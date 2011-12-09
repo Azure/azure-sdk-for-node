@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{00000000-0000-0000-0000-000000000000}") = "Azure", "Azure.csproj", "{225C3222-C084-494C-A15C-AE611F6A66DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{225C3222-C084-494C-A15C-AE611F6A66DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{225C3222-C084-494C-A15C-AE611F6A66DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{225C3222-C084-494C-A15C-AE611F6A66DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{225C3222-C084-494C-A15C-AE611F6A66DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

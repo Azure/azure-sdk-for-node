@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{225C3222-C084-494C-A15C-AE611F6A66DB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Node</RootNamespace>
+    <AssemblyName>Node</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\..\.gitignore">
+      <Link>.gitignore</Link>
+    </Content>
+    <Content Include="..\..\examples\blobuploader\helpers.js">
+      <Link>examples\blobuploader\helpers.js</Link>
+    </Content>
+    <Content Include="..\..\examples\blobuploader\public\css\default.css">
+      <Link>examples\blobuploader\public\css\default.css</Link>
+    </Content>
+    <Content Include="..\..\examples\blobuploader\public\css\reset.css">
+      <Link>examples\blobuploader\public\css\reset.css</Link>
+    </Content>
+    <Content Include="..\..\examples\blobuploader\server.js">
+      <Link>examples\blobuploader\server.js</Link>
+    </Content>
+    <Content Include="..\..\examples\blog\blog.js">
+      <Link>examples\blog\blog.js</Link>
+    </Content>
+    <Content Include="..\..\examples\blog\server.js">
+      <Link>examples\blog\server.js</Link>
+    </Content>
+    <Content Include="..\..\examples\samples\blobuploaddownloadsample.js">
+      <Link>examples\samples\blobuploaddownloadsample.js</Link>
+    </Content>
+    <Content Include="..\..\examples\samples\continuationsample.js">
+      <Link>examples\samples\continuationsample.js</Link>
+    </Content>
+    <Content Include="..\..\examples\samples\leaseblobsample.js">
+      <Link>examples\samples\leaseblobsample.js</Link>
+    </Content>
+    <Content Include="..\..\examples\samples\retrypolicysample.js">
+      <Link>examples\samples\retrypolicysample.js</Link>
+    </Content>
+    <Content Include="..\..\examples\samples\sassample.js">
+      <Link>examples\samples\sassample.js</Link>
+    </Content>
+    <Content Include="..\..\examples\samples\snapshotsample.js">
+      <Link>examples\samples\snapshotsample.js</Link>
+    </Content>
+    <Content Include="..\..\examples\tasklist\home.js">
+      <Link>examples\tasklist\home.js</Link>
+    </Content>
+    <Content Include="..\..\examples\tasklist\server.js">
+      <Link>examples\tasklist\server.js</Link>
+    </Content>
+    <Content Include="..\..\lib\azure.js">
+      <Link>lib\azure.js</Link>
+    </Content>
+    <Content Include="..\..\lib\common\exponentialretrypolicyfilter.js">
+      <Link>lib\common\exponentialretrypolicyfilter.js</Link>
+    </Content>
+    <Content Include="..\..\lib\common\linearretrypolicyfilter.js">
+      <Link>lib\common\linearretrypolicyfilter.js</Link>
+    </Content>
+    <Content Include="..\..\lib\diagnostics\logger.js">
+      <Link>lib\diagnostics\logger.js</Link>
+    </Content>
+    <Content Include="..\..\lib\http\webresource.js">
+      <Link>lib\http\webresource.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\blobservice.js">
+      <Link>lib\services\blob\blobservice.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\hmacsha256sign.js">
+      <Link>lib\services\blob\hmacsha256sign.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\models\blobresult.js">
+      <Link>lib\services\blob\models\blobresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\models\blocklistresult.js">
+      <Link>lib\services\blob\models\blocklistresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\models\containeraclresult.js">
+      <Link>lib\services\blob\models\containeraclresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\models\containerresult.js">
+      <Link>lib\services\blob\models\containerresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\models\leaseresult.js">
+      <Link>lib\services\blob\models\leaseresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\models\listblobsresultcontinuation.js">
+      <Link>lib\services\blob\models\listblobsresultcontinuation.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\models\listcontainersresultcontinuation.js">
+      <Link>lib\services\blob\models\listcontainersresultcontinuation.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\models\servicepropertiesresult.js">
+      <Link>lib\services\blob\models\servicepropertiesresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\sharedaccesssignature.js">
+      <Link>lib\services\blob\sharedaccesssignature.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\sharedkey.js">
+      <Link>lib\services\blob\sharedkey.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\blob\sharedkeylite.js">
+      <Link>lib\services\blob\sharedkeylite.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\queue\models\listqueuesresultcontinuation.js">
+      <Link>lib\services\queue\models\listqueuesresultcontinuation.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\queue\models\queuemessageresult.js">
+      <Link>lib\services\queue\models\queuemessageresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\queue\models\queueresult.js">
+      <Link>lib\services\queue\models\queueresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\queue\models\servicepropertiesresult.js">
+      <Link>lib\services\queue\models\servicepropertiesresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\queue\queueservice.js">
+      <Link>lib\services\queue\queueservice.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceclient.js">
+      <Link>lib\services\serviceclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\atomhandler.js">
+      <Link>lib\services\table\atomhandler.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\batchserviceclient.js">
+      <Link>lib\services\table\batchserviceclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\models\queryentitiesresultcontinuation.js">
+      <Link>lib\services\table\models\queryentitiesresultcontinuation.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\models\querytablesresultcontinuation.js">
+      <Link>lib\services\table\models\querytablesresultcontinuation.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\models\servicepropertiesresult.js">
+      <Link>lib\services\table\models\servicepropertiesresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\sharedkeylitetable.js">
+      <Link>lib\services\table\sharedkeylitetable.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\sharedkeytable.js">
+      <Link>lib\services\table\sharedkeytable.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\tablequery.js">
+      <Link>lib\services\table\tablequery.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\tableservice.js">
+      <Link>lib\services\table\tableservice.js</Link>
+    </Content>
+    <Content Include="..\..\lib\util\base64.js">
+      <Link>lib\util\base64.js</Link>
+    </Content>
+    <Content Include="..\..\lib\util\constants.js">
+      <Link>lib\util\constants.js</Link>
+    </Content>
+    <Content Include="..\..\lib\util\iso8061date.js">
+      <Link>lib\util\iso8061date.js</Link>
+    </Content>
+    <Content Include="..\..\lib\util\util.js">
+      <Link>lib\util\util.js</Link>
+    </Content>
+    <Content Include="..\..\LICENSE.txt">
+      <Link>LICENSE.txt</Link>
+    </Content>
+    <Content Include="..\..\test\azure-tests.js">
+      <Link>test\azure-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\common\exponentialretrypolicyfilter-tests.js">
+      <Link>test\common\exponentialretrypolicyfilter-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\common\linearretrypolicyfilter-tests.js">
+      <Link>test\common\linearretrypolicyfilter-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\extendedtestlist.txt">
+      <Link>test\extendedtestlist.txt</Link>
+    </Content>
+    <Content Include="..\..\test\runextendedtests.js">
+      <Link>test\runextendedtests.js</Link>
+    </Content>
+    <Content Include="..\..\test\runjshint.js">
+      <Link>test\runjshint.js</Link>
+    </Content>
+    <Content Include="..\..\test\runtests.js">
+      <Link>test\runtests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\blob\blobservice-longrunning-tests.js">
+      <Link>test\services\blob\blobservice-longrunning-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\blob\blobservice-tests.js">
+      <Link>test\services\blob\blobservice-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\blob\filters-tests.js">
+      <Link>test\services\blob\filters-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\blob\sharedaccesssignature-tests.js">
+      <Link>test\services\blob\sharedaccesssignature-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\blob\sharedkey-tests.js">
+      <Link>test\services\blob\sharedkey-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\blob\sharedkeylite-tests.js">
+      <Link>test\services\blob\sharedkeylite-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\queue\listqueuesresultcontinuation-tests.js">
+      <Link>test\services\queue\listqueuesresultcontinuation-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\queue\queueservice-tests.js">
+      <Link>test\services\queue\queueservice-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\atomhandler-tests.js">
+      <Link>test\services\table\atomhandler-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\batchserviceclient-tests.js">
+      <Link>test\services\table\batchserviceclient-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\queryentitiesresultcontinuation-tests.js">
+      <Link>test\services\table\queryentitiesresultcontinuation-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\querytablesresultcontinuation-tests.js">
+      <Link>test\services\table\querytablesresultcontinuation-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\sharedkeylitetable-tests.js">
+      <Link>test\services\table\sharedkeylitetable-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\sharedkeytable-tests.js">
+      <Link>test\services\table\sharedkeytable-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\tablequery-tests.js">
+      <Link>test\services\table\tablequery-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\tableservice-batch-tests.js">
+      <Link>test\services\table\tableservice-batch-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\tableservice-tablequery-tests.js">
+      <Link>test\services\table\tableservice-tablequery-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\table\tableservice-tests.js">
+      <Link>test\services\table\tableservice-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\testlist.txt">
+      <Link>test\testlist.txt</Link>
+    </Content>
+    <Content Include="..\..\test\util\base64-tests.js">
+      <Link>test\util\base64-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\util\iso8061date-tests.js">
+      <Link>test\util\iso8061date-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\util\util-tests.js">
+      <Link>test\util\util-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\util\util.js">
+      <Link>test\util\util.js</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\.npmignore">
+      <Link>.npmignore</Link>
+    </None>
+    <None Include="..\..\examples\blobuploader\package.json">
+      <Link>examples\blobuploader\package.json</Link>
+    </None>
+    <None Include="..\..\examples\blobuploader\views\display.ejs">
+      <Link>examples\blobuploader\views\display.ejs</Link>
+    </None>
+    <None Include="..\..\examples\blobuploader\views\error.ejs">
+      <Link>examples\blobuploader\views\error.ejs</Link>
+    </None>
+    <None Include="..\..\examples\blobuploader\views\index.ejs">
+      <Link>examples\blobuploader\views\index.ejs</Link>
+    </None>
+    <None Include="..\..\examples\blobuploader\views\layout.ejs">
+      <Link>examples\blobuploader\views\layout.ejs</Link>
+    </None>
+    <None Include="..\..\examples\blobuploader\views\upload.ejs">
+      <Link>examples\blobuploader\views\upload.ejs</Link>
+    </None>
+    <None Include="..\..\examples\blog\package.json">
+      <Link>examples\blog\package.json</Link>
+    </None>
+    <None Include="..\..\examples\blog\public\stylesheets\style.styl">
+      <Link>examples\blog\public\stylesheets\style.styl</Link>
+    </None>
+    <None Include="..\..\examples\blog\views\blog_new.ejs">
+      <Link>examples\blog\views\blog_new.ejs</Link>
+    </None>
+    <None Include="..\..\examples\blog\views\blog_show.ejs">
+      <Link>examples\blog\views\blog_show.ejs</Link>
+    </None>
+    <None Include="..\..\examples\blog\views\index.ejs">
+      <Link>examples\blog\views\index.ejs</Link>
+    </None>
+    <None Include="..\..\examples\blog\views\layout.ejs">
+      <Link>examples\blog\views\layout.ejs</Link>
+    </None>
+    <None Include="..\..\examples\tasklist\package.json">
+      <Link>examples\tasklist\package.json</Link>
+    </None>
+    <None Include="..\..\examples\tasklist\views\home.ejs">
+      <Link>examples\tasklist\views\home.ejs</Link>
+    </None>
+    <None Include="..\..\examples\tasklist\views\home.jade">
+      <Link>examples\tasklist\views\home.jade</Link>
+    </None>
+    <None Include="..\..\package.json">
+      <Link>package.json</Link>
+    </None>
+    <None Include="..\..\README.md">
+      <Link>README.md</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>28751</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
