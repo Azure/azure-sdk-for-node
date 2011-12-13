@@ -18,14 +18,18 @@ var testCase = require('nodeunit').testCase;
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
 
+var testutil = require('../../util/util');
+
 var ServiceClient = require("../../../lib/services/serviceclient");
 var TableQuery = require('../../../lib/services/table/tablequery');
 var Constants = require('../../../lib/util/constants');
+var QueryEntitiesResultContinuation = require('../../../lib/services/table/models/queryentitiesresultcontinuation');
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
 var tableService;
-var tableNames = generateNames('queryentities', 1);
+var tableNames = [];
+var tablePrefix = 'qecont';
 
 module.exports = testCase(
 {
@@ -56,10 +60,10 @@ module.exports = testCase(
   },
 
   testContinuationTokens: function (test) {
-    var tableName = tableNames[0];
-    var numberOfEntities = 150;
-    var numberOfEntitiesPerBatch = 50;
-    var numberOfEntitiesPerQuery = 50;
+    var tableName = testutil.generateId(tablePrefix, tableNames);
+    var numberOfEntities = 30;
+    var numberOfEntitiesPerBatch = 10;
+    var numberOfEntitiesPerQuery = 10;
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -120,6 +124,25 @@ module.exports = testCase(
           }
         });
       }
+    });
+  },
+
+  testNullNextRowKey: function (test) {
+    var tableName = testutil.generateId(tablePrefix, tableNames);
+    var tableQuery = TableQuery.select().from(tableName);
+
+    tableService.createTable(tableName, function (createError) {
+      test.equal(createError, null);
+
+      var queryEntitiesResultContinuation = new QueryEntitiesResultContinuation(tableService, tableQuery, 'part1', null);
+      test.equal(queryEntitiesResultContinuation.hasNextPage(), true);
+
+      queryEntitiesResultContinuation.getNextPage(function (error) {
+        // There should be no error when fetching the next page with a null next row key
+        test.equal(error, null);
+
+        test.done();
+      });
     });
   }
 });
