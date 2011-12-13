@@ -57,8 +57,9 @@ module.exports = testCase(
 
   testContinuationTokens: function (test) {
     var tableName = tableNames[0];
-    var numberOfEntities = 2500;
-    var numberOfEntitiesPerBatch = 100;
+    var numberOfEntities = 150;
+    var numberOfEntitiesPerBatch = 50;
+    var numberOfEntitiesPerQuery = 50;
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -87,9 +88,10 @@ module.exports = testCase(
           if (finished === Math.ceil(numberOfEntities / numberOfEntitiesPerBatch)) {
             // Verify
             var tableQuery = TableQuery.select()
-              .from(tableName);
+              .from(tableName)
+              .top(numberOfEntitiesPerQuery);
 
-            tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
+            tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation) {
               test.equal(queryError, null);
               test.notEqual(entries, null);
 
