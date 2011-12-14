@@ -1210,6 +1210,29 @@ module.exports = testCase(
         });
       });
     });
+  },
+
+  testGetBlobUrl: function (test) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+
+    var blobServiceTest = azure.createBlobService('storageAccount', 'storageAccessKey', 'host:80');
+    blobServiceTest.usePathStyleUri = false;
+
+    var urlParts = blobServiceTest.getBlobUrl(containerName);
+    test.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName);
+
+    urlParts = blobServiceTest.getBlobUrl(containerName, blobName);
+    test.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName + '/' + blobName);
+
+    blobServiceTest.usePathStyleUri = true;
+    urlParts = blobServiceTest.getBlobUrl(containerName);
+    test.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName);
+
+    urlParts = blobServiceTest.getBlobUrl(containerName, blobName);
+    test.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName + '/' + blobName);
+
+    test.done();
   }
 });
 
