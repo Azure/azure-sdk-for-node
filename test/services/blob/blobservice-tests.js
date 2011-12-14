@@ -1210,6 +1210,19 @@ module.exports = testCase(
         });
       });
     });
+  },
+
+  testGetBlobUrl: function (test) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+
+    var urlParts = blobService.getBlobUrl(containerName);
+    test.equal(urlParts.url(), 'http://nodejsdev.blob.core.windows.net:80/' + containerName);
+
+    urlParts = blobService.getBlobUrl(containerName, blobName);
+    test.equal(urlParts.url(), 'http://nodejsdev.blob.core.windows.net:80/' + containerName + '/' + blobName);
+
+    test.done();
   }
 });
 
