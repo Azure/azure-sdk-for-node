@@ -1,7 +1,7 @@
 {
     "name": "azure",
     "author": "Microsoft Corporation",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "Windows Azure Client Library for node",
     "tags" : ["azure", "sdk"],
     "keywords": [ "node", "azure" ],
