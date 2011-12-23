@@ -1,0 +1,9 @@
+{
+  "name": "log",
+  "description": "Tiny logger with streaming reader",
+  "version": "1.2.0",
+  "author": "TJ Holowaychuk <tj@vision-media.ca>",
+  "keywords": ["log", "logger"],
+  "main": "./lib/log.js",
+  "engines": { "node": ">= 0.2.0" }
+}

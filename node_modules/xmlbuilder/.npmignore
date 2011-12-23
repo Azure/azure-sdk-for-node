@@ -1,0 +1,6 @@
+.git*
+.travis.yml
+src/
+test/
+Makefile
+README.*
