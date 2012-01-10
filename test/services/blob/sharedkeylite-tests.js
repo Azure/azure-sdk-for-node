@@ -20,7 +20,9 @@ var util = require('util');
 
 var azureutil = require('../../../lib/util/util');
 var azure = require('../../../lib/azure');
+
 var testutil = require('../../util/util');
+var blobtestutil = require('../../util/blob-test-utils');
 
 var SharedAccessSignature = require('../../../lib/services/blob/sharedaccesssignature');
 var BlobService = require("../../../lib/services/blob/blobservice");
@@ -35,12 +37,15 @@ var blobService;
 var containerNames = [];
 var containerNamesPrefix = 'cont';
 
+var testPrefix = 'sharedkeylite-tests';
+
 module.exports = testCase(
 {
   setUp: function (callback) {
-    blobService = azure.createBlobService();
-
-    callback();
+    blobtestutil.setUpTest(module.exports, testPrefix, function (err, newBlobService) {
+      blobService = newBlobService;
+      callback();
+    });
   },
 
   tearDown: function (callback) {
@@ -56,31 +61,13 @@ module.exports = testCase(
       callback();
     };
 
-    // delete blob containers
-    blobService.listContainers(function (listError, containers) {
-      if (containers && containers.length > 0) {
-        var containerCount = 0;
-        containers.forEach(function (container) {
-          blobService.deleteContainer(container.name, function () {
-            containerCount++;
-            if (containerCount === containers.length) {
-              // clean up
-              deleteFiles();
-            }
-          });
-        });
-      }
-      else {
-        // clean up
-        deleteFiles();
-      }
-    });
+    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, deleteFiles);
   },
 
   testCreateContainer: function (test) {
     blobService.authenticationProvider = new SharedKeyLite(blobService.storageAccount, blobService.storageAccessKey);
 
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       test.equal(createError, null);

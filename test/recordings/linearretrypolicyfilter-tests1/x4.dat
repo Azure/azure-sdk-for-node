@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+  <code>TableBeingDeleted</code>
+  <message xml:lang="en-US">The specified table is being deleted. Try operation later.
+RequestId:8f0c96c9-10bf-4ab0-b821-71778fa522b6
+Time:2012-01-10T00:32:41.8114461Z</message>
+</error>

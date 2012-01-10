@@ -19,16 +19,35 @@ var util = require('../../lib/util/util');
 
 var exports = module.exports;
 
-exports.generateId = function (prefix, currentList) {
+/**
+* Generates an unique identifier using a prefix, based on a currentList and repeatable or not depending on the isMocked flag.
+*
+* @param {string} prefix          The prefix to use in the identifier.
+* @param {array}  currentList     The current list of identifiers.
+* @param {bool}   isMocked        Boolean flag indicating if the test is mocked or not.
+* @return {string} A new unique identifier.
+*/
+exports.generateId = function (prefix, currentList, isMocked) {
   if (!currentList) {
     currentList = [];
   }
 
   while (true) {
-    var newNumber = prefix + Math.floor(Math.random() * 10000);
-    if (currentList.indexOf(newNumber) === -1) {
+    var newNumber;
+    if (isMocked) {
+      // Predictable
+      newNumber = prefix + (currentList.length + 1);
       currentList.push(newNumber);
+
       return newNumber;
+    } else {
+      // Random
+      var newNumber = prefix + Math.floor(Math.random() * 10000);
+      if (currentList.indexOf(newNumber) === -1) {
+        currentList.push(newNumber);
+
+        return newNumber;
+      }
     }
   }
 };

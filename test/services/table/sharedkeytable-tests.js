@@ -17,8 +17,10 @@ var testCase = require('nodeunit').testCase;
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
-var testutil = require('../../util/util');
 var ISO8061Date = require('../../../lib/util/iso8061date');
+
+var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
 
 var ServiceClient = require("../../../lib/services/serviceclient");
 var TableQuery = require('../../../lib/services/table/tablequery');
@@ -44,38 +46,25 @@ var entity2 = { PartitionKey: 'part2',
 };
 
 var tableNames = [];
-var testPrefix = 'tableservice';
+var tablePrefix = 'sharedkeytable';
+
+var testPrefix = 'sharedkeytable-tests';
 
 module.exports = testCase(
 {
   setUp: function (callback) {
-    tableService = azure.createTableService();
-
-    callback();
-  },
-
-  tearDown: function (callback) {
-    tableService.queryTables(function (queryError, tables) {
-      if (!queryError && tables.length > 0) {
-        var tableCount = 0;
-        tables.forEach(function (table) {
-          tableService.deleteTable(table.TableName, function () {
-            tableCount++;
-
-            if (tableCount === tables.length) {
-              callback();
-            }
-          });
-        });
-      }
-      else {
-        callback();
-      }
+    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+      tableService = newTableService;
+      callback();
     });
   },
 
+  tearDown: function (callback) {
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
+  },
+
   testCreateTable: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.authenticationProvider = new SharedKeyLiteTable(tableService.storageAccount, tableService.storageAccessKey);
     tableService.createTable(tableName, function (createError, table, createResponse) {

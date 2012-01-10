@@ -17,7 +17,9 @@ var testCase = require('nodeunit').testCase;
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
+
 var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
 
 var ServiceClient = require("../../../lib/services/serviceclient");
 var TableQuery = require('../../../lib/services/table/tablequery');
@@ -42,38 +44,25 @@ var entity2 = {
 };
 
 var tableNames = [];
-var testPrefix = 'tableservice';
+var tablePrefix = 'tablequery';
+
+var testPrefix = 'tableservice-tablequery-tests';
 
 module.exports = testCase(
 {
   setUp: function (callback) {
-    tableService = azure.createTableService();
-
-    callback();
-  },
-
-  tearDown: function (callback) {
-    tableService.queryTables(function (queryError, tables) {
-      if (!queryError && tables.length > 0) {
-        var tableCount = 0;
-        tables.forEach(function (table) {
-          tableService.deleteTable(table.TableName, function () {
-            tableCount++;
-
-            if (tableCount === tables.length) {
-              callback();
-            }
-          });
-        });
-      }
-      else {
-        callback();
-      }
+    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+      tableService = newTableService;
+      callback();
     });
   },
 
+  tearDown: function (callback) {
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
+  },
+
   testSelect: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (error1) {
       test.equal(error1, null);
@@ -128,7 +117,7 @@ function generateEntities(count) {
     var entity = {
       PartitionKey: 'partition1',
       RowKey: i + 1,
-      field: 'street' + randomFromTo(0, 50)
+      field: 'street' + (i + 1)
     };
 
     entities.push(entity);

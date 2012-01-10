@@ -1,0 +1,22 @@
+--batchresponse_ab55e64a-9cee-41d1-9c3b-9abeb30bd8be
+Content-Type: multipart/mixed; boundary=changesetresponse_7b9a3dd5-7c51-40aa-9332-d576e4ed2242
+
+--changesetresponse_7b9a3dd5-7c51-40aa-9332-d576e4ed2242
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 404 Not Found
+Content-ID: 2
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+  <code>ResourceNotFound</code>
+  <message xml:lang="en-US">1:The specified resource does not exist.
+RequestId:cb3d2edf-6751-4cdd-8e90-39c0dd0e5cc0
+Time:2012-01-10T00:35:13.6455753Z</message>
+</error>
+--changesetresponse_7b9a3dd5-7c51-40aa-9332-d576e4ed2242--
+--batchresponse_ab55e64a-9cee-41d1-9c3b-9abeb30bd8be--

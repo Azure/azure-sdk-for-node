@@ -17,6 +17,9 @@ var testCase = require('nodeunit').testCase;
 
 var azure = require("../../lib/azure");
 
+var testutil = require('../util/util');
+var tabletestutil = require('../util/table-test-utils');
+
 var ServiceClient = require('../../lib/services/serviceclient');
 var ExponentialRetryPolicyFilter = require('../../lib/common/exponentialretrypolicyfilter');
 var Constants = require('../../lib/util/constants');
@@ -24,41 +27,28 @@ var Constants = require('../../lib/util/constants');
 var tableService;
 var exponentialRetryPolicyFilter;
 
-var tableNames = generateNames('retryexp', 3);
+var tableNames = [];
+var tablePrefix = 'expretry';
+
+var testPrefix = 'exponentialretrypolicyfilter-tests';
 
 module.exports = testCase(
 {
   setUp: function (callback) {
-    tableService = azure.createTableService();
-
-    exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
-    tableService = tableService.withFilter(exponentialRetryPolicyFilter);
-
-    callback();
-  },
-
-  tearDown: function (callback) {
-    tableService.queryTables(function (queryError, tables) {
-      if (!queryError && tables.length > 0) {
-        var tableCount = 0;
-        tables.forEach(function (table) {
-          tableService.deleteTable(table.TableName, function () {
-            tableCount++;
-
-            if (tableCount === tables.length) {
-              callback();
-            }
-          });
-        });
-      }
-      else {
-        callback();
-      }
+    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+      exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
+      tableService = newTableService.withFilter(exponentialRetryPolicyFilter);
+      callback();
     });
   },
 
+  tearDown: function (callback) {
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
+  },
+
   testRetryFailSingle: function (test) {
-    var tableName = tableNames[0];
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+
     var retryCount = 3;
     var retryInterval = 30;
 
@@ -79,11 +69,20 @@ module.exports = testCase(
   },
 
   testRetryFailMultiple: function (test) {
-    var tableName = tableNames[1];
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+
     var retryCount = 3;
-    var retryInterval = 30000;
+
     // 30 seconds as starting time between attempts should be enough to give enough time for the
     // table creation to succeed after a deletion.
+    var retryInterval = 30000;
+
+    if (tabletestutil.isMocked && !tabletestutil.isRecording) {
+      // if a playback on the mockserver is running, retryinterval can be lower
+      retryInterval = 30;
+
+      exponentialRetryPolicyFilter.minRetryInterval = 30;
+    }
 
     exponentialRetryPolicyFilter.retryCount = retryCount;
     exponentialRetryPolicyFilter.retryInterval = retryInterval;
@@ -113,7 +112,8 @@ module.exports = testCase(
   },
 
   testGetTablePassOnGetTable: function (test) {
-    var tableName = tableNames[2];
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+
     var retryCount = 3;
     var retryInterval = 30;
 
@@ -128,16 +128,3 @@ module.exports = testCase(
     });
   }
 });
-
-function generateNames(prefix, num) {
-  var result = [];
-  for (var i = 0; i < num; ) {
-    var newNumber = prefix + Math.floor(Math.random() * 10000);
-    if (result.indexOf(newNumber) == -1) {
-      result.push(newNumber);
-      i++;
-    }
-  }
-
-  return result;
-};

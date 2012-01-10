@@ -18,22 +18,27 @@ var testCase = require('nodeunit').testCase;
 var azureutil = require('../../../lib/util/util');
 var azure = require('../../../lib/azure');
 
+var blobtestutil = require('../../util/blob-test-utils');
+
 var BlobService = require("../../../lib/services/blob/blobservice");
 var Constants = require('../../../lib/util/constants');
 var BlobConstants = Constants.BlobConstants;
 
 var blobService;
 
+var testPrefix = 'filter-tests';
+
 module.exports = testCase(
 {
   setUp: function (callback) {
-    blobService = azure.createBlobService();
-
-    callback();
+    blobtestutil.setUpTest(module.exports, testPrefix, function (err, newBlobService) {
+      blobService = newBlobService;
+      callback();
+    });
   },
 
   tearDown: function (callback) {
-    callback();
+    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, callback);
   },
 
   testNoFilter: function (test) {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A44.5329416Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tableservice15(PartitionKey='1',RowKey='1')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:44Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tableservice15" href="tableservice15(PartitionKey='1',RowKey='1')" />
+  <category term="nodejsdev.tableservice15" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>1</d:PartitionKey>
+      <d:RowKey>1</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:44.5329416Z</d:Timestamp>
+      <d:field1>value</d:field1>
+      <d:field2>1</d:field2>
+      <d:field3>2</d:field3>
+    </m:properties>
+  </content>
+</entry>
