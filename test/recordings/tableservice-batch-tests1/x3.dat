@@ -1,0 +1,205 @@
+--batch_f1951344989f1f95dfe87da1c58f1478
+Content-Type: multipart/mixed; boundary=changeset_f1951344989f1f95dfe87da1c58f1478
+
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 1
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000530Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>1</d:RowKey><d:address>street1</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 2
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>2</d:RowKey><d:address>street2</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 3
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>3</d:RowKey><d:address>street3</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 4
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>4</d:RowKey><d:address>street4</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 5
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>5</d:RowKey><d:address>street5</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 6
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>6</d:RowKey><d:address>street6</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 7
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>7</d:RowKey><d:address>street7</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 8
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>8</d:RowKey><d:address>street8</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 493
+Content-ID: 9
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>9</d:RowKey><d:address>street9</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 10
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000531Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>10</d:RowKey><d:address>street10</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 11
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>11</d:RowKey><d:address>street11</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 12
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>12</d:RowKey><d:address>street12</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 13
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>13</d:RowKey><d:address>street13</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 14
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>14</d:RowKey><d:address>street14</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 15
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>15</d:RowKey><d:address>street15</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 16
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>16</d:RowKey><d:address>street16</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 17
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>17</d:RowKey><d:address>street17</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 18
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>18</d:RowKey><d:address>street18</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 19
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000532Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>19</d:RowKey><d:address>street19</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+POST http://nodejsdev.table.core.windows.net:80/tablebatch2 HTTP/1.1
+Content-Type: application/atom+xml;type=entry
+Content-Length: 495
+Content-ID: 20
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-01-10T00:35:02.0000533Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>20</d:RowKey><d:address>street20</d:address></m:properties></content></entry>
+--changeset_f1951344989f1f95dfe87da1c58f1478--
+--batch_f1951344989f1f95dfe87da1c58f1478--

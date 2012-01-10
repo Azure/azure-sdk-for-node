@@ -17,8 +17,11 @@ var testCase = require('nodeunit').testCase;
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
-var testutil = require('../../util/util');
+
 var ISO8061Date = require('../../../lib/util/iso8061date');
+
+var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
 
 var ServiceClient = require("../../../lib/services/serviceclient");
 var TableQuery = require('../../../lib/services/table/tablequery');
@@ -39,42 +42,29 @@ var entity2 = { PartitionKey: 'part2',
   RowKey: 'row1',
   boolval: { '@': { type: 'Edm.Boolean' }, '#': true },
   intval: { '@': { type: 'Edm.Int32' }, '#': 42 },
-  dateval: { '@': { type: 'Edm.DateTime' }, '#': ISO8061Date.format(new Date()) }
+  dateval: { '@': { type: 'Edm.DateTime' }, '#': ISO8061Date.format(new Date(2011, 12, 25)) }
 };
 
 var tableNames = [];
-var testPrefix = 'tableservice';
+var tablePrefix = 'tableservice';
+
+var testPrefix = 'tableservice-tests';
 
 module.exports = testCase(
 {
   setUp: function (callback) {
-    tableService = azure.createTableService();
-
-    callback();
-  },
-
-  tearDown: function (callback) {
-    tableService.queryTables(function (queryError, tables) {
-      if (!queryError && tables.length > 0) {
-        var tableCount = 0;
-        tables.forEach(function (table) {
-          tableService.deleteTable(table.TableName, function () {
-            tableCount++;
-
-            if (tableCount === tables.length) {
-              callback();
-            }
-          });
-        });
-      }
-      else {
-        callback();
-      }
+    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+      tableService = newTableService;
+      callback();
     });
   },
 
+  tearDown: function (callback) {
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
+  },
+
   getServiceProperties: function (test) {
-    tableService.getServiceProperties(function (error, serviceProperties, response) {
+    tableService.getServiceProperties(function (error, serviceProperties) {
       test.equal(error, null);
       test.notEqual(serviceProperties, null);
 
@@ -115,7 +105,7 @@ module.exports = testCase(
   },
 
   testCreateTable: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -150,7 +140,7 @@ module.exports = testCase(
   },
 
   testCreateTableIfNotExists: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -184,8 +174,8 @@ module.exports = testCase(
   },
 
   testQueryTable: function (test) {
-    var tableName1 = testutil.generateId(testPrefix, tableNames);
-    var tableName2 = testutil.generateId(testPrefix, tableNames);
+    var tableName1 = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName2 = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.queryTables(function (queryErrorEmpty, tablesEmpty) {
       test.equal(queryErrorEmpty, null);
@@ -236,7 +226,7 @@ module.exports = testCase(
   },
 
   testDeleteTable: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -255,7 +245,7 @@ module.exports = testCase(
   },
 
   testInsertEntity: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -341,7 +331,7 @@ module.exports = testCase(
   },
 
   testInsertEntityWithHtmlSpecialChars: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -375,7 +365,7 @@ module.exports = testCase(
   },
 
   testDeleteEntityWithoutEtag: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -402,7 +392,7 @@ module.exports = testCase(
   },
 
   testDeleteEntityWithEtag: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -433,7 +423,7 @@ module.exports = testCase(
   },
 
   testUpdateEntityWithoutEtag: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -466,7 +456,7 @@ module.exports = testCase(
   },
 
   testUpdateEntityWithEtag: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -500,7 +490,7 @@ module.exports = testCase(
   },
 
   testMergeEntityWithoutEtag: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -531,7 +521,7 @@ module.exports = testCase(
   },
 
   testMergeEntityWithEtag: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -565,7 +555,7 @@ module.exports = testCase(
   },
 
   testInsertOrReplaceEntity: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       test.equal(error, null);
@@ -607,7 +597,7 @@ module.exports = testCase(
   },
 
   testInsertOrMerge: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       test.equal(error, null);
@@ -650,7 +640,7 @@ module.exports = testCase(
   },
 
   testInsertEntityEmptyField: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       test.equal(error, null);

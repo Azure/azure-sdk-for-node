@@ -217,50 +217,61 @@ module.exports = testCase(
     });
   },
 
-  /*
-  testInvalidMD5Text: function (test) {
-    var containerName = containerNames[7];
-    var blobName = blobNames[12];
-    var blobText = 'Hello World';
+  testSharedAccess: function (test) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var blobText = 'text';
 
-    blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
-      test.equal(createError1, null);
+    var sharedBlobClient = azure.createBlobService();
+    var sharedAccessSignature = new SharedAccessSignature(sharedBlobClient.storageAccount, sharedBlobClient.storageAccessKey);
+    sharedBlobClient.authenticationProvider = sharedAccessSignature;
+
+    var managementBlobClient = azure.createBlobService();
+
+    managementBlobClient.createContainer(containerName, function (createError, container1, createResponse) {
+      test.equal(createError, null);
       test.notEqual(container1, null);
-      test.ok(createResponse1.isSuccessful);
-      test.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      test.ok(createResponse.isSuccessful);
 
-      blobService.createBlockBlobFromFile(containerName, blobName, blobText, { setBlobContentMD5: true }, function (uploadError, blobResponse, uploadResponse) {
-        test.equal(uploadError, null);
-        test.notEqual(blobResponse, null);
-        test.ok(uploadResponse.isSuccessful);
+      var currentDate = new Date();
+      var futureDate = new Date(currentDate);
+      futureDate.setMinutes(currentDate.getMinutes() + 5);
 
-        // Normal retrieval ok
-        blobService.getBlobToText(containerName, blobName, function (downloadErr1, content) {
-          test.equal(downloadErr1, null);
-          test.equal(blobText, content);
+      var sharedAccessPolicy = {
+        AccessPolicy: {
+          Expiry: futureDate,
+          Permissions: BlobConstants.SharedAccessPermissions.WRITE
+        }
+      };
 
-          // replace contentMD5 by a messed up one
-          var blobOptions = { contentMD5: 'fake' };
-          blobService.setBlobProperties(containerName, blobName, blobOptions, function (setPropErr) {
-            test.equal(setPropErr, null);
+      // Get shared access Url valid for the next 5 minutes
+      var sharedAccessCredentials = managementBlobClient.generateSharedAccessSignature(
+        containerName,
+        null,
+        sharedAccessPolicy);
 
-            // Error will be shown
-            blobService.getBlobToText(containerName, blobName, function (downloadErr2) {
-              test.notEqual(downloadErr2, null);
-              test.equal(downloadErr2, 'Blob data corrupted (integrity check failed), Expected value is fake, retrieved sQqNsWTgdUEFt6mb5y4/5Q==');
+      sharedAccessSignature.permissionSet = [sharedAccessCredentials];
 
-              // We can always ask to ignore MD5
-              blobService.getBlobToText(containerName, blobName, { disableContentMD5: true }, function (downloadErr3) {
-                test.equal(downloadErr3, null);
+      // Writing the blob should be possible
+      sharedBlobClient.createBlockBlobFromText(containerName, blobName, blobText, function (putError, blob, putResponse) {
+        test.equal(putError, null);
+        test.ok(putResponse.isSuccessful);
 
-                test.done();
-              });
-            });
-          });
+        // Make sure its not possible to get the blob since only write permission was given
+        sharedBlobClient.getBlobToText(containerName, blobName, function (getError, content, blockBlob, getResponse) {
+          test.equal(getError.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
+          test.equal(content, null);
+          test.equal(blockBlob, null);
+          test.notEqual(getResponse, null);
+          if (getResponse) {
+            test.equal(getResponse.isSuccessful, false);
+          }
+
+          test.done();
         });
       });
     });
-  }*/
+  }
 });
 
 function repeat(s, n) {

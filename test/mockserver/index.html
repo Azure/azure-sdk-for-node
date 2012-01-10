@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>
+      Mock proxy server
+    </title>
+  </head>
+  <body>
+    <h3>
+      Get current session state
+    </h3>
+    <p>
+      <code>GET <a href="session">/session</a></code>
+    </p>
+    <h3>
+      Start recording session
+    </h3>
+    <p>
+      <code>PUT <a href="session">/session</a> {"mode":"recording","name":"name-for-session-folder"}</code>
+    </p>
+    <h3>
+      Start playback session
+    </h3>
+    <p>
+      <code>PUT <a href="session">/session</a> {"mode":"playback","name":"name-for-session-folder"}</code>
+    </p>
+    <h3>
+      End current playback or recording
+    </h3>
+    <p>
+      <code>DELETE <a href="session">/session</a></code>
+    </p>
+    <h3>
+      Browse recorded sessions
+    </h3>
+    <p>
+      <code>GET <a href="sessions">/sessions</a></code>
+    </p>
+    <h3>
+      Get and Set next-proxy settings
+    </h3>
+    <p>
+      <code>GET <a href="proxy">/proxy</a></code><br>
+      <code>PUT <a href="proxy">/proxy</a> {"host":"dns-name-or-ip","port":"80"}</code>
+    </p>
+  </body>
+</html>

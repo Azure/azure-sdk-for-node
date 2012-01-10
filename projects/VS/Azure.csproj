@@ -210,6 +210,15 @@
     <Content Include="..\..\test\extendedtestlist.txt">
       <Link>test\extendedtestlist.txt</Link>
     </Content>
+    <Content Include="..\..\test\mockserver\index.html">
+      <Link>test\mockserver\index.html</Link>
+    </Content>
+    <Content Include="..\..\test\mockserver\mockserver.js">
+      <Link>test\mockserver\mockserver.js</Link>
+    </Content>
+    <Content Include="..\..\test\mockserver\mockserverclient.js">
+      <Link>test\mockserver\mockserverclient.js</Link>
+    </Content>
     <Content Include="..\..\test\runextendedtests.js">
       <Link>test\runextendedtests.js</Link>
     </Content>
@@ -279,8 +288,17 @@
     <Content Include="..\..\test\util\base64-tests.js">
       <Link>test\util\base64-tests.js</Link>
     </Content>
+    <Content Include="..\..\test\util\blob-test-utils.js">
+      <Link>test\util\blob-test-utils.js</Link>
+    </Content>
     <Content Include="..\..\test\util\iso8061date-tests.js">
       <Link>test\util\iso8061date-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\util\queue-test-utils.js">
+      <Link>test\util\queue-test-utils.js</Link>
+    </Content>
+    <Content Include="..\..\test\util\table-test-utils.js">
+      <Link>test\util\table-test-utils.js</Link>
     </Content>
     <Content Include="..\..\test\util\util-tests.js">
       <Link>test\util\util-tests.js</Link>

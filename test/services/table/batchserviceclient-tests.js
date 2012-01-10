@@ -15,10 +15,10 @@
 
 var testCase = require('nodeunit').testCase;
 
+var azure = require('../../../lib/azure');
 var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
 
-var TableService  = require('../../../lib/services/table/tableservice');
-var ServiceClient      = require('../../../lib/services/serviceclient');
 var BatchServiceClient = require('../../../lib/services/table/batchserviceclient');
 var Constants = require('../../../lib/util/constants');
 var HttpConstants = Constants.HttpConstants;
@@ -35,21 +35,23 @@ var entity1 = { PartitionKey: 'part1',
   otherprops: 'my properties'
 };
 
+var testPrefix = 'batchserviceclient-tests';
+
 module.exports = testCase(
 {
   setUp: function (callback) {
-    tableService = new TableService();
-
-    callback();
+    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+      tableService = newTableService;
+      callback();
+    });
   },
 
   tearDown: function (callback) {
-    // clean up
-    callback();
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
   },
 
   testAddOperation: function (test) {
-    var tableName = testutil.generateId(tablePrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.beginBatch();
 

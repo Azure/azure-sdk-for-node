@@ -17,7 +17,9 @@ var testCase = require('nodeunit').testCase;
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
+
 var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
 
 var ServiceClient = require('../../../lib/services/serviceclient');
 var TableQuery = require('../../../lib/services/table/tablequery');
@@ -26,40 +28,25 @@ var HttpConstants = Constants.HttpConstants;
 
 var tableService;
 var tableNames = [];
-var testPrefix = 'tableservicebatch';
+var tablePrefix = 'tablebatch';
+
+var testPrefix = 'tableservice-batch-tests';
 
 module.exports = testCase(
 {
   setUp: function (callback) {
-    tableService = azure.createTableService();
-
-    callback();
-  },
-
-  tearDown: function (callback) {
-    tableService.queryTables(function (queryError, tables) {
-      if (!queryError && tables.length > 0) {
-        var tableCount = 0;
-        tables.forEach(function (table) {
-          tableService.deleteTable(table.TableName, function () {
-            tableCount++;
-
-            if (tableCount === tables.length) {
-              // clean up
-              callback();
-            }
-          });
-        });
-      }
-      else {
-        // clean up
-        callback();
-      }
+    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+      tableService = newTableService;
+      callback();
     });
   },
 
+  tearDown: function (callback) {
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
+  },
+
   testQueryEntities_All: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -95,7 +82,7 @@ module.exports = testCase(
   },
 
   testQueryEntities_Single1: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -132,7 +119,7 @@ module.exports = testCase(
   },
 
   testQueryEntities_Single2: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -164,7 +151,7 @@ module.exports = testCase(
   },
 
   testRetrieveEntities_TableQuery1: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -208,7 +195,7 @@ module.exports = testCase(
   },
 
   testRetrieveEntities_TableQuery2: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -266,7 +253,7 @@ module.exports = testCase(
   },
 
   testRetrieveEntities_Top: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -316,7 +303,7 @@ module.exports = testCase(
   },
 
   testFailBatch: function (test) {
-    var tableName = testutil.generateId(testPrefix, tableNames);
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       test.equal(createError, null);
@@ -367,7 +354,7 @@ function generateEntities(count) {
     var entity = {
       PartitionKey: 'partition1',
       RowKey: i + 1,
-      address: 'street' + testutil.randomFromTo(0, 50)
+      address: 'street' + (i + 1)
     };
 
     entities.push(entity);

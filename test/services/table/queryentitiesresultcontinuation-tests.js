@@ -167,15 +167,11 @@ function generateEntities(count) {
     var entity = {
       PartitionKey: 'partition1',
       RowKey: i + 1,
-      field: 'street' + randomFromTo(0, 50)
+      field: 'street' + (i + 1)
     };
 
     entities.push(entity);
   }
 
   return entities;
-};
-
-function randomFromTo(from, to) {
-  return Math.floor(Math.random() * (to - from + 1) + from);
 };

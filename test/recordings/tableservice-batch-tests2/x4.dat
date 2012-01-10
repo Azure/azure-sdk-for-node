@@ -1,0 +1,625 @@
+--batchresponse_bd37c5e1-08bb-44ef-af9b-a75dfb720b4c
+Content-Type: multipart/mixed; boundary=changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 1
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='1')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='1')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='1')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>1</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street1</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 2
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='2')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='2')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='2')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>2</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street2</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 3
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='3')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='3')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='3')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>3</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street3</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 4
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='4')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='4')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='4')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>4</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street4</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 5
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='5')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='5')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='5')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>5</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street5</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 6
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='6')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='6')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='6')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>6</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street6</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 7
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='7')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='7')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='7')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>7</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street7</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 8
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='8')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='8')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='8')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>8</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street8</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 9
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='9')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='9')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='9')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>9</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street9</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 10
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='10')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='10')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='10')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>10</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street10</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 11
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='11')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='11')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='11')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>11</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street11</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 12
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='12')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='12')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='12')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>12</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street12</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 13
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='13')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='13')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='13')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>13</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street13</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 14
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='14')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='14')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='14')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>14</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street14</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 15
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='15')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='15')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='15')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>15</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street15</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 16
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='16')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='16')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='16')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>16</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street16</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 17
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='17')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='17')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='17')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>17</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street17</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 18
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='18')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='18')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='18')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>18</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street18</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 19
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='19')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='19')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='19')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>19</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street19</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 20
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='20')
+ETag: W/"datetime'2012-01-10T00%3A35%3A06.0431429Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='20')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:06Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='20')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>20</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street20</d:address>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_8568dd1c-89eb-4db9-a4ab-87110fa421ba--
+--batchresponse_bd37c5e1-08bb-44ef-af9b-a75dfb720b4c--
