@@ -80,6 +80,8 @@ module.exports = testCase(
     if (tabletestutil.isMocked && !tabletestutil.isRecording) {
       // if a playback on the mockserver is running, retryinterval can be lower
       retryInterval = 30;
+
+      exponentialRetryPolicyFilter.minRetryInterval = 30;
     }
 
     exponentialRetryPolicyFilter.retryCount = retryCount;
