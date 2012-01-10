@@ -17,7 +17,9 @@ var testCase = require('nodeunit').testCase;
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
+
 var testutil = require('../../util/util');
+var queuetestutil = require('../../util/queue-test-utils');
 
 var ServiceClient = require("../../../lib/services/serviceclient");
 var Constants = require('../../../lib/util/constants');
@@ -27,31 +29,19 @@ var queueService;
 var queueNames = [];
 var queueNamesPrefix = 'queue';
 
+var testPrefix = 'queueservice-tests';
+
 module.exports = testCase(
 {
   setUp: function (callback) {
-    queueService = azure.createQueueService();
-
-    callback();
+    queuetestutil.setUpTest(module.exports, testPrefix, function (err, newQueueService) {
+      queueService = newQueueService;
+      callback();
+    });
   },
 
   tearDown: function (callback) {
-    queueService.listQueues(function (listError, queues) {
-      if (queues && queues.length > 0) {
-        var queueCount = 0;
-        queues.forEach(function (queue) {
-          queueService.deleteQueue(queue.name, function () {
-            queueCount++;
-            if (queueCount === queues.length) {
-              callback();
-            }
-          });
-        });
-      }
-      else {
-        callback();
-      }
-    });
+    queuetestutil.tearDownTest(module.exports, queueService, testPrefix, callback);
   },
 
   getServiceProperties: function (test) {
@@ -96,7 +86,7 @@ module.exports = testCase(
   },
 
   testCreateQueue: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     // Create
@@ -144,7 +134,7 @@ module.exports = testCase(
   },
 
   testCreateQueueIfNotExists: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     // Create
@@ -174,8 +164,8 @@ module.exports = testCase(
   },
 
   testListQueues: function (test) {
-    var queueName1 = testutil.generateId(queueNamesPrefix, queueNames);
-    var queueName2 = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName1 = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName2 = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     queueService.listQueues({ 'include': 'metadata' }, function (listErrorEmpty, queuesEmpty) {
@@ -228,7 +218,7 @@ module.exports = testCase(
   },
 
   testCreateMessage: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var messageText1 = 'hi there';
     var messageText2 = 'bye there';
 
@@ -322,7 +312,7 @@ module.exports = testCase(
   },
 
   testCreateEmptyMessage: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
 
     // Create Queue
     queueService.createQueue(queueName, function (createError1) {
@@ -339,7 +329,7 @@ module.exports = testCase(
   },
 
   testSetQueueMetadataName: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { '\Uc8fc\Uba39\Uc774\Uc6b4\Ub2e4': 'test' };
 
     queueService.createQueue(queueName, function (createError) {
@@ -354,7 +344,7 @@ module.exports = testCase(
   },
 
   testSetQueueMetadata: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     queueService.createQueue(queueName, function (createError) {
@@ -380,7 +370,7 @@ module.exports = testCase(
   },
 
   testGetMessages: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
 
     queueService.createQueue(queueName, function (createError) {
       test.equal(createError, null);
@@ -423,7 +413,7 @@ module.exports = testCase(
   },
 
   testUpdateMessage: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
 
     queueService.createQueue(queueName, function (error) {
       test.equal(error, null);
@@ -447,7 +437,7 @@ module.exports = testCase(
   },
 
   testUpdateMessageEncodingPopReceipt: function (test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
 
     // no messages in the queue try to update a message should give fail to update instead of blowing up on authentication
     queueService.updateMessage(queueName, 'mymsg', 'AgAAAAEAAACucgAAvMW8+dqjzAE=', 10, { messagetext: 'bye there' }, function (error) {

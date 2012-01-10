@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/Tables('tableservice12')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:38Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="Tables" href="Tables('tableservice12')" />
+  <category term="nodejsdev.Tables" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:TableName>tableservice12</d:TableName>
+    </m:properties>
+  </content>
+</entry>

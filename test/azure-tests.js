@@ -83,6 +83,10 @@ module.exports = testCase(
     delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
     test.equal(azure.isEmulated(), false);
 
+    // set some environment credentials for the live windows azure services
+    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+
     var blobService1 = azure.createBlobService();
     test.equal(blobService1.host, ServiceClient.CLOUD_BLOB_HOST);
     test.equal(blobService1.usePathStyleUri, false);

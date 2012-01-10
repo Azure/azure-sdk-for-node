@@ -20,7 +20,9 @@ var util = require('util');
 
 var azureutil = require('../../../lib/util/util');
 var azure = require('../../../lib/azure');
+
 var testutil = require('../../util/util');
+var blobtestutil = require('../../util/blob-test-utils');
 
 var SharedAccessSignature = require('../../../lib/services/blob/sharedaccesssignature');
 var BlobService = require("../../../lib/services/blob/blobservice");
@@ -33,49 +35,23 @@ var WebResource = require('../../../lib/http/webresource');
 var blobService;
 var containerNames = [];
 var containerNamesPrefix = 'cont';
+
 var blobNames = [];
 var blobNamesPrefix = 'blob';
+
+var testPrefix = 'blobservice-tests';
 
 module.exports = testCase(
 {
   setUp: function (callback) {
-    blobService = azure.createBlobService();
-
-    callback();
+    blobtestutil.setUpTest(module.exports, testPrefix, function (err, newBlobService) {
+      blobService = newBlobService;
+      callback();
+    });
   },
 
   tearDown: function (callback) {
-    var deleteFiles = function () {
-      // delete test files
-      var list = fs.readdirSync('./');
-      list.forEach(function (file) {
-        if (file.indexOf('.test') !== -1) {
-          fs.unlinkSync(file);
-        }
-      });
-
-      callback();
-    };
-
-    // delete blob containers
-    blobService.listContainers(function (listError, containers) {
-      if (containers && containers.length > 0) {
-        var containerCount = 0;
-        containers.forEach(function (container) {
-          blobService.deleteContainer(container.name, function () {
-            containerCount++;
-            if (containerCount === containers.length) {
-              // clean up
-              deleteFiles();
-            }
-          });
-        });
-      }
-      else {
-        // clean up
-        deleteFiles();
-      }
-    });
+    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, callback);
   },
 
   testIncorrectContainerNames: function (test) {
@@ -154,28 +130,28 @@ module.exports = testCase(
   },
 
   testListContainers: function (test) {
-    var containerName1 = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName1 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata1 = {
       color: 'orange',
       containernumber: '01',
       somemetadataname: 'SomeMetadataValue'
     };
 
-    var containerName2 = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName2 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata2 = {
       color: 'pink',
       containernumber: '02',
       somemetadataname: 'SomeMetadataValue'
     };
 
-    var containerName3 = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName3 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata3 = {
       color: 'brown',
       containernumber: '03',
       somemetadataname: 'SomeMetadataValue'
     };
 
-    var containerName4 = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName4 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata4 = {
       color: 'blue',
       containernumber: '04',
@@ -271,7 +247,7 @@ module.exports = testCase(
   },
 
   testCreateContainer: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       test.equal(createError, null);
@@ -295,7 +271,7 @@ module.exports = testCase(
   },
 
   testCreateContainerIfNotExists: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       test.equal(createError, null);
@@ -319,7 +295,7 @@ module.exports = testCase(
   },
 
   testGetContainerProperties: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata = {
       color: 'blue'
     };
@@ -345,7 +321,7 @@ module.exports = testCase(
   },
 
   testSetContainerMetadata: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     blobService.createContainer(containerName, function (createError, createContainer, createContainerResponse) {
@@ -374,7 +350,7 @@ module.exports = testCase(
   },
 
   testGetContainerAcl: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       test.equal(createError, null);
@@ -396,7 +372,7 @@ module.exports = testCase(
   },
 
   testSetContainerAcl: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       test.equal(createError, null);
@@ -440,7 +416,7 @@ module.exports = testCase(
   },
 
   testSetContainerAclSignedIdentifiers: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createContainerError, container1, createContainerResponse) {
       test.equal(createContainerError, null);
@@ -508,8 +484,8 @@ module.exports = testCase(
   },
 
   testCreateBlockBlobFromText: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
@@ -533,8 +509,8 @@ module.exports = testCase(
   },
 
   testSnapshotBlob: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError, container1, createResponse) {
@@ -578,11 +554,11 @@ module.exports = testCase(
   },
 
   testCopyBlob: function (test) {
-    var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
-    var sourceBlobName = testutil.generateId(blobNamesPrefix, blobNames);
-    var targetBlobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var sourceBlobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var targetBlobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     var blobText = 'hi there';
 
@@ -611,8 +587,8 @@ module.exports = testCase(
   },
 
   testLeaseBlob: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'hello';
 
     blobService.createContainer(containerName, function (createError, container1, createResponse) {
@@ -658,8 +634,8 @@ module.exports = testCase(
   },
 
   testGetBlobProperties: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var metadata = {
       color: 'blue'
     };
@@ -688,8 +664,8 @@ module.exports = testCase(
   },
 
   testSetBlobProperties: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var text = "hello";
 
     blobService.createContainer(containerName, function (err) {
@@ -727,11 +703,9 @@ module.exports = testCase(
   },
 
   testGetBlobMetadata: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
-    var metadata = {
-      color: 'blue'
-    };
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var metadata = { color: 'blue' };
 
     blobService.createContainer(containerName, function (err) {
       test.equal(err, null);
@@ -757,9 +731,9 @@ module.exports = testCase(
   },
 
   testListBlobs: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName1 = testutil.generateId(blobNamesPrefix, blobNames);
-    var blobName2 = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName1 = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var blobName2 = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText1 = 'hello1';
     var blobText2 = 'hello2';
 
@@ -838,65 +812,9 @@ module.exports = testCase(
     });
   },
 
-  testSharedAccess: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
-    var blobText = 'text';
-
-    var sharedBlobClient = azure.createBlobService();
-    var sharedAccessSignature = new SharedAccessSignature(sharedBlobClient.storageAccount, sharedBlobClient.storageAccessKey);
-    sharedBlobClient.authenticationProvider = sharedAccessSignature;
-
-    var managementBlobClient = azure.createBlobService();
-
-    managementBlobClient.createContainer(containerName, function (createError, container1, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
-      test.ok(createResponse.isSuccessful);
-
-      var currentDate = new Date();
-      var futureDate = new Date(currentDate);
-      futureDate.setMinutes(currentDate.getMinutes() + 5);
-
-      var sharedAccessPolicy = {
-        AccessPolicy: {
-          Expiry: futureDate,
-          Permissions: BlobConstants.SharedAccessPermissions.WRITE
-        }
-      };
-
-      // Get shared access Url valid for the next 5 minutes
-      var sharedAccessCredentials = managementBlobClient.generateSharedAccessSignature(
-        containerName,
-        null,
-        sharedAccessPolicy);
-
-      sharedAccessSignature.permissionSet = [sharedAccessCredentials];
-
-      // Writing the blob should be possible
-      sharedBlobClient.createBlockBlobFromText(containerName, blobName, blobText, function (putError, blob, putResponse) {
-        test.equal(putError, null);
-        test.ok(putResponse.isSuccessful);
-
-        // Make sure its not possible to get the blob since only write permission was given
-        sharedBlobClient.getBlobToText(containerName, blobName, function (getError, content, blockBlob, getResponse) {
-          test.equal(getError.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
-          test.equal(content, null);
-          test.equal(blockBlob, null);
-          test.notEqual(getResponse, null);
-          if (getResponse) {
-            test.equal(getResponse.isSuccessful, false);
-          }
-
-          test.done();
-        });
-      });
-    });
-  },
-
   testPageBlob: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
       test.equal(createError, null);
@@ -944,8 +862,8 @@ module.exports = testCase(
   },
 
   testGetPageRegions: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
       test.equal(createError, null);
@@ -994,8 +912,8 @@ module.exports = testCase(
   },
 
   testUploadBlobAccessCondition: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'hello';
 
     blobService.createContainer(containerName, function (error) {
@@ -1020,8 +938,8 @@ module.exports = testCase(
   },
 
   testSmallUploadBlobFromFileWithSpace: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames) + ' a';
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked) + ' a';
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
@@ -1046,8 +964,8 @@ module.exports = testCase(
   },
 
   testGetBlobRange: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
       test.equal(createError, null);
@@ -1071,8 +989,8 @@ module.exports = testCase(
   },
 
   testGetBlobRangeOpenEnded: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
       test.equal(createError, null);
@@ -1096,8 +1014,8 @@ module.exports = testCase(
   },
 
   testSetBlobMime: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var fileNameSource = testutil.generateId('file') + '.bmp'; // fake bmp file with text...
     var blobText = 'Hello World!';
 
@@ -1126,8 +1044,8 @@ module.exports = testCase(
   },
 
   testSetBlobMimeSkip: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var fileNameSource = testutil.generateId('prefix') + '.bmp'; // fake bmp file with text...
     var blobText = 'Hello World!';
 
@@ -1156,8 +1074,8 @@ module.exports = testCase(
   },
 
   testCreateBlobWithBars: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'Hello World!';
 
     blobService.createContainer(containerName, function (createError) {
@@ -1179,8 +1097,8 @@ module.exports = testCase(
   },
 
   testCommitBlockList: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (error) {
       test.equal(error, null);
@@ -1213,8 +1131,8 @@ module.exports = testCase(
   },
 
   testGetBlobUrl: function (test) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     var blobServiceTest = azure.createBlobService('storageAccount', 'storageAccessKey', 'host:80');
     blobServiceTest.usePathStyleUri = false;

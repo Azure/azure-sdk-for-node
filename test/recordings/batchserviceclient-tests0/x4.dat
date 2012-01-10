@@ -1,0 +1,38 @@
+--batchresponse_ece25e79-d575-45fd-a157-25ac4670b81b
+Content-Type: multipart/mixed; boundary=changesetresponse_3b278ea7-ba13-4e7a-8c13-810f0ce8df07
+
+--changesetresponse_3b278ea7-ba13-4e7a-8c13-810f0ce8df07
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+HTTP/1.1 201 Created
+Content-ID: 1
+Cache-Control: no-cache
+DataServiceVersion: 1.0;
+Content-Type: application/atom+xml;charset=utf-8
+Location: http://nodejsdev.table.core.windows.net/batch1(PartitionKey='part1',RowKey='row1')
+ETag: W/"datetime'2012-01-10T00%3A34%3A58.857285Z'"
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A34%3A58.857285Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/batch1(PartitionKey='part1',RowKey='row1')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:34:58Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="batch1" href="batch1(PartitionKey='part1',RowKey='row1')" />
+  <category term="nodejsdev.batch1" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>part1</d:PartitionKey>
+      <d:RowKey>row1</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:34:58.857285Z</d:Timestamp>
+      <d:address>my city, my state</d:address>
+      <d:field1>my field1</d:field1>
+      <d:otherprops>my properties</d:otherprops>
+    </m:properties>
+  </content>
+</entry>
+--changesetresponse_3b278ea7-ba13-4e7a-8c13-810f0ce8df07--
+--batchresponse_ece25e79-d575-45fd-a157-25ac4670b81b--

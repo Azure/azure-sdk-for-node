@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-10T00%3A35%3A06.0431429Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='1')</id>
+  <title type="text"></title>
+  <updated>2012-01-10T00:35:07Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="tablebatch3" href="tablebatch3(PartitionKey='partition1',RowKey='1')" />
+  <category term="nodejsdev.tablebatch3" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:PartitionKey>partition1</d:PartitionKey>
+      <d:RowKey>1</d:RowKey>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-10T00:35:06.0431429Z</d:Timestamp>
+      <d:address>street1</d:address>
+    </m:properties>
+  </content>
+</entry>
