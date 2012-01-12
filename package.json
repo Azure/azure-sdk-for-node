@@ -1,5 +1,5 @@
 {
-    "name": "azure-0.4.7",
+    "name": "azure",
     "author": "Microsoft Corporation",
     "version": "0.5.1",
     "description": "Windows Azure Client Library for node",
