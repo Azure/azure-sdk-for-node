@@ -5,7 +5,7 @@
  
 var express = require('express') 
   , EventService = require('./eventService')
-  , azure = require('azure')
+  , azure = require('./../../lib/azure')
   , ServiceClient = azure.ServiceClient;
  
 var app = module.exports = express.createServer(); 
@@ -58,5 +58,5 @@ app.get('/', eventService.showEvents.bind(eventService));
 app.post('/events/create', eventService.newEvent.bind(eventService));
 app.get('/events/:id', eventService.showEvent.bind(eventService))
 
-app.listen(process.env.port);
+app.listen(process.env.PORT || 1337);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
