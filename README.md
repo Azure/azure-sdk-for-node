@@ -157,7 +157,7 @@ Developer Forums on Stack Overflow</a> if you have trouble with the provided cod
 
 <h1>Feedback</h1>
 <p>For feedback related specifically to this SDK, please use the Issues
-section of the repository.</p>
+section of the repository. If you would like to fix an issue, please read our Contribution Guidelines available <a href="http://windowsazure.github.com">here,</a> before submitting a Pull Request.</p>
 <p>For general suggestions about Windows Azure please use our
 <a href="http://www.mygreatwindowsazureidea.com/forums/34192-windows-azure-feature-voting">UserVoice forum</a>.</p>
 
