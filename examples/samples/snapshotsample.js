@@ -18,7 +18,13 @@
 * 8. List all snapshots for this blob.
 */
 
-var azure = require('../../lib/azure');
+var path = require('path');
+if (path.existsSync('./../../lib/azure.js')) {
+  azure = require('./../../lib/azure');
+} else {
+  azure = require('azure');
+}
+
 var BlobConstants = azure.Constants.BlobConstants;
 var ServiceClient = azure.ServiceClient;
 var CloudBlobClient = azure.CloudBlobClient;

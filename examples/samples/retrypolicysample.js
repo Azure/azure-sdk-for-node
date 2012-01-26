@@ -8,7 +8,13 @@
 * sent if users immediately recreate a container after delete it.
 */
 
-var azure = require('../../lib/azure');
+var path = require('path');
+if (path.existsSync('./../../lib/azure.js')) {
+  azure = require('./../../lib/azure');
+} else {
+  azure = require('azure');
+}
+
 var BlobConstants = azure.Constants.BlobConstants;
 var ServiceClient = azure.ServiceClient;
 var CloudBlobClient = azure.CloudBlobClient;

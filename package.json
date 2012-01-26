@@ -17,8 +17,7 @@
         "mime": ">= 1.2.4"
     },
     "devDependencies": {
-        "nodeunit": ">= 0.6.4",
-        "jshint": ">= 0.5.2"
+        "nodeunit": ">= 0.6.4"
     },
     "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
     "repository": {
