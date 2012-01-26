@@ -20,7 +20,13 @@
 * c. Use both shared access signatures to read that blob (Expect a failure from the "Read" permission shared access signature since it has already expired.).
 */
 
-var azure = require('../../lib/azure');
+var path = require('path');
+if (path.existsSync('./../../lib/azure.js')) {
+  azure = require('./../../lib/azure');
+} else {
+  azure = require('azure');
+}
+
 var BlobConstants = azure.Constants.BlobConstants;
 var ServiceClient = azure.ServiceClient;
 var CloudBlobClient = azure.CloudBlobClient;
