@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-26T03%3A08%3A42.8662313Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-26T19%3A09%3A10.3015781Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
   <id>http://nodejsdev.table.core.windows.net/tableservice10(PartitionKey='part1',RowKey='row1')</id>
   <title type="text"></title>
-  <updated>2012-01-26T03:08:42Z</updated>
+  <updated>2012-01-26T19:09:10Z</updated>
   <author>
     <name />
   </author>
@@ -12,8 +12,8 @@
     <m:properties>
       <d:PartitionKey>part1</d:PartitionKey>
       <d:RowKey>row1</d:RowKey>
-      <d:Timestamp m:type="Edm.DateTime">2012-01-26T03:08:42.8662313Z</d:Timestamp>
-      <d:field>ç</d:field>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:09:10.3015781Z</d:Timestamp>
+      <d:field>XML &lt;test&gt;</d:field>
       <d:otherfield>my other field</d:otherfield>
       <d:otherprops>my properties</d:otherprops>
     </m:properties>

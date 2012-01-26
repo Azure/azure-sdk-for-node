@@ -1,7 +1,7 @@
---batchresponse_1ffb8383-3fe7-452c-8778-080321a1c92a
-Content-Type: multipart/mixed; boundary=changesetresponse_c9903fa3-3e9f-4413-b714-06ea6b0f9707
+--batchresponse_05d1ec09-603d-4ed1-b3f5-414910fd1481
+Content-Type: multipart/mixed; boundary=changesetresponse_c43b1d39-938f-4a64-baee-78f37b62aa36
 
---changesetresponse_c9903fa3-3e9f-4413-b714-06ea6b0f9707
+--changesetresponse_c43b1d39-938f-4a64-baee-78f37b62aa36
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
@@ -11,13 +11,13 @@ Cache-Control: no-cache
 DataServiceVersion: 1.0;
 Content-Type: application/atom+xml;charset=utf-8
 Location: http://nodejsdev.table.core.windows.net/batch1(PartitionKey='part1',RowKey='row1')
-ETag: W/"datetime'2012-01-26T03%3A07%3A42.564894Z'"
+ETag: W/"datetime'2012-01-26T19%3A08%3A17.266966Z'"
 
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-26T03%3A07%3A42.564894Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A17.266966Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
   <id>http://nodejsdev.table.core.windows.net/batch1(PartitionKey='part1',RowKey='row1')</id>
   <title type="text"></title>
-  <updated>2012-01-26T03:07:42Z</updated>
+  <updated>2012-01-26T19:08:17Z</updated>
   <author>
     <name />
   </author>
@@ -27,12 +27,12 @@ ETag: W/"datetime'2012-01-26T03%3A07%3A42.564894Z'"
     <m:properties>
       <d:PartitionKey>part1</d:PartitionKey>
       <d:RowKey>row1</d:RowKey>
-      <d:Timestamp m:type="Edm.DateTime">2012-01-26T03:07:42.564894Z</d:Timestamp>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:17.266966Z</d:Timestamp>
       <d:address>my city, my state</d:address>
       <d:field1>my field1</d:field1>
       <d:otherprops>my properties</d:otherprops>
     </m:properties>
   </content>
 </entry>
---changesetresponse_c9903fa3-3e9f-4413-b714-06ea6b0f9707--
---batchresponse_1ffb8383-3fe7-452c-8778-080321a1c92a--
+--changesetresponse_c43b1d39-938f-4a64-baee-78f37b62aa36--
+--batchresponse_05d1ec09-603d-4ed1-b3f5-414910fd1481--

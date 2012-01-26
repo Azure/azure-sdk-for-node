@@ -2,12 +2,12 @@
 <feed xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
   <title type="text">tablequery1</title>
   <id>http://nodejsdev.table.core.windows.net/tablequery1</id>
-  <updated>2012-01-26T03:08:15Z</updated>
+  <updated>2012-01-26T19:08:45Z</updated>
   <link rel="self" title="tablequery1" href="tablequery1" />
-  <entry m:etag="W/&quot;datetime'2012-01-26T03%3A08%3A15.1560026Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A43.987799Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablequery1(PartitionKey='partition1',RowKey='row1')</id>
     <title type="text"></title>
-    <updated>2012-01-26T03:08:15Z</updated>
+    <updated>2012-01-26T19:08:45Z</updated>
     <author>
       <name />
     </author>
