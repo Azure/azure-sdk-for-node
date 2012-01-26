@@ -1,4 +1,11 @@
-var TableQuery = require('./../../lib/azure').TableQuery;
+var path = require('path');
+if (path.existsSync('./../../lib/azure.js')) {
+  azure = require('./../../lib/azure');
+} else {
+  azure = require('azure');
+}
+
+var TableQuery = azure.TableQuery;
 
 module.exports = Home;
 var uuid = require('node-uuid');

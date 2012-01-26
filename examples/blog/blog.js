@@ -1,4 +1,10 @@
-var azure = require('./../../lib/azure');
+var path = require('path');
+if (path.existsSync('./../../lib/azure.js')) {
+  azure = require('./../../lib/azure');
+} else {
+  azure = require('azure');
+}
+
 var ServiceClient = azure.ServiceClient;
 var TableQuery = azure.TableQuery;
 var uuid = require('node-uuid');

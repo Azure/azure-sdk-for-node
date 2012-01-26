@@ -1,6 +1,12 @@
+var path = require('path');
+if (path.existsSync('./../../lib/azure.js')) {
+  azure = require('./../../lib/azure');
+} else {
+  azure = require('azure');
+}
+
 var express = require('express');
 var formidable = require('formidable');
-var azure = require('./../../lib/azure');
 var helpers = require('./helpers.js');
 
 var app = module.exports = express.createServer();
