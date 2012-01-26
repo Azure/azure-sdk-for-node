@@ -1,8 +1,14 @@
 // Module dependencies.
+var path = require('path');
+if (path.existsSync('./../../lib/azure.js')) {
+  azure = require('./../../lib/azure');
+} else {
+  azure = require('azure');
+}
+
 var express = require('express');
 var uuid = require('node-uuid');
 var Home = require('./home');
-var azure = require('./../../lib/azure');
 var ServiceClient = azure.ServiceClient;
 
 var app = module.exports = express.createServer();
