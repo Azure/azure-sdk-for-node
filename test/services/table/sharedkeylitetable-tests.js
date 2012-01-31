@@ -42,10 +42,11 @@ module.exports = testCase(
     webResource.addOptionalHeader(HeaderConstants.STORAGE_VERSION_HEADER, HeaderConstants.TARGET_STORAGE_VERSION);
     webResource.addOptionalHeader(HeaderConstants.DATE_HEADER, 'Fri, 23 Sep 2011 01:37:34 GMT');
 
-    sharedkey.signRequest(webResource);
-    test.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKeyLite devstoreaccount1:c8dPVfX0lX++AxpLHNLSU8Afdd7MIoIDNX0xzo1satk=');
+    sharedkey.signRequest(webResource, function () {
+      test.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKeyLite devstoreaccount1:c8dPVfX0lX++AxpLHNLSU8Afdd7MIoIDNX0xzo1satk=');
 
-    test.done();
+      test.done();
+    });
   },
 
   testSignRequestServiceProperties: function (test) {
@@ -56,9 +57,10 @@ module.exports = testCase(
     webResource.addOptionalHeader('User-Agent', 'WA-Storage/1.6.0');
     webResource.addOptionalHeader(HeaderConstants.DATE_HEADER, 'Mon, 05 Dec 2011 17:55:02 GMT');
 
-    sharedkey.signRequest(webResource);
-    test.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKeyLite devstoreaccount1:b89upLBiJ54w3Ju3zBv4GzThZGj/M6C3CdTm1BySj28=');
+    sharedkey.signRequest(webResource, function() {
+      test.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKeyLite devstoreaccount1:b89upLBiJ54w3Ju3zBv4GzThZGj/M6C3CdTm1BySj28=');
 
-    test.done();
+      test.done();
+    });
   }
 });

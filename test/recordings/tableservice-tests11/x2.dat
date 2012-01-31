@@ -2,7 +2,7 @@
 <entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
   <id>http://nodejsdev.table.core.windows.net/Tables('tableservice11')</id>
   <title type="text"></title>
-  <updated>2012-01-26T19:09:13Z</updated>
+  <updated>2012-01-30T23:24:00Z</updated>
   <author>
     <name />
   </author>

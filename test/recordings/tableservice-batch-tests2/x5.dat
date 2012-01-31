@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A28.3168463Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
+<entry xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A34.0580709Z'&quot;" xmlns="http://www.w3.org/2005/Atom">
   <id>http://nodejsdev.table.core.windows.net/tablebatch3(PartitionKey='partition1',RowKey='1')</id>
   <title type="text"></title>
-  <updated>2012-01-26T19:08:29Z</updated>
+  <updated>2012-01-30T23:23:38Z</updated>
   <author>
     <name />
   </author>
@@ -12,7 +12,7 @@
     <m:properties>
       <d:PartitionKey>partition1</d:PartitionKey>
       <d:RowKey>1</d:RowKey>
-      <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:28.3168463Z</d:Timestamp>
+      <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:34.0580709Z</d:Timestamp>
       <d:address>street1</d:address>
     </m:properties>
   </content>

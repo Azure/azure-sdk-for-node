@@ -27,6 +27,15 @@ var QueryStringConstants = Constants.QueryStringConstants;
 
 module.exports = testCase(
 {
+  setUp: function (callback) {
+    callback();
+  },
+
+  tearDown: function (callback) {
+    // clean up
+    callback();
+  },
+
   testGenerateSignatureContainer: function (test) {
     var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
 
@@ -149,9 +158,9 @@ module.exports = testCase(
     webResource.path = '/images/pic1.png?comp=metadata';
     webResource.requestUrl = '/images/pic1.png?comp=metadata';
 
-
-    credentials.signRequest(webResource);
-    test.equal('/images/pic1.png?comp=metadata&' + qs.stringify(queryString), webResource.requestUrl);
-    test.done();
+    credentials.signRequest(webResource, function() {
+      test.equal('/images/pic1.png?comp=metadata&' + qs.stringify(queryString), webResource.requestUrl);
+      test.done();
+    });
   }
 });
