@@ -155,11 +155,9 @@ Windows Azure Node.js Developer Center</a>.</strong></p>
 <p>Be sure to check out the Windows Azure <a href="http://go.microsoft.com/fwlink/?LinkId=234489">
 Developer Forums on Stack Overflow</a> if you have trouble with the provided code.</p>
 
-<h1>Feedback</h1>
-<p>For feedback related specifically to this SDK, please use the Issues
-section of the repository. If you would like to fix an issue, please read our Contribution Guidelines available <a href="http://windowsazure.github.com">here,</a> before submitting a Pull Request.</p>
-<p>For general suggestions about Windows Azure please use our
-<a href="http://www.mygreatwindowsazureidea.com/forums/34192-windows-azure-feature-voting">UserVoice forum</a>.</p>
+<h1>Contribute Code or Provide Feedback</h1>
+<p>If you would like to become an active contributor to this project please follow the instructions provided in <a href="http://windowsazure.github.com/guidelines.html">Windows Azure Projects Contribution Guidelines</a>.</p>
+<p>If you encounter any bugs with the library please file an issue in the <a href="https://github.com/WindowsAzure/azure-sdk-for-node/issues">Issues</a> section of the project.</p>
 
 <h1>Learn More</h1>
 <a href="http://www.windowsazure.com/en-us/develop/nodejs/">Windows Azure Node.js Developer Center</a>
