@@ -153,14 +153,47 @@
     <Content Include="..\..\lib\services\queue\queueservice.js">
       <Link>lib\services\queue\queueservice.js</Link>
     </Content>
+    <Content Include="..\..\lib\services\servicebusserviceclient.js">
+      <Link>lib\services\servicebusserviceclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\models\acstokenresult.js">
+      <Link>lib\services\serviceBus\models\acstokenresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\models\queueresult.js">
+      <Link>lib\services\serviceBus\models\queueresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\models\ruleresult.js">
+      <Link>lib\services\serviceBus\models\ruleresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\models\subscriptionresult.js">
+      <Link>lib\services\serviceBus\models\subscriptionresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\models\topicresult.js">
+      <Link>lib\services\serviceBus\models\topicresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\servicebusservice.js">
+      <Link>lib\services\serviceBus\servicebusservice.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\wrap.js">
+      <Link>lib\services\serviceBus\wrap.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\wrapservice.js">
+      <Link>lib\services\serviceBus\wrapservice.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\serviceBus\wraptokenmanager.js">
+      <Link>lib\services\serviceBus\wraptokenmanager.js</Link>
+    </Content>
     <Content Include="..\..\lib\services\serviceclient.js">
       <Link>lib\services\serviceclient.js</Link>
     </Content>
-    <Content Include="..\..\lib\services\table\atomhandler.js">
-      <Link>lib\services\table\atomhandler.js</Link>
+    <Content Include="..\..\lib\services\storageserviceclient.js">
+      <Link>lib\services\storageserviceclient.js</Link>
     </Content>
     <Content Include="..\..\lib\services\table\batchserviceclient.js">
       <Link>lib\services\table\batchserviceclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\models\entityresult.js">
+      <Link>lib\services\table\models\entityresult.js</Link>
     </Content>
     <Content Include="..\..\lib\services\table\models\queryentitiesresultcontinuation.js">
       <Link>lib\services\table\models\queryentitiesresultcontinuation.js</Link>
@@ -170,6 +203,9 @@
     </Content>
     <Content Include="..\..\lib\services\table\models\servicepropertiesresult.js">
       <Link>lib\services\table\models\servicepropertiesresult.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\table\models\tableresult.js">
+      <Link>lib\services\table\models\tableresult.js</Link>
     </Content>
     <Content Include="..\..\lib\services\table\sharedkeylitetable.js">
       <Link>lib\services\table\sharedkeylitetable.js</Link>
@@ -182,6 +218,9 @@
     </Content>
     <Content Include="..\..\lib\services\table\tableservice.js">
       <Link>lib\services\table\tableservice.js</Link>
+    </Content>
+    <Content Include="..\..\lib\util\atomhandler.js">
+      <Link>lib\util\atomhandler.js</Link>
     </Content>
     <Content Include="..\..\lib\util\base64.js">
       <Link>lib\util\base64.js</Link>
@@ -252,8 +291,14 @@
     <Content Include="..\..\test\services\queue\queueservice-tests.js">
       <Link>test\services\queue\queueservice-tests.js</Link>
     </Content>
-    <Content Include="..\..\test\services\table\atomhandler-tests.js">
-      <Link>test\services\table\atomhandler-tests.js</Link>
+    <Content Include="..\..\test\services\serviceBus\servicebusservice-tests.js">
+      <Link>test\services\serviceBus\servicebusservice-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\serviceBus\wrapservice-tests.js">
+      <Link>test\services\serviceBus\wrapservice-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\serviceBus\wraptokenmanager-tests.js">
+      <Link>test\services\serviceBus\wraptokenmanager-tests.js</Link>
     </Content>
     <Content Include="..\..\test\services\table\batchserviceclient-tests.js">
       <Link>test\services\table\batchserviceclient-tests.js</Link>
@@ -285,6 +330,9 @@
     <Content Include="..\..\test\testlist.txt">
       <Link>test\testlist.txt</Link>
     </Content>
+    <Content Include="..\..\test\util\atomhandler-tests.js">
+      <Link>test\util\atomhandler-tests.js</Link>
+    </Content>
     <Content Include="..\..\test\util\base64-tests.js">
       <Link>test\util\base64-tests.js</Link>
     </Content>
@@ -297,6 +345,9 @@
     <Content Include="..\..\test\util\queue-test-utils.js">
       <Link>test\util\queue-test-utils.js</Link>
     </Content>
+    <Content Include="..\..\test\util\servicebus-test-utils.js">
+      <Link>test\util\servicebus-test-utils.js</Link>
+    </Content>
     <Content Include="..\..\test\util\table-test-utils.js">
       <Link>test\util\table-test-utils.js</Link>
     </Content>
@@ -305,6 +356,9 @@
     </Content>
     <Content Include="..\..\test\util\util.js">
       <Link>test\util\util.js</Link>
+    </Content>
+    <Content Include="..\..\test\util\wrapservice-test-utils.js">
+      <Link>test\util\wrapservice-test-utils.js</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -346,6 +400,9 @@
     </None>
     <None Include="..\..\examples\blog\views\layout.ejs">
       <Link>examples\blog\views\layout.ejs</Link>
+    </None>
+    <None Include="..\..\examples\geophoto\package.json">
+      <Link>examples\geophoto\package.json</Link>
     </None>
     <None Include="..\..\examples\tasklist\package.json">
       <Link>examples\tasklist\package.json</Link>
