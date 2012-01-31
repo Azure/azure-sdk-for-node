@@ -15,7 +15,8 @@
 
 var testCase = require('nodeunit').testCase;
 
-var AtomHandler = require('../../../lib/services/table/atomhandler');
+var AtomHandler = require('../../lib/util/atomhandler');
+var ISO8061Date = require('../../lib/util/iso8061date');
 
 var fs = require('fs');
 
@@ -33,10 +34,23 @@ module.exports = testCase({
     var atomHandler = new AtomHandler('m', 'd');
 
     var entity = {
-      PartitionKey: 'part1',
-      RowKey: 'row1',
-      intValue: 10,
-      stringValue: 'my string'
+      title: '',
+      updated: ISO8061Date.format(new Date()),
+      author: {
+        name: ''
+      },
+      id: '',
+      content: {
+        '@': {
+          type: 'application/xml'
+        },
+        'm:properties': {
+          'd:PartitionKey': 'part1',
+          'd:RowKey': 'row1',
+          'd:intValue': 10,
+          'd:stringValue': 'my string'
+        }
+      }
     };
 
     var res = atomHandler.serialize(entity);

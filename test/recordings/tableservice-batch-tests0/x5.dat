@@ -2,12 +2,12 @@
 <feed xml:base="http://nodejsdev.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
   <title type="text">tablebatch1</title>
   <id>http://nodejsdev.table.core.windows.net/tablebatch1</id>
-  <updated>2012-01-26T19:08:23Z</updated>
+  <updated>2012-01-30T23:23:34Z</updated>
   <link rel="self" title="tablebatch1" href="tablebatch1" />
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0587631Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='1')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -17,15 +17,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>1</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0587631Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street1</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='10')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -35,15 +35,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>10</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street10</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='11')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -53,15 +53,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>11</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street11</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='12')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -71,15 +71,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>12</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street12</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='13')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -89,15 +89,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>13</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street13</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='14')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -107,15 +107,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>14</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street14</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='15')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -125,15 +125,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>15</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street15</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='16')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -143,15 +143,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>16</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street16</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='17')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -161,15 +161,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>17</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street17</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='18')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -179,15 +179,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>18</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street18</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='19')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -197,15 +197,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>19</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street19</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0587631Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='2')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -215,15 +215,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>2</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0587631Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street2</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0413614Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='20')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -233,15 +233,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>20</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0413614Z</d:Timestamp>
         <d:address>street20</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0587631Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='3')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -251,15 +251,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>3</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0587631Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street3</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0587631Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='4')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -269,15 +269,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>4</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0587631Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street4</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0587631Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='5')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -287,15 +287,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>5</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0587631Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street5</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0587631Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='6')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -305,15 +305,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>6</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0587631Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street6</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='7')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -323,15 +323,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>7</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street7</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='8')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -341,15 +341,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>8</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street8</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-01-26T19%3A08%3A21.0597633Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-01-30T23%3A23%3A30.0403611Z'&quot;">
     <id>http://nodejsdev.table.core.windows.net/tablebatch1(PartitionKey='partition1',RowKey='9')</id>
     <title type="text"></title>
-    <updated>2012-01-26T19:08:23Z</updated>
+    <updated>2012-01-30T23:23:34Z</updated>
     <author>
       <name />
     </author>
@@ -359,7 +359,7 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>9</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-01-26T19:08:21.0597633Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-01-30T23:23:30.0403611Z</d:Timestamp>
         <d:address>street9</d:address>
       </m:properties>
     </content>
