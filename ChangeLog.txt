@@ -1,0 +1,5 @@
+2011.12.14 Version 0.5.1
+ * Multiple bug fixes.
+
+2011.12.09 Version 0.5.0
+ * Initial Release
