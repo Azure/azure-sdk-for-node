@@ -82,5 +82,42 @@ module.exports = testCase(
         test.done();
       });
     });
+  },
+
+  testHasOperations: function (test) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+
+    tableService.beginBatch();
+
+    test.equal(tableService.isInBatch(), true);
+    test.equal(tableService.hasOperations(), false);
+
+    // Don't really need to create the table since we're not going to execute the batch
+    tableService.insertEntity(tableName, entity1, null, function (insertError, insertEntity, insertEntityResponse) {
+      test.equal(insertError, null);
+      test.equal(insertEntity, null);
+      test.equal(insertEntityResponse.statusCode, BatchServiceClient.BATCH_CODE);
+    });
+
+    test.equal(tableService.isInBatch(), true);
+    test.equal(tableService.hasOperations(), true);
+
+    // insert another one just to check
+    tableService.insertEntity(tableName, entity1, null, function (insertError, insertEntity, insertEntityResponse) {
+      test.equal(insertError, null);
+      test.equal(insertEntity, null);
+      test.equal(insertEntityResponse.statusCode, BatchServiceClient.BATCH_CODE);
+    });
+
+    test.equal(tableService.isInBatch(), true);
+    test.equal(tableService.hasOperations(), true);
+
+    tableService.rollback();
+
+    // rolling back should've clear the batch
+    test.equal(tableService.hasOperations(), false);
+    test.equal(tableService.isInBatch(), false);
+
+    test.done();
   }
 });
