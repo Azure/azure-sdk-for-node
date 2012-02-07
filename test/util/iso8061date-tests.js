@@ -29,10 +29,10 @@ module.exports = testCase(
   },
 
   testParse: function (test) {
-    var datetime = Date.UTC(2011, 6, 17, 14, 0, 23, 270);
+    var datetime = new Date(Date.UTC(2011, 6, 17, 14, 0, 23, 270));
     var datetimeAtom = "2011-07-17T14:00:23.270Z";
     var parsed = ISO8061Date.parse(datetimeAtom);
-    test.equal(parsed, datetime);
+    test.deepEqual(parsed, datetime);
     test.done();
   },
 
