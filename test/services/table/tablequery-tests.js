@@ -17,6 +17,9 @@ var testCase = require('nodeunit').testCase;
 
 var TableQuery = require('../../../lib/services/table/tablequery');
 var azureutil = require('../../../lib/util/util');
+var Constants = require('../../../lib/util/constants');
+var QueryStringConstants = Constants.QueryStringConstants;
+var util = require('util');
 
 module.exports = testCase(
 {
@@ -111,15 +114,34 @@ module.exports = testCase(
   testReplaceOperators: function (test) {
     var tableQuery = TableQuery.select();
 
-    test.equal(tableQuery._replaceOperators('== =='), 'eq eq');
-    test.equal(tableQuery._replaceOperators('> >'), 'gt gt');
-    test.equal(tableQuery._replaceOperators('< <'), 'lt lt');
-    test.equal(tableQuery._replaceOperators('>= >='), 'ge ge');
-    test.equal(tableQuery._replaceOperators('<= <='), 'le le');
-    test.equal(tableQuery._replaceOperators('!= !='), 'ne ne');
-    test.equal(tableQuery._replaceOperators('&& &&'), 'and and');
-    test.equal(tableQuery._replaceOperators('|| ||'), 'or or');
+    test.equal(tableQuery._replaceOperators(' ==  == '), ' eq  eq ');
+    test.equal(tableQuery._replaceOperators(' >  > '), ' gt  gt ');
+    test.equal(tableQuery._replaceOperators(' <  < '), ' lt  lt ');
+    test.equal(tableQuery._replaceOperators(' >=  >= '), ' ge  ge ');
+    test.equal(tableQuery._replaceOperators(' <=  <= '), ' le  le ');
+    test.equal(tableQuery._replaceOperators(' !=  != '), ' ne  ne ');
+    test.equal(tableQuery._replaceOperators(' &&  && '), ' and  and ');
+    test.equal(tableQuery._replaceOperators(' ||  || '), ' or  or ');
     test.equal(tableQuery._replaceOperators('! !'), 'not not');
+
+    test.done();
+  },
+
+  testComplexPartitionKey: function (test) {
+    var complexPartitionKey = 'aHR0cDovL2ZlZWRzLmZlZWRidXJuZXIuY29tL2ppbXdhbmdzYmxvZw==';
+    var encodedComplexPartitionKey = 'aHR0cDovL2ZlZWRzLmZlZWRidXJuZXIuY29tL2ppbXdhbmdzYmxvZw%3D%3D';
+
+    var tableQuery = TableQuery.select()
+      .where('PartitionKey == ?', complexPartitionKey);
+
+    var queryObject = tableQuery.toQueryObject();
+    test.notEqual(queryObject[QueryStringConstants.FILTER].indexOf(encodedComplexPartitionKey), -1);
+
+    tableQuery = TableQuery.select()
+      .where("PartitionKey == '" + complexPartitionKey + "'");
+
+    queryObject = tableQuery.toQueryObject();
+    test.notEqual(queryObject[QueryStringConstants.FILTER].indexOf(encodedComplexPartitionKey), -1);
 
     test.done();
   }
