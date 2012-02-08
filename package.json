@@ -14,7 +14,8 @@
         "qs": ">= 0.3.1",
         "log": ">= 1.2.0",
         "xmlbuilder": ">= 0.3.1",
-        "mime": ">= 1.2.4"
+        "mime": ">= 1.2.4",
+        "dateformat": "1.0.2-1.2.3"
     },
     "devDependencies": {
         "nodeunit": ">= 0.6.4"

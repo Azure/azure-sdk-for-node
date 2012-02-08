@@ -157,7 +157,46 @@ module.exports = testCase(
         // read the message
         serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
           test.equal(receiveError, null);
-          test.equal(message, messageText);
+          test.equal(message.messagetext, messageText);
+
+          serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
+            test.notEqual(receiveError2, null);
+            test.equal(emptyMessage, null);
+
+            test.done();
+          });
+        });
+      });
+    });
+  },
+
+  testMessageCustomProperties: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var messageText = 'hi there again';
+    var messageOptions = {
+      customProperties: {
+        propint: 1,
+        propfloat: 2.22,
+        propdate: new Date(2012, 02, 07, 22, 27, 0),
+        propstring: 'hi there'
+      }
+    };
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      test.equal(createError, null);
+      test.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, messageOptions, function (sendError) {
+        test.equal(sendError, null);
+
+        // read the message
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
+          test.equal(receiveError, null);
+          test.equal(message.messagetext, messageText);
+          test.strictEqual(message.customProperties.propint, messageOptions.customProperties.propint);
+          test.strictEqual(message.customProperties.propfloat, messageOptions.customProperties.propfloat);
+          test.deepEqual(message.customProperties.propdate.valueOf(), messageOptions.customProperties.propdate.valueOf());
+          test.strictEqual(message.customProperties.propstring, messageOptions.customProperties.propstring);
 
           serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
             test.notEqual(receiveError2, null);
