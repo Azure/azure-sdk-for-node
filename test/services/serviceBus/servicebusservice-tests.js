@@ -27,6 +27,7 @@ var ServiceClient = require("../../../lib/services/serviceclient");
 var Constants = require('../../../lib/util/constants');
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
+var ServiceBusConstants = Constants.ServiceBusConstants;
 
 var serviceBusService;
 
@@ -59,12 +60,57 @@ module.exports = testCase(
 
   testCreateQueue: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueOptions = {
+      LockDuration: 'PT45S',
+      MaxSizeInMegabytes: '2048',
+      RequiresDuplicateDetection: false,
+      RequiresSession: false,
+      DefaultMessageTimeToLive: 'PT5S',
+      DeadLetteringOnMessageExpiration: true,
+      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+    };
 
-    serviceBusService.createQueue(queueName, function (createError, queue) {
+    serviceBusService.createQueue(queueName, queueOptions, function (createError, queue) {
       test.equal(createError, null);
       test.notEqual(queue, null);
+      if (queue) {
+        test.equal(queue.QueueName, queueName);
+        test.equal(queue.LockDuration, queueOptions.LockDuration);
+        test.equal(queue.RequiresDuplicateDetection, queueOptions.RequiresDuplicateDetection);
+        test.equal(queue.RequiresSession, queueOptions.RequiresSession);
+        test.equal(queue.DefaultMessageTimeToLive, queueOptions.DefaultMessageTimeToLive);
+        test.equal(queue.DeadLetteringOnMessageExpiration, queueOptions.DeadLetteringOnMessageExpiration);
+        test.equal(queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow);
+        test.equal(queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes);
+      }
 
       test.done();
+    });
+  },
+
+  testCreateQueueIfNotExists: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueOptions = {
+      LockDuration: 'PT45S',
+      MaxSizeInMegabytes: '2048',
+      RequiresDuplicateDetection: false,
+      RequiresSession: false,
+      DefaultMessageTimeToLive: 'PT5S',
+      DeadLetteringOnMessageExpiration: true,
+      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+    };
+
+    serviceBusService.createQueueIfNotExists(queueName, queueOptions, function (createError, created) {
+      test.equal(createError, null);
+      test.equal(created, true);
+
+      // try creating queue again
+      serviceBusService.createQueueIfNotExists(queueName, function (createError2, created2) {
+        test.equal(createError2, null);
+        test.equal(created2, false);
+
+        test.done();
+      });
     });
   },
 
@@ -79,11 +125,22 @@ module.exports = testCase(
         test.equal(error2, null);
         test.notEqual(createResponse1, null);
 
-        serviceBusService.deleteQueue(queueName, function (error3, deleteResponse2) {
+        serviceBusService.getQueue(queueName, function (error3, createdQueue) {
           test.equal(error3, null);
-          test.notEqual(deleteResponse2, null);
+          test.notEqual(createdQueue, null);
+          test.equal(createdQueue.QueueName, queueName);
 
-          test.done();
+          serviceBusService.deleteQueue(queueName, function (error4, deleteResponse2) {
+            test.equal(error4, null);
+            test.notEqual(deleteResponse2, null);
+
+            serviceBusService.getQueue(queueName, function (error5, queueDeleting) {
+              test.notEqual(error5, null);
+              test.equal(queueDeleting, null);
+
+              test.done();
+            });
+          });
         });
       });
     });
@@ -92,15 +149,21 @@ module.exports = testCase(
   testGetQueue: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
 
-    serviceBusService.createQueue(queueName, function (createError, queue) {
-      test.equal(createError, null);
-      test.notEqual(queue, null);
+    serviceBusService.getQueue(queueName, function (getError1, getQueue1) {
+      test.notEqual(getError1, null);
+      test.equal(getQueue1, null);
 
-      serviceBusService.getQueue(queueName, function (getError, getQueue) {
-        test.equal(getError, null);
-        test.notEqual(getQueue, null);
+      serviceBusService.createQueue(queueName, function (createError, queue) {
+        test.equal(createError, null);
+        test.notEqual(queue, null);
 
-        test.done();
+        // Getting existant queue
+        serviceBusService.getQueue(queueName, function (getError2, getQueue2) {
+          test.equal(getError2, null);
+          test.notEqual(getQueue2, null);
+
+          test.done();
+        });
       });
     });
   },
@@ -109,20 +172,127 @@ module.exports = testCase(
     var queueName1 = testutil.generateId(queueNamesPrefix, queueNames);
     var queueName2 = testutil.generateId(queueNamesPrefix, queueNames);
 
-    serviceBusService.createQueue(queueName1, function (createError1, queue1) {
+    // listing without any queue
+    serviceBusService.listQueues(function (emptyError, emptyQueues) {
+      test.equal(emptyError, null);
+      test.notEqual(emptyQueues, null);
+      test.equal(emptyQueues.length, 0);
+
+      serviceBusService.createQueue(queueName1, function (createError1, queue1) {
+        test.equal(createError1, null);
+        test.notEqual(queue1, null);
+
+        // Listing with only one queue
+        serviceBusService.listQueues(function (oneQueueError, oneQueue) {
+          test.equal(oneQueueError, null);
+          test.notEqual(oneQueue, null);
+          test.equal(oneQueue.length, 1);
+
+          serviceBusService.createQueue(queueName2, function (createError2, queue2) {
+            test.equal(createError2, null);
+            test.notEqual(queue2, null);
+
+            // Listing with multiple queues.
+            serviceBusService.listQueues(function (getError, queues) {
+              test.equal(getError, null);
+              test.notEqual(queues, null);
+              test.equal(queues.length, 2);
+
+              var queueCount = 0;
+              for (var queue in queues) {
+                var currentQueue = queues[queue];
+
+                test.notEqual(currentQueue[ServiceBusConstants.LOCK_DURATION], null);
+                test.notEqual(currentQueue[ServiceBusConstants.MAX_SIZE_IN_MEGABYTES], null);
+                test.notEqual(currentQueue[ServiceBusConstants.REQUIRES_DUPLICATE_DETECTION], null);
+                test.notEqual(currentQueue[ServiceBusConstants.REQUIRES_SESSION], null);
+                test.notEqual(currentQueue[ServiceBusConstants.DEFAULT_MESSAGE_TIME_TO_LIVE], null);
+                test.notEqual(currentQueue[ServiceBusConstants.DEAD_LETTERING_ON_MESSAGE_EXPIRATION], null);
+                test.notEqual(currentQueue[ServiceBusConstants.DUPLICATE_DETECTION_HISTORY_TIME_WINDOW], null);
+                test.notEqual(currentQueue[ServiceBusConstants.MAX_DELIVERY_COUNT], null);
+                test.notEqual(currentQueue[ServiceBusConstants.ENABLED_BATCHED_OPERATIONS], null);
+                test.notEqual(currentQueue[ServiceBusConstants.SIZE_IN_BYTES], null);
+                test.notEqual(currentQueue[ServiceBusConstants.MESSAGE_COUNT], null);
+
+                if (currentQueue.QueueName === queueName1) {
+                  queueCount += 1;
+                } else if (currentQueue.QueueName === queueName2) {
+                  queueCount += 2;
+                }
+              }
+
+              test.equal(queueCount, 3);
+
+              test.done();
+            });
+          });
+        });
+      });
+    });
+  },
+
+  testListQueueRanges: function (test) {
+    var queueName1 = '1' + testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName2 = '2' + testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName3 = '3' + testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName4 = '4' + testutil.generateId(queueNamesPrefix, queueNames);
+
+    serviceBusService.createQueue(queueName1, function (createError1) {
       test.equal(createError1, null);
-      test.notEqual(queue1, null);
 
-      serviceBusService.createQueue(queueName2, function (createError2, queue2) {
+      serviceBusService.createQueue(queueName2, function (createError2) {
         test.equal(createError2, null);
-        test.notEqual(queue2, null);
 
-        serviceBusService.listQueues(function (getError, queues) {
-          test.equal(getError, null);
-          test.notEqual(queues, null);
-          test.equal(queues.length, 2);
+        serviceBusService.createQueue(queueName3, function (createError3) {
+          test.equal(createError3, null);
 
-          test.done();
+          serviceBusService.createQueue(queueName4, function (createError4) {
+            test.equal(createError4, null);
+
+            // test top
+            serviceBusService.listQueues({ top: 2 }, function (listError1, listQueues1) {
+              test.equal(listError1, null);
+              test.notEqual(listQueues1, null);
+              test.equal(listQueues1.length, 2);
+
+              // results are ordered by alphabetic order so
+              // queueName1 and queueName2 should be in the result
+              var queueCount = 0;
+              for (var queue in listQueues1) {
+                var currentQueue = listQueues1[queue];
+                if (currentQueue.QueueName === queueName1) {
+                  queueCount += 1;
+                } else if (currentQueue.QueueName === queueName2) {
+                  queueCount += 2;
+                }
+              }
+
+              test.equal(queueCount, 3);
+
+              // test skip
+              serviceBusService.listQueues({ top: 2, skip: 1 }, function (listError2, listQueues2) {
+                test.equal(listError2, null);
+                test.notEqual(listQueues2, null);
+                test.equal(listQueues2.length, 2);
+
+                // results are ordered by alphabetic order so
+                // queueName2 and queueName3 should be in the result
+                queueCount = 0;
+                for (queue in listQueues2) {
+                  currentQueue = listQueues2[queue];
+                  if (currentQueue.QueueName === queueName2) {
+                    queueCount += 1;
+                  } else if (currentQueue.QueueName === queueName3) {
+                    queueCount += 2;
+                  }
+                }
+
+                test.equal(queueCount, 3);
+
+                test.done();
+              });
+            });
+          });
         });
       });
     });
@@ -143,28 +313,43 @@ module.exports = testCase(
     });
   },
 
-  testReceiveQueueMessage: function (test) {
+  testSendMessageProperties: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
     var messageText = 'hi there again';
+    var messageOptions = {
+      contentType: 'made-up-one',
+      brokerProperties: {
+        CorrelationId: '{701332F3-B37B-4D29-AA0A-E367906C206E}',
+        SessionId: 'session',
+        MessageId: 'id',
+        Label: 'lbl',
+        ReplyTo: 'repTo',
+        To: 'to',
+        ReplyToSessionId: 'repsession'
+      }
+    };
 
     serviceBusService.createQueue(queueName, function (createError, queue) {
       test.equal(createError, null);
       test.notEqual(queue, null);
 
-      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+      serviceBusService.sendQueueMessage(queueName, messageText, messageOptions, function (sendError) {
         test.equal(sendError, null);
 
-        // read the message
-        serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, messageReceived, rsp) {
           test.equal(receiveError, null);
-          test.equal(message.messagetext, messageText);
+          test.notEqual(messageReceived, null);
 
-          serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
-            test.notEqual(receiveError2, null);
-            test.equal(emptyMessage, null);
+          test.equal(messageReceived.contentType, messageOptions.contentType);
+          test.equal(messageReceived.brokerProperties.CorrelationId, messageOptions.brokerProperties.CorrelationId);
+          test.equal(messageReceived.brokerProperties.SessionId, messageOptions.brokerProperties.SessionId);
+          test.equal(messageReceived.brokerProperties.MessageId, messageOptions.brokerProperties.MessageId);
+          test.equal(messageReceived.brokerProperties.Label, messageOptions.brokerProperties.Label);
+          test.equal(messageReceived.brokerProperties.ReplyTo, messageOptions.brokerProperties.ReplyTo);
+          test.equal(messageReceived.brokerProperties.To, messageOptions.brokerProperties.To);
+          test.equal(messageReceived.brokerProperties.ReplyToSessionId, messageOptions.brokerProperties.ReplyToSessionId);
 
-            test.done();
-          });
+          test.done();
         });
       });
     });
@@ -197,6 +382,33 @@ module.exports = testCase(
           test.strictEqual(message.customProperties.propfloat, messageOptions.customProperties.propfloat);
           test.deepEqual(message.customProperties.propdate.valueOf(), messageOptions.customProperties.propdate.valueOf());
           test.strictEqual(message.customProperties.propstring, messageOptions.customProperties.propstring);
+
+          serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
+            test.notEqual(receiveError2, null);
+            test.equal(emptyMessage, null);
+
+            test.done();
+          });
+        });
+      });
+    });
+  },
+
+  testReceiveQueueMessage: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      test.equal(createError, null);
+      test.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        test.equal(sendError, null);
+
+        // read the message
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
+          test.equal(receiveError, null);
+          test.equal(message.messagetext, messageText);
 
           serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
             test.notEqual(receiveError2, null);

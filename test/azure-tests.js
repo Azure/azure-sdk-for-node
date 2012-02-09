@@ -231,8 +231,8 @@ module.exports = testCase(
     test.equal(serviceBusService.password, environmentServiceBusPassword);
 
     // defaulted correctly
-    test.equal(serviceBusService.acsnamespace, environmentServiceBusNamespace + ServiceBusServiceClient.WRAP_NAMESPACE_SUFFIX);
-    test.equal(serviceBusService.issuer, ServiceBusServiceClient.DEFAULT_ISSUER);
+    test.equal(serviceBusService.acsnamespace, environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX);
+    test.equal(serviceBusService.issuer, ServiceClient.DEFAULT_SERVICEBUS_ISSUER);
 
     test.done();
   }
