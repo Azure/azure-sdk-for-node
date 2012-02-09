@@ -26,5 +26,34 @@ module.exports = testCase(
   tearDown: function (callback) {
     // clean up
     callback();
+  },
+
+  testStringStartsWith: function (test) {
+    test.equal(util.stringStartsWith('test', 't'), true);
+    test.equal(util.stringStartsWith('test', 'e'), false);
+    test.equal(util.stringStartsWith('test', ''), true);
+    test.equal(util.stringStartsWith('test', null), true);
+    test.equal(util.stringStartsWith('test', 'T'), false);
+
+    test.done();
+  },
+
+  testStringEndsWith: function (test) {
+    test.equal(util.stringEndsWith('test', 't'), true);
+    test.equal(util.stringEndsWith('test', 'e'), false);
+    test.equal(util.stringEndsWith('test', ''), true);
+    test.equal(util.stringEndsWith('test', null), true);
+    test.equal(util.stringEndsWith('test', 'T'), false);
+
+    test.done();
+  },
+
+  testIsInt: function (test) {
+    test.equal(util.isInt('1'), true);
+    test.equal(util.isInt(null), false);
+    test.equal(util.isInt(), false);
+    test.equal(util.isInt('1.23'), false);
+
+    test.done();
   }
 });
