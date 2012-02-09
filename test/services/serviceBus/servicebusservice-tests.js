@@ -59,10 +59,29 @@ module.exports = testCase(
 
   testCreateQueue: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueOptions = {
+      LockDuration: 'PT45S',
+      MaxSizeInMegabytes: '2048',
+      RequiresDuplicateDetection: false,
+      RequiresSession: false,
+      DefaultMessageTimeToLive: 'PT5S',
+      DeadLetteringOnMessageExpiration: true,
+      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+    };
 
-    serviceBusService.createQueue(queueName, function (createError, queue) {
+    serviceBusService.createQueue(queueName, queueOptions, function (createError, queue) {
       test.equal(createError, null);
       test.notEqual(queue, null);
+      if (queue) {
+        test.equal(queue.QueueName, queueName);
+        test.equal(queue.LockDuration, queueOptions.LockDuration);
+        test.equal(queue.RequiresDuplicateDetection, queueOptions.RequiresDuplicateDetection);
+        test.equal(queue.RequiresSession, queueOptions.RequiresSession);
+        test.equal(queue.DefaultMessageTimeToLive, queueOptions.DefaultMessageTimeToLive);
+        test.equal(queue.DeadLetteringOnMessageExpiration, queueOptions.DeadLetteringOnMessageExpiration);
+        test.equal(queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow);
+        test.equal(queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes);
+      }
 
       test.done();
     });
@@ -70,8 +89,17 @@ module.exports = testCase(
 
   testCreateQueueIfNotExists: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueOptions = {
+      LockDuration: 'PT45S',
+      MaxSizeInMegabytes: '2048',
+      RequiresDuplicateDetection: false,
+      RequiresSession: false,
+      DefaultMessageTimeToLive: 'PT5S',
+      DeadLetteringOnMessageExpiration: true,
+      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+    };
 
-    serviceBusService.createQueueIfNotExists(queueName, function (createError, created) {
+    serviceBusService.createQueueIfNotExists(queueName, queueOptions, function (createError, created) {
       test.equal(createError, null);
       test.equal(created, true);
 
