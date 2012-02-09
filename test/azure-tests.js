@@ -17,16 +17,26 @@ var testCase = require('nodeunit').testCase;
 
 var azure = require('../lib/azure');
 
+var ServiceBusServiceClient = require('../lib/services/servicebusserviceclient');
 var ServiceClient = azure.ServiceClient;
 
 var environmentAzureStorageAccount = 'myaccount';
 var environmentAzureStorageAccessKey = 'myaccountstoragekey';
+var environmentServiceBusNamespace = 'mynamespace';
+var environmentServiceBusIssuer = 'myissuer';
+var environmentServiceBusPassword = 'mypassword';
+var environmentWrapNamespace = 'mynamespace-sb';
+
 var parameterAzureStorageAccount = 'storageAccount';
 var parameterAzureStorageAccessKey = 'storageAccesKey';
 
 var firstRun = true;
 var originalAzureStorageAccount = null;
 var originalAzureStorageAccessKey = null;
+var originalServiceBusNamespace = null;
+var originalServiceBusIssuer = null;
+var originalServiceBusPassword = null;
+var originalWrapNamespace = null;
 
 module.exports = testCase(
 {
@@ -41,6 +51,23 @@ module.exports = testCase(
 
       if (!originalAzureStorageAccessKey && process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY]) {
         originalAzureStorageAccessKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
+      }
+
+      // On the first run store the previous azure storage account / azure storage access key from the environment
+      if (!originalServiceBusNamespace && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE]) {
+        originalServiceBusNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+      }
+
+      if (!originalServiceBusIssuer && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER]) {
+        originalServiceBusIssuer = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
+      }
+
+      if (!originalServiceBusPassword && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_PASSWORD]) {
+        originalServiceBusPassword = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_PASSWORD];
+      }
+
+      if (!originalWrapNamespace && process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE]) {
+        originalWrapNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
       }
     }
 
@@ -176,7 +203,7 @@ module.exports = testCase(
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
 
     // Create blob client without passing any credentials
-    blobService = azure.createBlobService();
+    var blobService = azure.createBlobService();
 
     // Points to the live service
     test.equal(blobService.usePathStyleUri, false);
@@ -185,6 +212,27 @@ module.exports = testCase(
     // and uses the environment variables
     test.equal(blobService.authenticationProvider.storageAccount, environmentAzureStorageAccount);
     test.equal(blobService.authenticationProvider.storageAccessKey, environmentAzureStorageAccessKey);
+
+    test.done();
+  },
+
+  testMissingServiceBusIssuerAndWrapNamespace: function (test) {
+    delete process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
+    delete process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
+
+    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = environmentServiceBusNamespace;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_PASSWORD] = environmentServiceBusPassword;
+
+    // Create service bus client without passing any credentials
+    var serviceBusService = azure.createServiceBusService();
+
+    // set correctly
+    test.equal(serviceBusService.namespace, environmentServiceBusNamespace);
+    test.equal(serviceBusService.password, environmentServiceBusPassword);
+
+    // defaulted correctly
+    test.equal(serviceBusService.acsnamespace, environmentServiceBusNamespace + ServiceBusServiceClient.WRAP_NAMESPACE_SUFFIX);
+    test.equal(serviceBusService.issuer, ServiceBusServiceClient.DEFAULT_ISSUER);
 
     test.done();
   }

@@ -159,6 +159,9 @@
     <Content Include="..\..\lib\services\serviceBus\models\acstokenresult.js">
       <Link>lib\services\serviceBus\models\acstokenresult.js</Link>
     </Content>
+    <Content Include="..\..\lib\services\serviceBus\models\queuemessageresult.js">
+      <Link>lib\services\serviceBus\models\queuemessageresult.js</Link>
+    </Content>
     <Content Include="..\..\lib\services\serviceBus\models\queueresult.js">
       <Link>lib\services\serviceBus\models\queueresult.js</Link>
     </Content>
@@ -230,6 +233,9 @@
     </Content>
     <Content Include="..\..\lib\util\iso8061date.js">
       <Link>lib\util\iso8061date.js</Link>
+    </Content>
+    <Content Include="..\..\lib\util\rfc1123date.js">
+      <Link>lib\util\rfc1123date.js</Link>
     </Content>
     <Content Include="..\..\lib\util\util.js">
       <Link>lib\util\util.js</Link>
