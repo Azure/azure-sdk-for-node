@@ -193,7 +193,7 @@ module.exports = testCase(
             test.notEqual(queue2, null);
 
             // Listing with multiple queues.
-            serviceBusService.listQueues(function(getError, queues) {
+            serviceBusService.listQueues(function (getError, queues) {
               test.equal(getError, null);
               test.notEqual(queues, null);
               test.equal(queues.length, 2);
@@ -224,6 +224,73 @@ module.exports = testCase(
               test.equal(queueCount, 3);
 
               test.done();
+            });
+          });
+        });
+      });
+    });
+  },
+
+  testListQueueRanges: function (test) {
+    var queueName1 = '1' + testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName2 = '2' + testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName3 = '3' + testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName4 = '4' + testutil.generateId(queueNamesPrefix, queueNames);
+
+    serviceBusService.createQueue(queueName1, function (createError1) {
+      test.equal(createError1, null);
+
+      serviceBusService.createQueue(queueName2, function (createError2) {
+        test.equal(createError2, null);
+
+        serviceBusService.createQueue(queueName3, function (createError3) {
+          test.equal(createError3, null);
+
+          serviceBusService.createQueue(queueName4, function (createError4) {
+            test.equal(createError4, null);
+
+            // test top
+            serviceBusService.listQueues({ top: 2 }, function (listError1, listQueues1) {
+              test.equal(listError1, null);
+              test.notEqual(listQueues1, null);
+              test.equal(listQueues1.length, 2);
+
+              // results are ordered by alphabetic order so
+              // queueName1 and queueName2 should be in the result
+              var queueCount = 0;
+              for (var queue in listQueues1) {
+                var currentQueue = listQueues1[queue];
+                if (currentQueue.QueueName === queueName1) {
+                  queueCount += 1;
+                } else if (currentQueue.QueueName === queueName2) {
+                  queueCount += 2;
+                }
+              }
+
+              test.equal(queueCount, 3);
+
+              // test skip
+              serviceBusService.listQueues({ top: 2, skip: 1 }, function (listError2, listQueues2) {
+                test.equal(listError2, null);
+                test.notEqual(listQueues2, null);
+                test.equal(listQueues2.length, 2);
+
+                // results are ordered by alphabetic order so
+                // queueName2 and queueName3 should be in the result
+                queueCount = 0;
+                for (queue in listQueues2) {
+                  currentQueue = listQueues2[queue];
+                  if (currentQueue.QueueName === queueName2) {
+                    queueCount += 1;
+                  } else if (currentQueue.QueueName === queueName3) {
+                    queueCount += 2;
+                  }
+                }
+
+                test.equal(queueCount, 3);
+
+                test.done();
+              });
             });
           });
         });
