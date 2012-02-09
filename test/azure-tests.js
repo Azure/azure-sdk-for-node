@@ -17,6 +17,7 @@ var testCase = require('nodeunit').testCase;
 
 var azure = require('../lib/azure');
 
+var ServiceBusServiceClient = require('../lib/services/servicebusserviceclient');
 var ServiceClient = azure.ServiceClient;
 
 var environmentAzureStorageAccount = 'myaccount';
