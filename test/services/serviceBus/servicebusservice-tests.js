@@ -27,6 +27,7 @@ var ServiceClient = require("../../../lib/services/serviceclient");
 var Constants = require('../../../lib/util/constants');
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
+var ServiceBusConstants = Constants.ServiceBusConstants;
 
 var serviceBusService;
 
@@ -124,11 +125,22 @@ module.exports = testCase(
         test.equal(error2, null);
         test.notEqual(createResponse1, null);
 
-        serviceBusService.deleteQueue(queueName, function (error3, deleteResponse2) {
+        serviceBusService.getQueue(queueName, function (error3, createdQueue) {
           test.equal(error3, null);
-          test.notEqual(deleteResponse2, null);
+          test.notEqual(createdQueue, null);
+          test.equal(createdQueue.QueueName, queueName);
 
-          test.done();
+          serviceBusService.deleteQueue(queueName, function (error4, deleteResponse2) {
+            test.equal(error4, null);
+            test.notEqual(deleteResponse2, null);
+
+            serviceBusService.getQueue(queueName, function (error5, queueDeleting) {
+              test.notEqual(error5, null);
+              test.equal(queueDeleting, null);
+
+              test.done();
+            });
+          });
         });
       });
     });
@@ -137,15 +149,21 @@ module.exports = testCase(
   testGetQueue: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
 
-    serviceBusService.createQueue(queueName, function (createError, queue) {
-      test.equal(createError, null);
-      test.notEqual(queue, null);
+    serviceBusService.getQueue(queueName, function (getError1, getQueue1) {
+      test.notEqual(getError1, null);
+      test.equal(getQueue1, null);
 
-      serviceBusService.getQueue(queueName, function (getError, getQueue) {
-        test.equal(getError, null);
-        test.notEqual(getQueue, null);
+      serviceBusService.createQueue(queueName, function (createError, queue) {
+        test.equal(createError, null);
+        test.notEqual(queue, null);
 
-        test.done();
+        // Getting existant queue
+        serviceBusService.getQueue(queueName, function (getError2, getQueue2) {
+          test.equal(getError2, null);
+          test.notEqual(getQueue2, null);
+
+          test.done();
+        });
       });
     });
   },
@@ -166,6 +184,31 @@ module.exports = testCase(
           test.equal(getError, null);
           test.notEqual(queues, null);
           test.equal(queues.length, 2);
+
+          var queueCount = 0;
+          for (var queue in queues) {
+            var currentQueue = queues[queue];
+
+            test.notEqual(currentQueue[ServiceBusConstants.LOCK_DURATION], null);
+            test.notEqual(currentQueue[ServiceBusConstants.MAX_SIZE_IN_MEGABYTES], null);
+            test.notEqual(currentQueue[ServiceBusConstants.REQUIRES_DUPLICATE_DETECTION], null);
+            test.notEqual(currentQueue[ServiceBusConstants.REQUIRES_SESSION], null);
+            test.notEqual(currentQueue[ServiceBusConstants.DEFAULT_MESSAGE_TIME_TO_LIVE], null);
+            test.notEqual(currentQueue[ServiceBusConstants.DEAD_LETTERING_ON_MESSAGE_EXPIRATION], null);
+            test.notEqual(currentQueue[ServiceBusConstants.DUPLICATE_DETECTION_HISTORY_TIME_WINDOW], null);
+            test.notEqual(currentQueue[ServiceBusConstants.MAX_DELIVERY_COUNT], null);
+            test.notEqual(currentQueue[ServiceBusConstants.ENABLED_BATCHED_OPERATIONS], null);
+            test.notEqual(currentQueue[ServiceBusConstants.SIZE_IN_BYTES], null);
+            test.notEqual(currentQueue[ServiceBusConstants.MESSAGE_COUNT], null);
+
+            if (currentQueue.QueueName === queueName1) {
+              queueCount += 1;
+            } else if (currentQueue.QueueName === queueName2) {
+              queueCount += 2;
+            }
+          }
+
+          test.equal(queueCount, 3);
 
           test.done();
         });
