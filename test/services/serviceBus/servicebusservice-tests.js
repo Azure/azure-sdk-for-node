@@ -313,28 +313,43 @@ module.exports = testCase(
     });
   },
 
-  testReceiveQueueMessage: function (test) {
+  testSendMessageProperties: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
     var messageText = 'hi there again';
+    var messageOptions = {
+      contentType: 'made-up-one',
+      brokerProperties: {
+        CorrelationId: '{701332F3-B37B-4D29-AA0A-E367906C206E}',
+        SessionId: 'session',
+        MessageId: 'id',
+        Label: 'lbl',
+        ReplyTo: 'repTo',
+        To: 'to',
+        ReplyToSessionId: 'repsession'
+      }
+    };
 
     serviceBusService.createQueue(queueName, function (createError, queue) {
       test.equal(createError, null);
       test.notEqual(queue, null);
 
-      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+      serviceBusService.sendQueueMessage(queueName, messageText, messageOptions, function (sendError) {
         test.equal(sendError, null);
 
-        // read the message
-        serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, messageReceived, rsp) {
           test.equal(receiveError, null);
-          test.equal(message.messagetext, messageText);
+          test.notEqual(messageReceived, null);
 
-          serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
-            test.notEqual(receiveError2, null);
-            test.equal(emptyMessage, null);
+          test.equal(messageReceived.contentType, messageOptions.contentType);
+          test.equal(messageReceived.brokerProperties.CorrelationId, messageOptions.brokerProperties.CorrelationId);
+          test.equal(messageReceived.brokerProperties.SessionId, messageOptions.brokerProperties.SessionId);
+          test.equal(messageReceived.brokerProperties.MessageId, messageOptions.brokerProperties.MessageId);
+          test.equal(messageReceived.brokerProperties.Label, messageOptions.brokerProperties.Label);
+          test.equal(messageReceived.brokerProperties.ReplyTo, messageOptions.brokerProperties.ReplyTo);
+          test.equal(messageReceived.brokerProperties.To, messageOptions.brokerProperties.To);
+          test.equal(messageReceived.brokerProperties.ReplyToSessionId, messageOptions.brokerProperties.ReplyToSessionId);
 
-            test.done();
-          });
+          test.done();
         });
       });
     });
@@ -367,6 +382,33 @@ module.exports = testCase(
           test.strictEqual(message.customProperties.propfloat, messageOptions.customProperties.propfloat);
           test.deepEqual(message.customProperties.propdate.valueOf(), messageOptions.customProperties.propdate.valueOf());
           test.strictEqual(message.customProperties.propstring, messageOptions.customProperties.propstring);
+
+          serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
+            test.notEqual(receiveError2, null);
+            test.equal(emptyMessage, null);
+
+            test.done();
+          });
+        });
+      });
+    });
+  },
+
+  testReceiveQueueMessage: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      test.equal(createError, null);
+      test.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        test.equal(sendError, null);
+
+        // read the message
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
+          test.equal(receiveError, null);
+          test.equal(message.messagetext, messageText);
 
           serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
             test.notEqual(receiveError2, null);
