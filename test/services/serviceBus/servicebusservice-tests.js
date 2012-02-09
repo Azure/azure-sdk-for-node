@@ -172,45 +172,60 @@ module.exports = testCase(
     var queueName1 = testutil.generateId(queueNamesPrefix, queueNames);
     var queueName2 = testutil.generateId(queueNamesPrefix, queueNames);
 
-    serviceBusService.createQueue(queueName1, function (createError1, queue1) {
-      test.equal(createError1, null);
-      test.notEqual(queue1, null);
+    // listing without any queue
+    serviceBusService.listQueues(function (emptyError, emptyQueues) {
+      test.equal(emptyError, null);
+      test.notEqual(emptyQueues, null);
+      test.equal(emptyQueues.length, 0);
 
-      serviceBusService.createQueue(queueName2, function (createError2, queue2) {
-        test.equal(createError2, null);
-        test.notEqual(queue2, null);
+      serviceBusService.createQueue(queueName1, function (createError1, queue1) {
+        test.equal(createError1, null);
+        test.notEqual(queue1, null);
 
-        serviceBusService.listQueues(function (getError, queues) {
-          test.equal(getError, null);
-          test.notEqual(queues, null);
-          test.equal(queues.length, 2);
+        // Listing with only one queue
+        serviceBusService.listQueues(function (oneQueueError, oneQueue) {
+          test.equal(oneQueueError, null);
+          test.notEqual(oneQueue, null);
+          test.equal(oneQueue.length, 1);
 
-          var queueCount = 0;
-          for (var queue in queues) {
-            var currentQueue = queues[queue];
+          serviceBusService.createQueue(queueName2, function (createError2, queue2) {
+            test.equal(createError2, null);
+            test.notEqual(queue2, null);
 
-            test.notEqual(currentQueue[ServiceBusConstants.LOCK_DURATION], null);
-            test.notEqual(currentQueue[ServiceBusConstants.MAX_SIZE_IN_MEGABYTES], null);
-            test.notEqual(currentQueue[ServiceBusConstants.REQUIRES_DUPLICATE_DETECTION], null);
-            test.notEqual(currentQueue[ServiceBusConstants.REQUIRES_SESSION], null);
-            test.notEqual(currentQueue[ServiceBusConstants.DEFAULT_MESSAGE_TIME_TO_LIVE], null);
-            test.notEqual(currentQueue[ServiceBusConstants.DEAD_LETTERING_ON_MESSAGE_EXPIRATION], null);
-            test.notEqual(currentQueue[ServiceBusConstants.DUPLICATE_DETECTION_HISTORY_TIME_WINDOW], null);
-            test.notEqual(currentQueue[ServiceBusConstants.MAX_DELIVERY_COUNT], null);
-            test.notEqual(currentQueue[ServiceBusConstants.ENABLED_BATCHED_OPERATIONS], null);
-            test.notEqual(currentQueue[ServiceBusConstants.SIZE_IN_BYTES], null);
-            test.notEqual(currentQueue[ServiceBusConstants.MESSAGE_COUNT], null);
+            // Listing with multiple queues.
+            serviceBusService.listQueues(function(getError, queues) {
+              test.equal(getError, null);
+              test.notEqual(queues, null);
+              test.equal(queues.length, 2);
 
-            if (currentQueue.QueueName === queueName1) {
-              queueCount += 1;
-            } else if (currentQueue.QueueName === queueName2) {
-              queueCount += 2;
-            }
-          }
+              var queueCount = 0;
+              for (var queue in queues) {
+                var currentQueue = queues[queue];
 
-          test.equal(queueCount, 3);
+                test.notEqual(currentQueue[ServiceBusConstants.LOCK_DURATION], null);
+                test.notEqual(currentQueue[ServiceBusConstants.MAX_SIZE_IN_MEGABYTES], null);
+                test.notEqual(currentQueue[ServiceBusConstants.REQUIRES_DUPLICATE_DETECTION], null);
+                test.notEqual(currentQueue[ServiceBusConstants.REQUIRES_SESSION], null);
+                test.notEqual(currentQueue[ServiceBusConstants.DEFAULT_MESSAGE_TIME_TO_LIVE], null);
+                test.notEqual(currentQueue[ServiceBusConstants.DEAD_LETTERING_ON_MESSAGE_EXPIRATION], null);
+                test.notEqual(currentQueue[ServiceBusConstants.DUPLICATE_DETECTION_HISTORY_TIME_WINDOW], null);
+                test.notEqual(currentQueue[ServiceBusConstants.MAX_DELIVERY_COUNT], null);
+                test.notEqual(currentQueue[ServiceBusConstants.ENABLED_BATCHED_OPERATIONS], null);
+                test.notEqual(currentQueue[ServiceBusConstants.SIZE_IN_BYTES], null);
+                test.notEqual(currentQueue[ServiceBusConstants.MESSAGE_COUNT], null);
 
-          test.done();
+                if (currentQueue.QueueName === queueName1) {
+                  queueCount += 1;
+                } else if (currentQueue.QueueName === queueName2) {
+                  queueCount += 2;
+                }
+              }
+
+              test.equal(queueCount, 3);
+
+              test.done();
+            });
+          });
         });
       });
     });
