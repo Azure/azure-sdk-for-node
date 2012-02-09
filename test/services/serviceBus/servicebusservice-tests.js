@@ -68,6 +68,23 @@ module.exports = testCase(
     });
   },
 
+  testCreateQueueIfNotExists: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+
+    serviceBusService.createQueueIfNotExists(queueName, function (createError, created) {
+      test.equal(createError, null);
+      test.equal(created, true);
+
+      // try creating queue again
+      serviceBusService.createQueueIfNotExists(queueName, function (createError2, created2) {
+        test.equal(createError2, null);
+        test.equal(created2, false);
+
+        test.done();
+      });
+    });
+  },
+
   testDeleteQueue: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
 
