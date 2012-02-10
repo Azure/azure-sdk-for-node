@@ -453,6 +453,37 @@ module.exports = testCase(
     });
   },
 
+  testPeekLockedMessageCanBeCompletedWithObject: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      test.equal(createError, null);
+      test.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        test.equal(sendError, null);
+
+        // Peek the message
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError, message) {
+          test.equal(receiveError, null);
+          test.equal(message.body, messageText);
+
+          test.notEqual(message.location, null);
+          test.notEqual(message.brokerProperties.LockToken, null);
+          test.notEqual(message.brokerProperties.LockedUntilUtc, null);
+
+          // deleted message
+          serviceBusService.deleteMessage(message, function (deleteError) {
+            test.equal(deleteError, null);
+
+            test.done();
+          });
+        });
+      });
+    });
+  },
+
   testPeekLockedMessageCanBeUnlocked: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
     var messageText = 'hi there again';
@@ -475,6 +506,42 @@ module.exports = testCase(
 
           // deleted message
           serviceBusService.unlockMessage(message1.location, function (unlockError) {
+            test.equal(unlockError, null);
+
+            serviceBusService.receiveQueueMessage(queueName, function (receiveError2, receiveMessage2) {
+              test.equal(receiveError2, null);
+              test.notEqual(receiveMessage2, null);
+
+              test.done();
+            });
+          });
+        });
+      });
+    });
+  },
+
+  testPeekLockedMessageCanBeUnlockedWithObject: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      test.equal(createError, null);
+      test.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        test.equal(sendError, null);
+
+        // Peek the message
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
+          test.equal(receiveError1, null);
+          test.equal(message1.body, messageText);
+
+          test.notEqual(message1.location, null);
+          test.notEqual(message1.brokerProperties.LockToken, null);
+          test.notEqual(message1.brokerProperties.LockedUntilUtc, null);
+
+          // deleted message
+          serviceBusService.unlockMessage(message1, function (unlockError) {
             test.equal(unlockError, null);
 
             serviceBusService.receiveQueueMessage(queueName, function (receiveError2, receiveMessage2) {
