@@ -42,7 +42,7 @@ exports.generateId = function (prefix, currentList, isMocked) {
       return newNumber;
     } else {
       // Random
-      var newNumber = prefix + Math.floor(Math.random() * 10000);
+      newNumber = prefix + Math.floor(Math.random() * 10000);
       if (currentList.indexOf(newNumber) === -1) {
         currentList.push(newNumber);
 
