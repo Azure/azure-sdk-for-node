@@ -693,17 +693,37 @@ module.exports = testCase(
 
   testCreateSubscription: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+
+    var subscriptionOptions = {
+      LockDuration: 'PT5S',
+      RequiresSession: true,
+      DefaultMessageTimeToLive: 'PT5S',
+      DeadLetteringOnMessageExpiration: true,
+      DeadLetteringOnFilterEvaluationExceptions: true
+    };
 
     serviceBusService.createTopic(topicName, function (createError, topic) {
       test.equal(createError, null);
       test.notEqual(topic, null);
 
-      serviceBusService.createSubscription(topicName, subscriptionName, function (createSubscriptionError, subscription) {
-        test.equal(createSubscriptionError, null);
-        test.notEqual(subscription, null);
+      serviceBusService.createSubscription(topicName, subscriptionName1, subscriptionOptions, function (createSubscriptionError1, subscription1) {
+        test.equal(createSubscriptionError1, null);
+        test.notEqual(subscription1, null);
 
-        test.done();
+        serviceBusService.createSubscription(topicName, subscriptionName2, subscriptionOptions, function (createSubscriptionError2, subscription2) {
+          test.equal(createSubscriptionError2, null);
+          test.notEqual(subscription2, null);
+
+          test.equal(subscription2.LockDuration, subscriptionOptions.LockDuration);
+          test.equal(subscription2.RequiresSession, subscriptionOptions.RequiresSession);
+          test.equal(subscription2.DefaultMessageTimeToLive, subscriptionOptions.DefaultMessageTimeToLive);
+          test.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration);
+          test.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions);
+
+          test.done();
+        });
       });
     });
   },
