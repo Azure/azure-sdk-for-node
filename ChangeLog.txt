@@ -1,3 +1,9 @@
+2012.02.10 Version 0.5.2
+ * Service Bus Wrappers
+ * Storage Services UT run against a mock server.
+ * Node.exe version requirement lowered to raise compatibility.
+ * Multiple Bugfixes
+
 2011.12.14 Version 0.5.1
  * Multiple bug fixes.
 

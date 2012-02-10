@@ -42,6 +42,9 @@
     <Content Include="..\..\.gitignore">
       <Link>.gitignore</Link>
     </Content>
+    <Content Include="..\..\ChangeLog.txt">
+      <Link>ChangeLog.txt</Link>
+    </Content>
     <Content Include="..\..\examples\blobuploader\helpers.js">
       <Link>examples\blobuploader\helpers.js</Link>
     </Content>

@@ -315,8 +315,8 @@ module.exports = testCase(
 
   testSendMessageProperties: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
-    var messageText = 'hi there again';
-    var messageOptions = {
+    var message = {
+      body: 'hi there again',
       contentType: 'made-up-one',
       brokerProperties: {
         CorrelationId: '{701332F3-B37B-4D29-AA0A-E367906C206E}',
@@ -333,21 +333,22 @@ module.exports = testCase(
       test.equal(createError, null);
       test.notEqual(queue, null);
 
-      serviceBusService.sendQueueMessage(queueName, messageText, messageOptions, function (sendError) {
+      serviceBusService.sendQueueMessage(queueName, message, function (sendError) {
         test.equal(sendError, null);
 
         serviceBusService.receiveQueueMessage(queueName, function (receiveError, messageReceived) {
           test.equal(receiveError, null);
           test.notEqual(messageReceived, null);
 
-          test.equal(messageReceived.contentType, messageOptions.contentType);
-          test.equal(messageReceived.brokerProperties.CorrelationId, messageOptions.brokerProperties.CorrelationId);
-          test.equal(messageReceived.brokerProperties.SessionId, messageOptions.brokerProperties.SessionId);
-          test.equal(messageReceived.brokerProperties.MessageId, messageOptions.brokerProperties.MessageId);
-          test.equal(messageReceived.brokerProperties.Label, messageOptions.brokerProperties.Label);
-          test.equal(messageReceived.brokerProperties.ReplyTo, messageOptions.brokerProperties.ReplyTo);
-          test.equal(messageReceived.brokerProperties.To, messageOptions.brokerProperties.To);
-          test.equal(messageReceived.brokerProperties.ReplyToSessionId, messageOptions.brokerProperties.ReplyToSessionId);
+          test.equal(messageReceived.body, message.body);
+          test.equal(messageReceived.contentType, message.contentType);
+          test.equal(messageReceived.brokerProperties.CorrelationId, message.brokerProperties.CorrelationId);
+          test.equal(messageReceived.brokerProperties.SessionId, message.brokerProperties.SessionId);
+          test.equal(messageReceived.brokerProperties.MessageId, message.brokerProperties.MessageId);
+          test.equal(messageReceived.brokerProperties.Label, message.brokerProperties.Label);
+          test.equal(messageReceived.brokerProperties.ReplyTo, message.brokerProperties.ReplyTo);
+          test.equal(messageReceived.brokerProperties.To, message.brokerProperties.To);
+          test.equal(messageReceived.brokerProperties.ReplyToSessionId, message.brokerProperties.ReplyToSessionId);
 
           test.done();
         });
@@ -357,8 +358,8 @@ module.exports = testCase(
 
   testMessageCustomProperties: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
-    var messageText = 'hi there again';
-    var messageOptions = {
+    var message = {
+      body: 'hi there again',
       customProperties: {
         propint: 1,
         propfloat: 2.22,
@@ -371,17 +372,17 @@ module.exports = testCase(
       test.equal(createError, null);
       test.notEqual(queue, null);
 
-      serviceBusService.sendQueueMessage(queueName, messageText, messageOptions, function (sendError) {
+      serviceBusService.sendQueueMessage(queueName, message, function (sendError) {
         test.equal(sendError, null);
 
         // read the message
-        serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, receivedMessage) {
           test.equal(receiveError, null);
-          test.equal(message.messagetext, messageText);
-          test.strictEqual(message.customProperties.propint, messageOptions.customProperties.propint);
-          test.strictEqual(message.customProperties.propfloat, messageOptions.customProperties.propfloat);
-          test.deepEqual(message.customProperties.propdate.valueOf(), messageOptions.customProperties.propdate.valueOf());
-          test.strictEqual(message.customProperties.propstring, messageOptions.customProperties.propstring);
+          test.equal(receivedMessage.body, message.body);
+          test.strictEqual(receivedMessage.customProperties.propint, message.customProperties.propint);
+          test.strictEqual(receivedMessage.customProperties.propfloat, message.customProperties.propfloat);
+          test.deepEqual(receivedMessage.customProperties.propdate.valueOf(), message.customProperties.propdate.valueOf());
+          test.strictEqual(receivedMessage.customProperties.propstring, message.customProperties.propstring);
 
           serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
             test.notEqual(receiveError2, null);
@@ -408,7 +409,7 @@ module.exports = testCase(
         // read the message
         serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
           test.equal(receiveError, null);
-          test.equal(message.messagetext, messageText);
+          test.equal(message.body, messageText);
 
           serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
             test.notEqual(receiveError2, null);
@@ -435,7 +436,7 @@ module.exports = testCase(
         // Peek the message
         serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError, message) {
           test.equal(receiveError, null);
-          test.equal(message.messagetext, messageText);
+          test.equal(message.body, messageText);
 
           test.notEqual(message.location, null);
           test.notEqual(message.brokerProperties.LockToken, null);
@@ -443,6 +444,37 @@ module.exports = testCase(
 
           // deleted message
           serviceBusService.deleteMessage(message.location, function (deleteError) {
+            test.equal(deleteError, null);
+
+            test.done();
+          });
+        });
+      });
+    });
+  },
+
+  testPeekLockedMessageCanBeCompletedWithObject: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      test.equal(createError, null);
+      test.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        test.equal(sendError, null);
+
+        // Peek the message
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError, message) {
+          test.equal(receiveError, null);
+          test.equal(message.body, messageText);
+
+          test.notEqual(message.location, null);
+          test.notEqual(message.brokerProperties.LockToken, null);
+          test.notEqual(message.brokerProperties.LockedUntilUtc, null);
+
+          // deleted message
+          serviceBusService.deleteMessage(message, function (deleteError) {
             test.equal(deleteError, null);
 
             test.done();
@@ -466,7 +498,7 @@ module.exports = testCase(
         // Peek the message
         serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
           test.equal(receiveError1, null);
-          test.equal(message1.messagetext, messageText);
+          test.equal(message1.body, messageText);
 
           test.notEqual(message1.location, null);
           test.notEqual(message1.brokerProperties.LockToken, null);
@@ -474,6 +506,42 @@ module.exports = testCase(
 
           // deleted message
           serviceBusService.unlockMessage(message1.location, function (unlockError) {
+            test.equal(unlockError, null);
+
+            serviceBusService.receiveQueueMessage(queueName, function (receiveError2, receiveMessage2) {
+              test.equal(receiveError2, null);
+              test.notEqual(receiveMessage2, null);
+
+              test.done();
+            });
+          });
+        });
+      });
+    });
+  },
+
+  testPeekLockedMessageCanBeUnlockedWithObject: function (test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      test.equal(createError, null);
+      test.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        test.equal(sendError, null);
+
+        // Peek the message
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
+          test.equal(receiveError1, null);
+          test.equal(message1.body, messageText);
+
+          test.notEqual(message1.location, null);
+          test.notEqual(message1.brokerProperties.LockToken, null);
+          test.notEqual(message1.brokerProperties.LockedUntilUtc, null);
+
+          // deleted message
+          serviceBusService.unlockMessage(message1, function (unlockError) {
             test.equal(unlockError, null);
 
             serviceBusService.receiveQueueMessage(queueName, function (receiveError2, receiveMessage2) {
@@ -542,8 +610,8 @@ module.exports = testCase(
   testSendTopicMessage: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
     var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var messageText = 'hi there topic';
-    var messageOptions = {
+    var message = {
+      body: 'hi there topic',
       contentType: 'made-up-one',
       brokerProperties: {
         CorrelationId: '{701332F3-B37B-4D29-AA0A-E367906C206E}',
@@ -562,22 +630,22 @@ module.exports = testCase(
       serviceBusService.createSubscription(topicName, subscriptionName, function (createSubscriptionError) {
         test.equal(createSubscriptionError, null);
 
-        serviceBusService.sendTopicMessage(topicName, messageText, messageOptions, function (sendMessageError) {
+        serviceBusService.sendTopicMessage(topicName, message, function (sendMessageError) {
           test.equal(sendMessageError, null);
 
           serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName, function (receiveSubscriptionError, messageReceived) {
             test.equal(receiveSubscriptionError, null);
             test.notEqual(messageReceived, null);
-            test.equal(messageReceived.messagetext, messageText);
+            test.equal(messageReceived.body, message.body);
 
-            test.equal(messageReceived.contentType, messageOptions.contentType);
-            test.equal(messageReceived.brokerProperties.CorrelationId, messageOptions.brokerProperties.CorrelationId);
-            test.equal(messageReceived.brokerProperties.SessionId, messageOptions.brokerProperties.SessionId);
-            test.equal(messageReceived.brokerProperties.MessageId, messageOptions.brokerProperties.MessageId);
-            test.equal(messageReceived.brokerProperties.Label, messageOptions.brokerProperties.Label);
-            test.equal(messageReceived.brokerProperties.ReplyTo, messageOptions.brokerProperties.ReplyTo);
-            test.equal(messageReceived.brokerProperties.To, messageOptions.brokerProperties.To);
-            test.equal(messageReceived.brokerProperties.ReplyToSessionId, messageOptions.brokerProperties.ReplyToSessionId);
+            test.equal(messageReceived.contentType, message.contentType);
+            test.equal(messageReceived.brokerProperties.CorrelationId, message.brokerProperties.CorrelationId);
+            test.equal(messageReceived.brokerProperties.SessionId, message.brokerProperties.SessionId);
+            test.equal(messageReceived.brokerProperties.MessageId, message.brokerProperties.MessageId);
+            test.equal(messageReceived.brokerProperties.Label, message.brokerProperties.Label);
+            test.equal(messageReceived.brokerProperties.ReplyTo, message.brokerProperties.ReplyTo);
+            test.equal(messageReceived.brokerProperties.To, message.brokerProperties.To);
+            test.equal(messageReceived.brokerProperties.ReplyToSessionId, message.brokerProperties.ReplyToSessionId);
 
             test.done();
           });
@@ -1027,31 +1095,47 @@ module.exports = testCase(
       falseFilter: 'Number=2'
     };
 
-    serviceBusService.createTopic(topicName, function (createError, topic) {
-      test.equal(createError, null);
-      test.notEqual(topic, null);
+    serviceBusService.createRule('FakeTopic', 'FakeSubscription', ruleName1, function (invalidCreateError, rule) {
+      test.notEqual(invalidCreateError, null);
+      test.equal(rule, null);
 
-      serviceBusService.createSubscription(topicName, subscriptionName, function (createSubscriptionError, subscription) {
-        test.equal(createSubscriptionError, null);
-        test.notEqual(subscription, null);
+      serviceBusService.createRule(topicName, 'FakeSubscription', ruleName1, function (invalidCreateError2, rule2) {
+        test.notEqual(invalidCreateError2, null);
+        test.equal(rule2, null);
 
-        serviceBusService.createRule(topicName, subscriptionName, ruleName1, ruleOptions1, function (createRuleError1, rule1) {
-          test.equal(createRuleError1, null);
-          test.notEqual(rule1, null);
+        serviceBusService.createTopic(topicName, function (createError, topic) {
+          test.equal(createError, null);
+          test.notEqual(topic, null);
 
-          serviceBusService.createRule(topicName, subscriptionName, ruleName2, ruleOptions2, function (createRuleError2, rule2) {
-            test.equal(createRuleError2, null);
-            test.notEqual(rule2, null);
+          serviceBusService.createSubscription(topicName, subscriptionName, function (createSubscriptionError, subscription) {
+            test.equal(createSubscriptionError, null);
+            test.notEqual(subscription, null);
 
-            serviceBusService.createRule(topicName, subscriptionName, ruleName3, ruleOptions3, function (createRuleError3, rule3) {
-              test.equal(createRuleError3, null);
-              test.notEqual(rule3, null);
+            serviceBusService.createRule(topicName, subscriptionName, ruleName1, ruleOptions1, function (createRuleError1, rule1) {
+              test.equal(createRuleError1, null);
+              test.notEqual(rule1, null);
 
-              serviceBusService.createRule(topicName, subscriptionName, ruleName4, ruleOptions4, function (createRuleError4, rule4) {
-                test.equal(createRuleError4, null);
-                test.notEqual(rule4, null);
+              serviceBusService.createRule(topicName, subscriptionName, ruleName2, ruleOptions2, function (createRuleError2, rule2) {
+                test.equal(createRuleError2, null);
+                test.notEqual(rule2, null);
 
-                test.done();
+                serviceBusService.createRule(topicName, subscriptionName, ruleName3, ruleOptions3, function (createRuleError3, rule3) {
+                  test.equal(createRuleError3, null);
+                  test.notEqual(rule3, null);
+
+                  serviceBusService.createRule(topicName, subscriptionName, ruleName4, ruleOptions4, function (createRuleError4, rule4) {
+                    test.equal(createRuleError4, null);
+                    test.notEqual(rule4, null);
+
+                    // Existing rule...
+                    serviceBusService.createRule(topicName, subscriptionName, ruleName1, function (duplicateError, duplicateRule) {
+                      test.notEqual(duplicateError, null);
+                      test.equal(duplicateRule, null);
+
+                      test.done();
+                    });
+                  });
+                });
               });
             });
           });
