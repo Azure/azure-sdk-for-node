@@ -387,7 +387,7 @@ module.exports = testCase(
       serviceBusService.sendQueueMessage(queueName, messageText, messageOptions, function (sendError) {
         test.equal(sendError, null);
 
-        serviceBusService.receiveQueueMessage(queueName, function (receiveError, messageReceived, rsp) {
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, messageReceived) {
           test.equal(receiveError, null);
           test.notEqual(messageReceived, null);
 
@@ -472,43 +472,103 @@ module.exports = testCase(
     });
   },
 
-  testReceiveQueueMessagePeekLock: function(test) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
-    var messageText = 'hi there with PeekLock';
-    var messageOptions = 
+  /*
+  testPeekMessage: function (test) {
+  var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+  var messageText = 'hi there again';
 
-    serviceBusService.createQueue(queueName, function (createError, queue) {
-      test.equal(createError, null);
-      test.notEqual(queue, null);
+  serviceBusService.createQueue(queueName, function (createError, queue) {
+  test.equal(createError, null);
+  test.notEqual(queue, null);
 
-      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
-        test.equal(sendError, null);
+  serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+  test.equal(sendError, null);
 
-        // read the message
-        serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
-          test.equal(receiveError, null);
-          test.equal(message.messagetext, messageText);
+  // Peek the message
+  serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInMs: 5 }, function (receiveError, message) {
+  test.equal(receiveError, null);
+  test.equal(message.messagetext, messageText);
 
-          serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
-            test.notEqual(receiveError2, null);
-            test.equal(emptyMessage, null);
+  test.notEqual(message.location, null);
+  test.notEqual(message.brokerProperties.LockToken, null);
+  test.notEqual(message.brokerProperties.LockedUntilUtc, null);
 
-            test.done();
-          });
-        });
-      });
-    });
-   
+  // Message is not available while locked
+  serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInMs: 5 }, function (receiveError2, emptyMessage, rsp) {
+  console.log(rsp);
+
+  test.notEqual(receiveError2, null);
+  test.equal(emptyMessage, null);
+
+  // unlock message
+  serviceBusService.unlockMessage(message.location, function (unlockError) {
+  test.equal(unlockError, null);
+
+  // receive message again
+  serviceBusService.receiveQueueMessage(queueName, function (receiveError3, message3) {
+  test.equal(receiveError3, null);
+  test.equal(message3.messagetext, messageText);
+
+  // message was deleted
+  serviceBusService.receiveQueueMessage(queueName, function (receiveError4, emptyMessage2) {
+  test.notEqual(receiveError4, null);
+  test.equal(emptyMessage2, null);
+
+  test.done();
+  });
+  });
+  });
+  });
+  });
+  });
+  });
   },
+  */
 
   testCreateTopic: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicOptions = {
+      MaxSizeInMegabytes: '2048',
+      RequiresDuplicateDetection: false,
+      DefaultMessageTimeToLive: 'PT5S',
+      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+    };
 
-    serviceBusService.createTopic(topicName, function (createError, topic) {
+    serviceBusService.createTopic(topicName, topicOptions, function (createError, topic) {
       test.equal(createError, null);
       test.notEqual(topic, null);
+      if (topic) {
+        test.equal(topic.TopicName, topicName);
+
+        test.equal(topic.MaxSizeInMegabytes, topicOptions.MaxSizeInMegabytes);
+        test.equal(topic.RequiresDuplicateDetection, topicOptions.RequiresDuplicateDetection);
+        test.equal(topic.DefaultMessageTimeToLive, topicOptions.DefaultMessageTimeToLive);
+        test.equal(topic.DuplicateDetectionHistoryTimeWindow, topicOptions.DuplicateDetectionHistoryTimeWindow);
+      }
 
       test.done();
+    });
+  },
+
+  testCreateTopicIfNotExists: function (test) {
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicOptions = {
+      MaxSizeInMegabytes: '2048',
+      RequiresDuplicateDetection: false,
+      DefaultMessageTimeToLive: 'PT5S',
+      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+    };
+
+    serviceBusService.createTopicIfNotExists(topicName, topicOptions, function (createError1, created1) {
+      test.equal(createError1, null);
+      test.equal(created1, true);
+
+      serviceBusService.createTopicIfNotExists(topicName, function (createError2, created2) {
+        test.equal(createError2, null);
+        test.equal(created2, false);
+
+        test.done();
+      });
     });
   },
 
@@ -527,7 +587,12 @@ module.exports = testCase(
           test.equal(error3, null);
           test.notEqual(deleteResponse2, null);
 
-          test.done();
+          serviceBusService.getTopic(topicName, function (error4, topicDeleting) {
+            test.notEqual(error4, null);
+            test.equal(topicDeleting, null);
+
+            test.done();
+          });
         });
       });
     });
@@ -536,15 +601,20 @@ module.exports = testCase(
   testGetTopic: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
 
-    serviceBusService.createTopic(topicName, function (createError, topic) {
-      test.equal(createError, null);
-      test.notEqual(topic, null);
+    serviceBusService.getTopic(topicName, function (error, emptyTopic) {
+      test.notEqual(error, null);
+      test.equal(emptyTopic, null);
 
-      serviceBusService.getTopic(topicName, function (getError, getTopic) {
-        test.equal(getError, null);
-        test.notEqual(getTopic, null);
+      serviceBusService.createTopic(topicName, function (createError, topic) {
+        test.equal(createError, null);
+        test.notEqual(topic, null);
 
-        test.done();
+        serviceBusService.getTopic(topicName, function (getError, getTopic) {
+          test.equal(getError, null);
+          test.notEqual(getTopic, null);
+
+          test.done();
+        });
       });
     });
   },
@@ -553,20 +623,120 @@ module.exports = testCase(
     var topicName1 = testutil.generateId(topicNamesPrefix, topicNames);
     var topicName2 = testutil.generateId(topicNamesPrefix, topicNames);
 
-    serviceBusService.createTopic(topicName1, function (createError1, topic1) {
+    // listing without any topic
+    serviceBusService.listTopics(function (listError1, listTopics1) {
+      test.equal(listError1, null);
+      test.notEqual(listTopics1, null);
+      test.equal(listTopics1.length, 0);
+
+      serviceBusService.createTopic(topicName1, function (createError1, topic1) {
+        test.equal(createError1, null);
+        test.notEqual(topic1, null);
+
+        // listing with a single topic
+        serviceBusService.listTopics(function (listError2, listTopics2) {
+          test.equal(listError2, null);
+          test.notEqual(listTopics2, null);
+          test.equal(listTopics2.length, 1);
+
+          serviceBusService.createTopic(topicName2, function (createError2, topic2) {
+            test.equal(createError2, null);
+            test.notEqual(topic2, null);
+
+            // listing multiple topics
+            serviceBusService.listTopics(function (listError, listTopics) {
+              test.equal(listError, null);
+              test.notEqual(listTopics, null);
+              test.equal(listTopics.length, 2);
+
+              var topicCount = 0;
+              for (var topic in listTopics) {
+                var currentTopic = listTopics[topic];
+
+                test.notEqual(currentTopic.MaxSizeInMegabytes, null);
+                test.notEqual(currentTopic.RequiresDuplicateDetection, null);
+                test.notEqual(currentTopic.DefaultMessageTimeToLive, null);
+                test.notEqual(currentTopic.DuplicateDetectionHistoryTimeWindow, null);
+
+                if (currentTopic.TopicName === topicName1) {
+                  topicCount += 1;
+                } else if (currentTopic.TopicName === topicName2) {
+                  topicCount += 2;
+                }
+              }
+
+              test.equal(topicCount, 3);
+
+              test.done();
+            });
+          });
+        });
+      });
+    });
+  },
+
+  testListTopicsRanges: function (test) {
+    var topicName1 = '1' + testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName2 = '2' + testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName3 = '3' + testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName4 = '4' + testutil.generateId(topicNamesPrefix, topicNames);
+
+    serviceBusService.createTopic(topicName1, function (createError1) {
       test.equal(createError1, null);
-      test.notEqual(topic1, null);
 
-      serviceBusService.createTopic(topicName2, function (createError2, topic2) {
+      serviceBusService.createTopic(topicName2, function (createError2) {
         test.equal(createError2, null);
-        test.notEqual(topic2, null);
 
-        serviceBusService.listTopics(function (listError, listTopics) {
-          test.equal(listError, null);
-          test.notEqual(listTopics, null);
-          test.equal(listTopics.length, 2);
+        serviceBusService.createTopic(topicName3, function (createError3) {
+          test.equal(createError3, null);
 
-          test.done();
+          serviceBusService.createTopic(topicName4, function (createError4) {
+            test.equal(createError4, null);
+
+            // test top
+            serviceBusService.listTopics({ top: 2 }, function (listError1, listTopics1) {
+              test.equal(listError1, null);
+              test.notEqual(listTopics1, null);
+              test.equal(listTopics1.length, 2);
+
+              // results are ordered by alphabetic order so
+              // topicName1 and topicName2 should be in the result
+              var topicCount = 0;
+              for (var topic in listTopics1) {
+                var currentTopic = listTopics1[topic];
+                if (currentTopic.TopicName === topicName1) {
+                  topicCount += 1;
+                } else if (currentTopic.TopicName === topicName2) {
+                  topicCount += 2;
+                }
+              }
+
+              test.equal(topicCount, 3);
+
+              // test skip
+              serviceBusService.listTopics({ top: 2, skip: 1 }, function (listError2, listTopics2) {
+                test.equal(listError2, null);
+                test.notEqual(listTopics2, null);
+                test.equal(listTopics2.length, 2);
+
+                // results are ordered by alphabetic order so
+                // topicName2 and topicName3 should be in the result
+                topicCount = 0;
+                for (topic in listTopics2) {
+                  currentTopic = listTopics2[topic];
+                  if (currentTopic.TopicName === topicName2) {
+                    topicCount += 1;
+                  } else if (currentTopic.TopicName === topicName3) {
+                    topicCount += 2;
+                  }
+                }
+
+                test.equal(topicCount, 3);
+
+                test.done();
+              });
+            });
+          });
         });
       });
     });
@@ -574,17 +744,43 @@ module.exports = testCase(
 
   testCreateSubscription: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
 
-    serviceBusService.createTopic(topicName, function (createError, topic) {
-      test.equal(createError, null);
-      test.notEqual(topic, null);
+    var subscriptionOptions = {
+      LockDuration: 'PT5S',
+      RequiresSession: true,
+      DefaultMessageTimeToLive: 'PT5S',
+      DeadLetteringOnMessageExpiration: true,
+      DeadLetteringOnFilterEvaluationExceptions: true
+    };
 
-      serviceBusService.createSubscription(topicName, subscriptionName, function (createSubscriptionError, subscription) {
-        test.equal(createSubscriptionError, null);
-        test.notEqual(subscription, null);
+    // Invalid topic name
+    serviceBusService.createSubscription('MyFakeTopic', subscriptionName1, subscriptionOptions, function (fakeCreateSubscriptionError, fakeSubscription) {
+      test.notEqual(fakeCreateSubscriptionError, null);
+      test.equal(fakeSubscription, null);
 
-        test.done();
+      serviceBusService.createTopic(topicName, function (createError, topic) {
+        test.equal(createError, null);
+        test.notEqual(topic, null);
+
+        serviceBusService.createSubscription(topicName, subscriptionName1, subscriptionOptions, function (createSubscriptionError1, subscription1) {
+          test.equal(createSubscriptionError1, null);
+          test.notEqual(subscription1, null);
+
+          serviceBusService.createSubscription(topicName, subscriptionName2, subscriptionOptions, function (createSubscriptionError2, subscription2) {
+            test.equal(createSubscriptionError2, null);
+            test.notEqual(subscription2, null);
+
+            test.equal(subscription2.LockDuration, subscriptionOptions.LockDuration);
+            test.equal(subscription2.RequiresSession, subscriptionOptions.RequiresSession);
+            test.equal(subscription2.DefaultMessageTimeToLive, subscriptionOptions.DefaultMessageTimeToLive);
+            test.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration);
+            test.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions);
+
+            test.done();
+          });
+        });
       });
     });
   },
@@ -609,7 +805,12 @@ module.exports = testCase(
             test.equal(error4, null);
             test.notEqual(deleteResponse4, null);
 
-            test.done();
+            serviceBusService.getSubscription(topicName, subscriptionName, function (getError, sub) {
+              test.notEqual(getError, null);
+              test.equal(sub, null);
+
+              test.done();
+            });
           });
         });
       });
