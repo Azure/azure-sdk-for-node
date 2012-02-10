@@ -624,6 +624,73 @@ module.exports = testCase(
     });
   },
 
+  testListTopicsRanges: function (test) {
+    var topicName1 = '1' + testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName2 = '2' + testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName3 = '3' + testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName4 = '4' + testutil.generateId(topicNamesPrefix, topicNames);
+
+    serviceBusService.createTopic(topicName1, function (createError1) {
+      test.equal(createError1, null);
+
+      serviceBusService.createTopic(topicName2, function (createError2) {
+        test.equal(createError2, null);
+
+        serviceBusService.createTopic(topicName3, function (createError3) {
+          test.equal(createError3, null);
+
+          serviceBusService.createTopic(topicName4, function (createError4) {
+            test.equal(createError4, null);
+
+            // test top
+            serviceBusService.listTopics({ top: 2 }, function (listError1, listTopics1) {
+              test.equal(listError1, null);
+              test.notEqual(listTopics1, null);
+              test.equal(listTopics1.length, 2);
+
+              // results are ordered by alphabetic order so
+              // topicName1 and topicName2 should be in the result
+              var topicCount = 0;
+              for (var topic in listTopics1) {
+                var currentTopic = listTopics1[topic];
+                if (currentTopic.TopicName === topicName1) {
+                  topicCount += 1;
+                } else if (currentTopic.TopicName === topicName2) {
+                  topicCount += 2;
+                }
+              }
+
+              test.equal(topicCount, 3);
+
+              // test skip
+              serviceBusService.listTopics({ top: 2, skip: 1 }, function (listError2, listTopics2) {
+                test.equal(listError2, null);
+                test.notEqual(listTopics2, null);
+                test.equal(listTopics2.length, 2);
+
+                // results are ordered by alphabetic order so
+                // topicName2 and topicName3 should be in the result
+                topicCount = 0;
+                for (topic in listTopics2) {
+                  currentTopic = listTopics2[topic];
+                  if (currentTopic.TopicName === topicName2) {
+                    topicCount += 1;
+                  } else if (currentTopic.TopicName === topicName3) {
+                    topicCount += 2;
+                  }
+                }
+
+                test.equal(topicCount, 3);
+
+                test.done();
+              });
+            });
+          });
+        });
+      });
+    });
+  },
+
   testCreateSubscription: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
     var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
