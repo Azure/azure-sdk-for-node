@@ -536,7 +536,7 @@ module.exports = testCase(
           test.equal(error3, null);
           test.notEqual(deleteResponse2, null);
 
-          serviceBusService.getTopic(topicNames, function (error4, topicDeleting) {
+          serviceBusService.getTopic(topicName, function (error4, topicDeleting) {
             test.notEqual(error4, null);
             test.equal(topicDeleting, null);
 
@@ -550,15 +550,20 @@ module.exports = testCase(
   testGetTopic: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
 
-    serviceBusService.createTopic(topicName, function (createError, topic) {
-      test.equal(createError, null);
-      test.notEqual(topic, null);
+    serviceBusService.getTopic(topicName, function (error, emptyTopic) {
+      test.notEqual(error, null);
+      test.equal(emptyTopic, null);
 
-      serviceBusService.getTopic(topicName, function (getError, getTopic) {
-        test.equal(getError, null);
-        test.notEqual(getTopic, null);
+      serviceBusService.createTopic(topicName, function (createError, topic) {
+        test.equal(createError, null);
+        test.notEqual(topic, null);
 
-        test.done();
+        serviceBusService.getTopic(topicName, function (getError, getTopic) {
+          test.equal(getError, null);
+          test.notEqual(getTopic, null);
+
+          test.done();
+        });
       });
     });
   },
@@ -567,20 +572,53 @@ module.exports = testCase(
     var topicName1 = testutil.generateId(topicNamesPrefix, topicNames);
     var topicName2 = testutil.generateId(topicNamesPrefix, topicNames);
 
-    serviceBusService.createTopic(topicName1, function (createError1, topic1) {
-      test.equal(createError1, null);
-      test.notEqual(topic1, null);
+    // listing without any topic
+    serviceBusService.listTopics(function (listError1, listTopics1) {
+      test.equal(listError1, null);
+      test.notEqual(listTopics1, null);
+      test.equal(listTopics1.length, 0);
 
-      serviceBusService.createTopic(topicName2, function (createError2, topic2) {
-        test.equal(createError2, null);
-        test.notEqual(topic2, null);
+      serviceBusService.createTopic(topicName1, function (createError1, topic1) {
+        test.equal(createError1, null);
+        test.notEqual(topic1, null);
 
-        serviceBusService.listTopics(function (listError, listTopics) {
-          test.equal(listError, null);
-          test.notEqual(listTopics, null);
-          test.equal(listTopics.length, 2);
+        // listing with a single topic
+        serviceBusService.listTopics(function (listError2, listTopics2) {
+          test.equal(listError2, null);
+          test.notEqual(listTopics2, null);
+          test.equal(listTopics2.length, 1);
 
-          test.done();
+          serviceBusService.createTopic(topicName2, function (createError2, topic2) {
+            test.equal(createError2, null);
+            test.notEqual(topic2, null);
+
+            // listing multiple topics
+            serviceBusService.listTopics(function (listError, listTopics) {
+              test.equal(listError, null);
+              test.notEqual(listTopics, null);
+              test.equal(listTopics.length, 2);
+
+              var topicCount = 0;
+              for (var topic in listTopics) {
+                var currentTopic = listTopics[topic];
+
+                test.notEqual(currentTopic.MaxSizeInMegabytes, null);
+                test.notEqual(currentTopic.RequiresDuplicateDetection, null);
+                test.notEqual(currentTopic.DefaultMessageTimeToLive, null);
+                test.notEqual(currentTopic.DuplicateDetectionHistoryTimeWindow, null);
+
+                if (currentTopic.TopicName === topicName1) {
+                  topicCount += 1;
+                } else if (currentTopic.TopicName === topicName2) {
+                  topicCount += 2;
+                }
+              }
+
+              test.equal(topicCount, 3);
+
+              test.done();
+            });
+          });
         });
       });
     });
