@@ -62,8 +62,8 @@ module.exports = testCase(
         originalServiceBusIssuer = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
       }
 
-      if (!originalServiceBusPassword && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_PASSWORD]) {
-        originalServiceBusPassword = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_PASSWORD];
+      if (!originalServiceBusPassword && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY]) {
+        originalServiceBusPassword = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
       }
 
       if (!originalWrapNamespace && process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE]) {
@@ -221,7 +221,7 @@ module.exports = testCase(
     delete process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
 
     process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = environmentServiceBusNamespace;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_PASSWORD] = environmentServiceBusPassword;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = environmentServiceBusPassword;
 
     // Create service bus client without passing any credentials
     var serviceBusService = azure.createServiceBusService();
