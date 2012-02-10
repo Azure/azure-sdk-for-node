@@ -704,25 +704,31 @@ module.exports = testCase(
       DeadLetteringOnFilterEvaluationExceptions: true
     };
 
-    serviceBusService.createTopic(topicName, function (createError, topic) {
-      test.equal(createError, null);
-      test.notEqual(topic, null);
+    // Invalid topic name
+    serviceBusService.createSubscription('MyFakeTopic', subscriptionName1, subscriptionOptions, function (fakeCreateSubscriptionError, fakeSubscription) {
+      test.notEqual(fakeCreateSubscriptionError, null);
+      test.equal(fakeSubscription, null);
 
-      serviceBusService.createSubscription(topicName, subscriptionName1, subscriptionOptions, function (createSubscriptionError1, subscription1) {
-        test.equal(createSubscriptionError1, null);
-        test.notEqual(subscription1, null);
+      serviceBusService.createTopic(topicName, function (createError, topic) {
+        test.equal(createError, null);
+        test.notEqual(topic, null);
 
-        serviceBusService.createSubscription(topicName, subscriptionName2, subscriptionOptions, function (createSubscriptionError2, subscription2) {
-          test.equal(createSubscriptionError2, null);
-          test.notEqual(subscription2, null);
+        serviceBusService.createSubscription(topicName, subscriptionName1, subscriptionOptions, function (createSubscriptionError1, subscription1) {
+          test.equal(createSubscriptionError1, null);
+          test.notEqual(subscription1, null);
 
-          test.equal(subscription2.LockDuration, subscriptionOptions.LockDuration);
-          test.equal(subscription2.RequiresSession, subscriptionOptions.RequiresSession);
-          test.equal(subscription2.DefaultMessageTimeToLive, subscriptionOptions.DefaultMessageTimeToLive);
-          test.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration);
-          test.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions);
+          serviceBusService.createSubscription(topicName, subscriptionName2, subscriptionOptions, function (createSubscriptionError2, subscription2) {
+            test.equal(createSubscriptionError2, null);
+            test.notEqual(subscription2, null);
 
-          test.done();
+            test.equal(subscription2.LockDuration, subscriptionOptions.LockDuration);
+            test.equal(subscription2.RequiresSession, subscriptionOptions.RequiresSession);
+            test.equal(subscription2.DefaultMessageTimeToLive, subscriptionOptions.DefaultMessageTimeToLive);
+            test.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration);
+            test.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions);
+
+            test.done();
+          });
         });
       });
     });
@@ -748,7 +754,12 @@ module.exports = testCase(
             test.equal(error4, null);
             test.notEqual(deleteResponse4, null);
 
-            test.done();
+            serviceBusService.getSubscription(topicName, subscriptionName, function (getError, sub) {
+              test.notEqual(getError, null);
+              test.equal(sub, null);
+
+              test.done();
+            });
           });
         });
       });
