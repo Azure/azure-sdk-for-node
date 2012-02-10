@@ -210,7 +210,7 @@ module.exports = testCase(
                 test.notEqual(currentQueue[ServiceBusConstants.DEAD_LETTERING_ON_MESSAGE_EXPIRATION], null);
                 test.notEqual(currentQueue[ServiceBusConstants.DUPLICATE_DETECTION_HISTORY_TIME_WINDOW], null);
                 test.notEqual(currentQueue[ServiceBusConstants.MAX_DELIVERY_COUNT], null);
-                test.notEqual(currentQueue[ServiceBusConstants.ENABLED_BATCHED_OPERATIONS], null);
+                test.notEqual(currentQueue[ServiceBusConstants.ENABLE_BATCHED_OPERATIONS], null);
                 test.notEqual(currentQueue[ServiceBusConstants.SIZE_IN_BYTES], null);
                 test.notEqual(currentQueue[ServiceBusConstants.MESSAGE_COUNT], null);
 
@@ -494,7 +494,9 @@ module.exports = testCase(
       MaxSizeInMegabytes: '2048',
       RequiresDuplicateDetection: false,
       DefaultMessageTimeToLive: 'PT5S',
-      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+      DuplicateDetectionHistoryTimeWindow: 'PT55S',
+      EnableBatchedOperations: true,
+      SizeInBytes: '1024'
     };
 
     serviceBusService.createTopic(topicName, topicOptions, function (createError, topic) {
@@ -507,6 +509,8 @@ module.exports = testCase(
         test.equal(topic.RequiresDuplicateDetection, topicOptions.RequiresDuplicateDetection);
         test.equal(topic.DefaultMessageTimeToLive, topicOptions.DefaultMessageTimeToLive);
         test.equal(topic.DuplicateDetectionHistoryTimeWindow, topicOptions.DuplicateDetectionHistoryTimeWindow);
+        test.equal(topic.EnableBatchedOperations, topicOptions.EnableBatchedOperations);
+        test.equal(topic.SizeInBytes, topicOptions.SizeInBytes);
       }
 
       test.done();
