@@ -15,6 +15,7 @@
 
 var testCase = require('nodeunit').testCase;
 
+var assert = require('assert');
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
 
@@ -72,20 +73,25 @@ module.exports = testCase(
 
     serviceBusService.createQueue(queueName, queueOptions, function (createError, queue) {
       test.equal(createError, null);
-      test.notEqual(queue, null);
-      if (queue) {
-        test.equal(queue.QueueName, queueName);
-        test.equal(queue.LockDuration, queueOptions.LockDuration);
-        test.equal(queue.RequiresDuplicateDetection, queueOptions.RequiresDuplicateDetection);
-        test.equal(queue.RequiresSession, queueOptions.RequiresSession);
-        test.equal(queue.DefaultMessageTimeToLive, queueOptions.DefaultMessageTimeToLive);
-        test.equal(queue.DeadLetteringOnMessageExpiration, queueOptions.DeadLetteringOnMessageExpiration);
-        test.equal(queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow);
-        test.equal(queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes);
-      }
+      servicebustestutil.validateQueue(test, queueName, queueOptions, queue);
 
-      test.done();
-    });
+      // Validate appropriate error for existing queue
+      serviceBusService.createQueue( queueName, queueOptions, function (createError, queue) {
+        // TODO, validate the actual error
+        test.notEqual(createError, null);
+
+        //Validate appropriate error for invalid queue name
+        assert.throws( 
+          function() {
+            serviceBusService.createQueue( null, function( createError2, queue) {
+              // TODO, validate the actual error
+              test.notEqual(createError, null);
+              })}, 
+          /name must be a non empty string/
+        );
+        test.done();
+        });
+      });
   },
 
   testCreateQueueIfNotExists: function (test) {
@@ -104,12 +110,26 @@ module.exports = testCase(
       test.equal(createError, null);
       test.equal(created, true);
 
-      // try creating queue again
-      serviceBusService.createQueueIfNotExists(queueName, function (createError2, created2) {
-        test.equal(createError2, null);
-        test.equal(created2, false);
+      serviceBusService.getQueue(queueName, function( error, queue) {
+        servicebustestutil.validateQueue(test, queueName, queueOptions, queue);
 
-        test.done();
+        // try creating queue again
+        serviceBusService.createQueueIfNotExists(queueName, function (createError2, created2) {
+          test.equal(createError2, null);
+          test.equal(created2, false);
+
+          // try creating a queue with an invalid name
+          assert.throws( 
+            function() {
+              serviceBusService.createQueueIfNotExists(null, function(createError3, created3) {
+                //TODO, add in actuall error validation
+                test.notEqual(createError3, null);
+              })
+            },
+              /name must be a non empty string/
+            );
+            test.done();
+        });        
       });
     });
   },
@@ -137,8 +157,19 @@ module.exports = testCase(
             serviceBusService.getQueue(queueName, function (error5, queueDeleting) {
               test.notEqual(error5, null);
               test.equal(queueDeleting, null);
-
+              
+              // Test deleting a queue with an invalid name
+              assert.throws(
+                function() {
+                  serviceBusService.deleteQueue(null, function(deleteError) {
+                    // TODO, add in validation for the actual error
+                    test.notEqual(deleteError, null);
+                  });
+                },
+                /name must be a non empty string/
+              );
               test.done();
+              
             });
           });
         });
@@ -162,6 +193,17 @@ module.exports = testCase(
           test.equal(getError2, null);
           test.notEqual(getQueue2, null);
 
+          //getting invalid queue name
+          assert.throws(
+            function() {
+              serviceBusService.getQueue(null, function( getError3, getQueue3) {
+                // TODO, validate actual returned error
+                test.notEqual(getError3, null);
+                test.equal(getQueue3, null);
+              });
+            },
+            /name must be a non empty string/
+          );
           test.done();
         });
       });
@@ -308,6 +350,15 @@ module.exports = testCase(
       serviceBusService.sendQueueMessage(queueName, 'hi there', function (sendError) {
         test.equal(sendError, null);
 
+        //invalid queue name
+        assert.throws(
+          function() {
+            serviceBusService.sendQueueMessage(null, 'hi again', function(sendError2) {
+              //TODO, add validation for returned error
+              test.notEqual(createError2, null);
+            });},
+          /name must be a non empty string/
+        );
         test.done();
       });
     });
@@ -419,6 +470,35 @@ module.exports = testCase(
         });
       });
     });
+  },
+
+  testReceiveQueueMessagePeekLock: function(test) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var messageText = 'hi there with PeekLock';
+    var messageOptions = 
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      test.equal(createError, null);
+      test.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        test.equal(sendError, null);
+
+        // read the message
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
+          test.equal(receiveError, null);
+          test.equal(message.messagetext, messageText);
+
+          serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
+            test.notEqual(receiveError2, null);
+            test.equal(emptyMessage, null);
+
+            test.done();
+          });
+        });
+      });
+    });
+   
   },
 
   testCreateTopic: function (test) {

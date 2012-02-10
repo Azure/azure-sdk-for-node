@@ -74,3 +74,23 @@ exports.tearDownTest = function (testObject, serviceBusService, testPrefix, call
     }
   });
 };
+
+var checkValue = function( test, value, optionValue) {
+  if (optionValue) {
+    test.equal(value, optionValue);
+  }
+};
+
+exports.validateQueue = function( testObject, queueName, queueOptions, queue) {
+  testObject.notEqual(queue, null);
+  if (queue) {
+    testObject.equal(queue.QueueName, queueName);
+    checkValue(testObject, queue.LockDuration, queueOptions.LockDuration);
+    checkValue(testObject, queue.RequiresDuplicateDetection, queueOptions.RequiresDuplicateDetection);
+    checkValue(testObject, queue.RequiresSession, queueOptions.RequiresSession);
+    checkValue(testObject, queue.DefaultMessageTimeToLive, queueOptions.DefaultMessageTimeToLive);
+    checkValue(testObject, queue.DeadLetteringOnMessageExpiration, queueOptions.DeadLetteringOnMessageExpiration);
+    checkValue(testObject, queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow);
+    checkValue(testObject, queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes);
+  }
+};
