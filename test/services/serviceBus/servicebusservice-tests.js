@@ -1003,7 +1003,25 @@ module.exports = testCase(
   testCreateRule: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
     var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleName1 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleOptions1 = {
+      sqlExpressionFilter: 'Number=2'
+    };
+
+    var ruleName2 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleOptions2 = {
+      correlationIdFilter: 'myId'
+    };
+
+    var ruleName3 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleOptions3 = {
+      trueFilter: 'Number=2'
+    };
+
+    var ruleName4 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleOptions4 = {
+      falseFilter: 'Number=2'
+    };
 
     serviceBusService.createTopic(topicName, function (createError, topic) {
       test.equal(createError, null);
@@ -1013,10 +1031,26 @@ module.exports = testCase(
         test.equal(createSubscriptionError, null);
         test.notEqual(subscription, null);
 
-        serviceBusService.createRule(topicName, subscriptionName, ruleName, function (createRuleError, rule) {
-          test.equal(createRuleError, null);
-          test.notEqual(rule, null);
-          test.done();
+        serviceBusService.createRule(topicName, subscriptionName, ruleName1, ruleOptions1, function (createRuleError1, rule1) {
+          test.equal(createRuleError1, null);
+          test.notEqual(rule1, null);
+
+          serviceBusService.createRule(topicName, subscriptionName, ruleName2, ruleOptions2, function (createRuleError2, rule2) {
+            test.equal(createRuleError2, null);
+            test.notEqual(rule2, null);
+
+            serviceBusService.createRule(topicName, subscriptionName, ruleName3, ruleOptions3, function (createRuleError3, rule3) {
+              test.equal(createRuleError3, null);
+              test.notEqual(rule3, null);
+
+              serviceBusService.createRule(topicName, subscriptionName, ruleName4, ruleOptions4, function (createRuleError4, rule4) {
+                test.equal(createRuleError4, null);
+                test.notEqual(rule4, null);
+
+                test.done();
+              });
+            });
+          });
         });
       });
     });
@@ -1213,5 +1247,6 @@ module.exports = testCase(
         });
       });
     });
+    ;
   }
 });
