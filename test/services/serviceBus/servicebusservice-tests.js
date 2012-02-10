@@ -316,7 +316,7 @@ module.exports = testCase(
   testSendMessageProperties: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
     var message = {
-      messagetext: 'hi there again',
+      body: 'hi there again',
       contentType: 'made-up-one',
       brokerProperties: {
         CorrelationId: '{701332F3-B37B-4D29-AA0A-E367906C206E}',
@@ -340,7 +340,7 @@ module.exports = testCase(
           test.equal(receiveError, null);
           test.notEqual(messageReceived, null);
 
-          test.equal(messageReceived.messagetext, message.messagetext);
+          test.equal(messageReceived.body, message.body);
           test.equal(messageReceived.contentType, message.contentType);
           test.equal(messageReceived.brokerProperties.CorrelationId, message.brokerProperties.CorrelationId);
           test.equal(messageReceived.brokerProperties.SessionId, message.brokerProperties.SessionId);
@@ -359,7 +359,7 @@ module.exports = testCase(
   testMessageCustomProperties: function (test) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
     var message = {
-      messagetext: 'hi there again',
+      body: 'hi there again',
       customProperties: {
         propint: 1,
         propfloat: 2.22,
@@ -378,7 +378,7 @@ module.exports = testCase(
         // read the message
         serviceBusService.receiveQueueMessage(queueName, function (receiveError, receivedMessage) {
           test.equal(receiveError, null);
-          test.equal(receivedMessage.messagetext, message.messagetext);
+          test.equal(receivedMessage.body, message.body);
           test.strictEqual(receivedMessage.customProperties.propint, message.customProperties.propint);
           test.strictEqual(receivedMessage.customProperties.propfloat, message.customProperties.propfloat);
           test.deepEqual(receivedMessage.customProperties.propdate.valueOf(), message.customProperties.propdate.valueOf());
@@ -409,7 +409,7 @@ module.exports = testCase(
         // read the message
         serviceBusService.receiveQueueMessage(queueName, function (receiveError, message) {
           test.equal(receiveError, null);
-          test.equal(message.messagetext, messageText);
+          test.equal(message.body, messageText);
 
           serviceBusService.receiveQueueMessage(queueName, function (receiveError2, emptyMessage) {
             test.notEqual(receiveError2, null);
@@ -436,7 +436,7 @@ module.exports = testCase(
         // Peek the message
         serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError, message) {
           test.equal(receiveError, null);
-          test.equal(message.messagetext, messageText);
+          test.equal(message.body, messageText);
 
           test.notEqual(message.location, null);
           test.notEqual(message.brokerProperties.LockToken, null);
@@ -467,7 +467,7 @@ module.exports = testCase(
         // Peek the message
         serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
           test.equal(receiveError1, null);
-          test.equal(message1.messagetext, messageText);
+          test.equal(message1.body, messageText);
 
           test.notEqual(message1.location, null);
           test.notEqual(message1.brokerProperties.LockToken, null);
@@ -544,7 +544,7 @@ module.exports = testCase(
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
     var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
     var message = {
-      messagetext: 'hi there topic',
+      body: 'hi there topic',
       contentType: 'made-up-one',
       brokerProperties: {
         CorrelationId: '{701332F3-B37B-4D29-AA0A-E367906C206E}',
@@ -569,7 +569,7 @@ module.exports = testCase(
           serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName, function (receiveSubscriptionError, messageReceived) {
             test.equal(receiveSubscriptionError, null);
             test.notEqual(messageReceived, null);
-            test.equal(messageReceived.messagetext, message.messagetext);
+            test.equal(messageReceived.body, message.body);
 
             test.equal(messageReceived.contentType, message.contentType);
             test.equal(messageReceived.brokerProperties.CorrelationId, message.brokerProperties.CorrelationId);
