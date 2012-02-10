@@ -433,7 +433,7 @@ module.exports = testCase(
         test.equal(sendError, null);
 
         // Peek the message
-        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInMs: 5 }, function (receiveError, message) {
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError, message) {
           test.equal(receiveError, null);
           test.equal(message.messagetext, messageText);
 
@@ -464,7 +464,7 @@ module.exports = testCase(
         test.equal(sendError, null);
 
         // Peek the message
-        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInMs: 5 }, function (receiveError1, message1) {
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
           test.equal(receiveError1, null);
           test.equal(message1.messagetext, messageText);
 
