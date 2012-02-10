@@ -559,7 +559,9 @@ module.exports = testCase(
         test.equal(topic.RequiresDuplicateDetection, topicOptions.RequiresDuplicateDetection);
         test.equal(topic.DefaultMessageTimeToLive, topicOptions.DefaultMessageTimeToLive);
         test.equal(topic.DuplicateDetectionHistoryTimeWindow, topicOptions.DuplicateDetectionHistoryTimeWindow);
-      }
+        test.equal(topic.EnableBatchedOperations, topicOptions.EnableBatchedOperations);     
+        test.equal(topic.SizeInBytes, topicOptions.SizeInBytes);
+        }
 
       test.done();
     });
