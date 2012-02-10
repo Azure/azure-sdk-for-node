@@ -336,7 +336,7 @@ module.exports = testCase(
       serviceBusService.sendQueueMessage(queueName, messageText, messageOptions, function (sendError) {
         test.equal(sendError, null);
 
-        serviceBusService.receiveQueueMessage(queueName, function (receiveError, messageReceived, rsp) {
+        serviceBusService.receiveQueueMessage(queueName, function (receiveError, messageReceived) {
           test.equal(receiveError, null);
           test.notEqual(messageReceived, null);
 
@@ -421,14 +421,103 @@ module.exports = testCase(
     });
   },
 
+  /*
+  testPeekMessage: function (test) {
+  var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+  var messageText = 'hi there again';
+
+  serviceBusService.createQueue(queueName, function (createError, queue) {
+  test.equal(createError, null);
+  test.notEqual(queue, null);
+
+  serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+  test.equal(sendError, null);
+
+  // Peek the message
+  serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInMs: 5 }, function (receiveError, message) {
+  test.equal(receiveError, null);
+  test.equal(message.messagetext, messageText);
+
+  test.notEqual(message.location, null);
+  test.notEqual(message.brokerProperties.LockToken, null);
+  test.notEqual(message.brokerProperties.LockedUntilUtc, null);
+
+  // Message is not available while locked
+  serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInMs: 5 }, function (receiveError2, emptyMessage, rsp) {
+  console.log(rsp);
+
+  test.notEqual(receiveError2, null);
+  test.equal(emptyMessage, null);
+
+  // unlock message
+  serviceBusService.unlockMessage(message.location, function (unlockError) {
+  test.equal(unlockError, null);
+
+  // receive message again
+  serviceBusService.receiveQueueMessage(queueName, function (receiveError3, message3) {
+  test.equal(receiveError3, null);
+  test.equal(message3.messagetext, messageText);
+
+  // message was deleted
+  serviceBusService.receiveQueueMessage(queueName, function (receiveError4, emptyMessage2) {
+  test.notEqual(receiveError4, null);
+  test.equal(emptyMessage2, null);
+
+  test.done();
+  });
+  });
+  });
+  });
+  });
+  });
+  });
+  },
+  */
+
   testCreateTopic: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicOptions = {
+      MaxSizeInMegabytes: '2048',
+      RequiresDuplicateDetection: false,
+      DefaultMessageTimeToLive: 'PT5S',
+      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+    };
 
-    serviceBusService.createTopic(topicName, function (createError, topic) {
+    serviceBusService.createTopic(topicName, topicOptions, function (createError, topic) {
       test.equal(createError, null);
       test.notEqual(topic, null);
+      if (topic) {
+        test.equal(topic.TopicName, topicName);
+
+        test.equal(topic.MaxSizeInMegabytes, topicOptions.MaxSizeInMegabytes);
+        test.equal(topic.RequiresDuplicateDetection, topicOptions.RequiresDuplicateDetection);
+        test.equal(topic.DefaultMessageTimeToLive, topicOptions.DefaultMessageTimeToLive);
+        test.equal(topic.DuplicateDetectionHistoryTimeWindow, topicOptions.DuplicateDetectionHistoryTimeWindow);
+      }
 
       test.done();
+    });
+  },
+
+  testCreateTopicIfNotExists: function (test) {
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicOptions = {
+      MaxSizeInMegabytes: '2048',
+      RequiresDuplicateDetection: false,
+      DefaultMessageTimeToLive: 'PT5S',
+      DuplicateDetectionHistoryTimeWindow: 'PT55S'
+    };
+
+    serviceBusService.createTopicIfNotExists(topicName, topicOptions, function (createError1, created1) {
+      test.equal(createError1, null);
+      test.equal(created1, true);
+
+      serviceBusService.createTopicIfNotExists(topicName, function (createError2, created2) {
+        test.equal(createError2, null);
+        test.equal(created2, false);
+
+        test.done();
+      });
     });
   },
 
@@ -447,7 +536,12 @@ module.exports = testCase(
           test.equal(error3, null);
           test.notEqual(deleteResponse2, null);
 
-          test.done();
+          serviceBusService.getTopic(topicNames, function (error4, topicDeleting) {
+            test.notEqual(error4, null);
+            test.equal(topicDeleting, null);
+
+            test.done();
+          });
         });
       });
     });
