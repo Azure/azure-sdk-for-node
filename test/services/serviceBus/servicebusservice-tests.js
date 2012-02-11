@@ -80,18 +80,12 @@ module.exports = testCase(
         // TODO, validate the actual error
         test.notEqual(createError, null);
 
-        //Validate appropriate error for invalid queue name
-        assert.throws( 
-          function() {
-            serviceBusService.createQueue( null, function( createError2, queue) {
-              // TODO, validate the actual error
-              test.notEqual(createError, null);
-              })}, 
-          /name must be a non empty string/
-        );
-        test.done();
-        });
+        servicebustestutil.checkNullParameter(
+          function() {serviceBusService.createQueue( null, function( createError2, queue) {});
+          });
+         test.done();
       });
+    });
   },
 
   testCreateQueueIfNotExists: function (test) {
@@ -118,16 +112,9 @@ module.exports = testCase(
           test.equal(createError2, null);
           test.equal(created2, false);
 
-          // try creating a queue with an invalid name
-          assert.throws( 
-            function() {
-              serviceBusService.createQueueIfNotExists(null, function(createError3, created3) {
-                //TODO, add in actuall error validation
-                test.notEqual(createError3, null);
-              })
-            },
-              /name must be a non empty string/
-            );
+          servicebustestutil.checkNullParameter(
+            function() {serviceBusService.createQueueIfNotExists( null, function( createError3, queue) {});
+            });
             test.done();
         });        
       });
@@ -157,16 +144,9 @@ module.exports = testCase(
             serviceBusService.getQueue(queueName, function (error5, queueDeleting) {
               test.notEqual(error5, null);
               test.equal(queueDeleting, null);
-              // Test deleting a queue with an invalid name
-              assert.throws(
-                function() {
-                  serviceBusService.deleteQueue(null, function(deleteError) {
-                    // TODO, add in validation for the actual error
-                    test.notEqual(deleteError, null);
-                  });
-                },
-                /name must be a non empty string/
-              );
+              servicebustestutil.checkNullParameter(
+                function() {serviceBusService.deleteQueue( null, function( deleteError) {});
+                });
               test.done();
             });
           });
@@ -191,17 +171,9 @@ module.exports = testCase(
           test.equal(getError2, null);
           test.notEqual(getQueue2, null);
 
-          //getting invalid queue name
-          assert.throws(
-            function() {
-              serviceBusService.getQueue(null, function( getError3, getQueue3) {
-                // TODO, validate actual returned error
-                test.notEqual(getError3, null);
-                test.equal(getQueue3, null);
-              });
-            },
-            /name must be a non empty string/
-          );
+          servicebustestutil.checkNullParameter(
+            function() {serviceBusService.getQueue( null, function( getError3, getQueue3) {});
+            });
           test.done();
         });
       });
@@ -348,15 +320,9 @@ module.exports = testCase(
       serviceBusService.sendQueueMessage(queueName, 'hi there', function (sendError) {
         test.equal(sendError, null);
 
-        //invalid queue name
-        assert.throws(
-          function() {
-            serviceBusService.sendQueueMessage(null, 'hi again', function(sendError2) {
-              //TODO, add validation for returned error
-              test.notEqual(createError2, null);
-            });},
-          /name must be a non empty string/
-        );
+        servicebustestutil.checkNullParameter(
+          function() {serviceBusService.sendQueueMessage( null, 'hello again', function( sendError2) {});
+          });
         test.done();
       });
     });
@@ -398,7 +364,6 @@ module.exports = testCase(
           test.equal(messageReceived.brokerProperties.ReplyTo, message.brokerProperties.ReplyTo);
           test.equal(messageReceived.brokerProperties.To, message.brokerProperties.To);
           test.equal(messageReceived.brokerProperties.ReplyToSessionId, message.brokerProperties.ReplyToSessionId);
-
           test.done();
         });
       });
@@ -464,6 +429,9 @@ module.exports = testCase(
             test.notEqual(receiveError2, null);
             test.equal(emptyMessage, null);
 
+            servicebustestutil.checkNullParameter(
+              function() {serviceBusService.receiveQueueMessage( null, function( receiveError3, message3) {});
+              });
             test.done();
           });
         });
@@ -630,6 +598,9 @@ module.exports = testCase(
         test.equal(topic.SizeInBytes, topicOptions.SizeInBytes);
         }
 
+      servicebustestutil.checkNullParameter(
+        function() {serviceBusService.createTopic( null, topicOptions, function( createErrro2, topic2) {});
+        });
       test.done();
     });
   },
@@ -651,6 +622,9 @@ module.exports = testCase(
         test.equal(createError2, null);
         test.equal(created2, false);
 
+        servicebustestutil.checkNullParameter(
+          function() {serviceBusService.createTopicIfNotExists( null, topicOptions, function( createErrro3, created3) {});
+          });
         test.done();
       });
     });
@@ -696,6 +670,15 @@ module.exports = testCase(
             test.equal(messageReceived.brokerProperties.To, message.brokerProperties.To);
             test.equal(messageReceived.brokerProperties.ReplyToSessionId, message.brokerProperties.ReplyToSessionId);
 
+            servicebustestutil.checkNullParameter(
+              function() {serviceBusService.sendTopicMessage( null, message, function( sendError2) {});
+              });
+            servicebustestutil.checkNullParameter(
+              function() {serviceBusService.receiveSubscriptionMessage( null, subscriptionName, function( topicError, topicMessage) {});
+              });
+            servicebustestutil.checkNullParameter(
+              function() {serviceBusService.receiveSubscriptionMessage( topicName, null, function( topicError2, topicMessage2) {});
+              });
             test.done();
           });
         });
@@ -722,6 +705,9 @@ module.exports = testCase(
             test.notEqual(error4, null);
             test.equal(topicDeleting, null);
 
+            servicebustestutil.checkNullParameter(
+              function() {serviceBusService.deleteTopic( null, function( error5) {});
+              });
             test.done();
           });
         });
@@ -744,6 +730,9 @@ module.exports = testCase(
           test.equal(getError, null);
           test.notEqual(getTopic, null);
 
+          servicebustestutil.checkNullParameter(
+            function() {serviceBusService.getTopic( null, message, function( error2, topic2) {});
+            });
           test.done();
         });
       });
@@ -913,7 +902,12 @@ module.exports = testCase(
             serviceBusService.createSubscription(topicName, subscriptionName1, function (subscriptionError, duplicateSubscription) {
               test.notEqual(subscriptionError, null);
               test.equal(duplicateSubscription, null);
-
+              servicebustestutil.checkNullParameter(
+                function() { serviceBusService.createSubscription( null, subscriptionName1, function( subError, subResult) {});
+                });
+              servicebustestutil.checkNullParameter(
+                function() { serviceBusService.createSubscription( topicName, null, function( subError2, subResult2) {});
+                });
               test.done();
             });
           });
@@ -945,7 +939,12 @@ module.exports = testCase(
             serviceBusService.getSubscription(topicName, subscriptionName, function (getError, sub) {
               test.notEqual(getError, null);
               test.equal(sub, null);
-
+              servicebustestutil.checkNullParameter(
+                function() { serviceBusService.deleteSubscription( null, subscriptionName1, function( subError, subResult) {});
+                });
+              servicebustestutil.checkNullParameter(
+                function() { serviceBusService.deleteSubscription( topicName, null, function( subError2, subResult2) {});
+                });
               test.done();
             });
           });
@@ -979,7 +978,12 @@ module.exports = testCase(
             test.notEqual(getSubscription.DefaultMessageTimeToLive, null);
             test.notEqual(getSubscription.DeadLetteringOnMessageExpiration, null);
             test.notEqual(getSubscription.DeadLetteringOnFilterEvaluationExceptions, null);
-
+            servicebustestutil.checkNullParameter(
+              function() { serviceBusService.getSubscription( null, subscriptionName1, function( subError, subResult) {});
+              });
+            servicebustestutil.checkNullParameter(
+              function() { serviceBusService.getSubscription( topicName, null, function( subError2, subResult2) {});
+              });
             test.done();
           });
         });
@@ -1186,7 +1190,15 @@ module.exports = testCase(
                     serviceBusService.createRule(topicName, subscriptionName, ruleName1, function (duplicateError, duplicateRule) {
                       test.notEqual(duplicateError, null);
                       test.equal(duplicateRule, null);
-
+                      servicebustestutil.checkNullParameter(
+                        function() { serviceBusService.createRule( null, subscriptionName, ruleName1, ruleOptions1, function( ruleError, ruleResult) {});
+                        });
+                      servicebustestutil.checkNullParameter(
+                        function() { serviceBusService.createRule( topicName, null, ruleName1, ruleOptions1, function( ruleError2, ruleResult2) {});
+                        });
+                      servicebustestutil.checkNullParameter(
+                        function() { serviceBusService.createRule( topicName, subscriptionName, null, ruleOptions1, function( ruleError, ruleResult) {});
+                        });
                       test.done();
                     });
                   });
@@ -1367,7 +1379,15 @@ module.exports = testCase(
               serviceBusService.getRule(topicName, subscriptionName, ruleName, function (error6, deletedRule) {
                 test.notEqual(error6, null);
                 test.equal(deletedRule, null);
-
+                servicebustestutil.checkNullParameter(
+                  function() { serviceBusService.deleteRule( null, subscriptionName, ruleName, function( ruleError, ruleResult) {});
+                  });
+                servicebustestutil.checkNullParameter(
+                  function() { serviceBusService.deleteRule( topicName, null, ruleName, function( ruleError2, ruleResult2) {});
+                  });
+                servicebustestutil.checkNullParameter(
+                  function() { serviceBusService.deleteRule( topicName, subscriptionName, null, function( ruleError, ruleResult) {});
+                  });
                 test.done();
               });
             });
