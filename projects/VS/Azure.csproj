@@ -78,6 +78,12 @@
     <Content Include="..\..\examples\samples\sassample.js">
       <Link>examples\samples\sassample.js</Link>
     </Content>
+    <Content Include="..\..\examples\samples\sbqueue.js">
+      <Link>examples\samples\sbqueue.js</Link>
+    </Content>
+    <Content Include="..\..\examples\samples\sbtopic.js">
+      <Link>examples\samples\sbtopic.js</Link>
+    </Content>
     <Content Include="..\..\examples\samples\snapshotsample.js">
       <Link>examples\samples\snapshotsample.js</Link>
     </Content>
