@@ -416,9 +416,6 @@
     <None Include="..\..\examples\blog\views\layout.ejs">
       <Link>examples\blog\views\layout.ejs</Link>
     </None>
-    <None Include="..\..\examples\geophoto\package.json">
-      <Link>examples\geophoto\package.json</Link>
-    </None>
     <None Include="..\..\examples\tasklist\package.json">
       <Link>examples\tasklist\package.json</Link>
     </None>
