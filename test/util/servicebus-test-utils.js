@@ -15,6 +15,7 @@
 
 var MockServerClient = require('../mockserver/mockserverclient');
 var azure = require('../../lib/azure');
+var assert = require('assert');
 
 var exports = module.exports;
 
@@ -92,5 +93,14 @@ exports.validateQueue = function( testObject, queueName, queueOptions, queue) {
     checkValue(testObject, queue.DeadLetteringOnMessageExpiration, queueOptions.DeadLetteringOnMessageExpiration);
     checkValue(testObject, queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow);
     checkValue(testObject, queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes);
-  }
+  };
+
+  exports.checkNullParameter = function( callback) {
+    assert.throws( 
+      function() {
+        callback();
+      }, 
+      /name must be a non empty string/
+    );
+  };
 };
