@@ -1172,7 +1172,7 @@ module.exports = testCase(
         serviceBusService.createSubscription(topicName, subscriptionName2, function (createSubscriptionError2) {
           test.equal(createSubscriptionError2, null);
 
-          serviceBusService.deleteRule(topicName, subscriptionName1, '$Default', function (deleteRuleError) {
+          serviceBusService.deleteRule(topicName, subscriptionName1, ServiceBusConstants.DEFAULT_RULE_NAME, function (deleteRuleError) {
             test.equal(deleteRuleError, null);
 
             serviceBusService.createRule(topicName, subscriptionName1, ruleName, ruleOptions, function(createRuleError) {
@@ -1242,7 +1242,7 @@ module.exports = testCase(
         serviceBusService.createSubscription(topicName, subscriptionName2, function (createSubscriptionError2) {
           test.equal(createSubscriptionError2, null);
 
-          serviceBusService.deleteRule(topicName, subscriptionName1, '$Default', function (deleteRuleError) {
+          serviceBusService.deleteRule(topicName, subscriptionName1, ServiceBusConstants.DEFAULT_RULE_NAME, function (deleteRuleError) {
             test.equal(deleteRuleError, null);
 
             serviceBusService.createRule(topicName, subscriptionName1, ruleName, ruleOptions, function (createRuleError) {
@@ -1443,7 +1443,7 @@ module.exports = testCase(
                   var ruleCount = 0;
                   for (var rule in listRules1) {
                     var currentRule = listRules1[rule];
-                    if (currentRule.RuleName === '$Default') {
+                    if (currentRule.RuleName === ServiceBusConstants.DEFAULT_RULE_NAME) {
                       ruleCount += 1;
                     } else if (currentRule.RuleName === ruleName1) {
                       ruleCount += 2;
