@@ -67,12 +67,12 @@ function receiveMessagesSubscription1() {
     if (error1) {
       console.log(error1);
     } else {
-      console.log(message1.messagetext);
+      console.log(message1.body);
       serviceBusClient.receiveSubscriptionMessage(topic, subscription1, function (error2, message2) {
         if (error2) {
           console.log(error2);
         } else {
-          console.log(message2.messagetext);
+          console.log(message2.body);
           receiveMessagesSubscription2();
         }
       });
