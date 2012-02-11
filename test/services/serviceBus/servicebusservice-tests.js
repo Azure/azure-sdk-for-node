@@ -1220,6 +1220,76 @@ module.exports = testCase(
     });
   },
 
+  testCorrelationIdFilter: function (test) {
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+
+    var messageText1 = 'hi there topic';
+    var messageText2 = 'hi there topic again';
+
+    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleOptions = {
+      correlationIdFilter: 'myid'
+    };
+
+    serviceBusService.createTopic(topicName, function (createTopicError) {
+      test.equal(createTopicError, null);
+
+      serviceBusService.createSubscription(topicName, subscriptionName1, function (createSubscriptionError1) {
+        test.equal(createSubscriptionError1, null);
+
+        serviceBusService.createSubscription(topicName, subscriptionName2, function (createSubscriptionError2) {
+          test.equal(createSubscriptionError2, null);
+
+          serviceBusService.deleteRule(topicName, subscriptionName1, '$Default', function (deleteRuleError) {
+            test.equal(deleteRuleError, null);
+
+            serviceBusService.createRule(topicName, subscriptionName1, ruleName, ruleOptions, function (createRuleError) {
+              test.equal(createRuleError, null);
+
+              // non matching property
+              serviceBusService.sendTopicMessage(topicName, { body: messageText1, brokerProperties: { CorrelationId: 'otherid'} }, function (sendError1) {
+                test.equal(sendError1, null);
+
+                serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName1, function (receiveError1, receiveMessage1) {
+                  test.notEqual(receiveError1, null); // Nothing to receive
+                  test.equal(receiveMessage1, null);
+
+                  // matching property
+                  serviceBusService.sendTopicMessage(topicName, { body: messageText2, brokerProperties: { CorrelationId: 'myid'} }, function (sendError2) {
+                    test.equal(sendError2, null);
+
+                    serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName1, function (receiveError2, receiveMessage2) {
+                      test.equal(receiveError2, null);
+                      test.notEqual(receiveMessage2, null);
+                      test.equal(receiveMessage2.body, messageText2);
+
+                      // subscription 2 can receive both messages
+                      serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName2, function (receiveError3, receiveMessage3) {
+                        test.equal(receiveError3, null);
+                        test.notEqual(receiveMessage3, null);
+                        test.equal(receiveMessage3.body, messageText1);
+
+                        serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName2, function (receiveError4, receiveMessage4) {
+                          test.equal(receiveError4, null);
+                          test.notEqual(receiveMessage4, null);
+                          test.equal(receiveMessage4.body, messageText2);
+
+                          test.done();
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  },
+
   testDeleteRule: function (test) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
     var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
