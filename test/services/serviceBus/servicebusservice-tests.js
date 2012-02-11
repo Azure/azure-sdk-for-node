@@ -860,7 +860,13 @@ module.exports = testCase(
             test.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration);
             test.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions);
 
-            test.done();
+            // duplicate subscription
+            serviceBusService.createSubscription(topicName, subscriptionName1, function (subscriptionError, duplicateSubscription) {
+              test.notEqual(subscriptionError, null);
+              test.equal(duplicateSubscription, null);
+
+              test.done();
+            });
           });
         });
       });
@@ -1095,13 +1101,13 @@ module.exports = testCase(
       falseFilter: 'Number=2'
     };
 
-    serviceBusService.createRule('FakeTopic', 'FakeSubscription', ruleName1, function (invalidCreateError, rule) {
+    serviceBusService.createRule('FakeTopic', 'FakeSubscription', ruleName1, function (invalidCreateError, invalidRule1) {
       test.notEqual(invalidCreateError, null);
-      test.equal(rule, null);
+      test.equal(invalidRule1, null);
 
-      serviceBusService.createRule(topicName, 'FakeSubscription', ruleName1, function (invalidCreateError2, rule2) {
+      serviceBusService.createRule(topicName, 'FakeSubscription', ruleName1, function (invalidCreateError2, invalidRule2) {
         test.notEqual(invalidCreateError2, null);
-        test.equal(rule2, null);
+        test.equal(invalidRule2, null);
 
         serviceBusService.createTopic(topicName, function (createError, topic) {
           test.equal(createError, null);
@@ -1133,6 +1139,76 @@ module.exports = testCase(
                       test.equal(duplicateRule, null);
 
                       test.done();
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  },
+
+  testSqlExpressionFilter: function (test) {
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+
+    var messageText1 = 'hi there topic';
+    var messageText2 = 'hi there topic again';
+
+    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleOptions = {
+      sqlExpressionFilter: 'property=1'
+    };
+
+    serviceBusService.createTopic(topicName, function (createTopicError) {
+      test.equal(createTopicError, null);
+
+      serviceBusService.createSubscription(topicName, subscriptionName1, function (createSubscriptionError1) {
+        test.equal(createSubscriptionError1, null);
+
+        serviceBusService.createSubscription(topicName, subscriptionName2, function (createSubscriptionError2) {
+          test.equal(createSubscriptionError2, null);
+
+          serviceBusService.deleteRule(topicName, subscriptionName1, '$Default', function (deleteRuleError) {
+            test.equal(deleteRuleError, null);
+
+            serviceBusService.createRule(topicName, subscriptionName1, ruleName, ruleOptions, function(createRuleError) {
+              test.equal(createRuleError, null);
+
+              // non matching property
+              serviceBusService.sendTopicMessage(topicName, { body: messageText1, customProperties: { property: 2 } }, function(sendError1) {
+                test.equal(sendError1, null);
+
+                serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName1, function(receiveError1, receiveMessage1) {
+                  test.notEqual(receiveError1, null); // Nothing to receive
+                  test.equal(receiveMessage1, null);
+
+                  // matching property
+                  serviceBusService.sendTopicMessage(topicName, { body: messageText2, customProperties: { property: 1 } }, function(sendError2) {
+                    test.equal(sendError2, null);
+
+                    serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName1, function(receiveError2, receiveMessage2) {
+                      test.equal(receiveError2, null);
+                      test.notEqual(receiveMessage2, null);
+                      test.equal(receiveMessage2.body, messageText2);
+
+                      // subscription 2 can receive both messages
+                      serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName2, function(receiveError3, receiveMessage3) {
+                        test.equal(receiveError3, null);
+                        test.notEqual(receiveMessage3, null);
+                        test.equal(receiveMessage3.body, messageText1);
+
+                        serviceBusService.receiveSubscriptionMessage(topicName, subscriptionName2, function(receiveError4, receiveMessage4) {
+                          test.equal(receiveError4, null);
+                          test.notEqual(receiveMessage4, null);
+                          test.equal(receiveMessage4.body, messageText2);
+
+                          test.done();
+                        });
+                      });
                     });
                   });
                 });
