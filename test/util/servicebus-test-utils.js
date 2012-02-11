@@ -93,4 +93,13 @@ exports.validateQueue = function( testObject, queueName, queueOptions, queue) {
     checkValue(testObject, queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow);
     checkValue(testObject, queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes);
   }
+
+  exports.checkNullParameter = function( callback) {
+    assert.throws( 
+      function() {
+        callback();
+      })}, 
+      /name must be a non empty string/
+    );
+  }
 };
