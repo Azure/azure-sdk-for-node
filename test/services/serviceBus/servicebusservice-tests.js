@@ -76,14 +76,15 @@ module.exports = testCase(
       servicebustestutil.validateQueue(test, queueName, queueOptions, queue);
 
       // Validate appropriate error for existing queue
-      serviceBusService.createQueue( queueName, queueOptions, function (createError, queue) {
+      serviceBusService.createQueue(queueName, queueOptions, function (createError2) {
         // TODO, validate the actual error
-        test.notEqual(createError, null);
+        test.notEqual(createError2, null);
 
-        servicebustestutil.checkNullParameter(
-          function() {serviceBusService.createQueue( null, function( createError2, queue) {});
-          });
-         test.done();
+        servicebustestutil.checkNullParameter(function () {
+          serviceBusService.createQueue(null, function() { });
+        });
+
+        test.done();
       });
     });
   },
@@ -112,11 +113,12 @@ module.exports = testCase(
           test.equal(createError2, null);
           test.equal(created2, false);
 
-          servicebustestutil.checkNullParameter(
-            function() {serviceBusService.createQueueIfNotExists( null, function( createError3, queue) {});
-            });
-            test.done();
-        });        
+          servicebustestutil.checkNullParameter(function () {
+            serviceBusService.createQueueIfNotExists( null, function() { });
+          });
+
+          test.done();
+        });
       });
     });
   },
@@ -144,9 +146,9 @@ module.exports = testCase(
             serviceBusService.getQueue(queueName, function (error5, queueDeleting) {
               test.notEqual(error5, null);
               test.equal(queueDeleting, null);
-              servicebustestutil.checkNullParameter(
-                function() {serviceBusService.deleteQueue( null, function( deleteError) {});
-                });
+              servicebustestutil.checkNullParameter(function () {
+                serviceBusService.deleteQueue(null, function() { });
+              });
               test.done();
             });
           });
@@ -171,9 +173,9 @@ module.exports = testCase(
           test.equal(getError2, null);
           test.notEqual(getQueue2, null);
 
-          servicebustestutil.checkNullParameter(
-            function() {serviceBusService.getQueue( null, function( getError3, getQueue3) {});
-            });
+          servicebustestutil.checkNullParameter(function () {
+            serviceBusService.getQueue(null, function() { });
+          });
           test.done();
         });
       });
@@ -320,9 +322,9 @@ module.exports = testCase(
       serviceBusService.sendQueueMessage(queueName, 'hi there', function (sendError) {
         test.equal(sendError, null);
 
-        servicebustestutil.checkNullParameter(
-          function() {serviceBusService.sendQueueMessage( null, 'hello again', function( sendError2) {});
-          });
+        servicebustestutil.checkNullParameter(function () {
+          serviceBusService.sendQueueMessage( null, 'hello again', function() { });
+        });
         test.done();
       });
     });
@@ -429,9 +431,9 @@ module.exports = testCase(
             test.notEqual(receiveError2, null);
             test.equal(emptyMessage, null);
 
-            servicebustestutil.checkNullParameter(
-              function() {serviceBusService.receiveQueueMessage( null, function( receiveError3, message3) {});
-              });
+            servicebustestutil.checkNullParameter(function () {
+              serviceBusService.receiveQueueMessage(null, function() { });
+            });
             test.done();
           });
         });
@@ -598,9 +600,9 @@ module.exports = testCase(
         test.equal(topic.SizeInBytes, topicOptions.SizeInBytes);
         }
 
-      servicebustestutil.checkNullParameter(
-        function() {serviceBusService.createTopic( null, topicOptions, function( createErrro2, topic2) {});
-        });
+      servicebustestutil.checkNullParameter(function () {
+        serviceBusService.createTopic(null, topicOptions, function() { });
+      });
       test.done();
     });
   },
@@ -622,9 +624,9 @@ module.exports = testCase(
         test.equal(createError2, null);
         test.equal(created2, false);
 
-        servicebustestutil.checkNullParameter(
-          function() {serviceBusService.createTopicIfNotExists( null, topicOptions, function( createErrro3, created3) {});
-          });
+        servicebustestutil.checkNullParameter(function () {
+          serviceBusService.createTopicIfNotExists(null, topicOptions, function() { });
+        });
         test.done();
       });
     });
@@ -670,15 +672,18 @@ module.exports = testCase(
             test.equal(messageReceived.brokerProperties.To, message.brokerProperties.To);
             test.equal(messageReceived.brokerProperties.ReplyToSessionId, message.brokerProperties.ReplyToSessionId);
 
-            servicebustestutil.checkNullParameter(
-              function() {serviceBusService.sendTopicMessage( null, message, function( sendError2) {});
-              });
-            servicebustestutil.checkNullParameter(
-              function() {serviceBusService.receiveSubscriptionMessage( null, subscriptionName, function( topicError, topicMessage) {});
-              });
-            servicebustestutil.checkNullParameter(
-              function() {serviceBusService.receiveSubscriptionMessage( topicName, null, function( topicError2, topicMessage2) {});
-              });
+            servicebustestutil.checkNullParameter(function () {
+              serviceBusService.sendTopicMessage( null, message, function() { });
+            });
+
+            servicebustestutil.checkNullParameter(function () {
+              serviceBusService.receiveSubscriptionMessage(null, subscriptionName, function() { });
+            });
+
+            servicebustestutil.checkNullParameter(function () {
+              serviceBusService.receiveSubscriptionMessage(topicName, null, function() { });
+            });
+
             test.done();
           });
         });
@@ -705,9 +710,9 @@ module.exports = testCase(
             test.notEqual(error4, null);
             test.equal(topicDeleting, null);
 
-            servicebustestutil.checkNullParameter(
-              function() {serviceBusService.deleteTopic( null, function( error5) {});
-              });
+            servicebustestutil.checkNullParameter(function () {
+              serviceBusService.deleteTopic(null, function() { });
+            });
             test.done();
           });
         });
@@ -730,9 +735,10 @@ module.exports = testCase(
           test.equal(getError, null);
           test.notEqual(getTopic, null);
 
-          servicebustestutil.checkNullParameter(
-            function() {serviceBusService.getTopic( null, message, function( error2, topic2) {});
-            });
+          servicebustestutil.checkNullParameter(function () {
+            serviceBusService.getTopic(null, function() { });
+          });
+
           test.done();
         });
       });
@@ -902,12 +908,15 @@ module.exports = testCase(
             serviceBusService.createSubscription(topicName, subscriptionName1, function (subscriptionError, duplicateSubscription) {
               test.notEqual(subscriptionError, null);
               test.equal(duplicateSubscription, null);
-              servicebustestutil.checkNullParameter(
-                function() { serviceBusService.createSubscription( null, subscriptionName1, function( subError, subResult) {});
-                });
-              servicebustestutil.checkNullParameter(
-                function() { serviceBusService.createSubscription( topicName, null, function( subError2, subResult2) {});
-                });
+
+              servicebustestutil.checkNullParameter(function () {
+                serviceBusService.createSubscription(null, subscriptionName1, function() { });
+              });
+
+              servicebustestutil.checkNullParameter(function () {
+                serviceBusService.createSubscription(topicName, null, function() { });
+              });
+
               test.done();
             });
           });
@@ -939,12 +948,15 @@ module.exports = testCase(
             serviceBusService.getSubscription(topicName, subscriptionName, function (getError, sub) {
               test.notEqual(getError, null);
               test.equal(sub, null);
-              servicebustestutil.checkNullParameter(
-                function() { serviceBusService.deleteSubscription( null, subscriptionName1, function( subError, subResult) {});
-                });
-              servicebustestutil.checkNullParameter(
-                function() { serviceBusService.deleteSubscription( topicName, null, function( subError2, subResult2) {});
-                });
+
+              servicebustestutil.checkNullParameter(function () {
+                serviceBusService.deleteSubscription(null, subscriptionName, function() { });
+              });
+
+              servicebustestutil.checkNullParameter(function () {
+                serviceBusService.deleteSubscription(topicName, null, function() { });
+              });
+
               test.done();
             });
           });
@@ -978,12 +990,15 @@ module.exports = testCase(
             test.notEqual(getSubscription.DefaultMessageTimeToLive, null);
             test.notEqual(getSubscription.DeadLetteringOnMessageExpiration, null);
             test.notEqual(getSubscription.DeadLetteringOnFilterEvaluationExceptions, null);
-            servicebustestutil.checkNullParameter(
-              function() { serviceBusService.getSubscription( null, subscriptionName1, function( subError, subResult) {});
-              });
-            servicebustestutil.checkNullParameter(
-              function() { serviceBusService.getSubscription( topicName, null, function( subError2, subResult2) {});
-              });
+
+            servicebustestutil.checkNullParameter(function () {
+              serviceBusService.getSubscription(null, subscriptionName, function() { });
+            });
+
+            servicebustestutil.checkNullParameter(function () {
+              serviceBusService.getSubscription(topicName, null, function() { });
+            });
+
             test.done();
           });
         });
@@ -1190,15 +1205,19 @@ module.exports = testCase(
                     serviceBusService.createRule(topicName, subscriptionName, ruleName1, function (duplicateError, duplicateRule) {
                       test.notEqual(duplicateError, null);
                       test.equal(duplicateRule, null);
-                      servicebustestutil.checkNullParameter(
-                        function() { serviceBusService.createRule( null, subscriptionName, ruleName1, ruleOptions1, function( ruleError, ruleResult) {});
-                        });
-                      servicebustestutil.checkNullParameter(
-                        function() { serviceBusService.createRule( topicName, null, ruleName1, ruleOptions1, function( ruleError2, ruleResult2) {});
-                        });
-                      servicebustestutil.checkNullParameter(
-                        function() { serviceBusService.createRule( topicName, subscriptionName, null, ruleOptions1, function( ruleError, ruleResult) {});
-                        });
+
+                      servicebustestutil.checkNullParameter(function () {
+                        serviceBusService.createRule(null, subscriptionName, ruleName1, ruleOptions1, function() { });
+                      });
+
+                      servicebustestutil.checkNullParameter(function () {
+                        serviceBusService.createRule(topicName, null, ruleName1, ruleOptions1, function() { });
+                      });
+
+                      servicebustestutil.checkNullParameter(function () {
+                        serviceBusService.createRule(topicName, subscriptionName, null, ruleOptions1, function() { });
+                      });
+
                       test.done();
                     });
                   });
@@ -1379,15 +1398,19 @@ module.exports = testCase(
               serviceBusService.getRule(topicName, subscriptionName, ruleName, function (error6, deletedRule) {
                 test.notEqual(error6, null);
                 test.equal(deletedRule, null);
-                servicebustestutil.checkNullParameter(
-                  function() { serviceBusService.deleteRule( null, subscriptionName, ruleName, function( ruleError, ruleResult) {});
-                  });
-                servicebustestutil.checkNullParameter(
-                  function() { serviceBusService.deleteRule( topicName, null, ruleName, function( ruleError2, ruleResult2) {});
-                  });
-                servicebustestutil.checkNullParameter(
-                  function() { serviceBusService.deleteRule( topicName, subscriptionName, null, function( ruleError, ruleResult) {});
-                  });
+
+                servicebustestutil.checkNullParameter(function () {
+                  serviceBusService.deleteRule(null, subscriptionName, ruleName, function() { });
+                });
+
+                servicebustestutil.checkNullParameter(function () {
+                  serviceBusService.deleteRule(topicName, null, ruleName, function() { });
+                });
+
+                servicebustestutil.checkNullParameter(function () {
+                  serviceBusService.deleteRule(topicName, subscriptionName, null, function() { });
+                });
+
                 test.done();
               });
             });
@@ -1550,6 +1573,5 @@ module.exports = testCase(
         });
       });
     });
-    ;
   }
 });
