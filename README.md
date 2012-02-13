@@ -112,7 +112,7 @@ blobService.getBlobToStream('taskcontainer', 'task1', fs.createWriteStream('task
     }
 });
 </pre>
-<h2>Queues</h2>
+<h2>Storage Queues</h2>
 <p>The <strong>createQueueIfNotExists</strong> method can be used to ensure a queue exists:</p>
 <pre>
 var queueService = azure.createQueueService();
@@ -146,6 +146,73 @@ queueService.getMessages(queueName, function(error, serverMessages){
             }
         });
     }
+});
+</pre>
+<h2>ServiceBus Queues</h2>
+<p>ServiceBus Queues are an alternative to Storage Queues that might be useful in scenarios where more advanced messaging features are needed (larger message sizes, message ordering, single-operaiton destructive reads, scheduled delivery) using push-style delivery (using long polling).</p>
+<p>The <strong>createQueueIfNotExists</strong> method can be used to ensure a queue exists:</p>
+<pre>
+var serviceBusService = azure.createServiceBusService();
+serviceBusService.createQueueIfNotExists('taskqueue', function(error){
+    if(!error){
+        // Queue exists
+    }
+});
+</pre>
+<p>The <strong>sendQueueMessage</strong> method can then be called to insert the message into the queue:</p>
+<pre>
+var serviceBusService = azure.createServiceBusService();
+serviceBusService.sendQueueMessage('taskqueue', 'Hello world!', function(
+    if(!error){
+        // Message sent
+     }
+});
+</pre>
+<p>It is then possible to call the <strong>receiveQueueMessage</strong> method to dequeue the message.</p>
+<pre>
+var serviceBusService = azure.createServiceBusService();
+serviceBusService.receiveQueueMessage('taskqueue', function(error, serverMessage){
+    if(!error){
+        // Process the message
+    }
+});
+</pre>
+<h2>ServiceBus Topics</h2>
+<p>ServiceBus topics are an abstraction on top of ServiceBus Queues that make pub/sub scenarios easy to implement.</p>
+<p>The <strong>createTopicIfNotExists</strong> method can be used to create a server-side topic:</p>
+<pre>
+var serviceBusService = azure.createServiceBusService();
+serviceBusService.createTopicIfNotExists('taskdiscussion', function(error){
+    if(!error){
+        // Topic exists
+    }
+});
+</pre>
+<p>The <strong>sendTopicMessage</strong> method can be used to send a message to a topic:</p>
+<pre>
+var serviceBusService = azure.createServiceBusService();
+serviceBusService.sendTopicMessage('taskdiscussion', 'Hello world!', function(error){
+    if(!error){
+        // Message sent
+    }
+});
+</pre>
+<p>A client can then create a subscription and start consuming messages by calling the <strong>createSubscription</strong> method followed by the <strong>receiveSubscriptionMessage</strong> method. Please note that any messages sent before the subscription is created will not be received.</p>
+<pre>
+var serviceBusService = azure.createServiceBusService(),
+    topic = 'taskdiscussion',
+    subscription = 'client1';
+
+serviceBusService.createSubscription(topic, subscription, function(error1){
+    if(!error1){
+        // Subscription created
+
+        serviceBusService.receiveSubscriptionMessage(topic, subscription, function(error2, serverMessage){
+            if(!error2){
+                // Process message
+            }
+        });
+     }
 });
 </pre>
 <p><strong>For more examples please see the <a href="http://www.windowsazure.com/en-us/develop/nodejs/">
