@@ -24,7 +24,7 @@ var environmentAzureStorageAccount = 'myaccount';
 var environmentAzureStorageAccessKey = 'myaccountstoragekey';
 var environmentServiceBusNamespace = 'mynamespace';
 var environmentServiceBusIssuer = 'myissuer';
-var environmentServiceBusPassword = 'mypassword';
+var environmentServiceBusAccessKey = 'myaccesskey';
 var environmentWrapNamespace = 'mynamespace-sb';
 
 var parameterAzureStorageAccount = 'storageAccount';
@@ -221,14 +221,14 @@ module.exports = testCase(
     delete process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
 
     process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = environmentServiceBusNamespace;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = environmentServiceBusPassword;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = environmentServiceBusAccessKey;
 
     // Create service bus client without passing any credentials
     var serviceBusService = azure.createServiceBusService();
 
     // set correctly
     test.equal(serviceBusService.namespace, environmentServiceBusNamespace);
-    test.equal(serviceBusService.password, environmentServiceBusPassword);
+    test.equal(serviceBusService.accessKey, environmentServiceBusAccessKey);
 
     // defaulted correctly
     test.equal(serviceBusService.acsnamespace, environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX);
