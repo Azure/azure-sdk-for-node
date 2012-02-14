@@ -35,7 +35,7 @@ var originalAzureStorageAccount = null;
 var originalAzureStorageAccessKey = null;
 var originalServiceBusNamespace = null;
 var originalServiceBusIssuer = null;
-var originalServiceBusPassword = null;
+var originalServiceBusAccessKey = null;
 var originalWrapNamespace = null;
 
 module.exports = testCase(
@@ -62,8 +62,8 @@ module.exports = testCase(
         originalServiceBusIssuer = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
       }
 
-      if (!originalServiceBusPassword && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY]) {
-        originalServiceBusPassword = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
+      if (!originalServiceBusAccessKey && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY]) {
+        originalServiceBusAccessKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
       }
 
       if (!originalWrapNamespace && process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE]) {
@@ -84,6 +84,22 @@ module.exports = testCase(
 
     if (originalAzureStorageAccessKey) {
       process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = originalAzureStorageAccessKey;
+    }
+
+    if (originalServiceBusNamespace) {
+      process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = originalServiceBusNamespace;
+    }
+
+    if (originalServiceBusIssuer) {
+      process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER] = originalServiceBusIssuer;
+    }
+
+    if (originalServiceBusAccessKey) {
+      process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = originalServiceBusAccessKey;
+    }
+
+    if (originalWrapNamespace) {
+      process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE] = originalWrapNamespace;
     }
 
     // clean up
