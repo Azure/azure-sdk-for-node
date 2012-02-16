@@ -63,6 +63,21 @@
     <Content Include="..\..\examples\blog\server.js">
       <Link>examples\blog\server.js</Link>
     </Content>
+    <Content Include="..\..\examples\geophoto\controllers\pushpinController.js">
+      <Link>examples\geophoto\NewFolder1\pushpinController.js</Link>
+    </Content>
+    <Content Include="..\..\examples\geophoto\public\scripts\geophoto.js">
+      <Link>examples\geophoto\public\scripts\geophoto.js</Link>
+    </Content>
+    <Content Include="..\..\examples\geophoto\public\stylesheets\style.css">
+      <Link>examples\geophoto\public\stylesheets\style.css</Link>
+    </Content>
+    <Content Include="..\..\examples\geophoto\server.js">
+      <Link>examples\geophoto\server.js</Link>
+    </Content>
+    <Content Include="..\..\examples\geophoto\services\pushpinService.js">
+      <Link>examples\geophoto\services\pushpinService.js</Link>
+    </Content>
     <Content Include="..\..\examples\samples\blobuploaddownloadsample.js">
       <Link>examples\samples\blobuploaddownloadsample.js</Link>
     </Content>
@@ -415,6 +430,18 @@
     </None>
     <None Include="..\..\examples\blog\views\layout.ejs">
       <Link>examples\blog\views\layout.ejs</Link>
+    </None>
+    <None Include="..\..\examples\geophoto\package.json">
+      <Link>examples\geophoto\package.json</Link>
+    </None>
+    <None Include="..\..\examples\geophoto\views\index.ejs">
+      <Link>examples\geophoto\views\index.ejs</Link>
+    </None>
+    <None Include="..\..\examples\geophoto\views\layout.ejs">
+      <Link>examples\geophoto\views\layout.ejs</Link>
+    </None>
+    <None Include="..\..\examples\geophoto\views\setup.ejs">
+      <Link>examples\geophoto\views\setup.ejs</Link>
     </None>
     <None Include="..\..\examples\tasklist\package.json">
       <Link>examples\tasklist\package.json</Link>
