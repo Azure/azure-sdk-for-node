@@ -44,6 +44,14 @@ module.exports = testCase(
     test.done();
   },
 
+  testParseLongTimestampWithRounding: function(test) {
+    var datetime = new Date(Date.UTC(2011, 6, 17, 14, 0, 23, 270));
+    var datetimeAtom = "2011-07-17T14:00:23.26993Z";
+    var parsed = ISO8061Date.parse(datetimeAtom);
+    test.deepEqual(parsed, datetime);
+    test.done();
+  },
+
   testParseShortMillis: function (test) {
     var datetime = new Date(Date.UTC(2011, 6, 17, 14, 0, 23, 200));
     var datetimeAtom = "2011-07-17T14:00:23.2Z";
