@@ -647,7 +647,7 @@ module.exports = testCase(
 
       var entity = {
         PartitionKey: '1',
-        RowKey: '1',
+        RowKey: '1abc',
         field1: 'value',
         emptyField1: '',
         emptyField2: null,
