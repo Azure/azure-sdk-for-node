@@ -53,7 +53,7 @@ module.exports = testCase(
   tearDown: function (callback) {
     blobtestutil.tearDownTest(module.exports, blobService, testPrefix, callback);
   },
-  /*
+
   testIncorrectContainerNames: function (test) {
     test.throws(function () { blobService.createContainer(null, function () { }); },
       BlobService.incorrectContainerNameErr);
@@ -910,7 +910,7 @@ module.exports = testCase(
       });
     });
   },
-  */
+
   testUploadBlobAccessCondition: function (test) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
@@ -935,7 +935,7 @@ module.exports = testCase(
         });
       });
     });
-  }/*,
+  },
 
   testSmallUploadBlobFromFileWithSpace: function (test) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
@@ -1151,7 +1151,7 @@ module.exports = testCase(
     test.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName + '/' + blobName);
 
     test.done();
-  }*/
+  }
 });
 
 function repeat(s, n) {
