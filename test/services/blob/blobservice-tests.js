@@ -925,7 +925,7 @@ module.exports = testCase(
         blobService.getBlobProperties(containerName, blobName, function (error4, blobProperties) {
           test.equal(error4, null);
 
-          var options = { accessConditions: { 'If-None-Match': blobProperties.etag} };
+          var options = { accessConditions: { 'if-none-match': blobProperties.etag} };
           blobService.createBlockBlobFromText(containerName, blobName, blobText, options, function (error3) {
             test.notEqual(error3, null);
             test.equal(error3.code, Constants.StorageErrorCodeStrings.CONDITION_NOT_MET);
