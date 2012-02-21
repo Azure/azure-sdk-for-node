@@ -49,10 +49,77 @@ module.exports = testCase(
   },
 
   testIsInt: function (test) {
+    // positives
     test.equal(util.isInt('1'), true);
+    test.equal(util.isInt('1asd'), false);
+    test.equal(util.isInt('asd1'), false);
+    test.equal(util.isInt('1.23'), false);
+
+    // negatives
+    test.equal(util.isInt('-1'), true);
+    test.equal(util.isInt('-1asd'), false);
+    test.equal(util.isInt('-asd1'), false);
+    test.equal(util.isInt('-1.23'), false);
+    
+    // nulls
     test.equal(util.isInt(null), false);
     test.equal(util.isInt(), false);
-    test.equal(util.isInt('1.23'), false);
+
+    test.done();
+  },
+
+  testIsFloat: function (test) {
+    // positives
+    test.equal(util.isFloat('1'), false);
+    test.equal(util.isFloat('1.'), false);
+    test.equal(util.isFloat('1.0'), false);
+    test.equal(util.isFloat('1.1'), true);
+    test.equal(util.isFloat('1.0a'), false);
+    test.equal(util.isFloat('1a'), false);
+
+    // negatives
+    test.equal(util.isFloat('-1'), false);
+    test.equal(util.isFloat('-1.'), false);
+    test.equal(util.isFloat('-1.0'), false);
+    test.equal(util.isFloat('-1.1'), true);
+    test.equal(util.isFloat('-1.0a'), false);
+    test.equal(util.isFloat('-1a'), false);
+
+    // nulls
+    test.equal(util.isFloat(null), false);
+    test.equal(util.isFloat(), false);
+
+    test.done();
+  },
+
+  testIsNumber: function (test) {
+    // int positives
+    test.equal(util.isNumber('1'), true);
+    test.equal(util.isNumber('1asd'), false);
+    test.equal(util.isNumber('asd1'), false);
+
+    // int negatives
+    test.equal(util.isNumber('-1'), true);
+    test.equal(util.isNumber('-1asd'), false);
+    test.equal(util.isNumber('-asd1'), false);
+
+    // float positives
+    test.equal(util.isNumber('1.'), true);
+    test.equal(util.isNumber('1.0'), true);
+    test.equal(util.isNumber('1.1'), true);
+    test.equal(util.isNumber('1.0a'), false);
+    test.equal(util.isNumber('1a'), false);
+
+    // float negatives
+    test.equal(util.isNumber('-1.'), true);
+    test.equal(util.isNumber('-1.0'), true);
+    test.equal(util.isNumber('-1.1'), true);
+    test.equal(util.isNumber('-1.0a'), false);
+    test.equal(util.isNumber('-1a'), false);
+
+    // nulls
+    test.equal(util.isFloat(null), false);
+    test.equal(util.isFloat(), false);
 
     test.done();
   }
