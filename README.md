@@ -29,7 +29,6 @@ Node.js Developer Center</a>.</p>
         <ul>
             <li>Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages</li>
             <li>Topics: create, list, and delete topics; create, list, and delete rules</li>
-        </ul>
     </li>
 </ul>
 
