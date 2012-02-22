@@ -20,10 +20,16 @@ Node.js Developer Center</a>.</p>
             work with blob blocks and pages, delete blobs</li>
             <li>work with blob properties, metadata, leases, snapshot a blob</li>
     </li>
-    <li>Queues
+    <li>Storage Queues
         <ul>
             <li>create, list, and delete queues, and work with queue metadata</li>
             <li>create, get, peek, update, delete messages</li>
+    </li>
+    <li>Service Bus
+        <ul>
+            <li>Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages</li>
+            <li>Topics: create, list, and delete topics; create, list, and delete rules</li>
+        </ul>
     </li>
 </ul>
 
@@ -37,12 +43,12 @@ Node.js Developer Center</a>.</p>
 <p>Alternatively, to get the source code via the Node Package Manager (npm), type<br/>
 <pre>npm install azure</pre>
 <p>You can use these packages against the cloud Windows Azure Services, or against
-the local Storage Emulator.</p>
+the local Storage Emulator (with the exception of Service Bus features).</p>
 <ol>
     <li>To use the cloud services, you need to first create an account with
-    Windows Azure. You need to set the AZURE_STORAGE_ACCOUNT and the AZURE_STORAGE_ACCESS_KEY
+    Windows Azure. To use the storage services, you need to set the AZURE_STORAGE_ACCOUNT and the AZURE_STORAGE_ACCESS_KEY
     environment variables to the storage account name and primary access key you
-    obtain from the Azure Portal.</li>
+    obtain from the Azure Portal. To use Service Bus, you need to set the AZURE_SERVICEBUS_NAMESPACE and the AZURE_SERVICEBUS_ACCESS_KEY environment variables to the service bus namespace and the default key you obtain from the Azure Portal.</li>
     <li>To use the Storage Emulator, make sure the latest version of the
     Windows Azure SDK is installed on the machine, and set the EMULATED environment
     variable to any value ("true", "1", etc.)</li>
