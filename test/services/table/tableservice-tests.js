@@ -40,9 +40,10 @@ var entity1 = { PartitionKey: 'part1',
 
 var entity2 = { PartitionKey: 'part2',
   RowKey: 'row1',
-  boolval: { '@': { type: 'Edm.Boolean' }, '#': true },
-  intval: { '@': { type: 'Edm.Int32' }, '#': 42 },
-  dateval: { '@': { type: 'Edm.DateTime' }, '#': ISO8061Date.format(new Date(2011, 12, 25)) }
+  boolValueTrue: { '@': { type: 'Edm.Boolean' }, '#': true },
+  boolValueFalse: { '@': { type: 'Edm.Boolean' }, '#': false },
+  intValue: { '@': { type: 'Edm.Int32' }, '#': 42 },
+  dateValue: { '@': { type: 'Edm.DateTime' }, '#': ISO8061Date.format(new Date(2011, 12, 25)) }
 };
 
 var tableNames = [];
@@ -286,11 +287,12 @@ module.exports = testCase(
                 entities += 2;
 
                 test.ok(currentEntry['etag']);
-                test.equal(currentEntry['boolval'], entity2['boolval']['#']);
-                test.equal(currentEntry['intval'], entity2['intval']['#']);
+                test.equal(currentEntry['boolValueTrue'], entity2['boolValueTrue']['#']);
+                test.equal(currentEntry['boolValueFalse'], entity2['boolValueFalse']['#']);
+                test.equal(currentEntry['intValue'], entity2['intValue']['#']);
 
-                var date1 = new Date(currentEntry['dateval']);
-                var date2 = new Date(entity2['dateval']['#']);
+                var date1 = new Date(currentEntry['dateValue']);
+                var date2 = new Date(entity2['dateValue']['#']);
                 test.ok(date1, date2);
               }
             });
