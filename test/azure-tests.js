@@ -247,7 +247,7 @@ module.exports = testCase(
     test.equal(serviceBusService.accessKey, environmentServiceBusAccessKey);
 
     // defaulted correctly
-    test.equal(serviceBusService.acsnamespace, environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX);
+    test.equal(serviceBusService.acsNamespace, environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX);
     test.equal(serviceBusService.issuer, ServiceClient.DEFAULT_SERVICEBUS_ISSUER);
 
     test.done();

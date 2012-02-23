@@ -64,7 +64,7 @@
       <Link>examples\blog\server.js</Link>
     </Content>
     <Content Include="..\..\examples\geophoto\controllers\pushpinController.js">
-      <Link>examples\geophoto\NewFolder1\pushpinController.js</Link>
+      <Link>examples\geophoto\controllers\pushpinController.js</Link>
     </Content>
     <Content Include="..\..\examples\geophoto\public\scripts\geophoto.js">
       <Link>examples\geophoto\public\scripts\geophoto.js</Link>
