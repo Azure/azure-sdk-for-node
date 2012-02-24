@@ -25,10 +25,10 @@ var azure = require('../../../lib/azure');
 var testutil = require('../../util/util');
 var blobtestutil = require('../../util/blob-test-utils');
 
-var SharedAccessSignature = require('../../../lib/services/blob/sharedaccesssignature');
-var BlobService = require("../../../lib/services/blob/blobservice");
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+var SharedAccessSignature = azure.SharedAccessSignature;
+var BlobService = azure.BlobService;
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
 var WebResource = require('../../../lib/http/webresource');

@@ -17,7 +17,7 @@ var assert = require('assert');
 
 var azure = require('../lib/azure');
 
-var ServiceBusServiceClient = require('../lib/services/servicebusserviceclient');
+var ServiceBusServiceClient = require('../lib/services/core/servicebusserviceclient');
 var ServiceClient = azure.ServiceClient;
 
 var environmentAzureStorageAccount = 'myaccount';

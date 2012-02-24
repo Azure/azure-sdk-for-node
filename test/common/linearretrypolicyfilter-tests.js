@@ -20,7 +20,7 @@ var azure = require("../../lib/azure");
 var testutil = require('../util/util');
 var tabletestutil = require('../util/table-test-utils');
 
-var ServiceClient = require('../../lib/services/serviceclient');
+var ServiceClient = require('../../lib/services/core/serviceclient');
 var LinearRetryPolicyFilter = require('../../lib/common/linearretrypolicyfilter');
 var Constants = require('../../lib/util/constants');
 

@@ -22,10 +22,10 @@ var ISO8061Date = require('../../../lib/util/iso8061date');
 var testutil = require('../../util/util');
 var tabletestutil = require('../../util/table-test-utils');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var TableQuery = require('../../../lib/services/table/tablequery');
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
+var TableQuery = azure.TableQuery;
 var SharedKeyLiteTable = require('../../../lib/services/table/sharedkeylitetable');
-var Constants = require('../../../lib/util/constants');
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 

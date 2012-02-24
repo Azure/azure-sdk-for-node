@@ -17,7 +17,7 @@ var http = require('http');
 
 var mockServer = require('../mockserver/mockserver');
 
-var ServiceClient = require("../../lib/services/serviceclient");
+var ServiceClient = require("../../lib/services/core/serviceclient");
 
 var recordingsPath = '/session';
 

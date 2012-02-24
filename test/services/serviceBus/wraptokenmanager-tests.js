@@ -26,8 +26,8 @@ var wrapservicetestutil = require('../../util/wrapservice-test-utils');
 var WrapService = require('../../../lib/services/serviceBus/wrapservice');
 var WrapTokenManager = require('../../../lib/services/serviceBus/wraptokenmanager');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 

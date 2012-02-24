@@ -23,9 +23,9 @@ var ISO8061Date = require('../../../lib/util/iso8061date');
 var testutil = require('../../util/util');
 var tabletestutil = require('../../util/table-test-utils');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var TableQuery = require('../../../lib/services/table/tablequery');
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var TableQuery = azure.TableQuery;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
