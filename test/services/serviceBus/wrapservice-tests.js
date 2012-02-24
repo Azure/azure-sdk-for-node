@@ -23,8 +23,8 @@ var ISO8061Date = require('../../../lib/util/iso8061date');
 var testutil = require('../../util/util');
 var wrapservicetestutil = require('../../util/wrapservice-test-utils');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 

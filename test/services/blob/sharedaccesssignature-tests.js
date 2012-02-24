@@ -17,10 +17,12 @@ var assert = require('assert');
 
 var qs = require('qs');
 
-var ServiceClient = require('../../../lib/services/serviceclient');
-var SharedAccessSignature = require('../../../lib/services/blob/sharedaccesssignature');
+var azure = require('../../../lib/azure');
+
 var WebResource = require('../../../lib/http/webresource');
-var Constants = require('../../../lib/util/constants');
+var SharedAccessSignature = azure.SharedAccessSignature;
+var Constants = azure.Constants;
+var ServiceClient = azure.ServiceClient;
 var BlobConstants = Constants.BlobConstants;
 var HeaderConstants = Constants.HeaderConstants;
 var QueryStringConstants = Constants.QueryStringConstants;

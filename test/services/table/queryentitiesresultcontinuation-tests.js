@@ -20,9 +20,9 @@ var azureutil = require('../../../lib/util/util');
 
 var testutil = require('../../util/util');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var TableQuery = require('../../../lib/services/table/tablequery');
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var TableQuery = azure.TableQuery;
+var Constants = azure.Constants;
 var QueryEntitiesResultContinuation = require('../../../lib/services/table/models/queryentitiesresultcontinuation');
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
