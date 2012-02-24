@@ -111,12 +111,6 @@
     <Content Include="..\..\lib\azure.js">
       <Link>lib\azure.js</Link>
     </Content>
-    <Content Include="..\..\lib\common\exponentialretrypolicyfilter.js">
-      <Link>lib\common\exponentialretrypolicyfilter.js</Link>
-    </Content>
-    <Content Include="..\..\lib\common\linearretrypolicyfilter.js">
-      <Link>lib\common\linearretrypolicyfilter.js</Link>
-    </Content>
     <Content Include="..\..\lib\diagnostics\logger.js">
       <Link>lib\diagnostics\logger.js</Link>
     </Content>
@@ -162,6 +156,21 @@
     <Content Include="..\..\lib\services\blob\sharedkeylite.js">
       <Link>lib\services\blob\sharedkeylite.js</Link>
     </Content>
+    <Content Include="..\..\lib\services\core\exponentialretrypolicyfilter.js">
+      <Link>lib\services\core\exponentialretrypolicyfilter.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\core\linearretrypolicyfilter.js">
+      <Link>lib\services\core\linearretrypolicyfilter.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\core\servicebusserviceclient.js">
+      <Link>lib\services\core\servicebusserviceclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\core\serviceclient.js">
+      <Link>lib\services\core\serviceclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\core\storageserviceclient.js">
+      <Link>lib\services\core\storageserviceclient.js</Link>
+    </Content>
     <Content Include="..\..\lib\services\queue\models\listqueuesresultcontinuation.js">
       <Link>lib\services\queue\models\listqueuesresultcontinuation.js</Link>
     </Content>
@@ -176,9 +185,6 @@
     </Content>
     <Content Include="..\..\lib\services\queue\queueservice.js">
       <Link>lib\services\queue\queueservice.js</Link>
-    </Content>
-    <Content Include="..\..\lib\services\servicebusserviceclient.js">
-      <Link>lib\services\servicebusserviceclient.js</Link>
     </Content>
     <Content Include="..\..\lib\services\serviceBus\models\acstokenresult.js">
       <Link>lib\services\serviceBus\models\acstokenresult.js</Link>
@@ -209,12 +215,6 @@
     </Content>
     <Content Include="..\..\lib\services\serviceBus\wraptokenmanager.js">
       <Link>lib\services\serviceBus\wraptokenmanager.js</Link>
-    </Content>
-    <Content Include="..\..\lib\services\serviceclient.js">
-      <Link>lib\services\serviceclient.js</Link>
-    </Content>
-    <Content Include="..\..\lib\services\storageserviceclient.js">
-      <Link>lib\services\storageserviceclient.js</Link>
     </Content>
     <Content Include="..\..\lib\services\table\batchserviceclient.js">
       <Link>lib\services\table\batchserviceclient.js</Link>
@@ -267,12 +267,6 @@
     <Content Include="..\..\test\azure-tests.js">
       <Link>test\azure-tests.js</Link>
     </Content>
-    <Content Include="..\..\test\common\exponentialretrypolicyfilter-tests.js">
-      <Link>test\common\exponentialretrypolicyfilter-tests.js</Link>
-    </Content>
-    <Content Include="..\..\test\common\linearretrypolicyfilter-tests.js">
-      <Link>test\common\linearretrypolicyfilter-tests.js</Link>
-    </Content>
     <Content Include="..\..\test\extendedtestlist.txt">
       <Link>test\extendedtestlist.txt</Link>
     </Content>
@@ -311,6 +305,12 @@
     </Content>
     <Content Include="..\..\test\services\blob\sharedkeylite-tests.js">
       <Link>test\services\blob\sharedkeylite-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\core\exponentialretrypolicyfilter-tests.js">
+      <Link>test\services\core\exponentialretrypolicyfilter-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\core\linearretrypolicyfilter-tests.js">
+      <Link>test\services\core\linearretrypolicyfilter-tests.js</Link>
     </Content>
     <Content Include="..\..\test\services\queue\listqueuesresultcontinuation-tests.js">
       <Link>test\services\queue\listqueuesresultcontinuation-tests.js</Link>
