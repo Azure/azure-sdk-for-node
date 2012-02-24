@@ -13,143 +13,133 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var util = require('../../lib/util/util');
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    callback();
-  },
+suite('util-tests', function() {
+  test('should be an empty object', function (done) {
+    assert.equal(util.objectIsEmpty(null), true);
+    assert.equal(util.objectIsEmpty({}), true);
+    assert.equal(util.objectIsEmpty({ a: '1' }), false);
+    assert.equal(util.objectIsEmpty({ a: '1', b: '2' }), false);
 
-  tearDown: function (callback) {
-    // clean up
-    callback();
-  },
+    done();
+  });
 
-  testObjectIsEmpty: function (test) {
-    test.equal(util.objectIsEmpty(null), true);
-    test.equal(util.objectIsEmpty({}), true);
-    test.equal(util.objectIsEmpty({ a: '1' }), false);
-    test.equal(util.objectIsEmpty({ a: '1', b: '2' }), false);
+  test('should be a string', function (done) {
+    assert.equal(util.objectIsString(''), true);
+    assert.equal(util.objectIsString('hi'), true);
+    assert.equal(util.objectIsString(null), false);
+    assert.equal(util.objectIsString({}), false);
+    assert.equal(util.objectIsString({ a: '1' }), false);
 
-    test.done();
-  },
+    done();
+  });
 
-  testObjectIsString: function (test) {
-    test.equal(util.objectIsString(''), true);
-    test.equal(util.objectIsString('hi'), true);
-    test.equal(util.objectIsString(null), false);
-    test.equal(util.objectIsString({}), false);
-    test.equal(util.objectIsString({ a: '1' }), false);
+  test('should be an empty string', function (done) {
+    assert.equal(util.stringIsEmpty(''), true);
+    assert.equal(util.stringIsEmpty(null), true);
+    assert.equal(util.stringIsEmpty(undefined), true);
+    assert.equal(util.stringIsEmpty('a'), false);
+    assert.equal(util.stringIsEmpty(' '), false);
 
-    test.done();
-  },
+    done();
+  });
 
-  testStringIsEmpty: function (test) {
-    test.equal(util.stringIsEmpty(''), true);
-    test.equal(util.stringIsEmpty(null), true);
-    test.equal(util.stringIsEmpty(undefined), true);
-    test.equal(util.stringIsEmpty('a'), false);
-    test.equal(util.stringIsEmpty(' '), false);
+  test('should start with', function (done) {
+    assert.equal(util.stringStartsWith('test', 't'), true);
+    assert.equal(util.stringStartsWith('test', 'e'), false);
+    assert.equal(util.stringStartsWith('test', ''), true);
+    assert.equal(util.stringStartsWith('test', null), true);
+    assert.equal(util.stringStartsWith('test', 'T'), false);
 
-    test.done();
-  },
+    done();
+  });
 
-  testStringStartsWith: function (test) {
-    test.equal(util.stringStartsWith('test', 't'), true);
-    test.equal(util.stringStartsWith('test', 'e'), false);
-    test.equal(util.stringStartsWith('test', ''), true);
-    test.equal(util.stringStartsWith('test', null), true);
-    test.equal(util.stringStartsWith('test', 'T'), false);
+  test('should end with', function (done) {
+    assert.equal(util.stringEndsWith('test', 't'), true);
+    assert.equal(util.stringEndsWith('test', 'e'), false);
+    assert.equal(util.stringEndsWith('test', ''), true);
+    assert.equal(util.stringEndsWith('test', null), true);
+    assert.equal(util.stringEndsWith('test', 'T'), false);
 
-    test.done();
-  },
+    done();
+  });
 
-  testStringEndsWith: function (test) {
-    test.equal(util.stringEndsWith('test', 't'), true);
-    test.equal(util.stringEndsWith('test', 'e'), false);
-    test.equal(util.stringEndsWith('test', ''), true);
-    test.equal(util.stringEndsWith('test', null), true);
-    test.equal(util.stringEndsWith('test', 'T'), false);
-
-    test.done();
-  },
-
-  testStringIsInt: function (test) {
+  test('should be int', function (done) {
     // positives
-    test.equal(util.stringIsInt('1'), true);
-    test.equal(util.stringIsInt('1asd'), false);
-    test.equal(util.stringIsInt('asd1'), false);
-    test.equal(util.stringIsInt('1.23'), false);
+    assert.equal(util.stringIsInt('1'), true);
+    assert.equal(util.stringIsInt('1asd'), false);
+    assert.equal(util.stringIsInt('asd1'), false);
+    assert.equal(util.stringIsInt('1.23'), false);
 
     // negatives
-    test.equal(util.stringIsInt('-1'), true);
-    test.equal(util.stringIsInt('-1asd'), false);
-    test.equal(util.stringIsInt('-asd1'), false);
-    test.equal(util.stringIsInt('-1.23'), false);
+    assert.equal(util.stringIsInt('-1'), true);
+    assert.equal(util.stringIsInt('-1asd'), false);
+    assert.equal(util.stringIsInt('-asd1'), false);
+    assert.equal(util.stringIsInt('-1.23'), false);
 
     // nulls
-    test.equal(util.stringIsInt(null), false);
-    test.equal(util.stringIsInt(), false);
+    assert.equal(util.stringIsInt(null), false);
+    assert.equal(util.stringIsInt(), false);
 
-    test.done();
-  },
+    done();
+  });
 
-  testStringIsFloat: function (test) {
+  test('should be float', function (done) {
     // positives
-    test.equal(util.stringIsFloat('1'), false);
-    test.equal(util.stringIsFloat('1.'), false);
-    test.equal(util.stringIsFloat('1.0'), false);
-    test.equal(util.stringIsFloat('1.1'), true);
-    test.equal(util.stringIsFloat('1.0a'), false);
-    test.equal(util.stringIsFloat('1a'), false);
+    assert.equal(util.stringIsFloat('1'), false);
+    assert.equal(util.stringIsFloat('1.'), false);
+    assert.equal(util.stringIsFloat('1.0'), false);
+    assert.equal(util.stringIsFloat('1.1'), true);
+    assert.equal(util.stringIsFloat('1.0a'), false);
+    assert.equal(util.stringIsFloat('1a'), false);
 
     // negatives
-    test.equal(util.stringIsFloat('-1'), false);
-    test.equal(util.stringIsFloat('-1.'), false);
-    test.equal(util.stringIsFloat('-1.0'), false);
-    test.equal(util.stringIsFloat('-1.1'), true);
-    test.equal(util.stringIsFloat('-1.0a'), false);
-    test.equal(util.stringIsFloat('-1a'), false);
+    assert.equal(util.stringIsFloat('-1'), false);
+    assert.equal(util.stringIsFloat('-1.'), false);
+    assert.equal(util.stringIsFloat('-1.0'), false);
+    assert.equal(util.stringIsFloat('-1.1'), true);
+    assert.equal(util.stringIsFloat('-1.0a'), false);
+    assert.equal(util.stringIsFloat('-1a'), false);
 
     // nulls
-    test.equal(util.stringIsFloat(null), false);
-    test.equal(util.stringIsFloat(), false);
+    assert.equal(util.stringIsFloat(null), false);
+    assert.equal(util.stringIsFloat(), false);
 
-    test.done();
-  },
+    done();
+  });
 
-  testStringIsNumber: function (test) {
+  test('should be a number', function (done) {
     // int positives
-    test.equal(util.stringIsNumber('1'), true);
-    test.equal(util.stringIsNumber('1asd'), false);
-    test.equal(util.stringIsNumber('asd1'), false);
+    assert.equal(util.stringIsNumber('1'), true);
+    assert.equal(util.stringIsNumber('1asd'), false);
+    assert.equal(util.stringIsNumber('asd1'), false);
 
     // int negatives
-    test.equal(util.stringIsNumber('-1'), true);
-    test.equal(util.stringIsNumber('-1asd'), false);
-    test.equal(util.stringIsNumber('-asd1'), false);
+    assert.equal(util.stringIsNumber('-1'), true);
+    assert.equal(util.stringIsNumber('-1asd'), false);
+    assert.equal(util.stringIsNumber('-asd1'), false);
 
     // float positives
-    test.equal(util.stringIsNumber('1.'), true);
-    test.equal(util.stringIsNumber('1.0'), true);
-    test.equal(util.stringIsNumber('1.1'), true);
-    test.equal(util.stringIsNumber('1.0a'), false);
-    test.equal(util.stringIsNumber('1a'), false);
+    assert.equal(util.stringIsNumber('1.'), true);
+    assert.equal(util.stringIsNumber('1.0'), true);
+    assert.equal(util.stringIsNumber('1.1'), true);
+    assert.equal(util.stringIsNumber('1.0a'), false);
+    assert.equal(util.stringIsNumber('1a'), false);
 
     // float negatives
-    test.equal(util.stringIsNumber('-1.'), true);
-    test.equal(util.stringIsNumber('-1.0'), true);
-    test.equal(util.stringIsNumber('-1.1'), true);
-    test.equal(util.stringIsNumber('-1.0a'), false);
-    test.equal(util.stringIsNumber('-1a'), false);
+    assert.equal(util.stringIsNumber('-1.'), true);
+    assert.equal(util.stringIsNumber('-1.0'), true);
+    assert.equal(util.stringIsNumber('-1.1'), true);
+    assert.equal(util.stringIsNumber('-1.0a'), false);
+    assert.equal(util.stringIsNumber('-1a'), false);
 
     // nulls
-    test.equal(util.stringIsFloat(null), false);
-    test.equal(util.stringIsFloat(), false);
+    assert.equal(util.stringIsFloat(null), false);
+    assert.equal(util.stringIsFloat(), false);
 
-    test.done();
-  }
+    done();
+  });
 });

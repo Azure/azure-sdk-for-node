@@ -20,7 +20,7 @@
         "underscore.string": ">= 2.0.0"
     },
     "devDependencies": {
-        "nodeunit": ">= 0.6.4"
+        "mocha": "*"
     },
     "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
     "repository": {

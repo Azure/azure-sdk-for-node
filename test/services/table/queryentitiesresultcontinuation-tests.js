@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
@@ -31,15 +31,14 @@ var tableService;
 var tableNames = [];
 var tablePrefix = 'qecont';
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('queryentitiesresultcontinuation-tests', function () {
+  setup(function (done) {
     tableService = azure.createTableService();
 
-    callback();
-  },
+    done();
+  });
 
-  tearDown: function (callback) {
+  teardown(function (done) {
     tableService.queryTables(function (queryError, tables) {
       if (!queryError && tables.length > 0) {
         var tableCount = 0;
@@ -48,31 +47,31 @@ module.exports = testCase(
             tableCount++;
 
             if (tableCount === tables.length) {
-              callback();
+              done();
             }
           });
         });
       }
       else {
-        callback();
+        done();
       }
     });
-  },
+  });
 
-  testContinuationTokens: function (test) {
+  test('ContinuationTokens', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames);
     var numberOfEntities = 30;
     var numberOfEntitiesPerBatch = 10;
     var numberOfEntitiesPerQuery = 10;
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.notEqual(createResponse, null);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.notEqual(createResponse, null);
 
       if (createResponse) {
-        test.ok(createResponse.isSuccessful);
-        test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.ok(createResponse.isSuccessful);
+        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
       }
 
       var entities = generateEntities(numberOfEntities);
@@ -96,25 +95,25 @@ module.exports = testCase(
               .top(numberOfEntitiesPerQuery);
 
             tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation) {
-              test.equal(queryError, null);
-              test.notEqual(entries, null);
+              assert.equal(queryError, null);
+              assert.notEqual(entries, null);
 
               if (entries) {
                 var count = entries.length;
 
                 if (entriesContinuation.hasNextPage()) {
                   entriesContinuation.getNextPage(function (queryError2, entries2, entriesContinuation2) {
-                    test.equal(queryError2, null);
+                    assert.equal(queryError2, null);
                     count += entries2.length;
 
                     if (entriesContinuation2.hasNextPage()) {
                       entriesContinuation2.getNextPage(function (queryError3, entries3, entriesContinuation3) {
-                        test.equal(queryError3, null);
+                        assert.equal(queryError3, null);
                         count += entries3.length;
 
-                        test.equal(count, numberOfEntities);
-                        test.equal(entriesContinuation3.hasNextPage(), false);
-                        test.done();
+                        assert.equal(count, numberOfEntities);
+                        assert.equal(entriesContinuation3.hasNextPage(), false);
+                        done();
                       });
                     }
                   });
@@ -125,26 +124,26 @@ module.exports = testCase(
         });
       }
     });
-  },
+  });
 
-  testNullNextRowKey: function (test) {
+  test('NullNextRowKey', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames);
     var tableQuery = TableQuery.select().from(tableName);
 
     tableService.createTable(tableName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       var queryEntitiesResultContinuation = new QueryEntitiesResultContinuation(tableService, tableQuery, 'part1', null);
-      test.equal(queryEntitiesResultContinuation.hasNextPage(), true);
+      assert.equal(queryEntitiesResultContinuation.hasNextPage(), true);
 
       queryEntitiesResultContinuation.getNextPage(function (error) {
         // There should be no error when fetching the next page with a null next row key
-        test.equal(error, null);
+        assert.equal(error, null);
 
-        test.done();
+        done();
       });
     });
-  }
+  });
 });
 
 function generateNames (prefix, num) {

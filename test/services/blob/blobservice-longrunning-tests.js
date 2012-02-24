@@ -13,7 +13,8 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
+
 var fs = require('fs');
 var path = require("path");
 var util = require('util');
@@ -38,15 +39,14 @@ var blobNamesPrefix = 'blob';
 var mockServerClient;
 var currentTestName;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('blobservice-longrunning-tests', function () {
+  setup: function (done) {
     blobService = azure.createBlobService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, ServiceClient.DEVSTORE_BLOB_HOST);
 
-    callback();
-  },
+    done();
+  });
 
-  tearDown: function (callback) {
+  teardown: function (done) {
     var deleteFiles = function () {
       // delete test files
       var list = fs.readdirSync('./');
@@ -56,7 +56,7 @@ module.exports = testCase(
         }
       });
 
-      callback();
+      done();
     };
 
     // delete blob containers
@@ -78,37 +78,37 @@ module.exports = testCase(
         deleteFiles();
       }
     });
-  },
+  });
 
-  testGetBlobToStream: function (test) {
+  test('GetBlobToStream', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames);
     var fileNameTarget = testutil.generateId('getBlobFile') + '.test';
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError1, container1) {
-      test.equal(createError1, null);
-      test.notEqual(container1, null);
+      assert.equal(createError1, null);
+      assert.notEqual(container1, null);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error1) {
-        test.equal(error1, null);
+        assert.equal(error1, null);
 
         blobService.getBlobToFile(containerName, blobName, fileNameTarget, function (error2) {
-          test.equal(error2, null);
+          assert.equal(error2, null);
 
           path.exists(fileNameTarget, function (exists) {
-            test.equal(exists, true);
+            assert.equal(exists, true);
 
             var fileText = fs.readFileSync(fileNameTarget);
-            test.equal(blobText, fileText);
-            test.done();
+            assert.equal(blobText, fileText);
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testSmallUploadBlobFromFile: function (test) {
+  test('SmallUploadBlobFromFile', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames);
     var fileNameSource = testutil.generateId('getBlobFile') + '.test';
@@ -116,37 +116,37 @@ module.exports = testCase(
 
     fs.writeFile(fileNameSource, blobText, function () {
       blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
-        test.equal(createError1, null);
-        test.notEqual(container1, null);
-        test.ok(createResponse1.isSuccessful);
-        test.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createError1, null);
+        assert.notEqual(container1, null);
+        assert.ok(createResponse1.isSuccessful);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         var blobOptions = { contentType: 'text' };
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, blobOptions, function (uploadError, blobResponse, uploadResponse) {
-          test.equal(uploadError, null);
-          test.notEqual(blobResponse, null);
-          test.ok(uploadResponse.isSuccessful);
+          assert.equal(uploadError, null);
+          assert.notEqual(blobResponse, null);
+          assert.ok(uploadResponse.isSuccessful);
 
           blobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
-            test.equal(downloadErr, null);
-            test.equal(blobTextResponse, blobText);
+            assert.equal(downloadErr, null);
+            assert.equal(blobTextResponse, blobText);
 
             blobService.getBlobProperties(containerName, blobName, function (getBlobPropertiesErr, blobGetResponse) {
-              test.equal(getBlobPropertiesErr, null);
-              test.notEqual(blobGetResponse, null);
+              assert.equal(getBlobPropertiesErr, null);
+              assert.notEqual(blobGetResponse, null);
               if (blobGetResponse) {
-                test.equal(blobOptions.contentType, blobGetResponse.contentType);
+                assert.equal(blobOptions.contentType, blobGetResponse.contentType);
               }
 
-              test.done();
+              done();
             });
           });
         });
       });
     });
-  },
+  });
 
-  testAnalyzeStream: function (test) {
+  test('AnalyzeStream', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames);
     var fileNameSource = testutil.generateId('getBlobFile') + '.test';
@@ -154,28 +154,28 @@ module.exports = testCase(
 
     fs.writeFile(fileNameSource, blobText, function () {
       blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
-        test.equal(createError1, null);
-        test.notEqual(container1, null);
-        test.ok(createResponse1.isSuccessful);
-        test.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createError1, null);
+        assert.notEqual(container1, null);
+        assert.ok(createResponse1.isSuccessful);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, { setBlobContentMD5: true }, function (uploadError, blobResponse, uploadResponse) {
-          test.equal(uploadError, null);
-          test.notEqual(blobResponse, null);
-          test.ok(uploadResponse.isSuccessful);
+          assert.equal(uploadError, null);
+          assert.notEqual(blobResponse, null);
+          assert.ok(uploadResponse.isSuccessful);
 
           blobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
-            test.equal(downloadErr, null);
-            test.equal(blobTextResponse, blobText);
+            assert.equal(downloadErr, null);
+            assert.equal(blobTextResponse, blobText);
 
-            test.done();
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testInvalidMD5SmallFile: function (test) {
+  test('InvalidMD5SmallFile', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames);
     var fileNames = [];
@@ -185,39 +185,39 @@ module.exports = testCase(
 
     fs.writeFile(fileNameSource, blobText, function () {
       blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
-        test.equal(createError1, null);
-        test.notEqual(container1, null);
-        test.ok(createResponse1.isSuccessful);
-        test.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createError1, null);
+        assert.notEqual(container1, null);
+        assert.ok(createResponse1.isSuccessful);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, { setBlobContentMD5: true }, function (uploadError, blobResponse, uploadResponse) {
-          test.equal(uploadError, null);
-          test.notEqual(blobResponse, null);
-          test.ok(uploadResponse.isSuccessful);
+          assert.equal(uploadError, null);
+          assert.notEqual(blobResponse, null);
+          assert.ok(uploadResponse.isSuccessful);
 
           // Just retrieving works fine
           blobService.getBlobToFile(containerName, blobName, fileNameTarget, function (downloadErr1) {
-            test.equal(downloadErr1, null);
+            assert.equal(downloadErr1, null);
 
             // replace contentMD5 by a messed up one
             var blobOptions = { contentMD5: 'fake' };
             blobService.setBlobProperties(containerName, blobName, blobOptions, function (setPropErr) {
-              test.equal(setPropErr, null);
+              assert.equal(setPropErr, null);
 
               blobService.getBlobToFile(containerName, blobName, fileNameTarget, function (downloadErr2) {
-                test.notEqual(downloadErr2, null);
-                test.equal(downloadErr2, 'Blob data corrupted (integrity check failed), Expected value is fake, retrieved sQqNsWTgdUEFt6mb5y4/5Q==');
+                assert.notEqual(downloadErr2, null);
+                assert.equal(downloadErr2, 'Blob data corrupted (integrity check failed), Expected value is fake, retrieved sQqNsWTgdUEFt6mb5y4/5Q==');
 
-                test.done();
+                done();
               });
             });
           });
         });
       });
     });
-  },
+  });
 
-  testSharedAccess: function (test) {
+  test('SharedAccess', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames);
     var blobText = 'text';
@@ -229,9 +229,9 @@ module.exports = testCase(
     var managementBlobClient = azure.createBlobService();
 
     managementBlobClient.createContainer(containerName, function (createError, container1, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
-      test.ok(createResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
+      assert.ok(createResponse.isSuccessful);
 
       var currentDate = new Date();
       var futureDate = new Date(currentDate);
@@ -254,24 +254,24 @@ module.exports = testCase(
 
       // Writing the blob should be possible
       sharedBlobClient.createBlockBlobFromText(containerName, blobName, blobText, function (putError, blob, putResponse) {
-        test.equal(putError, null);
-        test.ok(putResponse.isSuccessful);
+        assert.equal(putError, null);
+        assert.ok(putResponse.isSuccessful);
 
         // Make sure its not possible to get the blob since only write permission was given
         sharedBlobClient.getBlobToText(containerName, blobName, function (getError, content, blockBlob, getResponse) {
-          test.equal(getError.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
-          test.equal(content, null);
-          test.equal(blockBlob, null);
-          test.notEqual(getResponse, null);
+          assert.equal(getError.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
+          assert.equal(content, null);
+          assert.equal(blockBlob, null);
+          assert.notEqual(getResponse, null);
           if (getResponse) {
-            test.equal(getResponse.isSuccessful, false);
+            assert.equal(getResponse.isSuccessful, false);
           }
 
-          test.done();
+          done();
         });
       });
     });
-  }
+  });
 });
 
 function repeat(s, n) {

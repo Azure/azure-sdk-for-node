@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
@@ -36,39 +36,38 @@ var wrapService;
 
 var testPrefix = 'wraptokenmanager-tests';
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('wraptokenmanager-tests', function () {
+  setup(function (done) {
     wrapservicetestutil.setUpTest(module.exports, testPrefix, function (err, newWrapService) {
       wrapService = newWrapService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    wrapservicetestutil.tearDownTest(module.exports, wrapService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    wrapservicetestutil.tearDownTest(module.exports, wrapService, testPrefix, done);
+  });
 
-  testGetAccessToken: function (test) {
+  test('GetAccessToken', function (done) {
     wrapTokenManager = new WrapTokenManager();
 
     var namespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var scopeUri = 'http://' + namespace + '.servicebus.windows.net/myqueue';
 
     wrapTokenManager.getAccessToken(scopeUri, function (error, wrapAccessToken) {
-      test.equal(error, null);
-      test.notEqual(wrapAccessToken['wrap_access_token'], null);
-      test.notEqual(wrapAccessToken['wrap_access_token_expires_in'], null);
-      test.notEqual(wrapAccessToken['wrap_access_token_expires_utc'], null);
+      assert.equal(error, null);
+      assert.notEqual(wrapAccessToken['wrap_access_token'], null);
+      assert.notEqual(wrapAccessToken['wrap_access_token_expires_in'], null);
+      assert.notEqual(wrapAccessToken['wrap_access_token_expires_utc'], null);
 
       // trying to get an access token to the same scopeUri immediately 
       // should return the same as it should still be cached
       wrapTokenManager.getAccessToken(scopeUri, function (error2, cachedWrapAccessToken) {
-        test.equal(error2, null);
-        test.equal(cachedWrapAccessToken, wrapAccessToken);
+        assert.equal(error2, null);
+        assert.equal(cachedWrapAccessToken, wrapAccessToken);
 
-        test.done();
+        done();
       });
     });
-  }
+  });
 });

@@ -13,8 +13,6 @@
 * limitations under the License.
 */
 
-// Based on bin/nodeunit.js from the nodeunit module.
-
 var fs = require('fs');
 var path = require('path');
 
@@ -30,6 +28,13 @@ if (path.existsSync('./extendedtestlist.txt')) {
 var files = fileContent.split('\n');
 
 var args = (process.ARGV || process.argv);
+args.push('-u');
+args.push('tdd');
+
+// TODO: remove this timeout once tests are faster
+args.push('-t');
+args.push('200000');
+
 files.forEach(function (file) {
   // trim trailing \r if it exists
   file = file.replace('\r', '');
@@ -41,4 +46,4 @@ files.forEach(function (file) {
   }
 });
 
-var nodebin = require('../node_modules/nodeunit/bin/nodeunit');
+require('../node_modules/mocha/bin/mocha');

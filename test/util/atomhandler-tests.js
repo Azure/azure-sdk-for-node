@@ -13,24 +13,15 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var AtomHandler = require('../../lib/util/atomhandler');
 var ISO8061Date = require('../../lib/util/iso8061date');
 
 var fs = require('fs');
 
-module.exports = testCase({
-  setUp: function (callback) {
-    callback();
-  },
-
-  tearDown: function (callback) {
-    // clean up.
-    callback();
-  },
-
-  testSerialize: function (test) {
+suite('atomhandler-tests', function () {
+  test('Serialize', function (done) {
     var atomHandler = new AtomHandler('m', 'd');
 
     var entity = {
@@ -55,7 +46,7 @@ module.exports = testCase({
 
     var res = atomHandler.serialize(entity);
 
-    test.ok(res.indexOf(
+    assert.ok(res.indexOf(
     "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>"
   + "<entry xmlns=\"http://www.w3.org/2005/Atom\" "
   + "xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" "
@@ -63,7 +54,7 @@ module.exports = testCase({
   + "<title/>"
   + "<updated>") !== -1);
 
-    test.ok(res.indexOf(
+    assert.ok(res.indexOf(
     "</updated>"
   + "<author>"
   + "<name/>"
@@ -79,6 +70,6 @@ module.exports = testCase({
   + "</content>"
   + "</entry>") !== -1);
 
-    test.done();
-  }
+    done();
+  });
 });

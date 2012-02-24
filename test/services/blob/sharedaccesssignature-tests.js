@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var qs = require('qs');
 
@@ -25,18 +25,8 @@ var BlobConstants = Constants.BlobConstants;
 var HeaderConstants = Constants.HeaderConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    callback();
-  },
-
-  tearDown: function (callback) {
-    // clean up
-    callback();
-  },
-
-  testGenerateSignatureContainer: function (test) {
+suite('sharedaccesssignature-tests', function () {
+  test('GenerateSignatureContainer', function (done) {
     var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
@@ -53,11 +43,11 @@ module.exports = testCase(
       BlobConstants.ResourceTypes.CONTAINER,
       sharedAccessPolicy);
 
-    test.equal(signature, 'VdlALM4TYEYYNf94Bvt3dn48TsA01wk45ltwP3zeKp4=');
-    test.done();
-  },
+    assert.equal(signature, 'VdlALM4TYEYYNf94Bvt3dn48TsA01wk45ltwP3zeKp4=');
+    done();
+  });
 
-  testGenerateSignatureBlob: function (test) {
+  test('GenerateSignatureBlob', function (done) {
     var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
@@ -73,11 +63,11 @@ module.exports = testCase(
       BlobConstants.ResourceTypes.BLOB,
       sharedAccessPolicy);
 
-    test.equal(signature, '7NIEip+VOrQ5ZV80pORPK1MOsJc62wwCNcbMvE+lQ0s=');
-    test.done();
-  },
+    assert.equal(signature, '7NIEip+VOrQ5ZV80pORPK1MOsJc62wwCNcbMvE+lQ0s=');
+    done();
+  });
 
-  testContainerSignedQueryString: function (test) {
+  test('ContainerSignedQueryString', function (done) {
     var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
@@ -95,16 +85,16 @@ module.exports = testCase(
       BlobConstants.ResourceTypes.CONTAINER,
       sharedAccessPolicy);
 
-    test.equal(queryString[QueryStringConstants.SIGNED_START], '2011-10-11');
-    test.equal(queryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12');
-    test.equal(queryString[QueryStringConstants.SIGNED_RESOURCE], BlobConstants.ResourceTypes.CONTAINER);
-    test.equal(queryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobConstants.SharedAccessPermissions.READ);
-    test.equal(queryString[QueryStringConstants.SIGNED_IDENTIFIER], 'YWJjZGVmZw==');
-    test.equal(queryString[QueryStringConstants.SIGNATURE], 'VdlALM4TYEYYNf94Bvt3dn48TsA01wk45ltwP3zeKp4=');
-    test.done();
-  },
+    assert.equal(queryString[QueryStringConstants.SIGNED_START], '2011-10-11');
+    assert.equal(queryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12');
+    assert.equal(queryString[QueryStringConstants.SIGNED_RESOURCE], BlobConstants.ResourceTypes.CONTAINER);
+    assert.equal(queryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobConstants.SharedAccessPermissions.READ);
+    assert.equal(queryString[QueryStringConstants.SIGNED_IDENTIFIER], 'YWJjZGVmZw==');
+    assert.equal(queryString[QueryStringConstants.SIGNATURE], 'VdlALM4TYEYYNf94Bvt3dn48TsA01wk45ltwP3zeKp4=');
+    done();
+  });
 
-  testBlobSignedQueryString: function (test) {
+  test('BlobSignedQueryString', function (done) {
     var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
@@ -121,15 +111,15 @@ module.exports = testCase(
       BlobConstants.ResourceTypes.BLOB,
       sharedAccessPolicy);
 
-    test.equal(queryString[QueryStringConstants.SIGNED_START], '2011-10-11');
-    test.equal(queryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12');
-    test.equal(queryString[QueryStringConstants.SIGNED_RESOURCE], BlobConstants.ResourceTypes.BLOB);
-    test.equal(queryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobConstants.SharedAccessPermissions.WRITE);
-    test.equal(queryString[QueryStringConstants.SIGNATURE], 'k8uyTrn3pgLXuhwgZhxeAH6mZ/es9k2vqHPJEuIH4CE=');
-    test.done();
-  },
+    assert.equal(queryString[QueryStringConstants.SIGNED_START], '2011-10-11');
+    assert.equal(queryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12');
+    assert.equal(queryString[QueryStringConstants.SIGNED_RESOURCE], BlobConstants.ResourceTypes.BLOB);
+    assert.equal(queryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobConstants.SharedAccessPermissions.WRITE);
+    assert.equal(queryString[QueryStringConstants.SIGNATURE], 'k8uyTrn3pgLXuhwgZhxeAH6mZ/es9k2vqHPJEuIH4CE=');
+    done();
+  });
 
-  testSignRequest: function (test) {
+  test('SignRequest', function (done) {
     var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
@@ -158,9 +148,9 @@ module.exports = testCase(
     webResource.path = '/images/pic1.png?comp=metadata';
     webResource.requestUrl = '/images/pic1.png?comp=metadata';
 
-    credentials.signRequest(webResource, function() {
-      test.equal('/images/pic1.png?comp=metadata&' + qs.stringify(queryString), webResource.requestUrl);
-      test.done();
+    credentials.signRequest(webResource, function () {
+      assert.equal('/images/pic1.png?comp=metadata&' + qs.stringify(queryString), webResource.requestUrl);
+      done();
     });
-  }
+  });
 });

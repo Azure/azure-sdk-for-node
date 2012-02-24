@@ -24,7 +24,7 @@ exports.isRecording = MockServerClient.isRecording();
 var mockServerClient;
 var currentTest = 0;
 
-exports.setUpTest = function (testObject, testPrefix, callback) {
+exports.setUpTest = function (testPrefix, callback) {
   var tableService;
 
   if (exports.isMocked) {
@@ -53,15 +53,10 @@ exports.setUpTest = function (testObject, testPrefix, callback) {
   }
 };
 
-exports.tearDownTest = function (testObject, tableService, testPrefix, callback) {
+exports.tearDownTest = function (numberTests, tableService, testPrefix, callback) {
   var endTest = function () {
     if (exports.isMocked) {
-      var testMethods = 0;
-      for (var i in testObject) {
-        testMethods++;
-      }
-
-      var lastTest = (testMethods === currentTest + 1);
+      var lastTest = (numberTests === currentTest + 1);
 
       mockServerClient.endTest(testPrefix + currentTest, lastTest, function () {
         currentTest++;
