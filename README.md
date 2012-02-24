@@ -26,6 +26,7 @@ Node.js Developer Center.
 ## Download Source Code
 
 To get the source code of the SDK via **git** just type:
+
     git clone https://github.com/WindowsAzure/azure-sdk-for-node.git
     cd ./azure-sdk-for-node
 
@@ -211,7 +212,7 @@ serviceBusService.createTopicIfNotExists('taskdiscussion', function(error){
         // Topic exists
     }
 });
-
+```
 
 The **sendTopicMessage** method can be used to send a message to a topic:
 
@@ -242,7 +243,7 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
         });
      }
 });
-
+```
 
 ** For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs) **
 
