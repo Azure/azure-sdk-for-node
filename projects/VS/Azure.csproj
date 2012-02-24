@@ -162,6 +162,15 @@
     <Content Include="..\..\lib\services\blob\sharedkeylite.js">
       <Link>lib\services\blob\sharedkeylite.js</Link>
     </Content>
+    <Content Include="..\..\lib\services\core\servicebusserviceclient.js">
+      <Link>lib\services\core\servicebusserviceclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\core\serviceclient.js">
+      <Link>lib\services\core\serviceclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\core\storageserviceclient.js">
+      <Link>lib\services\core\storageserviceclient.js</Link>
+    </Content>
     <Content Include="..\..\lib\services\queue\models\listqueuesresultcontinuation.js">
       <Link>lib\services\queue\models\listqueuesresultcontinuation.js</Link>
     </Content>
@@ -176,9 +185,6 @@
     </Content>
     <Content Include="..\..\lib\services\queue\queueservice.js">
       <Link>lib\services\queue\queueservice.js</Link>
-    </Content>
-    <Content Include="..\..\lib\services\servicebusserviceclient.js">
-      <Link>lib\services\servicebusserviceclient.js</Link>
     </Content>
     <Content Include="..\..\lib\services\serviceBus\models\acstokenresult.js">
       <Link>lib\services\serviceBus\models\acstokenresult.js</Link>
@@ -209,12 +215,6 @@
     </Content>
     <Content Include="..\..\lib\services\serviceBus\wraptokenmanager.js">
       <Link>lib\services\serviceBus\wraptokenmanager.js</Link>
-    </Content>
-    <Content Include="..\..\lib\services\serviceclient.js">
-      <Link>lib\services\serviceclient.js</Link>
-    </Content>
-    <Content Include="..\..\lib\services\storageserviceclient.js">
-      <Link>lib\services\storageserviceclient.js</Link>
     </Content>
     <Content Include="..\..\lib\services\table\batchserviceclient.js">
       <Link>lib\services\table\batchserviceclient.js</Link>
