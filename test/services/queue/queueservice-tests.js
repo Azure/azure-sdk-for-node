@@ -393,6 +393,7 @@ module.exports = testCase(
               if (messages) {
                 // By default only one is returned
                 test.equal(messages.length, 1);
+                test.equal(messages[0].messagetext, 'msg1');
               }
 
               queueService.getMessages(queueName, { numofmessages: 2 }, function (error4, messages2) {
