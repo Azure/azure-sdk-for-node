@@ -36,17 +36,18 @@ var entity1 = { PartitionKey: 'part1',
 };
 
 var testPrefix = 'batchserviceclient-tests';
+var numberTests = 2;
 
 suite('batchserviceclient-tests', function () {
   setup(function (done) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       tableService = newTableService;
       done();
     });
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
   });
 
   test('AddOperation', function (done) {

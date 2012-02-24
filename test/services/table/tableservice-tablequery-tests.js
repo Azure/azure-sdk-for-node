@@ -47,17 +47,18 @@ var tableNames = [];
 var tablePrefix = 'tablequery';
 
 var testPrefix = 'tableservice-tablequery-tests';
+var numberTests = 1;
 
 suite('tableservice-tablequery-tests', function () {
   setup(function (done) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       tableService = newTableService;
       done();
     });
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
   });
 
   test('Select', function (done) {

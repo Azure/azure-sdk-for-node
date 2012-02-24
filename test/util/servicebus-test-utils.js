@@ -25,14 +25,14 @@ exports.isRecording = MockServerClient.isRecording();
 var mockServerClient;
 var currentTest = 0;
 
-exports.setUpTest = function (testObject, testPrefix, callback) {
+exports.setUpTest = function (testPrefix, callback) {
   var serviceBusService;
 
   serviceBusService = azure.createServiceBusService();
   callback(null, serviceBusService);
 };
 
-exports.tearDownTest = function (testObject, serviceBusService, testPrefix, callback) {
+exports.tearDownTest = function (numberTests, serviceBusService, testPrefix, callback) {
   var endTest = function () {
     callback();
   };

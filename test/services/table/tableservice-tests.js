@@ -50,17 +50,18 @@ var tableNames = [];
 var tablePrefix = 'tableservice';
 
 var testPrefix = 'tableservice-tests';
+var numberTests = 17;
 
 suite('tableservice-tests', function () {
   setup(function (done) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       tableService = newTableService;
       done();
     });
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
   });
 
   test('GetServiceProperties', function (done) {

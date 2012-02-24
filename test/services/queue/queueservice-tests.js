@@ -30,17 +30,18 @@ var queueNames = [];
 var queueNamesPrefix = 'queue';
 
 var testPrefix = 'queueservice-tests';
+var numberTests = 12;
 
 suite('queueservice-tests', function () {
   setup(function (done) {
-    queuetestutil.setUpTest(module.exports, testPrefix, function (err, newQueueService) {
+    queuetestutil.setUpTest(testPrefix, function (err, newQueueService) {
       queueService = newQueueService;
       done();
     });
   });
 
   teardown(function (done) {
-    queuetestutil.tearDownTest(module.exports, queueService, testPrefix, done);
+    queuetestutil.tearDownTest(numberTests, queueService, testPrefix, done);
   });
 
   test('GetServiceProperties', function (done) {

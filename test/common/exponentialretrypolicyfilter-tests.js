@@ -31,10 +31,11 @@ var tableNames = [];
 var tablePrefix = 'expretry';
 
 var testPrefix = 'exponentialretrypolicyfilter-tests';
+var numberTests = 3;
 
 suite('exponentialretrypolicyfilter-tests', function () {
   setup(function (done) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
       tableService = newTableService.withFilter(exponentialRetryPolicyFilter);
       done();
@@ -42,7 +43,7 @@ suite('exponentialretrypolicyfilter-tests', function () {
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
   });
 
   test('RetryFailSingle', function (done) {

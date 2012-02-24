@@ -44,17 +44,18 @@ var ruleNames = [];
 var ruleNamesPrefix = 'sbrule';
 
 var testPrefix = 'servicebusservice-tests';
+var numberTests = 32;
 
 suite('servicebusservice-tests', function () {
   setup(function (done) {
-    servicebustestutil.setUpTest(module.exports, testPrefix, function (err, newServiceBusService) {
+    servicebustestutil.setUpTest(testPrefix, function (err, newServiceBusService) {
       serviceBusService = newServiceBusService;
       done();
     });
   });
 
   teardown(function (done) {
-    servicebustestutil.tearDownTest(module.exports, serviceBusService, testPrefix, done);
+    servicebustestutil.tearDownTest(numberTests, serviceBusService, testPrefix, done);
   });
 
   test('CreateQueue', function (done) {

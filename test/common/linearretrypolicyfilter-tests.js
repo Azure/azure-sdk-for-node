@@ -31,10 +31,11 @@ var tableNames = [];
 var tablePrefix = 'linearretry';
 
 var testPrefix = 'linearretrypolicyfilter-tests';
+var numberTests = 3;
 
 suite('linearretrypolicyfilter-tests', function () {
   setup(function (done) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       linearRetryPolicyFilter = new LinearRetryPolicyFilter();
       tableService = newTableService.withFilter(linearRetryPolicyFilter);
       done();
@@ -42,7 +43,7 @@ suite('linearretrypolicyfilter-tests', function () {
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
   });
 
   test('RetryFailSingle', function (done) {

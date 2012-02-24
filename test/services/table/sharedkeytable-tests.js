@@ -49,17 +49,18 @@ var tableNames = [];
 var tablePrefix = 'sharedkeytable';
 
 var testPrefix = 'sharedkeytable-tests';
+var numberTests = 1;
 
 suite('sharedkeytable-tests', function () {
   setup(function (done) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       tableService = newTableService;
       done();
     });
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
   });
 
   test('CreateTable', function (done) {

@@ -39,10 +39,11 @@ var containerNames = [];
 var containerNamesPrefix = 'cont';
 
 var testPrefix = 'sharedkeylite-tests';
+var numberTests = 1;
 
 suite('sharedkeylite-tests', function () {
   setup(function (done) {
-    blobtestutil.setUpTest(module.exports, testPrefix, function (err, newBlobService) {
+    blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
       blobService = newBlobService;
       done();
     });
@@ -61,7 +62,7 @@ suite('sharedkeylite-tests', function () {
       done();
     };
 
-    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, deleteFiles);
+    blobtestutil.tearDownTest(numberTests, blobService, testPrefix, deleteFiles);
   });
 
   test('CreateContainer', function (done) {

@@ -41,17 +41,18 @@ var blobNames = [];
 var blobNamesPrefix = 'blob';
 
 var testPrefix = 'blobservice-tests';
+var numberTests = 32;
 
 suite('blobservice-tests', function () {
   setup(function (done) {
-    blobtestutil.setUpTest(module.exports, testPrefix, function (err, newBlobService) {
+    blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
       blobService = newBlobService;
       done();
     });
   });
 
   teardown(function (done) {
-    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, done);
+    blobtestutil.tearDownTest(numberTests, blobService, testPrefix, done);
   });
 
   test('IncorrectContainerNames', function (done) {
