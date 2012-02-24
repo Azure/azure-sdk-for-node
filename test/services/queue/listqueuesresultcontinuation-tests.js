@@ -18,8 +18,8 @@ var assert = require('assert');
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 

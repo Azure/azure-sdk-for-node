@@ -21,8 +21,8 @@ var azureutil = require('../../../lib/util/util');
 var testutil = require('../../util/util');
 var queuetestutil = require('../../util/queue-test-utils');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 
 var queueService;

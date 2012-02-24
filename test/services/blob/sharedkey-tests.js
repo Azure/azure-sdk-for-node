@@ -15,10 +15,12 @@
 
 var assert = require('assert');
 
-var SharedKey = require('../../../lib/services/blob/sharedkey');
-var ServiceClient = require('../../../lib/services/serviceclient');
+var azure = require('../../../lib/azure');
+
 var WebResource = require('../../../lib/http/webresource');
-var Constants = require('../../../lib/util/constants');
+var SharedKey = azure.SharedKey;
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var QueryStringConstants = Constants.QueryStringConstants;
 var HeaderConstants = Constants.HeaderConstants;
 
