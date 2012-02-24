@@ -13,7 +13,8 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
+
 var fs = require('fs');
 var path = require("path");
 var util = require('util');
@@ -38,17 +39,17 @@ var containerNames = [];
 var containerNamesPrefix = 'cont';
 
 var testPrefix = 'sharedkeylite-tests';
+var numberTests = 1;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    blobtestutil.setUpTest(module.exports, testPrefix, function (err, newBlobService) {
+suite('sharedkeylite-tests', function () {
+  setup(function (done) {
+    blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
       blobService = newBlobService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
+  teardown(function (done) {
     var deleteFiles = function () {
       // delete test files
       var list = fs.readdirSync('./');
@@ -58,35 +59,35 @@ module.exports = testCase(
         }
       });
 
-      callback();
+      done();
     };
 
-    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, deleteFiles);
-  },
+    blobtestutil.tearDownTest(numberTests, blobService, testPrefix, deleteFiles);
+  });
 
-  testCreateContainer: function (test) {
+  test('CreateContainer', function (done) {
     blobService.authenticationProvider = new SharedKeyLite(blobService.storageAccount, blobService.storageAccessKey);
 
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
       if (container1) {
-        test.notEqual(container1.name, null);
-        test.notEqual(container1.etag, null);
-        test.notEqual(container1.lastModified, null);
+        assert.notEqual(container1.name, null);
+        assert.notEqual(container1.etag, null);
+        assert.notEqual(container1.lastModified, null);
       }
 
-      test.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       // creating again will result in a duplicate error
       blobService.createContainer(containerName, function (createError2, container2) {
-        test.equal(createError2.code, Constants.BlobErrorCodeStrings.CONTAINER_ALREADY_EXISTS);
-        test.equal(container2, null);
+        assert.equal(createError2.code, Constants.BlobErrorCodeStrings.CONTAINER_ALREADY_EXISTS);
+        assert.equal(container2, null);
 
-        test.done();
+        done();
       });
     });
-  }
+  });
 });

@@ -249,9 +249,6 @@
     <Content Include="..\..\lib\util\atomhandler.js">
       <Link>lib\util\atomhandler.js</Link>
     </Content>
-    <Content Include="..\..\lib\util\base64.js">
-      <Link>lib\util\base64.js</Link>
-    </Content>
     <Content Include="..\..\lib\util\constants.js">
       <Link>lib\util\constants.js</Link>
     </Content>
@@ -362,9 +359,6 @@
     </Content>
     <Content Include="..\..\test\util\atomhandler-tests.js">
       <Link>test\util\atomhandler-tests.js</Link>
-    </Content>
-    <Content Include="..\..\test\util\base64-tests.js">
-      <Link>test\util\base64-tests.js</Link>
     </Content>
     <Content Include="..\..\test\util\blob-test-utils.js">
       <Link>test\util\blob-test-utils.js</Link>

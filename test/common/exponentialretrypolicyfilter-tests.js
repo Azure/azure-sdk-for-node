@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require("../../lib/azure");
 
@@ -31,22 +31,22 @@ var tableNames = [];
 var tablePrefix = 'expretry';
 
 var testPrefix = 'exponentialretrypolicyfilter-tests';
+var numberTests = 3;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+suite('exponentialretrypolicyfilter-tests', function () {
+  setup(function (done) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
       tableService = newTableService.withFilter(exponentialRetryPolicyFilter);
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+  });
 
-  testRetryFailSingle: function (test) {
+  test('RetryFailSingle', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     var retryCount = 3;
@@ -56,19 +56,19 @@ module.exports = testCase(
     exponentialRetryPolicyFilter.retryInterval = retryInterval;
 
     tableService.createTable(tableName, function (err) {
-      test.equal(err, null);
+      assert.equal(err, null);
 
       tableService.createTable(tableName, function (err2) {
-        test.notEqual(err2, null);
-        test.equal(err2.code, Constants.TableErrorCodeStrings.TABLE_ALREADY_EXISTS);
-        test.equal(err2.innerError, null);
+        assert.notEqual(err2, null);
+        assert.equal(err2.code, Constants.TableErrorCodeStrings.TABLE_ALREADY_EXISTS);
+        assert.equal(err2.innerError, null);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testRetryFailMultiple: function (test) {
+  test('RetryFailMultiple', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     var retryCount = 3;
@@ -95,23 +95,23 @@ module.exports = testCase(
     };
 
     tableService.createTable(tableName, function (err) {
-      test.equal(err, null);
+      assert.equal(err, null);
 
       tableService.deleteTable(tableName, function (err2) {
-        test.equal(err2, null);
+        assert.equal(err2, null);
 
         // trying to create a table right after a delete should force retry to kick in
         // table should be created nicely
         tableService.createTable(tableName, function (err3) {
-          test.equal(err3, null);
+          assert.equal(err3, null);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testGetTablePassOnGetTable: function (test) {
+  test('GetTablePassOnGetTable', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     var retryCount = 3;
@@ -121,10 +121,10 @@ module.exports = testCase(
     exponentialRetryPolicyFilter.retryInterval = retryInterval;
 
     tableService.getTable(tableName, function (err, table) {
-      test.equal(err.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
-      test.equal(table, null);
+      assert.equal(err.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
+      assert.equal(table, null);
 
-      test.done();
+      done();
     });
-  }
+  });
 });

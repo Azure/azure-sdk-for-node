@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
@@ -47,43 +47,43 @@ var tableNames = [];
 var tablePrefix = 'tablequery';
 
 var testPrefix = 'tableservice-tablequery-tests';
+var numberTests = 1;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+suite('tableservice-tablequery-tests', function () {
+  setup(function (done) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       tableService = newTableService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+  });
 
-  testSelect: function (test) {
+  test('Select', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (error1) {
-      test.equal(error1, null);
+      assert.equal(error1, null);
 
       tableService.insertEntity(tableName, entity1, function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         // Select specific field
         var tableQuery = TableQuery.select('field1')
           .from(tableName);
 
         tableService.queryEntities(tableQuery, function (error3, entities1) {
-          test.equal(error3, null);
+          assert.equal(error3, null);
 
-          test.notEqual(entities1, null);
+          assert.notEqual(entities1, null);
 
           if (entities1) {
-            test.equal(entities1.length, 1);
+            assert.equal(entities1.length, 1);
             var entityResult1 = entities1[0];
-            test.equal(entityResult1.field1, entity1.field1);
-            test.equal(entityResult1.field2, undefined);
+            assert.equal(entityResult1.field1, entity1.field1);
+            assert.equal(entityResult1.field2, undefined);
           }
 
           // Select all fields
@@ -91,23 +91,23 @@ module.exports = testCase(
             .from(tableName);
 
           tableService.queryEntities(tableQuery, function (error4, entities2) {
-            test.equal(error3, null);
+            assert.equal(error3, null);
 
-            test.notEqual(entities2, null);
+            assert.notEqual(entities2, null);
 
             if (entities2) {
-              test.equal(entities2.length, 1);
+              assert.equal(entities2.length, 1);
               var entityResult2 = entities2[0];
-              test.equal(entityResult2.field1, entity1.field1);
-              test.equal(entityResult2.field2, entity1.field2);
+              assert.equal(entityResult2.field1, entity1.field1);
+              assert.equal(entityResult2.field2, entity1.field2);
             }
 
-            test.done();
+            done();
           });
         });
       });
     });
-  }
+  });
 });
 
 function generateEntities(count) {
