@@ -391,7 +391,12 @@ suite('queueservice-tests', function () {
               assert.notEqual(messages, null);
               if (messages) {
                 // By default only one is returned
+<<<<<<< HEAD
                 assert.equal(messages.length, 1);
+=======
+                test.equal(messages.length, 1);
+                test.equal(messages[0].messagetext, 'msg1');
+>>>>>>> upstream/dev
               }
 
               queueService.getMessages(queueName, { numofmessages: 2 }, function (error4, messages2) {
