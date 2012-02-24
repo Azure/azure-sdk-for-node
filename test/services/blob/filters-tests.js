@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azureutil = require('../../../lib/util/util');
 var azure = require('../../../lib/azure');
@@ -28,41 +28,40 @@ var blobService;
 
 var testPrefix = 'filter-tests';
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('filter-tests', function () {
+  setup(function (done) {
     blobtestutil.setUpTest(module.exports, testPrefix, function (err, newBlobService) {
       blobService = newBlobService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, done);
+  });
 
-  testNoFilter: function (test) {
+  test('NoFilter', function (done) {
     blobService.getServiceProperties(function (error, serviceProperties) {
-      test.equal(error, null);
-      test.notEqual(serviceProperties, null);
+      assert.equal(error, null);
+      assert.notEqual(serviceProperties, null);
 
-      test.done();
+      done();
     });
-  },
+  });
 
-  testSingleFilter: function (test) {
+  test('SingleFilter', function (done) {
     var eventNumber = 0;
 
     var loggingBlobClient = blobService.withFilter({
       handle: function (requestOptions, nextPreCallback) {
         // pre is first event to occur
-        test.equal(eventNumber, 0);
+        assert.equal(eventNumber, 0);
         eventNumber++;
 
         if (nextPreCallback) {
           nextPreCallback(requestOptions, function (returnObject, finalCallback, nextPostCallback) {
             // post is second event to occur
-            test.equal(eventNumber, 1);
+            assert.equal(eventNumber, 1);
             if (nextPostCallback) {
               nextPostCallback(returnObject);
             }
@@ -75,23 +74,23 @@ module.exports = testCase(
     });
 
     loggingBlobClient.getServiceProperties(function (error, serviceProperties) {
-      test.equal(error, null);
-      test.notEqual(serviceProperties, null);
+      assert.equal(error, null);
+      assert.notEqual(serviceProperties, null);
 
-      test.done();
+      done();
     });
-  },
+  });
 
-  testNestedFilters: function (test) {
+  test('NestedFilters', function (done) {
     var eventNumber = 0;
 
     var loggingBlobClient = blobService.withFilter({
       handle: function (requestOptions, nextPreCallback) {
-        test.equal(eventNumber++, 2);
+        assert.equal(eventNumber++, 2);
 
         if (nextPreCallback) {
           nextPreCallback(requestOptions, function (returnObject, finalCallback, nextPostCallback) {
-            test.equal(eventNumber++, 3);
+            assert.equal(eventNumber++, 3);
 
             if (nextPostCallback) {
               nextPostCallback(returnObject);
@@ -104,11 +103,11 @@ module.exports = testCase(
       }
     }).withFilter({
       handle: function (requestOptions, nextPreCallback) {
-        test.equal(eventNumber++, 1);
+        assert.equal(eventNumber++, 1);
 
         if (nextPreCallback) {
           nextPreCallback(requestOptions, function (returnObject, finalCallback, nextPostCallback) {
-            test.equal(eventNumber++, 4);
+            assert.equal(eventNumber++, 4);
 
             if (nextPostCallback) {
               nextPostCallback(returnObject);
@@ -121,11 +120,11 @@ module.exports = testCase(
       }
     }).withFilter({
       handle: function (requestOptions, nextPreCallback) {
-        test.equal(eventNumber++, 0);
+        assert.equal(eventNumber++, 0);
 
         if (nextPreCallback) {
           nextPreCallback(requestOptions, function (returnObject, finalCallback, nextPostCallback) {
-            test.equal(eventNumber++, 5);
+            assert.equal(eventNumber++, 5);
 
             if (nextPostCallback) {
               nextPostCallback(returnObject);
@@ -139,9 +138,9 @@ module.exports = testCase(
     });
 
     loggingBlobClient.getServiceProperties(function (error) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
-      test.done();
+      done();
     });
-  }
+  });
 });

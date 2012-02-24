@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
@@ -51,428 +51,427 @@ var tablePrefix = 'tableservice';
 
 var testPrefix = 'tableservice-tests';
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('tableservice-tests', function () {
+  setup(function (done) {
     tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
       tableService = newTableService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+  });
 
-  getServiceProperties: function (test) {
+  test('GetServiceProperties', function (done) {
     tableService.getServiceProperties(function (error, serviceProperties) {
-      test.equal(error, null);
-      test.notEqual(serviceProperties, null);
+      assert.equal(error, null);
+      assert.notEqual(serviceProperties, null);
 
       if (serviceProperties) {
-        test.notEqual(serviceProperties.Logging, null);
+        assert.notEqual(serviceProperties.Logging, null);
         if (serviceProperties.Logging) {
-          test.notEqual(serviceProperties.Logging.RetentionPolicy);
-          test.notEqual(serviceProperties.Logging.Version);
+          assert.notEqual(serviceProperties.Logging.RetentionPolicy);
+          assert.notEqual(serviceProperties.Logging.Version);
         }
 
         if (serviceProperties.Metrics) {
-          test.notEqual(serviceProperties.Metrics, null);
-          test.notEqual(serviceProperties.Metrics.RetentionPolicy);
-          test.notEqual(serviceProperties.Metrics.Version);
+          assert.notEqual(serviceProperties.Metrics, null);
+          assert.notEqual(serviceProperties.Metrics.RetentionPolicy);
+          assert.notEqual(serviceProperties.Metrics.Version);
         }
       }
 
-      test.done();
+      done();
     });
-  },
+  });
 
-  testSetServiceProperties: function (test) {
+  test('SetServiceProperties', function (done) {
     tableService.getServiceProperties(function (error, serviceProperties) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       serviceProperties.Logging.Read = true;
       tableService.setServiceProperties(serviceProperties, function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         tableService.getServiceProperties(function (error3, serviceProperties2) {
-          test.equal(error3, null);
-          test.equal(serviceProperties2.Logging.Read, true);
+          assert.equal(error3, null);
+          assert.equal(serviceProperties2.Logging.Read, true);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testCreateTable: function (test) {
+  test('CreateTable', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
-      test.ok(table);
+      assert.ok(table);
       if (table) {
-        test.ok(table.TableName);
-        test.equal(table.TableName, tableName);
+        assert.ok(table.TableName);
+        assert.equal(table.TableName, tableName);
 
-        test.ok(table.id);
-        test.equal(table.id, createResponse.body['id']);
+        assert.ok(table.id);
+        assert.equal(table.id, createResponse.body['id']);
 
-        test.ok(table.link);
-        test.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.ok(table.link);
+        assert.equal(table.link, createResponse.body['link']['@']['href']);
 
-        test.ok(table.updated);
-        test.equal(table.updated, createResponse.body['updated']);
+        assert.ok(table.updated);
+        assert.equal(table.updated, createResponse.body['updated']);
       }
 
       // check that the table exists
       tableService.getTable(tableName, function (existsError, tableResponse, existsResponse) {
-        test.equal(existsError, null);
-        test.notEqual(tableResponse, null);
-        test.ok(existsResponse.isSuccessful);
-        test.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
-        test.done();
+        assert.equal(existsError, null);
+        assert.notEqual(tableResponse, null);
+        assert.ok(existsResponse.isSuccessful);
+        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+        done();
       });
     });
-  },
+  });
 
-  testCreateTableIfNotExists: function (test) {
+  test('CreateTableIfNotExists', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
-      test.ok(table);
+      assert.ok(table);
       if (table) {
-        test.ok(table.TableName);
-        test.equal(table.TableName, tableName);
+        assert.ok(table.TableName);
+        assert.equal(table.TableName, tableName);
 
-        test.ok(table.id);
-        test.equal(table.id, createResponse.body['id']);
+        assert.ok(table.id);
+        assert.equal(table.id, createResponse.body['id']);
 
-        test.ok(table.link);
-        test.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.ok(table.link);
+        assert.equal(table.link, createResponse.body['link']['@']['href']);
 
-        test.ok(table.updated);
-        test.equal(table.updated, createResponse.body['updated']);
+        assert.ok(table.updated);
+        assert.equal(table.updated, createResponse.body['updated']);
       }
 
       // trying to create again with if not exists should be fine
       tableService.createTableIfNotExists(tableName, function (createError2, created2) {
-        test.equal(createError2, null);
-        test.equal(created2, false);
+        assert.equal(createError2, null);
+        assert.equal(created2, false);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testQueryTable: function (test) {
+  test('QueryTable', function (done) {
     var tableName1 = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var tableName2 = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.queryTables(function (queryErrorEmpty, tablesEmpty) {
-      test.equal(queryErrorEmpty, null);
-      test.notEqual(tablesEmpty, null);
+      assert.equal(queryErrorEmpty, null);
+      assert.notEqual(tablesEmpty, null);
       if (tablesEmpty) {
-        test.equal(tablesEmpty.length, 0);
+        assert.equal(tablesEmpty.length, 0);
       }
 
       tableService.createTable(tableName1, function (createError, table1, createResponse) {
-        test.equal(createError, null);
-        test.notEqual(table1, null);
-        test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createError, null);
+        assert.notEqual(table1, null);
+        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         tableService.createTable(tableName2, function (createError2, table2, createResponse2) {
-          test.equal(createError2, null);
-          test.notEqual(table2, null);
-          test.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(createError2, null);
+          assert.notEqual(table2, null);
+          assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
           tableService.queryTables(function (queryError, tables, tablesContinuation, queryResponse) {
-            test.equal(queryError, null);
-            test.notEqual(tables, null);
-            test.ok(queryResponse.isSuccessful);
-            test.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(queryError, null);
+            assert.notEqual(tables, null);
+            assert.ok(queryResponse.isSuccessful);
+            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
             var entries = 0;
             tables.forEach(function (currentTable) {
               if (currentTable.TableName === tableName1) {
                 entries += 1;
-                test.ok(currentTable.id);
-                test.ok(currentTable.link);
-                test.ok(currentTable.updated);
+                assert.ok(currentTable.id);
+                assert.ok(currentTable.link);
+                assert.ok(currentTable.updated);
               }
               else if (currentTable.TableName === tableName2) {
                 entries += 2;
-                test.ok(currentTable.id);
-                test.ok(currentTable.link);
-                test.ok(currentTable.updated);
+                assert.ok(currentTable.id);
+                assert.ok(currentTable.link);
+                assert.ok(currentTable.updated);
               }
             });
 
-            test.equal(entries, 3);
+            assert.equal(entries, 3);
 
-            test.done();
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testDeleteTable: function (test) {
+  test('DeleteTable', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       tableService.deleteTable(tableName, function (deleteError, deleted, deleteResponse) {
-        test.equal(deleteError, null);
-        test.equal(deleted, true);
-        test.ok(deleteResponse.isSuccessful);
-        test.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
-        test.done();
+        assert.equal(deleteError, null);
+        assert.equal(deleted, true);
+        assert.ok(deleteResponse.isSuccessful);
+        assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+        done();
       });
     });
-  },
+  });
 
-  testInsertEntity: function (test) {
+  test('InsertEntity', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
-        test.equal(insertError, null);
-        test.notEqual(insertEntity, null);
-        test.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertError, null);
+        assert.notEqual(insertEntity, null);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         tableService.insertEntity(tableName, entity2, function (insertError2, insertEntity2, insertResponse2) {
-          test.equal(insertError2, null);
-          test.notEqual(insertEntity2, null);
-          test.equal(insertResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(insertError2, null);
+          assert.notEqual(insertEntity2, null);
+          assert.equal(insertResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
           var tableQuery = TableQuery.select()
             .from(tableName);
 
           tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
-            test.equal(queryError, null);
-            test.notEqual(entries, null);
-            test.ok(queryResponse.isSuccessful);
-            test.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(queryError, null);
+            assert.notEqual(entries, null);
+            assert.ok(queryResponse.isSuccessful);
+            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
-            test.ok(entries);
+            assert.ok(entries);
             var entities = 0;
             entries.forEach(function (currentEntry) {
               if (currentEntry['PartitionKey'] === entity1['PartitionKey'] && currentEntry['RowKey'] === entity1['RowKey']) {
                 entities += 1;
 
-                test.ok(currentEntry['etag']);
-                test.equal(currentEntry['field'], entity1['field']);
-                test.equal(currentEntry['otherfield'], entity1['otherfield']);
-                test.equal(currentEntry['otherprops'], entity1['otherprops']);
+                assert.ok(currentEntry['etag']);
+                assert.equal(currentEntry['field'], entity1['field']);
+                assert.equal(currentEntry['otherfield'], entity1['otherfield']);
+                assert.equal(currentEntry['otherprops'], entity1['otherprops']);
               }
               else if (currentEntry['PartitionKey'] === entity2['PartitionKey'] && currentEntry['RowKey'] === entity2['RowKey']) {
                 entities += 2;
 
-                test.ok(currentEntry['etag']);
-                test.equal(currentEntry['boolValueTrue'], entity2['boolValueTrue']['#']);
-                test.equal(currentEntry['boolValueFalse'], entity2['boolValueFalse']['#']);
-                test.equal(currentEntry['intValue'], entity2['intValue']['#']);
+                assert.ok(currentEntry['etag']);
+                assert.equal(currentEntry['boolValueTrue'], entity2['boolValueTrue']['#']);
+                assert.equal(currentEntry['boolValueFalse'], entity2['boolValueFalse']['#']);
+                assert.equal(currentEntry['intValue'], entity2['intValue']['#']);
 
                 var date1 = new Date(currentEntry['dateValue']);
                 var date2 = new Date(entity2['dateValue']['#']);
-                test.ok(date1, date2);
+                assert.ok(date1, date2);
               }
             });
 
-            test.equal(entities, 3);
+            assert.equal(entities, 3);
 
             tableQuery = TableQuery.select()
               .from(tableName)
               .whereKeys(entity1.PartitionKey, entity1.RowKey);
 
             tableService.queryEntities(tableQuery, function (queryError2, tableEntries2, tableEntriesContinuation2, queryResponse2) {
-              test.equal(queryError2, null);
-              test.ok(queryResponse2.isSuccessful);
-              test.equal(queryResponse2.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+              assert.equal(queryError2, null);
+              assert.ok(queryResponse2.isSuccessful);
+              assert.equal(queryResponse2.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
-              test.ok(tableEntries2);
+              assert.ok(tableEntries2);
               var newentities = 0;
               tableEntries2.forEach(function (newcurrentEntry) {
 
                 if (newcurrentEntry['PartitionKey'] === entity1['PartitionKey'] && newcurrentEntry['RowKey'] === entity1['RowKey']) {
                   newentities += 1;
 
-                  test.ok(newcurrentEntry['etag']);
-                  test.equal(newcurrentEntry['field'], entity1['field']);
-                  test.equal(newcurrentEntry['otherfield'], entity1['otherfield']);
-                  test.equal(newcurrentEntry['otherprops'], entity1['otherprops']);
+                  assert.ok(newcurrentEntry['etag']);
+                  assert.equal(newcurrentEntry['field'], entity1['field']);
+                  assert.equal(newcurrentEntry['otherfield'], entity1['otherfield']);
+                  assert.equal(newcurrentEntry['otherprops'], entity1['otherprops']);
                 }
               });
 
-              test.equal(newentities, 1);
+              assert.equal(newentities, 1);
 
-              test.done();
+              done();
             });
           });
         });
       });
     });
-  },
+  });
 
-  testInsertEntityWithHtmlSpecialChars: function (test) {
+  test('InsertEntityWithHtmlSpecialChars', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       var newEntity = entity1;
       newEntity['field'] = 'XML <test>'; // this should work without breaking the XML
 
       tableService.insertEntity(tableName, newEntity, function (insertError, insertEntity, insertResponse) {
-        test.equal(insertError, null);
-        test.notEqual(insertEntity, null);
-        test.ok(insertResponse.isSuccessful);
-        test.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertError, null);
+        assert.notEqual(insertEntity, null);
+        assert.ok(insertResponse.isSuccessful);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         var tableQuery = TableQuery.select()
           .from(tableName)
           .whereKeys(newEntity.PartitionKey, newEntity.RowKey);
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
-          test.equal(queryError, null);
-          test.notEqual(entries, null);
-          test.ok(queryResponse.isSuccessful);
-          test.ok(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+          assert.equal(queryError, null);
+          assert.notEqual(entries, null);
+          assert.ok(queryResponse.isSuccessful);
+          assert.ok(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
-          test.equal(entries[0]['field'], 'XML <test>');
-          test.done();
+          assert.equal(entries[0]['field'], 'XML <test>');
+          done();
         });
       });
     });
-  },
+  });
 
-  testDeleteEntityWithoutEtag: function (test) {
+  test('DeleteEntityWithoutEtag', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
-        test.equal(insertError, null);
-        test.notEqual(insertEntity, null);
-        test.ok(insertResponse.isSuccessful);
-        test.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertError, null);
+        assert.notEqual(insertEntity, null);
+        assert.ok(insertResponse.isSuccessful);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         tableService.deleteEntity(tableName, entity1, false, function (deleteError, deleted, deleteResponse) {
-          test.equal(deleteError, null);
-          test.equal(deleted, true);
-          test.ok(deleteResponse.isSuccessful);
-          test.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(deleteError, null);
+          assert.equal(deleted, true);
+          assert.ok(deleteResponse.isSuccessful);
+          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testDeleteEntityWithEtag: function (test) {
+  test('DeleteEntityWithEtag', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
-        test.equal(insertError, null);
-        test.notEqual(insertEntity, null);
-        test.ok(insertResponse.isSuccessful);
-        test.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertError, null);
+        assert.notEqual(insertEntity, null);
+        assert.ok(insertResponse.isSuccessful);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         // Set a fake old etag
         entity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
 
         // Delete forcing etag to be verified
         tableService.deleteEntity(tableName, entity1, { checkEtag: true }, function (deleteError, deleted, deleteResponse) {
-          test.equal(deleteError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
-          test.equal(deleted, false);
-          test.equal(deleteResponse.isSuccessful, false);
-          test.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(deleteError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
+          assert.equal(deleted, false);
+          assert.equal(deleteResponse.isSuccessful, false);
+          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testUpdateEntityWithoutEtag: function (test) {
+  test('UpdateEntityWithoutEtag', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
-        test.equal(insertError, null);
-        test.notEqual(insertEntity, null);
-        test.ok(insertResponse.isSuccessful);
-        test.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertError, null);
+        assert.notEqual(insertEntity, null);
+        assert.ok(insertResponse.isSuccessful);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
         var originalEtag = newEntity1['etag'];
 
         newEntity1['otherfield'] = newField;
 
         tableService.updateEntity(tableName, newEntity1, false, function (updateError2, updateEntity2, updateResponse2) {
-          test.equal(updateError2, null);
-          test.notEqual(updateEntity2, null);
-          test.ok(updateResponse2.isSuccessful);
-          test.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
-          test.notEqual(newEntity1.etag, originalEtag);
+          assert.equal(updateError2, null);
+          assert.notEqual(updateEntity2, null);
+          assert.ok(updateResponse2.isSuccessful);
+          assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.notEqual(newEntity1.etag, originalEtag);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testUpdateEntityWithEtag: function (test) {
+  test('UpdateEntityWithEtag', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
-        test.equal(insertError, null);
-        test.notEqual(insertEntity, null);
-        test.ok(insertResponse.isSuccessful);
-        test.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertError, null);
+        assert.notEqual(insertEntity, null);
+        assert.ok(insertResponse.isSuccessful);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         newEntity1['otherfield'] = newField;
 
@@ -480,64 +479,64 @@ module.exports = testCase(
         newEntity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
 
         tableService.updateEntity(tableName, newEntity1, { checkEtag: true }, function (updateError, updateEntity, updateResponse) {
-          test.equal(updateError.code, StorageErrorCodeStrings.CONDITION_NOT_MET);
-          test.equal(updateEntity, null);
-          test.equal(updateResponse.isSuccessful, false);
-          test.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(updateError.code, StorageErrorCodeStrings.CONDITION_NOT_MET);
+          assert.equal(updateEntity, null);
+          assert.equal(updateResponse.isSuccessful, false);
+          assert.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testMergeEntityWithoutEtag: function (test) {
+  test('MergeEntityWithoutEtag', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
-        test.equal(insertError, null);
-        test.notEqual(insertEntity, null);
-        test.ok(insertResponse.isSuccessful);
-        test.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertError, null);
+        assert.notEqual(insertEntity, null);
+        assert.ok(insertResponse.isSuccessful);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         insertEntity['otherfield'] = newField;
 
         tableService.mergeEntity(tableName, newEntity1, false, function (mergeError, mergeEntity, mergeResponse) {
-          test.equal(mergeError, null);
-          test.notEqual(mergeEntity, null);
-          test.ok(mergeResponse.isSuccessful);
-          test.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(mergeError, null);
+          assert.notEqual(mergeEntity, null);
+          assert.ok(mergeResponse.isSuccessful);
+          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testMergeEntityWithEtag: function (test) {
+  test('MergeEntityWithEtag', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
-        test.equal(insertError, null);
-        test.notEqual(insertEntity, null);
-        test.ok(insertResponse.isSuccessful);
-        test.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertError, null);
+        assert.notEqual(insertEntity, null);
+        assert.ok(insertResponse.isSuccessful);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         newEntity1['otherfield'] = newField;
 
@@ -545,22 +544,22 @@ module.exports = testCase(
         newEntity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
 
         tableService.mergeEntity(tableName, newEntity1, { checkEtag: true }, function (mergeError, mergeEntity, mergeResponse) {
-          test.equal(mergeError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
-          test.equal(mergeEntity, null);
-          test.equal(mergeResponse.isSuccessful, false);
-          test.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(mergeError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
+          assert.equal(mergeEntity, null);
+          assert.equal(mergeResponse.isSuccessful, false);
+          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testInsertOrReplaceEntity: function (test) {
+  test('InsertOrReplaceEntity', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (error) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       var entity = {
         PartitionKey: '1',
@@ -571,38 +570,38 @@ module.exports = testCase(
 
       // Should perform an insert
       tableService.insertOrReplaceEntity(tableName, entity, function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         // change value of field2
         entity.field2 = 2;
 
         // should perform an update
         tableService.insertOrReplaceEntity(tableName, entity, function (error3) {
-          test.equal(error3, null);
+          assert.equal(error3, null);
 
           tableService.queryEntity(tableName, entity.PartitionKey, entity.RowKey, function (error4, entityResult) {
-            test.equal(error4, null);
+            assert.equal(error4, null);
 
-            test.notEqual(entityResult, null);
+            assert.notEqual(entityResult, null);
             if (entityResult) {
-              test.equal(entityResult.PartitionKey, entity.PartitionKey);
-              test.equal(entityResult.RowKey, entity.RowKey);
-              test.equal(entityResult.field1, entity.field1);
-              test.equal(entityResult.field2, entity.field2);
+              assert.equal(entityResult.PartitionKey, entity.PartitionKey);
+              assert.equal(entityResult.RowKey, entity.RowKey);
+              assert.equal(entityResult.field1, entity.field1);
+              assert.equal(entityResult.field2, entity.field2);
             }
 
-            test.done();
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testInsertOrMerge: function (test) {
+  test('InsertOrMerge', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (error) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       var entity = {
         PartitionKey: '1',
@@ -613,39 +612,39 @@ module.exports = testCase(
 
       // Should perform an insert
       tableService.insertOrMergeEntity(tableName, entity, function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         // Add a new field
         entity.field3 = 2;
 
         // should perform a merge
         tableService.insertOrMergeEntity(tableName, entity, function (error3) {
-          test.equal(error3, null);
+          assert.equal(error3, null);
 
           tableService.queryEntity(tableName, entity.PartitionKey, entity.RowKey, function (error4, entityResult) {
-            test.equal(error4, null);
+            assert.equal(error4, null);
 
-            test.notEqual(entityResult, null);
+            assert.notEqual(entityResult, null);
             if (entityResult) {
-              test.equal(entityResult.PartitionKey, entity.PartitionKey);
-              test.equal(entityResult.RowKey, entity.RowKey);
-              test.equal(entityResult.field1, entity.field1);
-              test.equal(entityResult.field2, entity.field2);
-              test.equal(entityResult.field3, entity.field3);
+              assert.equal(entityResult.PartitionKey, entity.PartitionKey);
+              assert.equal(entityResult.RowKey, entity.RowKey);
+              assert.equal(entityResult.field1, entity.field1);
+              assert.equal(entityResult.field2, entity.field2);
+              assert.equal(entityResult.field3, entity.field3);
             }
 
-            test.done();
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testInsertEntityEmptyField: function (test) {
+  test('InsertEntityEmptyField', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (error) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       var entity = {
         PartitionKey: '1',
@@ -658,24 +657,24 @@ module.exports = testCase(
 
       // Should perform an insert
       tableService.insertOrMergeEntity(tableName, entity, function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         tableService.queryEntity(tableName, entity.PartitionKey, entity.RowKey, function (error4, entityResult) {
-          test.equal(error4, null);
+          assert.equal(error4, null);
 
-          test.notEqual(entityResult, null);
+          assert.notEqual(entityResult, null);
           if (entityResult) {
-            test.equal(entityResult.PartitionKey, entity.PartitionKey);
-            test.equal(entityResult.RowKey, entity.RowKey);
-            test.equal(entityResult.field1, entity.field1);
-            test.equal(entityResult.emptyField1, entity.emptyField1);
-            test.equal(entityResult.emptyField2, entity.emptyField2);
-            test.equal(entityResult.nonEmptyField3, entity.nonEmptyField3);
+            assert.equal(entityResult.PartitionKey, entity.PartitionKey);
+            assert.equal(entityResult.RowKey, entity.RowKey);
+            assert.equal(entityResult.field1, entity.field1);
+            assert.equal(entityResult.emptyField1, entity.emptyField1);
+            assert.equal(entityResult.emptyField2, entity.emptyField2);
+            assert.equal(entityResult.nonEmptyField3, entity.nonEmptyField3);
           }
 
-          test.done();
+          done();
         });
       });
     });
-  }
+  });
 });

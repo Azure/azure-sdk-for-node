@@ -78,11 +78,11 @@ exports.tearDownTest = function (testObject, serviceBusService, testPrefix, call
 
 var checkValue = function( test, value, optionValue) {
   if (optionValue) {
-    test.equal(value, optionValue);
+    assert.equal(value, optionValue);
   }
 };
 
-exports.validateQueue = function( testObject, queueName, queueOptions, queue) {
+exports.validateQueue = function(testObject, queueName, queueOptions, queue) {
   testObject.notEqual(queue, null);
   if (queue) {
     testObject.equal(queue.QueueName, queueName);
@@ -94,13 +94,13 @@ exports.validateQueue = function( testObject, queueName, queueOptions, queue) {
     checkValue(testObject, queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow);
     checkValue(testObject, queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes);
   };
+};
 
-  exports.checkNullParameter = function( callback) {
-    assert.throws( 
-      function() {
+exports.checkNullParameter = function (callback) {
+  assert.throws(
+      function () {
         callback();
-      }, 
+      },
       /name must be a non empty string/
     );
-  };
 };

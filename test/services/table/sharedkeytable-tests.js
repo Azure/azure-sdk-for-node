@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
@@ -50,52 +50,51 @@ var tablePrefix = 'sharedkeytable';
 
 var testPrefix = 'sharedkeytable-tests';
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('sharedkeytable-tests', function () {
+  setup(function (done) {
     tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
       tableService = newTableService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+  });
 
-  testCreateTable: function (test) {
+  test('CreateTable', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.authenticationProvider = new SharedKeyLiteTable(tableService.storageAccount, tableService.storageAccessKey);
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
-      test.ok(table);
+      assert.ok(table);
       if (table) {
-        test.ok(table.TableName);
-        test.equal(table.TableName, tableName);
+        assert.ok(table.TableName);
+        assert.equal(table.TableName, tableName);
 
-        test.ok(table.id);
-        test.equal(table.id, createResponse.body['id']);
+        assert.ok(table.id);
+        assert.equal(table.id, createResponse.body['id']);
 
-        test.ok(table.link);
-        test.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.ok(table.link);
+        assert.equal(table.link, createResponse.body['link']['@']['href']);
 
-        test.ok(table.updated);
-        test.equal(table.updated, createResponse.body['updated']);
+        assert.ok(table.updated);
+        assert.equal(table.updated, createResponse.body['updated']);
       }
 
       // check that the table exists
       tableService.getTable(tableName, function (existsError, tableResponse, existsResponse) {
-        test.equal(existsError, null);
-        test.notEqual(tableResponse, null);
-        test.ok(existsResponse.isSuccessful);
-        test.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
-        test.done();
+        assert.equal(existsError, null);
+        assert.notEqual(tableResponse, null);
+        assert.ok(existsResponse.isSuccessful);
+        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+        done();
       });
     });
-  }
+  });
 });

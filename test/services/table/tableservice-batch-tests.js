@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
@@ -32,26 +32,25 @@ var tablePrefix = 'tablebatch';
 
 var testPrefix = 'tableservice-batch-tests';
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('tableservice-batch-tests', function () {
+  setup(function (done) {
     tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
       tableService = newTableService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, done);
+  });
 
-  testQueryEntities_All: function (test) {
+  test('QueryEntities_All', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
 
       var entities = generateEntities(20);
 
@@ -61,33 +60,33 @@ module.exports = testCase(
       });
 
       tableService.commitBatch(function (batchError, performBatchOperationResponses, batchResponse) {
-        test.equal(batchError, null);
-        test.ok(batchResponse.isSuccessful);
+        assert.equal(batchError, null);
+        assert.ok(batchResponse.isSuccessful);
 
         var tableQuery = TableQuery.select()
           .from(tableName);
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
-          test.equal(queryError, null);
-          test.ok(queryResponse.isSuccessful);
+          assert.equal(queryError, null);
+          assert.ok(queryResponse.isSuccessful);
 
           if (entries) {
-            test.equal(entries.length, 20);
+            assert.equal(entries.length, 20);
           }
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testQueryEntities_Single1: function (test) {
+  test('QueryEntities_Single1', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
 
       var entities = generateEntities(20);
 
@@ -97,34 +96,34 @@ module.exports = testCase(
       });
 
       tableService.commitBatch(function (batchError, performBatchOperationResponses, batchResponse) {
-        test.equal(batchError, null);
-        test.ok(batchResponse.isSuccessful);
+        assert.equal(batchError, null);
+        assert.ok(batchResponse.isSuccessful);
 
         var tableQuery = TableQuery.select()
           .from(tableName)
           .whereKeys(entities[0].PartitionKey, entities[0].RowKey);
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
-          test.equal(queryError, null);
-          test.ok(queryResponse.isSuccessful);
+          assert.equal(queryError, null);
+          assert.ok(queryResponse.isSuccessful);
 
           if (entries) {
-            test.equal(entries.length, 1);
+            assert.equal(entries.length, 1);
           }
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testQueryEntities_Single2: function (test) {
+  test('QueryEntities_Single2', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
 
       var entities = generateEntities(20);
 
@@ -134,29 +133,29 @@ module.exports = testCase(
       });
 
       tableService.commitBatch(function (batchError, performBatchOperationResponses, batchResponse) {
-        test.equal(batchError, null);
-        test.ok(batchResponse.isSuccessful);
+        assert.equal(batchError, null);
+        assert.ok(batchResponse.isSuccessful);
 
         tableService.queryEntity(tableName, entities[0].PartitionKey, entities[0].RowKey, function (queryError, entry, queryResponse) {
-          test.equal(queryError, null);
-          test.ok(queryResponse.isSuccessful);
-          test.notEqual(entry, null);
-          test.equal(entry.PartitionKey, entities[0].PartitionKey);
-          test.equal(entry.RowKey, entities[0].RowKey);
+          assert.equal(queryError, null);
+          assert.ok(queryResponse.isSuccessful);
+          assert.notEqual(entry, null);
+          assert.equal(entry.PartitionKey, entities[0].PartitionKey);
+          assert.equal(entry.RowKey, entities[0].RowKey);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testRetrieveEntities_TableQuery1: function (test) {
+  test('RetrieveEntities_TableQuery1', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
 
       var entities = generateEntities(20);
 
@@ -166,8 +165,8 @@ module.exports = testCase(
       });
 
       tableService.commitBatch(function (batchError, performBatchOperationResponses, batchResponse) {
-        test.equal(batchError, null);
-        test.ok(batchResponse.isSuccessful);
+        assert.equal(batchError, null);
+        assert.ok(batchResponse.isSuccessful);
 
         var tableQuery = TableQuery.select()
           .from(tableName)
@@ -175,32 +174,32 @@ module.exports = testCase(
           .and('RowKey eq ?', entities[0].RowKey);
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
-          test.equal(queryError, null);
-          test.notEqual(entries, null);
-          test.ok(queryResponse.isSuccessful);
+          assert.equal(queryError, null);
+          assert.notEqual(entries, null);
+          assert.ok(queryResponse.isSuccessful);
 
           if (entries) {
-            test.equal(entries.length, 1);
+            assert.equal(entries.length, 1);
             if (entries[0]) {
-              test.equal(entries[0].address, entities[0].address);
-              test.equal(entries[0].RowKey, entities[0].RowKey);
-              test.equal(entries[0].PartitionKey, entities[0].PartitionKey);
+              assert.equal(entries[0].address, entities[0].address);
+              assert.equal(entries[0].RowKey, entities[0].RowKey);
+              assert.equal(entries[0].PartitionKey, entities[0].PartitionKey);
             }
           }
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testRetrieveEntities_TableQuery2: function (test) {
+  test('RetrieveEntities_TableQuery2', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
-      test.ok(createResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
+      assert.ok(createResponse.isSuccessful);
 
       var entities = generateEntities(20);
 
@@ -216,11 +215,11 @@ module.exports = testCase(
       });
 
       tableService.commitBatch(function (batchError, performBatchOperationResponses, batchResponse) {
-        test.equal(batchError, null);
+        assert.equal(batchError, null);
 
-        test.notEqual(batchResponse, null);
+        assert.notEqual(batchResponse, null);
         if (batchResponse) {
-          test.ok(batchResponse.isSuccessful);
+          assert.ok(batchResponse.isSuccessful);
         }
 
         var tableQuery = TableQuery.select()
@@ -229,39 +228,39 @@ module.exports = testCase(
           .and('PartitionKey eq ?', entities[0].PartitionKey);
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
-          test.equal(queryError, null);
-          test.notEqual(entries, null);
+          assert.equal(queryError, null);
+          assert.notEqual(entries, null);
           if (entries) {
-            test.equal(entries.length, 1);
+            assert.equal(entries.length, 1);
 
             if (entries[0]) {
-              test.equal(entries[0].address, entities[0].address);
-              test.equal(entries[0].RowKey, entities[0].RowKey);
-              test.equal(entries[0].PartitionKey, entities[0].PartitionKey);
+              assert.equal(entries[0].address, entities[0].address);
+              assert.equal(entries[0].RowKey, entities[0].RowKey);
+              assert.equal(entries[0].PartitionKey, entities[0].PartitionKey);
             }
           }
 
-          test.notEqual(queryResponse, null);
+          assert.notEqual(queryResponse, null);
           if (queryResponse) {
-            test.ok(queryResponse.isSuccessful);
+            assert.ok(queryResponse.isSuccessful);
           }
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testRetrieveEntities_Top: function (test) {
+  test('RetrieveEntities_Top', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
 
-      test.notEqual(createResponse, null);
+      assert.notEqual(createResponse, null);
       if (createResponse) {
-        test.ok(createResponse.isSuccessful);
+        assert.ok(createResponse.isSuccessful);
       }
 
       var entities = generateEntities(20);
@@ -272,11 +271,11 @@ module.exports = testCase(
       });
 
       tableService.commitBatch(function (batchError, performBatchOperationResponses, batchResponse) {
-        test.equal(batchError, null);
+        assert.equal(batchError, null);
 
-        test.notEqual(batchResponse, null);
+        assert.notEqual(batchResponse, null);
         if (batchResponse) {
-          test.ok(batchResponse.isSuccessful);
+          assert.ok(batchResponse.isSuccessful);
         }
 
         var tableQuery = TableQuery.select()
@@ -284,34 +283,34 @@ module.exports = testCase(
           .top(4);
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
-          test.equal(queryError, null);
+          assert.equal(queryError, null);
 
-          test.notEqual(entries, null);
+          assert.notEqual(entries, null);
           if (entries) {
-            test.equal(entries.length, 4);
+            assert.equal(entries.length, 4);
           }
 
-          test.notEqual(queryResponse, null);
+          assert.notEqual(queryResponse, null);
           if (queryResponse) {
-            test.ok(queryResponse.isSuccessful);
+            assert.ok(queryResponse.isSuccessful);
           }
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testFailBatch: function (test) {
+  test('FailBatch', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(table, null);
+      assert.equal(createError, null);
+      assert.notEqual(table, null);
 
-      test.notEqual(createResponse, null);
+      assert.notEqual(createResponse, null);
       if (createResponse) {
-        test.ok(createResponse.isSuccessful);
+        assert.ok(createResponse.isSuccessful);
       }
 
       var simpleEntity = {
@@ -329,22 +328,22 @@ module.exports = testCase(
       tableService.updateEntity(tableName, simpleEntity);
 
       tableService.commitBatch(function (batchError, performBatchOperationResponses, batchResponse) {
-        test.equal(batchError, null);
+        assert.equal(batchError, null);
 
-        test.notEqual(performBatchOperationResponses, null);
-        test.equal(performBatchOperationResponses.length, 1);
-        test.notEqual(performBatchOperationResponses[0].error, null);
-        test.equal(performBatchOperationResponses[0].error.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
+        assert.notEqual(performBatchOperationResponses, null);
+        assert.equal(performBatchOperationResponses.length, 1);
+        assert.notEqual(performBatchOperationResponses[0].error, null);
+        assert.equal(performBatchOperationResponses[0].error.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
 
-        test.notEqual(batchResponse, null);
+        assert.notEqual(batchResponse, null);
         if (batchResponse) {
-          test.ok(batchResponse.isSuccessful);
+          assert.ok(batchResponse.isSuccessful);
         }
 
-        test.done();
+        done();
       });
     });
-  }
+  });
 });
 
 function generateEntities(count) {

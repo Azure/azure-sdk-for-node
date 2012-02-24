@@ -18,7 +18,6 @@ services/table/tablequery-tests.js
 services/table/tableservice-batch-tests.js
 services/table/tableservice-tablequery-tests.js
 services/table/tableservice-tests.js
-util/base64-tests.js
 util/iso8061date-tests.js
 util/util-tests.js
 azure-tests.js
