@@ -15,29 +15,29 @@
 
 var assert = require('assert');
 
-var azure = require("../../lib/azure");
+var azure = require("../../../lib/azure");
 
-var testutil = require('../util/util');
-var tabletestutil = require('../util/table-test-utils');
+var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
 
-var ServiceClient = require('../../lib/services/core/serviceclient');
-var ExponentialRetryPolicyFilter = require('../../lib/common/exponentialretrypolicyfilter');
-var Constants = require('../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var LinearRetryPolicyFilter = azure.LinearRetryPolicyFilter;
+var Constants = azure.Constants;
 
 var tableService;
-var exponentialRetryPolicyFilter;
+var linearRetryPolicyFilter;
 
 var tableNames = [];
-var tablePrefix = 'expretry';
+var tablePrefix = 'linearretry';
 
-var testPrefix = 'exponentialretrypolicyfilter-tests';
+var testPrefix = 'linearretrypolicyfilter-tests';
 var numberTests = 3;
 
-suite('exponentialretrypolicyfilter-tests', function () {
+suite('linearretrypolicyfilter-tests', function () {
   setup(function (done) {
     tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
-      tableService = newTableService.withFilter(exponentialRetryPolicyFilter);
+      linearRetryPolicyFilter = new LinearRetryPolicyFilter();
+      tableService = newTableService.withFilter(linearRetryPolicyFilter);
       done();
     });
   });
@@ -52,8 +52,8 @@ suite('exponentialretrypolicyfilter-tests', function () {
     var retryCount = 3;
     var retryInterval = 30;
 
-    exponentialRetryPolicyFilter.retryCount = retryCount;
-    exponentialRetryPolicyFilter.retryInterval = retryInterval;
+    linearRetryPolicyFilter.retryCount = retryCount;
+    linearRetryPolicyFilter.retryInterval = retryInterval;
 
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
@@ -73,22 +73,20 @@ suite('exponentialretrypolicyfilter-tests', function () {
 
     var retryCount = 3;
 
-    // 30 seconds as starting time between attempts should be enough to give enough time for the
+    // 30 seconds between attempts should be enough to give enough time for the
     // table creation to succeed after a deletion.
     var retryInterval = 30000;
 
     if (tabletestutil.isMocked && !tabletestutil.isRecording) {
       // if a playback on the mockserver is running, retryinterval can be lower
       retryInterval = 30;
-
-      exponentialRetryPolicyFilter.minRetryInterval = 30;
     }
 
-    exponentialRetryPolicyFilter.retryCount = retryCount;
-    exponentialRetryPolicyFilter.retryInterval = retryInterval;
+    linearRetryPolicyFilter.retryCount = retryCount;
+    linearRetryPolicyFilter.retryInterval = retryInterval;
 
     // replace shouldRetry to skip return codes verification and retry on 409 (deleting)
-    exponentialRetryPolicyFilter.shouldRetry = function (statusCode, retryData) {
+    linearRetryPolicyFilter.shouldRetry = function (statusCode, retryData) {
       var currentCount = (retryData && retryData.retryCount) ? retryData.retryCount : 0;
 
       return (currentCount < this.retryCount);
@@ -111,14 +109,14 @@ suite('exponentialretrypolicyfilter-tests', function () {
     });
   });
 
-  test('GetTablePassOnGetTable', function (done) {
+  test('RetryPassOnGetTable', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     var retryCount = 3;
     var retryInterval = 30;
 
-    exponentialRetryPolicyFilter.retryCount = retryCount;
-    exponentialRetryPolicyFilter.retryInterval = retryInterval;
+    linearRetryPolicyFilter.retryCount = retryCount;
+    linearRetryPolicyFilter.retryInterval = retryInterval;
 
     tableService.getTable(tableName, function (err, table) {
       assert.equal(err.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
