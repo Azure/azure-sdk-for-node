@@ -1110,7 +1110,8 @@ suite('blobservice-tests', function () {
           assert.equal(error3, null);
 
           var blockList = {
-            LatestBlocks: ['id1', 'id2']
+            LatestBlocks: ['id1'],
+            UncommittedBlocks: ['id2']
           };
 
           blobService.commitBlobBlocks(containerName, blobName, blockList, function (error4) {
@@ -1125,7 +1126,7 @@ suite('blobservice-tests', function () {
               done();
             });
           });
-        });
+        }); 
       });
     });
   });
