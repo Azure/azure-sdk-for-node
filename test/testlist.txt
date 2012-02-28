@@ -19,4 +19,7 @@ services/table/tableservice-tests.js
 util/atomhandler-tests.js
 util/iso8061date-tests.js
 util/util-tests.js
+util/certificates/der.decoder.js
+util/certificates/der.decoder.pfx.root.js
+util/certificates/pkcs.filedecoder.js
 azure-tests.js
