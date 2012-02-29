@@ -1,3 +1,9 @@
+util/certificates/der.decoder-tests.js
+util/certificates/der.decoder.pfx.root-tests.js
+util/certificates/pkcs.filedecoder-tests.js
+waz/waz.help-tests.js
+waz/waz.account-tests.js
+waz/waz.site-tests.js
 services/blob/blobservice-tests.js
 services/blob/sharedaccesssignature-tests.js
 services/blob/sharedkey-tests.js
@@ -19,7 +25,4 @@ services/table/tableservice-tests.js
 util/atomhandler-tests.js
 util/iso8061date-tests.js
 util/util-tests.js
-util/certificates/der.decoder.js
-util/certificates/der.decoder.pfx.root.js
-util/certificates/pkcs.filedecoder.js
 azure-tests.js
