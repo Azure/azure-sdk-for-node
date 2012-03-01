@@ -102,6 +102,87 @@
     <Content Include="..\..\examples\samples\snapshotsample.js">
       <Link>examples\samples\snapshotsample.js</Link>
     </Content>
+    <Content Include="..\..\examples\servicemanagement\testadddatadiskbyblob.js">
+      <Link>examples\servicemanagement\testadddatadiskbyblob.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testadddatadiskbyname.js">
+      <Link>examples\servicemanagement\testadddatadiskbyname.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testadddatadiskempty.js">
+      <Link>examples\servicemanagement\testadddatadiskempty.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testaddrole.js">
+      <Link>examples\servicemanagement\testaddrole.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testcapturerole.js">
+      <Link>examples\servicemanagement\testcapturerole.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testcommon.js">
+      <Link>examples\servicemanagement\testcommon.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testcreatedeployment.js">
+      <Link>examples\servicemanagement\testcreatedeployment.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testcreatehostedservice.js">
+      <Link>examples\servicemanagement\testcreatehostedservice.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testcreateosimage.js">
+      <Link>examples\servicemanagement\testcreateosimage.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testdeletedeployment.js">
+      <Link>examples\servicemanagement\testdeletedeployment.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testdeletehostedservice.js">
+      <Link>examples\servicemanagement\testdeletehostedservice.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testdeleteosimage.js">
+      <Link>examples\servicemanagement\testdeleteosimage.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testdeleterole.js">
+      <Link>examples\servicemanagement\testdeleterole.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testgetdeployment.js">
+      <Link>examples\servicemanagement\testgetdeployment.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testgetdisk.js">
+      <Link>examples\servicemanagement\testgetdisk.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testgethostedservice.js">
+      <Link>examples\servicemanagement\testgethostedservice.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testgethostedservicewithproxy.js">
+      <Link>examples\servicemanagement\testgethostedservicewithproxy.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testgetoperationstatus.js">
+      <Link>examples\servicemanagement\testgetoperationstatus.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testgetosimage.js">
+      <Link>examples\servicemanagement\testgetosimage.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testgetrole.js">
+      <Link>examples\servicemanagement\testgetrole.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testgetstorageaccountkeys.js">
+      <Link>examples\servicemanagement\testgetstorageaccountkeys.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testlistdatadisk.js">
+      <Link>examples\servicemanagement\testlistdatadisk.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testlisthostedservices.js">
+      <Link>examples\servicemanagement\testlisthostedservices.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testmodifydatadisk.js">
+      <Link>examples\servicemanagement\testmodifydatadisk.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testmodifyrole.js">
+      <Link>examples\servicemanagement\testmodifyrole.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testremovedatadisk.js">
+      <Link>examples\servicemanagement\testremovedatadisk.js</Link>
+    </Content>
+    <Content Include="..\..\examples\servicemanagement\testshutdownrestart.js">
+      <Link>examples\servicemanagement\testshutdownrestart.js</Link>
+    </Content>
     <Content Include="..\..\examples\tasklist\home.js">
       <Link>examples\tasklist\home.js</Link>
     </Content>
@@ -168,6 +249,9 @@
     <Content Include="..\..\lib\services\core\serviceclient.js">
       <Link>lib\services\core\serviceclient.js</Link>
     </Content>
+    <Content Include="..\..\lib\services\core\servicemanagementclient.js">
+      <Link>lib\services\core\servicemanagementclient.js</Link>
+    </Content>
     <Content Include="..\..\lib\services\core\storageserviceclient.js">
       <Link>lib\services\core\storageserviceclient.js</Link>
     </Content>
@@ -215,6 +299,12 @@
     </Content>
     <Content Include="..\..\lib\services\serviceBus\wraptokenmanager.js">
       <Link>lib\services\serviceBus\wraptokenmanager.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\servicemanagement\servicemanagementservice.js">
+      <Link>lib\services\servicemanagement\servicemanagementservice.js</Link>
+    </Content>
+    <Content Include="..\..\lib\services\servicemanagement\models\servicemanagementserialize.js">
+      <Link>lib\services\servicemanagement\models\servicemanagementserialize.js</Link>
     </Content>
     <Content Include="..\..\lib\services\table\batchserviceclient.js">
       <Link>lib\services\table\batchserviceclient.js</Link>
