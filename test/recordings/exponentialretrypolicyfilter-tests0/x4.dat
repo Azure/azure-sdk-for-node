@@ -2,6 +2,6 @@
 <error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
   <code>TableAlreadyExists</code>
   <message xml:lang="en-US">The table specified already exists.
-RequestId:0bfd28fb-7784-46b5-8362-904235681d2c
-Time:2012-02-24T07:33:32.5516582Z</message>
+RequestId:55a990a2-5a65-480b-bd93-1a71cd5d5891
+Time:2012-02-28T04:15:22.1709867Z</message>
 </error>

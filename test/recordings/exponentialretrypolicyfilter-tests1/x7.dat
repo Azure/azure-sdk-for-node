@@ -1,1 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:33:33.669Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:TableName>expretry2</d:TableName></m:properties></content></entry>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xml:base="http://andrerod.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Tables</title>
+  <id>http://andrerod.table.core.windows.net/Tables</id>
+  <updated>2012-02-28T04:16:01Z</updated>
+  <link rel="self" title="Tables" href="Tables" />
+  <entry>
+    <id>http://andrerod.table.core.windows.net/Tables('expretry2')</id>
+    <title type="text"></title>
+    <updated>2012-02-28T04:16:01Z</updated>
+    <author>
+      <name />
+    </author>
+    <link rel="edit" title="Tables" href="Tables('expretry2')" />
+    <category term="andrerod.Tables" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+    <content type="application/xml">
+      <m:properties>
+        <d:TableName>expretry2</d:TableName>
+      </m:properties>
+    </content>
+  </entry>
+</feed>
