@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
-  <code>TableBeingDeleted</code>
-  <message xml:lang="en-US">The specified table is being deleted. Try operation later.
-RequestId:eca11f03-852f-4668-a6dd-30dbe63bfc89
-Time:2012-02-24T07:34:07.2404978Z</message>
-</error>
+<entry xml:base="http://andrerod.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://andrerod.table.core.windows.net/Tables('expretry2')</id>
+  <title type="text"></title>
+  <updated>2012-02-28T04:16:02Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="Tables" href="Tables('expretry2')" />
+  <category term="andrerod.Tables" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:TableName>expretry2</d:TableName>
+    </m:properties>
+  </content>
+</entry>
