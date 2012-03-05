@@ -23,7 +23,7 @@ var inputNames = {
 // DiskLabel - friendly name - optional
 // HostCaching - ”ReadOnly”, “ReadWrite”.  optional. Default ReadWrite
 var osDisk = {
-  SourceImageName : 'Win2K8SP1.110809-2000.201108-01.en.us.30GB.vhd',
+  SourceImageName : 'CentOs-CS.vhd'
 };
 
 // data disk
@@ -70,11 +70,11 @@ var networkConfigurationSet = {
 // RoleSize is optional
 // RoleType must be 'PersistentVMRole'. Filled in automatically
 var VMRole = {
-  RoleName: 'testjsRole',
+  RoleName: 'testjsRole2',
   RoleSize: 'Small',
   OSDisk: osDisk,
-  DataDisks: [dataDisk1],
-  ConfigurationSets: [provisioningConfigurationSet, networkConfigurationSet]
+  DataDisks: [],
+  ConfigurationSets: [provisioningConfigurationSet]
 }
 
 
@@ -82,16 +82,20 @@ var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, au
 
 svcmgmt.addRole(inputNames.serviceName, 
                          inputNames.deploymentName,
-                         VMRole, function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful) {
-    if (rspobj.response.statusCode == 200) {
-      console.log('OK');
-    } else {
-      console.log('Pending');
-      console.log('RequestID: ' + rspobj.response.headers['x-ms-request-id']);
-    }
+                         VMRole, function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful) {
+      if (response.statusCode == 200) {
+        console.log('OK');
+      } else {
+        console.log('Pending');
+        console.log('RequestID: ' + response.headers['x-ms-request-id']);
+      }
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 

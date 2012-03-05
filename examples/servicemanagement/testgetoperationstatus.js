@@ -20,17 +20,21 @@ var reqid = process.argv[2];
 
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
-svcmgmt.getOperationStatus(reqid, function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log(rsp.Status);
-    if (rsp.HttpStatusCode) console.log('HTTP Status: ' + rsp.HttpStatusCode);
-    if (rsp.Error) {      
-      console.log('Error code: ' + rsp.Error.Code);
-      console.log('Error Message: ' + rsp.Error.Message);
-    }
+svcmgmt.getOperationStatus(reqid, function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log(rsp.Status);
+      if (rsp.HttpStatusCode) console.log('HTTP Status: ' + rsp.HttpStatusCode);
+      if (rsp.Error) {
+        console.log('Error code: ' + rsp.Error.Code);
+        console.log('Error Message: ' + rsp.Error.Message);
+      }
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 

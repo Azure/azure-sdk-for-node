@@ -16,32 +16,40 @@ var inputNames = {
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
 
-svcmgmt.getDisk(inputNames.diskName, function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log('** named disk information **');
-    testCommon.showDisk(rsp);
+svcmgmt.getDisk(inputNames.diskName, function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log('** named disk information **');
+      testCommon.showDisk(rsp);
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 
-svcmgmt.listDisks(function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log('** List of Disks **');
-    if (rsp.Disk) {
-      if (rsp.Disk instanceof Array) {
-        for (var i = 0; i < rsp.Disk.length; i++) {
-          console.log('** Disk **');
-          testCommon.showDisk(rsp.Disk[i]);
-        }
-      } else {
-        testCommon.showDisk(rsp.Disk);
-      }
-    }
+svcmgmt.listDisks(function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log('** List of Disks **');
+      if (rsp.Disk) {
+        if (rsp.Disk instanceof Array) {
+          for (var i = 0; i < rsp.Disk.length; i++) {
+            console.log('** Disk **');
+            testCommon.showDisk(rsp.Disk[i]);
+          }
+        } else {
+          testCommon.showDisk(rsp.Disk);
+        }
+      }
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 

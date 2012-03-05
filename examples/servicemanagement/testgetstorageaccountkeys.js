@@ -16,23 +16,29 @@ var inputNames = {
 
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
-svcmgmt.getStorageAccountKeys(inputNames.storageServicename, function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log('URL = ' + rsp.Url);
-    console.log('Primary = ' + rsp.StorageServiceKeys.Primary);
-    console.log('Secondary = ' + rsp.StorageServiceKeys.Secondary);
+svcmgmt.getStorageAccountKeys(inputNames.storageServicename, function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log('URL = ' + rsp.Url);
+      console.log('Primary = ' + rsp.StorageServiceKeys.Primary);
+      console.log('Secondary = ' + rsp.StorageServiceKeys.Secondary);
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 
-svcmgmt.getStorageAccountKeys(inputNames.badServicename, function(rspobj) {
-  if (rspobj.isSuccessful && rspobj.response) {
-    console.log('Calling with bad storage service name: Unexpected success');
-  } else {
-    if (rspobj.error.Code == 'ResourceNotFound') {
+svcmgmt.getStorageAccountKeys(inputNames.badServicename, function(error, response) {
+  if (error) {
+    if (error.Code == 'ResourceNotFound') {
       console.log('Calling with bad storage service name: Received expected failure code');
+    }
+  } else {
+    if (response && response.isSuccessful) {
+      console.log('Calling with bad storage service name: Unexpected success');
     }
   }
 });

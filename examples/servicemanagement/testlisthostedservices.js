@@ -13,24 +13,27 @@ var inputNames = {
 
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
-svcmgmt.listHostedServices(function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    if (rsp.HostedService instanceof Array) {
-      var len = rsp.HostedService.length;
-      console.log('Number of hosted services: ' + len);
-      for (var i = 0; i < len; i++) {
-        console.log('# ' + i +'  ServiceName: ' + rsp.HostedService[i].ServiceName);
-      }
-    } else if (rsp.HostedService) {
-      console.log('Number of hosted services: 1');
-      console.log('ServiceName: ' + rsp.HostedService.ServiceName);
-    } else {
-      console.log('Number of hosted services: 0');
-    }
+svcmgmt.listHostedServices(function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    console.log(rspobj);
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      if (rsp.HostedService instanceof Array) {
+        var len = rsp.HostedService.length;
+        console.log('Number of hosted services: ' + len);
+        for (var i = 0; i < len; i++) {
+          console.log('# ' + i +'  ServiceName: ' + rsp.HostedService[i].ServiceName);
+        }
+      } else if (rsp.HostedService) {
+        console.log('Number of hosted services: 1');
+        console.log('ServiceName: ' + rsp.HostedService.ServiceName);
+      } else {
+        console.log('Number of hosted services: 0');
+      }
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 

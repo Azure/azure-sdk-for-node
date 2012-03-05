@@ -14,12 +14,16 @@ var inputNames = {
 
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
-svcmgmt.listDisks(function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log(rsp);
+svcmgmt.listDisks(function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log(rsp);
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 
