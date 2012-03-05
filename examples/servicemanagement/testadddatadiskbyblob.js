@@ -30,19 +30,23 @@ var dataDisk = {
 
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
-svcmgmt.addDataDisk(inputNames.serviceName, 
-                    inputNames.deploymentName, 
+svcmgmt.addDataDisk(inputNames.serviceName,
+                    inputNames.deploymentName,
                     inputNames.roleName,
-                    dataDisk, function(rspobj) {
-    if (rspobj.response && rspobj.response.isSuccessful) {
-      if (rspobj.response.statusCode == 200) {
-        console.log('OK');
-    } else {
-      console.log('Pending');
-      console.log('RequestID: ' + rspobj.response.headers['x-ms-request-id']);
-    }
+                    dataDisk, function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful) {
+      if (response.statusCode == 200) {
+        console.log('OK');
+      } else {
+        console.log('Pending');
+        console.log('RequestID: ' + response.headers['x-ms-request-id']);
+      }
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 

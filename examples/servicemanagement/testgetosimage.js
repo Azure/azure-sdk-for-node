@@ -15,32 +15,40 @@ var inputNames = {
 
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
-svcmgmt.getOSImage(inputNames.imageName, function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log('** named image information **');
-    testCommon.showOSImage(rsp);
+svcmgmt.getOSImage(inputNames.imageName, function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log('** named image information **');
+      testCommon.showOSImage(rsp);
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 
-svcmgmt.listOSImage(function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log('** List of Images **');
-    if (rsp.OSImage) {
-      if (rsp.OSImage instanceof Array) {
-        for (var i = 0; i < rsp.OSImage.length; i++) {
-          console.log('** Image **');
-          testCommon.showOSImage(rsp.OSImage[i]);
-        }
-      } else {
-        testCommon.showOSImage(rsp.OSImage);
-      }
-    }
+svcmgmt.listOSImage(function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log('** List of Images **');
+      if (rsp.OSImage) {
+        if (rsp.OSImage instanceof Array) {
+          for (var i = 0; i < rsp.OSImage.length; i++) {
+            console.log('** Image **');
+            testCommon.showOSImage(rsp.OSImage[i]);
+          }
+        } else {
+          testCommon.showOSImage(rsp.OSImage);
+        }
+      }
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 

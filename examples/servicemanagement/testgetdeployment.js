@@ -17,23 +17,33 @@ var inputNames = {
 
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
-svcmgmt.getDeploymentBySlot(inputNames.serviceName, inputNames.deploymentSlot, function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log('*** Deployments By Slot results ***');
-    testCommon.showDeployment(rsp);
+svcmgmt.getDeploymentBySlot(inputNames.serviceName, inputNames.deploymentSlot,
+                            function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log('*** Deployments By Slot results ***');
+      testCommon.showDeployment(rsp);
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 
-svcmgmt.getDeployment(inputNames.serviceName, inputNames.deploymentName, function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log('*** Deployments By Name results ***');
-    testCommon.showDeployment(rsp);
+svcmgmt.getDeployment(inputNames.serviceName, inputNames.deploymentName,
+                        function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log('*** Deployments By Name results ***');
+      testCommon.showDeployment(rsp);
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 

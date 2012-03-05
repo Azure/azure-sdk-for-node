@@ -15,16 +15,20 @@ var inputNames = {
 
 var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
-svcmgmt.getHostedService(inputNames.serviceName, function(rspobj) {
-  if (rspobj.response && rspobj.response.isSuccessful && rspobj.response.body) {
-    var rsp = rspobj.response.body;
-    console.log('ServiceName: ' + rsp.ServiceName);
-    console.log('Description: ' + rsp.HostedServiceProperties.Description);
-    console.log('Location: ' + rsp.HostedServiceProperties.Location);
-    console.log('AffinityGroup: ' + rsp.HostedServiceProperties.AffinityGroup);
-    console.log('Label: ' + rsp.HostedServiceProperties.Label);
+svcmgmt.getHostedService(inputNames.serviceName, function(error, response) {
+  if (error) {
+    testCommon.showErrorResponse(error);
   } else {
-    testCommon.showErrorResponse(rspobj);
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log('ServiceName: ' + rsp.ServiceName);
+      console.log('Description: ' + rsp.HostedServiceProperties.Description);
+      console.log('Location: ' + rsp.HostedServiceProperties.Location);
+      console.log('AffinityGroup: ' + rsp.HostedServiceProperties.AffinityGroup);
+      console.log('Label: ' + rsp.HostedServiceProperties.Label);
+    } else {
+      console.log('Unexpected');
+    }
   }
 });
 

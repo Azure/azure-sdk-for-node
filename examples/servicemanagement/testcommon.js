@@ -10,11 +10,10 @@ exports.showOSImage = showOSImage;
 exports.showDisk = showDisk;
 
 
-function showErrorResponse(rsp) {
+function showErrorResponse(error) {
   console.log('There was an error response from the service');
-  console.log('status code=' + rsp.response.statusCode);
-  console.log('Error Code=' + rsp.error.code);
-  console.log('Error Message=' + rsp.error.message);
+  console.log('Error Code=' + error.code);
+  console.log('Error Message=' + error.message);
 }
 
 function showDeployment(rsp) {
@@ -29,28 +28,34 @@ function showDeployment(rsp) {
   console.log('Configuration: ' + rsp.Configuration);
   console.log('Locked: ' + rsp.Locked);
   console.log('RollbackAllowed: ' + rsp.RollbackAllowed);
-  var roleinst = rsp.RoleInstanceList.RoleInstance;
-  console.log('RoleInstance: ');
-  console.log('  RoleName: ' + roleinst.RoleName);
-  console.log('  InstanceName: ' + roleinst.InstanceName);
-  console.log('  InstanceStatus: ' + roleinst.InstanceStatus);
-  console.log('  InstanceUpgradeDomain: ' + roleinst.InstanceUpgradeDomain);
-  console.log('  InstanceFaultDomain: ' + roleinst.InstanceFaultDomain);
-  console.log('  InstanceSize: ' + roleinst.InstanceSize);
-  console.log('  IpAddress: ' + roleinst.IpAddress);
-  var role = rsp.RoleList.Role;
-  console.log('Role: ');
-  showRole(role);
-  if (rsp.InputEndpointList) {
-    console.log('  InputEndpointList: ');
-    var endpoints = rsp.InputEndpointList
-    if (endpoints.InputEndpoint instanceof Array) {
-      var len = endpoints.InputEndpoint.length;
-      for (var i = 0; i < len; i++) {
-        showInputEndpoint(endpoints.InputEndpoint[i]);
+  if (rsp.RoleInstanceList) {
+    var roleinst = rsp.RoleInstanceList.RoleInstance;
+    if (roleinst) {
+      console.log('RoleInstance: ');
+      console.log('  RoleName: ' + roleinst.RoleName);
+      console.log('  InstanceName: ' + roleinst.InstanceName);
+      console.log('  InstanceStatus: ' + roleinst.InstanceStatus);
+      console.log('  InstanceUpgradeDomain: ' + roleinst.InstanceUpgradeDomain);
+      console.log('  InstanceFaultDomain: ' + roleinst.InstanceFaultDomain);
+      console.log('  InstanceSize: ' + roleinst.InstanceSize);
+      console.log('  IpAddress: ' + roleinst.IpAddress);
+    }
+  }
+  if (rsp.RoleList) {
+    var role = rsp.RoleList.Role;
+    console.log('Role: ');
+    showRole(role);
+    if (rsp.InputEndpointList) {
+      console.log('  InputEndpointList: ');
+      var endpoints = rsp.InputEndpointList
+      if (endpoints.InputEndpoint instanceof Array) {
+        var len = endpoints.InputEndpoint.length;
+        for (var i = 0; i < len; i++) {
+          showInputEndpoint(endpoints.InputEndpoint[i]);
+        }
+      } else if (endpoints) {
+        showInputEndpoint(endpoints.InputEndpoint);
       }
-    } else if (endpoints) {
-      showInputEndpoint(endpoints.InputEndpoint);
     }
   }
 }
