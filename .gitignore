@@ -7,3 +7,4 @@ projects/VS/obj/
 projects/VS/bin/
 projects/Eclipse
 targets/*
+npm-debug.log
