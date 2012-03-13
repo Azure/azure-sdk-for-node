@@ -142,4 +142,24 @@ suite('util-tests', function() {
 
     done();
   });
+
+  test('keys counting works', function (done) {
+    // int positives
+    assert.equal(util.objectKeysLength({ }), 0);
+    assert.equal(util.objectKeysLength(null), 0);
+    assert.equal(util.objectKeysLength({ prop1: 1 }), 1);
+    assert.equal(util.objectKeysLength({ prop1: 1, prop2: 2 }), 2);
+
+    done();
+  });
+
+  test('first key works', function (done) {
+    // int positives
+    assert.equal(util.objectFirstKey({}), null);
+    assert.equal(util.objectFirstKey(null), null);
+    assert.equal(util.objectFirstKey({ prop1: 1 }), 'prop1');
+    assert.equal(util.objectFirstKey({ prop1: 1, prop2: 2 }), 'prop1');
+
+    done();
+  });
 });
