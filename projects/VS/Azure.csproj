@@ -117,6 +117,51 @@
     <Content Include="..\..\lib\http\webresource.js">
       <Link>lib\http\webresource.js</Link>
     </Content>
+    <Content Include="..\..\lib\serviceruntime\fileinputchannel.js">
+      <Link>lib\serviceruntime\fileinputchannel.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\goalstatedeserializer.js">
+      <Link>lib\serviceruntime\goalstatedeserializer.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\namedpipeinputchannel.js">
+      <Link>lib\serviceruntime\namedpipeinputchannel.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\namedpipeoutputchannel.js">
+      <Link>lib\serviceruntime\namedpipeoutputchannel.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\protocol1runtimeclient.js">
+      <Link>lib\serviceruntime\protocol1runtimeclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\protocol1runtimecurrentstateclient.js">
+      <Link>lib\serviceruntime\protocol1runtimecurrentstateclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\protocol1runtimegoalstateclient.js">
+      <Link>lib\serviceruntime\protocol1runtimegoalstateclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\roleenvironment.js">
+      <Link>lib\serviceruntime\roleenvironment.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\roleinstance.js">
+      <Link>lib\serviceruntime\roleinstance.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\runtimekernel.js">
+      <Link>lib\serviceruntime\runtimekernel.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\runtimeversionmanager.js">
+      <Link>lib\serviceruntime\runtimeversionmanager.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\runtimeversionprotocolclient.js">
+      <Link>lib\serviceruntime\runtimeversionprotocolclient.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\xmlcurrentstateserializer.js">
+      <Link>lib\serviceruntime\xmlcurrentstateserializer.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\xmlgoalstatedeserializer.js">
+      <Link>lib\serviceruntime\xmlgoalstatedeserializer.js</Link>
+    </Content>
+    <Content Include="..\..\lib\serviceruntime\xmlroleenvironmentdatadeserializer.js">
+      <Link>lib\serviceruntime\xmlroleenvironmentdatadeserializer.js</Link>
+    </Content>
     <Content Include="..\..\lib\services\blob\blobservice.js">
       <Link>lib\services\blob\blobservice.js</Link>
     </Content>
@@ -255,6 +300,9 @@
     <Content Include="..\..\lib\util\iso8061date.js">
       <Link>lib\util\iso8061date.js</Link>
     </Content>
+    <Content Include="..\..\lib\util\js2xml.js">
+      <Link>lib\util\js2xml.js</Link>
+    </Content>
     <Content Include="..\..\lib\util\rfc1123date.js">
       <Link>lib\util\rfc1123date.js</Link>
     </Content>
@@ -287,6 +335,15 @@
     </Content>
     <Content Include="..\..\test\runtests.js">
       <Link>test\runtests.js</Link>
+    </Content>
+    <Content Include="..\..\test\serviceruntime\roleenvironment-tests.js">
+      <Link>test\serviceruntime\roleenvironment-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\serviceruntime\runtimeversionmanager-tests.js">
+      <Link>test\serviceruntime\runtimeversionmanager-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\serviceruntime\runtimeversionprotocolclient-tests.js">
+      <Link>test\serviceruntime\runtimeversionprotocolclient-tests.js</Link>
     </Content>
     <Content Include="..\..\test\services\blob\blobservice-longrunning-tests.js">
       <Link>test\services\blob\blobservice-longrunning-tests.js</Link>
