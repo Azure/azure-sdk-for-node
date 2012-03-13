@@ -40,13 +40,13 @@ var mockServerClient;
 var currentTestName;
 
 suite('blobservice-longrunning-tests', function () {
-  setup: function (done) {
+  setup(function (done) {
     blobService = azure.createBlobService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, ServiceClient.DEVSTORE_BLOB_HOST);
 
     done();
   });
 
-  teardown: function (done) {
+  teardown(function (done) {
     var deleteFiles = function () {
       // delete test files
       var list = fs.readdirSync('./');
