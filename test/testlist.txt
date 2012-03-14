@@ -1,3 +1,9 @@
+util/certificates/der.decoder-tests.js
+util/certificates/der.decoder.pfx.root-tests.js
+util/certificates/pkcs.filedecoder-tests.js
+waz/waz.help-tests.js
+waz/waz.account-tests.js
+waz/waz.site-tests.js
 services/blob/blobservice-tests.js
 services/blob/sharedaccesssignature-tests.js
 services/blob/sharedkey-tests.js
