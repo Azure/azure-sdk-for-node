@@ -498,7 +498,7 @@ suite('roleenvironment-tests', function () {
     });
   });
 
-  test('testChangedNotifications', function (done) {
+  test('testStartedChangedNotifications', function (done) {
     var versionsXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
@@ -530,7 +530,10 @@ suite('roleenvironment-tests', function () {
       "</RoleEnvironment>";
 
     // Create versions pipe
+    var serverVersionsStream;
     var serverVersions = net.createServer(function (stream) {
+      serverVersionsStream = stream;
+
       stream.setEncoding('utf8');
       stream.on('connect', function () {
         stream.write(versionsXml);
@@ -545,7 +548,10 @@ suite('roleenvironment-tests', function () {
 
     // Create goal state pipe
     var serverGoalStateInterval;
+    var serverGoalStateStream;
     var serverGoalState = net.createServer(function (stream) {
+      serverGoalStateStream = stream;
+
       stream.setEncoding('utf8');
       stream.on('connect', function () {
         // Write goal state every second
@@ -587,10 +593,145 @@ suite('roleenvironment-tests', function () {
       assert.equal(changes[0].type, 'TopologyChange');
       assert.equal(changes[0].name, 'test');
 
-      serverVersions.close();
-      serverGoalState.close();
-
       clearInterval(serverGoalStateInterval);
+
+      serverVersions.on('close', function () {
+        serverGoalState.on('close', function () {
+          done();
+        });
+
+        serverGoalStateStream.end();
+        serverGoalState.close();
+      });
+
+      serverVersionsStream.end();
+      serverVersions.close();
+    });
+
+    // Make sure incarnation 1 is read
+    azure.RoleEnvironment.getConfigurationSettings(function (error, configurationSettings) {
+      // Update to incarnation 2
+      goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+        "<Incarnation>2</Incarnation>" +
+        "<ExpectedState>Started</ExpectedState>" +
+        "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+        "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+        "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+        "</GoalState>";
+
+      environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+        "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+        "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"1\">" +
+        "<ConfigurationSettings />" +
+        "<LocalResources />" +
+        "<Endpoints />" +
+        "</CurrentInstance>" +
+        "<Roles />" +
+        "</RoleEnvironment>";
+
+      assert.equal(error, null);
+    });
+  });
+
+  test('testStoppedChangedNotifications', function (done) {
+    var versionsXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<RuntimeServerEndpoints>" +
+      "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"\\\\.\\pipe\\goalState\" />" +
+      "</RuntimeServerEndpoints>" +
+      "</RuntimeServerDiscovery>";
+
+    var goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<Incarnation>1</Incarnation>" +
+      "<ExpectedState>Started</ExpectedState>" +
+      "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+      "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+      "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+      "</GoalState>";
+
+    var environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+      "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<ConfigurationSettings />" +
+      "<LocalResources />" +
+      "<Endpoints />" +
+      "</CurrentInstance>" +
+      "<Roles />" +
+      "</RoleEnvironment>";
+
+    // Create versions pipe
+    var serverVersionsStream;
+    var serverVersions = net.createServer(function (stream) {
+      serverVersionsStream = stream;
+
+      stream.setEncoding('utf8');
+      stream.on('connect', function () {
+        stream.write(versionsXml);
+      });
+
+      stream.on('end', function () {
+        stream.end();
+      });
+    });
+
+    serverVersions.listen('\\\\.\\pipe\\versions');
+
+    // Create goal state pipe
+    var serverGoalStateInterval;
+    var serverGoalStateStream;
+    var serverGoalState = net.createServer(function (stream) {
+      serverGoalStateStream = stream;
+
+      stream.setEncoding('utf8');
+      stream.on('connect', function () {
+        // Write goal state every second
+        serverGoalStateInterval = setInterval(function () {
+          stream.write(goalStateXml);
+        }, 1000);
+      });
+
+      stream.on('end', function () {
+        stream.end();
+      });
+    });
+
+    serverGoalState.listen('\\\\.\\pipe\\goalState');
+
+    var runtimeKernel = RuntimeKernel.getKernel();
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
+      if (name === 'C:\\file.xml') {
+        callback(undefined, environmentData);
+      } else {
+        callback('wrong file');
+      }
+    };
+
+    azure.RoleEnvironment.VersionEndpointFixedPath = '\\\\.\\pipe\\versions';
+    azure.RoleEnvironment.runtimeClient = null;
+
+    azure.RoleEnvironment.on(ServiceRuntimeConstants.STOPPING, function () {
+      clearInterval(serverGoalStateInterval);
+
+      serverVersions.on('close', function () {
+        serverGoalState.on('close', function () {
+          done();
+        });
+
+        serverGoalStateStream.end();
+        serverGoalState.close();
+      });
+
+      serverVersionsStream.end();
+      serverVersions.close();
 
       done();
     });
@@ -602,7 +743,7 @@ suite('roleenvironment-tests', function () {
         "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Incarnation>2</Incarnation>" +
-        "<ExpectedState>Started</ExpectedState>" +
+        "<ExpectedState>Stopped</ExpectedState>" +
         "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
         "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
         "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
