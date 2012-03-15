@@ -2,12 +2,12 @@
 <feed xml:base="http://andrerod.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
   <title type="text">tablebatch6</title>
   <id>http://andrerod.table.core.windows.net/tablebatch6</id>
-  <updated>2012-02-24T07:42:23Z</updated>
+  <updated>2012-03-15T21:56:52Z</updated>
   <link rel="self" title="tablebatch6" href="tablebatch6" />
-  <entry m:etag="W/&quot;datetime'2012-02-24T07%3A42%3A22.9028983Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-03-15T21%3A56%3A48.3461378Z'&quot;">
     <id>http://andrerod.table.core.windows.net/tablebatch6(PartitionKey='partition1',RowKey='1')</id>
     <title type="text"></title>
-    <updated>2012-02-24T07:42:23Z</updated>
+    <updated>2012-03-15T21:56:52Z</updated>
     <author>
       <name />
     </author>
@@ -17,15 +17,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>1</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-02-24T07:42:22.9028983Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-03-15T21:56:48.3461378Z</d:Timestamp>
         <d:address>street1</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-02-24T07%3A42%3A22.9028983Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-03-15T21%3A56%3A48.3461378Z'&quot;">
     <id>http://andrerod.table.core.windows.net/tablebatch6(PartitionKey='partition1',RowKey='10')</id>
     <title type="text"></title>
-    <updated>2012-02-24T07:42:23Z</updated>
+    <updated>2012-03-15T21:56:52Z</updated>
     <author>
       <name />
     </author>
@@ -35,15 +35,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>10</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-02-24T07:42:22.9028983Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-03-15T21:56:48.3461378Z</d:Timestamp>
         <d:address>street10</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-02-24T07%3A42%3A22.9028983Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-03-15T21%3A56%3A48.3461378Z'&quot;">
     <id>http://andrerod.table.core.windows.net/tablebatch6(PartitionKey='partition1',RowKey='11')</id>
     <title type="text"></title>
-    <updated>2012-02-24T07:42:23Z</updated>
+    <updated>2012-03-15T21:56:52Z</updated>
     <author>
       <name />
     </author>
@@ -53,15 +53,15 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>11</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-02-24T07:42:22.9028983Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-03-15T21:56:48.3461378Z</d:Timestamp>
         <d:address>street11</d:address>
       </m:properties>
     </content>
   </entry>
-  <entry m:etag="W/&quot;datetime'2012-02-24T07%3A42%3A22.9028983Z'&quot;">
+  <entry m:etag="W/&quot;datetime'2012-03-15T21%3A56%3A48.3461378Z'&quot;">
     <id>http://andrerod.table.core.windows.net/tablebatch6(PartitionKey='partition1',RowKey='12')</id>
     <title type="text"></title>
-    <updated>2012-02-24T07:42:23Z</updated>
+    <updated>2012-03-15T21:56:52Z</updated>
     <author>
       <name />
     </author>
@@ -71,7 +71,7 @@
       <m:properties>
         <d:PartitionKey>partition1</d:PartitionKey>
         <d:RowKey>12</d:RowKey>
-        <d:Timestamp m:type="Edm.DateTime">2012-02-24T07:42:22.9028983Z</d:Timestamp>
+        <d:Timestamp m:type="Edm.DateTime">2012-03-15T21:56:48.3461378Z</d:Timestamp>
         <d:address>street12</d:address>
       </m:properties>
     </content>

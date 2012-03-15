@@ -1,7 +1,7 @@
---batch_901e705e7a333eeb276794b462c68589
-content-type: multipart/mixed; boundary=changeset_901e705e7a333eeb276794b462c68589
+--batch_486850d4aef6575e99be1f20eb374ea6
+content-type: multipart/mixed; boundary=changeset_486850d4aef6575e99be1f20eb374ea6
 
---changeset_901e705e7a333eeb276794b462c68589
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -10,8 +10,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 1
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.707Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>1</d:RowKey><d:address>street1</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.953Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>1</d:RowKey><d:address>street1</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -20,8 +20,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 2
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.707Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>2</d:RowKey><d:address>street2</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.953Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>2</d:RowKey><d:address>street2</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -30,8 +30,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 3
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.707Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>3</d:RowKey><d:address>street3</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.953Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>3</d:RowKey><d:address>street3</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -40,8 +40,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 4
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.708Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>4</d:RowKey><d:address>street4</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.953Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>4</d:RowKey><d:address>street4</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -50,8 +50,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 5
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.708Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>5</d:RowKey><d:address>street5</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.953Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>5</d:RowKey><d:address>street5</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -60,8 +60,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 6
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.708Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>6</d:RowKey><d:address>street6</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.953Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>6</d:RowKey><d:address>street6</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -70,8 +70,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 7
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.710Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>7</d:RowKey><d:address>street7</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.954Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>7</d:RowKey><d:address>street7</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -80,8 +80,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 8
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>8</d:RowKey><d:address>street8</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.954Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>8</d:RowKey><d:address>street8</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -90,8 +90,8 @@ content-type: application/atom+xml;type=entry
 content-length: 489
 content-id: 9
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>9</d:RowKey><d:address>street9</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.954Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>9</d:RowKey><d:address>street9</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -100,8 +100,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 10
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>10</d:RowKey><d:address>street10</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.954Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>10</d:RowKey><d:address>street10</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -110,8 +110,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 11
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>11</d:RowKey><d:address>street11</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.954Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>11</d:RowKey><d:address>street11</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -120,8 +120,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 12
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>12</d:RowKey><d:address>street12</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.954Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>12</d:RowKey><d:address>street12</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -130,8 +130,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 13
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>13</d:RowKey><d:address>street13</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.954Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>13</d:RowKey><d:address>street13</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -140,8 +140,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 14
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>14</d:RowKey><d:address>street14</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.954Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>14</d:RowKey><d:address>street14</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -150,8 +150,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 15
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>15</d:RowKey><d:address>street15</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.955Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>15</d:RowKey><d:address>street15</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -160,8 +160,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 16
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.711Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>16</d:RowKey><d:address>street16</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.955Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>16</d:RowKey><d:address>street16</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -170,8 +170,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 17
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.712Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>17</d:RowKey><d:address>street17</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.955Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>17</d:RowKey><d:address>street17</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -180,8 +180,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 18
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.712Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>18</d:RowKey><d:address>street18</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.955Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>18</d:RowKey><d:address>street18</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -190,8 +190,8 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 19
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.712Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>19</d:RowKey><d:address>street19</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.955Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>19</d:RowKey><d:address>street19</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -200,6 +200,6 @@ content-type: application/atom+xml;type=entry
 content-length: 491
 content-id: 20
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:16.712Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>20</d:RowKey><d:address>street20</d:address></m:properties></content></entry>
---changeset_901e705e7a333eeb276794b462c68589--
---batch_901e705e7a333eeb276794b462c68589--
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:46.955Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>partition1</d:PartitionKey><d:RowKey>20</d:RowKey><d:address>street20</d:address></m:properties></content></entry>
+--changeset_486850d4aef6575e99be1f20eb374ea6--
+--batch_486850d4aef6575e99be1f20eb374ea6--
