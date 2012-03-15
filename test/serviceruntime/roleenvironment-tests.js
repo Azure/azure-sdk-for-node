@@ -26,14 +26,48 @@ var ServiceRuntimeConstants = Constants.ServiceRuntimeConstants;
 
 var azure = require('../../lib/azure');
 
+var originalFileInputChannelReadData;
+var originalNamedPipeInputChannelReadData;
+var originalNamedPipeOutputChannelWriteOutputChannel;
+var originalVersionEndpointFixedPath;
+var originalRuntimeClient;
+var originalEndpoint;
+
 suite('roleenvironment-tests', function () {
+  setup(function (done) {
+    var runtimeKernel = RuntimeKernel.getKernel();
+
+    originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
+    originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
+    originalNamedPipeOutputChannelWriteOutputChannel = runtimeKernel.namedPipeOutputChannel.writeOutputChannel;
+    originalVersionEndpointFixedPath = azure.RoleEnvironment.VersionEndpointFixedPath;
+    originalRuntimeClient = azure.RoleEnvironment.runtimeClient;
+    originalEndpoint = runtimeKernel.protocol1RuntimeGoalStateClient.endpoint;
+
+    done();
+  });
+
+  teardown(function (done) {
+    var runtimeKernel = RuntimeKernel.getKernel();
+
+    runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
+    runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
+    runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
+    runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+    runtimeKernel.protocol1RuntimeGoalStateClient.endpoint = originalEndpoint;
+
+    azure.RoleEnvironment.VersionEndpointFixedPath = originalVersionEndpointFixedPath;
+    azure.RoleEnvironment.runtimeClient = originalRuntimeClient;
+
+    done();
+  });
+
   test('IsAvailable', function (done) {
     azure.RoleEnvironment.isAvailable(function (error1, isAvailable1) {
       assert.notEqual(error1, null);
       assert.equal(isAvailable1, false);
 
       var runtimeKernel = RuntimeKernel.getKernel();
-      var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
       runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
         if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
           callback(undefined,
@@ -60,7 +94,6 @@ suite('roleenvironment-tests', function () {
         }
       };
 
-      var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
       runtimeKernel.fileInputChannel._readData = function (name, callback) {
         if (name === 'C:\\file.xml') {
           callback(undefined,
@@ -88,11 +121,6 @@ suite('roleenvironment-tests', function () {
         assert.equal(error2, null);
         assert.equal(isAvailable2, true);
 
-        runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
-        runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
         done();
       });
     });
@@ -109,7 +137,6 @@ suite('roleenvironment-tests', function () {
 
   test('GetDeploymentId', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
     runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
@@ -164,18 +191,12 @@ suite('roleenvironment-tests', function () {
       assert.equal(error, null);
       assert.equal(id, 'mydeploymentid');
 
-      runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
       done();
     });
   });
 
   test('GetLocalResources', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
     runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
@@ -202,7 +223,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
     runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
@@ -233,18 +253,12 @@ suite('roleenvironment-tests', function () {
       assert.notEqual(localResources['DiagnosticStore']['path'], null);
       assert.notEqual(localResources['DiagnosticStore']['sizeInMB'], null);
 
-      runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
       done();
     });
   });
 
   test('GetRoles', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
     runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
@@ -271,7 +285,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
     runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
@@ -329,18 +342,12 @@ suite('roleenvironment-tests', function () {
       assert.notEqual(roles['role2']['deployment16(191).test.role2_IN_0'], null);
       assert.notEqual(roles['role2']['deployment16(191).test.role2_IN_1'], null);
 
-      runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
       done();
     });
   });
 
   test('CalculateChanges', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
     runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
@@ -367,7 +374,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
     runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
@@ -425,11 +431,6 @@ suite('roleenvironment-tests', function () {
         assert.notEqual(changes, null);
         assert.equal(changes.length, 0);
 
-        runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
-        runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
         done();
       });
     });
@@ -437,7 +438,6 @@ suite('roleenvironment-tests', function () {
 
   test('testRequestRecycle', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
     runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
@@ -464,7 +464,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
     runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
@@ -484,7 +483,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalNamedPipeOutputChannelWriteOutputChannel = runtimeKernel.namedPipeOutputChannel.writeOutputChannel;
     var writtenData;
     runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (name, data, callback) {
       writtenData = data;
@@ -495,12 +493,6 @@ suite('roleenvironment-tests', function () {
       assert.equal(error, null);
 
       assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Acquire><Incarnation>1</Incarnation><Status>' + ServiceRuntimeConstants.RoleStatus.RECYCLE + '</Status><StatusDetail>' + ServiceRuntimeConstants.RoleStatus.RECYCLE + '</StatusDetail><Expiration>9999-12-31T23:59:59.999Z</Expiration></Acquire></StatusLease></CurrentState>');
-
-      runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-      runtimeKernel.namedPipeOutputChannel.writeOutputChannel = originalNamedPipeOutputChannelWriteOutputChannel;
 
       done();
     });
@@ -569,7 +561,6 @@ suite('roleenvironment-tests', function () {
     serverGoalState.listen('\\\\.\\pipe\\goalState');
 
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
     runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined, environmentData);
@@ -578,13 +569,8 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalVersionEndpointFixedPath = azure.RoleEnvironment.VersionEndpointFixedPath;
     azure.RoleEnvironment.VersionEndpointFixedPath = '\\\\.\\pipe\\versions';
-
-    var originalRuntimeClient = azure.RoleEnvironment.runtimeClient;
     azure.RoleEnvironment.runtimeClient = null;
-
-    var originalEndpoint = runtimeKernel.protocol1RuntimeGoalStateClient.endpoint;
 
     var changingInvoked = false;
 
@@ -599,14 +585,6 @@ suite('roleenvironment-tests', function () {
       assert.equal(changes.length, 1);
       assert.equal(changes[0].type, 'TopologyChange');
       assert.equal(changes[0].name, 'test');
-
-      runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.endpoint = originalEndpoint;
-
-      azure.RoleEnvironment.VersionEndpointFixedPath = originalVersionEndpointFixedPath;
-      azure.RoleEnvironment.runtimeClient = originalRuntimeClient;
 
       serverVersions.close();
       serverGoalState.close();
@@ -645,7 +623,6 @@ suite('roleenvironment-tests', function () {
 
   test('testClearStatus', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
     runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
@@ -672,7 +649,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
     runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
@@ -693,7 +669,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalNamedPipeOutputChannelWriteOutputChannel = runtimeKernel.namedPipeOutputChannel.writeOutputChannel;
     var writtenData;
     runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (name, data, callback) {
       writtenData = data;
@@ -705,19 +680,12 @@ suite('roleenvironment-tests', function () {
 
       assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Release/></StatusLease></CurrentState>');
 
-      runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-      runtimeKernel.namedPipeOutputChannel.writeOutputChannel = originalNamedPipeOutputChannelWriteOutputChannel;
-
       done();
     });
   });
 
   test('testSetStatus', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
     runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
@@ -744,7 +712,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
     runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
@@ -764,7 +731,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalNamedPipeOutputChannelWriteOutputChannel = runtimeKernel.namedPipeOutputChannel.writeOutputChannel;
     var writtenData;
     runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (name, data, callback) {
       writtenData = data;
@@ -780,13 +746,6 @@ suite('roleenvironment-tests', function () {
         assert.equal(error2, null);
 
         assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Acquire><Incarnation>1</Incarnation><Status>Busy</Status><StatusDetail>Busy</StatusDetail><Expiration>2012-02-01T18:10:10.000Z</Expiration></Acquire></StatusLease></CurrentState>');
-
-        runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
-        runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
-        runtimeKernel.namedPipeOutputChannel.writeOutputChannel = originalNamedPipeOutputChannelWriteOutputChannel;
-
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
 
         done();
       });
