@@ -544,11 +544,12 @@ suite('roleenvironment-tests', function () {
     serverVersions.listen('\\\\.\\pipe\\versions');
 
     // Create goal state pipe
+    var serverGoalStateInterval;
     var serverGoalState = net.createServer(function (stream) {
       stream.setEncoding('utf8');
       stream.on('connect', function () {
         // Write goal state every second
-        setInterval(function () {
+        serverGoalStateInterval = setInterval(function () {
           stream.write(goalStateXml);
         }, 1000);
       });
@@ -588,6 +589,8 @@ suite('roleenvironment-tests', function () {
 
       serverVersions.close();
       serverGoalState.close();
+
+      clearInterval(serverGoalStateInterval);
 
       done();
     });
