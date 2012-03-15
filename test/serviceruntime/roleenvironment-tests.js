@@ -71,24 +71,24 @@ suite('roleenvironment-tests', function () {
       runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
         if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
           callback(undefined,
-  "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-  "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-  "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-  "<RuntimeServerEndpoints>" +
-  "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
-  "</RuntimeServerEndpoints>" +
-  "</RuntimeServerDiscovery>");
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+            "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+            "<RuntimeServerEndpoints>" +
+            "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
+            "</RuntimeServerEndpoints>" +
+            "</RuntimeServerDiscovery>");
         } else if (name === 'SomePath.GoalState') {
           callback(undefined,
-  "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-  "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-  "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-  "<Incarnation>1</Incarnation>" +
-  "<ExpectedState>Started</ExpectedState>" +
-  "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
-  "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
-  "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
-  "</GoalState>");
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+            "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+            "<Incarnation>1</Incarnation>" +
+            "<ExpectedState>Started</ExpectedState>" +
+            "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+            "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+            "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+            "</GoalState>");
         } else {
           callback('wrong file');
         }
@@ -97,21 +97,21 @@ suite('roleenvironment-tests', function () {
       runtimeKernel.fileInputChannel._readData = function (name, callback) {
         if (name === 'C:\\file.xml') {
           callback(undefined,
-  "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-  "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-  "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-  "<Deployment id=\"92f5cd71a4c048ed94e1b130bd0c4639\" emulated=\"false\" />" +
-  "<CurrentInstance id=\"geophotoapp_IN_0\" roleName=\"geophotoapp\" faultDomain=\"0\" updateDomain=\"0\">" +
-  "<ConfigurationSettings />" +
-  "<LocalResources>" +
-  "<LocalResource name=\"DiagnosticStore\" path=\"somepath.DiagnosticStore\" sizeInMB=\"4096\" />" +
-  "</LocalResources>" +
-  "<Endpoints>" +
-  "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
-  "</Endpoints>" +
-  "</CurrentInstance>" +
-  "<Roles />" +
-  "</RoleEnvironment>");
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+            "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+            "<Deployment id=\"92f5cd71a4c048ed94e1b130bd0c4639\" emulated=\"false\" />" +
+            "<CurrentInstance id=\"geophotoapp_IN_0\" roleName=\"geophotoapp\" faultDomain=\"0\" updateDomain=\"0\">" +
+            "<ConfigurationSettings />" +
+            "<LocalResources>" +
+            "<LocalResource name=\"DiagnosticStore\" path=\"somepath.DiagnosticStore\" sizeInMB=\"4096\" />" +
+            "</LocalResources>" +
+            "<Endpoints>" +
+            "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+            "</Endpoints>" +
+            "</CurrentInstance>" +
+            "<Roles />" +
+            "</RoleEnvironment>");
         } else {
           callback('wrong file');
         }
@@ -629,24 +629,24 @@ suite('roleenvironment-tests', function () {
     runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
-  "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-  "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-  "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-  "<RuntimeServerEndpoints>" +
-  "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
-  "</RuntimeServerEndpoints>" +
-  "</RuntimeServerDiscovery>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<RuntimeServerEndpoints>" +
+          "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
+          "</RuntimeServerEndpoints>" +
+          "</RuntimeServerDiscovery>");
       } else if (name === 'SomePath.GoalState') {
         callback(undefined,
-  "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-  "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-  "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-  "<Incarnation>1</Incarnation>" +
-  "<ExpectedState>Started</ExpectedState>" +
-  "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
-  "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
-  "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
-  "</GoalState>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Incarnation>1</Incarnation>" +
+          "<ExpectedState>Started</ExpectedState>" +
+          "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+          "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+          "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+          "</GoalState>");
       } else {
         callback('wrong pipe');
       }
