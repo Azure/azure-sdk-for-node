@@ -50,7 +50,7 @@ var tableNames = [];
 var tablePrefix = 'tableservice';
 
 var testPrefix = 'tableservice-tests';
-var numberTests = 17;
+var numberTests = 18;
 
 suite('tableservice-tests', function () {
   setup(function (done) {
@@ -674,6 +674,61 @@ suite('tableservice-tests', function () {
           }
 
           done();
+        });
+      });
+    });
+  });
+
+  test('InsertPartitionKeyOnly', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+
+    tableService.createTable(tableName, function (error1) {
+      assert.equal(error1, null);
+
+      var entity1 = {
+        PartitionKey: '1',
+        RowKey: '1st',
+        field1: 'value'
+      };
+
+      // entity in the same partition
+      var entity2 = {
+        PartitionKey: '1',
+        RowKey: '2st',
+        field1: 'value'
+      }
+
+      // entity in another partition
+      var entity3 = {
+        PartitionKey: '2',
+        RowKey: '2st',
+        field1: 'value'
+      }
+
+      // Should perform an insert
+      tableService.insertEntity(tableName, entity1, function (error2) {
+        assert.equal(error2, null);
+
+        tableService.insertEntity(tableName, entity2, function (error3) {
+          assert.equal(error3, null);
+
+          tableService.insertEntity(tableName, entity3, function (error4) {
+            assert.equal(error4, null);
+
+            // Create table query with passing partition key only
+            var tableQuery = azure.TableQuery.select()
+            .from(tableName)
+            .whereKeys(entity1.PartitionKey);
+
+            tableService.queryEntities(tableQuery, function (error5, entities) {
+              assert.equal(error5, null);
+
+              assert.notEqual(entities, null);
+              assert.equal(entities.length, 2);
+
+              done();
+            });
+          });
         });
       });
     });
