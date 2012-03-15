@@ -21,7 +21,9 @@
         "tunnel": ">= 0.0.1",
         "commander": ">= 0.5.2",
         "winston": ">= 0.5.10",
-        "colors": "0.x.x"
+        "colors": "0.x.x",
+        "eyes": "0.x.x",
+        "easy-table": "0.0.1"
     },
     "devDependencies": {
         "mocha": "*",
