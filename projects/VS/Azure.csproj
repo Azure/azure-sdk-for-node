@@ -324,9 +324,6 @@
     <Content Include="..\..\test\mockserver\mockserverclient.js">
       <Link>test\mockserver\mockserverclient.js</Link>
     </Content>
-    <Content Include="..\..\test\runextendedtests.js">
-      <Link>test\runextendedtests.js</Link>
-    </Content>
     <Content Include="..\..\test\runjshint.js">
       <Link>test\runjshint.js</Link>
     </Content>

@@ -33,8 +33,8 @@
     "url" : "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "node test/runtests.js",
+    "test": "node test/runtests.js testlist.txt",
     "jshint": "node test/runjshint.js",
-    "extendedtests": "node test/runextendedtests.js"
+    "extendedtests": "node test/runtests.js extendedtestlist.txt"
   }
 }
