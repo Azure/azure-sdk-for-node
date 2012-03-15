@@ -16,18 +16,21 @@
 var fs = require('fs');
 var path = require('path');
 
+var args = (process.ARGV || process.argv);
+
+var testList = args.pop();
+
 var fileContent;
 var root = false;
-if (path.existsSync('./testlist.txt')) {
-  fileContent = fs.readFileSync('./testlist.txt').toString();
+if (path.existsSync(testList)) {
+  fileContent = fs.readFileSync(testList).toString();
 } else {
-  fileContent = fs.readFileSync('./test/testlist.txt').toString();
+  fileContent = fs.readFileSync('./test/' + testList).toString();
   root = true;
 }
 
 var files = fileContent.split('\n');
 
-var args = (process.ARGV || process.argv);
 args.push('-u');
 args.push('tdd');
 
