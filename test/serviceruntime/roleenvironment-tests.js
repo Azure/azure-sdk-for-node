@@ -732,8 +732,6 @@ suite('roleenvironment-tests', function () {
 
       serverVersionsStream.end();
       serverVersions.close();
-
-      done();
     });
 
     // Make sure incarnation 1 is read
