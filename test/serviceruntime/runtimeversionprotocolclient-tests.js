@@ -21,7 +21,7 @@ var RuntimeVersionProtocolClient = require('../../lib/serviceruntime/runtimevers
 suite('runtimeversionprotocolclient-tests', function () {
   test('GetVersionMapSingle', function (done) {
     var inputChannel = new NamedPipeInputChannel();
-    inputChannel.readData = function (name, callback) {
+    inputChannel._readData = function (name, callback) {
       callback(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
@@ -44,7 +44,7 @@ suite('runtimeversionprotocolclient-tests', function () {
 
   test('GetVersionMapArray', function (done) {
     var inputChannel = new NamedPipeInputChannel();
-    inputChannel.readData = function (name, callback) {
+    inputChannel._readData = function (name, callback) {
       callback(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +

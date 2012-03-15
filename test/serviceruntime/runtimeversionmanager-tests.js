@@ -23,7 +23,7 @@ var RuntimeVersionManager = require('../../lib/serviceruntime/runtimeversionmana
 suite('runtimeversionmanager-tests', function () {
   test('GetRuntimeClient', function (done) {
     var inputChannel = new NamedPipeInputChannel();
-    inputChannel.readData = function (name, callback) {
+    inputChannel._readData = function (name, callback) {
       callback(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +

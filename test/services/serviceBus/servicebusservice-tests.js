@@ -1576,23 +1576,32 @@ suite('servicebusservice-tests', function () {
   });
 
   test('TimeoutWorks', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
     var customTimeoutInternalInS = 5;
 
-    var buildRequestOptionsFunction = serviceBusService._buildRequestOptions.bind(serviceBusService);
-    serviceBusService._buildRequestOptions = function (webResource, options, callback) {
-      buildRequestOptionsFunction(webResource, options, function (error, requestOptions) {
-        assert.equal(webResource._queryString[QueryStringConstants.TIMEOUT], customTimeoutInternalInS);
+    serviceBusService.createQueue(queueName, function (createQueueError) {
+      assert.equal(createQueueError, null);
 
-        callback(error, requestOptions);
+      serviceBusService.sendQueueMessage(queueName, 'hi there', function (sendMessageError) {
+        assert.equal(sendMessageError, null);
+
+        var buildRequestOptionsFunction = serviceBusService._buildRequestOptions.bind(serviceBusService);
+        serviceBusService._buildRequestOptions = function (webResource, options, callback) {
+          buildRequestOptionsFunction(webResource, options, function (error, requestOptions) {
+            assert.equal(webResource._queryString[QueryStringConstants.TIMEOUT]['value'], customTimeoutInternalInS);
+
+            callback(error, requestOptions);
+          });
+        };
+
+        serviceBusService.receiveQueueMessage(queueName, { timeoutIntervalInS: customTimeoutInternalInS }, function (receiveMessageError) {
+          assert.equal(receiveMessageError, null);
+
+          serviceBusService._buildRequestOptions = buildRequestOptionsFunction;
+
+          done();
+        });
       });
-    };
-
-    serviceBusService.createTopic(topicName, { timeoutIntervalInS: customTimeoutInternalInS }, function (createError) {
-      assert.equal(createError, null);
-
-      serviceBusService._buildRequestOptions = buildRequestOptionsFunction;
-      done();
     });
   });
 });

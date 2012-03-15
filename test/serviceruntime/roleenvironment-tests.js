@@ -14,6 +14,7 @@
 */
 
 var assert = require('assert');
+var net = require('net');
 
 var RuntimeKernel = require('../../lib/serviceruntime/runtimekernel');
 var NamedPipeInputChannel = require('../../lib/serviceruntime/namedpipeinputchannel');
@@ -25,15 +26,49 @@ var ServiceRuntimeConstants = Constants.ServiceRuntimeConstants;
 
 var azure = require('../../lib/azure');
 
+var originalFileInputChannelReadData;
+var originalNamedPipeInputChannelReadData;
+var originalNamedPipeOutputChannelWriteOutputChannel;
+var originalVersionEndpointFixedPath;
+var originalRuntimeClient;
+var originalEndpoint;
+
 suite('roleenvironment-tests', function () {
+  setup(function (done) {
+    var runtimeKernel = RuntimeKernel.getKernel();
+
+    originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
+    originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel._readData;
+    originalNamedPipeOutputChannelWriteOutputChannel = runtimeKernel.namedPipeOutputChannel.writeOutputChannel;
+    originalVersionEndpointFixedPath = azure.RoleEnvironment.VersionEndpointFixedPath;
+    originalRuntimeClient = azure.RoleEnvironment.runtimeClient;
+    originalEndpoint = runtimeKernel.protocol1RuntimeGoalStateClient.endpoint;
+
+    done();
+  });
+
+  teardown(function (done) {
+    var runtimeKernel = RuntimeKernel.getKernel();
+
+    runtimeKernel.namedPipeInputChannel._readData = originalNamedPipeInputChannelReadData;
+    runtimeKernel.fileInputChannel._readData = originalFileInputChannelReadData;
+    runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
+    runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+    runtimeKernel.protocol1RuntimeGoalStateClient.endpoint = originalEndpoint;
+
+    azure.RoleEnvironment.VersionEndpointFixedPath = originalVersionEndpointFixedPath;
+    azure.RoleEnvironment.runtimeClient = originalRuntimeClient;
+
+    done();
+  });
+
   test('IsAvailable', function (done) {
     azure.RoleEnvironment.isAvailable(function (error1, isAvailable1) {
       assert.notEqual(error1, null);
       assert.equal(isAvailable1, false);
 
       var runtimeKernel = RuntimeKernel.getKernel();
-      var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel.readData;
-      runtimeKernel.namedPipeInputChannel.readData = function (name, callback) {
+      runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
         if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
           callback(undefined,
             "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -59,8 +94,7 @@ suite('roleenvironment-tests', function () {
         }
       };
 
-      var originalFileInputChannelReadData = runtimeKernel.fileInputChannel.readData;
-      runtimeKernel.fileInputChannel.readData = function (name, callback) {
+      runtimeKernel.fileInputChannel._readData = function (name, callback) {
         if (name === 'C:\\file.xml') {
           callback(undefined,
             "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -87,11 +121,6 @@ suite('roleenvironment-tests', function () {
         assert.equal(error2, null);
         assert.equal(isAvailable2, true);
 
-        runtimeKernel.namedPipeInputChannel.readData = originalNamedPipeInputChannelReadData;
-        runtimeKernel.fileInputChannel.readData = originalFileInputChannelReadData;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
         done();
       });
     });
@@ -99,17 +128,16 @@ suite('roleenvironment-tests', function () {
 
   test('GetLocalResourcesNoGoalStateNamedPipe', function (done) {
     assert.throws(
-      azure.RoleEnvironment.getLocalResources(function () { }),
-      Error
-    );
+  azure.RoleEnvironment.getLocalResources(function () { }),
+  Error
+  );
 
     done();
   });
 
   test('GetDeploymentId', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel.readData;
-    runtimeKernel.namedPipeInputChannel.readData = function (name, callback) {
+    runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -135,8 +163,8 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel.readData;
-    runtimeKernel.fileInputChannel.readData = function (name, callback) {
+    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -163,19 +191,13 @@ suite('roleenvironment-tests', function () {
       assert.equal(error, null);
       assert.equal(id, 'mydeploymentid');
 
-      runtimeKernel.namedPipeInputChannel.readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel.readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
       done();
     });
   });
 
   test('GetLocalResources', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel.readData;
-    runtimeKernel.namedPipeInputChannel.readData = function (name, callback) {
+    runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -201,8 +223,7 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel.readData;
-    runtimeKernel.fileInputChannel.readData = function (name, callback) {
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -232,19 +253,13 @@ suite('roleenvironment-tests', function () {
       assert.notEqual(localResources['DiagnosticStore']['path'], null);
       assert.notEqual(localResources['DiagnosticStore']['sizeInMB'], null);
 
-      runtimeKernel.namedPipeInputChannel.readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel.readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
       done();
     });
   });
 
   test('GetRoles', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel.readData;
-    runtimeKernel.namedPipeInputChannel.readData = function (name, callback) {
+    runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -270,8 +285,7 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel.readData;
-    runtimeKernel.fileInputChannel.readData = function (name, callback) {
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -328,19 +342,13 @@ suite('roleenvironment-tests', function () {
       assert.notEqual(roles['role2']['deployment16(191).test.role2_IN_0'], null);
       assert.notEqual(roles['role2']['deployment16(191).test.role2_IN_1'], null);
 
-      runtimeKernel.namedPipeInputChannel.readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel.readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
       done();
     });
   });
 
   test('CalculateChanges', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel.readData;
-    runtimeKernel.namedPipeInputChannel.readData = function (name, callback) {
+    runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -366,8 +374,7 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel.readData;
-    runtimeKernel.fileInputChannel.readData = function (name, callback) {
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -424,11 +431,6 @@ suite('roleenvironment-tests', function () {
         assert.notEqual(changes, null);
         assert.equal(changes.length, 0);
 
-        runtimeKernel.namedPipeInputChannel.readData = originalNamedPipeInputChannelReadData;
-        runtimeKernel.fileInputChannel.readData = originalFileInputChannelReadData;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-
         done();
       });
     });
@@ -436,56 +438,53 @@ suite('roleenvironment-tests', function () {
 
   test('testRequestRecycle', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel.readData;
-    runtimeKernel.namedPipeInputChannel.readData = function (name, callback) {
+    runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<RuntimeServerEndpoints>" +
-            "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
-            "</RuntimeServerEndpoints>" +
-            "</RuntimeServerDiscovery>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<RuntimeServerEndpoints>" +
+          "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
+          "</RuntimeServerEndpoints>" +
+          "</RuntimeServerDiscovery>");
       } else if (name === 'SomePath.GoalState') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<Incarnation>1</Incarnation>" +
-            "<ExpectedState>Started</ExpectedState>" +
-            "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
-            "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
-            "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
-            "</GoalState>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Incarnation>1</Incarnation>" +
+          "<ExpectedState>Started</ExpectedState>" +
+          "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+          "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+          "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+          "</GoalState>");
       } else {
         callback('wrong file');
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel.readData;
-    runtimeKernel.fileInputChannel.readData = function (name, callback) {
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
-            "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
-            "<ConfigurationSettings />" +
-            "<LocalResources />" +
-            "<Endpoints />" +
-            "</CurrentInstance>" +
-            "<Roles />" +
-            "</RoleEnvironment>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+          "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<ConfigurationSettings />" +
+          "<LocalResources />" +
+          "<Endpoints />" +
+          "</CurrentInstance>" +
+          "<Roles />" +
+          "</RoleEnvironment>");
       } else {
         callback('wrong file');
       }
     };
 
-    var originalNamedPipeOutputChannelWriteOutputChannel = runtimeKernel.namedPipeOutputChannel.writeOutputChannel;
     var writtenData;
-    runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (data, callback) {
+    runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (name, data, callback) {
       writtenData = data;
       callback();
     };
@@ -493,70 +492,188 @@ suite('roleenvironment-tests', function () {
     azure.RoleEnvironment.requestRecycle(function (error) {
       assert.equal(error, null);
 
-      assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Acquire><Expiration>Fri Dec 31 9999 15:59:59 GMT-0800 (Pacific Standard Time)</Expiration><Incarnation>1</Incarnation><Status>recycle</Status></Acquire></StatusLease></CurrentState>');
-
-      runtimeKernel.namedPipeInputChannel.readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel.readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-      runtimeKernel.namedPipeOutputChannel.writeOutputChannel = originalNamedPipeOutputChannelWriteOutputChannel;
+      assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Acquire><Incarnation>1</Incarnation><Status>' + ServiceRuntimeConstants.RoleStatus.RECYCLE + '</Status><StatusDetail>' + ServiceRuntimeConstants.RoleStatus.RECYCLE + '</StatusDetail><Expiration>9999-12-31T23:59:59.999Z</Expiration></Acquire></StatusLease></CurrentState>');
 
       done();
     });
   });
 
+  test('testChangedNotifications', function (done) {
+    var versionsXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<RuntimeServerEndpoints>" +
+      "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"\\\\.\\pipe\\goalState\" />" +
+      "</RuntimeServerEndpoints>" +
+      "</RuntimeServerDiscovery>";
+
+    var goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<Incarnation>1</Incarnation>" +
+      "<ExpectedState>Started</ExpectedState>" +
+      "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+      "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+      "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+      "</GoalState>";
+
+    var environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+      "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<ConfigurationSettings />" +
+      "<LocalResources />" +
+      "<Endpoints />" +
+      "</CurrentInstance>" +
+      "<Roles />" +
+      "</RoleEnvironment>";
+
+    // Create versions pipe
+    var serverVersions = net.createServer(function (stream) {
+      stream.setEncoding('utf8');
+      stream.on('connect', function () {
+        stream.write(versionsXml);
+      });
+
+      stream.on('end', function () {
+        stream.end();
+      });
+    });
+
+    serverVersions.listen('\\\\.\\pipe\\versions');
+
+    // Create goal state pipe
+    var serverGoalStateInterval;
+    var serverGoalState = net.createServer(function (stream) {
+      stream.setEncoding('utf8');
+      stream.on('connect', function () {
+        // Write goal state every second
+        serverGoalStateInterval = setInterval(function () {
+          stream.write(goalStateXml);
+        }, 1000);
+      });
+
+      stream.on('end', function () {
+        stream.end();
+      });
+    });
+
+    serverGoalState.listen('\\\\.\\pipe\\goalState');
+
+    var runtimeKernel = RuntimeKernel.getKernel();
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
+      if (name === 'C:\\file.xml') {
+        callback(undefined, environmentData);
+      } else {
+        callback('wrong file');
+      }
+    };
+
+    azure.RoleEnvironment.VersionEndpointFixedPath = '\\\\.\\pipe\\versions';
+    azure.RoleEnvironment.runtimeClient = null;
+
+    var changingInvoked = false;
+
+    azure.RoleEnvironment.on(ServiceRuntimeConstants.CHANGING, function () {
+      changingInvoked = true;
+    });
+
+    azure.RoleEnvironment.on(ServiceRuntimeConstants.CHANGED, function (changes) {
+      assert.equal(changingInvoked, true);
+
+      assert.notEqual(changes, null);
+      assert.equal(changes.length, 1);
+      assert.equal(changes[0].type, 'TopologyChange');
+      assert.equal(changes[0].name, 'test');
+
+      serverVersions.close();
+      serverGoalState.close();
+
+      clearInterval(serverGoalStateInterval);
+
+      done();
+    });
+
+    // Make sure incarnation 1 is read
+    azure.RoleEnvironment.getConfigurationSettings(function (error, configurationSettings) {
+      // Update to incarnation 2
+      goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+        "<Incarnation>2</Incarnation>" +
+        "<ExpectedState>Started</ExpectedState>" +
+        "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+        "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+        "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+        "</GoalState>";
+
+      environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+        "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+        "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"1\">" +
+        "<ConfigurationSettings />" +
+        "<LocalResources />" +
+        "<Endpoints />" +
+        "</CurrentInstance>" +
+        "<Roles />" +
+        "</RoleEnvironment>";
+
+      assert.equal(error, null);
+    });
+  });
+
   test('testClearStatus', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel.readData;
-    runtimeKernel.namedPipeInputChannel.readData = function (name, callback) {
+    runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<RuntimeServerEndpoints>" +
-            "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
-            "</RuntimeServerEndpoints>" +
-            "</RuntimeServerDiscovery>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<RuntimeServerEndpoints>" +
+          "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
+          "</RuntimeServerEndpoints>" +
+          "</RuntimeServerDiscovery>");
       } else if (name === 'SomePath.GoalState') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<Incarnation>1</Incarnation>" +
-            "<ExpectedState>Started</ExpectedState>" +
-            "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
-            "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
-            "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
-            "</GoalState>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Incarnation>1</Incarnation>" +
+          "<ExpectedState>Started</ExpectedState>" +
+          "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+          "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+          "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+          "</GoalState>");
       } else {
-        callback('wrong file');
+        callback('wrong pipe');
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel.readData;
-    runtimeKernel.fileInputChannel.readData = function (name, callback) {
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
-            "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
-            "<ConfigurationSettings />" +
-            "<LocalResources />" +
-            "<Endpoints />" +
-            "</CurrentInstance>" +
-            "<Roles />" +
-            "</RoleEnvironment>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+          "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<ConfigurationSettings />" +
+          "<LocalResources />" +
+          "<Endpoints />" +
+          "</CurrentInstance>" +
+          "<Roles />" +
+          "</RoleEnvironment>");
       } else {
+        console.log('hahah: ' + name);
         callback('wrong file');
       }
     };
 
-    var originalNamedPipeOutputChannelWriteOutputChannel = runtimeKernel.namedPipeOutputChannel.writeOutputChannel;
     var writtenData;
-    runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (data, callback) {
+    runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (name, data, callback) {
       writtenData = data;
       callback();
     };
@@ -566,87 +683,72 @@ suite('roleenvironment-tests', function () {
 
       assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Release/></StatusLease></CurrentState>');
 
-      runtimeKernel.namedPipeInputChannel.readData = originalNamedPipeInputChannelReadData;
-      runtimeKernel.fileInputChannel.readData = originalFileInputChannelReadData;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-      runtimeKernel.namedPipeOutputChannel.writeOutputChannel = originalNamedPipeOutputChannelWriteOutputChannel;
-
       done();
     });
   });
 
   test('testSetStatus', function (done) {
     var runtimeKernel = RuntimeKernel.getKernel();
-    var originalNamedPipeInputChannelReadData = runtimeKernel.namedPipeInputChannel.readData;
-    runtimeKernel.namedPipeInputChannel.readData = function (name, callback) {
+    runtimeKernel.namedPipeInputChannel._readData = function (name, callback) {
       if (name === '\\\\.\\pipe\\WindowsAzureRuntime') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<RuntimeServerEndpoints>" +
-            "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
-            "</RuntimeServerEndpoints>" +
-            "</RuntimeServerDiscovery>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<RuntimeServerEndpoints>" +
+          "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
+          "</RuntimeServerEndpoints>" +
+          "</RuntimeServerDiscovery>");
       } else if (name === 'SomePath.GoalState') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<Incarnation>1</Incarnation>" +
-            "<ExpectedState>Started</ExpectedState>" +
-            "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
-            "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
-            "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
-            "</GoalState>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Incarnation>1</Incarnation>" +
+          "<ExpectedState>Started</ExpectedState>" +
+          "<RoleEnvironmentPath>C:\\file.xml</RoleEnvironmentPath>" +
+          "<CurrentStateEndpoint>\\.\pipe\WindowsAzureRuntime.CurrentState</CurrentStateEndpoint>" +
+          "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+          "</GoalState>");
       } else {
         callback('wrong file');
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel.readData;
-    runtimeKernel.fileInputChannel.readData = function (name, callback) {
+    runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
-            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
-            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
-            "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
-            "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
-            "<ConfigurationSettings />" +
-            "<LocalResources />" +
-            "<Endpoints />" +
-            "</CurrentInstance>" +
-            "<Roles />" +
-            "</RoleEnvironment>");
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+          "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<ConfigurationSettings />" +
+          "<LocalResources />" +
+          "<Endpoints />" +
+          "</CurrentInstance>" +
+          "<Roles />" +
+          "</RoleEnvironment>");
       } else {
         callback('wrong file');
       }
     };
 
-    var originalNamedPipeOutputChannelWriteOutputChannel = runtimeKernel.namedPipeOutputChannel.writeOutputChannel;
     var writtenData;
-    runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (data, callback) {
+    runtimeKernel.namedPipeOutputChannel.writeOutputChannel = function (name, data, callback) {
       writtenData = data;
       callback();
     };
 
-    azure.RoleEnvironment.setStatus(ServiceRuntimeConstants.RoleInstanceStatus.READY, new Date(2012, 1, 1, 12, 10, 10, 0), function (error1) {
+    azure.RoleEnvironment.setStatus(ServiceRuntimeConstants.RoleInstanceStatus.READY, new Date(2012, 1, 1, 10, 10, 10, 0), function (error1) {
       assert.equal(error1, null);
 
-      assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Acquire><Expiration>Wed Feb 01 2012 12:10:10 GMT-0800 (Pacific Standard Time)</Expiration><Incarnation>1</Incarnation><Status>started</Status></Acquire></StatusLease></CurrentState>');
+      assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Acquire><Incarnation>1</Incarnation><Status>Started</Status><StatusDetail>Started</StatusDetail><Expiration>2012-02-01T18:10:10.000Z</Expiration></Acquire></StatusLease></CurrentState>');
 
       azure.RoleEnvironment.setStatus(ServiceRuntimeConstants.RoleInstanceStatus.BUSY, new Date(2012, 1, 1, 10, 10, 10, 0), function (error2) {
         assert.equal(error2, null);
 
-        assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Acquire><Expiration>Wed Feb 01 2012 10:10:10 GMT-0800 (Pacific Standard Time)</Expiration><Incarnation>1</Incarnation><Status>busy</Status></Acquire></StatusLease></CurrentState>');
-
-        runtimeKernel.namedPipeInputChannel.readData = originalNamedPipeInputChannelReadData;
-        runtimeKernel.fileInputChannel.readData = originalFileInputChannelReadData;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
-        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
-        runtimeKernel.namedPipeOutputChannel.writeOutputChannel = originalNamedPipeOutputChannelWriteOutputChannel;
+        assert.equal(writtenData, '<?xml version="1.0" encoding="utf-8" standalone="yes"?><CurrentState><StatusLease ClientId="' + azure.RoleEnvironment.clientId + '"><Acquire><Incarnation>1</Incarnation><Status>Busy</Status><StatusDetail>Busy</StatusDetail><Expiration>2012-02-01T18:10:10.000Z</Expiration></Acquire></StatusLease></CurrentState>');
 
         done();
       });

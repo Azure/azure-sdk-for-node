@@ -141,9 +141,6 @@
     <Content Include="..\..\lib\serviceruntime\roleenvironment.js">
       <Link>lib\serviceruntime\roleenvironment.js</Link>
     </Content>
-    <Content Include="..\..\lib\serviceruntime\roleinstance.js">
-      <Link>lib\serviceruntime\roleinstance.js</Link>
-    </Content>
     <Content Include="..\..\lib\serviceruntime\runtimekernel.js">
       <Link>lib\serviceruntime\runtimekernel.js</Link>
     </Content>
