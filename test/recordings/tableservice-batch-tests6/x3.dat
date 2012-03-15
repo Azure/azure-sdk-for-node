@@ -1,7 +1,7 @@
---batch_13586cd6d15674722fb1543e22ef25e2
-content-type: multipart/mixed; boundary=changeset_13586cd6d15674722fb1543e22ef25e2
+--batch_df8a8ad0bfe33d6463b4cef422e6e93f
+content-type: multipart/mixed; boundary=changeset_df8a8ad0bfe33d6463b4cef422e6e93f
 
---changeset_13586cd6d15674722fb1543e22ef25e2
+--changeset_df8a8ad0bfe33d6463b4cef422e6e93f
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -10,8 +10,8 @@ content-type: application/atom+xml;type=entry
 content-length: 481
 content-id: 1
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:23.543Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>part</d:PartitionKey><d:RowKey>1</d:RowKey><d:MyField>value</d:MyField></m:properties></content></entry>
---changeset_13586cd6d15674722fb1543e22ef25e2
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:53.766Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>part</d:PartitionKey><d:RowKey>1</d:RowKey><d:MyField>value</d:MyField></m:properties></content></entry>
+--changeset_df8a8ad0bfe33d6463b4cef422e6e93f
 content-type: application/http
 content-transfer-encoding: binary
 
@@ -21,6 +21,6 @@ content-length: 486
 if-match: *
 content-id: 2
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-02-24T07:42:23.543Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>part</d:PartitionKey><d:RowKey>1</d:RowKey><d:MyField>othervalue</d:MyField></m:properties></content></entry>
---changeset_13586cd6d15674722fb1543e22ef25e2--
---batch_13586cd6d15674722fb1543e22ef25e2--
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"><title/><updated>2012-03-15T21:56:53.767Z</updated><author><name/></author><id/><content type="application/xml"><m:properties><d:PartitionKey>part</d:PartitionKey><d:RowKey>1</d:RowKey><d:MyField>othervalue</d:MyField></m:properties></content></entry>
+--changeset_df8a8ad0bfe33d6463b4cef422e6e93f--
+--batch_df8a8ad0bfe33d6463b4cef422e6e93f--
