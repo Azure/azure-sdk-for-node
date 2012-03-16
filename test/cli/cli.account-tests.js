@@ -1,9 +1,9 @@
 
 require('should');
-var waz = require('./waz');
+var cli = require('./cli');
 var capture = require('./util').capture;
 
-suite('waz', function(){
+suite('cli', function(){
    suite('account', function() {
        
        suite('import', function() {
@@ -11,7 +11,7 @@ suite('waz', function(){
            test('should launch browser when there is no file name', function(done) {
 
                var result = capture(function() {
-                   waz.parse('node waz.js account import'.split(' '));
+                   cli.parse('node cli.js account import'.split(' '));
                });
 
                done();

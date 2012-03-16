@@ -43,6 +43,6 @@
       "extendedtests": "node test/runextendedtests.js"
     },
     "bin": {
-        "waz": "./bin/waz"
+        "azure": "./bin/azure"
     }
 }
