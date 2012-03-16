@@ -62,6 +62,22 @@ suite('roleenvironment-tests', function () {
     done();
   });
 
+  test('eventEmitter', function (done) {
+    // No event listeners registered yet
+    assert.equal(azure.RoleEnvironment.listeners(ServiceRuntimeConstants.CHANGED).length, 0);
+
+    // Register one event listener
+    var listener = function () { };
+    azure.RoleEnvironment.on(ServiceRuntimeConstants.CHANGED, listener);
+    assert.equal(azure.RoleEnvironment.listeners(ServiceRuntimeConstants.CHANGED).length, 1);
+
+    // Remove the event listener
+    azure.RoleEnvironment.removeListener(ServiceRuntimeConstants.CHANGED, listener);
+    assert.equal(azure.RoleEnvironment.listeners(ServiceRuntimeConstants.CHANGED).length, 0);
+
+    done();
+  });
+
   test('IsAvailable', function (done) {
     azure.RoleEnvironment.isAvailable(function (error1, isAvailable1) {
       assert.notEqual(error1, null);
@@ -163,7 +179,6 @@ suite('roleenvironment-tests', function () {
       }
     };
 
-    var originalFileInputChannelReadData = runtimeKernel.fileInputChannel._readData;
     runtimeKernel.fileInputChannel._readData = function (name, callback) {
       if (name === 'C:\\file.xml') {
         callback(undefined,
@@ -609,7 +624,7 @@ suite('roleenvironment-tests', function () {
     });
 
     // Make sure incarnation 1 is read
-    azure.RoleEnvironment.getConfigurationSettings(function (error, configurationSettings) {
+    azure.RoleEnvironment.getConfigurationSettings(function (error) {
       // Update to incarnation 2
       goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
         "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
@@ -735,7 +750,7 @@ suite('roleenvironment-tests', function () {
     });
 
     // Make sure incarnation 1 is read
-    azure.RoleEnvironment.getConfigurationSettings(function (error, configurationSettings) {
+    azure.RoleEnvironment.getConfigurationSettings(function (error) {
       // Update to incarnation 2
       goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
         "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
