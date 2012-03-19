@@ -20,6 +20,7 @@
         "underscore.string": ">= 2.0.0",
         "tunnel": ">= 0.0.1",
         "async": ">= 0.1.18",
+        "streamline": "0.2.4",
         "commander": ">= 0.5.2",
         "winston": ">= 0.5.10",
         "colors": "0.x.x",
