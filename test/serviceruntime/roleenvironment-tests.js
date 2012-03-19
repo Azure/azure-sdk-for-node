@@ -821,7 +821,6 @@ suite('roleenvironment-tests', function () {
           "<Roles />" +
           "</RoleEnvironment>");
       } else {
-        console.log('hahah: ' + name);
         callback('wrong file');
       }
     };
