@@ -19,7 +19,13 @@
         "underscore": ">= 1.3.1",
         "underscore.string": ">= 2.0.0",
         "tunnel": ">= 0.0.1",
-        "commander": ">= 0.5.2"
+        "async": ">= 0.1.18",
+        "streamline": "0.2.4",
+        "commander": ">= 0.5.2",
+        "winston": ">= 0.5.10",
+        "colors": "0.x.x",
+        "eyes": "0.x.x",
+        "easy-table": "0.0.1"
     },
     "devDependencies": {
         "mocha": "*",
@@ -39,6 +45,6 @@
       "extendedtests": "node test/runextendedtests.js"
     },
     "bin": {
-        "waz": "./bin/waz"
+        "azure": "./bin/azure"
     }
 }

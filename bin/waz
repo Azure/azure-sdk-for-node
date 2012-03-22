@@ -1,4 +1,0 @@
-#!/usr/bin/env node
-
-var waz = require('../lib/waz/waz');
-waz.parse(process.argv);
