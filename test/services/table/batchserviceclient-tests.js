@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var testutil = require('../../util/util');
@@ -36,88 +36,88 @@ var entity1 = { PartitionKey: 'part1',
 };
 
 var testPrefix = 'batchserviceclient-tests';
+var numberTests = 2;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    tabletestutil.setUpTest(module.exports, testPrefix, function (err, newTableService) {
+suite('batchserviceclient-tests', function () {
+  setup(function (done) {
+    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
       tableService = newTableService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    tabletestutil.tearDownTest(module.exports, tableService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+  });
 
-  testAddOperation: function (test) {
+  test('AddOperation', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.beginBatch();
 
-    test.throws(function () {
+    assert.throws(function () {
       tableService.commitBatch(function () { });
     });
 
     tableService.createTable(tableName, null, function (createTableError, table, createTableResponse) {
-      test.equal(createTableError, null);
-      test.notEqual(table, null);
-      test.equal(createTableResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createTableError, null);
+      assert.notEqual(table, null);
+      assert.equal(createTableResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       tableService.insertEntity(tableName, entity1, null, function (insertError, insertEntity, insertEntityResponse) {
-        test.equal(insertError, null);
-        test.equal(insertEntity, null);
-        test.equal(insertEntityResponse.statusCode, BatchServiceClient.BATCH_CODE);
+        assert.equal(insertError, null);
+        assert.equal(insertEntity, null);
+        assert.equal(insertEntityResponse.statusCode, BatchServiceClient.BATCH_CODE);
       });
 
       // The operations were successfully added
-      test.notEqual(tableService.operations, null);
+      assert.notEqual(tableService.operations, null);
       tableService.commitBatch(function (performBatchError, performBatchOperationResponses, performBatchResponse) {
-        test.equal(performBatchError, null);
-        test.equal(performBatchResponse.statusCode, HttpConstants.HttpResponseCodes.ACCEPTED_CODE);
+        assert.equal(performBatchError, null);
+        assert.equal(performBatchResponse.statusCode, HttpConstants.HttpResponseCodes.ACCEPTED_CODE);
 
         // The operations were successfully reset
-        test.equal(tableService.operations, null);
+        assert.equal(tableService.operations, null);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testHasOperations: function (test) {
+  test('HasOperations', function (done) {
     var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
 
     tableService.beginBatch();
 
-    test.equal(tableService.isInBatch(), true);
-    test.equal(tableService.hasOperations(), false);
+    assert.equal(tableService.isInBatch(), true);
+    assert.equal(tableService.hasOperations(), false);
 
     // Don't really need to create the table since we're not going to execute the batch
     tableService.insertEntity(tableName, entity1, null, function (insertError, insertEntity, insertEntityResponse) {
-      test.equal(insertError, null);
-      test.equal(insertEntity, null);
-      test.equal(insertEntityResponse.statusCode, BatchServiceClient.BATCH_CODE);
+      assert.equal(insertError, null);
+      assert.equal(insertEntity, null);
+      assert.equal(insertEntityResponse.statusCode, BatchServiceClient.BATCH_CODE);
     });
 
-    test.equal(tableService.isInBatch(), true);
-    test.equal(tableService.hasOperations(), true);
+    assert.equal(tableService.isInBatch(), true);
+    assert.equal(tableService.hasOperations(), true);
 
     // insert another one just to check
     tableService.insertEntity(tableName, entity1, null, function (insertError, insertEntity, insertEntityResponse) {
-      test.equal(insertError, null);
-      test.equal(insertEntity, null);
-      test.equal(insertEntityResponse.statusCode, BatchServiceClient.BATCH_CODE);
+      assert.equal(insertError, null);
+      assert.equal(insertEntity, null);
+      assert.equal(insertEntityResponse.statusCode, BatchServiceClient.BATCH_CODE);
     });
 
-    test.equal(tableService.isInBatch(), true);
-    test.equal(tableService.hasOperations(), true);
+    assert.equal(tableService.isInBatch(), true);
+    assert.equal(tableService.hasOperations(), true);
 
     tableService.rollback();
 
     // rolling back should've clear the batch
-    test.equal(tableService.hasOperations(), false);
-    test.equal(tableService.isInBatch(), false);
+    assert.equal(tableService.hasOperations(), false);
+    assert.equal(tableService.isInBatch(), false);
 
-    test.done();
-  }
+    done();
+  });
 });

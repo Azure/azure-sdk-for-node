@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
@@ -23,8 +23,8 @@ var ISO8061Date = require('../../../lib/util/iso8061date');
 var testutil = require('../../util/util');
 var wrapservicetestutil = require('../../util/wrapservice-test-utils');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
@@ -32,28 +32,27 @@ var wrapService;
 
 var testPrefix = 'wrapservice-tests';
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('wrapservice-tests', function() {
+  setup(function (done) {
     wrapservicetestutil.setUpTest(module.exports, testPrefix, function (err, newWrapService) {
       wrapService = newWrapService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    wrapservicetestutil.tearDownTest(module.exports, wrapService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    wrapservicetestutil.tearDownTest(module.exports, wrapService, testPrefix, done);
+  });
 
-  testWrapAccessToken: function (test) {
+  test('WrapAccessToken', function (done) {
     var namespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
 
     wrapService.wrapAccessToken('http://' + namespace + '.servicebus.windows.net/myqueue', function (error, wrapAccessToken) {
-      test.equal(error, null);
-      test.notEqual(wrapAccessToken['wrap_access_token'], null);
-      test.notEqual(wrapAccessToken['wrap_access_token_expires_in'], null);
+      assert.equal(error, null);
+      assert.notEqual(wrapAccessToken['wrap_access_token'], null);
+      assert.notEqual(wrapAccessToken['wrap_access_token_expires_in'], null);
 
-      test.done();
+      done();
     });
-  }
+  });
 });

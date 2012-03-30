@@ -13,15 +13,15 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
 var testutil = require('../../util/util');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var TableQuery = require('../../../lib/services/table/tablequery');
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var TableQuery = azure.TableQuery;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
@@ -29,15 +29,14 @@ var tableService;
 var tableNames = [];
 var tablePrefix = 'tablecont';
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('querytablesresultcontinuation-tests', function () {
+  setup(function (done) {
     tableService = azure.createTableService();
 
-    callback();
-  },
+    done();
+  });
 
-  tearDown: function (callback) {
+  teardown(function (done) {
     var deleteTablePage = function (error, tablesResult, tablesResultContinuation) {
       if (!error && tablesResult.length > 0) {
         var tableCount = 0;
@@ -52,21 +51,21 @@ module.exports = testCase(
                 tablesResultContinuation.getNextPage(deleteTablePage);
               }
               else {
-                callback();
+                done();
               }
             }
           });
         });
       }
       else {
-        callback();
+        done();
       }
     };
 
     tableService.queryTables(deleteTablePage);
-  },
+  });
 
-  testContinuationTokens: function (test) {
+  test('ContinuationTokens', function (done) {
     var createdTables = 0;
     var scheduledTables = 0;
     var tableLength = 1200;
@@ -85,7 +84,7 @@ module.exports = testCase(
 
         if (tablesContinuation.hasNextPage()) {
           tablesContinuation.getNextPage(function (err, nextTables, tablesContinuation2) {
-            test.equal(err, null);
+            assert.equal(err, null);
             count += nextTables.length;
 
             nextTables.forEach(function (t) {
@@ -96,9 +95,9 @@ module.exports = testCase(
               }
             });
 
-            test.equal(count, tableNames.length);
-            test.equal(tablesContinuation2.hasNextPage(), false);
-            test.done();
+            assert.equal(count, tableNames.length);
+            assert.equal(tablesContinuation2.hasNextPage(), false);
+            done();
           });
         }
       });
@@ -114,7 +113,7 @@ module.exports = testCase(
 
       if (scheduledTables <= tableLength) {
         tableService.createTable(testutil.generateId(tablePrefix, tableNames), function (createError) {
-          test.equal(createError, null);
+          assert.equal(createError, null);
 
           createdTables++;
           if (createdTables >= tableLength) {
@@ -131,5 +130,5 @@ module.exports = testCase(
 
     // Run the first batch now
     createTable();
-  }
+  });
 });

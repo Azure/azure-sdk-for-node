@@ -1,10 +1,13 @@
-common/exponentialretrypolicyfilter-tests.js
-common/linearretrypolicyfilter-tests.js
+serviceruntime/roleenvironment-tests.js
+serviceruntime/runtimeversionmanager-tests.js
+serviceruntime/runtimeversionprotocolclient-tests.js
 services/blob/blobservice-tests.js
 services/blob/sharedaccesssignature-tests.js
 services/blob/sharedkey-tests.js
 services/blob/sharedkeylite-tests.js
 services/blob/filters-tests.js
+services/core/exponentialretrypolicyfilter-tests.js
+services/core/linearretrypolicyfilter-tests.js
 services/queue/queueservice-tests.js
 services/table/batchserviceclient-tests.js
 services/table/sharedkeytable-tests.js
@@ -17,7 +20,6 @@ services/table/tableservice-batch-tests.js
 services/table/tableservice-tablequery-tests.js
 services/table/tableservice-tests.js
 util/atomhandler-tests.js
-util/base64-tests.js
 util/iso8061date-tests.js
 util/util-tests.js
 azure-tests.js

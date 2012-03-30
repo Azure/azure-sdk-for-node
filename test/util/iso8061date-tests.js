@@ -13,67 +13,56 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var ISO8061Date = require('../../lib/util/iso8061date');
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    callback();
-  },
-
-  tearDown: function (callback) {
-    // clean up
-    callback();
-  },
-
-  testParse: function (test) {
+suite('iso8061date-tests', function () {
+  test('Parse', function (done) {
     var datetime = new Date(Date.UTC(2011, 6, 17, 14, 0, 23, 270));
     var datetimeAtom = "2011-07-17T14:00:23.270Z";
     var parsed = ISO8061Date.parse(datetimeAtom);
-    test.deepEqual(parsed, datetime);
-    test.done();
-  },
+    assert.deepEqual(parsed, datetime);
+    done();
+  });
 
-  testParseLongTimestamp: function (test) {
+  test('ParseLongTimestamp', function (done) {
     var datetime = new Date(Date.UTC(2011, 6, 17, 14, 0, 23, 270));
     var datetimeAtom = "2011-07-17T14:00:23.2701234Z";
     var parsed = ISO8061Date.parse(datetimeAtom);
-    test.deepEqual(parsed, datetime);
-    test.done();
-  },
+    assert.deepEqual(parsed, datetime);
+    done();
+  });
 
-  testParseLongTimestampWithRounding: function(test) {
+  test('ParseLongTimestampWithRounding', function (done) {
     var datetime = new Date(Date.UTC(2011, 6, 17, 14, 0, 23, 270));
     var datetimeAtom = "2011-07-17T14:00:23.26993Z";
     var parsed = ISO8061Date.parse(datetimeAtom);
-    test.deepEqual(parsed, datetime);
-    test.done();
-  },
+    assert.deepEqual(parsed, datetime);
+    done();
+  });
 
-  testParseShortMillis: function (test) {
+  test('ParseShortMillis', function (done) {
     var datetime = new Date(Date.UTC(2011, 6, 17, 14, 0, 23, 200));
     var datetimeAtom = "2011-07-17T14:00:23.2Z";
     var parsed = ISO8061Date.parse(datetimeAtom);
-    test.deepEqual(parsed, datetime);
-    test.done();
-  },
+    assert.deepEqual(parsed, datetime);
+    done();
+  });
 
-  testParsePaddedShortMillis: function (test) {
+  test('ParsePaddedShortMillis', function (done) {
     var datetime = new Date(Date.UTC(2011, 6, 17, 14, 0, 23, 3));
     var datetimeAtom = "2011-07-17T14:00:23.003Z";
     var parsed = ISO8061Date.parse(datetimeAtom);
-    test.deepEqual(parsed, datetime);
-    test.done();
-  },
+    assert.deepEqual(parsed, datetime);
+    done();
+  });
 
-  testFormat: function (test) {
+  test('Format', function (done) {
     var datetime = Date.UTC(2011, 6, 17, 14, 0, 23, 270);
     var datetimeAtom = "2011-07-17T14:00:23.270Z";
     var strdate = ISO8061Date.format(new Date(datetime));
-    test.equal(strdate, datetimeAtom);
-    test.done();
-  }
-
+    assert.equal(strdate, datetimeAtom);
+    done();
+  });
 });

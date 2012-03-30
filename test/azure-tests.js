@@ -13,11 +13,11 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../lib/azure');
 
-var ServiceBusServiceClient = require('../lib/services/servicebusserviceclient');
+var ServiceBusServiceClient = require('../lib/services/core/servicebusserviceclient');
 var ServiceClient = azure.ServiceClient;
 
 var environmentAzureStorageAccount = 'myaccount';
@@ -38,9 +38,8 @@ var originalServiceBusIssuer = null;
 var originalServiceBusAccessKey = null;
 var originalWrapNamespace = null;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('azure', function () {
+  setup(function (done) {
     if (firstRun) {
       firstRun = false;
 
@@ -71,10 +70,10 @@ module.exports = testCase(
       }
     }
 
-    callback();
-  },
+    done();
+  });
 
-  tearDown: function (callback) {
+  teardown(function (done) {
     // Make sure emulated is never a left over after the test runs.
     delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
 
@@ -103,48 +102,51 @@ module.exports = testCase(
     }
 
     // clean up
-    callback();
-  },
+    done();
+  });
 
-  testExponentialRetryPolicyFilter: function (test) {
-    test.notEqual(azure.ExponentialRetryPolicyFilter, null);
-    test.done();
-  },
+  test('ExponentialRetryPolicyFilter', function (done) {
+    assert.notEqual(azure.ExponentialRetryPolicyFilter, null);
 
-  testLinearRetryPolicyFilter: function (test) {
-    test.notEqual(azure.LinearRetryPolicyFilter, null);
-    test.done();
-  },
+    done();
+  });
 
-  testConstants: function (test) {
-    test.notEqual(azure.Constants, null);
-    test.done();
-  },
+  test('LinearRetryPolicyFilter', function (done) {
+    assert.notEqual(azure.LinearRetryPolicyFilter, null);
 
-  testIsEmulated: function (test) {
+    done();
+  });
+
+  test('Constants', function (done) {
+    assert.notEqual(azure.Constants, null);
+
+    done();
+  });
+
+  test('IsEmulated', function (done) {
     var ServiceClient = azure.ServiceClient;
     delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
-    test.equal(azure.isEmulated(), false);
+    assert.equal(azure.isEmulated(), false);
 
     // set some environment credentials for the live windows azure services
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
 
     var blobService1 = azure.createBlobService();
-    test.equal(blobService1.host, ServiceClient.CLOUD_BLOB_HOST);
-    test.equal(blobService1.usePathStyleUri, false);
+    assert.equal(blobService1.host, ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService1.usePathStyleUri, false);
 
     process.env[ServiceClient.EnvironmentVariables.EMULATED] = true;
-    test.equal(azure.isEmulated(), true);
+    assert.equal(azure.isEmulated(), true);
 
     var blobService2 = azure.createBlobService();
-    test.equal(blobService2.host, '127.0.0.1');
-    test.equal(blobService2.usePathStyleUri, true);
+    assert.equal(blobService2.host, '127.0.0.1');
+    assert.equal(blobService2.usePathStyleUri, true);
 
-    test.done();
-  },
+    done();
+  });
 
-  testNotEmulatedExplicitCredentials: function (test) {
+  test('NotEmulatedExplicitCredentials', function (done) {
     // Make sure is not emulated
     delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
 
@@ -156,17 +158,17 @@ module.exports = testCase(
     var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
     // Points to the live services
-    test.equal(blobService.usePathStyleUri, false);
-    test.equal(blobService.host, ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService.usePathStyleUri, false);
+    assert.equal(blobService.host, ServiceClient.CLOUD_BLOB_HOST);
 
     // And credentials are the ones passed 
-    test.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);
-    test.equal(blobService.authenticationProvider.storageAccessKey, parameterAzureStorageAccessKey);
+    assert.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);
+    assert.equal(blobService.authenticationProvider.storageAccessKey, parameterAzureStorageAccessKey);
 
-    test.done();
-  },
+    done();
+  });
 
-  testEmulatedExplicitCredentials: function (test) {
+  test('EmulatedExplicitCredentials', function (done) {
     // set emulated to true
     process.env[ServiceClient.EnvironmentVariables.EMULATED] = true;
 
@@ -178,17 +180,17 @@ module.exports = testCase(
     var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
     // Points to the emulator
-    test.equal(blobService.usePathStyleUri, true);
-    test.equal(blobService.host + ':' + blobService.port, ServiceClient.DEVSTORE_BLOB_HOST);
+    assert.equal(blobService.usePathStyleUri, true);
+    assert.equal(blobService.host + ':' + blobService.port, ServiceClient.DEVSTORE_BLOB_HOST);
 
     // But the used credentials are the ones passed because we were explicit
-    test.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);
-    test.equal(blobService.authenticationProvider.storageAccessKey, parameterAzureStorageAccessKey);
+    assert.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);
+    assert.equal(blobService.authenticationProvider.storageAccessKey, parameterAzureStorageAccessKey);
 
-    test.done();
-  },
+    done();
+  });
 
-  testEmulatedWithoutParameters: function (test) {
+  test('EmulatedWithoutParameters', function (done) {
     // set emulated to true
     process.env[ServiceClient.EnvironmentVariables.EMULATED] = true;
 
@@ -200,17 +202,17 @@ module.exports = testCase(
     var blobService = azure.createBlobService();
 
     // Points to the emulator
-    test.equal(blobService.usePathStyleUri, true);
-    test.equal(blobService.host + ':' + blobService.port, ServiceClient.DEVSTORE_BLOB_HOST);
+    assert.equal(blobService.usePathStyleUri, true);
+    assert.equal(blobService.host + ':' + blobService.port, ServiceClient.DEVSTORE_BLOB_HOST);
 
     // And uses the emulator credentials
-    test.equal(blobService.authenticationProvider.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
-    test.equal(blobService.authenticationProvider.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    assert.equal(blobService.authenticationProvider.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
+    assert.equal(blobService.authenticationProvider.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
 
-    test.done();
-  },
+    done();
+  });
 
-  testNotEmulatedWithoutParameters: function (test) {
+  test('NotEmulatedWithoutParameters', function (done) {
     // Make sure is not emulated
     delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
 
@@ -222,17 +224,17 @@ module.exports = testCase(
     var blobService = azure.createBlobService();
 
     // Points to the live service
-    test.equal(blobService.usePathStyleUri, false);
-    test.equal(blobService.host, ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService.usePathStyleUri, false);
+    assert.equal(blobService.host, ServiceClient.CLOUD_BLOB_HOST);
 
     // and uses the environment variables
-    test.equal(blobService.authenticationProvider.storageAccount, environmentAzureStorageAccount);
-    test.equal(blobService.authenticationProvider.storageAccessKey, environmentAzureStorageAccessKey);
+    assert.equal(blobService.authenticationProvider.storageAccount, environmentAzureStorageAccount);
+    assert.equal(blobService.authenticationProvider.storageAccessKey, environmentAzureStorageAccessKey);
 
-    test.done();
-  },
+    done();
+  });
 
-  testMissingServiceBusIssuerAndWrapNamespace: function (test) {
+  test('MissingServiceBusIssuerAndWrapNamespace', function (done) {
     delete process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
     delete process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
 
@@ -243,13 +245,13 @@ module.exports = testCase(
     var serviceBusService = azure.createServiceBusService();
 
     // set correctly
-    test.equal(serviceBusService.namespace, environmentServiceBusNamespace);
-    test.equal(serviceBusService.accessKey, environmentServiceBusAccessKey);
+    assert.equal(serviceBusService.namespace, environmentServiceBusNamespace);
+    assert.equal(serviceBusService.accessKey, environmentServiceBusAccessKey);
 
     // defaulted correctly
-    test.equal(serviceBusService.acsnamespace, environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX);
-    test.equal(serviceBusService.issuer, ServiceClient.DEFAULT_SERVICEBUS_ISSUER);
+    assert.equal(serviceBusService.acsNamespace, environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX);
+    assert.equal(serviceBusService.issuer, ServiceClient.DEFAULT_SERVICEBUS_ISSUER);
 
-    test.done();
-  }
+    done();
+  });
 });

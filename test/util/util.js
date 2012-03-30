@@ -13,8 +13,6 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
-
 var util = require('../../lib/util/util');
 
 var exports = module.exports;

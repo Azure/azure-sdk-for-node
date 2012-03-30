@@ -31,15 +31,15 @@ module.exports = testCase(
     callback();
   },
 
-  testEncode64: function (test) {
+  testEncode64: function (done) {
     var enc = Base64.encode64(testBase64Text);
-    test.equal(enc, testBase64Coded);
-    test.done();
+    assert.equal(enc, testBase64Coded);
+    done();
   },
 
-  testDecode64: function (test) {
+  testDecode64: function (done) {
     var dec = Base64.decode64(testBase64Coded);
-    test.equal(dec, testBase64Text);
-    test.done();
+    assert.equal(dec, testBase64Text);
+    done();
   }
 });

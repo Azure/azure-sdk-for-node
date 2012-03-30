@@ -13,28 +13,27 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
 var azure = require('../../../lib/azure');
 var azureutil = require('../../../lib/util/util');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
 var queueService;
 var queueNames = generateNames('lqr', 5100);
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('listqueueresultcontinuation-tests', function () {
+  setup: function (done) {
     queueService = azure.createQueueService();
 
-    callback();
-  },
+    done();
+  });
 
-  tearDown: function (callback) {
+  teardown: function (done) {
     var deleteQueuePage = function (error, queuesResult, queuesResultContinuation) {
       if (!error && queuesResult.length > 0) {
         var queueCount = 0;
@@ -49,21 +48,21 @@ module.exports = testCase(
                 queuesResultContinuation.getNextPage(deleteQueuePage);
               }
               else {
-                callback();
+                done();
               }
             }
           });
         });
       }
       else {
-        callback();
+        done();
       }
     };
 
     queueService.listQueues(deleteQueuePage);
-  },
+  });
 
-  testContinuationTokens: function (test) {
+  test('ContinuationTokens', function (done) {
     var createdQueues = 0;
     var scheduledQueues = 0;
     var intervalId;
@@ -74,12 +73,12 @@ module.exports = testCase(
 
         if (queuesContinuation.hasNextPage()) {
           queuesContinuation.getNextPage(function (err, nextQueues, queuesContinuation2) {
-            test.equal(err, null);
+            assert.equal(err, null);
             count += nextQueues.length;
 
-            test.equal(count, queueNames.length);
-            test.equal(queuesContinuation2.hasNextPage(), false);
-            test.done();
+            assert.equal(count, queueNames.length);
+            assert.equal(queuesContinuation2.hasNextPage(), false);
+            done();
           });
         }
       });
@@ -95,7 +94,7 @@ module.exports = testCase(
 
       if (scheduledQueues <= queueNames.length) {
         queueService.createQueue(queueNames[scheduledQueues - 1], function (createError) {
-          test.equal(createError, null);
+          assert.equal(createError, null);
 
           createdQueues++;
           if (createdQueues >= queueNames.length) {
@@ -112,7 +111,7 @@ module.exports = testCase(
 
     // Run the first batch now
     createQueue();
-  }
+  });
 });
 
 function generateNames(prefix, num) {
