@@ -2,6 +2,6 @@
 <error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
   <code>TableBeingDeleted</code>
   <message xml:lang="en-US">The specified table is being deleted. Try operation later.
-RequestId:eca11f03-852f-4668-a6dd-30dbe63bfc89
-Time:2012-02-24T07:34:07.2404978Z</message>
+RequestId:43fbb7e9-2e26-4350-bd68-f672d8721b84
+Time:2012-03-15T21:49:26.5659361Z</message>
 </error>

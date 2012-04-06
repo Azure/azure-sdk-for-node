@@ -28,6 +28,7 @@ var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 var ServiceBusConstants = Constants.ServiceBusConstants;
+var QueryStringConstants = Constants.QueryStringConstants;
 
 var serviceBusService;
 
@@ -44,7 +45,7 @@ var ruleNames = [];
 var ruleNamesPrefix = 'sbrule';
 
 var testPrefix = 'servicebusservice-tests';
-var numberTests = 32;
+var numberTests = 33;
 
 suite('servicebusservice-tests', function () {
   setup(function (done) {
@@ -1569,6 +1570,36 @@ suite('servicebusservice-tests', function () {
               });
             });
           });
+        });
+      });
+    });
+  });
+
+  test('TimeoutWorks', function (done) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var customTimeoutInternalInS = 5;
+
+    serviceBusService.createQueue(queueName, function (createQueueError) {
+      assert.equal(createQueueError, null);
+
+      serviceBusService.sendQueueMessage(queueName, 'hi there', function (sendMessageError) {
+        assert.equal(sendMessageError, null);
+
+        var buildRequestOptionsFunction = serviceBusService._buildRequestOptions.bind(serviceBusService);
+        serviceBusService._buildRequestOptions = function (webResource, options, callback) {
+          buildRequestOptionsFunction(webResource, options, function (error, requestOptions) {
+            assert.equal(webResource._queryString[QueryStringConstants.TIMEOUT]['value'], customTimeoutInternalInS);
+
+            callback(error, requestOptions);
+          });
+        };
+
+        serviceBusService.receiveQueueMessage(queueName, { timeoutIntervalInS: customTimeoutInternalInS }, function (receiveMessageError) {
+          assert.equal(receiveMessageError, null);
+
+          serviceBusService._buildRequestOptions = buildRequestOptionsFunction;
+
+          done();
         });
       });
     });
