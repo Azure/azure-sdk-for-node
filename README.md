@@ -10,7 +10,7 @@ Node.js Developer Center</a>.</p>
     <li>Tables
         <ul>
             <li>create and delete tables</li>
-            <li>create, query, insert, update, merge, and delete entities</li>
+            <li>create, query, insert, update, merge, and delete entities</li></ul>
     </li>
     <li>Blobs
         <ul>
@@ -18,17 +18,17 @@ Node.js Developer Center</a>.</p>
             and permissions, list blobs in container</li>
             <li>create block and page blobs (from a stream, a file, or a string),
             work with blob blocks and pages, delete blobs</li>
-            <li>work with blob properties, metadata, leases, snapshot a blob</li>
+            <li>work with blob properties, metadata, leases, snapshot a blob</li></ul>
     </li>
     <li>Storage Queues
         <ul>
             <li>create, list, and delete queues, and work with queue metadata</li>
-            <li>create, get, peek, update, delete messages</li>
+            <li>create, get, peek, update, delete messages</li></ul>
     </li>
     <li>Service Bus
         <ul>
             <li>Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages</li>
-            <li>Topics: create, list, and delete topics; create, list, and delete rules</li>
+            <li>Topics: create, list, and delete topics; create, list, and delete rules</li></ul>
     </li>
 </ul>
 
