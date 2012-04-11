@@ -1,17 +1,36 @@
+/**
+* Copyright 2011 Microsoft Corporation
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
+var fs = require('fs');
+var path = require('path');
 var azure = require('../../lib/azure');
 var testCommon = require('./testcommon');
 
-var auth = {
-  keyfile : './certs/priv.pem',
-  certfile : './certs/pub.pem'
+
+if (path.existsSync('./testhost.json')) {
+  inp = JSON.parse(fs.readFileSync('./testhost.json'));
+} else {
+  console.log('The file testhost.json was not found.\n' +
+              'This is required and must specify the host, the subscription id, and the certificate file locations');
 }
 
-var inputNames = {
-  subscriptionId: '167a0c69-cb6f-4522-ba3e-d3bdc9c504e1',
-  serviceName: 'testjsService',
-  deploymentName: 'testjsDeployment'
-}
+var svcmgmt = azure.createServiceManagementService(inp.subscriptionId, inp.auth, inp.hostopt);
+
+var svcname = 'testJSsvc';
+var deployname = 'testJSdeploy';
+
 
 // deploymentOptions is optional
 // may also have UpgradeDomainCount
@@ -30,7 +49,7 @@ var deploymentOptions = {
 // DiskLabel - friendly name - optional
 // HostCaching - ”ReadOnly”, “ReadWrite”.  optional. Default ReadWrite
 var osDisk = {
-  SourceImageName : 'CentOs-CS.vhd',
+  SourceImageName : 'testJSImg',
 };
 
 // data disk
@@ -41,8 +60,10 @@ var osDisk = {
 // DiskName - friendly name - optional
 // HostCaching - “None”, ”ReadOnly”, “ReadWrite”.  optional. Default ReadOnly
 var dataDisk1 = {
+//  DiskName : 'testJSData',
   LogicalDiskSizeInGB : 10,
-  LUN : 0
+  Lun : 0,
+  MediaLink: 'http://sergei.blob.core.azure-preview.com/vhdstore/CentOs-CS.vhd'
 };
 
 // ConfigurationSetType must be 'ProvisioningConfiguration'
@@ -50,26 +71,38 @@ var dataDisk1 = {
 // MachineName is required
 // ResetPasswordOnFirstLogon optional
 // StoredCertificateSettings optional
-var provisioningConfigurationSet = {
-  ConfigurationSetType: 'ProvisioningConfiguration',
+var winProvisioningConfigurationSet = {
   AdminPassword: 'nodejsIaas',
-  MachineName: 'NodejsMa',
+  ComputerName: 'NodejsMa',
   ResetPasswordOnFirstLogon: false
+};
+var linuxProvisioningConfigurationSet = {
+  ConfigurationSetType: 'LinuxProvisioningConfiguration',
+  HostName: 'testJSlinux',
+  UserName: 'rduser',
+  UserPassword: 'Abc123',
+  DisablePasswordAuthentication: 'false'
 };
 
 // Defines network endpoint
-var externalEndpoint1 = {
-  Name: 'endpname1',
+var endpoint1 = {
+  Name: 'endpnameW',
   Protocol: 'tcp',
   Port: '59917',
   LocalPort: '3395'
+};
+var endpointLinux = {
+  Name: 'endpnameL',
+  Protocol: 'tcp',
+  Port: '59913',
+  LocalPort: '3394'
 };
 
 // network configuration set
 // Type maybe 'VirtualnetworkConfiguration' - doc ambiguous
 var networkConfigurationSet = {
   ConfigurationSetType: 'NetworkConfiguration',
-  InputEndpoints: [externalEndpoint1]
+  InputEndpoints: [endpointLinux]
 };
 
 // VMRole is required
@@ -79,20 +112,19 @@ var networkConfigurationSet = {
 var VMRole = {
   RoleName: 'testjsRole',
   RoleSize: 'Small',
-  OSDisk: osDisk,
-  DataDisks: [dataDisk1],
-  ConfigurationSets: [provisioningConfigurationSet, networkConfigurationSet]
-}
+  OSVirtualHardDisk: osDisk,
+  DataVirtualHardDisks: [dataDisk1],
+  ConfigurationSets: [linuxProvisioningConfigurationSet, networkConfigurationSet]
+};
 
 
-var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
-
-svcmgmt.createDeployment(inputNames.serviceName, 
-                         inputNames.deploymentName,
+svcmgmt.createDeployment(svcname, 
+                         deployname,
                          VMRole, deploymentOptions,
                           function(error, response) {
   if (error) {
     testCommon.showErrorResponse(error);
+    console.log(response);
   } else {
     if (response && response.isSuccessful) {
       if (response.statusCode == 200) {

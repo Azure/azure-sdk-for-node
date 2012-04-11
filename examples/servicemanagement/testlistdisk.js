@@ -26,23 +26,16 @@ if (path.existsSync('./testhost.json')) {
               'This is required and must specify the host, the subscription id, and the certificate file locations');
 }
 
+inp.hostopt.serializetype = 'JSON';
 var svcmgmt = azure.createServiceManagementService(inp.subscriptionId, inp.auth, inp.hostopt);
 
-var imgName = 'testJSImg';
-var mediaLink = 'http://sergei.blob.core.azure-preview.com/vhdstore/CentOs-test-8494.vhd'
-var typeOS = 'Linux';
-
-svcmgmt.createOSImage(typeOS, imgName, mediaLink, function(error, response) {
+svcmgmt.listDisks(function(error, response) {
   if (error) {
     testCommon.showErrorResponse(error);
   } else {
-    if (response && response.isSuccessful) {
-      if (response.statusCode == 200) {
-        console.log('OK');
-      } else {
-        console.log('Pending');
-        console.log('RequestID: ' + response.headers['x-ms-request-id']);
-      }
+    if (response && response.isSuccessful && response.body) {
+      var rsp = response.body;
+      console.log(rsp);
     } else {
       console.log('Unexpected');
     }

@@ -1,33 +1,53 @@
+/**
+* Copyright 2011 Microsoft Corporation
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
+var fs = require('fs');
+var path = require('path');
 var azure = require('../../lib/azure');
 var testCommon = require('./testcommon');
 
-var auth = {
-  keyfile : './certs/priv.pem',
-  certfile : './certs/pub.pem'
+
+if (path.existsSync('./testhost.json')) {
+  inp = JSON.parse(fs.readFileSync('./testhost.json'));
+} else {
+  console.log('The file testhost.json was not found.\n' +
+              'This is required and must specify the host, the subscription id, and the certificate file locations');
 }
 
+inp.hostopt.serializetype = 'XML';
+var svcmgmt = azure.createServiceManagementService(inp.subscriptionId, inp.auth, inp.hostopt);
+
 var inputNames = {
-  subscriptionId: '167a0c69-cb6f-4522-ba3e-d3bdc9c504e1',
-  serviceName: 'testjsService',
-  deploymentName: 'testjsDeployment',
-  roleInstance: 'testjsRole_IN_0',
+  serviceName: 'testjsSvc',
+  deploymentName: 'testjsDeploy',
+  roleInst: 'testjsRole_IN_0',
 };
 
 
 if (process.argv.length < 3) {
-  console.log('Pass either shutdown or restart on the command line');
+  console.log('Pass either shutdown, start or restart on the command line');
   process.exit();
 }
 
 var reqid = process.argv[2];
 
-var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
 if (reqid.toLowerCase() == 'shutdown') {
-  svcmgmt.shutdownRoleInstance(inputNames.serviceName,
+  svcmgmt.shutdownRole(inputNames.serviceName,
                                 inputNames.deploymentName,
-                                inputNames.roleInstance,
+                                inputNames.roleInst,
                                 function(error, response) {
     if (error) {
       testCommon.showErrorResponse(error);
@@ -45,9 +65,29 @@ if (reqid.toLowerCase() == 'shutdown') {
     }
   });
 } else if (reqid.toLowerCase() == 'restart') {
-  svcmgmt.restartRoleInstance(inputNames.serviceName,
+  svcmgmt.restartRole(inputNames.serviceName,
                                 inputNames.deploymentName,
-                                inputNames.roleInstance,
+                                inputNames.roleInst,
+                                function(error, response) {
+    if (error) {
+      testCommon.showErrorResponse(error);
+    } else {
+      if (response && response.isSuccessful) {
+        if (response.statusCode == 200) {
+          console.log('OK');
+        } else {
+          console.log('Pending');
+          console.log('RequestID: ' + response.headers['x-ms-request-id']);
+        }
+      } else {
+        console.log('Unexpected');
+      }
+    }
+  });
+} else if (reqid.toLowerCase() == 'start') {
+  svcmgmt.startRole(inputNames.serviceName,
+                                inputNames.deploymentName,
+                                inputNames.roleInst,
                                 function(error, response) {
     if (error) {
       testCommon.showErrorResponse(error);

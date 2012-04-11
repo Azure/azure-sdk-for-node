@@ -28,11 +28,11 @@ if (path.existsSync('./testhost.json')) {
 
 var svcmgmt = azure.createServiceManagementService(inp.subscriptionId, inp.auth, inp.hostopt);
 
-var imgName = 'testJSImg';
-var mediaLink = 'http://sergei.blob.core.azure-preview.com/vhdstore/CentOs-test-8494.vhd'
-var typeOS = 'Linux';
+var inputNames = {
+  serviceName: 'testJSsvc'
+};
 
-svcmgmt.createOSImage(typeOS, imgName, mediaLink, function(error, response) {
+svcmgmt.listCertificates(inputNames.serviceName, function(error, response) {
   if (error) {
     testCommon.showErrorResponse(error);
   } else {

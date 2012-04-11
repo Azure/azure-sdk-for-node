@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "keyfile": "../clientcert/privateKey.pem",
+    "certfile": "../clientcert/publicKeyCertificate.pem"
+  },
+  "hostopt": {
+    "host": "management-preview.core.windows-int.net"
+  },
+  "subscriptionId": "AB9F5567-8FFD-4F75-991A-62F47C270AEC"
+}
+

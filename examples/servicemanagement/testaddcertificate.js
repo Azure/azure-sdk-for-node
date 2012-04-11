@@ -28,11 +28,17 @@ if (path.existsSync('./testhost.json')) {
 
 var svcmgmt = azure.createServiceManagementService(inp.subscriptionId, inp.auth, inp.hostopt);
 
-var imgName = 'testJSImg';
-var mediaLink = 'http://sergei.blob.core.azure-preview.com/vhdstore/CentOs-test-8494.vhd'
-var typeOS = 'Linux';
+var inputNames = {
+  serviceName: 'testJSsvc',
+  data: new Buffer(0), // This is the .pfx file
+  format: 'pfx',
+  password: null
+};
 
-svcmgmt.createOSImage(typeOS, imgName, mediaLink, function(error, response) {
+svcmgmt.addCertificate(inputNames.serviceName,
+                       inputNames.data,
+                       inputNames.format,
+                       inputNames.password, function(error, response) {
   if (error) {
     testCommon.showErrorResponse(error);
   } else {
