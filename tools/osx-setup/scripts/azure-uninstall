@@ -9,22 +9,16 @@ if [ ! -r "/usr/local/azure" ]; then
 	exit 1
 fi
 
-# Check for the proper permissions to execute the uninstallation
-if [[ $EUID -ne 0 ]]; then
-	echo "This script must be run with sudo" 1>&2
-	exit 1
-fi
-
-# Keep the user informed
+echo "This will uninstall the Azure SDK by removing /usr/local/azure/ as well as the /usr/local/bin/azure scripts."
 echo Removing binaries and command line tools...
 
-rm -rf /usr/local/azure/
-rm /usr/local/bin/azure
-rm /usr/local/bin/azure-uninstall
+sudo rm -rf /usr/local/azure/
+sudo rm /usr/local/bin/azure
+sudo rm /usr/local/bin/azure-uninstall
 
 echo Forgetting the packages...
-pkgutil --forget com.microsoft.azure.cli.pkg
-pkgutil --forget com.microsoft.azure.cli.node.pkg
+sudo pkgutil --forget com.microsoft.azure.cli.pkg
+sudo pkgutil --forget com.microsoft.azure.cli.node.pkg
 
 echo 
 

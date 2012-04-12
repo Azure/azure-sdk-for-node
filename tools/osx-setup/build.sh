@@ -40,6 +40,13 @@ if [ ! "$NODE_VERSION" = "$CURRENT_NODE_DISTRIBUTION_VERSION" ]; then
 	exit 1
 fi
 
+# Ensure that all modules are present
+# -----------------------------------
+pushd ../../
+echo Running npm update to make sure that all modules are present locally...
+npm update
+popd
+
 # Tarball creation
 # ----------------
 scripts/createTarball.sh
