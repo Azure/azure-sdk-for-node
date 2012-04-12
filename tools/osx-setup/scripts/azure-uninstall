@@ -10,30 +10,23 @@ if [ ! -r "/usr/local/azure" ]; then
 fi
 
 echo "This will uninstall the Azure SDK by removing /usr/local/azure/ as well as the /usr/local/bin/azure scripts."
-printf "Type 'yes' if you'd like to continue: "
-read response
-if [ "$response" == "yes" ]; then
-	echo Removing binaries and command line tools...
+echo Removing binaries and command line tools...
 
-	sudo rm -rf /usr/local/azure/
-	sudo rm /usr/local/bin/azure
-	sudo rm /usr/local/bin/azure-uninstall
+sudo rm -rf /usr/local/azure/
+sudo rm /usr/local/bin/azure
+sudo rm /usr/local/bin/azure-uninstall
 
-	echo Forgetting the packages...
-	sudo pkgutil --forget com.microsoft.azure.cli.pkg
-	sudo pkgutil --forget com.microsoft.azure.cli.node.pkg
+echo Forgetting the packages...
+sudo pkgutil --forget com.microsoft.azure.cli.pkg
+sudo pkgutil --forget com.microsoft.azure.cli.node.pkg
 
-	echo 
+echo 
 
-	echo The Windows Azure Deployment Tool has been removed:
-	echo - /usr/local/azure/ directory removed
-	echo - /usr/local/azure script and uninstallation script removed
-	echo - packages forgotten
+echo The Windows Azure Deployment Tool has been removed:
+echo - /usr/local/azure/ directory removed
+echo - /usr/local/azure script and uninstallation script removed
+echo - packages forgotten
 
-	echo 
-else
-	echo "Aborted"
-	exit 1
-fi
+echo 
 
 exit 0
