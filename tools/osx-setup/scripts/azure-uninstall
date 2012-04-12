@@ -9,30 +9,31 @@ if [ ! -r "/usr/local/azure" ]; then
 	exit 1
 fi
 
-# Check for the proper permissions to execute the uninstallation
-if [[ $EUID -ne 0 ]]; then
-	echo "This script must be run with sudo" 1>&2
+echo "This will uninstall the Azure SDK by removing /usr/local/azure/ as well as the /usr/local/bin/azure scripts."
+printf "Type 'yes' if you'd like to continue: "
+read response
+if [ "$response" == "yes" ]; then
+	echo Removing binaries and command line tools...
+
+	sudo rm -rf /usr/local/azure/
+	sudo rm /usr/local/bin/azure
+	sudo rm /usr/local/bin/azure-uninstall
+
+	echo Forgetting the packages...
+	sudo pkgutil --forget com.microsoft.azure.cli.pkg
+	sudo pkgutil --forget com.microsoft.azure.cli.node.pkg
+
+	echo 
+
+	echo The Windows Azure Deployment Tool has been removed:
+	echo - /usr/local/azure/ directory removed
+	echo - /usr/local/azure script and uninstallation script removed
+	echo - packages forgotten
+
+	echo 
+else
+	echo "Aborted"
 	exit 1
 fi
-
-# Keep the user informed
-echo Removing binaries and command line tools...
-
-rm -rf /usr/local/azure/
-rm /usr/local/bin/azure
-rm /usr/local/bin/azure-uninstall
-
-echo Forgetting the packages...
-pkgutil --forget com.microsoft.azure.cli.pkg
-pkgutil --forget com.microsoft.azure.cli.node.pkg
-
-echo 
-
-echo The Windows Azure Deployment Tool has been removed:
-echo - /usr/local/azure/ directory removed
-echo - /usr/local/azure script and uninstallation script removed
-echo - packages forgotten
-
-echo 
 
 exit 0
