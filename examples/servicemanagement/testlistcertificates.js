@@ -16,6 +16,8 @@
 var fs = require('fs');
 var path = require('path');
 var azure = require('../../lib/azure');
+var Constants = require('../../lib/util/constants');
+var HttpResponseCodes = Constants.HttpConstants.HttpResponseCodes;
 var testCommon = require('./testcommon');
 
 
@@ -37,7 +39,7 @@ svcmgmt.listCertificates(inputNames.serviceName, function(error, response) {
     testCommon.showErrorResponse(error);
   } else {
     if (response && response.isSuccessful) {
-      if (response.statusCode == 200) {
+      if (response.statusCode == HttpResponseCodes.OK_CODE) {
         console.log('OK');
       } else {
         console.log('Pending');
