@@ -26,36 +26,16 @@ if (path.existsSync('./testhost.json')) {
               'This is required and must specify the host, the subscription id, and the certificate file locations');
 }
 
+inp.hostopt.serializetype = 'JSON';
 var svcmgmt = azure.createServiceManagementService(inp.subscriptionId, inp.auth, inp.hostopt);
 
-var svcname = 'testJSsvc';
-var deployname = 'testJSdeploy';
-var slot = 'Staging';
-
-svcmgmt.getDeploymentBySlot(svcname, slot,
-                            function(error, response) {
+svcmgmt.listDisks(function(error, response) {
   if (error) {
     testCommon.showErrorResponse(error);
   } else {
     if (response && response.isSuccessful && response.body) {
       var rsp = response.body;
-      console.log('*** Deployments By Slot results ***');
-      testCommon.showDeployment(rsp);
-    } else {
-      console.log('Unexpected');
-    }
-  }
-});
-
-svcmgmt.getDeployment(svcname, deployname,
-                        function(error, response) {
-  if (error) {
-    testCommon.showErrorResponse(error);
-  } else {
-    if (response && response.isSuccessful && response.body) {
-      var rsp = response.body;
-      console.log('*** Deployments By Name results ***');
-      testCommon.showDeployment(rsp);
+      console.log(rsp);
     } else {
       console.log('Unexpected');
     }

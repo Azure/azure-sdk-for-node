@@ -16,6 +16,8 @@
 var fs = require('fs');
 var path = require('path');
 var azure = require('../../lib/azure');
+var Constants = require('../../lib/util/constants');
+var HttpResponseCodes = Constants.HttpConstants.HttpResponseCodes;
 var testCommon = require('./testcommon');
 
 
@@ -28,34 +30,27 @@ if (path.existsSync('./testhost.json')) {
 
 var svcmgmt = azure.createServiceManagementService(inp.subscriptionId, inp.auth, inp.hostopt);
 
-var svcname = 'testJSsvc';
-var deployname = 'testJSdeploy';
-var slot = 'Staging';
+var inputNames = {
+  serviceName: 'testJSsvc',
+  data: new Buffer(0), // This is the .pfx file
+  format: 'pfx',
+  password: null
+};
 
-svcmgmt.getDeploymentBySlot(svcname, slot,
-                            function(error, response) {
+svcmgmt.addCertificate(inputNames.serviceName,
+                       inputNames.data,
+                       inputNames.format,
+                       inputNames.password, function(error, response) {
   if (error) {
     testCommon.showErrorResponse(error);
   } else {
-    if (response && response.isSuccessful && response.body) {
-      var rsp = response.body;
-      console.log('*** Deployments By Slot results ***');
-      testCommon.showDeployment(rsp);
-    } else {
-      console.log('Unexpected');
-    }
-  }
-});
-
-svcmgmt.getDeployment(svcname, deployname,
-                        function(error, response) {
-  if (error) {
-    testCommon.showErrorResponse(error);
-  } else {
-    if (response && response.isSuccessful && response.body) {
-      var rsp = response.body;
-      console.log('*** Deployments By Name results ***');
-      testCommon.showDeployment(rsp);
+    if (response && response.isSuccessful) {
+      if (response.statusCode == HttpResponseCodes.OK_CODE) {
+        console.log('OK');
+      } else {
+        console.log('Pending');
+        console.log('RequestID: ' + response.headers['x-ms-request-id']);
+      }
     } else {
       console.log('Unexpected');
     }

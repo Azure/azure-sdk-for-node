@@ -1,17 +1,39 @@
+/**
+* Copyright 2011 Microsoft Corporation
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
+var fs = require('fs');
+var path = require('path');
 var azure = require('../../lib/azure');
+var Constants = require('../../lib/util/constants');
+var HttpResponseCodes = Constants.HttpConstants.HttpResponseCodes;
 var testCommon = require('./testcommon');
 
-var auth = {
-  keyfile : './certs/priv.pem',
-  certfile : './certs/pub.pem'
+
+if (path.existsSync('./testhost.json')) {
+  inp = JSON.parse(fs.readFileSync('./testhost.json'));
+} else {
+  console.log('The file testhost.json was not found.\n' +
+              'This is required and must specify the host, the subscription id, and the certificate file locations');
 }
 
+var svcmgmt = azure.createServiceManagementService(inp.subscriptionId, inp.auth, inp.hostopt);
+
 var inputNames = {
-  subscriptionId: '167a0c69-cb6f-4522-ba3e-d3bdc9c504e1',
-  serviceName: 'testjsService',
-  deploymentName: 'testjsDeployment'
-}
+  serviceName: 'testjsSvc',
+  deploymentName: 'testjsDeploy',
+};
 
 // data for VM Role
 
@@ -23,46 +45,30 @@ var inputNames = {
 // DiskLabel - friendly name - optional
 // HostCaching - ”ReadOnly”, “ReadWrite”.  optional. Default ReadWrite
 var osDisk = {
-  SourceImageName : 'CentOs-CS.vhd'
+  SourceImageName : 'DiskTest-test-23586'
 };
 
-// data disk
-// One of DiskId, SourceMediaLink, or LogicalDiskSize must be specified for createDeployment
-// DiskId - ref to Data Disk in User Image Repository
-// SourceMediaLink may be used in Create to specifiy location of BLOB in XSTORE
-// MediaLink location of BLOB - not required in create
-// DiskName - friendly name - optional
-// HostCaching - “None”, ”ReadOnly”, “ReadWrite”.  optional. Default ReadOnly
-var dataDisk1 = {
-  LogicalDiskSizeInGB : 10,
-  LUN : 0
+
+var linuxProvisioningConfigurationSet = {
+  ConfigurationSetType: 'LinuxProvisioningConfiguration',
+  HostName: 'testJSlinux',
+  UserName: 'rduser',
+  UserPassword: 'Abc123',
+  DisablePasswordAuthentication: 'false'
 };
 
-// ConfigurationSetType must be 'ProvisioningConfiguration'
-// AdminPassword must be base64 encoded
-// MachineName is required
-// ResetPasswordOnFirstLogon optional
-// StoredCertificateSettings optional
-var provisioningConfigurationSet = {
-  ConfigurationSetType: 'ProvisioningConfiguration',
-  AdminPassword: 'nodejsIaas',
-  MachineName: 'NodejsMa',
-  ResetPasswordOnFirstLogon: false
-};
-
-// Defines network endpoint
-var externalEndpoint1 = {
-  Name: 'endpname1',
+var endpointLinux = {
+  Name: 'endpnameL2',
   Protocol: 'tcp',
-  Port: '59917',
-  LocalPort: '3395'
+  Port: '59913',
+  LocalPort: '3394'
 };
 
 // network configuration set
 // Type maybe 'VirtualnetworkConfiguration' - doc ambiguous
 var networkConfigurationSet = {
   ConfigurationSetType: 'NetworkConfiguration',
-  InputEndpoints: [externalEndpoint1]
+  InputEndpoints: [endpointLinux]
 };
 
 // VMRole is required
@@ -72,13 +78,11 @@ var networkConfigurationSet = {
 var VMRole = {
   RoleName: 'testjsRole2',
   RoleSize: 'Small',
-  OSDisk: osDisk,
-  DataDisks: [],
-  ConfigurationSets: [provisioningConfigurationSet]
+  OSVirtualHardDisk: osDisk,
+  DataVirtualHardDisks: [],
+  ConfigurationSets: [linuxProvisioningConfigurationSet]
 }
 
-
-var svcmgmt = azure.createServiceManagementService(inputNames.subscriptionId, auth);
 
 svcmgmt.addRole(inputNames.serviceName, 
                          inputNames.deploymentName,
@@ -87,7 +91,7 @@ svcmgmt.addRole(inputNames.serviceName,
     testCommon.showErrorResponse(error);
   } else {
     if (response && response.isSuccessful) {
-      if (response.statusCode == 200) {
+      if (response.statusCode == HttpResponseCodes.OK_CODE) {
         console.log('OK');
       } else {
         console.log('Pending');
