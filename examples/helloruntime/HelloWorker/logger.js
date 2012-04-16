@@ -21,23 +21,23 @@ var   azure = require('azure')
 var RoleEnvironment = azure.RoleEnvironment;
 
 var LogFileKey = "DiagnosticLog";
-var DefaultLogFileName = "DiagnisticLog.txt";
+var DefaultLogFileName = "DiagnosticLog.txt";
 
 exports = module.exports = Logger;
 
 /**
-* Construct a logger that writes to the diagnostics store
+* Construct a logger that writes to the diagnostics store.
 *
-* @param {string} logFile:  The name of the log file to write to 
+* @param {string} logFile:  The name of the log file to write to.
 */
 function Logger() {
 	this.setUp = false;
 }
 
 /**
-* Write a message to the log
+* Write a message to the log.
 *
-* @param {string} message:  The message to write
+* @param {string} message: The message to write.
 */
 Logger.prototype.write = function(message) {
 	this._setupLog(function(error) {
@@ -46,41 +46,46 @@ Logger.prototype.write = function(message) {
 }
 
 /**
-* End the log file stream
+* End the log file stream.
 */
 Logger.prototype.end = function() {
 	this.outStream.end();
 }
 
 /**
-* Get a readable stream of the log file contents
+* Get a readable stream of the log file contents.
 *
-* @return {Readab;leStream}: The log file contents
+* @return {ReadableStream}: The log file contents.
 */
 Logger.prototype.getReadableStream = function() {
 	return fs.createReadStream(this.logFilePath);
 }
 
- Logger.prototype._setupLog = function(callback) {
-	if (!this.setUp)
+/**
+* Set up log file streaming based on configuration stored in the service definition.
+*
+* @param {function(error)} callback: The completion callback.
+*/
+Logger.prototype._setupLog = function(callback) {
+	if (!this.setUp) {
 	    util.getConfigurationSetting(LogFileKey, function(error, logFileName) {
-    	if (!logFileName || logFileName.length < 1) {
-    		logFileName = DefaultLogFileName;
-    	}
-    	this.logFileName = logFileName;
-    	util.getDiagnosticPath(function( error, logPath) {
-    		this.setUp = true;
-		    if (error) {
-			    this.logFilePath = "console";
-			    console.log("Error getting diagnostic store, using stdout instead: " + error + "\r\n");
-			    this.outStream = process.stdout;
-			    callback(error);
-		    }
-		    else {
-			    this.logFilePath = path.join(logPath, this.logFileName);
-			    this.outStream = fs.createWriteStream(this.logFilePath);
-			    callback(null);
-		    }
-	    });
-    });
+    	    if (!logFileName || logFileName.length < 1) {
+    		     logFileName = DefaultLogFileName;
+    	    }
+    	    this.logFileName = logFileName;
+    	    util.getDiagnosticPath(function( error, logPath) {
+    		    this.setUp = true;
+		        if (error) {
+			        this.logFilePath = "console";
+			        console.log("Error getting diagnostic store, using stdout instead: " + error + "\r\n");
+			        this.outStream = process.stdout;
+			        callback(error);
+		        } else {
+			        this.logFilePath = path.join(logPath, this.logFileName);
+			        this.outStream = fs.createWriteStream(this.logFilePath);
+			        callback(null);
+		        }
+	        });
+        });
+    }
 }
