@@ -15,17 +15,19 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
-var azureutil = require('../../../lib/util/util');
-var ISO8061Date = require('../../../lib/util/iso8061date');
-
+// Test includes
 var testutil = require('../../util/util');
 var tabletestutil = require('../../util/table-test-utils');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
+var azureutil = testutil.libRequire('util/util');
+var ISO8061Date = testutil.libRequire('util/iso8061date');
+var SharedKeyLiteTable = testutil.libRequire('services/table/sharedkeylitetable');
 
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;
 var TableQuery = azure.TableQuery;
-var SharedKeyLiteTable = require('../../../lib/services/table/sharedkeylitetable');
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 

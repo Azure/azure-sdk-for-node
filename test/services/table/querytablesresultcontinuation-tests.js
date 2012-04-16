@@ -15,9 +15,14 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
-var azureutil = require('../../../lib/util/util');
+// Test includes
 var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
+var azureutil = testutil.libRequire('util/util');
+var testutil = testutil.libRequire('util/util');
 
 var ServiceClient = azure.ServiceClient;
 var TableQuery = azure.TableQuery;

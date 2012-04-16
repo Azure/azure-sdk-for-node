@@ -15,7 +15,11 @@
 
 var assert = require('assert');
 
-var util = require('../../lib/util/util');
+// Test includes
+var testutil = require('./util');
+
+// Lib includes
+var util = testutil.libRequire('util/util');
 
 suite('util-tests', function() {
   test('should be an empty object', function (done) {

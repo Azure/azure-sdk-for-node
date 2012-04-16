@@ -14,12 +14,16 @@
 */
 
 var assert = require('assert');
-
-var TableQuery = require('../../../lib/services/table/tablequery');
-var azureutil = require('../../../lib/util/util');
-var Constants = require('../../../lib/util/constants');
-var QueryStringConstants = Constants.QueryStringConstants;
 var util = require('util');
+
+// Test includes
+var testutil = require('../../util/util');
+
+// Lib includes
+var TableQuery = testutil.libRequire('services/table/tablequery');
+var azureutil = testutil.libRequire('util/util');
+var Constants = testutil.libRequire('util/constants');
+var QueryStringConstants = Constants.QueryStringConstants;
 
 suite('tablequery-tests', function () {
   test('Select', function (done) {

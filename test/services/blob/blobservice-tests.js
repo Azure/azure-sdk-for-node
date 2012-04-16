@@ -19,11 +19,14 @@ var fs = require('fs');
 var path = require("path");
 var util = require('util');
 
-var azureutil = require('../../../lib/util/util');
-var azure = require('../../../lib/azure');
-
+// Test includes
 var testutil = require('../../util/util');
 var blobtestutil = require('../../util/blob-test-utils');
+
+// Lib includes
+var azureutil = testutil.libRequire('util/util');
+var azure = testutil.libRequire('azure');
+var WebResource = testutil.libRequire('http/webresource');
 
 var SharedAccessSignature = azure.SharedAccessSignature;
 var BlobService = azure.BlobService;
@@ -31,7 +34,6 @@ var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;
 var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
-var WebResource = require('../../../lib/http/webresource');
 
 var blobService;
 var containerNames = [];
@@ -602,7 +604,7 @@ suite('blobservice-tests', function () {
         assert.ok(uploadResponse.isSuccessful);
 
         // Acquire a lease
-        blobService._leaseBlobImpl(containerName, blobName, null, BlobConstants.LeaseOperation.ACQUIRE, function (leaseBlobError, lease, leaseBlobResponse) {
+        blobService.acquireLease(containerName, blobName, function (leaseBlobError, lease, leaseBlobResponse) {
           assert.equal(leaseBlobError, null);
           assert.notEqual(lease, null);
           if (lease) {
@@ -615,7 +617,7 @@ suite('blobservice-tests', function () {
           }
 
           // Second lease should not be possible
-          blobService._leaseBlobImpl(containerName, blobName, null, BlobConstants.LeaseOperation.ACQUIRE, function (secondLeaseBlobError, secondLease, secondLeaseBlobResponse) {
+          blobService.acquireLease(containerName, blobName, function (secondLeaseBlobError, secondLease, secondLeaseBlobResponse) {
             assert.equal(secondLeaseBlobError.code, 'LeaseAlreadyPresent');
             assert.equal(secondLease, null);
             assert.equal(secondLeaseBlobResponse.isSuccessful, false);

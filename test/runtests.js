@@ -18,6 +18,12 @@ var path = require('path');
 
 var args = (process.ARGV || process.argv);
 
+var coverageOption = Array.prototype.indexOf.call(args, '-coverage');
+
+if (coverageOption !== -1) {
+  args.splice(coverageOption, 1);
+}
+
 var testList = args.pop();
 
 var fileContent;
@@ -48,5 +54,10 @@ files.forEach(function (file) {
     args.push(file);
   }
 });
+
+if (coverageOption !== -1) {
+  args.push('-R');
+  args.push('html-cov');
+}
 
 require('../node_modules/mocha/bin/mocha');
