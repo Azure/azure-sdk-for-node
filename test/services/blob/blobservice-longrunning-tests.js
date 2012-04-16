@@ -19,9 +19,12 @@ var fs = require('fs');
 var path = require("path");
 var util = require('util');
 
-var azureutil = require('../../../lib/util/util');
-var azure = require('../../../lib/azure');
+// Test includes
 var testutil = require('../../util/util');
+
+// Lib includes
+var azureutil = testutil.libRequire('util/util');
+var azure = testutil.libRequire('azure');
 
 var SharedAccessSignature = azure.SharedAccessSignature;
 var BlobService = azure.BlobService;

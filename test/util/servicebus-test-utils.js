@@ -13,9 +13,14 @@
 * limitations under the License.
 */
 
-var MockServerClient = require('../mockserver/mockserverclient');
-var azure = require('../../lib/azure');
 var assert = require('assert');
+
+// Test includes
+var testutil = require('./util');
+var MockServerClient = require('../mockserver/mockserverclient');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
 
 var exports = module.exports;
 

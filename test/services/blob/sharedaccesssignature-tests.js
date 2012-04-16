@@ -17,9 +17,12 @@ var assert = require('assert');
 
 var qs = require('qs');
 
-var azure = require('../../../lib/azure');
+// Test includes
+var testutil = require('../../util/util');
 
-var WebResource = require('../../../lib/http/webresource');
+// Lib includes
+var azure = testutil.libRequire('azure');
+var WebResource = testutil.libRequire('http/webresource');
 var SharedAccessSignature = azure.SharedAccessSignature;
 var Constants = azure.Constants;
 var ServiceClient = azure.ServiceClient;

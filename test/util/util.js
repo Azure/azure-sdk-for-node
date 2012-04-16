@@ -13,8 +13,6 @@
 * limitations under the License.
 */
 
-var util = require('../../lib/util/util');
-
 var exports = module.exports;
 
 /**
@@ -52,4 +50,12 @@ exports.generateId = function (prefix, currentList, isMocked) {
 
 exports.randomFromTo = function (from, to) {
   return Math.floor(Math.random() * (to - from + 1) + from);
+};
+
+exports.libFolder = function () {
+  return process.env['AZURE_LIB_PATH'] ? process.env['AZURE_LIB_PATH'] : 'lib';
+};
+
+exports.libRequire = function (path) {
+  return require('../../' + exports.libFolder() + '/' + path);
 };
