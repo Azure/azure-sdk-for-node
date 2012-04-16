@@ -15,8 +15,12 @@
 
 var assert = require('assert');
 
-var AtomHandler = require('../../lib/util/atomhandler');
-var ISO8061Date = require('../../lib/util/iso8061date');
+// Test includes
+var testutil = require('./util');
+
+// Lib includes
+var AtomHandler = testutil.libRequire('util/atomhandler');
+var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var fs = require('fs');
 

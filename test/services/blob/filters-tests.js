@@ -15,13 +15,16 @@
 
 var assert = require('assert');
 
-var azureutil = require('../../../lib/util/util');
-var azure = require('../../../lib/azure');
-
+// Test includes
+var testutil = require('../../util/util');
 var blobtestutil = require('../../util/blob-test-utils');
 
-var BlobService = require("../../../lib/services/blob/blobservice");
-var Constants = require('../../../lib/util/constants');
+// Lib includes
+var azureutil = testutil.libRequire('util/util');
+var azure = testutil.libRequire('azure');
+var BlobService = testutil.libRequire('services/blob/blobservice');
+var Constants = testutil.libRequire('util/constants');
+
 var BlobConstants = Constants.BlobConstants;
 
 var blobService;

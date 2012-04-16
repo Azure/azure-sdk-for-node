@@ -15,13 +15,15 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
-var azureutil = require('../../../lib/util/util');
 
-var ISO8061Date = require('../../../lib/util/iso8061date');
-
+// Test includes
 var testutil = require('../../util/util');
 var servicebustestutil = require('../../util/servicebus-test-utils');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
+var azureutil = testutil.libRequire('util/util');
+var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;

@@ -15,8 +15,12 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
-var azureutil = require('../../../lib/util/util');
+// Test includes
+var testutil = require('../../util/util');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
+var azureutil = testutil.require('util/util');
 
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;
