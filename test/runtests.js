@@ -13,24 +13,12 @@
 * limitations under the License.
 */
 
-function contains(a, obj) {
-  var i = a.length;
-
-  while (i--) {
-    if (a[i] === obj) {
-      return i;
-    }
-  }
-
-  return -1;
-}
-
 var fs = require('fs');
 var path = require('path');
 
 var args = (process.ARGV || process.argv);
 
-var coverageOption = contains(args, '-coverage');
+var coverageOption = Array.prototype.indexOf.call(args, '-coverage');
 
 if (coverageOption !== -1) {
   args.splice(coverageOption, 1);
