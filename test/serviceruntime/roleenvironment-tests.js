@@ -355,7 +355,7 @@ suite('roleenvironment-tests', function () {
       "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
-      "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"instanceId_fd\" updateDomain=\"instanceId_ud\">" +
       "<ConfigurationSettings />" +
       "<LocalResources />" +
       "<Endpoints>" +
@@ -365,7 +365,7 @@ suite('roleenvironment-tests', function () {
       "<Roles>" +
       "<Role name=\"role1\">" +
       "<Instances>" +
-      "<Instance id=\"role1instance1\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<Instance id=\"role1instance1\" faultDomain=\"role1instance1_fd\" updateDomain=\"role1instance1_ud\">" +
       "<Endpoints>" +
       "<Endpoint name=\"MyInternalEndpoint1\" address=\"127.255.0.0\" port=\"20000\" protocol=\"tcp\" />" +
       "</Endpoints>" +
@@ -374,12 +374,12 @@ suite('roleenvironment-tests', function () {
       "</Role>" +
       "<Role name=\"role2\">" +
       "<Instances>" +
-      "<Instance id=\"role2instance1\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<Instance id=\"role2instance1\" faultDomain=\"role2instance1_fd\" updateDomain=\"role2instance1_ud\">" +
       "<Endpoints>" +
       "<Endpoint name=\"MyInternalEndpoint2\" address=\"127.255.0.2\" port=\"20002\" protocol=\"tcp\" />" +
       "</Endpoints>" +
       "</Instance>" +
-      "<Instance id=\"role2instance2\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<Instance id=\"role2instance2\" faultDomain=\"role2instance2_fd\" updateDomain=\"role2instance2_ud\">" +
       "<Endpoints>" +
       "<Endpoint name=\"MyInternalEndpoint3\" address=\"127.255.0.3\" port=\"20002\" protocol=\"tcp\" />" +
       "<Endpoint name=\"MyInternalEndpoint4\" address=\"127.255.0.3\" port=\"20004\" protocol=\"tcp\" />" +
@@ -395,11 +395,28 @@ suite('roleenvironment-tests', function () {
       assert.equal(error, null);
       assert.notEqual(roles, null);
       assert.notEqual(roles['role1'], null);
+
       assert.notEqual(roles['role1']['role1instance1'], null);
+      assert.strictEqual(roles['role1']['role1instance1']['id'], 'role1instance1');
+      assert.strictEqual(roles['role1']['role1instance1']['faultDomain'], 'role1instance1_fd');
+      assert.strictEqual(roles['role1']['role1instance1']['updateDomain'], 'role1instance1_ud');
+
+      assert.notEqual(roles['role1']['instanceId'], null);
+      assert.strictEqual(roles['role1']['instanceId']['id'], 'instanceId');
+      assert.strictEqual(roles['role1']['instanceId']['faultDomain'], 'instanceId_fd');
+      assert.strictEqual(roles['role1']['instanceId']['updateDomain'], 'instanceId_ud');
 
       assert.notEqual(roles['role2'], null);
+
       assert.notEqual(roles['role2']['role2instance1'], null);
+      assert.strictEqual(roles['role2']['role2instance1']['id'], 'role2instance1');
+      assert.strictEqual(roles['role2']['role2instance1']['faultDomain'], 'role2instance1_fd');
+      assert.strictEqual(roles['role2']['role2instance1']['updateDomain'], 'role2instance1_ud');
+
       assert.notEqual(roles['role2']['role2instance2'], null);
+      assert.strictEqual(roles['role2']['role2instance2']['id'], 'role2instance2');
+      assert.strictEqual(roles['role2']['role2instance2']['faultDomain'], 'role2instance2_fd');
+      assert.strictEqual(roles['role2']['role2instance2']['updateDomain'], 'role2instance2_ud');
 
       done();
     });
