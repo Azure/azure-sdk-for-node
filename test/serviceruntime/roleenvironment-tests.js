@@ -359,7 +359,7 @@ suite('roleenvironment-tests', function () {
       "<ConfigurationSettings />" +
       "<LocalResources />" +
       "<Endpoints>" +
-      "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+      "<Endpoint name=\"MyInternalEndpoint\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
       "</Endpoints>" +
       "</CurrentInstance>" +
       "<Roles>" +
@@ -395,28 +395,54 @@ suite('roleenvironment-tests', function () {
       assert.equal(error, null);
       assert.notEqual(roles, null);
       assert.notEqual(roles['role1'], null);
+      assert.strictEqual(roles['role1']['name'], 'role1');
 
-      assert.notEqual(roles['role1']['role1instance1'], null);
-      assert.strictEqual(roles['role1']['role1instance1']['id'], 'role1instance1');
-      assert.strictEqual(roles['role1']['role1instance1']['faultDomain'], 'role1instance1_fd');
-      assert.strictEqual(roles['role1']['role1instance1']['updateDomain'], 'role1instance1_ud');
+      assert.notEqual(roles['role1'].instances['role1instance1'], null);
+      assert.strictEqual(roles['role1'].instances['role1instance1']['id'], 'role1instance1');
+      assert.strictEqual(roles['role1'].instances['role1instance1']['roleName'], 'role1');
+      assert.strictEqual(roles['role1'].instances['role1instance1']['faultDomain'], 'role1instance1_fd');
+      assert.strictEqual(roles['role1'].instances['role1instance1']['updateDomain'], 'role1instance1_ud');
+      assert.notEqual(roles['role1'].instances['role1instance1'].endpoints, null);
+      assert.notEqual(roles['role1'].instances['role1instance1'].endpoints['MyInternalEndpoint1'], null);
+      assert.strictEqual(roles['role1'].instances['role1instance1'].endpoints['MyInternalEndpoint1']['name'], 'MyInternalEndpoint1');
+      assert.strictEqual(roles['role1'].instances['role1instance1'].endpoints['MyInternalEndpoint1']['roleInstanceId'], 'role1instance1');
 
-      assert.notEqual(roles['role1']['instanceId'], null);
-      assert.strictEqual(roles['role1']['instanceId']['id'], 'instanceId');
-      assert.strictEqual(roles['role1']['instanceId']['faultDomain'], 'instanceId_fd');
-      assert.strictEqual(roles['role1']['instanceId']['updateDomain'], 'instanceId_ud');
+      assert.notEqual(roles['role1'].instances['instanceId'], null);
+      assert.strictEqual(roles['role1'].instances['instanceId']['id'], 'instanceId');
+      assert.strictEqual(roles['role1'].instances['instanceId']['roleName'], 'role1');
+      assert.strictEqual(roles['role1'].instances['instanceId']['faultDomain'], 'instanceId_fd');
+      assert.strictEqual(roles['role1'].instances['instanceId']['updateDomain'], 'instanceId_ud');
+      assert.notEqual(roles['role1'].instances['instanceId'].endpoints, null);
+      assert.notEqual(roles['role1'].instances['instanceId'].endpoints['MyInternalEndpoint'], null);
+      assert.strictEqual(roles['role1'].instances['instanceId'].endpoints['MyInternalEndpoint']['name'], 'MyInternalEndpoint');
+      assert.strictEqual(roles['role1'].instances['instanceId'].endpoints['MyInternalEndpoint']['roleInstanceId'], 'instanceId');
 
       assert.notEqual(roles['role2'], null);
+      assert.strictEqual(roles['role2']['name'], 'role2');
 
-      assert.notEqual(roles['role2']['role2instance1'], null);
-      assert.strictEqual(roles['role2']['role2instance1']['id'], 'role2instance1');
-      assert.strictEqual(roles['role2']['role2instance1']['faultDomain'], 'role2instance1_fd');
-      assert.strictEqual(roles['role2']['role2instance1']['updateDomain'], 'role2instance1_ud');
+      assert.notEqual(roles['role2'].instances['role2instance1'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance1']['id'], 'role2instance1');
+      assert.strictEqual(roles['role2'].instances['role2instance1']['roleName'], 'role2');
+      assert.strictEqual(roles['role2'].instances['role2instance1']['faultDomain'], 'role2instance1_fd');
+      assert.strictEqual(roles['role2'].instances['role2instance1']['updateDomain'], 'role2instance1_ud');
+      assert.notEqual(roles['role2'].instances['role2instance1'].endpoints, null);
+      assert.notEqual(roles['role2'].instances['role2instance1'].endpoints['MyInternalEndpoint2'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance1'].endpoints['MyInternalEndpoint2']['name'], 'MyInternalEndpoint2');
+      assert.strictEqual(roles['role2'].instances['role2instance1'].endpoints['MyInternalEndpoint2']['roleInstanceId'], 'role2instance1');
 
-      assert.notEqual(roles['role2']['role2instance2'], null);
-      assert.strictEqual(roles['role2']['role2instance2']['id'], 'role2instance2');
-      assert.strictEqual(roles['role2']['role2instance2']['faultDomain'], 'role2instance2_fd');
-      assert.strictEqual(roles['role2']['role2instance2']['updateDomain'], 'role2instance2_ud');
+      assert.notEqual(roles['role2'].instances['role2instance2'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance2']['id'], 'role2instance2');
+      assert.strictEqual(roles['role2'].instances['role2instance2']['roleName'], 'role2');
+      assert.strictEqual(roles['role2'].instances['role2instance2']['faultDomain'], 'role2instance2_fd');
+      assert.strictEqual(roles['role2'].instances['role2instance2']['updateDomain'], 'role2instance2_ud');
+      assert.notEqual(roles['role2'].instances['role2instance2'].endpoints, null);
+      assert.notEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint3'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint3']['name'], 'MyInternalEndpoint3');
+      assert.strictEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint4']['roleInstanceId'], 'role2instance2');
+
+      assert.notEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint4'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint4']['name'], 'MyInternalEndpoint4');
+      assert.strictEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint4']['roleInstanceId'], 'role2instance2');
 
       done();
     });
