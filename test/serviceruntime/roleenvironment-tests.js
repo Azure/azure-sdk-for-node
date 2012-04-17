@@ -32,6 +32,7 @@ var RuntimeVersionProtocolClient = testutil.libRequire('serviceruntime/runtimeve
 var RuntimeVersionManager = testutil.libRequire('serviceruntime/runtimeversionmanager');
 var Constants = testutil.libRequire('util/constants');
 var ServiceRuntimeConstants = Constants.ServiceRuntimeConstants;
+var azureutil = testutil.libRequire('util/util');
 
 var versionsEndpointPath = '\\\\.\\pipe\\versionsEndpointPath';
 var goalStatePath = '\\\\.\\pipe\\goalStatePath';
@@ -141,13 +142,19 @@ suite('roleenvironment-tests', function () {
   });
 
   test('isAvailable', function (done) {
-    // Test 1 - Is not available
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.isAvailable,
+      Error
+    );
+
+    // Test 2 - Is not available
     azure.RoleEnvironment.isAvailable(function (error1, isAvailable1) {
       assert.notStrictEqual(error1, undefined);
       assert.notEqual(error1.code, null);
       assert.strictEqual(isAvailable1, false);
 
-      // Test 2 - Is available
+      // Test 3 - Is available
       setupVersionEndpoint();
       setupGoalStateEndpoint();
 
@@ -180,6 +187,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('getLocalResourcesNoGoalStateNamedPipe', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.getLocalResources,
+      Error
+    );
+
+    // Test 2 - No goal state pipe defined
     assert.throws(
       azure.RoleEnvironment.getLocalResources(function () { }),
       Error
@@ -189,6 +203,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('getDeploymentId', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.getDeploymentId,
+      Error
+    );
+
+    // Test 2 - valid deployment id
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -220,6 +241,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('getLocalResources', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.getLocalResources,
+      Error
+    );
+
+    // Test 2 - 1 valid local resources
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -242,18 +270,82 @@ suite('roleenvironment-tests', function () {
       "</RoleEnvironment>"
     );
 
-    azure.RoleEnvironment.getLocalResources(function (error, localResources) {
-      assert.strictEqual(error, undefined);
-      assert.notEqual(localResources, null);
-      assert.notEqual(localResources['DiagnosticStore'], null);
-      assert.strictEqual(localResources['DiagnosticStore']['path'], 'diagnosticStorePath');
-      assert.strictEqual(localResources['DiagnosticStore']['sizeInMB'], '4096');
+    runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+    azure.RoleEnvironment.getLocalResources(function (error1, localResources1) {
+      assert.strictEqual(error1, undefined);
+      assert.notEqual(localResources1, null);
+      assert.notEqual(localResources1['DiagnosticStore'], null);
+      assert.strictEqual(localResources1['DiagnosticStore']['path'], 'diagnosticStorePath');
+      assert.strictEqual(localResources1['DiagnosticStore']['sizeInMB'], '4096');
 
-      done();
+      // Test 3 - 2 valid local resources
+      inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+        "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+        "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
+        "<ConfigurationSettings />" +
+        "<LocalResources>" +
+        "<LocalResource name=\"DiagnosticStore1\" path=\"diagnosticStorePath\" sizeInMB=\"4096\" />" +
+        "<LocalResource name=\"DiagnosticStore2\" path=\"diagnosticStorePath\" sizeInMB=\"4096\" />" +
+        "</LocalResources>" +
+        "<Endpoints>" +
+        "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+        "</Endpoints>" +
+        "</CurrentInstance>" +
+        "<Roles />" +
+        "</RoleEnvironment>"
+      );
+
+      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+      azure.RoleEnvironment.getLocalResources(function (error2, localResources2) {
+        assert.strictEqual(error2, undefined);
+        assert.notEqual(localResources2, null);
+
+        assert.notEqual(localResources2['DiagnosticStore1'], null);
+        assert.strictEqual(localResources2['DiagnosticStore1']['path'], 'diagnosticStorePath');
+        assert.strictEqual(localResources2['DiagnosticStore1']['sizeInMB'], '4096');
+
+        assert.notEqual(localResources2['DiagnosticStore2'], null);
+        assert.strictEqual(localResources2['DiagnosticStore2']['path'], 'diagnosticStorePath');
+        assert.strictEqual(localResources2['DiagnosticStore2']['sizeInMB'], '4096');
+
+        // Test 4 - no local resources
+        inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+          "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<ConfigurationSettings />" +
+          "<Endpoints>" +
+          "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+          "</Endpoints>" +
+          "</CurrentInstance>" +
+          "<Roles />" +
+          "</RoleEnvironment>"
+        );
+
+        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+        azure.RoleEnvironment.getLocalResources(function (error3, localResources3) {
+          assert.strictEqual(error3, undefined);
+          assert.strictEqual(0, azureutil.objectKeysLength(localResources3));
+
+          done();
+        });
+      });
     });
   });
 
   test('getRoles', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.getRoles,
+      Error
+    );
+
+    // Test 2 - 2 valid roles
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -376,6 +468,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('requestRecycle', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.requestRecycle,
+      Error
+    );
+
+    // Test 2 - Valid request
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -680,6 +779,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('clearStatus', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.clearStatus,
+      Error
+    );
+
+    // Test 2 - Valid callback
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -719,6 +825,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('setStatus', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.setStatus,
+      Error
+    );
+
+    // Test 2 - Valid callback
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
