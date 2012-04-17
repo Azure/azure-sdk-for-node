@@ -32,6 +32,7 @@ var RuntimeVersionProtocolClient = testutil.libRequire('serviceruntime/runtimeve
 var RuntimeVersionManager = testutil.libRequire('serviceruntime/runtimeversionmanager');
 var Constants = testutil.libRequire('util/constants');
 var ServiceRuntimeConstants = Constants.ServiceRuntimeConstants;
+var azureutil = testutil.libRequire('util/util');
 
 var versionsEndpointPath = '\\\\.\\pipe\\versionsEndpointPath';
 var goalStatePath = '\\\\.\\pipe\\goalStatePath';
@@ -141,13 +142,19 @@ suite('roleenvironment-tests', function () {
   });
 
   test('isAvailable', function (done) {
-    // Test 1 - Is not available
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.isAvailable,
+      Error
+    );
+
+    // Test 2 - Is not available
     azure.RoleEnvironment.isAvailable(function (error1, isAvailable1) {
       assert.notStrictEqual(error1, undefined);
       assert.notEqual(error1.code, null);
       assert.strictEqual(isAvailable1, false);
 
-      // Test 2 - Is available
+      // Test 3 - Is available
       setupVersionEndpoint();
       setupGoalStateEndpoint();
 
@@ -180,6 +187,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('getLocalResourcesNoGoalStateNamedPipe', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.getLocalResources,
+      Error
+    );
+
+    // Test 2 - No goal state pipe defined
     assert.throws(
       azure.RoleEnvironment.getLocalResources(function () { }),
       Error
@@ -189,6 +203,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('getDeploymentId', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.getDeploymentId,
+      Error
+    );
+
+    // Test 2 - valid deployment id
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -220,6 +241,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('getLocalResources', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.getLocalResources,
+      Error
+    );
+
+    // Test 2 - 1 valid local resources
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -242,18 +270,83 @@ suite('roleenvironment-tests', function () {
       "</RoleEnvironment>"
     );
 
-    azure.RoleEnvironment.getLocalResources(function (error, localResources) {
-      assert.strictEqual(error, undefined);
-      assert.notEqual(localResources, null);
-      assert.notEqual(localResources['DiagnosticStore'], null);
-      assert.strictEqual(localResources['DiagnosticStore']['path'], 'diagnosticStorePath');
-      assert.strictEqual(localResources['DiagnosticStore']['sizeInMB'], '4096');
+    runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+    azure.RoleEnvironment.getLocalResources(function (error1, localResources1) {
+      assert.strictEqual(error1, undefined);
+      assert.notEqual(localResources1, null);
+      assert.notEqual(localResources1['DiagnosticStore'], null);
+      assert.strictEqual(localResources1['DiagnosticStore']['name'], 'DiagnosticStore');
+      assert.strictEqual(localResources1['DiagnosticStore']['path'], 'diagnosticStorePath');
+      assert.strictEqual(localResources1['DiagnosticStore']['sizeInMB'], '4096');
 
-      done();
+      // Test 3 - 2 valid local resources
+      inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+        "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+        "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
+        "<ConfigurationSettings />" +
+        "<LocalResources>" +
+        "<LocalResource name=\"DiagnosticStore1\" path=\"diagnosticStorePath\" sizeInMB=\"4096\" />" +
+        "<LocalResource name=\"DiagnosticStore2\" path=\"diagnosticStorePath\" sizeInMB=\"4096\" />" +
+        "</LocalResources>" +
+        "<Endpoints>" +
+        "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+        "</Endpoints>" +
+        "</CurrentInstance>" +
+        "<Roles />" +
+        "</RoleEnvironment>"
+      );
+
+      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+      azure.RoleEnvironment.getLocalResources(function (error2, localResources2) {
+        assert.strictEqual(error2, undefined);
+        assert.notEqual(localResources2, null);
+
+        assert.notEqual(localResources2['DiagnosticStore1'], null);
+        assert.strictEqual(localResources2['DiagnosticStore1']['path'], 'diagnosticStorePath');
+        assert.strictEqual(localResources2['DiagnosticStore1']['sizeInMB'], '4096');
+
+        assert.notEqual(localResources2['DiagnosticStore2'], null);
+        assert.strictEqual(localResources2['DiagnosticStore2']['path'], 'diagnosticStorePath');
+        assert.strictEqual(localResources2['DiagnosticStore2']['sizeInMB'], '4096');
+
+        // Test 4 - no local resources
+        inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+          "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<ConfigurationSettings />" +
+          "<Endpoints>" +
+          "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+          "</Endpoints>" +
+          "</CurrentInstance>" +
+          "<Roles />" +
+          "</RoleEnvironment>"
+        );
+
+        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+        azure.RoleEnvironment.getLocalResources(function (error3, localResources3) {
+          assert.strictEqual(error3, undefined);
+          assert.strictEqual(0, azureutil.objectKeysLength(localResources3));
+
+          done();
+        });
+      });
     });
   });
 
   test('getRoles', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.getRoles,
+      Error
+    );
+
+    // Test 2 - 2 valid roles
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -263,17 +356,17 @@ suite('roleenvironment-tests', function () {
       "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
-      "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"instanceId_fd\" updateDomain=\"instanceId_ud\">" +
       "<ConfigurationSettings />" +
       "<LocalResources />" +
       "<Endpoints>" +
-      "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+      "<Endpoint name=\"MyInternalEndpoint\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
       "</Endpoints>" +
       "</CurrentInstance>" +
       "<Roles>" +
       "<Role name=\"role1\">" +
       "<Instances>" +
-      "<Instance id=\"role1instance1\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<Instance id=\"role1instance1\" faultDomain=\"role1instance1_fd\" updateDomain=\"role1instance1_ud\">" +
       "<Endpoints>" +
       "<Endpoint name=\"MyInternalEndpoint1\" address=\"127.255.0.0\" port=\"20000\" protocol=\"tcp\" />" +
       "</Endpoints>" +
@@ -282,12 +375,12 @@ suite('roleenvironment-tests', function () {
       "</Role>" +
       "<Role name=\"role2\">" +
       "<Instances>" +
-      "<Instance id=\"role2instance1\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<Instance id=\"role2instance1\" faultDomain=\"role2instance1_fd\" updateDomain=\"role2instance1_ud\">" +
       "<Endpoints>" +
       "<Endpoint name=\"MyInternalEndpoint2\" address=\"127.255.0.2\" port=\"20002\" protocol=\"tcp\" />" +
       "</Endpoints>" +
       "</Instance>" +
-      "<Instance id=\"role2instance2\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<Instance id=\"role2instance2\" faultDomain=\"role2instance2_fd\" updateDomain=\"role2instance2_ud\">" +
       "<Endpoints>" +
       "<Endpoint name=\"MyInternalEndpoint3\" address=\"127.255.0.3\" port=\"20002\" protocol=\"tcp\" />" +
       "<Endpoint name=\"MyInternalEndpoint4\" address=\"127.255.0.3\" port=\"20004\" protocol=\"tcp\" />" +
@@ -303,11 +396,54 @@ suite('roleenvironment-tests', function () {
       assert.equal(error, null);
       assert.notEqual(roles, null);
       assert.notEqual(roles['role1'], null);
-      assert.notEqual(roles['role1']['role1instance1'], null);
+      assert.strictEqual(roles['role1']['name'], 'role1');
+
+      assert.notEqual(roles['role1'].instances['role1instance1'], null);
+      assert.strictEqual(roles['role1'].instances['role1instance1']['id'], 'role1instance1');
+      assert.strictEqual(roles['role1'].instances['role1instance1']['roleName'], 'role1');
+      assert.strictEqual(roles['role1'].instances['role1instance1']['faultDomain'], 'role1instance1_fd');
+      assert.strictEqual(roles['role1'].instances['role1instance1']['updateDomain'], 'role1instance1_ud');
+      assert.notEqual(roles['role1'].instances['role1instance1'].endpoints, null);
+      assert.notEqual(roles['role1'].instances['role1instance1'].endpoints['MyInternalEndpoint1'], null);
+      assert.strictEqual(roles['role1'].instances['role1instance1'].endpoints['MyInternalEndpoint1']['name'], 'MyInternalEndpoint1');
+      assert.strictEqual(roles['role1'].instances['role1instance1'].endpoints['MyInternalEndpoint1']['roleInstanceId'], 'role1instance1');
+
+      assert.notEqual(roles['role1'].instances['instanceId'], null);
+      assert.strictEqual(roles['role1'].instances['instanceId']['id'], 'instanceId');
+      assert.strictEqual(roles['role1'].instances['instanceId']['roleName'], 'role1');
+      assert.strictEqual(roles['role1'].instances['instanceId']['faultDomain'], 'instanceId_fd');
+      assert.strictEqual(roles['role1'].instances['instanceId']['updateDomain'], 'instanceId_ud');
+      assert.notEqual(roles['role1'].instances['instanceId'].endpoints, null);
+      assert.notEqual(roles['role1'].instances['instanceId'].endpoints['MyInternalEndpoint'], null);
+      assert.strictEqual(roles['role1'].instances['instanceId'].endpoints['MyInternalEndpoint']['name'], 'MyInternalEndpoint');
+      assert.strictEqual(roles['role1'].instances['instanceId'].endpoints['MyInternalEndpoint']['roleInstanceId'], 'instanceId');
 
       assert.notEqual(roles['role2'], null);
-      assert.notEqual(roles['role2']['role2instance1'], null);
-      assert.notEqual(roles['role2']['role2instance2'], null);
+      assert.strictEqual(roles['role2']['name'], 'role2');
+
+      assert.notEqual(roles['role2'].instances['role2instance1'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance1']['id'], 'role2instance1');
+      assert.strictEqual(roles['role2'].instances['role2instance1']['roleName'], 'role2');
+      assert.strictEqual(roles['role2'].instances['role2instance1']['faultDomain'], 'role2instance1_fd');
+      assert.strictEqual(roles['role2'].instances['role2instance1']['updateDomain'], 'role2instance1_ud');
+      assert.notEqual(roles['role2'].instances['role2instance1'].endpoints, null);
+      assert.notEqual(roles['role2'].instances['role2instance1'].endpoints['MyInternalEndpoint2'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance1'].endpoints['MyInternalEndpoint2']['name'], 'MyInternalEndpoint2');
+      assert.strictEqual(roles['role2'].instances['role2instance1'].endpoints['MyInternalEndpoint2']['roleInstanceId'], 'role2instance1');
+
+      assert.notEqual(roles['role2'].instances['role2instance2'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance2']['id'], 'role2instance2');
+      assert.strictEqual(roles['role2'].instances['role2instance2']['roleName'], 'role2');
+      assert.strictEqual(roles['role2'].instances['role2instance2']['faultDomain'], 'role2instance2_fd');
+      assert.strictEqual(roles['role2'].instances['role2instance2']['updateDomain'], 'role2instance2_ud');
+      assert.notEqual(roles['role2'].instances['role2instance2'].endpoints, null);
+      assert.notEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint3'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint3']['name'], 'MyInternalEndpoint3');
+      assert.strictEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint4']['roleInstanceId'], 'role2instance2');
+
+      assert.notEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint4'], null);
+      assert.strictEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint4']['name'], 'MyInternalEndpoint4');
+      assert.strictEqual(roles['role2'].instances['role2instance2'].endpoints['MyInternalEndpoint4']['roleInstanceId'], 'role2instance2');
 
       done();
     });
@@ -376,6 +512,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('requestRecycle', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.requestRecycle,
+      Error
+    );
+
+    // Test 2 - Valid request
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -680,6 +823,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('clearStatus', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.clearStatus,
+      Error
+    );
+
+    // Test 2 - Valid callback
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
@@ -719,6 +869,13 @@ suite('roleenvironment-tests', function () {
   });
 
   test('setStatus', function (done) {
+    // Test 1 - No callback
+    assert.throws(
+      azure.RoleEnvironment.setStatus,
+      Error
+    );
+
+    // Test 2 - Valid callback
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
