@@ -53,27 +53,6 @@ suite('tablequery-tests', function () {
     done();
   });
 
-  test('QueryWithOrderBy', function (done) {
-    var tableQuery = TableQuery.select()
-      .from('Table')
-      .orderBy('Name', 'asc');
-
-    assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name asc'), tableQuery.toQueryObject()['$orderby']);
-    done();
-  });
-
-  test('OrderByMultipleQuery', function (done) {
-    var tableQuery = TableQuery.select()
-      .from('Table')
-      .orderBy('Name', 'asc')
-      .orderBy('Visible', 'desc');
-
-    assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name asc') + ',' + azureutil.encodeUri('Visible desc'), tableQuery.toQueryObject()['$orderby']);
-    done();
-  });
-
   test('QueryWithWhere', function (done) {
     var tableQuery = TableQuery.select()
       .from('Table')
