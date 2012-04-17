@@ -275,6 +275,7 @@ suite('roleenvironment-tests', function () {
       assert.strictEqual(error1, undefined);
       assert.notEqual(localResources1, null);
       assert.notEqual(localResources1['DiagnosticStore'], null);
+      assert.strictEqual(localResources1['DiagnosticStore']['name'], 'DiagnosticStore');
       assert.strictEqual(localResources1['DiagnosticStore']['path'], 'diagnosticStorePath');
       assert.strictEqual(localResources1['DiagnosticStore']['sizeInMB'], '4096');
 
