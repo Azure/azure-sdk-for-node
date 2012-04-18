@@ -43,7 +43,8 @@ suite('atomhandler-tests', function () {
           'd:PartitionKey': 'part1',
           'd:RowKey': 'row1',
           'd:intValue': 10,
-          'd:stringValue': 'my string'
+          'd:stringValue': 'my string',
+          'd:nullValue': null
         }
       }
     };
@@ -70,6 +71,7 @@ suite('atomhandler-tests', function () {
   + "<d:RowKey>row1</d:RowKey>"
   + "<d:intValue>10</d:intValue>"
   + "<d:stringValue>my string</d:stringValue>"
+  + '<d:nullValue m:null="true"/>'
   + "</m:properties>"
   + "</content>"
   + "</entry>") !== -1);
