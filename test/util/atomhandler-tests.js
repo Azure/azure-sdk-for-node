@@ -144,4 +144,103 @@ suite('atomhandler-tests', function () {
 
     done();
   });
+
+  test('Parse', function (done) {
+    var atomHandler = new AtomHandler('m', 'd');
+
+    var entityXmlJs = {
+      title: '',
+      updated: '',
+      author: {
+        name: ''
+      },
+      id: '',
+      content: {
+        '@': {
+          type: 'application/xml'
+        },
+        'm:properties': {
+          'd:PartitionKey': 'part1',
+          'd:RowKey': 'row1',
+          'd:intValue': '10',
+          'd:stringValue': 'my string',
+          'd:nullValue': '',
+          'd:nullValue2': null
+        }
+      }
+    };
+
+    var entityResult = atomHandler.parse(entityXmlJs);
+
+    var entity = {
+      'PartitionKey': 'part1',
+      'RowKey': 'row1',
+      'intValue': '10',
+      'stringValue': 'my string',
+      'nullValue': '',
+      'nullValue2': ''
+    };
+
+    assert.deepEqual(entityResult, entity);
+
+    done();
+  });
+
+  test('ParseDataTypes', function (done) {
+    var atomHandler = new AtomHandler('m', 'd');
+
+    var entityXmlJs = {
+      title: '',
+      updated: '',
+      author: {
+        name: ''
+      },
+      id: '',
+      content: {
+        '@': {
+          type: 'application/xml'
+        },
+        'm:properties': {
+          'd:PartitionKey': {
+            '#': 'part1',
+            '@': { 'm:type': 'Edm.String' }
+          },
+          'd:RowKey': {
+            '#': 'row1',
+            '@': { 'm:type': 'Edm.String' }
+          },
+          'd:intValue': {
+            '#': '10',
+            '@': { 'm:type': 'Edm.Int32' }
+          },
+          'd:stringValue': {
+            '#': 'my string',
+            '@': { 'm:type': 'Edm.String' }
+          },
+          'd:nullValue': {
+            '#': '',
+            '@': { 'm:null': 'true' }
+          },
+          'd:nullValue2': {
+            '@': { 'm:null': 'true' }
+          }
+        }
+      }
+    };
+
+    var entityResult = atomHandler.parse(entityXmlJs);
+
+    var entity = {
+      'PartitionKey': 'part1',
+      'RowKey': 'row1',
+      'intValue': 10,
+      'stringValue': 'my string',
+      'nullValue': null,
+      'nullValue2': null
+    };
+
+    assert.deepEqual(entityResult, entity);
+
+    done();
+  });
 });
