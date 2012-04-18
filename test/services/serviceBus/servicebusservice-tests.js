@@ -594,12 +594,12 @@ suite('servicebusservice-tests', function () {
       if (topic) {
         assert.equal(topic.TopicName, topicName);
 
-        assert.equal(topic.MaxSizeInMegabytes, topicOptions.MaxSizeInMegabytes);
-        assert.equal(topic.RequiresDuplicateDetection, topicOptions.RequiresDuplicateDetection);
-        assert.equal(topic.DefaultMessageTimeToLive, topicOptions.DefaultMessageTimeToLive);
-        assert.equal(topic.DuplicateDetectionHistoryTimeWindow, topicOptions.DuplicateDetectionHistoryTimeWindow);
-        assert.equal(topic.EnableBatchedOperations, topicOptions.EnableBatchedOperations);
-        assert.equal(topic.SizeInBytes, topicOptions.SizeInBytes);
+        assert.equal(topic.MaxSizeInMegabytes, topicOptions.MaxSizeInMegabytes.toString());
+        assert.equal(topic.RequiresDuplicateDetection, topicOptions.RequiresDuplicateDetection.toString());
+        assert.equal(topic.DefaultMessageTimeToLive, topicOptions.DefaultMessageTimeToLive.toString());
+        assert.equal(topic.DuplicateDetectionHistoryTimeWindow, topicOptions.DuplicateDetectionHistoryTimeWindow.toString());
+        assert.equal(topic.EnableBatchedOperations, topicOptions.EnableBatchedOperations.toString());
+        assert.equal(topic.SizeInBytes, topicOptions.SizeInBytes.toString());
       }
 
       servicebustestutil.checkNullParameter(function () {
@@ -900,11 +900,11 @@ suite('servicebusservice-tests', function () {
             assert.equal(createSubscriptionError2, null);
             assert.notEqual(subscription2, null);
 
-            assert.equal(subscription2.LockDuration, subscriptionOptions.LockDuration);
-            assert.equal(subscription2.RequiresSession, subscriptionOptions.RequiresSession);
-            assert.equal(subscription2.DefaultMessageTimeToLive, subscriptionOptions.DefaultMessageTimeToLive);
-            assert.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration);
-            assert.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions);
+            assert.equal(subscription2.LockDuration, subscriptionOptions.LockDuration.toString());
+            assert.equal(subscription2.RequiresSession, subscriptionOptions.RequiresSession.toString());
+            assert.equal(subscription2.DefaultMessageTimeToLive, subscriptionOptions.DefaultMessageTimeToLive.toString());
+            assert.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration.toString());
+            assert.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions.toString());
 
             // duplicate subscription
             serviceBusService.createSubscription(topicName, subscriptionName1, function (subscriptionError, duplicateSubscription) {
