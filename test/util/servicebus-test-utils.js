@@ -81,7 +81,7 @@ exports.tearDownTest = function (numberTests, serviceBusService, testPrefix, cal
   });
 };
 
-var checkValue = function( test, value, optionValue) {
+var checkValue = function(test, value, optionValue) {
   if (optionValue) {
     assert.equal(value, optionValue);
   }
@@ -91,13 +91,13 @@ exports.validateQueue = function(testObject, queueName, queueOptions, queue) {
   testObject.notEqual(queue, null);
   if (queue) {
     testObject.equal(queue.QueueName, queueName);
-    checkValue(testObject, queue.LockDuration, queueOptions.LockDuration);
-    checkValue(testObject, queue.RequiresDuplicateDetection, queueOptions.RequiresDuplicateDetection);
-    checkValue(testObject, queue.RequiresSession, queueOptions.RequiresSession);
-    checkValue(testObject, queue.DefaultMessageTimeToLive, queueOptions.DefaultMessageTimeToLive);
-    checkValue(testObject, queue.DeadLetteringOnMessageExpiration, queueOptions.DeadLetteringOnMessageExpiration);
-    checkValue(testObject, queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow);
-    checkValue(testObject, queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes);
+    checkValue(testObject, queue.LockDuration, queueOptions.LockDuration.toString());
+    checkValue(testObject, queue.RequiresDuplicateDetection, queueOptions.RequiresDuplicateDetection.toString());
+    checkValue(testObject, queue.RequiresSession, queueOptions.RequiresSession.toString());
+    checkValue(testObject, queue.DefaultMessageTimeToLive, queueOptions.DefaultMessageTimeToLive.toString());
+    checkValue(testObject, queue.DeadLetteringOnMessageExpiration, queueOptions.DeadLetteringOnMessageExpiration.toString());
+    checkValue(testObject, queue.DuplicateDetectionHistoryTimeWindow, queueOptions.DuplicateDetectionHistoryTimeWindow.toString());
+    checkValue(testObject, queue.MaxSizeInMegabytes, queueOptions.MaxSizeInMegabytes.toString());
   };
 };
 
