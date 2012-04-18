@@ -28,9 +28,11 @@ suite('atomhandler-tests', function () {
   test('Serialize', function (done) {
     var atomHandler = new AtomHandler('m', 'd');
 
+    var dateTime = ISO8061Date.format(new Date());
+
     var entity = {
       title: '',
-      updated: ISO8061Date.format(new Date()),
+      updated: dateTime,
       author: {
         name: ''
       },
@@ -51,30 +53,94 @@ suite('atomhandler-tests', function () {
 
     var res = atomHandler.serialize(entity);
 
-    assert.ok(res.indexOf(
-    "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>"
-  + "<entry xmlns=\"http://www.w3.org/2005/Atom\" "
-  + "xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" "
-  + "xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\">"
-  + "<title/>"
-  + "<updated>") !== -1);
+    assert.equal(res,
+      '<?xml version="1.0" encoding="utf-8" standalone="yes"?>' +
+      '<entry xmlns="http://www.w3.org/2005/Atom" ' +
+      'xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" ' +
+      'xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">' +
+      '<title/>' +
+      '<updated>' + dateTime + '</updated>' +
+      '<author>' +
+      '<name/>' +
+      '</author>' +
+      '<id/>' +
+      '<content type="application/xml">' +
+      '<m:properties>' +
+      '<d:PartitionKey>part1</d:PartitionKey>' +
+      '<d:RowKey>row1</d:RowKey>' +
+      '<d:intValue>10</d:intValue>' +
+      '<d:stringValue>my string</d:stringValue>' +
+      '<d:nullValue m:null="true"/>' +
+      '</m:properties>' +
+      '</content>' +
+      '</entry>'
+    );
 
-    assert.ok(res.indexOf(
-    "</updated>"
-  + "<author>"
-  + "<name/>"
-  + "</author>"
-  + "<id/>"
-  + "<content type=\"application/xml\">"
-  + "<m:properties>"
-  + "<d:PartitionKey>part1</d:PartitionKey>"
-  + "<d:RowKey>row1</d:RowKey>"
-  + "<d:intValue>10</d:intValue>"
-  + "<d:stringValue>my string</d:stringValue>"
-  + '<d:nullValue m:null="true"/>'
-  + "</m:properties>"
-  + "</content>"
-  + "</entry>") !== -1);
+    done();
+  });
+
+  test('SerializeDataTypes', function (done) {
+    var atomHandler = new AtomHandler('m', 'd');
+
+    var dateTime = ISO8061Date.format(new Date());
+
+    var entity = {
+      title: '',
+      updated: dateTime,
+      author: {
+        name: ''
+      },
+      id: '',
+      content: {
+        '@': {
+          type: 'application/xml'
+        },
+        'm:properties': {
+          'd:PartitionKey': {
+            '#': 'part1',
+            '@': { 'm:type': 'Edm.String' }
+          },
+          'd:RowKey': {
+            '#': 'row1',
+            '@': { 'm:type': 'Edm.String' }
+          },
+          'd:intValue':  {
+            '#': 10,
+            '@': { 'm:type': 'Edm.Int32' }
+          },
+          'd:stringValue':  {
+            '#': 'my string',
+            '@': { 'm:type': 'Edm.String' }
+          },
+          'd:nullValue': null
+        }
+      }
+    };
+
+    var res = atomHandler.serialize(entity);
+
+    assert.equal(res,
+      '<?xml version="1.0" encoding="utf-8" standalone="yes"?>' +
+      '<entry xmlns="http://www.w3.org/2005/Atom" ' +
+      'xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" ' +
+      'xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">' +
+      '<title/>' +
+      '<updated>' + dateTime + '</updated>' +
+      '<author>' +
+      '<name/>' +
+      '</author>' +
+      '<id/>' +
+      '<content type="application/xml">' +
+      '<m:properties>' +
+      '<d:PartitionKey m:type="Edm.String">part1</d:PartitionKey>' +
+      '<d:RowKey m:type="Edm.String">row1</d:RowKey>' +
+      '<d:intValue m:type="Edm.Int32">10</d:intValue>' +
+      '<d:stringValue m:type="Edm.String">my string</d:stringValue>' +
+      '<d:nullValue m:null="true"/>' +
+      '</m:properties>' +
+      '</content>' +
+      '</entry>'
+    );
 
     done();
   });
