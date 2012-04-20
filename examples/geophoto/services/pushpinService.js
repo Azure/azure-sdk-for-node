@@ -13,7 +13,13 @@
 * limitations under the License.
 */
 
-var azure = require('azure');
+var azure;
+if (path.existsSync('./../../lib/azure.js')) {
+  azure = require('./../../lib/azure');
+} else {
+  azure = require('azure');
+}
+
 var uuid = require('node-uuid');
 
 var ServiceClient = azure.ServiceClient;
