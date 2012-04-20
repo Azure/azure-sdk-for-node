@@ -669,8 +669,8 @@ suite('tableservice-tests', function () {
             assert.equal(entityResult.PartitionKey, entity.PartitionKey);
             assert.equal(entityResult.RowKey, entity.RowKey);
             assert.equal(entityResult.field1, entity.field1);
-            assert.equal(entityResult.emptyField1, entity.emptyField1);
-            assert.equal(entityResult.emptyField2, entity.emptyField2);
+            assert.equal(entityResult.emptyField1, undefined);
+            assert.equal(entityResult.emptyField2, undefined);
             assert.equal(entityResult.nonEmptyField3, entity.nonEmptyField3);
           }
 
