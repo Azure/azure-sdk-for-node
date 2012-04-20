@@ -698,7 +698,7 @@ suite('roleenvironment-tests', function () {
       assert.notEqual(id, null);
     });
   });
-
+  */
   test('stoppedChangedNotifications', function (done) {
     var versionsXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
@@ -821,7 +821,7 @@ suite('roleenvironment-tests', function () {
       assert.notEqual(id, null);
     });
   });
-  */
+
   test('clearStatus', function (done) {
     // Test 1 - No callback
     assert.throws(
