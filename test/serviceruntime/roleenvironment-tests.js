@@ -501,12 +501,117 @@ suite('roleenvironment-tests', function () {
       assert.notEqual(roles, null);
 
       // explicitly call calculate changes to reread and compare to previous environment data
+      runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+      runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
+
       azure.RoleEnvironment._calculateChanges(function (calculateChangesError, changes) {
         assert.strictEqual(calculateChangesError, undefined);
         assert.notEqual(changes, null);
         assert.equal(changes.length, 0);
 
-        done();
+        // Change an instance endpoint and make sure it reflects
+        inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+          "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+          "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+          "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<ConfigurationSettings />" +
+          "<LocalResources />" +
+          "<Endpoints>" +
+          "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+          "</Endpoints>" +
+          "</CurrentInstance>" +
+          "<Roles>" +
+          "<Role name=\"role1\">" +
+          "<Instances>" +
+          "<Instance id=\"role1instance1\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<Endpoints>" +
+          "<Endpoint name=\"MyInternalEndpoint1\" address=\"127.255.0.0\" port=\"20000\" protocol=\"tcp\" />" +
+          "</Endpoints>" +
+          "</Instance>" +
+          "</Instances>" +
+          "</Role>" +
+          "<Role name=\"role2\">" +
+          "<Instances>" +
+          "<Instance id=\"role2instance1\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<Endpoints>" +
+          "<Endpoint name=\"MyInternalEndpoint2\" address=\"127.255.0.2\" port=\"20002\" protocol=\"tcp\" />" +
+          "</Endpoints>" +
+          "</Instance>" +
+          "<Instance id=\"role2instance2\" faultDomain=\"0\" updateDomain=\"0\">" +
+          "<Endpoints>" +
+          "<Endpoint name=\"MyInternalEndpoint3\" address=\"127.255.0.3\" port=\"20002\" protocol=\"tcp\" />" +
+          "<Endpoint name=\"MyInternalEndpoint4Other\" address=\"127.255.0.3\" port=\"20004\" protocol=\"tcp\" />" +
+          "</Endpoints>" +
+          "</Instance>" +
+          "</Instances>" +
+          "</Role>" +
+          "</Roles>" +
+          "</RoleEnvironment>"
+        );
+
+        runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+        runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
+
+        azure.RoleEnvironment._calculateChanges(function (calculateChangesError, changes) {
+          assert.strictEqual(calculateChangesError, undefined);
+          assert.notEqual(changes, null);
+          assert.equal(changes.length, 1);
+
+          // Change an instance endpoint and make sure it reflects
+          inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+            "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+            "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+            "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+            "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"0\" updateDomain=\"0\">" +
+            "<ConfigurationSettings />" +
+            "<LocalResources />" +
+            "<Endpoints>" +
+            "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+            "</Endpoints>" +
+            "</CurrentInstance>" +
+            "<Roles>" +
+            "<Role name=\"role1\">" +
+            "<Instances>" +
+            "<Instance id=\"role1instance1\" faultDomain=\"0\" updateDomain=\"0\">" +
+            "<Endpoints>" +
+            "<Endpoint name=\"MyInternalEndpoint1\" address=\"127.255.0.0\" port=\"20000\" protocol=\"tcp\" />" +
+            "</Endpoints>" +
+            "</Instance>" +
+            "</Instances>" +
+            "</Role>" +
+            "<Role name=\"role2\">" +
+            "<Instances>" +
+            "<Instance id=\"role2instance1\" faultDomain=\"0\" updateDomain=\"0\">" +
+            "<Endpoints>" +
+            "<Endpoint name=\"MyInternalEndpoint2\" address=\"127.255.0.2\" port=\"20002\" protocol=\"tcp\" />" +
+            "</Endpoints>" +
+            "</Instance>" +
+            "<Instance id=\"role2instance2\" faultDomain=\"0\" updateDomain=\"0\">" +
+            "<Endpoints>" +
+            "<Endpoint name=\"MyInternalEndpoint3\" address=\"127.255.0.3\" port=\"20002\" protocol=\"tcp\" />" +
+            "<Endpoint name=\"MyInternalEndpoint4Other\" address=\"127.255.0.3\" port=\"20004\" protocol=\"tcp\" />" +
+            "</Endpoints>" +
+            "</Instance>" +
+            "</Instances>" +
+            "</Role>" +
+            "</Roles>" +
+            "</RoleEnvironment>"
+          );
+
+          runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
+          runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
+
+          azure.RoleEnvironment._calculateChanges(function (calculateChangesError, changes) {
+            assert.strictEqual(calculateChangesError, undefined);
+            assert.notEqual(changes, null);
+            assert.equal(changes.length, 1);
+
+            done();
+          });
+        });
       });
     });
   });
