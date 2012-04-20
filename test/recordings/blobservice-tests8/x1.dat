@@ -1,1 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8"?><EnumerationResults AccountName="http://andrerod.blob.core.windows.net/"><Containers><Container><Name>cont7</Name><Url>http://andrerod.blob.core.windows.net/cont7</Url><Properties><Last-Modified>Thu, 15 Mar 2012 21:48:15 GMT</Last-Modified><Etag>"0x8CED10C75D3DC31"</Etag></Properties></Container></Containers><NextMarker /></EnumerationResults>
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>ContainerBeingDeleted</Code><Message>The specified container is being deleted. Try operation later.
+RequestId:3faa2840-4be6-4f34-99d4-f0f0af77f3bf
+Time:2012-04-20T06:52:19.4570629Z</Message></Error>
