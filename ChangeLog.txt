@@ -1,3 +1,8 @@
+2012.04.19 Version 0.5.3
+ * Service Runtime Wrappers
+ * Multiple Bugfixes
+ * Unit tests converted to mocha and code coverage made easy through JSCoverage
+
 2012.02.10 Version 0.5.2
  * Service Bus Wrappers
  * Storage Services UT run against a mock server.

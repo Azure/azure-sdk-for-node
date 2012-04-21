@@ -17,7 +17,7 @@ var http = require('http');
 
 var mockServer = require('../mockserver/mockserver');
 
-var ServiceClient = require("../../lib/services/serviceclient");
+var ServiceClient = require("../../lib/services/core/serviceclient");
 
 var recordingsPath = '/session';
 
@@ -30,8 +30,12 @@ MockServerClient.isRecording = function () {
 };
 
 MockServerClient.isMocked = function () {
+  return false;
+  // TODO: uncomment once mock server is running correctly again.
+  /*
   return !(process.env['AZURE_TEST_IS_NOT_MOCKED'] === '1' ||
            process.env['AZURE_TEST_IS_NOT_MOCKED'] === 'true');
+           */
 };
 
 MockServerClient.showLogs = function () {

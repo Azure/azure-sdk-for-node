@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
-  <code>ConditionNotMet</code>
-  <message xml:lang="en-US">The condition specified using HTTP conditional header(s) is not met.
-RequestId:3c2f55b6-cdc6-4843-9837-8be27dc9b00d
-Time:2012-02-16T04:58:43.1344284Z</message>
-</error>

@@ -13,24 +13,27 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
+
 var fs = require('fs');
 var path = require("path");
 var util = require('util');
 
-var azureutil = require('../../../lib/util/util');
-var azure = require('../../../lib/azure');
-
+// Test includes
 var testutil = require('../../util/util');
 var blobtestutil = require('../../util/blob-test-utils');
 
-var SharedAccessSignature = require('../../../lib/services/blob/sharedaccesssignature');
-var BlobService = require("../../../lib/services/blob/blobservice");
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+// Lib includes
+var azureutil = testutil.libRequire('util/util');
+var azure = testutil.libRequire('azure');
+var WebResource = testutil.libRequire('http/webresource');
+
+var SharedAccessSignature = azure.SharedAccessSignature;
+var BlobService = azure.BlobService;
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
-var WebResource = require('../../../lib/http/webresource');
 
 var blobService;
 var containerNames = [];
@@ -40,96 +43,96 @@ var blobNames = [];
 var blobNamesPrefix = 'blob';
 
 var testPrefix = 'blobservice-tests';
+var numberTests = 32;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    blobtestutil.setUpTest(module.exports, testPrefix, function (err, newBlobService) {
+suite('blobservice-tests', function () {
+  setup(function (done) {
+    blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
       blobService = newBlobService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    blobtestutil.tearDownTest(module.exports, blobService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    blobtestutil.tearDownTest(numberTests, blobService, testPrefix, done);
+  });
 
-  testIncorrectContainerNames: function (test) {
-    test.throws(function () { blobService.createContainer(null, function () { }); },
+  test('IncorrectContainerNames', function (done) {
+    assert.throws(function () { blobService.createContainer(null, function () { }); },
       BlobService.incorrectContainerNameErr);
 
-    test.throws(function () { blobService.createContainer('', function () { }); },
+    assert.throws(function () { blobService.createContainer('', function () { }); },
       BlobService.incorrectContainerNameErr);
 
-    test.throws(function () { blobService.createContainer('as', function () { }); },
+    assert.throws(function () { blobService.createContainer('as', function () { }); },
       BlobService.incorrectContainerNameFormatErr);
 
-    test.throws(function () { blobService.createContainer('a--s', function () { }); },
+    assert.throws(function () { blobService.createContainer('a--s', function () { }); },
       BlobService.incorrectContainerNameFormatErr);
 
-    test.throws(function () { blobService.createContainer('cont-', function () { }); },
+    assert.throws(function () { blobService.createContainer('cont-', function () { }); },
       BlobService.incorrectContainerNameFormatErr);
 
-    test.throws(function () { blobService.createContainer('conTain', function () { }); },
+    assert.throws(function () { blobService.createContainer('conTain', function () { }); },
       BlobService.incorrectContainerNameFormatErr);
 
-    test.done();
-  },
+    done();
+  });
 
-  testIncorrectBlobNames: function (test) {
-    test.throws(function () { blobService.blobExists('container', null, function () { }); },
+  test('IncorrectBlobNames', function (done) {
+    assert.throws(function () { blobService.blobExists('container', null, function () { }); },
       BlobService.incorrectBlobNameFormatErr);
 
-    test.throws(function () { blobService.blobExists('container', '', function () { }); },
+    assert.throws(function () { blobService.blobExists('container', '', function () { }); },
       BlobService.incorrectBlobNameFormatErr);
 
-    test.done();
-  },
+    done();
+  });
 
-  testGetServiceProperties: function (test) {
+  test('GetServiceProperties', function (done) {
     blobService.getServiceProperties(function (error, serviceProperties) {
-      test.equal(error, null);
-      test.notEqual(serviceProperties, null);
+      assert.equal(error, null);
+      assert.notEqual(serviceProperties, null);
 
       if (serviceProperties) {
-        test.notEqual(serviceProperties.Logging, null);
+        assert.notEqual(serviceProperties.Logging, null);
         if (serviceProperties.Logging) {
-          test.notEqual(serviceProperties.Logging.RetentionPolicy);
-          test.notEqual(serviceProperties.Logging.Version);
+          assert.notEqual(serviceProperties.Logging.RetentionPolicy);
+          assert.notEqual(serviceProperties.Logging.Version);
         }
 
         if (serviceProperties.Metrics) {
-          test.notEqual(serviceProperties.Metrics, null);
-          test.notEqual(serviceProperties.Metrics.RetentionPolicy);
-          test.notEqual(serviceProperties.Metrics.Version);
+          assert.notEqual(serviceProperties.Metrics, null);
+          assert.notEqual(serviceProperties.Metrics.RetentionPolicy);
+          assert.notEqual(serviceProperties.Metrics.Version);
         }
       }
 
-      test.done();
+      done();
     });
-  },
+  });
 
-  testSetServiceProperties: function (test) {
+  test('SetServiceProperties', function (done) {
     blobService.getServiceProperties(function (error, serviceProperties) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       serviceProperties.DefaultServiceVersion = '2009-09-19';
       serviceProperties.Logging.Read = true;
       blobService.setServiceProperties(serviceProperties, function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         blobService.getServiceProperties(function (error3, serviceProperties2) {
-          test.equal(error3, null);
-          test.equal(serviceProperties2.DefaultServiceVersion, '2009-09-19');
-          test.equal(serviceProperties2.Logging.Read, true);
+          assert.equal(error3, null);
+          assert.equal(serviceProperties2.DefaultServiceVersion, '2009-09-19');
+          assert.equal(serviceProperties2.Logging.Read, true);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testListContainers: function (test) {
+  test('ListContainers', function (done) {
     var containerName1 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata1 = {
       color: 'orange',
@@ -163,27 +166,27 @@ module.exports = testCase(
         var container = containers[containerIndex];
 
         if (container.name == containerName1) {
-          test.equal(container.metadata.color, metadata1.color);
-          test.equal(container.metadata.containernumber, metadata1.containernumber);
-          test.equal(container.metadata.somemetadataname, metadata1.somemetadataname);
+          assert.equal(container.metadata.color, metadata1.color);
+          assert.equal(container.metadata.containernumber, metadata1.containernumber);
+          assert.equal(container.metadata.somemetadataname, metadata1.somemetadataname);
           entries.push(container.name);
         }
         else if (container.name == containerName2) {
-          test.equal(container.metadata.color, metadata2.color);
-          test.equal(container.metadata.containernumber, metadata2.containernumber);
-          test.equal(container.metadata.somemetadataname, metadata2.somemetadataname);
+          assert.equal(container.metadata.color, metadata2.color);
+          assert.equal(container.metadata.containernumber, metadata2.containernumber);
+          assert.equal(container.metadata.somemetadataname, metadata2.somemetadataname);
           entries.push(container.name);
         }
         else if (container.name == containerName3) {
-          test.equal(container.metadata.color, metadata3.color);
-          test.equal(container.metadata.containernumber, metadata3.containernumber);
-          test.equal(container.metadata.somemetadataname, metadata3.somemetadataname);
+          assert.equal(container.metadata.color, metadata3.color);
+          assert.equal(container.metadata.containernumber, metadata3.containernumber);
+          assert.equal(container.metadata.somemetadataname, metadata3.somemetadataname);
           entries.push(container.name);
         }
         else if (container.name == containerName4) {
-          test.equal(container.metadata.color, metadata4.color);
-          test.equal(container.metadata.containernumber, metadata4.containernumber);
-          test.equal(container.metadata.somemetadataname, metadata4.somemetadataname);
+          assert.equal(container.metadata.color, metadata4.color);
+          assert.equal(container.metadata.containernumber, metadata4.containernumber);
+          assert.equal(container.metadata.somemetadataname, metadata4.somemetadataname);
           entries.push(container.name);
         }
       }
@@ -192,24 +195,24 @@ module.exports = testCase(
     };
 
     blobService.createContainer(containerName1, { metadata: metadata1 }, function (createError1, createContainer1, createResponse1) {
-      test.equal(createError1, null);
-      test.notEqual(createContainer1, null);
-      test.ok(createResponse1.isSuccessful);
+      assert.equal(createError1, null);
+      assert.notEqual(createContainer1, null);
+      assert.ok(createResponse1.isSuccessful);
 
       blobService.createContainer(containerName2, { metadata: metadata2 }, function (createError2, createContainer2, createResponse2) {
-        test.equal(createError2, null);
-        test.notEqual(createContainer2, null);
-        test.ok(createResponse2.isSuccessful);
+        assert.equal(createError2, null);
+        assert.notEqual(createContainer2, null);
+        assert.ok(createResponse2.isSuccessful);
 
         blobService.createContainer(containerName3, { metadata: metadata3 }, function (createError3, createContainer3, createResponse3) {
-          test.equal(createError3, null);
-          test.notEqual(createContainer3, null);
-          test.ok(createResponse3.isSuccessful);
+          assert.equal(createError3, null);
+          assert.notEqual(createContainer3, null);
+          assert.ok(createResponse3.isSuccessful);
 
           blobService.createContainer(containerName4, { metadata: metadata4 }, function (createError4, createContainer4, createResponse4) {
-            test.equal(createError4, null);
-            test.notEqual(createContainer4, null);
-            test.ok(createResponse4.isSuccessful);
+            assert.equal(createError4, null);
+            assert.notEqual(createContainer4, null);
+            assert.ok(createResponse4.isSuccessful);
 
             var options = {
               'maxresults': 3,
@@ -217,211 +220,211 @@ module.exports = testCase(
             };
 
             blobService.listContainers(options, function (listError, containers, containersContinuation, listResponse) {
-              test.equal(listError, null);
-              test.ok(listResponse.isSuccessful);
-              test.equal(containers.length, 3);
+              assert.equal(listError, null);
+              assert.ok(listResponse.isSuccessful);
+              assert.equal(containers.length, 3);
 
               var entries = validateContainers(containers, []);
 
-              test.equal(containersContinuation.hasNextPage(), true);
+              assert.equal(containersContinuation.hasNextPage(), true);
               containersContinuation.getNextPage(function (listErrorContinuation, containers2) {
-                test.equal(listErrorContinuation, null);
-                test.ok(listResponse.isSuccessful);
+                assert.equal(listErrorContinuation, null);
+                assert.ok(listResponse.isSuccessful);
                 validateContainers(containers2, entries);
-                test.equal(entries.length, 4);
+                assert.equal(entries.length, 4);
 
-                test.done();
+                done();
               });
             });
           });
         });
       });
     });
-  },
+  });
 
-  testListContainersOptionalParams: function (test) {
+  test('ListContainersOptionalParams', function (done) {
     blobService.listContainers(null, function (err) {
-      test.equal(err, null);
-      test.done();
+      assert.equal(err, null);
+      done();
     });
-  },
+  });
 
-  testCreateContainer: function (test) {
+  test('CreateContainer', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
       if (container1) {
-        test.notEqual(container1.name, null);
-        test.notEqual(container1.etag, null);
-        test.notEqual(container1.lastModified, null);
+        assert.notEqual(container1.name, null);
+        assert.notEqual(container1.etag, null);
+        assert.notEqual(container1.lastModified, null);
       }
 
-      test.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       // creating again will result in a duplicate error
       blobService.createContainer(containerName, function (createError2, container2) {
-        test.equal(createError2.code, Constants.BlobErrorCodeStrings.CONTAINER_ALREADY_EXISTS);
-        test.equal(container2, null);
+        assert.equal(createError2.code, Constants.BlobErrorCodeStrings.CONTAINER_ALREADY_EXISTS);
+        assert.equal(container2, null);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testCreateContainerIfNotExists: function (test) {
+  test('CreateContainerIfNotExists', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
       if (container1) {
-        test.notEqual(container1.name, null);
-        test.notEqual(container1.etag, null);
-        test.notEqual(container1.lastModified, null);
+        assert.notEqual(container1.name, null);
+        assert.notEqual(container1.etag, null);
+        assert.notEqual(container1.lastModified, null);
       }
 
-      test.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       // creating again will result in a duplicate error
       blobService.createContainerIfNotExists(containerName, function (createError2, isCreated) {
-        test.equal(createError2, null);
-        test.equal(isCreated, false);
+        assert.equal(createError2, null);
+        assert.equal(isCreated, false);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testGetContainerProperties: function (test) {
+  test('GetContainerProperties', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata = {
       color: 'blue'
     };
 
     blobService.createContainer(containerName, { metadata: metadata }, function (createError, container1, createContainerResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
-      test.equal(createContainerResponse.isSuccessful, true);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
+      assert.equal(createContainerResponse.isSuccessful, true);
 
       blobService.getContainerProperties(containerName, function (getError, container2, getResponse) {
-        test.equal(getError, null);
-        test.notEqual(container2, null);
+        assert.equal(getError, null);
+        assert.notEqual(container2, null);
         if (container2) {
-          test.equal(container2.metadata.color, metadata.color);
+          assert.equal(container2.metadata.color, metadata.color);
         }
 
-        test.notEqual(getResponse, null);
-        test.equal(getResponse.isSuccessful, true);
+        assert.notEqual(getResponse, null);
+        assert.equal(getResponse.isSuccessful, true);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testSetContainerMetadata: function (test) {
+  test('SetContainerMetadata', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     blobService.createContainer(containerName, function (createError, createContainer, createContainerResponse) {
-      test.equal(createError, null);
-      test.notEqual(createContainer, null);
-      test.ok(createContainerResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(createContainer, null);
+      assert.ok(createContainerResponse.isSuccessful);
 
       blobService.setContainerMetadata(containerName, metadata, function (setMetadataError, setMetadataResponse) {
-        test.equal(setMetadataError, null);
-        test.ok(setMetadataResponse.isSuccessful);
+        assert.equal(setMetadataError, null);
+        assert.ok(setMetadataResponse.isSuccessful);
 
         blobService.getContainerMetadata(containerName, function (getMetadataError, containerMetadata, getMetadataResponse) {
-          test.equal(getMetadataError, null);
-          test.notEqual(containerMetadata, null);
-          test.notEqual(containerMetadata.metadata, null);
+          assert.equal(getMetadataError, null);
+          assert.notEqual(containerMetadata, null);
+          assert.notEqual(containerMetadata.metadata, null);
           if (containerMetadata.metadata) {
-            test.equal(containerMetadata.metadata.class, 'test');
+            assert.equal(containerMetadata.metadata.class, 'test');
           }
 
-          test.ok(getMetadataResponse.isSuccessful);
+          assert.ok(getMetadataResponse.isSuccessful);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testGetContainerAcl: function (test) {
+  test('GetContainerAcl', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
-      test.equal(createContainerResponse.isSuccessful, true);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
+      assert.equal(createContainerResponse.isSuccessful, true);
 
       blobService.getContainerAcl(containerName, function (containerAclError, containerBlob, containerAclResponse) {
-        test.equal(containerAclError, null);
-        test.notEqual(containerBlob, null);
+        assert.equal(containerAclError, null);
+        assert.notEqual(containerBlob, null);
         if (containerBlob) {
-          test.equal(containerBlob.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.OFF);
+          assert.equal(containerBlob.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.OFF);
         }
 
-        test.equal(containerAclResponse.isSuccessful, true);
+        assert.equal(containerAclResponse.isSuccessful, true);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testSetContainerAcl: function (test) {
+  test('SetContainerAcl', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
-      test.ok(createContainerResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
+      assert.ok(createContainerResponse.isSuccessful);
 
       blobService.setContainerAcl(containerName, BlobConstants.BlobContainerPublicAccessType.BLOB, function (setAclError, setAclContainer1, setResponse1) {
-        test.equal(setAclError, null);
-        test.notEqual(setAclContainer1, null);
-        test.ok(setResponse1.isSuccessful);
+        assert.equal(setAclError, null);
+        assert.notEqual(setAclContainer1, null);
+        assert.ok(setResponse1.isSuccessful);
 
         blobService.getContainerAcl(containerName, function (getAclError, getAclContainer1, getResponse1) {
-          test.equal(getAclError, null);
-          test.notEqual(getAclContainer1, null);
+          assert.equal(getAclError, null);
+          assert.notEqual(getAclContainer1, null);
           if (getAclContainer1) {
-            test.equal(getAclContainer1.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.BLOB);
+            assert.equal(getAclContainer1.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.BLOB);
           }
 
-          test.ok(getResponse1.isSuccessful);
+          assert.ok(getResponse1.isSuccessful);
 
           blobService.setContainerAcl(containerName, BlobConstants.BlobContainerPublicAccessType.CONTAINER, function (setAclError2, setAclContainer2, setResponse2) {
-            test.equal(setAclError2, null);
-            test.notEqual(setAclContainer2, null);
-            test.ok(setResponse2.isSuccessful);
+            assert.equal(setAclError2, null);
+            assert.notEqual(setAclContainer2, null);
+            assert.ok(setResponse2.isSuccessful);
 
             blobService.getContainerAcl(containerName, function (getAclError2, getAclContainer2, getResponse3) {
-              test.equal(getAclError2, null);
-              test.notEqual(getAclContainer2, null);
+              assert.equal(getAclError2, null);
+              assert.notEqual(getAclContainer2, null);
               if (getAclContainer2) {
-                test.equal(getAclContainer2.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.CONTAINER);
+                assert.equal(getAclContainer2.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.CONTAINER);
               }
 
-              test.ok(getResponse3.isSuccessful);
+              assert.ok(getResponse3.isSuccessful);
 
-              test.done();
+              done();
             });
           });
         });
       });
     });
-  },
+  });
 
-  testSetContainerAclSignedIdentifiers: function (test) {
+  test('SetContainerAclSignedIdentifiers', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createContainerError, container1, createContainerResponse) {
-      test.equal(createContainerError, null);
-      test.notEqual(container1, null);
-      test.ok(createContainerResponse.isSuccessful);
+      assert.equal(createContainerError, null);
+      assert.notEqual(container1, null);
+      assert.ok(createContainerResponse.isSuccessful);
 
       var options = {};
       options.signedIdentifiers = [
@@ -441,17 +444,17 @@ module.exports = testCase(
         }];
 
       blobService.setContainerAcl(containerName, BlobConstants.BlobContainerPublicAccessType.OFF, options, function (setAclError, setAclContainer, setAclResponse) {
-        test.equal(setAclError, null);
-        test.notEqual(setAclContainer, null);
-        test.ok(setAclResponse.isSuccessful);
+        assert.equal(setAclError, null);
+        assert.notEqual(setAclContainer, null);
+        assert.ok(setAclResponse.isSuccessful);
 
         blobService.getContainerAcl(containerName, function (getAclError, containerAcl, getAclResponse) {
-          test.equal(getAclError, null);
-          test.notEqual(containerAcl, null);
-          test.notEqual(getAclResponse, null);
+          assert.equal(getAclError, null);
+          assert.notEqual(containerAcl, null);
+          assert.notEqual(getAclResponse, null);
 
           if (getAclResponse) {
-            test.equal(getAclResponse.isSuccessful, true);
+            assert.equal(getAclResponse.isSuccessful, true);
           }
 
           var entries = 0;
@@ -459,101 +462,100 @@ module.exports = testCase(
             if (containerAcl.signedIdentifiers) {
               containerAcl.signedIdentifiers.forEach(function (identifier) {
                 if (identifier.Id === 'id1') {
-                  test.equal(identifier.AccessPolicy.Start, '2009-10-10T00:00:00.0000000Z');
-                  test.equal(identifier.AccessPolicy.Expiry, '2009-10-11T00:00:00.0000000Z');
-                  test.equal(identifier.AccessPolicy.Permission, 'r');
+                  assert.equal(identifier.AccessPolicy.Start, '2009-10-10T00:00:00.0000000Z');
+                  assert.equal(identifier.AccessPolicy.Expiry, '2009-10-11T00:00:00.0000000Z');
+                  assert.equal(identifier.AccessPolicy.Permission, 'r');
                   entries += 1;
                 }
                 else if (identifier.Id === 'id2') {
-                  test.equal(identifier.AccessPolicy.Start, '2009-11-10T00:00:00.0000000Z');
-                  test.equal(identifier.AccessPolicy.Expiry, '2009-11-11T00:00:00.0000000Z');
-                  test.equal(identifier.AccessPolicy.Permission, 'w');
+                  assert.equal(identifier.AccessPolicy.Start, '2009-11-10T00:00:00.0000000Z');
+                  assert.equal(identifier.AccessPolicy.Expiry, '2009-11-11T00:00:00.0000000Z');
+                  assert.equal(identifier.AccessPolicy.Permission, 'w');
                   entries += 2;
                 }
               });
             }
           }
 
-          test.equals(entries, 3);
+          assert.equal(entries, 3);
 
-          test.done();
+          done();
         });
-      }
-      );
+      });
     });
-  },
+  });
 
-  testCreateBlockBlobFromText: function (test) {
+  test('CreateBlockBlobFromText', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
-      test.equal(createError1, null);
-      test.notEqual(container1, null);
-      test.ok(createResponse1.isSuccessful);
-      test.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError1, null);
+      assert.notEqual(container1, null);
+      assert.ok(createResponse1.isSuccessful);
+      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
-        test.equal(uploadError, null);
-        test.ok(uploadResponse.isSuccessful);
+        assert.equal(uploadError, null);
+        assert.ok(uploadResponse.isSuccessful);
 
         blobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
-          test.equal(downloadErr, null);
-          test.equal(blobTextResponse, blobText);
+          assert.equal(downloadErr, null);
+          assert.equal(blobTextResponse, blobText);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testSnapshotBlob: function (test) {
+  test('SnapshotBlob', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError, container1, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
-      test.notEqual(createResponse, null);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
+      assert.notEqual(createResponse, null);
       if (createResponse) {
-        test.ok(createResponse.isSuccessful);
+        assert.ok(createResponse.isSuccessful);
       }
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, putResponse) {
-        test.equal(uploadError, null);
-        test.notEqual(putResponse, null);
+        assert.equal(uploadError, null);
+        assert.notEqual(putResponse, null);
         if (putResponse) {
-          test.ok(putResponse.isSuccessful);
+          assert.ok(putResponse.isSuccessful);
         }
 
         blobService.createBlobSnapshot(containerName, blobName, function (snapshotError, snapshotId, snapshotResponse) {
-          test.equal(snapshotError, null);
-          test.notEqual(snapshotResponse, null);
-          test.notEqual(snapshotId, null);
+          assert.equal(snapshotError, null);
+          assert.notEqual(snapshotResponse, null);
+          assert.notEqual(snapshotId, null);
 
           if (snapshotResponse) {
-            test.ok(snapshotResponse.isSuccessful);
+            assert.ok(snapshotResponse.isSuccessful);
           }
 
           blobService.getBlobToText(containerName, blobName, function (getError, content, blockBlob, getResponse) {
-            test.equal(getError, null);
-            test.notEqual(blockBlob, null);
-            test.notEqual(getResponse, null);
+            assert.equal(getError, null);
+            assert.notEqual(blockBlob, null);
+            assert.notEqual(getResponse, null);
             if (getResponse) {
-              test.ok(getResponse.isSuccessful);
+              assert.ok(getResponse.isSuccessful);
             }
 
-            test.equal(blobText, content);
-            test.done();
+            assert.equal(blobText, content);
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testCopyBlob: function (test) {
+  test('CopyBlob', function (done) {
     var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 
@@ -563,77 +565,77 @@ module.exports = testCase(
     var blobText = 'hi there';
 
     blobService.createContainer(sourceContainerName, function (createErr1) {
-      test.equal(createErr1, null);
+      assert.equal(createErr1, null);
 
       blobService.createContainer(targetContainerName, function (createErr2) {
-        test.equal(createErr2, null);
+        assert.equal(createErr2, null);
 
         blobService.createBlockBlobFromText(sourceContainerName, sourceBlobName, blobText, function (uploadErr) {
-          test.equal(uploadErr, null);
+          assert.equal(uploadErr, null);
 
           blobService.copyBlob(sourceContainerName, sourceBlobName, targetContainerName, targetBlobName, function (copyErr) {
-            test.equal(copyErr, null);
+            assert.equal(copyErr, null);
 
             blobService.getBlobToText(targetContainerName, targetBlobName, function (downloadErr, text) {
-              test.equal(downloadErr, null);
-              test.equal(text, blobText);
+              assert.equal(downloadErr, null);
+              assert.equal(text, blobText);
 
-              test.done();
+              done();
             });
           });
         });
       });
     });
-  },
+  });
 
-  testLeaseBlob: function (test) {
+  test('LeaseBlob', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'hello';
 
     blobService.createContainer(containerName, function (createError, container1, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(container1, null);
-      test.ok(createResponse.isSuccessful);
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
+      assert.ok(createResponse.isSuccessful);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
-        test.equal(uploadError, null);
-        test.notEqual(blob, null);
-        test.ok(uploadResponse.isSuccessful);
+        assert.equal(uploadError, null);
+        assert.notEqual(blob, null);
+        assert.ok(uploadResponse.isSuccessful);
 
         // Acquire a lease
-        blobService._leaseBlobImpl(containerName, blobName, null, BlobConstants.LeaseOperation.ACQUIRE, function (leaseBlobError, lease, leaseBlobResponse) {
-          test.equal(leaseBlobError, null);
-          test.notEqual(lease, null);
+        blobService.acquireLease(containerName, blobName, function (leaseBlobError, lease, leaseBlobResponse) {
+          assert.equal(leaseBlobError, null);
+          assert.notEqual(lease, null);
           if (lease) {
-            test.ok(lease.id);
+            assert.ok(lease.id);
           }
 
-          test.notEqual(leaseBlobResponse, null);
+          assert.notEqual(leaseBlobResponse, null);
           if (leaseBlobResponse) {
-            test.ok(leaseBlobResponse.isSuccessful);
+            assert.ok(leaseBlobResponse.isSuccessful);
           }
 
           // Second lease should not be possible
-          blobService._leaseBlobImpl(containerName, blobName, null, BlobConstants.LeaseOperation.ACQUIRE, function (secondLeaseBlobError, secondLease, secondLeaseBlobResponse) {
-            test.equal(secondLeaseBlobError.code, 'LeaseAlreadyPresent');
-            test.equal(secondLease, null);
-            test.equal(secondLeaseBlobResponse.isSuccessful, false);
+          blobService.acquireLease(containerName, blobName, function (secondLeaseBlobError, secondLease, secondLeaseBlobResponse) {
+            assert.equal(secondLeaseBlobError.code, 'LeaseAlreadyPresent');
+            assert.equal(secondLease, null);
+            assert.equal(secondLeaseBlobResponse.isSuccessful, false);
 
             // Delete should not be possible
             blobService.deleteBlob(containerName, blobName, function (deleteError, deleted, deleteResponse) {
-              test.equal(deleteError.code, 'LeaseIdMissing');
-              test.equal(deleteResponse.isSuccessful, false);
+              assert.equal(deleteError.code, 'LeaseIdMissing');
+              assert.equal(deleteResponse.isSuccessful, false);
 
-              test.done();
+              done();
             });
           });
         });
       });
     });
-  },
+  });
 
-  testGetBlobProperties: function (test) {
+  test('GetBlobProperties', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var metadata = {
@@ -641,38 +643,38 @@ module.exports = testCase(
     };
 
     blobService.createContainer(containerName, function (err) {
-      test.equal(err, null);
+      assert.equal(err, null);
 
       blobService.createBlockBlobFromText(containerName, blobName, "hello", { metadata: metadata }, function (blobErr) {
-        test.equal(blobErr, null);
+        assert.equal(blobErr, null);
 
         blobService.getBlobProperties(containerName, blobName, function (getErr, blob) {
-          test.equal(getErr, null);
+          assert.equal(getErr, null);
 
-          test.notEqual(blob, null);
+          assert.notEqual(blob, null);
           if (blob) {
-            test.notEqual(blob.metadata, null);
+            assert.notEqual(blob.metadata, null);
             if (blob.metadata) {
-              test.equal(blob.metadata.color, metadata.color);
+              assert.equal(blob.metadata.color, metadata.color);
             }
           }
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testSetBlobProperties: function (test) {
+  test('SetBlobProperties', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var text = "hello";
 
     blobService.createContainer(containerName, function (err) {
-      test.equal(err, null);
+      assert.equal(err, null);
 
       blobService.createBlockBlobFromText(containerName, blobName, text, function (blobErr) {
-        test.equal(blobErr, null);
+        assert.equal(blobErr, null);
 
         var options = {};
         options.contentType = 'text';
@@ -681,56 +683,56 @@ module.exports = testCase(
         options.cacheControl = 'true';
 
         blobService.setBlobProperties(containerName, blobName, options, function (setErr) {
-          test.equal(setErr, null);
+          assert.equal(setErr, null);
 
           blobService.getBlobProperties(containerName, blobName, function (getErr, blob) {
-            test.equal(getErr, null);
+            assert.equal(getErr, null);
 
-            test.notEqual(blob, null);
+            assert.notEqual(blob, null);
             if (blob) {
-              test.equal(blob.contentLength, text.length);
-              test.equal(blob.contentType, options.contentType);
-              test.equal(blob.contentEncoding, options.contentEncoding);
-              test.equal(blob.contentLanguage, options.contentLanguage);
-              test.equal(blob.cacheControl, options.cacheControl);
+              assert.equal(blob.contentLength, text.length);
+              assert.equal(blob.contentType, options.contentType);
+              assert.equal(blob.contentEncoding, options.contentEncoding);
+              assert.equal(blob.contentLanguage, options.contentLanguage);
+              assert.equal(blob.cacheControl, options.cacheControl);
             }
 
-            test.done();
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testGetBlobMetadata: function (test) {
+  test('GetBlobMetadata', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var metadata = { color: 'blue' };
 
     blobService.createContainer(containerName, function (err) {
-      test.equal(err, null);
+      assert.equal(err, null);
 
       blobService.createBlockBlobFromText(containerName, blobName, "hello", { metadata: metadata }, function (blobErr) {
-        test.equal(blobErr, null);
+        assert.equal(blobErr, null);
 
         blobService.getBlobMetadata(containerName, blobName, function (getErr, blob) {
-          test.equal(getErr, null);
+          assert.equal(getErr, null);
 
-          test.notEqual(blob, null);
+          assert.notEqual(blob, null);
           if (blob) {
-            test.notEqual(blob.metadata, null);
+            assert.notEqual(blob.metadata, null);
             if (blob.metadata) {
-              test.equal(blob.metadata.color, metadata.color);
+              assert.equal(blob.metadata.color, metadata.color);
             }
           }
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testListBlobs: function (test) {
+  test('ListBlobs', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName1 = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobName2 = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
@@ -738,34 +740,34 @@ module.exports = testCase(
     var blobText2 = 'hello2';
 
     blobService.createContainer(containerName, function (err) {
-      test.equal(err, null);
+      assert.equal(err, null);
 
       // Test listing 0 blobs
       blobService.listBlobs(containerName, function (listErrNoBlobs, listNoBlobs) {
-        test.equal(listErrNoBlobs, null);
-        test.notEqual(listNoBlobs, null);
+        assert.equal(listErrNoBlobs, null);
+        assert.notEqual(listNoBlobs, null);
         if (listNoBlobs) {
-          test.equal(listNoBlobs.length, 0);
+          assert.equal(listNoBlobs.length, 0);
         }
 
         blobService.createBlockBlobFromText(containerName, blobName1, blobText1, function (blobErr1) {
-          test.equal(blobErr1, null);
+          assert.equal(blobErr1, null);
 
           // Test listing 1 blob
           blobService.listBlobs(containerName, function (listErr, listBlobs) {
-            test.equal(listErr, null);
-            test.notEqual(listBlobs, null);
-            test.equal(listBlobs.length, 1);
+            assert.equal(listErr, null);
+            assert.notEqual(listBlobs, null);
+            assert.equal(listBlobs.length, 1);
 
             blobService.createBlockBlobFromText(containerName, blobName2, blobText2, function (blobErr2) {
-              test.equal(blobErr2, null);
+              assert.equal(blobErr2, null);
 
               // Test listing multiple blobs
               blobService.listBlobs(containerName, function (listErr2, listBlobs2) {
-                test.equal(listErr2, null);
-                test.notEqual(listBlobs2, null);
+                assert.equal(listErr2, null);
+                assert.notEqual(listBlobs2, null);
                 if (listBlobs2) {
-                  test.equal(listBlobs2.length, 2);
+                  assert.equal(listBlobs2.length, 2);
 
                   var entries = 0;
                   listBlobs2.forEach(function (blob) {
@@ -777,30 +779,30 @@ module.exports = testCase(
                     }
                   });
 
-                  test.equal(entries, 3);
+                  assert.equal(entries, 3);
                 }
 
                 blobService.createBlobSnapshot(containerName, blobName1, function (snapErr) {
-                  test.equal(snapErr, null);
+                  assert.equal(snapErr, null);
 
                   // Test listing without requesting snapshots
                   blobService.listBlobs(containerName, function (listErr3, listBlobs3) {
-                    test.equal(listErr3, null);
-                    test.notEqual(listBlobs3, null);
+                    assert.equal(listErr3, null);
+                    assert.notEqual(listBlobs3, null);
                     if (listBlobs3) {
-                      test.equal(listBlobs3.length, 2);
+                      assert.equal(listBlobs3.length, 2);
                     }
 
                     // Test listing including snapshots
                     blobService.listBlobs(containerName, { include: BlobConstants.BlobListingDetails.SNAPSHOTS }, function (listErr4, listBlobs4) {
-                      test.equal(listErr4, null);
-                      test.notEqual(listBlobs4, null);
+                      assert.equal(listErr4, null);
+                      assert.notEqual(listBlobs4, null);
 
                       if (listBlobs3) {
-                        test.equal(listBlobs4.length, 3);
+                        assert.equal(listBlobs4.length, 3);
                       }
 
-                      test.done();
+                      done();
                     });
                   });
                 });
@@ -810,47 +812,47 @@ module.exports = testCase(
         });
       });
     });
-  },
+  });
 
-  testPageBlob: function (test) {
+  test('PageBlob', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       var data1 = "Hello, World!" + repeat(' ', 1024 - 13);
       var data2 = "Hello, World!" + repeat(' ', 512 - 13);
 
       // Create the empty page blob
       blobService.createPageBlob(containerName, blobName, 1024, function (err) {
-        test.equal(err, null);
+        assert.equal(err, null);
 
         // Upload all data
         blobService.createBlobPagesFromText(containerName, blobName, data1, 0, 1023, function (err2) {
-          test.equal(err2, null);
+          assert.equal(err2, null);
 
           // Verify contents
           blobService.getBlobToText(containerName, blobName, function (err3, content1) {
-            test.equal(err3, null);
-            test.equal(content1, data1);
+            assert.equal(err3, null);
+            assert.equal(content1, data1);
 
             // Clear the page blob
             blobService.clearBlobPages(containerName, blobName, 0, 1023, function (err4) {
-              test.equal(err4);
+              assert.equal(err4);
 
               // Upload other data in 2 pages
               blobService.createBlobPagesFromText(containerName, blobName, data2, 0, 511, function (err5) {
-                test.equal(err5, null);
+                assert.equal(err5, null);
 
                 blobService.createBlobPagesFromText(containerName, blobName, data2, 512, 1023, function (err6) {
-                  test.equal(err6, null);
+                  assert.equal(err6, null);
 
                   blobService.getBlobToText(containerName, blobName, function (err7, content2) {
-                    test.equal(err7, null);
-                    test.equal(data2 + data2, content2);
+                    assert.equal(err7, null);
+                    assert.equal(data2 + data2, content2);
 
-                    test.done();
+                    done();
                   });
                 });
               });
@@ -859,161 +861,161 @@ module.exports = testCase(
         });
       });
     });
-  },
+  });
 
-  testGetPageRegions: function (test) {
+  test('GetPageRegions', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       var data = "Hello, World!" + repeat(' ', 512 - 13);
 
       // Upload contents in 2 parts
       blobService.createPageBlob(containerName, blobName, 1024 * 1024 * 1024, function (err) {
-        test.equal(err, null);
+        assert.equal(err, null);
 
         // Upload all data
         blobService.createBlobPagesFromText(containerName, blobName, data, 0, 511, function (err2) {
-          test.equal(err2, null);
+          assert.equal(err2, null);
 
           blobService.createBlobPagesFromText(containerName, blobName, data, 1048576, 1049087, null, function (err3) {
-            test.equal(err3, null);
+            assert.equal(err3, null);
 
             // Get page regions
             blobService.listBlobRegions(containerName, blobName, 0, null, function (error5, regions) {
-              test.equal(error5, null);
-              test.notEqual(regions, null);
+              assert.equal(error5, null);
+              assert.notEqual(regions, null);
               if (regions) {
-                test.equal(regions.length, 2);
+                assert.equal(regions.length, 2);
 
                 var entries = 0;
                 regions.forEach(function (region) {
                   if (region.start === 0) {
-                    test.equal(region.end, 511);
+                    assert.equal(region.end, 511);
                     entries += 1;
                   }
                   else if (region.start === 1048576) {
-                    test.equal(region.end, 1049087);
+                    assert.equal(region.end, 1049087);
                     entries += 2;
                   }
                 });
 
-                test.equal(entries, 3);
+                assert.equal(entries, 3);
               }
 
-              test.done();
+              done();
             });
           });
         });
       });
     });
-  },
+  });
 
-  testUploadBlobAccessCondition: function (test) {
+  test('UploadBlobAccessCondition', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'hello';
 
     blobService.createContainer(containerName, function (error) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         blobService.getBlobProperties(containerName, blobName, function (error4, blobProperties) {
-          test.equal(error4, null);
+          assert.equal(error4, null);
 
-          var options = { accessConditions: { 'If-None-Match': blobProperties.etag} };
+          var options = { accessConditions: { 'if-none-match': blobProperties.etag} };
           blobService.createBlockBlobFromText(containerName, blobName, blobText, options, function (error3) {
-            test.notEqual(error3, null);
-            test.equal(error3.code, Constants.StorageErrorCodeStrings.CONDITION_NOT_MET);
+            assert.notEqual(error3, null);
+            assert.equal(error3.code, Constants.StorageErrorCodeStrings.CONDITION_NOT_MET);
 
-            test.done();
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testSmallUploadBlobFromFileWithSpace: function (test) {
+  test('SmallUploadBlobFromFileWithSpace', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked) + ' a';
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
-      test.equal(createError1, null);
-      test.notEqual(container1, null);
-      test.ok(createResponse1.isSuccessful);
-      test.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError1, null);
+      assert.notEqual(container1, null);
+      assert.ok(createResponse1.isSuccessful);
+      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blobResponse, uploadResponse) {
-        test.equal(uploadError, null);
-        test.notEqual(blobResponse, null);
-        test.ok(uploadResponse.isSuccessful);
+        assert.equal(uploadError, null);
+        assert.notEqual(blobResponse, null);
+        assert.ok(uploadResponse.isSuccessful);
 
         blobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
-          test.equal(downloadErr, null);
-          test.equal(blobTextResponse, blobText);
+          assert.equal(downloadErr, null);
+          assert.equal(blobTextResponse, blobText);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testGetBlobRange: function (test) {
+  test('GetBlobRange', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       var data1 = "Hello, World!";
 
       // Create the empty page blob
       blobService.createBlockBlobFromText(containerName, blobName, data1, function (err) {
-        test.equal(err, null);
+        assert.equal(err, null);
 
         blobService.getBlobToText(containerName, blobName, { rangeStart: 2, rangeEnd: 3 }, function (err3, content1) {
-          test.equal(err3, null);
+          assert.equal(err3, null);
 
           // get the double ll's in the hello
-          test.equal(content1, 'll');
+          assert.equal(content1, 'll');
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testGetBlobRangeOpenEnded: function (test) {
+  test('GetBlobRangeOpenEnded', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       var data1 = "Hello, World!";
 
       // Create the empty page blob
       blobService.createBlockBlobFromText(containerName, blobName, data1, function (err) {
-        test.equal(err, null);
+        assert.equal(err, null);
 
         blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1) {
-          test.equal(err3, null);
+          assert.equal(err3, null);
 
           // get the last bytes from the message
-          test.equal(content1, 'llo, World!');
+          assert.equal(content1, 'llo, World!');
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testSetBlobMime: function (test) {
+  test('SetBlobMime', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var fileNameSource = testutil.generateId('file') + '.bmp'; // fake bmp file with text...
@@ -1021,29 +1023,29 @@ module.exports = testCase(
 
     fs.writeFile(fileNameSource, blobText, function () {
       blobService.createContainer(containerName, function (createError) {
-        test.equal(createError, null);
+        assert.equal(createError, null);
 
         // Create the empty page blob
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, function (err) {
-          test.equal(err, null);
+          assert.equal(err, null);
 
           blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, blob) {
-            test.equal(err3, null);
+            assert.equal(err3, null);
 
             // get the last bytes from the message
-            test.equal(content1, 'llo World!');
-            test.equal(blob.contentType, 'image/bmp');
+            assert.equal(content1, 'llo World!');
+            assert.equal(blob.contentType, 'image/bmp');
 
             fs.unlink(fileNameSource, function () {
-              test.done();
+              done();
             });
           });
         });
       });
     });
-  },
+  });
 
-  testSetBlobMimeSkip: function (test) {
+  test('SetBlobMimeSkip', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var fileNameSource = testutil.generateId('prefix') + '.bmp'; // fake bmp file with text...
@@ -1051,107 +1053,108 @@ module.exports = testCase(
 
     fs.writeFile(fileNameSource, blobText, function () {
       blobService.createContainer(containerName, function (createError) {
-        test.equal(createError, null);
+        assert.equal(createError, null);
 
         // Create the empty page blob
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, { contentType: null, contentTypeHeader: null }, function (err) {
-          test.equal(err, null);
+          assert.equal(err, null);
 
           blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, blob) {
-            test.equal(err3, null);
+            assert.equal(err3, null);
 
             // get the last bytes from the message
-            test.equal(content1, 'llo World!');
-            test.equal(blob.contentType, 'application/octet-stream');
+            assert.equal(content1, 'llo World!');
+            assert.equal(blob.contentType, 'application/octet-stream');
 
             fs.unlink(fileNameSource, function () {
-              test.done();
+              done();
             });
           });
         });
       });
     });
-  },
+  });
 
-  testCreateBlobWithBars: function (test) {
+  test('CreateBlobWithBars', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
     var blobText = 'Hello World!';
 
     blobService.createContainer(containerName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       // Create the empty page blob
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (err) {
-        test.equal(err, null);
+        assert.equal(err, null);
 
         blobService.getBlobProperties(containerName, blobName, function (error, properties) {
-          test.equal(error, null);
-          test.equal(properties.container, containerName);
-          test.equal(properties.blob, blobName);
+          assert.equal(error, null);
+          assert.equal(properties.container, containerName);
+          assert.equal(properties.blob, blobName);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testCommitBlockList: function (test) {
+  test('CommitBlockList', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
     blobService.createContainer(containerName, function (error) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       blobService.createBlobBlockFromText('id1', containerName, blobName, 'id1', function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         blobService.createBlobBlockFromText('id2', containerName, blobName, 'id2', function (error3) {
-          test.equal(error3, null);
+          assert.equal(error3, null);
 
           var blockList = {
-            LatestBlocks: ['id1', 'id2']
+            LatestBlocks: ['id1'],
+            UncommittedBlocks: ['id2']
           };
 
           blobService.commitBlobBlocks(containerName, blobName, blockList, function (error4) {
-            test.equal(error4, null);
+            assert.equal(error4, null);
 
             blobService.listBlobBlocks(containerName, blobName, BlobConstants.BlockListFilter.ALL, function (error5, list) {
-              test.equal(error5, null);
-              test.notEqual(list, null);
-              test.notEqual(list.CommittedBlocks, null);
-              test.equal(list.CommittedBlocks.length, 2);
+              assert.equal(error5, null);
+              assert.notEqual(list, null);
+              assert.notEqual(list.CommittedBlocks, null);
+              assert.equal(list.CommittedBlocks.length, 2);
 
-              test.done();
+              done();
             });
           });
-        });
+        }); 
       });
     });
-  },
+  });
 
-  testGetBlobUrl: function (test) {
+  test('GetBlobUrl', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
-    var blobServiceTest = azure.createBlobService('storageAccount', 'storageAccessKey', 'host:80');
-    blobServiceTest.usePathStyleUri = false;
+    var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host:80');
+    blobServiceassert.usePathStyleUri = false;
 
-    var urlParts = blobServiceTest.getBlobUrl(containerName);
-    test.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName);
+    var urlParts = blobServiceassert.getBlobUrl(containerName);
+    assert.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName);
 
-    urlParts = blobServiceTest.getBlobUrl(containerName, blobName);
-    test.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName + '/' + blobName);
+    urlParts = blobServiceassert.getBlobUrl(containerName, blobName);
+    assert.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName + '/' + blobName);
 
-    blobServiceTest.usePathStyleUri = true;
-    urlParts = blobServiceTest.getBlobUrl(containerName);
-    test.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName);
+    blobServiceassert.usePathStyleUri = true;
+    urlParts = blobServiceassert.getBlobUrl(containerName);
+    assert.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName);
 
-    urlParts = blobServiceTest.getBlobUrl(containerName, blobName);
-    test.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName + '/' + blobName);
+    urlParts = blobServiceassert.getBlobUrl(containerName, blobName);
+    assert.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName + '/' + blobName);
 
-    test.done();
-  }
+    done();
+  });
 });
 
 function repeat(s, n) {

@@ -13,16 +13,18 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
+var assert = require('assert');
 
-var azure = require('../../../lib/azure');
-var azureutil = require('../../../lib/util/util');
-
+// Test includes
 var testutil = require('../../util/util');
 var queuetestutil = require('../../util/queue-test-utils');
 
-var ServiceClient = require("../../../lib/services/serviceclient");
-var Constants = require('../../../lib/util/constants');
+// Lib includes
+var azure = testutil.libRequire('azure');
+var azureutil = testutil.libRequire('util/util');
+
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 
 var queueService;
@@ -30,170 +32,170 @@ var queueNames = [];
 var queueNamesPrefix = 'queue';
 
 var testPrefix = 'queueservice-tests';
+var numberTests = 12;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
-    queuetestutil.setUpTest(module.exports, testPrefix, function (err, newQueueService) {
+suite('queueservice-tests', function () {
+  setup(function (done) {
+    queuetestutil.setUpTest(testPrefix, function (err, newQueueService) {
       queueService = newQueueService;
-      callback();
+      done();
     });
-  },
+  });
 
-  tearDown: function (callback) {
-    queuetestutil.tearDownTest(module.exports, queueService, testPrefix, callback);
-  },
+  teardown(function (done) {
+    queuetestutil.tearDownTest(numberTests, queueService, testPrefix, done);
+  });
 
-  getServiceProperties: function (test) {
+  test('GetServiceProperties', function (done) {
     queueService.getServiceProperties(function (error, serviceProperties) {
-      test.equal(error, null);
-      test.notEqual(serviceProperties, null);
+      assert.equal(error, null);
+      assert.notEqual(serviceProperties, null);
 
       if (serviceProperties) {
-        test.notEqual(serviceProperties.Logging, null);
+        assert.notEqual(serviceProperties.Logging, null);
         if (serviceProperties.Logging) {
-          test.notEqual(serviceProperties.Logging.RetentionPolicy);
-          test.notEqual(serviceProperties.Logging.Version);
+          assert.notEqual(serviceProperties.Logging.RetentionPolicy);
+          assert.notEqual(serviceProperties.Logging.Version);
         }
 
         if (serviceProperties.Metrics) {
-          test.notEqual(serviceProperties.Metrics, null);
-          test.notEqual(serviceProperties.Metrics.RetentionPolicy);
-          test.notEqual(serviceProperties.Metrics.Version);
+          assert.notEqual(serviceProperties.Metrics, null);
+          assert.notEqual(serviceProperties.Metrics.RetentionPolicy);
+          assert.notEqual(serviceProperties.Metrics.Version);
         }
       }
 
-      test.done();
+      done();
     });
-  },
+  });
 
-  testSetServiceProperties: function (test) {
+  test('SetServiceProperties', function (done) {
     queueService.getServiceProperties(function (error, serviceProperties) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       serviceProperties.Logging.Read = true;
       queueService.setServiceProperties(serviceProperties, function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         queueService.getServiceProperties(function (error3, serviceProperties2) {
-          test.equal(error3, null);
-          test.equal(serviceProperties2.Logging.Read, true);
+          assert.equal(error3, null);
+          assert.equal(serviceProperties2.Logging.Read, true);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testCreateQueue: function (test) {
+  test('CreateQueue', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     // Create
     queueService.createQueue(queueName, { metadata: metadata }, function (createError, queue, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(queue, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(queue, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
-      test.ok(queue);
+      assert.ok(queue);
       if (createResponse.queue) {
-        test.ok(queue.name);
-        test.equal(queue.name, queueName);
+        assert.ok(queue.name);
+        assert.equal(queue.name, queueName);
 
-        test.ok(queue.metadata);
-        test.equal(queue.metadata['class'], metadata['class']);
+        assert.ok(queue.metadata);
+        assert.equal(queue.metadata['class'], metadata['class']);
       }
 
       // Get
       queueService.getQueueMetadata(queueName, function (getError, getQueue, getResponse) {
-        test.equal(getError, null);
-        test.ok(getResponse.isSuccessful);
-        test.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+        assert.equal(getError, null);
+        assert.ok(getResponse.isSuccessful);
+        assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
-        test.ok(getQueue);
+        assert.ok(getQueue);
         if (getQueue) {
-          test.ok(getQueue.name);
-          test.equal(getQueue.name, queueName);
+          assert.ok(getQueue.name);
+          assert.equal(getQueue.name, queueName);
 
-          test.ok(getQueue.metadata);
-          test.equal(getQueue.metadata['class'], metadata['class']);
+          assert.ok(getQueue.metadata);
+          assert.equal(getQueue.metadata['class'], metadata['class']);
         }
 
         // Delete
         queueService.deleteQueue(queueName, function (deleteError, deleted, deleteResponse) {
-          test.equal(deleteError, null);
-          test.equal(deleted, true);
-          test.ok(deleteResponse.isSuccessful);
-          test.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(deleteError, null);
+          assert.equal(deleted, true);
+          assert.ok(deleteResponse.isSuccessful);
+          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
 
-          test.done();
+          done();
         });
       });
     });
-  },
+  });
 
-  testCreateQueueIfNotExists: function (test) {
+  test('CreateQueueIfNotExists', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     // Create
     queueService.createQueue(queueName, { metadata: metadata }, function (createError, queue, createResponse) {
-      test.equal(createError, null);
-      test.notEqual(queue, null);
-      test.ok(createResponse.isSuccessful);
-      test.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError, null);
+      assert.notEqual(queue, null);
+      assert.ok(createResponse.isSuccessful);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
-      test.ok(queue);
+      assert.ok(queue);
       if (createResponse.queue) {
-        test.ok(queue.name);
-        test.equal(queue.name, queueName);
+        assert.ok(queue.name);
+        assert.equal(queue.name, queueName);
 
-        test.ok(queue.metadata);
-        test.equal(queue.metadata['class'], metadata['class']);
+        assert.ok(queue.metadata);
+        assert.equal(queue.metadata['class'], metadata['class']);
       }
 
       // Try creating again
       queueService.createQueueIfNotExists(queueName, { metadata: metadata }, function (createError2, queueCreated2) {
-        test.equal(createError2, null);
-        test.equal(queueCreated2, false);
+        assert.equal(createError2, null);
+        assert.equal(queueCreated2, false);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testListQueues: function (test) {
+  test('ListQueues', function (done) {
     var queueName1 = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var queueName2 = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     queueService.listQueues({ 'include': 'metadata' }, function (listErrorEmpty, queuesEmpty) {
-      test.equal(listErrorEmpty, null);
-      test.notEqual(queuesEmpty, null);
+      assert.equal(listErrorEmpty, null);
+      assert.notEqual(queuesEmpty, null);
       if (queuesEmpty) {
-        test.equal(queuesEmpty.length, 0);
+        assert.equal(queuesEmpty.length, 0);
       }
 
       queueService.createQueue(queueName1, function (createError1, queue1, createResponse1) {
-        test.equal(createError1, null);
-        test.notEqual(queue1, null);
-        test.ok(createResponse1.isSuccessful);
-        test.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createError1, null);
+        assert.notEqual(queue1, null);
+        assert.ok(createResponse1.isSuccessful);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         queueService.createQueue(queueName2, { metadata: metadata }, function (createError2, queue2, createResponse2) {
-          test.equal(createError2, null);
-          test.notEqual(queue2, null);
-          test.ok(createResponse2.isSuccessful);
-          test.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(createError2, null);
+          assert.notEqual(queue2, null);
+          assert.ok(createResponse2.isSuccessful);
+          assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
           queueService.listQueues({ 'include': 'metadata' }, function (listError, queues, nextMarker, listResponse) {
-            test.equal(listError, null);
-            test.notEqual(queues, null);
-            test.ok(listResponse.isSuccessful);
-            test.equal(listResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(listError, null);
+            assert.notEqual(queues, null);
+            assert.ok(listResponse.isSuccessful);
+            assert.equal(listResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
-            test.ok(queues);
+            assert.ok(queues);
 
             var entries = 0;
             for (var queue in queues) {
@@ -204,102 +206,102 @@ module.exports = testCase(
               }
               else if (currentQueue.name === queueName2) {
                 entries += 2;
-                test.equal(currentQueue.metadata['class'], metadata['class']);
+                assert.equal(currentQueue.metadata['class'], metadata['class']);
               }
             }
 
-            test.equal(entries, 3);
+            assert.equal(entries, 3);
 
-            test.done();
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testCreateMessage: function (test) {
+  test('CreateMessage', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var messageText1 = 'hi there';
     var messageText2 = 'bye there';
 
     // Create Queue
     queueService.createQueue(queueName, function (createError1, queue1, createResponse1) {
-      test.equal(createError1, null);
-      test.notEqual(queue1, null);
-      test.ok(createResponse1.isSuccessful);
-      test.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createError1, null);
+      assert.notEqual(queue1, null);
+      assert.ok(createResponse1.isSuccessful);
+      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
       // Create message
       queueService.createMessage(queueName, messageText1, function (createMessageError, message, createMessageResponse) {
-        test.equal(createMessageError, null);
-        test.ok(createMessageResponse.isSuccessful);
-        test.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createMessageError, null);
+        assert.ok(createMessageResponse.isSuccessful);
+        assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
         // Create another message
         queueService.createMessage(queueName, messageText2, function (createMessageError2, message2, createMessageResponse2) {
-          test.equal(createMessageError, null);
-          test.ok(createMessageResponse2.isSuccessful);
-          test.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(createMessageError, null);
+          assert.ok(createMessageResponse2.isSuccessful);
+          assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
           // Peek message
           queueService.peekMessages(queueName, function (peekError, queueMessages, peekResponse) {
-            test.equal(peekError, null);
-            test.notEqual(queueMessages, null);
+            assert.equal(peekError, null);
+            assert.notEqual(queueMessages, null);
 
             var queueMessage = queueMessages[0];
             if (queueMessage) {
-              test.ok(queueMessage['messageid']);
-              test.ok(queueMessage['insertiontime']);
-              test.ok(queueMessage['expirationtime']);
-              test.equal(queueMessage.messagetext, messageText1);
+              assert.ok(queueMessage['messageid']);
+              assert.ok(queueMessage['insertiontime']);
+              assert.ok(queueMessage['expirationtime']);
+              assert.equal(queueMessage.messagetext, messageText1);
             }
 
-            test.ok(peekResponse.isSuccessful);
-            test.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.ok(peekResponse.isSuccessful);
+            assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
             // Get messages
             queueService.getMessages(queueName, function (getError, getQueueMessages, getResponse) {
-              test.equal(getError, null);
-              test.notEqual(getQueueMessages, null);
-              test.equal(getQueueMessages.length, 1);
-              test.ok(getResponse.isSuccessful);
-              test.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+              assert.equal(getError, null);
+              assert.notEqual(getQueueMessages, null);
+              assert.equal(getQueueMessages.length, 1);
+              assert.ok(getResponse.isSuccessful);
+              assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
               var getQueueMessage = getQueueMessages[0];
-              test.equal(getQueueMessage.messagetext, messageText1);
+              assert.equal(getQueueMessage.messagetext, messageText1);
 
               // Delete message
               queueService.deleteMessage(queueName, getQueueMessage.messageid, getQueueMessage.popreceipt, function (deleteError, deleted, deleteResponse) {
-                test.equal(deleteError, null);
-                test.equal(deleted, true);
-                test.ok(deleteResponse.isSuccessful);
-                test.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+                assert.equal(deleteError, null);
+                assert.equal(deleted, true);
+                assert.ok(deleteResponse.isSuccessful);
+                assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
 
                 // Get messages again
                 queueService.getMessages(queueName, function (getError2, getQueueMessages2, getResponse2) {
-                  test.equal(getError2, null);
-                  test.notEqual(getQueueMessages2, null);
-                  test.ok(getResponse2.isSuccessful);
-                  test.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+                  assert.equal(getError2, null);
+                  assert.notEqual(getQueueMessages2, null);
+                  assert.ok(getResponse2.isSuccessful);
+                  assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
                   var getQueueMessage2 = getQueueMessages2[0];
-                  test.equal(getQueueMessage2.messagetext, messageText2);
+                  assert.equal(getQueueMessage2.messagetext, messageText2);
 
                   // Clear messages
                   queueService.clearMessages(queueName, function (clearError, clearResponse) {
-                    test.equal(clearError, null);
-                    test.ok(clearResponse.isSuccessful);
-                    test.equal(clearResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+                    assert.equal(clearError, null);
+                    assert.ok(clearResponse.isSuccessful);
+                    assert.equal(clearResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
 
                     // Get message again should yield empty
                     queueService.getMessages(queueName, function (getError3, getQueueMessage3, getResponse3) {
-                      test.equal(getError3, null);
-                      test.ok(getResponse3.isSuccessful);
-                      test.equal(getResponse3.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+                      assert.equal(getError3, null);
+                      assert.ok(getResponse3.isSuccessful);
+                      assert.equal(getResponse3.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
 
-                      test.equal(getQueueMessage3.length, 0);
+                      assert.equal(getQueueMessage3.length, 0);
 
-                      test.done();
+                      done();
                     });
                   });
                 });
@@ -309,142 +311,143 @@ module.exports = testCase(
         });
       });
     });
-  },
+  });
 
-  testCreateEmptyMessage: function (test) {
+  test('CreateEmptyMessage', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
 
     // Create Queue
     queueService.createQueue(queueName, function (createError1) {
-      test.equal(createError1, null);
+      assert.equal(createError1, null);
 
       // Create message
       queueService.createMessage(queueName, '', function (createMessageError, message, createMessageResponse) {
-        test.equal(createMessageError, null);
-        test.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createMessageError, null);
+        assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
 
-        test.done();
+        done();
       });
     });
-  },
+  });
 
-  testSetQueueMetadataName: function (test) {
+  test('SetQueueMetadataName', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { '\Uc8fc\Uba39\Uc774\Uc6b4\Ub2e4': 'test' };
 
     queueService.createQueue(queueName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       // unicode headers are valid
       queueService.setQueueMetadata(queueName, metadata, function (setError) {
-        test.equal(setError, null);
-        test.done();
+        assert.equal(setError, null);
+        done();
       });
     });
-  },
+  });
 
-  testSetQueueMetadata: function (test) {
+  test('SetQueueMetadata', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
     var metadata = { 'class': 'test' };
 
     queueService.createQueue(queueName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       queueService.setQueueMetadata(queueName, metadata, function (setError) {
-        test.equal(setError, null);
+        assert.equal(setError, null);
 
         queueService.getQueueMetadata(queueName, function (getError, queue) {
-          test.equal(getError, null);
+          assert.equal(getError, null);
 
-          test.notEqual(queue, null);
+          assert.notEqual(queue, null);
           if (queue) {
-            test.notEqual(queue.metadata, null);
+            assert.notEqual(queue.metadata, null);
 
-            test.equal(queue.metadata.class, 'test');
+            assert.equal(queue.metadata.class, 'test');
 
-            test.done();
+            done();
           }
         });
       });
     });
-  },
+  });
 
-  testGetMessages: function (test) {
+  test('GetMessages', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
 
     queueService.createQueue(queueName, function (createError) {
-      test.equal(createError, null);
+      assert.equal(createError, null);
 
       queueService.getMessages(queueName, function (error, emptyMessages) {
-        test.equal(error, null);
-        test.notEqual(emptyMessages, null);
-        test.equal(emptyMessages.length, 0);
+        assert.equal(error, null);
+        assert.notEqual(emptyMessages, null);
+        assert.equal(emptyMessages.length, 0);
 
         queueService.createMessage(queueName, 'msg1', function (error1) {
-          test.equal(error1, null);
+          assert.equal(error1, null);
 
           queueService.createMessage(queueName, 'msg2', function (error2) {
-            test.equal(error2, null);
+            assert.equal(error2, null);
 
             queueService.getMessages(queueName, { peekonly: true }, function (error3, messages) {
-              test.equal(error3, null);
+              assert.equal(error3, null);
 
-              test.notEqual(messages, null);
+              assert.notEqual(messages, null);
               if (messages) {
                 // By default only one is returned
-                test.equal(messages.length, 1);
+                assert.equal(messages.length, 1);
+                assert.equal(messages[0].messagetext, 'msg1');
               }
 
               queueService.getMessages(queueName, { numofmessages: 2 }, function (error4, messages2) {
-                test.equal(error4, null);
-                test.notEqual(messages2, null);
+                assert.equal(error4, null);
+                assert.notEqual(messages2, null);
 
                 if (messages2) {
-                  test.equal(messages2.length, 2);
+                  assert.equal(messages2.length, 2);
                 }
 
-                test.done();
+                done();
               });
             });
           });
         });
       });
     });
-  },
+  });
 
-  testUpdateMessage: function (test) {
+  test('UpdateMessage', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
 
     queueService.createQueue(queueName, function (error) {
-      test.equal(error, null);
+      assert.equal(error, null);
 
       queueService.createMessage(queueName, 'hi there', function (error2) {
-        test.equal(error2, null);
+        assert.equal(error2, null);
 
         queueService.getMessages(queueName, function (error3, messages) {
-          test.equal(error2, null);
-          test.notEqual(messages, null);
+          assert.equal(error2, null);
+          assert.notEqual(messages, null);
           var message = messages[0];
 
           queueService.updateMessage(queueName, message.messageid, message.popreceipt, 10, { messagetext: 'bye there' }, function (error4) {
-            test.equal(error4, null);
+            assert.equal(error4, null);
 
-            test.done();
+            done();
           });
         });
       });
     });
-  },
+  });
 
-  testUpdateMessageEncodingPopReceipt: function (test) {
+  test('UpdateMessageEncodingPopReceipt', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
 
     // no messages in the queue try to update a message should give fail to update instead of blowing up on authentication
     queueService.updateMessage(queueName, 'mymsg', 'AgAAAAEAAACucgAAvMW8+dqjzAE=', 10, { messagetext: 'bye there' }, function (error) {
-      test.notEqual(error, null);
-      test.equal(error.code, Constants.QueueErrorCodeStrings.QUEUE_NOT_FOUND);
+      assert.notEqual(error, null);
+      assert.equal(error.code, Constants.QueueErrorCodeStrings.QUEUE_NOT_FOUND);
 
-      test.done();
+      done();
     });
-  }
+  });
 });

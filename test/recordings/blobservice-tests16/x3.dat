@@ -1,3 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the blob and no lease ID was specified in the request.
-RequestId:8f82a1a1-1efe-45ed-946d-822df24ad68f
-Time:2012-02-06T07:35:27.6127943Z</Message></Error>

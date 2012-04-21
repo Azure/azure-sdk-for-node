@@ -13,30 +13,35 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
-var SharedKey = require('../../../lib/services/blob/sharedkey');
-var ServiceClient = require('../../../lib/services/serviceclient');
-var WebResource = require('../../../lib/http/webresource');
-var Constants = require('../../../lib/util/constants');
+var assert = require('assert');
+
+// Test includes
+var testutil = require('../../util/util');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
+var WebResource = testutil.libRequire('http/webresource');
+var SharedKey = azure.SharedKey;
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var QueryStringConstants = Constants.QueryStringConstants;
 var HeaderConstants = Constants.HeaderConstants;
 
 var sharedkey;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('sharedkey-tests', function () {
+  setup(function (done) {
     sharedkey = new SharedKey(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, false);
 
-    callback();
-  },
+    done();
+  });
 
-  tearDown: function (callback) {
+  teardown(function (done) {
     // clean up
-    callback();
-  },
+    done();
+  });
 
-  testSignRequest: function (test) {
+  test('SignRequest', function (done) {
     var webResource = WebResource.get('container');
     webResource.addOptionalQueryParam(QueryStringConstants.RESTYPE, 'container');
     webResource.addOptionalHeader(HeaderConstants.CONTENT_TYPE, '');
@@ -44,9 +49,9 @@ module.exports = testCase(
     webResource.addOptionalHeader(HeaderConstants.DATE_HEADER, 'Fri, 23 Sep 2011 01:37:34 GMT');
 
     sharedkey.signRequest(webResource, function () {
-      test.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:Y5R86+6XE5MH602SIyjeTwlJuQjbawv20PT4kb/F/04=');
+      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:Y5R86+6XE5MH602SIyjeTwlJuQjbawv20PT4kb/F/04=');
 
-      test.done();
+      done();
     });
-  }
+  });
 });

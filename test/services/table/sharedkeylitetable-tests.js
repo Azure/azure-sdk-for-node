@@ -13,43 +13,49 @@
 * limitations under the License.
 */
 
-var testCase = require('nodeunit').testCase;
-var SharedKeyLiteTable = require('../../../lib/services/table/sharedkeylitetable');
-var ServiceClient = require('../../../lib/services/serviceclient');
-var WebResource = require('../../../lib/http/webresource');
-var Constants = require('../../../lib/util/constants');
+var assert = require('assert');
+
+// Test includes
+var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
+var SharedKeyLiteTable = testutil.libRequire('services/table/sharedkeylitetable');
+var WebResource = testutil.libRequire('http/webresource');
+var ServiceClient = azure.ServiceClient;
+var Constants = azure.Constants;
 var HeaderConstants = Constants.HeaderConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
 var sharedkey;
 
-module.exports = testCase(
-{
-  setUp: function (callback) {
+suite('sharedkeylitetable-tests', function () {
+  setup(function (done) {
     sharedkey = new SharedKeyLiteTable(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, false);
 
-    callback();
-  },
+    done();
+  });
 
-  tearDown: function (callback) {
+  teardown(function (done) {
     // clean up
-    callback();
-  },
+    done();
+  });
 
-  testSignRequest: function (test) {
+  test('SignRequest', function (done) {
     var webResource = WebResource.get('Tables');
     webResource.addOptionalHeader(HeaderConstants.CONTENT_TYPE, 'application/atom+xml');
     webResource.addOptionalHeader(HeaderConstants.STORAGE_VERSION_HEADER, HeaderConstants.TARGET_STORAGE_VERSION);
     webResource.addOptionalHeader(HeaderConstants.DATE_HEADER, 'Fri, 23 Sep 2011 01:37:34 GMT');
 
     sharedkey.signRequest(webResource, function () {
-      test.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKeyLite devstoreaccount1:c8dPVfX0lX++AxpLHNLSU8Afdd7MIoIDNX0xzo1satk=');
+      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKeyLite devstoreaccount1:c8dPVfX0lX++AxpLHNLSU8Afdd7MIoIDNX0xzo1satk=');
 
-      test.done();
+      done();
     });
-  },
+  });
 
-  testSignRequestServiceProperties: function (test) {
+  test('SignRequestServiceProperties', function (done) {
     var webResource = WebResource.get();
     webResource.addOptionalQueryParam(QueryStringConstants.RESTYPE, 'service');
     webResource.addOptionalQueryParam(QueryStringConstants.COMP, 'properties');
@@ -58,9 +64,9 @@ module.exports = testCase(
     webResource.addOptionalHeader(HeaderConstants.DATE_HEADER, 'Mon, 05 Dec 2011 17:55:02 GMT');
 
     sharedkey.signRequest(webResource, function() {
-      test.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKeyLite devstoreaccount1:b89upLBiJ54w3Ju3zBv4GzThZGj/M6C3CdTm1BySj28=');
+      assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKeyLite devstoreaccount1:b89upLBiJ54w3Ju3zBv4GzThZGj/M6C3CdTm1BySj28=');
 
-      test.done();
+      done();
     });
-  }
+  });
 });
