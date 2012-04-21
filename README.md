@@ -22,6 +22,9 @@ Node.js Developer Center.
     * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
     * Topics: create, list, and delete topics; create, list, and delete rules
 * Service Runtime
+    * get configuration settings and access local resources
+    * get role instance information for current role and other role instances
+    * query and set the status of the current role
 
 
 # Getting Started
@@ -266,7 +269,8 @@ The *getLocalResources* method lets you obtain data from the role's local storag
 ```Javascript
 azure.RoleEnvironment.getLocalResources(function(error, resources) {
     if(!error){
-        // You can get the path to the role's diagnostics store via resources['DiagnosticStore']['path']
+        // You can get the path to the role's diagnostics store via 
+        // resources['DiagnosticStore']['path']
     }
 });
 ```
@@ -291,6 +295,7 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
     } 
 });
 ```
+
 
 ** For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs) **
 
