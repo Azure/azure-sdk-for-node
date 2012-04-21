@@ -1048,4 +1048,51 @@ suite('roleenvironment-tests', function () {
       });
     });
   });
+
+  test('setValidNodeVersion', function (done) {
+    process.version = 'v0.6.10';
+
+    assert.throws(
+      azure.RoleEnvironment.getDeploymentId,
+      Error
+    );
+
+    process.version = 'v0.4.10';
+
+    assert.throws(
+      azure.RoleEnvironment.getDeploymentId,
+      Error
+    );
+
+    process.version = 'v0.6.11';
+
+    setupVersionEndpoint();
+    setupGoalStateEndpoint();
+
+    inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
+    inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+      "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<Deployment id=\"newDeploymentId\" emulated=\"false\" />" +
+      "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<ConfigurationSettings />" +
+      "<LocalResources>" +
+      "<LocalResource name=\"DiagnosticStore\" path=\"diagnosticStorePath\" sizeInMB=\"4096\" />" +
+      "</LocalResources>" +
+      "<Endpoints>" +
+      "<Endpoint name=\"HttpIn\" address=\"10.114.250.21\" port=\"80\" protocol=\"tcp\" />" +
+      "</Endpoints>" +
+      "</CurrentInstance>" +
+      "<Roles />" +
+      "</RoleEnvironment>"
+    );
+
+    azure.RoleEnvironment.getDeploymentId(function (error, id) {
+      assert.strictEqual(error, undefined);
+      assert.strictEqual(id, 'newDeploymentId');
+
+      done();
+    });
+  });
 });
