@@ -297,7 +297,7 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 ```
 
 
-** For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs) **
+*For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)*
 
 # Need Help?
 
