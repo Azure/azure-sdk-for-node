@@ -254,7 +254,7 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
 
 The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running inside the Azure emulator or in the cloud.
 
-The *getConfigurationSettings* method lets you obtain values from the role's .cscfg file.
+The **getConfigurationSettings** method lets you obtain values from the role's .cscfg file.
 
 ```Javascript
 azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
@@ -264,7 +264,7 @@ azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
 });
 ```
 
-The *getLocalResources* method lets you obtain data from the role's local storage.
+The **getLocalResources** method lets you obtain data from the role's local storage.
 
 ```Javascript
 azure.RoleEnvironment.getLocalResources(function(error, resources) {
@@ -275,7 +275,7 @@ azure.RoleEnvironment.getLocalResources(function(error, resources) {
 });
 ```
 
-The *getCurrentRoleInstance* method lets you obtain information about where the current instance is running, among other things:
+The **getCurrentRoleInstance** method lets you obtain information about where the current instance is running, among other things:
 
 ```JavaScript
 azure.RoleEnvironment.getCurrentRoleInstance(function(error, instance) {
@@ -286,7 +286,7 @@ azure.RoleEnvironment.getCurrentRoleInstance(function(error, instance) {
 });
 ```
 
-The *getRoles* method lets you obtain information about role instances running on other machines:
+The **getRoles** method lets you obtain information about role instances running on other machines:
 
 ```Javascript
 azure.RoleEnvironment.getRoles(function(error, roles) {
@@ -297,7 +297,7 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 ```
 
 
-*For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)*
+**For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
 
 # Need Help?
 
