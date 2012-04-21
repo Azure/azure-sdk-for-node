@@ -22,6 +22,7 @@ Node.js Developer Center.
     * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
     * Topics: create, list, and delete topics; create, list, and delete rules
 * Service Runtime
+    * discover addresses and ports for the endpoints of other role instances in your service
     * get configuration settings and access local resources
     * get role instance information for current role and other role instances
     * query and set the status of the current role
@@ -252,7 +253,18 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
 
 ## Service Runtime
 
-The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running inside the Azure emulator or in the cloud.
+The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running in a worker role inside the Azure emulator or in the cloud.
+
+The **isAvailable** method lets you determine whether the service runtime endpoint is running on the local machine.  It is good practice to enclose any code that 
+uses service runtime in the isAvailable callback.
+
+```JavaScript
+azure.RoleEnvironment.isAvailable(function(error, available) {
+    if (available) {
+        // Place your calls to service runtime here
+    }
+});
+```
 
 The **getConfigurationSettings** method lets you obtain values from the role's .cscfg file.
 
@@ -264,7 +276,8 @@ azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
 });
 ```
 
-The **getLocalResources** method lets you obtain data from the role's local storage.
+The **getLocalResources** method lets you find the path to defined local storage resources for the current role.  For example, the DiagnosticStore 
+resource which is defined for every role provides a location for runtime diagnostics and logs.
 
 ```Javascript
 azure.RoleEnvironment.getLocalResources(function(error, resources) {
@@ -275,7 +288,7 @@ azure.RoleEnvironment.getLocalResources(function(error, resources) {
 });
 ```
 
-The **getCurrentRoleInstance** method lets you obtain information about where the current instance is running, among other things:
+The **getCurrentRoleInstance** method lets you obtain information about endpoints defined for the current role instance:
 
 ```JavaScript
 azure.RoleEnvironment.getCurrentRoleInstance(function(error, instance) {
@@ -286,7 +299,7 @@ azure.RoleEnvironment.getCurrentRoleInstance(function(error, instance) {
 });
 ```
 
-The **getRoles** method lets you obtain information about role instances running on other machines:
+The **getRoles** method lets you obtain information about endpoints in role instances running on other machines:
 
 ```Javascript
 azure.RoleEnvironment.getRoles(function(error, roles) {
