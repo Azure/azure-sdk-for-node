@@ -21,6 +21,8 @@ Node.js Developer Center.
 * Service Bus
     * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
     * Topics: create, list, and delete topics; create, list, and delete rules
+* Service Runtime
+
 
 # Getting Started
 ## Download Source Code
@@ -162,9 +164,9 @@ queueService.getMessages(queueName, function(error, serverMessages){
 });
 ```
 
-## ServiceBus Queues
+## Service Bus Queues
 
-ServiceBus Queues are an alternative to Storage Queues that might be useful in scenarios where more advanced messaging features are needed (larger message sizes, message ordering, single-operaiton destructive reads, scheduled delivery) using push-style delivery (using long polling).
+Service Bus Queues are an alternative to Storage Queues that might be useful in scenarios where more advanced messaging features are needed (larger message sizes, message ordering, single-operaiton destructive reads, scheduled delivery) using push-style delivery (using long polling).
 
 The **createQueueIfNotExists** method can be used to ensure a queue exists:
 
@@ -199,9 +201,9 @@ serviceBusService.receiveQueueMessage('taskqueue', function(error, serverMessage
 });
 ```
 
-## ServiceBus Topics
+## Service Bus Topics
 
-ServiceBus topics are an abstraction on top of ServiceBus Queues that make pub/sub scenarios easy to implement.
+Service Bus topics are an abstraction on top of Service Bus Queues that make pub/sub scenarios easy to implement.
 
 The **createTopicIfNotExists** method can be used to create a server-side topic:
 
@@ -242,6 +244,51 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
             }
         });
      }
+});
+```
+
+## Service Runtime
+
+The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running inside the Azure emulator or in the cloud.
+
+The *getConfigurationSettings* method lets you obtain values from the role's .cscfg file.
+
+```Javascript
+azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
+    if (!error) {
+        // You can get the value of setting "setting1" via settings['setting1']
+    }        
+});
+```
+
+The *getLocalResources* method lets you obtain data from the role's local storage.
+
+```Javascript
+azure.RoleEnvironment.getLocalResources(function(error, resources) {
+    if(!error){
+        // You can get the path to the role's diagnostics store via resources['DiagnosticStore']['path']
+    }
+});
+```
+
+The *getCurrentRoleInstance* method lets you obtain information about where the current instance is running, among other things:
+
+```JavaScript
+azure.RoleEnvironment.getCurrentRoleInstance(function(error, instance) {
+    if (!error && instance['endpoints']) {
+        // You can get information about "endpoint1" such as its address and port via
+        // instance['endpoints']['endpoint1']['address'] and instance['endpoints']['endpoint1']['port']
+    }
+});
+```
+
+The *getRoles* method lets you obtain information about role instances running on other machines:
+
+```Javascript
+azure.RoleEnvironment.getRoles(function(error, roles) {
+    if(!error){
+        // You can get information about "instance1" of "role1" via roles['role1']['instance1']
+    } 
 });
 ```
 
