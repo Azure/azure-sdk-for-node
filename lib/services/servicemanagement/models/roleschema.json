@@ -16,7 +16,7 @@
       "RegEx": "NIL",
       "XmlNode": "OsVersion"
     },
-      
+
   "RoleType":
     {
       "Name": "RoleType",
@@ -26,7 +26,7 @@
       "RegEx": "/^PersistentVMRole$/",
       "XmlNode": "RoleType"
     },
-      
+
   "ConfigurationSets":
     {
       "Name": "ConfigurationSets",
@@ -51,7 +51,7 @@
                   "RegEx": "/^WindowsProvisioningConfiguration$/",
                   "XmlNode": "ConfigurationSetType"
                 },
-                
+
               "ComputerName": 
                 {
                   "Name": "ComputerName",
@@ -94,7 +94,7 @@
                   "RegEx": "NIL",
                   "XmlNode": "TimeZone"
                 },
-                
+
               "DomainJoin":
                 {
                   "Name": "DomainJoin",
@@ -173,7 +173,7 @@
                         }
                     }
                 },
-                
+
                 "StoredCertificateSettings":
                   {
                     "Name": "StoredCertificateSettings",
@@ -440,7 +440,7 @@
       "RegEx": "NIL",
       "XmlNode": "AvailabilitySetName"
     },
-    
+
   "DataVirtualHardDisks":
     {
       "Name": "DataVirtualHardDisks",
@@ -450,31 +450,6 @@
       "ItemXmlNode": "DataVirtualHardDisk",
       "TypeMeta":
         {
-          "@rules": 
-            {
-              "rule1": 
-                {
-                  "flags": 
-                    {
-                      "DiskName": false,
-                      "MediaLink": false
-                    },
-                    
-                    "expression": "(rules['rule1']['flags']['DiskName'] === rules['rule1']['flags']['MediaLink'])",
-                    "message": "Either DiskName or MediaLink should present in DataVirtualHardDisk, not both"
-                },
-              "rule2": 
-                {
-                  "flags": 
-                    {
-                      "LogicalDiskSizeInGB": false
-                    },
-                    
-                    "expression": "(rules['rule1']['flags']['MediaLink'] && !rules['rule2']['flags']['LogicalDiskSizeInGB'])",
-                    "message": "If MediaLink is specified then LogicalDiskSizeInGB should be specified in DataVirtualHardDisk"
-                }
-            },
-            
           "HostCaching":
             {
               "Name": "HostCaching",
@@ -494,7 +469,7 @@
           "DiskName":
             {
               "Name": "DiskName",
-              "Required": "rule1",
+              "Required": false,
               "Type": "Primitive.String",
               "RegEx": "NIL",
               "XmlNode": "DiskName"
@@ -509,21 +484,21 @@
           "LogicalDiskSizeInGB":
             {
               "Name": "LogicalDiskSizeInGB",
-              "Required": "rule2",
+              "Required": false,
               "Type": "Primitive.Int",
               "XmlNode": "LogicalDiskSizeInGB"
             },
           "MediaLink":
             {
               "Name": "MediaLink",
-              "Required": "rule1",
+              "Required": false,
               "Type": "Primitive.String",
               "RegEx": "NIL",
               "XmlNode": "MediaLink"
             }
         }
     },
-    
+
   "Label":
     {
       "Name": "Label",
@@ -532,7 +507,7 @@
       "RegEx": "NIL",
       "XmlNode": "Label"
     },
-    
+
   "OSVirtualHardDisk":
     {
       "Name": "OSVirtualHardDisk",
@@ -591,7 +566,7 @@
             }
         }
     },
-    
+
   "RoleSize":
     {
       "Name": "RoleSize",
