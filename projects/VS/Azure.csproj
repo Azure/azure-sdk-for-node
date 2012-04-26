@@ -423,6 +423,9 @@
     <Content Include="..\..\test\services\serviceBus\wraptokenmanager-tests.js">
       <Link>test\services\serviceBus\wraptokenmanager-tests.js</Link>
     </Content>
+    <Content Include="..\..\test\services\serviceManagement\servicemanagementservice-tests.js">
+      <Link>test\services\serviceManagement\servicemanagementservice-tests.js</Link>
+    </Content>
     <Content Include="..\..\test\services\table\batchserviceclient-tests.js">
       <Link>test\services\table\batchserviceclient-tests.js</Link>
     </Content>
