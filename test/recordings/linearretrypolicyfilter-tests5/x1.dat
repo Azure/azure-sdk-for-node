@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
-  <code>ResourceNotFound</code>
-  <message xml:lang="en-US">The specified resource does not exist.
-RequestId:aac60a08-57e7-4bb0-9999-7dd48a590bb0
-Time:2012-02-24T07:03:23.3857910Z</message>
-</error>

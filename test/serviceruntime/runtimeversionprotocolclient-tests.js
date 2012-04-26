@@ -14,26 +14,34 @@
 */
 
 var assert = require('assert');
+var sinon = require('sinon');
 
-var NamedPipeInputChannel = require('../../lib/serviceruntime/namedpipeinputchannel');
-var RuntimeVersionProtocolClient = require('../../lib/serviceruntime/runtimeversionprotocolclient');
+// Test includes
+var testutil = require('../util/util');
+
+// Lib includes
+var NamedPipeInputChannel = testutil.libRequire('serviceruntime/namedpipeinputchannel');
+var RuntimeVersionProtocolClient = testutil.libRequire('serviceruntime/runtimeversionprotocolclient');
 
 suite('runtimeversionprotocolclient-tests', function () {
-  test('GetVersionMapSingle', function (done) {
+  test('getVersionMap single', function (done) {
+    var versionsEndpointPath = 'versionsEndpointPath';
+
     var inputChannel = new NamedPipeInputChannel();
-    inputChannel._readData = function (name, callback) {
-      callback(undefined,
+    var stub = sinon.stub(inputChannel, '_readData');
+
+    stub.withArgs(versionsEndpointPath).callsArgWith(1, undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<RuntimeServerEndpoints>" +
       "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
       "</RuntimeServerEndpoints>" +
-      "</RuntimeServerDiscovery>");
-    };
+      "</RuntimeServerDiscovery>"
+    );
 
     var runtimeVersionProtocolClient = new RuntimeVersionProtocolClient(inputChannel);
-    runtimeVersionProtocolClient.getVersionMap('', function (error, versions) {
+    runtimeVersionProtocolClient.getVersionMap(versionsEndpointPath, function (error, versions) {
       assert.equal(error, null);
       assert.notEqual(versions, null);
       assert.equal(versions["2011-03-08"], "SomePath.GoalState");
@@ -42,10 +50,13 @@ suite('runtimeversionprotocolclient-tests', function () {
     });
   });
 
-  test('GetVersionMapArray', function (done) {
+  test('getVersionMap array', function (done) {
+    var versionsEndpointPath = 'versionsEndpointPath';
+
     var inputChannel = new NamedPipeInputChannel();
-    inputChannel._readData = function (name, callback) {
-      callback(undefined,
+    var stub = sinon.stub(inputChannel, '_readData');
+
+    stub.withArgs(versionsEndpointPath).callsArgWith(1, undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
@@ -53,11 +64,11 @@ suite('runtimeversionprotocolclient-tests', function () {
       "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
       "<RuntimeServerEndpoint version=\"2011-08-08\" path=\"SomeOtherPath.GoalState\" />" +
       "</RuntimeServerEndpoints>" +
-      "</RuntimeServerDiscovery>");
-    };
+      "</RuntimeServerDiscovery>"
+    );
 
     var runtimeVersionProtocolClient = new RuntimeVersionProtocolClient(inputChannel);
-    runtimeVersionProtocolClient.getVersionMap('', function (error, versions) {
+    runtimeVersionProtocolClient.getVersionMap(versionsEndpointPath, function (error, versions) {
       assert.equal(error, null);
       assert.notEqual(versions, null);
       assert.equal(versions["2011-03-08"], "SomePath.GoalState");

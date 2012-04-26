@@ -1,7 +1,7 @@
 {
   "name": "azure",
   "author": "Microsoft Corporation",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Windows Azure Client Library for node",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
@@ -30,7 +30,8 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "jshint": "*"
+    "jshint": "*",
+    "sinon": "*"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {
@@ -43,7 +44,8 @@
   "scripts": {
     "test": "node test/runtests.js",
     "jshint": "node test/runjshint.js",
-    "extendedtests": "node test/runextendedtests.js"
+    "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
+    "extendedtests": "node test/runtests.js extendedtestlist.txt"
   },
   "bin": {
     "azure": "./bin/azure"

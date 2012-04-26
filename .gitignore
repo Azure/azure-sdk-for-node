@@ -1,10 +1,6 @@
 node_modules/
 *.suo
 *.user
-projects/VS/*.XML
-projects/VS/_ReSharper*
-projects/VS/obj/
-projects/VS/bin/
-projects/Eclipse
+projects/*
 targets/*
 npm-debug.log

@@ -15,15 +15,19 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
-var azureutil = require('../../../lib/util/util');
-
+// Test includes
 var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
+var azureutil = testutil.libRequire('util/util');
+var testutil = testutil.libRequire('util/util');
+var QueryEntitiesResultContinuation = testutil.libRequire('services/table/models/queryentitiesresultcontinuation');
 
 var ServiceClient = azure.ServiceClient;
 var TableQuery = azure.TableQuery;
 var Constants = azure.Constants;
-var QueryEntitiesResultContinuation = require('../../../lib/services/table/models/queryentitiesresultcontinuation');
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 

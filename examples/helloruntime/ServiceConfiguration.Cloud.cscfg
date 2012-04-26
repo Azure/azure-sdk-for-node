@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ServiceConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" serviceName="helloruntime" osFamily="1" osVersion="*" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+  <Role name="HelloWorker">
+    <ConfigurationSettings />
+    <Instances count="1" />
+    <Certificates />
+  </Role>
+</ServiceConfiguration>
