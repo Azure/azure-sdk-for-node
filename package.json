@@ -31,7 +31,8 @@
   "devDependencies": {
     "mocha": "*",
     "jshint": "*",
-    "sinon": "*"
+    "sinon": "*",
+    "should": "*"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {
@@ -42,7 +43,7 @@
     "url" : "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "node test/runtests.js",
+    "test": "node test/runtests.js testlist.txt",
     "jshint": "node test/runjshint.js",
     "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
     "extendedtests": "node test/runtests.js extendedtestlist.txt"
