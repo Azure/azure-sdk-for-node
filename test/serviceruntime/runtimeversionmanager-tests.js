@@ -14,25 +14,31 @@
 */
 
 var assert = require('assert');
+var sinon = require('sinon');
 
-var NamedPipeInputChannel = require('../../lib/serviceruntime/namedpipeinputchannel');
+// Test includes
+var testutil = require('../util/util');
 
-var RuntimeVersionProtocolClient = require('../../lib/serviceruntime/runtimeversionprotocolclient');
-var RuntimeVersionManager = require('../../lib/serviceruntime/runtimeversionmanager');
+// Lib includes
+var NamedPipeInputChannel = testutil.libRequire('serviceruntime/namedpipeinputchannel');
+var RuntimeVersionProtocolClient = testutil.libRequire('serviceruntime/runtimeversionprotocolclient');
+var RuntimeVersionManager = testutil.libRequire('serviceruntime/runtimeversionmanager');
 
 suite('runtimeversionmanager-tests', function () {
-  test('GetRuntimeClient', function (done) {
+  test('getRuntimeClient', function (done) {
+    var versionsEndpointPath = 'versionsEndpointPath';
+
     var inputChannel = new NamedPipeInputChannel();
-    inputChannel._readData = function (name, callback) {
-      callback(undefined,
+    var stub = sinon.stub(inputChannel, '_readData');
+    stub.withArgs(versionsEndpointPath).callsArgWith(1, undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<RuntimeServerEndpoints>" +
       "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
       "</RuntimeServerEndpoints>" +
-      "</RuntimeServerDiscovery>");
-    };
+      "</RuntimeServerDiscovery>"
+    );
 
     var runtimeVersionProtocolClient = new RuntimeVersionProtocolClient(inputChannel);
     var runtimeKernel = {
@@ -41,7 +47,7 @@ suite('runtimeversionmanager-tests', function () {
     };
 
     var runtimeVersionManager = new RuntimeVersionManager(runtimeVersionProtocolClient, runtimeKernel);
-    runtimeVersionManager.getRuntimeClient('', function (error, runtimeClient) {
+    runtimeVersionManager.getRuntimeClient(versionsEndpointPath, function (error, runtimeClient) {
       assert.equal(error, undefined);
       assert.notEqual(runtimeClient, null);
 

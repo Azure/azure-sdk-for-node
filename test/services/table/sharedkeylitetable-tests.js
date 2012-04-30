@@ -15,10 +15,14 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
+// Test includes
+var testutil = require('../../util/util');
+var tabletestutil = require('../../util/table-test-utils');
 
-var SharedKeyLiteTable = require('../../../lib/services/table/sharedkeylitetable');
-var WebResource = require('../../../lib/http/webresource');
+// Lib includes
+var azure = testutil.libRequire('azure');
+var SharedKeyLiteTable = testutil.libRequire('services/table/sharedkeylitetable');
+var WebResource = testutil.libRequire('http/webresource');
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;
 var HeaderConstants = Constants.HeaderConstants;

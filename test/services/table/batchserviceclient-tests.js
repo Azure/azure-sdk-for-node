@@ -15,12 +15,14 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
+// Test includes
 var testutil = require('../../util/util');
 var tabletestutil = require('../../util/table-test-utils');
 
-var BatchServiceClient = require('../../../lib/services/table/batchserviceclient');
-var Constants = require('../../../lib/util/constants');
+// Lib includes
+var azure = testutil.libRequire('azure');
+var BatchServiceClient = testutil.libRequire('services/table/batchserviceclient');
+var Constants = testutil.libRequire('util/constants');
 var HttpConstants = Constants.HttpConstants;
 
 var tableService;

@@ -15,13 +15,14 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
-var azureutil = require('../../../lib/util/util');
-
-var ISO8061Date = require('../../../lib/util/iso8061date');
-
+// Test includes
 var testutil = require('../../util/util');
 var tabletestutil = require('../../util/table-test-utils');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
+var azureutil = testutil.libRequire('util/util');
+var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var ServiceClient = azure.ServiceClient;
 var TableQuery = azure.TableQuery;
@@ -668,8 +669,8 @@ suite('tableservice-tests', function () {
             assert.equal(entityResult.PartitionKey, entity.PartitionKey);
             assert.equal(entityResult.RowKey, entity.RowKey);
             assert.equal(entityResult.field1, entity.field1);
-            assert.equal(entityResult.emptyField1, entity.emptyField1);
-            assert.equal(entityResult.emptyField2, entity.emptyField2);
+            assert.equal(entityResult.emptyField1, undefined);
+            assert.equal(entityResult.emptyField2, undefined);
             assert.equal(entityResult.nonEmptyField3, entity.nonEmptyField3);
           }
 

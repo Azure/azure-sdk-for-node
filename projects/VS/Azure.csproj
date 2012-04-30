@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -198,6 +199,66 @@
     <Content Include="..\..\lib\azure.js">
       <Link>lib\azure.js</Link>
     </Content>
+    <Content Include="..\..\lib\cli\blobUtils.js">
+      <Link>lib\cli\blobUtils.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\channel.js">
+      <Link>lib\cli\channel.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\cli.js">
+      <Link>lib\cli\cli.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\account.js">
+      <Link>lib\cli\commands\account.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\cert.js">
+      <Link>lib\cli\commands\cert.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\cloudService.js">
+      <Link>lib\cli\commands\cloudService.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\config.js">
+      <Link>lib\cli\commands\config.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\disk.js">
+      <Link>lib\cli\commands\disk.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\help.js">
+      <Link>lib\cli\commands\help.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\image.js">
+      <Link>lib\cli\commands\image.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\site.js">
+      <Link>lib\cli\commands\site.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\site_.js">
+      <Link>lib\cli\commands\site_.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\space.js">
+      <Link>lib\cli\commands\space.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\vm.js">
+      <Link>lib\cli\commands\vm.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\common.js">
+      <Link>lib\cli\common.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\generate-psm1-utils.js">
+      <Link>lib\cli\generate-psm1-utils.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\generate-psm1.js">
+      <Link>lib\cli\generate-psm1.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\keyFiles.js">
+      <Link>lib\cli\keyFiles.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\patch-winston.js">
+      <Link>lib\cli\patch-winston.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\utils.js">
+      <Link>lib\cli\utils.js</Link>
+    </Content>
     <Content Include="..\..\lib\diagnostics\logger.js">
       <Link>lib\diagnostics\logger.js</Link>
     </Content>
@@ -363,6 +424,9 @@
     <Content Include="..\..\test\azure-tests.js">
       <Link>test\azure-tests.js</Link>
     </Content>
+    <Content Include="..\..\test\cli\commands\generate-psm1-utils-test.js">
+      <Link>test\cli\commands\generate-psm1-utils-test.js</Link>
+    </Content>
     <Content Include="..\..\test\extendedtestlist.txt">
       <Link>test\extendedtestlist.txt</Link>
     </Content>
@@ -374,9 +438,6 @@
     </Content>
     <Content Include="..\..\test\mockserver\mockserverclient.js">
       <Link>test\mockserver\mockserverclient.js</Link>
-    </Content>
-    <Content Include="..\..\test\runextendedtests.js">
-      <Link>test\runextendedtests.js</Link>
     </Content>
     <Content Include="..\..\test\runjshint.js">
       <Link>test\runjshint.js</Link>
@@ -569,7 +630,12 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

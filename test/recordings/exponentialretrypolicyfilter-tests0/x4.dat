@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
-  <code>TableAlreadyExists</code>
-  <message xml:lang="en-US">The table specified already exists.
-RequestId:e8b6e78d-c120-4875-9ddb-cc7911b6c2a1
-Time:2012-03-15T21:48:56.7036766Z</message>
-</error>

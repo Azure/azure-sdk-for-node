@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<error xmlns="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
-  <code>UpdateConditionNotSatisfied</code>
-  <message xml:lang="en-US">The update condition specified in the request was not satisfied.
-RequestId:2f65f032-d3ec-488e-badf-a1f24d6e122e
-Time:2012-03-15T21:57:06.8869019Z</message>
-</error>

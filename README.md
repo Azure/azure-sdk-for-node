@@ -21,6 +21,12 @@ Node.js Developer Center.
 * Service Bus
     * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
     * Topics: create, list, and delete topics; create, list, and delete rules
+* Service Runtime
+    * discover addresses and ports for the endpoints of other role instances in your service
+    * get configuration settings and access local resources
+    * get role instance information for current role and other role instances
+    * query and set the status of the current role
+
 
 # Getting Started
 ## Download Source Code
@@ -162,9 +168,9 @@ queueService.getMessages(queueName, function(error, serverMessages){
 });
 ```
 
-## ServiceBus Queues
+## Service Bus Queues
 
-ServiceBus Queues are an alternative to Storage Queues that might be useful in scenarios where more advanced messaging features are needed (larger message sizes, message ordering, single-operaiton destructive reads, scheduled delivery) using push-style delivery (using long polling).
+Service Bus Queues are an alternative to Storage Queues that might be useful in scenarios where more advanced messaging features are needed (larger message sizes, message ordering, single-operaiton destructive reads, scheduled delivery) using push-style delivery (using long polling).
 
 The **createQueueIfNotExists** method can be used to ensure a queue exists:
 
@@ -199,9 +205,9 @@ serviceBusService.receiveQueueMessage('taskqueue', function(error, serverMessage
 });
 ```
 
-## ServiceBus Topics
+## Service Bus Topics
 
-ServiceBus topics are an abstraction on top of ServiceBus Queues that make pub/sub scenarios easy to implement.
+Service Bus topics are an abstraction on top of Service Bus Queues that make pub/sub scenarios easy to implement.
 
 The **createTopicIfNotExists** method can be used to create a server-side topic:
 
@@ -245,7 +251,66 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
 });
 ```
 
-** For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs) **
+## Service Runtime
+
+The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running in a worker role inside the Azure emulator or in the cloud.
+
+The **isAvailable** method lets you determine whether the service runtime endpoint is running on the local machine.  It is good practice to enclose any code that 
+uses service runtime in the isAvailable callback.
+
+```JavaScript
+azure.RoleEnvironment.isAvailable(function(error, available) {
+    if (available) {
+        // Place your calls to service runtime here
+    }
+});
+```
+
+The **getConfigurationSettings** method lets you obtain values from the role's .cscfg file.
+
+```Javascript
+azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
+    if (!error) {
+        // You can get the value of setting "setting1" via settings['setting1']
+    }        
+});
+```
+
+The **getLocalResources** method lets you find the path to defined local storage resources for the current role.  For example, the DiagnosticStore 
+resource which is defined for every role provides a location for runtime diagnostics and logs.
+
+```Javascript
+azure.RoleEnvironment.getLocalResources(function(error, resources) {
+    if(!error){
+        // You can get the path to the role's diagnostics store via 
+        // resources['DiagnosticStore']['path']
+    }
+});
+```
+
+The **getCurrentRoleInstance** method lets you obtain information about endpoints defined for the current role instance:
+
+```JavaScript
+azure.RoleEnvironment.getCurrentRoleInstance(function(error, instance) {
+    if (!error && instance['endpoints']) {
+        // You can get information about "endpoint1" such as its address and port via
+        // instance['endpoints']['endpoint1']['address'] and instance['endpoints']['endpoint1']['port']
+    }
+});
+```
+
+The **getRoles** method lets you obtain information about endpoints in role instances running on other machines:
+
+```Javascript
+azure.RoleEnvironment.getRoles(function(error, roles) {
+    if(!error){
+        // You can get information about "instance1" of "role1" via roles['role1']['instance1']
+    } 
+});
+```
+
+
+**For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
 
 # Need Help?
 

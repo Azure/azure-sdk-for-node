@@ -15,16 +15,16 @@
 
 var assert = require('assert');
 
-var azure = require('../../../lib/azure');
-var azureutil = require('../../../lib/util/util');
-
-var ISO8061Date = require('../../../lib/util/iso8061date');
-
+// Test includes
 var testutil = require('../../util/util');
 var wrapservicetestutil = require('../../util/wrapservice-test-utils');
 
-var WrapService = require('../../../lib/services/serviceBus/wrapservice');
-var WrapTokenManager = require('../../../lib/services/serviceBus/wraptokenmanager');
+// Lib includes
+var azure = testutil.libRequire('azure');
+var azureutil = testutil.libRequire('util/util');
+var ISO8061Date = testutil.libRequire('util/iso8061date');
+var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
+var WrapTokenManager = testutil.libRequire('services/serviceBus/wraptokenmanager');
 
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;

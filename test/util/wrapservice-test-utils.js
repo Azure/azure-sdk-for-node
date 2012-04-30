@@ -13,8 +13,12 @@
 * limitations under the License.
 */
 
+// Test includes
+var testutil = require('./util');
 var MockServerClient = require('../mockserver/mockserverclient');
-var WrapService = require('../../lib/services/serviceBus/wrapservice');
+
+// Lib includes
+var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
 
 var exports = module.exports;
 
