@@ -14,8 +14,13 @@
 */
 
 var fs = require('fs');
-var azure = require('../../lib/azure');
+
+// Test includes
+var testutil = require('./util');
 var MockServerClient = require('../mockserver/mockserverclient');
+
+// Lib includes
+var azure = testutil.libRequire('azure');
 
 var exports = module.exports;
 

@@ -14,12 +14,16 @@
 */
 
 var assert = require('assert');
-
-var TableQuery = require('../../../lib/services/table/tablequery');
-var azureutil = require('../../../lib/util/util');
-var Constants = require('../../../lib/util/constants');
-var QueryStringConstants = Constants.QueryStringConstants;
 var util = require('util');
+
+// Test includes
+var testutil = require('../../util/util');
+
+// Lib includes
+var TableQuery = testutil.libRequire('services/table/tablequery');
+var azureutil = testutil.libRequire('util/util');
+var Constants = testutil.libRequire('util/constants');
+var QueryStringConstants = Constants.QueryStringConstants;
 
 suite('tablequery-tests', function () {
   test('Select', function (done) {
@@ -46,27 +50,6 @@ suite('tablequery-tests', function () {
 
     assert.equal('Table()', tableQuery.toPath());
     assert.equal(10, tableQuery.toQueryObject()['$top']);
-    done();
-  });
-
-  test('QueryWithOrderBy', function (done) {
-    var tableQuery = TableQuery.select()
-      .from('Table')
-      .orderBy('Name', 'asc');
-
-    assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name asc'), tableQuery.toQueryObject()['$orderby']);
-    done();
-  });
-
-  test('OrderByMultipleQuery', function (done) {
-    var tableQuery = TableQuery.select()
-      .from('Table')
-      .orderBy('Name', 'asc')
-      .orderBy('Visible', 'desc');
-
-    assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name asc') + ',' + azureutil.encodeUri('Visible desc'), tableQuery.toQueryObject()['$orderby']);
     done();
   });
 

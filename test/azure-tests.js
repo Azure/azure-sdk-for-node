@@ -15,9 +15,12 @@
 
 var assert = require('assert');
 
-var azure = require('../lib/azure');
+// Test includes
+var testutil = require('./util/util');
 
-var ServiceBusServiceClient = require('../lib/services/core/servicebusserviceclient');
+// Lib includes
+var azure = testutil.libRequire('azure');
+var ServiceBusServiceClient = testutil.libRequire('services/core/servicebusserviceclient');
 var ServiceClient = azure.ServiceClient;
 
 var environmentAzureStorageAccount = 'myaccount';
