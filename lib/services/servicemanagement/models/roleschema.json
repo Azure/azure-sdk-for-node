@@ -543,7 +543,7 @@
             "MediaLink":
             {
               "Name": "MediaLink",
-              "Required": true,
+              "Required": false,
               "Type": "Primitive.String",
               "RegEx": "NIL",
               "XmlNode": "MediaLink"
