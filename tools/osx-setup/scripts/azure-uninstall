@@ -1,0 +1,32 @@
+#!/bin/bash
+# Windows Azure CLI Uninstallation Script
+# Copyright (C) 2012 Microsoft Corporation. All Rights Reserved.
+#
+
+# Check for existance of the SDK
+if [ ! -r "/usr/local/azure" ]; then
+	echo "Azure SDK doesn't appear to have been installed using the installer. Aborting."
+	exit 1
+fi
+
+echo "This will uninstall the Azure SDK by removing /usr/local/azure/ as well as the /usr/local/bin/azure scripts."
+echo Removing binaries and command line tools...
+
+sudo rm -rf /usr/local/azure/
+sudo rm /usr/local/bin/azure
+sudo rm /usr/local/bin/azure-uninstall
+
+echo Forgetting the packages...
+sudo pkgutil --forget com.microsoft.azure.cli.pkg
+sudo pkgutil --forget com.microsoft.azure.cli.node.pkg
+
+echo 
+
+echo The Windows Azure Deployment Tool has been removed:
+echo - /usr/local/azure/ directory removed
+echo - /usr/local/azure script and uninstallation script removed
+echo - packages forgotten
+
+echo 
+
+exit 0
