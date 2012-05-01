@@ -290,7 +290,7 @@
                        "KeyPairs":
                          {
                            "Name": "KeyPairs",
-                           "Required": true,
+                           "Required": false,
                            "Type": "Collection(Complex.KeyPair)",
                            "XmlNode": "KeyPairs",
                            "ItemXmlNode": "KeyPair",
