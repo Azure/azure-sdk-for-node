@@ -262,7 +262,7 @@
                        "PublicKeys":
                          {
                            "Name": "PublicKeys",
-                           "Required": true,
+                           "Required": false,
                            "Type": "Collection(Complex.PublicKey)",
                            "XmlNode": "PublicKeys",
                            "ItemXmlNode": "PublicKey",
