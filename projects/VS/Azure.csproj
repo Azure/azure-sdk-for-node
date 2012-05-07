@@ -19,6 +19,10 @@
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UpgradeBackupLocation />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -483,6 +487,9 @@
     </Content>
     <Content Include="..\..\test\services\serviceBus\wraptokenmanager-tests.js">
       <Link>test\services\serviceBus\wraptokenmanager-tests.js</Link>
+    </Content>
+    <Content Include="..\..\test\services\serviceManagement\servicemanagementservice-tests.js">
+      <Link>test\services\serviceManagement\servicemanagementservice-tests.js</Link>
     </Content>
     <Content Include="..\..\test\services\table\batchserviceclient-tests.js">
       <Link>test\services\table\batchserviceclient-tests.js</Link>
