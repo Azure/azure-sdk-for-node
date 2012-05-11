@@ -227,9 +227,6 @@
     <Content Include="..\..\lib\cli\commands\site_.js">
       <Link>lib\cli\commands\site_.js</Link>
     </Content>
-    <Content Include="..\..\lib\cli\commands\space.js">
-      <Link>lib\cli\commands\space.js</Link>
-    </Content>
     <Content Include="..\..\lib\cli\commands\vm.js">
       <Link>lib\cli\commands\vm.js</Link>
     </Content>
