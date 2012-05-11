@@ -215,23 +215,11 @@
     <Content Include="..\..\lib\cli\commands\account.js">
       <Link>lib\cli\commands\account.js</Link>
     </Content>
-    <Content Include="..\..\lib\cli\commands\cert.js">
-      <Link>lib\cli\commands\cert.js</Link>
-    </Content>
-    <Content Include="..\..\lib\cli\commands\cloudService.js">
-      <Link>lib\cli\commands\cloudService.js</Link>
-    </Content>
     <Content Include="..\..\lib\cli\commands\config.js">
       <Link>lib\cli\commands\config.js</Link>
     </Content>
-    <Content Include="..\..\lib\cli\commands\disk.js">
-      <Link>lib\cli\commands\disk.js</Link>
-    </Content>
     <Content Include="..\..\lib\cli\commands\help.js">
       <Link>lib\cli\commands\help.js</Link>
-    </Content>
-    <Content Include="..\..\lib\cli\commands\image.js">
-      <Link>lib\cli\commands\image.js</Link>
     </Content>
     <Content Include="..\..\lib\cli\commands\site.js">
       <Link>lib\cli\commands\site.js</Link>
