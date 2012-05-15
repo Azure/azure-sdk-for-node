@@ -21,7 +21,7 @@ var vhdTools = require('../../lib/cli/iaas/upload/vhdTools');
 
 var inVhd = process.argv[2];
 if (!inVhd) {
-	console.error('VHD (or other) file name is expected');
+	console.error('VHD <file-name> [hex|base64]');
 	process.exit(1);
 }
 
@@ -32,7 +32,7 @@ function calculateMD5(callback) {
     md5hash.update(data);
   });
   stream.on('end', function () {
-    callback(md5hash.digest('base64'));
+    callback(md5hash.digest(process.argv[3] || 'base64'));
   });
   stream.on('error', function (e) {
     callback(null, e);
