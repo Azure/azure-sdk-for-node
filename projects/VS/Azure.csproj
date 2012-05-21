@@ -233,6 +233,12 @@
     <Content Include="..\..\lib\cli\common.js">
       <Link>lib\cli\common.js</Link>
     </Content>
+    <Content Include="..\..\lib\cli\constants.js">
+      <Link>lib\cli\constants.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\cacheUtils.js">
+      <Link>lib\cli\cacheUtils.js</Link>
+    </Content>
     <Content Include="..\..\lib\cli\generate-psm1-utils.js">
       <Link>lib\cli\generate-psm1-utils.js</Link>
     </Content>
