@@ -23,36 +23,36 @@ suite('cli', function () {
        
        test('Verifying stream conversion of dynamic VHD', function(done) {
            
-         cp.execFile('node', [__dirname + '/vhdMd5.js', __dirname + '/DiskTest.vhd'], null, 
+         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTest.vhd'], null, 
              function(exitCode, out, err) {
-           out.should.include('1fK/lWWNvTijd+2UChMWUQ==');
+           out.should.include('FUvqsIDyYn1JQUIGF6fzWQ==');
            done();
          });
        });
        
        test('Verifying stream conversion of difference VHD with trivial difference', function(done) {
            
-         cp.execFile('node', [__dirname + '/vhdMd5.js', __dirname + '/DiskTestDiff0.vhd'], null, 
+         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiff0.vhd'], null, 
              function(exitCode, out, err) {
-           out.should.include('NmL+zsd6qAt1JF+UcUnm6A==');
+           out.should.include('cM95x2r5yQtFvNsVytU4bA==');
            done();
          });
        });
        
        test('Verifying stream conversion of difference VHD', function(done) {
            
-         cp.execFile('node', [__dirname + '/vhdMd5.js', __dirname + '/DiskTestDiff.vhd'], null, 
+         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiff.vhd'], null, 
              function(exitCode, out, err) {
-           out.should.include('CYOC3iwdtVlrHFdSLCwVGA==');
+           out.should.include('SagFXzzaYPbxl6q2t9/0XQ==');
            done();
          });
        });
        
        test('Verifying stream conversion of a difference VHD with difference parent VHD', function(done) {
            
-         cp.execFile('node', [__dirname + '/vhdMd5.js', __dirname + '/DiskTestDiffDiff.vhd'], null, 
+         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiffDiff.vhd'], null, 
              function(exitCode, out, err) {
-           out.should.include('fb/uwHU/FrEPTTDimi5Aww==');
+           out.should.include('Ocw1718CwnnI1yXVVGEfgw==');
            done();
          });
        });
