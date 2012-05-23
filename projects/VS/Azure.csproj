@@ -227,6 +227,18 @@
     <Content Include="..\..\lib\cli\commands\site_.js">
       <Link>lib\cli\commands\site_.js</Link>
     </Content>
+    <Content Include="..\..\lib\cli\commands\deployment.js">
+      <Link>lib\cli\commands\deployment.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\deployment_.js">
+      <Link>lib\cli\commands\deployment_.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\log.js">
+      <Link>lib\cli\commands\log.js</Link>
+    </Content>
+    <Content Include="..\..\lib\cli\commands\log_.js">
+      <Link>lib\cli\commands\log_.js</Link>
+    </Content>
     <Content Include="..\..\lib\cli\commands\vm.js">
       <Link>lib\cli\commands\vm.js</Link>
     </Content>
