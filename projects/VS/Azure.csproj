@@ -425,6 +425,12 @@
     <Content Include="..\..\lib\util\util.js">
       <Link>lib\util\util.js</Link>
     </Content>
+    <Content Include="..\..\lib\util\certificates\der.js">
+      <Link>lib\util\certificates\der.js</Link>
+    </Content>
+    <Content Include="..\..\lib\util\certificates\pkcs.js">
+      <Link>lib\util\certificates\pkcs.js</Link>
+    </Content>
     <Content Include="..\..\LICENSE.txt">
       <Link>LICENSE.txt</Link>
     </Content>
