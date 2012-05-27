@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ServiceDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="helloruntime" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WorkerRole name="HelloWorker">
+    <Endpoints>
+      <InputEndpoint name="HttpIn" protocol="tcp" port="80" />
+    </Endpoints>
+    <Runtime>
+      <Environment>
+        <Variable name="PORT">
+          <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='HttpIn']/@port" />
+        </Variable>
+        <Variable name="EMULATED">
+          <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+        </Variable>
+      </Environment>
+      <EntryPoint>
+        <ProgramEntryPoint commandLine="node.exe .\server.js" setReadyOnProcessStart="true" />
+      </EntryPoint>
+    </Runtime>
+  </WorkerRole>
+</ServiceDefinition>
