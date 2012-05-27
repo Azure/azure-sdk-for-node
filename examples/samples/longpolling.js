@@ -22,8 +22,8 @@ if (path.existsSync('./../../lib/azure.js')) {
 
 var util = require('util');
 
-var topic = 'topic1';
-var subscription = 'subscription1';
+var topic = 'topic_1';
+var subscription = 'subscription_1';
 
 var serviceBusClient = azure.createServiceBusService();
 
@@ -58,7 +58,7 @@ function sendMessage() {
 }
 
 function receiveMessages() {
-  serviceBusClient.receiveSubscriptionMessage(topic, subscription, { timeoutIntervalInS: 55000 } , function (error, message) {
+  serviceBusClient.receiveSubscriptionMessage(topic, subscription, { timeoutIntervalInS: 55 } , function (error, message) {
     if (error) {
       console.log(error);
     } else {
