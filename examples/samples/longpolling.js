@@ -41,6 +41,8 @@ function createSubscriptionAndSend(callback) {
           console.log(error2);
         } else {
           console.log('Created subscription ' + subscription);
+
+          // Send a new message every 30 seconds.
           setInterval(sendMessage, 30000);
           callback();
         }
