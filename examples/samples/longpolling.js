@@ -30,7 +30,6 @@ var serviceBusClient = azure.createServiceBusService();
 var messageCount = 0;
 
 function createSubscriptionAndSend(callback) {
-  // Step 0: Create topic.
   serviceBusClient.createTopic(topic, function (error) {
     if (error) {
       console.log(error);
