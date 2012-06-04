@@ -56,7 +56,7 @@ rm -rf /tmp/ait/node_modules #modules that npm will install
 # Makefile and install text
 cp ../linux/* /tmp/ait/
 
-# Prepare a tarball (and also a tar)
+# Prepare a tarball
 pushd /tmp/ait/
 tar -cf ../azure.tar .
 cd ..

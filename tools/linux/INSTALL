@@ -7,6 +7,8 @@ Unix/Macintosh
 
 To install
 ----------
+As an alternate to using npm to install, you may use make to install the 
+Windows Azure tools:
 
     ./configure
     make
