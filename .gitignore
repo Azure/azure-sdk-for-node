@@ -1,6 +1,18 @@
-node_modules/
-*.suo
-*.user
 projects/*
 targets/*
+
+# Visual Studio #
+*.suo
+*.user
+
+# Node #
+node_modules/
 npm-debug.log
+
+# Mac OS #
+.DS_Store
+.DS_Store?
+
+# Windows #
+Thumbs.db
+
