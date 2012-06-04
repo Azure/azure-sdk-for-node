@@ -1,12 +1,12 @@
 {
   "name": "azure",
   "author": "Microsoft Corporation",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Windows Azure Client Library for node",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
   "main": "./lib/azure.js",
-  "engines": { "node": ">= 0.4.7" },
+  "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
     "xml2js" : ">= 0.1.11",
