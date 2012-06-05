@@ -3,8 +3,7 @@
 # Copyright (C) 2012 Microsoft Corporation. All Rights Reserved.
 #
 # This script prepares an 'archive' folder that contains the CLI 
-# that is to be packaged in the Mac installer, as well as shipped
-# to the Windows Azure site as a .tar.gz source package.
+# that is to be packaged in the Mac installer.
 #
 # This script is not packaged or bundled, but rather used when 
 # building the package.
