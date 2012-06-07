@@ -1,0 +1,25 @@
+<pkmkdoc spec="1.12"><properties><title>Windows Azure SDK</title><build>/Users/wilcoxj/Desktop/Windows Azure SDK.pkg</build><organization>com.microsoft.azure</organization><userSees ui="easy"/><min-target os="3"/><domain system="true"/></properties><distribution><versions min-spec="1.000000"/><scripts></scripts></distribution><description>The Windows Azure SDK for OS X adds the powerful azure command line interface for interacting with, publishing, and building open source applications for Windows Azure.</description><contents><choice title="Node.js Independent Binary" id="containednode" description="The Windows Azure SDK includes an independent binary of Node.js that is installed outside the path." starts_selected="true" starts_enabled="true" starts_hidden="true"><pkgref id="com.microsoft.azure.cli.node.pkg"/><pkgref id="com.microsoft.azure.windowsAzureSdk.THIRDPARTYNOTICE.pkg"/></choice><choice title="Windows Azure CLI" id="azurecli" starts_selected="true" starts_enabled="true" starts_hidden="true"><pkgref id="com.microsoft.azure.cli.pkg"/></choice></contents><resources bg-scale="none" bg-align="topleft"><locale lang="en"><resource relative="true" mod="true" type="background">resources/background.png</resource><resource relative="true" mod="true" type="license">resources/Windows Azure Deployment Tools Pre-release License_LCA 5 17 2012.rtf</resource><resource mime-type="text/rtf" kind="embedded" type="welcome"><![CDATA[{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs26 \cf0 This package will install the Windows Azure SDK into /usr/local/bin/azure/\
+\
+To use the command line interface after installation, type `azure` in the Terminal.\
+\
+To uninstall, type `azure-uninstall` in the Terminal.}]]></resource><resource mime-type="text/rtf" kind="embedded" type="conclusion"><![CDATA[{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs26 \cf0 Thanks for installing the Windows Azure SDK for Mac.\
+\
+To get started, just type `azure` in a new Terminal window.\
+\
+If you need to ever install, type `azure-uninstall` from a Terminal window.\
+\
+Please make sure that /usr/local/bin/ is in your $PATH.\
+\
+Thanks,\
+The Windows Azure Team\
+@windowsazure}]]></resource></locale></resources><requirements><requirement id="sosv" operator="ge" value="'10.6.7'"><message-title>Mac OS X 10.6.7 Required</message-title><message>The Windows Azure SDK requires at least operating system version 10.6.7.</message></requirement></requirements><flags/><postinstall><action id="com.apple.packagemaker.actions.openurl"><value>http://go.microsoft.com/fwlink/?LinkId=247438</value></action></postinstall><item type="file">01node.xml</item><item type="file">02azure.xml</item><item type="file">03thirdpartynotice.xml</item><mod>properties.systemDomain</mod><mod>properties.title</mod><mod>properties.customizeOption</mod><mod>description</mod><mod>properties.anywhereDomain</mod><mod>postinstallActions.actions</mod></pkmkdoc>

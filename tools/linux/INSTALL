@@ -1,0 +1,16 @@
+You have downloaded the Linux source tarball.
+
+Unix/Macintosh
+--------------
+* Requires Python 2.6 or 2.7
+* Requires Node.js 6.14 or greater, as well as npm (http://nodejs.org/#download)
+
+To install
+----------
+As an alternate to using npm to install, you may use make to install the 
+Windows Azure tools:
+
+    ./configure
+    make
+    make install
+
