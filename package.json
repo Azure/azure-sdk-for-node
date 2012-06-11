@@ -2,7 +2,7 @@
   "name": "azure",
   "author": "Microsoft Corporation",
   "version": "0.6.0",
-  "description": "Windows Azure Client Library for node",
+  "description": "Windows Azure Client Library for node and Command Line Tool",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
   "main": "./lib/azure.js",
