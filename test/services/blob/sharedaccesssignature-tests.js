@@ -72,27 +72,6 @@ suite('sharedaccesssignature-tests', function () {
     done();
   });
 
-  test('GenerateSignatureBlobDate', function (done) {
-    var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
-
-    // Using date with milliseconds defined to make sure they are ignored in the signature
-    var sharedAccessPolicy = {
-      AccessPolicy: {
-        Permissions: BlobConstants.SharedAccessPermissions.READ,
-        Start: new Date(2011, 10, 11, 11, 03, 40, 100),
-        Expiry: new Date(2011, 10, 12, 11, 03, 40, 100)
-      }
-    };
-
-    var signature = credentials._generateSignature(
-      'images/pic1.png',
-      BlobConstants.ResourceTypes.BLOB,
-      sharedAccessPolicy);
-
-    assert.equal(signature, '7NIEip+VOrQ5ZV80pORPK1MOsJc62wwCNcbMvE+lQ0s=');
-    done();
-  });
-
   test('ContainerSignedQueryString', function (done) {
     var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
 
