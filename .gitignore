@@ -8,6 +8,7 @@ targets/*
 # Node #
 node_modules/
 npm-debug.log
+azure_error
 
 # Mac OS #
 .DS_Store
