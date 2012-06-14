@@ -90,7 +90,7 @@ Blog.prototype.init = function () {
 
       provider.tableClient.beginBatch();
 
-      var now = new Date().toString();
+      var now = new Date().toUTCString();
       provider.tableClient.insertEntity(tableName, { PartitionKey: partition, RowKey: uuid(), title: 'Post one', body: 'Body one', created_at: now });
       provider.tableClient.insertEntity(tableName, { PartitionKey: partition, RowKey: uuid(), title: 'Post two', body: 'Body two', created_at: now });
       provider.tableClient.insertEntity(tableName, { PartitionKey: partition, RowKey: uuid(), title: 'Post three', body: 'Body three', created_at: now });
