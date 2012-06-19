@@ -8,6 +8,8 @@ For documentation on how to host Node.js applications on Windows Azure, please s
 
 For documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)
 
+Check out our new IRC channel on freenode, node-azure.
+
 # CLI Features
 
 * Websites
