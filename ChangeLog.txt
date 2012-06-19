@@ -1,3 +1,7 @@
+2012.06.06 Version 0.6.0
+ * Adding CLI tool
+ * Multiple Bugfixes
+
 2012.04.19 Version 0.5.3
  * Service Runtime Wrappers
  * Multiple Bugfixes
