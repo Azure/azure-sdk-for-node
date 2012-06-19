@@ -23,7 +23,7 @@ suite('cli', function () {
        
        test('Verifying stream conversion of dynamic VHD', function(done) {
            
-         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTest.vhd'], null, 
+         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTest'], null, 
              function(exitCode, out, err) {
            out.should.include('FUvqsIDyYn1JQUIGF6fzWQ==');
            done();
@@ -32,7 +32,7 @@ suite('cli', function () {
        
        test('Verifying stream conversion of difference VHD with trivial difference', function(done) {
            
-         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiff0.vhd'], null, 
+         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiff0'], null, 
              function(exitCode, out, err) {
            out.should.include('cM95x2r5yQtFvNsVytU4bA==');
            done();
@@ -41,7 +41,7 @@ suite('cli', function () {
        
        test('Verifying stream conversion of difference VHD', function(done) {
            
-         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiff.vhd'], null, 
+         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiff'], null, 
              function(exitCode, out, err) {
            out.should.include('SagFXzzaYPbxl6q2t9/0XQ==');
            done();
@@ -50,7 +50,7 @@ suite('cli', function () {
        
        test('Verifying stream conversion of a difference VHD with difference parent VHD', function(done) {
            
-         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiffDiff.vhd'], null, 
+         cp.execFile('node', [__dirname + '/vhdHash.js', '-q', __dirname + '/DiskTestDiffDiff'], null, 
              function(exitCode, out, err) {
            out.should.include('Ocw1718CwnnI1yXVVGEfgw==');
            done();
