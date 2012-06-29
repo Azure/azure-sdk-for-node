@@ -24,8 +24,8 @@ version = node_version()
 if version == None:
   print 'Node is not installed.'
   errors = True
-elif int(version.replace('.', '')) < 611:
-  print 'Node version needs to be higher than 0.6.11'
+elif int(version.replace('.', '')) < 615:
+  print 'Node version needs to be higher than 0.6.15'
   errors = True
 else:
   print 'Node is installed. Version: ' + version

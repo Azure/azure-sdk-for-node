@@ -1,5 +1,5 @@
 ﻿/**
-* Copyright 2011 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -672,6 +672,38 @@ suite('tableservice-tests', function () {
             assert.equal(entityResult.emptyField1, undefined);
             assert.equal(entityResult.emptyField2, undefined);
             assert.equal(entityResult.nonEmptyField3, entity.nonEmptyField3);
+          }
+
+          done();
+        });
+      });
+    });
+  });
+
+  test('InsertEntityNewLines', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+
+    tableService.createTable(tableName, function (error) {
+      assert.equal(error, null);
+
+      var entity = {
+        PartitionKey: '1',
+        RowKey: '1abc',
+        content: '\n\nhi\n\nthere\n\n'
+      };
+
+      // Should perform an insert
+      tableService.insertOrMergeEntity(tableName, entity, function (error2) {
+        assert.equal(error2, null);
+
+        tableService.queryEntity(tableName, entity.PartitionKey, entity.RowKey, function (error4, entityResult) {
+          assert.equal(error4, null);
+
+          assert.notEqual(entityResult, null);
+          if (entityResult) {
+            assert.equal(entityResult.PartitionKey, entity.PartitionKey);
+            assert.equal(entityResult.RowKey, entity.RowKey);
+            assert.equal(entityResult.content, entity.content);
           }
 
           done();
