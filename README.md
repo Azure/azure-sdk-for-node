@@ -10,7 +10,7 @@ For documentation on the new cross platform CLI tool for Mac and Linux, please s
 
 Check out our new IRC channel on freenode, node-azure.
 
-# CLI Features
+## CLI Features
 
 * Websites
 	* Create and manage WindowsAzure websites
@@ -22,7 +22,7 @@ Check out our new IRC channel on freenode, node-azure.
     * Create and manage Virtual Machine Images
     * Create and manage certificates
 
-# Library Features
+## Library Features
 
 * Tables
     * create and delete tables
@@ -43,15 +43,15 @@ Check out our new IRC channel on freenode, node-azure.
     * get role instance information for current role and other role instances
     * query and set the status of the current role
 
-# Getting Started
-## Download Source Code
+## Getting Started
+### Download Source Code
 
 To get the source code of the SDK via **git** just type:
 
     git clone https://github.com/WindowsAzure/azure-sdk-for-node.git
     cd ./azure-sdk-for-node
 
-## Download Package
+### Download Package
 
 Alternatively, to get the source code via the Node Package Manager (npm), type
 
@@ -63,8 +63,8 @@ the local Storage Emulator (with the exception of Service Bus features).
 1. To use the cloud services, you need to first create an account with Windows Azure. To use the storage services, you need to set the AZURE_STORAGE_ACCOUNT and the AZURE_STORAGE_ACCESS_KEY environment variables to the storage account name and primary access key you obtain from the Azure Portal. To use Service Bus, you need to set the AZURE_SERVICEBUS_NAMESPACE and the AZURE_SERVICEBUS_ACCESS_KEY environment variables to the service bus namespace and the default key you obtain from the Azure Portal.
 2. To use the Storage Emulator, make sure the latest version of the Windows Azure SDK is installed on the machine, and set the EMULATED environment variable to any value ("true", "1", etc.)
 
-# Usage
-## Table Storage
+## Usage
+### Table Storage
 
 To ensure a table exists, call **createTableIfNotExists**:
 
@@ -104,7 +104,7 @@ tableService.queryEntity('tasktable', 'tasksSeattle', '1', function(error, serve
 });
 ```
 
-## Blob Storage
+### Blob Storage
 
 The **createContainerIfNotExists** method can be used to create a 
 container in which to store a blob:
@@ -140,7 +140,7 @@ blobService.getBlobToStream('taskcontainer', 'task1', fs.createWriteStream('task
 });
 ```
 
-## Storage Queues
+### Storage Queues
 
 The **createQueueIfNotExists** method can be used to ensure a queue exists:
 
@@ -183,7 +183,7 @@ queueService.getMessages(queueName, function(error, serverMessages){
 });
 ```
 
-## Service Bus Queues
+### Service Bus Queues
 
 Service Bus Queues are an alternative to Storage Queues that might be useful in scenarios where more advanced messaging features are needed (larger message sizes, message ordering, single-operaiton destructive reads, scheduled delivery) using push-style delivery (using long polling).
 
@@ -220,7 +220,7 @@ serviceBusService.receiveQueueMessage('taskqueue', function(error, serverMessage
 });
 ```
 
-## Service Bus Topics
+### Service Bus Topics
 
 Service Bus topics are an abstraction on top of Service Bus Queues that make pub/sub scenarios easy to implement.
 
@@ -266,7 +266,7 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
 });
 ```
 
-## Service Runtime
+### Service Runtime
 
 The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running in a worker role inside the Azure emulator or in the cloud.
 
@@ -327,15 +327,15 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 
 **For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
 
-# Need Help?
+## Need Help?
 
 Be sure to check out the Windows Azure [Developer Forums on Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
 
-# Contribute Code or Provide Feedback
+## Contribute Code or Provide Feedback
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Windows Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-node/issues) section of the project.
 
-# Learn More
+## Learn More
 [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/)
