@@ -1,12 +1,28 @@
 # Windows Azure SDK for Node.js
 
-This project provides a set of Node.js packages that make it easy to access
-the Windows Azure storage and queue services. For documentation on how
-to host Node.js applications on Windows Azure, please see the
-[Windows Azure](http://www.windowsazure.com/en-us/develop/nodejs/)
-Node.js Developer Center.
+This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. It also includes a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
 
-# Features
+With Windows Azure Websites you can deploy node.js applications to the cloud in just seconds using git. 
+
+For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
+
+For documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)
+
+Check out our new IRC channel on freenode, node-azure.
+
+# CLI Features
+
+* Websites
+	* Create and manage WindowsAzure websites
+    * Download site logs
+    * Manage Deployments
+* Virtual machines
+    * Create and manage Windows and Linux Virtual machines
+	* Create and manage VM endpoints
+    * Create and manage Virtual Machine Images
+    * Create and manage certificates
+
+# Library Features
 
 * Tables
     * create and delete tables
@@ -26,7 +42,6 @@ Node.js Developer Center.
     * get configuration settings and access local resources
     * get role instance information for current role and other role instances
     * query and set the status of the current role
-
 
 # Getting Started
 ## Download Source Code

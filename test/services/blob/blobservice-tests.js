@@ -1,5 +1,5 @@
 ﻿/**
-* Copyright 2011 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -31,9 +31,11 @@ var WebResource = testutil.libRequire('http/webresource');
 var SharedAccessSignature = azure.SharedAccessSignature;
 var BlobService = azure.BlobService;
 var ServiceClient = azure.ServiceClient;
+var ExponentialRetryPolicyFilter = azure.ExponentialRetryPolicyFilter;
 var Constants = azure.Constants;
 var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
+var QueryStringConstants = Constants.QueryStringConstants;
 
 var blobService;
 var containerNames = [];
@@ -43,7 +45,7 @@ var blobNames = [];
 var blobNamesPrefix = 'blob';
 
 var testPrefix = 'blobservice-tests';
-var numberTests = 32;
+var numberTests = 33;
 
 suite('blobservice-tests', function () {
   setup(function (done) {
@@ -1073,6 +1075,31 @@ suite('blobservice-tests', function () {
         });
       });
     });
+  });
+
+  test('GenerateSharedAccessSignature', function (done) {
+    var containerName = 'images';
+    var blobName = 'pic1.png';
+
+    var devStorageBlobService = azure.createBlobService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+
+    var sharedAccessPolicy = {
+      AccessPolicy: {
+        Permissions: BlobConstants.SharedAccessPermissions.READ,
+        Start: new Date('October 11, 2011 11:03:40 am GMT'),
+        Expiry: new Date('October 12, 2011 11:53:40 am GMT')
+      }
+    };
+
+    var sharedAccessSignature = devStorageBlobService.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+
+    assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNED_START], '2011-10-11T11:03:40Z');
+    assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12T11:53:40Z');
+    assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNED_RESOURCE], BlobConstants.ResourceTypes.BLOB);
+    assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobConstants.SharedAccessPermissions.READ);
+    assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNATURE], '7NIEip+VOrQ5ZV80pORPK1MOsJc62wwCNcbMvE+lQ0s=');
+
+    done();
   });
 
   test('CreateBlobWithBars', function (done) {

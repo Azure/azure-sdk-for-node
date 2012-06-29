@@ -14,8 +14,8 @@
 */
 
 require('should');
-var cli = require('./cli');
-var capture = require('./util').capture;
+var cli = require('../cli');
+var capture = require('../util').capture;
 
 suite('cli', function(){
    suite('account', function() {
