@@ -4,5 +4,8 @@
 # Node #
 node_modules/
 
-# Recordings #
-test/recordings*
+# Test folder #
+test/
+
+# Tools #
+tools/
