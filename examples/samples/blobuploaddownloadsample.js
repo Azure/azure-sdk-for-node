@@ -22,7 +22,7 @@
 */
 
 var path = require('path');
-if (path.existsSync('./../../lib/azure.js')) {
+if (fs.existsSync('./../../lib/azure.js')) {
   azure = require('./../../lib/azure');
 } else {
   azure = require('azure');
@@ -72,7 +72,7 @@ function uploadSample() {
 
 function uploadBlobs(sourceDirectoryPath, containerName, callback) {
   // Step 0 : validate directory is valid.
-  if (!path.existsSync(sourceDirectoryPath)) {
+  if (!fs.existsSync(sourceDirectoryPath)) {
     console.log(sourceDirectoryPath + ' is an invalid directory path.');
   } else {
     listFilesUpload(sourceDirectoryPath, containerName, callback);
@@ -118,7 +118,7 @@ function uploadFilesParallel(files, containerName, callback) {
 
 function downloadBlobs(containerName, destinationDirectoryPath, callback) {
   // Step 0. Validate directory
-  if (!path.existsSync(destinationDirectoryPath)) {
+  if (!fs.existsSync(destinationDirectoryPath)) {
     console.log(destinationDirectoryPath + ' is an invalid directory path.');
   } else {
     downloadFilesParallel(containerName, destinationDirectoryPath, callback);

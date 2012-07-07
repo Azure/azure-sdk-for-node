@@ -43,7 +43,7 @@ var walk = function (dir, done) {
 var jshint = require('../node_modules/jshint/packages/jshint/jshint');
 
 var libDir = '../lib';
-if (!path.existsSync(libDir + '/azure.js')) {
+if (!fs.existsSync(libDir + '/azure.js')) {
   libDir = './lib';
 }
 
