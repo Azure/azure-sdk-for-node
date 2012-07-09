@@ -19,7 +19,7 @@ var azure = require('../../lib/azure');
 var testCommon = require('./testcommon');
 
 
-if (path.existsSync('./testhost.json')) {
+if (fs.existsSync('./testhost.json')) {
   inp = JSON.parse(fs.readFileSync('./testhost.json'));
 } else {
   console.log('The file testhost.json was not found.\n' +

@@ -28,7 +28,7 @@ var testList = args.pop();
 
 var fileContent;
 var root = false;
-if (path.existsSync(testList)) {
+if (fs.existsSync(testList)) {
   fileContent = fs.readFileSync(testList).toString();
 } else {
   fileContent = fs.readFileSync('./test/' + testList).toString();

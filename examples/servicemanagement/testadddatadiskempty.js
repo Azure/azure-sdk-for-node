@@ -21,7 +21,7 @@ var HttpResponseCodes = Constants.HttpConstants.HttpResponseCodes;
 var testCommon = require('./testcommon');
 
 
-if (path.existsSync('./testhost.json')) {
+if (fs.existsSync('./testhost.json')) {
   inp = JSON.parse(fs.readFileSync('./testhost.json'));
 } else {
   console.log('The file testhost.json was not found.\n' +
@@ -42,7 +42,7 @@ var inputNames = {
 // SourceMediaLink may be used in Create to specifiy location of BLOB in XSTORE
 // MediaLink location of BLOB - not required in create
 // DiskName - friendly name - optional
-// HostCaching - “None”, ”ReadOnly”, “ReadWrite”.  optional. Default ReadOnly
+// HostCaching - ï¿½Noneï¿½, ï¿½ReadOnlyï¿½, ï¿½ReadWriteï¿½.  optional. Default ReadOnly
 var dataDisk = {
   DiskLabel : 'testjsDiskLabel1',
   LogicalDiskSizeInGB : 10,

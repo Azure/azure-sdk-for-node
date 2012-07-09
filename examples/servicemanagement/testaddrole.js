@@ -21,7 +21,7 @@ var HttpResponseCodes = Constants.HttpConstants.HttpResponseCodes;
 var testCommon = require('./testcommon');
 
 
-if (path.existsSync('./testhost.json')) {
+if (fs.existsSync('./testhost.json')) {
   inp = JSON.parse(fs.readFileSync('./testhost.json'));
 } else {
   console.log('The file testhost.json was not found.\n' +
@@ -43,7 +43,7 @@ var inputNames = {
 // SourceImageId - reference to PlatformStockImage or UserImage Repository
 // MediaLink - location of physical BLOB backing OS disk. Blob in customer storage account
 // DiskLabel - friendly name - optional
-// HostCaching - ”ReadOnly”, “ReadWrite”.  optional. Default ReadWrite
+// HostCaching - ï¿½ReadOnlyï¿½, ï¿½ReadWriteï¿½.  optional. Default ReadWrite
 var osDisk = {
   SourceImageName : 'DiskTest-test-23586'
 };
