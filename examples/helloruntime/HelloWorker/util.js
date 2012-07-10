@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var   azure = require('azure');
+var azure = require('azure');
 
 var RoleEnvironment = azure.RoleEnvironment;
 
