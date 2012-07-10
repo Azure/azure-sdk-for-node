@@ -82,12 +82,6 @@ function setupGoalStateEndpoint () {
 
 suite('roleenvironment-tests', function () {
   setup(function (done) {
-    // Temporary fix for node version < 0.8, starting from v0.8
-    // path.existsSync has been deprecated.
-    if (!fs.existsSync) {
-      fs.existsSync = path.existsSync;
-    }
-
     // Set windows azure runtime endpoint
     originalWaRuntimeEndpoint = process.env['WaRuntimeEndpoint'];
     process.env['WaRuntimeEndpoint'] = versionsEndpointPath;
@@ -111,19 +105,19 @@ suite('roleenvironment-tests', function () {
     runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
     runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
 
-    if (fs.existsSync(versionsEndpointPath)) {
+    if (azureutil.pathExistsSync(versionsEndpointPath)) {
       fs.unlinkSync(versionsEndpointPath);
     }
 
-    if (fs.existsSync(goalStatePath)) {
+    if (azureutil.pathExistsSync(goalStatePath)) {
       fs.unlinkSync(goalStatePath);
     }
 
-    if (fs.existsSync(currentStatePath)) {
+    if (azureutil.pathExistsSync(currentStatePath)) {
       fs.unlinkSync(currentStatePath);
     }
 
-    if (fs.existsSync(roleEnvironmentPath)) {
+    if (azureutil.pathExistsSync(roleEnvironmentPath)) {
       fs.unlinkSync(roleEnvironmentPath);
     }
 
