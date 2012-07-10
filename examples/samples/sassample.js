@@ -35,8 +35,13 @@
 * c. Use both shared access signatures to read that blob (Expect a failure from the "Read" permission shared access signature since it has already expired.).
 */
 
-var path = require('path');
-if (path.existsSync('./../../lib/azure.js')) {
+var fs = require('fs');
+if (!fs.existsSync) {
+  fs.existsSync = require('path').existsSync;
+}
+
+var azure;
+if (fs.existsSync('./../../lib/azure.js')) {
   azure = require('./../../lib/azure');
 } else {
   azure = require('azure');

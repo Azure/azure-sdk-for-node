@@ -14,7 +14,6 @@
 */
 
 var fs = require('fs');
-var path = require('path');
 
 var args = (process.ARGV || process.argv);
 
@@ -28,7 +27,12 @@ var testList = args.pop();
 
 var fileContent;
 var root = false;
-if (path.existsSync(testList)) {
+
+if  (!fs.existsSync) {
+  fs.existsSync = require('path').existsSync;
+}
+
+if (fs.existsSync(testList)) {
   fileContent = fs.readFileSync(testList).toString();
 } else {
   fileContent = fs.readFileSync('./test/' + testList).toString();

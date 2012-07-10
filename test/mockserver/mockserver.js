@@ -16,11 +16,15 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
-var path = require('path');
 
 var sessionsRootPath = 'test/recordings';
 
 exports.log = true;
+
+if (!fs.existsSync) {
+  fs.existsSync = require('path').existsSync;
+}
+
 
 function writeLog(msg) {
   if (exports.log) {
@@ -126,10 +130,10 @@ driverFactory.modes.neutral = function (proxy, session) {
 driverFactory.modes.recording = function (proxy, session) {
 
   var sessionPath = sessionsRootPath + '/' + session.name;
-  if (!path.existsSync(sessionsRootPath)) {
+  if (!fs.existsSync(sessionsRootPath)) {
     fs.mkdirSync(sessionsRootPath, 0755);
   }
-  if (!path.existsSync(sessionPath)) {
+  if (!fs.existsSync(sessionPath)) {
     fs.mkdirSync(sessionPath, 0755);
   }
 
@@ -282,7 +286,7 @@ driverFactory.modes.recording = function (proxy, session) {
 
 driverFactory.modes.playback = function (proxy, session) {
   var sessionPath = sessionsRootPath + '/' + session.name;
-  if (path.existsSync(sessionPath + '/index.json')) {
+  if (fs.existsSync(sessionPath + '/index.json')) {
 
     var records = JSON.parse(fs.readFileSync(sessionPath + '/index.json'));
     var driver = {};

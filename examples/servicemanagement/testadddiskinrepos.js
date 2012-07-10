@@ -14,14 +14,16 @@
 */
 
 var fs = require('fs');
-var path = require('path');
 var azure = require('../../lib/azure');
 var Constants = require('../../lib/util/constants');
 var HttpResponseCodes = Constants.HttpConstants.HttpResponseCodes;
 var testCommon = require('./testcommon');
 
+if (!fs.existsSync) {
+  fs.existsSync = require('path').existsSync;
+}
 
-if (path.existsSync('./testhost.json')) {
+if (fs.existsSync('./testhost.json')) {
   inp = JSON.parse(fs.readFileSync('./testhost.json'));
 } else {
   console.log('The file testhost.json was not found.\n' +

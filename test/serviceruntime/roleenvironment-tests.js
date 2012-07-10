@@ -105,19 +105,19 @@ suite('roleenvironment-tests', function () {
     runtimeKernel.protocol1RuntimeGoalStateClient.currentEnvironmentData = null;
     runtimeKernel.protocol1RuntimeGoalStateClient.currentGoalState = null;
 
-    if (path.existsSync(versionsEndpointPath)) {
+    if (azureutil.pathExistsSync(versionsEndpointPath)) {
       fs.unlinkSync(versionsEndpointPath);
     }
 
-    if (path.existsSync(goalStatePath)) {
+    if (azureutil.pathExistsSync(goalStatePath)) {
       fs.unlinkSync(goalStatePath);
     }
 
-    if (path.existsSync(currentStatePath)) {
+    if (azureutil.pathExistsSync(currentStatePath)) {
       fs.unlinkSync(currentStatePath);
     }
 
-    if (path.existsSync(roleEnvironmentPath)) {
+    if (azureutil.pathExistsSync(roleEnvironmentPath)) {
       fs.unlinkSync(roleEnvironmentPath);
     }
 
