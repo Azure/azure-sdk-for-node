@@ -28,8 +28,13 @@
 *
 */
 
-var path = require('path');
-if (path.existsSync('./../../lib/azure.js')) {
+var fs = require('fs');
+if (!fs.existsSync) {
+  fs.existsSync = require('path').existsSync;
+}
+
+var azure;
+if (fs.existsSync('./../../lib/azure.js')) {
   azure = require('./../../lib/azure');
 } else {
   azure = require('azure');
