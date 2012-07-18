@@ -330,7 +330,7 @@
               "InputEndpoints": 
                 {
                   "Name": "InputEndpoints",
-                  "Required": true,
+                  "Required": false,
                   "Type": "Collection(Complex.InputEndpoint)",
                   "XmlNode": "InputEndpoints",
                   "ItemXmlNode": "InputEndpoint",
@@ -551,7 +551,7 @@
             "SourceImageName":
             {
               "Name": "SourceImageName",
-              "Required": true,
+              "Required": false,
               "Type": "Primitive.String",
               "RegEx": "NIL",
               "XmlNode": "SourceImageName"
