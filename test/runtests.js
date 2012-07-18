@@ -64,7 +64,7 @@ if (coverageOption !== -1) {
   args.push('html-cov');
 } else {
   args.push('-R');
-  args.push('List');
+  args.push('list');
 }
 
 require('../node_modules/mocha/bin/mocha');
