@@ -62,6 +62,9 @@ files.forEach(function (file) {
 if (coverageOption !== -1) {
   args.push('-R');
   args.push('html-cov');
+} else {
+  args.push('-R');
+  args.push('List');
 }
 
 require('../node_modules/mocha/bin/mocha');
