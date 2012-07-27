@@ -26,7 +26,8 @@
     "winston": ">= 0.5.10",
     "colors": "0.x.x",
     "eyes": "0.x.x",
-    "easy-table": "0.0.1"
+    "easy-table": "0.0.1",
+    "request": ">= 2.9.203"
   },
   "devDependencies": {
     "mocha": "*",
