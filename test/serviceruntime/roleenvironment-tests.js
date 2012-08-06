@@ -1177,7 +1177,9 @@ suite('roleenvironment-tests', function () {
 
     azure.RoleEnvironment.on(ServiceRuntimeConstants.CHANGING, function (changes) {
       changes.cancel();
+    });
 
+    sandbox.stub(azure.RoleEnvironment, 'requestRecycle', function () {
       clearInterval(serverGoalStateInterval);
 
       serverVersions.on('close', function () {
