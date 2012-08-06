@@ -1173,8 +1173,6 @@ suite('roleenvironment-tests', function () {
     var outputFileReadDataStub = sandbox.stub(runtimeKernel.namedPipeOutputChannel, 'writeOutputChannel');
     outputFileReadDataStub.returns();
 
-    var changingInvoked = false;
-
     azure.RoleEnvironment.on(ServiceRuntimeConstants.CHANGING, function (changes) {
       changes.cancel();
     });
