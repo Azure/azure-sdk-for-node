@@ -1095,4 +1095,138 @@ suite('roleenvironment-tests', function () {
       done();
     });
   });
+
+  test('startedChangedCancelNotifications', function (done) {
+    var versionsXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<RuntimeServerEndpoints>" +
+      "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"" + goalStatePath + "\" />" +
+      "</RuntimeServerEndpoints>" +
+      "</RuntimeServerDiscovery>";
+
+    var goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<Incarnation>1</Incarnation>" +
+      "<ExpectedState>Started</ExpectedState>" +
+      "<RoleEnvironmentPath>" + roleEnvironmentPath + "</RoleEnvironmentPath>" +
+      "<CurrentStateEndpoint>" + currentStatePath + "</CurrentStateEndpoint>" +
+      "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+      "</GoalState>";
+
+    var environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+      "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+      "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
+      "<ConfigurationSettings />" +
+      "<LocalResources />" +
+      "<Endpoints />" +
+      "</CurrentInstance>" +
+      "<Roles />" +
+      "</RoleEnvironment>";
+
+    // Create versions pipe
+    var serverVersionsStream;
+    var serverVersions = net.createServer(function (stream) {
+      serverVersionsStream = stream;
+
+      stream.setEncoding('utf8');
+      stream.on('connect', function () {
+        stream.write(versionsXml);
+      });
+
+      stream.on('end', function () {
+        stream.end();
+      });
+    });
+
+    serverVersions.listen(versionsEndpointPath);
+
+    // Create goal state pipe
+    var serverGoalStateInterval;
+    var serverGoalStateStream;
+    var serverGoalState = net.createServer(function (stream) {
+      serverGoalStateStream = stream;
+
+      stream.setEncoding('utf8');
+      stream.on('connect', function () {
+        // Write goal state every second
+        serverGoalStateInterval = setInterval(function () {
+          stream.write(goalStateXml);
+        }, 1000);
+      });
+
+      stream.on('end', function () {
+        stream.end();
+      });
+    });
+
+    serverGoalState.listen(goalStatePath);
+
+    // Stub role environment file
+    inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
+    inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined, environmentData);
+
+    // Stub output channel
+    var outputFileReadDataStub = sandbox.stub(runtimeKernel.namedPipeOutputChannel, 'writeOutputChannel');
+    outputFileReadDataStub.returns();
+
+    var changingInvoked = false;
+
+    azure.RoleEnvironment.on(ServiceRuntimeConstants.CHANGING, function (changes) {
+      changes.cancel();
+
+      clearInterval(serverGoalStateInterval);
+
+      serverVersions.on('close', function () {
+        serverGoalState.on('close', function () {
+          done();
+        });
+
+        serverGoalStateStream.end();
+        serverGoalState.close();
+      });
+
+      serverVersionsStream.end();
+      serverVersions.close();
+    });
+
+    azure.RoleEnvironment.on(ServiceRuntimeConstants.CHANGED, function (changes) {
+      assert.fail();
+    });
+
+    // Make sure incarnation 1 is read
+    azure.RoleEnvironment.getDeploymentId(function (error, id) {
+      // Update to incarnation 2
+      goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+        "<Incarnation>2</Incarnation>" +
+        "<ExpectedState>Started</ExpectedState>" +
+        "<RoleEnvironmentPath>" + roleEnvironmentPath + "</RoleEnvironmentPath>" +
+        "<CurrentStateEndpoint>" + currentStatePath + "</CurrentStateEndpoint>" +
+        "<Deadline>9999-12-31T23:59:59.9999999</Deadline>" +
+        "</GoalState>";
+
+      inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(
+        undefined, 
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
+        "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
+        "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"1\">" +
+        "<ConfigurationSettings />" +
+        "<LocalResources />" +
+        "<Endpoints />" +
+        "</CurrentInstance>" +
+        "<Roles />" +
+        "</RoleEnvironment>"
+      );
+
+      assert.equal(error, null);
+      assert.notEqual(id, null);
+    });
+  });
 });
