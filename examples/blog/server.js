@@ -19,7 +19,7 @@
 var express = require('express');
 var Blog = require('./blog').Blog;
 
-var app = module.exports = express.createServer();
+var app = module.exports = express();
 
 // Configuration
 
@@ -90,5 +90,5 @@ app.get('/blog/:id', function (req, res) {
   });
 });
 
-app.listen(process.env.port || 1337);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+var server = app.listen(process.env.port || 1337);
+console.log("Express server listening on port %d in %s mode", server.address().port, app.settings.env);

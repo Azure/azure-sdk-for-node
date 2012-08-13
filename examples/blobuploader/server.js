@@ -29,7 +29,7 @@ var express = require('express');
 var formidable = require('formidable');
 var helpers = require('./helpers.js');
 
-var app = module.exports = express.createServer();
+var app = module.exports = express();
 // Global request options, set the retryPolicy
 var blobClient = azure.createBlobService(azure.ServiceClient.DEVSTORE_STORAGE_ACCOUNT, azure.ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, azure.ServiceClient.DEVSTORE_BLOB_HOST).withFilter(new azure.ExponentialRetryPolicyFilter());
 var containerName = 'webpi';
@@ -148,8 +148,8 @@ function setPermissions() {
     if (error) {
       console.log(error);
     } else {
-      app.listen(process.env.port || 1337);
-      console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+      var server = app.listen(process.env.port || 1337);
+      console.log("Express server listening on port %d in %s mode", server.address().port, app.settings.env);
     }
   });
 }

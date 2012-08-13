@@ -31,7 +31,7 @@ var uuid = require('node-uuid');
 var Home = require('./home');
 var ServiceClient = azure.ServiceClient;
 
-var app = module.exports = express.createServer();
+var app = module.exports = express();
 var client = azure.createTableService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, ServiceClient.DEVSTORE_TABLE_HOST);
 
 // table creation
@@ -87,6 +87,6 @@ function setupApplication() {
   app.post('/home/newitem', home.newItem.bind(home));
   app.post('/home/completed', home.markCompleted.bind(home));
 
-  app.listen(process.env.PORT || 1337);
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+  var server = app.listen(process.env.PORT || 1337);
+  console.log("Express server listening on port %d in %s mode", server.address().port, app.settings.env);
 }
