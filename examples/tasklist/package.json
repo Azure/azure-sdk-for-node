@@ -3,7 +3,7 @@
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
-      "express": ">= 2.4.7"
+      "express": "2.x"
     , "ejs": ">= 0.4.3"
     , "jade": ">= 0.18.0"
     , "node-uuid": "> = 1.2.0"
