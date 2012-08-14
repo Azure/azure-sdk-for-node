@@ -21,7 +21,7 @@ var express = require('express')
   , pushpinController = require('./controllers/pushpinController')
   , socketio = require('socket.io');
 
-var app = module.exports = express.createServer();
+var app = module.exports = express();
 var io;
 
 // Configuration
@@ -49,8 +49,8 @@ app.get('/setup', pushpinController.setup);
 app.post('/setupPOST', pushpinController.setupPOST);
 app.post('/createPushpin', pushpinController.createPushpin);
 
-app.listen(process.env.PORT || 1337);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+var server = app.listen(process.env.PORT || 1337);
+console.log("Express server listening on port %d in %s mode", server.address().port, app.settings.env);
 
 // Setup socket.io
 io = socketio.listen(app);

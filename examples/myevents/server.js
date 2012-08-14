@@ -8,7 +8,7 @@ var express = require('express')
   , azure = require('./../../lib/azure')
   , ServiceClient = azure.ServiceClient;
  
-var app = module.exports = express.createServer(); 
+var app = module.exports = express(); 
 
 
 var tableClient = azure.createTableService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, ServiceClient.DEVSTORE_TABLE_HOST); 
@@ -58,5 +58,5 @@ app.get('/', eventService.showEvents.bind(eventService));
 app.post('/events/create', eventService.newEvent.bind(eventService));
 app.get('/events/:id', eventService.showEvent.bind(eventService))
 
-app.listen(process.env.PORT || 1337);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+var server = app.listen(process.env.PORT || 1337);
+console.log("Express server listening on port %d in %s mode", server.address().port, app.settings.env);
