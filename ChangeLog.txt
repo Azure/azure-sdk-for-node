@@ -1,3 +1,10 @@
+2012.08.15 Version 0.6.2
+ * Multiple Bugfixes
+
+2012.07.02 Version 0.6.1
+ * Multiple Bugfixes
+ * Adding subscription setting and listing functionality.
+
 2012.06.06 Version 0.6.0
  * Adding CLI tool
  * Multiple Bugfixes
