@@ -1,3 +1,10 @@
+2012.08.15 Version 0.6.2
+ * Multiple bugfixes
+
+2012.07.12 Version 0.6.1
+ * Multiple bugfixes
+ * Adding account listing and setting functionality
+
 2012.06.06 Version 0.6.0
  * Adding CLI tool
  * Multiple Bugfixes
