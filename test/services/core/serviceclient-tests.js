@@ -13,10 +13,10 @@
 * limitations under the License.
 */
 
-var should = require('should')
-  , testutil = require('../../util/util')
-  , azure = testutil.libRequire('azure')
-  , ServiceClient = azure.ServiceClient;
+var should = require('should');
+var testutil = require('../../util/util');
+var azure = testutil.libRequire('azure');
+var ServiceClient = azure.ServiceClient;
 
 suite('serviceclient-tests', function () {
   test('NormalizedErrorsAreErrors', function () {
