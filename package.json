@@ -9,7 +9,7 @@
   "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
-    "xml2js" : ">= 0.1.11",
+    "xml2js" : "0.1.14",
     "sax": ">= 0.1.1",
     "qs": ">= 0.3.1",
     "log": ">= 1.2.0",
