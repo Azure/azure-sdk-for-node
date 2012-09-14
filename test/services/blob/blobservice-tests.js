@@ -45,7 +45,7 @@ var blobNames = [];
 var blobNamesPrefix = 'blob';
 
 var testPrefix = 'blobservice-tests';
-var numberTests = 33;
+var numberTests = 34;
 
 suite('blobservice-tests', function () {
   setup(function (done) {
@@ -1181,6 +1181,30 @@ suite('blobservice-tests', function () {
     assert.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName + '/' + blobName);
 
     done();
+  });
+
+  test('responseEmitts', function (done) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+
+    var responseReceived = false;
+    blobService.on('response', function (response) {
+      assert.notEqual(response, null);
+      responseReceived = true;
+      blobService.removeAllListeners('response');
+    });
+
+    blobService.createContainer(containerName, function (error) {
+      assert.equal(error, null);
+
+      blobService.createBlobBlockFromText('id1', containerName, blobName, 'id1', function (error2) {
+        assert.equal(error2, null);
+        // By the time the complete callback is processed the response header callback must have been called before
+        assert.equal(responseReceived, true);
+
+        done();
+      });
+    });
   });
 });
 
