@@ -1183,7 +1183,7 @@ suite('blobservice-tests', function () {
     done();
   });
 
-  test('responseEmitts', function (done) {
+  test('responseEmits', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
@@ -1203,6 +1203,72 @@ suite('blobservice-tests', function () {
         assert.equal(responseReceived, true);
 
         done();
+      });
+    });
+  });
+
+  test('GetBlobToStream', function (done) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var fileNameTarget = testutil.generateId('getBlobFile') + '.test';
+    var blobText = 'Hello World';
+
+    blobService.createContainer(containerName, function (createError1, container1) {
+      assert.equal(createError1, null);
+      assert.notEqual(container1, null);
+
+      blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error1) {
+        assert.equal(error1, null);
+
+        blobService.getBlobToFile(containerName, blobName, fileNameTarget, function (error2) {
+          assert.equal(error2, null);
+
+          fs.exists(fileNameTarget, function (exists) {
+            assert.equal(exists, true);
+
+            var fileText = fs.readFileSync(fileNameTarget);
+            assert.equal(blobText, fileText);
+            done();
+          });
+        });
+      });
+    });
+  });
+
+  test('SmallUploadBlobFromFile', function (done) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
+    var fileNameSource = testutil.generateId('getBlobFile') + '.test';
+    var blobText = 'Hello World';
+
+    fs.writeFile(fileNameSource, blobText, function () {
+      blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
+        assert.equal(createError1, null);
+        assert.notEqual(container1, null);
+        assert.ok(createResponse1.isSuccessful);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+
+        var blobOptions = { contentType: 'text' };
+        blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, blobOptions, function (uploadError, blobResponse, uploadResponse) {
+          assert.equal(uploadError, null);
+          assert.notEqual(blobResponse, null);
+          assert.ok(uploadResponse.isSuccessful);
+
+          blobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
+            assert.equal(downloadErr, null);
+            assert.equal(blobTextResponse, blobText);
+
+            blobService.getBlobProperties(containerName, blobName, function (getBlobPropertiesErr, blobGetResponse) {
+              assert.equal(getBlobPropertiesErr, null);
+              assert.notEqual(blobGetResponse, null);
+              if (blobGetResponse) {
+                assert.equal(blobOptions.contentType, blobGetResponse.contentType);
+              }
+
+              done();
+            });
+          });
+        });
       });
     });
   });
