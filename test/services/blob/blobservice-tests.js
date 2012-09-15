@@ -1183,7 +1183,7 @@ suite('blobservice-tests', function () {
     done();
   });
 
-  test('responseEmitts', function (done) {
+  test('responseEmits', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
