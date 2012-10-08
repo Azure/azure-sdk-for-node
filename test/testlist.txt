@@ -1,3 +1,5 @@
+cli/commands/cli.account-tests.js
+cli/commands/cli.site-tests.js
 cli/commands/generate-psm1-utils-test.js
 serviceruntime/roleenvironment-tests.js
 serviceruntime/runtimeversionmanager-tests.js
