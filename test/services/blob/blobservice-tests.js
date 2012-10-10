@@ -1272,6 +1272,18 @@ suite('blobservice-tests', function () {
       });
     });
   });
+
+  test('storageConnectionStrings', function (done) {
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var blobService = azure.createBlobService(connectionString);
+
+    assert.equal(blobService.storageAccount, 'myaccount');
+    assert.equal(blobService.storageAccessKey, 'mykey');
+    assert.equal(blobService.protocol, 'https://');
+    assert.equal(blobService.host, 'blob.core.windows.net');
+
+    done();
+  });
 });
 
 function repeat(s, n) {

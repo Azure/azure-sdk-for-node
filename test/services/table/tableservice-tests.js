@@ -766,4 +766,15 @@ suite('tableservice-tests', function () {
       });
     });
   });
+
+  test('storageConnectionStrings', function (done) {
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var tableService = azure.createTableService(connectionString);
+
+    assert.equal(tableService.storageAccount, 'myaccount');
+    assert.equal(tableService.storageAccessKey, 'mykey');
+    assert.equal(tableService.protocol, 'https://');
+
+    done();
+  });
 });

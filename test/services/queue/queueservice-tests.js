@@ -450,4 +450,15 @@ suite('queueservice-tests', function () {
       done();
     });
   });
+
+  test('storageConnectionStrings', function (done) {
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var queueService = azure.createQueueService(connectionString);
+
+    assert.equal(queueService.storageAccount, 'myaccount');
+    assert.equal(queueService.storageAccessKey, 'mykey');
+    assert.equal(queueService.protocol, 'https://');
+
+    done();
+  });
 });
