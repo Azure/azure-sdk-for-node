@@ -13,23 +13,37 @@
 * limitations under the License.
 */
 
-var should = require('should');
+var assert = require('assert');
+
 var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
 var ServiceSettings = azure.ServiceSettings;
 
-suite('serviceclient-tests', function () {
-  test('NormalizedErrorsAreErrors', function () {
-    var error = {
-      'message': 'this is an error message',
-      'ResultCode': 500,
-      'somethingElse': 'goes here'
-    };
+suite('servicesettings-tests', function () {
+  test('parseAndValidateKeysInvalid', function (done) {
+    var connectionString = 'FakeKey=FakeValue';
+    var validKeys = [ 'ValidKey1', 'ValidKey2' ];
 
-    var normalizedError = ServiceClient.prototype._normalizeError(error);
+    assert.throws(
+      function() {
+        ServiceSettings.parseAndValidateKeys(connectionString, validKeys);
+      },
+      function(err) {
+        if ((err instanceof Error) && err.message === 'Invalid connection string setting key fakekey') {
+          return true;
+        }
+      },
+      "unexpected error"
+    );
 
-    normalizedError.should.be.an.instanceOf(Error);
-    normalizedError.should.have.keys('message', 'resultcode', 'somethingelse');
+    done();
+  });
+
+  test('parseAndValidateKeysInvalid', function (done) {
+    var connectionString = 'ValidKey1=FakeValue';
+    var validKeys = [ 'ValidKey1', 'ValidKey2' ];
+
+    ServiceSettings.parseAndValidateKeys(connectionString, validKeys);
+    done();
   });
 });
-
