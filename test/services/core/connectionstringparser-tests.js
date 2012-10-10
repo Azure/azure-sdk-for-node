@@ -43,7 +43,7 @@ suite('connectionstringparser-tests', function () {
     done();
   });
 
-  test('parseInvalid', function (done) {
+  test('parseInvalidAssignment', function (done) {
     // no assignment
     assert.throws(
       function() {
@@ -51,6 +51,34 @@ suite('connectionstringparser-tests', function () {
       },
       Error
     );
+
+    done();
+  });
+
+  test('parseInvalidKey', function (done) {
+    assert.throws(
+      function() {
+        var parsedConnectionString = ConnectionStringParser.parse('=value');
+      },
+      Error
+    );
+
+    assert.throws(
+      function() {
+        var parsedConnectionString = ConnectionStringParser.parse('    =value');
+      },
+      Error
+    );
+
+    done();
+  });
+
+  test('parseQuotedValues', function (done) {
+    var parsedConnectionString = ConnectionStringParser.parse('"test"=\'value\'');
+    assert.equal(parsedConnectionString['test'], 'value');
+
+    var parsedConnectionString = ConnectionStringParser.parse('\'test\'="value"');
+    assert.equal(parsedConnectionString['test'], 'value');
 
     done();
   });
