@@ -49,7 +49,12 @@ suite('connectionstringparser-tests', function () {
       function() {
         var parsedConnectionString = ConnectionStringParser.parse('Endpoint');
       },
-      Error
+      function(err) {
+        if ((err instanceof Error) && err.message === 'Missing character "="') {
+          return true;
+        }
+      },
+      "unexpected error"
     );
 
     done();
@@ -60,14 +65,24 @@ suite('connectionstringparser-tests', function () {
       function() {
         var parsedConnectionString = ConnectionStringParser.parse('=value');
       },
-      Error
+      function(err) {
+        if ((err instanceof Error) && err.message === 'Missing key') {
+          return true;
+        }
+      },
+      "unexpected error"
     );
 
     assert.throws(
       function() {
         var parsedConnectionString = ConnectionStringParser.parse('    =value');
       },
-      Error
+      function(err) {
+        if ((err instanceof Error) && err.message === 'Missing key') {
+          return true;
+        }
+      },
+      "unexpected error"
     );
 
     done();
