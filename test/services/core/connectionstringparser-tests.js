@@ -74,8 +74,8 @@ suite('connectionstringparser-tests', function () {
   });
 
   test('parseQuotedValues', function (done) {
-    var parsedConnectionString = ConnectionStringParser.parse('"test"=\'value\'');
-    assert.equal(parsedConnectionString['test'], 'value');
+    var parsedConnectionString = ConnectionStringParser.parse('"test key"=\'value of test\'');
+    assert.equal(parsedConnectionString['test key'], 'value of test');
 
     var parsedConnectionString = ConnectionStringParser.parse('\'test\'="value"');
     assert.equal(parsedConnectionString['test'], 'value');
