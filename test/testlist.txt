@@ -9,6 +9,7 @@ services/blob/sharedaccesssignature-tests.js
 services/blob/sharedkey-tests.js
 services/blob/sharedkeylite-tests.js
 services/blob/filters-tests.js
+services/core/connectionstringparser-tests.js
 services/core/serviceclient-tests.js
 services/core/exponentialretrypolicyfilter-tests.js
 services/core/linearretrypolicyfilter-tests.js

@@ -49,7 +49,12 @@ suite('connectionstringparser-tests', function () {
       function() {
         var parsedConnectionString = ConnectionStringParser.parse('Endpoint');
       },
-      Error
+      function(err) {
+        if ((err instanceof Error) && err.message === 'Missing character "="') {
+          return true;
+        }
+      },
+      "unexpected error"
     );
 
     done();
@@ -60,25 +65,47 @@ suite('connectionstringparser-tests', function () {
       function() {
         var parsedConnectionString = ConnectionStringParser.parse('=value');
       },
-      Error
+      function(err) {
+        if ((err instanceof Error) && err.message === 'Missing key') {
+          return true;
+        }
+      },
+      "unexpected error"
     );
 
     assert.throws(
       function() {
         var parsedConnectionString = ConnectionStringParser.parse('    =value');
       },
-      Error
+      function(err) {
+        if ((err instanceof Error) && err.message === 'Missing key') {
+          return true;
+        }
+      },
+      "unexpected error"
     );
 
     done();
   });
 
   test('parseQuotedValues', function (done) {
-    var parsedConnectionString = ConnectionStringParser.parse('"test"=\'value\'');
-    assert.equal(parsedConnectionString['test'], 'value');
+    var parsedConnectionString = ConnectionStringParser.parse('"test key"=\'value of test\'');
+    assert.equal(parsedConnectionString['test key'], 'value of test');
 
     var parsedConnectionString = ConnectionStringParser.parse('\'test\'="value"');
     assert.equal(parsedConnectionString['test'], 'value');
+
+    done();
+  });
+
+  test('connectionStringWithSpecialCharacters', function (done) {
+    var parsedConnectionString = ConnectionStringParser.parse('key1=qwdwdqdw=@#!@;key2=value2');
+    assert.equal(parsedConnectionString['key1'], 'qwdwdqdw=@#!@');
+    assert.equal(parsedConnectionString['key2'], 'value2');
+
+    var parsedConnectionString = ConnectionStringParser.parse('key1="qwd;wdqdw=@#!@";key2=value2');
+    assert.equal(parsedConnectionString['key1'], 'qwd;wdqdw=@#!@');
+    assert.equal(parsedConnectionString['key2'], 'value2');
 
     done();
   });
