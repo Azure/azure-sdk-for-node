@@ -48,6 +48,7 @@ var testPrefix = 'blobservice-tests';
 var numberTests = 34;
 
 suite('blobservice-tests', function () {
+  /*
   setup(function (done) {
     blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
       blobService = newBlobService;
@@ -1272,7 +1273,7 @@ suite('blobservice-tests', function () {
       });
     });
   });
-
+*/
   test('storageConnectionStrings', function (done) {
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
     var blobService = azure.createBlobService(connectionString);
@@ -1280,6 +1281,7 @@ suite('blobservice-tests', function () {
     assert.equal(blobService.storageAccount, 'myaccount');
     assert.equal(blobService.storageAccessKey, 'mykey');
     assert.equal(blobService.protocol, 'https://');
+    assert.equal(blobService.host, 'blob.core.windows.net');
 
     done();
   });
