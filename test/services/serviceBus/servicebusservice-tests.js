@@ -1606,4 +1606,16 @@ suite('servicebusservice-tests', function () {
       });
     });
   });
+
+  test('connectionStrings', function (done) {
+    var connectionString = 'Endpoint=sb://ablal-martvue.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=value';
+
+    var serviceBusService = azure.createServiceBusService(connectionString);
+    assert.equal(serviceBusService.host, 'servicebus.windows.net');
+    assert.equal(serviceBusService.namespace, 'ablal-martvue');
+    assert.equal(serviceBusService.issuer, 'owner');
+    assert.equal(serviceBusService.accessKey, 'value');
+
+    done();
+  });
 });
