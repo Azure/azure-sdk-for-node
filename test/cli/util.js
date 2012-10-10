@@ -17,7 +17,7 @@ exports = module.exports = {
     capture: capture,
 };
 
-function capture(action) {
+function capture(action, cb) {
     var result = {
         text: '',
     }
@@ -26,11 +26,12 @@ function capture(action) {
     var processExit = process.exit
     
     process.stdout.write = function(data, encoding, fd) {
-        result.text = result.text + data;
+        result.text += data;
     };
     process.exit = function(status) {
         result.exitStatus = status;
-        throw new Error('process exit');
+        
+        return cb(result);
     };
     
     try {
@@ -41,5 +42,4 @@ function capture(action) {
     }
     process.stdout.write = processStdoutWrite;
     process.exit = processExit;
-    return result;
 }
