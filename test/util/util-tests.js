@@ -166,4 +166,13 @@ suite('util-tests', function() {
 
     done();
   });
+
+  test('In array case insensitive', function (done) {
+    // int positives
+    assert.ok(util.inArrayInsensitive('a', [ 'a', 'b', 'c']));
+    assert.ok(util.inArrayInsensitive('A', [ 'a', 'b', 'c']));
+    assert.ok(!util.inArrayInsensitive('d', [ 'a', 'b', 'c']));
+
+    done();
+  });
 });
