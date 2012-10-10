@@ -48,7 +48,6 @@ var testPrefix = 'blobservice-tests';
 var numberTests = 34;
 
 suite('blobservice-tests', function () {
-  /*
   setup(function (done) {
     blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
       blobService = newBlobService;
@@ -1273,7 +1272,7 @@ suite('blobservice-tests', function () {
       });
     });
   });
-*/
+
   test('storageConnectionStrings', function (done) {
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
     var blobService = azure.createBlobService(connectionString);
