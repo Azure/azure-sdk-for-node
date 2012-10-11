@@ -1,1 +1,2 @@
 services/core/servicesettings-tests.js
+util/validate-tests.js
