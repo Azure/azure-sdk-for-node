@@ -13,6 +13,7 @@
 * limitations under the License.
 */
 
+var should = require('should');
 var assert = require('assert');
 
 var testutil = require('../../util/util');
@@ -39,11 +40,20 @@ suite('servicesettings-tests', function () {
     done();
   });
 
+
   test('parseAndValidateKeysInvalid', function (done) {
     var connectionString = 'ValidKey1=FakeValue';
     var validKeys = [ 'ValidKey1', 'ValidKey2' ];
 
     ServiceSettings.parseAndValidateKeys(connectionString, validKeys);
+    done();
+  });
+
+  test('Setting', function (done) {
+    var settingWithFunc = ServiceSettings.setting('mysettingname', 'true', 'false');
+    settingWithFunc['SettingName'].should.not.be.null;
+    settingWithFunc['SettingConstraint'].should.not.be.null;
+
     done();
   });
 });
