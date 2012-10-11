@@ -17,9 +17,31 @@ var should = require('should');
 
 var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
+var Constants = azure.Constants;
+var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var StorageServiceSettings = azure.StorageServiceSettings;
 
 suite('storageservicesettings-tests', function () {
+  test('testCreateFromConnectionStringWithUseDevStore', function () {
+    // Setup
+    var connectionString = 'UseDevelopmentStorage=true';
+    var expectedName = ConnectionStringKeys.DEV_STORE_NAME;
+    var expectedKey = ConnectionStringKeys.DEV_STORE_KEY;
+    var expectedBlobEndpoint = Constants.DEV_STORE_URI + ':10000/devstoreaccount1/';
+    var expectedQueueEndpoint = Constants.DEV_STORE_URI + ':10001/devstoreaccount1/';
+    var expectedTableEndpoint = Constants.DEV_STORE_URI + ':10002/devstoreaccount1/';
+    
+    // Test
+    var actual = StorageServiceSettings.createFromConnectionString(connectionString);
+    
+    // Assert
+    actual._name.should.equal(expectedName);
+    actual._key.should.equal(expectedKey);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    actual.tableEndpointUri.should.equal(expectedTableEndpoint);
+  });
+
   test('getDevelopmentStorageAccount', function () {
     var developmentStorageAccount = StorageServiceSettings._getDevelopmentStorageAccount();
 
