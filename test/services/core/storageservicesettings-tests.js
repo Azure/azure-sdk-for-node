@@ -42,6 +42,48 @@ suite('storageservicesettings-tests', function () {
     actual.tableEndpointUri.should.equal(expectedTableEndpoint);
   });
 
+  test('testCreateFromConnectionStringWithUseDevStoreUri', function () {
+    // Setup
+    var myProxyUri = 'http://222.3.5.6';
+    var connectionString = "DevelopmentStorageProxyUri=$myProxyUri;UseDevelopmentStorage=true";
+    var expectedName = ConnectionStringKeys.DEV_STORE_NAME;
+    var expectedKey = ConnectionStringKeys.DEV_STORE_KEY;
+    var expectedBlobEndpoint = myProxyUri + ':10000/devstoreaccount1/';
+    var expectedQueueEndpoint = myProxyUri + ':10001/devstoreaccount1/';
+    var expectedTableEndpoint = myProxyUri + ':10002/devstoreaccount1/';
+    
+    // Test
+    var actual = StorageServiceSettings.createFromConnectionString(connectionString);
+    
+    // Assert
+    actual._name.should.equal(expectedName);
+    actual._key.should.equal(expectedKey);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+  });
+
+  test('testCreateFromConnectionStringWithInvalidUseDevStoreFail', function () {
+    // Setup
+    var invalidValue = 'invalid_value';
+    var connectionString = 'UseDevelopmentStorage=$invalidValue';
+
+    // Test
+    (function() {
+      StorageServiceSettings.createFromConnectionString(connectionString);
+    }).should.throw('The provided config value ' + invalidValue + 'does not belong to the valid values subset:\n[ true ]');
+  });
+
+  test('testCreateFromConnectionStringWithEmptyConnectionStringFail', function () {
+    // Setup
+    var connectionString = '';
+
+    // Test
+    (function() {
+      StorageServiceSettings.createFromConnectionString(connectionString);
+    }).should.throw('InvalidArgumentException');
+  });
+
   test('getDevelopmentStorageAccount', function () {
     var developmentStorageAccount = StorageServiceSettings._getDevelopmentStorageAccount();
 
