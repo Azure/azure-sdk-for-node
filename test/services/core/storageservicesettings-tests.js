@@ -177,7 +177,7 @@ suite('storageservicesettings-tests', function () {
     var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.TABLE_BASE_DNS_NAME });
     var expectedBlobEndpoint = 'http://myprivateblobdns.com';
     var expectedQueueEndpoint = 'http://myprivatequeuedns.com';
-    var connectionString  = 'DefaultEndpointsProtocol=' + protocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';QueueEndpoint=' + expectedQueueEndpoint+ ';BlobEndpoint=' + expectedBlobEndpoint;
+    var connectionString  = 'DefaultEndpointsProtocol=' + protocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';QueueEndpoint=' + expectedQueueEndpoint + ';BlobEndpoint=' + expectedBlobEndpoint;
 
     // Test
     var actual = StorageServiceSettings.createFromConnectionString(connectionString);
@@ -223,6 +223,74 @@ suite('storageservicesettings-tests', function () {
     (function() {
       StorageServiceSettings.createFromConnectionString(connectionString);
     }).should.throw('The provided account key ' + invalidKey + ' is not a valid base64 string.');
+  });
+
+  test('testCreateFromConnectionStringWithQueueAndBlobAndTableEndpointSpecfied', function () {
+    // Setup
+    var protocol = 'https';
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var expectedTableEndpoint = 'http://myprivatetabledns.com';
+    var expectedBlobEndpoint = 'http://myprivateblobdns.com';
+    var expectedQueueEndpoint = 'http://myprivatequeuedns.com';
+    var connectionString  = 'DefaultEndpointsProtocol=' + protocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';QueueEndpoint=' + expectedQueueEndpoint + ';BlobEndpoint=' + expectedBlobEndpoint+ ';TableEndpoint=' + expectedTableEndpoint;
+
+    // Test
+    var actual = StorageServiceSettings.createFromConnectionString(connectionString);
+
+    // Assert
+    actual._name.should.equal(expectedName);
+    actual._key.should.equal(expectedKey);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+  });
+
+  test('testCreateFromConnectionStringMissingServicesEndpointsFail', function () {
+    // Setup
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var invalidUri = 'https://www.invalid_domain';
+    var connectionString  = 'BlobEndpoint=' + invalidUri + ';DefaultEndpointsProtocol=http;AccountName=' + expectedName + ';AccountKey=' + expectedKey;
+
+    // Test
+    (function() {
+      StorageServiceSettings.createFromConnectionString(connectionString);
+    }).should.throw('The provided URI "' + invalidUri + '" is invalid.');
+  });
+
+  test('testCreateFromConnectionStringWithInvalidSettingKeyFail', function () {
+    // Setup
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var invalidKey = 'InvalidKey';
+    var connectionString  = 'DefaultEndpointsProtocol=http;' + invalidKey + '=MyValue;AccountName=' + expectedName + ';AccountKey=' + expectedKey;
+
+    // Test
+    (function() {
+      StorageServiceSettings.createFromConnectionString(connectionString);
+    }).should.throw('Invalid connection string setting key ' + invalidKey.toLowerCase());
+  });
+
+  test('testCreateFromConnectionStringWithCaseInsensitive', function () {
+    // Setup
+    var protocol = 'https';
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString  = 'defaultendpointsprotocol=' + protocol + ';accountname=' + expectedName + ';accountkey=' + expectedKey;
+    var expectedBlobEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.BLOB_BASE_DNS_NAME });
+    var expectedQueueEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.QUEUE_BASE_DNS_NAME });
+    var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.TABLE_BASE_DNS_NAME });
+
+    // Test
+    var actual = StorageServiceSettings.createFromConnectionString(connectionString);
+
+    // Assert
+    actual._name.should.equal(expectedName);
+    actual._key.should.equal(expectedKey);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
   });
 
   test('getDevelopmentStorageAccount', function () {
