@@ -22,7 +22,7 @@ var Constants = azure.Constants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var ServiceBusSettings = azure.ServiceBusSettings;
 
-suite('storageservicesettings-tests', function () {
+suite('servicebussettings-tests', function () {
   test('testCreateFromConnectionStringWithServiceBusAutomaticCase', function () {
     // Setup
     var expectedNamespace = 'mynamespace';
