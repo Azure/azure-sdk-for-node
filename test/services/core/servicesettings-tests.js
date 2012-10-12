@@ -50,7 +50,7 @@ suite('servicesettings-tests', function () {
   });
 
   test('Setting', function (done) {
-    var settingWithFunc = ServiceSettings.setting('mysettingname', 'true', 'false');
+    var settingWithFunc = ServiceSettings.setting('mysettingname', true, false);
     settingWithFunc['SettingName'].should.not.be.null;
     settingWithFunc['SettingConstraint'].should.not.be.null;
 

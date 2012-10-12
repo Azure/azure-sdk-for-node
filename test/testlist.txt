@@ -1,4 +1,1 @@
-services/core/servicesettings-tests.js
 services/core/storageservicesettings-tests.js
-util/validate-tests.js
-util/util-tests.js
