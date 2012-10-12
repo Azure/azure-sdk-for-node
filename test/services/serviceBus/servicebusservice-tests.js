@@ -1616,7 +1616,6 @@ suite('servicebusservice-tests', function () {
     assert.equal(serviceBusService.namespace, 'ablal-martvue');
     assert.equal(serviceBusService.issuer, 'owner');
     assert.equal(serviceBusService.accessKey, key);
-    assert.equal(serviceBusService.acsNamespace, 'ablal-martvue-sb');
 
     done();
   });
