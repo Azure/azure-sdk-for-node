@@ -41,11 +41,11 @@ suite('storageservicesettings-tests', function () {
     actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
     actual._tableEndpointUri.should.equal(expectedTableEndpoint);
   });
-/*
+
   test('testCreateFromConnectionStringWithUseDevStoreUri', function () {
     // Setup
     var myProxyUri = 'http://222.3.5.6';
-    var connectionString = "DevelopmentStorageProxyUri=$myProxyUri;UseDevelopmentStorage=true";
+    var connectionString = 'DevelopmentStorageProxyUri=' + myProxyUri + ';UseDevelopmentStorage=true';
     var expectedName = ConnectionStringKeys.DEV_STORE_NAME;
     var expectedKey = ConnectionStringKeys.DEV_STORE_KEY;
     var expectedBlobEndpoint = myProxyUri + ':10000/devstoreaccount1/';
@@ -66,12 +66,12 @@ suite('storageservicesettings-tests', function () {
   test('testCreateFromConnectionStringWithInvalidUseDevStoreFail', function () {
     // Setup
     var invalidValue = 'invalid_value';
-    var connectionString = 'UseDevelopmentStorage=$invalidValue';
+    var connectionString = 'UseDevelopmentStorage=' + invalidValue;
 
     // Test
     (function() {
       StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided config value ' + invalidValue + 'does not belong to the valid values subset:\n[ true ]');
+    }).should.throw('The provided config value ' + invalidValue + ' does not belong to the valid values subset:\n[true]');
   });
 
   test('testCreateFromConnectionStringWithEmptyConnectionStringFail', function () {
@@ -89,8 +89,8 @@ suite('storageservicesettings-tests', function () {
 
     developmentStorageAccount._name.should.equal('devstoreaccount1');
     developmentStorageAccount._key.should.equal('Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==');
-    developmentStorageAccount._blobEndpointUri.should.equal('http:://127.0.0.1:10000/devstoreaccount1/');
-    developmentStorageAccount._queueEndpointUri.should.equal('http:://127.0.0.1:10001/devstoreaccount1/');
-    developmentStorageAccount._tableEndpointUri.should.equal('http:://127.0.0.1:10002/devstoreaccount1/');
-  });*/
+    developmentStorageAccount._blobEndpointUri.should.equal('http://127.0.0.1:10000/devstoreaccount1/');
+    developmentStorageAccount._queueEndpointUri.should.equal('http://127.0.0.1:10001/devstoreaccount1/');
+    developmentStorageAccount._tableEndpointUri.should.equal('http://127.0.0.1:10002/devstoreaccount1/');
+  });
 });
