@@ -1,7 +1,7 @@
 {
   "name": "azure",
   "author": "Microsoft Corporation",
-  "version": "0.6.4",
+  "version": "0.6.6",
   "description": "Windows Azure Client Library for node and Command Line Tool",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
@@ -22,7 +22,7 @@
     "tunnel": ">= 0.0.1",
     "async": ">= 0.1.18",
     "streamline": "0.2.4",
-    "commander": ">= 0.5.2",
+    "commander": "1.0.4",
     "winston": ">= 0.5.10",
     "colors": "0.x.x",
     "eyes": "0.x.x",
