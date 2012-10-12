@@ -58,7 +58,7 @@ suite('blobservice-tests', function () {
   teardown(function (done) {
     blobtestutil.tearDownTest(numberTests, blobService, testPrefix, done);
   });
-
+/*
   test('IncorrectContainerNames', function (done) {
     assert.throws(function () { blobService.createContainer(null, function () { }); },
       BlobService.incorrectContainerNameErr);
@@ -1164,21 +1164,13 @@ suite('blobservice-tests', function () {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
-    var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host:80');
-    blobServiceassert.usePathStyleUri = false;
+    var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
     var urlParts = blobServiceassert.getBlobUrl(containerName);
-    assert.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName);
+    assert.equal(urlParts.url(), 'http://storageaccount.host.com:80/' + containerName);
 
     urlParts = blobServiceassert.getBlobUrl(containerName, blobName);
-    assert.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName + '/' + blobName);
-
-    blobServiceassert.usePathStyleUri = true;
-    urlParts = blobServiceassert.getBlobUrl(containerName);
-    assert.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName);
-
-    urlParts = blobServiceassert.getBlobUrl(containerName, blobName);
-    assert.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName + '/' + blobName);
+    assert.equal(urlParts.url(), 'http://storageaccount.host.com:80/' + containerName + '/' + blobName);
 
     done();
   });
@@ -1272,7 +1264,7 @@ suite('blobservice-tests', function () {
       });
     });
   });
-
+*/
   test('storageConnectionStrings', function (done) {
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
     var blobService = azure.createBlobService(connectionString);
