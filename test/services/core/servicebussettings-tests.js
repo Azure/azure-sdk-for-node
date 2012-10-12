@@ -23,6 +23,7 @@ var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var ServiceBusSettings = azure.ServiceBusSettings;
 
 suite('servicebussettings-tests', function () {
+    /*
   test('testCreateFromConnectionStringWithServiceBusAutomaticCase', function () {
     // Setup
     var expectedNamespace = 'mynamespace';
@@ -63,7 +64,7 @@ suite('servicebussettings-tests', function () {
       ServiceBusSettings.createFromConnectionString(connectionString);
     }).should.throw('Invalid connection string setting key ' + invalidKey.toLowerCase());
   });
-
+*/
   test('testCreateFromConnectionStringWithCaseInvesitive', function () {
     // Setup
     var expectedNamespace = 'mynamespace';

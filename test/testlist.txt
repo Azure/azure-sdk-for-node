@@ -1,1 +1,2 @@
 services/serviceBus/servicebusservice-tests.js
+services/core/servicebussettings-tests.js
