@@ -33,13 +33,13 @@ suite('storageservicesettings-tests', function () {
     
     // Test
     var actual = StorageServiceSettings.createFromConnectionString(connectionString);
-    
+
     // Assert
     actual._name.should.equal(expectedName);
     actual._key.should.equal(expectedKey);
     actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
     actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
-    actual.tableEndpointUri.should.equal(expectedTableEndpoint);
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
   });
 /*
   test('testCreateFromConnectionStringWithUseDevStoreUri', function () {
