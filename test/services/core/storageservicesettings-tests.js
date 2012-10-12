@@ -14,6 +14,7 @@
 */
 
 var should = require('should');
+var url = require('url');
 
 var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
@@ -83,6 +84,28 @@ suite('storageservicesettings-tests', function () {
       StorageServiceSettings.createFromConnectionString(connectionString);
     }).should.throw('The provided connection string  does not have complete configuration settings.');
   });
+
+  test('testCreateFromConnectionStringWithAutomatic', function () {
+    // Setup
+    var protocol = 'https';
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString  = 'DefaultEndpointsProtocol=' + protocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey;
+    var expectedBlobEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.BLOB_BASE_DNS_NAME });
+    var expectedQueueEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.QUEUE_BASE_DNS_NAME });
+    var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.TABLE_BASE_DNS_NAME });
+
+    // Test
+    var actual = StorageServiceSettings.createFromConnectionString(connectionString);
+
+    // Assert
+    actual._name.should.equal(expectedName);
+    actual._key.should.equal(expectedKey);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+  });
+
 
   test('getDevelopmentStorageAccount', function () {
     var developmentStorageAccount = StorageServiceSettings._getDevelopmentStorageAccount();
