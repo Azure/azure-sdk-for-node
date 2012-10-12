@@ -481,7 +481,7 @@ suite('tableservice-tests', function () {
         newEntity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
 
         tableService.updateEntity(tableName, newEntity1, { checkEtag: true }, function (updateError, updateEntity, updateResponse) {
-          assert.equal(updateError.code, StorageErrorCodeStrings.CONDITION_NOT_MET);
+          assert.equal(updateError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
           assert.equal(updateEntity, null);
           assert.equal(updateResponse.isSuccessful, false);
           assert.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
