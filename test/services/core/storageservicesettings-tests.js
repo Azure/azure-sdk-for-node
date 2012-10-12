@@ -81,7 +81,7 @@ suite('storageservicesettings-tests', function () {
     // Test
     (function() {
       StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('InvalidArgumentException');
+    }).should.throw('The provided connection string  does not have complete configuration settings.');
   });
 
   test('getDevelopmentStorageAccount', function () {
