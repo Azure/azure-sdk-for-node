@@ -107,7 +107,7 @@ suite('azure', function () {
     // clean up
     done();
   });
-/*
+
   test('ExponentialRetryPolicyFilter', function (done) {
     assert.notEqual(azure.ExponentialRetryPolicyFilter, null);
 
@@ -191,7 +191,7 @@ suite('azure', function () {
 
     done();
   });
-*/
+
   test('EmulatedWithoutParameters', function (done) {
     // set emulated to true
     process.env[ServiceClient.EnvironmentVariables.EMULATED] = true;
@@ -213,7 +213,7 @@ suite('azure', function () {
 
     done();
   });
-/*
+
   test('NotEmulatedWithoutParameters', function (done) {
     // Make sure is not emulated
     delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
@@ -234,5 +234,5 @@ suite('azure', function () {
     assert.equal(blobService.authenticationProvider.storageAccessKey, environmentAzureStorageAccessKey);
 
     done();
-  });*/
+  });
 });
