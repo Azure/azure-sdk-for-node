@@ -58,7 +58,7 @@ suite('blobservice-tests', function () {
   teardown(function (done) {
     blobtestutil.tearDownTest(numberTests, blobService, testPrefix, done);
   });
-/*
+
   test('IncorrectContainerNames', function (done) {
     assert.throws(function () { blobService.createContainer(null, function () { }); },
       BlobService.incorrectContainerNameErr);
@@ -1264,15 +1264,16 @@ suite('blobservice-tests', function () {
       });
     });
   });
-*/
+
   test('storageConnectionStrings', function (done) {
-    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
     var blobService = azure.createBlobService(connectionString);
 
     assert.equal(blobService.storageAccount, 'myaccount');
-    assert.equal(blobService.storageAccessKey, 'mykey');
+    assert.equal(blobService.storageAccessKey, key);
     assert.equal(blobService.protocol, 'https://');
-    assert.equal(blobService.host, 'blob.core.windows.net');
+    assert.equal(blobService.host, 'myaccount.blob.core.windows.net');
 
     done();
   });

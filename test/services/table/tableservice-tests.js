@@ -768,11 +768,12 @@ suite('tableservice-tests', function () {
   });
 
   test('storageConnectionStrings', function (done) {
-    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
     var tableService = azure.createTableService(connectionString);
 
     assert.equal(tableService.storageAccount, 'myaccount');
-    assert.equal(tableService.storageAccessKey, 'mykey');
+    assert.equal(tableService.storageAccessKey, key);
     assert.equal(tableService.protocol, 'https://');
 
     done();
