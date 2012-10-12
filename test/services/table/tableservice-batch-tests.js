@@ -303,52 +303,6 @@ suite('tableservice-batch-tests', function () {
       });
     });
   });
-
-  // TODO: fix
-/*
-  test('FailBatch', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
-
-    tableService.createTable(tableName, function (createError, table, createResponse) {
-      assert.equal(createError, null);
-      assert.notEqual(table, null);
-
-      assert.notEqual(createResponse, null);
-      if (createResponse) {
-        assert.ok(createResponse.isSuccessful);
-      }
-
-      var simpleEntity = {
-        PartitionKey: 'part',
-        RowKey: 1,
-        MyField: 'value'
-      };
-
-      tableService.beginBatch();
-
-      tableService.insertEntity(tableName, simpleEntity);
-
-      // Doing an update on the same entity within the same batch should make the batch fail
-      simpleEntity.MyField = 'othervalue';
-      tableService.updateEntity(tableName, simpleEntity);
-
-      tableService.commitBatch(function (batchError, performBatchOperationResponses, batchResponse) {
-        assert.equal(batchError, null);
-
-        assert.notEqual(performBatchOperationResponses, null);
-        assert.equal(performBatchOperationResponses.length, 1);
-        assert.notEqual(performBatchOperationResponses[0].error, null);
-        assert.equal(performBatchOperationResponses[0].error.code, Constants.StorageErrorCodeStrings.RESOURCE_NOT_FOUND);
-
-        assert.notEqual(batchResponse, null);
-        if (batchResponse) {
-          assert.ok(batchResponse.isSuccessful);
-        }
-
-        done();
-      });
-    });
-  });*/
 });
 
 function generateEntities(count) {
