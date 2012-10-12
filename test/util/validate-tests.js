@@ -29,4 +29,15 @@ suite('servicesettings-tests', function () {
       validUri('something');
     }).should.throw('The provided URI "something" is invalid.');
   });
+
+  test('getIsBase64Encoded', function () {
+    var validBase64 = Validate.getIsBase64Encoded();
+
+    validBase64('AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==').should.be.ok;
+
+    var key = '__A&*INVALID-@Key';
+    (function() {
+      validBase64(key);
+    }).should.throw('The provided account key ' + key + ' is not a valid base64 string.');
+  });
 });
