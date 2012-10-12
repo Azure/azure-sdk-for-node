@@ -24,10 +24,10 @@ var ServiceBusServiceClient = testutil.libRequire('services/core/servicebusservi
 var ServiceClient = azure.ServiceClient;
 
 var environmentAzureStorageAccount = 'myaccount';
-var environmentAzureStorageAccessKey = 'myaccountstoragekey';
+var environmentAzureStorageAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
 var environmentServiceBusNamespace = 'mynamespace';
 var environmentServiceBusIssuer = 'myissuer';
-var environmentServiceBusAccessKey = 'myaccesskey';
+var environmentServiceBusAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
 var environmentWrapNamespace = 'mynamespace-sb';
 
 var parameterAzureStorageAccount = 'storageAccount';
