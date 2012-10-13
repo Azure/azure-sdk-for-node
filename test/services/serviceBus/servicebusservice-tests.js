@@ -1615,7 +1615,7 @@ suite('servicebusservice-tests', function () {
     assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');
     assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
     assert.equal(serviceBusService.authenticationProvider.accessKey, key);
-    assert.equal(serviceBusService.authenticationProvider.acsHost, 'ablal-martvue-sb.accesscontrol.windows.net');
+    assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://ablal-martvue-sb.accesscontrol.windows.net');
 
     done();
   });
