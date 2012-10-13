@@ -25,11 +25,11 @@ suite('servicesettings-tests', function () {
     Validate.isValidUri('http://www.microsoft.com').should.equal(true);
 
     (function() {
-      Validate.getIsValidUri()('something');
+      Validate.usValidUri('something');
     }).should.throw('The provided URI "something" is invalid.');
   });
 
-  test('getIsBase64Encoded', function () {
+  test('isBase64Encoded', function () {
     Validate.isBase64Encoded('AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==').should.be.ok;
 
     var key = '__A&*INVALID-@Key';
