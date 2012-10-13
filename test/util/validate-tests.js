@@ -20,25 +20,21 @@ var azure = testutil.libRequire('azure');
 var Validate = azure.Validate;
 
 suite('servicesettings-tests', function () {
-  test('getIsValidUri', function () {
-    var validUri = Validate.getIsValidUri();
-
-    validUri('http://www.microsoft.com').should.be.ok;
-    validUri('http://www.microsoft.com').should.equal(true);
+  test('isValidUri', function () {
+    Validate.isValidUri('http://www.microsoft.com').should.be.ok;
+    Validate.isValidUri('http://www.microsoft.com').should.equal(true);
 
     (function() {
-      validUri('something');
+      Validate.getIsValidUri()('something');
     }).should.throw('The provided URI "something" is invalid.');
   });
 
   test('getIsBase64Encoded', function () {
-    var validBase64 = Validate.getIsBase64Encoded();
-
-    validBase64('AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==').should.be.ok;
+    Validate.isBase64Encoded('AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==').should.be.ok;
 
     var key = '__A&*INVALID-@Key';
     (function() {
-      validBase64(key);
+      Validate.isBase64Encoded(key);
     }).should.throw('The provided account key ' + key + ' is not a valid base64 string.');
   });
 });
