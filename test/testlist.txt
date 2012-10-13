@@ -12,6 +12,7 @@ services/core/serviceclient-tests.js
 services/core/exponentialretrypolicyfilter-tests.js
 services/core/linearretrypolicyfilter-tests.js
 services/core/servicesettings-tests.js
+services/core/servicebussettings-tests.js
 services/core/storageservicesettings-tests.js
 services/queue/queueservice-tests.js
 services/table/batchserviceclient-tests.js
