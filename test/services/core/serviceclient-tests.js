@@ -19,7 +19,7 @@ var azure = testutil.libRequire('azure');
 var ServiceClient = azure.ServiceClient;
 
 suite('serviceclient-tests', function () {
-  test('NormalizedErrorsAreErrors', function () {
+  test('NormalizedErrorsAreErrors', function (done) {
     var error = {
       'message': 'this is an error message',
       'ResultCode': 500,
@@ -30,6 +30,8 @@ suite('serviceclient-tests', function () {
 
     normalizedError.should.be.an.instanceOf(Error);
     normalizedError.should.have.keys('message', 'resultcode', 'somethingelse');
+
+    done();
   });
 });
 
