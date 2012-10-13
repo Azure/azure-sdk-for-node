@@ -269,7 +269,7 @@ suite('storageservicesettings-tests', function () {
     // Test
     (function() {
       StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('Invalid connection string setting key ' + invalidKey.toLowerCase());
+    }).should.throw('Invalid connection string setting key "' + invalidKey.toLowerCase() + '"');
   });
 
   test('testCreateFromConnectionStringWithCaseInsensitive', function () {
