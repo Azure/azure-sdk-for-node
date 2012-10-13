@@ -1277,6 +1277,20 @@ suite('blobservice-tests', function () {
 
     done();
   });
+
+  test('storageConnectionStringsDevStore', function (done) {
+    var connectionString = 'UseDevelopmentStorage=true';
+    var blobService = azure.createBlobService(connectionString);
+
+    assert.equal(blobService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
+    assert.equal(blobService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    assert.equal(blobService.protocol, 'http://');
+    assert.equal(blobService.host, '127.0.0.1');
+    assert.equal(blobService.port, '10000');
+
+    done();
+  });
+
 });
 
 function repeat(s, n) {

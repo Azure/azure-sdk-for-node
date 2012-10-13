@@ -462,4 +462,17 @@ suite('queueservice-tests', function () {
 
     done();
   });
+
+  test('storageConnectionStringsDevStore', function (done) {
+    var connectionString = 'UseDevelopmentStorage=true';
+    var queueService = azure.createQueueService(connectionString);
+
+    assert.equal(queueService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
+    assert.equal(queueService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    assert.equal(queueService.protocol, 'http://');
+    assert.equal(queueService.host, '127.0.0.1');
+    assert.equal(queueService.port, '10002');
+
+    done();
+  });
 });
