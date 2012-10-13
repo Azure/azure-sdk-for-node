@@ -60,7 +60,7 @@ suite('servicebusservice-tests', function () {
   teardown(function (done) {
     servicebustestutil.tearDownTest(numberTests, serviceBusService, testPrefix, done);
   });
-/*
+
   test('CreateQueue', function (done) {
     var queueName = testutil.generateId(queueNamesPrefix, queueNames);
     var queueOptions = {
@@ -1606,13 +1606,16 @@ suite('servicebusservice-tests', function () {
       });
     });
   });
-*/
+
   test('connectionStrings', function (done) {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'Endpoint=http://ablal-martvue.servicebus.windows.net/;StsEndpoint=https://ablal-martvue-sb.accesscontrol.windows.net;SharedSecretIssuer=owner;SharedSecretValue=' + key;
 
     var serviceBusService = azure.createServiceBusService(connectionString);
     assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');
+    assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
+    assert.equal(serviceBusService.authenticationProvider.accessKey, 'value');
+    assert.equal(serviceBusService.authenticationProvider.acsHost, 'ablal-martvue-sb.accesscontrol.windows.net');
 
     done();
   });
