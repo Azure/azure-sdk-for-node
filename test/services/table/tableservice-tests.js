@@ -481,7 +481,7 @@ suite('tableservice-tests', function () {
         newEntity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
 
         tableService.updateEntity(tableName, newEntity1, { checkEtag: true }, function (updateError, updateEntity, updateResponse) {
-          assert.equal(updateError.code, StorageErrorCodeStrings.CONDITION_NOT_MET);
+          assert.equal(updateError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
           assert.equal(updateEntity, null);
           assert.equal(updateResponse.isSuccessful, false);
           assert.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
@@ -768,11 +768,12 @@ suite('tableservice-tests', function () {
   });
 
   test('storageConnectionStrings', function (done) {
-    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
     var tableService = azure.createTableService(connectionString);
 
     assert.equal(tableService.storageAccount, 'myaccount');
-    assert.equal(tableService.storageAccessKey, 'mykey');
+    assert.equal(tableService.storageAccessKey, key);
     assert.equal(tableService.protocol, 'https://');
 
     done();

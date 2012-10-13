@@ -24,6 +24,7 @@ suite('servicesettings-tests', function () {
     var validUri = Validate.getIsValidUri();
 
     validUri('http://www.microsoft.com').should.be.ok;
+    validUri('http://www.microsoft.com').should.equal(true);
 
     (function() {
       validUri('something');

@@ -452,11 +452,12 @@ suite('queueservice-tests', function () {
   });
 
   test('storageConnectionStrings', function (done) {
-    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
     var queueService = azure.createQueueService(connectionString);
 
     assert.equal(queueService.storageAccount, 'myaccount');
-    assert.equal(queueService.storageAccessKey, 'mykey');
+    assert.equal(queueService.storageAccessKey, key);
     assert.equal(queueService.protocol, 'https://');
 
     done();

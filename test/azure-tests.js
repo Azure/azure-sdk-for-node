@@ -24,14 +24,14 @@ var ServiceBusServiceClient = testutil.libRequire('services/core/servicebusservi
 var ServiceClient = azure.ServiceClient;
 
 var environmentAzureStorageAccount = 'myaccount';
-var environmentAzureStorageAccessKey = 'myaccountstoragekey';
+var environmentAzureStorageAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
 var environmentServiceBusNamespace = 'mynamespace';
 var environmentServiceBusIssuer = 'myissuer';
-var environmentServiceBusAccessKey = 'myaccesskey';
+var environmentServiceBusAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
 var environmentWrapNamespace = 'mynamespace-sb';
 
 var parameterAzureStorageAccount = 'storageAccount';
-var parameterAzureStorageAccessKey = 'storageAccesKey';
+var parameterAzureStorageAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
 
 var firstRun = true;
 var originalAzureStorageAccount = null;
@@ -136,11 +136,10 @@ suite('azure', function () {
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
 
     var blobService1 = azure.createBlobService();
-    assert.equal(blobService1.host, ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService1.host, environmentAzureStorageAccount + '.' + ServiceClient.CLOUD_BLOB_HOST);
     assert.equal(blobService1.usePathStyleUri, false);
 
     process.env[ServiceClient.EnvironmentVariables.EMULATED] = true;
-    assert.equal(azure.isEmulated(), true);
 
     var blobService2 = azure.createBlobService();
     assert.equal(blobService2.host, '127.0.0.1');
@@ -162,7 +161,7 @@ suite('azure', function () {
 
     // Points to the live services
     assert.equal(blobService.usePathStyleUri, false);
-    assert.equal(blobService.host, ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService.host, parameterAzureStorageAccount.toLowerCase() + '.' + ServiceClient.CLOUD_BLOB_HOST);
 
     // And credentials are the ones passed 
     assert.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);
@@ -182,9 +181,9 @@ suite('azure', function () {
     // Create blob client passing some credentials
     var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
-    // Points to the emulator
-    assert.equal(blobService.usePathStyleUri, true);
-    assert.equal(blobService.host + ':' + blobService.port, ServiceClient.DEVSTORE_BLOB_HOST);
+    // Points to the credentials
+    assert.equal(blobService.usePathStyleUri, false);
+    assert.equal(blobService.host + ':' + blobService.port, parameterAzureStorageAccount.toLowerCase() + '.' +  ServiceClient.CLOUD_BLOB_HOST + ':80');
 
     // But the used credentials are the ones passed because we were explicit
     assert.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);
@@ -228,32 +227,11 @@ suite('azure', function () {
 
     // Points to the live service
     assert.equal(blobService.usePathStyleUri, false);
-    assert.equal(blobService.host, ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService.host, environmentAzureStorageAccount + '.' + ServiceClient.CLOUD_BLOB_HOST);
 
     // and uses the environment variables
     assert.equal(blobService.authenticationProvider.storageAccount, environmentAzureStorageAccount);
     assert.equal(blobService.authenticationProvider.storageAccessKey, environmentAzureStorageAccessKey);
-
-    done();
-  });
-
-  test('MissingServiceBusIssuerAndWrapNamespace', function (done) {
-    delete process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
-    delete process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
-
-    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = environmentServiceBusNamespace;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = environmentServiceBusAccessKey;
-
-    // Create service bus client without passing any credentials
-    var serviceBusService = azure.createServiceBusService();
-
-    // set correctly
-    assert.equal(serviceBusService.namespace, environmentServiceBusNamespace);
-    assert.equal(serviceBusService.accessKey, environmentServiceBusAccessKey);
-
-    // defaulted correctly
-    assert.equal(serviceBusService.acsNamespace, environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX);
-    assert.equal(serviceBusService.issuer, ServiceClient.DEFAULT_SERVICEBUS_ISSUER);
 
     done();
   });
