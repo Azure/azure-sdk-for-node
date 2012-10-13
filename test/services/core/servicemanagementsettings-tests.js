@@ -62,7 +62,7 @@ suite('servicemanagementsettings-tests', function () {
     // Test
     (function() {
       ServiceManagementSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided connection string ' + connectionString + ' does not have complete configuration settings.');
+    }).should.throw('The provided connection string "' + connectionString + '" does not have complete configuration settings.');
   });
 
   test('testCreateFromConnectionStringWithInvalidServiceManagementKeyFail', function () {
@@ -73,7 +73,7 @@ suite('servicemanagementsettings-tests', function () {
     // Test
     (function() {
       ServiceManagementSettings.createFromConnectionString(connectionString);
-    }).should.throw('Invalid connection string setting key ' + invalidKey.toLowerCase());
+    }).should.throw('Invalid connection string setting key "' + invalidKey.toLowerCase() + '"');
   });
 
   test('testCreateFromConnectionStringWithCaseInsensitive', function () {

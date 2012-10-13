@@ -50,7 +50,7 @@ suite('servicebussettings-tests', function () {
     // Test
     (function() {
       ServiceBusSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided connection string ' + connectionString + ' does not have complete configuration settings.');
+    }).should.throw('The provided connection string "' + connectionString + '" does not have complete configuration settings.');
   });
 
   test('testCreateFromConnectionStringWithInvalidServiceBusKeyFail', function () {
@@ -61,7 +61,7 @@ suite('servicebussettings-tests', function () {
     // Test
     (function() {
       ServiceBusSettings.createFromConnectionString(connectionString);
-    }).should.throw('Invalid connection string setting key ' + invalidKey.toLowerCase());
+    }).should.throw('Invalid connection string setting key "' + invalidKey.toLowerCase() + '"');
   });
 
   test('testCreateFromConnectionStringWithCaseInvesitive', function () {
