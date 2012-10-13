@@ -28,10 +28,11 @@ suite('storageservicesettings-tests', function () {
     var connectionString = 'UseDevelopmentStorage=true';
     var expectedName = Constants.DEV_STORE_NAME;
     var expectedKey = Constants.DEV_STORE_KEY;
-    var expectedBlobEndpoint = Constants.DEV_STORE_URI + ':10000/devstoreaccount1/';
-    var expectedQueueEndpoint = Constants.DEV_STORE_URI + ':10001/devstoreaccount1/';
-    var expectedTableEndpoint = Constants.DEV_STORE_URI + ':10002/devstoreaccount1/';
-    
+    var expectedBlobEndpoint = Constants.DEV_STORE_URI + ':10000';
+    var expectedQueueEndpoint = Constants.DEV_STORE_URI + ':10001';
+    var expectedTableEndpoint = Constants.DEV_STORE_URI + ':10002';
+    var expectedUsePathStyleUri = true;
+
     // Test
     var actual = StorageServiceSettings.createFromConnectionString(connectionString);
 
@@ -41,6 +42,7 @@ suite('storageservicesettings-tests', function () {
     actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
     actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
     actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+    actual._usePathStyleUri.should.equal(expectedUsePathStyleUri);
   });
 
   test('testCreateFromConnectionStringWithUseDevStoreUri', function () {
@@ -49,10 +51,11 @@ suite('storageservicesettings-tests', function () {
     var connectionString = 'DevelopmentStorageProxyUri=' + myProxyUri + ';UseDevelopmentStorage=true';
     var expectedName = Constants.DEV_STORE_NAME;
     var expectedKey = Constants.DEV_STORE_KEY;
-    var expectedBlobEndpoint = myProxyUri + ':10000/devstoreaccount1/';
-    var expectedQueueEndpoint = myProxyUri + ':10001/devstoreaccount1/';
-    var expectedTableEndpoint = myProxyUri + ':10002/devstoreaccount1/';
-    
+    var expectedBlobEndpoint = myProxyUri + ':10000';
+    var expectedQueueEndpoint = myProxyUri + ':10001';
+    var expectedTableEndpoint = myProxyUri + ':10002';
+    var expectedUsePathStyleUri = true;
+
     // Test
     var actual = StorageServiceSettings.createFromConnectionString(connectionString);
     
@@ -62,6 +65,7 @@ suite('storageservicesettings-tests', function () {
     actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
     actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
     actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+    actual._usePathStyleUri.should.equal(expectedUsePathStyleUri);
   });
 
   test('testCreateFromConnectionStringWithInvalidUseDevStoreFail', function () {
@@ -298,8 +302,9 @@ suite('storageservicesettings-tests', function () {
 
     developmentStorageAccount._name.should.equal('devstoreaccount1');
     developmentStorageAccount._key.should.equal('Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==');
-    developmentStorageAccount._blobEndpointUri.should.equal('http://127.0.0.1:10000/devstoreaccount1/');
-    developmentStorageAccount._queueEndpointUri.should.equal('http://127.0.0.1:10001/devstoreaccount1/');
-    developmentStorageAccount._tableEndpointUri.should.equal('http://127.0.0.1:10002/devstoreaccount1/');
+    developmentStorageAccount._blobEndpointUri.should.equal('http://127.0.0.1:10000');
+    developmentStorageAccount._queueEndpointUri.should.equal('http://127.0.0.1:10001');
+    developmentStorageAccount._tableEndpointUri.should.equal('http://127.0.0.1:10002');
+    developmentStorageAccount._usePathStyleUri.should.equal(true);
   });
 });
