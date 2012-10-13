@@ -1614,7 +1614,7 @@ suite('servicebusservice-tests', function () {
     var serviceBusService = azure.createServiceBusService(connectionString);
     assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');
     assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
-    assert.equal(serviceBusService.authenticationProvider.accessKey, 'value');
+    assert.equal(serviceBusService.authenticationProvider.accessKey, key);
     assert.equal(serviceBusService.authenticationProvider.acsHost, 'ablal-martvue-sb.accesscontrol.windows.net');
 
     done();
