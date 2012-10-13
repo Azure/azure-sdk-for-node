@@ -235,4 +235,24 @@ suite('azure', function () {
 
     done();
   });
+
+test('MissingServiceBusIssuerAndWrapNamespace', function (done) {
+    delete process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
+    delete process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
+
+    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = environmentServiceBusNamespace;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = environmentServiceBusAccessKey;
+
+    // Create service bus client without passing any credentials
+    var serviceBusService = azure.createServiceBusService();
+
+    // set correctly
+    assert.equal(serviceBusService.authenticationProvider.acsHost, environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX);
+    assert.equal(serviceBusService.authenticationProvider.accessKey, environmentServiceBusAccessKey);
+
+    // defaulted correctly
+    assert.equal(serviceBusService.authenticationProvider.issuer, ServiceClient.DEFAULT_SERVICEBUS_ISSUER);
+
+    done();
+  });
 });
