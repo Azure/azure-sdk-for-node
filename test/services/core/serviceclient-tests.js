@@ -30,6 +30,8 @@ suite('serviceclient-tests', function () {
 
     normalizedError.should.be.an.instanceOf(Error);
     normalizedError.should.have.keys('message', 'resultcode', 'somethingelse');
+
+    done();
   });
 });
 
