@@ -30,7 +30,7 @@ suite('servicesettings-tests', function () {
         ServiceSettings.parseAndValidateKeys(connectionString, validKeys);
       },
       function(err) {
-        if ((err instanceof Error) && err.message === 'Invalid connection string setting key fakekey') {
+        if ((err instanceof Error) && err.message === 'Invalid connection string setting key "fakekey"') {
           return true;
         }
       },

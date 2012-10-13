@@ -82,7 +82,7 @@ suite('storageservicesettings-tests', function () {
     // Test
     (function() {
       StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided connection string  does not have complete configuration settings.');
+    }).should.throw('The provided connection string "" does not have complete configuration settings.');
   });
 
   test('testCreateFromConnectionStringWithAutomatic', function () {
@@ -199,7 +199,7 @@ suite('storageservicesettings-tests', function () {
     // Test
     (function() {
       StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided connection string ' + connectionString + ' does not have complete configuration settings.');
+    }).should.throw('The provided connection string "' + connectionString + '" does not have complete configuration settings.');
   });
 
   test('testCreateFromConnectionStringWithAutomaticMissingAccountNameFail', function () {
@@ -210,7 +210,7 @@ suite('storageservicesettings-tests', function () {
     // Test
     (function() {
       StorageServiceSettings.createFromConnectionString(connectionString);
-    }).should.throw('The provided connection string ' + connectionString + ' does not have complete configuration settings.');
+    }).should.throw('The provided connection string "' + connectionString + '" does not have complete configuration settings.');
   });
 
   test('testCreateFromConnectionStringWithAutomaticCorruptedAccountKeyFail', function () {
