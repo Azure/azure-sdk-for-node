@@ -27,7 +27,8 @@
     "colors": "0.x.x",
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
-    "request": ">= 2.9.203"
+    "request": ">= 2.9.203",
+    "validator": ">= 0.4.12"
   },
   "devDependencies": {
     "mocha": "*",
