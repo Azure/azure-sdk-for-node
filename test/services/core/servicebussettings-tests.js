@@ -37,7 +37,7 @@ suite('servicebussettings-tests', function () {
 
     // Assert
     actual._namespace.should.equal(expectedNamespace);
-    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint + ':443');
+    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint);
     actual._wrapName.should.equal(expectedWrapName);
     actual._wrapPassword.should.equal(expectedWrapPassword);
     actual._wrapEndpointUri.should.equal(expectedWrapEndpointUri);
@@ -78,7 +78,7 @@ suite('servicebussettings-tests', function () {
 
     // Assert
     actual._namespace.should.equal(expectedNamespace);
-    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint + ':443');
+    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint);
     actual._wrapName.should.equal(expectedWrapName);
     actual._wrapPassword.should.equal(expectedWrapPassword);
     actual._wrapEndpointUri.should.equal(expectedWrapEndpointUri);
