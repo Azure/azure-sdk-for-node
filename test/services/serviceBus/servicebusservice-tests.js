@@ -1620,7 +1620,7 @@ suite('servicebusservice-tests', function () {
     done();
   });
 
-  test('storageConnectionStringsEndpointHttpsExplicit', function (done) {
+  test('storageConnectionStringsEndpointHttpExplicit', function (done) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames);
     var expectedNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
@@ -1630,6 +1630,26 @@ suite('servicebusservice-tests', function () {
       assert.equal(err, null);
 
       assert.equal(serviceBusService.host, process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net');
+      assert.equal(serviceBusService.port, '80');
+      assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
+      assert.equal(serviceBusService.authenticationProvider.accessKey, expectedKey);
+      assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '-sb.accesscontrol.windows.net:443');
+
+      done();
+    });
+  });
+
+  test('storageConnectionStringsEndpointHttpsExplicit', function (done) {
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var expectedNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+    var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
+    var expectedHost = 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
+    var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
+    serviceBusService.createTopic(topicName, function (err) {
+      assert.equal(err, null);
+
+      assert.equal(serviceBusService.host, process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net');
+      assert.equal(serviceBusService.port, '443');
       assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
       assert.equal(serviceBusService.authenticationProvider.accessKey, expectedKey);
       assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '-sb.accesscontrol.windows.net:443');
