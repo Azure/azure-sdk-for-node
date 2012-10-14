@@ -1,3 +1,6 @@
+2012.10.12 Version 0.6.6
+ * Using fixed version of commander.js to avoid bug in commander.js 1.0.5
+
 2012.10.01 Version 0.6.5
  * Bugfixing
 
