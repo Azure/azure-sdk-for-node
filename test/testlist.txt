@@ -11,6 +11,10 @@ services/core/connectionstringparser-tests.js
 services/core/serviceclient-tests.js
 services/core/exponentialretrypolicyfilter-tests.js
 services/core/linearretrypolicyfilter-tests.js
+services/core/servicesettings-tests.js
+services/core/servicebussettings-tests.js
+services/core/servicemanagementsettings-tests.js
+services/core/storageservicesettings-tests.js
 services/queue/queueservice-tests.js
 services/table/batchserviceclient-tests.js
 services/table/sharedkeytable-tests.js
@@ -25,6 +29,7 @@ services/table/tableservice-tests.js
 util/atomhandler-tests.js
 util/iso8061date-tests.js
 util/util-tests.js
+util/validate-tests.js
 util/certificates/der.decoder-tests.js
 util/certificates/der.decoder.pfx.root-tests.js
 util/certificates/pkcs.filedecoder-tests.js
