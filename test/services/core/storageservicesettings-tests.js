@@ -105,9 +105,9 @@ suite('storageservicesettings-tests', function () {
     // Assert
     actual._name.should.equal(expectedName);
     actual._key.should.equal(expectedKey);
-    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
-    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
-    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint + ':443');
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint + ':443');
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint + ':443');
   });
 
   test('testCreateFromConnectionStringWithTableEndpointSpecified', function () {
@@ -126,8 +126,8 @@ suite('storageservicesettings-tests', function () {
     // Assert
     actual._name.should.equal(expectedName);
     actual._key.should.equal(expectedKey);
-    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
-    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint + ':443');
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint + ':443');
     actual._tableEndpointUri.should.equal(expectedTableEndpoint);
   });
 
@@ -148,8 +148,8 @@ suite('storageservicesettings-tests', function () {
     actual._name.should.equal(expectedName);
     actual._key.should.equal(expectedKey);
     actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
-    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
-    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint + ':443');
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint + ':443');
   });
 
   test('testCreateFromConnectionStringWithQueueEndpointSpecified', function () {
@@ -168,9 +168,9 @@ suite('storageservicesettings-tests', function () {
     // Assert
     actual._name.should.equal(expectedName);
     actual._key.should.equal(expectedKey);
-    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint + ':443');
     actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
-    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint + ':443');
   });
 
   test('testCreateFromConnectionStringWithQueueAndBlobEndpointSpecified', function () {
@@ -191,7 +191,7 @@ suite('storageservicesettings-tests', function () {
     actual._key.should.equal(expectedKey);
     actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
     actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
-    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint + ':443');
   });
 
   test('testCreateFromConnectionStringWithAutomaticMissingProtocolFail', function () {
@@ -292,9 +292,9 @@ suite('storageservicesettings-tests', function () {
     // Assert
     actual._name.should.equal(expectedName);
     actual._key.should.equal(expectedKey);
-    actual._blobEndpointUri.should.equal(expectedBlobEndpoint);
-    actual._queueEndpointUri.should.equal(expectedQueueEndpoint);
-    actual._tableEndpointUri.should.equal(expectedTableEndpoint);
+    actual._blobEndpointUri.should.equal(expectedBlobEndpoint + ':443');
+    actual._queueEndpointUri.should.equal(expectedQueueEndpoint + ':443');
+    actual._tableEndpointUri.should.equal(expectedTableEndpoint + ':443');
   });
 
   test('getDevelopmentStorageAccount', function () {

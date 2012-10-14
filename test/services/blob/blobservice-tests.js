@@ -1167,10 +1167,10 @@ suite('blobservice-tests', function () {
     var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
     var urlParts = blobServiceassert.getBlobUrl(containerName);
-    assert.equal(urlParts.url(), 'http://storageaccount.host.com:80/' + containerName);
+    assert.equal(urlParts.url(), 'http://host.com:80/' + containerName);
 
     urlParts = blobServiceassert.getBlobUrl(containerName, blobName);
-    assert.equal(urlParts.url(), 'http://storageaccount.host.com:80/' + containerName + '/' + blobName);
+    assert.equal(urlParts.url(), 'http://host.com:80/' + containerName + '/' + blobName);
 
     done();
   });
