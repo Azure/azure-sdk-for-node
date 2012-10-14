@@ -791,4 +791,22 @@ suite('tableservice-tests', function () {
 
     done();
   });
+
+  test('storageConnectionStringsHttps', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var expectedProtocol = 'https';
+    var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
+    var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
+    var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey;
+    var tableService = azure.createTableService(connectionString);
+    tableService.createTable(tableName, function (err, t, rsp) {
+      assert.equal(err, null);
+
+      assert.equal(tableService.storageAccount, expectedName);
+      assert.equal(tableService.storageAccessKey, expectedKey);
+      assert.equal(tableService.protocol, 'https://');
+
+      done();
+    });
+  });
 });
