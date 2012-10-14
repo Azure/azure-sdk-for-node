@@ -842,8 +842,6 @@ suite('tableservice-tests', function () {
 
       assert.equal(tableService.storageAccount, expectedName);
       assert.equal(tableService.storageAccessKey, expectedKey);
-
-      // Explicit table host wins
       assert.equal(tableService.protocol, 'http://');
 
       done();
