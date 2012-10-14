@@ -51,7 +51,7 @@ var tableNames = [];
 var tablePrefix = 'tableservice';
 
 var testPrefix = 'tableservice-tests';
-var numberTests = 18;
+var numberTests = 20;
 
 suite('tableservice-tests', function () {
   setup(function (done) {
@@ -799,12 +799,33 @@ suite('tableservice-tests', function () {
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey;
     var tableService = azure.createTableService(connectionString);
-    tableService.createTable(tableName, function (err, t, rsp) {
+    tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
       assert.equal(tableService.storageAccount, expectedName);
       assert.equal(tableService.storageAccessKey, expectedKey);
       assert.equal(tableService.protocol, 'https://');
+
+      done();
+    });
+  });
+
+  test('storageConnectionStringsEndpointHttps', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var expectedProtocol = 'https';
+    var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
+    var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
+    var expectedTableEndpoint = 'http://andrerod.table.core.windows.net';
+    var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';TableEndpoint=' + expectedTableEndpoint;
+    var tableService = azure.createTableService(connectionString);
+    tableService.createTable(tableName, function (err) {
+      assert.equal(err, null);
+
+      assert.equal(tableService.storageAccount, expectedName);
+      assert.equal(tableService.storageAccessKey, expectedKey);
+
+      // Explicit table host wins
+      assert.equal(tableService.protocol, 'http://');
 
       done();
     });
