@@ -29,7 +29,7 @@ suite('servicebussettings-tests', function () {
     var expectedServiceBusEndpoint = 'https://' + expectedNamespace + '.servicebus.windows.net';
     var expectedWrapName = 'myname';
     var expectedWrapPassword = 'mypassword';
-    var expectedWrapEndpointUri = 'https://' + expectedNamespace + '-sb.accesscontrol.windows.net/WRAPv0.9';
+    var expectedWrapEndpointUri = 'https://' + expectedNamespace + '-sb.accesscontrol.windows.net:443/WRAPv0.9';
     var connectionString = 'Endpoint=' + expectedServiceBusEndpoint + ';SharedSecretIssuer=' + expectedWrapName + ';SharedSecretValue=' + expectedWrapPassword;
 
     // Test
@@ -37,7 +37,7 @@ suite('servicebussettings-tests', function () {
 
     // Assert
     actual._namespace.should.equal(expectedNamespace);
-    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint);
+    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint + ':443');
     actual._wrapName.should.equal(expectedWrapName);
     actual._wrapPassword.should.equal(expectedWrapPassword);
     actual._wrapEndpointUri.should.equal(expectedWrapEndpointUri);
@@ -70,7 +70,7 @@ suite('servicebussettings-tests', function () {
     var expectedServiceBusEndpoint = 'https://' + expectedNamespace + '.servicebus.windows.net';
     var expectedWrapName = 'myname';
     var expectedWrapPassword = 'mypassword';
-    var expectedWrapEndpointUri = 'https://' + expectedNamespace + '-sb.accesscontrol.windows.net/WRAPv0.9';
+    var expectedWrapEndpointUri = 'https://' + expectedNamespace + '-sb.accesscontrol.windows.net:443/WRAPv0.9';
     var connectionString = 'eNdPoinT=' + expectedServiceBusEndpoint + ';sHarEdsecRetiSsuer=' + expectedWrapName + ';shArEdsecrEtvAluE=' + expectedWrapPassword;
         
     // Test
@@ -78,7 +78,7 @@ suite('servicebussettings-tests', function () {
 
     // Assert
     actual._namespace.should.equal(expectedNamespace);
-    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint);
+    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint + ':443');
     actual._wrapName.should.equal(expectedWrapName);
     actual._wrapPassword.should.equal(expectedWrapPassword);
     actual._wrapEndpointUri.should.equal(expectedWrapEndpointUri);
