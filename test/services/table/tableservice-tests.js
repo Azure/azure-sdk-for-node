@@ -854,17 +854,14 @@ suite('tableservice-tests', function () {
     var expectedKey = ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY;
     var expectedTableEndpoint = ServiceClient.DEVSTORE_TABLE_HOST;
     var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
-    tableService.createTable(tableName, function (err) {
-      assert.equal(err, null);
 
-      assert.equal(tableService.storageAccount, expectedName);
-      assert.equal(tableService.storageAccessKey, expectedKey);
-      assert.equal(tableService.protocol, 'http://');
-      assert.equal(tableService.host, '127.0.0.1');
-      assert.equal(tableService.port, '10002');
-      assert.equal(tableService.usePathStyleUri, true);
+    assert.equal(tableService.storageAccount, expectedName);
+    assert.equal(tableService.storageAccessKey, expectedKey);
+    assert.equal(tableService.protocol, 'http://');
+    assert.equal(tableService.host, '127.0.0.1');
+    assert.equal(tableService.port, '10002');
+    assert.equal(tableService.usePathStyleUri, true);
 
-      done();
-    });
+    done();
   });
 });
