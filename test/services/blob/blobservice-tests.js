@@ -1164,21 +1164,13 @@ suite('blobservice-tests', function () {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
 
-    var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host:80');
-    blobServiceassert.usePathStyleUri = false;
+    var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
     var urlParts = blobServiceassert.getBlobUrl(containerName);
-    assert.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName);
+    assert.equal(urlParts.url(), 'http://host.com:80/' + containerName);
 
     urlParts = blobServiceassert.getBlobUrl(containerName, blobName);
-    assert.equal(urlParts.url(), 'http://storageAccount.host:80/' + containerName + '/' + blobName);
-
-    blobServiceassert.usePathStyleUri = true;
-    urlParts = blobServiceassert.getBlobUrl(containerName);
-    assert.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName);
-
-    urlParts = blobServiceassert.getBlobUrl(containerName, blobName);
-    assert.equal(urlParts.url(), 'http://host:80/storageAccount/' + containerName + '/' + blobName);
+    assert.equal(urlParts.url(), 'http://host.com:80/' + containerName + '/' + blobName);
 
     done();
   });
@@ -1274,16 +1266,31 @@ suite('blobservice-tests', function () {
   });
 
   test('storageConnectionStrings', function (done) {
-    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
     var blobService = azure.createBlobService(connectionString);
 
     assert.equal(blobService.storageAccount, 'myaccount');
-    assert.equal(blobService.storageAccessKey, 'mykey');
+    assert.equal(blobService.storageAccessKey, key);
     assert.equal(blobService.protocol, 'https://');
-    assert.equal(blobService.host, 'blob.core.windows.net');
+    assert.equal(blobService.host, 'myaccount.blob.core.windows.net');
 
     done();
   });
+
+  test('storageConnectionStringsDevStore', function (done) {
+    var connectionString = 'UseDevelopmentStorage=true';
+    var blobService = azure.createBlobService(connectionString);
+
+    assert.equal(blobService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
+    assert.equal(blobService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    assert.equal(blobService.protocol, 'http://');
+    assert.equal(blobService.host, '127.0.0.1');
+    assert.equal(blobService.port, '10000');
+
+    done();
+  });
+
 });
 
 function repeat(s, n) {

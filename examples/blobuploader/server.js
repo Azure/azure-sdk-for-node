@@ -31,7 +31,7 @@ var helpers = require('./helpers.js');
 
 var app = module.exports = express.createServer();
 // Global request options, set the retryPolicy
-var blobClient = azure.createBlobService(azure.ServiceClient.DEVSTORE_STORAGE_ACCOUNT, azure.ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, azure.ServiceClient.DEVSTORE_BLOB_HOST).withFilter(new azure.ExponentialRetryPolicyFilter());
+var blobClient = azure.createBlobService('UseDevelopmentStorage=true').withFilter(new azure.ExponentialRetryPolicyFilter());
 var containerName = 'webpi';
 
 //Configuration

@@ -166,4 +166,23 @@ suite('util-tests', function() {
 
     done();
   });
+
+  test('In array case insensitive', function (done) {
+    // int positives
+    assert.ok(util.inArrayInsensitive('a', [ 'a', 'b', 'c']));
+    assert.ok(util.inArrayInsensitive('A', [ 'a', 'b', 'c']));
+    assert.ok(!util.inArrayInsensitive('d', [ 'a', 'b', 'c']));
+
+    done();
+  });
+
+  test('Get value case insensitive', function (done) {
+    // int positives
+    assert.equal(util.tryGetValueInsensitive('B', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }), 'b1');
+    assert.equal(util.tryGetValueInsensitive('b', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }), 'b1');
+    assert.equal(util.tryGetValueInsensitive('D', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }), undefined);
+    assert.equal(util.tryGetValueInsensitive('D', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }, 'something'), 'something');
+
+    done();
+  });
 });

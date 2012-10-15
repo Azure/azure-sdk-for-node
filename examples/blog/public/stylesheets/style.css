@@ -1,7 +1,7 @@
 body {
   font-family: Tahoma, "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 13px;
-  text-stroke: 1px rgba(255,255,255,0.10);
+  text-stroke: 1px rgba(255,255,255,0.1);
   color: #555;
   background-color: #f3f4f5;
 }

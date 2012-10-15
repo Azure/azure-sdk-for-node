@@ -33,7 +33,7 @@ var tableName = 'posts';
 var partition = 'part1';
 
 Blog = function () {
-  this.tableClient = azure.createTableService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, ServiceClient.DEVSTORE_TABLE_HOST);
+  this.tableClient = azure.createTableService('UseDevelopmentStorage=true');
 };
 
 Blog.prototype.findAll = function (callback) {

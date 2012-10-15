@@ -32,7 +32,7 @@ var Home = require('./home');
 var ServiceClient = azure.ServiceClient;
 
 var app = module.exports = express.createServer();
-var client = azure.createTableService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, ServiceClient.DEVSTORE_TABLE_HOST);
+var client = azure.createTableService('UseDevelopmentStorage=true');
 
 // table creation
 client.createTableIfNotExists("tasks", function (res, created) {
