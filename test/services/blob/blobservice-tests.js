@@ -1215,13 +1215,13 @@ suite('blobservice-tests', function () {
         blobService.getBlobToFile(containerName, blobName, fileNameTarget, function (error2) {
           assert.equal(error2, null);
 
-          fs.exists(fileNameTarget, function (exists) {
-            assert.equal(exists, true);
+          var exists = azureutil.pathExistsSync(fileNameTarget);
+          assert.equal(exists, true);
 
-            var fileText = fs.readFileSync(fileNameTarget);
-            assert.equal(blobText, fileText);
-            done();
-          });
+          var fileText = fs.readFileSync(fileNameTarget);
+          assert.equal(blobText, fileText);
+
+          done();
         });
       });
     });
