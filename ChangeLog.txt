@@ -1,3 +1,7 @@
+2012.10.15 Version 0.6.7
+ * Adding connection strings support for storage and service bus
+ * Fixing issue with EMULATED and explicit variables making the later more relevant
+
 2012.10.12 Version 0.6.6
  * Using fixed version of commander.js to avoid bug in commander.js 1.0.5
 
@@ -33,7 +37,7 @@
  * Multiple Bugfixes
 
 2011.12.14 Version 0.5.1
- * Multiple bug fixes.
+ * Multiple bug fixes
 
 2011.12.09 Version 0.5.0
  * Initial Release

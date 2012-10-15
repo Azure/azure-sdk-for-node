@@ -452,12 +452,26 @@ suite('queueservice-tests', function () {
   });
 
   test('storageConnectionStrings', function (done) {
-    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey';
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
     var queueService = azure.createQueueService(connectionString);
 
     assert.equal(queueService.storageAccount, 'myaccount');
-    assert.equal(queueService.storageAccessKey, 'mykey');
+    assert.equal(queueService.storageAccessKey, key);
     assert.equal(queueService.protocol, 'https://');
+
+    done();
+  });
+
+  test('storageConnectionStringsDevStore', function (done) {
+    var connectionString = 'UseDevelopmentStorage=true';
+    var queueService = azure.createQueueService(connectionString);
+
+    assert.equal(queueService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
+    assert.equal(queueService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    assert.equal(queueService.protocol, 'http://');
+    assert.equal(queueService.host, '127.0.0.1');
+    assert.equal(queueService.port, '10001');
 
     done();
   });
