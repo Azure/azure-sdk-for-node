@@ -1,4 +1,4 @@
-2012.10.15 Version 0.6.6
+2012.10.15 Version 0.6.7
  * Adding connection strings support for storage and service bus
  * Fixing issue with EMULATED and explicit variables making the later more relevant
 
