@@ -849,7 +849,6 @@ suite('tableservice-tests', function () {
   });
 
   test('storageConnectionStringsEndpointDevStoreExplicit', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
     var expectedName = ServiceClient.DEVSTORE_STORAGE_ACCOUNT;
     var expectedKey = ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY;
     var expectedTableEndpoint = ServiceClient.DEVSTORE_TABLE_HOST;
