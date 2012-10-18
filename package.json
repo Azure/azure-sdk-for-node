@@ -28,7 +28,8 @@
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
     "request": ">= 2.9.203",
-    "validator": ">= 0.4.12"
+    "validator": ">= 0.4.12",
+    "github": ">= 0.1.6"
   },
   "devDependencies": {
     "mocha": "*",
