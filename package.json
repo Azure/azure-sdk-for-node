@@ -29,7 +29,7 @@
     "easy-table": "0.0.1",
     "request": ">= 2.9.203",
     "validator": ">= 0.4.12",
-    "github": ">= 0.1.6"
+    "github": "0.1.6"
   },
   "devDependencies": {
     "mocha": "*",
