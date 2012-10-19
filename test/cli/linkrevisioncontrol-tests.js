@@ -1,5 +1,5 @@
 /**
-* Copyright 2012 Microsoft Corporation
+* Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -14,19 +14,30 @@
 */
 
 require('should');
+var sinon = require('sinon');
 var cli = require('../cli');
 var capture = require('../util').capture;
 
+var sandbox;
+
 suite('cli', function(){
-  suite('site', function() {
-    suite('list', function() {
-      test('should list no sites', function(done) {
-        capture(function() {
-          cli.parse('node cli.js site list --json'.split(' '));
-        }, function (result) {
-          done();
-        });
-      });
+  suite('linkrevisioncontrol', function() {
+    setup(function (done) {
+      sandbox = sinon.sandbox.create();
+
+      done();
+    });
+
+    teardown(function (done) {
+      sandbox.restore();
+
+      done();
+    });
+
+    test('should list no sites', function(done) {
+      
     });
   });
 });
+
+
