@@ -55,7 +55,7 @@ suite('cli', function(){
         url.should.equal('git://github.com/andrerod/mynewsite999.git');
 
         done();
-      })
+      });
     });
 
     test('should get remote origin uri', function(done) {
@@ -78,7 +78,7 @@ suite('cli', function(){
         url.should.equal('git://github.com/andrerod/mynewsite999.git');
 
         done();
-      })
+      });
     });
 
     test('should not get other remote uris', function(done) {
@@ -101,7 +101,35 @@ suite('cli', function(){
         should.strictEqual(undefined, url);
 
         done();
-      })
+      });
+    });
+
+    test('site create hook', function(done) {
+      // Setup
+      var originUrl = { 
+        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
+                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
+        stderr: '' 
+      };
+
+/*
+      var cli = { output: { }, progress: function() { return { end: function() {}}} };
+
+
+      var githubClient = LinkedRevisionControl.createClient(cli, 'github');
+
+      var execStub = sandbox.stub(githubClient.repos, 'createHook');
+      execStub.yields(undefined, originUrl);
+*/
+      var username = process.env['AZURE_GITHUB_USERNAME'];
+      var password = process.env['AZURE_GITHUB_PASSWORD'];
+
+      capture(function() {
+        cli.parse('node cli.js site create mytestsite --github --username ' + username + ' --pass ' + password + ' --location "East US"'.split(' '));
+      }, function (result) {
+        console.log(result);
+        done();
+      });
     });
   });
 });
