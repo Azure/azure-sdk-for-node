@@ -18,28 +18,29 @@ exports = module.exports = {
 };
 
 function capture(action, cb) {
-    var result = {
-        text: '',
-    }
+  var result = {
+    text: '',
+  }
 
-    var processStdoutWrite = process.stdout.write
-    var processExit = process.exit
-    
-    process.stdout.write = function(data, encoding, fd) {
-        result.text += data;
-    };
-    process.exit = function(status) {
-        result.exitStatus = status;
-        
-        return cb(result);
-    };
-    
-    try {
-        action();
-    }
-    catch(err) {
-        result.error = err;
-    }
-    process.stdout.write = processStdoutWrite;
-    process.exit = processExit;
+  var processStdoutWrite = process.stdout.write
+  var processExit = process.exit
+
+  process.stdout.write = function(data, encoding, fd) {
+    result.text += data;
+  };
+
+  process.exit = function(status) {
+    result.exitStatus = status;
+
+    return cb(result);
+  };
+
+  try {
+    action();
+  } catch(err) {
+    result.error = err;
+  }
+
+  process.stdout.write = processStdoutWrite;
+  process.exit = processExit;
 }

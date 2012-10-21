@@ -112,22 +112,18 @@ suite('cli', function(){
         stderr: '' 
       };
 
-/*
-      var cli = { output: { }, progress: function() { return { end: function() {}}} };
-
-
-      var githubClient = LinkedRevisionControl.createClient(cli, 'github');
-
-      var execStub = sandbox.stub(githubClient.repos, 'createHook');
-      execStub.yields(undefined, originUrl);
-*/
-      var username = process.env['AZURE_GITHUB_USERNAME'];
-      var password = process.env['AZURE_GITHUB_PASSWORD'];
+      var cmd = 'node cli.js site create cliuttestsite --json --github --location'.split(' ');
+      cmd.push('East US');
+      cmd.push('--username');
+      cmd.push(process.env['AZURE_GITHUB_USERNAME']);
+      cmd.push('--pass');
+      cmd.push(process.env['AZURE_GITHUB_PASSWORD']);
 
       capture(function() {
-        cli.parse('node cli.js site create mytestsite --github --username ' + username + ' --pass ' + password + ' --location "East US"'.split(' '));
+        cli.parse(cmd);
       }, function (result) {
         console.log(result);
+
         done();
       });
     });
