@@ -17,7 +17,7 @@ var assert = require('assert');
 
 var generatePsm1 = require('../../../lib/cli/generate-psm1-utils');
 
-suite('sharedkey-tests', function () {
+suite('generate-psm1', function () {
   test('getNormalizedParameterName', function (done) {
     assert.equal(generatePsm1.getNormalizedParameterName('p#p#p'), 'ppp');
     assert.equal(generatePsm1.getNormalizedParameterName('p,p,p'), 'ppp');
