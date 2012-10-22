@@ -51,16 +51,91 @@ suite('cli', function(){
 
           siteExists.should.be.ok;
 
-          console.log('vou pro delete');
-
           // Delete created site
-          cmd = ('node cli.js site delete ' + siteName + ' --json').split(' ');
+          cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
           capture(function() {
             cli.parse(cmd);
           }, function (result) {
-            console.log(result);
+            result.exitStatus.should.equal(0);
 
-            done();
+            // List sites
+            cmd = 'node cli.js site list --json'.split(' ');
+            capture(function() {
+              cli.parse(cmd);
+            }, function (result) {
+              siteList = JSON.parse(result.text);
+
+              siteExists = siteList.some(function (site) {
+                return site.Name.toLowerCase() === siteName.toLowerCase()
+              });
+
+              siteExists.should.not.be.ok;
+
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    test('site create github', function(done) {
+      var siteName = 'cliuttestsite';
+
+      // Setup
+      var originUrl = { 
+        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
+                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
+        stderr: '' 
+      };
+
+      // Create site
+      var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
+      cmd.push('East US');
+      cmd.push('--username');
+      cmd.push(process.env['AZURE_GITHUB_USERNAME']);
+      cmd.push('--pass');
+      cmd.push(process.env['AZURE_GITHUB_PASSWORD']);
+
+      capture(function() {
+        cli.parse(cmd);
+      }, function (result) {
+        result.exitStatus.should.equal(0);
+
+        // List sites
+        cmd = 'node cli.js site list --json'.split(' ');
+        capture(function() {
+          cli.parse(cmd);
+        }, function (result) {
+          var siteList = JSON.parse(result.text);
+
+          var siteExists = siteList.some(function (site) {
+            return site.Name.toLowerCase() === siteName.toLowerCase()
+          });
+
+          siteExists.should.be.ok;
+
+          // Delete created site
+          cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
+          capture(function() {
+            cli.parse(cmd);
+          }, function (result) {
+            result.exitStatus.should.equal(0);
+
+            // List sites
+            cmd = 'node cli.js site list --json'.split(' ');
+            capture(function() {
+              cli.parse(cmd);
+            }, function (result) {
+              siteList = JSON.parse(result.text);
+
+              siteExists = siteList.some(function (site) {
+                return site.Name.toLowerCase() === siteName.toLowerCase()
+              });
+
+              siteExists.should.not.be.ok;
+
+              done();
+            });
           });
         });
       });
