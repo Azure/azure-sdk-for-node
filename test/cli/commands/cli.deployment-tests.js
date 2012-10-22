@@ -98,7 +98,7 @@ suite('cli', function(){
           siteExists.should.be.ok;
 
           // Create the hook using deployment github cmdlet
-          cmd = 'node cli.js site deployment github --json'.split(' ');
+          cmd = ('node cli.js site deployment github ' + siteName + ' --json').split(' ');
           cmd.push('--username');
           cmd.push(githubUsername);
           cmd.push('--pass');
