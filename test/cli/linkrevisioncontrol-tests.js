@@ -112,7 +112,7 @@ suite('cli', function(){
         stderr: '' 
       };
 
-      var cmd = 'node cli.js site create cliuttestsite --json --github --location'.split(' ');
+      var cmd = 'node cli.js site create cliuttestsite --github --json --location'.split(' ');
       cmd.push('East US');
       cmd.push('--username');
       cmd.push(process.env['AZURE_GITHUB_USERNAME']);
@@ -122,6 +122,7 @@ suite('cli', function(){
       capture(function() {
         cli.parse(cmd);
       }, function (result) {
+        console.log('terminei');
         console.log(result);
 
         done();

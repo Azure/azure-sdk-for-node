@@ -35,6 +35,8 @@ function capture(action, cb) {
     return cb(result);
   };
 
+  console.log('cheguei aqui');
+
   try {
     action();
   } catch(err) {
