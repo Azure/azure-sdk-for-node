@@ -32,17 +32,20 @@ function capture(action, cb) {
   process.exit = function(status) {
     result.exitStatus = status;
 
+    process.stdout.write = processStdoutWrite;
+    process.exit = processExit;
+
     return cb(result);
   };
-
-  console.log('cheguei aqui');
 
   try {
     action();
   } catch(err) {
     result.error = err;
-  }
 
-  process.stdout.write = processStdoutWrite;
-  process.exit = processExit;
+    process.stdout.write = processStdoutWrite;
+    process.exit = processExit;
+
+    cb(result);
+  }
 }

@@ -1,0 +1,3 @@
+cli/commands/generate-psm1-utils-test.js
+cli/commands/cli.site-tests.js
+cli/linkrevisioncontrol-tests.js

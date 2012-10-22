@@ -103,30 +103,5 @@ suite('cli', function(){
         done();
       });
     });
-
-    test('site create hook', function(done) {
-      // Setup
-      var originUrl = { 
-        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
-        stderr: '' 
-      };
-
-      var cmd = 'node cli.js site create cliuttestsite --github --json --location'.split(' ');
-      cmd.push('East US');
-      cmd.push('--username');
-      cmd.push(process.env['AZURE_GITHUB_USERNAME']);
-      cmd.push('--pass');
-      cmd.push(process.env['AZURE_GITHUB_PASSWORD']);
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
-        console.log('terminei');
-        console.log(result);
-
-        done();
-      });
-    });
   });
 });

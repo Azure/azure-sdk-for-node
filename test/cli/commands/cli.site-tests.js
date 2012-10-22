@@ -19,12 +19,47 @@ var capture = require('../util').capture;
 
 suite('cli', function(){
   suite('site', function() {
-    suite('list', function() {
-      test('should list no sites', function(done) {
+    test('site create', function(done) {
+      var siteName = 'cliuttestsite';
+
+      // Setup
+      var originUrl = { 
+        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
+                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
+        stderr: '' 
+      };
+
+      // Create site
+      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
+      cmd.push('East US');
+
+      capture(function() {
+        cli.parse(cmd);
+      }, function (result) {
+        result.exitStatus.should.equal(0);
+
+        // List sites
+        cmd = 'node cli.js site list --json'.split(' ');
         capture(function() {
-          cli.parse('node cli.js site list --json'.split(' '));
+          cli.parse(cmd);
         }, function (result) {
-          done();
+          var siteList = JSON.parse(result.text);
+
+          var siteExists = siteList.some(function (site) {
+            return site.Name.toLowerCase() === siteName.toLowerCase()
+          });
+
+          siteExists.should.be.ok;
+
+          // Delete created site
+          cmd = ('node cli.js site delete ' + siteName + ' --json').split(' ');
+          capture(function() {
+            cli.parse(cmd);
+          }, function (result) {
+            console.log(result);
+
+            done();
+          });
         });
       });
     });

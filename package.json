@@ -47,6 +47,7 @@
   },
   "scripts": {
     "test": "node test/runtests.js testlist.txt",
+    "clitest": "node test/runtests.js clitestlist.txt",
     "jshint": "node test/runjshint.js",
     "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
     "extendedtests": "node test/runtests.js extendedtestlist.txt"
