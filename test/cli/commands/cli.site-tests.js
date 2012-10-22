@@ -51,6 +51,8 @@ suite('cli', function(){
 
           siteExists.should.be.ok;
 
+          console.log('vou pro delete');
+
           // Delete created site
           cmd = ('node cli.js site delete ' + siteName + ' --json').split(' ');
           capture(function() {
