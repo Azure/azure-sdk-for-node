@@ -33,7 +33,7 @@ githubClient.authenticate({
 });
 
 suite('cli', function(){
-  suite('site', function() {
+  suite('deployment', function() {
     teardown(function (done) {
       var repositoryName;
 
@@ -64,8 +64,8 @@ suite('cli', function(){
       });
     });
 
-    test('site create', function(done) {
-      var siteName = 'cliuttestsite1';
+    test('site deployment github', function(done) {
+      var siteName = 'cliuttestdeploy1';
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
@@ -90,152 +90,20 @@ suite('cli', function(){
 
           siteExists.should.be.ok;
 
-          // Delete created site
-          cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
+          // Create the hook using deployment github cmdlet
+          cmd = ('node cli.js site deployment github ' + siteName + ' --json').split(' ');
+          cmd.push('--username');
+          cmd.push(githubUsername);
+          cmd.push('--pass');
+          cmd.push(githubPassword);
+          cmd.push('--repository');
+          cmd.push(githubRepositoryFullName);
+
           capture(function() {
             cli.parse(cmd);
           }, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
-
-            // List sites
-            cmd = 'node cli.js site list --json'.split(' ');
-            capture(function() {
-              cli.parse(cmd);
-            }, function (result) {
-              siteList = JSON.parse(result.text);
-
-              siteExists = siteList.some(function (site) {
-                return site.Name.toLowerCase() === siteName.toLowerCase()
-              });
-
-              siteExists.should.not.be.ok;
-
-              done();
-            });
-          });
-        });
-      });
-    });
-
-    test('site create github', function(done) {
-      var siteName = 'cliuttestsite2';
-
-      // Create site
-      var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
-      cmd.push('East US');
-      cmd.push('--username');
-      cmd.push(githubUsername);
-      cmd.push('--pass');
-      cmd.push(githubPassword);
-      cmd.push('--repository');
-      cmd.push(githubRepositoryFullName);
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
-
-        // List sites
-        cmd = 'node cli.js site list --json'.split(' ');
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
-          var siteList = JSON.parse(result.text);
-
-          var siteExists = siteList.some(function (site) {
-            return site.Name.toLowerCase() === siteName.toLowerCase()
-          });
-
-          siteExists.should.be.ok;
-
-          // verify that the hook is in github
-          githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
-            var repository = LinkedRevisionControlClient._getRepository(repositories, githubRepositoryFullName);
-
-            githubClient.repos.getHooks({
-              user: githubUsername,
-              repo: repository.name
-            }, function (err, hooks) {
-              var hookExists = hooks.some(function (hook) {
-                var parsedUrl = url.parse(hook.config.url);
-                return parsedUrl.hostname === (siteName + '.scm.azurewebsites.net');
-              });
-
-              hookExists.should.be.ok;
-
-              // Delete created site
-              cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-              capture(function() {
-                cli.parse(cmd);
-              }, function (result) {
-                result.text.should.equal('');
-                result.exitStatus.should.equal(0);
-
-                // List sites
-                cmd = 'node cli.js site list --json'.split(' ');
-                capture(function() {
-                  cli.parse(cmd);
-                }, function (result) {
-                  siteList = JSON.parse(result.text);
-
-                  siteExists = siteList.some(function (site) {
-                    return site.Name.toLowerCase() === siteName.toLowerCase()
-                  });
-
-                  siteExists.should.not.be.ok;
-
-                  done();
-                });
-              });
-            });
-          });
-        });
-      });
-    });
-
-    test('site create github rerun scenario', function(done) {
-      var siteName = 'cliuttestsite3';
-
-      // Create site
-      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
-
-        cmd.push('--github');
-        cmd.push('--username');
-        cmd.push(githubUsername);
-        cmd.push('--pass');
-        cmd.push(githubPassword);
-        cmd.push('--repository');
-        cmd.push(githubRepositoryFullName);
-
-        // Rerun to make sure update hook works properly
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
-          result.text.should.equal('');
-          result.exitStatus.should.equal(0);
-
-          // List sites
-          cmd = 'node cli.js site list --json'.split(' ');
-
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
-            var siteList = JSON.parse(result.text);
-
-            var siteExists = siteList.some(function (site) {
-              return site.Name.toLowerCase() === siteName.toLowerCase()
-            });
-
-            siteExists.should.be.ok;
 
             // verify that the hook is in github
             githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {

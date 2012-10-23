@@ -1,4 +1,3 @@
-cli/commands/generate-psm1-utils-test.js
 serviceruntime/roleenvironment-tests.js
 serviceruntime/runtimeversionmanager-tests.js
 serviceruntime/runtimeversionprotocolclient-tests.js
