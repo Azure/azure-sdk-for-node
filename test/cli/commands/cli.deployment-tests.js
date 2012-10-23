@@ -23,7 +23,7 @@ var LinkedRevisionControlClient = require('../../../lib/cli/linkedrevisioncontro
 
 var githubUsername = process.env['AZURE_GITHUB_USERNAME'];
 var githubPassword = process.env['AZURE_GITHUB_PASSWORD'];
-var githubRepositoryUri = process.env['AZURE_GITHUB_REPOSITORY'];
+var githubRepositoryFullName = process.env['AZURE_GITHUB_REPOSITORY'];
 var githubClient = new GitHubApi({ version: "3.0.0" });
 
 githubClient.authenticate({
@@ -53,7 +53,7 @@ suite('cli', function(){
 
       // Remove any existing repository hooks
       githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
-        repositoryName = LinkedRevisionControlClient.getRepository(repositories, githubRepositoryUri).name;
+        repositoryName = LinkedRevisionControlClient._getRepository(repositories, githubRepositoryFullName).name;
 
         githubClient.repos.getHooks({
           user: githubUsername,
@@ -104,7 +104,7 @@ suite('cli', function(){
           cmd.push('--pass');
           cmd.push(githubPassword);
           cmd.push('--repository');
-          cmd.push(githubRepositoryUri);
+          cmd.push(githubRepositoryFullName);
 
           capture(function() {
             cli.parse(cmd);
@@ -114,7 +114,7 @@ suite('cli', function(){
 
             // verify that the hook is in github
             githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
-              var repository = LinkedRevisionControlClient.getRepository(repositories, githubRepositoryUri);
+              var repository = LinkedRevisionControlClient._getRepository(repositories, githubRepositoryFullName);
 
               githubClient.repos.getHooks({
                 user: githubUsername,
