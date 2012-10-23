@@ -220,14 +220,8 @@ suite('cli', function(){
       };
 
       // Create site
-      var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
+      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('East US');
-      cmd.push('--username');
-      cmd.push(githubUsername);
-      cmd.push('--pass');
-      cmd.push(githubPassword);
-      cmd.push('--repository');
-      cmd.push(githubRepositoryUri);
 
       capture(function() {
         cli.parse(cmd);
@@ -244,6 +238,14 @@ suite('cli', function(){
 
           // List sites
           cmd = 'node cli.js site list --json'.split(' ');
+          cmd.push('--github');
+          cmd.push('--username');
+          cmd.push(githubUsername);
+          cmd.push('--pass');
+          cmd.push(githubPassword);
+          cmd.push('--repository');
+          cmd.push(githubRepositoryUri);
+
           capture(function() {
             cli.parse(cmd);
           }, function (result) {
