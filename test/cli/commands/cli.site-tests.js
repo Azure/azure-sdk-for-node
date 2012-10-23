@@ -128,13 +128,6 @@ suite('cli', function(){
     test('site create github', function(done) {
       var siteName = 'cliuttestsite2';
 
-      // Setup
-      var originUrl = { 
-        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
-        stderr: '' 
-      };
-
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
       cmd.push('East US');
@@ -229,6 +222,14 @@ suite('cli', function(){
         result.text.should.equal('');
         result.exitStatus.should.equal(0);
 
+        cmd.push('--github');
+        cmd.push('--username');
+        cmd.push(githubUsername);
+        cmd.push('--pass');
+        cmd.push(githubPassword);
+        cmd.push('--repository');
+        cmd.push(githubRepositoryUri);
+
         // Rerun to make sure update hook works properly
         capture(function() {
           cli.parse(cmd);
@@ -238,13 +239,6 @@ suite('cli', function(){
 
           // List sites
           cmd = 'node cli.js site list --json'.split(' ');
-          cmd.push('--github');
-          cmd.push('--username');
-          cmd.push(githubUsername);
-          cmd.push('--pass');
-          cmd.push(githubPassword);
-          cmd.push('--repository');
-          cmd.push(githubRepositoryUri);
 
           capture(function() {
             cli.parse(cmd);
