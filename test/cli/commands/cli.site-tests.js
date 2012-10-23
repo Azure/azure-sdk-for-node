@@ -67,13 +67,6 @@ suite('cli', function(){
     test('site create', function(done) {
       var siteName = 'cliuttestsite1';
 
-      // Setup
-      var originUrl = { 
-        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
-        stderr: '' 
-      };
-
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('East US');
@@ -204,13 +197,6 @@ suite('cli', function(){
 
     test('site create github rerun scenario', function(done) {
       var siteName = 'cliuttestsite3';
-
-      // Setup
-      var originUrl = { 
-        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
-        stderr: '' 
-      };
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');

@@ -67,13 +67,6 @@ suite('cli', function(){
     test('site deployment github', function(done) {
       var siteName = 'cliuttestdeploy1';
 
-      // Setup
-      var originUrl = { 
-        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
-        stderr: '' 
-      };
-
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('East US');
