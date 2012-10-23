@@ -26,7 +26,7 @@ suite('cli', function(){
         }, function (result) {
 
           done();
-        }); 
+        });
        });
    });
 });

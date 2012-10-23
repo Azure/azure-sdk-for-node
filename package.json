@@ -28,7 +28,8 @@
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
     "request": ">= 2.9.203",
-    "validator": ">= 0.4.12"
+    "validator": ">= 0.4.12",
+    "github": "0.1.6"
   },
   "devDependencies": {
     "mocha": "*",
@@ -46,6 +47,7 @@
   },
   "scripts": {
     "test": "node test/runtests.js testlist.txt",
+    "clitest": "node test/runtests.js clitestlist.txt",
     "jshint": "node test/runjshint.js",
     "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
     "extendedtests": "node test/runtests.js extendedtestlist.txt"

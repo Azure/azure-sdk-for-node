@@ -33,7 +33,7 @@ githubClient.authenticate({
 });
 
 suite('cli', function(){
-  suite('site', function() {
+  suite('deployment', function() {
     teardown(function (done) {
       var repositoryName;
 
@@ -64,8 +64,8 @@ suite('cli', function(){
       });
     });
 
-    test('site create', function(done) {
-      var siteName = 'cliuttestsite1';
+    test('site deployment github', function(done) {
+      var siteName = 'cliuttestdeploy1';
 
       // Setup
       var originUrl = { 
@@ -97,148 +97,8 @@ suite('cli', function(){
 
           siteExists.should.be.ok;
 
-          // Delete created site
-          cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-          capture(function() {
-            cli.parse(cmd);
-          }, function (result) {
-            result.text.should.equal('');
-            result.exitStatus.should.equal(0);
-
-            // List sites
-            cmd = 'node cli.js site list --json'.split(' ');
-            capture(function() {
-              cli.parse(cmd);
-            }, function (result) {
-              siteList = JSON.parse(result.text);
-
-              siteExists = siteList.some(function (site) {
-                return site.Name.toLowerCase() === siteName.toLowerCase()
-              });
-
-              siteExists.should.not.be.ok;
-
-              done();
-            });
-          });
-        });
-      });
-    });
-
-    test('site create github', function(done) {
-      var siteName = 'cliuttestsite2';
-
-      // Setup
-      var originUrl = { 
-        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
-        stderr: '' 
-      };
-
-      // Create site
-      var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
-      cmd.push('East US');
-      cmd.push('--username');
-      cmd.push(githubUsername);
-      cmd.push('--pass');
-      cmd.push(githubPassword);
-      cmd.push('--repository');
-      cmd.push(githubRepositoryUri);
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
-
-        // List sites
-        cmd = 'node cli.js site list --json'.split(' ');
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
-          var siteList = JSON.parse(result.text);
-
-          var siteExists = siteList.some(function (site) {
-            return site.Name.toLowerCase() === siteName.toLowerCase()
-          });
-
-          siteExists.should.be.ok;
-
-          // verify that the hook is in github
-          githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
-            var repository = LinkedRevisionControlClient.getRepository(repositories, githubRepositoryUri);
-
-            githubClient.repos.getHooks({
-              user: githubUsername,
-              repo: repository.name
-            }, function (err, hooks) {
-              var hookExists = hooks.some(function (hook) {
-                var parsedUrl = url.parse(hook.config.url);
-                return parsedUrl.hostname === (siteName + '.scm.azurewebsites.net');
-              });
-
-              hookExists.should.be.ok;
-
-              // Delete created site
-              cmd = ('node cli.js site delete ' + siteName + ' --json --quiet').split(' ');
-              capture(function() {
-                cli.parse(cmd);
-              }, function (result) {
-                result.text.should.equal('');
-                result.exitStatus.should.equal(0);
-
-                // List sites
-                cmd = 'node cli.js site list --json'.split(' ');
-                capture(function() {
-                  cli.parse(cmd);
-                }, function (result) {
-                  siteList = JSON.parse(result.text);
-
-                  siteExists = siteList.some(function (site) {
-                    return site.Name.toLowerCase() === siteName.toLowerCase()
-                  });
-
-                  siteExists.should.not.be.ok;
-
-                  done();
-                });
-              });
-            });
-          });
-        });
-      });
-    });
-
-    test('site create github rerun scenario', function(done) {
-      var siteName = 'cliuttestsite3';
-
-      // Setup
-      var originUrl = { 
-        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
-        stderr: '' 
-      };
-
-      // Create site
-      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
-
-      capture(function() {
-        cli.parse(cmd);
-      }, function (result) {
-        result.text.should.equal('');
-        result.exitStatus.should.equal(0);
-
-        // Rerun to make sure update hook works properly
-        capture(function() {
-          cli.parse(cmd);
-        }, function (result) {
-          result.text.should.equal('');
-          result.exitStatus.should.equal(0);
-
-          // List sites
-          cmd = 'node cli.js site list --json'.split(' ');
-          cmd.push('--github');
+          // Create the hook using deployment github cmdlet
+          cmd = ('node cli.js site deployment github ' + siteName + ' --json').split(' ');
           cmd.push('--username');
           cmd.push(githubUsername);
           cmd.push('--pass');
@@ -249,13 +109,8 @@ suite('cli', function(){
           capture(function() {
             cli.parse(cmd);
           }, function (result) {
-            var siteList = JSON.parse(result.text);
-
-            var siteExists = siteList.some(function (site) {
-              return site.Name.toLowerCase() === siteName.toLowerCase()
-            });
-
-            siteExists.should.be.ok;
+            result.text.should.equal('');
+            result.exitStatus.should.equal(0);
 
             // verify that the hook is in github
             githubClient.repos.getFromUser({ user: githubUsername }, function (err, repositories) {
