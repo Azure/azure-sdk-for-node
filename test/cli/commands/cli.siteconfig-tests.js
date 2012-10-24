@@ -18,7 +18,7 @@ var cli = require('../cli');
 var capture = require('../util').capture;
 
 var currentSiteName = 0;
-var siteNames = [ siteName1, siteName2 ];
+var siteNames = [ 'siteName1', 'siteName2' ];
 
 suite('cli', function(){
   suite('siteconfig', function() {
