@@ -1,4 +1,5 @@
 cli/commands/generate-psm1-utils-test.js
 cli/commands/cli.deployment-tests.js
 cli/commands/cli.site-tests.js
+cli/commands/cli.siteconfig-tests.js
 cli/linkrevisioncontrol-tests.js
