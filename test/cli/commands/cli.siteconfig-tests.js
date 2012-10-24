@@ -17,9 +17,7 @@ var should = require('should');
 var cli = require('../cli');
 var capture = require('../util').capture;
 
-var siteName1 = 'cliuttestsiteconfig1';
-var siteName2 = 'cliuttestsiteconfig2';
-
+var currentSiteName = 0;
 var siteNames = [ siteName1, siteName2 ];
 
 suite('cli', function(){
@@ -28,6 +26,7 @@ suite('cli', function(){
 
       var removeSites = function (sites, cb) {
         if (sites.length === 0) {
+          siteNames++;
           cb();
         } else {
           var siteName = sites.pop();
@@ -58,8 +57,10 @@ suite('cli', function(){
     });
 
     test('siteconfig list', function(done) {
+      var siteName = siteNames[currentSiteName];
+
       // Create site
-      var cmd = ('node cli.js site create ' + siteName1 + ' --json --location').split(' ');
+      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('East US');
 
       capture(function() {
@@ -69,7 +70,7 @@ suite('cli', function(){
         result.exitStatus.should.equal(0);
 
         // List sites
-        cmd = ('node cli.js site config list ' + siteName1 + ' --json ').split(' ');
+        cmd = ('node cli.js site config list ' + siteName + ' --json ').split(' ');
         capture(function() {
           cli.parse(cmd);
         }, function (result) {
@@ -78,14 +79,14 @@ suite('cli', function(){
           result.exitStatus.should.equal(0);
 
           // add a setting
-          var cmd = ('node cli.js site config add mysetting=myvalue ' + siteName1 + ' --json').split(' ');
+          var cmd = ('node cli.js site config add mysetting=myvalue ' + siteName + ' --json').split(' ');
           capture(function() {
             cli.parse(cmd);
           }, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
-            cmd = ('node cli.js site config list ' + siteName1 + ' --json').split(' ');
+            cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
             capture(function() {
               cli.parse(cmd);
             }, function (result) {
@@ -95,14 +96,14 @@ suite('cli', function(){
               settingsList.length.should.equal(1);
 
               // add another setting
-              var cmd = ('node cli.js site config add mysetting2=myvalue ' + siteName1 + ' --json').split(' ');
+              var cmd = ('node cli.js site config add mysetting2=myvalue ' + siteName + ' --json').split(' ');
               capture(function() {
                 cli.parse(cmd);
               }, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
-                cmd = ('node cli.js site config list ' + siteName1 + ' --json').split(' ');
+                cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
                 capture(function() {
                   cli.parse(cmd);
                 }, function (result) {
@@ -121,8 +122,10 @@ suite('cli', function(){
     });
 
     test('siteconfig add get clear', function(done) {
+      var siteName = siteNames[currentSiteName];
+
       // Create site
-      var cmd = ('node cli.js site create ' + siteName2 + ' --json --location').split(' ');
+      var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
       cmd.push('East US');
 
       capture(function() {
@@ -132,7 +135,7 @@ suite('cli', function(){
         result.exitStatus.should.equal(0);
 
         // List sites
-        cmd = ('node cli.js site config list ' + siteName2 + ' --json ').split(' ');
+        cmd = ('node cli.js site config list ' + siteName + ' --json ').split(' ');
         capture(function() {
           cli.parse(cmd);
         }, function (result) {
@@ -141,14 +144,14 @@ suite('cli', function(){
           result.exitStatus.should.equal(0);
 
           // add a setting
-          var cmd = ('node cli.js site config add mysetting=myvalue ' + siteName2 + ' --json').split(' ');
+          var cmd = ('node cli.js site config add mysetting=myvalue ' + siteName + ' --json').split(' ');
           capture(function() {
             cli.parse(cmd);
           }, function (result) {
             result.text.should.equal('');
             result.exitStatus.should.equal(0);
 
-            cmd = ('node cli.js site config get mysetting ' + siteName2 + ' --json').split(' ');
+            cmd = ('node cli.js site config get mysetting ' + siteName + ' --json').split(' ');
             capture(function() {
               cli.parse(cmd);
             }, function (result) {
@@ -156,14 +159,14 @@ suite('cli', function(){
               result.exitStatus.should.equal(0);
 
               // add another setting
-              var cmd = ('node cli.js site config clear mysetting ' + siteName2 + ' --json').split(' ');
+              var cmd = ('node cli.js site config clear mysetting ' + siteName + ' --json').split(' ');
               capture(function() {
                 cli.parse(cmd);
               }, function (result) {
                 result.text.should.equal('');
                 result.exitStatus.should.equal(0);
 
-                cmd = ('node cli.js site config list ' + siteName2 + ' --json').split(' ');
+                cmd = ('node cli.js site config list ' + siteName + ' --json').split(' ');
                 capture(function() {
                   cli.parse(cmd);
                 }, function (result) {
