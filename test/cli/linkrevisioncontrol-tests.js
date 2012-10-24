@@ -35,7 +35,7 @@ suite('cli', function(){
       done();
     });
 
-    test('should get remote azure uri', function(done) {
+    test('should get remote uris single', function(done) {
       // Setup
       var azureUrl = { 
         stdout: 'azure\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
@@ -50,19 +50,22 @@ suite('cli', function(){
       execStub.yields(undefined, azureUrl);
 
       // Test
-      githubClient._getRemoteUri(function (err, url) {
+      githubClient._getRemoteUris(function (err, urls) {
         // Assert
-        url.should.equal('git://github.com/andrerod/mynewsite999.git');
+        urls.length.should.equal(1);
+        urls[0].should.equal('git://github.com/andrerod/mynewsite999.git');
 
         done();
       });
     });
 
-    test('should get remote origin uri', function(done) {
+    test('should get remote uris multiple', function(done) {
       // Setup
-      var originUrl = { 
-        stdout: 'origin\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'origin\tgit://github.com/andrerod/mynewsite999.git (push)\n',
+      var azureUrl = { 
+        stdout: 'azure\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
+                'azure\tgit://github.com/andrerod/mynewsite999.git (push)\n' +
+                'origin\tgit://github.com/andrerod/mynewsite2.git (fetch)\n' +
+                'origin\tgit://github.com/andrerod/mynewsite2.git (push)\n',
         stderr: '' 
       };
 
@@ -70,35 +73,14 @@ suite('cli', function(){
       var githubClient = LinkedRevisionControl.createClient(cli, 'github');
 
       var execStub = sandbox.stub(githubClient, '_exec');
-      execStub.yields(undefined, originUrl);
+      execStub.yields(undefined, azureUrl);
 
       // Test
-      githubClient._getRemoteUri(function (err, url) {
+      githubClient._getRemoteUris(function (err, urls) {
         // Assert
-        url.should.equal('git://github.com/andrerod/mynewsite999.git');
-
-        done();
-      });
-    });
-
-    test('should not get other remote uris', function(done) {
-      // Setup
-      var originUrl = { 
-        stdout: 'myremote\tgit://github.com/andrerod/mynewsite999.git (fetch)\n' +
-                'myremote\tgit://github.com/andrerod/mynewsite999.git (push)\n',
-        stderr: '' 
-      };
-
-      var cli = { output: { }, progress: function() { return { end: function() {}}} };
-      var githubClient = LinkedRevisionControl.createClient(cli, 'github');
-
-      var execStub = sandbox.stub(githubClient, '_exec');
-      execStub.yields(undefined, originUrl);
-
-      // Test
-      githubClient._getRemoteUri(function (err, url) {
-        // Assert
-        should.strictEqual(undefined, url);
+        urls.length.should.equal(2);
+        urls[0].should.equal('git://github.com/andrerod/mynewsite999.git');
+        urls[1].should.equal('git://github.com/andrerod/mynewsite2.git');
 
         done();
       });
