@@ -26,7 +26,7 @@ suite('cli', function(){
 
       var removeSites = function (sites, cb) {
         if (sites.length === 0) {
-          siteNames++;
+          currentSiteName++;
           cb();
         } else {
           var siteName = sites.pop();
