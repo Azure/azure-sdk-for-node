@@ -92,11 +92,11 @@ suite('cli', function(){
 
           // Create the hook using deployment github cmdlet
           cmd = ('node cli.js site deployment github ' + siteName + ' --json').split(' ');
-          cmd.push('--username');
+          cmd.push('--githubusername');
           cmd.push(githubUsername);
-          cmd.push('--pass');
+          cmd.push('--githubpassword');
           cmd.push(githubPassword);
-          cmd.push('--repository');
+          cmd.push('--githubrepository');
           cmd.push(githubRepositoryFullName);
 
           capture(function() {
