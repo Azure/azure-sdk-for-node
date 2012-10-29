@@ -124,11 +124,11 @@ suite('cli', function(){
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
       cmd.push('East US');
-      cmd.push('--username');
+      cmd.push('--githubusername');
       cmd.push(githubUsername);
-      cmd.push('--pass');
+      cmd.push('--githubpassword');
       cmd.push(githubPassword);
-      cmd.push('--repository');
+      cmd.push('--githubrepository');
       cmd.push(githubRepositoryFullName);
 
       capture(function() {
@@ -209,11 +209,11 @@ suite('cli', function(){
         result.exitStatus.should.equal(0);
 
         cmd.push('--github');
-        cmd.push('--username');
+        cmd.push('--githubusername');
         cmd.push(githubUsername);
-        cmd.push('--pass');
+        cmd.push('--githubpassword');
         cmd.push(githubPassword);
-        cmd.push('--repository');
+        cmd.push('--githubrepository');
         cmd.push(githubRepositoryFullName);
 
         // Rerun to make sure update hook works properly
