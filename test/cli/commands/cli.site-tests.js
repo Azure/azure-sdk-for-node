@@ -16,7 +16,7 @@
 var should = require('should');
 var url = require('url');
 var GitHubApi = require('github');
-
+var util = require('util');
 var cli = require('../cli');
 var capture = require('../util').capture;
 var LinkedRevisionControlClient = require('../../../lib/cli/linkedrevisioncontrol').LinkedRevisionControlClient;
@@ -268,7 +268,7 @@ suite('cli', function(){
                     siteList = JSON.parse(result.text);
 
                     siteExists = siteList.some(function (site) {
-                      return site.Name.toLowerCase() === siteName.toLowerCase()
+                      return site.Name.toLowerCase() === siteName.toLowerCase();
                     });
 
                     siteExists.should.not.be.ok;
@@ -281,6 +281,73 @@ suite('cli', function(){
           });
         });
       });
+    });
+    
+    test('site restart running site', function (done) {
+      var siteName = 'cliuttestsite4';
+
+      // Create site for testing
+      var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
+      cmd.push('East US');
+      capture(function () {
+        cli.parse(cmd);
+      }, function (result) {
+
+        // Restart site, it's created running
+        cmd = util.format('node cli.js site restart %s', siteName).split(' ');
+        capture(function () {
+          cli.parse(cmd);
+        }, function (result) {
+          // Verify site stopped and restarted
+          result.text.should.match('Site ' + siteName + ' has been stopped');
+          result.test.should.match('Site ' + siteName + ' has been started');
+
+          // Delete test site
+
+          cmd = util.format('node cli.js delete %s', siteName).split(' ');
+          capture(function () {
+            cli.parse(cmd);
+          }, function (result) {
+            done();
+          });
+        });
+      });
+    });
+
+    test('site restart stopped site', function (done) {
+      var siteName = 'cliuttestsite4';
+
+      // Create site for testing
+      var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
+      cmd.push('East US');
+      capture(function () {
+        cli.parse(cmd);
+      }, function (result) {
+        // Stop the site
+        cmd = util.format('node cli.js site stop %s', siteName).split(' ');
+        capture(function () {
+          cli.parse(cmd);
+        }, function () {
+          // Restart site
+          cmd = util.format('node cli.js site restart %s', siteName).split(' ');
+          capture(function () {
+            cli.parse(cmd);
+          }, function (result) {
+            // Verify site stopped and restarted
+            result.text.should.match('Site ' + siteName + ' has been stopped');
+            result.test.should.match('Site ' + siteName + ' has been started');
+
+            // Delete test site
+
+            cmd = util.format('node cli.js delete %s', siteName).split(' ');
+            capture(function () {
+              cli.parse(cmd);
+            }, function (result) {
+              done();
+            });
+          });
+        });
+      });      
     });
   });
 });
