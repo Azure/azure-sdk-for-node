@@ -300,7 +300,7 @@ suite('cli', function(){
         }, function (result) {
           // Verify site stopped and restarted
           result.text.should.match('Site ' + siteName + ' has been stopped');
-          result.test.should.match('Site ' + siteName + ' has been started');
+          result.text.should.match('Site ' + siteName + ' has been started');
 
           // Delete test site
 
@@ -335,7 +335,7 @@ suite('cli', function(){
           }, function (result) {
             // Verify site stopped and restarted
             result.text.should.match('Site ' + siteName + ' has been stopped');
-            result.test.should.match('Site ' + siteName + ' has been started');
+            result.text.should.match('Site ' + siteName + ' has been started');
 
             // Delete test site
 
