@@ -15,6 +15,7 @@
 
 var should = require('should');
 var url = require('url');
+var uuid = require('node-uuid');
 var GitHubApi = require('github');
 var util = require('util');
 var cli = require('../cli');
@@ -65,7 +66,7 @@ suite('cli', function(){
     });
 
     test('site create', function(done) {
-      var siteName = 'cliuttestsite1';
+      var siteName = 'cliuttestsite1' + uuid();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
@@ -119,11 +120,11 @@ suite('cli', function(){
     });
 
     test('site create github', function(done) {
-      var siteName = 'cliuttestsite2';
+      var siteName = 'cliuttestsite2b' + uuid();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
       cmd.push('--githubusername');
       cmd.push(githubUsername);
       cmd.push('--githubpassword');
@@ -196,11 +197,11 @@ suite('cli', function(){
     });
 
     test('site create github rerun scenario', function(done) {
-      var siteName = 'cliuttestsite3';
+      var siteName = 'cliuttestsite3' + uuid();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -284,11 +285,11 @@ suite('cli', function(){
     });
     
     test('site restart running site', function (done) {
-      var siteName = 'cliuttestsite4';
+      var siteName = 'cliuttestsite4' + uuid();
 
       // Create site for testing
       var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
       capture(function () {
         cli.parse(cmd);
       }, function (result) {
@@ -299,8 +300,8 @@ suite('cli', function(){
           cli.parse(cmd);
         }, function (result) {
           // Verify site stopped and restarted
-          result.text.should.match(new Regex('Site ' + siteName + ' has been stopped, restarting'));
-          result.text.should.match(new Regex('Site ' + siteName + ' has been restarted'));
+          result.text.should.match(new RegExp('Site ' + siteName + ' has been stopped, restarting'));
+          result.text.should.match(new RegExp('Site ' + siteName + ' has been restarted'));
 
           // Delete test site
 
@@ -315,11 +316,11 @@ suite('cli', function(){
     });
 
     test('site restart stopped site', function (done) {
-      var siteName = 'cliuttestsite4';
+      var siteName = 'cliuttestsite4' + uuid();
 
       // Create site for testing
       var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
       capture(function () {
         cli.parse(cmd);
       }, function (result) {
@@ -334,8 +335,8 @@ suite('cli', function(){
             cli.parse(cmd);
           }, function (result) {
             // Verify site stopped and restarted
-            result.text.should.match(new Regex('Site ' + siteName + ' has been stopped, restarting'));
-            result.text.should.match(new Regex('Site ' + siteName + ' has been restarted'));
+            result.text.should.match(new RegExp('Site ' + siteName + ' has been stopped, restarting'));
+            result.text.should.match(new RegExp('Site ' + siteName + ' has been restarted'));
 
             // Delete test site
 
