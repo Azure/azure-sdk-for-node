@@ -15,8 +15,9 @@
 
 var should = require('should');
 var url = require('url');
+var uuid = require('node-uuid');
 var GitHubApi = require('github');
-
+var util = require('util');
 var cli = require('../cli');
 var capture = require('../util').capture;
 var LinkedRevisionControlClient = require('../../../lib/cli/linkedrevisioncontrol').LinkedRevisionControlClient;
@@ -65,11 +66,11 @@ suite('cli', function(){
     });
 
     test('site create', function(done) {
-      var siteName = 'cliuttestsite1';
+      var siteName = 'cliuttestsite1' + uuid();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -119,11 +120,11 @@ suite('cli', function(){
     });
 
     test('site create github', function(done) {
-      var siteName = 'cliuttestsite2';
+      var siteName = 'cliuttestsite2b' + uuid();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --github --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
       cmd.push('--githubusername');
       cmd.push(githubUsername);
       cmd.push('--githubpassword');
@@ -196,11 +197,11 @@ suite('cli', function(){
     });
 
     test('site create github rerun scenario', function(done) {
-      var siteName = 'cliuttestsite3';
+      var siteName = 'cliuttestsite3' + uuid();
 
       // Create site
       var cmd = ('node cli.js site create ' + siteName + ' --json --location').split(' ');
-      cmd.push('East US');
+      cmd.push('West US');
 
       capture(function() {
         cli.parse(cmd);
@@ -268,7 +269,7 @@ suite('cli', function(){
                     siteList = JSON.parse(result.text);
 
                     siteExists = siteList.some(function (site) {
-                      return site.Name.toLowerCase() === siteName.toLowerCase()
+                      return site.Name.toLowerCase() === siteName.toLowerCase();
                     });
 
                     siteExists.should.not.be.ok;
@@ -281,6 +282,67 @@ suite('cli', function(){
           });
         });
       });
+    });
+    
+    test('site restart running site', function (done) {
+      var siteName = 'cliuttestsite4' + uuid();
+
+      // Create site for testing
+      var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
+      cmd.push('West US');
+      capture(function () {
+        cli.parse(cmd);
+      }, function (result) {
+
+        // Restart site, it's created running
+        cmd = util.format('node cli.js site restart %s', siteName).split(' ');
+        capture(function () {
+          cli.parse(cmd);
+        }, function (result) {
+
+          // Delete test site
+
+          cmd = util.format('node cli.js site delete %s', siteName).split(' ');
+          capture(function () {
+            cli.parse(cmd);
+          }, function (result) {
+            done();
+          });
+        });
+      });
+    });
+
+    test('site restart stopped site', function (done) {
+      var siteName = 'cliuttestsite4' + uuid();
+
+      // Create site for testing
+      var cmd = util.format('node cli.js site create %s --json --location', siteName).split(' ');
+      cmd.push('West US');
+      capture(function () {
+        cli.parse(cmd);
+      }, function (result) {
+        // Stop the site
+        cmd = util.format('node cli.js site stop %s', siteName).split(' ');
+        capture(function () {
+          cli.parse(cmd);
+        }, function () {
+          // Restart site
+          cmd = util.format('node cli.js site restart %s', siteName).split(' ');
+          capture(function () {
+            cli.parse(cmd);
+          }, function (result) {
+            
+            // Delete test site
+
+            cmd = util.format('node cli.js site delete %s', siteName).split(' ');
+            capture(function () {
+              cli.parse(cmd);
+            }, function (result) {
+              done();
+            });
+          });
+        });
+      });      
     });
   });
 });
