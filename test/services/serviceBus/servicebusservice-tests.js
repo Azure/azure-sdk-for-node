@@ -1606,4 +1606,55 @@ suite('servicebusservice-tests', function () {
       });
     });
   });
+
+  test('connectionStrings', function (done) {
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'Endpoint=http://ablal-martvue.servicebus.windows.net/;StsEndpoint=https://ablal-martvue-sb.accesscontrol.windows.net;SharedSecretIssuer=owner;SharedSecretValue=' + key;
+
+    var serviceBusService = azure.createServiceBusService(connectionString);
+    assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');
+    assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
+    assert.equal(serviceBusService.authenticationProvider.accessKey, key);
+    assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://ablal-martvue-sb.accesscontrol.windows.net');
+
+    done();
+  });
+
+  test('storageConnectionStringsEndpointHttpExplicit', function (done) {
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var expectedNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+    var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
+    var expectedHost = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
+    var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
+    serviceBusService.createTopic(topicName, function (err) {
+      assert.equal(err, null);
+
+      assert.equal(serviceBusService.host, process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net');
+      assert.equal(serviceBusService.port, 80);
+      assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
+      assert.equal(serviceBusService.authenticationProvider.accessKey, expectedKey);
+      assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '-sb.accesscontrol.windows.net:443');
+
+      done();
+    });
+  });
+
+  test('storageConnectionStringsEndpointHttpsExplicit', function (done) {
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var expectedNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+    var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
+    var expectedHost = 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
+    var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
+    serviceBusService.createTopic(topicName, function (err) {
+      assert.equal(err, null);
+
+      assert.equal(serviceBusService.host, process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net');
+      assert.equal(serviceBusService.port, 443);
+      assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
+      assert.equal(serviceBusService.authenticationProvider.accessKey, expectedKey);
+      assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '-sb.accesscontrol.windows.net:443');
+
+      done();
+    });
+  });
 });
