@@ -299,9 +299,6 @@ suite('cli', function(){
         capture(function () {
           cli.parse(cmd);
         }, function (result) {
-          // Verify site stopped and restarted
-          result.text.should.match(new RegExp('Site ' + siteName + ' has been stopped, restarting'));
-          result.text.should.match(new RegExp('Site ' + siteName + ' has been restarted'));
 
           // Delete test site
 
@@ -334,10 +331,7 @@ suite('cli', function(){
           capture(function () {
             cli.parse(cmd);
           }, function (result) {
-            // Verify site stopped and restarted
-            result.text.should.match(new RegExp('Site ' + siteName + ' has been stopped, restarting'));
-            result.text.should.match(new RegExp('Site ' + siteName + ' has been restarted'));
-
+            
             // Delete test site
 
             cmd = util.format('node cli.js site delete %s', siteName).split(' ');
