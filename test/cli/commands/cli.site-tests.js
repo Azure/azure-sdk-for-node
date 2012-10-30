@@ -299,12 +299,12 @@ suite('cli', function(){
           cli.parse(cmd);
         }, function (result) {
           // Verify site stopped and restarted
-          result.text.should.match('Site ' + siteName + ' has been stopped');
-          result.text.should.match('Site ' + siteName + ' has been started');
+          result.text.should.match(new Regex('Site ' + siteName + ' has been stopped, restarting'));
+          result.text.should.match(new Regex('Site ' + siteName + ' has been restarted'));
 
           // Delete test site
 
-          cmd = util.format('node cli.js delete %s', siteName).split(' ');
+          cmd = util.format('node cli.js site delete %s', siteName).split(' ');
           capture(function () {
             cli.parse(cmd);
           }, function (result) {
@@ -334,12 +334,12 @@ suite('cli', function(){
             cli.parse(cmd);
           }, function (result) {
             // Verify site stopped and restarted
-            result.text.should.match('Site ' + siteName + ' has been stopped');
-            result.text.should.match('Site ' + siteName + ' has been started');
+            result.text.should.match(new Regex('Site ' + siteName + ' has been stopped, restarting'));
+            result.text.should.match(new Regex('Site ' + siteName + ' has been restarted'));
 
             // Delete test site
 
-            cmd = util.format('node cli.js delete %s', siteName).split(' ');
+            cmd = util.format('node cli.js site delete %s', siteName).split(' ');
             capture(function () {
               cli.parse(cmd);
             }, function (result) {
