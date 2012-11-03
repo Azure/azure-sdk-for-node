@@ -19,8 +19,8 @@ if (!fs.existsSync) {
 }
 
 var azure;
-if (fs.existsSync('./../../lib/azure.js')) {
-  azure = require('./../../lib/azure');
+if (fs.existsSync('./../../../lib/azure.js')) {
+  azure = require('./../../../lib/azure');
 } else {
   azure = require('azure');
 }
