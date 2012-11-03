@@ -1,6 +1,8 @@
 2012.10.15 Version 0.6.7
  * Adding connection strings support for storage and service bus
  * Fixing issue with EMULATED and explicit variables making the later more relevant
+ * Adding Github support
+ * Adding website application settings support
 
 2012.10.12 Version 0.6.6
  * Using fixed version of commander.js to avoid bug in commander.js 1.0.5
