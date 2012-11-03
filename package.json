@@ -1,7 +1,7 @@
 {
   "name": "azure",
   "author": "Microsoft Corporation",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "Windows Azure Client Library for node and Command Line Tool",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
@@ -27,7 +27,9 @@
     "colors": "0.x.x",
     "eyes": "0.x.x",
     "easy-table": "0.0.1",
-    "request": ">= 2.9.203"
+    "request": ">= 2.9.203",
+    "validator": ">= 0.4.12",
+    "github": "0.1.6"
   },
   "devDependencies": {
     "mocha": "*",
@@ -45,6 +47,7 @@
   },
   "scripts": {
     "test": "node test/runtests.js testlist.txt",
+    "clitest": "node test/runtests.js clitestlist.txt",
     "jshint": "node test/runjshint.js",
     "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
     "extendedtests": "node test/runtests.js extendedtestlist.txt"
