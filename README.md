@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/WindowsAzure/azure-sdk-for-node.png)](http://travis-ci.org/WindowsAzure/azure-sdk-for-node)
 # Windows Azure SDK for Node.js
 
 This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. It also includes a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
