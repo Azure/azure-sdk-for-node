@@ -1,8 +1,8 @@
 {
   "name": "azure",
   "author": "Microsoft Corporation",
-  "version": "0.6.7",
-  "description": "Windows Azure Client Library for node and Command Line Tool",
+  "version": "0.6.8",
+  "description": "Windows Azure Client Library for node",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
   "main": "./lib/azure.js",
@@ -20,16 +20,8 @@
     "underscore.string": ">= 2.0.0",
     "node-uuid": "> = 1.2.0",
     "tunnel": ">= 0.0.1",
-    "async": ">= 0.1.18",
-    "streamline": "0.2.4",
-    "commander": "1.0.4",
-    "winston": ">= 0.5.10",
-    "colors": "0.x.x",
-    "eyes": "0.x.x",
-    "easy-table": "0.0.1",
     "request": ">= 2.9.203",
-    "validator": ">= 0.4.12",
-    "github": "0.1.6"
+    "validator": ">= 0.4.12"
   },
   "devDependencies": {
     "mocha": "*",
@@ -47,12 +39,8 @@
   },
   "scripts": {
     "test": "node test/runtests.js testlist.txt",
-    "clitest": "node test/runtests.js clitestlist.txt",
     "jshint": "node test/runjshint.js",
     "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
     "extendedtests": "node test/runtests.js extendedtestlist.txt"
-  },
-  "bin": {
-    "azure": "./bin/azure"
   }
 }
