@@ -453,8 +453,8 @@ suite('roleenvironment-tests', function () {
     setupVersionEndpoint();
     setupGoalStateEndpoint();
 
-    inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
-    inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+    var stub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
+    stub.yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
       "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
@@ -510,7 +510,9 @@ suite('roleenvironment-tests', function () {
         assert.equal(changes.length, 0);
 
         // Change an instance endpoint and make sure it reflects
-        inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+        stub.restore();
+        stub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
+        stub.yields(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
           "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
           "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
@@ -560,7 +562,9 @@ suite('roleenvironment-tests', function () {
           assert.equal(changes.length, 1);
 
           // Change an instance endpoint and make sure it reflects
-          inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
+          stub.restore();
+          stub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
+          stub.yields(undefined,
             "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
             "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
             "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
