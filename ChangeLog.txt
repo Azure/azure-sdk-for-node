@@ -1,3 +1,11 @@
+2012.11.20 Version 0.6.8
+ * CLI functionality has been pulled out into a new "azure-cli" module. See https://github.com/WindowsAzure/azure-sdk-tools-xplat for details.
+ * Add support for sb: in ServiceBus connection strings.
+ * Add functions to ServiceManagement for managing storage accounts.
+ * Merged #314 from @smarx for allowing empty partition keys on the client.
+ * Merged #447 from @anodejs for array enumeration and exception on batch response.
+ * Various other fixes
+
 2012.10.15 Version 0.6.7
  * Adding connection strings support for storage and service bus
  * Fixing issue with EMULATED and explicit variables making the later more relevant
