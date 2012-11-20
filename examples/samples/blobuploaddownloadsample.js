@@ -53,8 +53,7 @@ function createContainer() {
   blobService.createContainerIfNotExists(container, function (error) {
     if (error) {
       console.log(error);
-    }
-    else {
+    } else {
       console.log('Created the container ' + container);
       uploadSample();
     }
@@ -203,8 +202,7 @@ function testAccess(containerName, blobName, etag) {
 
 if (processArguments.length > 5 || processArguments.length < 4) {
   console.log('Incorrect number of arguments');
-}
-else if (processArguments.length == 5) {
+} else if (processArguments.length == 5) {
   // Adding a third argument on the command line, whatever it is, will delete the container before running the sample.
   blobService.deleteContainer(container, function (error) {
     if (error) {
@@ -213,8 +211,7 @@ else if (processArguments.length == 5) {
       createContainer();
     }
   });
-}
-else {
+} else {
   createContainer();
 }
 
