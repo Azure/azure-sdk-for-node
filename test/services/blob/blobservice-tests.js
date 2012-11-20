@@ -420,6 +420,74 @@ suite('blobservice-tests', function () {
     });
   });
 
+  test('SetContainerAclWithPolicies', function (done) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+
+    var readWriteStartDate = new Date();
+    var readWriteExpiryDate = new Date(readWriteStartDate);
+    readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
+
+    var readWriteSharedAccessPolicy = {
+      Id: 'readwrite',
+      AccessPolicy: {
+        Start: readWriteStartDate,
+        Expiry: readWriteExpiryDate,
+        Permissions: 'rw'
+      }
+    };
+
+    var readSharedAccessPolicy = {
+      Id: 'read',
+      AccessPolicy: {
+        Expiry: readWriteStartDate,
+        Permissions: 'r'
+      }
+    };
+
+    var options = {};
+    options.signedIdentifiers = [readWriteSharedAccessPolicy, readSharedAccessPolicy];
+
+    blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
+      assert.equal(createError, null);
+      assert.notEqual(container1, null);
+      assert.ok(createContainerResponse.isSuccessful);
+
+      blobService.setContainerAcl(containerName, BlobConstants.BlobContainerPublicAccessType.BLOB, options, function (setAclError, setAclContainer1, setResponse1) {
+        assert.equal(setAclError, null);
+        assert.notEqual(setAclContainer1, null);
+        assert.ok(setResponse1.isSuccessful);
+
+        blobService.getContainerAcl(containerName, function (getAclError, getAclContainer1, getResponse1) {
+          assert.equal(getAclError, null);
+          assert.notEqual(getAclContainer1, null);
+          if (getAclContainer1) {
+            assert.equal(getAclContainer1.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.BLOB);
+          }
+
+          assert.ok(getResponse1.isSuccessful);
+
+          blobService.setContainerAcl(containerName, BlobConstants.BlobContainerPublicAccessType.CONTAINER, function (setAclError2, setAclContainer2, setResponse2) {
+            assert.equal(setAclError2, null);
+            assert.notEqual(setAclContainer2, null);
+            assert.ok(setResponse2.isSuccessful);
+
+            blobService.getContainerAcl(containerName, function (getAclError2, getAclContainer2, getResponse3) {
+              assert.equal(getAclError2, null);
+              assert.notEqual(getAclContainer2, null);
+              if (getAclContainer2) {
+                assert.equal(getAclContainer2.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.CONTAINER);
+              }
+
+              assert.ok(getResponse3.isSuccessful);
+
+              done();
+            });
+          });
+        });
+      });
+    });
+  });
+
   test('SetContainerAclSignedIdentifiers', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
 

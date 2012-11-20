@@ -1,45 +1,6 @@
-2012.10.15 Version 0.6.7
- * Adding connection strings support for storage and service bus
- * Fixing issue with EMULATED and explicit variables making the later more relevant
- * Adding Github support
- * Adding website application settings support
+2012.11.20 - Version 0.6.8
+* Initial release of stand alone CLI.
+* New commands for managing storage accounts
+* Support for new .publishsettings file format
+* Several bug fixes for github repos.
 
-2012.10.12 Version 0.6.6
- * Using fixed version of commander.js to avoid bug in commander.js 1.0.5
-
-2012.10.01 Version 0.6.5
- * Bugfixing
-
-2012.09.18 Version 0.6.4
- * Multiple Bugfixes around blob streaming
-
-2012.09.09 Version 0.6.3
- * Fixing issue with xml2js
-
-2012.08.15 Version 0.6.2
- * Multiple Bugfixes
-
-2012.07.02 Version 0.6.1
- * Multiple Bugfixes
- * Adding subscription setting and listing functionality.
-
-2012.06.06 Version 0.6.0
- * Adding CLI tool
- * Multiple Bugfixes
-
-2012.04.19 Version 0.5.3
- * Service Runtime Wrappers
- * Multiple Bugfixes
- * Unit tests converted to mocha and code coverage made easy through JSCoverage
-
-2012.02.10 Version 0.5.2
- * Service Bus Wrappers
- * Storage Services UT run against a mock server.
- * Node.exe version requirement lowered to raise compatibility.
- * Multiple Bugfixes
-
-2011.12.14 Version 0.5.1
- * Multiple bug fixes
-
-2011.12.09 Version 0.5.0
- * Initial Release
