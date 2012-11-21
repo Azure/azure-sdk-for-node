@@ -104,7 +104,7 @@ suite('tableservice-batch-tests', function () {
 
         var tableQuery = TableQuery.select()
           .from(tableName)
-          .whereKeys(entities[0].PartitionKey, entities[0].RowKey);
+          .whereKeys(entities[0].PartitionKey, entities[0].RowKey.toString());
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
           assert.equal(queryError, null);
@@ -139,7 +139,7 @@ suite('tableservice-batch-tests', function () {
         assert.equal(batchError, null);
         assert.ok(batchResponse.isSuccessful);
 
-        tableService.queryEntity(tableName, entities[0].PartitionKey, entities[0].RowKey, function (queryError, entry, queryResponse) {
+        tableService.queryEntity(tableName, entities[0].PartitionKey, entities[0].RowKey.toString(), function (queryError, entry, queryResponse) {
           assert.equal(queryError, null);
           assert.ok(queryResponse.isSuccessful);
           assert.notEqual(entry, null);

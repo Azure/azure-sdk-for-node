@@ -14,11 +14,22 @@
 */
 
 var should = require('should');
+var sinon = require('sinon');
 var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
 var ServiceClient = azure.ServiceClient;
 
+var sandbox;
+
 suite('serviceclient-tests', function () {
+  setup(function () {
+    sandbox = sinon.sandbox.create();
+  });
+
+  teardown(function () {
+    sandbox.restore();
+  });
+
   test('NormalizedErrorsAreErrors', function () {
     var error = {
       'message': 'this is an error message',
@@ -30,6 +41,20 @@ suite('serviceclient-tests', function () {
 
     normalizedError.should.be.an.instanceOf(Error);
     normalizedError.should.have.keys('message', 'resultcode', 'somethingelse');
+  });
+
+  test('loadenvironmentproxy', function () {
+    var serviceClient = new ServiceClient();
+
+    var loadEnvironmentProxy = sandbox.stub(serviceClient, '_loadEnvironmentProxyValue');
+    loadEnvironmentProxy.returns('http://localhost:8888');
+
+    serviceClient._loadEnvironmentProxy();
+
+    serviceClient.useProxy.should.equal(true);
+    serviceClient.proxyProtocol.should.equal('http:');
+    serviceClient.proxyPort.should.equal('8888');
+    serviceClient.proxyUrl.should.equal('localhost');
   });
 });
 
