@@ -1657,4 +1657,18 @@ suite('servicebusservice-tests', function () {
       done();
     });
   });
+
+  test('connectionStringsWithSbSchema', function (done) {
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'Endpoint=sb://ablal-martvue.servicebus.windows.net/;StsEndpoint=https://ablal-martvue-sb.accesscontrol.windows.net;SharedSecretIssuer=owner;SharedSecretValue=' + key;
+
+    var serviceBusService = azure.createServiceBusService(connectionString);
+    assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');
+    assert.equal(serviceBusService.protocol, 'https://');
+    assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
+    assert.equal(serviceBusService.authenticationProvider.accessKey, key);
+    assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://ablal-martvue-sb.accesscontrol.windows.net');
+
+    done();
+  });
 });

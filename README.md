@@ -1,26 +1,6 @@
 # Windows Azure SDK for Node.js
 
-This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. It also includes a cross platform command line tool for managing Windows Azure Websites and Virtual Machines.
-
-With Windows Azure Websites you can deploy node.js applications to the cloud in just seconds using git. 
-
-For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
-
-For documentation on the new cross platform CLI tool for Mac and Linux, please see this [reference](http://go.microsoft.com/fwlink/?LinkId=252246&clcid=0x409) and this [How to Guide](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/)
-
-Check out our new IRC channel on freenode, node-azure.
-
-# CLI Features
-
-* Websites
-	* Create and manage WindowsAzure websites
-    * Download site logs
-    * Manage Deployments
-* Virtual machines
-    * Create and manage Windows and Linux Virtual machines
-	* Create and manage VM endpoints
-    * Create and manage Virtual Machine Images
-    * Create and manage certificates
+This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. 
 
 # Library Features
 
@@ -51,9 +31,9 @@ To get the source code of the SDK via **git** just type:
     git clone https://github.com/WindowsAzure/azure-sdk-for-node.git
     cd ./azure-sdk-for-node
 
-## Download Package
+## Install the npm package
 
-Alternatively, to get the source code via the Node Package Manager (npm), type
+You can install the azure npm package directly.
 
     npm install azure
 
@@ -324,7 +304,6 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 });
 ```
 
-
 **For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
 
 # Need Help?
@@ -338,4 +317,9 @@ If you would like to become an active contributor to this project please follow 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-node/issues) section of the project.
 
 # Learn More
-[Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/)
+
+For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
+
+For documentation on the Azure cross platform CLI tool for Mac and Linux, please see our readme [here] (http://github.com/windowsazure/azure-sdk-tools-xplat)
+
+Check out our new IRC channel on freenode, node-azure.
