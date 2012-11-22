@@ -39,6 +39,7 @@
     "url" : "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
   },
   "scripts": {
+    "postinstall" : "node scripts/azure.js",
     "test": "node test/runtests.js testlist.txt",
     "jshint": "node test/runjshint.js",
     "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
