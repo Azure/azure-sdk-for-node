@@ -1671,4 +1671,24 @@ suite('servicebusservice-tests', function () {
 
     done();
   });
+
+  test('invalidNamespaceGivesError', function (done) {
+    var serviceBusService = azure.createServiceBusService(process.env['AZURE_SERVICEBUS_NAMESPACE'], 'key');
+    // fails, with an error on the callback.
+    serviceBusService.createTopicIfNotExists('Topic', function(error) {
+      assert.notEqual(error, null);
+
+      done();
+    });
+  });
+
+  test('invalidKeyGivesError', function (done) {
+    var serviceBusService = azure.createServiceBusService('BoGuS', process.env['AZURE_SERVICEBUS_ACCESS_KEY']);
+    // fails, with an error on the callback.
+    serviceBusService.createTopicIfNotExists('Topic', function(error) {
+      assert.notEqual(error, null);
+
+      done();
+    });
+  });
 });
