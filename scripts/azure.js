@@ -13,5 +13,5 @@
 * limitations under the License.
 */
 
-console.log('The azure cli has been moved to a separate project. Please use "npm install azure-cli" to get it.');
+console.log('The azure cli has been moved to a separate project. Please use "npm install azure-cli -g" to get it.');
 console.log('');
