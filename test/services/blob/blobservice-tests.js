@@ -1358,7 +1358,6 @@ suite('blobservice-tests', function () {
 
     done();
   });
-
 });
 
 function repeat(s, n) {
