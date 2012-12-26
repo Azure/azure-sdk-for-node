@@ -41,10 +41,10 @@ var entity1 = { PartitionKey: 'part1',
 
 var entity2 = { PartitionKey: 'part2',
   RowKey: 'row1',
-  boolValueTrue: { '@': { type: 'Edm.Boolean' }, '#': true },
-  boolValueFalse: { '@': { type: 'Edm.Boolean' }, '#': false },
-  intValue: { '@': { type: 'Edm.Int32' }, '#': 42 },
-  dateValue: { '@': { type: 'Edm.DateTime' }, '#': ISO8061Date.format(new Date(2011, 12, 25)) }
+  boolValueTrue: { '$': { type: 'Edm.Boolean' }, '_': true },
+  boolValueFalse: { '$': { type: 'Edm.Boolean' }, '_': false },
+  intValue: { '$': { type: 'Edm.Int32' }, '_': 42 },
+  dateValue: { '$': { type: 'Edm.DateTime' }, '_': ISO8061Date.format(new Date(2011, 12, 25)) }
 };
 
 var tableNames = [];
@@ -121,13 +121,13 @@ suite('tableservice-tests', function () {
         assert.equal(table.TableName, tableName);
 
         assert.ok(table.id);
-        assert.equal(table.id, createResponse.body['id']);
+        assert.equal(table.id, createResponse.body.entry['id']);
 
         assert.ok(table.link);
-        assert.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.equal(table.link, createResponse.body.entry['link'][0][Constants.XML_METADATA_MARKER]['href']);
 
         assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body['updated']);
+        assert.equal(table.updated, createResponse.body.entry['updated']);
       }
 
       // check that the table exists
@@ -156,13 +156,13 @@ suite('tableservice-tests', function () {
         assert.equal(table.TableName, tableName);
 
         assert.ok(table.id);
-        assert.equal(table.id, createResponse.body['id']);
+        assert.equal(table.id, createResponse.body.entry['id']);
 
         assert.ok(table.link);
-        assert.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.equal(table.link, createResponse.body.entry['link'][0][Constants.XML_METADATA_MARKER]['href']);
 
         assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body['updated']);
+        assert.equal(table.updated, createResponse.body.entry['updated']);
       }
 
       // trying to create again with if not exists should be fine
@@ -288,12 +288,12 @@ suite('tableservice-tests', function () {
                 entities += 2;
 
                 assert.ok(currentEntry['etag']);
-                assert.equal(currentEntry['boolValueTrue'], entity2['boolValueTrue']['#']);
-                assert.equal(currentEntry['boolValueFalse'], entity2['boolValueFalse']['#']);
-                assert.equal(currentEntry['intValue'], entity2['intValue']['#']);
+                assert.equal(currentEntry['boolValueTrue'], entity2['boolValueTrue'][Constants.XML_VALUE_MARKER]);
+                assert.equal(currentEntry['boolValueFalse'], entity2['boolValueFalse'][Constants.XML_VALUE_MARKER]);
+                assert.equal(currentEntry['intValue'], entity2['intValue'][Constants.XML_VALUE_MARKER]);
 
                 var date1 = new Date(currentEntry['dateValue']);
-                var date2 = new Date(entity2['dateValue']['#']);
+                var date2 = new Date(entity2['dateValue'][Constants.XML_VALUE_MARKER]);
                 assert.ok(date1, date2);
               }
             });

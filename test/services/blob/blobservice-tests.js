@@ -299,6 +299,14 @@ suite('blobservice-tests', function () {
     });
   });
 
+  test('CreateContainerIfNotExistsNoCallback', function (done) {
+    assert.throws(function () { blobService.createContainerIfNotExists('name'); },
+      Error
+    );
+
+    done();
+  });
+
   test('GetContainerProperties', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
     var metadata = {
@@ -1358,7 +1366,6 @@ suite('blobservice-tests', function () {
 
     done();
   });
-
 });
 
 function repeat(s, n) {

@@ -42,9 +42,9 @@ var entity1 = { PartitionKey: 'part1',
 
 var entity2 = { PartitionKey: 'part2',
   RowKey: 'row1',
-  boolval: { '@': { type: 'Edm.Boolean' }, '#': true },
-  intval: { '@': { type: 'Edm.Int32' }, '#': 42 },
-  dateval: { '@': { type: 'Edm.DateTime' }, '#': ISO8061Date.format(new Date()) }
+  boolval: { '$': { type: 'Edm.Boolean' }, '_': true },
+  intval: { '$': { type: 'Edm.Int32' }, '_': 42 },
+  dateval: { '$': { type: 'Edm.DateTime' }, '_': ISO8061Date.format(new Date()) }
 };
 
 var tableNames = [];
@@ -81,13 +81,13 @@ suite('sharedkeytable-tests', function () {
         assert.equal(table.TableName, tableName);
 
         assert.ok(table.id);
-        assert.equal(table.id, createResponse.body['id']);
+        assert.equal(table.id, createResponse.body.entry['id']);
 
         assert.ok(table.link);
-        assert.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.equal(table.link, createResponse.body.entry['link'][0][Constants.XML_METADATA_MARKER]['href']);
 
         assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body['updated']);
+        assert.equal(table.updated, createResponse.body.entry['updated']);
       }
 
       // check that the table exists
