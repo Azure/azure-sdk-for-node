@@ -25,8 +25,6 @@ var BatchServiceClient = testutil.libRequire('services/table/batchserviceclient'
 var Constants = testutil.libRequire('util/constants');
 var HttpConstants = Constants.HttpConstants;
 
-var tableService;
-
 var tableNames = [];
 var tablePrefix = 'batch';
 
@@ -38,22 +36,31 @@ var entity1 = { PartitionKey: 'part1',
 };
 
 var testPrefix = 'batchserviceclient-tests';
-var numberTests = 2;
+
+var tableService;
+var suiteUtil;
 
 suite('batchserviceclient-tests', function () {
+  suiteSetup(function (done) {
+    tableService = azure.createTableService();
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      tableService = newTableService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('AddOperation', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.beginBatch();
 
@@ -87,7 +94,7 @@ suite('batchserviceclient-tests', function () {
   });
 
   test('HasOperations', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.beginBatch();
 

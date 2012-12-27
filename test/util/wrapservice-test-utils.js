@@ -15,7 +15,7 @@
 
 // Test includes
 var testutil = require('./util');
-var MockServerClient = require('../mockserver/mockserverclient');
+var MockServerClient = require('http-mock');
 
 // Lib includes
 var WrapService = testutil.libRequire('services/serviceBus/wrapservice');

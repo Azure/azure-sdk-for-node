@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<entry xml:base="http://aogail2.table.core.windows.net/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+  <id>http://aogail2.table.core.windows.net/Tables('tableservice15')</id>
+  <title type="text"></title>
+  <updated>2012-12-30T15:35:53Z</updated>
+  <author>
+    <name />
+  </author>
+  <link rel="edit" title="Tables" href="Tables('tableservice15')" />
+  <category term="aogail2.Tables" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" />
+  <content type="application/xml">
+    <m:properties>
+      <d:TableName>tableservice15</d:TableName>
+    </m:properties>
+  </content>
+</entry>

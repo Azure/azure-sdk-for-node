@@ -37,7 +37,6 @@ var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
-var blobService;
 var containerNames = [];
 var containerNamesPrefix = 'cont';
 
@@ -45,18 +44,27 @@ var blobNames = [];
 var blobNamesPrefix = 'blob';
 
 var testPrefix = 'blobservice-tests';
-var numberTests = 34;
+
+var blobService;
+var suiteUtil;
 
 suite('blobservice-tests', function () {
+  suiteSetup(function (done) {
+    blobService = azure.createBlobService();
+    suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
-      blobService = newBlobService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    blobtestutil.tearDownTest(numberTests, blobService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('IncorrectContainerNames', function (done) {
@@ -135,28 +143,28 @@ suite('blobservice-tests', function () {
   });
 
   test('ListContainers', function (done) {
-    var containerName1 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName1 = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var metadata1 = {
       color: 'orange',
       containernumber: '01',
       somemetadataname: 'SomeMetadataValue'
     };
 
-    var containerName2 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName2 = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var metadata2 = {
       color: 'pink',
       containernumber: '02',
       somemetadataname: 'SomeMetadataValue'
     };
 
-    var containerName3 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName3 = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var metadata3 = {
       color: 'brown',
       containernumber: '03',
       somemetadataname: 'SomeMetadataValue'
     };
 
-    var containerName4 = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName4 = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var metadata4 = {
       color: 'blue',
       containernumber: '04',
@@ -252,7 +260,7 @@ suite('blobservice-tests', function () {
   });
 
   test('CreateContainer', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       assert.equal(createError, null);
@@ -276,7 +284,7 @@ suite('blobservice-tests', function () {
   });
 
   test('CreateContainerIfNotExists', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       assert.equal(createError, null);
@@ -308,7 +316,7 @@ suite('blobservice-tests', function () {
   });
 
   test('GetContainerProperties', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var metadata = {
       color: 'blue'
     };
@@ -334,7 +342,7 @@ suite('blobservice-tests', function () {
   });
 
   test('SetContainerMetadata', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var metadata = { 'class': 'test' };
 
     blobService.createContainer(containerName, function (createError, createContainer, createContainerResponse) {
@@ -363,7 +371,7 @@ suite('blobservice-tests', function () {
   });
 
   test('GetContainerAcl', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       assert.equal(createError, null);
@@ -385,7 +393,7 @@ suite('blobservice-tests', function () {
   });
 
   test('SetContainerAcl', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       assert.equal(createError, null);
@@ -429,7 +437,7 @@ suite('blobservice-tests', function () {
   });
 
   test('SetContainerAclWithPolicies', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
     var readWriteStartDate = new Date();
     var readWriteExpiryDate = new Date(readWriteStartDate);
@@ -497,7 +505,7 @@ suite('blobservice-tests', function () {
   });
 
   test('SetContainerAclSignedIdentifiers', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createContainerError, container1, createContainerResponse) {
       assert.equal(createContainerError, null);
@@ -564,8 +572,8 @@ suite('blobservice-tests', function () {
   });
 
   test('CreateBlockBlobFromText', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
@@ -589,8 +597,8 @@ suite('blobservice-tests', function () {
   });
 
   test('SnapshotBlob', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError, container1, createResponse) {
@@ -634,11 +642,11 @@ suite('blobservice-tests', function () {
   });
 
   test('CopyBlob', function (done) {
-    var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var sourceContainerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var targetContainerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
-    var sourceBlobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
-    var targetBlobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var sourceBlobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+    var targetBlobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
     var blobText = 'hi there';
 
@@ -667,8 +675,8 @@ suite('blobservice-tests', function () {
   });
 
   test('LeaseBlob', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var blobText = 'hello';
 
     blobService.createContainer(containerName, function (createError, container1, createResponse) {
@@ -714,8 +722,8 @@ suite('blobservice-tests', function () {
   });
 
   test('GetBlobProperties', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var metadata = {
       color: 'blue'
     };
@@ -744,8 +752,8 @@ suite('blobservice-tests', function () {
   });
 
   test('SetBlobProperties', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var text = "hello";
 
     blobService.createContainer(containerName, function (err) {
@@ -783,8 +791,8 @@ suite('blobservice-tests', function () {
   });
 
   test('GetBlobMetadata', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var metadata = { color: 'blue' };
 
     blobService.createContainer(containerName, function (err) {
@@ -811,9 +819,9 @@ suite('blobservice-tests', function () {
   });
 
   test('ListBlobs', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName1 = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
-    var blobName2 = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName1 = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+    var blobName2 = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var blobText1 = 'hello1';
     var blobText2 = 'hello2';
 
@@ -893,8 +901,8 @@ suite('blobservice-tests', function () {
   });
 
   test('PageBlob', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
       assert.equal(createError, null);
@@ -942,8 +950,8 @@ suite('blobservice-tests', function () {
   });
 
   test('GetPageRegions', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
       assert.equal(createError, null);
@@ -992,8 +1000,8 @@ suite('blobservice-tests', function () {
   });
 
   test('UploadBlobAccessCondition', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var blobText = 'hello';
 
     blobService.createContainer(containerName, function (error) {
@@ -1018,8 +1026,8 @@ suite('blobservice-tests', function () {
   });
 
   test('SmallUploadBlobFromFileWithSpace', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked) + ' a';
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked) + ' a';
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError1, container1, createResponse1) {
@@ -1044,8 +1052,8 @@ suite('blobservice-tests', function () {
   });
 
   test('GetBlobRange', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
       assert.equal(createError, null);
@@ -1069,8 +1077,8 @@ suite('blobservice-tests', function () {
   });
 
   test('GetBlobRangeOpenEnded', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError) {
       assert.equal(createError, null);
@@ -1094,8 +1102,8 @@ suite('blobservice-tests', function () {
   });
 
   test('SetBlobMime', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var fileNameSource = testutil.generateId('file') + '.bmp'; // fake bmp file with text...
     var blobText = 'Hello World!';
 
@@ -1124,8 +1132,8 @@ suite('blobservice-tests', function () {
   });
 
   test('SetBlobMimeSkip', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var fileNameSource = testutil.generateId('prefix') + '.bmp'; // fake bmp file with text...
     var blobText = 'Hello World!';
 
@@ -1179,8 +1187,8 @@ suite('blobservice-tests', function () {
   });
 
   test('CreateBlobWithBars', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = 'blobs/' + testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var blobText = 'Hello World!';
 
     blobService.createContainer(containerName, function (createError) {
@@ -1202,8 +1210,8 @@ suite('blobservice-tests', function () {
   });
 
   test('CommitBlockList', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (error) {
       assert.equal(error, null);
@@ -1237,8 +1245,8 @@ suite('blobservice-tests', function () {
   });
 
   test('GetBlobUrl', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
     var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
@@ -1252,8 +1260,8 @@ suite('blobservice-tests', function () {
   });
 
   test('responseEmits', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
     var responseReceived = false;
     blobService.on('response', function (response) {
@@ -1276,9 +1284,9 @@ suite('blobservice-tests', function () {
   });
 
   test('GetBlobToStream', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
-    var fileNameTarget = testutil.generateId('getBlobFile') + '.test';
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+    var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
     var blobText = 'Hello World';
 
     blobService.createContainer(containerName, function (createError1, container1) {
@@ -1304,9 +1312,9 @@ suite('blobservice-tests', function () {
   });
 
   test('SmallUploadBlobFromFile', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames);
-    var fileNameSource = testutil.generateId('getBlobFile') + '.test';
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+    var fileNameSource = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
     var blobText = 'Hello World';
 
     fs.writeFile(fileNameSource, blobText, function () {
