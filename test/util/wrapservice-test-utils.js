@@ -22,9 +22,6 @@ var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
 
 var exports = module.exports;
 
-exports.isMocked = MockServerClient.isMocked();
-exports.isRecording = MockServerClient.isRecording();
-
 var mockServerClient;
 var currentTest = 0;
 
