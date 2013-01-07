@@ -26,30 +26,38 @@ var ServiceClient = azure.ServiceClient;
 var ExponentialRetryPolicyFilter = azure.ExponentialRetryPolicyFilter;
 var Constants = azure.Constants;
 
-var tableService;
 var exponentialRetryPolicyFilter;
 
 var tableNames = [];
 var tablePrefix = 'expretry';
 
 var testPrefix = 'exponentialretrypolicyfilter-tests';
-var numberTests = 3;
+
+var tableService;
+var suiteUtil;
 
 suite('exponentialretrypolicyfilter-tests', function () {
+  suiteSetup(function (done) {
+    exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
+    tableService = azure.createTableService().withFilter(exponentialRetryPolicyFilter);
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
-      tableService = newTableService.withFilter(exponentialRetryPolicyFilter);
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('RetryFailSingle', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     var retryCount = 3;
     var retryInterval = 30;
@@ -71,7 +79,7 @@ suite('exponentialretrypolicyfilter-tests', function () {
   });
 
   test('RetryFailMultiple', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     var retryCount = 3;
 
@@ -79,7 +87,7 @@ suite('exponentialretrypolicyfilter-tests', function () {
     // table creation to succeed after a deletion.
     var retryInterval = 30000;
 
-    if (tabletestutil.isMocked && !tabletestutil.isRecording) {
+    if (suiteUtil.isMocked && !suiteUtil.isRecording) {
       // if a playback on the mockserver is running, retryinterval can be lower
       retryInterval = 30;
 
@@ -114,7 +122,7 @@ suite('exponentialretrypolicyfilter-tests', function () {
   });
 
   test('GetTablePassOnGetTable', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     var retryCount = 3;
     var retryInterval = 30;

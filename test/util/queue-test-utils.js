@@ -13,84 +13,44 @@
 * limitations under the License.
 */
 
+var util = require('util');
+var MockServerClient = require('http-mock');
+
 // Test includes
 var testutil = require('./util');
-var MockServerClient = require('../mockserver/mockserverclient');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
 
-var exports = module.exports;
+var StorageTestUtils = require('./storage-test-utils');
 
-exports.isMocked = MockServerClient.isMocked();
-exports.isRecording = MockServerClient.isRecording();
+function QueueTestUtils(service, testPrefix) {
+  QueueTestUtils.super_.call(this, service, testPrefix);
+}
 
-var mockServerClient;
-var currentTest = 0;
+util.inherits(QueueTestUtils, StorageTestUtils);
 
-exports.setUpTest = function (testPrefix, callback) {
-  var queueService;
+QueueTestUtils.prototype.teardownTest = function (callback) {
+  var self = this;
 
-  if (exports.isMocked) {
-    if (exports.isRecording) {
-      queueService = azure.createQueueService();
+  var deleteQueues = function (queues, done) {
+    if (queues.length <= 0) {
+      done();
     } else {
-      // The mockserver will ignore the credentials when it's in playback mode
-      queueService = azure.createQueueService('playback', 'playback');
-    }
-
-    if (!mockServerClient) {
-      mockServerClient = new MockServerClient();
-      mockServerClient.tryStartServer();
-    }
-
-    mockServerClient.startTest(testPrefix + currentTest, function () {
-      queueService.useProxy = true;
-      queueService.proxyUrl = 'localhost';
-      queueService.proxyPort = 8888;
-
-      callback(null, queueService);
-    });
-  } else {
-    queueService = azure.createQueueService();
-    callback(null, queueService);
-  }
-};
-
-exports.tearDownTest = function (numberTests, queueService, testPrefix, callback) {
-  var endTest = function () {
-    if (exports.isMocked) {
-      var lastTest = (numberTests === currentTest + 1);
-
-      mockServerClient.endTest(testPrefix + currentTest, lastTest, function () {
-        currentTest++;
-
-        if (lastTest) {
-          mockServerClient = null;
-          currentTest = 0;
-        }
-
-        callback();
+      var currentQueue = queues.pop();
+      self.service.deleteQueue(currentQueue.name, function () {
+        deleteQueues(queues, done);
       });
-    } else {
-      callback();
     }
   };
 
-  queueService.listQueues(function (listError, queues) {
-    if (queues && queues.length > 0) {
-      var queueCount = 0;
-      queues.forEach(function (queue) {
-        queueService.deleteQueue(queue.name, function () {
-          queueCount++;
-          if (queueCount === queues.length) {
-            endTest();
-          }
-        });
-      });
-    }
-    else {
-      endTest();
-    }
+  self.service.listQueues(function (queryError, queues) {
+    deleteQueues(queues, function () {
+      self.baseTeardownTest(callback);
+    });
   });
+};
+
+exports.createQueueTestUtils = function (service, testPrefix) {
+  return new QueueTestUtils(service, testPrefix);
 };
