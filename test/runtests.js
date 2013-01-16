@@ -49,13 +49,15 @@ args.push('-t');
 args.push('200000');
 
 files.forEach(function (file) {
-  // trim trailing \r if it exists
-  file = file.replace('\r', '');
+  if (file.length > 0 && file.trim()[0] !== '#') {
+    // trim trailing \r if it exists
+    file = file.replace('\r', '');
 
-  if (root) {
-    args.push('test/' + file);
-  } else {
-    args.push(file);
+    if (root) {
+      args.push('test/' + file);
+    } else {
+      args.push(file);
+    }
   }
 });
 
