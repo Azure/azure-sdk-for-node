@@ -24,7 +24,7 @@ var azure = testutil.libRequire('azure');
 
 var exports = module.exports;
 
-exports.isMocked = MockServerClient.isMocked();
+exports.isMocked = MockServerClient.isEnabled();
 exports.isRecording = MockServerClient.isRecording();
 
 var mockServerClient;
