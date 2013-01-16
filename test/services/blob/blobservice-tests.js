@@ -1112,7 +1112,7 @@ suite('blobservice-tests', function () {
 
             // get the last bytes from the message
             assert.equal(content1, 'llo World!');
-            assert.equal(blob.contentType, 'image/bmp');
+            assert.ok(blob.contentType === 'image/bmp' || blob.contentType === 'image/x-ms-bmp');
 
             fs.unlink(fileNameSource, function () {
               done();
