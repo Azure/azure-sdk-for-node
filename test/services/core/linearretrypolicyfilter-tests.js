@@ -33,23 +33,32 @@ var tableNames = [];
 var tablePrefix = 'linearretry';
 
 var testPrefix = 'linearretrypolicyfilter-tests';
-var numberTests = 3;
+
+var tableService;
+var suiteUtil;
 
 suite('linearretrypolicyfilter-tests', function () {
+  suiteSetup(function (done) {
+    linearRetryPolicyFilter = new LinearRetryPolicyFilter();
+    tableService = azure.createTableService().withFilter(linearRetryPolicyFilter);
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      linearRetryPolicyFilter = new LinearRetryPolicyFilter();
-      tableService = newTableService.withFilter(linearRetryPolicyFilter);
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('RetryFailSingle', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     var retryCount = 3;
     var retryInterval = 30;
@@ -71,7 +80,7 @@ suite('linearretrypolicyfilter-tests', function () {
   });
 
   test('RetryFailMultiple', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     var retryCount = 3;
 
@@ -79,7 +88,7 @@ suite('linearretrypolicyfilter-tests', function () {
     // table creation to succeed after a deletion.
     var retryInterval = 30000;
 
-    if (tabletestutil.isMocked && !tabletestutil.isRecording) {
+    if (suiteUtil.isMocked && !suiteUtil.isRecording) {
       // if a playback on the mockserver is running, retryinterval can be lower
       retryInterval = 30;
     }
@@ -112,7 +121,7 @@ suite('linearretrypolicyfilter-tests', function () {
   });
 
   test('RetryPassOnGetTable', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     var retryCount = 3;
     var retryInterval = 30;

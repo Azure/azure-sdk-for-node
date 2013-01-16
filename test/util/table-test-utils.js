@@ -13,85 +13,37 @@
 * limitations under the License.
 */
 
-// Test includes
-var testutil = require('./util');
-var MockServerClient = require('../mockserver/mockserverclient');
+var util = require('util');
 
-// Lib includes
-var azure = testutil.libRequire('azure');
+var StorageTestUtils = require('./storage-test-utils');
 
-var exports = module.exports;
+function TableTestUtils(service, testPrefix) {
+  TableTestUtils.super_.call(this, service, testPrefix);
+}
 
-exports.isMocked = MockServerClient.isMocked();
-exports.isRecording = MockServerClient.isRecording();
+util.inherits(TableTestUtils, StorageTestUtils);
 
-var mockServerClient;
-var currentTest = 0;
+TableTestUtils.prototype.teardownTest = function (callback) {
+  var self = this;
 
-exports.setUpTest = function (testPrefix, callback) {
-  var tableService;
-
-  if (exports.isMocked) {
-    if (exports.isRecording) {
-      tableService = azure.createTableService();
+  var deleteTables = function (tables, done) {
+    if (tables <= 0) {
+      done();
     } else {
-      // The mockserver will ignore the credentials when it's in playback mode
-      tableService = azure.createTableService('playback', 'playback');
-    }
-
-    if (!mockServerClient) {
-      mockServerClient = new MockServerClient();
-      mockServerClient.tryStartServer();
-    }
-
-    mockServerClient.startTest(testPrefix + currentTest, function () {
-      tableService.useProxy = true;
-      tableService.proxyUrl = 'localhost';
-      tableService.proxyPort = 8888;
-
-      callback(null, tableService);
-    });
-  } else {
-    tableService = azure.createTableService();
-    callback(null, tableService);
-  }
-};
-
-exports.tearDownTest = function (numberTests, tableService, testPrefix, callback) {
-  var endTest = function () {
-    if (exports.isMocked) {
-      var lastTest = (numberTests === currentTest + 1);
-
-      mockServerClient.endTest(testPrefix + currentTest, lastTest, function () {
-        currentTest++;
-
-        if (lastTest) {
-          mockServerClient = null;
-          currentTest = 0;
-        }
-
-        callback();
+      var currentTable = tables.pop();
+      self.service.deleteTable(currentTable.TableName, function () {
+        deleteTables(tables, done);
       });
-    } else {
-      callback();
     }
   };
 
-  tableService.queryTables(function (queryError, tables) {
-    if (!queryError && tables.length > 0) {
-      var tableCount = 0;
-      tables.forEach(function (table) {
-        tableService.deleteTable(table.TableName, function () {
-          tableCount++;
-
-          if (tableCount === tables.length) {
-            endTest();
-          }
-        });
-      });
-    }
-    else {
-      endTest();
-    }
+  self.service.queryTables(function (queryError, tables) {
+    deleteTables(tables, function () {
+      self.baseTeardownTest(callback);
+    });
   });
+};
+
+exports.createTableTestUtils = function (service, testPrefix) {
+  return new TableTestUtils(service, testPrefix);
 };

@@ -15,15 +15,12 @@
 
 // Test includes
 var testutil = require('./util');
-var MockServerClient = require('../mockserver/mockserverclient');
+var MockServerClient = require('http-mock');
 
 // Lib includes
 var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
 
 var exports = module.exports;
-
-exports.isMocked = MockServerClient.isMocked();
-exports.isRecording = MockServerClient.isRecording();
 
 var mockServerClient;
 var currentTest = 0;

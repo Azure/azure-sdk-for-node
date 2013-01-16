@@ -14,70 +14,18 @@
 */
 
 var fs = require('fs');
+var util = require('util');
 
-// Test includes
-var testutil = require('./util');
-var MockServerClient = require('../mockserver/mockserverclient');
+var StorageTestUtils = require('./storage-test-utils');
 
-// Lib includes
-var azure = testutil.libRequire('azure');
+function BlobTestUtils(service, testPrefix) {
+  BlobTestUtils.super_.call(this, service, testPrefix);
+}
 
-var exports = module.exports;
+util.inherits(BlobTestUtils, StorageTestUtils);
 
-exports.isMocked = MockServerClient.isMocked();
-exports.isRecording = MockServerClient.isRecording();
-
-var mockServerClient;
-var currentTest = 0;
-
-exports.setUpTest = function (testPrefix, callback) {
-  var blobService;
-
-  if (exports.isMocked) {
-    if (exports.isRecording) {
-      blobService = azure.createBlobService();
-    } else {
-      // The mockserver will ignore the credentials when it's in playback mode
-      blobService = azure.createBlobService('playback', 'playback');
-    }
-
-    if (!mockServerClient) {
-      mockServerClient = new MockServerClient();
-      mockServerClient.tryStartServer();
-    }
-
-    mockServerClient.startTest(testPrefix + currentTest, function () {
-      blobService.useProxy = true;
-      blobService.proxyUrl = 'localhost';
-      blobService.proxyPort = 8888;
-
-      callback(null, blobService);
-    });
-  } else {
-    blobService = azure.createBlobService();
-    callback(null, blobService);
-  }
-};
-
-exports.tearDownTest = function (numberTests, blobService, testPrefix, callback) {
-  var endTest = function () {
-    if (exports.isMocked) {
-      var lastTest = (numberTests === currentTest + 1);
-
-      mockServerClient.endTest(testPrefix + currentTest, lastTest, function () {
-        currentTest++;
-
-        if (lastTest) {
-          mockServerClient = null;
-          currentTest = 0;
-        }
-
-        callback();
-      });
-    } else {
-      callback();
-    }
-  };
+BlobTestUtils.prototype.teardownTest = function (callback) {
+  var self = this;
 
   var deleteFiles = function () {
     // delete test files
@@ -88,26 +36,29 @@ exports.tearDownTest = function (numberTests, blobService, testPrefix, callback)
       }
     });
 
-    endTest();
+    self.baseTeardownTest(callback);
+  };
+
+  var deleteContainers = function (containers, done) {
+    if (!containers || containers.length <= 0) {
+      done();
+    } else {
+      var currentContainer = containers.pop();
+      self.service.deleteContainer(currentContainer.name, function () {
+        deleteContainers(containers, done);
+      });
+    }
   };
 
   // delete blob containers
-  blobService.listContainers(function (listError, containers) {
-    if (containers && containers.length > 0) {
-      var containerCount = 0;
-      containers.forEach(function (container) {
-        blobService.deleteContainer(container.name, function () {
-          containerCount++;
-          if (containerCount === containers.length) {
-            // clean up
-            deleteFiles();
-          }
-        });
-      });
-    }
-    else {
+  self.service.listContainers(function (listError, containers) {
+    deleteContainers(containers, function () {
       // clean up
       deleteFiles();
-    }
+    });
   });
+};
+
+exports.createBlobTestUtils = function (service, testPrefix) {
+  return new BlobTestUtils(service, testPrefix);
 };
