@@ -31,8 +31,6 @@ var TableQuery = azure.TableQuery;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
-var tableService;
-
 var entity1 = { PartitionKey: 'part1',
   RowKey: 'row1',
   field: 'my field',
@@ -51,22 +49,31 @@ var tableNames = [];
 var tablePrefix = 'sharedkeytable';
 
 var testPrefix = 'sharedkeytable-tests';
-var numberTests = 1;
+
+var tableService;
+var suiteUtil;
 
 suite('sharedkeytable-tests', function () {
+  suiteSetup(function (done) {
+    tableService = azure.createTableService();
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      tableService = newTableService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('CreateTable', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.authenticationProvider = new SharedKeyLiteTable(tableService.storageAccount, tableService.storageAccessKey);
     tableService.createTable(tableName, function (createError, table, createResponse) {

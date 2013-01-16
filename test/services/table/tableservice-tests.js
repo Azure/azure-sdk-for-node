@@ -30,8 +30,6 @@ var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
-var tableService;
-
 var entity1 = { PartitionKey: 'part1',
   RowKey: 'row1',
   field: 'my field',
@@ -51,18 +49,27 @@ var tableNames = [];
 var tablePrefix = 'tableservice';
 
 var testPrefix = 'tableservice-tests';
-var numberTests = 21;
+
+var tableService;
+var suiteUtil;
 
 suite('tableservice-tests', function () {
+  suiteSetup(function (done) {
+    tableService = azure.createTableService();
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      tableService = newTableService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('GetServiceProperties', function (done) {
@@ -107,7 +114,7 @@ suite('tableservice-tests', function () {
   });
 
   test('CreateTable', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -142,7 +149,7 @@ suite('tableservice-tests', function () {
   });
 
   test('CreateTableIfNotExists', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -176,15 +183,12 @@ suite('tableservice-tests', function () {
   });
 
   test('QueryTable', function (done) {
-    var tableName1 = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
-    var tableName2 = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName1 = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
+    var tableName2 = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.queryTables(function (queryErrorEmpty, tablesEmpty) {
       assert.equal(queryErrorEmpty, null);
       assert.notEqual(tablesEmpty, null);
-      if (tablesEmpty) {
-        assert.equal(tablesEmpty.length, 0);
-      }
 
       tableService.createTable(tableName1, function (createError, table1, createResponse) {
         assert.equal(createError, null);
@@ -228,7 +232,7 @@ suite('tableservice-tests', function () {
   });
 
   test('DeleteTable', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -247,7 +251,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertEntity', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -334,7 +338,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertEntityWithHtmlSpecialChars', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -368,7 +372,7 @@ suite('tableservice-tests', function () {
   });
 
   test('DeleteEntityWithoutEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -395,7 +399,7 @@ suite('tableservice-tests', function () {
   });
 
   test('DeleteEntityWithEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -426,7 +430,7 @@ suite('tableservice-tests', function () {
   });
 
   test('UpdateEntityWithoutEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -459,7 +463,7 @@ suite('tableservice-tests', function () {
   });
 
   test('UpdateEntityWithEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -493,7 +497,7 @@ suite('tableservice-tests', function () {
   });
 
   test('MergeEntityWithoutEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -524,7 +528,7 @@ suite('tableservice-tests', function () {
   });
 
   test('MergeEntityWithEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -558,7 +562,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertOrReplaceEntity', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       assert.equal(error, null);
@@ -600,7 +604,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertOrMerge', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       assert.equal(error, null);
@@ -643,7 +647,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertEntityEmptyField', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       assert.equal(error, null);
@@ -681,7 +685,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertEntityNewLines', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       assert.equal(error, null);
@@ -713,7 +717,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertPartitionKeyOnly', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error1) {
       assert.equal(error1, null);
@@ -792,32 +796,38 @@ suite('tableservice-tests', function () {
     done();
   });
 
-  test('storageConnectionStringsHttps', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
-    var expectedProtocol = 'https';
+  test('storageConnectionStringsHttp', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
+    var expectedProtocol = 'http';
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey;
-    var tableService = azure.createTableService(connectionString);
+    tableService = azure.createTableService(connectionString);
+
+    suiteUtil.normalizeService(tableService);
+
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
       assert.equal(tableService.storageAccount, expectedName);
       assert.equal(tableService.storageAccessKey, expectedKey);
-      assert.equal(tableService.protocol, 'https://');
+      assert.equal(tableService.protocol, 'http://');
 
       done();
     });
   });
 
-  test('storageConnectionStringsEndpointHttps', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
-    var expectedProtocol = 'https';
+  test('storageConnectionStringsEndpointHttp', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
+    var expectedProtocol = 'http';
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
-    var expectedTableEndpoint = 'http://andrerod.table.core.windows.net';
+    var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.core.windows.net';
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';TableEndpoint=' + expectedTableEndpoint;
     var tableService = azure.createTableService(connectionString);
+
+    suiteUtil.normalizeService(tableService);
+
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
@@ -831,12 +841,15 @@ suite('tableservice-tests', function () {
     });
   });
 
-  test('storageConnectionStringsEndpointHttpsExplicit', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+  test('storageConnectionStringsEndpointHttpExplicit', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
-    var expectedTableEndpoint = 'http://andrerod.table.core.windows.net';
+    var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.core.windows.net';
     var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+
+    suiteUtil.normalizeService(tableService);
+
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
@@ -853,6 +866,8 @@ suite('tableservice-tests', function () {
     var expectedKey = ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY;
     var expectedTableEndpoint = ServiceClient.DEVSTORE_TABLE_HOST;
     var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+
+    suiteUtil.normalizeService(tableService);
 
     assert.equal(tableService.storageAccount, expectedName);
     assert.equal(tableService.storageAccessKey, expectedKey);
