@@ -28,7 +28,8 @@
     "mocha": "*",
     "jshint": "*",
     "sinon": "*",
-    "should": "*"
+    "should": "*",
+    "http-mock": "*"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {
