@@ -21,6 +21,9 @@ var testutil = require('../../util/util');
 
 var azure = testutil.libRequire('azure');
 
+var SERVER_ADMIN_USERNAME = 'admin';
+var SERVER_ADMIN_PASSWORD = 'PassWord!1';
+
 describe('SQL Server Management', function () {
   var sqlServersToClean = [];
   var service;
@@ -60,7 +63,7 @@ describe('SQL Server Management', function () {
       before(function (done) {
         service.listServers(function (err, sqlServers) {
           deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-            service.createServer('azuresdk', 'PassWord!1', location, done);
+            service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, location, done);
           });
         });
       });
@@ -79,7 +82,7 @@ describe('SQL Server Management', function () {
   describe('create server', function () {
     it('should succeed', function (done) {
       var location = 'West US';
-      service.createServer('azuresdk', 'PassWord!1', location, function (err, name) {
+      service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, location, function (err, name) {
         should.not.exist(err);
         name.should.not.be.null;
         done(err);
@@ -98,7 +101,7 @@ describe('SQL Server Management', function () {
 
     it('should succeed', function (done) {
       var location = 'West US';
-      service.createServer('azuresdk', 'PassWord!1', location, function (err, name) {
+      service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, location, function (err, name) {
         if (err) { return done(err); }
         service.deleteServer(name, done);
       });
@@ -111,7 +114,7 @@ describe('SQL Server Management', function () {
     before(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-          service.createServer('azuresdk', 'PassWord!1', 'West US', function (err, name) {
+          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, 'West US', function (err, name) {
             serverName = name;
             done();
           });
@@ -167,7 +170,7 @@ describe('SQL Server Management', function () {
     before(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-          service.createServer('azuresdk', 'PassWord!1', 'West US', function (err, name) {
+          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, 'West US', function (err, name) {
             serverName = name;
             done();
           });
@@ -180,9 +183,9 @@ describe('SQL Server Management', function () {
     });
 
     it('should succeed', function (done) {
-      var name = 'xplatcli-' + uuid.v4().substr(0, 8);
+      var ruleName = 'xplatcli-' + uuid.v4().substr(0, 8);
 
-      service.createServerFirewallRule(serverName, name, '192.168.0.1', '192.168.0.255', function (err, rule) {
+      service.createServerFirewallRule(serverName, ruleName, '192.168.0.1', '192.168.0.255', function (err, rule) {
         should.not.exist(err);
         rule.Name.should.equal(name);
         done(err);
@@ -196,7 +199,7 @@ describe('SQL Server Management', function () {
     before(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-          service.createServer('azuresdk', 'PassWord!1', 'West US', function (err, name) {
+          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, 'West US', function (err, name) {
             serverName = name;
             done();
           });
@@ -219,7 +222,7 @@ describe('SQL Server Management', function () {
     it('should succeed if server exists and values are valid', function (done) {
       var name = 'xplatcli-' + uuid.v4().substr(0, 8);
 
-      service.createServerFirewallRule(serverName, name, '192.168.0.1', '192.168.0.255', function (err, rule) {
+      service.createServerFirewallRule(serverName, ruleName, '192.168.0.1', '192.168.0.255', function (err, rule) {
         if (err) { return done(err); }
         service.deleteServerFirewallRule(serverName, rule.Name, done);
       });
@@ -233,7 +236,7 @@ describe('SQL Server Management', function () {
     before(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-          service.createServer('azuresdk', 'PassWord!1', 'West US', function (err, name) {
+          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, 'West US', function (err, name) {
             serverName = name;
 
             service.createServerFirewallRule(serverName, ruleName, '192.168.0.1', '192.168.0.255', done);
@@ -248,7 +251,6 @@ describe('SQL Server Management', function () {
 
     it('should succeed when server and rule exist', function (done) {
       service.updateServerFirewallRule(serverName, ruleName, '192.168.0.5', '192.168.0.255', function (err, rule) {
-        console.log(err);
         should.not.exist(err);
         rule.Name.should.equal(ruleName);
         rule.StartIPAddress.should.equal('192.168.0.5');
