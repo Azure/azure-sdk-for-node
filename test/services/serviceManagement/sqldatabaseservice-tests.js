@@ -21,7 +21,7 @@ var testutil = require('../../util/util');
 
 var azure = testutil.libRequire('azure');
 
-var SERVER_ADMIN_USERNAME = 'admin';
+var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
 
 describe('SQL Server Management', function () {
@@ -187,7 +187,7 @@ describe('SQL Server Management', function () {
 
       service.createServerFirewallRule(serverName, ruleName, '192.168.0.1', '192.168.0.255', function (err, rule) {
         should.not.exist(err);
-        rule.Name.should.equal(name);
+        rule.Name.should.equal(ruleName);
         done(err);
       });
     });
@@ -220,7 +220,7 @@ describe('SQL Server Management', function () {
     });
 
     it('should succeed if server exists and values are valid', function (done) {
-      var name = 'xplatcli-' + uuid.v4().substr(0, 8);
+      var ruleName = 'xplatcli-' + uuid.v4().substr(0, 8);
 
       service.createServerFirewallRule(serverName, ruleName, '192.168.0.1', '192.168.0.255', function (err, rule) {
         if (err) { return done(err); }
