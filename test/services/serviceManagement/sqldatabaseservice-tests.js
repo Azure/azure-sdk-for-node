@@ -23,6 +23,7 @@ var azure = testutil.libRequire('azure');
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
+var SERVER_LOCATION = 'West US';
 
 describe('SQL Server Management', function () {
   var sqlServersToClean = [];
@@ -58,12 +59,10 @@ describe('SQL Server Management', function () {
     });
 
     describe('when one server is defined', function () {
-      var location = 'West US';
-
       before(function (done) {
         service.listServers(function (err, sqlServers) {
           deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-            service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, location, done);
+            service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, done);
           });
         });
       });
@@ -72,7 +71,7 @@ describe('SQL Server Management', function () {
         service.listServers(function (err, sqlServers) {
           should.exist(sqlServers);
           sqlServers.should.have.length(1);
-          sqlServers[0].Location.should.equal(location);
+          sqlServers[0].Location.should.equal(SERVER_LOCATION);
           done(err);
         });
       });
@@ -81,8 +80,7 @@ describe('SQL Server Management', function () {
 
   describe('create server', function () {
     it('should succeed', function (done) {
-      var location = 'West US';
-      service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, location, function (err, name) {
+      service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
         should.not.exist(err);
         name.should.not.be.null;
         done(err);
@@ -100,8 +98,7 @@ describe('SQL Server Management', function () {
     });
 
     it('should succeed', function (done) {
-      var location = 'West US';
-      service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, location, function (err, name) {
+      service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
         if (err) { return done(err); }
         service.deleteServer(name, done);
       });
@@ -114,7 +111,7 @@ describe('SQL Server Management', function () {
     before(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, 'West US', function (err, name) {
+          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
             serverName = name;
             done();
           });
@@ -170,7 +167,7 @@ describe('SQL Server Management', function () {
     before(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, 'West US', function (err, name) {
+          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
             serverName = name;
             done();
           });
@@ -199,7 +196,7 @@ describe('SQL Server Management', function () {
     before(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, 'West US', function (err, name) {
+          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
             serverName = name;
             done();
           });
@@ -236,7 +233,7 @@ describe('SQL Server Management', function () {
     before(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
-          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, 'West US', function (err, name) {
+          service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
             serverName = name;
 
             service.createServerFirewallRule(serverName, ruleName, '192.168.0.1', '192.168.0.255', done);
