@@ -16,6 +16,7 @@
 var should = require('should');
 var mocha = require('mocha');
 var uuid = require('node-uuid');
+var _ = require('underscore');
 
 var testutil = require('../../util/util');
 
@@ -33,7 +34,7 @@ describe('Service Management', function () {
   });
 
   describe('list locations', function () {
-    it('should list all locations', function (done) {
+    it('should return locations', function (done) {
       service.listLocations(function (err, response) {
         should.exist(response.body);
         should.exist(response.body.filter(function (location) {
@@ -41,8 +42,11 @@ describe('Service Management', function () {
                  location.Name === 'West Europe' &&
                  location.AvailableServices !== undefined &&
                  location.AvailableServices.AvailableService !== undefined &&
-                 location.AvailableServices.AvailableService.length === 3
+                 _.isArray(location.AvailableServices.AvailableService)
         }));
+
+        // there is more than one location
+        response.body.length.should.be.above(1);
 
         done(err);
       });
