@@ -1467,7 +1467,6 @@ suite('servicebusservice-tests', function () {
                     assert.notEqual(rule2, null);
 
                     // multiple rules
-                    console.log('9');
                     serviceBusService.listRules(topicName, subscriptionName, function (listError, rules) {
                       assert.equal(listError, null);
                       assert.notEqual(rules, null);
