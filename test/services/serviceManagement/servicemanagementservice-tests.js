@@ -27,7 +27,7 @@ describe('Service Management', function () {
 
   before(function () {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
-    var auth = { keyvalue: process.env['AZURE_CERTIFICATE_KEY'], certvalue: process.env['AZURE_CERTIFICATE'] };
+    var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
     service = azure.createServiceManagementService(
       subscriptionId, auth,
       { serializetype: 'XML'});
