@@ -62,7 +62,7 @@ exports.libRequire = function (path) {
   return require('../../' + exports.libFolder() + '/' + path);
 };
 
-exports.getCertificate = function () {
+exports.getCertificateKey = function () {
   if (process.env['AZURE_CERTIFICATE_KEY']) {
     return process.env['AZURE_CERTIFICATE_KEY'];
   } else if (process.env['AZURE_CERTIFICATE_KEY_FILE']) {
@@ -72,7 +72,7 @@ exports.getCertificate = function () {
   return null;
 };
 
-exports.getCertificateKey = function () {
+exports.getCertificate = function () {
   if (process.env['AZURE_CERTIFICATE']) {
     return process.env['AZURE_CERTIFICATE'];
   } else if (process.env['AZURE_CERTIFICATE_FILE']) {
