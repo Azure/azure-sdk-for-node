@@ -32,7 +32,7 @@ describe('SQL Server Management', function () {
   before(function () {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
-    service = azure.createSqlDatabaseService(
+    service = azure.createSqlManagementService(
       subscriptionId, auth,
       { serializetype: 'XML'});
   });
