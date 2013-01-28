@@ -23,11 +23,12 @@ services/serviceBus/servicebusservice-tests.js
 services/serviceBus/wrapservice-tests.js
 services/serviceBus/wraptokenmanager-tests.js
 services/serviceManagement/servicemanagementservice-tests.js
-services/serviceManagement/sqldatabaseservice-tests.js
+services/serviceManagement/sqlmanagementservice-tests.js
 services/table/tablequery-tests.js
 services/table/tableservice-batch-tests.js
 services/table/tableservice-tablequery-tests.js
 services/table/tableservice-tests.js
+services/sqlAzure/sqlservice-tests.js
 util/atomhandler-tests.js
 util/iso8061date-tests.js
 util/util-tests.js
