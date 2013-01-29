@@ -18,6 +18,7 @@ var assert = require('assert');
 var fs = require('fs');
 var path = require("path");
 var util = require('util');
+var sinon = require('sinon');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -1273,6 +1274,29 @@ suite('blobservice-tests', function () {
 
     var blobUrl = blobServiceassert.getBlobUrl(containerName, blobName, sharedAccessPolicy);
     assert.equal(blobUrl, 'http://host.com:80/' + containerName + '/' + blobName + '?se=2011-10-12T11%3A53%3A40Z&sr=b&sp=r&sig=eVkH%2BFxxShel2hcN50ZUmgPAHk%2FmqRVeaBfyry%2BVacw%3D');
+
+    done();
+  });
+
+  test('GetBlobSharedUrlWithDuration', function (done) {
+    var containerName = 'container';
+    var blobName = 'blob';
+
+    var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
+
+    // Mock Date just to ensure a fixed signature
+    this.clock = sinon.useFakeTimers(0, "Date");
+
+    var sharedAccessPolicy = {
+      AccessPolicy: {
+        Expiry: azure.date.minutesFromNow(10);
+      }
+    };
+
+    this.clock.restore();
+
+    var blobUrl = blobServiceassert.getBlobUrl(containerName, blobName, sharedAccessPolicy);
+    assert.equal(blobUrl, 'http://host.com:80/' + containerName + '/' + blobName + '?se=1970-01-01T00%3A10%3A00Z&sr=b&sp=r&sig=LofuDUzdHPpiteauMetANWzDpzd0Vw%2BVMOHyXYCipAM%3D');
 
     done();
   });
