@@ -82,7 +82,7 @@ PushpinService.prototype.createPushpin = function (pushpinData, pushpinImage, ca
     entity.PartitionKey = DEFAULT_PARTITION;
 
     if (blob) {
-      entity.imageUrl = self.blobClient.getBlobUrl(blob.container, blob.blob).url();
+      entity.imageUrl = self.blobClient.getBlobUrl(blob.container, blob.blob);
     }
 
     self.tableClient.insertEntity(TABLE_NAME, entity, callback);
