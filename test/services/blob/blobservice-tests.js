@@ -1289,7 +1289,7 @@ suite('blobservice-tests', function () {
 
     var sharedAccessPolicy = {
       AccessPolicy: {
-        Expiry: azure.date.minutesFromNow(10);
+        Expiry: azure.date.minutesFromNow(10)
       }
     };
 
