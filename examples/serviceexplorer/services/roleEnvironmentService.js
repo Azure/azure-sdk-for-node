@@ -146,7 +146,7 @@ exports.createOrEditRole = function (roleData, roleImage, callback) {
 
   function insertOrUpdateEntity(error, role) {
     if (role) {
-      roleData.imageUrl = blobClient.getBlobUrl(role.container, role.blob).url();
+      roleData.imageUrl = blobClient.getBlobUrl(role.container, role.blob);
     }
 
     if (!_.isUndefined(roleData.RowKey) && !_.isUndefined(roleData.PartitionKey)) {
