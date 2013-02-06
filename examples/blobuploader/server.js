@@ -116,7 +116,7 @@ app.post('/uploadhandler', function (req, res) {
         if (error != null) {
           helpers.renderError(res);
         } else {
-            setSAS(containerName, fields.itemName);
+          setSAS(containerName, fields.itemName);
           res.redirect('/Display');
         }
       });
@@ -148,7 +148,7 @@ blobClient.createContainerIfNotExists(containerName, function (error) {
 function setSAS(containerName, blobName) {
     var sharedAccessPolicy = {
         AccessPolicy: {
-            Expiry: azure.date.minutesFromNow(5)
+            Expiry: azure.date.minutesFromNow(3)
         }
     };   
     
