@@ -33,15 +33,11 @@ describe('Service Bus Management', function () {
   var service;
 
   before(function () {
-    var subscriptionId = account.lookupSubscriptionId();
-    var pem = account.managementCertificate();
-    var auth = { keyvalue: pem.key, certvalue: pem.cert };
-    var endpoint = url.parse(account.managementEndpointUrl());
+    var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
+    var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
     service = new ServiceBusManagement.ServiceBusManagementService(
       subscriptionId, auth,
-      { host: endpoint.hostname,
-        port: endpoint.port,
-        serializetype: 'XML'});
+      { serializetype: 'XML'});
   });
 
   after(function (done) {
