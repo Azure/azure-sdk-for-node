@@ -22,11 +22,12 @@ var _ = require('underscore');
 var should = require('should');
 var mocha = require('mocha');
 
-var cli = require('../../lib/cli');
-var account = cli.category('account');
+var testutil = require('../../util/util');
 
-var ServiceBusManagement = require('../../lib/services/serviceManagement/servicebusmanagementservice');
-var sampledata = require('../util/sampledata.js');
+var azure = testutil.libRequire('azure');
+var sampledata = require('../../util/sampledata.js');
+var namespaceNameIsValid = require('../../../lib/services/serviceManagement/models/namevalidation');
+var parseServerResponse = require('../../../lib/services/serviceManagement/models/servicebusparseresponse');
 
 describe('Service Bus Management', function () {
   var namespacesToClean = [];
@@ -35,7 +36,7 @@ describe('Service Bus Management', function () {
   before(function () {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
-    service = new ServiceBusManagement.ServiceBusManagementService(
+    service = azure.createServiceBusManagementService(
       subscriptionId, auth,
       { serializetype: 'XML'});
   });
@@ -45,7 +46,7 @@ describe('Service Bus Management', function () {
   });
 
   function newName() {
-    var name = 'xplatcli-' + uuid.v4();
+    var name = 'nodesdk-' + uuid.v4().substr(0, 8);
     namespacesToClean.push(name);
     return name;
   }
@@ -112,9 +113,8 @@ describe('Service Bus Management', function () {
   });
 
   describe('create namespace', function () {
-
     it('should fail if name is invalid', function (done) {
-      service.createNamespace('!notValid$', "West US", function (err, result) {
+      service.createNamespace('!notValid$', 'West US', function (err, result) {
         should.exist(err);
         err.message.should.match(/must start with a letter/);
         done();
@@ -124,6 +124,7 @@ describe('Service Bus Management', function () {
     it('should succeed if namespace does not exist', function (done) {
       var name = newName();
       var region = 'South Central US';
+
       service.createNamespace(name, region, function (err, result) {
         should.not.exist(err);
         result.Name.should.equal(name);
@@ -181,18 +182,19 @@ describe('Service Bus Management', function () {
     });
 
     it('should return availability if namespace is properly formed', function (done) {
-      service.verifyNamespace('cctsandbox', function (err, result) {
+      var name = newName();
+      // Take this name out of the namespaces to clean as no namespace will actually be created
+      namespacesToClean.pop();
+      service.verifyNamespace(name, function (err, result) {
         should.not.exist(err);
         should.exist(result);
-        result.should.be.false;
+        result.should.be.true;
         done();
       });
     });
   });
 
   describe('Namespace validation', function () {
-    var namespaceNameIsValid = ServiceBusManagement.namespaceNameIsValid;
-
     it('should pass on valid name', function() {
       (function() { namespaceNameIsValid('aValidNamespace'); })
         .should.not.throw();
@@ -234,7 +236,7 @@ describe('Service Bus Management', function () {
   describe('Result parsing', function () {
     describe('When parsing an entry', function () {
       it('should return a single object containing the contents', function () {
-        var result = ServiceBusManagement.parseServerResponse(sampledata.singleEntry, 'NamespaceDescription');
+        var result = parseServerResponse(sampledata.singleEntry, 'NamespaceDescription');
 
         result.should.not.be.an.instanceOf(Array);
         result.should.have.property('Name');
@@ -244,7 +246,7 @@ describe('Service Bus Management', function () {
 
     describe('When parsing a feed', function () {
       it('should return an array with all entries when feed contains more than one entry', function () {
-        var result = ServiceBusManagement.parseServerResponse(sampledata.threeItemFeed, 'NamespaceDescription');
+        var result = parseServerResponse(sampledata.threeItemFeed, 'NamespaceDescription');
 
         result.should.be.an.instanceOf(Array);
         result.should.have.length(3);
@@ -255,7 +257,7 @@ describe('Service Bus Management', function () {
       });
 
       it('should return an array with one entry when feed contains exactly one entry', function () {
-        var result = ServiceBusManagement.parseServerResponse(sampledata.oneEntryFeed, 'NamespaceDescription');
+        var result = parseServerResponse(sampledata.oneEntryFeed, 'NamespaceDescription');
 
         result.should.be.an.instanceOf(Array);
         result.should.have.length(1);
@@ -264,7 +266,7 @@ describe('Service Bus Management', function () {
       });
 
       it('should return an empty array when feed contains no entries', function () {
-        var result = ServiceBusManagement.parseServerResponse(sampledata.noEntryFeed, 'NamespaceDescription');
+        var result = parseServerResponse(sampledata.noEntryFeed, 'NamespaceDescription');
         should.exist(result);
 
         result.should.be.an.instanceOf(Array);
@@ -278,18 +280,18 @@ describe('Service Bus Management', function () {
     var numDeleted = 0;
     namespaces.forEach(function (namespaceName) {
       waitForNamespaceToActivate(namespaceName, function () {
-          service.deleteNamespace(namespaceName, function () {
-            ++numDeleted;
-            if (numDeleted === namespaces.length) {
-              waitForNamespacesToBeDeleted(namespaces, callback);
-            }
-          });
+        service.deleteNamespace(namespaceName, function () {
+          ++numDeleted;
+          if (numDeleted === namespaces.length) {
+            waitForNamespacesToBeDeleted(namespaces, callback);
+          }
+        });
       });
     });
   }
 
   function waitForNamespaceToActivate(namespaceName, callback) {
-    function poll() {
+    var poll = function () {
       service.getNamespace(namespaceName, function (err, ns) {
         if (err) { 
           callback(err); 
@@ -301,7 +303,8 @@ describe('Service Bus Management', function () {
           setTimeout(callback, 5000);
         }
       });
-    }
+    };
+
     poll();
   }
 
