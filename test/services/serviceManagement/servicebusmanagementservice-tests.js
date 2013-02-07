@@ -26,7 +26,7 @@ var testutil = require('../../util/util');
 
 var azure = testutil.libRequire('azure');
 var sampledata = require('../../util/sampledata.js');
-var namespaceNameIsValid = require('../../../lib/services/serviceManagement/models/namevalidation');
+var namespaceNameIsValid = azure.namespaceNameIsValid;
 var parseServerResponse = require('../../../lib/services/serviceManagement/models/servicebusparseresponse');
 
 describe('Service Bus Management', function () {
