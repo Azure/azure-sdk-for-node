@@ -17,13 +17,12 @@ var _ = require('underscore');
 var util = require('util');
 var xmlbuilder = require('xmlbuilder');
 
+var Constants = require('../../lib/util/constants');
+
 // Sample data builder for XML parsing tests
 
-var ATOM_NAMESPACE = 'http://www.w3.org/2005/Atom';
-var SB_NAMESPACE = 'http://schemas.microsoft.com/netservices/2010/10/servicebus/connect';
-
 function makeFeed(makeEntries) {
-  var xml = xmlbuilder.create('feed').att('xmlns', ATOM_NAMESPACE);
+  var xml = xmlbuilder.create('feed').att('xmlns', Constants.ATOM_NAMESPACE);
   xml.ele('title', { type: 'text'}, 'Test feed');
   makeEntries(xml);
   return xml;
@@ -32,9 +31,9 @@ function makeFeed(makeEntries) {
 function makeEntry(parent, makePayload) {
   var entry;
   if (!parent) {
-    entry = xmlbuilder.create('entry').att('xmlns', ATOM_NAMESPACE);
+    entry = xmlbuilder.create('entry').att('xmlns', Constants.ATOM_NAMESPACE);
   } else {
-    entry = parent.ele('entry', {xmlns: ATOM_NAMESPACE });
+    entry = parent.ele('entry', {xmlns: Constants.ATOM_NAMESPACE });
   }
   var content = entry.ele('content', {type: 'application.xml'});
   makePayload(content);
@@ -43,7 +42,7 @@ function makeEntry(parent, makePayload) {
 
 function nsd(name, region) {
   return function (entry) {
-    entry.ele('NamespaceDescription', {xmlns: SB_NAMESPACE})
+    entry.ele('NamespaceDescription', {xmlns: Constants.SB_NAMESPACE})
       .ele('Name', name)
       .up()
       .ele('Region', region);
