@@ -73,7 +73,7 @@ describe('Service Bus Management', function () {
         service.listNamespaces(function (err, allNamespaces) {
           should.exist(allNamespaces);
           var namespaces = allNamespaces.filter(function (namespace) {
-            return !(namespacesBefore && namespacesBefore.any(function (before) {
+            return !(namespacesBefore && namespacesBefore.some(function (before) {
               return before.Name === namespace.Name;
             }));
           });
