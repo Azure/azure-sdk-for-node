@@ -85,7 +85,7 @@ describe('Service Bus Management', function () {
       });
     });
   });
-/*
+
   describe('Show namespace', function () {
     describe('namespace name exists', function () {
       it('should return the namespace definition', function (done) {
@@ -268,7 +268,7 @@ describe('Service Bus Management', function () {
       });
     });
   });
-*/
+
   function deleteNamespaces(namespaces, callback) {
     if (namespaces.length === 0) { return callback(); }
     var numDeleted = 0;
