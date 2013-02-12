@@ -17,13 +17,13 @@ This project provides a Node.js package that makes it easy to access Windows Azu
 * Service Bus
     * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
     * Topics: create, list, and delete topics; create, list, and delete rules
+* Azure SQL Database
+    * create, list and delete Azure SQL Database servers, databases and firewall rules
 * Service Runtime
     * discover addresses and ports for the endpoints of other role instances in your service
     * get configuration settings and access local resources
     * get role instance information for current role and other role instances
     * query and set the status of the current role
-* Azure SQL Database
-    * create, list and delete Azure SQL Database servers, databases and firewall rules
 
 # Getting Started
 ## Download Source Code
@@ -261,65 +261,6 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
      }
 });
 ```
-
-## Service Runtime
-
-The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running in a worker role inside the Azure emulator or in the cloud.
-
-The **isAvailable** method lets you determine whether the service runtime endpoint is running on the local machine.  It is good practice to enclose any code that 
-uses service runtime in the isAvailable callback.
-
-```JavaScript
-azure.RoleEnvironment.isAvailable(function(error, available) {
-    if (available) {
-        // Place your calls to service runtime here
-    }
-});
-```
-
-The **getConfigurationSettings** method lets you obtain values from the role's .cscfg file.
-
-```Javascript
-azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
-    if (!error) {
-        // You can get the value of setting "setting1" via settings['setting1']
-    }        
-});
-```
-
-The **getLocalResources** method lets you find the path to defined local storage resources for the current role.  For example, the DiagnosticStore 
-resource which is defined for every role provides a location for runtime diagnostics and logs.
-
-```Javascript
-azure.RoleEnvironment.getLocalResources(function(error, resources) {
-    if(!error){
-        // You can get the path to the role's diagnostics store via 
-        // resources['DiagnosticStore']['path']
-    }
-});
-```
-
-The **getCurrentRoleInstance** method lets you obtain information about endpoints defined for the current role instance:
-
-```JavaScript
-azure.RoleEnvironment.getCurrentRoleInstance(function(error, instance) {
-    if (!error && instance['endpoints']) {
-        // You can get information about "endpoint1" such as its address and port via
-        // instance['endpoints']['endpoint1']['address'] and instance['endpoints']['endpoint1']['port']
-    }
-});
-```
-
-The **getRoles** method lets you obtain information about endpoints in role instances running on other machines:
-
-```Javascript
-azure.RoleEnvironment.getRoles(function(error, roles) {
-    if(!error){
-        // You can get information about "instance1" of "role1" via roles['role1']['instance1']
-    } 
-});
-```
-
 ## Azure SQL Database
 
 The Azure SQL Database functions allow you to manage Azure SQL servers, databases and firewall rules.
@@ -385,6 +326,64 @@ sqlServer.listServerDatabases(function(error, dbs) {
 
 ```
 
+
+## Service Runtime
+
+The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running in a worker role inside the Azure emulator or in the cloud.
+
+The **isAvailable** method lets you determine whether the service runtime endpoint is running on the local machine.  It is good practice to enclose any code that 
+uses service runtime in the isAvailable callback.
+
+```JavaScript
+azure.RoleEnvironment.isAvailable(function(error, available) {
+    if (available) {
+        // Place your calls to service runtime here
+    }
+});
+```
+
+The **getConfigurationSettings** method lets you obtain values from the role's .cscfg file.
+
+```Javascript
+azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
+    if (!error) {
+        // You can get the value of setting "setting1" via settings['setting1']
+    }        
+});
+```
+
+The **getLocalResources** method lets you find the path to defined local storage resources for the current role.  For example, the DiagnosticStore 
+resource which is defined for every role provides a location for runtime diagnostics and logs.
+
+```Javascript
+azure.RoleEnvironment.getLocalResources(function(error, resources) {
+    if(!error){
+        // You can get the path to the role's diagnostics store via 
+        // resources['DiagnosticStore']['path']
+    }
+});
+```
+
+The **getCurrentRoleInstance** method lets you obtain information about endpoints defined for the current role instance:
+
+```JavaScript
+azure.RoleEnvironment.getCurrentRoleInstance(function(error, instance) {
+    if (!error && instance['endpoints']) {
+        // You can get information about "endpoint1" such as its address and port via
+        // instance['endpoints']['endpoint1']['address'] and instance['endpoints']['endpoint1']['port']
+    }
+});
+```
+
+The **getRoles** method lets you obtain information about endpoints in role instances running on other machines:
+
+```Javascript
+azure.RoleEnvironment.getRoles(function(error, roles) {
+    if(!error){
+        // You can get information about "instance1" of "role1" via roles['role1']['instance1']
+    } 
+});
+```
 
 **For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
 
