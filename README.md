@@ -329,11 +329,11 @@ You can add, delete and list SQL Server instances
 
 ```Javascript
 var authentication={keyvalue:"...", certvalue:"..."};
-var sqlMgmt = new azure.SqlManagementService(subscriptionId, authentication);
+var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
 
 //create a new server
 //admin, password, location, callback
-sqlMgmt.createServer("sqladmin", "pa$$w0rd", "West US", function(error, serverName) {
+sqlMgmt.createServer("sqladmin", "Pa$$w0rd", "West US", function(error, serverName) {
     console.log("created server " + serverName);
 });
 
@@ -349,21 +349,41 @@ You can list, create and delete firewall rules
 
 ```Javascript
 var authentication={keyvalue:"...", certvalue:"..."};
-var sqlMgmt = new azure.SqlManagementService(subscriptionId, authentication);
+var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
 
 //create a new rule
 //server, rule name, start ip, end ip, callback
-sqlMgmt.createServerFirewallRule(serverName, "myrule", "192.168.100.0", "192.168.100.255",
-    function(error, firewallRule) {
-        console.log("Rule created:\n" + firewallRule);
+sqlMgmt.createServerFirewallRule(serverName, 'myrule', '192.168.100.0', '192.168.100.255',
+    function(error, rule) {
+        console.log("Rule created:\n" + rule);
     }
 );
+
+//list rules
+sqlMgmt.listServerFirewallRules(serverName, function(error, rules) {
+    console.log("Rules:\n:" + rules);
+});
+
 ```
 
 ### Databases
 You can list, create and delete databases
 
 ```Javascript
+var sqlService = new azure.createSqlService(serverName, 'sqlAdmin', 'Pa$$w0rd');
+
+//create a new database
+//db name, callback
+sqlServer.createServerDatabase("mydb", function(error, db) {
+  console.log("DB Created:\n" + db);
+});
+
+//list databases
+sqlServer.listServerDatabases(function(error, dbs) {
+  console.log("Databases:\n" + dbs);
+});
+
+```
 
 
 **For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
