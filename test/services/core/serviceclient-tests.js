@@ -31,10 +31,12 @@ suite('serviceclient-tests', function () {
   });
 
   test('NormalizedErrorsAreErrors', function () {
-    var error = {
-      'message': 'this is an error message',
-      'ResultCode': 500,
-      'somethingElse': 'goes here'
+    var error = { 
+      Error: {
+        'message': [ 'this is an error message' ],
+        'ResultCode': [ 500 ],
+        'somethingElse': [ 'goes here' ]
+      }
     };
 
     var normalizedError = ServiceClient.prototype._normalizeError(error);

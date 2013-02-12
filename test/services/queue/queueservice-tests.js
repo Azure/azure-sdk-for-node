@@ -32,18 +32,27 @@ var queueNames = [];
 var queueNamesPrefix = 'queue';
 
 var testPrefix = 'queueservice-tests';
-var numberTests = 12;
+
+var tableService;
+var suiteUtil;
 
 suite('queueservice-tests', function () {
+  suiteSetup(function (done) {
+    queueService = azure.createQueueService();
+    suiteUtil = queuetestutil.createQueueTestUtils(queueService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    queuetestutil.setUpTest(testPrefix, function (err, newQueueService) {
-      queueService = newQueueService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    queuetestutil.tearDownTest(numberTests, queueService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('GetServiceProperties', function (done) {
@@ -88,7 +97,7 @@ suite('queueservice-tests', function () {
   });
 
   test('CreateQueue', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var metadata = { 'class': 'test' };
 
     // Create
@@ -136,7 +145,7 @@ suite('queueservice-tests', function () {
   });
 
   test('CreateQueueIfNotExists', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var metadata = { 'class': 'test' };
 
     // Create
@@ -166,8 +175,8 @@ suite('queueservice-tests', function () {
   });
 
   test('ListQueues', function (done) {
-    var queueName1 = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
-    var queueName2 = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName1 = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var queueName2 = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var metadata = { 'class': 'test' };
 
     queueService.listQueues({ 'include': 'metadata' }, function (listErrorEmpty, queuesEmpty) {
@@ -220,7 +229,7 @@ suite('queueservice-tests', function () {
   });
 
   test('CreateMessage', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var messageText1 = 'hi there';
     var messageText2 = 'bye there';
 
@@ -314,7 +323,7 @@ suite('queueservice-tests', function () {
   });
 
   test('CreateEmptyMessage', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     // Create Queue
     queueService.createQueue(queueName, function (createError1) {
@@ -331,7 +340,7 @@ suite('queueservice-tests', function () {
   });
 
   test('SetQueueMetadataName', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var metadata = { '\Uc8fc\Uba39\Uc774\Uc6b4\Ub2e4': 'test' };
 
     queueService.createQueue(queueName, function (createError) {
@@ -346,7 +355,7 @@ suite('queueservice-tests', function () {
   });
 
   test('SetQueueMetadata', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var metadata = { 'class': 'test' };
 
     queueService.createQueue(queueName, function (createError) {
@@ -372,7 +381,7 @@ suite('queueservice-tests', function () {
   });
 
   test('GetMessages', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     queueService.createQueue(queueName, function (createError) {
       assert.equal(createError, null);
@@ -416,7 +425,7 @@ suite('queueservice-tests', function () {
   });
 
   test('UpdateMessage', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     queueService.createQueue(queueName, function (error) {
       assert.equal(error, null);
@@ -440,7 +449,7 @@ suite('queueservice-tests', function () {
   });
 
   test('UpdateMessageEncodingPopReceipt', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames, queuetestutil.isMocked);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     // no messages in the queue try to update a message should give fail to update instead of blowing up on authentication
     queueService.updateMessage(queueName, 'mymsg', 'AgAAAAEAAACucgAAvMW8+dqjzAE=', 10, { messagetext: 'bye there' }, function (error) {

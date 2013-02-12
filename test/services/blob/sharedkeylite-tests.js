@@ -36,41 +36,37 @@ var Constants = azure.Constants;
 var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
 
-var blobService;
 var containerNames = [];
 var containerNamesPrefix = 'cont';
 
 var testPrefix = 'sharedkeylite-tests';
-var numberTests = 1;
+
+var blobService;
+var suiteUtil;
 
 suite('sharedkeylite-tests', function () {
+  suiteSetup(function (done) {
+    blobService = azure.createBlobService();
+    suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
-      blobService = newBlobService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    var deleteFiles = function () {
-      // delete test files
-      var list = fs.readdirSync('./');
-      list.forEach(function (file) {
-        if (file.indexOf('.test') !== -1) {
-          fs.unlinkSync(file);
-        }
-      });
-
-      done();
-    };
-
-    blobtestutil.tearDownTest(numberTests, blobService, testPrefix, deleteFiles);
+    suiteUtil.teardownTest(done);
   });
 
   test('CreateContainer', function (done) {
     blobService.authenticationProvider = new SharedKeyLite(blobService.storageAccount, blobService.storageAccessKey);
 
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, blobtestutil.isMocked);
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
     blobService.createContainer(containerName, function (createError, container1, createContainerResponse) {
       assert.equal(createError, null);

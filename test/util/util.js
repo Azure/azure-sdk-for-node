@@ -13,6 +13,8 @@
 * limitations under the License.
 */
 
+var fs = require('fs');
+
 var exports = module.exports;
 
 /**
@@ -58,4 +60,24 @@ exports.libFolder = function () {
 
 exports.libRequire = function (path) {
   return require('../../' + exports.libFolder() + '/' + path);
+};
+
+exports.getCertificateKey = function () {
+  if (process.env['AZURE_CERTIFICATE_KEY']) {
+    return process.env['AZURE_CERTIFICATE_KEY'];
+  } else if (process.env['AZURE_CERTIFICATE_KEY_FILE']) {
+    return fs.readFileSync(process.env['AZURE_CERTIFICATE_KEY_FILE']).toString();
+  }
+
+  return null;
+};
+
+exports.getCertificate = function () {
+  if (process.env['AZURE_CERTIFICATE']) {
+    return process.env['AZURE_CERTIFICATE'];
+  } else if (process.env['AZURE_CERTIFICATE_FILE']) {
+    return fs.readFileSync(process.env['AZURE_CERTIFICATE_FILE']).toString();
+  }
+
+  return null;
 };

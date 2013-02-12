@@ -38,7 +38,7 @@ suite('atomhandler-tests', function () {
       },
       id: '',
       content: {
-        '@': {
+        '$': {
           type: 'application/xml'
         },
         'm:properties': {
@@ -92,25 +92,25 @@ suite('atomhandler-tests', function () {
       },
       id: '',
       content: {
-        '@': {
+        '$': {
           type: 'application/xml'
         },
         'm:properties': {
           'd:PartitionKey': {
-            '#': 'part1',
-            '@': { 'm:type': 'Edm.String' }
+            '_': 'part1',
+            '$': { 'm:type': 'Edm.String' }
           },
           'd:RowKey': {
-            '#': 'row1',
-            '@': { 'm:type': 'Edm.String' }
+            '_': 'row1',
+            '$': { 'm:type': 'Edm.String' }
           },
           'd:intValue':  {
-            '#': 10,
-            '@': { 'm:type': 'Edm.Int32' }
+            '_': 10,
+            '$': { 'm:type': 'Edm.Int32' }
           },
           'd:stringValue':  {
-            '#': 'my string',
-            '@': { 'm:type': 'Edm.String' }
+            '_': 'my string',
+            '$': { 'm:type': 'Edm.String' }
           },
           'd:nullValue': null
         }
@@ -155,19 +155,19 @@ suite('atomhandler-tests', function () {
         name: ''
       },
       id: '',
-      content: {
-        '@': {
+      content: [ {
+        '$': {
           type: 'application/xml'
         },
-        'm:properties': {
-          'd:PartitionKey': 'part1',
-          'd:RowKey': 'row1',
-          'd:intValue': '10',
-          'd:stringValue': 'my string',
-          'd:nullValue': '',
-          'd:nullValue2': null
-        }
-      }
+        'm:properties': [ {
+          'd:PartitionKey': [ 'part1' ],
+          'd:RowKey': [ 'row1' ],
+          'd:intValue': [ '10' ],
+          'd:stringValue': [ 'my string' ],
+          'd:nullValue': [ '' ],
+          'd:nullValue2': [ null ]
+        } ]
+      } ]
     };
 
     var entityResult = atomHandler.parse(entityXmlJs);
@@ -196,36 +196,36 @@ suite('atomhandler-tests', function () {
         name: ''
       },
       id: '',
-      content: {
-        '@': {
+      content: [ {
+        '$': {
           type: 'application/xml'
         },
-        'm:properties': {
-          'd:PartitionKey': {
-            '#': 'part1',
-            '@': { 'm:type': 'Edm.String' }
-          },
-          'd:RowKey': {
-            '#': 'row1',
-            '@': { 'm:type': 'Edm.String' }
-          },
-          'd:intValue': {
-            '#': '10',
-            '@': { 'm:type': 'Edm.Int32' }
-          },
-          'd:stringValue': {
-            '#': 'my string',
-            '@': { 'm:type': 'Edm.String' }
-          },
-          'd:nullValue': {
-            '#': '',
-            '@': { 'm:null': 'true' }
-          },
-          'd:nullValue2': {
-            '@': { 'm:null': 'true' }
-          }
-        }
-      }
+        'm:properties': [ {
+          'd:PartitionKey': [ {
+            '_': 'part1',
+            '$': { 'm:type': 'Edm.String' }
+          } ],
+          'd:RowKey': [ {
+            '_': 'row1',
+            '$': { 'm:type': 'Edm.String' }
+          } ],
+          'd:intValue': [ {
+            '_': '10',
+            '$': { 'm:type': 'Edm.Int32' }
+          } ],
+          'd:stringValue': [ {
+            '_': 'my string',
+            '$': { 'm:type': 'Edm.String' }
+          } ],
+          'd:nullValue': [ {
+            '_': '',
+            '$': { 'm:null': 'true' }
+          } ],
+          'd:nullValue2': [ {
+            '$': { 'm:null': 'true' }
+          } ]
+        } ]
+      } ]
     };
 
     var entityResult = atomHandler.parse(entityXmlJs);
