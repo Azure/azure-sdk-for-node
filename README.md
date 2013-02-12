@@ -324,10 +324,9 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 
 The Azure SQL Database functions allow you to manage Azure SQL servers, databases and firewall rules.
 
-### Servers and Firewall Rules
-To work with servers and firewall rules you can use the SqlManagementService
+### Servers
+You can add, delete and list SQL Server instances
 
-*Servers*
 ```Javascript
 var authentication={keyvalue:"...", certvalue:"..."};
 var sqlMgmt = new azure.SqlManagementService(subscriptionId, authentication);
@@ -345,7 +344,9 @@ sqlMgmt.listServers(function(error, servers) {
 
 ```
 
-*Firewall rules*
+### Firewall rules
+You can list, create and delete firewall rules
+
 ```Javascript
 var authentication={keyvalue:"...", certvalue:"..."};
 var sqlMgmt = new azure.SqlManagementService(subscriptionId, authentication);
@@ -358,6 +359,12 @@ sqlMgmt.createServerFirewallRule(serverName, "myrule", "192.168.100.0", "192.168
     }
 );
 ```
+
+### Databases
+You can list, create and delete databases
+
+```Javascript
+
 
 **For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
 
