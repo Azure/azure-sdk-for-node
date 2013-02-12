@@ -22,6 +22,8 @@ This project provides a Node.js package that makes it easy to access Windows Azu
     * get configuration settings and access local resources
     * get role instance information for current role and other role instances
     * query and set the status of the current role
+* Azure SQL Database
+    * create, list and delete Azure SQL Database servers, databases and firewall rules
 
 # Getting Started
 ## Download Source Code
@@ -119,6 +121,20 @@ blobService.getBlobToStream('taskcontainer', 'task1', fs.createWriteStream('task
     }
 });
 ```
+
+To create a SAS URL you can use the **generateSharedAccessSignatureUrl** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
+
+```Javascript
+var blobService = azure.createBlobService();
+
+//create a SAS that expires in an hour
+var sharedAccessPolicy = { 
+    AccessPolicy: {
+        Expiry: azure.date.minutesFromNow(60);
+    }
+};
+
+var sasUrl = blobService.generateSharedAccessSignatureUrl(containerName, blobName, sharedAccessPolicy);
 
 ## Storage Queues
 
@@ -302,6 +318,18 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
         // You can get information about "instance1" of "role1" via roles['role1']['instance1']
     } 
 });
+```
+
+## Azure SQL Database
+
+The Azure SQL Database functions allow you to manage Azure SQL servers, databases and firewall rules.
+
+### Servers
+To work with servers and firewall rules you can use the SqlManagementService
+
+```Javascript
+var authentication={keyvalue:"...", certvalue:"..."};
+var sqlMgmt = new azure.SqlManagementService(subscriptionId, authentication);
 ```
 
 **For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
