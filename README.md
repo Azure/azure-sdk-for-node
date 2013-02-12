@@ -135,6 +135,7 @@ var sharedAccessPolicy = {
 };
 
 var sasUrl = blobService.generateSharedAccessSignatureUrl(containerName, blobName, sharedAccessPolicy);
+```
 
 ## Storage Queues
 
