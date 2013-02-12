@@ -324,12 +324,39 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 
 The Azure SQL Database functions allow you to manage Azure SQL servers, databases and firewall rules.
 
-### Servers
+### Servers and Firewall Rules
 To work with servers and firewall rules you can use the SqlManagementService
 
+*Servers*
 ```Javascript
 var authentication={keyvalue:"...", certvalue:"..."};
 var sqlMgmt = new azure.SqlManagementService(subscriptionId, authentication);
+
+//create a new server
+//admin, password, location, callback
+sqlMgmt.createServer("sqladmin", "pa$$w0rd", "West US", function(error, serverName) {
+    console.log("created server " + serverName);
+});
+
+//list out servers
+sqlMgmt.listServers(function(error, servers) {
+    console.log("servers\n" + servers);
+});
+
+```
+
+*Firewall rules*
+```Javascript
+var authentication={keyvalue:"...", certvalue:"..."};
+var sqlMgmt = new azure.SqlManagementService(subscriptionId, authentication);
+
+//create a new rule
+//server, rule name, start ip, end ip, callback
+sqlMgmt.createServerFirewallRule(serverName, "myrule", "192.168.100.0", "192.168.100.255",
+    function(error, firewallRule) {
+        console.log("Rule created:\n" + firewallRule);
+    }
+);
 ```
 
 **For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
