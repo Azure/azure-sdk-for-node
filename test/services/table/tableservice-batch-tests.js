@@ -28,27 +28,35 @@ var TableQuery = azure.TableQuery;
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 
-var tableService;
 var tableNames = [];
 var tablePrefix = 'tablebatch';
 
 var testPrefix = 'tableservice-batch-tests';
-var numberTests = 7;
+
+var tableService;
+var testUtil;
 
 suite('tableservice-batch-tests', function () {
+  suiteSetup(function (done) {
+    tableService = azure.createTableService();
+    testUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    testUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    testUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      tableService = newTableService;
-      done();
-    });
+    testUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    testUtil.teardownTest(done);
   });
 
   test('QueryEntities_All', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, testUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -84,7 +92,7 @@ suite('tableservice-batch-tests', function () {
   });
 
   test('QueryEntities_Single1', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, testUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -121,7 +129,7 @@ suite('tableservice-batch-tests', function () {
   });
 
   test('QueryEntities_Single2', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, testUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -153,7 +161,7 @@ suite('tableservice-batch-tests', function () {
   });
 
   test('RetrieveEntities_TableQuery1', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, testUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -197,7 +205,7 @@ suite('tableservice-batch-tests', function () {
   });
 
   test('RetrieveEntities_TableQuery2', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, testUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -255,7 +263,7 @@ suite('tableservice-batch-tests', function () {
   });
 
   test('RetrieveEntities_Top', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, testUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
@@ -307,7 +315,7 @@ suite('tableservice-batch-tests', function () {
   // TODO: fix
 /*
   test('FailBatch', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, testUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);

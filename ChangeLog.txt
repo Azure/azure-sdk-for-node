@@ -1,3 +1,8 @@
+2012.02.11 Version 0.6.10
+* Added helper date.* functions for generating SAS expirations (secondsFromNow, minutesFromNow, hoursFromNow, daysFromNow)
+* Added SQL classes for managing SQL Servers, Databases and Firewall rules
+* Updating to use latest xml2js
+
 2012.12.12 Version 0.6.9
 * Exporting WebResource, Client classes from package to support CLI.
 * Install message updated to remind users the CLI is now a separate package.

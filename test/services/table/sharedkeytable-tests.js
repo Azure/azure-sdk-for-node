@@ -31,8 +31,6 @@ var TableQuery = azure.TableQuery;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
-var tableService;
-
 var entity1 = { PartitionKey: 'part1',
   RowKey: 'row1',
   field: 'my field',
@@ -42,31 +40,40 @@ var entity1 = { PartitionKey: 'part1',
 
 var entity2 = { PartitionKey: 'part2',
   RowKey: 'row1',
-  boolval: { '@': { type: 'Edm.Boolean' }, '#': true },
-  intval: { '@': { type: 'Edm.Int32' }, '#': 42 },
-  dateval: { '@': { type: 'Edm.DateTime' }, '#': ISO8061Date.format(new Date()) }
+  boolval: { '$': { type: 'Edm.Boolean' }, '_': true },
+  intval: { '$': { type: 'Edm.Int32' }, '_': 42 },
+  dateval: { '$': { type: 'Edm.DateTime' }, '_': ISO8061Date.format(new Date()) }
 };
 
 var tableNames = [];
 var tablePrefix = 'sharedkeytable';
 
 var testPrefix = 'sharedkeytable-tests';
-var numberTests = 1;
+
+var tableService;
+var suiteUtil;
 
 suite('sharedkeytable-tests', function () {
+  suiteSetup(function (done) {
+    tableService = azure.createTableService();
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      tableService = newTableService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('CreateTable', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.authenticationProvider = new SharedKeyLiteTable(tableService.storageAccount, tableService.storageAccessKey);
     tableService.createTable(tableName, function (createError, table, createResponse) {
@@ -81,13 +88,13 @@ suite('sharedkeytable-tests', function () {
         assert.equal(table.TableName, tableName);
 
         assert.ok(table.id);
-        assert.equal(table.id, createResponse.body['id']);
+        assert.equal(table.id, createResponse.body.entry['id']);
 
         assert.ok(table.link);
-        assert.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.equal(table.link, createResponse.body.entry['link'][0][Constants.XML_METADATA_MARKER]['href']);
 
         assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body['updated']);
+        assert.equal(table.updated, createResponse.body.entry['updated']);
       }
 
       // check that the table exists

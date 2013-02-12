@@ -55,8 +55,7 @@ suite('queryentitiesresultcontinuation-tests', function () {
             }
           });
         });
-      }
-      else {
+      } else {
         done();
       }
     });
