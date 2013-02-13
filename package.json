@@ -2,7 +2,7 @@
   "name": "azure",
   "author": "Microsoft Corporation",
   "contributors": ["Block, Glenn <gblock@microsoft.com>", "Cowlishaw, Mark <markcowl@microsoft.com>", "Dejardin, Louis <loudej@microsoft.com>", "Georgiev, Yavor <yavorg@microsoft.com>", "Janczuk, Tomasz <tjanczuk@microsoft.com>", "Rodrigues, Andre <andrerod@microsoft.com>", "Tavares, Chris <ctavares@microsoft.com>"],
-  "version": "0.6.9",
+  "version": "0.6.10",
   "description": "Windows Azure Client Library for node",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
