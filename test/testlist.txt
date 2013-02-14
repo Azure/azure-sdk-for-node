@@ -35,7 +35,4 @@ util/date-tests.js
 util/iso8061date-tests.js
 util/util-tests.js
 util/validate-tests.js
-util/certificates/der.decoder-tests.js
-util/certificates/der.decoder.pfx.root-tests.js
-util/certificates/pkcs.filedecoder-tests.js
 azure-tests.js
