@@ -20,6 +20,7 @@ var uuid = require('node-uuid');
 var testutil = require('../../util/util');
 
 var azure = testutil.libRequire('azure');
+var SqlAzureConstants = azure.Constants.SqlAzureConstants;
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
@@ -253,6 +254,46 @@ describe('SQL Server Management', function () {
         rule.StartIPAddress.should.equal('192.168.0.5');
 
         done(err);
+      });
+    });
+  });
+
+  describe('create database', function () {
+    var serverName;
+
+    before(function (done) {
+      service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, server) {
+        if (err) { done(err); }
+        serverName = server;
+        done();
+      });
+    });
+
+    after(function (done) {
+      service.deleteServer(serverName, done);
+    });
+
+    it('should create database with defaults', function (done) {
+      service.createDatabase(serverName, 'db1', function (err, db) {
+        if (err) { return done(err); }
+        db.Name.should.equal('db1');
+        db.Edition.should.equal('Web');
+        db.MaxSizeGB.should.equal('1');
+        db.CollationName.should.equal(SqlAzureConstants.DEFAULT_COLLATION_NAME);
+        done();
+      });
+    });
+
+    it('should create database with options', function (done) {
+      service.createDatabase(serverName, 'db2', { 
+        edition: SqlAzureConstants.BUSINESS_EDITION, 
+        maxsize: SqlAzureConstants.BUSINESS_50GB 
+      }, function (err, db) {
+        if (err) { return done(err); }
+        db.Name.should.equal('db2');
+        db.Edition.should.equal('Business');
+        db.MaxSizeGB.should.equal('50');
+        done();
       });
     });
   });
