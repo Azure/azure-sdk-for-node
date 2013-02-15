@@ -30,9 +30,9 @@ services/table/tableservice-batch-tests.js
 services/table/tableservice-tablequery-tests.js
 services/table/tableservice-tests.js
 services/sqlAzure/sqlservice-tests.js
-util/atomhandler-tests.js
 util/date-tests.js
 util/iso8061date-tests.js
+util/odatahandler-tests.js
 util/util-tests.js
 util/validate-tests.js
 azure-tests.js

@@ -47,7 +47,6 @@ var ruleNames = [];
 var ruleNamesPrefix = 'sbrule';
 
 var testPrefix = 'servicebusservice-tests';
-var numberTests = 33;
 
 suite('servicebusservice-tests', function () {
   setup(function (done) {
@@ -58,7 +57,7 @@ suite('servicebusservice-tests', function () {
   });
 
   teardown(function (done) {
-    servicebustestutil.tearDownTest(numberTests, serviceBusService, testPrefix, done);
+    servicebustestutil.tearDownTest(serviceBusService, testPrefix, done);
   });
 
   test('CreateQueue', function (done) {

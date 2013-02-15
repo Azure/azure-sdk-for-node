@@ -19,14 +19,14 @@ var assert = require('assert');
 var testutil = require('./util');
 
 // Lib includes
-var AtomHandler = testutil.libRequire('util/atomhandler');
+var OdataHandler = testutil.libRequire('util/odatahandler');
 var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var fs = require('fs');
 
-suite('atomhandler-tests', function () {
+suite('odatahandler-tests', function () {
   test('Serialize', function (done) {
-    var atomHandler = new AtomHandler('m', 'd');
+    var odataHandler = new OdataHandler('m', 'd');
 
     var dateTime = ISO8061Date.format(new Date());
 
@@ -51,7 +51,7 @@ suite('atomhandler-tests', function () {
       }
     };
 
-    var res = atomHandler.serialize(entity);
+    var res = odataHandler.serialize(entity);
 
     assert.equal(res,
       '<?xml version="1.0" encoding="utf-8" standalone="yes"?>' +
@@ -80,7 +80,7 @@ suite('atomhandler-tests', function () {
   });
 
   test('SerializeDataTypes', function (done) {
-    var atomHandler = new AtomHandler('m', 'd');
+    var odataHandler = new OdataHandler('m', 'd');
 
     var dateTime = ISO8061Date.format(new Date());
 
@@ -117,7 +117,7 @@ suite('atomhandler-tests', function () {
       }
     };
 
-    var res = atomHandler.serialize(entity);
+    var res = odataHandler.serialize(entity);
 
     assert.equal(res,
       '<?xml version="1.0" encoding="utf-8" standalone="yes"?>' +
@@ -146,7 +146,7 @@ suite('atomhandler-tests', function () {
   });
 
   test('Parse', function (done) {
-    var atomHandler = new AtomHandler('m', 'd');
+    var odataHandler = new OdataHandler('m', 'd');
 
     var entityXmlJs = {
       title: '',
@@ -170,7 +170,7 @@ suite('atomhandler-tests', function () {
       } ]
     };
 
-    var entityResult = atomHandler.parse(entityXmlJs);
+    var entityResult = odataHandler.parse(entityXmlJs);
 
     var entity = {
       'PartitionKey': 'part1',
@@ -187,7 +187,7 @@ suite('atomhandler-tests', function () {
   });
 
   test('ParseDataTypes', function (done) {
-    var atomHandler = new AtomHandler('m', 'd');
+    var odataHandler = new OdataHandler('m', 'd');
 
     var entityXmlJs = {
       title: '',
@@ -228,7 +228,7 @@ suite('atomhandler-tests', function () {
       } ]
     };
 
-    var entityResult = atomHandler.parse(entityXmlJs);
+    var entityResult = odataHandler.parse(entityXmlJs);
 
     var entity = {
       'PartitionKey': 'part1',
