@@ -18,11 +18,9 @@ var should = require('should');
 
 // Test includes
 var testutil = require('../../util/util');
-var servicebustestutil = require('../../util/servicebus-test-utils');
+var notificationhubstestutil = require('../../util/notificationhubs-test-utils');
 
 var testPrefix = 'notificationhubs-tests';
-
-var serviceBusService;
 
 var hubNames;
 var hubNamePrefix = 'hub';
@@ -31,8 +29,8 @@ describe('Notification hubs', function () {
   var service;
 
   before(function (done) {
-    servicebustestutil.setUpTest(testPrefix, function (err, newServiceBusService) {
-      serviceBusService = newServiceBusService;
+    notificationhubstestutil.setUpTest(testPrefix, function (err, notificationHubService) {
+      service = notificationHubService;
 
       done();
     });
@@ -41,17 +39,17 @@ describe('Notification hubs', function () {
   after(function (done) {
     // Schedule deleting notification hubs
     _.each(hubNames, function (notificationHub) {
-      serviceBusService.deleteNotificationHub(notificationHub, function () {});
+      service.deleteNotificationHub(notificationHub, function () {});
     });
 
-    servicebustestutil.tearDownTest(serviceBusService, testPrefix, done);
+    notificationhubstestutil.tearDownTest(service, testPrefix, done);
   });
 
   describe('Create notification hub', function () {
     it('should create a notification hub', function (done) {
       var hubName = testutil.generateId(hubNamePrefix, hubNames);
 
-      serviceBusService.createNotificationHub(hubName, function (err, hub) {
+      service.createNotificationHub(hubName, function (err, hub) {
         should.not.exist(err);
         should.exist(hub);
         hub.NotificationHubName.should.equal(hubName);
@@ -65,11 +63,11 @@ describe('Notification hubs', function () {
     var hubName = testutil.generateId(hubNamePrefix, hubNames);
 
     before(function (done) {
-      serviceBusService.createNotificationHub(hubName, done);
+      service.createNotificationHub(hubName, done);
     });
 
     it('should delete a notification hub', function (done) {
-      serviceBusService.deleteNotificationHub(hubName, function (err, hub) {
+      service.deleteNotificationHub(hubName, function (err, hub) {
         should.not.exist(err);
 
         done();
@@ -82,13 +80,13 @@ describe('Notification hubs', function () {
     var hubName2 = testutil.generateId(hubNamePrefix, hubNames);
 
     before(function (done) {
-      serviceBusService.createNotificationHub(hubName1, function () {
-        serviceBusService.createNotificationHub(hubName2, done);
+      service.createNotificationHub(hubName1, function () {
+        service.createNotificationHub(hubName2, done);
       });
     });
 
     it('should list the existing hubs', function (done) {
-      serviceBusService.listNotificationHubs(function (err, hubs) {
+      service.listNotificationHubs(function (err, hubs) {
         should.not.exist(err);
 
         var hubsFound = 0;
@@ -111,11 +109,11 @@ describe('Notification hubs', function () {
     var hubName = testutil.generateId(hubNamePrefix, hubNames);
 
     before(function (done) {
-      serviceBusService.createNotificationHub(hubName, done);
+      service.createNotificationHub(hubName, done);
     });
 
     it('should get the existing hub', function (done) {
-      serviceBusService.getNotificationHub(hubName, function (err, hub) {
+      service.getNotificationHub(hubName, function (err, hub) {
         should.not.exist(err);
         should.exist(hub);
 
