@@ -54,10 +54,7 @@ walk(libDir, function (err, files) {
   var args = (process.ARGV || process.argv);
 
   files.forEach(function (file) {
-    // NOTE: TableQuery uses regular expressions which seem to confuse JSHint. Exclude for now...
-    if (file.indexOf('lib/services/table/tablequery.js') === -1) {
-      args.push(file);
-    }
+    args.push(file);
   });
 
   args.push('--jslint-reporter');

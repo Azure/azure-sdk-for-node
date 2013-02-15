@@ -116,6 +116,7 @@ app.post('/uploadhandler', function (req, res) {
         if (error != null) {
           helpers.renderError(res);
         } else {
+          setSAS(containerName, fields.itemName);
           res.redirect('/Display');
         }
       });
@@ -138,10 +139,22 @@ app.post('/Delete/:id', function (req, res) {
 blobClient.createContainerIfNotExists(containerName, function (error) {
   if (error) {
     console.log(error);
-  } else {
+  } else { 
     setPermissions();
   }
 });
+
+
+function setSAS(containerName, blobName) {
+    var sharedAccessPolicy = {
+        AccessPolicy: {
+            Expiry: azure.date.minutesFromNow(3)
+        }
+    };   
+    
+    var blobUrl = blobClient.getBlobUrl(containerName, blobName, sharedAccessPolicy);
+    console.log("access the blob at ", blobUrl);
+}
 
 function setPermissions() {
   blobClient.setContainerAcl(containerName, azure.Constants.BlobConstants.BlobContainerPublicAccessType.BLOB, function (error) {
