@@ -19,14 +19,14 @@ var assert = require('assert');
 var testutil = require('./util');
 
 // Lib includes
-var AtomHandler = testutil.libRequire('util/atomhandler');
+var OdataHandler = testutil.libRequire('util/odatahandler');
 var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var fs = require('fs');
 
-suite('atomhandler-tests', function () {
+suite('odatahandler-tests', function () {
   test('Serialize', function (done) {
-    var atomHandler = new AtomHandler('m', 'd');
+    var odataHandler = new OdataHandler('m', 'd');
 
     var dateTime = ISO8061Date.format(new Date());
 
@@ -51,7 +51,7 @@ suite('atomhandler-tests', function () {
       }
     };
 
-    var res = atomHandler.serialize(entity);
+    var res = odataHandler.serialize(entity);
 
     assert.equal(res,
       '<?xml version="1.0" encoding="utf-8" standalone="yes"?>' +
@@ -80,7 +80,7 @@ suite('atomhandler-tests', function () {
   });
 
   test('SerializeDataTypes', function (done) {
-    var atomHandler = new AtomHandler('m', 'd');
+    var odataHandler = new OdataHandler('m', 'd');
 
     var dateTime = ISO8061Date.format(new Date());
 
@@ -117,7 +117,7 @@ suite('atomhandler-tests', function () {
       }
     };
 
-    var res = atomHandler.serialize(entity);
+    var res = odataHandler.serialize(entity);
 
     assert.equal(res,
       '<?xml version="1.0" encoding="utf-8" standalone="yes"?>' +
@@ -146,7 +146,7 @@ suite('atomhandler-tests', function () {
   });
 
   test('Parse', function (done) {
-    var atomHandler = new AtomHandler('m', 'd');
+    var odataHandler = new OdataHandler('m', 'd');
 
     var entityXmlJs = {
       title: '',
@@ -155,22 +155,22 @@ suite('atomhandler-tests', function () {
         name: ''
       },
       id: '',
-      content: [ {
+      content: {
         '$': {
           type: 'application/xml'
         },
-        'm:properties': [ {
-          'd:PartitionKey': [ 'part1' ],
-          'd:RowKey': [ 'row1' ],
-          'd:intValue': [ '10' ],
-          'd:stringValue': [ 'my string' ],
-          'd:nullValue': [ '' ],
-          'd:nullValue2': [ null ]
-        } ]
-      } ]
+        'm:properties': {
+          'd:PartitionKey': 'part1',
+          'd:RowKey': 'row1',
+          'd:intValue': '10',
+          'd:stringValue': 'my string',
+          'd:nullValue': '',
+          'd:nullValue2': null
+        }
+      }
     };
 
-    var entityResult = atomHandler.parse(entityXmlJs);
+    var entityResult = odataHandler.parse(entityXmlJs);
 
     var entity = {
       'PartitionKey': 'part1',
@@ -187,7 +187,7 @@ suite('atomhandler-tests', function () {
   });
 
   test('ParseDataTypes', function (done) {
-    var atomHandler = new AtomHandler('m', 'd');
+    var odataHandler = new OdataHandler('m', 'd');
 
     var entityXmlJs = {
       title: '',
@@ -196,39 +196,39 @@ suite('atomhandler-tests', function () {
         name: ''
       },
       id: '',
-      content: [ {
+      content: {
         '$': {
           type: 'application/xml'
         },
-        'm:properties': [ {
-          'd:PartitionKey': [ {
+        'm:properties': {
+          'd:PartitionKey': {
             '_': 'part1',
             '$': { 'm:type': 'Edm.String' }
-          } ],
-          'd:RowKey': [ {
+          },
+          'd:RowKey': {
             '_': 'row1',
             '$': { 'm:type': 'Edm.String' }
-          } ],
-          'd:intValue': [ {
+          },
+          'd:intValue': {
             '_': '10',
             '$': { 'm:type': 'Edm.Int32' }
-          } ],
-          'd:stringValue': [ {
+          },
+          'd:stringValue': {
             '_': 'my string',
             '$': { 'm:type': 'Edm.String' }
-          } ],
-          'd:nullValue': [ {
+          },
+          'd:nullValue': {
             '_': '',
             '$': { 'm:null': 'true' }
-          } ],
-          'd:nullValue2': [ {
+          },
+          'd:nullValue2': {
             '$': { 'm:null': 'true' }
-          } ]
-        } ]
-      } ]
+          }
+        }
+      }
     };
 
-    var entityResult = atomHandler.parse(entityXmlJs);
+    var entityResult = odataHandler.parse(entityXmlJs);
 
     var entity = {
       'PartitionKey': 'part1',
