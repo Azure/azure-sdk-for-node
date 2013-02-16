@@ -33,9 +33,9 @@ suite('serviceclient-tests', function () {
   test('NormalizedErrorsAreErrors', function () {
     var error = { 
       Error: {
-        'message': [ 'this is an error message' ],
-        'ResultCode': [ 500 ],
-        'somethingElse': [ 'goes here' ]
+        'message': 'this is an error message',
+        'ResultCode': 500,
+        'somethingElse': 'goes here'
       }
     };
 
