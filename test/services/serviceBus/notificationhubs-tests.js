@@ -14,6 +14,7 @@
 */
 
 var _ = require('underscore');
+
 var should = require('should');
 
 // Test includes
@@ -23,7 +24,7 @@ var notificationhubstestutil = require('../../util/notificationhubs-test-utils')
 var testPrefix = 'notificationhubs-tests';
 
 var hubNames;
-var hubNamePrefix = 'hub';
+var hubNamePrefix = 'xplathub';
 
 describe('Notification hubs', function () {
   var service;
@@ -32,7 +33,17 @@ describe('Notification hubs', function () {
     notificationhubstestutil.setUpTest(testPrefix, function (err, notificationHubService) {
       service = notificationHubService;
 
-      done();
+      service.listNotificationHubs(function (err, hubs) {
+        var xplatHubs = hubs.filter(function (hub) {
+          return hub.NotificationHubName.substr(0, hubNamePrefix.length) === hubNamePrefix;
+        });
+
+        _.each(xplatHubs, function (hub) {
+          service.deleteNotificationHub(hub.NotificationHubName, function () {});
+        });
+
+        done();
+      });
     });
   });
 

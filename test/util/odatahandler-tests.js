@@ -155,19 +155,19 @@ suite('odatahandler-tests', function () {
         name: ''
       },
       id: '',
-      content: [ {
+      content: {
         '$': {
           type: 'application/xml'
         },
-        'm:properties': [ {
-          'd:PartitionKey': [ 'part1' ],
-          'd:RowKey': [ 'row1' ],
-          'd:intValue': [ '10' ],
-          'd:stringValue': [ 'my string' ],
-          'd:nullValue': [ '' ],
-          'd:nullValue2': [ null ]
-        } ]
-      } ]
+        'm:properties': {
+          'd:PartitionKey': 'part1',
+          'd:RowKey': 'row1',
+          'd:intValue': '10',
+          'd:stringValue': 'my string',
+          'd:nullValue': '',
+          'd:nullValue2': null
+        }
+      }
     };
 
     var entityResult = odataHandler.parse(entityXmlJs);
@@ -196,36 +196,36 @@ suite('odatahandler-tests', function () {
         name: ''
       },
       id: '',
-      content: [ {
+      content: {
         '$': {
           type: 'application/xml'
         },
-        'm:properties': [ {
-          'd:PartitionKey': [ {
+        'm:properties': {
+          'd:PartitionKey': {
             '_': 'part1',
             '$': { 'm:type': 'Edm.String' }
-          } ],
-          'd:RowKey': [ {
+          },
+          'd:RowKey': {
             '_': 'row1',
             '$': { 'm:type': 'Edm.String' }
-          } ],
-          'd:intValue': [ {
+          },
+          'd:intValue': {
             '_': '10',
             '$': { 'm:type': 'Edm.Int32' }
-          } ],
-          'd:stringValue': [ {
+          },
+          'd:stringValue': {
             '_': 'my string',
             '$': { 'm:type': 'Edm.String' }
-          } ],
-          'd:nullValue': [ {
+          },
+          'd:nullValue': {
             '_': '',
             '$': { 'm:null': 'true' }
-          } ],
-          'd:nullValue2': [ {
+          },
+          'd:nullValue2': {
             '$': { 'm:null': 'true' }
-          } ]
-        } ]
-      } ]
+          }
+        }
+      }
     };
 
     var entityResult = odataHandler.parse(entityXmlJs);
