@@ -91,7 +91,7 @@ suite('sharedkeytable-tests', function () {
         assert.equal(table.id, createResponse.body.entry['id']);
 
         assert.ok(table.link);
-        assert.equal(table.link, createResponse.body.entry['link'][0][Constants.XML_METADATA_MARKER]['href']);
+        assert.equal(table.link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
 
         assert.ok(table.updated);
         assert.equal(table.updated, createResponse.body.entry['updated']);
