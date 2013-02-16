@@ -37,7 +37,7 @@ exports.setUpTest = function (testPrefix, callback) {
   callback(null, serviceBusService);
 };
 
-exports.tearDownTest = function (numberTests, serviceBusService, testPrefix, callback) {
+exports.tearDownTest = function (serviceBusService, testPrefix, callback) {
   var endTest = function () {
     callback();
   };
