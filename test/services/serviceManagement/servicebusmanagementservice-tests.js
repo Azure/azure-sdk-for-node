@@ -27,7 +27,6 @@ var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
 var sampledata = require('../../util/sampledata.js');
 var namespaceNameIsValid = azure.namespaceNameIsValid;
-var parseServerResponse = require('../../../lib/services/serviceManagement/models/servicebusparseresponse');
 
 describe('Service Bus Management', function () {
   var namespacesToClean = [];
@@ -224,48 +223,6 @@ describe('Service Bus Management', function () {
 
       (function () { namespaceNameIsValid('namespace-appfabric'); })
         .should.throw(/may not end with/);
-    });
-  });
-
-  describe('Result parsing', function () {
-    describe('When parsing an entry', function () {
-      it('should return a single object containing the contents', function () {
-        var result = parseServerResponse(sampledata.singleEntry, 'NamespaceDescription');
-
-        result.should.not.be.an.instanceOf(Array);
-        result.should.have.property('Name');
-        result.should.have.property('Region');
-      });
-    });
-
-    describe('When parsing a feed', function () {
-      it('should return an array with all entries when feed contains more than one entry', function () {
-        var result = parseServerResponse(sampledata.threeItemFeed, 'NamespaceDescription');
-
-        result.should.be.an.instanceOf(Array);
-        result.should.have.length(3);
-        result.forEach(function (ns) {
-          ns.should.have.property('Name');
-          ns.should.have.property('Region');
-        });
-      });
-
-      it('should return an array with one entry when feed contains exactly one entry', function () {
-        var result = parseServerResponse(sampledata.oneEntryFeed, 'NamespaceDescription');
-
-        result.should.be.an.instanceOf(Array);
-        result.should.have.length(1);
-        result[0].should.have.property('Name');
-        result[0].should.have.property('Region');
-      });
-
-      it('should return an empty array when feed contains no entries', function () {
-        var result = parseServerResponse(sampledata.noEntryFeed, 'NamespaceDescription');
-        should.exist(result);
-
-        result.should.be.an.instanceOf(Array);
-        result.should.have.length(0);
-      });
     });
   });
 
