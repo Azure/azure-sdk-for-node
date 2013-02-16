@@ -12,7 +12,6 @@
   "dependencies": {
     "xml2js" : " >= 0.2.x",
     "qs": ">= 0.3.1",
-    "log": ">= 1.2.0",
     "xmlbuilder": ">= 0.3.1",
     "mime": ">= 1.2.4",
     "dateformat": "1.0.2-1.2.3",
