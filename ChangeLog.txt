@@ -1,3 +1,5 @@
+* Adding support for creating and deleting affinity groups
+
 2012.02.11 Version 0.6.10
 * Added helper date.* functions for generating SAS expirations (secondsFromNow, minutesFromNow, hoursFromNow, daysFromNow)
 * Added SQL classes for managing SQL Servers, Databases and Firewall rules
