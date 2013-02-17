@@ -7,5 +7,15 @@ node_modules/
 # Test folder #
 test/
 
+# Examples #
+examples/blobuploader/
+examples/blog/
+examples/geophoto/
+examples/helloruntime/
+examples/myevents/
+examples/serviceexplorer/
+examples/servicemanagement/
+examples/tasklist/
+
 # Tools #
 tools/
