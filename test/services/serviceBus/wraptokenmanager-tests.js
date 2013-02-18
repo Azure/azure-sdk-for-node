@@ -22,7 +22,6 @@ var wrapservicetestutil = require('../../util/wrapservice-test-utils');
 // Lib includes
 var azure = testutil.libRequire('azure');
 var azureutil = testutil.libRequire('util/util');
-var ISO8061Date = testutil.libRequire('util/iso8061date');
 var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
 var WrapTokenManager = testutil.libRequire('services/serviceBus/wraptokenmanager');
 
