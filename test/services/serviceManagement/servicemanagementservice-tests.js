@@ -156,9 +156,7 @@ describe('Service Management', function () {
 
         response.body.ServiceName.should.equal(storageAccountName);
 
-        // TODO: fix issue with handling null values for description
-        // response.body.StorageServiceProperties.Description.should.be.null
-
+        response.body.StorageServiceProperties.Description.should.be.null
         response.body.StorageServiceProperties.Location.should.equal(storageAccountLocation);
 
         done(err);
@@ -166,14 +164,27 @@ describe('Service Management', function () {
     });
 
     it('should get created storage account keys', function (done) {
-      service.getStorageAccountKeys(storageAccountName, function (err, response) {
-        should.not.exist(err);
+      var attempts = 0;
 
-        response.body.StorageServiceKeys.Primary.should.not.be.null;
-        response.body.StorageServiceKeys.Secondary.should.not.be.null;
+      var executeTest = function () {
+        service.getStorageAccountKeys(storageAccountName, function (err, response) {
+          if (!err || attempts >= 3) {
+            should.not.exist(err);
 
-        done(err);
-      });
+            response.body.StorageServiceKeys.Primary.should.not.be.null;
+            response.body.StorageServiceKeys.Secondary.should.not.be.null;
+
+            done();
+          } else {
+            attempts++;
+
+            // Retry in 5 seconds
+            setTimeout(executeTest, 5000);
+          }
+        });
+      };
+
+      executeTest();
     });
   });
 });
