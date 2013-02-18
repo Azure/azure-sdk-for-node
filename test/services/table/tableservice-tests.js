@@ -302,11 +302,6 @@ suite('tableservice-tests', function () {
 
                 var date3 = new Date(currentEntry['complexDateValue']);
                 var date4 = new Date(entity2['complexDateValue'][Constants.XML_VALUE_MARKER]);
-
-                console.log(date3);
-                console.log(date3.getTime());
-                console.log(date4);
-                console.log(date4.getTime());
                 assert.equal(date3.getTime(), date4.getTime());
               }
             });
