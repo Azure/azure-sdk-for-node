@@ -16,6 +16,7 @@
 var _ = require('underscore');
 
 var should = require('should');
+var sinon = require('sinon');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -57,10 +58,56 @@ describe('Notification hubs', function () {
   });
 
   describe('Create notification hub', function () {
+    var sandbox;
+
+    before(function (done) {
+      sandbox = sinon.sandbox.create();
+
+      done();
+    });
+
+    after(function (done) {
+      sandbox.restore();
+
+      done();
+    });
+
     it('should create a notification hub', function (done) {
       var hubName = testutil.generateId(hubNamePrefix, hubNames);
 
       service.createNotificationHub(hubName, function (err, hub) {
+        should.not.exist(err);
+        should.exist(hub);
+        hub.NotificationHubName.should.equal(hubName);
+
+        done();
+      });
+    });
+
+    it('should create a notification hub with credentials', function (done) {
+      var hubName = testutil.generateId(hubNamePrefix, hubNames);
+
+      var credentials = {
+        'WnsCredential': {
+          'PackageSid': 'secret1',
+          'SecretKey': 'secret2'
+        },
+        'ApnsCredential': {
+          'ApnsCertificate': 'secret1',
+          'CertificateKey': 'secret2'
+        }
+      }
+
+      sandbox.stub(service, '_executeRequest', function (webResource, payload, resultHandler, validators, callback) {
+        payload.should.include('<WnsCredential><Properties><Property><Name>PackageSid</Name><Value>secret1</Value></Property>' +
+          '<Property><Name>SecretKey</Name><Value>secret2</Value></Property></Properties></WnsCredential>' +
+          '<ApnsCredential><Properties><Property><Name>ApnsCertificate</Name><Value>secret1</Value></Property>' +
+          '<Property><Name>CertificateKey</Name><Value>secret2</Value></Property></Properties></ApnsCredential>');
+
+        callback(undefined, { NotificationHubName: hubName });
+      });
+
+      service.createNotificationHub(hubName, credentials, function (err, hub) {
         should.not.exist(err);
         should.exist(hub);
         hub.NotificationHubName.should.equal(hubName);
