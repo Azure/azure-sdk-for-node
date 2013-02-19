@@ -238,4 +238,22 @@ describe('Service Bus Management', function () {
       });
     });
   }
+
+  function waitForNamespaceToActivate(namespaceName, callback) {
+    var poll = function () {
+      service.getNamespace(namespaceName, function (err, ns) {
+        if (err) { 
+          callback(err); 
+        } else if (ns.Status === 'Activating') {
+          setTimeout(poll, 2000);
+        } else {
+          // Give Azure time to settle down - can't delete immediately after activating
+          // without getting a 500 error.
+          setTimeout(callback, 5000);
+        }
+      });
+    };
+
+    poll();
+  }
 });
