@@ -725,10 +725,10 @@ suite('roleenvironment-tests', function () {
 
       stream.setEncoding('utf8');
       stream.on('connect', function () {
-        // Write goal state every second
+        // Write goal state every few MS
         serverGoalStateInterval = setInterval(function () {
           stream.write(goalStateXml);
-        }, 1000);
+        }, 10);
       });
 
       stream.on('end', function () {
@@ -864,10 +864,10 @@ suite('roleenvironment-tests', function () {
 
       stream.setEncoding('utf8');
       stream.on('connect', function () {
-        // Write goal state every second
+        // Write goal state every few MS
         serverGoalStateInterval = setInterval(function () {
           stream.write(goalStateXml);
-        }, 1000);
+        }, 10);
       });
 
       stream.on('end', function () {
@@ -1156,10 +1156,10 @@ suite('roleenvironment-tests', function () {
 
       stream.setEncoding('utf8');
       stream.on('connect', function () {
-        // Write goal state every second
+        // Write goal state every few MS
         serverGoalStateInterval = setInterval(function () {
           stream.write(goalStateXml);
-        }, 1000);
+        }, 10);
       });
 
       stream.on('end', function () {
