@@ -17,7 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');

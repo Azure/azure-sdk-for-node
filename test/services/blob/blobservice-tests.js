@@ -22,7 +22,7 @@ var sinon = require('sinon');
 
 // Test includes
 var testutil = require('../../util/util');
-var blobtestutil = require('../../util/blob-test-utils');
+var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
 var azureutil = testutil.libRequire('util/util');
@@ -420,17 +420,19 @@ suite('blobservice-tests', function () {
             assert.notEqual(setAclContainer2, null);
             assert.ok(setResponse2.isSuccessful);
 
-            blobService.getContainerAcl(containerName, function (getAclError2, getAclContainer2, getResponse3) {
-              assert.equal(getAclError2, null);
-              assert.notEqual(getAclContainer2, null);
-              if (getAclContainer2) {
-                assert.equal(getAclContainer2.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.CONTAINER);
-              }
+            setTimeout(function () {
+              blobService.getContainerAcl(containerName, function (getAclError2, getAclContainer2, getResponse3) {
+                assert.equal(getAclError2, null);
+                assert.notEqual(getAclContainer2, null);
+                if (getAclContainer2) {
+                  assert.equal(getAclContainer2.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.CONTAINER);
+                }
 
-              assert.ok(getResponse3.isSuccessful);
+                assert.ok(getResponse3.isSuccessful);
 
-              done();
-            });
+                done();
+              });
+            }, (suiteUtil.isMocked && !suiteUtil.isRecording) ? 0 : 5000);
           });
         });
       });
@@ -440,7 +442,7 @@ suite('blobservice-tests', function () {
   test('SetContainerAclWithPolicies', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
-    var readWriteStartDate = new Date();
+    var readWriteStartDate = new Date(2012, 10, 10);
     var readWriteExpiryDate = new Date(readWriteStartDate);
     readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
     readWriteExpiryDate.setMilliseconds(999);
