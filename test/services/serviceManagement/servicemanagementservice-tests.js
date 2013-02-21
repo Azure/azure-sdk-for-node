@@ -18,7 +18,7 @@ var mocha = require('mocha');
 var _ = require('underscore');
 
 var testutil = require('../../util/util');
-var StorageTestUtils = require('../../util/mocked-test-utils');
+var StorageTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 

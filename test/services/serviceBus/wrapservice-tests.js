@@ -17,7 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var wrapservicetestutil = require('../../util/wrapservice-test-utils');
+var wrapservicetestutil = require('../../framework/wrapservice-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');

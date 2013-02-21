@@ -19,7 +19,7 @@ var should = require('should');
 
 // Test includes
 var testutil = require('../../util/util');
-var notificationhubstestutil = require('../../util/notificationhubs-test-utils');
+var notificationhubstestutil = require('../../framework/notificationhubs-test-utils');
 
 var azure = testutil.libRequire('azure');
 

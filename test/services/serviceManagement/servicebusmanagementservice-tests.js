@@ -23,7 +23,7 @@ var should = require('should');
 var mocha = require('mocha');
 
 var testutil = require('../../util/util');
-var StorageTestUtils = require('../../util/mocked-test-utils');
+var StorageTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 var sampledata = require('../../util/sampledata.js');

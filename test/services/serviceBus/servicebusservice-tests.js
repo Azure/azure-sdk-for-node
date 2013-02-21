@@ -18,7 +18,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var servicebustestutil = require('../../util/servicebus-test-utils');
+var servicebustestutil = require('../../framework/servicebus-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');

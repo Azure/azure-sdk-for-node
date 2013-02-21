@@ -18,7 +18,7 @@ var mocha = require('mocha');
 var uuid = require('node-uuid');
 
 var testutil = require('../../util/util');
-var StorageTestUtils = require('../../util/mocked-test-utils');
+var StorageTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 
