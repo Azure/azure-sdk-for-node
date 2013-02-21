@@ -22,6 +22,7 @@ var wrapservicetestutil = require('../../framework/wrapservice-test-utils');
 // Lib includes
 var azure = testutil.libRequire('azure');
 var azureutil = testutil.libRequire('util/util');
+var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
 
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;

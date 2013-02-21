@@ -89,8 +89,8 @@ StorageTestUtils.prototype.baseTeardownTest = function (callback) {
         line = line.replace(/(\.get\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
         line = line.replace(/(\.put\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
         line = line.replace(/(\.delete\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-        line = line.replace(/(\.merge\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';});\n$1, \'*\')');
-        line = line.replace(/(\.patch\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';});\n$1, \'*\')');
+        line = line.replace(/(\.merge\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
+        line = line.replace(/(\.patch\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
 
         scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
           'var result = ' + line + ' return result; }';
