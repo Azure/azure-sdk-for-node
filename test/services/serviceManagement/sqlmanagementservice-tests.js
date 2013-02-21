@@ -18,6 +18,7 @@ var mocha = require('mocha');
 var uuid = require('node-uuid');
 
 var testutil = require('../../util/util');
+var StorageTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 var SqlAzureConstants = azure.Constants.SqlAzureConstants;
@@ -26,25 +27,42 @@ var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
 var SERVER_LOCATION = 'West US';
 
+var testPrefix = 'sqlManagement-tests';
+var ruleNames = [];
+
 describe('SQL Server Management', function () {
   var sqlServersToClean = [];
   var service;
+  var suiteUtil;
 
-  before(function () {
+  before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
     service = azure.createSqlManagementService(
       subscriptionId, auth,
       { serializetype: 'XML'});
+
+    suiteUtil = new StorageTestUtils(service, testPrefix);
+    suiteUtil.setupSuite(done);
   });
 
   after(function (done) {
-    deleteSqlServers(sqlServersToClean, done);
+    deleteSqlServers(sqlServersToClean, function () {
+      suiteUtil.teardownSuite(done);
+    });
+  });
+
+  beforeEach(function (done) {
+    suiteUtil.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suiteUtil.baseTeardownTest(done);
   });
 
   describe('list SQL servers', function () {
     describe('No defined servers', function () {
-      before(function (done) {
+      beforeEach(function (done) {
         service.listServers(function (err, sqlServers) {
           deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), done);
         });
@@ -60,7 +78,7 @@ describe('SQL Server Management', function () {
     });
 
     describe('when one server is defined', function () {
-      before(function (done) {
+      beforeEach(function (done) {
         service.listServers(function (err, sqlServers) {
           deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
             service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, done);
@@ -101,7 +119,11 @@ describe('SQL Server Management', function () {
     it('should succeed', function (done) {
       service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
         if (err) { return done(err); }
-        service.deleteServer(name, done);
+        service.deleteServer(name, function (err2) {
+          should.not.exist(err2);
+
+          done();
+        });
       });
     });
   });
@@ -109,7 +131,7 @@ describe('SQL Server Management', function () {
   describe('list Firewall Rules', function () {
     var serverName;
 
-    before(function (done) {
+    beforeEach(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
           service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
@@ -120,12 +142,12 @@ describe('SQL Server Management', function () {
       });
     });
 
-    after(function (done) {
+    afterEach(function (done) {
       service.deleteServer(serverName, done);
     });
 
     describe('No defined rules', function () {
-      before(function (done) {
+      beforeEach(function (done) {
         service.listServerFirewallRules(serverName, function (err, rules) {
           deleteServerFirewallRules(rules.map(function (r) { return r.Name; }), done);
         });
@@ -141,9 +163,11 @@ describe('SQL Server Management', function () {
     });
 
     describe('when one rule is defined', function () {
-      var name = 'xplatcli-' + uuid.v4().substr(0, 8);
+      var name;
 
-      before(function (done) {
+      beforeEach(function (done) {
+        name = testutil.generateId('nodesdk', ruleNames, suiteUtil.isMocked);
+
         service.listServerFirewallRules(serverName, function (err, rules) {
           deleteServerFirewallRules(rules.map(function (r) { return r.Name; }), function () {
             service.createServerFirewallRule(serverName, name, '192.168.0.1', '192.168.0.255', done);
@@ -165,7 +189,7 @@ describe('SQL Server Management', function () {
   describe('create rule', function () {
     var serverName;
 
-    before(function (done) {
+    beforeEach(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
           service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
@@ -176,12 +200,12 @@ describe('SQL Server Management', function () {
       });
     });
 
-    after(function (done) {
+    afterEach(function (done) {
       service.deleteServer(serverName, done);
     });
 
     it('should succeed', function (done) {
-      var ruleName = 'xplatcli-' + uuid.v4().substr(0, 8);
+      var ruleName = testutil.generateId('nodesdk', ruleNames, suiteUtil.isMocked);
 
       service.createServerFirewallRule(serverName, ruleName, '192.168.0.1', '192.168.0.255', function (err, rule) {
         should.not.exist(err);
@@ -194,7 +218,7 @@ describe('SQL Server Management', function () {
   describe('delete rule', function () {
     var serverName;
 
-    before(function (done) {
+    beforeEach(function (done) {
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
           service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
@@ -205,7 +229,7 @@ describe('SQL Server Management', function () {
       });
     });
 
-    after(function (done) {
+    afterEach(function (done) {
       service.deleteServer(serverName, done);
     });
 
@@ -218,7 +242,7 @@ describe('SQL Server Management', function () {
     });
 
     it('should succeed if server exists and values are valid', function (done) {
-      var ruleName = 'xplatcli-' + uuid.v4().substr(0, 8);
+      var ruleName = testutil.generateId('nodesdk', ruleNames, suiteUtil.isMocked);
 
       service.createServerFirewallRule(serverName, ruleName, '192.168.0.1', '192.168.0.255', function (err, rule) {
         if (err) { return done(err); }
@@ -229,9 +253,11 @@ describe('SQL Server Management', function () {
 
   describe('update rule', function () {
     var serverName;
-    var ruleName = 'xplatcli-' + uuid.v4().substr(0, 8);
+    var ruleName;
 
-    before(function (done) {
+    beforeEach(function (done) {
+      ruleName = testutil.generateId('nodesdk', ruleNames, suiteUtil.isMocked);
+
       service.listServers(function (err, sqlServers) {
         deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), function () {
           service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
@@ -243,7 +269,7 @@ describe('SQL Server Management', function () {
       });
     });
 
-    after(function (done) {
+    afterEach(function (done) {
       service.deleteServer(serverName, done);
     });
 
@@ -261,7 +287,7 @@ describe('SQL Server Management', function () {
   describe('create database', function () {
     var serverName;
 
-    before(function (done) {
+    beforeEach(function (done) {
       service.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, server) {
         if (err) { done(err); }
         serverName = server;
@@ -269,7 +295,7 @@ describe('SQL Server Management', function () {
       });
     });
 
-    after(function (done) {
+    afterEach(function (done) {
       service.deleteServer(serverName, done);
     });
 

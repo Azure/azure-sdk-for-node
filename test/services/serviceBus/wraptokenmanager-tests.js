@@ -17,7 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var wrapservicetestutil = require('../../util/wrapservice-test-utils');
+var wrapservicetestutil = require('../../framework/wrapservice-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
@@ -33,19 +33,27 @@ var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
 var wrapTokenManager;
 var wrapService;
+var suiteUtil;
 
 var testPrefix = 'wraptokenmanager-tests';
 
 suite('wraptokenmanager-tests', function () {
+  suiteSetup(function (done) {
+    wrapService = new WrapService();
+    suiteUtil = wrapservicetestutil.createWrapServiceTestUtils(wrapService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    wrapservicetestutil.setUpTest(module.exports, testPrefix, function (err, newWrapService) {
-      wrapService = newWrapService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    wrapservicetestutil.tearDownTest(module.exports, wrapService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('GetAccessToken', function (done) {

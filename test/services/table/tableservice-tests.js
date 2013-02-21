@@ -17,7 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
@@ -804,8 +804,6 @@ suite('tableservice-tests', function () {
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey;
     tableService = azure.createTableService(connectionString);
 
-    suiteUtil.normalizeService(tableService);
-
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
@@ -825,8 +823,6 @@ suite('tableservice-tests', function () {
     var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.core.windows.net';
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';TableEndpoint=' + expectedTableEndpoint;
     var tableService = azure.createTableService(connectionString);
-
-    suiteUtil.normalizeService(tableService);
 
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
@@ -848,8 +844,6 @@ suite('tableservice-tests', function () {
     var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.core.windows.net';
     var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
 
-    suiteUtil.normalizeService(tableService);
-
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
@@ -866,8 +860,6 @@ suite('tableservice-tests', function () {
     var expectedKey = ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY;
     var expectedTableEndpoint = ServiceClient.DEVSTORE_TABLE_HOST;
     var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
-
-    suiteUtil.normalizeService(tableService);
 
     assert.equal(tableService.storageAccount, expectedName);
     assert.equal(tableService.storageAccessKey, expectedKey);

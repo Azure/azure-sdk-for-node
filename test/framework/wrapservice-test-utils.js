@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,4 +13,20 @@
 * limitations under the License.
 */
 
-require('../node_modules/jshint/lib/cli').interpret([ 'node', 'runjshint.js', 'lib', '--jslint-reporter' ]);
+var util = require('util');
+
+var MockedTestUtils = require('./mocked-test-utils');
+
+function WrapServiceUtils(service, testPrefix) {
+  WrapServiceUtils.super_.call(this, service, testPrefix);
+}
+
+util.inherits(WrapServiceUtils, MockedTestUtils);
+
+WrapServiceUtils.prototype.teardownTest = function (callback) {
+  this.baseTeardownTest(callback);
+};
+
+exports.createWrapServiceTestUtils = function (service, testPrefix) {
+  return new WrapServiceUtils(service, testPrefix);
+};

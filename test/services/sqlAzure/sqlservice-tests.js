@@ -19,6 +19,8 @@ var uuid = require('node-uuid');
 
 var testutil = require('../../util/util');
 
+var StorageTestUtils = require('../../framework/mocked-test-utils');
+
 var azure = testutil.libRequire('azure');
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
@@ -27,11 +29,14 @@ var SERVER_LOCATION = 'West US';
 
 var DATABASE_NAME = 'mydatabase';
 
+var testPrefix = 'sqlservice-tests';
+
 describe('SQL Azure Database', function () {
   var serverName;
 
   var service;
   var serviceManagement;
+  var suiteUtil;
 
   before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
@@ -40,65 +45,79 @@ describe('SQL Azure Database', function () {
       subscriptionId, auth,
       { serializetype: 'XML'});
 
-    serviceManagement.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
-      should.not.exist(err);
+    suiteUtil = new StorageTestUtils(serviceManagement, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
 
-      serverName = name;
+  after(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
 
-      // Create the SQL Azure service to test
-      service = azure.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD);
+  beforeEach(function (done) {
+    suiteUtil.setupTest(function () {
+      serviceManagement.createServer(SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, SERVER_LOCATION, function (err, name) {
+        should.not.exist(err);
 
-      // add firewall rule for all the ip range
-      serviceManagement.createServerFirewallRule(serverName, 'rule1', '0.0.0.0', '255.255.255.255', function () {
+        serverName = name;
 
-        // Wait for the firewall rule to be added (test different operations needed as it seems they dont go valid at the same time)
-        var checkIfRuleAdded = function () {
-          setTimeout(function () {
-            var databaseId;
+        // Create the SQL Azure service to test
+        service = azure.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD);
 
-            service.createServerDatabase(DATABASE_NAME, function (err, db) {
-              if (err) {
-                checkIfRuleAdded();
-              } else {
-                databaseId = db.Id;
+        // add firewall rule for all the ip range
+        serviceManagement.createServerFirewallRule(serverName, 'rule1', '0.0.0.0', '255.255.255.255', function () {
+          var intervalTimeout = (suiteUtil.isMocked && !suiteUtil.isRecording) ? 0 : 2000;
 
-                var checkIfRuleDeleted = function () {
-                  setTimeout(function () {
-                    service.deleteServerDatabase(databaseId, function (err) {
-                      if (err) {
-                        checkIfRuleDeleted();
-                      } else {
-                        var checkIfRuleLists = function () {
-                          setTimeout(function () {
-                            service.listServerDatabases(function (err) {
-                              if (err) {
-                                checkIfRuleLists();
-                              } else {
-                                done();
-                              }
-                            })
-                          }, 2000);
-                        };
+          // Wait for the firewall rule to be added (test different operations needed as it seems they dont go valid at the same time)
+          var checkIfRuleAdded = function () {
+            setTimeout(function () {
+              var databaseId;
 
-                        checkIfRuleLists();
-                      }
-                    });
-                  }, 2000);
-                };
+              service.createServerDatabase(DATABASE_NAME, function (err, db) {
+                if (err) {
+                  checkIfRuleAdded();
+                } else {
+                  databaseId = db.Id;
 
-                checkIfRuleDeleted();
-              }
-            });
-          }, 2000);
-        };
+                  var checkIfRuleDeleted = function () {
+                    setTimeout(function () {
+                      service.deleteServerDatabase(databaseId, function (err) {
+                        if (err) {
+                          checkIfRuleDeleted();
+                        } else {
+                          var checkIfRuleLists = function () {
+                            setTimeout(function () {
+                              service.listServerDatabases(function (err) {
+                                if (err) {
+                                  checkIfRuleLists();
+                                } else {
+                                  done();
+                                }
+                              })
+                            }, intervalTimeout);
+                          };
 
-        checkIfRuleAdded();
+                          checkIfRuleLists();
+                        }
+                      });
+                    }, intervalTimeout);
+                  };
+
+                  checkIfRuleDeleted();
+                }
+              });
+            }, intervalTimeout);
+          };
+
+          checkIfRuleAdded();
+        });
       });
     });
   });
 
-  after(function (done) {
-    serviceManagement.deleteServer(serverName, done);
+  afterEach(function (done) {
+    serviceManagement.deleteServer(serverName, function () {
+      suiteUtil.baseTeardownTest(done);
+    });
   });
 
   describe('list SQL databases', function () {
@@ -117,7 +136,7 @@ describe('SQL Azure Database', function () {
     describe('when multiple databases are defined', function () {
       var databaseId;
 
-      before(function (done) {
+      beforeEach(function (done) {
         service.createServerDatabase(DATABASE_NAME, function (err, database) {
           should.not.exist(err);
           databaseId = database.Id;
@@ -126,10 +145,8 @@ describe('SQL Azure Database', function () {
         });
       });
 
-      after(function (done) {
-        service.deleteServerDatabase(databaseId, function (err) {
-          done(err);
-        });
+      afterEach(function (done) {
+        service.deleteServerDatabase(databaseId, done);
       });
 
       it('should return it', function (done) {
@@ -150,7 +167,7 @@ describe('SQL Azure Database', function () {
   describe('Delete SQL databases', function () {
     var databaseId;
 
-    before(function (done) {
+    beforeEach(function (done) {
       service.createServerDatabase(DATABASE_NAME, function (err, database) {
         should.not.exist(err);
         databaseId = database.Id;

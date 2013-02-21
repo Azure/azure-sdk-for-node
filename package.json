@@ -33,7 +33,7 @@
     "jshint": "*",
     "sinon": "*",
     "should": "*",
-    "http-mock": "*"
+    "nock": "*"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {
@@ -45,7 +45,8 @@
   },
   "scripts": {
     "postinstall" : "node scripts/azure.js",
-    "test": "node test/runtests.js testlist.txt",
+    "test": "node test/runci.js testlist.txt",
+    "testonly": "node test/runtests.js testlist.txt",
     "jshint": "node test/runjshint.js",
     "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
     "extendedtests": "node test/runtests.js extendedtestlist.txt"

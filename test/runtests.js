@@ -69,4 +69,22 @@ if (coverageOption !== -1) {
   args.push('list');
 }
 
+if (!process.env.NOCK_OFF) {
+  if (!process.env.AZURE_STORAGE_ACCOUNT) {
+    process.env.AZURE_STORAGE_ACCOUNT = 'ciserversdk';
+    process.env.AZURE_STORAGE_ACCESS_KEY = new Buffer('fake_key').toString('base64');
+  }
+
+  if (!process.env.AZURE_SERVICEBUS_NAMESPACE) {
+    process.env.AZURE_SERVICEBUS_NAMESPACE = 'ciserversb';
+    process.env.AZURE_SERVICEBUS_ACCESS_KEY = new Buffer('fake_key').toString('base64');
+  }
+
+  if (!process.env.AZURE_SUBSCRIPTION_ID) {
+    process.env.AZURE_SUBSCRIPTION_ID = '279b0675-cf67-467f-98f0-67ae31eb540f';
+    process.env.AZURE_CERTIFICATE = 'fake_certificate';
+    process.env.AZURE_CERTIFICATE_KEY = 'fake_certificate_key';
+  }
+}
+
 require('../node_modules/mocha/bin/mocha');

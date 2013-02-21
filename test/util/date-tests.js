@@ -21,7 +21,7 @@ var azure = testutil.libRequire('azure');
 
 suite('date-tests', function () {
   setup(function () {
-    this.clock = sinon.useFakeTimers(0, "Date");
+    this.clock = sinon.useFakeTimers(0, 'Date');
   });
 
   teardown(function () {
@@ -32,27 +32,27 @@ suite('date-tests', function () {
     var daysInterval = 1;
     var expectedDate = new Date('Jan 2, 1970 00:00:00 am GMT');
 
-    azure.date.daysFromNow(daysInterval).should.equal(expectedDate);
+    azure.date.daysFromNow(daysInterval).getTime().should.equal(expectedDate.getTime());
   });
 
   test('hoursFromNow', function () {
     var hoursInterval = 3;
     var expectedDate = new Date('Jan 1, 1970 03:00:00 am GMT');
 
-    azure.date.hoursFromNow(hoursInterval).should.equal(expectedDate);
+    azure.date.hoursFromNow(hoursInterval).getTime().should.equal(expectedDate.getTime());
   });
 
   test('minutesFromNow', function () {
     var minutesInterval = 10;
     var expectedDate = new Date('Jan 1, 1970 00:10:00 am GMT');
 
-    azure.date.minutesFromNow(minutesInterval).should.equal(expectedDate);
+    azure.date.minutesFromNow(minutesInterval).getTime().should.equal(expectedDate.getTime());
   });
 
   test('secondsFromNow', function () {
     var secondsInterval = 20;
     var expectedDate = new Date('Jan 1, 1970 00:00:20 am GMT');
 
-    azure.date.secondsFromNow(secondsInterval).should.equal(expectedDate);
+    azure.date.secondsFromNow(secondsInterval).getTime().should.equal(expectedDate.getTime());
   });
 });
