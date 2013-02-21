@@ -15,13 +15,13 @@
 
 var util = require('util');
 
-var StorageTestUtils = require('./storage-test-utils');
+var MockedTestUtils = require('./mocked-test-utils');
 
 function TableTestUtils(service, testPrefix) {
   TableTestUtils.super_.call(this, service, testPrefix);
 }
 
-util.inherits(TableTestUtils, StorageTestUtils);
+util.inherits(TableTestUtils, MockedTestUtils);
 
 TableTestUtils.prototype.teardownTest = function (callback) {
   var self = this;

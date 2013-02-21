@@ -16,13 +16,13 @@
 var fs = require('fs');
 var util = require('util');
 
-var StorageTestUtils = require('./storage-test-utils');
+var MockedTestUtils = require('./mocked-test-utils');
 
 function BlobTestUtils(service, testPrefix) {
   BlobTestUtils.super_.call(this, service, testPrefix);
 }
 
-util.inherits(BlobTestUtils, StorageTestUtils);
+util.inherits(BlobTestUtils, MockedTestUtils);
 
 BlobTestUtils.prototype.teardownTest = function (callback) {
   var self = this;

@@ -13,23 +13,20 @@
 * limitations under the License.
 */
 
-// Test includes
-var testutil = require('./util');
-var MockServerClient = require('http-mock');
+var util = require('util');
 
-// Lib includes
-var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
+var MockedTestUtils = require('./mocked-test-utils');
 
-var exports = module.exports;
+function WrapServiceUtils(service, testPrefix) {
+  WrapServiceUtils.super_.call(this, service, testPrefix);
+}
 
-var mockServerClient;
-var currentTest = 0;
+util.inherits(WrapServiceUtils, MockedTestUtils);
 
-exports.setUpTest = function (testObject, testPrefix, callback) {
-  var wrapService = new WrapService();
-  callback(null, wrapService);
+WrapServiceUtils.prototype.teardownTest = function (callback) {
+  this.baseTeardownTest(callback);
 };
 
-exports.tearDownTest = function (testObject, wrapService, testPrefix, callback) {
-  callback();
+exports.createWrapServiceTestUtils = function (service, testPrefix) {
+  return new WrapServiceUtils(service, testPrefix);
 };

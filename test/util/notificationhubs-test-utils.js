@@ -13,31 +13,19 @@
 * limitations under the License.
 */
 
+var util = require('util');
 var assert = require('assert');
 
-// Test includes
-var testutil = require('./util');
-var MockServerClient = require('http-mock');
+var MockedTestUtils = require('./mocked-test-utils');
 
-// Lib includes
-var azure = testutil.libRequire('azure');
+function NotificationHubsTestUtils(service, testPrefix) {
+  NotificationHubsTestUtils.super_.call(this, service, testPrefix);
+}
 
-var exports = module.exports;
+util.inherits(NotificationHubsTestUtils, MockedTestUtils);
 
-exports.isMocked = MockServerClient.isEnabled();
-exports.isRecording = MockServerClient.isRecording();
-
-var mockServerClient;
-
-exports.setUpTest = function (testPrefix, callback) {
-  var notificationHubService;
-
-  notificationHubService = azure.createNotificationHubService();
-  callback(null, notificationHubService);
-};
-
-exports.tearDownTest = function (notificationHubService, testPrefix, callback) {
-  callback();
+exports.createNotificationHubsTestUtils = function (service, testPrefix) {
+  return new NotificationHubsTestUtils(service, testPrefix);
 };
 
 var checkValue = function(test, value, optionValue) {

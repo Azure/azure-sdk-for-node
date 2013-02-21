@@ -14,7 +14,6 @@
 */
 
 var util = require('util');
-var MockServerClient = require('http-mock');
 
 // Test includes
 var testutil = require('./util');
@@ -22,13 +21,13 @@ var testutil = require('./util');
 // Lib includes
 var azure = testutil.libRequire('azure');
 
-var StorageTestUtils = require('./storage-test-utils');
+var MockedTestUtils = require('./mocked-test-utils');
 
 function QueueTestUtils(service, testPrefix) {
   QueueTestUtils.super_.call(this, service, testPrefix);
 }
 
-util.inherits(QueueTestUtils, StorageTestUtils);
+util.inherits(QueueTestUtils, MockedTestUtils);
 
 QueueTestUtils.prototype.teardownTest = function (callback) {
   var self = this;

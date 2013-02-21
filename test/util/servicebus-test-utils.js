@@ -13,41 +13,30 @@
 * limitations under the License.
 */
 
+var util = require('util');
 var assert = require('assert');
 
-// Test includes
-var testutil = require('./util');
-var MockServerClient = require('http-mock');
+var MockedTestUtils = require('./mocked-test-utils');
 
-// Lib includes
-var azure = testutil.libRequire('azure');
+function ServiceBusTestUtils(service, testPrefix) {
+  ServiceBusTestUtils.super_.call(this, service, testPrefix);
+}
 
-var exports = module.exports;
+util.inherits(ServiceBusTestUtils, MockedTestUtils);
 
-exports.isMocked = MockServerClient.isEnabled();
-exports.isRecording = MockServerClient.isRecording();
+ServiceBusTestUtils.prototype.teardownTest = function (callback) {
+  var self = this;
 
-var mockServerClient;
-var currentTest = 0;
-
-exports.setUpTest = function (testPrefix, callback) {
-  var serviceBusService;
-
-  serviceBusService = azure.createServiceBusService();
-  callback(null, serviceBusService);
-};
-
-exports.tearDownTest = function (serviceBusService, testPrefix, callback) {
   var endTest = function () {
-    callback();
+    self.baseTeardownTest(callback);
   };
 
   var deleteTopics = function () {
-    serviceBusService.listTopics(function (queryError, topics) {
+    self.service.listTopics(function (queryError, topics) {
       if (!queryError && topics.length > 0) {
         var topicCount = 0;
         topics.forEach(function (topic) {
-          serviceBusService.deleteTopic(topic.TopicName, function () {
+          self.service.deleteTopic(topic.TopicName, function () {
             topicCount++;
 
             if (topicCount === topics.length) {
@@ -62,11 +51,11 @@ exports.tearDownTest = function (serviceBusService, testPrefix, callback) {
     });
   };
 
-  serviceBusService.listQueues(function (queryError, queues) {
+  self.service.listQueues(function (queryError, queues) {
     if (!queryError && queues.length > 0) {
       var queueCount = 0;
       queues.forEach(function (queue) {
-        serviceBusService.deleteQueue(queue.QueueName, function () {
+        self.service.deleteQueue(queue.QueueName, function () {
           queueCount++;
 
           if (queueCount === queues.length) {
@@ -79,6 +68,10 @@ exports.tearDownTest = function (serviceBusService, testPrefix, callback) {
       deleteTopics();
     }
   });
+};
+
+exports.createServiceBusTestUtils = function (service, testPrefix) {
+  return new ServiceBusTestUtils(service, testPrefix);
 };
 
 var checkValue = function(test, value, optionValue) {

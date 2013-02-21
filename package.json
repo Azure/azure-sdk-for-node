@@ -33,7 +33,7 @@
     "jshint": "*",
     "sinon": "*",
     "should": "*",
-    "http-mock": "*"
+    "nock": "*"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {
