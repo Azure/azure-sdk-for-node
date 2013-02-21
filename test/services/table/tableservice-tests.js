@@ -22,7 +22,6 @@ var tabletestutil = require('../../framework/table-test-utils');
 // Lib includes
 var azure = testutil.libRequire('azure');
 var azureutil = testutil.libRequire('util/util');
-var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var ServiceClient = azure.ServiceClient;
 var TableQuery = azure.TableQuery;
@@ -42,7 +41,8 @@ var entity2 = { PartitionKey: 'part2',
   boolValueTrue: { '$': { type: 'Edm.Boolean' }, '_': true },
   boolValueFalse: { '$': { type: 'Edm.Boolean' }, '_': false },
   intValue: { '$': { type: 'Edm.Int32' }, '_': 42 },
-  dateValue: { '$': { type: 'Edm.DateTime' }, '_': ISO8061Date.format(new Date(2011, 12, 25)) }
+  dateValue: { '$': { type: 'Edm.DateTime' }, '_': new Date(2011, 12, 25).toISOString() },
+  complexDateValue: { '$': { type: 'Edm.DateTime' }, '_': new Date(2013, 02, 16, 00, 46, 20).toISOString() }
 };
 
 var tableNames = [];
@@ -298,7 +298,11 @@ suite('tableservice-tests', function () {
 
                 var date1 = new Date(currentEntry['dateValue']);
                 var date2 = new Date(entity2['dateValue'][Constants.XML_VALUE_MARKER]);
-                assert.ok(date1, date2);
+                assert.equal(date1.getTime(), date2.getTime());
+
+                var date3 = new Date(currentEntry['complexDateValue']);
+                var date4 = new Date(entity2['complexDateValue'][Constants.XML_VALUE_MARKER]);
+                assert.equal(date3.getTime(), date4.getTime());
               }
             });
 
