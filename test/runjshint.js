@@ -13,4 +13,4 @@
 * limitations under the License.
 */
 
-require('../node_modules/jshint/lib/cli').interpret([ 'node', 'runjshint.js', 'lib', '--jslint-reporter' ]);
+require('../node_modules/jshint/src/cli/cli').interpret([ 'node', 'runjshint.js', 'lib', '--jslint-reporter' ]);
