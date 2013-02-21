@@ -1,4 +1,6 @@
+[date] Version 0.6.11
 * Adding support for creating and deleting affinity groups
+* Replacing http-mock by nock and making all tests use it by default
 
 2012.02.11 Version 0.6.10
 * Added helper date.* functions for generating SAS expirations (secondsFromNow, minutesFromNow, hoursFromNow, daysFromNow)
