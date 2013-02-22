@@ -27,7 +27,7 @@
     "tunnel": ">= 0.0.1",
     "request": ">= 2.9.203",
     "validator": ">= 0.4.12",
-    "wns": "git://github.com/tjanczuk/wns.git#master"
+    "wns": ">= 0.5.3"
   },
   "devDependencies": {
     "mocha": "*",
