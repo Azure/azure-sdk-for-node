@@ -17,12 +17,11 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
 var azureutil = testutil.libRequire('util/util');
-var ISO8061Date = testutil.libRequire('util/iso8061date');
 var SharedKeyLiteTable = testutil.libRequire('services/table/sharedkeylitetable');
 
 var ServiceClient = azure.ServiceClient;
@@ -42,7 +41,7 @@ var entity2 = { PartitionKey: 'part2',
   RowKey: 'row1',
   boolval: { '$': { type: 'Edm.Boolean' }, '_': true },
   intval: { '$': { type: 'Edm.Int32' }, '_': 42 },
-  dateval: { '$': { type: 'Edm.DateTime' }, '_': ISO8061Date.format(new Date()) }
+  dateval: { '$': { type: 'Edm.DateTime' }, '_': new Date().toISOString() }
 };
 
 var tableNames = [];

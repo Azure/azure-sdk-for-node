@@ -18,26 +18,44 @@ var mocha = require('mocha');
 var uuid = require('node-uuid');
 
 var testutil = require('../../util/util');
+var StorageTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 
 var AFFINITYGROUP_NAME_PREFIX = 'xplatcli-';
 var AFFINITYGROUP_LOCATION = 'West US';
 
+var testPrefix = 'affinityGroup-tests';
+
+var affinityGroupNamePrefix = 'afgrp';
+var affinityGroups = [];
+
 describe('Affinity Group Management', function () {
   var service;
+  var suiteUtil;
   var affinityGroupName;
 
-  before(function () {
-    affinityGroupName = AFFINITYGROUP_NAME_PREFIX + uuid.v4().substr(0, 8);
+  before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
     service = azure.createServiceManagementService(
       subscriptionId, auth,
       { serializetype: 'XML'});
+
+    suiteUtil = new StorageTestUtils(service, testPrefix);
+    affinityGroupName = testutil.generateId(affinityGroupNamePrefix, affinityGroups, suiteUtil.isMocked);
+    suiteUtil.setupSuite(done);
   });
 
   after(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suiteUtil.setupTest(done);
+  });
+
+  afterEach(function (done) {
     // Cleanup any affinity groups with the specified prefix
     service.listAffinityGroups(function (err, response) {
       if (err) { return done(err); }
@@ -49,7 +67,9 @@ describe('Affinity Group Management', function () {
         }
       });
 
-      deleteAffinityGroups(affinityGroupsToClean, done);
+      deleteAffinityGroups(affinityGroupsToClean, function () {
+        suiteUtil.baseTeardownTest(done);
+      });
     });
   });
 

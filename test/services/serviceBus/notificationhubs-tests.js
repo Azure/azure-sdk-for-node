@@ -20,20 +20,31 @@ var sinon = require('sinon');
 
 // Test includes
 var testutil = require('../../util/util');
-var notificationhubstestutil = require('../../util/notificationhubs-test-utils');
+var notificationhubstestutil = require('../../framework/notificationhubs-test-utils');
 
-var testPrefix = 'notificationhubs-tests';
+var azure = testutil.libRequire('azure');
 
-var hubNames;
+var hubNames = [];
 var hubNamePrefix = 'xplathub';
+
+var testPrefix = 'notificationhubservice-tests';
 
 describe('Notification hubs', function () {
   var service;
+  var suiteUtil;
 
   before(function (done) {
-    notificationhubstestutil.setUpTest(testPrefix, function (err, notificationHubService) {
-      service = notificationHubService;
+    service = azure.createNotificationHubService();
+    suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
 
+  after(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suiteUtil.setupTest(function () {
       service.listNotificationHubs(function (err, hubs) {
         var xplatHubs = hubs.filter(function (hub) {
           return hub.NotificationHubName.substr(0, hubNamePrefix.length) === hubNamePrefix;
@@ -48,13 +59,13 @@ describe('Notification hubs', function () {
     });
   });
 
-  after(function (done) {
+  afterEach(function (done) {
     // Schedule deleting notification hubs
     _.each(hubNames, function (notificationHub) {
       service.deleteNotificationHub(notificationHub, function () {});
     });
 
-    notificationhubstestutil.tearDownTest(service, testPrefix, done);
+    suiteUtil.baseTeardownTest(done);
   });
 
   describe('Create notification hub', function () {
@@ -73,7 +84,7 @@ describe('Notification hubs', function () {
     });
 
     it('should create a notification hub', function (done) {
-      var hubName = testutil.generateId(hubNamePrefix, hubNames);
+      var hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
       service.createNotificationHub(hubName, function (err, hub) {
         should.not.exist(err);
@@ -118,9 +129,10 @@ describe('Notification hubs', function () {
   });
 
   describe('Delete a notification hub', function () {
-    var hubName = testutil.generateId(hubNamePrefix, hubNames);
+    var hubName;
 
-    before(function (done) {
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
       service.createNotificationHub(hubName, done);
     });
 
@@ -134,10 +146,13 @@ describe('Notification hubs', function () {
   });
 
   describe('List notification hubs', function () {
-    var hubName1 = testutil.generateId(hubNamePrefix, hubNames);
-    var hubName2 = testutil.generateId(hubNamePrefix, hubNames);
+    var hubName1;
+    var hubName2;
 
-    before(function (done) {
+    beforeEach(function (done) {
+      hubName1 = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+      hubName2 = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
       service.createNotificationHub(hubName1, function () {
         service.createNotificationHub(hubName2, done);
       });
@@ -164,9 +179,11 @@ describe('Notification hubs', function () {
   });
 
   describe('Get notification hubs', function () {
-    var hubName = testutil.generateId(hubNamePrefix, hubNames);
+    var hubName;
 
-    before(function (done) {
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
       service.createNotificationHub(hubName, done);
     });
 

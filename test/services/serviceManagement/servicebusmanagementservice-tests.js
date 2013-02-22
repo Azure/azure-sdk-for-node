@@ -23,36 +23,51 @@ var should = require('should');
 var mocha = require('mocha');
 
 var testutil = require('../../util/util');
+var StorageTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 var sampledata = require('../../util/sampledata.js');
 var namespaceNameIsValid = azure.namespaceNameIsValid;
 
+var testPrefix = 'serviceBusManagement-tests';
+
 describe('Service Bus Management', function () {
   var namespacesToClean = [];
   var namespacesBefore;
   var service;
+  var suiteUtil;
 
-  before(function () {
+  before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
     service = azure.createServiceBusManagementService(
       subscriptionId, auth,
       { serializetype: 'XML'});
+
+    suiteUtil = new StorageTestUtils(service, testPrefix);
+    suiteUtil.setupSuite(done);
   });
 
   after(function (done) {
-    deleteNamespaces(namespacesToClean, done);
+    suiteUtil.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suiteUtil.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    deleteNamespaces(namespacesToClean, function () {
+      suiteUtil.baseTeardownTest(done);
+    });
   });
 
   function newName() {
-    var name = 'nodesdk-' + uuid.v4().substr(0, 8);
-    namespacesToClean.push(name);
-    return name;
+    return testutil.generateId('nodesdk-', namespacesToClean, suiteUtil.isMocked);
   }
 
   describe('List Namespaces', function () {
-    before(function (done) {
+    beforeEach(function (done) {
       service.listNamespaces(function (err, namespaces) {
         namespacesBefore = namespaces;
 
@@ -61,10 +76,12 @@ describe('Service Bus Management', function () {
     });
 
     describe('when one namespace is defined', function () {
-      var name = newName();
+      var name;
       var region = 'West US';
 
-      before(function (done) {
+      beforeEach(function (done) {
+        name = newName();
+
         service.createNamespace(name, region, done);
       })
 
@@ -245,11 +262,11 @@ describe('Service Bus Management', function () {
         if (err) { 
           callback(err); 
         } else if (ns.Status === 'Activating') {
-          setTimeout(poll, 2000);
+          setTimeout(poll, (suiteUtil.isMocked && !suiteUtil.isRecording) ? 0 : 2000);
         } else {
           // Give Azure time to settle down - can't delete immediately after activating
           // without getting a 500 error.
-          setTimeout(callback, 5000);
+          setTimeout(callback, (suiteUtil.isMocked && !suiteUtil.isRecording) ? 0 : 5000);
         }
       });
     };

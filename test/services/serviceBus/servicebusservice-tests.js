@@ -18,12 +18,11 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var servicebustestutil = require('../../util/servicebus-test-utils');
+var servicebustestutil = require('../../framework/servicebus-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
 var azureutil = testutil.libRequire('util/util');
-var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;
@@ -33,6 +32,7 @@ var ServiceBusConstants = Constants.ServiceBusConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
 var serviceBusService;
+var suiteUtil;
 
 var queueNames = [];
 var queueNamesPrefix = 'sbqueue';
@@ -49,19 +49,26 @@ var ruleNamesPrefix = 'sbrule';
 var testPrefix = 'servicebusservice-tests';
 
 suite('servicebusservice-tests', function () {
+  suiteSetup(function (done) {
+    serviceBusService = azure.createServiceBusService();
+    suiteUtil = servicebustestutil.createServiceBusTestUtils(serviceBusService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    servicebustestutil.setUpTest(testPrefix, function (err, newServiceBusService) {
-      serviceBusService = newServiceBusService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    servicebustestutil.tearDownTest(serviceBusService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('CreateQueue', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var queueOptions = {
       LockDuration: 'PT45S',
       MaxSizeInMegabytes: '2048',
@@ -91,7 +98,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('CreateQueueIfNotExists', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var queueOptions = {
       LockDuration: 'PT45S',
       MaxSizeInMegabytes: '2048',
@@ -125,7 +132,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('DeleteQueue', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     serviceBusService.deleteQueue(queueName, function (error1) {
       assert.notEqual(error1, null);
@@ -159,7 +166,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('GetQueue', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     serviceBusService.getQueue(queueName, function (getError1, getQueue1) {
       assert.notEqual(getError1, null);
@@ -184,8 +191,8 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ListQueue', function (done) {
-    var queueName1 = testutil.generateId(queueNamesPrefix, queueNames);
-    var queueName2 = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName1 = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var queueName2 = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     // listing without any queue
     serviceBusService.listQueues(function (emptyError, emptyQueues) {
@@ -247,10 +254,10 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ListQueueRanges', function (done) {
-    var queueName1 = '1' + testutil.generateId(queueNamesPrefix, queueNames);
-    var queueName2 = '2' + testutil.generateId(queueNamesPrefix, queueNames);
-    var queueName3 = '3' + testutil.generateId(queueNamesPrefix, queueNames);
-    var queueName4 = '4' + testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName1 = '1' + testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var queueName2 = '2' + testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var queueName3 = '3' + testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var queueName4 = '4' + testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     serviceBusService.createQueue(queueName1, function (createError1) {
       assert.equal(createError1, null);
@@ -314,7 +321,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('SendQueueMessage', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
 
     serviceBusService.createQueue(queueName, function (createError, queue) {
       assert.equal(createError, null);
@@ -332,7 +339,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('SendMessageProperties', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var message = {
       body: 'hi there again',
       contentType: 'made-up-one',
@@ -374,7 +381,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('MessageCustomProperties', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var message = {
       body: 'hi there again',
       customProperties: {
@@ -413,7 +420,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ReceiveQueueMessage', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var messageText = 'hi there again';
 
     serviceBusService.createQueue(queueName, function (createError, queue) {
@@ -443,7 +450,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('PeekLockedMessageCanBeCompleted', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var messageText = 'hi there again';
 
     serviceBusService.createQueue(queueName, function (createError, queue) {
@@ -474,7 +481,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('PeekLockedMessageCanBeCompletedWithObject', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var messageText = 'hi there again';
 
     serviceBusService.createQueue(queueName, function (createError, queue) {
@@ -505,7 +512,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('PeekLockedMessageCanBeUnlocked', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var messageText = 'hi there again';
 
     serviceBusService.createQueue(queueName, function (createError, queue) {
@@ -541,7 +548,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('PeekLockedMessageCanBeUnlockedWithObject', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var messageText = 'hi there again';
 
     serviceBusService.createQueue(queueName, function (createError, queue) {
@@ -577,7 +584,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('CreateTopic', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
     var topicOptions = {
       MaxSizeInMegabytes: '2048',
       RequiresDuplicateDetection: false,
@@ -609,7 +616,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('CreateTopicIfNotExists', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
     var topicOptions = {
       MaxSizeInMegabytes: '2048',
       RequiresDuplicateDetection: false,
@@ -634,8 +641,8 @@ suite('servicebusservice-tests', function () {
   });
 
   test('SendTopicMessage', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
     var message = {
       body: 'hi there topic',
       contentType: 'made-up-one',
@@ -693,7 +700,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('DeleteTopic', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
 
     serviceBusService.deleteTopic(topicName, function (error1) {
       assert.notEqual(error1, null);
@@ -722,7 +729,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('GetTopic', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
 
     serviceBusService.getTopic(topicName, function (error, emptyTopic) {
       assert.notEqual(error, null);
@@ -747,8 +754,8 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ListTopics', function (done) {
-    var topicName1 = testutil.generateId(topicNamesPrefix, topicNames);
-    var topicName2 = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName1 = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var topicName2 = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
 
     // listing without any topic
     serviceBusService.listTopics(function (listError1, listTopics1) {
@@ -803,10 +810,10 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ListTopicsRanges', function (done) {
-    var topicName1 = '1' + testutil.generateId(topicNamesPrefix, topicNames);
-    var topicName2 = '2' + testutil.generateId(topicNamesPrefix, topicNames);
-    var topicName3 = '3' + testutil.generateId(topicNamesPrefix, topicNames);
-    var topicName4 = '4' + testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName1 = '1' + testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var topicName2 = '2' + testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var topicName3 = '3' + testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var topicName4 = '4' + testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
 
     serviceBusService.createTopic(topicName1, function (createError1) {
       assert.equal(createError1, null);
@@ -870,9 +877,9 @@ suite('servicebusservice-tests', function () {
   });
 
   test('CreateSubscription', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
 
     var subscriptionOptions = {
       LockDuration: 'PT5S',
@@ -927,8 +934,8 @@ suite('servicebusservice-tests', function () {
   });
 
   test('DeleteSubscription', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
 
     serviceBusService.deleteSubscription(topicName, subscriptionName, function (error1) {
       assert.notEqual(error1, null);
@@ -967,8 +974,8 @@ suite('servicebusservice-tests', function () {
   });
 
   test('GetSubscription', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
 
     serviceBusService.getSubscription(topicName, subscriptionName, function (getError1, getSub1) {
       assert.notEqual(getError1, null);
@@ -1008,9 +1015,9 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ListSubscriptions', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
 
     // topic doesnt exist
     serviceBusService.listSubscriptions(topicName, function (listError1, subscriptions1) {
@@ -1076,11 +1083,11 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ListSubscriptionsRanges', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName1 = '1' + testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var subscriptionName2 = '2' + testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var subscriptionName3 = '3' + testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var subscriptionName4 = '4' + testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName1 = '1' + testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var subscriptionName2 = '2' + testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var subscriptionName3 = '3' + testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var subscriptionName4 = '4' + testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
 
     serviceBusService.createTopic(topicName, function (createError0) {
       assert.equal(createError0, null);
@@ -1148,24 +1155,24 @@ suite('servicebusservice-tests', function () {
   });
 
   test('CreateRule', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var ruleName1 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var ruleName1 = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
     var ruleOptions1 = {
       sqlExpressionFilter: 'Number=2'
     };
 
-    var ruleName2 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleName2 = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
     var ruleOptions2 = {
       correlationIdFilter: 'myId'
     };
 
-    var ruleName3 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleName3 = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
     var ruleOptions3 = {
       trueFilter: 'Number=2'
     };
 
-    var ruleName4 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleName4 = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
     var ruleOptions4 = {
       falseFilter: 'Number=2'
     };
@@ -1232,14 +1239,14 @@ suite('servicebusservice-tests', function () {
   });
 
   test('SqlExpressionFilter', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
 
     var messageText1 = 'hi there topic';
     var messageText2 = 'hi there topic again';
 
-    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
     var ruleOptions = {
       sqlExpressionFilter: 'property=1'
     };
@@ -1302,14 +1309,14 @@ suite('servicebusservice-tests', function () {
   });
 
   test('CorrelationIdFilter', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName1 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var subscriptionName2 = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
 
     var messageText1 = 'hi there topic';
     var messageText2 = 'hi there topic again';
 
-    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
     var ruleOptions = {
       correlationIdFilter: 'myid'
     };
@@ -1372,9 +1379,9 @@ suite('servicebusservice-tests', function () {
   });
 
   test('DeleteRule', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var ruleName = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
 
     serviceBusService.deleteRule(topicName, subscriptionName, ruleName, function (error1) {
       assert.notEqual(error1, null);
@@ -1422,10 +1429,10 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ListRule', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var ruleName1 = testutil.generateId(ruleNamesPrefix, ruleNames);
-    var ruleName2 = testutil.generateId(ruleNamesPrefix, ruleNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var ruleName1 = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
+    var ruleName2 = testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
 
     // Invalid topic
     serviceBusService.listRules(topicName, subscriptionName, function (listError1, rulesList1) {
@@ -1500,12 +1507,12 @@ suite('servicebusservice-tests', function () {
   });
 
   test('ListRulesRanges', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
-    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames);
-    var ruleName1 = '1' + testutil.generateId(ruleNamesPrefix, ruleNames);
-    var ruleName2 = '2' + testutil.generateId(ruleNamesPrefix, ruleNames);
-    var ruleName3 = '3' + testutil.generateId(ruleNamesPrefix, ruleNames);
-    var ruleName4 = '4' + testutil.generateId(ruleNamesPrefix, ruleNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
+    var subscriptionName = testutil.generateId(subscriptionNamesPrefix, subscriptionNames, suiteUtil.isMocked);
+    var ruleName1 = '1' + testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
+    var ruleName2 = '2' + testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
+    var ruleName3 = '3' + testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
+    var ruleName4 = '4' + testutil.generateId(ruleNamesPrefix, ruleNames, suiteUtil.isMocked);
 
     serviceBusService.createTopic(topicName, function (createError0) {
       assert.equal(createError0, null);
@@ -1577,7 +1584,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('TimeoutWorks', function (done) {
-    var queueName = testutil.generateId(queueNamesPrefix, queueNames);
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
     var customTimeoutInternalInS = 5;
 
     serviceBusService.createQueue(queueName, function (createQueueError) {
@@ -1606,6 +1613,27 @@ suite('servicebusservice-tests', function () {
     });
   });
 
+  test('invalidAccessKeyGivesError', function (done) {
+    var serviceBusService = azure.createServiceBusService(process.env['AZURE_SERVICEBUS_NAMESPACE'], 'key');
+    // fails, with an error on the callback.
+    serviceBusService.createTopicIfNotExists('Topic', function(error) {
+      assert.notEqual(error, null);
+      assert.equal(error.code, '401');
+
+      done();
+    });
+  });
+
+  test('invalidNamespaceGivesError', function (done) {
+    var serviceBusService = azure.createServiceBusService('BoGuS', process.env['AZURE_SERVICEBUS_ACCESS_KEY']);
+    // fails, with an error on the callback.
+    serviceBusService.createTopicIfNotExists('Topic', function(error) {
+      assert.notEqual(error, null);
+
+      done();
+    });
+  });
+
   test('connectionStrings', function (done) {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'Endpoint=http://ablal-martvue.servicebus.windows.net/;StsEndpoint=https://ablal-martvue-sb.accesscontrol.windows.net;SharedSecretIssuer=owner;SharedSecretValue=' + key;
@@ -1620,7 +1648,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('storageConnectionStringsEndpointHttpExplicit', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
     var expectedNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
     var expectedHost = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
@@ -1639,7 +1667,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('storageConnectionStringsEndpointHttpsExplicit', function (done) {
-    var topicName = testutil.generateId(topicNamesPrefix, topicNames);
+    var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
     var expectedNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
     var expectedHost = 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
@@ -1669,26 +1697,5 @@ suite('servicebusservice-tests', function () {
     assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://ablal-martvue-sb.accesscontrol.windows.net');
 
     done();
-  });
-
-  test('invalidAccessKeyGivesError', function (done) {
-    var serviceBusService = azure.createServiceBusService(process.env['AZURE_SERVICEBUS_NAMESPACE'], 'key');
-    // fails, with an error on the callback.
-    serviceBusService.createTopicIfNotExists('Topic', function(error) {
-      assert.notEqual(error, null);
-      assert.equal(error.code, '401');
-
-      done();
-    });
-  });
-
-  test('invalidNamespaceGivesError', function (done) {
-    var serviceBusService = azure.createServiceBusService('BoGuS', process.env['AZURE_SERVICEBUS_ACCESS_KEY']);
-    // fails, with an error on the callback.
-    serviceBusService.createTopicIfNotExists('Topic', function(error) {
-      assert.notEqual(error, null);
-
-      done();
-    });
   });
 });
