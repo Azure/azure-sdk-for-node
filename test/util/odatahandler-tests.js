@@ -20,7 +20,6 @@ var testutil = require('./util');
 
 // Lib includes
 var OdataHandler = testutil.libRequire('util/odatahandler');
-var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var fs = require('fs');
 
@@ -28,7 +27,7 @@ suite('odatahandler-tests', function () {
   test('Serialize', function (done) {
     var odataHandler = new OdataHandler('m', 'd');
 
-    var dateTime = ISO8061Date.format(new Date());
+    var dateTime = new Date().toISOString();
 
     var entity = {
       title: '',
@@ -82,7 +81,7 @@ suite('odatahandler-tests', function () {
   test('SerializeDataTypes', function (done) {
     var odataHandler = new OdataHandler('m', 'd');
 
-    var dateTime = ISO8061Date.format(new Date());
+    var dateTime = new Date().toISOString();
 
     var entity = {
       title: '',
