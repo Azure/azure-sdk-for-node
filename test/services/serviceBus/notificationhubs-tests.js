@@ -71,13 +71,13 @@ describe('Notification hubs', function () {
   describe('Create notification hub', function () {
     var sandbox;
 
-    before(function (done) {
+    beforeEach(function (done) {
       sandbox = sinon.sandbox.create();
 
       done();
     });
 
-    after(function (done) {
+    afterEach(function (done) {
       sandbox.restore();
 
       done();
@@ -96,7 +96,7 @@ describe('Notification hubs', function () {
     });
 
     it('should create a notification hub with credentials', function (done) {
-      var hubName = testutil.generateId(hubNamePrefix, hubNames);
+      var hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
       var credentials = {
         'WnsCredential': {
