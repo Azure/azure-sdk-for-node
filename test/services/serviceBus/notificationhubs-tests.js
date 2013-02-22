@@ -99,11 +99,11 @@ describe('Notification hubs', function () {
       var hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
       var credentials = {
-        'WnsCredential': {
+        'wns': {
           'PackageSid': 'secret1',
           'SecretKey': 'secret2'
         },
-        'ApnsCredential': {
+        'apns': {
           'ApnsCertificate': 'secret1',
           'CertificateKey': 'secret2'
         }
