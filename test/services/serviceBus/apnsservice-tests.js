@@ -78,8 +78,8 @@ describe('APNS notifications', function () {
 
     it('should send a simple message', function (done) {
       service.apns.send(hubName, { 
-        'aps' : { 
-          'alert': 'This is my toast message for iOS!', 
+        aps : { 
+          alert: 'This is my toast message for iOS!', 
         }, 
       }, function (error, result) {
         should.not.exist(error);

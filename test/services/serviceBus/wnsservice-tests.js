@@ -104,11 +104,12 @@ describe('WNS notifications', function () {
         '<text id="4">Beware of dog</text>' +
         '</binding></visual></tile>',
         function (error, result) {
-        should.not.exist(error);
-        result.statusCode.should.equal(201);
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
 
-        done();
-      });
+          done();
+        }
+      );
     });
   });
 });
