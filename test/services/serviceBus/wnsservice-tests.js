@@ -19,20 +19,31 @@ var should = require('should');
 
 // Test includes
 var testutil = require('../../util/util');
-var notificationhubstestutil = require('../../util/notificationhubs-test-utils');
+var notificationhubstestutil = require('../../framework/notificationhubs-test-utils');
 
-var testPrefix = 'notificationhubs-tests';
+var azure = testutil.libRequire('azure');
 
-var hubNames;
+var hubNames = [];
 var hubNamePrefix = 'xplathub';
+
+var testPrefix = 'wnsservice-tests';
 
 describe('WNS notifications', function () {
   var service;
+  var suiteUtil;
 
   before(function (done) {
-    notificationhubstestutil.setUpTest(testPrefix, function (err, notificationHubService) {
-      service = notificationHubService;
+    service = azure.createNotificationHubService();
+    suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
 
+  after(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suiteUtil.setupTest(function () {
       service.listNotificationHubs(function (err, hubs) {
         var xplatHubs = hubs.filter(function (hub) {
           return hub.NotificationHubName.substr(0, hubNamePrefix.length) === hubNamePrefix;
@@ -47,26 +58,28 @@ describe('WNS notifications', function () {
     });
   });
 
-  after(function (done) {
+  afterEach(function (done) {
     // Schedule deleting notification hubs
     _.each(hubNames, function (notificationHub) {
       service.deleteNotificationHub(notificationHub, function () {});
     });
 
-    notificationhubstestutil.tearDownTest(service, testPrefix, done);
+    suiteUtil.baseTeardownTest(done);
   });
 
   describe('Send notification', function () {
-    var hubName = testutil.generateId(hubNamePrefix, hubNames);
+    var hubName;
 
-    before(function (done) {
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
       service.createNotificationHub(hubName, done);
     });
 
     it('should send a simple tile message', function (done) {
       service.wns.sendTileSquarePeekImageAndText01(
         hubName, {
-          image1src: 'http://foobar.com/dog.jpg',
+          image1src: 'http://hi.com/dog.jpg',
           image1alt: 'A dog',
           text1: 'This is a dog',
           text2: 'The dog is nice',
