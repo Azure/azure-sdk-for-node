@@ -80,5 +80,22 @@ describe('WNS notifications', function () {
           done();
         });
     });
+
+    it('should send a simple raw message', function (done) {
+      service.wns.send(hubName, 'wns/toast',
+        '<tile><visual><binding template="TileSquarePeekImageAndText01">' +
+        '<image id="1" src="http://foobar.com/dog.jpg" alt="A dog"/>' +
+        '<text id="1">This is a dog</text>' +
+        '<text id="2">The dog is nice</text>' +
+        '<text id="3">The dog bites</text>' +
+        '<text id="4">Beware of dog</text>' +
+        '</binding></visual></tile>',
+        function (error, result) {
+        should.not.exist(error);
+        result.statusCode.should.equal(201);
+
+        done();
+      });
+    });
   });
 });
