@@ -19,6 +19,7 @@ services/queue/queueservice-tests.js
 services/table/batchserviceclient-tests.js
 services/table/sharedkeytable-tests.js
 services/table/sharedkeylitetable-tests.js
+services/serviceBus/apnsservice-tests.js
 services/serviceBus/notificationhubs-tests.js
 services/serviceBus/servicebusservice-tests.js
 services/serviceBus/wnsservice-tests.js

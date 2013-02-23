@@ -26,9 +26,9 @@ var azure = testutil.libRequire('azure');
 var hubNames = [];
 var hubNamePrefix = 'xplathub';
 
-var testPrefix = 'wnsservice-tests';
+var testPrefix = 'apnsservice-tests';
 
-describe('WNS notifications', function () {
+describe('APNS notifications', function () {
   var service;
   var suiteUtil;
 
@@ -76,40 +76,17 @@ describe('WNS notifications', function () {
       service.createNotificationHub(hubName, done);
     });
 
-    it('should send a simple tile message', function (done) {
-      service.wns.sendTileSquarePeekImageAndText01(
-        hubName, {
-          image1src: 'http://hi.com/dog.jpg',
-          image1alt: 'A dog',
-          text1: 'This is a dog',
-          text2: 'The dog is nice',
-          text3: 'The dog bites',
-          text4: 'Beware of dog'
-        },
-        function (error, result) {
-          should.not.exist(error);
-          result.statusCode.should.equal(201);
+    it('should send a simple message', function (done) {
+      service.apns.send(hubName, { 
+        aps : { 
+          alert: 'This is my toast message for iOS!', 
+        }, 
+      }, function (error, result) {
+        should.not.exist(error);
+        result.statusCode.should.equal(201);
 
-          done();
-        });
-    });
-
-    it('should send a simple raw message', function (done) {
-      service.wns.send(hubName, 'wns/toast',
-        '<tile><visual><binding template="TileSquarePeekImageAndText01">' +
-        '<image id="1" src="http://hi.com/dog.jpg" alt="A dog"/>' +
-        '<text id="1">This is a dog</text>' +
-        '<text id="2">The dog is nice</text>' +
-        '<text id="3">The dog bites</text>' +
-        '<text id="4">Beware of dog</text>' +
-        '</binding></visual></tile>',
-        function (error, result) {
-          should.not.exist(error);
-          result.statusCode.should.equal(201);
-
-          done();
-        }
-      );
+        done();
+      });
     });
   });
 });
