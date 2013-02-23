@@ -72,6 +72,25 @@ suite('tableservice-tests', function () {
     suiteUtil.teardownTest(done);
   });
 
+  test('SetDefaultPortProperly', function (done) {
+    var storageAccount = 'account';
+    var storageAccountKey = new Buffer('key').toString('base64');
+
+    var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net');
+    assert.equal(service.port, 443);
+
+    var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net:21');
+    assert.equal(service.port, 21);
+
+    service = azure.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net');
+    assert.equal(service.port, 80);
+
+    service = azure.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net:81');
+    assert.equal(service.port, 81);
+
+    done();
+  });
+
   test('GetServiceProperties', function (done) {
     tableService.getServiceProperties(function (error, serviceProperties) {
       assert.equal(error, null);
