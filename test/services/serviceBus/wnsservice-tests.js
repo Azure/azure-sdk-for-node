@@ -16,6 +16,7 @@
 var _ = require('underscore');
 
 var should = require('should');
+var sinon = require('sinon');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -31,14 +32,18 @@ var testPrefix = 'wnsservice-tests';
 describe('WNS notifications', function () {
   var service;
   var suiteUtil;
+  var sandbox;
 
   before(function (done) {
+    sandbox = sinon.sandbox.create();
+
     service = azure.createNotificationHubService();
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
 
   after(function (done) {
+    sandbox.restore();
     suiteUtil.teardownSuite(done);
   });
 
@@ -94,8 +99,34 @@ describe('WNS notifications', function () {
         });
     });
 
-    it('should send a simple raw message', function (done) {
-      service.wns.send(hubName, 'wns/toast',
+    it('should send a simple tile message with tags', function (done) {
+      var tagsString = 'dogs';
+
+      var executeSpy = sandbox.spy(service, '_executeRequest');
+      service.wns.sendTileSquarePeekImageAndText01(
+        hubName, {
+          image1src: 'http://hi.com/dog.jpg',
+          image1alt: 'A dog',
+          text1: 'This is a dog',
+          text2: 'The dog is nice',
+          text3: 'The dog bites',
+          text4: 'Beware of dog'
+        },
+        { tags: tagsString },
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
+
+          executeSpy.args[0][0].headers['ServiceBusNotification-Tags'].should.equal(tagsString);
+          executeSpy.args[0][0].headers['X-WNS-Type'].should.equal('wns/tile');
+          executeSpy.args[0][0].headers['ServiceBusNotification-Format'].should.equal('windows');
+
+          done();
+        });
+    });
+
+    it('should send a simple message', function (done) {
+      service.wns.send(hubName,
         '<tile><visual><binding template="TileSquarePeekImageAndText01">' +
         '<image id="1" src="http://hi.com/dog.jpg" alt="A dog"/>' +
         '<text id="1">This is a dog</text>' +
@@ -103,6 +134,18 @@ describe('WNS notifications', function () {
         '<text id="3">The dog bites</text>' +
         '<text id="4">Beware of dog</text>' +
         '</binding></visual></tile>',
+        'wns/tile',
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
+
+          done();
+        }
+      );
+    });
+
+    it('should send a badge message', function (done) {
+      service.wns.sendBadge(hubName, 'alert',
         function (error, result) {
           should.not.exist(error);
           result.statusCode.should.equal(201);
