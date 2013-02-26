@@ -1258,10 +1258,10 @@ suite('blobservice-tests', function () {
     var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
     var blobUrl = blobServiceassert.getBlobUrl(containerName);
-    assert.equal(blobUrl, 'http://host.com:80/' + containerName);
+    assert.equal(blobUrl, 'https://host.com:80/' + containerName);
 
     blobUrl = blobServiceassert.getBlobUrl(containerName, blobName);
-    assert.equal(blobUrl, 'http://host.com:80/' + containerName + '/' + blobName);
+    assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName);
 
     done();
   });
@@ -1279,7 +1279,7 @@ suite('blobservice-tests', function () {
     };
 
     var blobUrl = blobServiceassert.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-    assert.equal(blobUrl, 'http://host.com:80/' + containerName + '/' + blobName + '?se=2011-10-12T11%3A53%3A40Z&sr=b&sp=r&sig=eVkH%2BFxxShel2hcN50ZUmgPAHk%2FmqRVeaBfyry%2BVacw%3D');
+    assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName + '?se=2011-10-12T11%3A53%3A40Z&sr=b&sp=r&sig=eVkH%2BFxxShel2hcN50ZUmgPAHk%2FmqRVeaBfyry%2BVacw%3D');
 
     done();
   });
@@ -1291,7 +1291,7 @@ suite('blobservice-tests', function () {
     var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
     // Mock Date just to ensure a fixed signature
-    this.clock = sinon.useFakeTimers(0, "Date");
+    this.clock = sinon.useFakeTimers(0, 'Date');
 
     var sharedAccessPolicy = {
       AccessPolicy: {
@@ -1302,7 +1302,7 @@ suite('blobservice-tests', function () {
     this.clock.restore();
 
     var blobUrl = blobServiceassert.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-    assert.equal(blobUrl, 'http://host.com:80/' + containerName + '/' + blobName + '?se=1970-01-01T00%3A10%3A00Z&sr=b&sp=r&sig=LofuDUzdHPpiteauMetANWzDpzd0Vw%2BVMOHyXYCipAM%3D');
+    assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName + '?se=1970-01-01T00%3A10%3A00Z&sr=b&sp=r&sig=LofuDUzdHPpiteauMetANWzDpzd0Vw%2BVMOHyXYCipAM%3D');
 
     done();
   });
@@ -1404,7 +1404,7 @@ suite('blobservice-tests', function () {
 
     assert.equal(blobService.storageAccount, 'myaccount');
     assert.equal(blobService.storageAccessKey, key);
-    assert.equal(blobService.protocol, 'https://');
+    assert.equal(blobService.protocol, 'https:');
     assert.equal(blobService.host, 'myaccount.blob.core.windows.net');
 
     done();
@@ -1416,7 +1416,7 @@ suite('blobservice-tests', function () {
 
     assert.equal(blobService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
     assert.equal(blobService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
-    assert.equal(blobService.protocol, 'http://');
+    assert.equal(blobService.protocol, 'http:');
     assert.equal(blobService.host, '127.0.0.1');
     assert.equal(blobService.port, '10000');
 
