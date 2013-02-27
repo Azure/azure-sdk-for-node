@@ -18,7 +18,7 @@ var mocha = require('mocha');
 var _ = require('underscore');
 
 var testutil = require('../../util/util');
-var StorageTestUtils = require('../../framework/mocked-test-utils');
+var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 
@@ -38,7 +38,7 @@ describe('Service Management', function () {
       subscriptionId, auth,
       { serializetype: 'XML'});
 
-    suiteUtil = new StorageTestUtils(service, testPrefix);
+    suiteUtil = new MockedTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
 
