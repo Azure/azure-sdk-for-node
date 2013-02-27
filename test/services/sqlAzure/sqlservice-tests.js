@@ -19,7 +19,7 @@ var uuid = require('node-uuid');
 
 var testutil = require('../../util/util');
 
-var StorageTestUtils = require('../../framework/mocked-test-utils');
+var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 
@@ -45,7 +45,7 @@ describe('SQL Azure Database', function () {
       subscriptionId, auth,
       { serializetype: 'XML'});
 
-    suiteUtil = new StorageTestUtils(serviceManagement, testPrefix);
+    suiteUtil = new MockedTestUtils(serviceManagement, testPrefix);
     suiteUtil.setupSuite(done);
   });
 
@@ -62,6 +62,7 @@ describe('SQL Azure Database', function () {
 
         // Create the SQL Azure service to test
         service = azure.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD);
+        suiteUtil.setupService(service);
 
         // add firewall rule for all the ip range
         serviceManagement.createServerFirewallRule(serverName, 'rule1', '0.0.0.0', '255.255.255.255', function () {

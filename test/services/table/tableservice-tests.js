@@ -801,7 +801,7 @@ suite('tableservice-tests', function () {
 
     assert.equal(tableService.storageAccount, 'myaccount');
     assert.equal(tableService.storageAccessKey, key);
-    assert.equal(tableService.protocol, 'https://');
+    assert.equal(tableService.protocol, 'https:');
 
     done();
   });
@@ -812,7 +812,7 @@ suite('tableservice-tests', function () {
 
     assert.equal(tableService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
     assert.equal(tableService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
-    assert.equal(tableService.protocol, 'http://');
+    assert.equal(tableService.protocol, 'http:');
     assert.equal(tableService.host, '127.0.0.1');
     assert.equal(tableService.port, '10002');
 
@@ -832,7 +832,7 @@ suite('tableservice-tests', function () {
 
       assert.equal(tableService.storageAccount, expectedName);
       assert.equal(tableService.storageAccessKey, expectedKey);
-      assert.equal(tableService.protocol, 'http://');
+      assert.equal(tableService.protocol, 'http:');
 
       done();
     });
@@ -854,7 +854,7 @@ suite('tableservice-tests', function () {
       assert.equal(tableService.storageAccessKey, expectedKey);
 
       // Explicit table host wins
-      assert.equal(tableService.protocol, 'http://');
+      assert.equal(tableService.protocol, 'http:');
 
       done();
     });
@@ -872,7 +872,7 @@ suite('tableservice-tests', function () {
 
       assert.equal(tableService.storageAccount, expectedName);
       assert.equal(tableService.storageAccessKey, expectedKey);
-      assert.equal(tableService.protocol, 'http://');
+      assert.equal(tableService.protocol, 'http:');
 
       done();
     });
@@ -886,7 +886,7 @@ suite('tableservice-tests', function () {
 
     assert.equal(tableService.storageAccount, expectedName);
     assert.equal(tableService.storageAccessKey, expectedKey);
-    assert.equal(tableService.protocol, 'http://');
+    assert.equal(tableService.protocol, 'https:');
     assert.equal(tableService.host, '127.0.0.1');
     assert.equal(tableService.port, '10002');
     assert.equal(tableService.usePathStyleUri, true);

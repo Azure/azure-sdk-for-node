@@ -23,7 +23,7 @@ var should = require('should');
 var mocha = require('mocha');
 
 var testutil = require('../../util/util');
-var StorageTestUtils = require('../../framework/mocked-test-utils');
+var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 var sampledata = require('../../util/sampledata.js');
@@ -44,7 +44,7 @@ describe('Service Bus Management', function () {
       subscriptionId, auth,
       { serializetype: 'XML'});
 
-    suiteUtil = new StorageTestUtils(service, testPrefix);
+    suiteUtil = new MockedTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
 
