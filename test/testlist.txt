@@ -16,9 +16,6 @@ services/core/servicebussettings-tests.js
 services/core/servicemanagementsettings-tests.js
 services/core/storageservicesettings-tests.js
 services/queue/queueservice-tests.js
-services/table/batchserviceclient-tests.js
-services/table/sharedkeytable-tests.js
-services/table/sharedkeylitetable-tests.js
 services/serviceBus/apnsservice-tests.js
 services/serviceBus/notificationhubs-tests.js
 services/serviceBus/servicebusservice-tests.js
@@ -29,6 +26,9 @@ services/serviceManagement/affinitygroup-tests.js
 services/serviceManagement/servicebusmanagementservice-tests.js
 services/serviceManagement/servicemanagementservice-tests.js
 services/serviceManagement/sqlmanagementservice-tests.js
+services/table/batchserviceclient-tests.js
+services/table/sharedkeytable-tests.js
+services/table/sharedkeylitetable-tests.js
 services/table/tablequery-tests.js
 services/table/tableservice-batch-tests.js
 services/table/tableservice-tablequery-tests.js

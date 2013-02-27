@@ -18,7 +18,7 @@ var mocha = require('mocha');
 var uuid = require('node-uuid');
 
 var testutil = require('../../util/util');
-var StorageTestUtils = require('../../framework/mocked-test-utils');
+var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 
@@ -42,7 +42,7 @@ describe('Affinity Group Management', function () {
       subscriptionId, auth,
       { serializetype: 'XML'});
 
-    suiteUtil = new StorageTestUtils(service, testPrefix);
+    suiteUtil = new MockedTestUtils(service, testPrefix);
     affinityGroupName = testutil.generateId(affinityGroupNamePrefix, affinityGroups, suiteUtil.isMocked);
     suiteUtil.setupSuite(done);
   });
