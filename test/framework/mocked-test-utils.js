@@ -27,7 +27,7 @@ function MockedTestUtils(service, testPrefix) {
   this.currentTest = 0;
   this.scopeWritten;
   this.recordingsFile = __dirname + '/../recordings/' + this.testPrefix + '.nock.js';
-  this.isMocked = !process.env.AZURE_NOCK_OFF;
+  this.isMocked = !process.env.NOCK_OFF;
   this.isRecording = process.env.AZURE_NOCK_RECORD;
 
   this.setupService(service);
