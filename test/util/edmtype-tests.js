@@ -13,7 +13,46 @@
 * limitations under the License.
 */
 
+var should = require('should');
+
+// Test includes
+var testutil = require('./util');
+
+// Lib includes
+var edmType = testutil.libRequire('util/edmtype');
+
 describe('Edmtype', function () {
+  describe('serializeQueryValue', function () {
+    it('correctly serializes int32 query values', function (done) {
+      var value = 2;
+      var serializedValue = edmType.serializeQueryValue(value);
+      serializedValue.should.equal('2');
 
+      done();
+    });
 
+    it('correctly serializes datetime query values', function (done) {
+      var value = new Date(2001, 1, 3, 4, 5, 6);
+      var serializedValue = edmType.serializeQueryValue(value);
+      serializedValue.should.equal("datetime'2001-02-03T04:05:06+00:00'");
+
+      done();
+    });
+
+    it('correctly serializes float query values', function (done) {
+      var value = 1.2;
+      var serializedValue = edmType.serializeQueryValue(value);
+      serializedValue.should.equal('1.2');
+
+      done();
+    });
+
+    it('correctly serializes string query values', function (done) {
+      var value = 'string';
+      var serializedValue = edmType.serializeQueryValue(value);
+      serializedValue.should.equal("'string'");
+
+      done();
+    });
+  });
 });
