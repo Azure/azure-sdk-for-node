@@ -63,6 +63,28 @@ suite('tablequery-tests', function () {
     done();
   });
 
+  test('QueryWithWhereDateTime', function (done) {
+    var date = new Date(2001, 1, 3, 4, 5, 6);
+
+    var tableQuery = TableQuery.select()
+      .from('Table')
+      .where('Date eq ?', date);
+
+    assert.equal('Table()', tableQuery.toPath());
+    assert.equal(azureutil.encodeUri('Date eq datetime\'2001-02-03T04:05:06+00:00\''), tableQuery.toQueryObject()['$filter']);
+    done();
+  });
+
+  test('QueryWithWhereSingleQuoteString', function (done) {
+    var tableQuery = TableQuery.select()
+      .from('Table')
+      .where('Name eq ?', 'o\'right');
+
+    assert.equal('Table()', tableQuery.toPath());
+    assert.equal(azureutil.encodeUri('Name eq \'o\'\'right\''), tableQuery.toQueryObject()['$filter']);
+    done();
+  });
+
   test('QueryWithParameterArray', function (done) {
     var tableQuery = TableQuery.select()
       .from('Table')

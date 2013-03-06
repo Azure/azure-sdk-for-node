@@ -146,14 +146,14 @@ suite('tableservice-tests', function () {
         assert.ok(table.TableName);
         assert.equal(table.TableName, tableName);
 
-        assert.ok(table.id);
-        assert.equal(table.id, createResponse.body.entry['id']);
+        assert.ok(table['_'].id);
+        assert.equal(table['_'].id, createResponse.body.entry['id']);
 
-        assert.ok(table.link);
-        assert.equal(table.link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
+        assert.ok(table['_'].link);
+        assert.equal(table['_'].link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
 
-        assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body.entry['updated']);
+        assert.ok(table['_'].updated);
+        assert.equal(table['_'].updated, createResponse.body.entry['updated']);
       }
 
       // check that the table exists
@@ -181,14 +181,14 @@ suite('tableservice-tests', function () {
         assert.ok(table.TableName);
         assert.equal(table.TableName, tableName);
 
-        assert.ok(table.id);
-        assert.equal(table.id, createResponse.body.entry['id']);
+        assert.ok(table['_'].id);
+        assert.equal(table['_'].id, createResponse.body.entry['id']);
 
-        assert.ok(table.link);
-        assert.equal(table.link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
+        assert.ok(table['_'].link);
+        assert.equal(table['_'].link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
 
-        assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body.entry['updated']);
+        assert.ok(table['_'].updated);
+        assert.equal(table['_'].updated, createResponse.body.entry['updated']);
       }
 
       // trying to create again with if not exists should be fine
@@ -229,15 +229,15 @@ suite('tableservice-tests', function () {
             tables.forEach(function (currentTable) {
               if (currentTable.TableName === tableName1) {
                 entries += 1;
-                assert.ok(currentTable.id);
-                assert.ok(currentTable.link);
-                assert.ok(currentTable.updated);
+                assert.ok(currentTable['_'].id);
+                assert.ok(currentTable['_'].link);
+                assert.ok(currentTable['_'].updated);
               }
               else if (currentTable.TableName === tableName2) {
                 entries += 2;
-                assert.ok(currentTable.id);
-                assert.ok(currentTable.link);
-                assert.ok(currentTable.updated);
+                assert.ok(currentTable['_'].id);
+                assert.ok(currentTable['_'].link);
+                assert.ok(currentTable['_'].updated);
               }
             });
 
@@ -302,7 +302,7 @@ suite('tableservice-tests', function () {
               if (currentEntry['PartitionKey'] === entity1['PartitionKey'] && currentEntry['RowKey'] === entity1['RowKey']) {
                 entities += 1;
 
-                assert.ok(currentEntry['etag']);
+                assert.ok(currentEntry['_']['etag']);
                 assert.equal(currentEntry['field'], entity1['field']);
                 assert.equal(currentEntry['otherfield'], entity1['otherfield']);
                 assert.equal(currentEntry['otherprops'], entity1['otherprops']);
@@ -310,7 +310,7 @@ suite('tableservice-tests', function () {
               else if (currentEntry['PartitionKey'] === entity2['PartitionKey'] && currentEntry['RowKey'] === entity2['RowKey']) {
                 entities += 2;
 
-                assert.ok(currentEntry['etag']);
+                assert.ok(currentEntry['_']['etag']);
                 assert.equal(currentEntry['boolValueTrue'], entity2['boolValueTrue'][Constants.XML_VALUE_MARKER]);
                 assert.equal(currentEntry['boolValueFalse'], entity2['boolValueFalse'][Constants.XML_VALUE_MARKER]);
                 assert.equal(currentEntry['intValue'], entity2['intValue'][Constants.XML_VALUE_MARKER]);
@@ -343,7 +343,7 @@ suite('tableservice-tests', function () {
                 if (newcurrentEntry['PartitionKey'] === entity1['PartitionKey'] && newcurrentEntry['RowKey'] === entity1['RowKey']) {
                   newentities += 1;
 
-                  assert.ok(newcurrentEntry['etag']);
+                  assert.ok(newcurrentEntry['_']['etag']);
                   assert.equal(newcurrentEntry['field'], entity1['field']);
                   assert.equal(newcurrentEntry['otherfield'], entity1['otherfield']);
                   assert.equal(newcurrentEntry['otherprops'], entity1['otherprops']);
