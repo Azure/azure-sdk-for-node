@@ -182,7 +182,7 @@ suite('tableservice-batch-tests', function () {
         var tableQuery = TableQuery.select()
           .from(tableName)
           .where('address eq ?', entities[0].address)
-          .and('RowKey eq ?', entities[0].RowKey);
+          .and('RowKey eq ?', entities[0].RowKey.toString());
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
           assert.equal(queryError, null);
