@@ -86,14 +86,14 @@ suite('sharedkeytable-tests', function () {
         assert.ok(table.TableName);
         assert.equal(table.TableName, tableName);
 
-        assert.ok(table.id);
-        assert.equal(table.id, createResponse.body.entry['id']);
+        assert.ok(table['_'].id);
+        assert.equal(table['_'].id, createResponse.body.entry['id']);
 
-        assert.ok(table.link);
-        assert.equal(table.link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
+        assert.ok(table['_'].link);
+        assert.equal(table['_'].link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
 
-        assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body.entry['updated']);
+        assert.ok(table['_'].updated);
+        assert.equal(table['_'].updated, createResponse.body.entry['updated']);
       }
 
       // check that the table exists
