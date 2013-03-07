@@ -34,7 +34,7 @@ describe('Notification hubs', function () {
   var suiteUtil;
 
   before(function (done) {
-    service = azure.createNotificationHubService();
+    service = azure.createServiceBusService();
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
@@ -195,6 +195,48 @@ describe('Notification hubs', function () {
         // Check a few properties to make sure the content seems correct
         hub.RegistrationTtl.should.not.be.null;
         hub.AuthorizationRules.should.not.be.null;
+
+        done();
+      });
+    });
+  });
+
+  describe('Shared Access Signature', function () {
+    var notificationHubService;
+    var hubName;
+
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
+      service.createNotificationHub(hubName, function () {
+        var setupHub = function () {
+          service.getNotificationHub(hubName, function (err, hub) {
+            if (err) {
+              setupHub();
+            } else {
+              var listenRule = hub.AuthorizationRules.AuthorizationRule.filter(function (rule) {
+                return rule.KeyName === 'DefaultFullSharedAccessSignature';
+              })[0];
+
+              var endpoint = 'https://' + process.env.AZURE_SERVICEBUS_NAMESPACE + '.servicebus.windows.net';
+              notificationHubService = azure.createNotificationHubService(hubName, endpoint, listenRule.KeyName, listenRule.PrimaryKey);
+              suiteUtil.setupService(notificationHubService);
+
+              done();
+            }
+          });
+        };
+
+        setupHub();
+      });
+    });
+
+    it('should be able to execute an operation', function (done) {
+      notificationHubService.apns.send(null, { 
+        alert: 'This is my toast message for iOS!'
+      }, function (error, result) {
+        should.not.exist(error);
+        result.statusCode.should.equal(201);
 
         done();
       });
