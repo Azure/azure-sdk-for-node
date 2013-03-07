@@ -16,12 +16,15 @@
 var _ = require('underscore');
 
 var should = require('should');
+var sinon = require('sinon');
 
 // Test includes
 var testutil = require('../../util/util');
 var notificationhubstestutil = require('../../framework/notificationhubs-test-utils');
 
 var azure = testutil.libRequire('azure');
+
+var HeaderConstants = azure.Constants.HeaderConstants;
 
 var hubNames = [];
 var hubNamePrefix = 'xplathub';
@@ -31,14 +34,18 @@ var testPrefix = 'apnsservice-tests';
 describe('APNS notifications', function () {
   var service;
   var suiteUtil;
+  var sandbox;
 
   before(function (done) {
-    service = azure.createNotificationHubService();
+    sandbox = sinon.sandbox.create();
+
+    service = azure.createServiceBusService();
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
 
   after(function (done) {
+    sandbox.restore();
     suiteUtil.teardownSuite(done);
   });
 
@@ -69,15 +76,18 @@ describe('APNS notifications', function () {
 
   describe('Send notification', function () {
     var hubName;
+    var notificationHubService;
 
     beforeEach(function (done) {
       hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
+      notificationHubService = azure.createNotificationHubService(hubName);
+      suiteUtil.setupService(notificationHubService);
       service.createNotificationHub(hubName, done);
     });
 
     it('should send a simple message', function (done) {
-      service.apns.send(hubName, { 
+      notificationHubService.apns.send(null, { 
         alert: 'This is my toast message for iOS!'
       }, function (error, result) {
         should.not.exist(error);
@@ -85,6 +95,30 @@ describe('APNS notifications', function () {
 
         done();
       });
+    });
+
+    it('should send a simple message with tags', function (done) {
+      var tagsString = 'dogs';
+      var expiryDate = new Date();
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.apns.send(
+        tagsString,
+        {
+          alert: 'This is my toast message for iOS!',
+          expiry: expiryDate
+        },
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
+
+          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_TAGS].should.equal(tagsString);
+          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_APNS_EXPIRY].should.equal(expiryDate.toISOString());
+          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_FORMAT].should.equal('apple');
+
+          done();
+        }
+      );
     });
   });
 });
