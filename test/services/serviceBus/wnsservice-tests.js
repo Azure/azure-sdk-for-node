@@ -127,6 +127,36 @@ describe('WNS notifications', function () {
         });
     });
 
+    it('should set wrong wns type if asked to (and fail to send)', function (done) {
+      var tagsString = 'dogs';
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.wns.sendTileSquarePeekImageAndText01(
+        tagsString, {
+          image1src: 'http://hi.com/dog.jpg',
+          image1alt: 'A dog',
+          text1: 'This is a dog',
+          text2: 'The dog is nice',
+          text3: 'The dog bites',
+          text4: 'Beware of dog'
+        },
+        {
+          wnsHeaders: {
+            'X-WNS-Type': 'wns/raw'
+          }
+        },
+        function (error, result) {
+          should.exist(error);
+          result.statusCode.should.equal(400);
+
+          executeSpy.args[0][0].headers['ServiceBusNotification-Tags'].should.equal(tagsString);
+          executeSpy.args[0][0].headers['X-WNS-Type'].should.equal('wns/raw');
+          executeSpy.args[0][0].headers['ServiceBusNotification-Format'].should.equal('windows');
+
+          done();
+        });
+    });
+
     it('should send a simple message', function (done) {
       notificationHubService.wns.send(null,
         '<tile><visual><binding template="TileSquarePeekImageAndText01">' +
