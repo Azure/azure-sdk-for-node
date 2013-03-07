@@ -37,7 +37,7 @@ describe('WNS notifications', function () {
   before(function (done) {
     sandbox = sinon.sandbox.create();
 
-    service = azure.createNotificationHubService();
+    service = azure.createServiceBusService();
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
@@ -74,16 +74,19 @@ describe('WNS notifications', function () {
 
   describe('Send notification', function () {
     var hubName;
+    var notificationHubService;
 
     beforeEach(function (done) {
       hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
+      notificationHubService = azure.createNotificationHubService(hubName);
+      suiteUtil.setupService(notificationHubService);
       service.createNotificationHub(hubName, done);
     });
 
     it('should send a simple tile message', function (done) {
-      service.wns.sendTileSquarePeekImageAndText01(
-        hubName, {
+      notificationHubService.wns.sendTileSquarePeekImageAndText01(
+        null, {
           image1src: 'http://hi.com/dog.jpg',
           image1alt: 'A dog',
           text1: 'This is a dog',
@@ -102,9 +105,9 @@ describe('WNS notifications', function () {
     it('should send a simple tile message with tags', function (done) {
       var tagsString = 'dogs';
 
-      var executeSpy = sandbox.spy(service, '_executeRequest');
-      service.wns.sendTileSquarePeekImageAndText01(
-        hubName, {
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.wns.sendTileSquarePeekImageAndText01(
+        tagsString, {
           image1src: 'http://hi.com/dog.jpg',
           image1alt: 'A dog',
           text1: 'This is a dog',
@@ -112,7 +115,6 @@ describe('WNS notifications', function () {
           text3: 'The dog bites',
           text4: 'Beware of dog'
         },
-        { tags: tagsString },
         function (error, result) {
           should.not.exist(error);
           result.statusCode.should.equal(201);
@@ -125,8 +127,38 @@ describe('WNS notifications', function () {
         });
     });
 
+    it('should set wrong wns type if asked to (and fail to send)', function (done) {
+      var tagsString = 'dogs';
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.wns.sendTileSquarePeekImageAndText01(
+        tagsString, {
+          image1src: 'http://hi.com/dog.jpg',
+          image1alt: 'A dog',
+          text1: 'This is a dog',
+          text2: 'The dog is nice',
+          text3: 'The dog bites',
+          text4: 'Beware of dog'
+        },
+        {
+          wnsHeaders: {
+            'X-WNS-Type': 'wns/raw'
+          }
+        },
+        function (error, result) {
+          should.exist(error);
+          result.statusCode.should.equal(400);
+
+          executeSpy.args[0][0].headers['ServiceBusNotification-Tags'].should.equal(tagsString);
+          executeSpy.args[0][0].headers['X-WNS-Type'].should.equal('wns/raw');
+          executeSpy.args[0][0].headers['ServiceBusNotification-Format'].should.equal('windows');
+
+          done();
+        });
+    });
+
     it('should send a simple message', function (done) {
-      service.wns.send(hubName,
+      notificationHubService.wns.send(null,
         '<tile><visual><binding template="TileSquarePeekImageAndText01">' +
         '<image id="1" src="http://hi.com/dog.jpg" alt="A dog"/>' +
         '<text id="1">This is a dog</text>' +
@@ -145,7 +177,7 @@ describe('WNS notifications', function () {
     });
 
     it('should send a badge message', function (done) {
-      service.wns.sendBadge(hubName, 'alert',
+      notificationHubService.wns.sendBadge(null, 'alert',
         function (error, result) {
           should.not.exist(error);
           result.statusCode.should.equal(201);
