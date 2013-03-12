@@ -5,12 +5,12 @@ var result =
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fmyqueue%26ExpiresOn%3d1361412790%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3djZFHQe5yoeJ8zHGzKKoB3V%252bsd9h2TMu42vZVf4pBLIQ%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fmyqueue%26ExpiresOn%3d1363725246%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dJjCIOh%252bV%252bs1xch%252bVQ3C6KSm4fV5cTPXI6Plg%252fdokYnU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '60bfc280-b1cb-470b-a38e-1fee9455b510',
+  'request-id': '36ad4f8f-a404-4576-9482-fe7865592042',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 01:53:10 GMT',
-  'content-length': '540' });
+  date: 'Tue, 19 Mar 2013 20:14:06 GMT',
+  'content-length': '552' });
  return result; }]];
