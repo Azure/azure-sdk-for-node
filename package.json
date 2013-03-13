@@ -10,12 +10,13 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.6.10",
+  "version": "0.6.11",
   "description": "Windows Azure Client Library for node",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
   "main": "./lib/azure.js",
-  "engines": { "node": ">= 0.6.15" },
+  "engines": { "node": ">= 0.6.15 < 0.9" },
+  "engineStrict": "true",
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
     "xml2js" : " >= 0.2.x",
