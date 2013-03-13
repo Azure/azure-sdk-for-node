@@ -141,7 +141,7 @@ describe('WNS notifications', function () {
           text4: 'Beware of dog'
         },
         {
-          wnsHeaders: {
+          headers: {
             'X-WNS-Type': 'wns/raw'
           }
         },
@@ -178,6 +178,39 @@ describe('WNS notifications', function () {
 
     it('should send a badge message', function (done) {
       notificationHubService.wns.sendBadge(null, 'alert',
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
+
+          done();
+        }
+      );
+    });
+
+    it('should send an attention badge message', function (done) {
+      notificationHubService.wns.sendBadge(null, 'attention',
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
+
+          done();
+        }
+      );
+    });
+
+    it('should send a numeric badge message', function (done) {
+      notificationHubService.wns.sendBadge(null, 11,
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
+
+          done();
+        }
+      );
+    });
+
+    it('should send a raw message', function (done) {
+      notificationHubService.wns.sendRaw(null, JSON.stringify({ foo: 1, bar: 2 }),
         function (error, result) {
           should.not.exist(error);
           result.statusCode.should.equal(201);
