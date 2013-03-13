@@ -2,6 +2,12 @@
 
 This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. 
 
+# Node Version Requirement
+
+Currently the Windows Azure SDK for Node.js does not support node versions > 0.8.x. We are working on updating our module to support node 0.10 and will keep you posted.
+
+Thank you for your patience.
+
 # Library Features
 
 * Tables
