@@ -186,5 +186,16 @@ describe('WNS notifications', function () {
         }
       );
     });
+
+    it('should send a numeric badge message', function (done) {
+      notificationHubService.wns.sendBadge(null, 11,
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
+
+          done();
+        }
+      );
+    });
   });
 });
