@@ -141,7 +141,7 @@ describe('WNS notifications', function () {
           text4: 'Beware of dog'
         },
         {
-          wnsHeaders: {
+          headers: {
             'X-WNS-Type': 'wns/raw'
           }
         },
