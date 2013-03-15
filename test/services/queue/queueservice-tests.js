@@ -105,7 +105,7 @@ suite('queueservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(queue, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       assert.ok(queue);
       if (createResponse.queue) {
@@ -120,7 +120,7 @@ suite('queueservice-tests', function () {
       queueService.getQueueMetadata(queueName, function (getError, getQueue, getResponse) {
         assert.equal(getError, null);
         assert.ok(getResponse.isSuccessful);
-        assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+        assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
         assert.ok(getQueue);
         if (getQueue) {
@@ -136,7 +136,7 @@ suite('queueservice-tests', function () {
           assert.equal(deleteError, null);
           assert.equal(deleted, true);
           assert.ok(deleteResponse.isSuccessful);
-          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
 
           done();
         });
@@ -153,7 +153,7 @@ suite('queueservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(queue, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       assert.ok(queue);
       if (createResponse.queue) {
@@ -190,19 +190,19 @@ suite('queueservice-tests', function () {
         assert.equal(createError1, null);
         assert.notEqual(queue1, null);
         assert.ok(createResponse1.isSuccessful);
-        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         queueService.createQueue(queueName2, { metadata: metadata }, function (createError2, queue2, createResponse2) {
           assert.equal(createError2, null);
           assert.notEqual(queue2, null);
           assert.ok(createResponse2.isSuccessful);
-          assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           queueService.listQueues({ 'include': 'metadata' }, function (listError, queues, nextMarker, listResponse) {
             assert.equal(listError, null);
             assert.notEqual(queues, null);
             assert.ok(listResponse.isSuccessful);
-            assert.equal(listResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(listResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
             assert.ok(queues);
 
@@ -238,19 +238,19 @@ suite('queueservice-tests', function () {
       assert.equal(createError1, null);
       assert.notEqual(queue1, null);
       assert.ok(createResponse1.isSuccessful);
-      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       // Create message
       queueService.createMessage(queueName, messageText1, function (createMessageError, message, createMessageResponse) {
         assert.equal(createMessageError, null);
         assert.ok(createMessageResponse.isSuccessful);
-        assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Create another message
         queueService.createMessage(queueName, messageText2, function (createMessageError2, message2, createMessageResponse2) {
           assert.equal(createMessageError, null);
           assert.ok(createMessageResponse2.isSuccessful);
-          assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(createMessageResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           // Peek message
           queueService.peekMessages(queueName, function (peekError, queueMessages, peekResponse) {
@@ -266,7 +266,7 @@ suite('queueservice-tests', function () {
             }
 
             assert.ok(peekResponse.isSuccessful);
-            assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(peekResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
             // Get messages
             queueService.getMessages(queueName, function (getError, getQueueMessages, getResponse) {
@@ -274,7 +274,7 @@ suite('queueservice-tests', function () {
               assert.notEqual(getQueueMessages, null);
               assert.equal(getQueueMessages.length, 1);
               assert.ok(getResponse.isSuccessful);
-              assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+              assert.equal(getResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
               var getQueueMessage = getQueueMessages[0];
               assert.equal(getQueueMessage.messagetext, messageText1);
@@ -284,14 +284,14 @@ suite('queueservice-tests', function () {
                 assert.equal(deleteError, null);
                 assert.equal(deleted, true);
                 assert.ok(deleteResponse.isSuccessful);
-                assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+                assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
 
                 // Get messages again
                 queueService.getMessages(queueName, function (getError2, getQueueMessages2, getResponse2) {
                   assert.equal(getError2, null);
                   assert.notEqual(getQueueMessages2, null);
                   assert.ok(getResponse2.isSuccessful);
-                  assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+                  assert.equal(getResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                   var getQueueMessage2 = getQueueMessages2[0];
                   assert.equal(getQueueMessage2.messagetext, messageText2);
@@ -300,13 +300,13 @@ suite('queueservice-tests', function () {
                   queueService.clearMessages(queueName, function (clearError, clearResponse) {
                     assert.equal(clearError, null);
                     assert.ok(clearResponse.isSuccessful);
-                    assert.equal(clearResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+                    assert.equal(clearResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
 
                     // Get message again should yield empty
                     queueService.getMessages(queueName, function (getError3, getQueueMessage3, getResponse3) {
                       assert.equal(getError3, null);
                       assert.ok(getResponse3.isSuccessful);
-                      assert.equal(getResponse3.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+                      assert.equal(getResponse3.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
                       assert.equal(getQueueMessage3.length, 0);
 
@@ -332,7 +332,7 @@ suite('queueservice-tests', function () {
       // Create message
       queueService.createMessage(queueName, '', function (createMessageError, message, createMessageResponse) {
         assert.equal(createMessageError, null);
-        assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createMessageResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         done();
       });

@@ -272,7 +272,7 @@ suite('blobservice-tests', function () {
         assert.notEqual(container1.lastModified, null);
       }
 
-      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       // creating again will result in a duplicate error
       blobService.createContainer(containerName, function (createError2, container2) {
@@ -296,7 +296,7 @@ suite('blobservice-tests', function () {
         assert.notEqual(container1.lastModified, null);
       }
 
-      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       // creating again will result in a duplicate error
       blobService.createContainerIfNotExists(containerName, function (createError2, isCreated) {
@@ -587,7 +587,7 @@ suite('blobservice-tests', function () {
       assert.equal(createError1, null);
       assert.notEqual(container1, null);
       assert.ok(createResponse1.isSuccessful);
-      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
         assert.equal(uploadError, null);
@@ -1041,7 +1041,7 @@ suite('blobservice-tests', function () {
       assert.equal(createError1, null);
       assert.notEqual(container1, null);
       assert.ok(createResponse1.isSuccessful);
-      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blobResponse, uploadResponse) {
         assert.equal(uploadError, null);
@@ -1370,7 +1370,7 @@ suite('blobservice-tests', function () {
         assert.equal(createError1, null);
         assert.notEqual(container1, null);
         assert.ok(createResponse1.isSuccessful);
-        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         var blobOptions = { contentType: 'text' };
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, blobOptions, function (uploadError, blobResponse, uploadResponse) {

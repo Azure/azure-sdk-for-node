@@ -79,7 +79,7 @@ suite('sharedkeytable-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       assert.ok(table);
       if (table) {
@@ -101,7 +101,7 @@ suite('sharedkeytable-tests', function () {
         assert.equal(existsError, null);
         assert.notEqual(tableResponse, null);
         assert.ok(existsResponse.isSuccessful);
-        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
         done();
       });
     });
