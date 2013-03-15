@@ -74,7 +74,7 @@ suite('queryentitiesresultcontinuation-tests', function () {
 
       if (createResponse) {
         assert.ok(createResponse.isSuccessful);
-        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
       }
 
       var entities = generateEntities(numberOfEntities);
