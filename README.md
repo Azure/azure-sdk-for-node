@@ -286,7 +286,7 @@ serviceBusService.createNotificationHub('hubName', function (err) {
 });
 ```
 
-To send messages to the notification hub use the methods of the **wns** or **apns** objects.
+To send messages to the notification hub use the methods of the **wns** or **apns** objects. For a full reference on WNS method templates, check http://msdn.microsoft.com/en-us/library/windows/apps/hh779725.aspx.
 
 ```JavaScript
 var notificationHubService = azure.createNotificationHubService('hubName');
