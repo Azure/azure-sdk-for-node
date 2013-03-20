@@ -128,7 +128,7 @@ blobService.getBlobToStream('taskcontainer', 'task1', fs.createWriteStream('task
 });
 ```
 
-To create a SAS URL you can use the **generateSharedAccessSignatureUrl** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
+To create a SAS URL you can use the **getBlobUrl** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
 
 ```Javascript
 var blobService = azure.createBlobService();
@@ -140,7 +140,7 @@ var sharedAccessPolicy = {
     }
 };
 
-var sasUrl = blobService.generateSharedAccessSignatureUrl(containerName, blobName, sharedAccessPolicy);
+var sasUrl = blobService.getBlobUrl(containerName, blobName, sharedAccessPolicy);
 ```
 
 ## Storage Queues
