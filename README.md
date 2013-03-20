@@ -268,6 +268,58 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
      }
 });
 ```
+
+
+## Notification Hubs
+
+Notification hubs allow you to send notifications to WNS and APNS receivers.
+
+To create a notification hub, the method **createNotificationHub** can be used.
+
+```JavaScript
+var serviceBusService = azure.createServiceBusService();
+
+serviceBusService.createNotificationHub('hubName', function (err) {
+    if (!err) {
+        // Notification hub created successfully
+    }
+});
+```
+
+To send messages to the notification hub the **wns** or **apns** object methods can be used.
+
+```JavaScript
+var notificationHubService = azure.createNotificationHubService('hubName');
+
+notificationHubService.wns.sendTileSquarePeekImageAndText01(
+    null,
+    {
+        image1src: 'http://foobar.com/dog.jpg',
+        image1alt: 'A dog',
+        text1: 'This is a dog',
+        text2: 'The dog is nice',
+        text3: 'The dog bites',
+        text4: 'Beware of dog'
+    },
+    function (error) {
+        if (!error) {
+            // message sent successfully
+        }
+    });
+
+notificationHubService.apns.send(
+    null,
+    {
+        alert: 'This is my toast message for iOS!',
+        expiry: expiryDate
+    },
+    function (error) {
+        if (!error) {
+            // message sent successfully
+        }
+    });
+```
+
 ## Azure SQL Database
 
 The Azure SQL Database functions allow you to manage Azure SQL servers, databases and firewall rules.
@@ -332,7 +384,6 @@ sqlServer.listServerDatabases(function(error, dbs) {
 });
 
 ```
-
 
 ## Service Runtime
 
