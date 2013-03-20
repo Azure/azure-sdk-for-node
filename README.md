@@ -274,7 +274,7 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
 
 Notification hubs allow you to send notifications to WNS and APNS receivers.
 
-To create a notification hub, the method **createNotificationHub** can be used.
+To create a notification hub, use the method **createNotificationHub**.
 
 ```JavaScript
 var serviceBusService = azure.createServiceBusService();
@@ -286,7 +286,7 @@ serviceBusService.createNotificationHub('hubName', function (err) {
 });
 ```
 
-To send messages to the notification hub the **wns** or **apns** object methods can be used.
+To send messages to the notification hub use the methods of the **wns** or **apns** objects.
 
 ```JavaScript
 var notificationHubService = azure.createNotificationHubService('hubName');
