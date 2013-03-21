@@ -41,8 +41,8 @@ var entity2 = { PartitionKey: 'part2',
   boolValueTrue: { '$': { type: 'Edm.Boolean' }, '_': true },
   boolValueFalse: { '$': { type: 'Edm.Boolean' }, '_': false },
   intValue: { '$': { type: 'Edm.Int32' }, '_': 42 },
-  dateValue: { '$': { type: 'Edm.DateTime' }, '_': new Date(2011, 12, 25).toISOString() },
-  complexDateValue: { '$': { type: 'Edm.DateTime' }, '_': new Date(2013, 02, 16, 00, 46, 20).toISOString() }
+  dateValue: { '$': { type: 'Edm.DateTime' }, '_': new Date(Date.UTC(2011, 12, 25)).toISOString() },
+  complexDateValue: { '$': { type: 'Edm.DateTime' }, '_': new Date(Date.UTC(2013, 02, 16, 00, 46, 20)).toISOString() }
 };
 
 var tableNames = [];

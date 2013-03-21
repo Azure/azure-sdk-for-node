@@ -32,7 +32,7 @@ describe('Edmtype', function () {
     });
 
     it('correctly serializes datetime query values', function (done) {
-      var value = new Date(2001, 1, 3, 4, 5, 6);
+      var value = new Date(Date.UTC(2001, 1, 3, 4, 5, 6));
       var serializedValue = edmType.serializeQueryValue(value);
       serializedValue.should.equal("datetime'2001-02-03T04:05:06.000Z'");
 
