@@ -70,12 +70,43 @@ describe('Table Service', function () {
       DateValue: new Date(Date.UTC(2012, 10, 10, 3, 4, 5, 200))
     };
 
+    var explicitEntity = {
+      PartitionKey: '1',
+      RowKey: '3',
+      IntNumberValue: {
+        _: 200,
+        $: { type: 'Edm.Int32' }
+      },
+      DoubleNumberValue: {
+        _: 2.5,
+        $: { type: 'Edm.Double' }
+      },
+      FalseBooleanValue: {
+        _: false,
+        $: { type: 'Edm.Boolean' }
+      },
+      TrueBooleanValue: {
+        _: true,
+        $: { type: 'Edm.Boolean' }
+      },
+      StringValue: {
+        _: 'hi there',
+        $: { type: 'Edm.String' }
+      },
+      DateValue: {
+        _: new Date(Date.UTC(2012, 10, 10, 3, 4, 5, 200)),
+        $: { type: 'Edm.DateTime' }
+      }
+    };
+
     function verifyEntity(result) {
       Object.keys(entity).forEach(function (propertyName) {
-        if (_.isDate(entity[propertyName])) {
-          assert.strictEqual(entity[propertyName].getTime(), result[propertyName].getTime());
-        } else {
-          assert.strictEqual(entity[propertyName], result[propertyName]);
+        if (propertyName !== 'RowKey') {
+          if (_.isDate(entity[propertyName])) {
+            assert.strictEqual(entity[propertyName].getTime(), result[propertyName].getTime());
+          } else {
+            assert.strictEqual(entity[propertyName], result[propertyName]);
+          }
         }
       });
     }
@@ -84,7 +115,22 @@ describe('Table Service', function () {
       tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
       tableService.createTable(tableName, function () {
-        tableService.insertEntity(tableName, entity, done);
+        tableService.insertEntity(tableName, entity, function (err) {
+          assert.equal(err, null);
+          tableService.insertEntity(tableName, explicitEntity, function (err) {
+            assert.equal(err, null);
+            done(err);
+          });
+        });
+      });
+    });
+
+    it('should contain two entities', function (done) {
+      var tableQuery = azure.TableQuery.select().from(tableName);
+      tableService.queryEntities(tableQuery, function (err, results) {
+        assert.equal(err, null);
+        assert.equal(results.length, 2);
+        done();
       });
     });
 
@@ -93,8 +139,9 @@ describe('Table Service', function () {
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
-        assert.equal(results.length, 1);
+        assert.equal(results.length, 2);
         verifyEntity(results[0]);
+        verifyEntity(results[1]);
 
         done();
       });
@@ -105,8 +152,9 @@ describe('Table Service', function () {
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
-        assert.equal(results.length, 1);
+        assert.equal(results.length, 2);
         verifyEntity(results[0]);
+        verifyEntity(results[1]);
 
         done();
       });
@@ -117,8 +165,9 @@ describe('Table Service', function () {
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
-        assert.equal(results.length, 1);
+        assert.equal(results.length, 2);
         verifyEntity(results[0]);
+        verifyEntity(results[1]);
 
         done();
       });
@@ -129,20 +178,22 @@ describe('Table Service', function () {
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
-        assert.equal(results.length, 1);
+        assert.equal(results.length, 2);
         verifyEntity(results[0]);
+        verifyEntity(results[1]);
 
         done();
       });
     });
 
     it('should be able to query by string value', function (done) {
-      var tableQuery = azure.TableQuery.select().from(tableName).where('TrueBooleanValue eq ?', entity.TrueBooleanValue);
+      var tableQuery = azure.TableQuery.select().from(tableName).where('StringValue eq ?', entity.StringValue);
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
-        assert.equal(results.length, 1);
+        assert.equal(results.length, 2);
         verifyEntity(results[0]);
+        verifyEntity(results[1]);
 
         done();
       });
@@ -153,8 +204,9 @@ describe('Table Service', function () {
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
-        assert.equal(results.length, 1);
+        assert.equal(results.length, 2);
         verifyEntity(results[0]);
+        verifyEntity(results[1]);
 
         done();
       });
