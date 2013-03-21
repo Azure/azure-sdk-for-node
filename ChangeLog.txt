@@ -1,8 +1,8 @@
-2012.03.19 Version 0.6.12
+2012.03.25 Version 0.7.0
+* Breaking change: Primitive types will be stored for table storage.
 * Adding support for creating and deleting affinity groups
 * Replacing http-mock by nock and making all tests use it by default
 * Adding notification hubs messages for WNS and APNS
-* Fixing issues around table storage serialization / querying. Primitive types will be stored with types.
 * Add Strict SSL validation for server certificates
 * Add support for creating subscriptions that expire
 
