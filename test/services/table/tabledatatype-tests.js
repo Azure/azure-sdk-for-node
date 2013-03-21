@@ -67,7 +67,7 @@ describe('Table Service', function () {
       FalseBooleanValue: false,
       TrueBooleanValue: true,
       StringValue: 'hi there',
-      DateValue: new Date(2012, 10, 10, 3, 4, 5, 200)
+      DateValue: new Date(Date.UTC(2012, 10, 10, 3, 4, 5, 200))
     };
 
     function verifyEntity(result) {
