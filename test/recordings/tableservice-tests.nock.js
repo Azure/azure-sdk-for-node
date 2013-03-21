@@ -4,13 +4,13 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:19:48Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:46:52Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '281bc0f3-da37-4e70-8009-ef77004030cf',
+  'x-ms-request-id': 'be9a7e45-647c-4616-b8d0-a7454591c6c1',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:47 GMT' });
+  date: 'Thu, 21 Mar 2013 16:46:52 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -19,21 +19,21 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>true</Read><Write>false</Write><Delete>false</Delete><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Logging><Metrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Metrics></StorageServiceProperties>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ae2464b2-5d7d-478d-892c-5497c241795c',
+  'x-ms-request-id': 'ef7d97ec-3977-4280-84eb-a4896287ca74',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:48 GMT' });
+  date: 'Thu, 21 Mar 2013 16:46:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:19:50Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:46:53Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '88c0f06c-df68-48c2-a12c-527d71301b98',
+  'x-ms-request-id': '98fb76b9-1a68-4e9b-aa64-22455b2f86ab',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:50 GMT' });
+  date: 'Thu, 21 Mar 2013 16:46:53 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -42,9 +42,9 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>true</Read><Write>false</Write><Delete>false</Delete><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Logging><Metrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Metrics></StorageServiceProperties>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '34819e58-f45a-4fc4-94ec-cc413762b53d',
+  'x-ms-request-id': 'c6503eaf-c42b-43f0-9ebe-ec0fe01ed430',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:50 GMT' });
+  date: 'Thu, 21 Mar 2013 16:46:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -53,9 +53,9 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .put('/?comp=properties&restype=service', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a29c57ed-71b0-47dd-a199-f2ec67cc7ce3',
+  'x-ms-request-id': '27923390-693b-475b-abcc-53e2d34662df',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:51 GMT' });
+  date: 'Thu, 21 Mar 2013 16:46:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -64,59 +64,59 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>true</Read><Write>false</Write><Delete>false</Delete><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Logging><Metrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Metrics></StorageServiceProperties>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9a467340-a4aa-4f4a-a79c-b7aca8440df3',
+  'x-ms-request-id': '41f37ad1-bf45-42fc-9dd9-42415fcb2d31',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:51 GMT' });
+  date: 'Thu, 21 Mar 2013 16:46:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:19:54Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:46:56Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a33b9623-6e64-40a3-af35-f9b416039767',
+  'x-ms-request-id': '11390a1b-0ea6-4119-8170-21091588cb0d',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:53 GMT' });
+  date: 'Thu, 21 Mar 2013 16:46:56 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:19:55Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice1')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice1</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:00Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice1')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice1</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fb8c2ac6-c2e7-4c88-b34d-1975e19631e2',
+  'x-ms-request-id': '6fac2147-fc9b-4ad5-9699-bb26aa9658bd',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:55 GMT' });
+  date: 'Thu, 21 Mar 2013 16:46:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables(%27tableservice1%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:19:56Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice1')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice1</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:01Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice1')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice1</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cde9f23b-9aa9-4de1-b86a-ac247bab5aa5',
+  'x-ms-request-id': 'e2a8e79c-207c-440a-9a1c-ed042d4cba6d',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:56 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:19:58Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice1')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:19:58Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice1')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice1</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:02Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice1')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:02Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice1')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice1</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8f260baa-4a91-4fdd-a7d9-fa3c0a1953fc',
+  'x-ms-request-id': '3c885195-0998-4d0a-a2b4-86896a82b4a3',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:57 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -125,47 +125,47 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fd362d78-1791-4fd5-b49c-14d57a5ca7c4',
+  'x-ms-request-id': '12c7409b-0ba6-4af7-9a56-5fb115a8657a',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:57 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:02 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice2')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:19:59Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice2')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice2</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice2')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:04Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice2')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice2</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice2\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a91220ab-ccd1-4792-b5fc-717e6efd16e2',
+  'x-ms-request-id': '89b6c8af-dda4-463d-b54c-b6ec8d76b63c',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:19:58 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>TableAlreadyExists</code>\r\n  <message xml:lang=\"en-US\">The table specified already exists.\nRequestId:d20863c0-c6b2-41d4-ba6a-1566ffe071ff\nTime:2013-02-26T13:20:00.6033414Z</message>\r\n</error>", { 'cache-control': 'no-cache',
+  .reply(409, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>TableAlreadyExists</code>\r\n  <message xml:lang=\"en-US\">The table specified already exists.\nRequestId:5373d09e-9773-43c4-b75c-5b027a6032fd\nTime:2013-03-21T16:47:05.3983722Z</message>\r\n</error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd20863c0-c6b2-41d4-ba6a-1566ffe071ff',
+  'x-ms-request-id': '5373d09e-9773-43c4-b75c-5b027a6032fd',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:00 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:01Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice2')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:01Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice2')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice2</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:07Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice2')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:07Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice2')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice2</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2396fd4c-3bcf-4913-804b-24824cb49088',
+  'x-ms-request-id': '0ddd7916-4069-417e-8a71-e32f5af67043',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:01 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -174,73 +174,73 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c81db84b-13ac-4ab5-96bc-1f6dd4db0f29',
+  'x-ms-request-id': '50220a96-8001-436b-baef-c86ba89dfc62',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:02 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:07 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:03Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:08Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '098f56f0-4ba2-409e-a277-f01ca62a24f8',
+  'x-ms-request-id': 'f34ebf9f-684a-4c97-8726-80263ccf9271',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:02 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice3')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:06Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice3')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice3</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice3')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:09Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice3')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice3</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice3\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e0f2a0c9-6b42-425f-acf3-c3c19bef673e',
+  'x-ms-request-id': '232a1853-1749-414c-a4b1-b94627f94516',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:05 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice4')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:05Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice4')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice4</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice4')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:11Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice4')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice4</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice4\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd3584b0f-6c2e-4769-878a-b2dd54b64ecb',
+  'x-ms-request-id': '86df53ac-2c67-4bc6-a28d-24cb1b1325e2',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:04 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:07Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice3')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:07Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice3')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice3</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice4')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:07Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice4')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice4</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:11Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice3')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:11Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice3')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice3</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice4')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:11Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice4')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice4</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '007aa759-e250-475d-b05d-b82da3cec5e0',
+  'x-ms-request-id': '95a6eb16-c669-4cf5-b418-aee6d644b8e2',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:06 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:07Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice3')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:07Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice3')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice3</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice4')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:07Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice4')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice4</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:13Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice3')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:13Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice3')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice3</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice4')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:13Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice4')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice4</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b16fb471-0967-4e24-999f-62d2e1359d10',
+  'x-ms-request-id': '2665847d-c6ba-40eb-a556-402b82bb1093',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:07 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -249,9 +249,9 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '83e9f76e-b9f5-4f70-b54d-8e9c2be7f095',
+  'x-ms-request-id': '8ddd69c3-d267-470b-93c8-b32fe239ae79',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:09 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -260,23 +260,23 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'aca8a8f0-5e77-4596-a2ad-3147fb49b668',
+  'x-ms-request-id': '251f4547-8409-445f-b8ba-e8dabd2e1403',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:09 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:16 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice5')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:10Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice5')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice5</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice5')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:18Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice5')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice5</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice5\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e5bc1e16-3b75-4dcd-8563-bc0a69e87fa1',
+  'x-ms-request-id': '1b172717-c2d0-4a17-983f-98b486d7e052',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:10 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -285,102 +285,102 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '200fbc16-c9db-406d-ab92-70be6286980a',
+  'x-ms-request-id': '1ea2e486-b1cb-4714-b718-71dcaf4c1ce2',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:11 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:13Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:20Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8f90b8bc-6395-41fd-924c-2563db9a68c1',
+  'x-ms-request-id': '5caed72a-4925-46df-a183-a1a1b985d6e9',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:12 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:20 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice6')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:13Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice6')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice6</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice6')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:22Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice6')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice6</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice6\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '304e0cb0-cfdb-4e62-b879-daa75e2b2f7f',
+  'x-ms-request-id': 'e5eea759-c776-41f7-84dd-1ceb2c30d834',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:12 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice6', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A13.6412853Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:13Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:13.6412853Z</d:Timestamp>\r\n      <d:field>my field</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A24.3598787Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:24Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:24.3598787Z</d:Timestamp>\r\n      <d:field>my field</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A13.6412853Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A24.3598787Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey=\'part1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b9f31eb0-073c-4f7f-96a1-75b809f17bf8',
+  'x-ms-request-id': 'b6e82ad7-c20d-4c92-8c74-f42e2e193727',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:13 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice6', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A15.6379736Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part2',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:15Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part2',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part2</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:15.6379736Z</d:Timestamp>\r\n      <d:boolValueTrue m:type=\"Edm.Boolean\">true</d:boolValueTrue>\r\n      <d:boolValueFalse m:type=\"Edm.Boolean\">false</d:boolValueFalse>\r\n      <d:intValue m:type=\"Edm.Int32\">42</d:intValue>\r\n      <d:dateValue m:type=\"Edm.DateTime\">2012-01-25T00:00:00Z</d:dateValue>\r\n      <d:complexDateValue m:type=\"Edm.DateTime\">2013-03-16T00:46:20Z</d:complexDateValue>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A24.9698677Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part2',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:24Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part2',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part2</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:24.9698677Z</d:Timestamp>\r\n      <d:boolValueTrue m:type=\"Edm.Boolean\">true</d:boolValueTrue>\r\n      <d:boolValueFalse m:type=\"Edm.Boolean\">false</d:boolValueFalse>\r\n      <d:intValue m:type=\"Edm.Int32\">42</d:intValue>\r\n      <d:dateValue m:type=\"Edm.DateTime\">2012-01-25T00:00:00Z</d:dateValue>\r\n      <d:complexDateValue m:type=\"Edm.DateTime\">2013-03-16T00:46:20Z</d:complexDateValue>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A15.6379736Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A24.9698677Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey=\'part2\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '516fa15e-1455-48c5-862f-73cbc27525b5',
+  'x-ms-request-id': '315efb7a-a866-43ad-a316-135d026f428d',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:15 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/tableservice6()')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">tableservice6</title>\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice6</id>\r\n  <updated>2013-02-26T13:20:16Z</updated>\r\n  <link rel=\"self\" title=\"tableservice6\" href=\"tableservice6\" />\r\n  <entry m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A13.6412853Z'&quot;\">\r\n    <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part1',RowKey='row1')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:16Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part1',RowKey='row1')\" />\r\n    <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:PartitionKey>part1</d:PartitionKey>\r\n        <d:RowKey>row1</d:RowKey>\r\n        <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:13.6412853Z</d:Timestamp>\r\n        <d:field>my field</d:field>\r\n        <d:otherfield>my other field</d:otherfield>\r\n        <d:otherprops>my properties</d:otherprops>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A15.6379736Z'&quot;\">\r\n    <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part2',RowKey='row1')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:16Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part2',RowKey='row1')\" />\r\n    <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:PartitionKey>part2</d:PartitionKey>\r\n        <d:RowKey>row1</d:RowKey>\r\n        <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:15.6379736Z</d:Timestamp>\r\n        <d:boolValueTrue m:type=\"Edm.Boolean\">true</d:boolValueTrue>\r\n        <d:boolValueFalse m:type=\"Edm.Boolean\">false</d:boolValueFalse>\r\n        <d:intValue m:type=\"Edm.Int32\">42</d:intValue>\r\n        <d:dateValue m:type=\"Edm.DateTime\">2012-01-25T00:00:00Z</d:dateValue>\r\n        <d:complexDateValue m:type=\"Edm.DateTime\">2013-03-16T00:46:20Z</d:complexDateValue>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">tableservice6</title>\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice6</id>\r\n  <updated>2013-03-21T16:47:27Z</updated>\r\n  <link rel=\"self\" title=\"tableservice6\" href=\"tableservice6\" />\r\n  <entry m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A24.3598787Z'&quot;\">\r\n    <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part1',RowKey='row1')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:27Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part1',RowKey='row1')\" />\r\n    <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:PartitionKey>part1</d:PartitionKey>\r\n        <d:RowKey>row1</d:RowKey>\r\n        <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:24.3598787Z</d:Timestamp>\r\n        <d:field>my field</d:field>\r\n        <d:otherfield>my other field</d:otherfield>\r\n        <d:otherprops>my properties</d:otherprops>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A24.9698677Z'&quot;\">\r\n    <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part2',RowKey='row1')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:27Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part2',RowKey='row1')\" />\r\n    <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:PartitionKey>part2</d:PartitionKey>\r\n        <d:RowKey>row1</d:RowKey>\r\n        <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:24.9698677Z</d:Timestamp>\r\n        <d:boolValueTrue m:type=\"Edm.Boolean\">true</d:boolValueTrue>\r\n        <d:boolValueFalse m:type=\"Edm.Boolean\">false</d:boolValueFalse>\r\n        <d:intValue m:type=\"Edm.Int32\">42</d:intValue>\r\n        <d:dateValue m:type=\"Edm.DateTime\">2012-01-25T00:00:00Z</d:dateValue>\r\n        <d:complexDateValue m:type=\"Edm.DateTime\">2013-03-16T00:46:20Z</d:complexDateValue>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '481133ba-d5d8-4da3-a981-a7ee5a4303b0',
+  'x-ms-request-id': '4a45eea7-ad75-4af7-9b69-0e7a30949548',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:15 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/tableservice6(PartitionKey=%27part1%27,RowKey=%27row1%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A13.6412853Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:18Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:13.6412853Z</d:Timestamp>\r\n      <d:field>my field</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A24.3598787Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice6(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:28Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice6\" href=\"tableservice6(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice6\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:24.3598787Z</d:Timestamp>\r\n      <d:field>my field</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A13.6412853Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A24.3598787Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd02c0286-84dc-4368-b0a0-c7c05cf57b18',
+  'x-ms-request-id': '6d16b1c4-eb5a-4402-977d-4edded65bff2',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:17 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:19Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice6')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:19Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice6')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice6</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:29Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice6')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:29Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice6')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice6</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6d5003f1-5524-449f-af02-19d9f32fa754',
+  'x-ms-request-id': 'bfcaf2bd-7016-4355-860c-e32044009208',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:19 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -389,63 +389,63 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8041c2ed-3eca-47fd-a0d0-856bd35fca7c',
+  'x-ms-request-id': 'be524b8d-4e6b-4a24-b4b0-4a73e5b0a4dd',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:20 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:30 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice7')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:22Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice7')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice7</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice7')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:32Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice7')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice7</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice7\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8677612e-e67b-42f9-af4a-80980fda6a3f',
+  'x-ms-request-id': '6930f97f-1442-4786-8e32-2f9c6c3a2ce6',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:22 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice7', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A23.5092916Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice7(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:23Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice7\" href=\"tableservice7(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice7\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:23.5092916Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A34.0850691Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice7(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:34Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice7\" href=\"tableservice7(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice7\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:34.0850691Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A23.5092916Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A34.0850691Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice7(PartitionKey=\'part1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '11e820fa-16d1-4866-9fbc-b66144d73ab7',
+  'x-ms-request-id': 'b889a010-b771-4382-8126-68d05e53b12a',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:23 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/tableservice7(PartitionKey=%27part1%27,RowKey=%27row1%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A23.5092916Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice7(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:25Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice7\" href=\"tableservice7(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice7\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:23.5092916Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A34.0850691Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice7(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:34Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice7\" href=\"tableservice7(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice7\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:34.0850691Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A23.5092916Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A34.0850691Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8563c042-856d-4046-9369-92b57c9d4be9',
+  'x-ms-request-id': '328854dd-60f8-4d07-8cc8-57b6a0be14ea',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:24 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:26Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice7')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:26Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice7')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice7</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:35Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice7')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:35Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice7')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice7</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a160cea7-6632-45a9-8374-46df72aec12e',
+  'x-ms-request-id': '4e588c05-fa7b-48f1-b452-198246db53a4',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:25 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -454,38 +454,38 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '18715e2d-97f7-48eb-8d04-63aad4611aa6',
+  'x-ms-request-id': '0307f455-565b-4cc3-a1a8-bef7c0c3087d',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:27 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:36 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice8')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:28Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice8')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice8</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice8')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:37Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice8')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice8</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice8\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '500824ec-d032-42f9-98a2-eea63be3b190',
+  'x-ms-request-id': 'd361fd1c-6392-4205-a3ff-3cdf0a7bcd22',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:28 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice8', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A29.4506382Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice8(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:29Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice8\" href=\"tableservice8(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice8\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:29.4506382Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A39.4549057Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice8(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:39Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice8\" href=\"tableservice8(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice8\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:39.4549057Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A29.4506382Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A39.4549057Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice8(PartitionKey=\'part1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd76acb9d-7fb0-452e-b803-12459fd2390d',
+  'x-ms-request-id': '2b3ee0d6-cbc1-413f-9236-7a44c05b61fd',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:29 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -494,21 +494,21 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '612e0f13-76a6-407e-9b78-7fee254f5947',
+  'x-ms-request-id': '13b20d9b-9113-4756-b23a-70979db4cc2a',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:29 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:30Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice8')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:30Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice8')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice8</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:41Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice8')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:41Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice8')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice8</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c2909e39-c90e-4b49-9a79-9bef9e4d87d9',
+  'x-ms-request-id': '9a0d42d8-b7a4-4690-b1a7-516250411096',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:30 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -517,61 +517,61 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eaaafafd-2cf1-437a-8ad1-df9707cd9225',
+  'x-ms-request-id': '501a7756-007b-4220-9c30-1f656f751866',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:32 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:41 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice9')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:34Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice9')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice9</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice9')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:43Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice9')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice9</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice9\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0270bf7d-ba98-4607-b203-0a353c2ed074',
+  'x-ms-request-id': '96192be3-ed29-46da-b19d-47537f73c687',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:34 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice9', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A35.4267143Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice9(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:35Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice9\" href=\"tableservice9(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice9\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:35.4267143Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A44.7378258Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice9(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:44Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice9\" href=\"tableservice9(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice9\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:44.7378258Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A35.4267143Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A44.7378258Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice9(PartitionKey=\'part1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd24d7c17-62cc-4e10-9302-acc10df4518c',
+  'x-ms-request-id': 'b918eabe-7266-4518-b20e-28df0527becc',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:35 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .delete('/tableservice9(PartitionKey=%27part1%27,RowKey=%27row1%27)')
-  .reply(412, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>UpdateConditionNotSatisfied</code>\r\n  <message xml:lang=\"en-US\">The update condition specified in the request was not satisfied.\nRequestId:28ce52f8-2de6-48d0-aa77-2f98f0d10a2d\nTime:2013-02-26T13:20:35.8655080Z</message>\r\n</error>", { 'cache-control': 'no-cache',
+  .reply(412, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>UpdateConditionNotSatisfied</code>\r\n  <message xml:lang=\"en-US\">The update condition specified in the request was not satisfied.\nRequestId:fb9ea3e9-b978-4dee-8079-55ea58939d24\nTime:2013-03-21T16:47:45.3041346Z</message>\r\n</error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '28ce52f8-2de6-48d0-aa77-2f98f0d10a2d',
+  'x-ms-request-id': 'fb9ea3e9-b978-4dee-8079-55ea58939d24',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:35 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:37Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice9')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:37Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice9')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice9</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:47Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice9')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:47Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice9')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice9</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b507dc05-d5f1-4bc1-a52c-2d5fa2b50f6c',
+  'x-ms-request-id': '95bb9f02-b809-4ed7-a128-713d42f3fa8f',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:37 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -580,38 +580,38 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a9fa1a50-68e4-4b8c-9cd8-b804469215dc',
+  'x-ms-request-id': '8db33867-1ba7-4c1e-aebe-00c987628612',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:37 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:46 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice10')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:38Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice10')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice10</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice10')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:49Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice10')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice10</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice10\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '01a5d09a-dc9c-47c9-b61e-8967ff433837',
+  'x-ms-request-id': 'ee869c2b-ae10-4414-83b4-1ced1ab02f25',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:38 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice10', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A40.8412916Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice10(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:40Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice10\" href=\"tableservice10(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice10\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:40.8412916Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A50.2782123Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice10(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:50Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice10\" href=\"tableservice10(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice10\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:50.2782123Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>my other field</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n      <d:etag>W/\"datetime'2009-05-27T12%3A15%3A15.3321531Z'\"</d:etag>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A40.8412916Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A50.2782123Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice10(PartitionKey=\'part1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6505f02a-4842-4faa-866c-dcb3a666051c',
+  'x-ms-request-id': 'dc4d5e54-9d90-475c-a77e-ae876033e739',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:40 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -620,23 +620,23 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .put('/tableservice10(PartitionKey=%27part1%27,RowKey=%27row1%27)', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A41.4954051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A51.3885398Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '48294cf4-9f64-483c-8909-a3beb37bfad6',
+  'x-ms-request-id': 'c0f05cc9-b5b2-4e0c-9fa0-d19e5a3fdee4',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:41 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:42Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice10')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:42Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice10')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice10</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:51Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice10')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:51Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice10')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice10</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ab5f4eb1-bda1-41a8-b14c-64d160e71ef4',
+  'x-ms-request-id': '97f5eb86-350b-4862-9a61-9a44959f6b48',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:42 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -645,62 +645,62 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5ff75653-b18d-4fc7-a8a2-1a8b2033cab3',
+  'x-ms-request-id': '47c5f542-5104-42bd-9b9d-baff2c7f8a85',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:43 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:53 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice11')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:45Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice11')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice11</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice11')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:55Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice11')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice11</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice11\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b9e5d968-2885-4e7a-83ab-feeb93cbfa49',
+  'x-ms-request-id': 'd2d2e4ef-7401-4c8b-bbe2-13d7aa864493',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:44 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice11', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A45.871237Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice11(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:45Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice11\" href=\"tableservice11(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice11\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:45.871237Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>value</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A47%3A55.4807023Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice11(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:47:55Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice11\" href=\"tableservice11(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice11\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:47:55.4807023Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>value</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n      <d:etag>W/\"datetime'2013-03-21T16%3A47%3A51.3885398Z'\"</d:etag>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A45.871237Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A47%3A55.4807023Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice11(PartitionKey=\'part1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8cf9211e-01a9-41c1-aa3d-3533541e24a2',
+  'x-ms-request-id': 'd024c00e-d262-4ebc-add4-715a7b8089ed',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:45 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/tableservice11(PartitionKey=%27part1%27,RowKey=%27row1%27)', '*')
-  .reply(412, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>UpdateConditionNotSatisfied</code>\r\n  <message xml:lang=\"en-US\">The update condition specified in the request was not satisfied.\nRequestId:c193090f-b986-42c5-b442-19b5d6259b3c\nTime:2013-02-26T13:20:46.9932916Z</message>\r\n</error>", { 'cache-control': 'no-cache',
+  .reply(412, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>UpdateConditionNotSatisfied</code>\r\n  <message xml:lang=\"en-US\">The update condition specified in the request was not satisfied.\nRequestId:7c7e395a-ad01-4439-ae61-d8d12e9bf8ac\nTime:2013-03-21T16:47:56.6645816Z</message>\r\n</error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c193090f-b986-42c5-b442-19b5d6259b3c',
+  'x-ms-request-id': '7c7e395a-ad01-4439-ae61-d8d12e9bf8ac',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:46 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:47Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice11')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:47Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice11')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice11</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:47:58Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice11')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:47:58Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice11')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice11</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bcda4477-97d1-464e-9cb5-2f76c25494e2',
+  'x-ms-request-id': 'ce0a1ece-201a-43f8-832a-d2a1111db070',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:46 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -709,38 +709,38 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3d8328f1-a75d-4440-8634-e61ddede4f99',
+  'x-ms-request-id': '4b09b354-36dc-476f-aaba-f2e0c157a716',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:48 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:58 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice12')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:50Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice12')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice12</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice12')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:00Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice12')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice12</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice12\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f6165434-74bc-4fa7-b86c-33501c439d7d',
+  'x-ms-request-id': 'd5e12bcf-bf99-4109-938d-dae12915f745',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:50 GMT' });
+  date: 'Thu, 21 Mar 2013 16:47:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice12', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A50.850966Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice12(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:50Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice12\" href=\"tableservice12(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice12\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:50.850966Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>value</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A00.2315468Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice12(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:00Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice12\" href=\"tableservice12(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice12\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:00.2315468Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>value</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n      <d:etag>W/\"datetime'2009-05-27T12%3A15%3A15.3321531Z'\"</d:etag>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A50.850966Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A00.2315468Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice12(PartitionKey=\'part1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5c738cc8-e341-4d25-ac5e-fafe2d587c37',
+  'x-ms-request-id': 'ad20d799-1436-47f7-add9-377c8f58c20d',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:50 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -749,23 +749,23 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .merge('/tableservice12(PartitionKey=%27part1%27,RowKey=%27row1%27)', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A51.6984051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A02.7736782Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6bc74bca-661a-41d8-9428-20f2c5c7babc',
+  'x-ms-request-id': '1e69941c-a5ab-4805-8189-3c08e67ef64f',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:51 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:52Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice12')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:52Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice12')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice12</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:03Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice12')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:03Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice12')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice12</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1b8d65c7-cdac-41a7-87d4-d6013d6709ce',
+  'x-ms-request-id': '03f6dcf2-dab1-4a95-8c17-d5480dab0b59',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:52 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -774,62 +774,62 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ac837d2c-27a9-410e-8dd0-3d39a7700c41',
+  'x-ms-request-id': '2ed7cca4-9b0f-48a7-8d48-96dccb083a3b',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:53 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:03 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice13')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:54Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice13')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice13</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice13')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:06Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice13')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice13</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice13\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e3b3a4b2-c4c9-483c-84f2-bcd0d7fe0eb1',
+  'x-ms-request-id': 'e90c8174-ffaa-4f0c-80fd-b7d6455c0dc9',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:54 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice13', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A20%3A56.8094951Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice13(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:20:56Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice13\" href=\"tableservice13(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice13\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:20:56.8094951Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>value</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A08.9211163Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice13(PartitionKey='part1',RowKey='row1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:08Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice13\" href=\"tableservice13(PartitionKey='part1',RowKey='row1')\" />\r\n  <category term=\"ciserversdk.tableservice13\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>part1</d:PartitionKey>\r\n      <d:RowKey>row1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:08.9211163Z</d:Timestamp>\r\n      <d:field>XML &lt;test&gt;</d:field>\r\n      <d:otherfield>value</d:otherfield>\r\n      <d:otherprops>my properties</d:otherprops>\r\n      <d:etag>W/\"datetime'2013-03-21T16%3A48%3A02.7736782Z'\"</d:etag>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A20%3A56.8094951Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A08.9211163Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice13(PartitionKey=\'part1\',RowKey=\'row1\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '22ba0d25-7fa9-4403-923a-8b6cb1d7f65f',
+  'x-ms-request-id': '23b42fc1-8375-47a8-b918-868a98d44db4',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:56 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .merge('/tableservice13(PartitionKey=%27part1%27,RowKey=%27row1%27)', '*')
-  .reply(412, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>UpdateConditionNotSatisfied</code>\r\n  <message xml:lang=\"en-US\">The update condition specified in the request was not satisfied.\nRequestId:6ccdf21c-7362-490f-9fbd-a6ceae46b61c\nTime:2013-02-26T13:20:56.9926382Z</message>\r\n</error>", { 'cache-control': 'no-cache',
+  .reply(412, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>UpdateConditionNotSatisfied</code>\r\n  <message xml:lang=\"en-US\">The update condition specified in the request was not satisfied.\nRequestId:ed57c498-493a-4ed1-ae8e-637bf17377cb\nTime:2013-03-21T16:48:08.9864267Z</message>\r\n</error>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6ccdf21c-7362-490f-9fbd-a6ceae46b61c',
+  'x-ms-request-id': 'ed57c498-493a-4ed1-ae8e-637bf17377cb',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:56 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:20:58Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice13')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:20:58Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice13')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice13</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:10Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice13')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:10Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice13')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice13</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a43f6096-8935-42ea-b59e-0ee45d2155d1',
+  'x-ms-request-id': 'ddfb6a39-e965-4647-b6ad-e933f065e596',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:57 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -838,23 +838,23 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '62bfd1bf-612f-41cb-91a2-c2837af4c8ef',
+  'x-ms-request-id': 'fd93809f-4b97-4bb1-a464-979980dacc9a',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:20:58 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:10 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice14')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:00Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice14')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice14</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice14')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:12Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice14')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice14</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice14\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3afb5779-0f37-4d80-a708-4e0303c05f8c',
+  'x-ms-request-id': '83321e10-ed6d-403f-93fb-7e101d166b4c',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:00 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -863,11 +863,11 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .put('/tableservice14(PartitionKey=%271%27,RowKey=%271%27)', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A01.4464051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A13.6357642Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7bfd18aa-f3ff-4dbb-911e-90c9a1c3e486',
+  'x-ms-request-id': 'bc72d811-a8df-4b3a-9863-ddf834d16758',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:00 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -876,36 +876,36 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .put('/tableservice14(PartitionKey=%271%27,RowKey=%271%27)', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A02.4874051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A14.6598667Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd5f108eb-b35a-471f-b888-0e0bcb743520',
+  'x-ms-request-id': '66e09d89-9a23-4762-bc01-b217af36cfc0',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:02 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/tableservice14(PartitionKey=%271%27,RowKey=%271%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A02.4874051Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice14(PartitionKey='1',RowKey='1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:04Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice14\" href=\"tableservice14(PartitionKey='1',RowKey='1')\" />\r\n  <category term=\"ciserversdk.tableservice14\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:02.4874051Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n      <d:field2>2</d:field2>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A14.6598667Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice14(PartitionKey='1',RowKey='1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:16Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice14\" href=\"tableservice14(PartitionKey='1',RowKey='1')\" />\r\n  <category term=\"ciserversdk.tableservice14\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:14.6598667Z</d:Timestamp>\r\n      <d:etag>W/\"datetime'2013-03-21T16%3A48%3A13.6357642Z'\"</d:etag>\r\n      <d:field1>value</d:field1>\r\n      <d:field2 m:type=\"Edm.Int32\">2</d:field2>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A02.4874051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A14.6598667Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '70a04a0c-8c32-4b0c-a0b7-3f216e6159ec',
+  'x-ms-request-id': '10722281-907a-4023-b89a-20ccd9d9fb80',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:03 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:04Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice14')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:04Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice14')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice14</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:17Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice14')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:17Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice14')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice14</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6668c707-00a2-499a-8a7c-848723972535',
+  'x-ms-request-id': '644cab32-c6ce-42d0-b9cb-8783497fab3b',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:04 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -914,23 +914,23 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '90a963b8-39eb-4022-856e-c3f6b29154f2',
+  'x-ms-request-id': '892b518e-be84-424d-b633-40eb4f0bd146',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:04 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:17 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice15')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:06Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice15')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice15</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice15')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:19Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice15')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice15</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice15\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e8fff376-b69f-4135-9e68-18de4d14584b',
+  'x-ms-request-id': '3f293291-daf3-4d6b-a11c-b0fbd3e0526b',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:05 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -939,11 +939,11 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .merge('/tableservice15(PartitionKey=%271%27,RowKey=%271%27)', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A07.6924051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A20.004401Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'accf3a6a-41c3-4b85-93da-1414c9684637',
+  'x-ms-request-id': 'fdf87c06-8f0e-41ba-8bd9-203d6252e3be',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:06 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -952,36 +952,36 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .merge('/tableservice15(PartitionKey=%271%27,RowKey=%271%27)', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A08.7354051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A21.013502Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '34036a3c-4050-4c88-958d-de82b75ab5ce',
+  'x-ms-request-id': 'afebbcdb-d411-481b-85c4-59e5990ba839',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:07 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/tableservice15(PartitionKey=%271%27,RowKey=%271%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A08.7354051Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice15(PartitionKey='1',RowKey='1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:10Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice15\" href=\"tableservice15(PartitionKey='1',RowKey='1')\" />\r\n  <category term=\"ciserversdk.tableservice15\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:08.7354051Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n      <d:field2>1</d:field2>\r\n      <d:field3>2</d:field3>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A21.013502Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice15(PartitionKey='1',RowKey='1')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:21Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice15\" href=\"tableservice15(PartitionKey='1',RowKey='1')\" />\r\n  <category term=\"ciserversdk.tableservice15\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:21.013502Z</d:Timestamp>\r\n      <d:etag>W/\"datetime'2013-03-21T16%3A48%3A20.004401Z'\"</d:etag>\r\n      <d:field1>value</d:field1>\r\n      <d:field2 m:type=\"Edm.Int32\">1</d:field2>\r\n      <d:field3 m:type=\"Edm.Int32\">2</d:field3>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A08.7354051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A21.013502Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '081a958e-4d56-4e8c-a478-331744323f04',
+  'x-ms-request-id': 'fa17c5ff-2bd8-4271-89aa-d452bc1dee75',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:09 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:11Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice15')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:11Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice15')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice15</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:22Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice15')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:22Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice15')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice15</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '20ef0bab-49cd-439c-9e52-6e7a72a808c2',
+  'x-ms-request-id': 'be5c21d2-3f8b-4b90-aa34-7f320cb2ef53',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:10 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:22 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -990,23 +990,23 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c5642480-0831-4b7d-bbb7-78ec4fbf92bf',
+  'x-ms-request-id': 'd1953f38-e54c-4a2a-869d-947134b39f2d',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:11 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:23 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice16')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:12Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice16')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice16</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice16')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:24Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice16')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice16</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice16\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eab03ff3-bf52-499c-9d41-d0172d1aff5a',
+  'x-ms-request-id': '8b57c3c5-3604-416f-98fc-6223042f5aee',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:11 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1015,36 +1015,36 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .merge('/tableservice16(PartitionKey=%271%27,RowKey=%271abc%27)', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A13.8224051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A26.1970202Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'edbf4927-5d7b-4e36-84f3-194a8eb3dda2',
+  'x-ms-request-id': '6bd162f4-27a4-42f9-93d6-fd17eb1fd8f1',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:13 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/tableservice16(PartitionKey=%271%27,RowKey=%271abc%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A13.8224051Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice16(PartitionKey='1',RowKey='1abc')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:15Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice16\" href=\"tableservice16(PartitionKey='1',RowKey='1abc')\" />\r\n  <category term=\"ciserversdk.tableservice16\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1abc</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:13.8224051Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n      <d:nonEmptyField3>0</d:nonEmptyField3>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A26.1970202Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice16(PartitionKey='1',RowKey='1abc')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:26Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice16\" href=\"tableservice16(PartitionKey='1',RowKey='1abc')\" />\r\n  <category term=\"ciserversdk.tableservice16\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1abc</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:26.1970202Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n      <d:nonEmptyField3 m:type=\"Edm.Int32\">0</d:nonEmptyField3>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A13.8224051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A26.1970202Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6b87fbac-5931-4ccd-96f4-9bea17ed765c',
+  'x-ms-request-id': '040b32d0-c39b-443b-9faf-39929c99fa2d',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:14 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:16Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice16')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:16Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice16')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice16</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:28Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice16')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:28Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice16')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice16</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a6b3a19b-3b67-4387-a58f-71208ba44821',
+  'x-ms-request-id': '2ab1aa88-2b63-45cf-906e-fed6efff43cd',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:15 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1053,23 +1053,23 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '75d87057-1372-435c-b7da-40929af43085',
+  'x-ms-request-id': '3cc0230a-15b7-4494-8d69-21a7c29b1644',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:16 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:29 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice17')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:18Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice17')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice17</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice17')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:30Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice17')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice17</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice17\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9e03d1a3-4e8a-418b-abb3-44532c11220a',
+  'x-ms-request-id': 'f3f6a75d-06c1-4654-8742-7407406f5d3c',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:17 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1078,36 +1078,36 @@ nock('https://ciserversdk.table.core.windows.net:443')
 .merge('/tableservice17(PartitionKey=%271%27,RowKey=%271abc%27)', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A19.0654051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A31.535554Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6e264a4f-d3be-40a5-9f53-1792b40e51bb',
+  'x-ms-request-id': 'b716c5d6-866b-4d39-bed2-5e63a781dbd6',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:19 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/tableservice17(PartitionKey=%271%27,RowKey=%271abc%27)')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A19.0654051Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice17(PartitionKey='1',RowKey='1abc')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:20Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice17\" href=\"tableservice17(PartitionKey='1',RowKey='1abc')\" />\r\n  <category term=\"ciserversdk.tableservice17\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1abc</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:19.0654051Z</d:Timestamp>\r\n      <d:content xml:space=\"preserve\">\n\nhi\n\nthere\n\n</d:content>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A31.535554Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice17(PartitionKey='1',RowKey='1abc')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:32Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice17\" href=\"tableservice17(PartitionKey='1',RowKey='1abc')\" />\r\n  <category term=\"ciserversdk.tableservice17\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1abc</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:31.535554Z</d:Timestamp>\r\n      <d:content xml:space=\"preserve\">\n\nhi\n\nthere\n\n</d:content>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A19.0654051Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A31.535554Z\'"',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4720b89d-fbdb-442f-9491-2f32d41d46a1',
+  'x-ms-request-id': '6f2ad9d9-ab12-4f39-b5ab-b4ccfa64ec37',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:20 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:21Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice17')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:21Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice17')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice17</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:33Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice17')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:33Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice17')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice17</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b822b0ff-1e1c-47fb-b782-6329b0a5acab',
+  'x-ms-request-id': 'a102811c-5e20-4b4a-a1b7-e4b705fc71e2',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:21 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1116,92 +1116,92 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a64dd5a2-e351-4d44-885e-65533c79bc98',
+  'x-ms-request-id': 'bf59153d-9d16-4ccb-987c-98b36a22a436',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:21 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:35 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice18')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:23Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice18')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice18</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/Tables('tableservice18')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:35Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice18')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice18</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'https://ciserversdk.table.core.windows.net/Tables(\'tableservice18\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e8062fa8-1b19-448c-aeb9-7e23d1dc996e',
+  'x-ms-request-id': '52fe2b12-8f06-4efa-b973-ffced37c2d4f',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:22 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice18', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A24.1429547Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='1',RowKey='1st')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:24Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='1',RowKey='1st')\" />\r\n  <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1st</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:24.1429547Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A37.0142156Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='1',RowKey='1st')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:37Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='1',RowKey='1st')\" />\r\n  <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>1st</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:37.0142156Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A24.1429547Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A37.0142156Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey=\'1\',RowKey=\'1st\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '87615175-c76a-4e3d-a95c-1b2604ba08fe',
+  'x-ms-request-id': '371ba6b8-bdf3-4b67-8f52-2d7306e42952',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:23 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice18', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A25.2480613Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='1',RowKey='2st')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:25Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='1',RowKey='2st')\" />\r\n  <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>2st</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:25.2480613Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A38.2324035Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='1',RowKey='2st')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:38Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='1',RowKey='2st')\" />\r\n  <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>1</d:PartitionKey>\r\n      <d:RowKey>2st</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:38.2324035Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A25.2480613Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A38.2324035Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey=\'1\',RowKey=\'2st\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e91b8bb5-351c-4c94-97cf-7d9274b955e2',
+  'x-ms-request-id': '4120c562-f79a-424b-8d09-0e70a7599d34',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:25 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/tableservice18', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A26.9463752Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='2',RowKey='2st')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:26Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='2',RowKey='2st')\" />\r\n  <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>2</d:PartitionKey>\r\n      <d:RowKey>2st</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:26.9463752Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A40.9472729Z'&quot;\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='2',RowKey='2st')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:40Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='2',RowKey='2st')\" />\r\n  <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:PartitionKey>2</d:PartitionKey>\r\n      <d:RowKey>2st</d:RowKey>\r\n      <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:40.9472729Z</d:Timestamp>\r\n      <d:field1>value</d:field1>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  etag: 'W/"datetime\'2013-02-26T13%3A21%3A26.9463752Z\'"',
+  etag: 'W/"datetime\'2013-03-21T16%3A48%3A40.9472729Z\'"',
   location: 'https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey=\'2\',RowKey=\'2st\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '98c8af5b-2222-4ce8-b346-7a9ce4fc20ca',
+  'x-ms-request-id': '5c508328-a301-461c-9b7e-70c8cf7e063d',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:26 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/tableservice18()?$filter=PartitionKey%20eq%20%271%27')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">tableservice18</title>\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice18</id>\r\n  <updated>2013-02-26T13:21:27Z</updated>\r\n  <link rel=\"self\" title=\"tableservice18\" href=\"tableservice18\" />\r\n  <entry m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A24.1429547Z'&quot;\">\r\n    <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='1',RowKey='1st')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:27Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='1',RowKey='1st')\" />\r\n    <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:PartitionKey>1</d:PartitionKey>\r\n        <d:RowKey>1st</d:RowKey>\r\n        <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:24.1429547Z</d:Timestamp>\r\n        <d:field1>value</d:field1>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry m:etag=\"W/&quot;datetime'2013-02-26T13%3A21%3A25.2480613Z'&quot;\">\r\n    <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='1',RowKey='2st')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:27Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='1',RowKey='2st')\" />\r\n    <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:PartitionKey>1</d:PartitionKey>\r\n        <d:RowKey>2st</d:RowKey>\r\n        <d:Timestamp m:type=\"Edm.DateTime\">2013-02-26T13:21:25.2480613Z</d:Timestamp>\r\n        <d:field1>value</d:field1>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">tableservice18</title>\r\n  <id>https://ciserversdk.table.core.windows.net/tableservice18</id>\r\n  <updated>2013-03-21T16:48:42Z</updated>\r\n  <link rel=\"self\" title=\"tableservice18\" href=\"tableservice18\" />\r\n  <entry m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A37.0142156Z'&quot;\">\r\n    <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='1',RowKey='1st')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:42Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='1',RowKey='1st')\" />\r\n    <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:PartitionKey>1</d:PartitionKey>\r\n        <d:RowKey>1st</d:RowKey>\r\n        <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:37.0142156Z</d:Timestamp>\r\n        <d:field1>value</d:field1>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry m:etag=\"W/&quot;datetime'2013-03-21T16%3A48%3A38.2324035Z'&quot;\">\r\n    <id>https://ciserversdk.table.core.windows.net/tableservice18(PartitionKey='1',RowKey='2st')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:42Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"tableservice18\" href=\"tableservice18(PartitionKey='1',RowKey='2st')\" />\r\n    <category term=\"ciserversdk.tableservice18\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:PartitionKey>1</d:PartitionKey>\r\n        <d:RowKey>2st</d:RowKey>\r\n        <d:Timestamp m:type=\"Edm.DateTime\">2013-03-21T16:48:38.2324035Z</d:Timestamp>\r\n        <d:field1>value</d:field1>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd1dd249b-4b26-4638-8f0c-25cac464b7ae',
+  'x-ms-request-id': '6f2a121b-840b-4a88-a230-8285716f02ff',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:26 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:27Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice18')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:27Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice18')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice18</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:43Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice18')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:43Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice18')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice18</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '93425b78-8969-40af-8e6e-4416d98e4707',
+  'x-ms-request-id': '42806da3-ec4b-46e6-a1b6-066264f219e7',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:27 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1210,59 +1210,59 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '80a3917f-15b2-4160-854a-218d3d54ae5c',
+  'x-ms-request-id': '530705f5-3013-40cf-ad24-420827b7c4c8',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:29 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:45 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:29Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:46Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f01abca0-d010-4818-a094-a92c2c19e1c8',
+  'x-ms-request-id': '847fed85-6f05-4dc1-b172-8a682b7721a6',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:29 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:45 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:33Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:46Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3f70c1e8-7caf-4636-a8f6-5068281edc2d',
+  'x-ms-request-id': '6e6ac537-7b90-469a-8d53-2030b5fbbb2b',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:33 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:46 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://ciserversdk.table.core.windows.net:80')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"http://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>http://ciserversdk.table.core.windows.net/Tables('tableservice19')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:34Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice19')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice19</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"http://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>http://ciserversdk.table.core.windows.net/Tables('tableservice19')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:47Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice19')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice19</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'http://ciserversdk.table.core.windows.net/Tables(\'tableservice19\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3a51534a-b03c-4678-9417-c9faeba802bb',
+  'x-ms-request-id': 'b8e9acfc-821f-495e-a4ab-a580dd4ce836',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:34 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:36Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice19')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:36Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice19')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice19</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:48Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice19')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:48Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice19')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice19</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1fa5990f-8db6-4c10-9d2c-9d5f093bd456',
+  'x-ms-request-id': '11578076-2bc1-4e48-a5fd-bba5e429a2dd',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:36 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1271,35 +1271,35 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2c84de01-b2cc-4721-8d96-16afad0ea1fc',
+  'x-ms-request-id': '5dc67521-58db-4db9-b6d3-a4f96f994c3e',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:37 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:48 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://ciserversdk.table.core.windows.net:80')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"http://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>http://ciserversdk.table.core.windows.net/Tables('tableservice20')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:38Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice20')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice20</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"http://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>http://ciserversdk.table.core.windows.net/Tables('tableservice20')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:51Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice20')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice20</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'http://ciserversdk.table.core.windows.net/Tables(\'tableservice20\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0f0759e0-1e39-4f4d-9ce9-f13485ea337e',
+  'x-ms-request-id': 'e1e5a03f-3793-47fe-b527-1b4e8d76e6e8',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:37 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:39Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice20')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:39Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice20')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice20</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:52Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice20')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:52Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice20')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice20</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bf6cf7c7-ea2d-42fe-9e47-f8904d50fd0f',
+  'x-ms-request-id': '21be66d5-d948-493b-9303-b8553e3b4d2e',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:38 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1308,35 +1308,35 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '22ac07d8-b681-4b75-8e3a-8bbb8e1e9554',
+  'x-ms-request-id': '2f9e0644-4f56-47b9-8d84-85d342bd27f4',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:39 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:53 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('http://ciserversdk.table.core.windows.net:80')
   .filteringRequestBody(function (path) { return '*';})
 .post('/Tables', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"http://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>http://ciserversdk.table.core.windows.net/Tables('tableservice21')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-26T13:21:41Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice21')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice21</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"http://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>http://ciserversdk.table.core.windows.net/Tables('tableservice21')</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-21T16:48:54Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice21')\" />\r\n  <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:TableName>tableservice21</d:TableName>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   location: 'http://ciserversdk.table.core.windows.net/Tables(\'tableservice21\')',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9646a9b1-e2df-418e-8a99-d127f047c855',
+  'x-ms-request-id': '5e15ec31-e8db-4564-9e4c-5c6370559f88',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:40 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:41Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice21')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-26T13:21:41Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice21')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice21</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:55Z</updated>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n  <entry>\r\n    <id>https://ciserversdk.table.core.windows.net/Tables('tableservice21')</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-21T16:48:55Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Tables\" href=\"Tables('tableservice21')\" />\r\n    <category term=\"ciserversdk.Tables\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:TableName>tableservice21</d:TableName>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bad720bd-dfcb-4c40-8c4f-498544ca0255',
+  'x-ms-request-id': 'f78dfe6a-afed-4f08-915c-c64e02834bfd',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:41 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1345,19 +1345,19 @@ nock('https://ciserversdk.table.core.windows.net:443')
   .reply(204, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '647a0429-ecd1-4574-bd49-658c73006aa2',
+  'x-ms-request-id': 'dfa602b2-7a12-4bd0-b86e-e7b68a7697d6',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:42 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:57 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversdk.table.core.windows.net:443')
   .get('/Tables')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-02-26T13:21:44Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://ciserversdk.table.core.windows.net/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Tables</title>\r\n  <id>https://ciserversdk.table.core.windows.net/Tables</id>\r\n  <updated>2013-03-21T16:48:57Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"self\" title=\"Tables\" href=\"Tables\" />\r\n</feed>", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Windows-Azure-Table/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1492e5ed-11e8-4e84-a0ab-884648268221',
+  'x-ms-request-id': '578e10d1-6b83-4157-8ce7-2650fd0aa55b',
   'x-ms-version': '2011-08-18',
-  date: 'Tue, 26 Feb 2013 13:21:44 GMT' });
+  date: 'Thu, 21 Mar 2013 16:48:57 GMT' });
  return result; }]];
