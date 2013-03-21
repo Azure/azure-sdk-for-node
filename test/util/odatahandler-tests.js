@@ -27,108 +27,16 @@ suite('odatahandler-tests', function () {
   test('Serialize', function (done) {
     var odataHandler = new OdataHandler('m', 'd');
 
-    var dateTime = new Date().toISOString();
-
     var entity = {
-      title: '',
-      updated: dateTime,
-      author: {
-        name: ''
-      },
-      id: '',
-      content: {
-        '$': {
-          type: 'application/xml'
-        },
-        'm:properties': {
-          'd:PartitionKey': 'part1',
-          'd:RowKey': 'row1',
-          'd:intValue': 10,
-          'd:stringValue': 'my string',
-          'd:nullValue': null
-        }
-      }
+      'PartitionKey': 'part1',
+      'RowKey': 'row1',
+      'intValue': 10,
+      'stringValue': 'my string',
+      'nullValue': null
     };
 
     var res = odataHandler.serialize(entity);
-
-    assert.equal(res,
-      '<?xml version="1.0" encoding="utf-8" standalone="yes"?>' +
-      '<entry xmlns="http://www.w3.org/2005/Atom" ' +
-      'xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" ' +
-      'xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">' +
-      '<title/>' +
-      '<updated>' + dateTime + '</updated>' +
-      '<author>' +
-      '<name/>' +
-      '</author>' +
-      '<id/>' +
-      '<content type="application/xml">' +
-      '<m:properties>' +
-      '<d:PartitionKey>part1</d:PartitionKey>' +
-      '<d:RowKey>row1</d:RowKey>' +
-      '<d:intValue>10</d:intValue>' +
-      '<d:stringValue>my string</d:stringValue>' +
-      '<d:nullValue m:null="true"/>' +
-      '</m:properties>' +
-      '</content>' +
-      '</entry>'
-    );
-
-    done();
-  });
-
-  test('SerializeDataTypes', function (done) {
-    var odataHandler = new OdataHandler('m', 'd');
-
-    var dateTime = new Date().toISOString();
-
-    var entity = {
-      title: '',
-      updated: dateTime,
-      author: {
-        name: ''
-      },
-      id: '',
-      content: {
-        '$': {
-          type: 'application/xml'
-        },
-        'm:properties': {
-          'd:PartitionKey': {
-            '_': 'part1',
-            '$': { 'm:type': 'Edm.String' }
-          },
-          'd:RowKey': {
-            '_': 'row1',
-            '$': { 'm:type': 'Edm.String' }
-          },
-          'd:intValue':  {
-            '_': 10,
-            '$': { 'm:type': 'Edm.Int32' }
-          },
-          'd:stringValue':  {
-            '_': 'my string',
-            '$': { 'm:type': 'Edm.String' }
-          },
-          'd:nullValue': null
-        }
-      }
-    };
-
-    var res = odataHandler.serialize(entity);
-
-    assert.equal(res,
-      '<?xml version="1.0" encoding="utf-8" standalone="yes"?>' +
-      '<entry xmlns="http://www.w3.org/2005/Atom" ' +
-      'xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" ' +
-      'xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">' +
-      '<title/>' +
-      '<updated>' + dateTime + '</updated>' +
-      '<author>' +
-      '<name/>' +
-      '</author>' +
-      '<id/>' +
+    assert.notEqual(res.indexOf(
       '<content type="application/xml">' +
       '<m:properties>' +
       '<d:PartitionKey m:type="Edm.String">part1</d:PartitionKey>' +
@@ -137,9 +45,46 @@ suite('odatahandler-tests', function () {
       '<d:stringValue m:type="Edm.String">my string</d:stringValue>' +
       '<d:nullValue m:null="true"/>' +
       '</m:properties>' +
-      '</content>' +
-      '</entry>'
-    );
+      '</content>'), -1);
+
+    done();
+  });
+
+  test('SerializeDataTypes', function (done) {
+    var odataHandler = new OdataHandler('m', 'd');
+
+    var entity = {
+      'PartitionKey': {
+        '_': 'part1',
+        '$': { 'type': 'Edm.String' }
+      },
+      'RowKey': {
+        '_': 'row1',
+        '$': { 'type': 'Edm.String' }
+      },
+      'intValue':  {
+        '_': 10,
+        '$': { 'type': 'Edm.Int32' }
+      },
+      'stringValue':  {
+        '_': 'my string',
+        '$': { 'type': 'Edm.String' }
+      },
+      'nullValue': null
+    };
+
+    var res = odataHandler.serialize(entity);
+
+    assert.notEqual(res.indexOf(
+      '<content type="application/xml">' +
+      '<m:properties>' +
+      '<d:PartitionKey m:type="Edm.String">part1</d:PartitionKey>' +
+      '<d:RowKey m:type="Edm.String">row1</d:RowKey>' +
+      '<d:intValue m:type="Edm.Int32">10</d:intValue>' +
+      '<d:stringValue m:type="Edm.String">my string</d:stringValue>' +
+      '<d:nullValue m:null="true"/>' +
+      '</m:properties>' +
+      '</content>'), -1);
 
     done();
   });
