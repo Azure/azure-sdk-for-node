@@ -43,7 +43,7 @@ svcmgmt.deleteDeployment(inputNames.serviceName, inputNames.deploymentName, func
     testCommon.showErrorResponse(error);
   } else {
     if (response && response.isSuccessful) {
-      if (response.statusCode == HttpResponseCodes.OK_CODE) {
+      if (response.statusCode == HttpResponseCodes.Ok) {
         console.log('OK');
       } else {
         console.log('Pending');

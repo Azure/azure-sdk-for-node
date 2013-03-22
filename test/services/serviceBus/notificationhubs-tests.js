@@ -203,6 +203,7 @@ describe('Notification hubs', function () {
 
   describe('Shared Access Signature', function () {
     var notificationHubService;
+    var notificationListenHubService;
     var hubName;
 
     beforeEach(function (done) {
@@ -214,13 +215,21 @@ describe('Notification hubs', function () {
             if (err) {
               setupHub();
             } else {
-              var listenRule = hub.AuthorizationRules.AuthorizationRule.filter(function (rule) {
+              var fullRule = hub.AuthorizationRules.AuthorizationRule.filter(function (rule) {
                 return rule.KeyName === 'DefaultFullSharedAccessSignature';
               })[0];
 
               var endpoint = 'https://' + process.env.AZURE_SERVICEBUS_NAMESPACE + '.servicebus.windows.net';
-              notificationHubService = azure.createNotificationHubService(hubName, endpoint, listenRule.KeyName, listenRule.PrimaryKey);
+              notificationHubService = azure.createNotificationHubService(hubName, endpoint, fullRule.KeyName, fullRule.PrimaryKey);
               suiteUtil.setupService(notificationHubService);
+
+              var listenRule = hub.AuthorizationRules.AuthorizationRule.filter(function (rule) {
+                return rule.KeyName === 'DefaultListenSharedAccessSignature';
+              })[0];
+
+              var endpoint = 'https://' + process.env.AZURE_SERVICEBUS_NAMESPACE + '.servicebus.windows.net';
+              notificationListenHubService = azure.createNotificationHubService(hubName, endpoint, listenRule.KeyName, listenRule.PrimaryKey);
+              suiteUtil.setupService(notificationListenHubService);
 
               done();
             }
@@ -237,6 +246,17 @@ describe('Notification hubs', function () {
       }, function (error, result) {
         should.not.exist(error);
         result.statusCode.should.equal(201);
+
+        done();
+      });
+    });
+
+    it('should not be able to execute a send operation with listen rights only', function (done) {
+      notificationListenHubService.apns.send(null, { 
+        alert: 'This is my toast message for iOS!'
+      }, function (error, result) {
+        should.exist(error);
+        result.statusCode.should.equal(401);
 
         done();
       });

@@ -77,7 +77,7 @@ suite('sharedkeylite-tests', function () {
         assert.notEqual(container1.lastModified, null);
       }
 
-      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       // creating again will result in a duplicate error
       blobService.createContainer(containerName, function (createError2, container2) {

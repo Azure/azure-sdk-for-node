@@ -71,7 +71,7 @@ suite('batchserviceclient-tests', function () {
     tableService.createTable(tableName, null, function (createTableError, table, createTableResponse) {
       assert.equal(createTableError, null);
       assert.notEqual(table, null);
-      assert.equal(createTableResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createTableResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.insertEntity(tableName, entity1, null, function (insertError, insertEntity, insertEntityResponse) {
         assert.equal(insertError, null);
@@ -83,7 +83,7 @@ suite('batchserviceclient-tests', function () {
       assert.notEqual(tableService.operations, null);
       tableService.commitBatch(function (performBatchError, performBatchOperationResponses, performBatchResponse) {
         assert.equal(performBatchError, null);
-        assert.equal(performBatchResponse.statusCode, HttpConstants.HttpResponseCodes.ACCEPTED_CODE);
+        assert.equal(performBatchResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // The operations were successfully reset
         assert.equal(tableService.operations, null);

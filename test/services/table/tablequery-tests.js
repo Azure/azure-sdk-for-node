@@ -71,7 +71,7 @@ suite('tablequery-tests', function () {
       .where('Date eq ?', date);
 
     assert.equal('Table()', tableQuery.toPath());
-    assert.equal('Date eq datetime\'2001-02-03T04:05:06+00:00\'', tableQuery.toQueryObject()['$filter']);
+    assert.equal('Date eq datetime\'2001-02-03T04:05:06.000Z\'', tableQuery.toQueryObject()['$filter']);
     done();
   });
 

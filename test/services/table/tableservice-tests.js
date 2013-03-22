@@ -139,7 +139,7 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       assert.ok(table);
       if (table) {
@@ -161,7 +161,7 @@ suite('tableservice-tests', function () {
         assert.equal(existsError, null);
         assert.notEqual(tableResponse, null);
         assert.ok(existsResponse.isSuccessful);
-        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
         done();
       });
     });
@@ -174,7 +174,7 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       assert.ok(table);
       if (table) {
@@ -212,18 +212,18 @@ suite('tableservice-tests', function () {
       tableService.createTable(tableName1, function (createError, table1, createResponse) {
         assert.equal(createError, null);
         assert.notEqual(table1, null);
-        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         tableService.createTable(tableName2, function (createError2, table2, createResponse2) {
           assert.equal(createError2, null);
           assert.notEqual(table2, null);
-          assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           tableService.queryTables(function (queryError, tables, tablesContinuation, queryResponse) {
             assert.equal(queryError, null);
             assert.notEqual(tables, null);
             assert.ok(queryResponse.isSuccessful);
-            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
             var entries = 0;
             tables.forEach(function (currentTable) {
@@ -257,13 +257,13 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.deleteTable(tableName, function (deleteError, deleted, deleteResponse) {
         assert.equal(deleteError, null);
         assert.equal(deleted, true);
         assert.ok(deleteResponse.isSuccessful);
-        assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+        assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
         done();
       });
     });
@@ -275,17 +275,17 @@ suite('tableservice-tests', function () {
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         tableService.insertEntity(tableName, entity2, function (insertError2, insertEntity2, insertResponse2) {
           assert.equal(insertError2, null);
           assert.notEqual(insertEntity2, null);
-          assert.equal(insertResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(insertResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           var tableQuery = TableQuery.select()
             .from(tableName);
@@ -294,7 +294,7 @@ suite('tableservice-tests', function () {
             assert.equal(queryError, null);
             assert.notEqual(entries, null);
             assert.ok(queryResponse.isSuccessful);
-            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
             assert.ok(entries);
             var entities = 0;
@@ -334,7 +334,7 @@ suite('tableservice-tests', function () {
             tableService.queryEntities(tableQuery, function (queryError2, tableEntries2, tableEntriesContinuation2, queryResponse2) {
               assert.equal(queryError2, null);
               assert.ok(queryResponse2.isSuccessful);
-              assert.equal(queryResponse2.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+              assert.equal(queryResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
               assert.ok(tableEntries2);
               var newentities = 0;
@@ -366,7 +366,7 @@ suite('tableservice-tests', function () {
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity = entity1;
       newEntity['field'] = 'XML <test>'; // this should work without breaking the XML
@@ -375,7 +375,7 @@ suite('tableservice-tests', function () {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         var tableQuery = TableQuery.select()
           .from(tableName)
@@ -385,7 +385,7 @@ suite('tableservice-tests', function () {
           assert.equal(queryError, null);
           assert.notEqual(entries, null);
           assert.ok(queryResponse.isSuccessful);
-          assert.ok(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+          assert.ok(queryResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
           assert.equal(entries[0]['field'], 'XML <test>');
           done();
@@ -401,19 +401,19 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         tableService.deleteEntity(tableName, entity1, false, function (deleteError, deleted, deleteResponse) {
           assert.equal(deleteError, null);
           assert.equal(deleted, true);
           assert.ok(deleteResponse.isSuccessful);
-          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
 
           done();
         });
@@ -428,13 +428,13 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Set a fake old etag
         entity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
@@ -444,7 +444,7 @@ suite('tableservice-tests', function () {
           assert.equal(deleteError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
           assert.equal(deleted, false);
           assert.equal(deleteResponse.isSuccessful, false);
-          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
           done();
         });
@@ -460,14 +460,14 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
         var originalEtag = newEntity1['etag'];
 
         newEntity1['otherfield'] = newField;
@@ -476,7 +476,7 @@ suite('tableservice-tests', function () {
           assert.equal(updateError2, null);
           assert.notEqual(updateEntity2, null);
           assert.ok(updateResponse2.isSuccessful);
-          assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NoContent);
           assert.notEqual(newEntity1.etag, originalEtag);
 
           done();
@@ -493,14 +493,14 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         newEntity1['otherfield'] = newField;
 
@@ -511,7 +511,7 @@ suite('tableservice-tests', function () {
           assert.equal(updateError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
           assert.equal(updateEntity, null);
           assert.equal(updateResponse.isSuccessful, false);
-          assert.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
           done();
         });
@@ -527,14 +527,14 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         insertEntity['otherfield'] = newField;
 
@@ -542,7 +542,7 @@ suite('tableservice-tests', function () {
           assert.equal(mergeError, null);
           assert.notEqual(mergeEntity, null);
           assert.ok(mergeResponse.isSuccessful);
-          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
 
           done();
         });
@@ -558,14 +558,14 @@ suite('tableservice-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         newEntity1['otherfield'] = newField;
 
@@ -576,7 +576,7 @@ suite('tableservice-tests', function () {
           assert.equal(mergeError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
           assert.equal(mergeEntity, null);
           assert.equal(mergeResponse.isSuccessful, false);
-          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
           done();
         });
