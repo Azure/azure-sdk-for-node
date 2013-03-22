@@ -5,509 +5,509 @@ var result =
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">cfy1l15985</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">rvan11rizf</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'beb57b3956bb4feabfaf5804aa9a51ba',
-  date: 'Thu, 21 Feb 2013 03:10:33 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '1cddcc47949c442e9d30d37a718722c9',
+  date: 'Tue, 19 Mar 2013 20:28:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/cfy1l15985/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>rule1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/cfy1l15985/firewallrules/rule1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/cfy1l15985</ParentLink><StartIPAddress>0.0.0.0</StartIPAddress><EndIPAddress>255.255.255.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/rvan11rizf/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>rule1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/rvan11rizf/firewallrules/rule1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/rvan11rizf</ParentLink><StartIPAddress>0.0.0.0</StartIPAddress><EndIPAddress>255.255.255.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '592',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '2ed265ed432347d8960c09d253c48d6e',
-  date: 'Thu, 21 Feb 2013 03:10:36 GMT' });
+  'x-ms-request-id': '68f3503ac7624e01be27b297601eb017',
+  date: 'Tue, 19 Mar 2013 20:28:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://cfy1l15985.database.windows.net:443')
+nock('https://rvan11rizf.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">JN7qQd+Jx2FFUiXIgULlhn5boMFJlGmgdam+YzajqOhgHUiumyj40K1n6ANKz2VMkuEB1Oykrvm3FYsV4e3n7K7u2nXuJz707nxVFEAW9YDSnQBhfBoeio52TqZwd+0NBrhIdrhgZg8Ii5AwbrVgBreErJeVD/mWvCZh22Kv/rsKd9TZzCuw6L3Kv7J2OPOEzSqBGVTOG25jO0ekw/CbM2cu7TE9t+IcLhrditsZrUZFPVBXw80klJzBofVBffpAD99PrQbtQYNNMWCJb+h0UItmYNawLSV21D9sndr4AAfWY1WHdcF5t0IYV9ixRZGXKdrePRCBjwcxbNIJWZm9vHBZa804TN6NPJu2z3euAElqCa4fpoMWNChhrXGeC4bk9ZllmTvx47Aic/S2nj5vFKse5TXiYClgcfQe6xWliqP4x8OCbFZ33FtfuOdKGMlNsxpYjfZpj+tJD16vHl9GZjy5WJ+F5m/Vt9W1WuF2KsdXam8P63dA1hH3hhUjOvmbcpRBG+YFgp0V7k8llqaUeFTjKqQIg/Gq5t5KuKpElMpbZui9wAT56iP1ahuFWPma1NYJaz1Jz+tmKIfrpdQW94Xyu7uo7iR4NI2NgTT8tPAjDrGJf9jl88nR33ua+EMVoQ/26ZGt37zgUfKp6Tsxy/9QOupHTcyT6rpvRkDptwj4gJkQ2oYCoTxE7bfH/xLALrzC1M2H1hfvCs2AnLWiIGBbjdFyvkdkSRj3h66yQr30CtFsa1+/5/daNC81XaXrYD3UCmvICc7epNw2pe59Gw==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">YaIFYvfghevvppZMZ/WIfJ7MrezaoHnUud5turXI+AlY4el3Tt7Zzre0+ASLyxj6tppS4er3oEdM98xQiYfvw/KN1funsJWyd9zkVAiqoiy3BHs0FcQ6daMTqdraybN/euMe7KxPh5EMCD66KWLGas6fk1Hq+APfPgB4RQECEcSstDogaIxvIAqgR8cWzCNrapZG6Xl/zjP4c2FWaZsOJ/xsb7TTQmH/TEpdNql+NS49wCKhYeOTRrK93GD0n9aBt22a80Ry9ak7q0P88+tTT/Gg4+UXcs8X5Ro2+o084YBfwS+IscMQv06vSpQSOZSVmaZe3bwBCkajKbUS8GThTZL/mjslkdoQPUnQt2pfB+zaBc22MTeR2AUgXw6mZBroIyYeMO9D7qKdIsBviAbpL0ioVjfng+pJiWSjsCPhP+SR9OyzKtURNeRdXxoTsgs5qAdm3i9XCe+tqSxnB0I+HUQCmqgPhrWeZvmyNPui/gFcrvS1xBHEnX+pQW47t3ZmuF7KyL52HLsAJ71F6qy2IWtEGerFs/1/wRnIibkwOHxpQDDQ8R10ELtvHhr4pYKZp7SYdw0iYF88lg3WZmmErHhJmfFbgxCebHNgmgKyxy7QU5/d5xZsGTWUSY+gqHa/ahFPQMlntxSOXyNzdkMHJONUSJUg8tGOOfvqORbLmcL5BGoCnzCrLYub3QMWSqwNYmj9HPCH5jGPh6oARrwSZexZq6mExNrSst5uoi4A8uVOs6rM61BqDm82uwbeQLJODDFFp5B1eVJrCrNG/+GTLQ==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6044c99e-5024-49f7-7e8d-c5e4b9d36f37',
-  'set-cookie': [ '.SQLSERVERMANAGEMENT=1R34H8KpH++ukOV2HRyqUw==; path=/v1/ManagementService.svc; expires=21-Feb-2013 08:10:39 GMT; httponly; secure' ],
+  'x-ms-request-id': '9c9618b2-d251-9093-d891-868938b9f415',
+  'set-cookie': [ '.SQLSERVERMANAGEMENT=J1Hg/WHvl5+aAzZilqPNSg==; path=/v1/ManagementService.svc; expires=20-Mar-2013 01:28:31 GMT; httponly; secure' ],
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:10:39 GMT' });
+  date: 'Tue, 19 Mar 2013 20:28:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://cfy1l15985.database.windows.net:443')
+nock('https://rvan11rizf.database.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/v1/ManagementService.svc/Server2(%27cfy1l15985%27)/Databases', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2('cfy1l15985')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2('cfy1l15985')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-21T03:10:41Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:10:40.663</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
+.post('/v1/ManagementService.svc/Server2(%27rvan11rizf%27)/Databases', '*')
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2('rvan11rizf')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2('rvan11rizf')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-19T20:28:34Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:28:33.497</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  location: 'https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2(\'cfy1l15985\')/Databases(4)',
+  location: 'https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2(\'rvan11rizf\')/Databases(4)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6044c99e-5024-49f7-7e8d-c5e4b9d36f37',
+  'x-ms-request-id': '9c9618b2-d251-9093-d891-868938b9f415',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:10:40 GMT' });
+  date: 'Tue, 19 Mar 2013 20:28:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://cfy1l15985.database.windows.net:443')
+nock('https://rvan11rizf.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">YJlfmUdRZDT99uAkLYHMecMGPU5wwG1gPti0c17oPWHNqZY8XzdJOiMeA6msM/WXi+tVj1pwB1W4VYCR9qaj4YucPIR27i6OydCz8nz9+dQwlKEw0kMrqtTPQE5fdhhRHOc+A3x284fnhTEtgUlRpl3HF91yK/mBiCvP+0S/jn9Bl7bFDSxsWL/sASeLGi5jl1b7P9KCBdfrF8pi0aZ22qlf2X0vvf/MY344TWD5OFaB9kBuiKQmHOpaC+0c5OoemnvEoD03waXWlklBesIvZcHig/++2PEYN4x1Vj7KiaOtObFYv4RJRnoTU4S1CEhjVJatgp32VLAGn5nKlF8/EwD7m+l7EBOADtHTQ3Q71fbncJUTg/PHpHXp4yRHmVqbbesBWFKvcrViZ/ivQLOTbqHBL93mEjFQwe0OnlS+RpjpFWjjL2Pn/p3Zlqhc5W9thbt3q8HwKGtA8As52mWe4m4K/DNDwgvRFKV2TYlCAD/68gTUHBL5StN9HJJzpolp8qCOSPCW7uwXqcc/+w97r4Zglc+Vyqyk2tWr5dXe8W1Hc+1hCWhhVaHb531NRrZMYxsOlIzPsSNS84b/bGqTXEztSTTu4/qMFS2LyIlBMHLJ5N716INGTrGDn/O+yRp2e5LBRJBQNlZkO9fposHilTi0ba/FVFOtlzx7X29K51fu05jM0Fo3BO5ydYi2amYBPvcj6en2U+LhKUBDQtdYUV+0LjQQdpK29ywTukJ6Nmcysvx+MtLN4D5oE1YDHqBNFaPB7/2STYUMC97PbluQNg==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">J/PUpXFDS2ejmiy0s2nI87mlx3TSmjAMGIAzZDhpGM0vzItXAU13HJJ2cFRwUZp/fiURCXbeiO2l27TP6QUy3iXj0gUA/EdWalvrpLRwfGNMYvSDUfThrjk+RTg33C8RWB7pGGRBYaolR5IAbkHrRXKKzYKRaYdVGT7k9lGHk4aGMGQTDjZ3/AqtWxrFdfTZnB+B9jPxsEnLQlhpIp9VWGiHJ6qn7TYDtOlQP1WFl+/w26fa+MoPrODMDaQGshQvG4g92a/z0m1j3bzpLY7E2FapoesOb/hHsz/YaQkkZGNMWAT9wWyg2EwzJ8eOqcxy483ElRK0qjnhoBc4LCi/KX6bPyqqGXo7OhdbOCZ+nHLqmzpczQAETHynlB2cKs6+IIrnTj7QlD6ROfH7LTSCbMVhH8Y7NGXIUUauGlD75tEn8Ki9P+LXIX+jJbeSTK0VVDBfWtCbGlMzdAwXsZG2ef/EHJWPrD/YYLFauVJKRF6uVO+TBpzs8palG3NOQI3fFMV/oWj+ax4vTdog3rToTN6nhqqUSPFPSxEaGkV8t6Y6QmX3YSwquhviLHgoWZKrCXf65SvYXOJIcZBMxl+BmyvBIO+9unc7eSyz9PoFUwoQSIqpW3lpOx6FJzkfi5NlsY52kCgRImZ8aevUWdYAHaJvFIuJibGpeI/TV6GC+98aY4L/YLSgoNM3e0F5rPXnjep3hf7smJPDREXuCKFHmmW5WYIo2cKggANsNI9jwXTOSt47GQ05VzDJqU8EtquSNYetT8kz14OHfKxMZG7cew==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6351e138-f2b1-a6ed-9801-41a726508e4d',
+  'x-ms-request-id': '24952aa7-4217-d0bc-fe6a-8c8fee12b7ff',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:10:44 GMT' });
+  date: 'Tue, 19 Mar 2013 20:28:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://cfy1l15985.database.windows.net:443')
-  .delete('/v1/ManagementService.svc/Server2(%27cfy1l15985%27)/Databases(4)')
+nock('https://rvan11rizf.database.windows.net:443')
+  .delete('/v1/ManagementService.svc/Server2(%27rvan11rizf%27)/Databases(4)')
   .reply(204, "", { 'cache-control': 'no-store,no-cache',
   'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6351e138-f2b1-a6ed-9801-41a726508e4d',
+  'x-ms-request-id': '24952aa7-4217-d0bc-fe6a-8c8fee12b7ff',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:10:46 GMT' });
+  date: 'Tue, 19 Mar 2013 20:28:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://cfy1l15985.database.windows.net:443')
+nock('https://rvan11rizf.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">hvNsqqLpPdn0PJQIXAyWJ1Q79AD1wXijfYJHmCVh6T03wwwek7koofL4mdBVsfK0LhJdzWi3GGT9HUrwGsDSHP500CT80CYum6vuxoxXgF+F/bbxc5BSMsPeqq3Yg6TkTraq2WOPSh5vuGvGesR7jlZjOQKkJihRv/B1z91fzJkCKmsINan9FFkNlvo164vPUZQXESiyPVTXjV5Ow4u/4I+Ss7pmkFWdVC6rMXTJTVLqs4QpPiL8sO0y+L3il9bHDzQYDxyaTDMPMg2k7a3/6S9GqFNFRz0NQaFqhfEZlC7PhcKFTBE73c59q6tcI8ap/fTb827N6rWBd0OAOqkKjSzRi/64zbaTvEKzXviOrqZ6QcAgch/0WuiDbkTWL1dFFDngAntw3C6TnmyH4yRdD3g+yaWLm1rxz6kLKPiWXJTqqCJUWIgAH0r3LLrrYzcerS9nEqRJAwrmQ/FOye+H8+2kAxZ/BRaIaa7/3UUW8w4L/MJEBGZRTr0OoX+vT0mK8Vi0DQG+9/SvCNPugqmrrYSDCM5KH7X1ykYzN+PPgWc15ho3yDsM6e+H30YMqzL6nKzN9erP6jWkLthuGlbc0Xj9+ngnBzCeg/WpN96YX7AJT7aBUeuYHTAMaGRxrs3q3XJ+17syUmKP3WqBwkJz9NYxzlF80E9yDK2BqSGSJEXSAIEyjmdYjg7By3GtYkYiSO2LWNQKu+G1IaMoGeASUGqDl6K0Kjo3BOFhHpSmXo8HCnHyoyS6kK6ZIXunh8uHw1OQNVibeK7SZ/9XskLsrA==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">VsXgdtOFSP33+QV9OY7BpUOlRuZIrVHez/Nemt2RoGPhgTFykfPzV+Fp+LOqHO+SgmzBUgdA89A/YPLA1uwNrOx0WHpf+mS4ZLB8LbkCZ/KysiZDVQpIz3yCf1Zp5yIx74kJvaKrCUciucnHdhyaJN+yJ92tNdf5TlgyyRDTia4cKbfaw50j15Fdpu54SaeSH4DrAE6Y11/YiUNdlPI5PNrRnQEoHrWGh7VVHTQWSrCOM7PlIlSo1FJ+OyEhNQuRzRcvHP8F2ZCfWYJ18oT0nn2FTLqWVBKuLX26+VZfUC4rYi/jL1g9F5c9kR/y5cs15JMIqS8Bb2/xWV5k+k0q9T3wWd7/TKo/VVAOYFpqfWB1s9KBJAQtb9OF+79Oh8ToJOK2xpDSFCVhaNifYa2Yrm69vS2u8bHavm2ZrXKoDbHZUxhuWUSPpBg9EUvQW6UkBTL70DQ7gnlx61jgPi2vfdQ0ah/Vdvlng7fcBywaQnwxts3SQD3Lcn2FptWcd0EHuBmwnmeGvpJBQWgT+rLkbLEnmoAnXBc+msuWt61Bk6+2/dHWxC0CCzZKbbUP69v0KH/iXUbR0eW6u6qZ/KXvFz998X54Vo5Srke1mm2OWkuCF2IVLO5v6AsR5xL1Gpv9Bgm/8rur7LRWfvDLAAaqOg6WJk0g+CsLDxmovmV3hd6sGQVfsc+AbjP4Xqgp+8hrPvMvEPvU+kl8bnN742F/m/OcAz1BhTfqHGpnUPWPl4+ri0p6SuaCqY14hVxilzwmcGhyAau3jWtyN4Ii+d0s9w==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '543e205a-0431-4669-891b-062597a95d15',
+  'x-ms-request-id': '16d97e3d-ea38-2b93-84cb-7a7f0f4b6a2a',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:10:49 GMT' });
+  date: 'Tue, 19 Mar 2013 20:28:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://cfy1l15985.database.windows.net:443')
-  .get('/v1/ManagementService.svc/Server2(%27cfy1l15985%27)/Databases')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2('cfy1l15985')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2('cfy1l15985')/Databases</id>\r\n  <updated>2013-02-21T03:10:51Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2('cfy1l15985')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-21T03:10:51Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:10:31.347</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
+nock('https://rvan11rizf.database.windows.net:443')
+  .get('/v1/ManagementService.svc/Server2(%27rvan11rizf%27)/Databases')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2('rvan11rizf')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2('rvan11rizf')/Databases</id>\r\n  <updated>2013-03-19T20:28:44Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2('rvan11rizf')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-19T20:28:44Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:28:23.5</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '543e205a-0431-4669-891b-062597a95d15',
+  'x-ms-request-id': '16d97e3d-ea38-2b93-84cb-7a7f0f4b6a2a',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:10:50 GMT' });
+  date: 'Tue, 19 Mar 2013 20:28:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://cfy1l15985.database.windows.net:443')
+nock('https://rvan11rizf.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">hqNBOrHZemFJ5bz3vQzEYsNcLpczEy9OaqXkHGD9s8cxS5B/+F0f2aenw3Ao7gUVCMxZstzTkkilpfY98HgaPdKHLOhacEHjI6oy1VVPFsn0tvhVXjeue2Te5S+L8Yu89GZhaphIqnJrM3ajcYBbzGJ0q5PDrDobLOR1Id7I85oY3sPvIpy7EsVWLcLTN5YMcW+IV+UXSYaHFC+QlOxt5Y6A/ytB62OvZ0IEzkkAxF7cTSgt0ud+5xLzdFXQTtx+rEEVClY68A7tTznBRqoVDegFMDywxymSwbR19WddGpqaiGpdB/wNuyX7EqLnsAwKp53j/K+tybTOTC1cm4uGQTBX+YoJZYRkjBVYEfbzBV6kxj/GuxBxAyXz02msfyuykk2zJerfjBcAHs+8VHW9wZIbYil+QlvHL/Ov1iJtzsIgSegEe/QF/e3k/3HeUnYx9Tsbl63pLv0cEQMZUTL02HTIgVeXSWInQhTG+W1d81aSPMy7Zc7HHLjkhr6y34k//zf50MiiGWzq9oBTVGGaU2rxe4c0SiVPCQsWr3wHC38nWgk9PhfNge6cMYtL9tNBmo0zL8ADK84chCXEjJGEV58X2AxudeTJPqVBfRFTTOpR4mLT1lUUwflYDjVXzzenY/MFVmDAHq+ymqED+iarWN8pC2nC/GaDuaIquFcMGfpLraIt+hBRyEP9BlAdDmvhJINvUxHnALDh1pl76blNctYnaYtLkpRumuRamhQglClGmIJu1sdF4A5QUDpyv4dwU2Jmyu+mKFVvornJ49VHaA==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">gSp55yO+/08onvpbH2tsTAPZaFpp4q/CGkPa0EdBn+dvxcW4E7MUIEklLPL4+DCgH6XEr9fnN9xuOIjokazxzj/Wa3zA+CdlXz2o39iX49n2ILesBRBrBo78Vbmb9Jw17/Yr4M3Nec1gb2GqOUfZk9dJNYNUStjLiVsfOt2LuR0mlZ3KVS4BYgUP4+XVVAcyGVcDqmxn5hAPnUrRqyLy/jp7EOfh+hDtegnEA+HcDiL+FMevyRvF3xIweA3O4dOvKq/7pDpzbrSaid/9s6UnGzdTV+u1rYVhGR1cwJsMgfg4E71mNfwZ5bExDU3Tyl7sR6IutHtQEnrs84crPHCIxkH9QFwHocIaGHSNaIt9dt2ISbUwU5zgbBojb/zt5bLwgIc+H9sYQ67ltLz5QYOGPZcC1ZhCD1FPT/Lukx6QOwDNLPRtH2BZ7hkVmB0NmipMpa/JCYPuNEQIVyMEZ/nsIcEITSPshtacUDReitmkqTf1Jhi9q53s2t7QP7/SLBMqHgtt47KdCavkK4k9IfYJkPh6tpwaRNzpCzF+KtJ+yNQ2k96QQ6sgB6dCJwLfWArihAy/f1RVVIseI36kUd82O7ju1BCRZ+1FlJWuagYB1UGL9lBiNQHi5PBoZLR9FD1A+/6uidMd2axT8IhYIobyWdYRVib1+FP7PargXtVDMmVMl1GBcTuqgrICzdlzJcRvEgqe8/gkvAgRTQE3PA74QwIWsIoATiAtuj1EL+7qEc65nDddqn0gxICFlfOW+tNGMeFNd0cEBKgAgE8jsqidNw==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a167a24f-4d01-a83e-39a2-35adefb93548',
+  'x-ms-request-id': 'fc05aaaa-92f9-ba7f-63e1-e11e5800e133',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:10:52 GMT' });
+  date: 'Tue, 19 Mar 2013 20:28:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://cfy1l15985.database.windows.net:443')
-  .get('/v1/ManagementService.svc/Server2(%27cfy1l15985%27)/Databases')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2('cfy1l15985')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2('cfy1l15985')/Databases</id>\r\n  <updated>2013-02-21T03:10:53Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://cfy1l15985.database.windows.net/v1/ManagementService.svc/Server2('cfy1l15985')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-21T03:10:53Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:10:31.347</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
+nock('https://rvan11rizf.database.windows.net:443')
+  .get('/v1/ManagementService.svc/Server2(%27rvan11rizf%27)/Databases')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2('rvan11rizf')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2('rvan11rizf')/Databases</id>\r\n  <updated>2013-03-19T20:28:48Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://rvan11rizf.database.windows.net/v1/ManagementService.svc/Server2('rvan11rizf')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-19T20:28:48Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:28:23.5</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a167a24f-4d01-a83e-39a2-35adefb93548',
+  'x-ms-request-id': 'fc05aaaa-92f9-ba7f-63e1-e11e5800e133',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:10:53 GMT' });
+  date: 'Tue, 19 Mar 2013 20:28:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/cfy1l15985')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/rvan11rizf')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6e2cfaec01094d909d42bcae3f2e57cb',
-  date: 'Thu, 21 Feb 2013 03:10:57 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a8b49d1368c14e82b5c43571e723fcb5',
+  date: 'Tue, 19 Mar 2013 20:28:49 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">fz5a791my7</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">hyjfd1uy81</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9f640fc19a24477585f57a999a74c256',
-  date: 'Thu, 21 Feb 2013 03:11:01 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3a3817a62a224c9dbe70b5c6179d8e80',
+  date: 'Tue, 19 Mar 2013 20:28:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fz5a791my7/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>rule1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fz5a791my7/firewallrules/rule1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fz5a791my7</ParentLink><StartIPAddress>0.0.0.0</StartIPAddress><EndIPAddress>255.255.255.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/hyjfd1uy81/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>rule1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/hyjfd1uy81/firewallrules/rule1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/hyjfd1uy81</ParentLink><StartIPAddress>0.0.0.0</StartIPAddress><EndIPAddress>255.255.255.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '592',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '4d3d49e719c1488caef09ebe889616d4',
-  date: 'Thu, 21 Feb 2013 03:11:03 GMT' });
+  'x-ms-request-id': 'efd41d56d88a4c818a99a0f51bf0bcf4',
+  date: 'Tue, 19 Mar 2013 20:29:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
+nock('https://hyjfd1uy81.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">cH48gp3Qp5DxHlN3yOnF99s8uiUREVJOrFC8eDrePdCweu1hVejhfnMeXC/JVF1umNc/TXLYShwed1oWD70ESjXqw9chfR1N/U17s/Y17azx76to/UtCCnVlzh9yYPiQUpAVp3qabXRmJAsdMZSqWiwbQQFQkvAhK4ZUMS76/ld393WFA4LiCUConSB57yHuyEH8y4N5jTX0fL0GpzehZJwqkq1XtKCqpyM2KK1HXzeXMTpsL0UnHkBjAy2qRX/aVbydYzF5c+gZONxIMEs5bJp9PJ/UExFmm+/ueaP9EcXCp1cSHtApcmeyQq8n6nychLMyq7kHIH4iej1K/FqAKlIdx3mSxUM8YcE2rodHnGlFJM2krpZ9nkO8N2Nv3fiAYK2RYjPbpAhY8n0O+S5ToZnFGw7xIDobbBKpO5ilfdjVheNW1jEdpYNhcRLrIL7Uik2T808MKCHx6Yt4aZgVkQ3LbTjrsrWYUyW3oMh5/JBZe4B/YCoILXwsyekRnf/+XcelpJqq9FeKVRJa827VxzO/UaLXn/7ipeAxG/19vzANu0W+y9cflD3+6j/IKrZHAKGwrXBz9y3BU4ZGWC77H9Ph9u0GIbYpDf6ON+DSd3UMkiEARgNvvck8FEJt+carTw8qHesbtEPYFaOZAigvgwui/z65sr1n/NJPttuprpvSeO1bPzUUY7b+ZekUh0QhJjUW7aowVLXWGuamcW3zMw1jKFEtJYMmoGbL41ekbJ7yC0PfqbWi3y1UU2M+YaO5rtRfp8WuCk8r3bBVdn521w==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">R0Uyk5mcW47bkmdMOMDhtO0qgowY9H+QrHCJV1yzBLyfdW0cMnf36DAZw1Aj+0IsGOV9mxj33+urnE/sKZASRbj+pfzewE2BUFBGT5K4D/elfCemyjfdTgM+IPOeTw6UAXyDejmBM4sMbSEZuYjXIKCgumrWA6nS4T44I0i777TKPVAMUCGMsb/ZEYKwsWvnyYy2LpQSy9/Dxxs6e33O4UQkpyvV4LQ1t7l2kgx8GYW9LRVGW4CFYq/Qy6+gg+MGtbhvfoqAD2fJxnQAOP2qYpSeeSnnKbHY051QCD+dqFYVjT7sBNk3WTc2cuLjBxf6cu+Ni6CGP4+3hvZvsFCJIzD4vl9fKe5IGx6WU7Bu5Tlq7A5QxS29ceZIqlr++0z4XnfSOOt6oUpwu/LEuEyvO1+k/RMh5EV6SqHb4rOZrW1/Xo5TrYIm/60A42QqfOaMxq+XAOBRwnhIyxj5hVyl30+pI9+BnBuUcZLahTTw/lIknh5nDFrpyF3a1ZS2ERiBxF+tX5aHTLSct8KASbARqBfixUoqR3LBrzSRnYSjB5/PuPNvQ9t1YsWaZArWJHNXG1gpYDL4zNRrh/rdH6h+ii0I8c4PHNBMMnTAM9wZsKogb1Qmi8MIKD7jSwW45ROTp7TBZ4nA+GgCLih25j9N9aj+Pxxx+GICSQnayNbVVXb4hdAdoatD8AynMMDu211g8gqrFOfuVPRMV+5d4m6DZ++Janw+gImKY8SM1dC5aD2HaekohNWAHHYC/8+jn4X7SxUgaSs0AysT8pfYhIBsYA==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '84a7838c-10a7-b66e-a1dd-221913506804',
+  'x-ms-request-id': '92f81f7a-0b83-f034-e30c-290d86b1a11e',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:05 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
+nock('https://hyjfd1uy81.database.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/v1/ManagementService.svc/Server2(%27fz5a791my7%27)/Databases', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-21T03:11:08Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:08.733</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
+.post('/v1/ManagementService.svc/Server2(%27hyjfd1uy81%27)/Databases', '*')
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-19T20:29:07Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:29:06.537</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  location: 'https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2(\'fz5a791my7\')/Databases(4)',
+  location: 'https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2(\'hyjfd1uy81\')/Databases(4)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '84a7838c-10a7-b66e-a1dd-221913506804',
+  'x-ms-request-id': '92f81f7a-0b83-f034-e30c-290d86b1a11e',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:08 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
+nock('https://hyjfd1uy81.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">fskeevJN6t+fBXpb3BCcB5IL60dvSozpgJ5IzWwkT72WKgzGhhdH5DYISLfgJHjt3vCxMyHNbNAM/2xyNtfY7mRyFuYt2mBd3k8GrdsQSMG210UpTi7okM97hCyzhnI9MC38fe25qkbSf7+1wyDXxz0JFhJrSLFnMvT6q9NYJj0mmJdYTy+z+8gKhTPHUND7lHzu7JoxjH0gp2BSqgEXBufh8/UGf8MROex5AQjKiVoprLMp3ba1vdUA0Qpk0WMu9cipF+F1O46EQsRTKyqwR13DcIEr41q0bB0H6RZps+P4iJqwOYYBpHrhvEX8G1yV1c3azgbc0HSm4iTlidMU4YRGgr5Y/rRKRoXv7p29aMaqJmAq66ReBebv7FkQm65c5mf/KRMjt1QmRdeyeGbh/mJjLupj4otz1qv1lxD6cKZW0H892QWioL9VwlluYEyIw+K1zIwIRFAwK2DKGH/xY6VlLBiwX1KTYDnGwAfnwBqICX9jXouhmCO1Nw1aMHusjNsOGdLfqu3YVgviTJj6Ju3EC/DVUWeLK/hpKTjZZ+LkjT1kc49LDd/43YWik5CGm152+G1BZ4hgtJxaDTHDDLMpFPrg31UBREh8EU/pMYignVyZs4Z1Uf+XLxbWMRQaxtBGwDR1FYo4iGlfSFZahdduOuapWqPHR/Qv+d2RrZXTTQvRpRHJGfKPy97UvkNBf77j6g0H8OMy0xqvwM3MtF8J67uAgCvVZO43fgrgSDhLrpu7sFoMB534/e/s7s8cwPAydkqu9J+mbvZu0Fkfqw==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">kdDAKo8+K/lyHUPitrkmYibC/VEQ/VqlIrMaC7yJXeQSKdxiamrauYzVk2TtOceZVFbmwOAosS5W3rfv4nE0jshMq1y9p0l83QEnpuR6sDFa9NAXd7HaGcO1MOTrNOQElcxr1xagKt+pf6qABWqThOqaqnZZ+rXuQrIU8gNrHpWYRPiS1/rm4f51ZzGYMUbHX++GC+9ysPgAo4Rl8tD2PQZnxaFKBN16D8is2OnwYs/idBUuI2/B1UF8U3ShDwg3PpDGAD61XHWFk1vzdVbuo6TGc8XUTClLXNsOIXnEOXHxIlwoONPTa58PIpH+2A4CZRiNbw6rSupfu0FD8By5by2Q/jdCw0f0jwJ+heGvHq6rVbrXK3MBICA3v8/GBjcEjaa9NrQyhefLnMoKcZ6/3o6A9dSlFAk+mt+Hzet7sT4ZDPNkFBVTB7C6nEypXmHmweTkCc6z27xOa8hY5jVVFHCeeg0ywPL96HjUXioL9VIpuES/Wn2YUuwYz+mSyUjSoSxWhySaKGDEFnkR3zFiJTuG+XUlmTLcjAZF9v2S5p641BKR0P68nst7VN5ZlTkiiuvDfX3G1gqOVDXKgSvndJmx0uiIvX0s4xHj/iowaNC9ZPDE9/Vm/COoHKd1w31NOtb9y17IJqJ8qc+2F2Osr92uFmvyugrLzXD2tvw5qgCfndAWdC3rgbTqcaUyDWnSCtPCV+tOiW7flClpYY2JvmgM9CZJemUfTL0Mr9uhHfBzhzBXuzdNrjDSXMiW89MOQC0TYCtWPiSj3WbkS6mjgQ==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '84ffd45f-efb5-4c42-38bb-fa742fc166e3',
+  'x-ms-request-id': '7f1c0775-6f94-c222-3cad-3923c8d0cab4',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:12 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
-  .delete('/v1/ManagementService.svc/Server2(%27fz5a791my7%27)/Databases(4)')
+nock('https://hyjfd1uy81.database.windows.net:443')
+  .delete('/v1/ManagementService.svc/Server2(%27hyjfd1uy81%27)/Databases(4)')
   .reply(204, "", { 'cache-control': 'no-store,no-cache',
   'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '84ffd45f-efb5-4c42-38bb-fa742fc166e3',
+  'x-ms-request-id': '7f1c0775-6f94-c222-3cad-3923c8d0cab4',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:14 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
+nock('https://hyjfd1uy81.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">cUqkZA234NbTGMg8nEXGGh9YzdDg2JB9Jos55H+uJwI8UgLgZaPN199h+Zrnjw0Th/MuBhZ69+xYlEvQDABbb79lscFP5VkQpzhQSwxSSpK8oQtCaUItJgRquqMhJvAY6obP4u+uDW4womz4oXakRkog+tOP/DdLvKMDCJ9qlnno5doo8cMJLvxoDSnG9x1oDPqlsgsvprA6Il97WfpOw9YeAxKoLtuiKgQoq8LFuX4/7La9md8CGN+o/GIzYKoeI5LGBUErbI4PzAFyYY/Kvm9IaoqhkjimbiJFeKEhqCoAffuEb5AjvAv0WAP9FQqIit2G2/xQ9WqrygHQgEC/mVJWDd5M/LKgjd4n/2wR5WL6sH1iZpIwdYxXO4Jxf9UvIV36pbbtIoxKXN31lN2H52G80ukUaRcfvorJu0T+vTXq4qL6iaAqr7uTEi3XZ/SApNF+PiczcDmesRk7Hh6rFs4BhwAC0NJB9WVfUV0WFcEraLD8Alsr1ViEaQcoAbGSbaS6KYUKQmtu5QJN9iuYrvNAEYy2QOzx43YLaVblPlExQC9GJzYuoE5ywZROdUh5mG2QRZIx3vkKjD+Ql4W48aTLQm0XIiP2vvbOE6xmGTo7PTEzfTLCExOKiusBk4IMi9mibY+lcL7yMS4dX8wGYzmrSdw6OrKBgzH27MqWYfnWzqGqEdDysW88wyy7XKug6znaJMaIeGACGzQ25NUpORfbLHpQ5d1c4nbto+hMwsJ6qVeOo3mzUQ9nnqAIGJMiN6uxAMUETxWc5Wo9CUH3vA==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">jF8J88QwmmllKS5Gu2MmWJyJeFVg8lerQ4C0hWb+RwMgle7hNGCKzSzZnOdyLCnGvZvCVS//bxF9qq7M9o0JAGukXl+sY+MqmWfjqUaGn6X/RdAFFLJ/fyo/61Bcv3jiNmZu1Yf0s6jDSD76wTmgPCFncgSIwYzfCJwGRYQPTn8LbLtiFqJkFgSHpju/2hTy0+B8MOzOo1Tu8A8Z9opI8qVUvY54B+sNecjvEIFJpwIeEGFU+h6o8oQYnu1NTiTy0GuAhlIEy91v2J6FBUwRIPMxQhAbvdtEtiGjtk5t3cth2AQZbtkshf1lFy7zCjmcMsbrM1X3KKQOFbC+qStzVQodNg3CDkc2nJRQ2hNulbH+3rmnW7RSK1Rl7YuNNKgCMK9d1UHZOH+a8OfHga5fy8yymQin+YfFkgky/PjSa6+JrzJP6ErVJm+3UV51gnBoc5V8/SFZIER++Su17O05wX6/9LPhxgqdsWGvr4mzheSH6oosnzNPXOQ7NrBnAvgbv/uZpaqXAVbr35YqIBd+tTWCDTDWIiB5DjcHPdE+jh3fGYwEVUQrwlKd/BDHEnGGkgdFIKHja2wOP8j7awvrN2i9CgC9IheLsUGCf0Tpg7/ttHbdRdJXZZ8GeRLvhlq5KxyDaf+GODBX5s8fgwlEcyNB8JnYqN7JekC7s+tYdL62S9nm9rZlRWKlCGnTIOduQd2E0QYbNVjh7sSS2CPDBEVHi1Xi6/LeODeQJhluSkdP7XG9UUVoS1wQ5lPYVfrGd6DeNNGgPJpXpeAaWNfb8w==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ad974d1c-d7a4-f61f-6729-e2d367699720',
+  'x-ms-request-id': '5718f1c9-ca04-d944-0194-2e5ab398800a',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:17 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
-  .get('/v1/ManagementService.svc/Server2(%27fz5a791my7%27)/Databases')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/Databases</id>\r\n  <updated>2013-02-21T03:11:18Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-21T03:11:18Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:00.037</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
+nock('https://hyjfd1uy81.database.windows.net:443')
+  .get('/v1/ManagementService.svc/Server2(%27hyjfd1uy81%27)/Databases')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/Databases</id>\r\n  <updated>2013-03-19T20:29:18Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-19T20:29:18Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:28:55.343</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ad974d1c-d7a4-f61f-6729-e2d367699720',
+  'x-ms-request-id': '5718f1c9-ca04-d944-0194-2e5ab398800a',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:18 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
+nock('https://hyjfd1uy81.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">XMZy5iOr2cQ+S47JQeN6qzibVVxMVXqGfJt1vgl4r5yiU0au/vN6pRc1Otv8cYf57BvigMuns7PrSyvIejZBHtTL98nwf629G1LWDQwzZkYTmCSeiQOzTQuGLaYEoZBBaZM/pSxKt1DuWTM3eXJnS7z+tKiy895O8iCJ/+Xw28PEYvDrBzeOpf80FzM4+6NzVMLyQqb+2+y11kTQdAHDVvqiPVr9gWdSV+SCmN4ublaDgKamNGYFCOorDbkZIkvZrZZKJwHny0X9ObEBSV15fxUvFqOqZcNHMUHRPAvA2FlKqyn6ApZdFWnKB50kJUEoXG4RiljC9gxzM4i25F4WlIz61p023gmeVd7R25yVpk2zBUvSb985LyPbdgo6Lsl+H+FTKnuBWte+fjHST3W0jkyYy6r9ZwQCXa8zsbMmVisDQ3CTVTxOx3GUquQZy/T7PY+viCX9r5GWCFdTXk2lyaqiwg3eci1SK6shwJWez7zMG64Rv0Ee0MupIuvMWWNi7zSqxtnTUVWG5eDPMGGp6uKa7ywNvlNuzNzKsprNcyytLrCKEmQOC+zbZueXs2kkVva+AhBmCaEWfGZpOj1c1ucTYQe0xRCeK8MEVezT+wVOKhKRzdmPvFQodoB89S0hO6eU+5e5iHLNXgVR4ajYlGqviThJAO9qUne+pWOHFdnTvtf/AiOclw+Q5BjNPzdHRaBbpwOzgoOUFhuE0fgku6gbFkpuSXqBYTP4AN3xWbKrd28BEnhnvQGFLI8wLiU4iqlCSaNFnF2d5v74DvnBCQ==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">KhQXXcqvXtuV2T+OLFx3FQrMg1iwKC7v38nf2PwuqO4KPcgE7gO+qKzZpb8I6ne4hi+p7ZsUNfeNbIpw7ryE/FVUIDJ/PwOKGnGl/b3XIYZcPwhbzv62zdientUlvyoLTqz5NRAUuSKqVCEZU8df8sIb2Gju0suFaap4HD6hZHu9SFU1FivcECm8zHLxy1Tb2WYW5XcXnHUYsCnLsL4Z2B5dJyQ3Z3AAw2yiz8H5z5dSVQrvuQEM+5JEIQ7+VIKrb7/UWOCMb4vS8mYK6Vfg5NZ1bRK5CbXSfhnMufxJJroTt6GGXXrZAPExm7pGMNQBvSjSMyJdOTCP1LoMupR7xCPIn5ToMc3fzLatPdscM+jYkSpEzMrAuH+bR2IehPTknrjek/i2kmNrkSTtOuqgLP3SZP36uindZLPpyo6l3yRbEmA+jydmjN0NvBnYTKVuvHSVkGL7J9RaaddptEh4xxgr63uO6gl4Zpws0pPR7FgmBHgHhnpBj3sW9yKsxaXzh8+3Ukj5xhkERHZSbkNr/yiBtdYttjY/IikhmtcskpaAIR0nDsElbDXbww/bxgJ92yb7IQJpjaeFuRxd07Se9NqGulfA8zRIwyElJyYvuT19+4Wy+v7+1xtuQLoheV4tdwFLTrrcQzuthCkrpAxPkgf94xvV1WVSFYGw9IHEsGDEBezS46RX27JZ3jtWi/MKcQARIsOelecwTYosh7tB2iMh8oaOPBLdklCuHWa4jg5z3k2H9+zam2XGkGvq8k+jjvGDi7ZEjmLh5DltEffT/g==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '093c5a28-6d16-fdaa-7b45-5074a85cd5d2',
+  'x-ms-request-id': '2dd7fa09-2201-484a-a138-122eb87174e4',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:19 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
+nock('https://hyjfd1uy81.database.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/v1/ManagementService.svc/Server2(%27fz5a791my7%27)/Databases', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-21T03:11:22Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:21.903</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
+.post('/v1/ManagementService.svc/Server2(%27hyjfd1uy81%27)/Databases', '*')
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-19T20:29:21Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:29:21.17</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  location: 'https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2(\'fz5a791my7\')/Databases(4)',
+  location: 'https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2(\'hyjfd1uy81\')/Databases(4)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '093c5a28-6d16-fdaa-7b45-5074a85cd5d2',
+  'x-ms-request-id': '2dd7fa09-2201-484a-a138-122eb87174e4',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:22 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
+nock('https://hyjfd1uy81.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">RbhME8WCnUuy/120KK+KSvSypVudns9u73kzid4ptDIyJuv0ozNyPEaZSvdu5m7yITkyGfxsySRUDrB1oRyfHdFJvbY98RHiK9xU1i5GFyvGlWMVKATEqauTHkrfoZUEikEZEFqsqBklyZNkYqUhf17lHMpcblcRMsXdFGOUxHULOicncGiUqHMRfHt5xWUYOjRPKSzuurr6lIC4vzmot0CD3xrO7zF7/iZ+nU/PlCu7Wx5UlxGtBKy9aKon1Rbq7QkyOnR/nW1YFcJa/RTWqDfk834oNt8Q9LcQmSyowI90mlGersWZwUeIYiwvZ0ujbKW9kaKtpOmb6jnTG2iOgF3vV9T9/yo4ydEFknwl/hUAaCGgyCMlZ7zLLN/GO/OHbFBoBntxyYxotLmME2KXeoG+6K3VNnB64KM0qOsO7pgYNf1+u6ihGGKTGm/+4zaK8DjO+Kx4vr8LPuAwhfP3U2xPQhEmtNf6HDPSudLiJ5ntL/bvDFMCF40FszpGOsH4LKI3dIhP7X7kEtx036mnc3vtiLrD5Lm8JoAq15razyeEk4a8gALbMRsCWBwrfINAZthAa9Bbb3022kT/LgZUyUlT/XvR1sUPwDn5P7mozIL4eBKk5jmlZYZJP8TP0qOjdEGRB4UcAd1V+UC8p1mE//jW39zREI0Tgcc+eS3PHdKHaRc8uKo0FsSlkK6IIJaQZNlKAe0QvFtSdDN9fTDWD4Ism73HyLD4ljKIANhHRVrQYHqUylVOYU6/DhUhOEwD7eq95nd/BLTqEUc99LSZog==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">cHQd0LJw0XldGkRaACESi3apQFd7Jzp2pqF5XdrpFGQhfTWwNOTldwdrMOd3mxAFhdn4RmoLvSWSQVu8NBOkGZi4w7RZxb4rFVVLLwTaqxOPFBlAA++qmqrTfCd5cSQqG17WMRBOl2MGo/XY1qBuDACNbO9lHJF/SbtnsXdanlV6wy/XKif+eU3TqcZSKnuS1jhYvhy6iQH5qEl4CLemoYxwzozBqJRFytWUFHNTGfvulTKnVDyt5jqdnkkhz2BnVmw+NkvEjeRMFf5FSWLJmg/UYD3sKYYnrcT7C85tWJIWe6Id+pFpGYdo6je9A7b8TJuFehf8TJIsikNIDp9sgnGrnXbq73kgkKkW+8xuHSj99WGjzh6c/veVvdxr6NyxHi9xZ4YgmdIE6TWLk8B74qlKCeBol2BKWrB/unb0ZYfpZZD+f+Mier9D1QCJjZB3ue0Hpb5Xgb33MZm05U9Q/Wyx6zbkPGxbiG2ZZkiYeePjoD76PeXKlYxmPK3jkbBkLHIIXl8ndsFJkuvyo+CkkVzYGmL8AlAGHkBJW2nqzDUJ9isKzndH3EPXhbbeRNpm1Bjz3EHBITViRtXH4nbr2stP9c0VepoIe/xm6W0+3KutN+rTvmBQclQmFOru9GVqyZPe4rgvPHad731xf3Ks6ZALPIGV8M1WhaSQozLoOo34dSY5pD3TAQTnaZX8ooRJlCXcfGH4heyy45YAMXUqLIWXxnNIciXoGOGsc1BLdkq78ZHwWFhJu90KcEhNQlY8j6/EYbqX9SUTSqkDWR0LwQ==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1220aabd-a584-b74f-ac98-65b51327fd66',
+  'x-ms-request-id': 'baac7af1-0980-167b-3a78-6b87c4be54a5',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:23 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
-  .get('/v1/ManagementService.svc/Server2(%27fz5a791my7%27)/Databases')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/Databases</id>\r\n  <updated>2013-02-21T03:11:25Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-21T03:11:25Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:00.037</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry>\r\n    <id>https://fz5a791my7.database.windows.net/v1/ManagementService.svc/Server2('fz5a791my7')/Databases(4)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-21T03:11:25Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n        <d:Name>mydatabase</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:21.903</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
+nock('https://hyjfd1uy81.database.windows.net:443')
+  .get('/v1/ManagementService.svc/Server2(%27hyjfd1uy81%27)/Databases')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/Databases</id>\r\n  <updated>2013-03-19T20:29:24Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-19T20:29:24Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:28:55.343</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n  <entry>\r\n    <id>https://hyjfd1uy81.database.windows.net/v1/ManagementService.svc/Server2('hyjfd1uy81')/Databases(4)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-19T20:29:24Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n        <d:Name>mydatabase</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:29:21.17</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1220aabd-a584-b74f-ac98-65b51327fd66',
+  'x-ms-request-id': 'baac7af1-0980-167b-3a78-6b87c4be54a5',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:25 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
+nock('https://hyjfd1uy81.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">Fpdr1mc+RHGYQumU2c6+BZK+7hBEchsveYqw7Xi/B1u7OkwzMKO/scbs2jOiTfNX5zoDHKCFe1QRFjnvRikG4t/cb0+0OUV4388Y0uKrvoucNLo50O8sti3R3czkRg4TTyfKQA8ASSqbEmRgUp9kh1/QlmAJ0NGohUX0bDOjnCU06+cwGszaZtHQF54clhV+sINlDxYemvJL1yqJdy+TN6K1XAIsUBWPydWbwmiXhDcv1OAZN8KMykVJj6iiSAkOTa4CkBYYbAzCBVCmavIxcXSpy1NKk9GuftfH7ewBJ0yQhSOJfvqP5fR9QJ0XTc+2cbU5SY0UxpQTXRK8ViO7dJCDdRUla1HH2y8NNDMHmU2qlzb1B5girT7n5DMREHf4MVjd5Et+H3kfHkkydFN32X8OvAZ1f4aZL/b6PO0v1NNDUoIE+5jN6J3uSleQ5aohhoNlLn9UvHrqc/9c3mTEMEw+8V+l3BuVEtWl8OIjSEMzny0a4i2EiYiBJ5ftoXib5NYFb360KD1r+GNCZwdrQOaZNjU2F2kiHjDJig260JP72O+GsmtlZIW22DE9waDPq8DDQYh/xy67BEgQkpVunXmOcappvGpPDOML1EpMd0Rt/Bmg1je8uQOh2r2I25bie86sgWndUqadoUAZkamX0/Fbz8v3isBNu2QPgAT3q1i0qNDK1r/ewMTpKiMTpQojG+HqTfp7Dv9fGQss+592fWJETZ4Sj1u8USOofjU+MicYB39eZpcXOuzDiybne2bCyFH1w3D8aEX/ULlnrJQZVQ==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">AOlbwXd7OUxiyMqxtWFml+y37FEGAW8T/FThDD9hP2gK4Yd/s+i5/pQlV75w/1wX4H3jUZcv/ZMGf+hXsPiegi5g250epEN7rbIJEqkA9wor+eKv7uieyBE2GvqqXvLJM58Y7QujEqv6k2xcUFVrDnf0id/iAoVmXN8F2pKKHtdXaLw63ceCMU6ncuHjpE8E7xM4hVRQQZezhr5GopRqou9IUjHEdeEHfvkEUK+h8Jlb0hfEH6tUGULnXod7U0fe8gzbPPVZhfEeQBklTezEa9oopW9yPI3YcB0mDnsbMyF5vBiYn0dIcOm414jt2t0SnRo9+63U2wkfJ28ccUWMn0R7V5oid24R6VOpUxSvdXw3CnidF5vHLYlBVRuqZbWlrHFwKX+axIi9uPqf2i1xGpPEvTKPCrKaovJxGxfutUt2j0nhrVuIi2z+L4NqZ6FYNTVcPoJIBfbpn3mpqLMVZzdJP/npD95x7vhXIGnoGzqTnaM2+HA7dryGEnLXGSwL5g66GEZl/5TNsfthqWTVZ8RbANRY7QZqs8k5ya7Jy24K3cDirSH6lwrDTjs5FmI6E0zyXJScUILFFcnxdQFSj7opVtBOMoKgDdu1/Qdn16ASf4onoEnj5Dc4cOJtf6my1zHtRWuaannhMctRBFpV7BwWd4yixBKkwqssZmx+j+9aSHvdAlY0nnXIALgf9JddcQK+00zrqZp0ufdWIZLyMZyBen7hdy47esc+jimT40E6yIWOoovX6cTag6Pt6TAl7d0dndio9bHZLLjAW++GrQ==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dd97863d-4a7e-c91c-16f4-6b96ee2b468c',
+  'x-ms-request-id': 'e8abb9f3-6e4c-3943-18b9-690446d76f90',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:25 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://fz5a791my7.database.windows.net:443')
-  .delete('/v1/ManagementService.svc/Server2(%27fz5a791my7%27)/Databases(4)')
+nock('https://hyjfd1uy81.database.windows.net:443')
+  .delete('/v1/ManagementService.svc/Server2(%27hyjfd1uy81%27)/Databases(4)')
   .reply(204, "", { 'cache-control': 'no-store,no-cache',
   'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dd97863d-4a7e-c91c-16f4-6b96ee2b468c',
+  'x-ms-request-id': 'e8abb9f3-6e4c-3943-18b9-690446d76f90',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:28 GMT' });
+  date: 'Tue, 19 Mar 2013 20:29:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fz5a791my7')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/hyjfd1uy81')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '98af6922701e475d8bb99b8d7ab7422c',
-  date: 'Thu, 21 Feb 2013 03:11:31 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '94c70b4adc6e4fd78ec32d1ec39fc144',
+  date: 'Tue, 19 Mar 2013 20:29:51 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">uwoop6e4yp</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">glguj9qa6u</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b4f8ff36a84e4fb49dacc119bc5d2909',
-  date: 'Thu, 21 Feb 2013 03:11:36 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'dbddc59fc5374d23a3dbb6ecc88a2584',
+  date: 'Tue, 19 Mar 2013 20:29:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/uwoop6e4yp/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>rule1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/uwoop6e4yp/firewallrules/rule1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/uwoop6e4yp</ParentLink><StartIPAddress>0.0.0.0</StartIPAddress><EndIPAddress>255.255.255.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/glguj9qa6u/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>rule1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/glguj9qa6u/firewallrules/rule1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/glguj9qa6u</ParentLink><StartIPAddress>0.0.0.0</StartIPAddress><EndIPAddress>255.255.255.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '592',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '53119907941b4a9fbb6579943bd8dc3c',
-  date: 'Thu, 21 Feb 2013 03:11:36 GMT' });
+  'x-ms-request-id': '6643333f9dea473ab52a46a2ddd87d23',
+  date: 'Tue, 19 Mar 2013 20:30:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
+nock('https://glguj9qa6u.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">PU1yWNbJP8saIXJ1S2+fkdyxJxcxRGowb03rSk/cisM5o2cY7mGT9rnaP57guPMWmvhRVVJJM3mcWlQz8hi3+6boc2c345OYDkySSCOCSADRzZryArV4YMMx2q8JGFaqJ5oeGGrLwi3h89xpTwwdSNhWfTMI97vNwpO91YnnC0xmbiJvuANS6pvNUYKPwI/eibuo3PoLh3z3ZROAUsf2ZdvmZgReYCVV739/C4zRUsCrrP9TPpl6ufEbbTLV6ea7Qi/Xy4L2/BngIOaoKvkD/eBzvLYme88NPAuG61i+FM3Q0IW7avbLkpuUKNL+Al/x9tivi15jzcbb6goU9tLTkYRfIKubt5C8FIiPqDtrjs4lo59gTsNMMcVfP5VNoJd2aMNSfb3Dpo4lolPO6dHV9scR1dd89KSxyzeLsl39zmT6V6eQ4vXPcfd0pGTKa/sItm8oTRzroNyLH6kvJKVJBTYXN9g0PdiokjqrOpdxR4VGupBSTg8QrPfac/ama0+Wvw4L0fhRTEeZWOWclEHwewhqdyPnzh99ygAf5wSUna9LKtgTY4xaPcR8eJtgElDt0jXwEv1sfNXWDFeBOtRKgZnvfyZrmD+IA/2c94Ot5knVKaYSFll0g+hC/ZGZn3TSKDpK1loFK8Er3At1tyq5BK/jobQwdgXS9YaPu8fiUWHBjRHpGA5XvIfhyG2pDZqkxHacLeVAOirbsId+2ZOws0r2mXORFEmMtCpkT4hotLAiwQ6slxDqsn28oZ1PIgijU8zBrW9kO8DOsNvz6XMvdA==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">L9mn9UgkNVNvch9mTkxETRp4YBnzluqB5FCZ8Qov8UOx1bHUlgbesxJlrvVrMUw0m06Tw7JlYfebuyDEly26DttctUCURfLlClAfFmxxJSZtby0dnAeF0FKoRbtPN2GBIFsFzL1QnwqF6PGQEIEifmCfwqO+lGBwr0qZFmGl+ipMu8XXLgA9eWELduMGWsocT2VSjz8LfHiaCz7CRSD3B9BZcfUu/YapkzkPkOcD/j2sy27ZeuAaC8o0JHIe6PM7aczAFlbL+YPRyArBkyLEtZwgBVoRYJTNHHxkORdZKo7KDd14wrj1pSKMPwuEyLauljYWVL+jNgsRVhINp8ZVeTlfFj6ByynoVFU8a7/IP0NbBGBNKqMhW8D9ZwdWS1ta47RKH3J5G5QCGdY9InScB9eKACSklqHMxykTqkT57UPPP71hdi0G+GifFu7uMwrFeOrHNr8L5mAbNGphYy7vySeEDC1Fn31AMWFecpUD2P7wEiyIGa+G2+KzLZCOcdha5tFRp5iky0521igC3gO80IscOKInWBdHv8As3CI6rh1cyAxezfgNMv9Nz92F+NQ00dZhgI1BroZ29bFxK4/iRei9+WVLXkwvYMBuC9XbZJMuCRihIFPUMpFrw1jI6sEa2tlXazuMnF7NhFOS11Ht2npKVoDOya8A4wixAEPocu/KRBjwip19sQ6TLTzkL8sc+u76HvO9qVNyeAf2L0+JfQ9rICyD15qGCzb7oPjC2UsoT7Eow8LShszHzACam5ocPrGzvR2SaWBI+dwPXWOcvQ==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2e46e676-7e5a-1adf-1ae1-540ab7917f56',
+  'x-ms-request-id': '3ff64484-dbc0-40c2-13df-df0eab949d63',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:41 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
+nock('https://glguj9qa6u.database.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/v1/ManagementService.svc/Server2(%27uwoop6e4yp%27)/Databases', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-21T03:11:43Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:42.8</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
+.post('/v1/ManagementService.svc/Server2(%27glguj9qa6u%27)/Databases', '*')
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-19T20:30:06Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:30:06.017</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  location: 'https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2(\'uwoop6e4yp\')/Databases(4)',
+  location: 'https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2(\'glguj9qa6u\')/Databases(4)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2e46e676-7e5a-1adf-1ae1-540ab7917f56',
+  'x-ms-request-id': '3ff64484-dbc0-40c2-13df-df0eab949d63',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:42 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
+nock('https://glguj9qa6u.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">F9anBipwXJubxKm447JOctJBofosKrWDWb6aOs7L8bkG/oGhRN2CSyg4LBuEFFukcXKlziGu/O9H97ykOIlsua4VvSwDtGil1QkimDtaQIFs8WYfNfJ8Fjey2jNPv209CD8nBLlx8q//QleDEDvZZs4ycN4gGu4GtdCSeoY9fMpgXLERUe/Zn2Q9HXTSsjKhCoi/jwEbNTSFbq5WAjJ+gRpxAvBzEWETFybt0i7BbyW85DwQRc6dKGnVTZemECvCI9Rn8N79E7pxR+iPNDeHpcJlsd/jKWd5W/BGZ1KnY00sGoWylmQsNxS+oCr9uE9DJhBnHPWc0cKTXO5KMH2x8VBM0kq3cXdXQFuWLB4twY9gqx5RvU+1KRtUZqo8igH/84fWWXSYSHzrN/WfEFdTrYXQiNxxqCei+gVj2lsIawwBRInEPF040iyFOwSoD9H4hSFtu9nQppfJfDST+coZ4QKQssRI+irwGeXCg8MjZPDUa6R14zv0YJ1jE4KXgSwTRo1xrFtG2KXwui75bH0oNP3PoObNTkq2kLjATzjNmzYMrazkvh93gR8jgLlJPEPiD+Lnib+inuLnEFCKJtZBFGQCLYZfWSEESwGPBUUcmJjhetc81RhCGXM4mzYMTXXmg99xH+/t/pDqDtg/0d71udqpMk3J5cwPeUDfNMnwMuQhhXwPBnSY/ZjdWh8s5WtdCNN71Vqn4Rl2k8gWZ5ZRUFzKJ4aw5u5B0KRLmGgofB+xhEvg4xyt8qdBp6Pa5edjlC3APsEnwZX9YQl/6ZYajg==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">QS6FawykcFMwcyeXyQhWk8GGnfC9dufcx7MzYlAD5TzgMpzddRXds8tSpBrFsd9aXr5tzNthYbyxyUHQ94OmqMTQ+RAOPGbpA5dDkpFhslf0zLJ7HIqObUDBT0ruvh5wPGyZPPZM/v4xNgAYh7SdhlYcED8Ikt6S3I+a2riExQzwepQG0/KY+vw47C63xLoYeU0qPi15IttxBv4AHg0wSTDaqDhhISvs/GtK8NQ7uuqY+siPYebSmDcv+y0XRdlxyrsgSzGtPCTwiJgG0omiP1Q6511nH1OyMmVPruJ4ufEQhdwKDNBF5qv4RVwFpEsPW0IXlLihhSRPm+t+1RGTlk4ijjHumOsKiqrmUoksklV691BfdEPG2EQt2zWrejtBH9tYG36SDivV+PzjRtFyK72nOdwBsq0IpVGtfI3TySd0T83c3nTto+tGaGcxuJI1JzOj8NbHY2HUG1ShVhEV78vt6OvQoroXZb332gLcmQXnvCZaMxZjaXnZ+Rbgh3k/dSXWKIjiY93VMvOFC/EOC+PsqOOnmMJJkkjgbyIx+TGwcdXa2IbKFbIlcHWxeb68cxvP3BynXPYZ6YHqSgNBxSmS97eQnakWBw17guwmch8O7rBJeKjLxd529UbrdHediXzDeI7AxL5H27vhLoAFEmd+RvA1If7Z+0zNLrPj+bZx/ZzBGYSGNaa4dcf2kV9ryvNY/EFJZTJf0Loj173MwOgCxkGWBDwSlstCrG4p1iDWe0Ow00eHuJ3TrIi120vBIJmdsFUXpxXlmhVWVa1htQ==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2617221e-84cf-8774-e5f5-2b4385d37664',
+  'x-ms-request-id': '274a6dc3-e939-80c7-4585-fb0cd98803fe',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:46 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
-  .delete('/v1/ManagementService.svc/Server2(%27uwoop6e4yp%27)/Databases(4)')
+nock('https://glguj9qa6u.database.windows.net:443')
+  .delete('/v1/ManagementService.svc/Server2(%27glguj9qa6u%27)/Databases(4)')
   .reply(204, "", { 'cache-control': 'no-store,no-cache',
   'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2617221e-84cf-8774-e5f5-2b4385d37664',
+  'x-ms-request-id': '274a6dc3-e939-80c7-4585-fb0cd98803fe',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:48 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
+nock('https://glguj9qa6u.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">YyhYOYQtViTVMVlEHj5ri3yqpvWqYeFeqvTCyDDKOc9tIti5EJl80+FaKqmjFsGkI8UxeFMC8BqQ2lYCOLCPsES7GYsAfhue0o92iwmfgXE4e193nuwq3tJEZi4mjnd/MKJNTw/os7lM7NC2nrQJZCHbpSuw4ln8kLBV6ke+2rrLR9YkGyVlFoQk3b9DDq3K1Sf4mOmyjwdb/xZHb5FZ78GugBO/VRfJ0+KVw771ePVSD1vnycKMWopee0oyDYN3D+izyAN/zScxkKJyXGFRkOr6m+lXhAFvac1j7CZ31grCbsp6wkIBtk/rsYX7Je1YmluOp/FfUigZuZ8TR6lkd1SY7XaX3vw6C7ws/r9zW8elBhcgNRheVjWphZUW2lY36nMn/vFUr8T6v9IazvFM+Rm+A94+9jkGJxJT7sETvPFpGsnZVNITV79+YX8UIEQuEAAF52a3/RA9Qdp9FDd1ynr86D7zVObQdzJC7+BGhZcKFNQ58KAD74VMfWbfd6R/4JjGO509TAJGZbhos98tFQ1mXE1lWriMIVjQVGEj9XnMHvchXSHOdclzHH0LJsf6I3bzlAjDUMNPn/hd3Ou6YfUK61byg8wtFkmAUqHWMiw44927aCNBQw+tF32wvnxNJZwx/nVycb8nummHwdoN5I+cwHjm5PfYYx3eW48eay2ko0D7BxrwHD8zkWovz0z33d3Zu+kKRW32qDT4FPK+jHGlGH7YgUYvoPmkTkIOf5XNUJjhq4U9EHMibSlJmuTxK4tuU//v0+N+yD7GJGJXpg==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">ZrJ+k/FuHbkrIkTLlMk0bXDfVMv8GTzw/oHagJli5+A0gjOIhps4kGsqXeiV/GFq4Knbt4kDQWO0vHItf8xnhui24LwQrN4hj2RgVHAWo/bGYAXYErMBXbOECcib4hQnRJyJ3OcXiI93CRl0to4Az6COflyhBW5427CKWBn3AMctEooKho5YA+sBXPGZ+OC43dpEraOkEFtZyjc4uW08NicMEPwnZnN9vYGBBN/RHwCWudtmKiRsf2VDGrs4/Lx6FloR9odcXkKFVKiaj9aAZMYL8/eusUb2Y1ALMfprrw4QAm2j0hzHihS2ejp69igiHyCh1zT1nhrkB4YFCcS+1G3VaqZEMVxMwuDQN0ntUf7NU++65fyzENkq2TGf6tjxWaKMSTXe5/kJRNfQOpY9qxVRu3/+bodojAmhz0veLE2ZTBbxa8O/g8VDJVUL8RBw4AOpoyVfyjweXpYG3WrBgGcY+Ig/wz/zZMZ8eb+VfuX3oPf9215KabMNuMppnBISRUW3/NbQUKmMKrOUI5we/TfPlUONnxNIAMmcKrbllEyT9Qu7JqqYwM1Km9ijd8HNBzC/k0JltbnaD+z6DHGct/eTueyO5MjVRLWncDjALYkQUPhM+Oje0HE4wMQ1xYLy/OtR+Mtx7nXoAf54AGL/U8fFLAE3GaGG4xV/wUiqb7ia088uGBtZWOZ3dqYLI43531LXYuIwMuXDmX3gUMcs4gfci931MqpcqmeMTqFeLS5F9wCnZrLbIPO0qUzle6ZOmpe/6WADWiK1oVKTfG5rXg==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd1fdac96-25a7-0aee-a37c-a6239cc94695',
+  'x-ms-request-id': '366da2d6-adf7-2493-2ddb-c0866cc2cda1',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:51 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
-  .get('/v1/ManagementService.svc/Server2(%27uwoop6e4yp%27)/Databases')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/Databases</id>\r\n  <updated>2013-02-21T03:11:52Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-21T03:11:52Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:34.13</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
+nock('https://glguj9qa6u.database.windows.net:443')
+  .get('/v1/ManagementService.svc/Server2(%27glguj9qa6u%27)/Databases')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/Databases</id>\r\n  <updated>2013-03-19T20:30:16Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-19T20:30:16Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:29:55.66</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd1fdac96-25a7-0aee-a37c-a6239cc94695',
+  'x-ms-request-id': '366da2d6-adf7-2493-2ddb-c0866cc2cda1',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:51 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
+nock('https://glguj9qa6u.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">VW8h4gmxnHS0Kv/aph5fED9EOwDSVd9Y1+h73lMm6+l/T9MIG4W8wPXewVtjM8hX3WFdDb/jYsJEs4xdLQ6I3uOjylgzXHeR27BScLy3pwNKG5CaRXPiJ33t7SLNwhKKKUPGivB9++BTEbuEqCEsReOX6b3CEhtChGNRyCyNCedIFXez0//COU22mtNJSRKtzUZfpbH9AUi9Psj4fRu3MdVR+eRWWzmesgLTkLPoFn7AC1UgG3CsfYr3sLKRIzbI/bGRT9SY7PETmvFdmOjomGDm7zKlxZKzraRXu5utyXKzuWLqkSflhflqqEBVKiKvWOSKW3GTeZLiLUxTwm2ArGPfmVLrMEefEwrkGtm5rmcAiB9RQlR2KZ+Pxp70OY4VcZiV2AUJQZH0RzsvYWWzGUGUiPvGWoYCdZMu/aHfyutZSzCnSG549LiC99ErYeK4VYpokoK+RxL71jv0nYHJjaGhyKWBzO/UX927K6rgF/eRYvhAxjruWmACbIH9qxLDH8+rmtxlhh3HNaYB2mce/oOJIMPgFzg2ULnLcn/TCeBDuZft4a7+AITHY/xMV6o8ZWy8DuOQyzxs8qNZb3gv0yhaFOzvhSf7sDaKKsfETmIoGqI6SZNhXBXa0YcP3p/WlzpfplbsuJ/cQ+AguSEfGGnlzK4hOqDZ9jxhlxn0USo2jxYXfcjCf4RlkMYcSiKxzn3+jzTQ14cjgr277IRwA4v6MV68/yI4V9H2yBPvJ2JiaJzymXOeRBuA7BHfxGeBHj7uEHV4l6Hl1U8ghSwE8g==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">P6UjEzw5FWGFRVrGlNc2TO0KAo7jVDmOBq5z0CnLxf5/ONRKk0F4jbpk4L/j53La9IA4I4ThvEyxYmtcni19oOk2cFYK52sSk7eVUIk1WgLfjp8ilSZPTvL1gtBj/TQMyIAEkNx7dJoRZn+xoPe5szNDD8vMFaGOcwvrAePjaeOByYQeXLh8hhkB66ZiR564wU49TLbNF6A9rk7hzeNzv9yUIHuCYSQBc+bNQ48NUVaJ0f2+2N3HK4wmR1nJuZ0RUrzch7v2dqUbicxjqdz+lQjUDri5AOsgeKuUaNEAsywY89BKjuQ6vPBgrIp0WHwbagfpSbs+P/bXzRy71hE2SUIWh9Cdp8xdS+bNQIEXaIwvzSJe8wxfpVAYeIZrkEsGwG7pZkiWjLM1hFmYRbQf+oopdoHhP6vGjmWPG7GZDgCYW/LgRTzuTGi2UBtYm1Qs/FwW3fB7MtgvcOP+K0E2DiHUQGBKO1WJeGj95+kOL/4StUIi4qTiml9isHY74kD+e5hpOxzFYfXTKcHrx0zuJQ9PyhAb1SDa6NswyqlNvprksQCRvDkbrGFBuZ7yr0eGnRslLVN+rtr2whMR0PhEZEo+fOrABZlIMvyCuWM0CGSuxHrJHt4xZULc3GvhL2GwN8owA9uZ4FT4w54UP02uuIL2D++od5my6p5inIhYzWvB9HaqY+lsHsaABjOf5zr45AnhVOQUQqGqxEdUCMnYOFQexVUsVMDw0ezzkNRlx12kFlz4PidvCva3GTZQHq5xSE31IX7NCynfy3Zco8Cevw==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f5222de5-3ab6-f93a-d158-d483455ac9a9',
+  'x-ms-request-id': 'a1bc61ff-996f-eeda-b11b-aeb43c0afcdb',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:54 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
+nock('https://glguj9qa6u.database.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/v1/ManagementService.svc/Server2(%27uwoop6e4yp%27)/Databases', '*')
-  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-02-21T03:11:56Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:56.25</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
+.post('/v1/ManagementService.svc/Server2(%27glguj9qa6u%27)/Databases', '*')
+  .reply(201, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<entry xml:base=\"https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <id>https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/Databases(4)</id>\r\n  <title type=\"text\"></title>\r\n  <updated>2013-03-19T20:30:20Z</updated>\r\n  <author>\r\n    <name />\r\n  </author>\r\n  <link rel=\"edit\" title=\"Database\" href=\"Databases(4)\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(4)/Server\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(4)/ServiceObjective\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(4)/DatabaseMetrics\" />\r\n  <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(4)/DatabaseCopies\" />\r\n  <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n  <content type=\"application/xml\">\r\n    <m:properties>\r\n      <d:Id m:type=\"Edm.Int32\">4</d:Id>\r\n      <d:Name>mydatabase</d:Name>\r\n      <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n      <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n      <d:Edition>Web</d:Edition>\r\n      <d:MaxSizeGB m:type=\"Edm.Int32\">1</d:MaxSizeGB>\r\n      <d:MaxSizeBytes m:type=\"Edm.Int64\">1073741824</d:MaxSizeBytes>\r\n      <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n      <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:30:20.19</d:CreationDate>\r\n      <d:IsSystemObject m:type=\"Edm.Boolean\">false</d:IsSystemObject>\r\n      <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n      <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n      <d:SizeMB m:type=\"Edm.Decimal\">-1</d:SizeMB>\r\n      <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\" m:null=\"true\" />\r\n      <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n    </m:properties>\r\n  </content>\r\n</entry>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
-  location: 'https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2(\'uwoop6e4yp\')/Databases(4)',
+  location: 'https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2(\'glguj9qa6u\')/Databases(4)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f5222de5-3ab6-f93a-d158-d483455ac9a9',
+  'x-ms-request-id': 'a1bc61ff-996f-eeda-b11b-aeb43c0afcdb',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:56 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
+nock('https://glguj9qa6u.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">cL5bEUbcxHaH+iPHQnwv6/g6hF7bLlvJZKkujoFT9+obBTIz6On1k2LSM89ate05Jt0fpGtQqrd7rTV8IwvA56XM1XL5O4iIjqT7ojE3tNy+HvEKuBg+EGk2oTXNnkU7xQ0lZZDbNXqwdMt9qVPrBvqBSBhl4fJOdfvYEQBdDw1b7i6eq1gNy/hNi4g9mCTsm4k7HRrq1AsIqoBsk/RJIIIW7+vJNYIdKmtRT2qm1iEQZQ8Sk4GwGpedoFYArvriDmr/rCEmvM/Jf2Q65OZb1aXzCMV58Tfzj23GsUiqeZf1quACxwqXjYyzdkm3hxSmz0OVrpxF4O187qLz2PF3Qz+E5ZGby2Srm6q0u28aONMp0MpjdQ7TqoALR8QrAuE9EDkbiHFdyP/uUEiNugP1K4BmLRK5ORyKlCLbdowJGXcPwbKIA93L9OO/Ri+ENJumt+atp93XaJ11Spdnc7L8KpyICL43xkl8awKFRG5EXKHCJVNc9mGuPnXlHfwmsjVDxEbmGOqdRxPe14gJMva5sgKzFKfyO/s2+InHpFEXr26P6ZGbzrZBS+zHkrAXHx/36of4l/ZN9ZMWiaVM+NacoFQg9XKtjiGUQyz6Bi8vehHwCR4uwyBu3BmCAX9MVGT23U+n/4+NV8wZ5jsinv1hY0T75Yp6ORplI5l5BWNP3JpU044aTN+UEiqGVjBj2w5QW+QmfH/P3sdJ1GTK8Mm/ITYBPTSlhK+9qKiHHb4oUJ8VNnXDJIHdiHPwd6zVsff5+yRIAb8Gusr5JCbcbKItsA==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">IqHjAd2HzJAlJCn0Uc0R32+xNRg+eEYNtl81/jsBJZGEu1z2AXfflkAoXqsTvYfy9AF4srnOpYLYyJXfc1Lt+XFjR155Deh9s1P47Cfu2y6Hj6/ow++ccOX3w35lzmGg7wHxLLjd/4+g6p3whIvtFSvOPzqQDXBA4QZkY2eEw3ydtD/5OatVa8hrZYBlsM/X+H2gZFd/gdummodFfFRl6Hd2s3e3aunZd3XhuLiziYYf7YVm+oesLH9KlpUbH68bGBSWsz23pGpXH6ainW5aD0iUNEstNLyJcEipG/H4iqbtdsEJZxr22ny8d+fVDDtVFfu37hr0vTIyltvDQb+SXiDII+VSuYJxXGFQSJRXSl63biikOz4ffu9ypPeombeGG+fPkRU6JTNYOZuhFpyVjjpoj0tLsheOWY8EY7esEYKSV8swuZ4azV43FwXcrt74lsB5w8+0mHtyc9Wf+XeADk3Z6xU9VP7DF1ObyRLr518P5m+L5z03+OXN36qag4BFtpYgLRms0sPpsFGDPXHIFa/RDPrHi/4DQDAMQiGePB1K8bxfT9cKG29yV/2oumptViXDUKpTbA6k8VgWGe0vYmed4fnlmUPd5DKbc0X3oaazT625o0dcTSJcephnQ/IpCXpAz15dw9udEwYG1WB/zim2P1YXi0Rsb9RKoa1+lWbvc6rtTCBX4OkCVFzgtGRFh1LtrShTN3rz90xju9ucmfhs48UO+/2Q6hztZaguFhxHZA2w4gxbtp2eLjL9uklUxmlceNrINVtpI7bzWajNWw==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7e90b802-3ce1-d11c-7f05-c6f19192d0b8',
+  'x-ms-request-id': 'e25af29c-967d-269a-ee89-5a494eed7332',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:57 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
-  .delete('/v1/ManagementService.svc/Server2(%27uwoop6e4yp%27)/Databases(4)')
+nock('https://glguj9qa6u.database.windows.net:443')
+  .delete('/v1/ManagementService.svc/Server2(%27glguj9qa6u%27)/Databases(4)')
   .reply(204, "", { 'cache-control': 'no-store,no-cache',
   'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7e90b802-3ce1-d11c-7f05-c6f19192d0b8',
+  'x-ms-request-id': 'e25af29c-967d-269a-ee89-5a494eed7332',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:11:59 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
+nock('https://glguj9qa6u.database.windows.net:443')
   .get('/v1/ManagementService.svc/GetAccessToken')
-  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">hKAPlPqRMNjIDO08l1/htuZ/NWQXEkz/+Aze4xrjav4vZ1jlF6A+IlD1c+EF73khZRBAU0dt93wgpFs6Mw/3iLmSRr4rZlMjlXKRVF4F4AGVnekOf3YGPNigwH3NhB9qpOTV+G/ByKVgshg1jdu4FFnFZlB5cYvB9wngnS3+corMkuVOAGq7BkWUBQub6/rMKmFT1sf4uISVTmmgaZ5/PA0WjoXFPjTiyk0wQLXWcSOCiZVwoixveu375P1ZONdo/ftquUny/3mUVxrgW5s2WWCAM2p5dWV/V/zjyspnv9yj/DGQLGMdzVqphNESH1pvM0sGsDoACq8WS6PMZn4RB2V7TFZXSUhHHM62OS0PqtFwiTMEzI26lwr5l3PqJM0IQG51I+nz9IcXHbMnbHCm+ngK6rlN3xYGJCNxJ7uGFcpUAo64MiP2cHGefaA7TyQGL+Vl/SD/ToafhhQKZ9tm5Df2zfPSHCRdPdLlU0uxDTqYtF+Tymj1IuQsjCosrppbpiiEBR8YcSargefjntXpG+DnmmCHkGqkHtsTEXXwF3btbunMkWxK8VTJifvXk1vEIk+VuB3Nnv1rS4m9Xh3N3V1IAjeCgBQmgWdgzSy9UTtGcoR5DlVKMavl1HPkx2yud5GJYHGdV0zB9czchuo/odH+c5oGpisAU5VHDoCRskprH5ZTXe/eaqrvKwSOCoKiu8HqBIgE7QKgnWUKqpjj+IqpIxdOIy/vNsmBlb1LN5cuFOwIvUoXQXiJaEEFsoA4sUhvtNnMMkE1vfrq18EmAw==</string>", { 'cache-control': 'no-store,no-cache',
+  .reply(200, "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">fZegBA3+rwquWje7x4PPmtb01+SEwZesPXvTK88Y6mYSm8eD+GiQ6JcnvHcdSqltH3R1fQHApWstuxhE3XgOxMsY91Fumu5MV5YQpsUZtgzaMdX9/i65Wu7+c6HpD2UMWvK+qYkW0rWAKqxYT2B5yXYHeI3mr/YTAq5NJZ4/ykPLEkLitYgDnGQbtZnuK2v5XJBOclGoOLiuK7ZhJZ2BCI2cyErSuUPSaAosjFrdr5g8yqJaRrXQCA64EgkakgIbE08M5ipaoz+0LgqIMjYeTCa07nawJaKV+kiP2J+bWYhjVKBL7qB9CalSBVI97NaUbP/1YorRzVIWar81HQE43RSUbMYcofMBHNs6CNnROyjLufgHuy3Punt+2/WT+UFnJweZA620IHiQuPlaCqI2W1vV+w/2J+uHJHwiXKhWT67UU3w9gZ4F5Ny9dvdMvopOS3yFY2P65HpFDYxRjqX1Ub4wQWdEr+Ru1eh6AqrFbnKWKW5d9E8dJIqBM0Dwq+WRI75yik9E+8a+9fKN7m0XjZ9VArxNWep4iKsYzj1KEBn3UhOds8UQinb1QZWi1EVnwP30dxgIrplPkenoW2NhcZ2GFErUzr3nzfj4HO/yZW8DuF1KKqUFKvedDhif7lM8hUTAF2KcAOT/mzSy/FYvs+lNJ6/qmBOy8LSUARpxwi1Ub11w/RKb8+IFcjktSRSDLA5ijkd/oBVoPjAL3gRLMPAqFNC4wahSLftvZ7+HKlIEV4E22zvaMJ9WM6Fr4dG9pzvEiYWMK/W6IohFkIGVDA==</string>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cb0b0451-0f72-9b13-3391-d5c642a4e907',
+  'x-ms-request-id': '1e60d529-e51f-3f78-d8d1-88fa516e8fc6',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:12:00 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://uwoop6e4yp.database.windows.net:443')
-  .get('/v1/ManagementService.svc/Server2(%27uwoop6e4yp%27)/Databases')
-  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/Databases</id>\r\n  <updated>2013-02-21T03:12:02Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://uwoop6e4yp.database.windows.net/v1/ManagementService.svc/Server2('uwoop6e4yp')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-02-21T03:12:02Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-02-21T03:11:34.13</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
+nock('https://glguj9qa6u.database.windows.net:443')
+  .get('/v1/ManagementService.svc/Server2(%27glguj9qa6u%27)/Databases')
+  .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<feed xml:base=\"https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/\" xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\" xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\">Databases</title>\r\n  <id>https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/Databases</id>\r\n  <updated>2013-03-19T20:30:26Z</updated>\r\n  <link rel=\"self\" title=\"Databases\" href=\"Databases\" />\r\n  <entry>\r\n    <id>https://glguj9qa6u.database.windows.net/v1/ManagementService.svc/Server2('glguj9qa6u')/Databases(1)</id>\r\n    <title type=\"text\"></title>\r\n    <updated>2013-03-19T20:30:26Z</updated>\r\n    <author>\r\n      <name />\r\n    </author>\r\n    <link rel=\"edit\" title=\"Database\" href=\"Databases(1)\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/Server\" type=\"application/atom+xml;type=entry\" title=\"Server\" href=\"Databases(1)/Server\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/ServiceObjective\" type=\"application/atom+xml;type=entry\" title=\"ServiceObjective\" href=\"Databases(1)/ServiceObjective\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseMetrics\" type=\"application/atom+xml;type=entry\" title=\"DatabaseMetrics\" href=\"Databases(1)/DatabaseMetrics\" />\r\n    <link rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/DatabaseCopies\" type=\"application/atom+xml;type=feed\" title=\"DatabaseCopies\" href=\"Databases(1)/DatabaseCopies\" />\r\n    <category term=\"Microsoft.SqlServer.Management.Server.Domain.Database\" scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" />\r\n    <content type=\"application/xml\">\r\n      <m:properties>\r\n        <d:Id m:type=\"Edm.Int32\">1</d:Id>\r\n        <d:Name>master</d:Name>\r\n        <d:ServiceObjectiveId m:type=\"Edm.Guid\" m:null=\"true\" />\r\n        <d:ServiceObjectiveAssignmentState m:type=\"Edm.Byte\" m:null=\"true\" />\r\n        <d:Edition>Web</d:Edition>\r\n        <d:MaxSizeGB m:type=\"Edm.Int32\">5</d:MaxSizeGB>\r\n        <d:MaxSizeBytes m:type=\"Edm.Int64\">5368709120</d:MaxSizeBytes>\r\n        <d:CollationName>SQL_Latin1_General_CP1_CI_AS</d:CollationName>\r\n        <d:CreationDate m:type=\"Edm.DateTime\">2013-03-19T20:29:55.66</d:CreationDate>\r\n        <d:IsSystemObject m:type=\"Edm.Boolean\">true</d:IsSystemObject>\r\n        <d:Status m:type=\"Edm.Int32\">1</d:Status>\r\n        <d:IsFederationRoot m:type=\"Edm.Boolean\">false</d:IsFederationRoot>\r\n        <d:SizeMB m:type=\"Edm.Decimal\">-1.00</d:SizeMB>\r\n        <d:IsRecursiveTriggersOn m:type=\"Edm.Boolean\">false</d:IsRecursiveTriggersOn>\r\n        <d:IsReadOnly m:type=\"Edm.Boolean\">false</d:IsReadOnly>\r\n      </m:properties>\r\n    </content>\r\n  </entry>\r\n</feed>", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cb0b0451-0f72-9b13-3391-d5c642a4e907',
+  'x-ms-request-id': '1e60d529-e51f-3f78-d8d1-88fa516e8fc6',
   dataserviceversion: '1.0;',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 21 Feb 2013 03:12:02 GMT' });
+  date: 'Tue, 19 Mar 2013 20:30:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/uwoop6e4yp')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/glguj9qa6u')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '326ab50efa6e459c95576a7b784eee1f',
-  date: 'Thu, 21 Feb 2013 03:12:06 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f27bae1f2a424eaea0fefae7faa51d19',
+  date: 'Tue, 19 Mar 2013 20:30:31 GMT' });
  return result; }]];

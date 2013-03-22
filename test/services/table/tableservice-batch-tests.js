@@ -365,7 +365,7 @@ function generateEntities(count) {
   for(var i = 0 ; i < count ; i++) {
     var entity = {
       PartitionKey: 'partition1',
-      RowKey: i + 1,
+      RowKey: (i + 1).toString(),
       address: 'street' + (i + 1)
     };
 
