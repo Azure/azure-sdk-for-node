@@ -21,7 +21,7 @@ var util = require('util');
 
 // Test includes
 var testutil = require('../../util/util');
-var blobtestutil = require('../../util/blob-test-utils');
+var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
 var azureutil = testutil.libRequire('util/util');
@@ -77,7 +77,7 @@ suite('sharedkeylite-tests', function () {
         assert.notEqual(container1.lastModified, null);
       }
 
-      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       // creating again will result in a duplicate error
       blobService.createContainer(containerName, function (createError2, container2) {

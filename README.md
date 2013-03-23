@@ -1,4 +1,4 @@
-# Windows Azure SDK for Node.js
+# Windows Azure SDK for Node.js [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
 
 This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. 
 
@@ -128,7 +128,7 @@ blobService.getBlobToStream('taskcontainer', 'task1', fs.createWriteStream('task
 });
 ```
 
-To create a SAS URL you can use the **generateSharedAccessSignatureUrl** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
+To create a SAS URL you can use the **getBlobUrl** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
 
 ```Javascript
 var blobService = azure.createBlobService();
@@ -140,7 +140,7 @@ var sharedAccessPolicy = {
     }
 };
 
-var sasUrl = blobService.generateSharedAccessSignatureUrl(containerName, blobName, sharedAccessPolicy);
+var sasUrl = blobService.getBlobUrl(containerName, blobName, sharedAccessPolicy);
 ```
 
 ## Storage Queues
@@ -268,6 +268,58 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
      }
 });
 ```
+
+
+## Notification Hubs
+
+Notification hubs allow you to send notifications to WNS and APNS receivers.
+
+To create a notification hub, use the method **createNotificationHub**.
+
+```JavaScript
+var serviceBusService = azure.createServiceBusService();
+
+serviceBusService.createNotificationHub('hubName', function (err) {
+    if (!err) {
+        // Notification hub created successfully
+    }
+});
+```
+
+To send messages to the notification hub use the methods of the **wns** or **apns** objects. For a full reference on WNS method templates, check http://msdn.microsoft.com/en-us/library/windows/apps/hh779725.aspx.
+
+```JavaScript
+var notificationHubService = azure.createNotificationHubService('hubName');
+
+notificationHubService.wns.sendTileSquarePeekImageAndText01(
+    null,
+    {
+        image1src: 'http://foobar.com/dog.jpg',
+        image1alt: 'A dog',
+        text1: 'This is a dog',
+        text2: 'The dog is nice',
+        text3: 'The dog bites',
+        text4: 'Beware of dog'
+    },
+    function (error) {
+        if (!error) {
+            // message sent successfully
+        }
+    });
+
+notificationHubService.apns.send(
+    null,
+    {
+        alert: 'This is my toast message for iOS!',
+        expiry: expiryDate
+    },
+    function (error) {
+        if (!error) {
+            // message sent successfully
+        }
+    });
+```
+
 ## Azure SQL Database
 
 The Azure SQL Database functions allow you to manage Azure SQL servers, databases and firewall rules.
@@ -332,7 +384,6 @@ sqlServer.listServerDatabases(function(error, dbs) {
 });
 
 ```
-
 
 ## Service Runtime
 

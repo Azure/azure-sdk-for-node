@@ -52,7 +52,6 @@ var ServiceClient = azure.ServiceClient;
 var CloudBlobClient = azure.CloudBlobClient;
 
 var util = require('util');
-var ISO8061Date = require('../../lib/util/iso8061date');
 
 var container = 'sassample';
 var blob = 'sassample';

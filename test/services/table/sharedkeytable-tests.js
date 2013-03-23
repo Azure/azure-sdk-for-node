@@ -17,12 +17,11 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
 var azureutil = testutil.libRequire('util/util');
-var ISO8061Date = testutil.libRequire('util/iso8061date');
 var SharedKeyLiteTable = testutil.libRequire('services/table/sharedkeylitetable');
 
 var ServiceClient = azure.ServiceClient;
@@ -42,7 +41,7 @@ var entity2 = { PartitionKey: 'part2',
   RowKey: 'row1',
   boolval: { '$': { type: 'Edm.Boolean' }, '_': true },
   intval: { '$': { type: 'Edm.Int32' }, '_': 42 },
-  dateval: { '$': { type: 'Edm.DateTime' }, '_': ISO8061Date.format(new Date()) }
+  dateval: { '$': { type: 'Edm.DateTime' }, '_': new Date().toISOString() }
 };
 
 var tableNames = [];
@@ -80,21 +79,21 @@ suite('sharedkeytable-tests', function () {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       assert.ok(table);
       if (table) {
         assert.ok(table.TableName);
         assert.equal(table.TableName, tableName);
 
-        assert.ok(table.id);
-        assert.equal(table.id, createResponse.body.entry['id']);
+        assert.ok(table['_'].id);
+        assert.equal(table['_'].id, createResponse.body.entry['id']);
 
-        assert.ok(table.link);
-        assert.equal(table.link, createResponse.body.entry['link'][0][Constants.XML_METADATA_MARKER]['href']);
+        assert.ok(table['_'].link);
+        assert.equal(table['_'].link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
 
-        assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body.entry['updated']);
+        assert.ok(table['_'].updated);
+        assert.equal(table['_'].updated, createResponse.body.entry['updated']);
       }
 
       // check that the table exists
@@ -102,7 +101,7 @@ suite('sharedkeytable-tests', function () {
         assert.equal(existsError, null);
         assert.notEqual(tableResponse, null);
         assert.ok(existsResponse.isSuccessful);
-        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
         done();
       });
     });

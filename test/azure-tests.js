@@ -183,7 +183,7 @@ suite('azure', function () {
 
     // Points to the credentials
     assert.equal(blobService.usePathStyleUri, false);
-    assert.equal(blobService.host + ':' + blobService.port, parameterAzureStorageAccount.toLowerCase() + '.' +  ServiceClient.CLOUD_BLOB_HOST + ':80');
+    assert.equal(blobService.host + ':' + blobService.port, parameterAzureStorageAccount.toLowerCase() + '.' +  ServiceClient.CLOUD_BLOB_HOST + ':443');
 
     // But the used credentials are the ones passed because we were explicit
     assert.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);

@@ -17,7 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
@@ -182,7 +182,7 @@ suite('tableservice-batch-tests', function () {
         var tableQuery = TableQuery.select()
           .from(tableName)
           .where('address eq ?', entities[0].address)
-          .and('RowKey eq ?', entities[0].RowKey);
+          .and('RowKey eq ?', entities[0].RowKey.toString());
 
         tableService.queryEntities(tableQuery, function (queryError, entries, entriesContinuation, queryResponse) {
           assert.equal(queryError, null);
@@ -365,7 +365,7 @@ function generateEntities(count) {
   for(var i = 0 ; i < count ; i++) {
     var entity = {
       PartitionKey: 'partition1',
-      RowKey: i + 1,
+      RowKey: (i + 1).toString(),
       address: 'street' + (i + 1)
     };
 

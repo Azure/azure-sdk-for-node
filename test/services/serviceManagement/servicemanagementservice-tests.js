@@ -15,22 +15,43 @@
 
 var should = require('should');
 var mocha = require('mocha');
-var uuid = require('node-uuid');
 var _ = require('underscore');
 
 var testutil = require('../../util/util');
+var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
 
+var testPrefix = 'serviceManagement-tests';
+
+var storageaccounts = [];
+var hostedservices = [];
+
 describe('Service Management', function () {
   var service;
+  var suiteUtil;
 
-  before(function () {
+  before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
     service = azure.createServiceManagementService(
       subscriptionId, auth,
       { serializetype: 'XML'});
+
+    suiteUtil = new MockedTestUtils(service, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  after(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suiteUtil.setupTest(done);
+  });
+
+  afterEach(function (done) {
+    suiteUtil.baseTeardownTest(done);
   });
 
   describe('list locations', function () {
@@ -55,10 +76,11 @@ describe('Service Management', function () {
 
   describe('hosted services', function () {
     var originalHostedServices;
-    var hostedServiceName = 'xplatcli-' + uuid.v4().substr(0, 8);
+    var hostedServiceName;
     var hostedServiceLocation = 'West US';
 
-    before(function (done) {
+    beforeEach(function (done) {
+      hostedServiceName = testutil.generateId('nodesdk', hostedservices, suiteUtil.isMocked);
       service.listHostedServices(function (err, response) {
         originalHostedServices = response;
 
@@ -66,7 +88,7 @@ describe('Service Management', function () {
       });
     });
 
-    after(function (done) {
+    afterEach(function (done) {
       service.deleteHostedService(hostedServiceName, done);
     });
 
@@ -123,10 +145,12 @@ describe('Service Management', function () {
 
   describe('storage accounts', function () {
     var originalStorageAccounts;
-    var storageAccountName = 'xplatcli' + uuid.v4().substr(0, 8).replace(/-/g, '');
     var storageAccountLocation = 'West US';
+    var storageAccountName;
 
-    before(function (done) {
+    beforeEach(function (done) {
+      storageAccountName = testutil.generateId('nodesdk', storageaccounts, suiteUtil.isMocked);
+
       service.listStorageAccounts(function (err, response) {
         originalStorageAccounts = response;
 
@@ -134,8 +158,20 @@ describe('Service Management', function () {
       });
     });
 
-    after(function (done) {
-      service.deleteStorageAccount(storageAccountName, done);
+    afterEach(function (done) {
+      var deleteStorage = function() {
+        setTimeout(function () {
+          service.deleteStorageAccount(storageAccountName, function (err) {
+            if (err) {
+              deleteStorage();
+            } else {
+              done();
+            }
+          });
+        }, (suiteUtil.isMocked && !suiteUtil.isRecording) ? 0 : 10000);
+      };
+
+      deleteStorage();
     });
 
     it('should list storage accounts', function (done) {
@@ -156,9 +192,7 @@ describe('Service Management', function () {
 
         response.body.ServiceName.should.equal(storageAccountName);
 
-        // TODO: fix issue with handling null values for description
-        // response.body.StorageServiceProperties.Description.should.be.null
-
+        response.body.StorageServiceProperties.Description.should.be.null
         response.body.StorageServiceProperties.Location.should.equal(storageAccountLocation);
 
         done(err);
@@ -166,14 +200,27 @@ describe('Service Management', function () {
     });
 
     it('should get created storage account keys', function (done) {
-      service.getStorageAccountKeys(storageAccountName, function (err, response) {
-        should.not.exist(err);
+      var attempts = 0;
 
-        response.body.StorageServiceKeys.Primary.should.not.be.null;
-        response.body.StorageServiceKeys.Secondary.should.not.be.null;
+      var executeTest = function () {
+        service.getStorageAccountKeys(storageAccountName, function (err, response) {
+          if (!err || attempts >= 3) {
+            should.not.exist(err);
 
-        done(err);
-      });
+            response.body.StorageServiceKeys.Primary.should.not.be.null;
+            response.body.StorageServiceKeys.Secondary.should.not.be.null;
+
+            done();
+          } else {
+            attempts++;
+
+            // Retry in 5 seconds
+            setTimeout(executeTest, (suiteUtil.isMocked && !suiteUtil.isRecording) ? 0 : 5000);
+          }
+        });
+      };
+
+      executeTest();
     });
   });
 });
