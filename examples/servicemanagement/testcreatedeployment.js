@@ -131,7 +131,7 @@ svcmgmt.createDeployment(svcname,
     console.log(response);
   } else {
     if (response && response.isSuccessful) {
-      if (response.statusCode == HttpResponseCodes.OK_CODE) {
+      if (response.statusCode == HttpResponseCodes.Ok) {
         console.log('OK');
       } else {
         console.log('Pending');

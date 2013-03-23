@@ -22,7 +22,7 @@ var sinon = require('sinon');
 
 // Test includes
 var testutil = require('../../util/util');
-var blobtestutil = require('../../util/blob-test-utils');
+var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
 var azureutil = testutil.libRequire('util/util');
@@ -272,7 +272,7 @@ suite('blobservice-tests', function () {
         assert.notEqual(container1.lastModified, null);
       }
 
-      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       // creating again will result in a duplicate error
       blobService.createContainer(containerName, function (createError2, container2) {
@@ -296,7 +296,7 @@ suite('blobservice-tests', function () {
         assert.notEqual(container1.lastModified, null);
       }
 
-      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createContainerResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       // creating again will result in a duplicate error
       blobService.createContainerIfNotExists(containerName, function (createError2, isCreated) {
@@ -420,17 +420,19 @@ suite('blobservice-tests', function () {
             assert.notEqual(setAclContainer2, null);
             assert.ok(setResponse2.isSuccessful);
 
-            blobService.getContainerAcl(containerName, function (getAclError2, getAclContainer2, getResponse3) {
-              assert.equal(getAclError2, null);
-              assert.notEqual(getAclContainer2, null);
-              if (getAclContainer2) {
-                assert.equal(getAclContainer2.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.CONTAINER);
-              }
+            setTimeout(function () {
+              blobService.getContainerAcl(containerName, function (getAclError2, getAclContainer2, getResponse3) {
+                assert.equal(getAclError2, null);
+                assert.notEqual(getAclContainer2, null);
+                if (getAclContainer2) {
+                  assert.equal(getAclContainer2.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.CONTAINER);
+                }
 
-              assert.ok(getResponse3.isSuccessful);
+                assert.ok(getResponse3.isSuccessful);
 
-              done();
-            });
+                done();
+              });
+            }, (suiteUtil.isMocked && !suiteUtil.isRecording) ? 0 : 5000);
           });
         });
       });
@@ -440,9 +442,10 @@ suite('blobservice-tests', function () {
   test('SetContainerAclWithPolicies', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
-    var readWriteStartDate = new Date();
+    var readWriteStartDate = new Date(2012, 10, 10);
     var readWriteExpiryDate = new Date(readWriteStartDate);
     readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
+    readWriteExpiryDate.setMilliseconds(999);
 
     var readWriteSharedAccessPolicy = {
       Id: 'readwrite',
@@ -479,6 +482,7 @@ suite('blobservice-tests', function () {
           assert.notEqual(getAclContainer1, null);
           if (getAclContainer1) {
             assert.equal(getAclContainer1.publicAccessLevel, BlobConstants.BlobContainerPublicAccessType.BLOB);
+            assert.equal(getAclContainer1.signedIdentifiers[0].AccessPolicy.Expiry.getTime(), readWriteExpiryDate.getTime());
           }
 
           assert.ok(getResponse1.isSuccessful);
@@ -517,15 +521,15 @@ suite('blobservice-tests', function () {
       options.signedIdentifiers = [
         { Id: 'id1',
           AccessPolicy: {
-            Start: '2009-10-10',
-            Expiry: '2009-10-11',
+            Start: '2009-10-10T00:00:00.123Z',
+            Expiry: '2009-10-11T00:00:00.456Z',
             Permissions: 'r'
           }
         },
         { Id: 'id2',
           AccessPolicy: {
-            Start: '2009-11-10',
-            Expiry: '2009-11-11',
+            Start: '2009-11-10T00:00:00.006Z',
+            Expiry: '2009-11-11T00:00:00.4Z',
             Permissions: 'w'
           }
         }];
@@ -549,14 +553,16 @@ suite('blobservice-tests', function () {
             if (containerAcl.signedIdentifiers) {
               containerAcl.signedIdentifiers.forEach(function (identifier) {
                 if (identifier.Id === 'id1') {
-                  assert.equal(identifier.AccessPolicy.Start, '2009-10-10T00:00:00.0000000Z');
-                  assert.equal(identifier.AccessPolicy.Expiry, '2009-10-11T00:00:00.0000000Z');
+                  assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-10-10T00:00:00.123Z').getTime());
+                  assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-10-11T00:00:00.456Z').getTime());
                   assert.equal(identifier.AccessPolicy.Permission, 'r');
                   entries += 1;
                 }
                 else if (identifier.Id === 'id2') {
-                  assert.equal(identifier.AccessPolicy.Start, '2009-11-10T00:00:00.0000000Z');
-                  assert.equal(identifier.AccessPolicy.Expiry, '2009-11-11T00:00:00.0000000Z');
+                  assert.equal(identifier.AccessPolicy.Start.getTime(), new Date('2009-11-10T00:00:00.006Z').getTime());
+                  assert.equal(identifier.AccessPolicy.Start.getMilliseconds(), 6);
+                  assert.equal(identifier.AccessPolicy.Expiry.getTime(), new Date('2009-11-11T00:00:00.4Z').getTime());
+                  assert.equal(identifier.AccessPolicy.Expiry.getMilliseconds(), 400);
                   assert.equal(identifier.AccessPolicy.Permission, 'w');
                   entries += 2;
                 }
@@ -581,7 +587,7 @@ suite('blobservice-tests', function () {
       assert.equal(createError1, null);
       assert.notEqual(container1, null);
       assert.ok(createResponse1.isSuccessful);
-      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
         assert.equal(uploadError, null);
@@ -1035,7 +1041,7 @@ suite('blobservice-tests', function () {
       assert.equal(createError1, null);
       assert.notEqual(container1, null);
       assert.ok(createResponse1.isSuccessful);
-      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blobResponse, uploadResponse) {
         assert.equal(uploadError, null);
@@ -1252,10 +1258,10 @@ suite('blobservice-tests', function () {
     var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
     var blobUrl = blobServiceassert.getBlobUrl(containerName);
-    assert.equal(blobUrl, 'http://host.com:80/' + containerName);
+    assert.equal(blobUrl, 'https://host.com:80/' + containerName);
 
     blobUrl = blobServiceassert.getBlobUrl(containerName, blobName);
-    assert.equal(blobUrl, 'http://host.com:80/' + containerName + '/' + blobName);
+    assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName);
 
     done();
   });
@@ -1273,7 +1279,7 @@ suite('blobservice-tests', function () {
     };
 
     var blobUrl = blobServiceassert.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-    assert.equal(blobUrl, 'http://host.com:80/' + containerName + '/' + blobName + '?se=2011-10-12T11%3A53%3A40Z&sr=b&sp=r&sig=eVkH%2BFxxShel2hcN50ZUmgPAHk%2FmqRVeaBfyry%2BVacw%3D');
+    assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName + '?se=2011-10-12T11%3A53%3A40Z&sr=b&sp=r&sig=eVkH%2BFxxShel2hcN50ZUmgPAHk%2FmqRVeaBfyry%2BVacw%3D');
 
     done();
   });
@@ -1285,7 +1291,7 @@ suite('blobservice-tests', function () {
     var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
     // Mock Date just to ensure a fixed signature
-    this.clock = sinon.useFakeTimers(0, "Date");
+    this.clock = sinon.useFakeTimers(0, 'Date');
 
     var sharedAccessPolicy = {
       AccessPolicy: {
@@ -1296,7 +1302,7 @@ suite('blobservice-tests', function () {
     this.clock.restore();
 
     var blobUrl = blobServiceassert.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-    assert.equal(blobUrl, 'http://host.com:80/' + containerName + '/' + blobName + '?se=1970-01-01T00%3A10%3A00Z&sr=b&sp=r&sig=LofuDUzdHPpiteauMetANWzDpzd0Vw%2BVMOHyXYCipAM%3D');
+    assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName + '?se=1970-01-01T00%3A10%3A00Z&sr=b&sp=r&sig=LofuDUzdHPpiteauMetANWzDpzd0Vw%2BVMOHyXYCipAM%3D');
 
     done();
   });
@@ -1364,7 +1370,7 @@ suite('blobservice-tests', function () {
         assert.equal(createError1, null);
         assert.notEqual(container1, null);
         assert.ok(createResponse1.isSuccessful);
-        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         var blobOptions = { contentType: 'text' };
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, blobOptions, function (uploadError, blobResponse, uploadResponse) {
@@ -1398,7 +1404,7 @@ suite('blobservice-tests', function () {
 
     assert.equal(blobService.storageAccount, 'myaccount');
     assert.equal(blobService.storageAccessKey, key);
-    assert.equal(blobService.protocol, 'https://');
+    assert.equal(blobService.protocol, 'https:');
     assert.equal(blobService.host, 'myaccount.blob.core.windows.net');
 
     done();
@@ -1410,7 +1416,7 @@ suite('blobservice-tests', function () {
 
     assert.equal(blobService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
     assert.equal(blobService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
-    assert.equal(blobService.protocol, 'http://');
+    assert.equal(blobService.protocol, 'http:');
     assert.equal(blobService.host, '127.0.0.1');
     assert.equal(blobService.port, '10000');
 

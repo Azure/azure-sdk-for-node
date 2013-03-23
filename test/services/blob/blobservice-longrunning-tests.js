@@ -122,7 +122,7 @@ suite('blobservice-longrunning-tests', function () {
         assert.equal(createError1, null);
         assert.notEqual(container1, null);
         assert.ok(createResponse1.isSuccessful);
-        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         var blobOptions = { contentType: 'text' };
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, blobOptions, function (uploadError, blobResponse, uploadResponse) {
@@ -160,7 +160,7 @@ suite('blobservice-longrunning-tests', function () {
         assert.equal(createError1, null);
         assert.notEqual(container1, null);
         assert.ok(createResponse1.isSuccessful);
-        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, { setBlobContentMD5: true }, function (uploadError, blobResponse, uploadResponse) {
           assert.equal(uploadError, null);
@@ -191,7 +191,7 @@ suite('blobservice-longrunning-tests', function () {
         assert.equal(createError1, null);
         assert.notEqual(container1, null);
         assert.ok(createResponse1.isSuccessful);
-        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, { setBlobContentMD5: true }, function (uploadError, blobResponse, uploadResponse) {
           assert.equal(uploadError, null);
