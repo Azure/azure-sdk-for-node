@@ -89,16 +89,19 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
     process.env.AZURE_CERTIFICATE = 'fake_certificate';
     process.env.AZURE_CERTIFICATE_KEY = 'fake_certificate_key';
   }
-} else if (process.env.AZURE_NOCK_RECORD) {
-  if (process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
+} else if (!process.env.NOCK_OFF && process.env.AZURE_NOCK_RECORD) {
+  // If in record mode, and environment variables are set, make sure they are the expected one for recording
+  // NOTE: For now, only the Core team can make recording. For non-core team PRs, the recordings will be updated
+  // after merge
+  if (process.env.AZURE_STORAGE_ACCOUNT && process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
     throw new Error('Storage recordings can only be made with the account ' + defaultStorageAccount);
   }
 
-  if (process.env.AZURE_SERVICEBUS_NAMESPACE !== defaultServiceBusAccount) {
+  if (process.env.AZURE_SERVICEBUS_NAMESPACE && process.env.AZURE_SERVICEBUS_NAMESPACE !== defaultServiceBusAccount) {
     throw new Error('Service Bus recordings can only be made with the namespace ' + defaultServiceBusAccount);
   }
 
-  if (process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
+  if (process.env.AZURE_SUBSCRIPTION_ID && process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
     throw new Error('Service Management recordings can only be made with the subscription ' + defaultSubscription);
   }
 }
