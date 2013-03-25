@@ -91,7 +91,7 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
   }
 } else if (!process.env.NOCK_OFF && process.env.AZURE_NOCK_RECORD) {
   // If in record mode, and environment variables are set, make sure they are the expected one for recording
-  // NOTE: For now, only the Core team can make recording. For non-core team PRs, the recordings will be updated
+  // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated
   // after merge
   if (process.env.AZURE_STORAGE_ACCOUNT && process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
     throw new Error('Storage recordings can only be made with the account ' + defaultStorageAccount);
