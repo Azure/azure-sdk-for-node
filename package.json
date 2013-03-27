@@ -15,8 +15,7 @@
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
   "main": "./lib/azure.js",
-  "engines": { "node": ">= 0.6.15 < 0.9" },
-  "engineStrict": "true",
+  "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
     "xml2js" : " >= 0.2.x",

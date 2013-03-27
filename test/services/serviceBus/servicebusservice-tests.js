@@ -1598,7 +1598,7 @@ suite('servicebusservice-tests', function () {
         var buildRequestOptionsFunction = serviceBusService._buildRequestOptions.bind(serviceBusService);
         serviceBusService._buildRequestOptions = function (webResource, options, callback) {
           buildRequestOptionsFunction(webResource, options, function (error, requestOptions) {
-            assert.equal(webResource._queryString[QueryStringConstants.TIMEOUT]['value'], customTimeoutInternalInS);
+            assert.equal(webResource.queryString[QueryStringConstants.TIMEOUT], customTimeoutInternalInS);
 
             callback(error, requestOptions);
           });
