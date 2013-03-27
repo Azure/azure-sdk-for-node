@@ -7,9 +7,9 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ab6f147e265442f0a6a07d01348b47ba',
-  date: 'Thu, 21 Feb 2013 04:28:16 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '538a30f03f134f1b9554f037ca16beba',
+  date: 'Tue, 19 Mar 2013 20:19:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -18,9 +18,9 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '553a02a7d0a94d399762d877f05e9346',
-  date: 'Thu, 21 Feb 2013 04:28:18 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e6693e4a508442c094b55775cb302e59',
+  date: 'Tue, 19 Mar 2013 20:19:34 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -29,44 +29,44 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '04a3e13cc3ae41bfb28cb5b5b6086f62',
-  date: 'Thu, 21 Feb 2013 04:28:21 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a6f8462f15604e839a4b220d1ccfffb0',
+  date: 'Tue, 19 Mar 2013 20:19:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">aw9c194xtw</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">fh6h6ai8zy</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a2f91ef284764f3baab76440865fdcad',
-  date: 'Thu, 21 Feb 2013 04:28:25 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '1922a5ac6ee0474dbda9203bffa4a7e9',
+  date: 'Tue, 19 Mar 2013 20:19:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
-  .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">\n  <Server>\n    <Name>aw9c194xtw</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n</Servers>", { 'cache-control': 'no-cache',
+  .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">\n  <Server>\n    <Name>fh6h6ai8zy</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n</Servers>", { 'cache-control': 'no-cache',
   'content-length': '213',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '276fa6cc719344a795ea774008e5d647',
-  date: 'Thu, 21 Feb 2013 04:28:26 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '93c42bb11d064c87b8c1ee55ce86f5e7',
+  date: 'Tue, 19 Mar 2013 20:19:47 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">oqe62y66r4</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">i2q8p4iuhk</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '54753ca50a734fa39f0fc4face8097b4',
-  date: 'Thu, 21 Feb 2013 04:28:30 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b3ae4a5350354f5b9a8018ce497c4406',
+  date: 'Tue, 19 Mar 2013 20:19:51 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -75,106 +75,106 @@ nock('https://management.core.windows.net:443')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">\n  <Code>40645</Code>\n  <Message>Servername \"!NotValid$\" cannot be empty or null. It can only be made up of lowercase letters 'a'-'z', the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the name.</Message>\n  <Severity>16</Severity>\n  <State>1</State>\n</Error>", { 'content-length': '338',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 21 Feb 2013 04:28:31 GMT' });
+  date: 'Tue, 19 Mar 2013 20:19:55 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">vht8n1lqwj</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">kgme6ya9ai</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '039772e2398442f5bede9c84570027b9',
-  date: 'Thu, 21 Feb 2013 04:28:36 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e975468a97a14f98b4b13451945c2b10',
+  date: 'Tue, 19 Mar 2013 20:19:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/vht8n1lqwj')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/kgme6ya9ai')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0abd699bf08f45e09bfa457036edf43d',
-  date: 'Thu, 21 Feb 2013 04:28:38 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '2193a870e7ad4e23ab04175a5e66cc0c',
+  date: 'Tue, 19 Mar 2013 20:20:10 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
-  .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">\n  <Server>\n    <Name>aw9c194xtw</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n  <Server>\n    <Name>oqe62y66r4</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n</Servers>", { 'cache-control': 'no-cache',
+  .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">\n  <Server>\n    <Name>fh6h6ai8zy</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n  <Server>\n    <Name>i2q8p4iuhk</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n</Servers>", { 'cache-control': 'no-cache',
   'content-length': '351',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1b384e57ccc04b44ae78b2e2a8031ff1',
-  date: 'Thu, 21 Feb 2013 04:28:40 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '63110c3080bd414fa1ed41144eb259b0',
+  date: 'Tue, 19 Mar 2013 20:20:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/aw9c194xtw')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/i2q8p4iuhk')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c9c4d0dbfa434281b8e0c88b21dae895',
-  date: 'Thu, 21 Feb 2013 04:28:43 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'eff70c7ecc9f492fb1be6b280c6c2f4d',
+  date: 'Tue, 19 Mar 2013 20:20:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oqe62y66r4')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fh6h6ai8zy')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fa52926113a4432fb458b23e0a84466f',
-  date: 'Thu, 21 Feb 2013 04:28:43 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'a1a20e6dca6b4bc79ee651082659c7fd',
+  date: 'Tue, 19 Mar 2013 20:20:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">ojhh14ikzp</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">evnpmyhcj2</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '052522747ffe4a1baf9ec557d0f197cc',
-  date: 'Thu, 21 Feb 2013 04:28:48 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '0728be2f662047b98ab41ec398139d3d',
+  date: 'Tue, 19 Mar 2013 20:20:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ojhh14ikzp/firewallrules')
+  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/evnpmyhcj2/firewallrules')
   .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'no-store,no-cache',
   'content-length': '121',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '6d1fcc294da045dcb74405f9249f08a6',
-  date: 'Thu, 21 Feb 2013 04:28:49 GMT' });
+  'x-ms-request-id': '2c7b0c472aa24dc1ac5c3f59838abc7b',
+  date: 'Tue, 19 Mar 2013 20:20:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ojhh14ikzp/firewallrules')
+  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/evnpmyhcj2/firewallrules')
   .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'no-store,no-cache',
   'content-length': '121',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': 'a106ea3b1ddd44c79ed0d05146c01437',
-  date: 'Thu, 21 Feb 2013 04:28:52 GMT' });
+  'x-ms-request-id': '36cd5c6ce1e442df85243ad8031d1750',
+  date: 'Tue, 19 Mar 2013 20:20:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ojhh14ikzp')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/evnpmyhcj2')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9c0fe71c169c409899a598b7f83abc4a',
-  date: 'Thu, 21 Feb 2013 04:28:54 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'beff511f2974465385c9d76aedc5b9bc',
+  date: 'Tue, 19 Mar 2013 20:20:37 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -183,68 +183,68 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd2300e1922fb4f3fadb52c8901e8cb91',
-  date: 'Thu, 21 Feb 2013 04:28:57 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '84ed807fede642d59f04b488a065d4e0',
+  date: 'Tue, 19 Mar 2013 20:20:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">b7v2b1adht</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">fn4t0e8gnv</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '62000555a9eb46c69db392e408744b68',
-  date: 'Thu, 21 Feb 2013 04:29:02 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7ef88f4a169843b98885feb0b49fad62',
+  date: 'Tue, 19 Mar 2013 20:20:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/b7v2b1adht/firewallrules')
+  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules')
   .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'no-store,no-cache',
   'content-length': '121',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '3ee1654f400340dc91e390b0eea561e7',
-  date: 'Thu, 21 Feb 2013 04:29:06 GMT' });
+  'x-ms-request-id': '83bf8ad1bc4f485f885870dacd4631b6',
+  date: 'Tue, 19 Mar 2013 20:20:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/b7v2b1adht/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/b7v2b1adht/firewallrules/nodesdk1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/b7v2b1adht</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules/nodesdk1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': 'bd7da51ba2a84480b9d7e27f8b390636',
-  date: 'Thu, 21 Feb 2013 04:29:08 GMT' });
+  'x-ms-request-id': '8d5d477f4f904a1cbbe43d5200af9325',
+  date: 'Tue, 19 Mar 2013 20:21:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/b7v2b1adht/firewallrules')
-  .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ServiceResource><Name>nodesdk1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/b7v2b1adht/firewallrules/nodesdk1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/b7v2b1adht</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource></ServiceResources>", { 'cache-control': 'no-store,no-cache',
+  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules')
+  .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ServiceResource><Name>nodesdk1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules/nodesdk1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource></ServiceResources>", { 'cache-control': 'no-store,no-cache',
   'content-length': '637',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '56beae6c74b24c72a873d9bde7c8abad',
-  date: 'Thu, 21 Feb 2013 04:29:10 GMT' });
+  'x-ms-request-id': '841563d9e6b6460eab4709cecdba69df',
+  date: 'Tue, 19 Mar 2013 20:21:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/b7v2b1adht')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8fa8c29b4ea842a59cff2eb65229eb80',
-  date: 'Thu, 21 Feb 2013 04:29:13 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '456febf27f574e2c92bd22e8890809e6',
+  date: 'Tue, 19 Mar 2013 20:21:17 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -253,44 +253,44 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '39ed2b213e0f4f97af1edac9cfc2c3db',
-  date: 'Thu, 21 Feb 2013 04:29:14 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '37648fd892fd4197a655803632d15b09',
+  date: 'Tue, 19 Mar 2013 20:21:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">ktxktla5kw</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">d597ce28zr</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5f3eec6f188f4d5cbf73f32a25946760',
-  date: 'Thu, 21 Feb 2013 04:29:19 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '8fd56c1e8cc14ee69e49ffed77129fcd',
+  date: 'Tue, 19 Mar 2013 20:21:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ktxktla5kw/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk2</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ktxktla5kw/firewallrules/nodesdk2</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ktxktla5kw</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/d597ce28zr/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk2</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/d597ce28zr/firewallrules/nodesdk2</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/d597ce28zr</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': 'b8f9d4ea1240409f91c747e1fa30001d',
-  date: 'Thu, 21 Feb 2013 04:29:22 GMT' });
+  'x-ms-request-id': '19513905ca2d4b35bb69c1261232c3aa',
+  date: 'Tue, 19 Mar 2013 20:21:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ktxktla5kw')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/d597ce28zr')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fcec3608061d4ec495dfa550573647e5',
-  date: 'Thu, 21 Feb 2013 04:29:23 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '46c97527345c4f3b8accb94c1d900baf',
+  date: 'Tue, 19 Mar 2013 20:21:39 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -299,40 +299,40 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0ad32a4f0fee48cb9d2b8c0b312d193b',
-  date: 'Thu, 21 Feb 2013 04:29:26 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b56f7e28666147ac9d25fd9bacc5ab55',
+  date: 'Tue, 19 Mar 2013 20:21:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">ylp8vohv5g</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">rq9dde5i9e</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '29ddb9e8b0c4482e8a5e0b1bf3e27ded',
-  date: 'Thu, 21 Feb 2013 04:29:33 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '34da3c325cc04d5ab1c6409888bd2479',
+  date: 'Tue, 19 Mar 2013 20:21:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ylp8vohv5g/firewallrules/!NotValid$')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/rq9dde5i9e/firewallrules/!NotValid$')
   .reply(404, "<Error xmlns=\"Microsoft.SqlServer.Management.Framework.Web.Services\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Message>Resource with the name '!NotValid$' does not exist. To continue, specify a valid resource name.</Message><InnerError i:nil=\"true\"/></Error>", { 'content-length': '269',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 21 Feb 2013 04:29:35 GMT' });
+  date: 'Tue, 19 Mar 2013 20:21:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/ylp8vohv5g')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/rq9dde5i9e')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2a1d8721f1e74e4cbb3d423727171675',
-  date: 'Thu, 21 Feb 2013 04:29:37 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'aa10a480cb9b433fbd8f8e9669fcceae',
+  date: 'Tue, 19 Mar 2013 20:21:55 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -341,55 +341,55 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'db9172dbc04c46649b2145808f3af2fc',
-  date: 'Thu, 21 Feb 2013 04:29:39 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'abd7bbb1d4644d8980ca1d34c4079a1a',
+  date: 'Tue, 19 Mar 2013 20:21:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">pg4cxj0ote</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">bg18d09yh9</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '99acedd81226491699c96d119504c677',
-  date: 'Thu, 21 Feb 2013 04:29:41 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'aa31af4f240d4d8fac2c9709eb31a023',
+  date: 'Tue, 19 Mar 2013 20:22:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/pg4cxj0ote/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk3</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/pg4cxj0ote/firewallrules/nodesdk3</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/pg4cxj0ote</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk3</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9/firewallrules/nodesdk3</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': 'ab8d1297f0de4eeba4dde7b5d26bf1a3',
-  date: 'Thu, 21 Feb 2013 04:29:43 GMT' });
+  'x-ms-request-id': '03eb39aaf9de4ffca853c666cba27666',
+  date: 'Tue, 19 Mar 2013 20:22:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/pg4cxj0ote/firewallrules/nodesdk3')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9/firewallrules/nodesdk3')
   .reply(200, "", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '2c9dc94852734a7ca57d59393ad95428',
-  date: 'Thu, 21 Feb 2013 04:29:49 GMT' });
+  'x-ms-request-id': '2a0a1aed10784912a82a09daaab63c01',
+  date: 'Tue, 19 Mar 2013 20:22:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/pg4cxj0ote')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bb95ecfa0be84354a0142864fdc2c629',
-  date: 'Thu, 21 Feb 2013 04:29:51 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '3b0489e4afa241389f1c6389ea15a805',
+  date: 'Tue, 19 Mar 2013 20:22:13 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -398,125 +398,125 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c36dea1c04e543c0ac404c0353049426',
-  date: 'Thu, 21 Feb 2013 04:29:53 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '7f007408a1464a729cddb3ad7f62321b',
+  date: 'Tue, 19 Mar 2013 20:22:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">phnhbuvymr</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">w4zlj0yhgr</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4ec62f4218b146d7bb5a99c52f3075a7',
-  date: 'Thu, 21 Feb 2013 04:29:57 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e9672585f96f4d5589bf1d757c09315f',
+  date: 'Tue, 19 Mar 2013 20:22:22 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/phnhbuvymr/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk4</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/phnhbuvymr/firewallrules/nodesdk4</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/phnhbuvymr</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk4</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '94aaf2ec618f4612a6ed6a70bde35196',
-  date: 'Thu, 21 Feb 2013 04:29:59 GMT' });
+  'x-ms-request-id': '645ee7cf527d4ff6ba60f41cd0b3db4c',
+  date: 'Tue, 19 Mar 2013 20:22:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/phnhbuvymr/firewallrules/nodesdk4', '*')
-  .reply(200, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk4</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/phnhbuvymr/firewallrules/nodesdk4</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/phnhbuvymr</ParentLink><StartIPAddress>192.168.0.5</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4', '*')
+  .reply(200, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk4</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr</ParentLink><StartIPAddress>192.168.0.5</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '78faf6e22b974c3aa2abfcd711578e6d',
-  date: 'Thu, 21 Feb 2013 04:30:01 GMT' });
+  'x-ms-request-id': '173353270aeb43e8b925f72c0375fc48',
+  date: 'Tue, 19 Mar 2013 20:22:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/phnhbuvymr')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f1a365af433642bc978c6c6bc79c102d',
-  date: 'Thu, 21 Feb 2013 04:30:03 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '57c11ece04ac4d309dd0149c60d07172',
+  date: 'Tue, 19 Mar 2013 20:22:34 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">tvmmi86lla</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">g24ofxx59n</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '862f80927c12490f8a28b6c0c8f8537e',
-  date: 'Thu, 21 Feb 2013 04:30:08 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'eba9cd7f4c7d44b38ec45db610ae67a9',
+  date: 'Tue, 19 Mar 2013 20:22:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/tvmmi86lla/databases', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>db1</Name><Type>Microsoft.SqlAzure.Database</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/tvmmi86lla/databases/db1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/tvmmi86lla</ParentLink><Id>4</Id><Edition>Web</Edition><MaxSizeGB>1</MaxSizeGB><CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName><CreationDate>2013-02-21T04:30:10.6900000</CreationDate><IsFederationRoot>False</IsFederationRoot><IsSystemObject>False</IsSystemObject><SizeMB i:nil=\"true\"/><MaxSizeBytes>1073741824</MaxSizeBytes></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/g24ofxx59n/databases', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>db1</Name><Type>Microsoft.SqlAzure.Database</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/g24ofxx59n/databases/db1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/g24ofxx59n</ParentLink><Id>4</Id><Edition>Web</Edition><MaxSizeGB>1</MaxSizeGB><CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName><CreationDate>2013-03-19T20:22:42.0930000</CreationDate><IsFederationRoot>False</IsFederationRoot><IsSystemObject>False</IsSystemObject><SizeMB i:nil=\"true\"/><MaxSizeBytes>1073741824</MaxSizeBytes></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '808',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': '89783d0420a44cfeb3c71f57b041a3f4',
-  date: 'Thu, 21 Feb 2013 04:30:12 GMT' });
+  'x-ms-request-id': 'e6481408d7d44a6f9882e6d0fb8cd770',
+  date: 'Tue, 19 Mar 2013 20:22:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/tvmmi86lla')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/g24ofxx59n')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '73802ee34bbc4995b7392ebff8ad969d',
-  date: 'Thu, 21 Feb 2013 04:30:14 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '0dcaefe683f747b09e84f74dc1a38081',
+  date: 'Tue, 19 Mar 2013 20:22:48 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
-  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">mgomifv6wp</ServerName>", { 'cache-control': 'no-cache',
+  .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">oe7hjyulqf</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '72cf7c8a8b2b4c309d82a852b4f46242',
-  date: 'Thu, 21 Feb 2013 04:30:17 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '33ebb93bebe94460960acc5f393d8639',
+  date: 'Tue, 19 Mar 2013 20:22:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/mgomifv6wp/databases', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>db2</Name><Type>Microsoft.SqlAzure.Database</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/mgomifv6wp/databases/db2</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/mgomifv6wp</ParentLink><Id>4</Id><Edition>Business</Edition><MaxSizeGB>50</MaxSizeGB><CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName><CreationDate>2013-02-21T04:30:19.3630000</CreationDate><IsFederationRoot>False</IsFederationRoot><IsSystemObject>False</IsSystemObject><SizeMB i:nil=\"true\"/><MaxSizeBytes>53687091200</MaxSizeBytes></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oe7hjyulqf/databases', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>db2</Name><Type>Microsoft.SqlAzure.Database</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oe7hjyulqf/databases/db2</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oe7hjyulqf</ParentLink><Id>4</Id><Edition>Business</Edition><MaxSizeGB>50</MaxSizeGB><CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName><CreationDate>2013-03-19T20:22:56.4700000</CreationDate><IsFederationRoot>False</IsFederationRoot><IsSystemObject>False</IsSystemObject><SizeMB i:nil=\"true\"/><MaxSizeBytes>53687091200</MaxSizeBytes></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '815',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-content-type-options': 'nosniff',
-  'x-ms-request-id': 'c47624db7bff45aaac4753485f2d5220',
-  date: 'Thu, 21 Feb 2013 04:30:22 GMT' });
+  'x-ms-request-id': '75fb9185cf0941518f1a8eabd51073c8',
+  date: 'Tue, 19 Mar 2013 20:22:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/mgomifv6wp')
+  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oe7hjyulqf')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b6c21c5f64894a909a9802245e240223',
-  date: 'Thu, 21 Feb 2013 04:30:24 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '78c73b87fb2749b48d5a7b7809447c23',
+  date: 'Tue, 19 Mar 2013 20:23:00 GMT' });
  return result; }]];
