@@ -83,7 +83,7 @@ suite('batchserviceclient-tests', function () {
       assert.notEqual(tableService.operations, null);
       tableService.commitBatch(function (performBatchError, performBatchOperationResponses, performBatchResponse) {
         assert.equal(performBatchError, null);
-        assert.equal(performBatchResponse.statusCode, HttpConstants.HttpResponseCodes.Accepted);
+        assert.equal(performBatchResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // The operations were successfully reset
         assert.equal(tableService.operations, null);
