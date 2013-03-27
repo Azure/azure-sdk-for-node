@@ -8,20 +8,20 @@ nock('https://management.core.windows.net:443')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroup/afgrp1',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '22c19a01e1434bfc823bb6249b168b2f',
-  date: 'Thu, 21 Feb 2013 03:20:52 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'acf2aee055f6461e80de2ae23f133be5',
+  date: 'Tue, 19 Mar 2013 20:14:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
-  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>createaffinitygroup</Name><Label>Y3JlYXRlYWZmaW5pdHlncm91cA==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>getaffinitygroupproperties</Name><Label>Z2V0YWZmaW5pdHlncm91cHByb3BlcnRpZXM=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries1</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMQ==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries2</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMg==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithoneentry</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRob25lZW50cnk=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>updateaffinitygroup</Name><Label>bmV3bGFiZWw=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1831',
+  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '95bdc57e587f4fab9499f9da38e97292',
-  date: 'Thu, 21 Feb 2013 03:20:52 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '46af848a2b7f4f2c8b32f41cbf626b9b',
+  date: 'Tue, 19 Mar 2013 20:14:16 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -30,20 +30,20 @@ nock('https://management.core.windows.net:443')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The affinity group does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '199',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0bc99f4a9063468ca84760708b815990',
-  date: 'Thu, 21 Feb 2013 03:20:55 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '1e38f2d16a4944cb8c4af966cbf37f7d',
+  date: 'Tue, 19 Mar 2013 20:14:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
-  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>createaffinitygroup</Name><Label>Y3JlYXRlYWZmaW5pdHlncm91cA==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>getaffinitygroupproperties</Name><Label>Z2V0YWZmaW5pdHlncm91cHByb3BlcnRpZXM=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries1</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMQ==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries2</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMg==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithoneentry</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRob25lZW50cnk=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>updateaffinitygroup</Name><Label>bmV3bGFiZWw=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1831',
+  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '24e939786ede4990a5643cda98bd74a9',
-  date: 'Thu, 21 Feb 2013 03:20:58 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f1a08987a38149049a1a0cab6cab68c1',
+  date: 'Tue, 19 Mar 2013 20:14:20 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -52,42 +52,42 @@ nock('https://management.core.windows.net:443')
   .reply(200, "<AffinityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup>", { 'cache-control': 'no-cache',
   'content-length': '342',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '80d492570bf44ecdbe6667049f55268d',
-  date: 'Thu, 21 Feb 2013 03:20:59 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '4770e81b06a344b8b8ff1dae0d3da310',
+  date: 'Tue, 19 Mar 2013 20:14:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
-  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>createaffinitygroup</Name><Label>Y3JlYXRlYWZmaW5pdHlncm91cA==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>getaffinitygroupproperties</Name><Label>Z2V0YWZmaW5pdHlncm91cHByb3BlcnRpZXM=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries1</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMQ==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries2</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMg==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithoneentry</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRob25lZW50cnk=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>updateaffinitygroup</Name><Label>bmV3bGFiZWw=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1831',
+  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '23d539e835ab42bfb2108948e282d38a',
-  date: 'Thu, 21 Feb 2013 03:21:03 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '69f348ceaeca4d1482e71bffa26cb58d',
+  date: 'Tue, 19 Mar 2013 20:14:23 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
-  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>createaffinitygroup</Name><Label>Y3JlYXRlYWZmaW5pdHlncm91cA==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>getaffinitygroupproperties</Name><Label>Z2V0YWZmaW5pdHlncm91cHByb3BlcnRpZXM=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries1</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMQ==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries2</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMg==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithoneentry</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRob25lZW50cnk=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>updateaffinitygroup</Name><Label>bmV3bGFiZWw=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1831',
+  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3a36ca79c12f4cbfbb776b1175ab85d1',
-  date: 'Thu, 21 Feb 2013 03:21:05 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '74e74fd6b7e642aca605728fe3875260',
+  date: 'Tue, 19 Mar 2013 20:14:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
-  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>createaffinitygroup</Name><Label>Y3JlYXRlYWZmaW5pdHlncm91cA==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>getaffinitygroupproperties</Name><Label>Z2V0YWZmaW5pdHlncm91cHByb3BlcnRpZXM=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries1</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMQ==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries2</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMg==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithoneentry</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRob25lZW50cnk=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>updateaffinitygroup</Name><Label>bmV3bGFiZWw=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1831',
+  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3ae23031ddc14495b7e5aa283cd87e8d',
-  date: 'Thu, 21 Feb 2013 03:21:09 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '82d3b3f70e774acab21584d45d914943',
+  date: 'Tue, 19 Mar 2013 20:14:30 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -96,20 +96,20 @@ nock('https://management.core.windows.net:443')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The affinity group name is invalid.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '194',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd8b5c2ebe83546829f71fb406183eb55',
-  date: 'Thu, 21 Feb 2013 03:21:11 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '5078330ce91249da9b31c53c5d4d445c',
+  date: 'Tue, 19 Mar 2013 20:14:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
-  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>createaffinitygroup</Name><Label>Y3JlYXRlYWZmaW5pdHlncm91cA==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>getaffinitygroupproperties</Name><Label>Z2V0YWZmaW5pdHlncm91cHByb3BlcnRpZXM=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries1</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMQ==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries2</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMg==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithoneentry</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRob25lZW50cnk=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>updateaffinitygroup</Name><Label>bmV3bGFiZWw=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1831',
+  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
+  'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '85c8fc35e6b14cb88e4905db502d961e',
-  date: 'Thu, 21 Feb 2013 03:21:15 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'f3a17b1f9e324b0db1560303ee85e2ec',
+  date: 'Tue, 19 Mar 2013 20:14:34 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
@@ -117,18 +117,18 @@ nock('https://management.core.windows.net:443')
   .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups/afgrp1')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5be00a0649e34e348398073ed6cd6e91',
-  date: 'Thu, 21 Feb 2013 03:21:17 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '8a117e52907149e08c0aba186d698bef',
+  date: 'Tue, 19 Mar 2013 20:14:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
   .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
-  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>createaffinitygroup</Name><Label>Y3JlYXRlYWZmaW5pdHlncm91cA==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>getaffinitygroupproperties</Name><Label>Z2V0YWZmaW5pdHlncm91cHByb3BlcnRpZXM=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries1</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMQ==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithmultipleentries2</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRobXVsdGlwbGVlbnRyaWVzMg==</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>listaffinitygroupwithoneentry</Name><Label>bGlzdGFmZmluaXR5Z3JvdXB3aXRob25lZW50cnk=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup><AffinityGroup><Name>updateaffinitygroup</Name><Label>bmV3bGFiZWw=</Label><Description i:nil=\"true\"/><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
-  'content-length': '1626',
+  .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'no-cache',
+  'content-length': '119',
   'content-type': 'application/xml; charset=utf-8',
-  server: '33.0.6198.13 (rd_rdfe_stable.130218-1312) Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5d07893b1f5a4ee5acf1fd1b6dffa6b8',
-  date: 'Thu, 21 Feb 2013 03:21:20 GMT' });
+  server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '2f4f35ecdc8c4e0bb102e0a86eb19e26',
+  date: 'Tue, 19 Mar 2013 20:14:42 GMT' });
  return result; }]];

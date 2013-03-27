@@ -1,7 +1,6 @@
 serviceruntime/roleenvironment-tests.js
 serviceruntime/runtimeversionmanager-tests.js
 serviceruntime/runtimeversionprotocolclient-tests.js
-http/webresource-tests.js
 services/blob/blobservice-tests.js
 services/blob/sharedaccesssignature-tests.js
 services/blob/sharedkey-tests.js
