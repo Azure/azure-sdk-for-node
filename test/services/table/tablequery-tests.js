@@ -64,7 +64,7 @@ suite('tablequery-tests', function () {
   });
 
   test('QueryWithWhereDateTime', function (done) {
-    var date = new Date(2001, 1, 3, 4, 5, 6);
+    var date = new Date(Date.UTC(2001, 1, 3, 4, 5, 6));
 
     var tableQuery = TableQuery.select()
       .from('Table')

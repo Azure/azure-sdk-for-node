@@ -442,7 +442,7 @@ suite('blobservice-tests', function () {
   test('SetContainerAclWithPolicies', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
-    var readWriteStartDate = new Date(2012, 10, 10);
+    var readWriteStartDate = new Date(Date.UTC(2012, 10, 10));
     var readWriteExpiryDate = new Date(readWriteStartDate);
     readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
     readWriteExpiryDate.setMilliseconds(999);
