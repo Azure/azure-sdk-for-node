@@ -460,5 +460,3 @@ If you encounter any bugs with the library please file an issue in the [Issues](
 For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
 
 For documentation on the Azure cross platform CLI tool for Mac and Linux, please see our readme [here] (http://github.com/windowsazure/azure-sdk-tools-xplat)
-
-Check out our new IRC channel on freenode, node-azure.
