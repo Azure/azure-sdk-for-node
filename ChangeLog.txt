@@ -1,3 +1,7 @@
+2012.04.03 Version 0.7.1
+* Adding (limited) support for node 0.10
+* Fixing issue regarding registering providers when using websites or mobiles services
+
 2012.03.25 Version 0.7.0
 * Breaking change: Primitive types will be stored for table storage.
 * Adding support for creating and deleting affinity groups
