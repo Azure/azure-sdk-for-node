@@ -4,7 +4,7 @@ This project provides a Node.js package that makes it easy to access Windows Azu
 
 # Node Version Requirement
 
-Currently the Windows Azure SDK for Node.js does not support node versions > 0.8.x. We are working on updating our module to support node 0.10 and will keep you posted.
+Currently the Windows Azure SDK for Node.js, although it works, suffers from performance limitations when using node versions > 0.8.x due to issue https://github.com/joyent/node/issues/5145. This should be fixed with node versions > 0.10.2.
 
 Thank you for your patience.
 
