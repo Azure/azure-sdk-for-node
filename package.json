@@ -10,13 +10,12 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Windows Azure Client Library for node",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
   "main": "./lib/azure.js",
-  "engines": { "node": ">= 0.6.15 < 0.9" },
-  "engineStrict": "true",
+  "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
     "xml2js" : " >= 0.2.x",
@@ -46,7 +45,6 @@
     "url" : "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "postinstall" : "node scripts/azure.js",
     "test": "node test/runci.js testlist.txt",
     "testonly": "node test/runtests.js testlist.txt",
     "jshint": "node test/runjshint.js",

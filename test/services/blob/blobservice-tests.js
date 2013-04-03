@@ -442,7 +442,7 @@ suite('blobservice-tests', function () {
   test('SetContainerAclWithPolicies', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
-    var readWriteStartDate = new Date(2012, 10, 10);
+    var readWriteStartDate = new Date(Date.UTC(2012, 10, 10));
     var readWriteExpiryDate = new Date(readWriteStartDate);
     readWriteExpiryDate.setMinutes(readWriteStartDate.getMinutes() + 10);
     readWriteExpiryDate.setMilliseconds(999);
@@ -1350,10 +1350,11 @@ suite('blobservice-tests', function () {
           var exists = azureutil.pathExistsSync(fileNameTarget);
           assert.equal(exists, true);
 
-          var fileText = fs.readFileSync(fileNameTarget);
-          assert.equal(blobText, fileText);
+          fs.readFile(fileNameTarget, function (err, fileText) {
+            assert.equal(blobText, fileText);
 
-          done();
+            done();
+          });
         });
       });
     });
