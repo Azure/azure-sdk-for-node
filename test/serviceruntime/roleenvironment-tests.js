@@ -706,9 +706,7 @@ suite('roleenvironment-tests', function () {
       serverVersionsStream = stream;
 
       stream.setEncoding('utf8');
-      stream.on('connect', function () {
-        stream.write(versionsXml);
-      });
+      stream.write(versionsXml);
 
       stream.on('end', function () {
         stream.end();
@@ -724,12 +722,11 @@ suite('roleenvironment-tests', function () {
       serverGoalStateStream = stream;
 
       stream.setEncoding('utf8');
-      stream.on('connect', function () {
-        // Write goal state every few MS
-        serverGoalStateInterval = setInterval(function () {
-          stream.write(goalStateXml);
-        }, 10);
-      });
+
+      // Write goal state every few MS
+      serverGoalStateInterval = setInterval(function () {
+        stream.write(goalStateXml);
+      }, 10);
 
       stream.on('end', function () {
         stream.end();
@@ -845,9 +842,7 @@ suite('roleenvironment-tests', function () {
       serverVersionsStream = stream;
 
       stream.setEncoding('utf8');
-      stream.on('connect', function () {
-        stream.write(versionsXml);
-      });
+      stream.write(versionsXml);
 
       stream.on('end', function () {
         stream.end();
@@ -863,12 +858,10 @@ suite('roleenvironment-tests', function () {
       serverGoalStateStream = stream;
 
       stream.setEncoding('utf8');
-      stream.on('connect', function () {
-        // Write goal state every few MS
-        serverGoalStateInterval = setInterval(function () {
-          stream.write(goalStateXml);
-        }, 10);
-      });
+      // Write goal state every few MS
+      serverGoalStateInterval = setInterval(function () {
+        stream.write(goalStateXml);
+      }, 10);
 
       stream.on('end', function () {
         stream.end();
@@ -1054,6 +1047,7 @@ suite('roleenvironment-tests', function () {
   });
 
   test('setValidNodeVersion', function (done) {
+    var original = process.version;
     process.version = 'v0.6.10';
 
     assert.throws(
@@ -1096,6 +1090,8 @@ suite('roleenvironment-tests', function () {
       assert.strictEqual(error, undefined);
       assert.strictEqual(id, 'newDeploymentId');
 
+      process.version = original;
+
       done();
     });
   });
@@ -1137,9 +1133,7 @@ suite('roleenvironment-tests', function () {
       serverVersionsStream = stream;
 
       stream.setEncoding('utf8');
-      stream.on('connect', function () {
-        stream.write(versionsXml);
-      });
+      stream.write(versionsXml);
 
       stream.on('end', function () {
         stream.end();
@@ -1155,12 +1149,10 @@ suite('roleenvironment-tests', function () {
       serverGoalStateStream = stream;
 
       stream.setEncoding('utf8');
-      stream.on('connect', function () {
-        // Write goal state every few MS
-        serverGoalStateInterval = setInterval(function () {
-          stream.write(goalStateXml);
-        }, 10);
-      });
+      // Write goal state every few MS
+      serverGoalStateInterval = setInterval(function () {
+        stream.write(goalStateXml);
+      }, 10);
 
       stream.on('end', function () {
         stream.end();
