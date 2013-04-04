@@ -1047,6 +1047,7 @@ suite('roleenvironment-tests', function () {
   });
 
   test('setValidNodeVersion', function (done) {
+    var original = process.version;
     process.version = 'v0.6.10';
 
     assert.throws(
@@ -1088,6 +1089,8 @@ suite('roleenvironment-tests', function () {
     azure.RoleEnvironment.getDeploymentId(function (error, id) {
       assert.strictEqual(error, undefined);
       assert.strictEqual(id, 'newDeploymentId');
+
+      process.version = original;
 
       done();
     });
