@@ -17,7 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var blobtestutil = require('../../util/blob-test-utils');
+var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
 var azureutil = testutil.libRequire('util/util');
@@ -27,21 +27,28 @@ var Constants = testutil.libRequire('util/constants');
 
 var BlobConstants = Constants.BlobConstants;
 
-var blobService;
-
 var testPrefix = 'filter-tests';
-var numberTests = 3;
+
+var blobService;
+var suiteUtil;
 
 suite('filter-tests', function () {
+  suiteSetup(function (done) {
+    blobService = azure.createBlobService();
+    suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    blobtestutil.setUpTest(testPrefix, function (err, newBlobService) {
-      blobService = newBlobService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    blobtestutil.tearDownTest(numberTests, blobService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('NoFilter', function (done) {

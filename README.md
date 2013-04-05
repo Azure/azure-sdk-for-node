@@ -1,6 +1,12 @@
-# Windows Azure SDK for Node.js
+# Windows Azure SDK for Node.js [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
 
 This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. 
+
+# Node Version Requirement
+
+Currently the Windows Azure SDK for Node.js, although it works, suffers from performance limitations when using node versions > 0.8.x due to issue https://github.com/joyent/node/issues/5145.
+
+Thank you for your patience.
 
 # Library Features
 
@@ -17,6 +23,8 @@ This project provides a Node.js package that makes it easy to access Windows Azu
 * Service Bus
     * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
     * Topics: create, list, and delete topics; create, list, and delete rules
+* Azure SQL Database
+    * create, list and delete Azure SQL Database servers, databases and firewall rules
 * Service Runtime
     * discover addresses and ports for the endpoints of other role instances in your service
     * get configuration settings and access local resources
@@ -118,6 +126,21 @@ blobService.getBlobToStream('taskcontainer', 'task1', fs.createWriteStream('task
         // Blob available in serverBlob.blob variable
     }
 });
+```
+
+To create a SAS URL you can use the **getBlobUrl** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
+
+```Javascript
+var blobService = azure.createBlobService();
+
+//create a SAS that expires in an hour
+var sharedAccessPolicy = { 
+    AccessPolicy: {
+        Expiry: azure.date.minutesFromNow(60);
+    }
+};
+
+var sasUrl = blobService.getBlobUrl(containerName, blobName, sharedAccessPolicy);
 ```
 
 ## Storage Queues
@@ -244,6 +267,122 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
         });
      }
 });
+```
+
+
+## Notification Hubs
+
+Notification hubs allow you to send notifications to WNS and APNS receivers.
+
+To create a notification hub, use the method **createNotificationHub**.
+
+```JavaScript
+var serviceBusService = azure.createServiceBusService();
+
+serviceBusService.createNotificationHub('hubName', function (err) {
+    if (!err) {
+        // Notification hub created successfully
+    }
+});
+```
+
+To send messages to the notification hub use the methods of the **wns** or **apns** objects. For a full reference on WNS method templates, check http://msdn.microsoft.com/en-us/library/windows/apps/hh779725.aspx.
+
+```JavaScript
+var notificationHubService = azure.createNotificationHubService('hubName');
+
+notificationHubService.wns.sendTileSquarePeekImageAndText01(
+    null,
+    {
+        image1src: 'http://foobar.com/dog.jpg',
+        image1alt: 'A dog',
+        text1: 'This is a dog',
+        text2: 'The dog is nice',
+        text3: 'The dog bites',
+        text4: 'Beware of dog'
+    },
+    function (error) {
+        if (!error) {
+            // message sent successfully
+        }
+    });
+
+notificationHubService.apns.send(
+    null,
+    {
+        alert: 'This is my toast message for iOS!',
+        expiry: expiryDate
+    },
+    function (error) {
+        if (!error) {
+            // message sent successfully
+        }
+    });
+```
+
+## Azure SQL Database
+
+The Azure SQL Database functions allow you to manage Azure SQL servers, databases and firewall rules.
+
+### Servers
+You can add, delete and list SQL Server instances
+
+```Javascript
+var authentication={keyvalue:"...", certvalue:"..."};
+var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
+
+//create a new server
+//admin, password, location, callback
+sqlMgmt.createServer("sqladmin", "Pa$$w0rd", "West US", function(error, serverName) {
+    console.log("created server " + serverName);
+});
+
+//list out servers
+sqlMgmt.listServers(function(error, servers) {
+    console.log("servers\n" + servers);
+});
+
+```
+
+### Firewall rules
+You can list, create and delete firewall rules
+
+```Javascript
+var authentication={keyvalue:"...", certvalue:"..."};
+var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
+
+//create a new rule
+//server, rule name, start ip, end ip, callback
+sqlMgmt.createServerFirewallRule(serverName, 'myrule', '192.168.100.0', '192.168.100.255',
+    function(error, rule) {
+        console.log("Rule created:\n" + rule);
+    }
+);
+
+//list rules
+sqlMgmt.listServerFirewallRules(serverName, function(error, rules) {
+    console.log("Rules:\n:" + rules);
+});
+
+```
+
+### Databases
+You can list, create and delete databases
+
+```Javascript
+var sqlService = new azure.createSqlService(serverName, 'sqlAdmin', 'Pa$$w0rd');
+
+//create a new database
+//db name, callback
+sqlServer.createServerDatabase("mydb", function(error, db) {
+  console.log("DB Created:\n" + db);
+});
+
+//list databases
+sqlServer.listServerDatabases(function(error, dbs) {
+  console.log("Databases:\n" + dbs);
+});
+
 ```
 
 ## Service Runtime

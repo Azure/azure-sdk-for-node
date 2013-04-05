@@ -31,16 +31,17 @@ suite('serviceclient-tests', function () {
   });
 
   test('NormalizedErrorsAreErrors', function () {
-    var error = {
-      'message': 'this is an error message',
-      'ResultCode': 500,
-      'somethingElse': 'goes here'
+    var error = { 
+      Error: {
+        'detail': 'this is an error message',
+        'ResultCode': 500,
+        'somethingElse': 'goes here'
+      }
     };
 
     var normalizedError = ServiceClient.prototype._normalizeError(error);
-
     normalizedError.should.be.an.instanceOf(Error);
-    normalizedError.should.have.keys('message', 'resultcode', 'somethingelse');
+    normalizedError.should.have.keys('detail', 'resultcode', 'somethingelse');
   });
 
   test('loadenvironmentproxy', function () {

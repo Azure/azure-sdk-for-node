@@ -15,7 +15,7 @@
 
 var assert = require('assert');
 
-var qs = require('qs');
+var qs = require('querystring');
 
 // Test includes
 var testutil = require('../../util/util');

@@ -17,7 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
@@ -28,8 +28,6 @@ var TableQuery = azure.TableQuery;
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
-
-var tableService;
 
 var entity1 = {
   PartitionKey: 'partition1',
@@ -49,22 +47,31 @@ var tableNames = [];
 var tablePrefix = 'tablequery';
 
 var testPrefix = 'tableservice-tablequery-tests';
-var numberTests = 1;
+
+var tableService;
+var suiteUtil;
 
 suite('tableservice-tablequery-tests', function () {
+  suiteSetup(function (done) {
+    tableService = azure.createTableService();
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      tableService = newTableService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('Select', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error1) {
       assert.equal(error1, null);

@@ -17,20 +17,17 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
 var azureutil = testutil.libRequire('util/util');
-var ISO8061Date = testutil.libRequire('util/iso8061date');
 
 var ServiceClient = azure.ServiceClient;
 var TableQuery = azure.TableQuery;
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
-
-var tableService;
 
 var entity1 = { PartitionKey: 'part1',
   RowKey: 'row1',
@@ -41,28 +38,57 @@ var entity1 = { PartitionKey: 'part1',
 
 var entity2 = { PartitionKey: 'part2',
   RowKey: 'row1',
-  boolValueTrue: { '@': { type: 'Edm.Boolean' }, '#': true },
-  boolValueFalse: { '@': { type: 'Edm.Boolean' }, '#': false },
-  intValue: { '@': { type: 'Edm.Int32' }, '#': 42 },
-  dateValue: { '@': { type: 'Edm.DateTime' }, '#': ISO8061Date.format(new Date(2011, 12, 25)) }
+  boolValueTrue: { '$': { type: 'Edm.Boolean' }, '_': true },
+  boolValueFalse: { '$': { type: 'Edm.Boolean' }, '_': false },
+  intValue: { '$': { type: 'Edm.Int32' }, '_': 42 },
+  dateValue: { '$': { type: 'Edm.DateTime' }, '_': new Date(Date.UTC(2011, 12, 25)).toISOString() },
+  complexDateValue: { '$': { type: 'Edm.DateTime' }, '_': new Date(Date.UTC(2013, 02, 16, 00, 46, 20)).toISOString() }
 };
 
 var tableNames = [];
 var tablePrefix = 'tableservice';
 
 var testPrefix = 'tableservice-tests';
-var numberTests = 21;
+
+var tableService;
+var suiteUtil;
 
 suite('tableservice-tests', function () {
+  suiteSetup(function (done) {
+    tableService = azure.createTableService();
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      tableService = newTableService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
+  });
+
+  test('SetDefaultPortProperly', function (done) {
+    var storageAccount = 'account';
+    var storageAccountKey = new Buffer('key').toString('base64');
+
+    var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net');
+    assert.equal(service.port, 443);
+
+    var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net:21');
+    assert.equal(service.port, 21);
+
+    service = azure.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net');
+    assert.equal(service.port, 80);
+
+    service = azure.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net:81');
+    assert.equal(service.port, 81);
+
+    done();
   });
 
   test('GetServiceProperties', function (done) {
@@ -107,27 +133,27 @@ suite('tableservice-tests', function () {
   });
 
   test('CreateTable', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       assert.ok(table);
       if (table) {
         assert.ok(table.TableName);
         assert.equal(table.TableName, tableName);
 
-        assert.ok(table.id);
-        assert.equal(table.id, createResponse.body['id']);
+        assert.ok(table['_'].id);
+        assert.equal(table['_'].id, createResponse.body.entry['id']);
 
-        assert.ok(table.link);
-        assert.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.ok(table['_'].link);
+        assert.equal(table['_'].link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
 
-        assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body['updated']);
+        assert.ok(table['_'].updated);
+        assert.equal(table['_'].updated, createResponse.body.entry['updated']);
       }
 
       // check that the table exists
@@ -135,34 +161,34 @@ suite('tableservice-tests', function () {
         assert.equal(existsError, null);
         assert.notEqual(tableResponse, null);
         assert.ok(existsResponse.isSuccessful);
-        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+        assert.equal(existsResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
         done();
       });
     });
   });
 
   test('CreateTableIfNotExists', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       assert.ok(table);
       if (table) {
         assert.ok(table.TableName);
         assert.equal(table.TableName, tableName);
 
-        assert.ok(table.id);
-        assert.equal(table.id, createResponse.body['id']);
+        assert.ok(table['_'].id);
+        assert.equal(table['_'].id, createResponse.body.entry['id']);
 
-        assert.ok(table.link);
-        assert.equal(table.link, createResponse.body['link']['@']['href']);
+        assert.ok(table['_'].link);
+        assert.equal(table['_'].link, createResponse.body.entry['link'][Constants.XML_METADATA_MARKER]['href']);
 
-        assert.ok(table.updated);
-        assert.equal(table.updated, createResponse.body['updated']);
+        assert.ok(table['_'].updated);
+        assert.equal(table['_'].updated, createResponse.body.entry['updated']);
       }
 
       // trying to create again with if not exists should be fine
@@ -176,45 +202,42 @@ suite('tableservice-tests', function () {
   });
 
   test('QueryTable', function (done) {
-    var tableName1 = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
-    var tableName2 = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName1 = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
+    var tableName2 = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.queryTables(function (queryErrorEmpty, tablesEmpty) {
       assert.equal(queryErrorEmpty, null);
       assert.notEqual(tablesEmpty, null);
-      if (tablesEmpty) {
-        assert.equal(tablesEmpty.length, 0);
-      }
 
       tableService.createTable(tableName1, function (createError, table1, createResponse) {
         assert.equal(createError, null);
         assert.notEqual(table1, null);
-        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         tableService.createTable(tableName2, function (createError2, table2, createResponse2) {
           assert.equal(createError2, null);
           assert.notEqual(table2, null);
-          assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(createResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           tableService.queryTables(function (queryError, tables, tablesContinuation, queryResponse) {
             assert.equal(queryError, null);
             assert.notEqual(tables, null);
             assert.ok(queryResponse.isSuccessful);
-            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
             var entries = 0;
             tables.forEach(function (currentTable) {
               if (currentTable.TableName === tableName1) {
                 entries += 1;
-                assert.ok(currentTable.id);
-                assert.ok(currentTable.link);
-                assert.ok(currentTable.updated);
+                assert.ok(currentTable['_'].id);
+                assert.ok(currentTable['_'].link);
+                assert.ok(currentTable['_'].updated);
               }
               else if (currentTable.TableName === tableName2) {
                 entries += 2;
-                assert.ok(currentTable.id);
-                assert.ok(currentTable.link);
-                assert.ok(currentTable.updated);
+                assert.ok(currentTable['_'].id);
+                assert.ok(currentTable['_'].link);
+                assert.ok(currentTable['_'].updated);
               }
             });
 
@@ -228,41 +251,41 @@ suite('tableservice-tests', function () {
   });
 
   test('DeleteTable', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.deleteTable(tableName, function (deleteError, deleted, deleteResponse) {
         assert.equal(deleteError, null);
         assert.equal(deleted, true);
         assert.ok(deleteResponse.isSuccessful);
-        assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+        assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
         done();
       });
     });
   });
 
   test('InsertEntity', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         tableService.insertEntity(tableName, entity2, function (insertError2, insertEntity2, insertResponse2) {
           assert.equal(insertError2, null);
           assert.notEqual(insertEntity2, null);
-          assert.equal(insertResponse2.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+          assert.equal(insertResponse2.statusCode, HttpConstants.HttpResponseCodes.Created);
 
           var tableQuery = TableQuery.select()
             .from(tableName);
@@ -271,7 +294,7 @@ suite('tableservice-tests', function () {
             assert.equal(queryError, null);
             assert.notEqual(entries, null);
             assert.ok(queryResponse.isSuccessful);
-            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
             assert.ok(entries);
             var entities = 0;
@@ -279,7 +302,7 @@ suite('tableservice-tests', function () {
               if (currentEntry['PartitionKey'] === entity1['PartitionKey'] && currentEntry['RowKey'] === entity1['RowKey']) {
                 entities += 1;
 
-                assert.ok(currentEntry['etag']);
+                assert.ok(currentEntry['_']['etag']);
                 assert.equal(currentEntry['field'], entity1['field']);
                 assert.equal(currentEntry['otherfield'], entity1['otherfield']);
                 assert.equal(currentEntry['otherprops'], entity1['otherprops']);
@@ -287,14 +310,18 @@ suite('tableservice-tests', function () {
               else if (currentEntry['PartitionKey'] === entity2['PartitionKey'] && currentEntry['RowKey'] === entity2['RowKey']) {
                 entities += 2;
 
-                assert.ok(currentEntry['etag']);
-                assert.equal(currentEntry['boolValueTrue'], entity2['boolValueTrue']['#']);
-                assert.equal(currentEntry['boolValueFalse'], entity2['boolValueFalse']['#']);
-                assert.equal(currentEntry['intValue'], entity2['intValue']['#']);
+                assert.ok(currentEntry['_']['etag']);
+                assert.equal(currentEntry['boolValueTrue'], entity2['boolValueTrue'][Constants.XML_VALUE_MARKER]);
+                assert.equal(currentEntry['boolValueFalse'], entity2['boolValueFalse'][Constants.XML_VALUE_MARKER]);
+                assert.equal(currentEntry['intValue'], entity2['intValue'][Constants.XML_VALUE_MARKER]);
 
                 var date1 = new Date(currentEntry['dateValue']);
-                var date2 = new Date(entity2['dateValue']['#']);
-                assert.ok(date1, date2);
+                var date2 = new Date(entity2['dateValue'][Constants.XML_VALUE_MARKER]);
+                assert.equal(date1.getTime(), date2.getTime());
+
+                var date3 = new Date(currentEntry['complexDateValue']);
+                var date4 = new Date(entity2['complexDateValue'][Constants.XML_VALUE_MARKER]);
+                assert.equal(date3.getTime(), date4.getTime());
               }
             });
 
@@ -307,7 +334,7 @@ suite('tableservice-tests', function () {
             tableService.queryEntities(tableQuery, function (queryError2, tableEntries2, tableEntriesContinuation2, queryResponse2) {
               assert.equal(queryError2, null);
               assert.ok(queryResponse2.isSuccessful);
-              assert.equal(queryResponse2.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+              assert.equal(queryResponse2.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
               assert.ok(tableEntries2);
               var newentities = 0;
@@ -316,7 +343,7 @@ suite('tableservice-tests', function () {
                 if (newcurrentEntry['PartitionKey'] === entity1['PartitionKey'] && newcurrentEntry['RowKey'] === entity1['RowKey']) {
                   newentities += 1;
 
-                  assert.ok(newcurrentEntry['etag']);
+                  assert.ok(newcurrentEntry['_']['etag']);
                   assert.equal(newcurrentEntry['field'], entity1['field']);
                   assert.equal(newcurrentEntry['otherfield'], entity1['otherfield']);
                   assert.equal(newcurrentEntry['otherprops'], entity1['otherprops']);
@@ -334,12 +361,12 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertEntityWithHtmlSpecialChars', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity = entity1;
       newEntity['field'] = 'XML <test>'; // this should work without breaking the XML
@@ -348,7 +375,7 @@ suite('tableservice-tests', function () {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         var tableQuery = TableQuery.select()
           .from(tableName)
@@ -358,7 +385,7 @@ suite('tableservice-tests', function () {
           assert.equal(queryError, null);
           assert.notEqual(entries, null);
           assert.ok(queryResponse.isSuccessful);
-          assert.ok(queryResponse.statusCode, HttpConstants.HttpResponseCodes.OK_CODE);
+          assert.ok(queryResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
 
           assert.equal(entries[0]['field'], 'XML <test>');
           done();
@@ -368,25 +395,25 @@ suite('tableservice-tests', function () {
   });
 
   test('DeleteEntityWithoutEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         tableService.deleteEntity(tableName, entity1, false, function (deleteError, deleted, deleteResponse) {
           assert.equal(deleteError, null);
           assert.equal(deleted, true);
           assert.ok(deleteResponse.isSuccessful);
-          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
 
           done();
         });
@@ -395,19 +422,19 @@ suite('tableservice-tests', function () {
   });
 
   test('DeleteEntityWithEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.insertEntity(tableName, entity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Set a fake old etag
         entity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
@@ -417,7 +444,7 @@ suite('tableservice-tests', function () {
           assert.equal(deleteError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
           assert.equal(deleted, false);
           assert.equal(deleteResponse.isSuccessful, false);
-          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(deleteResponse.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
           done();
         });
@@ -426,21 +453,21 @@ suite('tableservice-tests', function () {
   });
 
   test('UpdateEntityWithoutEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
         var originalEtag = newEntity1['etag'];
 
         newEntity1['otherfield'] = newField;
@@ -449,7 +476,7 @@ suite('tableservice-tests', function () {
           assert.equal(updateError2, null);
           assert.notEqual(updateEntity2, null);
           assert.ok(updateResponse2.isSuccessful);
-          assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NoContent);
           assert.notEqual(newEntity1.etag, originalEtag);
 
           done();
@@ -459,21 +486,21 @@ suite('tableservice-tests', function () {
   });
 
   test('UpdateEntityWithEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         newEntity1['otherfield'] = newField;
 
@@ -484,7 +511,7 @@ suite('tableservice-tests', function () {
           assert.equal(updateError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
           assert.equal(updateEntity, null);
           assert.equal(updateResponse.isSuccessful, false);
-          assert.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(updateResponse.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
           done();
         });
@@ -493,21 +520,21 @@ suite('tableservice-tests', function () {
   });
 
   test('MergeEntityWithoutEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         insertEntity['otherfield'] = newField;
 
@@ -515,7 +542,7 @@ suite('tableservice-tests', function () {
           assert.equal(mergeError, null);
           assert.notEqual(mergeEntity, null);
           assert.ok(mergeResponse.isSuccessful);
-          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.NO_CONTENT_CODE);
+          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.NoContent);
 
           done();
         });
@@ -524,21 +551,21 @@ suite('tableservice-tests', function () {
   });
 
   test('MergeEntityWithEtag', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var newField = 'value';
 
     tableService.createTable(tableName, function (createError, table, createResponse) {
       assert.equal(createError, null);
       assert.notEqual(table, null);
       assert.ok(createResponse.isSuccessful);
-      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       var newEntity1 = entity1;
       tableService.insertEntity(tableName, newEntity1, function (insertError, insertEntity, insertResponse) {
         assert.equal(insertError, null);
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
-        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         newEntity1['otherfield'] = newField;
 
@@ -549,7 +576,7 @@ suite('tableservice-tests', function () {
           assert.equal(mergeError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
           assert.equal(mergeEntity, null);
           assert.equal(mergeResponse.isSuccessful, false);
-          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.PRECONDITION_FAILED_CODE);
+          assert.equal(mergeResponse.statusCode, HttpConstants.HttpResponseCodes.PreconditionFailed);
 
           done();
         });
@@ -558,7 +585,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertOrReplaceEntity', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       assert.equal(error, null);
@@ -600,7 +627,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertOrMerge', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       assert.equal(error, null);
@@ -643,7 +670,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertEntityEmptyField', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       assert.equal(error, null);
@@ -681,7 +708,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertEntityNewLines', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error) {
       assert.equal(error, null);
@@ -713,7 +740,7 @@ suite('tableservice-tests', function () {
   });
 
   test('InsertPartitionKeyOnly', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.createTable(tableName, function (error1) {
       assert.equal(error1, null);
@@ -774,7 +801,7 @@ suite('tableservice-tests', function () {
 
     assert.equal(tableService.storageAccount, 'myaccount');
     assert.equal(tableService.storageAccessKey, key);
-    assert.equal(tableService.protocol, 'https://');
+    assert.equal(tableService.protocol, 'https:');
 
     done();
   });
@@ -785,39 +812,41 @@ suite('tableservice-tests', function () {
 
     assert.equal(tableService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
     assert.equal(tableService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
-    assert.equal(tableService.protocol, 'http://');
+    assert.equal(tableService.protocol, 'http:');
     assert.equal(tableService.host, '127.0.0.1');
     assert.equal(tableService.port, '10002');
 
     done();
   });
 
-  test('storageConnectionStringsHttps', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
-    var expectedProtocol = 'https';
+  test('storageConnectionStringsHttp', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
+    var expectedProtocol = 'http';
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey;
-    var tableService = azure.createTableService(connectionString);
+    tableService = azure.createTableService(connectionString);
+
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
       assert.equal(tableService.storageAccount, expectedName);
       assert.equal(tableService.storageAccessKey, expectedKey);
-      assert.equal(tableService.protocol, 'https://');
+      assert.equal(tableService.protocol, 'http:');
 
       done();
     });
   });
 
-  test('storageConnectionStringsEndpointHttps', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
-    var expectedProtocol = 'https';
+  test('storageConnectionStringsEndpointHttp', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
+    var expectedProtocol = 'http';
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
-    var expectedTableEndpoint = 'http://andrerod.table.core.windows.net';
+    var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.core.windows.net';
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';TableEndpoint=' + expectedTableEndpoint;
     var tableService = azure.createTableService(connectionString);
+
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
@@ -825,24 +854,25 @@ suite('tableservice-tests', function () {
       assert.equal(tableService.storageAccessKey, expectedKey);
 
       // Explicit table host wins
-      assert.equal(tableService.protocol, 'http://');
+      assert.equal(tableService.protocol, 'http:');
 
       done();
     });
   });
 
-  test('storageConnectionStringsEndpointHttpsExplicit', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+  test('storageConnectionStringsEndpointHttpExplicit', function (done) {
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
-    var expectedTableEndpoint = 'http://andrerod.table.core.windows.net';
+    var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.core.windows.net';
     var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
 
       assert.equal(tableService.storageAccount, expectedName);
       assert.equal(tableService.storageAccessKey, expectedKey);
-      assert.equal(tableService.protocol, 'http://');
+      assert.equal(tableService.protocol, 'http:');
 
       done();
     });
@@ -856,7 +886,7 @@ suite('tableservice-tests', function () {
 
     assert.equal(tableService.storageAccount, expectedName);
     assert.equal(tableService.storageAccessKey, expectedKey);
-    assert.equal(tableService.protocol, 'http://');
+    assert.equal(tableService.protocol, 'https:');
     assert.equal(tableService.host, '127.0.0.1');
     assert.equal(tableService.port, '10002');
     assert.equal(tableService.usePathStyleUri, true);

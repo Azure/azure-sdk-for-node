@@ -59,7 +59,29 @@ suite('tablequery-tests', function () {
       .where('Name eq ?', 'Person');
 
     assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name eq \'Person\''), tableQuery.toQueryObject()['$filter']);
+    assert.equal('Name eq \'Person\'', tableQuery.toQueryObject()['$filter']);
+    done();
+  });
+
+  test('QueryWithWhereDateTime', function (done) {
+    var date = new Date(Date.UTC(2001, 1, 3, 4, 5, 6));
+
+    var tableQuery = TableQuery.select()
+      .from('Table')
+      .where('Date eq ?', date);
+
+    assert.equal('Table()', tableQuery.toPath());
+    assert.equal('Date eq datetime\'2001-02-03T04:05:06.000Z\'', tableQuery.toQueryObject()['$filter']);
+    done();
+  });
+
+  test('QueryWithWhereSingleQuoteString', function (done) {
+    var tableQuery = TableQuery.select()
+      .from('Table')
+      .where('Name eq ?', 'o\'right');
+
+    assert.equal('Table()', tableQuery.toPath());
+    assert.equal('Name eq \'o\'\'right\'', tableQuery.toQueryObject()['$filter']);
     done();
   });
 
@@ -69,7 +91,7 @@ suite('tablequery-tests', function () {
       .where('Name eq ? or Name eq ?', 'Person1', 'Person2');
 
     assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name eq \'Person1\' or Name eq \'Person2\''), tableQuery.toQueryObject()['$filter']);
+    assert.equal('Name eq \'Person1\' or Name eq \'Person2\'', tableQuery.toQueryObject()['$filter']);
     done();
   });
 
@@ -80,7 +102,7 @@ suite('tablequery-tests', function () {
       .and('Visible eq true');
 
     assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name eq \'Person\' and Visible eq true'), tableQuery.toQueryObject()['$filter']);
+    assert.equal('Name eq \'Person\' and Visible eq true', tableQuery.toQueryObject()['$filter']);
     done();
   });
 
@@ -102,19 +124,18 @@ suite('tablequery-tests', function () {
 
   test('ComplexPartitionKey', function (done) {
     var complexPartitionKey = 'aHR0cDovL2ZlZWRzLmZlZWRidXJuZXIuY29tL2ppbXdhbmdzYmxvZw==';
-    var encodedComplexPartitionKey = 'aHR0cDovL2ZlZWRzLmZlZWRidXJuZXIuY29tL2ppbXdhbmdzYmxvZw%3D%3D';
 
     var tableQuery = TableQuery.select()
       .where('PartitionKey == ?', complexPartitionKey);
 
     var queryObject = tableQuery.toQueryObject();
-    assert.notEqual(queryObject[QueryStringConstants.FILTER].indexOf(encodedComplexPartitionKey), -1);
+    assert.notEqual(queryObject[QueryStringConstants.FILTER].indexOf(complexPartitionKey), -1);
 
     tableQuery = TableQuery.select()
       .where("PartitionKey == '" + complexPartitionKey + "'");
 
     queryObject = tableQuery.toQueryObject();
-    assert.notEqual(queryObject[QueryStringConstants.FILTER].indexOf(encodedComplexPartitionKey), -1);
+    assert.notEqual(queryObject[QueryStringConstants.FILTER].indexOf(complexPartitionKey), -1);
 
     done();
   });

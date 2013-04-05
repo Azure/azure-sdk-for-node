@@ -17,7 +17,7 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
@@ -55,8 +55,7 @@ suite('queryentitiesresultcontinuation-tests', function () {
             }
           });
         });
-      }
-      else {
+      } else {
         done();
       }
     });
@@ -75,7 +74,7 @@ suite('queryentitiesresultcontinuation-tests', function () {
 
       if (createResponse) {
         assert.ok(createResponse.isSuccessful);
-        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+        assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
       }
 
       var entities = generateEntities(numberOfEntities);

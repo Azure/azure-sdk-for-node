@@ -17,15 +17,13 @@ var assert = require('assert');
 
 // Test includes
 var testutil = require('../../util/util');
-var tabletestutil = require('../../util/table-test-utils');
+var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
 var BatchServiceClient = testutil.libRequire('services/table/batchserviceclient');
 var Constants = testutil.libRequire('util/constants');
 var HttpConstants = Constants.HttpConstants;
-
-var tableService;
 
 var tableNames = [];
 var tablePrefix = 'batch';
@@ -38,22 +36,31 @@ var entity1 = { PartitionKey: 'part1',
 };
 
 var testPrefix = 'batchserviceclient-tests';
-var numberTests = 2;
+
+var tableService;
+var suiteUtil;
 
 suite('batchserviceclient-tests', function () {
+  suiteSetup(function (done) {
+    tableService = azure.createTableService();
+    suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  suiteTeardown(function (done) {
+    suiteUtil.teardownSuite(done);
+  });
+
   setup(function (done) {
-    tabletestutil.setUpTest(testPrefix, function (err, newTableService) {
-      tableService = newTableService;
-      done();
-    });
+    suiteUtil.setupTest(done);
   });
 
   teardown(function (done) {
-    tabletestutil.tearDownTest(numberTests, tableService, testPrefix, done);
+    suiteUtil.teardownTest(done);
   });
 
   test('AddOperation', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.beginBatch();
 
@@ -64,7 +71,7 @@ suite('batchserviceclient-tests', function () {
     tableService.createTable(tableName, null, function (createTableError, table, createTableResponse) {
       assert.equal(createTableError, null);
       assert.notEqual(table, null);
-      assert.equal(createTableResponse.statusCode, HttpConstants.HttpResponseCodes.CREATED_CODE);
+      assert.equal(createTableResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
       tableService.insertEntity(tableName, entity1, null, function (insertError, insertEntity, insertEntityResponse) {
         assert.equal(insertError, null);
@@ -76,7 +83,7 @@ suite('batchserviceclient-tests', function () {
       assert.notEqual(tableService.operations, null);
       tableService.commitBatch(function (performBatchError, performBatchOperationResponses, performBatchResponse) {
         assert.equal(performBatchError, null);
-        assert.equal(performBatchResponse.statusCode, HttpConstants.HttpResponseCodes.ACCEPTED_CODE);
+        assert.equal(performBatchResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // The operations were successfully reset
         assert.equal(tableService.operations, null);
@@ -87,7 +94,7 @@ suite('batchserviceclient-tests', function () {
   });
 
   test('HasOperations', function (done) {
-    var tableName = testutil.generateId(tablePrefix, tableNames, tabletestutil.isMocked);
+    var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
 
     tableService.beginBatch();
 
