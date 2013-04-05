@@ -1,3 +1,6 @@
+2012.04.05 Version 0.7.2
+* Removing workaround for SSL issue and forcing node version to be outside the > 0.8 && < 0.10.3 range where the issue occurs
+
 2012.04.03 Version 0.7.1
 * Adding (limited) support for node 0.10
 * Fixing issue regarding registering providers when using websites or mobiles services
