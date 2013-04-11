@@ -45,10 +45,9 @@
     "url" : "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "node test/runci.js testlist.txt",
-    "testonly": "node test/runtests.js testlist.txt",
-    "jshint": "node test/runjshint.js",
-    "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
-    "extendedtests": "node test/runtests.js extendedtestlist.txt"
+    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "unit": "node scripts/unit.js testlist.txt",
+    "jshint": "jshint lib --jslint-reporter",
+    "coverage": "node scripts/unit.js testlist.txt -coverage > coverage.html"
   }
 }
