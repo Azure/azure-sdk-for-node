@@ -1,4 +1,5 @@
-﻿/**
+#!/usr/bin/env node
+/**
 * Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,10 +44,6 @@ var files = fileContent.split('\n');
 
 args.push('-u');
 args.push('tdd');
-
-// TODO: remove this timeout once tests are faster
-args.push('-t');
-args.push('200000');
 
 files.forEach(function (file) {
   if (file.length > 0 && file.trim()[0] !== '#') {
