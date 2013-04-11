@@ -29,7 +29,7 @@ var HeaderConstants = azure.Constants.HeaderConstants;
 var hubNames = [];
 var hubNamePrefix = 'xplathubnxt';
 
-var testPrefix = 'apnsservice-next-tests';
+var testPrefix = 'apnsservice-registrations-tests';
 
 describe('APNS notifications registrations', function () {
   var service;

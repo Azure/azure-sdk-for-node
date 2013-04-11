@@ -27,7 +27,7 @@ var azure = testutil.libRequire('azure');
 var hubNames = [];
 var hubNamePrefix = 'xplathubnxt';
 
-var testPrefix = 'wnsservice-next-tests';
+var testPrefix = 'wnsservice-registrations-tests';
 
 describe('WNS notifications registrations', function () {
   var service;
