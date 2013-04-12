@@ -16,9 +16,11 @@ services/core/servicemanagementsettings-tests.js
 services/core/storageservicesettings-tests.js
 services/queue/queueservice-tests.js
 services/serviceBus/apnsservice-tests.js
+services/serviceBus/apnsservice-registrations-tests.js
 services/serviceBus/notificationhubs-tests.js
 services/serviceBus/servicebusservice-tests.js
 services/serviceBus/wnsservice-tests.js
+services/serviceBus/wnsservice-registrations-tests.js
 services/serviceBus/wrapservice-tests.js
 services/serviceBus/wraptokenmanager-tests.js
 services/serviceManagement/affinitygroup-tests.js

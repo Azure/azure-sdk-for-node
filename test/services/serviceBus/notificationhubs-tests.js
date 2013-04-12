@@ -201,6 +201,28 @@ describe('Notification hubs', function () {
     });
   });
 
+  describe('Send template messages', function () {
+    var hubName;
+    var notificationHubService;
+
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
+      service.createNotificationHub(hubName, done);
+    });
+
+    it('should be able to send a template message', function (done) {
+      notificationHubService = azure.createNotificationHubService(hubName);
+      suiteUtil.setupService(notificationHubService);
+
+      notificationHubService.send(null, { property: 'value' }, function (err) {
+        should.not.exist(err);
+
+        done();
+      });
+    });
+  });
+
   describe('Shared Access Signature', function () {
     var notificationHubService;
     var notificationListenHubService;
