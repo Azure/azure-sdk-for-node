@@ -26,6 +26,8 @@ var azure = testutil.libRequire('azure');
 
 var HeaderConstants = azure.Constants.HeaderConstants;
 
+var tokenId = '0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78';
+
 var hubNames = [];
 var hubNamePrefix = 'xplathubnxt';
 
@@ -101,7 +103,7 @@ describe('APNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
-          notificationHubService.apns.createNativeRegistration('0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78', function (error, registration) {
+          notificationHubService.apns.createNativeRegistration(tokenId, function (error, registration) {
             should.not.exist(error);
             registrationId = registration.RegistrationId;
 
@@ -121,7 +123,7 @@ describe('APNS notifications registrations', function () {
 
         it('should work', function (done) {
           notificationHubService.apns.createTemplateRegistration(
-            '0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78',
+            tokenId,
             {
               alert: '${alertMessage1}'
             },
@@ -139,7 +141,7 @@ describe('APNS notifications registrations', function () {
 
         beforeEach(function (done) {
           notificationHubService.apns.createTemplateRegistration(
-            '0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78',
+            tokenId,
             {
               alert: '${alertMessage1}'
             },
@@ -158,7 +160,7 @@ describe('APNS notifications registrations', function () {
         it('should work', function (done) {
           notificationHubService.apns.updateTemplateRegistration(
             registrationId,
-            '0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78',
+            tokenId,
             {
               alert: '${newAlertMessage1}'
             },
