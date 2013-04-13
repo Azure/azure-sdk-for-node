@@ -5,117 +5,139 @@ var result =
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252f%2524Resources%252fNotificationHubs%253fapi-version%253d2013-04%26ExpiresOn%3d1365695373%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dBWc0pOZw2GZIm1f4O6e6Vk14zHFOH9fBxwghstdZfAE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252f%2524Resources%252fNotificationHubs%253fapi-version%253d2013-04%26ExpiresOn%3d1365844308%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dkBmdLCzH3jMeOfaJkLhHFLyg0yqDuoqYGypXDsGYlps%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '6c67583b-ffa4-4284-a348-7cff7ef640e3',
+  'request-id': 'fd2a2d79-9f70-4df3-8315-6db6c230e70f',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:32 GMT',
+  date: 'Sat, 13 Apr 2013 08:51:48 GMT',
   'content-length': '653' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .get('/$Resources/NotificationHubs?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-04-11T15:29:35Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-09T14:33:19Z</published><updated>2013-04-09T14:33:20Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-09T14:33:15.5343264Z</CreatedTime><ModifiedTime>2013-04-09T14:33:15.5343264Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>WlC23QYTdwSJMKpJuiuITWgwC8BxJcplwJo4Uxdke0M=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-04-13T08:51:50Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-09T14:33:19Z</published><updated>2013-04-09T14:33:20Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-09T14:33:15.5343264Z</CreatedTime><ModifiedTime>2013-04-09T14:33:15.5343264Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>WlC23QYTdwSJMKpJuiuITWgwC8BxJcplwJo4Uxdke0M=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry><entry xml:base=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt7?api-version=2013-04</id><title type=\"text\">xplathubnxt7</title><published>2013-04-13T08:50:32Z</published><updated>2013-04-13T08:50:33Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"../xplathubnxt7?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><CreatedTime>2013-04-13T08:50:33.9138216Z</CreatedTime><ModifiedTime>2013-04-13T08:50:33.9138216Z</ModifiedTime><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>ZSgKSAVUnmDC6JxSj+onlddZ4T4ygi7imRP+3LZEa1o=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-13T08:50:33.9138216Z</CreatedTime><ModifiedTime>2013-04-13T08:50:33.9138216Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>gf1mhpvY2wkSOtryexhxltNm9neQUVgACxQMCeVrxxU=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:35 GMT' });
+  date: 'Sat, 13 Apr 2013 08:51:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt1%253fapi-version%253d2013-04%26ExpiresOn%3d1365695377%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dT8nzOshdGiISUS7N95ZOMdp34KmClNS7Mqjfts%252b3ke8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt7%253fapi-version%253d2013-04%26ExpiresOn%3d1365844312%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dlXmzj2t0eNJb5%252bmA8MMVBICa8%252bxstDoUK32Ad55Avzc%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '7de9c5c0-207a-47cf-aa3f-5f773a21e599',
+  'request-id': 'e09ec47d-fb2d-4360-9002-b9db804d6eaf',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:36 GMT',
-  'content-length': '634' });
+  date: 'Sat, 13 Apr 2013 08:51:52 GMT',
+  'content-length': '638' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt1%253fapi-version%253d2013-04%26ExpiresOn%3d1365844311%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dErCZYXF0XgBmZezIS8iCo7sPuGnNsvXTMcNV5an61is%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': '95e7b739-2b30-435c-8020-dd91f47191d6',
+  'x-content-type-options': 'nosniff',
+  date: 'Sat, 13 Apr 2013 08:51:51 GMT',
+  'content-length': '630' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/xplathubnxt1?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1?api-version=2013-04</id><title type=\"text\">xplathubnxt1</title><published>2013-04-11T15:29:38Z</published><updated>2013-04-11T15:29:38Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><CreatedTime>2013-04-11T15:29:38.8227517Z</CreatedTime><ModifiedTime>2013-04-11T15:29:38.8227517Z</ModifiedTime><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>5jv576V7Aw0FICK958E8W6FEMsjsq2Ul2TXeyXdXf6I=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-11T15:29:38.8227517Z</CreatedTime><ModifiedTime>2013-04-11T15:29:38.8227517Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>QbkLig9cgv4vpAWxKi2ZWCBE9XPUDvrPUZGyLwojctU=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1?api-version=2013-04</id><title type=\"text\">xplathubnxt1</title><published>2013-04-13T08:51:53Z</published><updated>2013-04-13T08:51:53Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><CreatedTime>2013-04-13T08:51:53.8145852Z</CreatedTime><ModifiedTime>2013-04-13T08:51:53.8145852Z</ModifiedTime><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>1+bg32ZV/Z0V9onezuXH9KzehtbovDkuz1bKNLt0b34=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-13T08:51:53.8145852Z</CreatedTime><ModifiedTime>2013-04-13T08:51:53.8145852Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>LlNBQfdZYAO2hmXHm/UZrmE8M0InRBK/kcQjMhUs49g=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:38 GMT' });
+  date: 'Sat, 13 Apr 2013 08:51:53 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
+  .delete('/xplathubnxt7?api-version=2013-04')
+  .reply(200, "", { 'content-length': '0',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Sat, 13 Apr 2013 08:51:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt1%252fregistrations%253fapi-version%253d2013-04%26ExpiresOn%3d1365695379%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dYeEcsBD5krTqPPUPGLB3u4B6pOi8eBkVQzNg8jgp4hE%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt1%252fregistrations%253fapi-version%253d2013-04%26ExpiresOn%3d1365844315%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dVWaH7L4aVAoWzweOm3VeCItinI74MSHPu1IwLrc%252bDEU%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '7818e373-87f5-48f1-99e5-ea126683d093',
+  'request-id': '5a65ea22-39c9-4711-93b1-1948966bbdb2',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:39 GMT',
-  'content-length': '648' });
+  date: 'Sat, 13 Apr 2013 08:51:55 GMT',
+  'content-length': '652' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/xplathubnxt1/registrations?api-version=2013-04', '*')
-  .reply(200, "<entry a:etag=\"W/&quot;1&quot;\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:a=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1/registrations/4842156137095735547-4799611495073679121?api-version=2013-04</id><title type=\"text\">4842156137095735547-4799611495073679121</title><published>2013-04-11T15:29:41Z</published><updated>2013-04-11T15:29:41Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1/registrations/4842156137095735547-4799611495073679121?api-version=2013-04\"/><content type=\"application/xml\"><AppleRegistrationDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ETag>1</ETag><ExpirationTime>2013-07-10T15:29:41.529Z</ExpirationTime><RegistrationId>4842156137095735547-4799611495073679121</RegistrationId><DeviceToken>0F744707BEBCF74F9B7C25D48E3358945F6AA01DA5DDB387462C7EAF61BBAD78</DeviceToken></AppleRegistrationDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<entry a:etag=\"W/&quot;1&quot;\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:a=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1/registrations/6792965159791929249-3558108733011543806?api-version=2013-04</id><title type=\"text\">6792965159791929249-3558108733011543806</title><published>2013-04-13T08:51:57Z</published><updated>2013-04-13T08:51:57Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1/registrations/6792965159791929249-3558108733011543806?api-version=2013-04\"/><content type=\"application/xml\"><AppleRegistrationDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ETag>1</ETag><ExpirationTime>2013-07-12T08:51:57.391Z</ExpirationTime><RegistrationId>6792965159791929249-3558108733011543806</RegistrationId><DeviceToken>0F744707BEBCF74F9B7C25D48E3358945F6AA01DA5DDB387462C7EAF61BBAD78</DeviceToken></AppleRegistrationDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
-  'content-location': 'https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1/registrations/4842156137095735547-4799611495073679121?api-version=2013-04',
+  'content-location': 'https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt1/registrations/6792965159791929249-3558108733011543806?api-version=2013-04',
   etag: 'W/"1"',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:41 GMT' });
+  date: 'Sat, 13 Apr 2013 08:51:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt1%252fregistrations%252f4842156137095735547-4799611495073679121%253fapi-version%253d2013-04%26ExpiresOn%3d1365695382%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dNC588abLfbHRcai%252ffYp1L3kPOpACrIrljqKfCMgolFg%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt1%252fregistrations%252f6792965159791929249-3558108733011543806%253fapi-version%253d2013-04%26ExpiresOn%3d1365844319%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3d9hkG0C4NSErDljshXHMIpr6E1hi%252bGQJ9wxpZw%252byREbo%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'af3f516d-ae43-4573-ad3c-9bfe12be0364',
+  'request-id': '23694150-2795-4e1b-b0b4-b20c6c6a77ae',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:41 GMT',
-  'content-length': '696' });
+  date: 'Sat, 13 Apr 2013 08:51:58 GMT',
+  'content-length': '700' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
-  .delete('/xplathubnxt1/registrations/4842156137095735547-4799611495073679121?api-version=2013-04')
+  .delete('/xplathubnxt1/registrations/6792965159791929249-3558108733011543806?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:43 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:00 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .get('/$Resources/NotificationHubs?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-04-11T15:29:44Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-09T14:33:19Z</published><updated>2013-04-09T14:33:20Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-09T14:33:15.5343264Z</CreatedTime><ModifiedTime>2013-04-09T14:33:15.5343264Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>WlC23QYTdwSJMKpJuiuITWgwC8BxJcplwJo4Uxdke0M=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-04-13T08:52:02Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-09T14:33:19Z</published><updated>2013-04-09T14:33:20Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-09T14:33:15.5343264Z</CreatedTime><ModifiedTime>2013-04-09T14:33:15.5343264Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>WlC23QYTdwSJMKpJuiuITWgwC8BxJcplwJo4Uxdke0M=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:44 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt2%253fapi-version%253d2013-04%26ExpiresOn%3d1365695385%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dRdJzGdq1o8ep%252f%252fIBXgYVSLL9JNDuFgtPvYGcgZKD9YQ%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt2%253fapi-version%253d2013-04%26ExpiresOn%3d1365844324%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dv1PpuxCdHlYX%252biBowpAbgmpWWtmSO9U66sM3FW%252fIu7U%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'f90ba532-32e2-4cc4-9bb8-1fcb31a2dbbf',
+  'request-id': 'cf8be65f-92a2-453c-88cc-27389b7ed35b',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:45 GMT',
+  date: 'Sat, 13 Apr 2013 08:52:03 GMT',
   'content-length': '638' });
  return result; },
 function (nock) { 
@@ -123,148 +145,148 @@ var result =
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/xplathubnxt2?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2?api-version=2013-04</id><title type=\"text\">xplathubnxt2</title><published>2013-04-11T15:29:46Z</published><updated>2013-04-11T15:29:46Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><CreatedTime>2013-04-11T15:29:47.1500772Z</CreatedTime><ModifiedTime>2013-04-11T15:29:47.1500772Z</ModifiedTime><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>+GF4RkUzt1et59/A9qqQdA1lhjuXX5s6/8oxfRd/15M=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-11T15:29:47.1500772Z</CreatedTime><ModifiedTime>2013-04-11T15:29:47.1500772Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>g/u0h1CjRAZ3dKNrOtqE8fQ3cUc3mZ3UsIaCUDPJjaA=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2?api-version=2013-04</id><title type=\"text\">xplathubnxt2</title><published>2013-04-13T08:52:05Z</published><updated>2013-04-13T08:52:05Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><CreatedTime>2013-04-13T08:52:06.7190557Z</CreatedTime><ModifiedTime>2013-04-13T08:52:06.7190557Z</ModifiedTime><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>CN87VI7s9+9Wg7OBIXH1XsNH8qcDyfs8Zex7PReIZN4=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-13T08:52:06.7190557Z</CreatedTime><ModifiedTime>2013-04-13T08:52:06.7190557Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>xVWHQCvOr3gFgwK/U8x+4OeVe0F8HbmCivW5FDP6jgo=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:47 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt2%252fregistrations%253fapi-version%253d2013-04%26ExpiresOn%3d1365695388%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3d3ZiRLSavzlT18sxj7lBwLwhNknS1GZkIpfRboa4dZ2U%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt2%252fregistrations%253fapi-version%253d2013-04%26ExpiresOn%3d1365844328%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3d0XmoMlvMbBMaL%252fVgx%252bce9%252fX98d1Xv32cWt8y8Fo4Vlo%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'f19e5398-59d0-4aa0-a633-d4e5a48f3571',
+  'request-id': '8b722a7e-0cbd-43a5-8e6b-7b7ec64f8808',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:47 GMT',
-  'content-length': '648' });
+  date: 'Sat, 13 Apr 2013 08:52:08 GMT',
+  'content-length': '660' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/xplathubnxt2/registrations?api-version=2013-04', '*')
-  .reply(200, "<entry a:etag=\"W/&quot;1&quot;\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:a=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2/registrations/3463274019027746779-4500985699614295051?api-version=2013-04</id><title type=\"text\">3463274019027746779-4500985699614295051</title><published>2013-04-11T15:29:51Z</published><updated>2013-04-11T15:29:51Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2/registrations/3463274019027746779-4500985699614295051?api-version=2013-04\"/><content type=\"application/xml\"><AppleRegistrationDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ETag>1</ETag><ExpirationTime>2013-07-10T15:29:50.997Z</ExpirationTime><RegistrationId>3463274019027746779-4500985699614295051</RegistrationId><DeviceToken>0F744707BEBCF74F9B7C25D48E3358945F6AA01DA5DDB387462C7EAF61BBAD78</DeviceToken><BodyTemplate>{\"aps\":{\"alert\":\"${alertMessage1}\"}}</BodyTemplate></AppleRegistrationDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<entry a:etag=\"W/&quot;1&quot;\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:a=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2/registrations/3794484463063272603-2753329836732411131?api-version=2013-04</id><title type=\"text\">3794484463063272603-2753329836732411131</title><published>2013-04-13T08:52:10Z</published><updated>2013-04-13T08:52:10Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2/registrations/3794484463063272603-2753329836732411131?api-version=2013-04\"/><content type=\"application/xml\"><AppleTemplateRegistrationDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ETag>1</ETag><ExpirationTime>2013-07-12T08:52:10.016Z</ExpirationTime><RegistrationId>3794484463063272603-2753329836732411131</RegistrationId><DeviceToken>0F744707BEBCF74F9B7C25D48E3358945F6AA01DA5DDB387462C7EAF61BBAD78</DeviceToken><BodyTemplate><![CDATA[{\"aps\":{\"alert\":\"$(alertMessage1)\"}}]]></BodyTemplate><Expiry i:nil=\"true\"/></AppleTemplateRegistrationDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
-  'content-location': 'https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2/registrations/3463274019027746779-4500985699614295051?api-version=2013-04',
+  'content-location': 'https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt2/registrations/3794484463063272603-2753329836732411131?api-version=2013-04',
   etag: 'W/"1"',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:50 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt2%252fregistrations%252f3463274019027746779-4500985699614295051%253fapi-version%253d2013-04%26ExpiresOn%3d1365695391%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dKR0sqTTcQ5OhG9%252b1UJ9HtzWWU6k27PlaUEDKETwTQos%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt2%252fregistrations%252f3794484463063272603-2753329836732411131%253fapi-version%253d2013-04%26ExpiresOn%3d1365844331%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3d1l1xKuE4KWelNn28jdSjyW6gKjc8UTrT7%252fzwumS3BdE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'a893c60a-bb43-4967-893b-e8a7741af83c',
+  'request-id': 'fbfdea44-c096-44c4-b7a4-de141bfc38c0',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:50 GMT',
+  date: 'Sat, 13 Apr 2013 08:52:11 GMT',
   'content-length': '696' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
-  .delete('/xplathubnxt2/registrations/3463274019027746779-4500985699614295051?api-version=2013-04')
+  .delete('/xplathubnxt2/registrations/3794484463063272603-2753329836732411131?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:52 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:13 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .get('/$Resources/NotificationHubs?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-04-11T15:29:54Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-09T14:33:19Z</published><updated>2013-04-09T14:33:20Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-09T14:33:15.5343264Z</CreatedTime><ModifiedTime>2013-04-09T14:33:15.5343264Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>WlC23QYTdwSJMKpJuiuITWgwC8BxJcplwJo4Uxdke0M=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-04-13T08:52:14Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-09T14:33:19Z</published><updated>2013-04-09T14:33:20Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-09T14:33:15.5343264Z</CreatedTime><ModifiedTime>2013-04-09T14:33:15.5343264Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>WlC23QYTdwSJMKpJuiuITWgwC8BxJcplwJo4Uxdke0M=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:54 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt3%253fapi-version%253d2013-04%26ExpiresOn%3d1365695395%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dVl%252b%252bubsihcE1swZxkv0TKu93g%252bZCyvOsxnYF5oS7Ojw%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt3%253fapi-version%253d2013-04%26ExpiresOn%3d1365844335%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dEsbwvlVp4IwhyUQm9FPOHp%252btd6cqe17AxreDyUYTy1Q%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'c401d74a-05f7-4371-8821-acad02c60f64',
+  'request-id': '2693470c-eeb0-450b-a2b9-05754de8155f',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:55 GMT',
-  'content-length': '642' });
+  date: 'Sat, 13 Apr 2013 08:52:15 GMT',
+  'content-length': '634' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/xplathubnxt3?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3?api-version=2013-04</id><title type=\"text\">xplathubnxt3</title><published>2013-04-11T15:29:56Z</published><updated>2013-04-11T15:29:56Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><CreatedTime>2013-04-11T15:29:57.6997783Z</CreatedTime><ModifiedTime>2013-04-11T15:29:57.6997783Z</ModifiedTime><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>O1GDLllzDtJxoiEB+MOCQ7LI/IoosQoySsUoKJVe6Zk=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-11T15:29:57.6997783Z</CreatedTime><ModifiedTime>2013-04-11T15:29:57.6997783Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>B1lgApg004RN+E/LcdBl1kkgO7aQ0szrBHXjkKY3w0I=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3?api-version=2013-04</id><title type=\"text\">xplathubnxt3</title><published>2013-04-13T08:52:17Z</published><updated>2013-04-13T08:52:17Z</updated><author><name>nodejstest-0-0e8a1-1</name></author><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><CreatedTime>2013-04-13T08:52:18.6244373Z</CreatedTime><ModifiedTime>2013-04-13T08:52:18.6244373Z</ModifiedTime><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>qtsp6zw1R5v5d/vPHKVXejIpTS0x9bNwDcVD9WhwTAA=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><CreatedTime>2013-04-13T08:52:18.6244373Z</CreatedTime><ModifiedTime>2013-04-13T08:52:18.6244373Z</ModifiedTime><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>86OwtyZ287M2oPZOpx5wWg/SrWeMH7Z4+xb8xzgLgD4=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:29:57 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt3%252fregistrations%253fapi-version%253d2013-04%26ExpiresOn%3d1365695398%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dqKA787HG%252bubqjD1xhaBet5YhHoOgMp5FrCIeku8dd40%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt3%252fregistrations%253fapi-version%253d2013-04%26ExpiresOn%3d1365844339%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dA6nAjnwbsKC%252fflMsnkNQEZdlZ%252ffP2hNhzJwyfu4Lt8s%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '4555d91a-7b7e-42e8-8f85-547e9e5f8765',
+  'request-id': '5f553795-ed82-418f-893b-4f332920ff22',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:29:58 GMT',
-  'content-length': '652' });
+  date: 'Sat, 13 Apr 2013 08:52:18 GMT',
+  'content-length': '656' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/xplathubnxt3/registrations?api-version=2013-04', '*')
-  .reply(200, "<entry a:etag=\"W/&quot;1&quot;\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:a=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/3868021779226616006-6813208837748789620?api-version=2013-04</id><title type=\"text\">3868021779226616006-6813208837748789620</title><published>2013-04-11T15:30:00Z</published><updated>2013-04-11T15:30:00Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/3868021779226616006-6813208837748789620?api-version=2013-04\"/><content type=\"application/xml\"><AppleRegistrationDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ETag>1</ETag><ExpirationTime>2013-07-10T15:29:59.984Z</ExpirationTime><RegistrationId>3868021779226616006-6813208837748789620</RegistrationId><DeviceToken>0F744707BEBCF74F9B7C25D48E3358945F6AA01DA5DDB387462C7EAF61BBAD78</DeviceToken><BodyTemplate>{\"aps\":{\"alert\":\"${alertMessage1}\"}}</BodyTemplate></AppleRegistrationDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<entry a:etag=\"W/&quot;1&quot;\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:a=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/5627599800342221173-4570424490689260558?api-version=2013-04</id><title type=\"text\">5627599800342221173-4570424490689260558</title><published>2013-04-13T08:52:23Z</published><updated>2013-04-13T08:52:23Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/5627599800342221173-4570424490689260558?api-version=2013-04\"/><content type=\"application/xml\"><AppleTemplateRegistrationDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ETag>1</ETag><ExpirationTime>2013-07-12T08:52:23.195Z</ExpirationTime><RegistrationId>5627599800342221173-4570424490689260558</RegistrationId><DeviceToken>0F744707BEBCF74F9B7C25D48E3358945F6AA01DA5DDB387462C7EAF61BBAD78</DeviceToken><BodyTemplate><![CDATA[{\"aps\":{\"alert\":\"$(alertMessage1)\"}}]]></BodyTemplate><Expiry i:nil=\"true\"/></AppleTemplateRegistrationDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
-  'content-location': 'https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/3868021779226616006-6813208837748789620?api-version=2013-04',
+  'content-location': 'https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/5627599800342221173-4570424490689260558?api-version=2013-04',
   etag: 'W/"1"',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:30:00 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt3%252fregistrations%252f3868021779226616006-6813208837748789620%253fapi-version%253d2013-04%26ExpiresOn%3d1365695401%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dTtKyKKa1JHCpHZeLIvSCl7unFMtSMi%252bxFQd55C3EH%252b8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26Audience%3dhttp%253a%252f%252fnodejstest-0-0e8a1-1.servicebus.int7.windows-int.net%252fxplathubnxt3%252fregistrations%252f5627599800342221173-4570424490689260558%253fapi-version%253d2013-04%26ExpiresOn%3d1365844344%26Issuer%3dhttps%253a%252f%252fnodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net%252f%26HMACSHA256%3dfkQeEbkxhym25TCZdc15xL0o3rjBAJahscRdpCKKroM%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'b3802c79-ed45-4e3b-91d7-d70a14d721da',
+  'request-id': '9d8d0016-0477-4b9e-bfce-2164a9236600',
   'x-content-type-options': 'nosniff',
-  date: 'Thu, 11 Apr 2013 15:30:00 GMT',
-  'content-length': '700' });
+  date: 'Sat, 13 Apr 2013 08:52:23 GMT',
+  'content-length': '692' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/xplathubnxt3/registrations/3868021779226616006-6813208837748789620?api-version=2013-04', '*')
-  .reply(200, "<entry a:etag=\"W/&quot;1&quot;\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:a=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/3868021779226616006-6813208837748789620?api-version=2013-04</id><title type=\"text\">3868021779226616006-6813208837748789620</title><published>2013-04-11T15:30:03Z</published><updated>2013-04-11T15:30:03Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/3868021779226616006-6813208837748789620?api-version=2013-04\"/><content type=\"application/xml\"><AppleRegistrationDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ETag>1</ETag><ExpirationTime>2013-07-10T15:30:02.902Z</ExpirationTime><RegistrationId>3868021779226616006-6813208837748789620</RegistrationId><DeviceToken>0F744707BEBCF74F9B7C25D48E3358945F6AA01DA5DDB387462C7EAF61BBAD78</DeviceToken><BodyTemplate>{\"aps\":{\"alert\":\"${newAlertMessage1}\"}}</BodyTemplate></AppleRegistrationDescription></content></entry>", { 'transfer-encoding': 'chunked',
+.put('/xplathubnxt3/registrations/5627599800342221173-4570424490689260558?api-version=2013-04', '*')
+  .reply(200, "<entry a:etag=\"W/&quot;1&quot;\" xmlns=\"http://www.w3.org/2005/Atom\" xmlns:a=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><id>https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/5627599800342221173-4570424490689260558?api-version=2013-04</id><title type=\"text\">5627599800342221173-4570424490689260558</title><published>2013-04-13T08:52:26Z</published><updated>2013-04-13T08:52:26Z</updated><link rel=\"self\" href=\"https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/xplathubnxt3/registrations/5627599800342221173-4570424490689260558?api-version=2013-04\"/><content type=\"application/xml\"><AppleTemplateRegistrationDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ETag>1</ETag><ExpirationTime>2013-07-12T08:52:26.608Z</ExpirationTime><RegistrationId>5627599800342221173-4570424490689260558</RegistrationId><DeviceToken>0F744707BEBCF74F9B7C25D48E3358945F6AA01DA5DDB387462C7EAF61BBAD78</DeviceToken><BodyTemplate><![CDATA[{\"aps\":{\"alert\":\"$(newAlertMessage1)\"}}]]></BodyTemplate><Expiry i:nil=\"true\"/></AppleTemplateRegistrationDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   etag: 'W/"1"',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:30:03 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net:443')
-  .delete('/xplathubnxt3/registrations/3868021779226616006-6813208837748789620?api-version=2013-04')
+  .delete('/xplathubnxt3/registrations/5627599800342221173-4570424490689260558?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Thu, 11 Apr 2013 15:30:03 GMT' });
+  date: 'Sat, 13 Apr 2013 08:52:28 GMT' });
  return result; }]];
