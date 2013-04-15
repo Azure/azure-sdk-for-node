@@ -41,7 +41,7 @@ describe('WNS notifications registrations', function () {
     sandbox = sinon.sandbox.create();
 
     service = azure.createServiceBusService(connectionString);
-    service.apiVersion = '2013-04'
+    service.apiVersion = '2013-04';
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
@@ -99,7 +99,7 @@ describe('WNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
-          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', function (error, registration) {
+          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', { registrationId: 'myname' }, function (error, registration) {
             should.not.exist(error);
             registrationId = registration.RegistrationId;
 
@@ -196,12 +196,12 @@ describe('WNS notifications registrations', function () {
           notificationHubService.wns.createTileSquarePeekImageAndText01Registration(
             'http://db3.notify.windows.com/fake/superfake',
             {
-              image1src: '$myImageProp1',
-              image1alt: '$myImageProp2',
-              text1: '$myTextProp1',
-              text2: '$myTextProp2',
-              text3: '$myTextProp3',
-              text4: '$myTextProp4'
+              image1src: '$(myImageProp1)',
+              image1alt: '$(myImageProp2)',
+              text1: '$(myTextProp1)',
+              text2: '$(myTextProp2)',
+              text3: '$(myTextProp3)',
+              text4: '$(myTextProp4)'
             },
             function (error, registration) {
               should.not.exist(error);
@@ -219,12 +219,12 @@ describe('WNS notifications registrations', function () {
           notificationHubService.wns.createTileSquarePeekImageAndText01Registration(
             'http://db3.notify.windows.com/fake/superfake',
             {
-              image1src: '$myImageProp1',
-              image1alt: '$myImageProp2',
-              text1: '$myTextProp1',
-              text2: '$myTextProp2',
-              text3: '$myTextProp3',
-              text4: '$myTextProp4'
+              image1src: '$(myImageProp1)',
+              image1alt: '$(myImageProp2)',
+              text1: '$(myTextProp1)',
+              text2: '$(myTextProp2)',
+              text3: '$(myTextProp3)',
+              text4: '$(myTextProp4)'
             },
             function (error, registration) {
               registrationId = registration.RegistrationId;
@@ -241,12 +241,12 @@ describe('WNS notifications registrations', function () {
             registrationId,
             'http://db3.notify.windows.com/fake/superfake',
             {
-              image1src: '$myImageProp1',
-              image1alt: '$myImageProp2',
-              text1: '$myTextProp1',
-              text2: '$myTextProp2',
-              text3: '$myTextProp3',
-              text4: '$myNewTextProp'
+              image1src: '$(myImageProp1)',
+              image1alt: '$(myImageProp2)',
+              text1: '$(myTextProp1)',
+              text2: '$(myTextProp2)',
+              text3: '$(myTextProp3)',
+              text4: '$(myNewTextProp)'
             },
             function (error) {
               should.not.exist(error);

@@ -125,7 +125,7 @@ describe('APNS notifications registrations', function () {
           notificationHubService.apns.createTemplateRegistration(
             tokenId,
             {
-              alert: '${alertMessage1}'
+              alert: '$(alertMessage1)'
             },
             function (error, registration) {
               should.not.exist(error);
@@ -143,7 +143,7 @@ describe('APNS notifications registrations', function () {
           notificationHubService.apns.createTemplateRegistration(
             tokenId,
             {
-              alert: '${alertMessage1}'
+              alert: '$(alertMessage1)'
             },
             function (error, registration) {
               should.not.exist(error);
@@ -162,7 +162,7 @@ describe('APNS notifications registrations', function () {
             registrationId,
             tokenId,
             {
-              alert: '${newAlertMessage1}'
+              alert: '$(newAlertMessage1)'
             },
             function (error) {
               should.not.exist(error);
