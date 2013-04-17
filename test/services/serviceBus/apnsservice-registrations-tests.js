@@ -38,14 +38,10 @@ describe('APNS notifications registrations', function () {
   var suiteUtil;
   var sandbox;
 
-  var key = process.env.AZURE_SERVICEBUS_ACCESS_KEY_TEST;
-  var connectionString = 'Endpoint=sb://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/;StsEndpoint=https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net/;SharedSecretIssuer=owner;SharedSecretValue=' + key;
-
   before(function (done) {
     sandbox = sinon.sandbox.create();
 
-    service = azure.createServiceBusService(connectionString);
-    service.apiVersion = '2013-04';
+    service = azure.createServiceBusService();
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
@@ -87,8 +83,7 @@ describe('APNS notifications registrations', function () {
     beforeEach(function (done) {
       hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
-      notificationHubService = azure.createNotificationHubService(hubName, connectionString);
-      notificationHubService.apiVersion = '2013-04';
+      notificationHubService = azure.createNotificationHubService(hubName);
 
       suiteUtil.setupService(notificationHubService);
       service.createNotificationHub(hubName, done);
@@ -124,6 +119,7 @@ describe('APNS notifications registrations', function () {
         it('should work', function (done) {
           notificationHubService.apns.createTemplateRegistration(
             tokenId,
+            null,
             {
               alert: '$(alertMessage1)'
             },
@@ -142,6 +138,7 @@ describe('APNS notifications registrations', function () {
         beforeEach(function (done) {
           notificationHubService.apns.createTemplateRegistration(
             tokenId,
+            null,
             {
               alert: '$(alertMessage1)'
             },
@@ -161,6 +158,7 @@ describe('APNS notifications registrations', function () {
           notificationHubService.apns.updateTemplateRegistration(
             registrationId,
             tokenId,
+            null,
             {
               alert: '$(newAlertMessage1)'
             },

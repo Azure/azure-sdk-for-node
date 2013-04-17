@@ -34,14 +34,10 @@ describe('WNS notifications registrations', function () {
   var suiteUtil;
   var sandbox;
 
-  var key = process.env.AZURE_SERVICEBUS_ACCESS_KEY_TEST;
-  var connectionString = 'Endpoint=sb://nodejstest-0-0e8a1-1.servicebus.int7.windows-int.net/;StsEndpoint=https://nodejstest-0-0e8a1-1-sb.accesscontrol.aadint.windows-int.net/;SharedSecretIssuer=owner;SharedSecretValue=' + key;
-
   before(function (done) {
     sandbox = sinon.sandbox.create();
 
-    service = azure.createServiceBusService(connectionString);
-    service.apiVersion = '2013-04';
+    service = azure.createServiceBusService();
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
@@ -83,9 +79,7 @@ describe('WNS notifications registrations', function () {
     beforeEach(function (done) {
       hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
-      notificationHubService = azure.createNotificationHubService(hubName, connectionString);
-      notificationHubService.apiVersion = '2013-04';
-
+      notificationHubService = azure.createNotificationHubService(hubName);
       suiteUtil.setupService(notificationHubService);
       service.createNotificationHub(hubName, done);
     });
@@ -195,6 +189,7 @@ describe('WNS notifications registrations', function () {
         it('should work', function (done) {
           notificationHubService.wns.createTileSquarePeekImageAndText01Registration(
             'http://db3.notify.windows.com/fake/superfake',
+            null,
             {
               image1src: '$(myImageProp1)',
               image1alt: '$(myImageProp2)',
@@ -218,6 +213,7 @@ describe('WNS notifications registrations', function () {
         beforeEach(function (done) {
           notificationHubService.wns.createTileSquarePeekImageAndText01Registration(
             'http://db3.notify.windows.com/fake/superfake',
+            null,
             {
               image1src: '$(myImageProp1)',
               image1alt: '$(myImageProp2)',
@@ -240,6 +236,7 @@ describe('WNS notifications registrations', function () {
           notificationHubService.wns.updateTileSquarePeekImageAndText01Registration(
             registrationId,
             'http://db3.notify.windows.com/fake/superfake',
+            null,
             {
               image1src: '$(myImageProp1)',
               image1alt: '$(myImageProp2)',
