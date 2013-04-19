@@ -666,7 +666,7 @@ suite('blobservice-tests', function () {
         blobService.createBlockBlobFromText(sourceContainerName, sourceBlobName, blobText, function (uploadErr) {
           assert.equal(uploadErr, null);
 
-          blobService.copyBlob(sourceContainerName, sourceBlobName, targetContainerName, targetBlobName, function (copyErr) {
+          blobService.copyBlob(blobService.getBlobUrl(sourceContainerName, sourceBlobName), targetContainerName, targetBlobName, function (copyErr) {
             assert.equal(copyErr, null);
 
             blobService.getBlobToText(targetContainerName, targetBlobName, function (downloadErr, text) {
