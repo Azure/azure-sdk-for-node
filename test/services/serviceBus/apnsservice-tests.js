@@ -83,7 +83,13 @@ describe('APNS notifications', function () {
 
       notificationHubService = azure.createNotificationHubService(hubName);
       suiteUtil.setupService(notificationHubService);
-      service.createNotificationHub(hubName, done);
+      service.createNotificationHub(hubName, {
+          apns: {
+            ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
+            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
+            Endpoint: 'gateway.push.apple.com'
+          }
+        }, done);
     });
 
     it('should send a simple message', function (done) {
