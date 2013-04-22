@@ -17,6 +17,7 @@ var _ = require('underscore');
 
 var should = require('should');
 var sinon = require('sinon');
+var fs = require('fs');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -28,6 +29,8 @@ var hubNames = [];
 var hubNamePrefix = 'xplathub';
 
 var testPrefix = 'notificationhubservice-tests';
+
+var tokenId = '0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78';
 
 describe('Notification hubs', function () {
   var service;
@@ -201,6 +204,34 @@ describe('Notification hubs', function () {
     });
   });
 
+  describe('Send template messages', function () {
+    var hubName;
+    var notificationHubService;
+
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
+      service.createNotificationHub(hubName, {
+          apns: {
+            ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
+            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
+            Endpoint: 'gateway.push.apple.com'
+          }
+        }, done);
+    });
+
+    it('should be able to send a template message', function (done) {
+      notificationHubService = azure.createNotificationHubService(hubName);
+      suiteUtil.setupService(notificationHubService);
+
+      notificationHubService.send(null, { property: 'value' }, function (err) {
+        should.not.exist(err);
+
+        done();
+      });
+    });
+  });
+
   describe('Shared Access Signature', function () {
     var notificationHubService;
     var notificationListenHubService;
@@ -209,7 +240,14 @@ describe('Notification hubs', function () {
     beforeEach(function (done) {
       hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
-      service.createNotificationHub(hubName, function () {
+      service.createNotificationHub(hubName, {
+          apns: {
+            ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
+            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
+            Endpoint: 'gateway.push.apple.com'
+          }
+        },
+        function () {
         var setupHub = function () {
           service.getNotificationHub(hubName, function (err, hub) {
             if (err) {
@@ -241,7 +279,7 @@ describe('Notification hubs', function () {
     });
 
     it('should be able to execute an operation', function (done) {
-      notificationHubService.apns.send(null, { 
+      notificationHubService.apns.send(null, {
         alert: 'This is my toast message for iOS!'
       }, function (error, result) {
         should.not.exist(error);
@@ -257,6 +295,43 @@ describe('Notification hubs', function () {
       }, function (error, result) {
         should.exist(error);
         result.statusCode.should.equal(401);
+
+        done();
+      });
+    });
+  });
+
+  describe('update registration', function () {
+    var hubName;
+    var notificationHubService;
+    var registration;
+
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
+      notificationHubService = azure.createNotificationHubService(hubName);
+
+      suiteUtil.setupService(notificationHubService);
+      service.createNotificationHub(hubName, function () {
+        notificationHubService.apns.createTemplateRegistration(
+          tokenId,
+          null,
+          {
+            alert: '$(alertMessage1)'
+          },
+          function (error, reg) {
+            notificationHubService.getRegistration(reg.RegistrationId, function (err, getRegistration) {
+              registration = getRegistration;
+
+              done();
+            });
+        });
+      });
+    });
+
+    it('should work', function (done) {
+      notificationHubService.updateRegistration(registration, function (err) {
+        should.not.exist(err);
 
         done();
       });
