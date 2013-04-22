@@ -81,7 +81,12 @@ describe('WNS notifications', function () {
 
       notificationHubService = azure.createNotificationHubService(hubName);
       suiteUtil.setupService(notificationHubService);
-      service.createNotificationHub(hubName, done);
+      service.createNotificationHub(hubName, {
+        wns: {
+          PackageSid: process.env.AZURE_WNS_PACKAGE_SID,
+          SecretKey: process.env.AZURE_WNS_SECRET_KEY
+        }
+      }, done);
     });
 
     it('should send a simple tile message', function (done) {
