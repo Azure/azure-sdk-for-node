@@ -25,7 +25,7 @@ var SqlAzureConstants = azure.Constants.SqlAzureConstants;
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
-var SERVER_LOCATION = 'West US';
+var SERVER_LOCATION = process.env['AZURE_SQL_TEST_LOCATION'] || 'West US';
 
 var testPrefix = 'sqlManagement-tests';
 var ruleNames = [];
@@ -48,8 +48,7 @@ describe('SQL Server Management', function () {
     }
 
     service = azure.createSqlManagementService(
-      subscriptionId, auth,
-      { serializetype: 'XML'});
+      subscriptionId, auth, hostOptions);
 
     suiteUtil = new MockedTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
