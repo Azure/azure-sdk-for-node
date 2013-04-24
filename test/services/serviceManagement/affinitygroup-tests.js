@@ -84,7 +84,7 @@ describe('Affinity Group Management', function () {
 
   describe('get affinity group', function () {
     it('should fail if name is invalid', function (done) {
-      service.getAffinityGroup('!NotValid$', function (err, response) {
+      service.getAffinityGroup('!NotValid$', function (err) {
         should.exist(err);
         err.message.should.not.be.null;
         done();
@@ -124,7 +124,7 @@ describe('Affinity Group Management', function () {
 
   describe('delete affinity group', function () {
     it('should fail if name is invalid', function (done) {
-      service.deleteAffinityGroup('!NotValid$', function (err, response) {
+      service.deleteAffinityGroup('!NotValid$', function (err) {
         should.exist(err);
         err.message.should.not.be.null;
         done();
@@ -132,7 +132,7 @@ describe('Affinity Group Management', function () {
     });
 
     it('should succeed', function (done) {
-      service.deleteAffinityGroup(affinityGroupName, function (err, response) {
+      service.deleteAffinityGroup(affinityGroupName, function (err) {
         if (err) { return done(err); }
         done();
       });
@@ -143,7 +143,7 @@ describe('Affinity Group Management', function () {
     if (affinityGroups.length === 0) { return callback(); }
     var numDeleted = 0;
     affinityGroups.forEach(function (name) {
-      service.deleteAffinityGroup(name, function (err, response) {
+      service.deleteAffinityGroup(name, function (err) {
         ++numDeleted;
         if (numDeleted === affinityGroups.length) {
           callback();
