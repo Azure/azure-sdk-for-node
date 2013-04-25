@@ -43,8 +43,8 @@ describe('SQL Server Management', function () {
       serializetype: 'XML'
     };
 
-    if (process.env['AZURE_MANAGEMENT_HOST']) {
-      hostOptions.host = process.env['AZURE_MANAGEMENT_HOST'];
+    if (process.env.AZURE_MANAGEMENT_HOST) {
+      hostOptions.host = process.env.AZURE_MANAGEMENT_HOST;
     }
 
     service = azure.createSqlManagementService(
