@@ -16,19 +16,15 @@
 var assert = require('assert');
 
 // Test includes
-var testutil = require('../../util/util');
-var wrapservicetestutil = require('../../framework/wrapservice-test-utils');
+var testutil = require('../../../util/util');
+var wrapservicetestutil = require('../../../framework/wrapservice-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var azureutil = testutil.libRequire('util/util');
 var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
-var WrapTokenManager = testutil.libRequire('services/serviceBus/wraptokenmanager');
+var WrapTokenManager = testutil.libRequire('services/serviceBus/internal/wraptokenmanager');
 
 var ServiceClient = azure.ServiceClient;
-var Constants = azure.Constants;
-var HttpConstants = Constants.HttpConstants;
-var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
 var wrapTokenManager;
 var wrapService;

@@ -15,25 +15,14 @@
 
 var assert = require('assert');
 
-var fs = require('fs');
-var path = require("path");
-var util = require('util');
-
 // Test includes
-var testutil = require('../../util/util');
-var blobtestutil = require('../../framework/blob-test-utils');
+var testutil = require('../../../util/util');
+var blobtestutil = require('../../../framework/blob-test-utils');
 
 // Lib includes
-var azureutil = testutil.libRequire('util/util');
 var azure = testutil.libRequire('azure');
-var WebResource = testutil.libRequire('http/webresource');
 
-var SharedAccessSignature = azure.SharedAccessSignature;
-var BlobService = azure.BlobService;
-var SharedKeyLite = azure.SharedKeyLite;
-var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;
-var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
 
 var containerNames = [];
@@ -64,7 +53,7 @@ suite('sharedkeylite-tests', function () {
   });
 
   test('CreateContainer', function (done) {
-    blobService.authenticationProvider = new SharedKeyLite(blobService.storageAccount, blobService.storageAccessKey);
+    blobService.authenticationProvider = new azure.SharedKeyLite(blobService.storageAccount, blobService.storageAccessKey);
 
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
 
