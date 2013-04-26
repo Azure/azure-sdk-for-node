@@ -16,33 +16,15 @@
 var assert = require('assert');
 
 // Test includes
-var testutil = require('../../util/util');
-var tabletestutil = require('../../framework/table-test-utils');
+var testutil = require('../../../util/util');
+var tabletestutil = require('../../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var azureutil = testutil.libRequire('util/util');
-var SharedKeyLiteTable = testutil.libRequire('services/table/sharedkeylitetable');
+var SharedKeyLiteTable = testutil.libRequire('services/table/internal/sharedkeylitetable');
 
-var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;
-var TableQuery = azure.TableQuery;
 var HttpConstants = Constants.HttpConstants;
-var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
-
-var entity1 = { PartitionKey: 'part1',
-  RowKey: 'row1',
-  field: 'my field',
-  otherfield: 'my other field',
-  otherprops: 'my properties'
-};
-
-var entity2 = { PartitionKey: 'part2',
-  RowKey: 'row1',
-  boolval: { '$': { type: 'Edm.Boolean' }, '_': true },
-  intval: { '$': { type: 'Edm.Int32' }, '_': 42 },
-  dateval: { '$': { type: 'Edm.DateTime' }, '_': new Date().toISOString() }
-};
 
 var tableNames = [];
 var tablePrefix = 'sharedkeytable';

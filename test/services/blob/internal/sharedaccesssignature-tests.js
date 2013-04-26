@@ -18,7 +18,7 @@ var assert = require('assert');
 var qs = require('querystring');
 
 // Test includes
-var testutil = require('../../util/util');
+var testutil = require('../../../util/util');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
@@ -27,7 +27,6 @@ var SharedAccessSignature = azure.SharedAccessSignature;
 var Constants = azure.Constants;
 var ServiceClient = azure.ServiceClient;
 var BlobConstants = Constants.BlobConstants;
-var HeaderConstants = Constants.HeaderConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
 suite('sharedaccesssignature-tests', function () {
