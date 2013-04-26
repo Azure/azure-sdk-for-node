@@ -16,7 +16,7 @@
 var assert = require('assert');
 
 // Test includes
-var testutil = require('../../util/util');
+var testutil = require('../../../util/util');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
@@ -31,7 +31,7 @@ var sharedkey;
 
 suite('sharedkey-tests', function () {
   setup(function (done) {
-    sharedkey = new SharedKey(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, false);
+    sharedkey = new azure.SharedKey(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, false);
 
     done();
   });
