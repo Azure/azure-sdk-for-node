@@ -468,7 +468,7 @@ suite('tableservice-tests', function () {
         assert.notEqual(insertEntity, null);
         assert.ok(insertResponse.isSuccessful);
         assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
-        var originalEtag = newEntity1['etag'];
+        var originalEtag = newEntity1._.etag;
 
         newEntity1['otherfield'] = newField;
 
@@ -477,7 +477,7 @@ suite('tableservice-tests', function () {
           assert.notEqual(updateEntity2, null);
           assert.ok(updateResponse2.isSuccessful);
           assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NoContent);
-          assert.notEqual(newEntity1.etag, originalEtag);
+          assert.notEqual(newEntity1._.etag, originalEtag);
 
           done();
         });
