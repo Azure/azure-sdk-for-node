@@ -13,6 +13,7 @@
 * limitations under the License.
 */
 
+var nockHelper = require('../../framework/nock-helper');
 var assert = require('assert');
 
 var fs = require('fs');
@@ -20,8 +21,6 @@ var path = require('path');
 var util = require('util');
 var sinon = require('sinon');
 var url = require('url');
-
-var request = require('request');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -1258,7 +1257,7 @@ describe('BlobService', function () {
                 fs.unlink(fileNameSource, done);
               }
 
-              request.get(blobUrl, responseCallback).pipe(fs.createWriteStream(fileNameSource));
+              require('request').get(blobUrl, responseCallback).pipe(fs.createWriteStream(fileNameSource));
             });
           });
         });
