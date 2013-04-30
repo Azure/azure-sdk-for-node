@@ -437,7 +437,7 @@ suite('tableservice-tests', function () {
         assert.equal(insertResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
 
         // Set a fake old etag
-        entity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
+        entity1._ = { etag: 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"' };
 
         // Delete forcing etag to be verified
         tableService.deleteEntity(tableName, entity1, { checkEtag: true }, function (deleteError, deleted, deleteResponse) {
@@ -505,7 +505,7 @@ suite('tableservice-tests', function () {
         newEntity1['otherfield'] = newField;
 
         // Set a fake old etag
-        newEntity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
+        newEntity1._ = { etag: 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"' };
 
         tableService.updateEntity(tableName, newEntity1, { checkEtag: true }, function (updateError, updateEntity, updateResponse) {
           assert.equal(updateError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
@@ -570,7 +570,7 @@ suite('tableservice-tests', function () {
         newEntity1['otherfield'] = newField;
 
         // Set a fake old etag
-        newEntity1['etag'] = 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"';
+        newEntity1._ = { etag: 'W/"datetime\'2009-05-27T12%3A15%3A15.3321531Z\'"' };
 
         tableService.mergeEntity(tableName, newEntity1, { checkEtag: true }, function (mergeError, mergeEntity, mergeResponse) {
           assert.equal(mergeError.code, StorageErrorCodeStrings.UPDATE_CONDITION_NOT_SATISFIED);
@@ -756,14 +756,14 @@ suite('tableservice-tests', function () {
         PartitionKey: '1',
         RowKey: '2st',
         field1: 'value'
-      }
+      };
 
       // entity in another partition
       var entity3 = {
         PartitionKey: '2',
         RowKey: '2st',
         field1: 'value'
-      }
+      };
 
       // Should perform an insert
       tableService.insertEntity(tableName, entity1, function (error2) {
