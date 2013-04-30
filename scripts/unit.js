@@ -74,6 +74,14 @@ var defaultStorageAccount = 'ciserversdk';
 var defaultServiceBusAccount = 'ciserversb';
 var defaultSubscription = '279b0675-cf67-467f-98f0-67ae31eb540f';
 
+if (!process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
+  process.env.AZURE_APNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_FILE'])).toString('base64');
+}
+
+if (!process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICATE_KEY_FILE) {
+  process.env.AZURE_APNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_KEY_FILE']).toString();
+}
+
 if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
   process.env.AZURE_APNS_CERTIFICATE = 'fake_certificate';
   process.env.AZURE_APNS_CERTIFICATE_KEY = 'fake_certificate_key';
@@ -83,8 +91,9 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
 
   if (process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
     process.env.AZURE_STORAGE_ACCOUNT = defaultStorageAccount;
-    process.env.AZURE_STORAGE_ACCESS_KEY = new Buffer('fake_key').toString('base64');
   }
+
+  process.env.AZURE_STORAGE_ACCESS_KEY = new Buffer('fake_key').toString('base64');
 
   if (process.env.AZURE_SERVICEBUS_NAMESPACE !== defaultServiceBusAccount) {
     process.env.AZURE_SERVICEBUS_NAMESPACE = defaultServiceBusAccount;
