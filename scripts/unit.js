@@ -91,8 +91,9 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
 
   if (process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
     process.env.AZURE_STORAGE_ACCOUNT = defaultStorageAccount;
-    process.env.AZURE_STORAGE_ACCESS_KEY = new Buffer('fake_key').toString('base64');
   }
+
+  process.env.AZURE_STORAGE_ACCESS_KEY = new Buffer('fake_key').toString('base64');
 
   if (process.env.AZURE_SERVICEBUS_NAMESPACE !== defaultServiceBusAccount) {
     process.env.AZURE_SERVICEBUS_NAMESPACE = defaultServiceBusAccount;
