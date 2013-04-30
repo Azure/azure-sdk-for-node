@@ -44,9 +44,9 @@ suite('sharedkey-tests', function () {
   test('SignRequest', function (done) {
     var webResource = WebResource.get('container');
     webResource.withQueryOption(QueryStringConstants.RESTYPE, 'container');
-    webResource.addOptionalHeader(HeaderConstants.CONTENT_TYPE, '');
-    webResource.addOptionalHeader(HeaderConstants.STORAGE_VERSION_HEADER, HeaderConstants.TARGET_STORAGE_VERSION);
-    webResource.addOptionalHeader(HeaderConstants.DATE_HEADER, 'Fri, 23 Sep 2011 01:37:34 GMT');
+    webResource.withHeader(HeaderConstants.CONTENT_TYPE, '');
+    webResource.withHeader(HeaderConstants.STORAGE_VERSION_HEADER, HeaderConstants.TARGET_STORAGE_VERSION);
+    webResource.withHeader(HeaderConstants.DATE_HEADER, 'Fri, 23 Sep 2011 01:37:34 GMT');
 
     sharedkey.signRequest(webResource, function () {
       assert.equal(webResource.headers[HeaderConstants.AUTHORIZATION], 'SharedKey devstoreaccount1:Y5R86+6XE5MH602SIyjeTwlJuQjbawv20PT4kb/F/04=');
