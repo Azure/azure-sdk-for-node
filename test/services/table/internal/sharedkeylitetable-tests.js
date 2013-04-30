@@ -56,8 +56,8 @@ suite('sharedkeylitetable-tests', function () {
 
   test('SignRequestServiceProperties', function (done) {
     var webResource = WebResource.get();
-    webResource.addOptionalQueryParam(QueryStringConstants.RESTYPE, 'service');
-    webResource.addOptionalQueryParam(QueryStringConstants.COMP, 'properties');
+    webResource.withQueryOption(QueryStringConstants.RESTYPE, 'service');
+    webResource.withQueryOption(QueryStringConstants.COMP, 'properties');
     webResource.addOptionalHeader(HeaderConstants.STORAGE_VERSION_HEADER, '2011-08-18');
     webResource.addOptionalHeader('User-Agent', 'WA-Storage/1.6.0');
     webResource.addOptionalHeader(HeaderConstants.DATE_HEADER, 'Mon, 05 Dec 2011 17:55:02 GMT');

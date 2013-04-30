@@ -43,7 +43,7 @@ suite('sharedkey-tests', function () {
 
   test('SignRequest', function (done) {
     var webResource = WebResource.get('container');
-    webResource.addOptionalQueryParam(QueryStringConstants.RESTYPE, 'container');
+    webResource.withQueryOption(QueryStringConstants.RESTYPE, 'container');
     webResource.addOptionalHeader(HeaderConstants.CONTENT_TYPE, '');
     webResource.addOptionalHeader(HeaderConstants.STORAGE_VERSION_HEADER, HeaderConstants.TARGET_STORAGE_VERSION);
     webResource.addOptionalHeader(HeaderConstants.DATE_HEADER, 'Fri, 23 Sep 2011 01:37:34 GMT');
