@@ -154,7 +154,7 @@ The **createMessage** method can then be called to insert the message into the q
 
 ```Javascript
 var queueService = azure.createQueueService();
-queueService.createMessage('taskqueue', "Hello world!", function(error){
+queueService.createMessage('taskqueue', 'Hello world!', function(error){
     if(!error){
         // Message inserted
     }
@@ -322,18 +322,18 @@ The Azure SQL Database functions allow you to manage Azure SQL servers, database
 You can add, delete and list SQL Server instances
 
 ```Javascript
-var authentication={keyvalue:"...", certvalue:"..."};
+var authentication={keyvalue:'...', certvalue:'...' };
 var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
 
 //create a new server
 //admin, password, location, callback
-sqlMgmt.createServer("sqladmin", "Pa$$w0rd", "West US", function(error, serverName) {
-    console.log("created server " + serverName);
+sqlMgmt.createServer('sqladmin', 'Pa$$w0rd', 'West US', function(error, serverName) {
+    console.log('created server ' + serverName);
 });
 
 //list out servers
 sqlMgmt.listServers(function(error, servers) {
-    console.log("servers\n" + servers);
+    console.log('servers\n' + servers);
 });
 
 ```
@@ -342,20 +342,20 @@ sqlMgmt.listServers(function(error, servers) {
 You can list, create and delete firewall rules
 
 ```Javascript
-var authentication={keyvalue:"...", certvalue:"..."};
+var authentication={keyvalue:'...', certvalue:'...'};
 var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
 
 //create a new rule
 //server, rule name, start ip, end ip, callback
 sqlMgmt.createServerFirewallRule(serverName, 'myrule', '192.168.100.0', '192.168.100.255',
     function(error, rule) {
-        console.log("Rule created:\n" + rule);
+        console.log('Rule created:\n' + rule);
     }
 );
 
 //list rules
 sqlMgmt.listServerFirewallRules(serverName, function(error, rules) {
-    console.log("Rules:\n:" + rules);
+    console.log('Rules:\n:' + rules);
 });
 
 ```
@@ -368,13 +368,13 @@ var sqlService = new azure.createSqlService(serverName, 'sqlAdmin', 'Pa$$w0rd');
 
 //create a new database
 //db name, callback
-sqlServer.createServerDatabase("mydb", function(error, db) {
-  console.log("DB Created:\n" + db);
+sqlServer.createServerDatabase('mydb', function(error, db) {
+  console.log('DB Created:\n' + db);
 });
 
 //list databases
 sqlServer.listServerDatabases(function(error, dbs) {
-  console.log("Databases:\n" + dbs);
+  console.log('Databases:\n' + dbs);
 });
 
 ```
