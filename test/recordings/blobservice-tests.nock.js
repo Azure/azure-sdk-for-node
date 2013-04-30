@@ -2454,7 +2454,7 @@ nock('https://ciserversdk.blob.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://ciserversdk.blob.core.windows.net:443')
-  .get('/cont36/blob25?se=2099-04-15T11%3A53%3A40Z&sr=b&si=readwrite&sig=d3t%2F1U1HLlkNn3UR84U5SOCNY1doy%2FG46ZIQj6RMcwE%3D')
+  .get('/cont36/blob25?se=2099-04-15T11%3A53%3A40Z&sr=b&si=readwrite&sig=dlSdldLvw%2BlrMmWI9liBPbUb9wioqeVaARZMpa9cuiw%3D')
   .reply(200, "Hello World!", { 'content-length': '12',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
