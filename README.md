@@ -17,6 +17,7 @@ This project provides a Node.js package that makes it easy to access Windows Azu
 * Service Bus
     * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
     * Topics: create, list, and delete topics; create, list, and delete rules
+    * Notification hubs: create hubs, register for messages, send messages
 * Azure SQL Database
     * create, list and delete Azure SQL Database servers, databases and firewall rules
 * Service Runtime
