@@ -185,4 +185,13 @@ suite('util-tests', function() {
 
     done();
   });
+
+  test('Get property from object', function (done) {
+    // int positives
+    assert.equal(util.tryGetValueChain({a: { b: { c: 'd' }}}, [ 'a', 'b', 'c' ]), 'd');
+    assert.equal(util.tryGetValueChain({a: { b: { c: 'd' }}}, [ 'a', 'b', 'k' ]), null);
+    assert.equal(util.tryGetValueChain(null, [ 'a', 'b', 'k' ]), null);
+
+    done();
+  });
 });
