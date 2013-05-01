@@ -1,3 +1,9 @@
+2012.05.01 Version 0.7.3
+* Fixed issue #680: BlobService.getBlobUrl puts permissions in sas url even if not given
+* Changes to test suite & sdk to run in other environments
+* Notification hubs registrations
+* Support in ServiceManagementClient for role reboot and reimage
+
 2012.04.05 Version 0.7.2
 * Removing workaround for SSL issue and forcing node version to be outside the > 0.8 && < 0.10.3 range where the issue occurs
 
