@@ -1,4 +1,0 @@
-services/blob/blobservice-longrunning-tests.js
-services/queue/listqueuesresultcontinuation-tests.js
-services/table/queryentitiesresultcontinuation-tests.js
-services/table/querytablesresultcontinuation-tests.js

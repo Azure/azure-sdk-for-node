@@ -20,13 +20,7 @@ var testutil = require('../../util/util');
 var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
-var azureutil = testutil.libRequire('util/util');
 var azure = testutil.libRequire('azure');
-var BlobService = testutil.libRequire('services/blob/blobservice');
-var Constants = testutil.libRequire('util/constants');
-
-var BlobConstants = Constants.BlobConstants;
-
 var testPrefix = 'filter-tests';
 
 var blobService;

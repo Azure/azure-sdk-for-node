@@ -1,4 +1,5 @@
-﻿/**
+#!/usr/bin/env node
+/**
 * Copyright (c) Microsoft.  All rights reserved.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -73,11 +74,26 @@ var defaultStorageAccount = 'ciserversdk';
 var defaultServiceBusAccount = 'ciserversb';
 var defaultSubscription = '279b0675-cf67-467f-98f0-67ae31eb540f';
 
+if (!process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
+  process.env.AZURE_APNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_FILE'])).toString('base64');
+}
+
+if (!process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICATE_KEY_FILE) {
+  process.env.AZURE_APNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_KEY_FILE']).toString();
+}
+
 if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
+  process.env.AZURE_APNS_CERTIFICATE = 'fake_certificate';
+  process.env.AZURE_APNS_CERTIFICATE_KEY = 'fake_certificate_key';
+
+  process.env.AZURE_WNS_PACKAGE_SID = 'sid';
+  process.env.AZURE_WNS_SECRET_KEY = 'key';
+
   if (process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
     process.env.AZURE_STORAGE_ACCOUNT = defaultStorageAccount;
-    process.env.AZURE_STORAGE_ACCESS_KEY = new Buffer('fake_key').toString('base64');
   }
+
+  process.env.AZURE_STORAGE_ACCESS_KEY = new Buffer('fake_key').toString('base64');
 
   if (process.env.AZURE_SERVICEBUS_NAMESPACE !== defaultServiceBusAccount) {
     process.env.AZURE_SERVICEBUS_NAMESPACE = defaultServiceBusAccount;
@@ -89,20 +105,22 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
     process.env.AZURE_CERTIFICATE = 'fake_certificate';
     process.env.AZURE_CERTIFICATE_KEY = 'fake_certificate_key';
   }
-} else if (!process.env.NOCK_OFF && process.env.AZURE_NOCK_RECORD) {
-  // If in record mode, and environment variables are set, make sure they are the expected one for recording
-  // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated
-  // after merge
-  if (process.env.AZURE_STORAGE_ACCOUNT && process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
-    throw new Error('Storage recordings can only be made with the account ' + defaultStorageAccount);
-  }
+} else {
+  if (!process.env.NOCK_OFF && process.env.AZURE_NOCK_RECORD) {
+    // If in record mode, and environment variables are set, make sure they are the expected one for recording
+    // NOTE: For now, only the Core team can update recordings. For non-core team PRs, the recordings will be updated
+    // after merge
+    if (process.env.AZURE_STORAGE_ACCOUNT && process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
+      throw new Error('Storage recordings can only be made with the account ' + defaultStorageAccount);
+    }
 
-  if (process.env.AZURE_SERVICEBUS_NAMESPACE && process.env.AZURE_SERVICEBUS_NAMESPACE !== defaultServiceBusAccount) {
-    throw new Error('Service Bus recordings can only be made with the namespace ' + defaultServiceBusAccount);
-  }
+    if (process.env.AZURE_SERVICEBUS_NAMESPACE && process.env.AZURE_SERVICEBUS_NAMESPACE !== defaultServiceBusAccount) {
+      throw new Error('Service Bus recordings can only be made with the namespace ' + defaultServiceBusAccount);
+    }
 
-  if (process.env.AZURE_SUBSCRIPTION_ID && process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
-    throw new Error('Service Management recordings can only be made with the subscription ' + defaultSubscription);
+    if (process.env.AZURE_SUBSCRIPTION_ID && process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
+      throw new Error('Service Management recordings can only be made with the subscription ' + defaultSubscription);
+    }
   }
 }
 

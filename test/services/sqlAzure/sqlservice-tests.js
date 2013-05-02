@@ -25,7 +25,8 @@ var azure = testutil.libRequire('azure');
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
-var SERVER_LOCATION = 'West US';
+var SERVER_LOCATION = process.env['AZURE_SQL_TEST_LOCATION'] || 'West US';
+var DATABASE_HOST = process.env['AZURE_SQL_DNS_SUFFIX'];
 
 var DATABASE_NAME = 'mydatabase';
 
@@ -41,9 +42,13 @@ describe('SQL Azure Database', function () {
   before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
+    var hostOptions = { serializetype: 'XML' };
+    if (process.env['AZURE_MANAGEMENT_HOST']) {
+      hostOptions.host = process.env['AZURE_MANAGEMENT_HOST'];
+    }
+
     serviceManagement = azure.createSqlManagementService(
-      subscriptionId, auth,
-      { serializetype: 'XML'});
+      subscriptionId, auth, hostOptions);
 
     suiteUtil = new MockedTestUtils(serviceManagement, testPrefix);
     suiteUtil.setupSuite(done);
@@ -60,8 +65,7 @@ describe('SQL Azure Database', function () {
 
         serverName = name;
 
-        // Create the SQL Azure service to test
-        service = azure.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD);
+        service = azure.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, DATABASE_HOST);
         suiteUtil.setupService(service);
 
         // add firewall rule for all the ip range

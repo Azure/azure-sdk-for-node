@@ -10,13 +10,13 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Windows Azure Client Library for node",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
   "main": "./lib/azure.js",
   "engines": { "node": ">= 0.6.15" },
-  "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
+  "licenses": [ { "type": "Apache 2.0", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
     "xml2js" : " >= 0.2.x",
     "xmlbuilder": ">= 0.3.1",
@@ -45,10 +45,9 @@
     "url" : "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "node test/runci.js testlist.txt",
-    "testonly": "node test/runtests.js testlist.txt",
-    "jshint": "node test/runjshint.js",
-    "coverage": "node test/runtests.js testlist.txt -coverage > coverage.html",
-    "extendedtests": "node test/runtests.js extendedtestlist.txt"
+    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "unit": "node scripts/unit.js testlist.txt",
+    "jshint": "jshint lib --jslint-reporter",
+    "coverage": "node scripts/unit.js testlist.txt -coverage > coverage.html"
   }
 }

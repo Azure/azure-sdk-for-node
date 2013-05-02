@@ -178,10 +178,19 @@ suite('util-tests', function() {
 
   test('Get value case insensitive', function (done) {
     // int positives
-    assert.equal(util.tryGetValueInsensitive('B', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }), 'b1');
-    assert.equal(util.tryGetValueInsensitive('b', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }), 'b1');
-    assert.equal(util.tryGetValueInsensitive('D', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }), undefined);
-    assert.equal(util.tryGetValueInsensitive('D', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }, 'something'), 'something');
+    assert.equal('b1', util.tryGetValueInsensitive('B', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }));
+    assert.equal('b1', util.tryGetValueInsensitive('b', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }));
+    assert.equal(undefined, util.tryGetValueInsensitive('D', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }));
+    assert.equal('something', util.tryGetValueInsensitive('D', { 'a': 'a1', 'b': 'b1', 'c': 'c1' }, 'something'));
+
+    done();
+  });
+
+  test('Get property from object', function (done) {
+    // int positives
+    assert.equal(util.tryGetValueChain({a: { b: { c: 'd' }}}, [ 'a', 'b', 'c' ]), 'd');
+    assert.equal(util.tryGetValueChain({a: { b: { c: 'd' }}}, [ 'a', 'b', 'k' ]), null);
+    assert.equal(util.tryGetValueChain(null, [ 'a', 'b', 'k' ]), null);
 
     done();
   });
