@@ -25,10 +25,11 @@ var SqlAzureConstants = azure.Constants.SqlAzureConstants;
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
-var SERVER_LOCATION = 'West US';
+var SERVER_LOCATION = process.env['AZURE_SQL_TEST_LOCATION'] || 'West US';
 
 var testPrefix = 'sqlManagement-tests';
 var ruleNames = [];
+var host = process.env['AZURE_MANAGEMENT_HOST'];
 
 describe('SQL Server Management', function () {
   var sqlServersToClean = [];
@@ -38,9 +39,16 @@ describe('SQL Server Management', function () {
   before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
+    var hostOptions = {
+      serializetype: 'XML'
+    };
+
+    if (process.env.AZURE_MANAGEMENT_HOST) {
+      hostOptions.host = process.env.AZURE_MANAGEMENT_HOST;
+    }
+
     service = azure.createSqlManagementService(
-      subscriptionId, auth,
-      { serializetype: 'XML'});
+      subscriptionId, auth, hostOptions);
 
     suiteUtil = new MockedTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
@@ -64,6 +72,9 @@ describe('SQL Server Management', function () {
     describe('No defined servers', function () {
       beforeEach(function (done) {
         service.listServers(function (err, sqlServers) {
+          if (err) {
+            return done(err);
+          }
           deleteSqlServers(sqlServers.map(function (s) { return s.Name; }), done);
         });
       });

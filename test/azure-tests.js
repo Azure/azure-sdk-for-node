@@ -25,6 +25,7 @@ var ServiceClient = azure.ServiceClient;
 
 var environmentAzureStorageAccount = 'myaccount';
 var environmentAzureStorageAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+var environmentAzureStorageDnsSuffix = 'core.windows.net';
 var environmentServiceBusNamespace = 'mynamespace';
 var environmentServiceBusIssuer = 'myissuer';
 var environmentServiceBusAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
@@ -36,6 +37,7 @@ var parameterAzureStorageAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6f
 var firstRun = true;
 var originalAzureStorageAccount = null;
 var originalAzureStorageAccessKey = null;
+var originalAzureStorageDnsSuffix = null;
 var originalServiceBusNamespace = null;
 var originalServiceBusIssuer = null;
 var originalServiceBusAccessKey = null;
@@ -55,6 +57,9 @@ suite('azure', function () {
         originalAzureStorageAccessKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
       }
 
+      if (!originalAzureStorageDnsSuffix && process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX]) {
+       originalAzureStorageDnsSuffix = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX]; 
+      }
       // On the first run store the previous azure storage account / azure storage access key from the environment
       if (!originalServiceBusNamespace && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE]) {
         originalServiceBusNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
@@ -134,7 +139,8 @@ suite('azure', function () {
     // set some environment credentials for the live windows azure services
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
-
+    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
+    
     var blobService1 = azure.createBlobService();
     assert.equal(blobService1.host, environmentAzureStorageAccount + '.' + ServiceClient.CLOUD_BLOB_HOST);
     assert.equal(blobService1.usePathStyleUri, false);
@@ -155,6 +161,7 @@ suite('azure', function () {
     // set some environment credentials for the live windows azure services
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client passing some credentials
     var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
@@ -177,6 +184,7 @@ suite('azure', function () {
     // set some environment credentials for the live windows azure services
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client passing some credentials
     var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
@@ -199,6 +207,7 @@ suite('azure', function () {
     // set some environment credentials for the live windows azure services
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client without passing any credentials
     var blobService = azure.createBlobService();
@@ -221,6 +230,7 @@ suite('azure', function () {
     // set some environment credentials for the live windows azure services
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client without passing any credentials
     var blobService = azure.createBlobService();

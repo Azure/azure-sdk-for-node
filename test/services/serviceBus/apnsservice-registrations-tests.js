@@ -26,12 +26,14 @@ var azure = testutil.libRequire('azure');
 
 var HeaderConstants = azure.Constants.HeaderConstants;
 
+var tokenId = '0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78';
+
 var hubNames = [];
-var hubNamePrefix = 'xplathub';
+var hubNamePrefix = 'xplathubnxt';
 
-var testPrefix = 'apnsservice-tests';
+var testPrefix = 'apnsservice-registrations-tests';
 
-describe('APNS notifications', function () {
+describe('APNS notifications registrations', function () {
   var service;
   var suiteUtil;
   var sandbox;
@@ -74,7 +76,7 @@ describe('APNS notifications', function () {
     suiteUtil.baseTeardownTest(done);
   });
 
-  describe('Send notification', function () {
+  describe('registrations', function () {
     var hubName;
     var notificationHubService;
 
@@ -82,6 +84,7 @@ describe('APNS notifications', function () {
       hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
 
       notificationHubService = azure.createNotificationHubService(hubName);
+
       suiteUtil.setupService(notificationHubService);
       service.createNotificationHub(hubName, {
           apns: {
@@ -92,39 +95,86 @@ describe('APNS notifications', function () {
         }, done);
     });
 
-    it('should send a simple message', function (done) {
-      notificationHubService.apns.send(null, { 
-        alert: 'This is my toast message for iOS!'
-      }, function (error, result) {
-        should.not.exist(error);
-        result.statusCode.should.equal(201);
+    describe('native', function () {
+      describe('create', function () {
+        var registrationId;
 
-        done();
+        afterEach(function (done) {
+          notificationHubService.deleteRegistration(registrationId, done);
+        });
+
+        it('should work', function (done) {
+          notificationHubService.apns.createNativeRegistration(tokenId, function (error, registration) {
+            should.not.exist(error);
+            registrationId = registration.RegistrationId;
+
+            done();
+          });
+        });
       });
     });
 
-    it('should send a simple message with tags', function (done) {
-      var tagsString = 'dogs';
-      var expiryDate = new Date();
+    describe('template', function () {
+      describe('create alert', function () {
+        var registrationId;
 
-      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
-      notificationHubService.apns.send(
-        tagsString,
-        {
-          alert: 'This is my toast message for iOS!',
-          expiry: expiryDate
-        },
-        function (error, result) {
-          should.not.exist(error);
-          result.statusCode.should.equal(201);
+        afterEach(function (done) {
+          notificationHubService.deleteRegistration(registrationId, done);
+        });
 
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_TAGS].should.equal(tagsString);
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_APNS_EXPIRY].should.equal(expiryDate.toISOString());
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_FORMAT].should.equal('apple');
+        it('should work', function (done) {
+          notificationHubService.apns.createTemplateRegistration(
+            tokenId,
+            null,
+            {
+              alert: '$(alertMessage1)'
+            },
+            function (error, registration) {
+              should.not.exist(error);
+              registrationId = registration.RegistrationId;
 
-          done();
-        }
-      );
+              done();
+          });
+        });
+      });
+
+      describe('update alert', function () {
+        var registrationId;
+
+        beforeEach(function (done) {
+          notificationHubService.apns.createTemplateRegistration(
+            tokenId,
+            null,
+            {
+              alert: '$(alertMessage1)'
+            },
+            function (error, registration) {
+              should.not.exist(error);
+              registrationId = registration.RegistrationId;
+
+              done();
+          });
+        });
+
+        afterEach(function (done) {
+          notificationHubService.deleteRegistration(registrationId, done);
+        });
+
+        it('should work', function (done) {
+          notificationHubService.apns.updateTemplateRegistration(
+            registrationId,
+            tokenId,
+            null,
+            {
+              alert: '$(newAlertMessage1)'
+            },
+            function (error) {
+              should.not.exist(error);
+
+              done();
+          });
+        });
+      });
     });
   });
 });
