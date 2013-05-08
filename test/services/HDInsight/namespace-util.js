@@ -16,38 +16,44 @@
 // External dependencies
 var crypto = require('crypto');
 
-function GetNameSpace(subscriptionId, prefix, location) {
-    location = location.replace(" ", "-");
-	var hash = crypto.createHash('sha256').update(new Buffer(subscriptionId, 'utf-8')).digest("hex");
-    return prefix + Base32NoPaddingEncode(new Buffer(hash, "hex")) + "-" + location;
+function HDInsightNamespace() {
+
 }
 
-var base32StandardAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+function _LongUnsignedRor(value, count) {
+  for(var i = 0; i<count; i++) {
+    value = value / 2;
+  }
+  return Math.floor(value);
+}
+
+var base32StandardAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 function _Base32NoPaddingEncode (data) {
+  var result = '';
+  for (var i = 0; i < data.length; i+=5) {
 
-	var result = "";
-    for (var i = 0; i < data.length; i+=5) {
+    // Process input 5 bytes at a time
+    var multiplier = 256;
+    var loopValue = 0;
+    for (var j = Math.min(data.length-1, i+4); j >= i ; j--) {
+      loopValue += data[j] * multiplier;
+      multiplier = multiplier * 256;
+    }
 
-        // Process input 5 bytes at a time
-        var multiplier = 256; 
-        var loopValue = 0;
-        for (var j = Math.min(data.length-1, i+4); j >= i ; j--) {
-            loopValue += data[j] * multiplier;
-            multiplier = multiplier * 256;
-        }
-
-        // Converts them into base32
-        var bytes = Math.min(data.length - i, 5);
-        for (var bitOffset = (bytes+1)*8 - 5; bitOffset > 3; bitOffset -= 5) {
-            result += base32StandardAlphabet[LongUnsignedRor(loopValue,bitOffset) & 0x1f];
-        }
-
-	}
-
-	return result;
+    // Converts them into base32
+    var bytes = Math.min(data.length - i, 5);
+    for (var bitOffset = (bytes+1)*8 - 5; bitOffset > 3; bitOffset -= 5) {
+      var index = _LongUnsignedRor(loopValue,bitOffset) % 32;
+      result += base32StandardAlphabet[index];
+    }
+  }
+  return result;
 }
 
-function _LongUnsignedRor(value, count) {    
-    for(var i = 0; i<count; i++) { value = value / 2; }
-    return value;
-}
+HDInsightNamespace.prototype.GetNameSpace = function (subscriptionId, prefix, location) {
+  location = location.replace(' ', '-');
+  var hash = crypto.createHash('sha256').update(new Buffer(subscriptionId, 'utf-8')).digest('hex');
+  return prefix + _Base32NoPaddingEncode(new Buffer(hash, 'hex')) + '-' + location;
+};
+
+module.exports = HDInsightNamespace;

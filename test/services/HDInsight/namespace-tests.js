@@ -14,7 +14,7 @@
 */
 
 // Test functions
-var namespace = require('./namespace-util.js');
+var HDInsightNamespace = require('./namespace-util.js');
 
 // Test includes
 var assert = require('assert');
@@ -22,6 +22,7 @@ var assert = require('assert');
 describe('HDInsight Namespace Test', function() {
 
   it('GetNameSpace', function (done) {
+    var namespace = new HDInsightNamespace();
 
     var subscriptionId = "0bf0b5da-dc38-4795-8595-3170ffefec48";
     var expected = "hdinsightC2D4FSA77HSYSQLRU4V73NKI3YH2OYHQXACMRGPECIHSH7FXTUAQ-East-US";

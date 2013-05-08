@@ -13,37 +13,23 @@
 * limitations under the License.
 */
 
-var assert = require('assert');
 var mocha = require('mocha');
 var should = require('should');
-var sinon = require('sinon');
+var _ = require('underscore');
 
 // Test includes
 var testutil = require('../../util/util');
 
-var HDInsightUtil = require('./hdinsight-util.js');
+var PerformRequestStubUtil = require('./PerformRequestStubUtil.js');
 
 var azure = testutil.libRequire('azure');
-var hdInsightUtil;
+var performRequestStubUtil;
 
-describe('HDInsight listClusters', function() {
-  var storageAccounts;
-  var sqlServers;
-
-  var storage1Name = "azurehdxstrtst00";
-  var storage2Name = "azurehdxstrtst01";
-  var foundStorage1 = false;
-  var foundStorage2 = false;
-
+describe('HDInsight listClusters (under unit test)', function() {
   var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
-  var serviceMan = azure.createServiceManagementService(subscriptionId, auth);
-  var sqlMan = azure.createSqlManagementService(subscriptionId, auth);
   var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
   var hdInsight = azure.createHDInsightService(subscriptionId, auth);
-  var WebResource = require('../../../lib/http/webresource');
-  var _performRequestSpy;
-  var _performRequestOriginal;
 
   // var createStorageAccountAndWait = function (name, next) {
   //   serviceMan.listStorageAccounts(function (err, response)) {
@@ -51,75 +37,28 @@ describe('HDInsight listClusters', function() {
   // };
 
   beforeEach(function (done) {
-    hdInsightUtil.NoStubProcessRequest();
+    performRequestStubUtil.NoStubProcessRequest();
     done();
   });
 
   afterEach(function (done) {
-    hdInsightUtil.NoStubProcessRequest();
+    performRequestStubUtil.NoStubProcessRequest();
     done();
   });
 
   after(function (done) {
-    hdInsightUtil.Revert();
+    performRequestStubUtil.Revert();
     done();
   });
 
   // NOTE: To Do, we should actually create new acounts for our tests
   //       So that we can work on any existing subscription.
   before (function (done) {
-    hdInsightUtil = new HDInsightUtil(HDInsight);
-    // this._performRequestOriginal = hdInsight._performRequest;
-    // this._performRequestSpy = sinon.spy(hdInsight, '_performRequest');
-    // hdInsight._performRequest = this._performRequestSpy;
-    // this._performRequestOriginal.should.eql('');
-    // false.should.be.eql(true);
-    // console.log(typeof(hdInsight._performRequest));
-    // hdInsight._performRequest = sinon.stub(hdInsight, '_performRequest', function(a, b , c, callback) {
-    //   callback({ error: null, response: response }, function(responseObject, finalCallback) {
-    //   // callback({ error: null, response: response }, function(responseObject, finalCallback) {
-    //     finalCallback(responseObject);
-    //   });
-    // });
-
-    // serviceMan.listStorageAccounts(function (err, response) {
-    //   should.not.exist(err);
-    //   should.exist(response.body);
-    //   // // response.body.length.should.eql(2);
-    //   // for(var i in response.body)
-    //   // {
-    //   //   if (response.body[i].ServiceName === storage1Name)
-    //   //   {
-    //   //     foundStorage1 = true;
-    //   //   }
-    //   //   else if (response.body[i].ServiceName === storage2Name)
-    //   //   {
-    //   //     foundStorage2 = true;
-    //   //   }
-    //   // }
-    //   // if (!foundStorage1)
-    //   // {
-    //   //   var options = {};
-    //   //   options.Location = 'East US';
-    //   //   serviceMan.createStorageAccount(storage1Name, options, function(err, response) {
-    //   //     "asdf".should.eql(response);
-    //   //     done(err);
-    //   //   });
-    //   // }
-    //   storageAccounts = response.body;
-
-    //   sqlMan.listServers(function (err, response) {
-    //     should.not.exist(err);
-    //     should.exists(response);
-    //     // response.length.should.eql(2);
-    //     sqlServers = response;
-    //     done(err);
-    //   });
-    // });
+    performRequestStubUtil = new PerformRequestStubUtil(HDInsight);
     done();
   });
 
-  var result = {
+  var goodResult = {
     CloudServices: {
       CloudService: [
         { Name: 'not-hdinsight' } ,
@@ -145,8 +84,63 @@ describe('HDInsight listClusters', function() {
     }
   };
 
+  var singleResult = {
+    CloudServices: {
+      CloudService: {
+        Name: 'hdinsightHRIEVKWCABCRT3AK64SGDGFJDR7EM64QV4T5UXU23MU6ZPCWG5NQ-East-US-2',
+        GeoRegion: 'East US 2',
+        Resources: {
+          Resource: {
+            ResourceProviderNamespace: 'hdinsight',
+            Type: 'containers',
+            Name: 'tsthdx00hdxcibld02',
+            State: 'Started',
+            SubState: 'Running'
+          }
+        }
+      }
+    }
+  };
+
+  it('should pass the error to the callback function', function(done) {
+    performRequestStubUtil.StubAuthenticationFailed();
+    hdInsight.listClusters(function (err, response) {
+      should.exist(err);
+      response.statusCode.should.be.eql(403);
+      done();
+    });
+  });
+
+  it('should turn single cloudservice items and resource items into arrays', function(done) {
+    performRequestStubUtil.StubProcessRequestWithSuccess(singleResult);
+    hdInsight.listClusters(function (err, response) {
+      should.not.exist(err);
+      should.exist(response.body.CloudServices.CloudService);
+      _.isArray(response.body.CloudServices.CloudService).should.be.eql(true);
+      response.body.CloudServices.CloudService.length.should.be.eql(1);
+      should.exist(response.body.CloudServices.CloudService[0].Resources.Resource);
+      _.isArray(response.body.CloudServices.CloudService).should.be.eql(true);
+      response.body.CloudServices.CloudService.length.should.be.eql(1);
+      done(err);
+    });
+  });
+
+  it('should provide the right headers for the request', function(done) {
+    performRequestStubUtil.StubProcessRequestWithSuccess(goodResult);
+    hdInsight.listClusters(function (err) {
+      var webResource = performRequestStubUtil.GetLastWebResource();
+      should.exist(webResource);
+      webResource.path.should.be.eql('/' + subscriptionId + '/cloudservices');
+      webResource.httpVerb.should.be.eql('GET');
+      _.size(webResource.headers).should.be.eql(2);
+      webResource.headers['x-ms-version'].should.be.eql('2011-08-18');
+      webResource.headers['accept'].should.be.eql('application/xml');
+      done(err);
+    });
+  });
+
   it('should remove CloudServices not related to HDInsight', function (done) {
-    hdInsightUtil.StubProcessRequestWithSuccess(result);
+    performRequestStubUtil.StubProcessRequestWithSuccess(goodResult);
     hdInsight.listClusters(function (err, response) {
       should.not.exist(err);
       should.exist(response.body.CloudServices.CloudService);
@@ -157,7 +151,7 @@ describe('HDInsight listClusters', function() {
   });
 
   it('should remove resources not representing a cluster', function (done) {
-    hdInsightUtil.StubProcessRequestWithSuccess(result);
+    performRequestStubUtil.StubProcessRequestWithSuccess(goodResult);
     hdInsight.listClusters(function (err, response) {
       should.not.exist(err);
       should.exist(response.body.CloudServices.CloudService);
