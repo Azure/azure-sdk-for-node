@@ -26,7 +26,7 @@ var HDInsightUtil = require('./hdinsight-util.js');
 var azure = testutil.libRequire('azure');
 var hdInsightUtil;
 
-describe('HDInsight Test', function() {
+describe('HDInsight listClusters', function() {
   var storageAccounts;
   var sqlServers;
 
@@ -119,32 +119,50 @@ describe('HDInsight Test', function() {
     done();
   });
 
+  var result = {
+    CloudServices: {
+      CloudService: [
+        { Name: 'not-hdinsight' } ,
+        {
+          Name: 'hdinsightHRIEVKWCABCRT3AK64SGDGFJDR7EM64QV4T5UXU23MU6ZPCWG5NQ-East-US-2',
+          GeoRegion: 'East US 2',
+          Resources: {
+            Resource: [
+              {
+                ResourceProviderNamespace: 'hdinsight',
+                Type: 'containers',
+                Name: 'tsthdx00hdxcibld02',
+                State: 'Started',
+                SubState: 'Running'
+              },
+              {
+                ResourceProviderNamespace: 'not-hdinsight'
+              }
+            ]
+          }
+        }
+      ]
+    }
+  };
 
-  it('should run tests', function (done) {
-    var result;
-    // hdInsightUtil.StubProcessRequestWithError(403, 'Unauthorized', 'You are not authorized');
-    hdInsightUtil.StubProcessRequestWithSuccess("foo");
+  it('should remove CloudServices not related to HDInsight', function (done) {
+    hdInsightUtil.StubProcessRequestWithSuccess(result);
     hdInsight.listClusters(function (err, response) {
-      console.log(err);
-      console.log(response);
       should.not.exist(err);
-      // response.bar.should.eql('foo');
-      response.should.eql('');
-      // response.length.should.eql(2);
+      should.exist(response.body.CloudServices.CloudService);
+      response.body.CloudServices.CloudService.length.should.eql(1);
+      response.body.CloudServices.CloudService[0].Name.should.eql('hdinsightHRIEVKWCABCRT3AK64SGDGFJDR7EM64QV4T5UXU23MU6ZPCWG5NQ-East-US-2');
       done(err);
     });
   });
 
-  it('should list storage accounts', function (done) {
-    var result;
-
+  it('should remove resources not representing a cluster', function (done) {
+    hdInsightUtil.StubProcessRequestWithSuccess(result);
     hdInsight.listClusters(function (err, response) {
-      console.log(err);
-      console.log(response);
       should.not.exist(err);
-      // response.bar.should.eql('foo');
-      response.should.eql('');
-      // response.length.should.eql(2);
+      should.exist(response.body.CloudServices.CloudService);
+      response.body.CloudServices.CloudService[0].Resources.Resource.length.should.eql(1);
+      response.body.CloudServices.CloudService[0].Resources.Resource[0].Name.should.eql('tsthdx00hdxcibld02');
       done(err);
     });
   });

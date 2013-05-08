@@ -13,9 +13,73 @@
 * limitations under the License.
 */
 
-var exports = module.exports;
+var testutil = require('../../util/util');
+var mockData = null;
 
-exports.AzureHDInsightSubscriptionId = function ()
-{
-	return process.env['AZURE_SUBSCRIPTION_ID'];
+var sinon = require('sinon');
+var _performRequestOriginal;
+var _performRequestStub;
+var _originalClass;
+
+function HDInsightUtil(originalClass) {
+  _originalClass = originalClass;
+  _performRequestOriginal = originalClass.prototype._performRequest;
+  console.log(_performRequestOriginal);
+  originalClass.prototype._performRequestOriginal = originalClass.prototype._performRequest;
+  _performRequestStub = sinon.stub(originalClass.prototype, '_performRequest', function(webResource, body, options, callback) {
+    var response;
+    var result;
+    if (!mockData) {
+      this._performRequestOriginal(webResource, body, options, callback);
+    }
+    else if (mockData.errorCode) {
+      response = {
+        isSuccessful: false,
+        statusCode: mockData.statusCode,
+        body: { Error: { '$': {}, Code: mockData.errorCode, Message: mockData.message } }
+      };
+
+      var err = [];
+      err['Error'] = mockData.message;
+      err.code = mockData.errorCode;
+      result = { error: err, response: response };
+      callback(result, function(responseObject, finalCallback) {
+        finalCallback(responseObject);
+      });
+    }
+    else if (mockData.body) {
+      response = {
+        isSuccessful: true,
+        statusCode: 200,
+        body: mockData.body
+      };
+      result = { error: null, response: response };
+      callback(result, function(responseObject, finalCallback) {
+        finalCallback(responseObject);
+      });
+    }
+  });
+  originalClass.prototype._performRequest = _performRequestStub;
+  // hdInsight._performRequest = function(webResource, body, options, callback) {
+  //   if (!isMocked) {
+  //     _performRequestOriginal(webResource, body, options, callback);
+  //   }
 }
+
+module.exports = HDInsightUtil;
+
+HDInsightUtil.prototype.StubProcessRequestWithError = function(statusCode, errorCode, message) {
+  mockData = { statusCode: statusCode, errorCode: errorCode, message: message };
+};
+
+HDInsightUtil.prototype.NoStubProcessRequest = function() {
+  mockData = null;
+};
+
+HDInsightUtil.prototype.StubProcessRequestWithSuccess = function(body) {
+  mockData = { body: body };
+};
+
+HDInsightUtil.prototype.Revert = function() {
+  _originalClass.prototype._performRequest = _performRequestOriginal;
+};
