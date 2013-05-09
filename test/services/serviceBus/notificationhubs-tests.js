@@ -337,4 +337,54 @@ describe('Notification hubs', function () {
       });
     });
   });
+
+  describe('Initiating service', function () {
+    originalNamespace = process.env.AZURE_SERVICEBUS_NAMESPACE;
+    originalKey = process.env.AZURE_SERVICEBUS_ACCESS_KEY;
+
+    beforeEach(function (done) {
+      var originalNamespace = process.env.AZURE_SERVICEBUS_NAMESPACE;
+      var originalKey = process.env.AZURE_SERVICEBUS_ACCESS_KEY;
+
+      delete process.env.AZURE_SERVICEBUS_NAMESPACE;
+      delete process.env.AZURE_SERVICEBUS_ACCESS_KEY;
+
+      done();
+    });
+
+    afterEach(function (done) {
+      process.env.AZURE_SERVICEBUS_NAMESPACE = originalNamespace;
+      process.env.AZURE_SERVICEBUS_ACCESS_KEY = originalKey;
+
+      done();
+    });
+
+    it('should work with no service bus credentials', function (done) {
+      var notificationHubService = azure.createNotificationHubService('portal12', 'https://todons.servicebus.windows.net',
+        'DefaultFullSharedAccessSignature',
+        'key');
+
+      should.exist(notificationHubService);
+
+      done();
+    });
+
+    it('should work with sb endpoints', function (done) {
+      var notificationHubService = azure.createNotificationHubService('portal12', 'sb://todons.servicebus.windows.net',
+        'DefaultFullSharedAccessSignature',
+        'key');
+
+      should.exist(notificationHubService);
+
+      done();
+    });
+
+    it('should work with connection strings', function (done) {
+      var notificationHubService = azure.createNotificationHubService('portal12', 'Endpoint=sb://todons.servicebus.windows.net;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=key');
+
+      should.exist(notificationHubService);
+
+      done();
+    });
+  });
 });
