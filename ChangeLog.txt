@@ -1,17 +1,20 @@
-2012.05.01 Version 0.7.3
+2013.05.09 Version 0.7.4
+* Fixed encoding issue with partition and row keys in table storage query
+
+2013.05.01 Version 0.7.3
 * Fixed issue #680: BlobService.getBlobUrl puts permissions in sas url even if not given
 * Changes to test suite & sdk to run in other environments
 * Notification hubs registrations
 * Support in ServiceManagementClient for role reboot and reimage
 
-2012.04.05 Version 0.7.2
+2013.04.05 Version 0.7.2
 * Removing workaround for SSL issue and forcing node version to be outside the > 0.8 && < 0.10.3 range where the issue occurs
 
-2012.04.03 Version 0.7.1
+2013.04.03 Version 0.7.1
 * Adding (limited) support for node 0.10
 * Fixing issue regarding registering providers when using websites or mobiles services
 
-2012.03.25 Version 0.7.0
+2013.03.25 Version 0.7.0
 * Breaking change: Primitive types will be stored for table storage.
 * Adding support for creating and deleting affinity groups
 * Replacing http-mock by nock and making all tests use it by default
@@ -19,10 +22,10 @@
 * Add Strict SSL validation for server certificates
 * Add support for creating subscriptions that expire
 
-2012.03.12 Version 0.6.11
+2013.03.12 Version 0.6.11
 * Added constraint to package.json to restrict to node versions < 0.9.
 
-2012.02.11 Version 0.6.10
+2013.02.11 Version 0.6.10
 * Added helper date.* functions for generating SAS expirations (secondsFromNow, minutesFromNow, hoursFromNow, daysFromNow)
 * Added SQL classes for managing SQL Servers, Databases and Firewall rules
 * Updating to use latest xml2js
