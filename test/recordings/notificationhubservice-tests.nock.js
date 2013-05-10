@@ -467,4 +467,45 @@ nock('https://ciserversb.servicebus.windows.net:443')
   etag: 'W/"1"',
   server: 'Microsoft-HTTPAPI/2.0',
   date: 'Sat, 20 Apr 2013 11:18:35 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fNotificationHubs%253fapi-version%253d2013-04%26ExpiresOn%3d1368104229%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dejnUa1rA%252bBY8KLcZcFL6zG9aLauWN9%252bFU2ZXzAVh84I%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': 'd289439f-b5c2-473c-adb0-5897641d8e4d',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 09 May 2013 12:37:09 GMT',
+  'content-length': '600' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .get('/$Resources/NotificationHubs?api-version=2013-04')
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-05-09T12:37:09Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-26T18:02:22Z</published><updated>2013-04-26T18:10:31Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><WnsCredential><Properties><Property><Name>PackageSid</Name><Value>ms-app://s-1-15-2-2060948854-1555579440-2624401838-1061041892-4152237894-3341387579-3741301639</Value></Property><Property><Name>SecretKey</Name><Value>1t/f1uWV3ehU8Wo/+vRRusLPlmwUOYud</Value></Property><Property><Name>WindowsLiveEndpoint</Name><Value>https://login.live.com/accesstoken.srf</Value></Property></Properties></WnsCredential><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>f7ReDRk4hzKRfLtXHjrl3vTNabq8xPKi8OpvTKlokBU=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>v7WXGFfWuD+6uVY40Y13h6gjt0Q/qb5QdIREMw5MtO0=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Thu, 09 May 2013 12:37:08 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .get('/$Resources/NotificationHubs?api-version=2013-04')
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-05-09T12:37:10Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-26T18:02:22Z</published><updated>2013-04-26T18:10:31Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><WnsCredential><Properties><Property><Name>PackageSid</Name><Value>ms-app://s-1-15-2-2060948854-1555579440-2624401838-1061041892-4152237894-3341387579-3741301639</Value></Property><Property><Name>SecretKey</Name><Value>1t/f1uWV3ehU8Wo/+vRRusLPlmwUOYud</Value></Property><Property><Name>WindowsLiveEndpoint</Name><Value>https://login.live.com/accesstoken.srf</Value></Property></Properties></WnsCredential><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>f7ReDRk4hzKRfLtXHjrl3vTNabq8xPKi8OpvTKlokBU=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>v7WXGFfWuD+6uVY40Y13h6gjt0Q/qb5QdIREMw5MtO0=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Thu, 09 May 2013 12:37:10 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .get('/$Resources/NotificationHubs?api-version=2013-04')
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">NotificationHubs</title><id>https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04</id><updated>2013-05-09T12:37:10Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/NotificationHubs?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/myhub?api-version=2013-04</id><title type=\"text\">myhub</title><published>2013-04-26T18:02:22Z</published><updated>2013-04-26T18:10:31Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../myhub?api-version=2013-04\"/><content type=\"application/xml\"><NotificationHubDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><RegistrationTtl>P90D</RegistrationTtl><WnsCredential><Properties><Property><Name>PackageSid</Name><Value>ms-app://s-1-15-2-2060948854-1555579440-2624401838-1061041892-4152237894-3341387579-3741301639</Value></Property><Property><Name>SecretKey</Name><Value>1t/f1uWV3ehU8Wo/+vRRusLPlmwUOYud</Value></Property><Property><Name>WindowsLiveEndpoint</Name><Value>https://login.live.com/accesstoken.srf</Value></Property></Properties></WnsCredential><AuthorizationRules><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights></Rights><KeyName>DefaultListenSharedAccessSignature</KeyName><PrimaryKey>f7ReDRk4hzKRfLtXHjrl3vTNabq8xPKi8OpvTKlokBU=</PrimaryKey></AuthorizationRule><AuthorizationRule i:type=\"SharedAccessAuthorizationRule\"><ClaimType>SharedAccessKey</ClaimType><ClaimValue>None</ClaimValue><Rights><AccessRights>Listen</AccessRights><AccessRights>Manage</AccessRights><AccessRights>Send</AccessRights></Rights><KeyName>DefaultFullSharedAccessSignature</KeyName><PrimaryKey>v7WXGFfWuD+6uVY40Y13h6gjt0Q/qb5QdIREMw5MtO0=</PrimaryKey></AuthorizationRule></AuthorizationRules></NotificationHubDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Thu, 09 May 2013 12:37:10 GMT' });
  return result; }]];

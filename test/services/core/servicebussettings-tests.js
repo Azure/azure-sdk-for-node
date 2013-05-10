@@ -72,7 +72,7 @@ suite('servicebussettings-tests', function () {
     var expectedWrapPassword = 'mypassword';
     var expectedWrapEndpointUri = 'https://' + expectedNamespace + '-sb.accesscontrol.windows.net:443/WRAPv0.9';
     var connectionString = 'eNdPoinT=' + expectedServiceBusEndpoint + ';sHarEdsecRetiSsuer=' + expectedWrapName + ';shArEdsecrEtvAluE=' + expectedWrapPassword;
-        
+
     // Test
     var actual = ServiceBusSettings.createFromConnectionString(connectionString);
 
