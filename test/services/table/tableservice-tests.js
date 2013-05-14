@@ -477,7 +477,7 @@ suite('tableservice-tests', function () {
           assert.notEqual(updateEntity2, null);
           assert.ok(updateResponse2.isSuccessful);
           assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NoContent);
-          assert.notEqual(newEntity1._.etag, originalEtag);
+          assert.notEqual(updateEntity2._.etag, originalEtag);
 
           done();
         });
