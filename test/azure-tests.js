@@ -58,7 +58,7 @@ suite('azure', function () {
       }
 
       if (!originalAzureStorageDnsSuffix && process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX]) {
-       originalAzureStorageDnsSuffix = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX]; 
+        originalAzureStorageDnsSuffix = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX];
       }
       // On the first run store the previous azure storage account / azure storage access key from the environment
       if (!originalServiceBusNamespace && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE]) {
@@ -140,7 +140,7 @@ suite('azure', function () {
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
-    
+
     var blobService1 = azure.createBlobService();
     assert.equal(blobService1.host, environmentAzureStorageAccount + '.' + ServiceClient.CLOUD_BLOB_HOST);
     assert.equal(blobService1.usePathStyleUri, false);
