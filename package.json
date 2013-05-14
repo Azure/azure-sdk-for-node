@@ -9,6 +9,7 @@
   "engines": { "node": ">= 0.6.15" },
   "licenses": [ { "type": "Apache", "url": "http://www.apache.org/licenses/LICENSE-2.0" } ],
   "dependencies": {
+    "azure": "git://github.com/WindowsAzure/azure-sdk-for-node.git#v0.7.4-May2013",
     "xml2js" : "0.1.x",
     "sax": ">= 0.1.1",
     "qs": ">= 0.3.1",
