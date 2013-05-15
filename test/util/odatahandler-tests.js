@@ -93,23 +93,25 @@ suite('odatahandler-tests', function () {
     var odataHandler = new OdataHandler('m', 'd');
 
     var entityXmlJs = {
-      title: '',
-      updated: '',
-      author: {
-        name: ''
-      },
-      id: '',
-      content: {
-        '$': {
-          type: 'application/xml'
+      entry: {
+        title: '',
+        updated: '',
+        author: {
+          name: ''
         },
-        'm:properties': {
-          'd:PartitionKey': 'part1',
-          'd:RowKey': 'row1',
-          'd:intValue': '10',
-          'd:stringValue': 'my string',
-          'd:nullValue': '',
-          'd:nullValue2': null
+        id: '',
+        content: {
+          '$': {
+            type: 'application/xml'
+          },
+          'm:properties': {
+            'd:PartitionKey': 'part1',
+            'd:RowKey': 'row1',
+            'd:intValue': '10',
+            'd:stringValue': 'my string',
+            'd:nullValue': '',
+            'd:nullValue2': null
+          }
         }
       }
     };
@@ -117,6 +119,15 @@ suite('odatahandler-tests', function () {
     var entityResult = odataHandler.parse(entityXmlJs);
 
     var entity = {
+      '_': {
+        'ContentRootElement': 'm:properties',
+        'title': '',
+        'updated': '',
+        'author': {
+          "name": ''
+        },
+        'id': ''
+      },
       'PartitionKey': 'part1',
       'RowKey': 'row1',
       'intValue': '10',
@@ -134,39 +145,41 @@ suite('odatahandler-tests', function () {
     var odataHandler = new OdataHandler('m', 'd');
 
     var entityXmlJs = {
-      title: '',
-      updated: '',
-      author: {
-        name: ''
-      },
-      id: '',
-      content: {
-        '$': {
-          type: 'application/xml'
+      entry: {
+        title: '',
+        updated: '',
+        author: {
+          name: ''
         },
-        'm:properties': {
-          'd:PartitionKey': {
-            '_': 'part1',
-            '$': { 'm:type': 'Edm.String' }
+        id: '',
+        content: {
+          '$': {
+            type: 'application/xml'
           },
-          'd:RowKey': {
-            '_': 'row1',
-            '$': { 'm:type': 'Edm.String' }
-          },
-          'd:intValue': {
-            '_': '10',
-            '$': { 'm:type': 'Edm.Int32' }
-          },
-          'd:stringValue': {
-            '_': 'my string',
-            '$': { 'm:type': 'Edm.String' }
-          },
-          'd:nullValue': {
-            '_': '',
-            '$': { 'm:null': 'true' }
-          },
-          'd:nullValue2': {
-            '$': { 'm:null': 'true' }
+          'm:properties': {
+            'd:PartitionKey': {
+              '_': 'part1',
+              '$': { 'm:type': 'Edm.String' }
+            },
+            'd:RowKey': {
+              '_': 'row1',
+              '$': { 'm:type': 'Edm.String' }
+            },
+            'd:intValue': {
+              '_': '10',
+              '$': { 'm:type': 'Edm.Int32' }
+            },
+            'd:stringValue': {
+              '_': 'my string',
+              '$': { 'm:type': 'Edm.String' }
+            },
+            'd:nullValue': {
+              '_': '',
+              '$': { 'm:null': 'true' }
+            },
+            'd:nullValue2': {
+              '$': { 'm:null': 'true' }
+            }
           }
         }
       }
@@ -175,6 +188,15 @@ suite('odatahandler-tests', function () {
     var entityResult = odataHandler.parse(entityXmlJs);
 
     var entity = {
+      '_': {
+        'ContentRootElement': 'm:properties',
+        'title': '',
+        'updated': '',
+        'author': {
+          "name": ''
+        },
+        'id': ''
+      },
       'PartitionKey': 'part1',
       'RowKey': 'row1',
       'intValue': 10,
