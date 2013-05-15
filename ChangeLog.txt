@@ -1,3 +1,7 @@
+2012.05.15 Version 0.7.5
+* Fixed registration hubs issue with requiring access key when shared key was provided.
+* Fixed registration hubs issue with listByTag, Channel and device token
+
 2013.05.09 Version 0.7.4
 * Fixed encoding issue with partition and row keys in table storage query
 
