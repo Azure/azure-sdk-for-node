@@ -204,45 +204,6 @@ describe('Service Bus Management', function () {
     });
   });
 
-  describe('Namespace validation', function () {
-    it('should pass on valid name', function() {
-      (function() { namespaceNameIsValid('aValidNamespace'); })
-        .should.not.throw();
-    });
-
-    it('should fail if name is too short', function () {
-      (function() { namespaceNameIsValid("a"); })  
-        .should.throw(/6 to 50/);
-    });
-
-    it('should fail if name is too long', function () {
-      (function () { namespaceNameIsValid('sbm12345678901234567890123456789012345678901234567890'); })
-        .should.throw(/6 to 50/);
-    });
-
-    it("should fail if name doesn't start with a letter", function () {
-      (function () { namespaceNameIsValid('!notALetter'); })
-        .should.throw(/start with a letter/);
-    });
-
-    it('should fail if ends with illegal ending', function () {
-      (function () { namespaceNameIsValid('namespace-'); } )
-        .should.throw(/may not end with/);
-
-      (function () { namespaceNameIsValid('namespace-sb'); })
-        .should.throw(/may not end with/);
-
-      (function () { namespaceNameIsValid('namespace-mgmt'); })
-        .should.throw(/may not end with/);
-
-      (function () { namespaceNameIsValid('namespace-cache'); })
-        .should.throw(/may not end with/);
-
-      (function () { namespaceNameIsValid('namespace-appfabric'); })
-        .should.throw(/may not end with/);
-    });
-  });
-
   function deleteNamespaces(namespaces, callback) {
     if (namespaces.length === 0) { return callback(); }
     var numDeleted = 0;
