@@ -17,7 +17,6 @@ var _ = require('underscore');
 
 var should = require('should');
 var sinon = require('sinon');
-var fs = require('fs');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -110,7 +109,7 @@ describe('Notification hubs', function () {
           ApnsCertificate: 'secret1',
           CertificateKey: 'secret2'
         }
-      }
+      };
 
       sandbox.stub(service, '_executeRequest', function (webResource, payload, resultHandler, validators, callback) {
         payload.should.include('<WnsCredential><Properties><Property><Name>PackageSid</Name><Value>secret1</Value></Property>' +
@@ -248,34 +247,34 @@ describe('Notification hubs', function () {
           }
         },
         function () {
-        var setupHub = function () {
-          service.getNotificationHub(hubName, function (err, hub) {
-            if (err) {
-              setupHub();
-            } else {
-              var fullRule = hub.AuthorizationRules.AuthorizationRule.filter(function (rule) {
-                return rule.KeyName === 'DefaultFullSharedAccessSignature';
-              })[0];
+          var setupHub = function () {
+            service.getNotificationHub(hubName, function (err, hub) {
+              if (err) {
+                setupHub();
+              } else {
+                var fullRule = hub.AuthorizationRules.AuthorizationRule.filter(function (rule) {
+                  return rule.KeyName === 'DefaultFullSharedAccessSignature';
+                })[0];
 
-              var endpoint = 'https://' + process.env.AZURE_SERVICEBUS_NAMESPACE + '.servicebus.windows.net';
-              notificationHubService = azure.createNotificationHubService(hubName, endpoint, fullRule.KeyName, fullRule.PrimaryKey);
-              suiteUtil.setupService(notificationHubService);
+                var endpoint = 'https://' + process.env.AZURE_SERVICEBUS_NAMESPACE + '.servicebus.windows.net';
+                notificationHubService = azure.createNotificationHubService(hubName, endpoint, fullRule.KeyName, fullRule.PrimaryKey);
+                suiteUtil.setupService(notificationHubService);
 
-              var listenRule = hub.AuthorizationRules.AuthorizationRule.filter(function (rule) {
-                return rule.KeyName === 'DefaultListenSharedAccessSignature';
-              })[0];
+                var listenRule = hub.AuthorizationRules.AuthorizationRule.filter(function (rule) {
+                  return rule.KeyName === 'DefaultListenSharedAccessSignature';
+                })[0];
 
-              var endpoint = 'https://' + process.env.AZURE_SERVICEBUS_NAMESPACE + '.servicebus.windows.net';
-              notificationListenHubService = azure.createNotificationHubService(hubName, endpoint, listenRule.KeyName, listenRule.PrimaryKey);
-              suiteUtil.setupService(notificationListenHubService);
+                endpoint = 'https://' + process.env.AZURE_SERVICEBUS_NAMESPACE + '.servicebus.windows.net';
+                notificationListenHubService = azure.createNotificationHubService(hubName, endpoint, listenRule.KeyName, listenRule.PrimaryKey);
+                suiteUtil.setupService(notificationListenHubService);
 
-              done();
-            }
-          });
-        };
+                done();
+              }
+            });
+          };
 
-        setupHub();
-      });
+          setupHub();
+        });
     });
 
     it('should be able to execute an operation', function (done) {
@@ -325,7 +324,7 @@ describe('Notification hubs', function () {
 
               done();
             });
-        });
+          });
       });
     });
 
@@ -335,6 +334,56 @@ describe('Notification hubs', function () {
 
         done();
       });
+    });
+  });
+
+  describe('Initiating service', function () {
+    originalNamespace = process.env.AZURE_SERVICEBUS_NAMESPACE;
+    originalKey = process.env.AZURE_SERVICEBUS_ACCESS_KEY;
+
+    beforeEach(function (done) {
+      var originalNamespace = process.env.AZURE_SERVICEBUS_NAMESPACE;
+      var originalKey = process.env.AZURE_SERVICEBUS_ACCESS_KEY;
+
+      delete process.env.AZURE_SERVICEBUS_NAMESPACE;
+      delete process.env.AZURE_SERVICEBUS_ACCESS_KEY;
+
+      done();
+    });
+
+    afterEach(function (done) {
+      process.env.AZURE_SERVICEBUS_NAMESPACE = originalNamespace;
+      process.env.AZURE_SERVICEBUS_ACCESS_KEY = originalKey;
+
+      done();
+    });
+
+    it('should work with no service bus credentials', function (done) {
+      var notificationHubService = azure.createNotificationHubService('portal12', 'https://todons.servicebus.windows.net',
+        'DefaultFullSharedAccessSignature',
+        'key');
+
+      should.exist(notificationHubService);
+
+      done();
+    });
+
+    it('should work with sb endpoints', function (done) {
+      var notificationHubService = azure.createNotificationHubService('portal12', 'sb://todons.servicebus.windows.net',
+        'DefaultFullSharedAccessSignature',
+        'key');
+
+      should.exist(notificationHubService);
+
+      done();
+    });
+
+    it('should work with connection strings', function (done) {
+      var notificationHubService = azure.createNotificationHubService('portal12', 'Endpoint=sb://todons.servicebus.windows.net;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=key');
+
+      should.exist(notificationHubService);
+
+      done();
     });
   });
 });
