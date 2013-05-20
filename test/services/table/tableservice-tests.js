@@ -14,6 +14,7 @@
 */
 
 var assert = require('assert');
+var util = require('util');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -477,7 +478,7 @@ suite('tableservice-tests', function () {
           assert.notEqual(updateEntity2, null);
           assert.ok(updateResponse2.isSuccessful);
           assert.equal(updateResponse2.statusCode, HttpConstants.HttpResponseCodes.NoContent);
-          assert.notEqual(newEntity1._.etag, originalEtag);
+          assert.notEqual(updateEntity2._.etag, originalEtag);
 
           done();
         });
@@ -824,7 +825,15 @@ suite('tableservice-tests', function () {
     var expectedProtocol = 'http';
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
-    var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey;
+    var storageDnsSuffix = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX];
+    var host;
+    if (storageDnsSuffix) {
+      host = util.format('TableEndpoint=%s://%s.table.%s', expectedProtocol, expectedName, storageDnsSuffix);
+    } else {
+      host = util.format('DefaultEndpointsProtocol=%s', expectedProtocol);
+    }
+    var connectionString = util.format('%s;AccountName=%s;AccountKey=%s', host, expectedName, expectedKey);
+
     tableService = azure.createTableService(connectionString);
 
     tableService.createTable(tableName, function (err) {
@@ -843,7 +852,8 @@ suite('tableservice-tests', function () {
     var expectedProtocol = 'http';
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
-    var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.core.windows.net';
+    var storageDnsSuffix = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] || 'core.windows.net';
+    var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.' + storageDnsSuffix;
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';TableEndpoint=' + expectedTableEndpoint;
     var tableService = azure.createTableService(connectionString);
 
@@ -864,7 +874,8 @@ suite('tableservice-tests', function () {
     var tableName = testutil.generateId(tablePrefix, tableNames, suiteUtil.isMocked);
     var expectedName = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
     var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
-    var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.core.windows.net';
+    var storageDnsSuffix = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] || 'core.windows.net';
+    var expectedTableEndpoint = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.' + storageDnsSuffix;
     var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
 
     tableService.createTable(tableName, function (err) {
@@ -886,10 +897,42 @@ suite('tableservice-tests', function () {
 
     assert.equal(tableService.storageAccount, expectedName);
     assert.equal(tableService.storageAccessKey, expectedKey);
-    assert.equal(tableService.protocol, 'https:');
+    assert.equal(tableService.protocol, 'http:');
     assert.equal(tableService.host, '127.0.0.1');
     assert.equal(tableService.port, '10002');
     assert.equal(tableService.usePathStyleUri, true);
+
+    done();
+  });
+
+  test('storageConnectionStringsEndpointDevStoreExplicitWithProtocol', function (done) {
+    var expectedName = ServiceClient.DEVSTORE_STORAGE_ACCOUNT;
+    var expectedKey = ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY;
+    var expectedTableEndpoint = 'http://' + ServiceClient.DEVSTORE_TABLE_HOST;
+    var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+
+    assert.equal(tableService.storageAccount, expectedName);
+    assert.equal(tableService.storageAccessKey, expectedKey);
+    assert.equal(tableService.protocol, 'http:');
+    assert.equal(tableService.host, '127.0.0.1');
+    assert.equal(tableService.port, '10002');
+    assert.equal(tableService.usePathStyleUri, true);
+
+    done();
+  });
+
+  test('storageConnectionStringsEndpointDevStoreExplicitWithWrongProtocol', function (done) {
+    var expectedName = ServiceClient.DEVSTORE_STORAGE_ACCOUNT;
+    var expectedKey = ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY;
+    var expectedTableEndpoint = 'https://' + ServiceClient.DEVSTORE_TABLE_HOST;
+    var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+
+    assert.equal(tableService.storageAccount, expectedName);
+    assert.equal(tableService.storageAccessKey, expectedKey);
+    assert.equal(tableService.protocol, 'https:');
+    assert.equal(tableService.host, '127.0.0.1');
+    assert.equal(tableService.port, '10002');
+    assert.equal(tableService.usePathStyleUri, false);
 
     done();
   });
