@@ -104,9 +104,55 @@ describe('APNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
-          notificationHubService.apns.createNativeRegistration(tokenId, function (error, registration) {
+          notificationHubService.apns.createNativeRegistration(tokenId, null, function (error, registration) {
             should.not.exist(error);
             registrationId = registration.RegistrationId;
+
+            done();
+          });
+        });
+      });
+
+      describe('list', function () {
+        beforeEach(function (done) {
+          notificationHubService.apns.createNativeRegistration(tokenId, [ 'mytag'], done);
+        });
+
+        it('should work without filtering', function (done) {
+          notificationHubService.listRegistrations(function (err, list) {
+            should.not.exist(err);
+            should.exist(list);
+            list.length.should.equal(1);
+
+            done();
+          });
+        });
+
+        it('should work with tag filtering with the wrong tag', function (done) {
+          notificationHubService.listRegistrationsByTag('tag', { top: 10, skip: 0 }, function (err, list) {
+            should.not.exist(err);
+            should.exist(list);
+            list.length.should.equal(0);
+
+            done();
+          });
+        });
+
+        it('should work with tag filtering with the right tag', function (done) {
+          notificationHubService.listRegistrationsByTag('mytag', { top: 10, skip: 0 }, function (err, list) {
+            should.not.exist(err);
+            should.exist(list);
+            list.length.should.equal(1);
+
+            done();
+          });
+        });
+
+        it('should work with token filtering', function (done) {
+          notificationHubService.apns.listRegistrationsByToken(tokenId, { top: 10, skip: 0 }, function (err, list, rsp) {
+            should.not.exist(err);
+            should.exist(list);
+            list.length.should.equal(1);
 
             done();
           });
@@ -153,7 +199,7 @@ describe('APNS notifications registrations', function () {
               registrationId = registration.RegistrationId;
 
               done();
-          });
+            });
         });
 
         afterEach(function (done) {
@@ -172,7 +218,7 @@ describe('APNS notifications registrations', function () {
               should.not.exist(error);
 
               done();
-          });
+            });
         });
       });
     });

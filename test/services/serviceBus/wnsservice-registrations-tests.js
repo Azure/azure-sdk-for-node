@@ -93,7 +93,7 @@ describe('WNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
-          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', { registrationId: 'myname' }, function (error, registration) {
+          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', null, { registrationId: 'myname' }, function (error, registration) {
             should.not.exist(error);
             registrationId = registration.RegistrationId;
 
@@ -106,7 +106,7 @@ describe('WNS notifications registrations', function () {
         var registrationId;
 
         beforeEach(function (done) {
-          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', function (err, registration) {
+          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', null, function (err, registration) {
             registrationId = registration.RegistrationId;
 
             done();
@@ -126,7 +126,7 @@ describe('WNS notifications registrations', function () {
         var registrationId;
 
         beforeEach(function (done) {
-          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', function (err, registration) {
+          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', null, function (err, registration) {
             registrationId = registration.RegistrationId;
 
             done();
@@ -146,14 +146,8 @@ describe('WNS notifications registrations', function () {
       });
 
       describe('list', function () {
-        var registrationId;
-
         beforeEach(function (done) {
-          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', function (err, registration) {
-            registrationId = registration.RegistrationId;
-
-            done();
-          });
+          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', [ 'mytag'], done);
         });
 
         it('should work without filtering', function (done) {
@@ -166,11 +160,31 @@ describe('WNS notifications registrations', function () {
           });
         });
 
-        it('should work with tag filtering', function (done) {
-          notificationHubService.listRegistrationsByTag('tag', function (err, list) {
+        it('should work with tag filtering with the wrong tag', function (done) {
+          notificationHubService.listRegistrationsByTag('tag', { top: 10, skip: 0 }, function (err, list) {
             should.not.exist(err);
             should.exist(list);
             list.length.should.equal(0);
+
+            done();
+          });
+        });
+
+        it('should work with tag filtering with the right tag', function (done) {
+          notificationHubService.listRegistrationsByTag('mytag', { top: 10, skip: 0 }, function (err, list) {
+            should.not.exist(err);
+            should.exist(list);
+            list.length.should.equal(1);
+
+            done();
+          });
+        });
+
+        it('should work with channel filtering', function (done) {
+          notificationHubService.wns.listRegistrationsByChannel('http://db3.notify.windows.com/fake/superfake', { top: 10, skip: 0 }, function (err, list, rsp) {
+            should.not.exist(err);
+            should.exist(list);
+            list.length.should.equal(1);
 
             done();
           });

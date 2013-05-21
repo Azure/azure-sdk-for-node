@@ -5,6 +5,7 @@
 # services/blob/internal/sharedkey-tests.js
 # services/blob/internal/sharedkeylite-tests.js
 # services/blob/blobservice-tests.js
+# services/blob/blobservice-gb-tests.js
 # services/blob/filters-tests.js
 # services/core/connectionstringparser-tests.js
 # services/core/serviceclient-tests.js
@@ -35,6 +36,7 @@
 # services/table/tableservice-batch-tests.js
 # services/table/tableservice-tablequery-tests.js
 # services/table/tableservice-tests.js
+# services/table/tableservice-gb-tests.js
 # services/sqlAzure/sqlservice-tests.js
 # util/date-tests.js
 # util/edmtype-tests.js
