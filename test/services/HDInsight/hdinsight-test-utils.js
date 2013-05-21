@@ -16,12 +16,56 @@
 var fs = require('fs');
 var xml2js = require('xml2js');
 var _ = require('underscore');
-
+var should = require('should');
+var creds;
 
 function HDInsightTestUtils() {
+  this.getTestCredentialData(function (result) {
+    creds = result;
+    should.exist(result);
+  });
 }
 
 module.exports = HDInsightTestUtils;
+
+HDInsightTestUtils.prototype.getDefaultCreds = function() {
+  return creds['default'];
+};
+
+HDInsightTestUtils.prototype.getDefaultWithAsvAndMetastores = function() {
+  return this.getCreationWithAsvAndMetastore('default');
+};
+
+HDInsightTestUtils.prototype.getCreationWithAsvAndMetastore = function (name) {
+  var cred = creds[name];
+  var clusterCreationObject = {
+    name : 'tistocks-jstest2',
+    location : 'East US',
+    defaultStorageAccountName : cred.defaultStorageAccount.name,
+    defaultStorageAccountKey : cred.defaultStorageAccount.key,
+    defaultStorageContainer : cred.defaultStorageAccount.container,
+    user : cred.user,
+    password : cred.password,
+    nodes : 4,
+    additionalStorageAccounts : [{
+      name : cred.additionalStorageAccounts[0].name,
+      key : cred.additionalStorageAccounts[0].key
+    }],
+    oozieMetastore : {
+      server : cred.oozieStores[0].server,
+      database : cred.oozieStores[0].database,
+      user : cred.oozieStores[0].user,
+      password : cred.oozieStores[0].password
+    },
+    hiveMetastore : {
+      server : cred.hiveStores[0].server,
+      database : cred.hiveStores[0].database,
+      user : cred.hiveStores[0].user,
+      password : cred.hiveStores[0].password
+    }
+  };
+  return clusterCreationObject;
+}
 
 HDInsightTestUtils.prototype.getTestCredentialData = function(callback) {
   var file = process.env['AZURE_HDINSIGHT_CREDENTIALFILE']; 
@@ -37,17 +81,17 @@ HDInsightTestUtils.prototype.getTestCredentialData = function(callback) {
       var retval = { };
       for (var i = 0; i < creds.length; i++) {
         var cred = {
-          credsName : creds[i].CredentialsName,
-          subscriptionId : creds[i].SubscriptionId,
-          dnsName : creds[i].DnsName,
-          cluster : creds[i].Cluster,
-          user : creds[i].AzureUserName,
-          password : creds[i].AzurePassword,
-          hadoopUserName : creds[i].HadoopUserName,
+          credsName : creds[i].CredentialsName[0],
+          subscriptionId : creds[i].SubscriptionId[0],
+          dnsName : creds[i].DnsName[0],
+          cluster : creds[i].Cluster[0],
+          user : creds[i].AzureUserName[0],
+          password : creds[i].AzurePassword[0],
+          hadoopUserName : creds[i].HadoopUserName[0],
           defaultStorageAccount : {
-            name : creds[i].DefaultStorageAccount.Name,
-            key : creds[i].DefaultStorageAccount.Key,
-            container : creds[i].DefaultStorageAccount.Container
+            name : creds[i].DefaultStorageAccount[0].Name[0],
+            key : creds[i].DefaultStorageAccount[0].Key[0],
+            container : creds[i].DefaultStorageAccount[0].Container[0]
           }
         };
         if (_.isArray(creds[i].AdditionalStorageAccounts)) {
@@ -60,45 +104,39 @@ HDInsightTestUtils.prototype.getTestCredentialData = function(callback) {
         cred.additionalStorageAccounts = [];
         for (var j = 0; j < accounts.length; j++) {
           var account = {
-            name : accounts[j].Name,
-            key : accounts[j].Key,
-            container : accounts[j].Container
+            name : accounts[j].Name[0],
+            key : accounts[j].Key[0],
+            container : accounts[j].Container[0]
           };
           cred.additionalStorageAccounts.push(account);
         }
-        if (_.isArray(creds[i].OozieStores)) {
-          creds[i].OozieStores = creds[i].OozieStores[0];
-        }
-        var oozies = creds[i].OozieStores.MetastoreCredentials;
+        var oozies = creds[i].OozieStores[0].MetastoreCredentials;
         if (!_.isArray(oozies)) {
           oozies = [ oozies ];
         }
         cred.oozieStores = [];
         for (j = 0; j < oozies.length; j++) {
           var oozie = {
-            description : oozies[j].Description,
-            server : oozies[j].SqlServer,
-            database : oozies[j].Database,
-            user : oozies[j].UserName,
-            password : oozies[j].Password
+            description : oozies[j].Description[0],
+            server : oozies[j].SqlServer[0],
+            database : oozies[j].Database[0],
+            user : oozies[j].UserName[0],
+            password : oozies[j].Password[0]
           };
           cred.oozieStores.push(oozie);
         }
-        if (_.isArray(creds[i].HiveStores)) {
-          creds[i].HiveStores = creds[i].HiveStores[0];
-        }
-        var hives = creds[i].HiveStores.MetastoreCredentials;
+        var hives = creds[i].HiveStores[0].MetastoreCredentials;
         if (!_.isArray(hives)) {
           hives = [ hives ];
         }
         cred.hiveStores = [];
         for (j = 0; j < hives.length; j++) {
           var hive = {
-            description : hives[j].Description,
-            server : hives[j].SqlServer,
-            database : hives[j].Database,
-            user : hives[j].UserName,
-            password : hives[j].Password
+            description : hives[j].Description[0],
+            server : hives[j].SqlServer[0],
+            database : hives[j].Database[0],
+            user : hives[j].UserName[0],
+            password : hives[j].Password[0]
           };
           cred.hiveStores.push(hive);
         }

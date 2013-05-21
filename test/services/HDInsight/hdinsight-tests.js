@@ -31,7 +31,7 @@ describe('HDInsight Test', function() {
   var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
   var hdInsight;
-  var hdinsightTestUtils = new HDInsightTestUtils();
+  var hdInsightTestUtils = new HDInsightTestUtils();
   var creds;
 
   beforeEach(function (done) {
@@ -47,42 +47,12 @@ describe('HDInsight Test', function() {
   });
 
   before (function (done) {
-    hdinsightTestUtils.getTestCredentialData(function (result) {
-      should.exist(result);
-      creds = result;
-      hdInsight = azure.createHDInsightService(creds["default"].subscriptionId, auth);
-      done();
-    });
+    hdInsight = azure.createHDInsightService(hdInsightTestUtils.getDefaultCreds().subscriptionId, auth);
+    done();
   });
 
   it('should be able to create a cluster', function (done) {
-    var cred = creds["default"];
-    var clusterCreationObject = {
-      name : 'tistocks-jstest2',
-      location : 'East US',
-      defaultStorageAccountName : cred.defaultStorageAccount.name,
-      defaultStorageAccountKey : cred.defaultStorageAccount.key,
-      defaultStorageContainer : cred.defaultStorageAccount.container,
-      user : cred.user,
-      password : creds.password,
-      nodes : 4,
-      additionalStorageAccounts : [{
-        name : cred.additionalStorageAccounts[0].name,
-        key : cred.additionalStorageAccounts[0].key
-      }],
-      oozieMetastore : {
-        server : cred.oozieStores[0].server,
-        database : cred.oozieStores[0].database,
-        user : cred.oozieStores[0].user,
-        password : cred.oozieStores[0].password
-      },
-      hiveMetastore : {
-        server : cred.hiveStores[0].server,
-        database : cred.hiveStores[0].database,
-        user : cred.hiveStores[0].user,
-        password : cred.hiveStores[0].password
-      }
-    };
+    var cred = hdInsightTestUtils.getDefaultWithAsvAndMetastores();
     hdInsight.createCluster(clusterCreationObject, function (err, response) {
       done(err);
     });

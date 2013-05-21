@@ -17,7 +17,8 @@ var mocha = require('mocha');
 var should = require('should');
 var assert = require('assert');
 var _ = require('underscore');
-var HDInsightTestUtils = require('./hdinsight-test-utils.js')
+var HDInsightTestUtils = require('./hdinsight-test-utils.js');
+var HDInsightNamespace = require('../../../lib/services/serviceManagement/hdinsightnamespaceutils.js');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -33,7 +34,6 @@ describe('HDInsight createCluster (under unit test)', function() {
   var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
   var hdInsight = azure.createHDInsightService(subscriptionId, auth);
   var hdinsightTestUtils = new HDInsightTestUtils();
-  var creds;
 
   beforeEach(function (done) {
     performRequestStubUtil.NoStubProcessRequest();
@@ -54,10 +54,33 @@ describe('HDInsight createCluster (under unit test)', function() {
   //       So that we can work on any existing subscription.
   before (function (done) {
     performRequestStubUtil = new PerformRequestStubUtil(HDInsight);
-    hdinsightTestUtils.getTestCredentialData(function (result) {
-      should.exist(result);
-      creds = result;
+    done();
+  });
+
+  it('should pass the error to the callback function', function(done) {
+    performRequestStubUtil.StubAuthenticationFailed('http://test.com');
+    var clusterCreationObject = hdinsightTestUtils.getDefaultWithAsvAndMetastores();
+    hdInsight.createCluster(clusterCreationObject, function (err, response) {
+      should.exist(err);
+      response.statusCode.should.be.eql(403);
       done();
+    });
+  });
+
+  it('should provide the right headers for the request', function(done) {
+    performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', {});
+    var clusterCreationObject = hdinsightTestUtils.getDefaultWithAsvAndMetastores();
+    hdInsight.createCluster(clusterCreationObject, function (err) {
+      var webResource = performRequestStubUtil.GetLastWebResource();
+      should.exist(webResource);
+      var namespaceUtil = new HDInsightNamespace();
+      var regionCloudServiceName = namespaceUtil.GetNameSpace(subscriptionId, 'hdinsight' , 'East US');
+      webResource.path.should.be.eql('/' + subscriptionId + '/cloudservices/' + regionCloudServiceName + '/resources/hdinsight/containers/' + clusterCreationObject.name);
+      webResource.httpVerb.should.be.eql('PUT');
+      _.size(webResource.headers).should.be.eql(2);
+      webResource.headers['x-ms-version'].should.be.eql('2011-08-18');
+      webResource.headers['accept'].should.be.eql('application/xml');
+      done(err);
     });
   });
 
@@ -423,7 +446,7 @@ describe('HDInsight createCluster (under unit test)', function() {
       user : 'user',
       password : 'password',
       nodes : 4,
-      additionalStorageAccounts : [{ 
+      additionalStorageAccounts : [{
         name : 4
       }]
     };
