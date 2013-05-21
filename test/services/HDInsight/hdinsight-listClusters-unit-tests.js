@@ -16,6 +16,7 @@
 var mocha = require('mocha');
 var should = require('should');
 var _ = require('underscore');
+var HDInsightTestUtils = require('./hdinsight-test-utils.js')
 
 // Test includes
 var testutil = require('../../util/util');
@@ -30,11 +31,8 @@ describe('HDInsight listClusters (under unit test)', function() {
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
   var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
   var hdInsight = azure.createHDInsightService(subscriptionId, auth);
-
-  // var createStorageAccountAndWait = function (name, next) {
-  //   serviceMan.listStorageAccounts(function (err, response)) {
-  //   }
-  // };
+  var hdinsightTestUtils = new HDInsightTestUtils();
+  var creds;
 
   beforeEach(function (done) {
     performRequestStubUtil.NoStubProcessRequest();
@@ -55,7 +53,11 @@ describe('HDInsight listClusters (under unit test)', function() {
   //       So that we can work on any existing subscription.
   before (function (done) {
     performRequestStubUtil = new PerformRequestStubUtil(HDInsight);
-    done();
+    hdinsightTestUtils.getTestCredentialData(function (result) {
+      should.exist(result);
+      creds = result;
+      done();
+    });
   });
 
   var goodResult = {
@@ -103,7 +105,7 @@ describe('HDInsight listClusters (under unit test)', function() {
   };
 
   it('should pass the error to the callback function', function(done) {
-    performRequestStubUtil.StubAuthenticationFailed();
+    performRequestStubUtil.StubAuthenticationFailed('http://test.com');
     hdInsight.listClusters(function (err, response) {
       should.exist(err);
       response.statusCode.should.be.eql(403);
@@ -112,7 +114,7 @@ describe('HDInsight listClusters (under unit test)', function() {
   });
 
   it('should turn single cloudservice items and resource items into arrays', function(done) {
-    performRequestStubUtil.StubProcessRequestWithSuccess(singleResult);
+    performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', singleResult);
     hdInsight.listClusters(function (err, response) {
       should.not.exist(err);
       should.exist(response.body.CloudServices.CloudService);
@@ -126,7 +128,7 @@ describe('HDInsight listClusters (under unit test)', function() {
   });
 
   it('should provide the right headers for the request', function(done) {
-    performRequestStubUtil.StubProcessRequestWithSuccess(goodResult);
+    performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', goodResult);
     hdInsight.listClusters(function (err) {
       var webResource = performRequestStubUtil.GetLastWebResource();
       should.exist(webResource);
@@ -140,7 +142,7 @@ describe('HDInsight listClusters (under unit test)', function() {
   });
 
   it('should remove CloudServices not related to HDInsight', function (done) {
-    performRequestStubUtil.StubProcessRequestWithSuccess(goodResult);
+    performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', goodResult);
     hdInsight.listClusters(function (err, response) {
       should.not.exist(err);
       should.exist(response.body.CloudServices.CloudService);
@@ -151,7 +153,7 @@ describe('HDInsight listClusters (under unit test)', function() {
   });
 
   it('should remove resources not representing a cluster', function (done) {
-    performRequestStubUtil.StubProcessRequestWithSuccess(goodResult);
+    performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', goodResult);
     hdInsight.listClusters(function (err, response) {
       should.not.exist(err);
       should.exist(response.body.CloudServices.CloudService);

@@ -14,7 +14,7 @@
 */
 
 // Test functions
-var HDInsightNamespace = require('./namespace-util.js');
+var HDInsightNamespace = require('../../../lib/services/serviceManagement/hdinsightnamespaceutils.js');
 
 // Test includes
 var assert = require('assert');

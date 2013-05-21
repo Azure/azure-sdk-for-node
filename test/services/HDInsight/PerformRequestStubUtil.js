@@ -72,12 +72,12 @@ PerformRequestStubUtil.prototype.GetLastWebResource = function() {
   return _lastWebResource;
 };
 
-PerformRequestStubUtil.prototype.StubAuthenticationFailed = function() {
+PerformRequestStubUtil.prototype.StubAuthenticationFailed = function(url) {
   var msg = 'The server failed to authenticate the request. Verify that the certificate is valid and is associated with this subscription.';
-  this.StubProcessRequestWithError(403, 'AuthenticationFailed', msg);
+  this.StubProcessRequestWithError(url, 403, 'AuthenticationFailed', msg);
 }
 
-PerformRequestStubUtil.prototype.StubProcessRequestWithError = function(statusCode, errorCode, message) {
+PerformRequestStubUtil.prototype.StubProcessRequestWithError = function(url, statusCode, errorCode, message) {
   mockData = { statusCode: statusCode, errorCode: errorCode, message: message };
 };
 
@@ -85,7 +85,7 @@ PerformRequestStubUtil.prototype.NoStubProcessRequest = function() {
   mockData = null;
 };
 
-PerformRequestStubUtil.prototype.StubProcessRequestWithSuccess = function(body) {
+PerformRequestStubUtil.prototype.StubProcessRequestWithSuccess = function(url, body) {
   mockData = { body: body };
 };
 

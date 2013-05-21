@@ -17,6 +17,7 @@ var assert = require('assert');
 var mocha = require('mocha');
 var should = require('should');
 var sinon = require('sinon');
+var HDInsightTestUtils = require('./hdinsight-test-utils.js')
 
 // Test includes
 var testutil = require('../../util/util');
@@ -27,22 +28,11 @@ var azure = testutil.libRequire('azure');
 var hdInsightUtil;
 
 describe('HDInsight Test', function() {
-  var storageAccounts;
-  var sqlServers;
-
-  var storage1Name = "azurehdxstrtst00";
-  var storage2Name = "azurehdxstrtst01";
-  var foundStorage1 = false;
-  var foundStorage2 = false;
-
   var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
-  var serviceMan = azure.createServiceManagementService(subscriptionId, auth);
-  var sqlMan = azure.createSqlManagementService(subscriptionId, auth);
-  var hdInsight = azure.createHDInsightService(subscriptionId, auth);
-
-  var _performRequestSpy;
-  var _performRequestOriginal;
+  var hdInsight;
+  var hdinsightTestUtils = new HDInsightTestUtils();
+  var creds;
 
   beforeEach(function (done) {
     done();
@@ -57,9 +47,46 @@ describe('HDInsight Test', function() {
   });
 
   before (function (done) {
-    done();
+    hdinsightTestUtils.getTestCredentialData(function (result) {
+      should.exist(result);
+      creds = result;
+      hdInsight = azure.createHDInsightService(creds["default"].subscriptionId, auth);
+      done();
+    });
   });
 
+  it('should be able to create a cluster', function (done) {
+    var cred = creds["default"];
+    var clusterCreationObject = {
+      name : 'tistocks-jstest2',
+      location : 'East US',
+      defaultStorageAccountName : cred.defaultStorageAccount.name,
+      defaultStorageAccountKey : cred.defaultStorageAccount.key,
+      defaultStorageContainer : cred.defaultStorageAccount.container,
+      user : cred.user,
+      password : creds.password,
+      nodes : 4,
+      additionalStorageAccounts : [{
+        name : cred.additionalStorageAccounts[0].name,
+        key : cred.additionalStorageAccounts[0].key
+      }],
+      oozieMetastore : {
+        server : cred.oozieStores[0].server,
+        database : cred.oozieStores[0].database,
+        user : cred.oozieStores[0].user,
+        password : cred.oozieStores[0].password
+      },
+      hiveMetastore : {
+        server : cred.hiveStores[0].server,
+        database : cred.hiveStores[0].database,
+        user : cred.hiveStores[0].user,
+        password : cred.hiveStores[0].password
+      }
+    };
+    hdInsight.createCluster(clusterCreationObject, function (err, response) {
+      done(err);
+    });
+  });
 
   it('should be able to list clusters', function (done) {
     hdInsight.listClusters(function (err, response) {
@@ -70,5 +97,4 @@ describe('HDInsight Test', function() {
       done(err);
     });
   });
-
 });
