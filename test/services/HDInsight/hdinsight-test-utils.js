@@ -17,6 +17,8 @@ var fs = require('fs');
 var xml2js = require('xml2js');
 var _ = require('underscore');
 var should = require('should');
+var uuid = require('node-uuid');
+var os = require('os');
 var creds;
 
 function HDInsightTestUtils(callback) {
@@ -41,8 +43,19 @@ HDInsightTestUtils.prototype.getDefaultWithAsvAndMetastores = function() {
 
 HDInsightTestUtils.prototype.getCreationWithAsvAndMetastore = function (name) {
   var cred = creds[name];
+  var machineName = os.hostname();
+  if (_.isUndefined(machineName)) {
+    machineName = 'unknown';
+  }
+  var now = new Date();
+  var day = now.getDate();
+  day = day < 10 ? '0'+day : day;
+  var month = now.getMonth();
+  month = month < 10 ? '0'+month : month;
+
+  var creationName = 'CLITest-' + machineName + '-' + month + day + now.getFullYear() + '-' + uuid.v4();
   var clusterCreationObject = {
-    name : 'tistocks-jstest2',
+    name : creationName,
     location : 'East US',
     defaultStorageAccountName : cred.defaultStorageAccount.name,
     defaultStorageAccountKey : cred.defaultStorageAccount.key,
