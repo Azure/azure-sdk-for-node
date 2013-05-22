@@ -35,6 +35,7 @@ describe('HDInsight listClusters (under unit test)', function() {
   beforeEach(function (done) {
     performRequestStubUtil.NoStubProcessRequest();
     done();
+    
   });
 
   afterEach(function (done) {
