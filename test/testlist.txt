@@ -45,8 +45,8 @@
 # util/util-tests.js
 # util/validate-tests.js
 # azure-tests.js
-# services/HDInsight/hdinsight-tests.js
+services/HDInsight/hdinsight-tests.js
 # services/HDInsight/hdinsight-unit-tests.js
-services/HDInsight/hdinsight-listClusters-unit-tests.js
-services/HDInsight/hdinsight-createCluster-unit-tests.js
-services/HDInsight/namespace-tests.js
+# services/HDInsight/hdinsight-listClusters-unit-tests.js
+# services/HDInsight/hdinsight-createCluster-unit-tests.js
+# services/HDInsight/namespace-tests.js

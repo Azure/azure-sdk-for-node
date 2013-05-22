@@ -49,7 +49,9 @@ describe('HDInsight Test', function() {
 
   it('should be able to create a cluster', function (done) {
     var clusterCreationObject = hdInsightTestUtils.getDefaultWithAsvAndMetastores();
-    hdInsight.createCluster(clusterCreationObject, function (err, response) {
+    //hdInsight.createCluster(clusterCreationObject, function (err, response) 
+
+    hdInsight.deleteCluster(clusterCreationObject.name, clusterCreationObject.location, function (err, response) {
       done(err);
     });
   });
