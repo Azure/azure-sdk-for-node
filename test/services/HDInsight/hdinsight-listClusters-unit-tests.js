@@ -16,7 +16,6 @@
 var mocha = require('mocha');
 var should = require('should');
 var _ = require('underscore');
-var HDInsightTestUtils = require('./hdinsight-test-utils.js')
 
 // Test includes
 var testutil = require('../../util/util');
@@ -31,7 +30,6 @@ describe('HDInsight listClusters (under unit test)', function() {
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
   var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
   var hdInsight = azure.createHDInsightService(subscriptionId, auth);
-  var hdinsightTestUtils = new HDInsightTestUtils();
   var creds;
 
   beforeEach(function (done) {
@@ -53,11 +51,7 @@ describe('HDInsight listClusters (under unit test)', function() {
   //       So that we can work on any existing subscription.
   before (function (done) {
     performRequestStubUtil = new PerformRequestStubUtil(HDInsight);
-    hdinsightTestUtils.getTestCredentialData(function (result) {
-      should.exist(result);
-      creds = result;
-      done();
-    });
+    done();
   });
 
   var goodResult = {

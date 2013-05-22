@@ -257,6 +257,26 @@ describe('HDInsight createCluster (under unit test)', function() {
     }
   });
 
+  it('should validate the defaultStorageContainer field is not invalid', function() {
+    performRequestStubUtil.StubAuthenticationFailed('http://test');
+    var clusterCreationObject = {
+      name : 'test',
+      location : 'East US',
+      defaultStorageAccountName : 'test',
+      defaultStorageAccountKey : 'KEY',
+      defaultStorageContainer : 'INVLAID'
+    };
+    try
+    {
+      hdInsight.createCluster(clusterCreationObject, function(err, response) {});
+      throw new Error('this line should never be reached');
+    }
+    catch (error)
+    {
+      error.message.should.be.eql('The [defaultStorageContainer] field is required when creating a cluster and must be a valid storage container name');
+    }
+  });
+
   it('should validate the user field of the clusterCreationObject is not undefined', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {

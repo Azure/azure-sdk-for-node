@@ -19,10 +19,13 @@ var _ = require('underscore');
 var should = require('should');
 var creds;
 
-function HDInsightTestUtils() {
+function HDInsightTestUtils(callback) {
   this.getTestCredentialData(function (result) {
     creds = result;
     should.exist(result);
+    if (callback) {
+      callback();
+    }
   });
 }
 
@@ -69,6 +72,9 @@ HDInsightTestUtils.prototype.getCreationWithAsvAndMetastore = function (name) {
 
 HDInsightTestUtils.prototype.getTestCredentialData = function(callback) {
   var file = process.env['AZURE_HDINSIGHT_CREDENTIALFILE'];
+  if (!file) {
+    file = __dirname + '/creds.xml';
+  }
   var parser = new xml2js.Parser();
   fs.readFile(file, 'utf-8', function(err, data) {
     parser.parseString(data, function(err, result) {

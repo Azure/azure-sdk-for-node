@@ -26,7 +26,7 @@ var azure = testutil.libRequire('azure');
 describe('HDInsight Test', function() {
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
   var hdInsight;
-  var hdInsightTestUtils = new HDInsightTestUtils();
+  var hdInsightTestUtils;
 
   beforeEach(function (done) {
     done();
@@ -41,8 +41,10 @@ describe('HDInsight Test', function() {
   });
 
   before (function (done) {
-    hdInsight = azure.createHDInsightService(hdInsightTestUtils.getDefaultCreds().subscriptionId, auth);
-    done();
+    hdInsightTestUtils = new HDInsightTestUtils(function () {
+      hdInsight = azure.createHDInsightService(hdInsightTestUtils.getDefaultCreds().subscriptionId, auth);
+      done();
+    });
   });
 
   it('should be able to create a cluster', function (done) {
