@@ -75,7 +75,7 @@ PerformRequestStubUtil.prototype.GetLastWebResource = function() {
 PerformRequestStubUtil.prototype.StubAuthenticationFailed = function(url) {
   var msg = 'The server failed to authenticate the request. Verify that the certificate is valid and is associated with this subscription.';
   this.StubProcessRequestWithError(url, 403, 'AuthenticationFailed', msg);
-}
+};
 
 PerformRequestStubUtil.prototype.StubProcessRequestWithError = function(url, statusCode, errorCode, message) {
   mockData = { statusCode: statusCode, errorCode: errorCode, message: message };

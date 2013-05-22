@@ -16,23 +16,17 @@
 var assert = require('assert');
 var mocha = require('mocha');
 var should = require('should');
-var sinon = require('sinon');
-var HDInsightTestUtils = require('./hdinsight-test-utils.js')
+var HDInsightTestUtils = require('./hdinsight-test-utils.js');
 
 // Test includes
 var testutil = require('../../util/util');
 
-var HDInsightUtil = require('./PerformRequestStubUtil.js');
-
 var azure = testutil.libRequire('azure');
-var hdInsightUtil;
 
 describe('HDInsight Test', function() {
-  var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
   var hdInsight;
   var hdInsightTestUtils = new HDInsightTestUtils();
-  var creds;
 
   beforeEach(function (done) {
     done();
@@ -52,7 +46,7 @@ describe('HDInsight Test', function() {
   });
 
   it('should be able to create a cluster', function (done) {
-    var cred = hdInsightTestUtils.getDefaultWithAsvAndMetastores();
+    var clusterCreationObject = hdInsightTestUtils.getDefaultWithAsvAndMetastores();
     hdInsight.createCluster(clusterCreationObject, function (err, response) {
       done(err);
     });

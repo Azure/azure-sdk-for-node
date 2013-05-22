@@ -65,10 +65,10 @@ HDInsightTestUtils.prototype.getCreationWithAsvAndMetastore = function (name) {
     }
   };
   return clusterCreationObject;
-}
+};
 
 HDInsightTestUtils.prototype.getTestCredentialData = function(callback) {
-  var file = process.env['AZURE_HDINSIGHT_CREDENTIALFILE']; 
+  var file = process.env['AZURE_HDINSIGHT_CREDENTIALFILE'];
   var parser = new xml2js.Parser();
   fs.readFile(file, 'utf-8', function(err, data) {
     parser.parseString(data, function(err, result) {
