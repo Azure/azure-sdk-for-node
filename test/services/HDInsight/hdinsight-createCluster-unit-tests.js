@@ -17,7 +17,9 @@ var mocha = require('mocha');
 var should = require('should');
 var _ = require('underscore');
 var HDInsightTestUtils = require('./hdinsight-test-utils.js');
-var HDInsightNamespace = require('../../../lib/services/serviceManagement/hdinsightnamespaceutils.js');
+var azureUtil = require('../../../lib/util/util.js');
+var uuid = require('node-uuid');
+var Validate = require('../../../lib/util/validate.js');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -72,8 +74,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     hdInsight.createCluster(clusterCreationObject, function (err) {
       var webResource = performRequestStubUtil.GetLastWebResource();
       should.exist(webResource);
-      var namespaceUtil = new HDInsightNamespace();
-      var regionCloudServiceName = namespaceUtil.GetNameSpace(subscriptionId, 'hdinsight' , 'East US');
+      var regionCloudServiceName = azureUtil.getNameSpace(subscriptionId, 'hdinsight' , 'East US');
       webResource.path.should.be.eql('/' + subscriptionId + '/cloudservices/' + regionCloudServiceName + '/resources/hdinsight/containers/' + clusterCreationObject.name);
       webResource.httpVerb.should.be.eql('PUT');
       _.size(webResource.headers).should.be.eql(2);
@@ -845,7 +846,7 @@ describe('HDInsight createCluster (under unit test)', function() {
   });
 
 
-  it('should validate that if an hive metastore is provided then it contains a server field', function() {
+  it('should validate that if a hive metastore is provided then it contains a server field', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {
       name : 'test',
@@ -879,7 +880,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     }
   });
 
-  it('should validate that if an hive metastore is provided then it contains a server field and it is a string', function() {
+  it('should validate that if a hive metastore is provided then it contains a server field and it is a string', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {
       name : 'test',
@@ -915,7 +916,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     }
   });
 
-  it('should validate that if an hive metastore is provided then it contains a database field', function() {
+  it('should validate that if a hive metastore is provided then it contains a database field', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {
       name : 'test',
@@ -951,7 +952,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     }
   });
 
-  it('should validate that if an hive metastore is provided then it contains a database field and it is a string', function() {
+  it('should validate that if a hive metastore is provided then it contains a database field and it is a string', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {
       name : 'test',
@@ -988,7 +989,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     }
   });
 
-  it('should validate that if an hive metastore is provided then it contains a user field', function() {
+  it('should validate that if a hive metastore is provided then it contains a user field', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {
       name : 'test',
@@ -1025,7 +1026,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     }
   });
 
-  it('should validate that if an hive metastore is provided then it contains a user field and it is a string', function() {
+  it('should validate that if a hive metastore is provided then it contains a user field and it is a string', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {
       name : 'test',
@@ -1063,7 +1064,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     }
   });
 
-  it('should validate that if an hive metastore is provided then it contains a password field', function() {
+  it('should validate that if a hive metastore is provided then it contains a password field', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {
       name : 'test',
@@ -1101,7 +1102,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     }
   });
 
-  it('should validate that if an hive metastore is provided then it contains a password field and it is a string', function() {
+  it('should validate that if a hive metastore is provided then it contains a password field and it is a string', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {
       name : 'test',
@@ -1187,8 +1188,7 @@ describe('HDInsight createCluster (under unit test)', function() {
     payload.Resource.IntrinsicSettings.ClusterContainer.Deployment.Version.should.be.eql('default');
     payload.Resource.IntrinsicSettings.ClusterContainer.DeploymentAction.should.be.eql('Create');
     payload.Resource.IntrinsicSettings.ClusterContainer.DnsName.should.be.eql('test');
-    // TODO: validate that the IncarnationID is a properly formated guid.
-    // payload.Resource.IntrinsicSettings.ClusterContainer.IncarnationID.   should.be.a.guid();
+    Validate.isValidUuid(payload.Resource.IntrinsicSettings.ClusterContainer.IncarnationID);
     payload.Resource.IntrinsicSettings.ClusterContainer.SubscriptionId.should.be.eql(subscriptionId);
   });
 });

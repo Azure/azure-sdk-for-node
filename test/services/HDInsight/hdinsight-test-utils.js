@@ -19,6 +19,8 @@ var _ = require('underscore');
 var should = require('should');
 var uuid = require('node-uuid');
 var os = require('os');
+var util = require('util');
+var MockedTestUtils = require('./mocked-test-utils');
 var creds;
 
 function HDInsightTestUtils(callback) {
@@ -30,6 +32,8 @@ function HDInsightTestUtils(callback) {
     }
   });
 }
+
+util.inherits(HDInsightTestUtils, MockedTestUtils);
 
 module.exports = HDInsightTestUtils;
 
@@ -55,7 +59,7 @@ HDInsightTestUtils.prototype.getCreationWithAsvAndMetastore = function (name) {
 
   var creationName = 'CLITest-' + machineName + '-' + month + day + now.getFullYear() + '-' + uuid.v4();
   var clusterCreationObject = {
-    name : creationName,
+    name : creationName.toLowerCase(),
     location : 'East US',
     defaultStorageAccountName : cred.defaultStorageAccount.name,
     defaultStorageAccountKey : cred.defaultStorageAccount.key,
