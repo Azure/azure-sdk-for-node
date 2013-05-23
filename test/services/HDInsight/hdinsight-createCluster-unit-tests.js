@@ -16,7 +16,7 @@
 var mocha = require('mocha');
 var should = require('should');
 var _ = require('underscore');
-var HDInsightTestUtils = require('./hdinsight-test-utils.js');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
 var azureUtil = require('../../../lib/util/util.js');
 var uuid = require('node-uuid');
 var Validate = require('../../../lib/util/validate.js');
@@ -25,16 +25,15 @@ var Validate = require('../../../lib/util/validate.js');
 var testutil = require('../../util/util');
 
 var PerformRequestStubUtil = require('./PerformRequestStubUtil.js');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
 
 var azure = testutil.libRequire('azure');
 var performRequestStubUtil;
 
 describe('HDInsight createCluster (under unit test)', function() {
-  var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
-  var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
   var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
-  var hdInsight = azure.createHDInsightService(subscriptionId, auth);
-  var hdinsightTestUtils = new HDInsightTestUtils();
+  var hdInsight;
+  var hdInsightTestUtils;
 
   beforeEach(function (done) {
     performRequestStubUtil.NoStubProcessRequest();
@@ -55,12 +54,15 @@ describe('HDInsight createCluster (under unit test)', function() {
   //       So that we can work on any existing subscription.
   before (function (done) {
     performRequestStubUtil = new PerformRequestStubUtil(HDInsight);
-    done();
+    hdInsightTestUtils = new HDInsightTestUtils(function () {
+      hdInsight = hdInsightTestUtils.getHDInsight();
+      done();
+    });
   });
 
   it('should pass the error to the callback function', function(done) {
     performRequestStubUtil.StubAuthenticationFailed('http://test.com');
-    var clusterCreationObject = hdinsightTestUtils.getDefaultWithAsvAndMetastores();
+    var clusterCreationObject = hdInsightTestUtils.getDefaultWithAsvAndMetastores();
     hdInsight.createCluster(clusterCreationObject, function (err, response) {
       should.exist(err);
       response.statusCode.should.be.eql(403);
@@ -70,12 +72,12 @@ describe('HDInsight createCluster (under unit test)', function() {
 
   it('should provide the right headers for the request', function(done) {
     performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', {});
-    var clusterCreationObject = hdinsightTestUtils.getDefaultWithAsvAndMetastores();
+    var clusterCreationObject = hdInsightTestUtils.getDefaultWithAsvAndMetastores();
     hdInsight.createCluster(clusterCreationObject, function (err) {
       var webResource = performRequestStubUtil.GetLastWebResource();
       should.exist(webResource);
-      var regionCloudServiceName = azureUtil.getNameSpace(subscriptionId, 'hdinsight' , 'East US');
-      webResource.path.should.be.eql('/' + subscriptionId + '/cloudservices/' + regionCloudServiceName + '/resources/hdinsight/containers/' + clusterCreationObject.name);
+      var regionCloudServiceName = azureUtil.getNameSpace(hdInsightTestUtils.getSubscriptionId(), 'hdinsight' , 'East US');
+      webResource.path.should.be.eql('/' + hdInsightTestUtils.getSubscriptionId() + '/cloudservices/' + regionCloudServiceName + '/resources/hdinsight/containers/' + clusterCreationObject.name);
       webResource.httpVerb.should.be.eql('PUT');
       _.size(webResource.headers).should.be.eql(2);
       webResource.headers['x-ms-version'].should.be.eql('2011-08-18');
@@ -1189,6 +1191,6 @@ describe('HDInsight createCluster (under unit test)', function() {
     payload.Resource.IntrinsicSettings.ClusterContainer.DeploymentAction.should.be.eql('Create');
     payload.Resource.IntrinsicSettings.ClusterContainer.DnsName.should.be.eql('test');
     Validate.isValidUuid(payload.Resource.IntrinsicSettings.ClusterContainer.IncarnationID);
-    payload.Resource.IntrinsicSettings.ClusterContainer.SubscriptionId.should.be.eql(subscriptionId);
+    payload.Resource.IntrinsicSettings.ClusterContainer.SubscriptionId.should.be.eql(hdInsightTestUtils.getSubscriptionId());
   });
 });

@@ -17,14 +17,12 @@ var assert = require('assert');
 var mocha = require('mocha');
 var should = require('should');
 var _ = require('underscore');
-var HDInsightTestUtils = require('./hdinsight-test-utils.js');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
 var azureUtil = require('../../../lib/util/util.js');
-var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 // Test includes
 var testutil = require('../../util/util');
 
-var azure = testutil.libRequire('azure');
 
 function doPollRequest(operation, validation, callback) {
   var _callback = function(err, response) {
@@ -44,7 +42,6 @@ describe('HDInsight Test', function() {
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
   var hdInsight;
   var hdInsightTestUtils;
-  var suiteUtil;
 
   beforeEach(function (done) {
     done();
@@ -60,7 +57,7 @@ describe('HDInsight Test', function() {
 
   before (function (done) {
     hdInsightTestUtils = new HDInsightTestUtils(function () {
-      hdInsight = azure.createHDInsightService(hdInsightTestUtils.getDefaultCreds().subscriptionId, auth);
+      hdInsight = hdInsightTestUtils.getHDInsight();
       done();
     });
   });
