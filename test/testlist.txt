@@ -45,8 +45,9 @@ util/odatahandler-tests.js
 util/util-tests.js
 util/validate-tests.js
 azure-tests.js
-# services/HDInsight/hdinsight-tests.js
 services/HDInsight/hdinsight-listClusters-unit-tests.js
 services/HDInsight/hdinsight-createCluster-unit-tests.js
 services/HDInsight/hdinsight-deleteCluster-unit-tests.js
 services/HDInsight/namespace-tests.js
+# These tests are waiting for the CI system to get the proper setup.
+# services/HDInsight/hdinsight-tests.js
