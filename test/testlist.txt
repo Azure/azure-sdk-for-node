@@ -1,52 +1,53 @@
-# serviceruntime/roleenvironment-tests.js
-# serviceruntime/runtimeversionmanager-tests.js
-# serviceruntime/runtimeversionprotocolclient-tests.js
-# services/blob/internal/sharedaccesssignature-tests.js
-# services/blob/internal/sharedkey-tests.js
-# services/blob/internal/sharedkeylite-tests.js
-# services/blob/blobservice-tests.js
-# services/blob/blobservice-gb-tests.js
-# services/blob/filters-tests.js
-# services/core/connectionstringparser-tests.js
-# services/core/serviceclient-tests.js
-# services/core/exponentialretrypolicyfilter-tests.js
-# services/core/linearretrypolicyfilter-tests.js
-# services/core/servicesettings-tests.js
-# services/core/servicebussettings-tests.js
-# services/core/servicemanagementsettings-tests.js
-# services/core/storageservicesettings-tests.js
-# services/queue/queueservice-tests.js
-# services/serviceBus/internal/wraptokenmanager-tests.js
-# services/serviceBus/apnsservice-tests.js
-# services/serviceBus/apnsservice-registrations-tests.js
-# services/serviceBus/servicebusservice-tests.js
-# services/serviceBus/notificationhubs-tests.js
-# services/serviceBus/wnsservice-tests.js
-# services/serviceBus/wnsservice-registrations-tests.js
-# services/serviceBus/wrapservice-tests.js
-# services/serviceManagement/affinitygroup-tests.js
-# services/serviceManagement/servicebusmanagementservice-tests.js
-# services/serviceManagement/servicemanagementservice-tests.js
-# services/serviceManagement/sqlmanagementservice-tests.js
-# services/table/internal/sharedkeytable-tests.js
-# services/table/internal/sharedkeylitetable-tests.js
-# services/table/batchserviceclient-tests.js
-# services/table/tabledatatype-tests.js
-# services/table/tablequery-tests.js
-# services/table/tableservice-batch-tests.js
-# services/table/tableservice-tablequery-tests.js
-# services/table/tableservice-tests.js
-# services/table/tableservice-gb-tests.js
-# services/sqlAzure/sqlservice-tests.js
-# util/date-tests.js
-# util/edmtype-tests.js
-# util/iso8061date-tests.js
-# util/odatahandler-tests.js
-# util/util-tests.js
-# util/validate-tests.js
-# azure-tests.js
-# services/HDInsight/hdinsight-tests.js
-# services/HDInsight/hdinsight-unit-tests.js
+serviceruntime/roleenvironment-tests.js
+serviceruntime/runtimeversionmanager-tests.js
+serviceruntime/runtimeversionprotocolclient-tests.js
+services/blob/internal/sharedaccesssignature-tests.js
+services/blob/internal/sharedkey-tests.js
+services/blob/internal/sharedkeylite-tests.js
+services/blob/blobservice-tests.js
+services/blob/blobservice-gb-tests.js
+services/blob/filters-tests.js
+services/core/connectionstringparser-tests.js
+services/core/serviceclient-tests.js
+services/core/exponentialretrypolicyfilter-tests.js
+services/core/linearretrypolicyfilter-tests.js
+services/core/servicesettings-tests.js
+services/core/servicebussettings-tests.js
+services/core/servicemanagementsettings-tests.js
+services/core/storageservicesettings-tests.js
+services/queue/queueservice-tests.js
+services/serviceBus/internal/wraptokenmanager-tests.js
+services/serviceBus/apnsservice-tests.js
+services/serviceBus/apnsservice-registrations-tests.js
+services/serviceBus/servicebusservice-tests.js
+services/serviceBus/notificationhubs-tests.js
+services/serviceBus/wnsservice-tests.js
+services/serviceBus/wnsservice-registrations-tests.js
+services/serviceBus/wrapservice-tests.js
+services/serviceManagement/affinitygroup-tests.js
+services/serviceManagement/servicebusmanagementservice-tests.js
+services/serviceManagement/servicemanagementservice-tests.js
+services/serviceManagement/sqlmanagementservice-tests.js
+services/table/internal/sharedkeytable-tests.js
+services/table/internal/sharedkeylitetable-tests.js
+services/table/batchserviceclient-tests.js
+services/table/tabledatatype-tests.js
+services/table/tablequery-tests.js
+services/table/tableservice-batch-tests.js
+services/table/tableservice-tablequery-tests.js
+services/table/tableservice-tests.js
+services/table/tableservice-gb-tests.js
+services/sqlAzure/sqlservice-tests.js
+util/date-tests.js
+util/edmtype-tests.js
+util/iso8061date-tests.js
+util/odatahandler-tests.js
+util/util-tests.js
+util/validate-tests.js
+azure-tests.js
 services/HDInsight/hdinsight-listClusters-unit-tests.js
 services/HDInsight/hdinsight-createCluster-unit-tests.js
+services/HDInsight/hdinsight-deleteCluster-unit-tests.js
 services/HDInsight/namespace-tests.js
+# These tests are waiting for the CI system to get the proper setup.
+# services/HDInsight/hdinsight-tests.js

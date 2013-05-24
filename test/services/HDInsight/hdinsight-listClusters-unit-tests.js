@@ -21,20 +21,22 @@ var _ = require('underscore');
 var testutil = require('../../util/util');
 
 var PerformRequestStubUtil = require('./PerformRequestStubUtil.js');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
 
 var azure = testutil.libRequire('azure');
 var performRequestStubUtil;
 
 describe('HDInsight listClusters (under unit test)', function() {
-  var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
+  var subscriptionId;
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
   var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
-  var hdInsight = azure.createHDInsightService(subscriptionId, auth);
-  var creds;
+  var hdInsight;
+  var hdInsightTestUtils;
 
   beforeEach(function (done) {
     performRequestStubUtil.NoStubProcessRequest();
     done();
+
   });
 
   afterEach(function (done) {
@@ -51,7 +53,11 @@ describe('HDInsight listClusters (under unit test)', function() {
   //       So that we can work on any existing subscription.
   before (function (done) {
     performRequestStubUtil = new PerformRequestStubUtil(HDInsight);
-    done();
+    hdInsightTestUtils = new HDInsightTestUtils(function () {
+      hdInsight = hdInsightTestUtils.getHDInsight();
+      subscriptionId = hdInsightTestUtils.getSubscriptionId();
+      done();
+    });
   });
 
   var goodResult = {

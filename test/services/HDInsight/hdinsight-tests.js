@@ -16,12 +16,27 @@
 var assert = require('assert');
 var mocha = require('mocha');
 var should = require('should');
-var HDInsightTestUtils = require('./hdinsight-test-utils.js');
+var _ = require('underscore');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
+var azureUtil = require('../../../lib/util/util.js');
 
 // Test includes
 var testutil = require('../../util/util');
 
-var azure = testutil.libRequire('azure');
+
+function doPollRequest(operation, validation, callback) {
+  var _callback = function(err, response) {
+    if (!validation(err, response)) {
+      setTimeout(function () {
+        doPollRequest(operation, validation, callback);
+      }, exports.POLL_REQUEST_INTERVAL);
+    }
+    else {
+      callback(err, response);
+    }
+  };
+  operation(_callback);
+}
 
 describe('HDInsight Test', function() {
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
@@ -42,15 +57,46 @@ describe('HDInsight Test', function() {
 
   before (function (done) {
     hdInsightTestUtils = new HDInsightTestUtils(function () {
-      hdInsight = azure.createHDInsightService(hdInsightTestUtils.getDefaultCreds().subscriptionId, auth);
+      hdInsight = hdInsightTestUtils.getHDInsight();
       done();
     });
   });
 
-  it('should be able to create a cluster', function (done) {
+  it('should be able to create and delete a cluster', function (done) {
+    var i = 0;
     var clusterCreationObject = hdInsightTestUtils.getDefaultWithAsvAndMetastores();
     hdInsight.createCluster(clusterCreationObject, function (err, response) {
-      done(err);
+      // poll for the cluster until it's creation is accnowledged.      
+      doPollRequest(function(callback) {
+        // list the clusters
+        hdInsight.listClusters(callback);
+      }, function (err, response) {
+        // enumerate through the clusters...
+        should.exist(response.body.CloudServices.CloudService);
+        response.body.CloudServices.CloudService.should.be.an.instanceOf(Array);
+        for (var i = 0; i < response.body.CloudServices.CloudService.length; i++) {
+          var service = response.body.CloudServices.CloudService[i];
+          should.exist(service);
+          if (!_.isUndefined(service.Resources.Resource)) {
+            service.Resources.Resource.should.be.an.instanceOf(Array);
+            for (var j = 0; j < service.Resources.Resource.length; j++) {
+              var resource = service.Resources.Resource[j];
+              should.exist(resource);
+              should.exist(resource.Name);
+              // if this one is present then we are done.
+              if (resource.Name == clusterCreationObject.name) {
+                return true;
+              }
+            }
+          }
+        }
+        return false;
+      }, function (err, response) {
+        // Then delete the cluster
+        hdInsight.deleteCluster(clusterCreationObject.name, clusterCreationObject.location, function (err, response) {
+          done(err);
+        });
+      });
     });
   });
 
