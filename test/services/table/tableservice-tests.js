@@ -14,6 +14,7 @@
 */
 
 var assert = require('assert');
+var should = require('should');
 var util = require('util');
 
 // Test includes
@@ -249,6 +250,59 @@ suite('tableservice-tests', function () {
             done();
           });
         });
+      });
+    });
+  });
+
+  test('QueryTableWithPrefix', function (done) {
+    var includedTables = [];
+    var excludedTables = [];
+    var i;
+
+    for(i = 0; i < 3; ++i) {
+      includedTables.push(testutil.generateId(tablePrefix + 'inc', tableNames, suiteUtil.isMocked));
+      excludedTables.push(testutil.generateId(tablePrefix + 'not', tableNames, suiteUtil.isMocked));
+    }
+
+    tableService.queryTables(function (queryErrorEmpty, tablesEmpty) {
+      assert.equal(queryErrorEmpty, null);
+      assert.notEqual(tablesEmpty, null);
+
+      var tablesToCreate = includedTables.concat(excludedTables);
+
+      function makeTables(tablesToCreate, callback) {
+        if (tablesToCreate.length === 0) {
+          callback();
+        } else {
+          tableService.createTable(tablesToCreate[0], function (createError, table, createResponse) {
+            assert.equal(createError, null);
+            assert.notEqual(table, null);
+            assert.equal(createResponse.statusCode, HttpConstants.HttpResponseCodes.Created);
+            makeTables(tablesToCreate.slice(1), callback);
+          });
+        }
+      }
+
+      makeTables(tablesToCreate, function () {
+        tableService.queryTables({ prefix: tablePrefix + 'inc' },
+          function (queryError, tables, tablesContinuation, queryResponse) {
+            assert.equal(queryError, null);
+            assert.notEqual(tables, null);
+            assert.ok(queryResponse.isSuccessful);
+            assert.equal(queryResponse.statusCode, HttpConstants.HttpResponseCodes.Ok);
+
+            var entries = includedTables.length;
+            tables.forEach(function (currentTable) {
+              excludedTables.should.not.include(currentTable.TableName);
+              includedTables.should.include(currentTable.TableName);
+              --entries;
+            });
+
+            assert.equal(entries, 0);
+
+            done();
+          }
+        );
       });
     });
   });
