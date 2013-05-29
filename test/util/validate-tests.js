@@ -49,6 +49,12 @@ suite('servicesettings-tests', function () {
       };
     }
 
+    function checkOpen(name) {
+      return function () {
+        Validate.containerNameIsValidForOpen(name);
+      };
+    }
+
     it('should pass for $root', function () {
       check('$root').should.not.throw();
     });
@@ -83,6 +89,9 @@ suite('servicesettings-tests', function () {
       check('Not*(valid)').should.throw();
     });
 
+    it('should pass for $logs when opening', function () {
+      checkOpen('$logs').should.not.throw();
+    });
 
   });
 
