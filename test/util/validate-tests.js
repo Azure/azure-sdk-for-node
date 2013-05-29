@@ -60,39 +60,42 @@ suite('servicesettings-tests', function () {
     });
 
     it('should throw for empty string', function () {
-      check('').should.throw();
+      check('').should.throw(/must be a non empty string/);
     });
 
     it('should throw for non-string', function () {
-      check({a: 1}).should.throw();
+      check({a: 1}).should.throw(/must be a non empty string/);
     });
 
     it('should throw if name starts with "-"', function () {
-      check('-notAName').should.throw();
+      check('-notAName').should.throw(/format is incorrect/);
     });
 
     it('should throw for name containing "--"', function () {
-      check('this--isNotAValidName').should.throw();
+      check('this--isNotAValidName').should.throw(/format is incorrect/);
     });
 
     it('should throw for name that\'s too short', function () {
-      check('ab').should.throw();
+      check('ab').should.throw(/format is incorrect/);
     });
 
     it('should throw for name that\'s too long', function () {
       var name = 'abcdefghijklmnopqrstuvwxyz';
       name += name + name + name + name;
-      check(name).should.throw();
+      check(name).should.throw(/format is incorrect/);
     });
 
     it('should throw for invalid characters', function () {
-      check('Not*(valid)').should.throw();
+      check('Not*(valid)').should.throw(/format is incorrect/);
     });
 
     it('should pass for $logs when opening', function () {
       checkOpen('$logs').should.not.throw();
     });
 
+    it('should throw for $logs when creating', function () {
+      check('$logs').should.throw(/format is incorrect/);
+    });
   });
 
   describe('Namespace validation', function () {
