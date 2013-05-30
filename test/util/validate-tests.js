@@ -53,6 +53,10 @@ suite('servicesettings-tests', function () {
       check('$root').should.not.throw();
     });
 
+    it('should pass for a valid name', function () {
+      check('avalidname').should.not.throw();
+    });
+
     it('should throw for empty string', function () {
       check('').should.throw(/must be a non empty string/);
     });
