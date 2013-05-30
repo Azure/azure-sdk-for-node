@@ -42,6 +42,56 @@ suite('servicesettings-tests', function () {
     });
   });
 
+  describe('Blob container validation', function () {
+    function check(name) {
+      return function () {
+        Validate.containerNameIsValid(name);
+      };
+    }
+
+    it('should pass for $root', function () {
+      check('$root').should.not.throw();
+    });
+
+    it('should pass for a valid name', function () {
+      check('avalidname').should.not.throw();
+    });
+
+    it('should throw for empty string', function () {
+      check('').should.throw(/must be a non empty string/);
+    });
+
+    it('should throw for non-string', function () {
+      check({a: 1}).should.throw(/must be a non empty string/);
+    });
+
+    it('should throw if name starts with "-"', function () {
+      check('-notAName').should.throw(/format is incorrect/);
+    });
+
+    it('should throw for name containing "--"', function () {
+      check('this--isNotAValidName').should.throw(/format is incorrect/);
+    });
+
+    it('should throw for name that\'s too short', function () {
+      check('ab').should.throw(/format is incorrect/);
+    });
+
+    it('should throw for name that\'s too long', function () {
+      var name = 'abcdefghijklmnopqrstuvwxyz';
+      name += name + name + name + name;
+      check(name).should.throw(/format is incorrect/);
+    });
+
+    it('should throw for invalid characters', function () {
+      check('Not*(valid)').should.throw(/format is incorrect/);
+    });
+
+    it('should pass for $logs', function () {
+      check('$logs').should.not.throw();
+    });
+  });
+
   describe('Namespace validation', function () {
     it('should pass on valid name', function() {
       (function() { Validate.namespaceNameIsValid('aValidNamespace'); })
@@ -49,7 +99,7 @@ suite('servicesettings-tests', function () {
     });
 
     it('should fail if name is too short', function () {
-      (function() { Validate.namespaceNameIsValid("a"); })  
+      (function() { Validate.namespaceNameIsValid("a"); })
         .should.throw(/6 to 50/);
     });
 
