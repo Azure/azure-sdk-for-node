@@ -90,7 +90,7 @@ describe('APNS notifications registrations', function () {
           apns: {
             ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
             CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
-            Endpoint: 'gateway.push.apple.com'
+            Endpoint: 'pushtestservice2.cloudapp.net'
           }
         }, done);
     });
