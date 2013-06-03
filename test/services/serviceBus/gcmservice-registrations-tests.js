@@ -89,7 +89,7 @@ describe('GCM notifications registrations', function () {
       service.createNotificationHub(hubName, {
           gcm: {
             GoogleApiKey: process.env.AZURE_GCM_KEY,
-            GcmEndpoint: 'https://android.googleapis.com/gcm/send'
+            GcmEndpoint: 'http://pushtestservice2.cloudapp.net/gcm/send'
           }
         }, done);
     });
