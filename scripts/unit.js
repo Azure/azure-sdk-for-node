@@ -96,6 +96,8 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
   process.env.AZURE_WNS_PACKAGE_SID = 'sid';
   process.env.AZURE_WNS_SECRET_KEY = 'key';
 
+  process.env.AZURE_GCM_KEY = 'fakekey'.toString('base64');
+
   if (process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
     process.env.AZURE_STORAGE_ACCOUNT = defaultStorageAccount;
   }
