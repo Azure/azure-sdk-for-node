@@ -84,7 +84,8 @@ describe('WNS notifications', function () {
       service.createNotificationHub(hubName, {
         wns: {
           PackageSid: process.env.AZURE_WNS_PACKAGE_SID,
-          SecretKey: process.env.AZURE_WNS_SECRET_KEY
+          SecretKey: process.env.AZURE_WNS_SECRET_KEY,
+          WindowsLiveEndpoint: 'http://pushtestservice2.cloudapp.net/LiveID/accesstoken.srf'
         }
       }, done);
     });
