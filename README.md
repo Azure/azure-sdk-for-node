@@ -11,6 +11,8 @@ This project provides a Node.js package that makes it easy to access Windows Azu
     * create, list, and delete containers, work with container metadata and permissions, list blobs in container
     * create block and page blobs (from a stream, a file, or a string), work with blob blocks and pages, delete blobs
     * work with blob properties, metadata, leases, snapshot a blob
+* HD Insight
+    * create, list and delete HDInsight clusters
 * Storage Queues
     * create, list, and delete queues, and work with queue metadata
     * create, get, peek, update, delete messages

@@ -1,4 +1,7 @@
-2012.05.15 Version 0.7.5
+2013.05.30 Version 0.7.6
+* Added list, delete and create cluster operations for HD Insight.
+
+2013.05.15 Version 0.7.5
 * Fixed registration hubs issue with requiring access key when shared key was provided.
 * Fixed registration hubs issue with listByTag, Channel and device token
 
