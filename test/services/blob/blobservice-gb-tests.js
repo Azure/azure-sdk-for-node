@@ -35,7 +35,9 @@ var suiteUtil;
 
 describe('BlobService', function () {
   before(function (done) {
-    blobService = azure.createBlobService();
+    blobService = azure.createBlobService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
+
     suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
     suiteUtil.setupSuite(done);
   });

@@ -51,6 +51,7 @@ var testPrefix = 'servicebusservice-tests';
 suite('servicebusservice-tests', function () {
   suiteSetup(function (done) {
     serviceBusService = azure.createServiceBusService();
+
     suiteUtil = servicebustestutil.createServiceBusTestUtils(serviceBusService, testPrefix);
     suiteUtil.setupSuite(done);
   });

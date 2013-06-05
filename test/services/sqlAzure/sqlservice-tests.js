@@ -48,7 +48,8 @@ describe('SQL Azure Database', function () {
     }
 
     serviceManagement = azure.createSqlManagementService(
-      subscriptionId, auth, hostOptions);
+      subscriptionId, auth, hostOptions)
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
 
     suiteUtil = new MockedTestUtils(serviceManagement, testPrefix);
     suiteUtil.setupSuite(done);
