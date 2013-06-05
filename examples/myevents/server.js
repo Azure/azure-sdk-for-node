@@ -13,7 +13,7 @@ var app = module.exports = express.createServer();
 
 var tableClient = azure.createTableService('UseDevelopmentStorage=true'); 
 var blobClient = azure.createBlobService('UseDevelopmentStorage=true').withFilter(new azure.ExponentialRetryPolicyFilter());
- 
+
 // Create table and blob
 tableClient.createTableIfNotExists('events', function(error) { 
   if (error) {

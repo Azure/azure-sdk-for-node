@@ -36,7 +36,9 @@ describe('Notification hubs', function () {
   var suiteUtil;
 
   before(function (done) {
-    service = azure.createServiceBusService();
+    service = azure.createServiceBusService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
+
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
   });
