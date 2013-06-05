@@ -36,7 +36,9 @@ var testPrefix = 'wrapservice-tests';
 
 suite('wrapservice-tests', function() {
   suiteSetup(function (done) {
-    wrapService = new WrapService();
+    wrapService = new WrapService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
+
     suiteUtil = wrapservicetestutil.createWrapServiceTestUtils(wrapService, testPrefix);
     suiteUtil.setupSuite(done);
   });
