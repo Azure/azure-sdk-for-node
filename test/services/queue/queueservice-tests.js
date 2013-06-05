@@ -38,7 +38,9 @@ var suiteUtil;
 
 suite('queueservice-tests', function () {
   suiteSetup(function (done) {
-    queueService = azure.createQueueService();
+    queueService = azure.createQueueService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
+
     suiteUtil = queuetestutil.createQueueTestUtils(queueService, testPrefix);
     suiteUtil.setupSuite(done);
   });
