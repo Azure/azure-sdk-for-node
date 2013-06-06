@@ -269,7 +269,7 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
 
 ## Notification Hubs
 
-Notification hubs allow you to send notifications to WNS and APNS receivers.
+Notification hubs allow you to send notifications to WNS, APNS, and GCM receivers.
 
 To create a notification hub, use the method **createNotificationHub**.
 
@@ -283,7 +283,7 @@ serviceBusService.createNotificationHub('hubName', function (err) {
 });
 ```
 
-To send messages to the notification hub use the methods of the **wns** or **apns** objects. For a full reference on WNS method templates, check http://msdn.microsoft.com/en-us/library/windows/apps/hh779725.aspx.
+To send messages to the notification hub use the methods of the **wns**, **apns**, or **gcm** objects. For a full reference on WNS method templates, check http://msdn.microsoft.com/en-us/library/windows/apps/hh779725.aspx.
 
 ```JavaScript
 var notificationHubService = azure.createNotificationHubService('hubName');
@@ -313,6 +313,17 @@ notificationHubService.apns.send(
     function (error) {
         if (!error) {
             // message sent successfully
+        }
+    });
+
+notificationHubService.gcm.send(
+    null,
+    {
+        data: { message: 'Here is a message' }
+    },
+    function (error) {
+        if (!error) {
+            //message send successfully
         }
     });
 ```
