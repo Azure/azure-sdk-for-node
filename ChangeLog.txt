@@ -1,3 +1,9 @@
+2013.06.06 Version 0.7.7
+* Added support for Android notification through Service Bus Notification Hubs
+* Support prefixes when listing tables
+* Support '$logs' as a valid blob container name to support reading diagnostic information
+* Fix for network configuration serialization for subnets
+
 2013.05.30 Version 0.7.6
 * Added list, delete and create cluster operations for HD Insight.
 
