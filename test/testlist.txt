@@ -19,6 +19,8 @@ services/queue/queueservice-tests.js
 services/serviceBus/internal/wraptokenmanager-tests.js
 services/serviceBus/apnsservice-tests.js
 services/serviceBus/apnsservice-registrations-tests.js
+services/serviceBus/gcmservice-tests.js
+services/serviceBus/gcmservice-registrations-tests.js
 services/serviceBus/servicebusservice-tests.js
 services/serviceBus/notificationhubs-tests.js
 services/serviceBus/wnsservice-tests.js
