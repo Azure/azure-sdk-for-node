@@ -86,6 +86,33 @@ describe('HDInsight createCluster (under unit test)', function() {
     });
   });
 
+  it('should pass the correct locate to getNameSpace', function(done) {
+    performRequestStubUtil.StubAuthenticationFailed('http://test');
+    var clusterCreationObject = {
+      name : 'test',
+      location : 'Botamazu',
+      defaultStorageAccountName : 'test',
+      defaultStorageAccountKey : 'KEY',
+      defaultStorageContainer : 'deploy1',
+      user : 'user',
+      password : 'password',
+      nodes : 4,
+    };
+    should.exist(azureUtil);
+    should.exist(azureUtil.getNameSpace);
+    var originalFunction = azureUtil.getNameSpace;
+    should.exist(azureUtil);
+    var actualLocation = 'unspecified';
+    azureUtil.getNameSpace = function(subscriptionId, prefix, location) {
+      actualLocation = location;
+    }
+    hdInsight.createCluster(clusterCreationObject, function(err, response) {
+      azureUtil.getNameSpace = originalFunction;
+      actualLocation.should.be.eql(clusterCreationObject.location);
+      done(null);
+    });
+  });
+
   it('should validate the name field of the clusterCreationObject is not undefined', function() {
     performRequestStubUtil.StubAuthenticationFailed('http://test');
     var clusterCreationObject = {};

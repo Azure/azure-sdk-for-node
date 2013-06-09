@@ -17,7 +17,7 @@
 var azureUtil = require('../../../lib/util/util.js');
 
 // Test includes
-var assert = require('assert');
+var should = require('should');
 
 describe('HDInsight Namespace Test', function() {
 
@@ -25,27 +25,32 @@ describe('HDInsight Namespace Test', function() {
     var subscriptionId = '0bf0b5da-dc38-4795-8595-3170ffefec48';
     var expected = 'hdinsightC2D4FSA77HSYSQLRU4V73NKI3YH2OYHQXACMRGPECIHSH7FXTUAQ-East-US';
     var result = azureUtil.getNameSpace(subscriptionId, 'hdinsight', 'East US');
-    assert.equal(expected, result);
+    result.should.be.eql(expected);
 
     subscriptionId = 'c72f7fde-36ec-4cdf-93bf-43f90fe5373a';
     expected = 'hdinsightGTUVH76U5MNNGTJEFMKSGQMQO7AFBW52LMZPQ22R6UUXVWBDRBVA-East-US';
     result = azureUtil.getNameSpace(subscriptionId, 'hdinsight', 'East US');
-    assert.equal(expected, result);
+    result.should.be.eql(expected);
 
     subscriptionId = '04066490-336b-4732-adfa-90ba5422cc84';
     expected = 'hdinsightXVS5S5SBDTTR7OJ4IOKGRTFM2M3P33KWPGP5SPYDJZYUMY73KOIQ-East-US';
     result = azureUtil.getNameSpace(subscriptionId, 'hdinsight', 'East US');
-    assert.equal(expected, result);
+    result.should.be.eql(expected);
 
     subscriptionId = '3cfbb7fc-1347-4eff-bf07-2e1f43084b00';
     expected = 'hdinsightVXFY2XGLQTT5PCJCDRKJXWE2W2PQZOJK3NLO4QSNHEKS32E6RM5A-East-US';
     result = azureUtil.getNameSpace(subscriptionId, 'hdinsight', 'East US');
-    assert.equal(expected, result);
+    result.should.be.eql(expected);
 
     subscriptionId = 'ee3733c1-5ebd-4a20-95ce-17dba36a071a';
     expected = 'hdinsightLDBRGOYTMVIJZ2ZAJZZTFFJD7N3MNFCJGONZO53VLK2V5GIEU2SQ-East-US';
     result = azureUtil.getNameSpace(subscriptionId, 'hdinsight', 'East US');
-    assert.equal(expected, result);
+    result.should.be.eql(expected);
+
+    subscriptionId = 'ee3733c1-5ebd-4a20-95ce-17dba36a071a';
+    expected = 'hdinsightLDBRGOYTMVIJZ2ZAJZZTFFJD7N3MNFCJGONZO53VLK2V5GIEU2SQ-East-US-2';
+    result = azureUtil.getNameSpace(subscriptionId, 'hdinsight', 'East US 2');
+    result.should.be.eql(expected);
 
     done();
   });
