@@ -18,6 +18,7 @@ var url = require('url');
 
 var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
+var EnvironmentVariables = testutil.libRequire('services/core/serviceclient').EnvironmentVariables;
 var Constants = azure.Constants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var ServiceBusSettings = azure.ServiceBusSettings;
@@ -92,33 +93,29 @@ suite('servicebussettings-tests', function () {
 
   test('testCreateFromConfigWithNoConfigUsesDefault', function () {
     var expected = new ExpectedConnectionString('namespacefromdefault', 'wrapnamefromdefault', 'passwordfromdefault');
-    var originalEnvironment = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'testenvironment';
+    var origEnv = process.env.NODE_ENV;
+    withEnvironment('NODE_ENV', function () {
+      process.env.NODE_ENV = 'testenvironment';
 
-    azure.configure('testenvironment', function (c) {
-      c.set('service bus connection string', expected.connectionString);
-    });
+      azure.configure('testenvironment', function (c) {
+        c.set('service bus connection string', expected.connectionString);
+      });
 
-    try {
       var actual = ServiceBusSettings.createFromConfig();
 
       expected.shouldMatchSettings(actual);
-    } finally {
-      process.env.NODE_ENV = originalEnvironment;
-    }
+    });
   });
 
   test('testCreateFromConfigWithNoSettingFallsBackToEnvironmentVariable', function () {
     var expected = new ExpectedConnectionString('namespacefromenv', 'wrapnameenv', 'passwordenv');
-    var originalVar = process.env.AZURE_SERVICEBUS_CONNECTIONSTRING;
-    process.env.AZURE_SERVICEBUS_CONNECTIONSTRING = expected.connectionString;
-    try {
+    withEnvironment('AZURE_SERVICEBUS_CONNECTION_STRING', function () {
+      process.env.AZURE_SERVICEBUS_CONNECTION_STRING = expected.connectionString;
+
       var actual = ServiceBusSettings.createFromConfig();
 
       expected.shouldMatchSettings(actual);
-    } finally {
-      process.env.AZURE_SERVICBUS_CONNECTIONSTRING = originalVar;
-    }
+    });
   });
 });
 
@@ -139,4 +136,24 @@ ExpectedConnectionString.prototype.shouldMatchSettings = function (settings) {
     settings._wrapName.should.equal(this.expectedWrapName);
     settings._wrapPassword.should.equal(this.expectedWrapPassword);
     settings._wrapEndpointUri.should.equal(this.expectedWrapEndpointUri);
+}
+
+// Helper function to save & restore the contents of the
+// process environment variables for a test
+function withEnvironment() {
+  var originalValues = [];
+  var i;
+  var testFunction = arguments[arguments.length - 1];
+
+  for (i = 0; i < arguments.length - 1; ++i) {
+    originalValues.push(process.env[arguments[i]]);
+  }
+
+  try {
+    testFunction();
+  } finally {
+    for (i = 0; i < arguments.length - 1; ++i) {
+      process.env[arguments[i]] = originalValues[i];
+    }
+  }
 }
