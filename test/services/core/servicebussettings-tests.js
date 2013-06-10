@@ -25,22 +25,13 @@ var ServiceBusSettings = azure.ServiceBusSettings;
 suite('servicebussettings-tests', function () {
   test('testCreateFromConnectionStringWithServiceBusAutomaticCase', function () {
     // Setup
-    var expectedNamespace = 'mynamespace';
-    var expectedServiceBusEndpoint = 'https://' + expectedNamespace + '.servicebus.windows.net';
-    var expectedWrapName = 'myname';
-    var expectedWrapPassword = 'mypassword';
-    var expectedWrapEndpointUri = 'https://' + expectedNamespace + '-sb.accesscontrol.windows.net:443/WRAPv0.9';
-    var connectionString = 'Endpoint=' + expectedServiceBusEndpoint + ';SharedSecretIssuer=' + expectedWrapName + ';SharedSecretValue=' + expectedWrapPassword;
+    var expected = new ExpectedConnectionString('mynamespace', 'myname', 'mypassword');
 
     // Test
-    var actual = ServiceBusSettings.createFromConnectionString(connectionString);
+    var actual = ServiceBusSettings.createFromConnectionString(expected.connectionString);
 
     // Assert
-    actual._namespace.should.equal(expectedNamespace);
-    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint);
-    actual._wrapName.should.equal(expectedWrapName);
-    actual._wrapPassword.should.equal(expectedWrapPassword);
-    actual._wrapEndpointUri.should.equal(expectedWrapEndpointUri);
+    expected.shouldMatchSettings(actual);
   });
 
   test('testCreateFromConnectionStringWithMissingServiceBusEndpointFail', function () {
@@ -97,6 +88,37 @@ suite('servicebussettings-tests', function () {
 
     // Assert
     expected.shouldMatchSettings(actual);
+  });
+
+  test('testCreateFromConfigWithNoConfigUsesDefault', function () {
+    var expected = new ExpectedConnectionString('namespacefromdefault', 'wrapnamefromdefault', 'passwordfromdefault');
+    var originalEnvironment = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'testenvironment';
+
+    azure.configure('testenvironment', function (c) {
+      c.set('service bus connection string', expected.connectionString);
+    });
+
+    try {
+      var actual = ServiceBusSettings.createFromConfig();
+
+      expected.shouldMatchSettings(actual);
+    } finally {
+      process.env.NODE_ENV = originalEnvironment;
+    }
+  });
+
+  test('testCreateFromConfigWithNoSettingFallsBackToEnvironmentVariable', function () {
+    var expected = new ExpectedConnectionString('namespacefromenv', 'wrapnameenv', 'passwordenv');
+    var originalVar = process.env.AZURE_SERVICEBUS_CONNECTIONSTRING;
+    process.env.AZURE_SERVICEBUS_CONNECTIONSTRING = expected.connectionString;
+    try {
+      var actual = ServiceBusSettings.createFromConfig();
+
+      expected.shouldMatchSettings(actual);
+    } finally {
+      process.env.AZURE_SERVICBUS_CONNECTIONSTRING = originalVar;
+    }
   });
 });
 
