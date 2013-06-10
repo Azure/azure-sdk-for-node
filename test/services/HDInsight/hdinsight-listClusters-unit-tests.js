@@ -117,12 +117,11 @@ describe('HDInsight listClusters (under unit test)', function() {
     performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', singleResult);
     hdInsight.listClusters(function (err, response) {
       should.not.exist(err);
-      should.exist(response.body.CloudServices.CloudService);
-      _.isArray(response.body.CloudServices.CloudService).should.be.eql(true);
-      response.body.CloudServices.CloudService.length.should.be.eql(1);
-      should.exist(response.body.CloudServices.CloudService[0].Resources.Resource);
-      _.isArray(response.body.CloudServices.CloudService).should.be.eql(true);
-      response.body.CloudServices.CloudService.length.should.be.eql(1);
+      should.exist(response.body.clusters);
+      _.isArray(response.body.clusters).should.be.eql(true);
+      response.body.clusters.length.should.be.eql(1);
+      should.exist(response.body.clusters[0]);
+      response.body.clusters[0].Name.should.be.eql('tsthdx00hdxcibld02');
       done(err);
     });
   });
@@ -141,26 +140,16 @@ describe('HDInsight listClusters (under unit test)', function() {
     });
   });
 
-  it('should remove CloudServices not related to HDInsight', function (done) {
+  it('should remove CloudServices and resources not related to HDInsight', function (done) {
     performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', goodResult);
     hdInsight.listClusters(function (err, response) {
       should.not.exist(err);
-      should.exist(response.body.CloudServices.CloudService);
-      response.body.CloudServices.CloudService.length.should.eql(1);
-      response.body.CloudServices.CloudService[0].Name.should.eql('hdinsightHRIEVKWCABCRT3AK64SGDGFJDR7EM64QV4T5UXU23MU6ZPCWG5NQ-East-US-2');
+      should.exist(response.body.clusters);
+      _.isArray(response.body.clusters).should.be.eql(true);
+      response.body.clusters.length.should.be.eql(1);
+      should.exist(response.body.clusters[0]);
+      response.body.clusters[0].Name.should.be.eql('tsthdx00hdxcibld02');
       done(err);
     });
   });
-
-  it('should remove resources not representing a cluster', function (done) {
-    performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', goodResult);
-    hdInsight.listClusters(function (err, response) {
-      should.not.exist(err);
-      should.exist(response.body.CloudServices.CloudService);
-      response.body.CloudServices.CloudService[0].Resources.Resource.length.should.eql(1);
-      response.body.CloudServices.CloudService[0].Resources.Resource[0].Name.should.eql('tsthdx00hdxcibld02');
-      done(err);
-    });
-  });
-
 });
