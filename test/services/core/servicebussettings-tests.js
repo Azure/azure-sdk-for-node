@@ -15,6 +15,7 @@
 
 var should = require('should');
 var url = require('url');
+var _ = require('underscore');
 
 var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
@@ -93,10 +94,7 @@ suite('servicebussettings-tests', function () {
 
   test('testCreateFromConfigWithNoConfigUsesDefault', function () {
     var expected = new ExpectedConnectionString('namespacefromdefault', 'wrapnamefromdefault', 'passwordfromdefault');
-    var origEnv = process.env.NODE_ENV;
-    withEnvironment('NODE_ENV', function () {
-      process.env.NODE_ENV = 'testenvironment';
-
+    withEnvironment( { NODE_ENV: 'testenvironment' }, function () {
       azure.configure('testenvironment', function (c) {
         c.set('service bus connection string', expected.connectionString);
       });
@@ -109,13 +107,34 @@ suite('servicebussettings-tests', function () {
 
   test('testCreateFromConfigWithNoSettingFallsBackToEnvironmentVariable', function () {
     var expected = new ExpectedConnectionString('namespacefromenv', 'wrapnameenv', 'passwordenv');
-    withEnvironment('AZURE_SERVICEBUS_CONNECTION_STRING', function () {
-      process.env.AZURE_SERVICEBUS_CONNECTION_STRING = expected.connectionString;
-
+    withEnvironment({ AZURE_SERVICEBUS_CONNECTION_STRING: expected.connectionString },
+     function () {
       var actual = ServiceBusSettings.createFromConfig();
 
       expected.shouldMatchSettings(actual);
     });
+  });
+
+  test('testCreateFromConfigWithNoSettingFallsBackToOldEnvironmentVariables', function () {
+    var expected = new ExpectedConnectionString('mynamespace', 'mywrap', 'mysecret');
+    withEnvironment({
+        AZURE_SERVICEBUS_NAMESPACE: 'mynamespace',
+        AZURE_SERVICEBUS_ISSUER: 'mywrap',
+        AZURE_SERVICEBUS_ACCESS_KEY: 'mysecret'
+      }, function () {
+        var actual = ServiceBusSettings.createFromConfig();
+        expected.shouldMatchSettings(actual);
+      }
+    );
+  });
+
+  test('testCreateFromConfigWithIncompleteEnvironmentThrows', function () {
+    withEnvironment({ AZURE_SERVICEBUS_NAMESPACE: 'mynamespace' },
+      function () {
+        (function () {
+          ServiceBusSettings.createFromConfig();
+        }).should.throw(/Cannot find correct Service Bus settings in configuration or environment/);
+      });
   });
 });
 
@@ -132,6 +151,9 @@ function ExpectedConnectionString(namespace, wrapName, wrapPassword) {
 
 ExpectedConnectionString.prototype.shouldMatchSettings = function (settings) {
     settings._namespace.should.equal(this.expectedNamespace);
+    if (settings._serviceBusEndpointUri.match(/:443$/)) {
+      this.expectedServiceBusEndpoint += ':443';
+    }
     settings._serviceBusEndpointUri.should.equal(this.expectedServiceBusEndpoint);
     settings._wrapName.should.equal(this.expectedWrapName);
     settings._wrapPassword.should.equal(this.expectedWrapPassword);
@@ -140,20 +162,19 @@ ExpectedConnectionString.prototype.shouldMatchSettings = function (settings) {
 
 // Helper function to save & restore the contents of the
 // process environment variables for a test
-function withEnvironment() {
-  var originalValues = [];
-  var i;
-  var testFunction = arguments[arguments.length - 1];
-
-  for (i = 0; i < arguments.length - 1; ++i) {
-    originalValues.push(process.env[arguments[i]]);
-  }
-
+function withEnvironment(values, testFunction) {
+  var keys = Object.keys(values);
+  var originalValues = keys.map(function (key) { return process.env[key]; } );
+  _.extend(process.env, values);
   try {
     testFunction();
   } finally {
-    for (i = 0; i < arguments.length - 1; ++i) {
-      process.env[arguments[i]] = originalValues[i];
-    }
+    _.zip(keys, originalValues).forEach(function (oldVal) {
+      if (_.isUndefined(oldVal[1])) {
+        delete process.env[oldVal[0]];
+      } else {
+        process.env[oldVal[0]] = oldVal[1];
+      }
+    });
   }
 }
