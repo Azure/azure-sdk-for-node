@@ -14,6 +14,7 @@
 */
 
 var mocha = require('mocha');
+var sinon = require('sinon');
 var should = require('should');
 var _ = require('underscore');
 var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
@@ -83,6 +84,30 @@ describe('HDInsight createCluster (under unit test)', function() {
       webResource.headers['x-ms-version'].should.be.eql('2011-08-18');
       webResource.headers['accept'].should.be.eql('application/xml');
       done(err);
+    });
+  });
+
+  it('should pass the correct locate to getNameSpace', function(done) {
+    performRequestStubUtil.StubAuthenticationFailed('http://test');
+    var clusterCreationObject = {
+      name : 'test',
+      location : 'Botamazu',
+      defaultStorageAccountName : 'test',
+      defaultStorageAccountKey : 'KEY',
+      defaultStorageContainer : 'deploy1',
+      user : 'user',
+      password : 'password',
+      nodes : 4,
+    };
+    should.exist(azureUtil);
+    should.exist(azureUtil.getNameSpace);
+    should.exist(azureUtil);
+    var actualLocation = 'unspecified';
+    var spy = sinon.spy(azureUtil, 'getNameSpace');
+    hdInsight.createCluster(clusterCreationObject, function(err, response) {
+      spy.restore();
+      spy.lastCall.args[2].should.be.eql(clusterCreationObject.location);
+      done(null);
     });
   });
 
