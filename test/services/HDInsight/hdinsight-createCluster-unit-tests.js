@@ -14,6 +14,7 @@
 */
 
 var mocha = require('mocha');
+var sinon = require('sinon');
 var should = require('should');
 var _ = require('underscore');
 var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
@@ -100,15 +101,12 @@ describe('HDInsight createCluster (under unit test)', function() {
     };
     should.exist(azureUtil);
     should.exist(azureUtil.getNameSpace);
-    var originalFunction = azureUtil.getNameSpace;
     should.exist(azureUtil);
     var actualLocation = 'unspecified';
-    azureUtil.getNameSpace = function(subscriptionId, prefix, location) {
-      actualLocation = location;
-    }
+    var spy = sinon.spy(azureUtil, 'getNameSpace');
     hdInsight.createCluster(clusterCreationObject, function(err, response) {
-      azureUtil.getNameSpace = originalFunction;
-      actualLocation.should.be.eql(clusterCreationObject.location);
+      spy.restore();
+      spy.lastCall.args[2].should.be.eql(clusterCreationObject.location);
       done(null);
     });
   });

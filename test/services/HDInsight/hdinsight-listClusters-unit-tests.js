@@ -145,8 +145,8 @@ describe('HDInsight listClusters (under unit test)', function() {
     hdInsight.listClusters(function (err, response) {
       should.not.exist(err);
       should.exist(response.body.clusters);
-      _.isArray(response.body.clusters).should.be.eql(true);
-      response.body.clusters.length.should.be.eql(1);
+      _.isArray(response.body.clusters).should.be.true;
+      response.body.clusters.length.should.be.equal(1);
       should.exist(response.body.clusters[0]);
       response.body.clusters[0].Name.should.be.eql('tsthdx00hdxcibld02');
       done(err);
