@@ -1625,7 +1625,6 @@ suite('servicebusservice-tests', function () {
       });
     });
 
-    console.log(azure.config('testInvalidAccessKeyGivesError').get('service bus connection string'));
     var serviceBusService = azure.createServiceBusService(azure.config('testInvalidAccessKeyGivesError'));
     suiteUtil.setupService(serviceBusService);
 
