@@ -46,7 +46,6 @@ util/iso8061date-tests.js
 util/odatahandler-tests.js
 util/util-tests.js
 util/validate-tests.js
-util/config-tests.js
 azure-tests.js
 services/HDInsight/hdinsight-listClusters-unit-tests.js
 services/HDInsight/hdinsight-createCluster-unit-tests.js
