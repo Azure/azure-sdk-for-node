@@ -915,7 +915,7 @@ suite('servicebusservice-tests', function () {
             assert.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration.toString());
             assert.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions.toString());
             assert.equal(subscription2.AutoDeleteOnIdle, subscriptionOptions.AutoDeleteOnIdle.toString());
-            
+
             // duplicate subscription
             serviceBusService.createSubscription(topicName, subscriptionName1, function (subscriptionError, duplicateSubscription) {
               assert.notEqual(subscriptionError, null);
@@ -1618,7 +1618,15 @@ suite('servicebusservice-tests', function () {
   });
 
   test('invalidAccessKeyGivesError', function (done) {
-    var serviceBusService = azure.createServiceBusService(process.env['AZURE_SERVICEBUS_NAMESPACE'], 'key');
+    azure.configure('testInvalidAccessKeyGivesError', function (c) {
+      c.serviceBus({
+        namespace: process.env['AZURE_SERVICEBUS_NAMESPACE'],
+        key: 'key'
+      });
+    });
+
+    console.log(azure.config('testInvalidAccessKeyGivesError').get('service bus connection string'));
+    var serviceBusService = azure.createServiceBusService(azure.config('testInvalidAccessKeyGivesError'));
     suiteUtil.setupService(serviceBusService);
 
     // fails, with an error on the callback.

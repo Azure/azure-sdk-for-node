@@ -129,8 +129,14 @@ suite('servicebussettings-tests', function () {
   });
 
   test('testCreateFromConfigWithIncompleteEnvironmentThrows', function () {
-    withEnvironment({ AZURE_SERVICEBUS_NAMESPACE: 'mynamespace' },
+    withEnvironment({
+      AZURE_SERVICEBUS_NAMESPACE: 'mynamespace',
+      AZURE_SERVICEBUS_ISSUER: null,
+      AZURE_SERVICEBUS_ACCESS_KEY: null
+    },
       function () {
+        delete process.env.AZURE_SERVICEBUS_ISSUER;
+        delete process.env.AZURE_SERVICEBUS_ACCESS_KEY;
         (function () {
           ServiceBusSettings.createFromConfig();
         }).should.throw(/Cannot find correct Service Bus settings in configuration or environment/);
