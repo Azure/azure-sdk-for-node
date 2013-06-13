@@ -36,7 +36,8 @@ var tablePrefix = 'tablecont';
 
 suite('querytablesresultcontinuation-tests', function () {
   setup(function (done) {
-    tableService = azure.createTableService();
+    tableService = azure.createTableService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
 
     done();
   });

@@ -5,57 +5,57 @@ var result =
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue1%253fapi-version%253d2013-04%26ExpiresOn%3d1366458897%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3deuAF%252flmSnuyi98Pa1R%252bq54zvvjVP%252f%252bwA%252fqy4%252f3WCkAs%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue1%253fapi-version%253d2013-04%26ExpiresOn%3d1370424737%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dWFrNIYnOsPO1WKDoYdPIIy2bsTCusQp%252fzztLAm%252fHcJo%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd4e49399-ad93-4d4c-bacd-97fff57870e5',
+  'request-id': '1afaa9bb-66ad-4fe9-b247-a5055f8a7e6c',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:34:57 GMT',
-  'content-length': '589' });
+  date: 'Wed, 05 Jun 2013 09:12:17 GMT',
+  'content-length': '573' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue1?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue1?api-version=2013-04</id><title type=\"text\">sbqueue1</title><published>2013-04-20T11:34:59Z</published><updated>2013-04-20T11:34:59Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue1?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue1?api-version=2013-04</id><title type=\"text\">sbqueue1</title><published>2013-06-05T09:12:12Z</published><updated>2013-06-05T09:12:12Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue1?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:34:59 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue1?api-version=2013-04', '*')
-  .reply(409, "<Error><Code>409</Code><Detail>Conflict.TrackingId:e9f0d480-1682-4be8-8cc8-ae913a410973_G1,TimeStamp:4/20/2013 11:35:01 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(409, "<Error><Code>409</Code><Detail>Conflict.TrackingId:606a654f-2dc4-4560-a9c5-81aaacd3b45e_G7,TimeStamp:6/5/2013 9:12:14 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:00 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fQueues%253fapi-version%253d2013-04%26ExpiresOn%3d1366458901%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8nwicw1O%252bF3xiJhDli8H2MVJOhs3UMfMU64goD%252fYjFI%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fQueues%253fapi-version%253d2013-04%26ExpiresOn%3d1370424745%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dvu39KE9oyZ9eO6c1%252bmm%252bEHcSduV5AGc%252fooWjw%252fQQ0YE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'a0680b68-2a71-408a-868c-ae0da8641433',
+  'request-id': 'd3e28b45-b870-41a9-808c-6f4724395c9c',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:01 GMT',
-  'content-length': '590' });
+  date: 'Wed, 05 Jun 2013 09:12:25 GMT',
+  'content-length': '598' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:35:03Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue1?api-version=2013-04</id><title type=\"text\">sbqueue1</title><published>2013-04-20T11:34:59Z</published><updated>2013-04-20T11:34:59Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue1?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:34:59.59Z</CreatedAt><UpdatedAt>2013-04-20T11:34:59.673Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:12:28Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue1?api-version=2013-04</id><title type=\"text\">sbqueue1</title><published>2013-06-05T09:12:12Z</published><updated>2013-06-05T09:12:12Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue1?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:12:12.263Z</CreatedAt><UpdatedAt>2013-06-05T09:12:12.43Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:03 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -63,82 +63,82 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue1?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:04 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fTopics%253fapi-version%253d2013-04%26ExpiresOn%3d1366458906%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dFkJAYaZDmJvupNhbIDxvMCP083hWSWjqq82Ughm%252b994%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fTopics%253fapi-version%253d2013-04%26ExpiresOn%3d1370424753%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d64EW6%252fF%252bBmB9N9DTBlouaI%252b7vxAmHecQNTCebxuJ3j8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '0fcefc11-947b-4375-b8ce-e70f5e347b4a',
+  'request-id': '284bf0d2-ec27-4752-b0bd-bda9931214a6',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:06 GMT',
-  'content-length': '586' });
+  date: 'Wed, 05 Jun 2013 09:12:32 GMT',
+  'content-length': '594' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:35:07Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:12:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:07 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:52 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue2%253fapi-version%253d2013-04%26ExpiresOn%3d1366458909%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dOxSKkagxGeyZZ%252bCx%252fVo8EUIvobIJ5A%252bJ3StVU%252fpKLZo%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue2%253fapi-version%253d2013-04%26ExpiresOn%3d1370424768%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252fDo3bKdBsozP8OZ%252fz4zHzjoAoowRGEq3Ng%252b9ah1ZNkc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '314ac631-7b53-4dca-93a9-c0ea93e8c0ef',
+  'request-id': 'ca5a432b-9206-49a9-b86a-0e279e608d1c',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:08 GMT',
-  'content-length': '581' });
+  date: 'Wed, 05 Jun 2013 09:12:47 GMT',
+  'content-length': '577' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue2?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04</id><title type=\"text\">sbqueue2</title><published>2013-04-20T11:35:10Z</published><updated>2013-04-20T11:35:10Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04</id><title type=\"text\">sbqueue2</title><published>2013-06-05T09:12:46Z</published><updated>2013-06-05T09:12:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:10 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbqueue2?api-version=2013-04')
-  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04</id><title type=\"text\">sbqueue2</title><published>2013-04-20T11:35:10Z</published><updated>2013-04-20T11:35:10Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:10.443Z</CreatedAt><UpdatedAt>2013-04-20T11:35:10.643Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04</id><title type=\"text\">sbqueue2</title><published>2013-06-05T09:12:46Z</published><updated>2013-06-05T09:12:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:12:46.74Z</CreatedAt><UpdatedAt>2013-06-05T09:12:46.937Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:11 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue2?api-version=2013-04', '*')
-  .reply(409, "<Error><Code>409</Code><Detail>Conflict.TrackingId:efbf223f-22e0-44ca-8df9-1fd042528ec0_G4,TimeStamp:4/20/2013 11:35:12 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(409, "<Error><Code>409</Code><Detail>Conflict.TrackingId:00db50af-33de-4db4-b990-64b1d4dc3b2c_G4,TimeStamp:6/5/2013 9:12:48 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:12 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:35:14Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04</id><title type=\"text\">sbqueue2</title><published>2013-04-20T11:35:10Z</published><updated>2013-04-20T11:35:10Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue2?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:10.443Z</CreatedAt><UpdatedAt>2013-04-20T11:35:10.643Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:12:49Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue2?api-version=2013-04</id><title type=\"text\">sbqueue2</title><published>2013-06-05T09:12:46Z</published><updated>2013-06-05T09:12:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue2?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT45S</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:12:46.74Z</CreatedAt><UpdatedAt>2013-06-05T09:12:46.937Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:13 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -146,58 +146,58 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue2?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:15 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:35:17Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:13:01Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:16 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:00 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue3%253fapi-version%253d2013-04%26ExpiresOn%3d1366458919%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d4gi4El9UCLFmyY2iwVXQpWkzinnGpOo3TTuP6k4Ya8Y%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue3%253fapi-version%253d2013-04%26ExpiresOn%3d1370424772%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dvXg4PBdvojG%252fK%252b4whhprPsMQB0T%252bm6uhivdxhbs3f00%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '77453c2f-c093-4e35-adb4-b0635d52c6e3',
+  'request-id': '8b8afe07-7417-449c-93ba-c98c3562a5f0',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:18 GMT',
-  'content-length': '565' });
+  date: 'Wed, 05 Jun 2013 09:12:52 GMT',
+  'content-length': '577' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue3?api-version=2013-04')
-  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:622d7963-c11d-487a-8151-521227fc0bda_G4,TimeStamp:4/20/2013 11:35:20 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:43b27e94-48c6-4b49-b61b-1d810df74d3f_G2,TimeStamp:6/5/2013 9:12:53 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:20 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue3?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue3?api-version=2013-04</id><title type=\"text\">sbqueue3</title><published>2013-04-20T11:35:21Z</published><updated>2013-04-20T11:35:21Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue3?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue3?api-version=2013-04</id><title type=\"text\">sbqueue3</title><published>2013-06-05T09:12:54Z</published><updated>2013-06-05T09:12:54Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue3?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:21 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbqueue3?api-version=2013-04')
-  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue3?api-version=2013-04</id><title type=\"text\">sbqueue3</title><published>2013-04-20T11:35:21Z</published><updated>2013-04-20T11:35:21Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue3?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:21.51Z</CreatedAt><UpdatedAt>2013-04-20T11:35:21.61Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue3?api-version=2013-04</id><title type=\"text\">sbqueue3</title><published>2013-06-05T09:12:54Z</published><updated>2013-06-05T09:12:54Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue3?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:12:54.66Z</CreatedAt><UpdatedAt>2013-06-05T09:12:54.797Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:22 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -205,85 +205,85 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue3?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:24 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbqueue3?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:ec572d53-0d07-4955-ba30-9e915ea3c716;id=3192</id><updated>2013-04-20T11:35:26Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:6e6e7dc1-a148-48ca-968b-c164108c7601;id=160060</id><updated>2013-06-05T09:12:58Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:26 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:35:28Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:12:59Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:27 GMT' });
+  date: 'Wed, 05 Jun 2013 09:12:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:35:29Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:13:09Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:29 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:09 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue4%253fapi-version%253d2013-04%26ExpiresOn%3d1366458930%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dHcScat69Q7GXeyRUHY5s6BDvMmyh4C3DMKjGOxZgbG0%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue4%253fapi-version%253d2013-04%26ExpiresOn%3d1370424786%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252fSy5S96riIdGLTyahlMc37pN09jXuow4SP4ZE%252frpydY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '53f4449d-ca2a-4c3a-9bc5-cf98db794c9c',
+  'request-id': 'c6066761-bcb3-446d-89b6-b2e5e3012752',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:30 GMT',
-  'content-length': '565' });
+  date: 'Wed, 05 Jun 2013 09:13:06 GMT',
+  'content-length': '573' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbqueue4?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:dcfa06a8-eee5-4f0a-a46b-1851cdfcb844;id=14023</id><updated>2013-04-20T11:35:32Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:7d62cab5-054f-4629-bb2a-8b5df9b13515;id=160886</id><updated>2013-06-05T09:13:02Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:32 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue4?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04</id><title type=\"text\">sbqueue4</title><published>2013-04-20T11:35:33Z</published><updated>2013-04-20T11:35:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04</id><title type=\"text\">sbqueue4</title><published>2013-06-05T09:13:03Z</published><updated>2013-06-05T09:13:04Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:33 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbqueue4?api-version=2013-04')
-  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04</id><title type=\"text\">sbqueue4</title><published>2013-04-20T11:35:33Z</published><updated>2013-04-20T11:35:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:33.96Z</CreatedAt><UpdatedAt>2013-04-20T11:35:34.05Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04</id><title type=\"text\">sbqueue4</title><published>2013-06-05T09:13:03Z</published><updated>2013-06-05T09:13:04Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:03.95Z</CreatedAt><UpdatedAt>2013-06-05T09:13:04.427Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:34 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:35:36Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04</id><title type=\"text\">sbqueue4</title><published>2013-04-20T11:35:33Z</published><updated>2013-04-20T11:35:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue4?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:33.96Z</CreatedAt><UpdatedAt>2013-04-20T11:35:34.05Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:13:05Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue4?api-version=2013-04</id><title type=\"text\">sbqueue4</title><published>2013-06-05T09:13:03Z</published><updated>2013-06-05T09:13:04Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue4?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:03.95Z</CreatedAt><UpdatedAt>2013-06-05T09:13:04.427Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:36 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -291,38 +291,38 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue4?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:37 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:35:39Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:13:08Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:39 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:07 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:35:41Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:13:18Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:40 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue5%253fapi-version%253d2013-04%26ExpiresOn%3d1366458942%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dG8Qkc1J0sQB%252bjixvHz7o7gZ13g8NLfv1w3Ia9t8PT8A%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue5%253fapi-version%253d2013-04%26ExpiresOn%3d1370424795%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252bY82FExR9NwpWv6oQ0VgphFOYtJa414sWGWgWvr1UZw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '1244a33e-ddf5-4ee9-9496-5797ce7e6423',
+  'request-id': '5b51da9a-d7bf-496d-b6fc-8c0c47d1535d',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:42 GMT',
+  date: 'Wed, 05 Jun 2013 09:13:14 GMT',
   'content-length': '569' });
  return result; },
 function (nock) { 
@@ -330,61 +330,61 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue5?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04</id><title type=\"text\">sbqueue5</title><published>2013-04-20T11:35:44Z</published><updated>2013-04-20T11:35:44Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04</id><title type=\"text\">sbqueue5</title><published>2013-06-05T09:13:11Z</published><updated>2013-06-05T09:13:11Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:44 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:35:46Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04</id><title type=\"text\">sbqueue5</title><published>2013-04-20T11:35:44Z</published><updated>2013-04-20T11:35:44Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue5?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:44.8Z</CreatedAt><UpdatedAt>2013-04-20T11:35:44.937Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:13:12Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04</id><title type=\"text\">sbqueue5</title><published>2013-06-05T09:13:11Z</published><updated>2013-06-05T09:13:11Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue5?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:11.82Z</CreatedAt><UpdatedAt>2013-06-05T09:13:11.937Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:45 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue6%253fapi-version%253d2013-04%26ExpiresOn%3d1366458947%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dM3HP80grq7Hc%252bhFKgQ5d7aoEgCja5kU9QGaUV9OaR0k%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue6%253fapi-version%253d2013-04%26ExpiresOn%3d1370424793%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dq7cAnNo3m14WLD%252fPDrR2qcY8C6745PVX1EC%252bzVBTl24%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '3418fda4-8988-427c-858a-acda4d977227',
+  'request-id': '4ab193c0-4d93-4d73-a082-5dabb8703841',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:46 GMT',
-  'content-length': '569' });
+  date: 'Wed, 05 Jun 2013 09:13:13 GMT',
+  'content-length': '573' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue6?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue6?api-version=2013-04</id><title type=\"text\">sbqueue6</title><published>2013-04-20T11:35:49Z</published><updated>2013-04-20T11:35:49Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue6?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue6?api-version=2013-04</id><title type=\"text\">sbqueue6</title><published>2013-06-05T09:13:14Z</published><updated>2013-06-05T09:13:14Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue6?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:48 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:35:50Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04</id><title type=\"text\">sbqueue5</title><published>2013-04-20T11:35:44Z</published><updated>2013-04-20T11:35:44Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue5?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:44.8Z</CreatedAt><UpdatedAt>2013-04-20T11:35:44.937Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue6?api-version=2013-04</id><title type=\"text\">sbqueue6</title><published>2013-04-20T11:35:49Z</published><updated>2013-04-20T11:35:49Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue6?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:49.19Z</CreatedAt><UpdatedAt>2013-04-20T11:35:49.25Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:13:15Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04</id><title type=\"text\">sbqueue5</title><published>2013-06-05T09:13:11Z</published><updated>2013-06-05T09:13:11Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue5?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:11.82Z</CreatedAt><UpdatedAt>2013-06-05T09:13:11.937Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue6?api-version=2013-04</id><title type=\"text\">sbqueue6</title><published>2013-06-05T09:13:14Z</published><updated>2013-06-05T09:13:14Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue6?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:14.507Z</CreatedAt><UpdatedAt>2013-06-05T09:13:14.71Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:49 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:35:51Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04</id><title type=\"text\">sbqueue5</title><published>2013-04-20T11:35:44Z</published><updated>2013-04-20T11:35:44Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue5?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:44.8Z</CreatedAt><UpdatedAt>2013-04-20T11:35:44.937Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue6?api-version=2013-04</id><title type=\"text\">sbqueue6</title><published>2013-04-20T11:35:49Z</published><updated>2013-04-20T11:35:49Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue6?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:49.19Z</CreatedAt><UpdatedAt>2013-04-20T11:35:49.25Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:13:16Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue5?api-version=2013-04</id><title type=\"text\">sbqueue5</title><published>2013-06-05T09:13:11Z</published><updated>2013-06-05T09:13:11Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue5?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:11.82Z</CreatedAt><UpdatedAt>2013-06-05T09:13:11.937Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue6?api-version=2013-04</id><title type=\"text\">sbqueue6</title><published>2013-06-05T09:13:14Z</published><updated>2013-06-05T09:13:14Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue6?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:14.507Z</CreatedAt><UpdatedAt>2013-06-05T09:13:14.71Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:51 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -392,7 +392,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue5?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:53 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -400,77 +400,77 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue6?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:53 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:35:54Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:13:18Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:54 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:18 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f1sbqueue7%253fapi-version%253d2013-04%26ExpiresOn%3d1366458955%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dbIaexYraUMa7drY4h%252fOj4rAZbIfkG7tFPb9MmtsyhEU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f1sbqueue7%253fapi-version%253d2013-04%26ExpiresOn%3d1370424800%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dNxUgWxTGkuKHcBIQcSFdkpp5vqTBfVUgz0hnS3WK7yA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '28fee3f8-f3c3-4c5a-8a65-e7cf31dc7d52',
+  'request-id': 'edfbdc17-83d9-4888-bfc1-9e0cf8a6c8b6',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:55 GMT',
-  'content-length': '570' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/1sbqueue7?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/1sbqueue7?api-version=2013-04</id><title type=\"text\">1sbqueue7</title><published>2013-04-20T11:35:56Z</published><updated>2013-04-20T11:35:57Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/1sbqueue7?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:35:57 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb-sb.accesscontrol.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f2sbqueue8%253fapi-version%253d2013-04%26ExpiresOn%3d1366458958%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3doagoqW7T44TLTHaahyYgQiZ7E6a2d6EAS6ESw0lnI5Q%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
-  expires: '-1',
-  'request-id': '65b9b752-3258-4c12-b5cd-8850f75e2b50',
-  'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:35:58 GMT',
+  date: 'Wed, 05 Jun 2013 09:13:20 GMT',
   'content-length': '566' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/2sbqueue8?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04</id><title type=\"text\">2sbqueue8</title><published>2013-04-20T11:36:00Z</published><updated>2013-04-20T11:36:00Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+.put('/1sbqueue7?api-version=2013-04', '*')
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/1sbqueue7?api-version=2013-04</id><title type=\"text\">1sbqueue7</title><published>2013-06-05T09:13:21Z</published><updated>2013-06-05T09:13:21Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/1sbqueue7?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:00 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f3sbqueue9%253fapi-version%253d2013-04%26ExpiresOn%3d1366458962%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dxpQa4td%252fWZ2W8dkWs8wGEJjdQrf1BUYjBFSM2P7ztGg%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f2sbqueue8%253fapi-version%253d2013-04%26ExpiresOn%3d1370424807%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dd%252f%252bH9svSe5hamAhvv7ovAKD5%252bY%252bj61bbd7nhG8kBGeE%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'a1bc447e-bdd5-43a1-a4da-af405b7f83b4',
+  'request-id': '2ca296f8-a76f-40e9-98dd-4546b4dbc49f',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:01 GMT',
+  date: 'Wed, 05 Jun 2013 09:13:26 GMT',
+  'content-length': '582' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/2sbqueue8?api-version=2013-04', '*')
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04</id><title type=\"text\">2sbqueue8</title><published>2013-06-05T09:13:23Z</published><updated>2013-06-05T09:13:23Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:13:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f3sbqueue9%253fapi-version%253d2013-04%26ExpiresOn%3d1370424807%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dYOrsR%252fKJnF6Efyxtr8hOTwwcOqjU7n1Jm9S1IsIhuzo%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': 'fc68840c-2785-45b3-88df-434e5673f1e2',
+  'x-content-type-options': 'nosniff',
+  date: 'Wed, 05 Jun 2013 09:13:26 GMT',
   'content-length': '570' });
  return result; },
 function (nock) { 
@@ -478,89 +478,89 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/3sbqueue9?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/3sbqueue9?api-version=2013-04</id><title type=\"text\">3sbqueue9</title><published>2013-04-20T11:36:03Z</published><updated>2013-04-20T11:36:03Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/3sbqueue9?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/3sbqueue9?api-version=2013-04</id><title type=\"text\">3sbqueue9</title><published>2013-06-05T09:13:25Z</published><updated>2013-06-05T09:13:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/3sbqueue9?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:04 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f4sbqueue10%253fapi-version%253d2013-04%26ExpiresOn%3d1366458964%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d479i5U%252fewMZOI4Xzjw080RZLr%252fIwRqE7G%252f1ca2VDyvo%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f4sbqueue10%253fapi-version%253d2013-04%26ExpiresOn%3d1370424810%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dbMwcjbRhJJqpeEjMl7tlN4NjS6wxxbgGthHcmjw8XVI%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'ab67ff7c-0d2f-411f-ae23-49f941316c29',
+  'request-id': '8665cc91-4b8e-44aa-b2d4-8d89335dd047',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:04 GMT',
-  'content-length': '579' });
+  date: 'Wed, 05 Jun 2013 09:13:30 GMT',
+  'content-length': '567' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/4sbqueue10?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/4sbqueue10?api-version=2013-04</id><title type=\"text\">4sbqueue10</title><published>2013-04-20T11:36:06Z</published><updated>2013-04-20T11:36:06Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/4sbqueue10?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/4sbqueue10?api-version=2013-04</id><title type=\"text\">4sbqueue10</title><published>2013-06-05T09:13:27Z</published><updated>2013-06-05T09:13:28Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/4sbqueue10?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:06 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fQueues%253f%252524top%253d2%2526api-version%253d2013-04%26ExpiresOn%3d1366458967%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dKyMCJ3mBxgxOIBsmIsPMxuCYL9JBnGTOhbcmqd%252fSjrM%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fQueues%253f%252524top%253d2%2526api-version%253d2013-04%26ExpiresOn%3d1370424812%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d7Y0GcG99PpwGkiW%252bQwDuS8Mi5jkEKt3XcwTYBEGanAo%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '4a15edb2-8701-4981-b783-ba202aa0a492',
+  'request-id': 'b5d18dbd-7eb0-42c8-b94d-f35be8ff15d4',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:07 GMT',
+  date: 'Wed, 05 Jun 2013 09:13:32 GMT',
   'content-length': '607' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?%24top=2&api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04</id><updated>2013-04-20T11:36:12Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04&amp;%24skip=2\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/1sbqueue7?api-version=2013-04</id><title type=\"text\">1sbqueue7</title><published>2013-04-20T11:35:56Z</published><updated>2013-04-20T11:35:57Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../1sbqueue7?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:56.913Z</CreatedAt><UpdatedAt>2013-04-20T11:35:57.173Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04</id><title type=\"text\">2sbqueue8</title><published>2013-04-20T11:36:00Z</published><updated>2013-04-20T11:36:00Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbqueue8?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:00.49Z</CreatedAt><UpdatedAt>2013-04-20T11:36:00.613Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04</id><updated>2013-06-05T09:13:30Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04&amp;%24skip=2\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/1sbqueue7?api-version=2013-04</id><title type=\"text\">1sbqueue7</title><published>2013-06-05T09:13:21Z</published><updated>2013-06-05T09:13:21Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../1sbqueue7?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:21.177Z</CreatedAt><UpdatedAt>2013-06-05T09:13:21.263Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04</id><title type=\"text\">2sbqueue8</title><published>2013-06-05T09:13:23Z</published><updated>2013-06-05T09:13:23Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbqueue8?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:23.393Z</CreatedAt><UpdatedAt>2013-06-05T09:13:23.487Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:12 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fQueues%253f%252524top%253d2%2526%252524skip%253d1%2526api-version%253d2013-04%26ExpiresOn%3d1366458973%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dDStEpBfRuK2ZO8%252frZvZVoPojvHdDEbDHFr6drGQAy4Q%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fQueues%253f%252524top%253d2%2526%252524skip%253d1%2526api-version%253d2013-04%26ExpiresOn%3d1370424813%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dm3OZGVvDNz%252bFdAwLtPOcF7ewRCtkc7YM7UXOTloNUHY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '7b64ecd6-9053-4945-ac9c-5c9cf49009ed',
+  'request-id': 'cbe0bc57-4d68-4215-9657-04b8ebb54d1c',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:13 GMT',
+  date: 'Wed, 05 Jun 2013 09:13:32 GMT',
   'content-length': '629' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?%24top=2&%24skip=1&api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=1&amp;api-version=2013-04</id><updated>2013-04-20T11:36:15Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=3&amp;api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04</id><title type=\"text\">2sbqueue8</title><published>2013-04-20T11:36:00Z</published><updated>2013-04-20T11:36:00Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbqueue8?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:00.49Z</CreatedAt><UpdatedAt>2013-04-20T11:36:00.613Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/3sbqueue9?api-version=2013-04</id><title type=\"text\">3sbqueue9</title><published>2013-04-20T11:36:03Z</published><updated>2013-04-20T11:36:03Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../3sbqueue9?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:03.8640496Z</CreatedAt><UpdatedAt>2013-04-20T11:36:03.8640496Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=1&amp;api-version=2013-04</id><updated>2013-06-05T09:13:42Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=3&amp;api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04</id><title type=\"text\">2sbqueue8</title><published>2013-06-05T09:13:23Z</published><updated>2013-06-05T09:13:23Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbqueue8?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:23.393Z</CreatedAt><UpdatedAt>2013-06-05T09:13:23.487Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/3sbqueue9?api-version=2013-04</id><title type=\"text\">3sbqueue9</title><published>2013-06-05T09:13:25Z</published><updated>2013-06-05T09:13:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../3sbqueue9?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:25.403Z</CreatedAt><UpdatedAt>2013-06-05T09:13:25.753Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:15 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:36:17Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/1sbqueue7?api-version=2013-04</id><title type=\"text\">1sbqueue7</title><published>2013-04-20T11:35:56Z</published><updated>2013-04-20T11:35:57Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../1sbqueue7?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:35:56.913Z</CreatedAt><UpdatedAt>2013-04-20T11:35:57.173Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04</id><title type=\"text\">2sbqueue8</title><published>2013-04-20T11:36:00Z</published><updated>2013-04-20T11:36:00Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbqueue8?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:00.49Z</CreatedAt><UpdatedAt>2013-04-20T11:36:00.613Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/3sbqueue9?api-version=2013-04</id><title type=\"text\">3sbqueue9</title><published>2013-04-20T11:36:03Z</published><updated>2013-04-20T11:36:03Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../3sbqueue9?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:03.8640496Z</CreatedAt><UpdatedAt>2013-04-20T11:36:03.8640496Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/4sbqueue10?api-version=2013-04</id><title type=\"text\">4sbqueue10</title><published>2013-04-20T11:36:06Z</published><updated>2013-04-20T11:36:06Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../4sbqueue10?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:06.303Z</CreatedAt><UpdatedAt>2013-04-20T11:36:06.38Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:13:33Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/1sbqueue7?api-version=2013-04</id><title type=\"text\">1sbqueue7</title><published>2013-06-05T09:13:21Z</published><updated>2013-06-05T09:13:21Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../1sbqueue7?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:21.177Z</CreatedAt><UpdatedAt>2013-06-05T09:13:21.263Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbqueue8?api-version=2013-04</id><title type=\"text\">2sbqueue8</title><published>2013-06-05T09:13:23Z</published><updated>2013-06-05T09:13:23Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbqueue8?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:23.393Z</CreatedAt><UpdatedAt>2013-06-05T09:13:23.487Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/3sbqueue9?api-version=2013-04</id><title type=\"text\">3sbqueue9</title><published>2013-06-05T09:13:25Z</published><updated>2013-06-05T09:13:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../3sbqueue9?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:25.403Z</CreatedAt><UpdatedAt>2013-06-05T09:13:25.753Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/4sbqueue10?api-version=2013-04</id><title type=\"text\">4sbqueue10</title><published>2013-06-05T09:13:27Z</published><updated>2013-06-05T09:13:28Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../4sbqueue10?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:27.87Z</CreatedAt><UpdatedAt>2013-06-05T09:13:28.197Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:16 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -568,7 +568,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/1sbqueue7?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:19 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -576,7 +576,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/3sbqueue9?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:19 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -584,7 +584,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/2sbqueue8?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:18 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -592,54 +592,54 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/4sbqueue10?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:18 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:36:20Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:13:36Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:19 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:35 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue11%253fapi-version%253d2013-04%26ExpiresOn%3d1366458981%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dh%252fWs8EDtDHDzSlSXwWsvnjxD97ydlXZBw7ffck9bNPM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue11%253fapi-version%253d2013-04%26ExpiresOn%3d1370424820%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d17Cw8HO7yGaqeIuLGYYFjb%252fmsBONEC0AeGf%252bzbABHTA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'ee71d0c9-3d6a-472f-9da8-4c0657f97fb5',
+  'request-id': '2d7dcb71-ff8d-467e-8a60-a019d9f489c4',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:21 GMT',
-  'content-length': '570' });
+  date: 'Wed, 05 Jun 2013 09:13:40 GMT',
+  'content-length': '574' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue11?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue11?api-version=2013-04</id><title type=\"text\">sbqueue11</title><published>2013-04-20T11:36:22Z</published><updated>2013-04-20T11:36:22Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue11?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue11?api-version=2013-04</id><title type=\"text\">sbqueue11</title><published>2013-06-05T09:13:38Z</published><updated>2013-06-05T09:13:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue11?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:22 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue11%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366458984%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dJBm5IBy%252f6UvV%252fTWtFzTxy651UkiIvavOaEm39kUeM5o%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue11%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370424822%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3deWbsYzZVGik7HTP9UpQo9GQQKq0d71p2oVOBO0xyr1c%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '4e7d6dec-a1a1-42a5-a883-4ce7fc33d819',
+  'request-id': 'fe82e3ac-108b-4d15-9faa-be2f53939796',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:24 GMT',
-  'content-length': '587' });
+  date: 'Wed, 05 Jun 2013 09:13:42 GMT',
+  'content-length': '579' });
  return result; },
 function (nock) { 
 var result = 
@@ -649,16 +649,16 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:25 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:36:27Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue11?api-version=2013-04</id><title type=\"text\">sbqueue11</title><published>2013-04-20T11:36:22Z</published><updated>2013-04-20T11:36:22Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue11?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>126</SizeInBytes><MessageCount>1</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:22.7676241Z</CreatedAt><UpdatedAt>2013-04-20T11:36:22.7676241Z</UpdatedAt><AccessedAt>2013-04-20T11:36:25.7050677Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>1</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:13:51Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue11?api-version=2013-04</id><title type=\"text\">sbqueue11</title><published>2013-06-05T09:13:38Z</published><updated>2013-06-05T09:13:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue11?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>126</SizeInBytes><MessageCount>1</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:43.2280653Z</CreatedAt><UpdatedAt>2013-06-05T09:13:43.2280653Z</UpdatedAt><AccessedAt>2013-06-05T09:13:45.5048149Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>1</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:27 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -666,54 +666,54 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue11?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:28 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:36:30Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:13:43Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:29 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:43 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue12%253fapi-version%253d2013-04%26ExpiresOn%3d1366458992%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dwTXR8JBP3ozJLVRnA6sqD%252fUUjdkP13qcK1Q90Xx4i2c%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue12%253fapi-version%253d2013-04%26ExpiresOn%3d1370424825%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dEJgbd4ChelmE089BlCXPDnTNy6mlahB3tB6grVcL1Us%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '5c05a892-d5f6-49f6-96cb-d55efec13816',
+  'request-id': 'f9a00413-18c5-4b5d-941d-098e542fcee3',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:32 GMT',
-  'content-length': '570' });
+  date: 'Wed, 05 Jun 2013 09:13:45 GMT',
+  'content-length': '566' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue12?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue12?api-version=2013-04</id><title type=\"text\">sbqueue12</title><published>2013-04-20T11:36:33Z</published><updated>2013-04-20T11:36:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue12?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue12?api-version=2013-04</id><title type=\"text\">sbqueue12</title><published>2013-06-05T09:13:46Z</published><updated>2013-06-05T09:13:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue12?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:34 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue12%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366458995%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d9vphgDCzhxFcvVQ72bJy5y8BXY%252fwZciqh4yZ3u5Pua4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue12%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370424830%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dS4em%252bRAfsVV3jOGuZHEKD%252fKDPqY68g5R7w7g5rPbPaE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'b2c0bda1-d70a-40f7-b9e4-f827ae2260af',
+  'request-id': '36f08787-9ac5-4327-894c-c4c382a8e314',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:34 GMT',
-  'content-length': '583' });
+  date: 'Wed, 05 Jun 2013 09:13:50 GMT',
+  'content-length': '587' });
  return result; },
 function (nock) { 
 var result = 
@@ -723,21 +723,21 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:36 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue12%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366458997%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dqpSX9xNyjByH6XoqMNhj5S9K5ypGNWxPIZTsVA3esNA%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue12%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370424829%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8pr5yCjLZQeUtEa8eKzVEuny8SvTV66JgW%252bjIPIuX7w%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd2844722-db15-4154-b72c-888892fd6800',
+  'request-id': '11bca65d-f13e-41c0-813b-96ea28ad0c26',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:37 GMT',
-  'content-length': '588' });
+  date: 'Wed, 05 Jun 2013 09:13:49 GMT',
+  'content-length': '592' });
  return result; },
 function (nock) { 
 var result = 
@@ -747,16 +747,16 @@ nock('https://ciserversb.servicebus.windows.net:443')
   'content-type': 'made-up-one',
   server: 'Microsoft-HTTPAPI/2.0',
   brokerproperties: '{"CorrelationId":"{701332F3-B37B-4D29-AA0A-E367906C206E}","DeliveryCount":1,"EnqueuedSequenceNumber":0,"Label":"lbl","MessageId":"id","ReplyTo":"repTo","ReplyToSessionId":"repsession","SequenceNumber":1,"SessionId":"session","State":"Active","TimeToLive":922337203685.47754,"To":"to"}',
-  date: 'Sat, 20 Apr 2013 11:36:38 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:36:40Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue12?api-version=2013-04</id><title type=\"text\">sbqueue12</title><published>2013-04-20T11:36:33Z</published><updated>2013-04-20T11:36:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue12?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:34.0159638Z</CreatedAt><UpdatedAt>2013-04-20T11:36:34.0159638Z</UpdatedAt><AccessedAt>2013-04-20T11:36:39.2189889Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:13:51Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue12?api-version=2013-04</id><title type=\"text\">sbqueue12</title><published>2013-06-05T09:13:46Z</published><updated>2013-06-05T09:13:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue12?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:56.5900986Z</CreatedAt><UpdatedAt>2013-06-05T09:13:56.5900986Z</UpdatedAt><AccessedAt>2013-06-05T09:14:00.9613362Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:39 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -764,54 +764,54 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue12?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:41 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:36:44Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:13:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:43 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:53 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue13%253fapi-version%253d2013-04%26ExpiresOn%3d1366459005%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3djCsPpWXljflpEN35pHDJ06ac4O93rVjoIK98XJPOyEs%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue13%253fapi-version%253d2013-04%26ExpiresOn%3d1370424834%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dObhk7A4mTFFi4zZdbHm8M02ZLb%252b%252btc11363ZgX0QbMs%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '161ae9ad-950a-4a32-a97e-7929f4150179',
+  'request-id': '08c45a8b-f923-45a0-9e14-d2d6ab8aa682',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:45 GMT',
-  'content-length': '566' });
+  date: 'Wed, 05 Jun 2013 09:13:53 GMT',
+  'content-length': '574' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue13?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue13?api-version=2013-04</id><title type=\"text\">sbqueue13</title><published>2013-04-20T11:36:46Z</published><updated>2013-04-20T11:36:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue13?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue13?api-version=2013-04</id><title type=\"text\">sbqueue13</title><published>2013-06-05T09:13:55Z</published><updated>2013-06-05T09:13:56Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue13?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:47 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue13%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459008%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d2BUEKLdb7XzpZejjtg6G4py1VAK9S2LN5vtzWpld1xM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue13%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370424836%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dVtXD%252bPa4uVD33R%252fyPq0MB9K4JDSVtXt9DSuG2UcQ%252bqQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd0246ecd-115d-4e55-a1eb-c722c5bf2439',
+  'request-id': '88f4b298-2ec2-407c-b397-b05db0aa94dc',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:48 GMT',
-  'content-length': '579' });
+  date: 'Wed, 05 Jun 2013 09:13:56 GMT',
+  'content-length': '591' });
  return result; },
 function (nock) { 
 var result = 
@@ -821,21 +821,21 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:49 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue13%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459011%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dRb7EuR2sMQQ32EYgQpJhKyiENEikeM315BCPGTBquo0%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue13%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370424838%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d3SoCUQUI0UZVeOV%252bc2LtX%252fD8olNg5ws3UggsW2%252b%252fLSI%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'dfec740a-f142-4f21-99e8-ae228ee31d0a',
+  'request-id': 'b9ae5cfa-0850-4c80-adcb-697b07e342c2',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:36:50 GMT',
-  'content-length': '588' });
+  date: 'Wed, 05 Jun 2013 09:13:57 GMT',
+  'content-length': '604' });
  return result; },
 function (nock) { 
 var result = 
@@ -844,12 +844,12 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(200, "hi there again", { 'transfer-encoding': 'chunked',
   'content-type': 'text/plain',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"MessageId":"96dc4a31287443dfa55f9c9b0a095526","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"MessageId":"eac13d78905343db99999b0566290edb","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
   propint: '1',
   propfloat: '2.22',
   propdate: '"Wed, 07 Mar 2012 22:27:00 GMT+0000"',
   propstring: '"hi there"',
-  date: 'Sat, 20 Apr 2013 11:36:52 GMT' });
+  date: 'Wed, 05 Jun 2013 09:13:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -858,16 +858,16 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(204, "", { 'content-length': '0',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:58 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:37:00Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue13?api-version=2013-04</id><title type=\"text\">sbqueue13</title><published>2013-04-20T11:36:46Z</published><updated>2013-04-20T11:36:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue13?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:36:46.9943199Z</CreatedAt><UpdatedAt>2013-04-20T11:36:46.9943199Z</UpdatedAt><AccessedAt>2013-04-20T11:36:58.9317101Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:14:17Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue13?api-version=2013-04</id><title type=\"text\">sbqueue13</title><published>2013-06-05T09:13:55Z</published><updated>2013-06-05T09:13:56Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue13?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:13:55.5916532Z</CreatedAt><UpdatedAt>2013-06-05T09:13:55.5916532Z</UpdatedAt><AccessedAt>2013-06-05T09:14:05.0809194Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:36:59 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -875,53 +875,53 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue13?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:02 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:37:04Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:14:37Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:04 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:36 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue14%253fapi-version%253d2013-04%26ExpiresOn%3d1366459025%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dLFp9sTVgK5ouJOMs9ER1WcGDEF5sd0%252fLGzykCkHrIiw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue14%253fapi-version%253d2013-04%26ExpiresOn%3d1370424876%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dW5WW2G%252f%252f8svVMD3hrQt4uL42ZbcStvGVudGP006YE7k%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'ec54faf9-660f-4990-80da-e8f37d666bd6',
+  'request-id': '12840f65-5d09-43c0-9274-14c5e6b0ec3f',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:05 GMT',
-  'content-length': '570' });
+  date: 'Wed, 05 Jun 2013 09:14:36 GMT',
+  'content-length': '574' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue14?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue14?api-version=2013-04</id><title type=\"text\">sbqueue14</title><published>2013-04-20T11:37:07Z</published><updated>2013-04-20T11:37:07Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue14?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue14?api-version=2013-04</id><title type=\"text\">sbqueue14</title><published>2013-06-05T09:14:34Z</published><updated>2013-06-05T09:14:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue14?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:06 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue14%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459028%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dEEo6YRN7x5Yisg0fKAteknwooFkDIoFq%252fUdP2%252bgjJec%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue14%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370424879%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3do%252fUyAtbgI0CWHepoohcWGkoXlX0NXQFEBvBwGxU%252bjqY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'a1956532-8225-489e-9d64-e891f28ea7af',
+  'request-id': 'f6d31a1a-ecb5-4c18-86de-aaf0552c6bbb',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:07 GMT',
+  date: 'Wed, 05 Jun 2013 09:14:39 GMT',
   'content-length': '587' });
  return result; },
 function (nock) { 
@@ -932,20 +932,20 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:09 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue14%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459030%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dvjtQzK5qWfYWoAjxSOGcM8Qk0Eri18HJ%252fj6jUwt7IHk%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue14%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370424883%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dQKahreVnFgQHn%252bxEHFI3yQib1WBDKjDdVaE0h4gY6Xo%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '1f8aa09a-7fc5-43d0-8a83-0a359db84fa7',
+  'request-id': 'a39bb137-94f9-4721-b6cf-90df03dae1e8',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:10 GMT',
+  date: 'Wed, 05 Jun 2013 09:14:42 GMT',
   'content-length': '592' });
  return result; },
 function (nock) { 
@@ -954,8 +954,8 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue14/Messages/Head?api-version=2013-04')
   .reply(200, "hi there again", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"MessageId":"4aacc113ece742d79a35779e0db124ea","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:37:11 GMT' });
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"MessageId":"0126314916454d15a627a4a63420cfce","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:14:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -964,16 +964,16 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(204, "", { 'content-length': '0',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:17 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:37:20Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue14?api-version=2013-04</id><title type=\"text\">sbqueue14</title><published>2013-04-20T11:37:07Z</published><updated>2013-04-20T11:37:07Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue14?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:37:07.2129071Z</CreatedAt><UpdatedAt>2013-04-20T11:37:07.2129071Z</UpdatedAt><AccessedAt>2013-04-20T11:37:18.9315821Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:14:54Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue14?api-version=2013-04</id><title type=\"text\">sbqueue14</title><published>2013-06-05T09:14:34Z</published><updated>2013-06-05T09:14:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue14?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:14:43.683045Z</CreatedAt><UpdatedAt>2013-06-05T09:14:43.683045Z</UpdatedAt><AccessedAt>2013-06-05T09:14:58.0816329Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:20 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -981,29 +981,29 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue14?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:22 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:37:23Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:14:56Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:23 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:55 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue15%253fapi-version%253d2013-04%26ExpiresOn%3d1366459045%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dQdYo9kcFJaMFGCJDHkfZlLWRlrh%252fYMaSeLkImjlzqsk%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue15%253fapi-version%253d2013-04%26ExpiresOn%3d1370424893%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dYvGceSa24du0qdtOL9v%252fps0GXPUkqEbBs57MlOZqaiU%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd7f6f4d6-3777-43b8-a184-0fec45fe2f24',
+  'request-id': '628ed22c-b67a-4502-b0a4-e01506d58dd5',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:24 GMT',
+  date: 'Wed, 05 Jun 2013 09:14:52 GMT',
   'content-length': '570' });
  return result; },
 function (nock) { 
@@ -1011,24 +1011,24 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue15?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue15?api-version=2013-04</id><title type=\"text\">sbqueue15</title><published>2013-04-20T11:37:26Z</published><updated>2013-04-20T11:37:26Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue15?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue15?api-version=2013-04</id><title type=\"text\">sbqueue15</title><published>2013-06-05T09:14:54Z</published><updated>2013-06-05T09:14:54Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue15?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:25 GMT' });
+  date: 'Wed, 05 Jun 2013 09:14:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue15%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459047%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8nzWMvRZWpniRixPQMUveYV0oTcjNwV6gp4cqAE9iW4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue15%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370424903%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dLSFYnNdXK0KiI2PWKqEZYQRW%252fCpn5IkJAZdWy4lonc8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'fbcd5bf1-ba71-4b2a-a6d2-a80cf924cf82',
+  'request-id': 'b4967544-9894-4650-bdba-f2437ceb13e5',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:27 GMT',
-  'content-length': '579' });
+  date: 'Wed, 05 Jun 2013 09:15:03 GMT',
+  'content-length': '583' });
  return result; },
 function (nock) { 
 var result = 
@@ -1038,63 +1038,63 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:28 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue15%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1366459050%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dTzzKUikkPp6hHyXSoklxnGuV1qE%252f%252bSvjPEcCA1zjH0I%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue15%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1370424908%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dQeqvKeIH8ne4quUIhzJVS3oP6OxuhbMgOpTNy7XT9j8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'cd1458a8-429c-4326-8709-c5f39226646e',
+  'request-id': 'c9cbfb46-3999-4531-b197-72799b2db89e',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:29 GMT',
-  'content-length': '614' });
+  date: 'Wed, 05 Jun 2013 09:15:08 GMT',
+  'content-length': '606' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .post('/sbqueue15/Messages/Head?timeout=5&api-version=2013-04')
   .reply(201, "hi there again", { 'transfer-encoding': 'chunked',
-  location: 'https://ciserversb.servicebus.windows.net/sbqueue15/messages/1/dd004706-8577-496b-8974-2ea0133b1bc4',
+  location: 'https://ciserversb.servicebus.windows.net/sbqueue15/messages/1/7165bfeb-2fab-4369-8293-ba71d1854282',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"LockToken":"dd004706-8577-496b-8974-2ea0133b1bc4","LockedUntilUtc":"Sat, 20 Apr 2013 11:38:31 GMT","MessageId":"4ace880cb18645aea691ddaf72175b53","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:37:31 GMT' });
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"LockToken":"7165bfeb-2fab-4369-8293-ba71d1854282","LockedUntilUtc":"Wed, 05 Jun 2013 09:16:14 GMT","MessageId":"615451d11eaa42698d73e2a7b1862ec5","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:15:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue15%252fmessages%252f1%252fdd004706-8577-496b-8974-2ea0133b1bc4%253fapi-version%253d2013-04%26ExpiresOn%3d1366459052%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dd%252fFrXVVknXGFeSHImOQR8aYX1YhKKf%252bJf3o0lIN6290%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue15%252fmessages%252f1%252f7165bfeb-2fab-4369-8293-ba71d1854282%253fapi-version%253d2013-04%26ExpiresOn%3d1370424934%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d3jmtMnbU9vUqA2dRnu17ic5qx0JNaa5AOFPQnN7vtak%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '481fa4f6-09bf-405a-8ab6-344282c885f5',
+  'request-id': '8e894d2a-d17b-42d6-955c-9787b24e1a07',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:32 GMT',
-  'content-length': '634' });
+  date: 'Wed, 05 Jun 2013 09:15:34 GMT',
+  'content-length': '626' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
-  .delete('/sbqueue15/messages/1/dd004706-8577-496b-8974-2ea0133b1bc4?api-version=2013-04')
+  .delete('/sbqueue15/messages/1/7165bfeb-2fab-4369-8293-ba71d1854282?api-version=2013-04')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:33 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:37:35Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue15?api-version=2013-04</id><title type=\"text\">sbqueue15</title><published>2013-04-20T11:37:26Z</published><updated>2013-04-20T11:37:26Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue15?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:37:26.5618299Z</CreatedAt><UpdatedAt>2013-04-20T11:37:26.5618299Z</UpdatedAt><AccessedAt>2013-04-20T11:37:34.0929353Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:15:33Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue15?api-version=2013-04</id><title type=\"text\">sbqueue15</title><published>2013-06-05T09:14:54Z</published><updated>2013-06-05T09:14:54Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue15?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:14:53.7842878Z</CreatedAt><UpdatedAt>2013-06-05T09:14:53.7842878Z</UpdatedAt><AccessedAt>2013-06-05T09:15:32.8468155Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:35 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1102,54 +1102,54 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue15?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:36 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:37:38Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:15:36Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:37 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:36 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue16%253fapi-version%253d2013-04%26ExpiresOn%3d1366459060%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dwMepa32iiiWxqjxx2aYNCTeppmcokw%252bStbfE%252beX4MEk%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue16%253fapi-version%253d2013-04%26ExpiresOn%3d1370424937%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3deAdfRSnEo894vw0BY%252fSkS6xkbH41hVKF7vp1Xw2iXhs%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'fc285629-4d4f-4191-870f-6f93f7af2b7a',
+  'request-id': '18e38ee5-141a-498b-b1af-e3e239581198',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:39 GMT',
-  'content-length': '574' });
+  date: 'Wed, 05 Jun 2013 09:15:37 GMT',
+  'content-length': '570' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue16?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue16?api-version=2013-04</id><title type=\"text\">sbqueue16</title><published>2013-04-20T11:37:42Z</published><updated>2013-04-20T11:37:42Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue16?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue16?api-version=2013-04</id><title type=\"text\">sbqueue16</title><published>2013-06-05T09:15:38Z</published><updated>2013-06-05T09:15:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue16?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:42 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue16%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459063%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252bmcpgMx8dCEJiB7eFZ9KH95G2ddZTNVsGz6ovDp%252fM%252fY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue16%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370424939%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dtZfoiTKyIzVE503qwinirkAbjN99gRi4pLb2veoqZNI%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'ff782199-b5a1-442c-94ce-f59dd88f2b6d',
+  'request-id': 'e1beb520-5b4b-493e-9e9e-981d09484322',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:43 GMT',
-  'content-length': '591' });
+  date: 'Wed, 05 Jun 2013 09:15:38 GMT',
+  'content-length': '579' });
  return result; },
 function (nock) { 
 var result = 
@@ -1159,63 +1159,63 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:43 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue16%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1366459065%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3ddA09BRUOHRTizG9NIUYZhjYZNrDRInFkVcd%252bGJuLuW4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue16%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1370424941%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3du4Fw6PJf0mGNLaIyNLcbpBFqqm6ygyNEaVCXPkH54FQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'dcdf6d90-c8d8-43da-96b7-1913b5ae2f20',
+  'request-id': 'c0d2e7e1-05df-478c-9452-d29470fe0bed',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:44 GMT',
-  'content-length': '610' });
+  date: 'Wed, 05 Jun 2013 09:15:40 GMT',
+  'content-length': '606' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .post('/sbqueue16/Messages/Head?timeout=5&api-version=2013-04')
   .reply(201, "hi there again", { 'transfer-encoding': 'chunked',
-  location: 'https://ciserversb.servicebus.windows.net/sbqueue16/messages/1/96b335be-3c63-4181-8d9a-9d9f7773d1f0',
+  location: 'https://ciserversb.servicebus.windows.net/sbqueue16/messages/1/b42f97f6-5b91-4162-b1f3-be3ea7726654',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"LockToken":"96b335be-3c63-4181-8d9a-9d9f7773d1f0","LockedUntilUtc":"Sat, 20 Apr 2013 11:38:47 GMT","MessageId":"41125c1e405d49a6bb619a0886897fa4","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:37:47 GMT' });
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"LockToken":"b42f97f6-5b91-4162-b1f3-be3ea7726654","LockedUntilUtc":"Wed, 05 Jun 2013 09:16:42 GMT","MessageId":"ea928470c7b94667947fe6d8fabfdbae","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:15:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue16%252fmessages%252f1%252f96b335be-3c63-4181-8d9a-9d9f7773d1f0%253fapi-version%253d2013-04%26ExpiresOn%3d1366459068%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dyLmZ2exMzPnGxiGMIH%252bI43KaDLZW1PpR63wVSEy1OaM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue16%252fmessages%252f1%252fb42f97f6-5b91-4162-b1f3-be3ea7726654%253fapi-version%253d2013-04%26ExpiresOn%3d1370424946%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d7sg4r1sjOLF4jtZd63ZrJdpLEEizODzhr9c2ipsXob8%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd90385f6-5b89-4b9d-84cc-2587b7a60ef2',
+  'request-id': '13fc4ebb-a763-41f1-a407-328067192c52',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:48 GMT',
-  'content-length': '630' });
+  date: 'Wed, 05 Jun 2013 09:15:45 GMT',
+  'content-length': '626' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
-  .delete('/sbqueue16/messages/1/96b335be-3c63-4181-8d9a-9d9f7773d1f0?api-version=2013-04')
+  .delete('/sbqueue16/messages/1/b42f97f6-5b91-4162-b1f3-be3ea7726654?api-version=2013-04')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:49 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:37:51Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue16?api-version=2013-04</id><title type=\"text\">sbqueue16</title><published>2013-04-20T11:37:42Z</published><updated>2013-04-20T11:37:42Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue16?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:37:42.3650356Z</CreatedAt><UpdatedAt>2013-04-20T11:37:42.3650356Z</UpdatedAt><AccessedAt>2013-04-20T11:37:50.6461266Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:15:49Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue16?api-version=2013-04</id><title type=\"text\">sbqueue16</title><published>2013-06-05T09:15:38Z</published><updated>2013-06-05T09:15:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue16?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:15:38.410421Z</CreatedAt><UpdatedAt>2013-06-05T09:15:38.410421Z</UpdatedAt><AccessedAt>2013-06-05T09:15:43.9676737Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:51 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1223,53 +1223,53 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue16?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:53 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:37:55Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:15:48Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:54 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:47 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%253fapi-version%253d2013-04%26ExpiresOn%3d1366459076%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dH3U5ygeTxlhn7aKhGtchLYWhKNH3RIKtprk1a4dzfEk%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%253fapi-version%253d2013-04%26ExpiresOn%3d1370424956%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dto7rBmolLiaYdy%252ff6Skxs7kWBaRO0%252f1h%252fI6fhqK9pvs%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '94e5366e-7c9a-4031-89be-27a73864aad6',
+  'request-id': '5756f817-a85c-4ba6-b4e8-33432540bfeb',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:55 GMT',
-  'content-length': '566' });
+  date: 'Wed, 05 Jun 2013 09:15:55 GMT',
+  'content-length': '578' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue17?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue17?api-version=2013-04</id><title type=\"text\">sbqueue17</title><published>2013-04-20T11:37:57Z</published><updated>2013-04-20T11:37:57Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue17?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue17?api-version=2013-04</id><title type=\"text\">sbqueue17</title><published>2013-06-05T09:15:50Z</published><updated>2013-06-05T09:15:50Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue17?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:57 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459079%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dVLrGf6zBLmAGxhI9C3inNgOHAwKkwDUIMm38yVTNF8s%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370424955%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dCpqf7Jnl816fqErRzP3HfS8MK0tOMGNA3VAIJFvJGBA%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '0ff66031-2e8b-42c2-9384-b3172d3eae9c',
+  'request-id': '32cd452a-c68e-4514-848c-cddf66ab4946',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:37:58 GMT',
+  date: 'Wed, 05 Jun 2013 09:15:54 GMT',
   'content-length': '579' });
  return result; },
 function (nock) { 
@@ -1280,68 +1280,68 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:37:59 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1366459081%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dEZA4M1iu7Tzypzz9HDgyird3t2DBOHUvp4PKsk4yFzE%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1370424953%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dE3mrXEZBm8sXq0sQmZmyT5WIDg6%252bQW9VbauRak%252f6lL0%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '16596748-aa76-4b74-929e-4750fe9d9d40',
+  'request-id': '19bd5922-d3e9-45c3-8a93-b572af542691',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:01 GMT',
-  'content-length': '606' });
+  date: 'Wed, 05 Jun 2013 09:15:53 GMT',
+  'content-length': '614' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .post('/sbqueue17/Messages/Head?timeout=5&api-version=2013-04')
   .reply(201, "hi there again", { 'transfer-encoding': 'chunked',
-  location: 'https://ciserversb.servicebus.windows.net/sbqueue17/messages/1/83c0cfe5-e13e-493b-9aa6-de20e02e060d',
+  location: 'https://ciserversb.servicebus.windows.net/sbqueue17/messages/1/6f1e9e03-455e-48bc-a5e9-c3a48a577730',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"LockToken":"83c0cfe5-e13e-493b-9aa6-de20e02e060d","LockedUntilUtc":"Sat, 20 Apr 2013 11:39:03 GMT","MessageId":"43a5286ec43b4bb6aea05a7ff13616ed","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:38:02 GMT' });
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"LockToken":"6f1e9e03-455e-48bc-a5e9-c3a48a577730","LockedUntilUtc":"Wed, 05 Jun 2013 09:17:03 GMT","MessageId":"3083731cada04d7095af3050a1df5504","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:15:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%252fmessages%252f1%252f83c0cfe5-e13e-493b-9aa6-de20e02e060d%253fapi-version%253d2013-04%26ExpiresOn%3d1366459084%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d5FcwcDHEFD9mhzgFUySi9YzVh28Qv9KRhhqMXNstbck%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%252fmessages%252f1%252f6f1e9e03-455e-48bc-a5e9-c3a48a577730%253fapi-version%253d2013-04%26ExpiresOn%3d1370424955%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dqBLpEn4fJUiA9QLWpFjMFlxG%252fUPU8TghG35K0UStR0Y%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '41bfa0b1-976c-4a3e-8025-bb3f166f1d96',
+  'request-id': 'f6f4b9c6-bc18-4848-8f2f-f984b896b8c3',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:04 GMT',
-  'content-length': '626' });
+  date: 'Wed, 05 Jun 2013 09:15:55 GMT',
+  'content-length': '630' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
-  .put('/sbqueue17/messages/1/83c0cfe5-e13e-493b-9aa6-de20e02e060d?api-version=2013-04')
+  .put('/sbqueue17/messages/1/6f1e9e03-455e-48bc-a5e9-c3a48a577730?api-version=2013-04')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:05 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459086%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dNJCXkVmozpaNI15VP%252bMahlhvYdoq1SBeqpZdJ5nuqjo%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue17%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370424960%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8ogGGLbY8p7KfDJnt%252fpNI%252fIZJYXWhNB2DO2JeU%252feOOo%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '3ddb111c-cc85-4aa9-8392-f3eea1515d84',
+  'request-id': '74dd621b-7b2d-4b35-9586-fc2497a1eed3',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:06 GMT',
-  'content-length': '592' });
+  date: 'Wed, 05 Jun 2013 09:16:00 GMT',
+  'content-length': '600' });
  return result; },
 function (nock) { 
 var result = 
@@ -1349,17 +1349,17 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue17/Messages/Head?api-version=2013-04')
   .reply(200, "hi there again", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":2,"EnqueuedSequenceNumber":0,"MessageId":"43a5286ec43b4bb6aea05a7ff13616ed","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:38:07 GMT' });
+  brokerproperties: '{"DeliveryCount":2,"EnqueuedSequenceNumber":0,"MessageId":"3083731cada04d7095af3050a1df5504","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:15:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:38:09Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue17?api-version=2013-04</id><title type=\"text\">sbqueue17</title><published>2013-04-20T11:37:57Z</published><updated>2013-04-20T11:37:57Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue17?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:37:57.8178639Z</CreatedAt><UpdatedAt>2013-04-20T11:37:57.8178639Z</UpdatedAt><AccessedAt>2013-04-20T11:38:08.3801611Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:15:58Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue17?api-version=2013-04</id><title type=\"text\">sbqueue17</title><published>2013-06-05T09:15:50Z</published><updated>2013-06-05T09:15:50Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue17?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:15:59.9129371Z</CreatedAt><UpdatedAt>2013-06-05T09:15:59.9129371Z</UpdatedAt><AccessedAt>2013-06-05T09:16:07.5400087Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:08 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1367,29 +1367,29 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue17?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:11 GMT' });
+  date: 'Wed, 05 Jun 2013 09:15:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:38:12Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:16:01Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:12 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:01 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%253fapi-version%253d2013-04%26ExpiresOn%3d1366459094%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dAOmdkabKAhrJS17GHvCDc9NqnEgtznZE9%252bD3WqKlNwg%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%253fapi-version%253d2013-04%26ExpiresOn%3d1370424966%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3ducFnhGCdF4z9G8YG%252bGuZ6gdLfYQ6anbThJNfZI3Eqtw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '3c8e077c-07cf-4764-af71-b255ca443bad',
+  'request-id': '7b24ebd5-b717-44c2-a524-9cafb987958b',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:13 GMT',
+  date: 'Wed, 05 Jun 2013 09:16:05 GMT',
   'content-length': '570' });
  return result; },
 function (nock) { 
@@ -1397,24 +1397,24 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue18?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue18?api-version=2013-04</id><title type=\"text\">sbqueue18</title><published>2013-04-20T11:38:15Z</published><updated>2013-04-20T11:38:15Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue18?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue18?api-version=2013-04</id><title type=\"text\">sbqueue18</title><published>2013-06-05T09:16:03Z</published><updated>2013-06-05T09:16:04Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue18?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:15 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459096%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dqve97%252bXNK3b%252fDHQ4nxZn7SpzFeUUOsBf4yv%252fAgw7ZTg%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370424969%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dUFmszHCmt9pwne1%252fTa0iBqWA%252fjv4XX1HkMosnNaah6M%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '7a71bd09-365a-4997-9964-844289b77b23',
+  'request-id': '1a681f0d-d9a3-4055-ae78-6c35aaed52b8',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:16 GMT',
-  'content-length': '591' });
+  date: 'Wed, 05 Jun 2013 09:16:09 GMT',
+  'content-length': '587' });
  return result; },
 function (nock) { 
 var result = 
@@ -1424,67 +1424,67 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:18 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1366459099%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dT0zViXxnAAFBabSY29Rk7bDX2XvoucGT9QOMveIz31k%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1370424966%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d3oRRZKS%252bHQZiSscXKXruBtNMw%252bOLo4Pq2jFETZf0OKQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '07f11d2b-e749-4508-bb17-cb9b9263f9c0',
+  'request-id': '9afae256-cbdc-4ea3-b281-707f45f53d46',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:18 GMT',
-  'content-length': '606' });
+  date: 'Wed, 05 Jun 2013 09:16:06 GMT',
+  'content-length': '614' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .post('/sbqueue18/Messages/Head?timeout=5&api-version=2013-04')
   .reply(201, "hi there again", { 'transfer-encoding': 'chunked',
-  location: 'https://ciserversb.servicebus.windows.net/sbqueue18/messages/1/24273edd-f707-436f-ba31-2ee7f6192710',
+  location: 'https://ciserversb.servicebus.windows.net/sbqueue18/messages/1/f9ea615b-ec4c-455c-b905-be07c3c9fd73',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"LockToken":"24273edd-f707-436f-ba31-2ee7f6192710","LockedUntilUtc":"Sat, 20 Apr 2013 11:39:21 GMT","MessageId":"88330c1fcd004e9bb1e3fe586eceb39d","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:38:21 GMT' });
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"LockToken":"f9ea615b-ec4c-455c-b905-be07c3c9fd73","LockedUntilUtc":"Wed, 05 Jun 2013 09:17:18 GMT","MessageId":"a5bb38d6062b48f6b1daf969c22066ea","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:16:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%252fmessages%252f1%252f24273edd-f707-436f-ba31-2ee7f6192710%253fapi-version%253d2013-04%26ExpiresOn%3d1366459102%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dYVD4XFLJ0VB1LNXnyYZ3Caj7gqSXb8zV0ty5OKBVMuI%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%252fmessages%252f1%252ff9ea615b-ec4c-455c-b905-be07c3c9fd73%253fapi-version%253d2013-04%26ExpiresOn%3d1370424972%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dliBrw58O9ogiCMIAW3vA5RESNYvJK11xKSLxInEy3ns%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '173b627e-852a-40d6-b342-e59c4c76b7e7',
+  'request-id': '24975ae6-ac41-4ce6-b949-b73812f39af5',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:22 GMT',
+  date: 'Wed, 05 Jun 2013 09:16:12 GMT',
   'content-length': '626' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
-  .put('/sbqueue18/messages/1/24273edd-f707-436f-ba31-2ee7f6192710?api-version=2013-04')
+  .put('/sbqueue18/messages/1/f9ea615b-ec4c-455c-b905-be07c3c9fd73?api-version=2013-04')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:23 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459105%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dval5P17NtEfdEjnmvXt6s5uE5fKf3qHzJ2Kh0dljtdM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue18%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370424970%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dyyAqcDi7JgSq26ogpmz6duafRg7Ib3Fvxd6RrbDHy3g%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '06ec4ae3-eb99-4021-8c63-c0c7ca3079b8',
+  'request-id': 'c7cf8199-611d-4607-aad5-173d97dd047c',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:25 GMT',
+  date: 'Wed, 05 Jun 2013 09:16:10 GMT',
   'content-length': '588' });
  return result; },
 function (nock) { 
@@ -1493,17 +1493,17 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue18/Messages/Head?api-version=2013-04')
   .reply(200, "hi there again", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":2,"EnqueuedSequenceNumber":0,"MessageId":"88330c1fcd004e9bb1e3fe586eceb39d","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:38:26 GMT' });
+  brokerproperties: '{"DeliveryCount":2,"EnqueuedSequenceNumber":0,"MessageId":"a5bb38d6062b48f6b1daf969c22066ea","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:16:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:38:28Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue18?api-version=2013-04</id><title type=\"text\">sbqueue18</title><published>2013-04-20T11:38:15Z</published><updated>2013-04-20T11:38:15Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue18?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:38:15.5900418Z</CreatedAt><UpdatedAt>2013-04-20T11:38:15.5900418Z</UpdatedAt><AccessedAt>2013-04-20T11:38:27.1055931Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:16:12Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue18?api-version=2013-04</id><title type=\"text\">sbqueue18</title><published>2013-06-05T09:16:03Z</published><updated>2013-06-05T09:16:04Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue18?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:16:14.424949Z</CreatedAt><UpdatedAt>2013-06-05T09:16:14.424949Z</UpdatedAt><AccessedAt>2013-06-05T09:16:22.2322292Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:27 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1511,58 +1511,58 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue18?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:29 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:38:31Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:16:15Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:31 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:14 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic1%253fapi-version%253d2013-04%26ExpiresOn%3d1366459112%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dCsya0WNbCXCQCH25lCkAHcXSg%252fdu2vcAYyK0Vyb5soE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic1%253fapi-version%253d2013-04%26ExpiresOn%3d1370424976%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3djY6Oq5u1ByrMIhQhw9Od%252bG%252fXyRvq6bKwOTxOvWQmtcc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'c352e01d-4f6f-4d3e-9284-f36769c50a08',
+  'request-id': 'e0e8c655-0d3c-4465-895c-13e6dd4bd51c',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:32 GMT',
-  'content-length': '569' });
+  date: 'Wed, 05 Jun 2013 09:16:16 GMT',
+  'content-length': '573' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic1?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic1?api-version=2013-04</id><title type=\"text\">sbtopic1</title><published>2013-04-20T11:38:34Z</published><updated>2013-04-20T11:38:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic1?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>1024</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic1?api-version=2013-04</id><title type=\"text\">sbtopic1</title><published>2013-06-05T09:16:17Z</published><updated>2013-06-05T09:16:17Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic1?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>1024</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:33 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:38:36Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:16:19Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:36 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:38:37Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic1?api-version=2013-04</id><title type=\"text\">sbtopic1</title><published>2013-04-20T11:38:34Z</published><updated>2013-04-20T11:38:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic1?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:38:34.363Z</CreatedAt><UpdatedAt>2013-04-20T11:38:34.447Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:16:19Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic1?api-version=2013-04</id><title type=\"text\">sbtopic1</title><published>2013-06-05T09:16:17Z</published><updated>2013-06-05T09:16:17Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic1?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:16:17.227Z</CreatedAt><UpdatedAt>2013-06-05T09:16:17.317Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:37 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1570,20 +1570,20 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic1?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:39 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:20 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic2%253fapi-version%253d2013-04%26ExpiresOn%3d1366459120%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dIdHhoWEes1CdER6aY0jLG2pSfxLmXJXw1rlnT0iaqE4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic2%253fapi-version%253d2013-04%26ExpiresOn%3d1370424982%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d9XS2SazDVilzWB4rtXi2Gtwn46mYltQrGCGTuDMh3G8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'fb11c660-1711-404a-b086-6001e4776515',
+  'request-id': 'c90b6f61-10a3-4463-88ac-843489fe1f0b',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:40 GMT',
+  date: 'Wed, 05 Jun 2013 09:16:21 GMT',
   'content-length': '565' });
  return result; },
 function (nock) { 
@@ -1591,38 +1591,38 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic2?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic2?api-version=2013-04</id><title type=\"text\">sbtopic2</title><published>2013-04-20T11:38:42Z</published><updated>2013-04-20T11:38:42Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic2?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic2?api-version=2013-04</id><title type=\"text\">sbtopic2</title><published>2013-06-05T09:16:23Z</published><updated>2013-06-05T09:16:23Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic2?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:41 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic2?api-version=2013-04', '*')
-  .reply(409, "<Error><Code>409</Code><Detail>Conflict.TrackingId:2d6cde06-47be-4801-9b2e-526067bcab3f_G4,TimeStamp:4/20/2013 11:38:43 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(409, "<Error><Code>409</Code><Detail>Conflict.TrackingId:44cb07f3-6582-47fc-bc7c-43aaf2b6bc25_G7,TimeStamp:6/5/2013 9:16:24 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:42 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:38:45Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:16:25Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:45 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:38:46Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic2?api-version=2013-04</id><title type=\"text\">sbtopic2</title><published>2013-04-20T11:38:42Z</published><updated>2013-04-20T11:38:42Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic2?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:38:42.05Z</CreatedAt><UpdatedAt>2013-04-20T11:38:42.183Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:16:30Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic2?api-version=2013-04</id><title type=\"text\">sbtopic2</title><published>2013-06-05T09:16:23Z</published><updated>2013-06-05T09:16:23Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic2?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT55S</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:16:23.337Z</CreatedAt><UpdatedAt>2013-06-05T09:16:23.623Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:46 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1630,68 +1630,68 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic2?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:48 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:42 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic3%253fapi-version%253d2013-04%26ExpiresOn%3d1366459129%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dlwpGNYEFODyAO5wDmqs4Izi0NwHbxzF4Gp3LS8NqmZs%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic3%253fapi-version%253d2013-04%26ExpiresOn%3d1370425001%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dHfOfkNh668IZ%252fqhVsoADqpcwqHXJ7s2shMtI3CGTelg%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '94e58377-2578-46ba-b82c-f75cd722b822',
+  'request-id': 'd8072f4c-2f6e-4571-9ed6-28b6b3a3d9f2',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:49 GMT',
-  'content-length': '565' });
+  date: 'Wed, 05 Jun 2013 09:16:41 GMT',
+  'content-length': '569' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic3?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic3?api-version=2013-04</id><title type=\"text\">sbtopic3</title><published>2013-04-20T11:38:51Z</published><updated>2013-04-20T11:38:51Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic3?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic3?api-version=2013-04</id><title type=\"text\">sbtopic3</title><published>2013-06-05T09:16:40Z</published><updated>2013-06-05T09:16:40Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic3?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:51 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic3%252fSubscriptions%252fsbsubscription1%253fapi-version%253d2013-04%26ExpiresOn%3d1366459132%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3du9qbm4kjFvuwf2oGXoPVPISRtS0%252fzSZHNxueY4lpwJ0%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic3%252fSubscriptions%252fsbsubscription1%253fapi-version%253d2013-04%26ExpiresOn%3d1370425004%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dgjwIp0Twg73DuXXmBBOUS4O3cEdQ%252fPURy6T6w%252f0Symk%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '76a4244d-bd29-42bc-930e-2a59eb02b071',
+  'request-id': '5c28b4ba-7274-49c0-8694-f2ec99195b55',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:52 GMT',
-  'content-length': '607' });
+  date: 'Wed, 05 Jun 2013 09:16:43 GMT',
+  'content-length': '611' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic3/Subscriptions/sbsubscription1?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic3/Subscriptions/sbsubscription1?api-version=2013-04</id><title type=\"text\">sbsubscription1</title><published>2013-04-20T11:38:53Z</published><updated>2013-04-20T11:38:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic3/Subscriptions/sbsubscription1?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:38:53.5500939Z</CreatedAt><UpdatedAt>2013-04-20T11:38:53.5500939Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic3/Subscriptions/sbsubscription1?api-version=2013-04</id><title type=\"text\">sbsubscription1</title><published>2013-06-05T09:16:53Z</published><updated>2013-06-05T09:16:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic3/Subscriptions/sbsubscription1?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:16:53.7685743Z</CreatedAt><UpdatedAt>2013-06-05T09:16:53.7685743Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:53 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic3%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459135%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dQtraycb57IilO5MYsPfgrUYKFRBYZqkIUbcWWxM8v14%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic3%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370425015%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3duTAs4SmqdOiUtYLUYaqn7GbX4jHrzJb093kH52iQyiw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'a2379288-2244-4e48-88f9-80247819e6a2',
+  'request-id': '422e9da4-1db9-4be1-8add-eee374fb374b',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:54 GMT',
+  date: 'Wed, 05 Jun 2013 09:16:55 GMT',
   'content-length': '578' });
  return result; },
 function (nock) { 
@@ -1702,20 +1702,20 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:56 GMT' });
+  date: 'Wed, 05 Jun 2013 09:16:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic3%252fSubscriptions%252fsbsubscription1%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459138%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dfwLHxdFVQg9AWeFXfJO1u7yROsd2MmSLqgP8lqJJ%252b8g%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic3%252fSubscriptions%252fsbsubscription1%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370425023%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dKIyPsYwY97ltMd1f6hBX1rBbfhCXJDb1b9V2Epfs%252bQA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '1dff0f45-50f4-4049-8cdb-580c18e8bcda',
+  'request-id': '34851220-6d52-4bae-a765-0063f0dc1e19',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:38:57 GMT',
+  date: 'Wed, 05 Jun 2013 09:17:03 GMT',
   'content-length': '629' });
  return result; },
 function (nock) { 
@@ -1726,25 +1726,25 @@ nock('https://ciserversb.servicebus.windows.net:443')
   'content-type': 'made-up-one',
   server: 'Microsoft-HTTPAPI/2.0',
   brokerproperties: '{"CorrelationId":"{701332F3-B37B-4D29-AA0A-E367906C206E}","DeliveryCount":1,"EnqueuedSequenceNumber":1,"Label":"lbl","MessageId":"id","ReplyTo":"repTo","ReplyToSessionId":"repsession","SequenceNumber":1,"SessionId":"session","State":"Active","TimeToLive":922337203685.47754,"To":"to"}',
-  date: 'Sat, 20 Apr 2013 11:38:58 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:39:00Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:17:03Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:38:59 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:39:01Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic3?api-version=2013-04</id><title type=\"text\">sbtopic3</title><published>2013-04-20T11:38:51Z</published><updated>2013-04-20T11:38:51Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic3?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:38:51.607072Z</CreatedAt><UpdatedAt>2013-04-20T11:38:51.607072Z</UpdatedAt><AccessedAt>2013-04-20T11:38:59.2944244Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:17:04Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic3?api-version=2013-04</id><title type=\"text\">sbtopic3</title><published>2013-06-05T09:16:40Z</published><updated>2013-06-05T09:16:40Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic3?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:16:47.770027Z</CreatedAt><UpdatedAt>2013-06-05T09:16:47.770027Z</UpdatedAt><AccessedAt>2013-06-05T09:17:08.9119219Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:01 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1752,40 +1752,40 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic3?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:03 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:15 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic4%253fapi-version%253d2013-04%26ExpiresOn%3d1366459144%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dGVnZNywHEqin9wECZPscS%252bHSSN7rbNnF2NiemC7Acpw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic4%253fapi-version%253d2013-04%26ExpiresOn%3d1370425029%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dNn%252bvGW4qb2IpWW4OWoLEZuUTwSvj69LSqp0TaOKwMes%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '3fb82fd8-eeb1-4422-82db-921b16f5321e',
+  'request-id': '8126be2a-f353-4d89-bee9-4c94accb376a',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:04 GMT',
+  date: 'Wed, 05 Jun 2013 09:17:08 GMT',
   'content-length': '569' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic4?api-version=2013-04')
-  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:d60987db-70b1-4da8-af25-fc628ca12ac1_G5,TimeStamp:4/20/2013 11:39:06 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:a112a3af-de4d-4469-9427-b3188368de73_G0,TimeStamp:6/5/2013 9:17:18 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:06 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic4?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic4?api-version=2013-04</id><title type=\"text\">sbtopic4</title><published>2013-04-20T11:39:07Z</published><updated>2013-04-20T11:39:07Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic4?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic4?api-version=2013-04</id><title type=\"text\">sbtopic4</title><published>2013-06-05T09:17:08Z</published><updated>2013-06-05T09:17:08Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic4?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:06 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1793,94 +1793,94 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic4?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:08 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic4?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:37bc576e-4af1-47af-9ba3-8e7a9c61430e;id=1404</id><updated>2013-04-20T11:39:11Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:7d62cab5-054f-4629-bb2a-8b5df9b13515;id=160976</id><updated>2013-06-05T09:17:11Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:11 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:39:13Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:17:12Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:13 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:39:14Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:17:13Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:13 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:13 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic5%253fapi-version%253d2013-04%26ExpiresOn%3d1366459155%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dNaTugPqGmAKWh0a%252fkpEs5jCUvz44ENUr%252fmmz9aUZnDc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic5%253fapi-version%253d2013-04%26ExpiresOn%3d1370425037%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d5Pr2K8NCz%252foHSVUg1dALMngkvzCFQ4J2Cf3MZnhBuxk%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '5217a2f2-f0e9-4d51-b0eb-de09245b3dff',
+  'request-id': 'd6bead52-34fe-4e15-a6ed-8c8fc7993bf0',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:15 GMT',
-  'content-length': '573' });
+  date: 'Wed, 05 Jun 2013 09:17:17 GMT',
+  'content-length': '569' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic5?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:dcfa06a8-eee5-4f0a-a46b-1851cdfcb844;id=14047</id><updated>2013-04-20T11:39:17Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:7d62cab5-054f-4629-bb2a-8b5df9b13515;id=160977</id><updated>2013-06-05T09:17:16Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:16 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic5?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04</id><title type=\"text\">sbtopic5</title><published>2013-04-20T11:39:18Z</published><updated>2013-04-20T11:39:18Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04</id><title type=\"text\">sbtopic5</title><published>2013-06-05T09:17:17Z</published><updated>2013-06-05T09:17:18Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:18 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic5?api-version=2013-04')
-  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04</id><title type=\"text\">sbtopic5</title><published>2013-04-20T11:39:18Z</published><updated>2013-04-20T11:39:18Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:18.677Z</CreatedAt><UpdatedAt>2013-04-20T11:39:18.79Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04</id><title type=\"text\">sbtopic5</title><published>2013-06-05T09:17:17Z</published><updated>2013-06-05T09:17:18Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:17.713Z</CreatedAt><UpdatedAt>2013-06-05T09:17:18.207Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:19 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:39:21Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:17:19Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:21 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:39:22Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04</id><title type=\"text\">sbtopic5</title><published>2013-04-20T11:39:18Z</published><updated>2013-04-20T11:39:18Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic5?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:18.677Z</CreatedAt><UpdatedAt>2013-04-20T11:39:18.79Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:17:20Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic5?api-version=2013-04</id><title type=\"text\">sbtopic5</title><published>2013-06-05T09:17:17Z</published><updated>2013-06-05T09:17:18Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic5?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:17.713Z</CreatedAt><UpdatedAt>2013-06-05T09:17:18.207Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:21 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1888,100 +1888,100 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic5?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:24 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:26 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:39:26Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:17:27Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:25 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic6%253fapi-version%253d2013-04%26ExpiresOn%3d1366459168%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d86IxmVEiiOYW5N4IVWVvGbg17MYJBYcUVCb7AmB6Pp4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic6%253fapi-version%253d2013-04%26ExpiresOn%3d1370425048%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dwm03bnqyjll3OEFR1FTGhS8iCsKGxQ%252bJDmOefVBcJ3Y%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '03ca39f8-15db-4694-9e54-204397f47a32',
+  'request-id': 'ff968c5e-8ee2-47c2-b392-bd642dda6dc6',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:27 GMT',
-  'content-length': '565' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/sbtopic6?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04</id><title type=\"text\">sbtopic6</title><published>2013-04-20T11:39:29Z</published><updated>2013-04-20T11:39:29Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:28 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:39:30Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04</id><title type=\"text\">sbtopic6</title><published>2013-04-20T11:39:29Z</published><updated>2013-04-20T11:39:29Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic6?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:29.157Z</CreatedAt><UpdatedAt>2013-04-20T11:39:29.44Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:29 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb-sb.accesscontrol.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic7%253fapi-version%253d2013-04%26ExpiresOn%3d1366459172%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dV0a3rh3%252bCLCCq8JFbIGBj6QHb0ZfOL9d89Znfzj9ZgU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
-  expires: '-1',
-  'request-id': '0c354f7d-1d48-4930-ad7b-fca0e32665ec',
-  'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:32 GMT',
+  date: 'Wed, 05 Jun 2013 09:17:28 GMT',
   'content-length': '569' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/sbtopic7?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic7?api-version=2013-04</id><title type=\"text\">sbtopic7</title><published>2013-04-20T11:39:33Z</published><updated>2013-04-20T11:39:33Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic7?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+.put('/sbtopic6?api-version=2013-04', '*')
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04</id><title type=\"text\">sbtopic6</title><published>2013-06-05T09:17:25Z</published><updated>2013-06-05T09:17:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:33 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:39:34Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04</id><title type=\"text\">sbtopic6</title><published>2013-04-20T11:39:29Z</published><updated>2013-04-20T11:39:29Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic6?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:29.157Z</CreatedAt><UpdatedAt>2013-04-20T11:39:29.44Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic7?api-version=2013-04</id><title type=\"text\">sbtopic7</title><published>2013-04-20T11:39:33Z</published><updated>2013-04-20T11:39:33Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic7?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:33.297Z</CreatedAt><UpdatedAt>2013-04-20T11:39:33.383Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:17:26Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04</id><title type=\"text\">sbtopic6</title><published>2013-06-05T09:17:25Z</published><updated>2013-06-05T09:17:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic6?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:25.277Z</CreatedAt><UpdatedAt>2013-06-05T09:17:25.57Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:34 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:26 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic7%253fapi-version%253d2013-04%26ExpiresOn%3d1370425050%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dSJcxb%252fLuDOELKdhKU64%252f7bLJLrT3k2tUuQyOQ4TfPY8%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': 'd71bc631-dc21-4d94-ae92-687258fb2723',
+  'x-content-type-options': 'nosniff',
+  date: 'Wed, 05 Jun 2013 09:17:30 GMT',
+  'content-length': '573' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/sbtopic7?api-version=2013-04', '*')
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic7?api-version=2013-04</id><title type=\"text\">sbtopic7</title><published>2013-06-05T09:17:28Z</published><updated>2013-06-05T09:17:28Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic7?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:17:27 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .get('/$Resources/Topics?api-version=2013-04')
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:17:29Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04</id><title type=\"text\">sbtopic6</title><published>2013-06-05T09:17:25Z</published><updated>2013-06-05T09:17:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic6?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:25.277Z</CreatedAt><UpdatedAt>2013-06-05T09:17:25.57Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic7?api-version=2013-04</id><title type=\"text\">sbtopic7</title><published>2013-06-05T09:17:28Z</published><updated>2013-06-05T09:17:28Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic7?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:28.417Z</CreatedAt><UpdatedAt>2013-06-05T09:17:28.503Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:17:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:39:36Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:17:41Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:36 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:39:38Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04</id><title type=\"text\">sbtopic6</title><published>2013-04-20T11:39:29Z</published><updated>2013-04-20T11:39:29Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic6?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:29.157Z</CreatedAt><UpdatedAt>2013-04-20T11:39:29.44Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic7?api-version=2013-04</id><title type=\"text\">sbtopic7</title><published>2013-04-20T11:39:33Z</published><updated>2013-04-20T11:39:33Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic7?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:33.481268Z</CreatedAt><UpdatedAt>2013-04-20T11:39:33.481268Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:17:32Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic6?api-version=2013-04</id><title type=\"text\">sbtopic6</title><published>2013-06-05T09:17:25Z</published><updated>2013-06-05T09:17:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic6?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:25.277Z</CreatedAt><UpdatedAt>2013-06-05T09:17:25.57Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic7?api-version=2013-04</id><title type=\"text\">sbtopic7</title><published>2013-06-05T09:17:28Z</published><updated>2013-06-05T09:17:28Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic7?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:28.417Z</CreatedAt><UpdatedAt>2013-06-05T09:17:28.503Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:37 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1989,7 +1989,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic7?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:40 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -1997,44 +1997,44 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic6?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:40 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:33 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f1sbtopic8%253fapi-version%253d2013-04%26ExpiresOn%3d1366459182%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dUDIqr6KFlzfoNfFfqY%252flAT5X8raqVkKjKkp1p4OUlrU%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f1sbtopic8%253fapi-version%253d2013-04%26ExpiresOn%3d1370425055%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252fBuWH8EqDEa%252ffwZkWMmKRnjqyv6rkbEX5CvvgRQLYnk%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '53fcb050-7926-457a-822f-f3bd9918388a',
+  'request-id': '315b8e77-9c6d-48f3-8250-e857167f4314',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:43 GMT',
-  'content-length': '570' });
+  date: 'Wed, 05 Jun 2013 09:17:34 GMT',
+  'content-length': '574' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/1sbtopic8?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/1sbtopic8?api-version=2013-04</id><title type=\"text\">1sbtopic8</title><published>2013-04-20T11:39:44Z</published><updated>2013-04-20T11:39:44Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/1sbtopic8?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/1sbtopic8?api-version=2013-04</id><title type=\"text\">1sbtopic8</title><published>2013-06-05T09:17:36Z</published><updated>2013-06-05T09:17:36Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/1sbtopic8?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:43 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f2sbtopic9%253fapi-version%253d2013-04%26ExpiresOn%3d1366459185%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dvpNOng2Azp3I5ksCZFvr%252fiQgG0cNjXDnqG29Ox%252bd5W0%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f2sbtopic9%253fapi-version%253d2013-04%26ExpiresOn%3d1370425057%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dU3odrG7GaLct%252befbrw525u4UudHERU3DwFHRLUhO6%252fA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '8955746c-ff51-4d3f-b3ff-cdef3247ca35',
+  'request-id': 'a1621e85-310a-4bd2-ad54-c54b28dc7c5c',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:44 GMT',
+  date: 'Wed, 05 Jun 2013 09:17:37 GMT',
   'content-length': '574' });
  return result; },
 function (nock) { 
@@ -2042,138 +2042,122 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/2sbtopic9?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04</id><title type=\"text\">2sbtopic9</title><published>2013-04-20T11:39:46Z</published><updated>2013-04-20T11:39:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04</id><title type=\"text\">2sbtopic9</title><published>2013-06-05T09:17:38Z</published><updated>2013-06-05T09:17:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:46 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f3sbtopic10%253fapi-version%253d2013-04%26ExpiresOn%3d1366459187%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8HOuMMTlhALMzhN4dO8mVoZ2qccN1QTk%252bjWQZudmYTA%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f3sbtopic10%253fapi-version%253d2013-04%26ExpiresOn%3d1370425059%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dI9F%252b2avhBynpS%252bqe%252b%252fw0EmmyYcTKWn4CrjXbmmgSEn4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'f450db1a-a1a6-49f0-9786-ce39725a7ade',
+  'request-id': 'b0efbe7d-f1e3-44f3-a46a-02b07ea7ccb6',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:47 GMT',
-  'content-length': '571' });
+  date: 'Wed, 05 Jun 2013 09:17:39 GMT',
+  'content-length': '583' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/3sbtopic10?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/3sbtopic10?api-version=2013-04</id><title type=\"text\">3sbtopic10</title><published>2013-04-20T11:39:49Z</published><updated>2013-04-20T11:39:49Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/3sbtopic10?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/3sbtopic10?api-version=2013-04</id><title type=\"text\">3sbtopic10</title><published>2013-06-05T09:17:40Z</published><updated>2013-06-05T09:17:41Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/3sbtopic10?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:49 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f4sbtopic11%253fapi-version%253d2013-04%26ExpiresOn%3d1366459190%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252fYl6Fcval6%252bVAR5hNCFOitTxhlXTptothIDSZ359uS4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f4sbtopic11%253fapi-version%253d2013-04%26ExpiresOn%3d1370425061%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dUjyoSdVyldKJyk7VgWGxKi0NV1zjA54DcfRY1EpPiaw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '87c47cb3-7ac2-4138-8671-f64e36f7d367',
+  'request-id': '8e7485ea-4a74-4818-bb30-fad793a24405',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:49 GMT',
-  'content-length': '575' });
+  date: 'Wed, 05 Jun 2013 09:17:41 GMT',
+  'content-length': '567' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/4sbtopic11?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/4sbtopic11?api-version=2013-04</id><title type=\"text\">4sbtopic11</title><published>2013-04-20T11:39:52Z</published><updated>2013-04-20T11:39:52Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/4sbtopic11?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/4sbtopic11?api-version=2013-04</id><title type=\"text\">4sbtopic11</title><published>2013-06-05T09:17:42Z</published><updated>2013-06-05T09:17:42Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/4sbtopic11?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:52 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fTopics%253f%252524top%253d2%2526api-version%253d2013-04%26ExpiresOn%3d1366459193%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dAQ3nOZ0RiQpPojhEoZU8ztfypjmOZT4qQVhqzLFRZqQ%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fTopics%253f%252524top%253d2%2526api-version%253d2013-04%26ExpiresOn%3d1370425063%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d2IUk6sUA%252fiFXcHtTnkPktlwvhUBJZNKXlCgIWAJ6jvM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '083eb46e-b7b9-4f08-86ba-1ae9d9d03196',
+  'request-id': 'ea089e30-6f2c-4d2f-9bf8-24c62909cb61',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:53 GMT',
-  'content-length': '603' });
+  date: 'Wed, 05 Jun 2013 09:17:43 GMT',
+  'content-length': '607' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?%24top=2&api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04</id><updated>2013-04-20T11:39:55Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04&amp;%24skip=2\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/1sbtopic8?api-version=2013-04</id><title type=\"text\">1sbtopic8</title><published>2013-04-20T11:39:44Z</published><updated>2013-04-20T11:39:44Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../1sbtopic8?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:44.183Z</CreatedAt><UpdatedAt>2013-04-20T11:39:44.333Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04</id><title type=\"text\">2sbtopic9</title><published>2013-04-20T11:39:46Z</published><updated>2013-04-20T11:39:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbtopic9?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:46.847Z</CreatedAt><UpdatedAt>2013-04-20T11:39:46.98Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04</id><updated>2013-06-05T09:17:44Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04&amp;%24skip=2\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/1sbtopic8?api-version=2013-04</id><title type=\"text\">1sbtopic8</title><published>2013-06-05T09:17:36Z</published><updated>2013-06-05T09:17:36Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../1sbtopic8?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:36.733Z</CreatedAt><UpdatedAt>2013-06-05T09:17:36.863Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04</id><title type=\"text\">2sbtopic9</title><published>2013-06-05T09:17:38Z</published><updated>2013-06-05T09:17:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbtopic9?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:38.643Z</CreatedAt><UpdatedAt>2013-06-05T09:17:38.99Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:54 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fTopics%253f%252524top%253d2%2526%252524skip%253d1%2526api-version%253d2013-04%26ExpiresOn%3d1366459196%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3djls2u1hwfs0Lh9ESntEEBfGuQkHo0ILDpsB1opo7Uy8%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fTopics%253f%252524top%253d2%2526%252524skip%253d1%2526api-version%253d2013-04%26ExpiresOn%3d1370425065%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dql%252f%252fu%252bNHLXloxv3aWGnDIPTYrtjbSZL4R%252f72MUlOat4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'e57dfdc6-6233-4b06-9945-cd5b02edf990',
+  'request-id': 'e1193672-5281-4209-b167-d4d23ca4b11d',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:39:56 GMT',
-  'content-length': '625' });
+  date: 'Wed, 05 Jun 2013 09:17:44 GMT',
+  'content-length': '641' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?%24top=2&%24skip=1&api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=1&amp;api-version=2013-04</id><updated>2013-04-20T11:39:57Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=3&amp;api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04</id><title type=\"text\">2sbtopic9</title><published>2013-04-20T11:39:46Z</published><updated>2013-04-20T11:39:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbtopic9?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:46.847Z</CreatedAt><UpdatedAt>2013-04-20T11:39:46.98Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/3sbtopic10?api-version=2013-04</id><title type=\"text\">3sbtopic10</title><published>2013-04-20T11:39:49Z</published><updated>2013-04-20T11:39:49Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../3sbtopic10?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:49.13Z</CreatedAt><UpdatedAt>2013-04-20T11:39:49.223Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=1&amp;api-version=2013-04</id><updated>2013-06-05T09:17:46Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=3&amp;api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04</id><title type=\"text\">2sbtopic9</title><published>2013-06-05T09:17:38Z</published><updated>2013-06-05T09:17:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbtopic9?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:38.643Z</CreatedAt><UpdatedAt>2013-06-05T09:17:38.99Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/3sbtopic10?api-version=2013-04</id><title type=\"text\">3sbtopic10</title><published>2013-06-05T09:17:40Z</published><updated>2013-06-05T09:17:41Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../3sbtopic10?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:40.963Z</CreatedAt><UpdatedAt>2013-06-05T09:17:41.09Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:56 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:39:58Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:17:47Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:58 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:39:59Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/1sbtopic8?api-version=2013-04</id><title type=\"text\">1sbtopic8</title><published>2013-04-20T11:39:44Z</published><updated>2013-04-20T11:39:44Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../1sbtopic8?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:44.183Z</CreatedAt><UpdatedAt>2013-04-20T11:39:44.333Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04</id><title type=\"text\">2sbtopic9</title><published>2013-04-20T11:39:46Z</published><updated>2013-04-20T11:39:46Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbtopic9?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:46.847Z</CreatedAt><UpdatedAt>2013-04-20T11:39:46.98Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/3sbtopic10?api-version=2013-04</id><title type=\"text\">3sbtopic10</title><published>2013-04-20T11:39:49Z</published><updated>2013-04-20T11:39:49Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../3sbtopic10?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:49.13Z</CreatedAt><UpdatedAt>2013-04-20T11:39:49.223Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/4sbtopic11?api-version=2013-04</id><title type=\"text\">4sbtopic11</title><published>2013-04-20T11:39:52Z</published><updated>2013-04-20T11:39:52Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../4sbtopic11?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:39:52.247Z</CreatedAt><UpdatedAt>2013-04-20T11:39:52.53Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:17:48Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/1sbtopic8?api-version=2013-04</id><title type=\"text\">1sbtopic8</title><published>2013-06-05T09:17:36Z</published><updated>2013-06-05T09:17:36Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../1sbtopic8?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:36.733Z</CreatedAt><UpdatedAt>2013-06-05T09:17:36.863Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/2sbtopic9?api-version=2013-04</id><title type=\"text\">2sbtopic9</title><published>2013-06-05T09:17:38Z</published><updated>2013-06-05T09:17:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../2sbtopic9?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:38.643Z</CreatedAt><UpdatedAt>2013-06-05T09:17:38.99Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/3sbtopic10?api-version=2013-04</id><title type=\"text\">3sbtopic10</title><published>2013-06-05T09:17:40Z</published><updated>2013-06-05T09:17:41Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../3sbtopic10?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:40.963Z</CreatedAt><UpdatedAt>2013-06-05T09:17:41.09Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/4sbtopic11?api-version=2013-04</id><title type=\"text\">4sbtopic11</title><published>2013-06-05T09:17:42Z</published><updated>2013-06-05T09:17:42Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../4sbtopic11?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:17:42.823Z</CreatedAt><UpdatedAt>2013-06-05T09:17:42.9Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:39:58 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .delete('/1sbtopic8?api-version=2013-04')
-  .reply(200, "", { 'content-length': '0',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:00 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .delete('/4sbtopic11?api-version=2013-04')
-  .reply(200, "", { 'content-length': '0',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:01 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2181,7 +2165,15 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/3sbtopic10?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:00 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:49 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .delete('/1sbtopic8?api-version=2013-04')
+  .reply(200, "", { 'content-length': '0',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:17:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2189,20 +2181,28 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/2sbtopic9?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:01 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:54 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .delete('/4sbtopic11?api-version=2013-04')
+  .reply(200, "", { 'content-length': '0',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:17:59 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fMyFakeTopic%252fSubscriptions%252fsbsubscription2%253fapi-version%253d2013-04%26ExpiresOn%3d1366459203%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dz%252btXkOLwgeVQcFeajVl67Lh3rcY6Ohr687u2%252bFgrlbQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fMyFakeTopic%252fSubscriptions%252fsbsubscription2%253fapi-version%253d2013-04%26ExpiresOn%3d1370425076%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dVEx6LEEg9XcTc96W3hI%252f1IDBoBfHkUllFow8J0hqK%252f4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '70e2a4ff-9b74-47fb-bbb5-1f7a82cf1689',
+  'request-id': 'fbe919b5-c01b-4e81-9efd-6748c740d6c1',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:03 GMT',
+  date: 'Wed, 05 Jun 2013 09:17:56 GMT',
   'content-length': '614' });
  return result; },
 function (nock) { 
@@ -2210,110 +2210,110 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/MyFakeTopic/Subscriptions/sbsubscription2?api-version=2013-04', '*')
-  .reply(404, "<Error><Code>404</Code><Detail>The incoming request is not recoginzed as a namespace policy put request: Unrecognized policy type: SubscriptionDescription, http://schemas.microsoft.com/netservices/2010/10/servicebus/connect.TrackingId:1108ddf6-4f6f-4382-9e73-31329bb7bdea_G1,TimeStamp:4/20/2013 11:40:05 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(404, "<Error><Code>404</Code><Detail>The incoming request is not recoginzed as a namespace policy put request: Unrecognized policy type: SubscriptionDescription, http://schemas.microsoft.com/netservices/2010/10/servicebus/connect.TrackingId:90c80e7b-2969-4a27-90c4-87b43fc083b4_G6,TimeStamp:6/5/2013 9:17:57 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:05 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic12%253fapi-version%253d2013-04%26ExpiresOn%3d1366459205%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dtnJpyrbzq%252fJ7yKKUi8WS%252b8L0ZfbVOonhprRYSKre4%252fA%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic12%253fapi-version%253d2013-04%26ExpiresOn%3d1370425073%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dBamam4TV8W1W%252fCiR21qHRejHQPKO%252f9GY1WhxwdPdu7g%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '317fd776-3dd1-47b5-9452-b3aa8a270cc1',
+  'request-id': '762e748f-4adf-4254-a6a6-e9752e2d2d84',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:05 GMT',
-  'content-length': '578' });
+  date: 'Wed, 05 Jun 2013 09:17:53 GMT',
+  'content-length': '574' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic12?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic12?api-version=2013-04</id><title type=\"text\">sbtopic12</title><published>2013-04-20T11:40:07Z</published><updated>2013-04-20T11:40:07Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic12?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic12?api-version=2013-04</id><title type=\"text\">sbtopic12</title><published>2013-06-05T09:17:54Z</published><updated>2013-06-05T09:17:54Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic12?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:07 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic12%252fSubscriptions%252fsbsubscription2%253fapi-version%253d2013-04%26ExpiresOn%3d1366459209%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d5HRThBfjyuNbIk0xeLenSEJridi5lHtW10LYm0ZNgyk%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic12%252fSubscriptions%252fsbsubscription2%253fapi-version%253d2013-04%26ExpiresOn%3d1370425078%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dJvIETCUGqVDwAtkPvoMj%252bIrZQnTuo3XUMb1HsUT5lFM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'edc34062-7ff9-44aa-8b0e-63691252618c',
+  'request-id': '281e8c50-1217-4912-b92c-2cf0ff5425a4',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:09 GMT',
-  'content-length': '604' });
+  date: 'Wed, 05 Jun 2013 09:17:58 GMT',
+  'content-length': '608' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic12/Subscriptions/sbsubscription2?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic12/Subscriptions/sbsubscription2?api-version=2013-04</id><title type=\"text\">sbsubscription2</title><published>2013-04-20T11:40:10Z</published><updated>2013-04-20T11:40:10Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic12/Subscriptions/sbsubscription2?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT5S</LockDuration><RequiresSession>true</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:40:10.5637084Z</CreatedAt><UpdatedAt>2013-04-20T11:40:10.5637084Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>PT5M</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic12/Subscriptions/sbsubscription2?api-version=2013-04</id><title type=\"text\">sbsubscription2</title><published>2013-06-05T09:17:55Z</published><updated>2013-06-05T09:17:55Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic12/Subscriptions/sbsubscription2?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT5S</LockDuration><RequiresSession>true</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:17:55.9242114Z</CreatedAt><UpdatedAt>2013-06-05T09:17:55.9242114Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>PT5M</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:10 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic12%252fSubscriptions%252fsbsubscription3%253fapi-version%253d2013-04%26ExpiresOn%3d1366459212%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dpqawA3VNxJFo4jOQtrDDJwxNJXDpsvPa3grANXVeBQ4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic12%252fSubscriptions%252fsbsubscription3%253fapi-version%253d2013-04%26ExpiresOn%3d1370425077%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dN7s2jiuHpYv4ZsWW6yVhfBQ%252fs9N0PTJYlUYjyUgqecs%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '150dab17-a7ca-434e-a31e-a7c45a667c03',
+  'request-id': '2586e3a1-4ccb-4ece-a3f7-3e2a31fc13c3',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:12 GMT',
-  'content-length': '604' });
+  date: 'Wed, 05 Jun 2013 09:17:56 GMT',
+  'content-length': '608' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic12/Subscriptions/sbsubscription3?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic12/Subscriptions/sbsubscription3?api-version=2013-04</id><title type=\"text\">sbsubscription3</title><published>2013-04-20T11:40:13Z</published><updated>2013-04-20T11:40:13Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic12/Subscriptions/sbsubscription3?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT5S</LockDuration><RequiresSession>true</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:40:13.1263189Z</CreatedAt><UpdatedAt>2013-04-20T11:40:13.1263189Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>PT5M</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic12/Subscriptions/sbsubscription3?api-version=2013-04</id><title type=\"text\">sbsubscription3</title><published>2013-06-05T09:17:57Z</published><updated>2013-06-05T09:17:57Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic12/Subscriptions/sbsubscription3?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT5S</LockDuration><RequiresSession>true</RequiresSession><DefaultMessageTimeToLive>PT5S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>true</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:17:57.9670288Z</CreatedAt><UpdatedAt>2013-06-05T09:17:57.9670288Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>PT5M</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:13 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic12/Subscriptions/sbsubscription2?api-version=2013-04', '*')
-  .reply(409, "<Error><Code>409</Code><Detail>Entity 'ciserversb:Topic:sbtopic12|sbsubscription2' already exists..TrackingId:1bf739b7-8813-4987-bdf6-6d69bfaa4a8a_G6_B2, Timestamp:4/20/2013 11:40:14 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(409, "<Error><Code>409</Code><Detail>Entity 'ciserversb:Topic:sbtopic12|sbsubscription2' already exists..TrackingId:4205fa75-3b91-4dd0-8175-062e2470e005_G7_B3, Timestamp:6/5/2013 9:18:08 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:14 GMT' });
+  date: 'Wed, 05 Jun 2013 09:17:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:40:16Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:18:04Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:15 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:40:17Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic12?api-version=2013-04</id><title type=\"text\">sbtopic12</title><published>2013-04-20T11:40:07Z</published><updated>2013-04-20T11:40:07Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic12?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:40:08.0458247Z</CreatedAt><UpdatedAt>2013-04-20T11:40:08.0458247Z</UpdatedAt><AccessedAt>2013-04-20T11:40:13.4675956Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>2</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:18:06Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic12?api-version=2013-04</id><title type=\"text\">sbtopic12</title><published>2013-06-05T09:17:54Z</published><updated>2013-06-05T09:17:54Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic12?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:18:03.8534538Z</CreatedAt><UpdatedAt>2013-06-05T09:18:03.8534538Z</UpdatedAt><AccessedAt>2013-06-05T09:18:07.6836653Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>2</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:17 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2321,43 +2321,43 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic12?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:18 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:07 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic13%252fSubscriptions%252fsbsubscription4%253fapi-version%253d2013-04%26ExpiresOn%3d1366459220%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dkuY1aZ8wkve2hh6LYNprlcuq2go1OPbqnpdyMyYTArY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic13%252fSubscriptions%252fsbsubscription4%253fapi-version%253d2013-04%26ExpiresOn%3d1370425087%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d1ChT72d2zl3IwYDEBSDMsTBfzeVFnkYXfC72u1YxOoQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'c7907b45-a4a7-4b2e-96f9-cacef77f18fc',
+  'request-id': '3189c23d-ec5c-478e-ae0e-5dcd4a8abda1',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:20 GMT',
+  date: 'Wed, 05 Jun 2013 09:18:06 GMT',
   'content-length': '604' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic13/Subscriptions/sbsubscription4?api-version=2013-04')
-  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:df155e6a-052b-47eb-be9f-0e1739f684ec_G2,TimeStamp:4/20/2013 11:40:23 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:6db95e0a-4a53-43bf-be0b-878588d553fc_G3,TimeStamp:6/5/2013 9:18:14 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:22 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic13%253fapi-version%253d2013-04%26ExpiresOn%3d1366459224%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dAPJoc%252fx0vzYdHwQCctbVf3DsHEAHII91ABZm%252b1LLez4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic13%253fapi-version%253d2013-04%26ExpiresOn%3d1370425086%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dhv0BUWqdDb%252bjqUPztutoiWu7J0Z9zFhL%252bfjLTMfJ8JI%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '26ea5fde-a324-4089-8164-c06ba5fd2e28',
+  'request-id': 'ab6763d8-f2b0-4687-8c2a-145265c18a15',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:23 GMT',
+  date: 'Wed, 05 Jun 2013 09:18:05 GMT',
   'content-length': '574' });
  return result; },
 function (nock) { 
@@ -2365,20 +2365,20 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic13?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic13?api-version=2013-04</id><title type=\"text\">sbtopic13</title><published>2013-04-20T11:40:25Z</published><updated>2013-04-20T11:40:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic13?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic13?api-version=2013-04</id><title type=\"text\">sbtopic13</title><published>2013-06-05T09:18:07Z</published><updated>2013-06-05T09:18:08Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic13?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:24 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic13/Subscriptions/sbsubscription4?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic13/Subscriptions/sbsubscription4?api-version=2013-04</id><title type=\"text\">sbsubscription4</title><published>2013-04-20T11:40:27Z</published><updated>2013-04-20T11:40:27Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic13/Subscriptions/sbsubscription4?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:40:27.0220846Z</CreatedAt><UpdatedAt>2013-04-20T11:40:27.0220846Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic13/Subscriptions/sbsubscription4?api-version=2013-04</id><title type=\"text\">sbsubscription4</title><published>2013-06-05T09:18:08Z</published><updated>2013-06-05T09:18:08Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic13/Subscriptions/sbsubscription4?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:08.4441996Z</CreatedAt><UpdatedAt>2013-06-05T09:18:08.4441996Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:26 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2386,7 +2386,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic13/Subscriptions/sbsubscription4?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:27 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2394,25 +2394,25 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic13/Subscriptions/sbsubscription4?api-version=2013-04')
   .reply(404, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:28 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:40:30Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:18:21Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:29 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:40:32Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic13?api-version=2013-04</id><title type=\"text\">sbtopic13</title><published>2013-04-20T11:40:25Z</published><updated>2013-04-20T11:40:25Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic13?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:40:25.5583931Z</CreatedAt><UpdatedAt>2013-04-20T11:40:25.5583931Z</UpdatedAt><AccessedAt>2013-04-20T11:40:28.480212Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:18:17Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic13?api-version=2013-04</id><title type=\"text\">sbtopic13</title><published>2013-06-05T09:18:07Z</published><updated>2013-06-05T09:18:08Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic13?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:18:07.5632619Z</CreatedAt><UpdatedAt>2013-06-05T09:18:07.5632619Z</UpdatedAt><AccessedAt>2013-06-05T09:18:10.1283303Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:31 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2420,91 +2420,91 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic13?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:33 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:14 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic14%252fSubscriptions%252fsbsubscription5%253fapi-version%253d2013-04%26ExpiresOn%3d1366459234%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dTEphLiNUPVyiFgcNOwJohbet9KnmwBMsIePjg6Gs3To%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic14%252fSubscriptions%252fsbsubscription5%253fapi-version%253d2013-04%26ExpiresOn%3d1370425099%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dGwt5SICngtpcIvqnWTBeqVTIt%252fQ0eud6%252bU3fwc2Fpys%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '9a639d17-2797-44a8-ba50-a3a7a563afef',
+  'request-id': 'b2fde248-6ebb-4067-9dec-a123c2a4e724',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:34 GMT',
-  'content-length': '604' });
+  date: 'Wed, 05 Jun 2013 09:18:19 GMT',
+  'content-length': '612' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:1c4b4bf7-df06-4c90-8135-24d414240d3f;id=2728</id><updated>2013-04-20T11:40:36Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:6e6e7dc1-a148-48ca-968b-c164108c7601;id=160133</id><updated>2013-06-05T09:18:17Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:36 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic14%253fapi-version%253d2013-04%26ExpiresOn%3d1366459237%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d7uGugAxE2R%252bfMzNFJJagy%252bzRA5Yt64QJC2KJ8Te1cnE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic14%253fapi-version%253d2013-04%26ExpiresOn%3d1370425102%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dZspkev2653zHJSGi2G%252b%252fLiANMg7GS4lZLOtCAdu%252bCPM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '6e420e9a-b557-4c65-a862-aac6b36b2a99',
+  'request-id': '21e81f7e-cb2d-43fc-898a-1cd96e60ecd0',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:37 GMT',
-  'content-length': '574' });
+  date: 'Wed, 05 Jun 2013 09:18:22 GMT',
+  'content-length': '578' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic14?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic14?api-version=2013-04</id><title type=\"text\">sbtopic14</title><published>2013-04-20T11:40:41Z</published><updated>2013-04-20T11:40:41Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic14?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic14?api-version=2013-04</id><title type=\"text\">sbtopic14</title><published>2013-06-05T09:18:19Z</published><updated>2013-06-05T09:18:20Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic14?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:40 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04</id><title type=\"text\">sbsubscription5</title><published>2013-04-20T11:40:45Z</published><updated>2013-04-20T11:40:45Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:40:45.2213104Z</CreatedAt><UpdatedAt>2013-04-20T11:40:45.2213104Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04</id><title type=\"text\">sbsubscription5</title><published>2013-06-05T09:18:25Z</published><updated>2013-06-05T09:18:25Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:25.3788556Z</CreatedAt><UpdatedAt>2013-06-05T09:18:25.3788556Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:45 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04')
-  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>sb://ciserversb.servicebus.windows.net:443/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04</id><title type=\"text\">sbsubscription5</title><published>2013-04-20T11:40:45Z</published><updated>2013-04-20T11:40:45Z</updated><link rel=\"self\" href=\"sb://ciserversb.servicebus.windows.net:443/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:40:45.198641Z</CreatedAt><UpdatedAt>2013-04-20T11:40:45.198641Z</UpdatedAt><AccessedAt>2013-04-20T11:40:45.2Z</AccessedAt><CountDetails xmlns:d3p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d3p1:ActiveMessageCount>0</d3p1:ActiveMessageCount><d3p1:DeadLetterMessageCount>0</d3p1:DeadLetterMessageCount><d3p1:ScheduledMessageCount>0</d3p1:ScheduledMessageCount><d3p1:TransferMessageCount>0</d3p1:TransferMessageCount><d3p1:TransferDeadLetterMessageCount>0</d3p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>sb://ciserversb.servicebus.windows.net:443/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04</id><title type=\"text\">sbsubscription5</title><published>2013-06-05T09:18:20Z</published><updated>2013-06-05T09:18:20Z</updated><link rel=\"self\" href=\"sb://ciserversb.servicebus.windows.net:443/sbtopic14/Subscriptions/sbsubscription5?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:20.5630713Z</CreatedAt><UpdatedAt>2013-06-05T09:18:20.5630713Z</UpdatedAt><AccessedAt>2013-06-05T09:18:20.563Z</AccessedAt><CountDetails xmlns:d3p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d3p1:ActiveMessageCount>0</d3p1:ActiveMessageCount><d3p1:DeadLetterMessageCount>0</d3p1:DeadLetterMessageCount><d3p1:ScheduledMessageCount>0</d3p1:ScheduledMessageCount><d3p1:TransferMessageCount>0</d3p1:TransferMessageCount><d3p1:TransferDeadLetterMessageCount>0</d3p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:45 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:22 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:40:47Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:18:23Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:47 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:40:48Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic14?api-version=2013-04</id><title type=\"text\">sbtopic14</title><published>2013-04-20T11:40:41Z</published><updated>2013-04-20T11:40:41Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic14?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:40:41.7299576Z</CreatedAt><UpdatedAt>2013-04-20T11:40:41.7299576Z</UpdatedAt><AccessedAt>2013-04-20T11:40:45.2Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:18:29Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic14?api-version=2013-04</id><title type=\"text\">sbtopic14</title><published>2013-06-05T09:18:19Z</published><updated>2013-06-05T09:18:20Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic14?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:18:19.5318911Z</CreatedAt><UpdatedAt>2013-06-05T09:18:19.5318911Z</UpdatedAt><AccessedAt>2013-06-05T09:18:20.563Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:48 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2512,109 +2512,109 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic14?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:49 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:25 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic15%252fSubscriptions%252f%253fapi-version%253d2013-04%26ExpiresOn%3d1366459251%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dipHDLsCnq7PJn65t%252be6CpXcKZ6SCEUac0VGjj45HD8I%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic15%252fSubscriptions%252f%253fapi-version%253d2013-04%26ExpiresOn%3d1370425109%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dYJwIwJAx3TJgkAhoOrEgdz1wvk8DdcMGFskfhrBHCRA%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'be35bd98-aee1-437c-bab0-6d7fb325ac94',
+  'request-id': '478b248c-99fd-4313-af96-5f8a643eea88',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:50 GMT',
-  'content-length': '593' });
+  date: 'Wed, 05 Jun 2013 09:18:29 GMT',
+  'content-length': '589' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic15/Subscriptions/?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:da3969fd-0e76-4545-9325-ee718914fb07;id=8728</id><updated>2013-04-20T11:40:53Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:84080259-1d46-405a-983c-f334da92803c;id=160690</id><updated>2013-06-05T09:18:39Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:52 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic15%253fapi-version%253d2013-04%26ExpiresOn%3d1366459254%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dEsc2dr%252bZ%252bzYz2gCqV298pQRmCuWd2Wk5N3jc0iGXhYU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic15%253fapi-version%253d2013-04%26ExpiresOn%3d1370425117%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252b7CZhjfICvFlCjrRwBuBUA%252buAR%252blW69ggjsTOeBYQI4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'b493a08c-dead-4069-85e6-2ff0d1690041',
+  'request-id': '9b776ec8-ed1c-4ec2-bf6a-fd2f3637b05f',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:53 GMT',
-  'content-length': '574' });
+  date: 'Wed, 05 Jun 2013 09:18:37 GMT',
+  'content-length': '578' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic15?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic15?api-version=2013-04</id><title type=\"text\">sbtopic15</title><published>2013-04-20T11:40:56Z</published><updated>2013-04-20T11:40:56Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic15?api-version=2013-04</id><title type=\"text\">sbtopic15</title><published>2013-06-05T09:18:34Z</published><updated>2013-06-05T09:18:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:56 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic15/Subscriptions/?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04</id><updated>2013-04-20T11:40:57Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04</id><updated>2013-06-05T09:18:46Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:56 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic15%252fSubscriptions%252fsbsubscription6%253fapi-version%253d2013-04%26ExpiresOn%3d1366459258%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8Ba8OxcsKn8%252fKJMNFREXkGKt7LxBKP0ZZFaprzCqO%252fo%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic15%252fSubscriptions%252fsbsubscription6%253fapi-version%253d2013-04%26ExpiresOn%3d1370425120%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dKUAhj4l6bOoViMgePDtuHPIUehujN5CrLnhao1i%252frXY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd650ea02-84c1-4524-87ba-28083c3d93a1',
+  'request-id': '9b413014-acac-409b-b17c-2245f8b89cc9',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:40:58 GMT',
-  'content-length': '612' });
+  date: 'Wed, 05 Jun 2013 09:18:39 GMT',
+  'content-length': '608' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04</id><title type=\"text\">sbsubscription6</title><published>2013-04-20T11:40:59Z</published><updated>2013-04-20T11:40:59Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:40:59.7657129Z</CreatedAt><UpdatedAt>2013-04-20T11:40:59.7657129Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04</id><title type=\"text\">sbsubscription6</title><published>2013-06-05T09:18:42Z</published><updated>2013-06-05T09:18:42Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:42.0189651Z</CreatedAt><UpdatedAt>2013-06-05T09:18:42.0189651Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:40:59 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic15/Subscriptions/?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04</id><updated>2013-04-20T11:41:01Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04</id><title type=\"text\">sbsubscription6</title><published>2013-04-20T11:40:59Z</published><updated>2013-04-20T11:40:59Z</updated><link rel=\"self\" href=\"sbsubscription6?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:40:59.8480607Z</CreatedAt><UpdatedAt>2013-04-20T11:40:59.8480607Z</UpdatedAt><AccessedAt>2013-04-20T11:40:59.847Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04</id><updated>2013-06-05T09:18:38Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04</id><title type=\"text\">sbsubscription6</title><published>2013-06-05T09:18:44Z</published><updated>2013-06-05T09:18:44Z</updated><link rel=\"self\" href=\"sbsubscription6?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:44.8391881Z</CreatedAt><UpdatedAt>2013-06-05T09:18:44.8391881Z</UpdatedAt><AccessedAt>2013-06-05T09:18:44.84Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:00 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic15%252fSubscriptions%252fsbsubscription7%253fapi-version%253d2013-04%26ExpiresOn%3d1366459262%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dv2I6qjI%252b2qqe6EEAOazMAncuZo9OiTWi1BTmgD09Hc4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic15%252fSubscriptions%252fsbsubscription7%253fapi-version%253d2013-04%26ExpiresOn%3d1370425124%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3do67aIEQAXE%252fqhYub9cBnelgb6aBrlRabJGjUSmIc6cc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd332c44a-7e8a-49bc-ae2d-517e87f33e10',
+  'request-id': '8613eac0-6db4-48e5-95ce-1ab2a39c6ea8',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:02 GMT',
+  date: 'Wed, 05 Jun 2013 09:18:44 GMT',
   'content-length': '608' });
  return result; },
 function (nock) { 
@@ -2622,37 +2622,37 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic15/Subscriptions/sbsubscription7?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription7?api-version=2013-04</id><title type=\"text\">sbsubscription7</title><published>2013-04-20T11:41:03Z</published><updated>2013-04-20T11:41:03Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription7?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:03.3581954Z</CreatedAt><UpdatedAt>2013-04-20T11:41:03.3581954Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription7?api-version=2013-04</id><title type=\"text\">sbsubscription7</title><published>2013-06-05T09:18:45Z</published><updated>2013-06-05T09:18:45Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription7?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:45.2121818Z</CreatedAt><UpdatedAt>2013-06-05T09:18:45.2121818Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:03 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic15/Subscriptions/?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04</id><updated>2013-04-20T11:41:04Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04</id><title type=\"text\">sbsubscription6</title><published>2013-04-20T11:40:59Z</published><updated>2013-04-20T11:40:59Z</updated><link rel=\"self\" href=\"sbsubscription6?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:40:59.8480607Z</CreatedAt><UpdatedAt>2013-04-20T11:40:59.8480607Z</UpdatedAt><AccessedAt>2013-04-20T11:40:59.847Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription7?api-version=2013-04</id><title type=\"text\">sbsubscription7</title><published>2013-04-20T11:41:03Z</published><updated>2013-04-20T11:41:03Z</updated><link rel=\"self\" href=\"sbsubscription7?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:03.3011028Z</CreatedAt><UpdatedAt>2013-04-20T11:41:03.3011028Z</UpdatedAt><AccessedAt>2013-04-20T11:41:03.3011028Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04</id><updated>2013-06-05T09:18:51Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription6?api-version=2013-04</id><title type=\"text\">sbsubscription6</title><published>2013-06-05T09:18:44Z</published><updated>2013-06-05T09:18:44Z</updated><link rel=\"self\" href=\"sbsubscription6?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:44.8391881Z</CreatedAt><UpdatedAt>2013-06-05T09:18:44.8391881Z</UpdatedAt><AccessedAt>2013-06-05T09:18:44.84Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic15/Subscriptions/sbsubscription7?api-version=2013-04</id><title type=\"text\">sbsubscription7</title><published>2013-06-05T09:18:48Z</published><updated>2013-06-05T09:18:48Z</updated><link rel=\"self\" href=\"sbsubscription7?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:48.0339478Z</CreatedAt><UpdatedAt>2013-06-05T09:18:48.0339478Z</UpdatedAt><AccessedAt>2013-06-05T09:18:48.0339478Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:04 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:41:05Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:18:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:05 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:41:06Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic15?api-version=2013-04</id><title type=\"text\">sbtopic15</title><published>2013-04-20T11:40:56Z</published><updated>2013-04-20T11:40:56Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic15?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:40:56.1137574Z</CreatedAt><UpdatedAt>2013-04-20T11:40:56.1137574Z</UpdatedAt><AccessedAt>2013-04-20T11:41:03.3011028Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>2</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:18:43Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic15?api-version=2013-04</id><title type=\"text\">sbtopic15</title><published>2013-06-05T09:18:34Z</published><updated>2013-06-05T09:18:34Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic15?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:18:41.517861Z</CreatedAt><UpdatedAt>2013-06-05T09:18:41.517861Z</UpdatedAt><AccessedAt>2013-06-05T09:18:48.0339478Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>2</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:06 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2660,20 +2660,20 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic15?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:08 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:44 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%253fapi-version%253d2013-04%26ExpiresOn%3d1366459270%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dbBMNwWekMYJbdZHgEwMAGSFGwRA%252bJtkV7oo3ikWZu9g%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%253fapi-version%253d2013-04%26ExpiresOn%3d1370425129%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dLUCQ52PrZQKt3D9sPIFtv5RRzqgcypPzbLcROvrv%252fyA%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '0ebe132e-a669-46cc-9f78-355041cb4942',
+  'request-id': 'c7b0ee68-2a0a-4d53-9448-7934434d3123',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:10 GMT',
+  date: 'Wed, 05 Jun 2013 09:18:49 GMT',
   'content-length': '570' });
  return result; },
 function (nock) { 
@@ -2681,170 +2681,170 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic16?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16?api-version=2013-04</id><title type=\"text\">sbtopic16</title><published>2013-04-20T11:41:11Z</published><updated>2013-04-20T11:41:11Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16?api-version=2013-04</id><title type=\"text\">sbtopic16</title><published>2013-06-05T09:18:47Z</published><updated>2013-06-05T09:18:47Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:11 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f1sbsubscription8%253fapi-version%253d2013-04%26ExpiresOn%3d1366459272%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3do%252foavHiCBFCMoaGt4SicMKMJuP%252flclsUHer9jlMBiKE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f1sbsubscription8%253fapi-version%253d2013-04%26ExpiresOn%3d1370425131%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3doippO4SkleUEbfkikVHB2EOwTj7ZZqv1rOU14UPo45Y%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'f77dfd74-2c31-46a9-8b1c-c4f225d01314',
+  'request-id': 'c518c3da-6a7d-4540-b90b-e048eaf2b63c',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:12 GMT',
-  'content-length': '613' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/sbtopic16/Subscriptions/1sbsubscription8?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/1sbsubscription8?api-version=2013-04</id><title type=\"text\">1sbsubscription8</title><published>2013-04-20T11:41:14Z</published><updated>2013-04-20T11:41:14Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/1sbsubscription8?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:14.2150783Z</CreatedAt><UpdatedAt>2013-04-20T11:41:14.2150783Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:14 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb-sb.accesscontrol.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f2sbsubscription9%253fapi-version%253d2013-04%26ExpiresOn%3d1366459275%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dk0kqXPAK6BV26Z4CcB7YNyR4ZHyy4thmVvs8AhVoh04%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
-  expires: '-1',
-  'request-id': '98b4cb0f-1898-4c52-9393-19dc0272f78d',
-  'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:14 GMT',
+  date: 'Wed, 05 Jun 2013 09:18:51 GMT',
   'content-length': '605' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04</id><title type=\"text\">2sbsubscription9</title><published>2013-04-20T11:41:16Z</published><updated>2013-04-20T11:41:16Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:16.780968Z</CreatedAt><UpdatedAt>2013-04-20T11:41:16.780968Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+.put('/sbtopic16/Subscriptions/1sbsubscription8?api-version=2013-04', '*')
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/1sbsubscription8?api-version=2013-04</id><title type=\"text\">1sbsubscription8</title><published>2013-06-05T09:18:49Z</published><updated>2013-06-05T09:18:49Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/1sbsubscription8?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:49.1656838Z</CreatedAt><UpdatedAt>2013-06-05T09:18:49.1656838Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:16 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f3sbsubscription10%253fapi-version%253d2013-04%26ExpiresOn%3d1366459278%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dJFTC23E618h8TdDYoz7WpsjQlRubzHxJUjhEU9Zb5UA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f2sbsubscription9%253fapi-version%253d2013-04%26ExpiresOn%3d1370425130%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dTrFTV1q%252bZ5KctgCljOY614raKxC%252b05%252bG4GVoe%252b3LeUU%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '43c76eee-e83e-44c5-b67f-4a189e03a224',
+  'request-id': 'ebadf649-e1bc-41e2-a967-415edbd453e1',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:17 GMT',
-  'content-length': '606' });
+  date: 'Wed, 05 Jun 2013 09:18:50 GMT',
+  'content-length': '621' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04', '*')
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04</id><title type=\"text\">2sbsubscription9</title><published>2013-06-05T09:18:51Z</published><updated>2013-06-05T09:18:51Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:51.6046829Z</CreatedAt><UpdatedAt>2013-06-05T09:18:51.6046829Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=entry;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:18:50 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f3sbsubscription10%253fapi-version%253d2013-04%26ExpiresOn%3d1370425137%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dGvcK9ZufBNV9Q%252b8oItncuCIuyzfo0TeXs0UldGvQiGE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': '08c66a84-ce55-4f4c-9c5e-0a96b32d2442',
+  'x-content-type-options': 'nosniff',
+  date: 'Wed, 05 Jun 2013 09:18:57 GMT',
+  'content-length': '610' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic16/Subscriptions/3sbsubscription10?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/3sbsubscription10?api-version=2013-04</id><title type=\"text\">3sbsubscription10</title><published>2013-04-20T11:41:19Z</published><updated>2013-04-20T11:41:19Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/3sbsubscription10?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:19.6993831Z</CreatedAt><UpdatedAt>2013-04-20T11:41:19.6993831Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/3sbsubscription10?api-version=2013-04</id><title type=\"text\">3sbsubscription10</title><published>2013-06-05T09:18:53Z</published><updated>2013-06-05T09:18:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/3sbsubscription10?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:53.8702782Z</CreatedAt><UpdatedAt>2013-06-05T09:18:53.8702782Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:19 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f4sbsubscription11%253fapi-version%253d2013-04%26ExpiresOn%3d1366459281%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d6wzI12zhqgp8nZKcZiWL%252bzfQIzrExdOTsRdq%252fOow4OU%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f4sbsubscription11%253fapi-version%253d2013-04%26ExpiresOn%3d1370425138%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dSprzXNvQ0EiB2ixDDm2Pzyh0tOuRAcVaqphtommQXSI%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd7c3ab16-128d-4e5c-8975-247cccda8ecd',
+  'request-id': '5c7dc947-ec10-4e47-b60c-8d656d99b3cc',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:21 GMT',
-  'content-length': '614' });
+  date: 'Wed, 05 Jun 2013 09:18:57 GMT',
+  'content-length': '606' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic16/Subscriptions/4sbsubscription11?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/4sbsubscription11?api-version=2013-04</id><title type=\"text\">4sbsubscription11</title><published>2013-04-20T11:41:22Z</published><updated>2013-04-20T11:41:22Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/4sbsubscription11?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:22.3730902Z</CreatedAt><UpdatedAt>2013-04-20T11:41:22.3730902Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/4sbsubscription11?api-version=2013-04</id><title type=\"text\">4sbsubscription11</title><published>2013-06-05T09:19:00Z</published><updated>2013-06-05T09:19:00Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/4sbsubscription11?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:19:00.3158978Z</CreatedAt><UpdatedAt>2013-06-05T09:19:00.3158978Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:22 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f%253f%252524top%253d2%2526api-version%253d2013-04%26ExpiresOn%3d1366459283%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dxPayP1e43E2A9fnxdqW1N9hyRHTN%252bVVQA5rGb4SndEM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f%253f%252524top%253d2%2526api-version%253d2013-04%26ExpiresOn%3d1370425139%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dzujTDjgi0yiuwoUxTpN6R55cs%252bT3%252bBaH23C5uwPMmoc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'e6c0d993-aba3-448c-9bb3-3b62273566ce',
+  'request-id': 'a78d2ac8-eb7d-48fd-88ff-4a00c85faf5d',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:22 GMT',
-  'content-length': '614' });
+  date: 'Wed, 05 Jun 2013 09:18:59 GMT',
+  'content-length': '618' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic16/Subscriptions/?%24top=2&api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04</id><updated>2013-04-20T11:41:24Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04&amp;%24skip=2\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/1sbsubscription8?api-version=2013-04</id><title type=\"text\">1sbsubscription8</title><published>2013-04-20T11:41:14Z</published><updated>2013-04-20T11:41:14Z</updated><link rel=\"self\" href=\"1sbsubscription8?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:14.1890935Z</CreatedAt><UpdatedAt>2013-04-20T11:41:14.1890935Z</UpdatedAt><AccessedAt>2013-04-20T11:41:14.19Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04</id><title type=\"text\">2sbsubscription9</title><published>2013-04-20T11:41:17Z</published><updated>2013-04-20T11:41:17Z</updated><link rel=\"self\" href=\"2sbsubscription9?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:17.0171642Z</CreatedAt><UpdatedAt>2013-04-20T11:41:17.0171642Z</UpdatedAt><AccessedAt>2013-04-20T11:41:17.0171642Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04</id><updated>2013-06-05T09:18:57Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04&amp;%24skip=2\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/1sbsubscription8?api-version=2013-04</id><title type=\"text\">1sbsubscription8</title><published>2013-06-05T09:18:56Z</published><updated>2013-06-05T09:18:56Z</updated><link rel=\"self\" href=\"1sbsubscription8?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:56.7139074Z</CreatedAt><UpdatedAt>2013-06-05T09:18:56.7139074Z</UpdatedAt><AccessedAt>2013-06-05T09:18:56.713Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04</id><title type=\"text\">2sbsubscription9</title><published>2013-06-05T09:18:58Z</published><updated>2013-06-05T09:18:58Z</updated><link rel=\"self\" href=\"2sbsubscription9?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:58.9945681Z</CreatedAt><UpdatedAt>2013-06-05T09:18:58.9945681Z</UpdatedAt><AccessedAt>2013-06-05T09:18:58.9945681Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:24 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f%253f%252524top%253d2%2526%252524skip%253d1%2526api-version%253d2013-04%26ExpiresOn%3d1366459286%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3drbI8YkkYtvHhN9Z53SHM8o%252fMJZln%252bCv2bN3nWRo5pJQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic16%252fSubscriptions%252f%253f%252524top%253d2%2526%252524skip%253d1%2526api-version%253d2013-04%26ExpiresOn%3d1370425142%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8dUGT5xU4TOZNpNKrLJEjRbBHEXeEMS49GzZHYspayQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'f82d147d-16c3-422a-bcea-14facdb59e38',
+  'request-id': '3481fcce-5328-4351-9b12-532db23e4406',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:26 GMT',
-  'content-length': '640' });
+  date: 'Wed, 05 Jun 2013 09:19:01 GMT',
+  'content-length': '632' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic16/Subscriptions/?%24top=2&%24skip=1&api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=1&amp;api-version=2013-04</id><updated>2013-04-20T11:41:27Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=3&amp;api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04</id><title type=\"text\">2sbsubscription9</title><published>2013-04-20T11:41:17Z</published><updated>2013-04-20T11:41:17Z</updated><link rel=\"self\" href=\"2sbsubscription9?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:17.0171642Z</CreatedAt><UpdatedAt>2013-04-20T11:41:17.0171642Z</UpdatedAt><AccessedAt>2013-04-20T11:41:17.0171642Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/3sbsubscription10?api-version=2013-04</id><title type=\"text\">3sbsubscription10</title><published>2013-04-20T11:41:19Z</published><updated>2013-04-20T11:41:19Z</updated><link rel=\"self\" href=\"3sbsubscription10?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:19.6733632Z</CreatedAt><UpdatedAt>2013-04-20T11:41:19.6733632Z</UpdatedAt><AccessedAt>2013-04-20T11:41:19.6733632Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Subscriptions</title><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=1&amp;api-version=2013-04</id><updated>2013-06-05T09:18:59Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=3&amp;api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/2sbsubscription9?api-version=2013-04</id><title type=\"text\">2sbsubscription9</title><published>2013-06-05T09:18:58Z</published><updated>2013-06-05T09:18:58Z</updated><link rel=\"self\" href=\"2sbsubscription9?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:18:58.9945681Z</CreatedAt><UpdatedAt>2013-06-05T09:18:58.9945681Z</UpdatedAt><AccessedAt>2013-06-05T09:18:58.9945681Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16/Subscriptions/3sbsubscription10?api-version=2013-04</id><title type=\"text\">3sbsubscription10</title><published>2013-06-05T09:19:01Z</published><updated>2013-06-05T09:19:01Z</updated><link rel=\"self\" href=\"3sbsubscription10?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:19:01.2805539Z</CreatedAt><UpdatedAt>2013-06-05T09:19:01.2805539Z</UpdatedAt><AccessedAt>2013-06-05T09:19:01.2805539Z</AccessedAt><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:27 GMT' });
+  date: 'Wed, 05 Jun 2013 09:18:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:41:28Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:19:04Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:28 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:41:30Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16?api-version=2013-04</id><title type=\"text\">sbtopic16</title><published>2013-04-20T11:41:11Z</published><updated>2013-04-20T11:41:11Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic16?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:41:11.9391367Z</CreatedAt><UpdatedAt>2013-04-20T11:41:11.9391367Z</UpdatedAt><AccessedAt>2013-04-20T11:41:22.4858092Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>4</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:19:01Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic16?api-version=2013-04</id><title type=\"text\">sbtopic16</title><published>2013-06-05T09:18:47Z</published><updated>2013-06-05T09:18:47Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic16?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:18:54.9578283Z</CreatedAt><UpdatedAt>2013-06-05T09:18:54.9578283Z</UpdatedAt><AccessedAt>2013-06-05T09:19:03.1334016Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>4</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:29 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -2852,92 +2852,92 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic16?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:30 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:11 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fFakeTopic%252fSubscriptions%252fFakeSubscription%252fRules%252fsbrule1%253fapi-version%253d2013-04%26ExpiresOn%3d1366459292%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252ffOmRZI63f7yfBRKPpe4cPYJELB73%252fj6MKbiWk%252fXpu8%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fFakeTopic%252fSubscriptions%252fFakeSubscription%252fRules%252fsbrule1%253fapi-version%253d2013-04%26ExpiresOn%3d1370425144%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dWudYMTwQ%252ftxrhXBExZBY6AEwO4xhrNG4OjNBNx5qH3k%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '8369321e-994c-41b2-8370-35e023d8a2fa',
+  'request-id': '22266eec-6a43-4151-ad49-849469bedb5f',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:31 GMT',
-  'content-length': '639' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/FakeTopic/Subscriptions/FakeSubscription/Rules/sbrule1?api-version=2013-04', '*')
-  .reply(404, "<Error><Code>404</Code><Detail>The incoming request is not recoginzed as a namespace policy put request: Unrecognized policy type: RuleDescription, http://schemas.microsoft.com/netservices/2010/10/servicebus/connect.TrackingId:01ec8c14-5ac2-49cd-ab56-987b4933f829_G2,TimeStamp:4/20/2013 11:41:34 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
-  'content-type': 'application/xml; charset=utf-8',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:34 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb-sb.accesscontrol.windows.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fFakeSubscription%252fRules%252fsbrule1%253fapi-version%253d2013-04%26ExpiresOn%3d1366459295%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dXygTjlXxKIYd4OCdJ6ARdQ5PMZdWHoeeFOg3o%252b8GSk4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
-  pragma: 'no-cache',
-  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
-  expires: '-1',
-  'request-id': '5064cef5-5693-4054-a96b-5506212d694f',
-  'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:34 GMT',
+  date: 'Wed, 05 Jun 2013 09:19:03 GMT',
   'content-length': '631' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/sbtopic17/Subscriptions/FakeSubscription/Rules/sbrule1?api-version=2013-04', '*')
-  .reply(404, "<Error><Code>404</Code><Detail>The incoming request is not recoginzed as a namespace policy put request: Unrecognized policy type: RuleDescription, http://schemas.microsoft.com/netservices/2010/10/servicebus/connect.TrackingId:18ed29f6-6cb9-461e-ae0b-3d693742824a_G0,TimeStamp:4/20/2013 11:41:36 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+.put('/FakeTopic/Subscriptions/FakeSubscription/Rules/sbrule1?api-version=2013-04', '*')
+  .reply(404, "<Error><Code>404</Code><Detail>The incoming request is not recoginzed as a namespace policy put request: Unrecognized policy type: RuleDescription, http://schemas.microsoft.com/netservices/2010/10/servicebus/connect.TrackingId:d4a08d6e-2ca4-48f9-88ca-1f60db1f5313_G3,TimeStamp:6/5/2013 9:19:14 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:35 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%253fapi-version%253d2013-04%26ExpiresOn%3d1366459297%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d7RVj5foDWCYjbIINBDQ9ic7LAmYXKPet2Hfdr6ZCefw%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fFakeSubscription%252fRules%252fsbrule1%253fapi-version%253d2013-04%26ExpiresOn%3d1370425150%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dLHTpeVLiA2spqzQPVewcy7JktnlgzUepU4U3kIhbUEI%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'ef2d6244-7b8b-4ba8-bc65-0ae43931dd35',
+  'request-id': '9e6773c5-e424-4422-82df-c6177096d506',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:36 GMT',
-  'content-length': '566' });
+  date: 'Wed, 05 Jun 2013 09:19:09 GMT',
+  'content-length': '627' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/sbtopic17/Subscriptions/FakeSubscription/Rules/sbrule1?api-version=2013-04', '*')
+  .reply(404, "<Error><Code>404</Code><Detail>The incoming request is not recoginzed as a namespace policy put request: Unrecognized policy type: RuleDescription, http://schemas.microsoft.com/netservices/2010/10/servicebus/connect.TrackingId:206ad69e-1ec7-4366-9231-20b6b41bc1b6_G2,TimeStamp:6/5/2013 9:19:07 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/xml; charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:19:06 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%253fapi-version%253d2013-04%26ExpiresOn%3d1370425151%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dLXIgCajq7joBer%252bkkfClbEIoj8zsN5%252bkeHLXPG526wE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': '50c72bef-e9cc-4042-a37e-28f4ff5a6545',
+  'x-content-type-options': 'nosniff',
+  date: 'Wed, 05 Jun 2013 09:19:11 GMT',
+  'content-length': '574' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic17?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17?api-version=2013-04</id><title type=\"text\">sbtopic17</title><published>2013-04-20T11:41:38Z</published><updated>2013-04-20T11:41:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17?api-version=2013-04</id><title type=\"text\">sbtopic17</title><published>2013-06-05T09:19:09Z</published><updated>2013-06-05T09:19:09Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:38 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%253fapi-version%253d2013-04%26ExpiresOn%3d1366459300%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d1GGjlI64IjNPDQdeOCNHLV%252fvPgrjhN6RJTSAAavLU1I%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%253fapi-version%253d2013-04%26ExpiresOn%3d1370425153%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dLiKLzKuAGS4gp7kLvcqiV5pa8WjIhyFtjgL%252ffERKnRs%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '7d4cf6e7-abef-4ea1-9317-695e2c9a2866',
+  'request-id': '03b1b76f-9606-4a6a-add4-ce4da8864496',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:40 GMT',
+  date: 'Wed, 05 Jun 2013 09:19:13 GMT',
   'content-length': '609' });
  return result; },
 function (nock) { 
@@ -2945,23 +2945,23 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic17/Subscriptions/sbsubscription12?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12?api-version=2013-04</id><title type=\"text\">sbsubscription12</title><published>2013-04-20T11:41:42Z</published><updated>2013-04-20T11:41:42Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:41:42.9593093Z</CreatedAt><UpdatedAt>2013-04-20T11:41:42.9593093Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12?api-version=2013-04</id><title type=\"text\">sbsubscription12</title><published>2013-06-05T09:19:11Z</published><updated>2013-06-05T09:19:11Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:19:11.178721Z</CreatedAt><UpdatedAt>2013-06-05T09:19:11.178721Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:43 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%252fRules%252fsbrule1%253fapi-version%253d2013-04%26ExpiresOn%3d1366459304%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dmE2WTxV17hBeTitTF6UndrRXn%252fyapxorqFy8ZXD2JS4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%252fRules%252fsbrule1%253fapi-version%253d2013-04%26ExpiresOn%3d1370425156%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dzkJKi%252bVnv5jSYdRav6PCnrZx0J5nJdqPWRJUIrBh74c%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '168c5965-ef61-4ea0-a493-ec3217a9f97d',
+  'request-id': 'a8e53e67-9558-4b4c-acae-d91cd207385f',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:43 GMT',
+  date: 'Wed, 05 Jun 2013 09:19:16 GMT',
   'content-length': '631' });
  return result; },
 function (nock) { 
@@ -2969,110 +2969,110 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule1?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule1?api-version=2013-04</id><title type=\"text\">sbrule1</title><published>2013-04-20T11:41:45Z</published><updated>2013-04-20T11:41:45Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule1?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"SqlFilter\"><SqlExpression>Number=2</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:41:45.7338136Z</CreatedAt><Name>sbrule1</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule1?api-version=2013-04</id><title type=\"text\">sbrule1</title><published>2013-06-05T09:19:13Z</published><updated>2013-06-05T09:19:13Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule1?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"SqlFilter\"><SqlExpression>Number=2</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:19:13.2400834Z</CreatedAt><Name>sbrule1</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:44 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%252fRules%252fsbrule2%253fapi-version%253d2013-04%26ExpiresOn%3d1366459306%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3doKI4nwwdrymx8USPjpf%252fIT%252bxYIpKDiI97n%252ba1reQN2A%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%252fRules%252fsbrule2%253fapi-version%253d2013-04%26ExpiresOn%3d1370425156%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dn17lHacM9DChotactiONybXiZJf24WJBgWfzCG47Ezk%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '3724b037-8c80-48ef-bf73-51cdb26c0ac1',
+  'request-id': '8581e53c-ef21-41f2-b32d-c90db05467ce',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:46 GMT',
-  'content-length': '639' });
+  date: 'Wed, 05 Jun 2013 09:19:15 GMT',
+  'content-length': '627' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule2?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule2?api-version=2013-04</id><title type=\"text\">sbrule2</title><published>2013-04-20T11:41:48Z</published><updated>2013-04-20T11:41:48Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule2?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"CorrelationFilter\"><CorrelationId>myId</CorrelationId></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:41:48.2158478Z</CreatedAt><Name>sbrule2</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule2?api-version=2013-04</id><title type=\"text\">sbrule2</title><published>2013-06-05T09:19:25Z</published><updated>2013-06-05T09:19:25Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule2?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"CorrelationFilter\"><CorrelationId>myId</CorrelationId></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:19:25.5110532Z</CreatedAt><Name>sbrule2</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:48 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%252fRules%252fsbrule3%253fapi-version%253d2013-04%26ExpiresOn%3d1366459309%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3duxddu6%252bkw5u0TZg3friMiixmwGxCHIznbnqDdLd6Xgc%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%252fRules%252fsbrule3%253fapi-version%253d2013-04%26ExpiresOn%3d1370425159%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dfegvltr2nhZljqPXj4q3tmrQOcmozrIS%252bUMOum%252fOxV4%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'c8ebe82b-4149-4bad-8e88-457479b3c710',
+  'request-id': '33bd8297-a7f2-4d99-92fc-c60ecccdc702',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:49 GMT',
-  'content-length': '631' });
+  date: 'Wed, 05 Jun 2013 09:19:18 GMT',
+  'content-length': '635' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule3?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule3?api-version=2013-04</id><title type=\"text\">sbrule3</title><published>2013-04-20T11:41:50Z</published><updated>2013-04-20T11:41:50Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule3?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:41:50.2489137Z</CreatedAt><Name>sbrule3</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule3?api-version=2013-04</id><title type=\"text\">sbrule3</title><published>2013-06-05T09:19:27Z</published><updated>2013-06-05T09:19:27Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule3?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:19:27.3491867Z</CreatedAt><Name>sbrule3</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:49 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%252fRules%252fsbrule4%253fapi-version%253d2013-04%26ExpiresOn%3d1366459311%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dgqmh8rU3JfV7TxqbjH%252b4oTvzIYzk3DZlZV6sI5ofCDE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic17%252fSubscriptions%252fsbsubscription12%252fRules%252fsbrule4%253fapi-version%253d2013-04%26ExpiresOn%3d1370425158%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dd%252fUsV4%252bYH0ri%252f8IiEynYWIWU3YMuxpppR1oNyzkneVc%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '4f948ea3-80b8-447e-bf86-0124d482b70c',
+  'request-id': 'fd422b80-1240-44d8-98ed-3019c7465daf',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:41:51 GMT',
-  'content-length': '631' });
+  date: 'Wed, 05 Jun 2013 09:19:18 GMT',
+  'content-length': '639' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule4?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule4?api-version=2013-04</id><title type=\"text\">sbrule4</title><published>2013-04-20T11:41:53Z</published><updated>2013-04-20T11:41:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule4?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"FalseFilter\"><SqlExpression>1=0</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:41:53.3617306Z</CreatedAt><Name>sbrule4</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule4?api-version=2013-04</id><title type=\"text\">sbrule4</title><published>2013-06-05T09:19:18Z</published><updated>2013-06-05T09:19:18Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule4?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"FalseFilter\"><SqlExpression>1=0</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:19:18.7894118Z</CreatedAt><Name>sbrule4</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:52 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic17/Subscriptions/sbsubscription12/Rules/sbrule1?api-version=2013-04', '*')
-  .reply(409, "<Error><Code>409</Code><Detail>The messaging entity 'ciserversb:Topic:sbtopic17|sbsubscription12|sbrule1' already exists..TrackingId:7a988b9d-2d95-4092-83bb-dd2c2567e3c2_B5, Timestamp:4/20/2013 11:41:54 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(409, "<Error><Code>409</Code><Detail>The messaging entity 'ciserversb:Topic:sbtopic17|sbsubscription12|sbrule1' already exists..TrackingId:216b1ad7-8335-4da3-9103-7e52f4591c83_B4, Timestamp:6/5/2013 9:19:19 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:54 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:41:55Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:19:31Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:55 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:41:58Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic17?api-version=2013-04</id><title type=\"text\">sbtopic17</title><published>2013-04-20T11:41:38Z</published><updated>2013-04-20T11:41:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic17?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:41:38.8856157Z</CreatedAt><UpdatedAt>2013-04-20T11:41:38.8856157Z</UpdatedAt><AccessedAt>2013-04-20T11:41:42.76Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:19:32Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic17?api-version=2013-04</id><title type=\"text\">sbtopic17</title><published>2013-06-05T09:19:09Z</published><updated>2013-06-05T09:19:09Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic17?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:19:09.2274196Z</CreatedAt><UpdatedAt>2013-06-05T09:19:09.2274196Z</UpdatedAt><AccessedAt>2013-06-05T09:19:10.95Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:57 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3080,68 +3080,68 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic17?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:41:59 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:34 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%253fapi-version%253d2013-04%26ExpiresOn%3d1366459321%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dMuuL9hBXTXsJ1%252b9Lc3Zsju1fOQUBGA1jtJkm3P1YDMM%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%253fapi-version%253d2013-04%26ExpiresOn%3d1370425168%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d7dAytT5cJrRaQy5Gv4DW5UWBwY%252fbUsgg4%252bg%252bWeZFy8o%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'a59f6753-3ff6-432a-96e8-95137003e68c',
+  'request-id': '71f5f299-9015-4909-bd3f-8b96c1c378b8',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:01 GMT',
-  'content-length': '570' });
+  date: 'Wed, 05 Jun 2013 09:19:27 GMT',
+  'content-length': '578' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic18?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic18?api-version=2013-04</id><title type=\"text\">sbtopic18</title><published>2013-04-20T11:42:03Z</published><updated>2013-04-20T11:42:03Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic18?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic18?api-version=2013-04</id><title type=\"text\">sbtopic18</title><published>2013-06-05T09:19:26Z</published><updated>2013-06-05T09:19:26Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic18?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:03 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription13%253fapi-version%253d2013-04%26ExpiresOn%3d1366459324%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dx4eNN2jH%252bXdqMByt5gDLK2PP18NjrkiqEar5ERANOO4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription13%253fapi-version%253d2013-04%26ExpiresOn%3d1370425167%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3doSJw7uh%252fNy8XL7Gp20zAmdeHOatZm%252byd2LbgKdL2dcg%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '56d0648e-f2be-479c-addc-6fd236a710b5',
+  'request-id': '3c477498-31bb-49ef-99d0-d48aae8c7c13',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:04 GMT',
-  'content-length': '609' });
+  date: 'Wed, 05 Jun 2013 09:19:26 GMT',
+  'content-length': '613' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic18/Subscriptions/sbsubscription13?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription13?api-version=2013-04</id><title type=\"text\">sbsubscription13</title><published>2013-04-20T11:42:06Z</published><updated>2013-04-20T11:42:06Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription13?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:42:06.3931661Z</CreatedAt><UpdatedAt>2013-04-20T11:42:06.3931661Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription13?api-version=2013-04</id><title type=\"text\">sbsubscription13</title><published>2013-06-05T09:19:28Z</published><updated>2013-06-05T09:19:28Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription13?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:19:28.3266467Z</CreatedAt><UpdatedAt>2013-06-05T09:19:28.3266467Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:06 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription14%253fapi-version%253d2013-04%26ExpiresOn%3d1366459327%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dZSEZ1APkmvVpF1KvXwhJT%252fnqn15UCzkRgBEQBxVXavU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription14%253fapi-version%253d2013-04%26ExpiresOn%3d1370425172%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dabcxmvY2GC4Ls6%252fRvHTUTsQ9ZuhlPqREtdF0WTStJwo%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '22bf3f0e-0191-45a8-a912-284333075175',
+  'request-id': 'bffc4829-a07a-4e65-b37d-6f354756b683',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:06 GMT',
+  date: 'Wed, 05 Jun 2013 09:19:31 GMT',
   'content-length': '609' });
  return result; },
 function (nock) { 
@@ -3149,23 +3149,23 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic18/Subscriptions/sbsubscription14?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription14?api-version=2013-04</id><title type=\"text\">sbsubscription14</title><published>2013-04-20T11:42:08Z</published><updated>2013-04-20T11:42:08Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription14?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:42:08.7524505Z</CreatedAt><UpdatedAt>2013-04-20T11:42:08.7524505Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription14?api-version=2013-04</id><title type=\"text\">sbsubscription14</title><published>2013-06-05T09:19:30Z</published><updated>2013-06-05T09:19:30Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription14?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:19:30.0212583Z</CreatedAt><UpdatedAt>2013-06-05T09:19:30.0212583Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:08 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription13%252fRules%252f%2524Default%253fapi-version%253d2013-04%26ExpiresOn%3d1366459329%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dzJRcw8z1EWIADfx%252faj%252boQiQYVxCAR76is%252fmhJmUzf1M%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription13%252fRules%252f%2524Default%253fapi-version%253d2013-04%26ExpiresOn%3d1370425171%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dQC5zTQN%252fhw0LnLS4wG1K%252fKPwuiPJAy4soa5Ap%252fQ7Ixw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'cfdbd610-9aa5-43a8-b277-b9a84caad2c5',
+  'request-id': 'd403e47a-c4e9-4426-8942-94aa13eae926',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:09 GMT',
+  date: 'Wed, 05 Jun 2013 09:19:30 GMT',
   'content-length': '644' });
  return result; },
 function (nock) { 
@@ -3174,45 +3174,45 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic18/Subscriptions/sbsubscription13/Rules/$Default?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:10 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription13%252fRules%252fsbrule5%253fapi-version%253d2013-04%26ExpiresOn%3d1366459332%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dEZjrpCPg7V3nHWwdj79uf7%252b4uEzMj74v%252fyrjb57vRPg%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription13%252fRules%252fsbrule5%253fapi-version%253d2013-04%26ExpiresOn%3d1370425173%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dg6HHkeAzlfLDMQneWGdC%252bUdvMsbbBOe8Ro3t74UsecE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '92883cb9-c98f-4ba2-9e0a-aabe159f690c',
+  'request-id': '8d6375f3-cb67-4424-bdd6-1c949a3bb6ea',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:12 GMT',
-  'content-length': '635' });
+  date: 'Wed, 05 Jun 2013 09:19:32 GMT',
+  'content-length': '631' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic18/Subscriptions/sbsubscription13/Rules/sbrule5?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription13/Rules/sbrule5?api-version=2013-04</id><title type=\"text\">sbrule5</title><published>2013-04-20T11:42:13Z</published><updated>2013-04-20T11:42:13Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription13/Rules/sbrule5?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"SqlFilter\"><SqlExpression>property=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:42:13.8488505Z</CreatedAt><Name>sbrule5</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription13/Rules/sbrule5?api-version=2013-04</id><title type=\"text\">sbrule5</title><published>2013-06-05T09:19:33Z</published><updated>2013-06-05T09:19:33Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic18/Subscriptions/sbsubscription13/Rules/sbrule5?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"SqlFilter\"><SqlExpression>property=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:19:33.5776582Z</CreatedAt><Name>sbrule5</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:13 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459334%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dBFsXhQ57%252b%252bJxgNLVUGWN75cvFyO8w4XIbR%252fh9h7P7I0%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370425174%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dyY6hmMb31GXpzR%252bfspShXmusaBumQDpYwZwaW6%252fgk5E%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'e58d7241-fad2-4793-96d1-6a7f60727df8',
+  'request-id': '1e0a20e4-a389-4db1-8f88-312cbe7f293a',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:13 GMT',
-  'content-length': '591' });
+  date: 'Wed, 05 Jun 2013 09:19:34 GMT',
+  'content-length': '587' });
  return result; },
 function (nock) { 
 var result = 
@@ -3222,21 +3222,21 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:16 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription13%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459338%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dw75IEk%252f%252fXTDm0RQ0ukKDE3aUOyszil60XoRmY4VINPw%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription13%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370425181%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dMmcQulGLOXQp2P7AyJmot5Vw52Sh5m9m8YCl2eMbWoo%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '05458d88-171b-4b40-8e3d-f1cd12959856',
+  'request-id': '0ad2d52b-3a4a-4dda-8821-62b86550afc7',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:17 GMT',
-  'content-length': '635' });
+  date: 'Wed, 05 Jun 2013 09:19:41 GMT',
+  'content-length': '627' });
  return result; },
 function (nock) { 
 var result = 
@@ -3245,7 +3245,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(204, "", { 'content-length': '0',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:24 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3255,7 +3255,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:25 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3264,22 +3264,22 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(200, "hi there topic again", { 'transfer-encoding': 'chunked',
   'content-type': 'text/plain',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":2,"MessageId":"c2d567d8af164b458032bfce8f70183a","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":2,"MessageId":"8ab49b4b48834d17ad7caf7ccf17688a","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
   property: '1',
-  date: 'Sat, 20 Apr 2013 11:42:27 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription14%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459348%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dr8TMgBxj2mWYbx70UdRYgI0qmiO2Ln6u8s92uVQLBAI%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic18%252fSubscriptions%252fsbsubscription14%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370425190%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dBDm2BJnSgdMapHpfgj60HPWte0WTLAdrRFjcQXGF6XE%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '9be37f02-cd07-49f7-9489-8ab0a298efd8',
+  'request-id': '1a5c432f-74d6-49fc-b867-f8d23ffeb009',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:28 GMT',
+  date: 'Wed, 05 Jun 2013 09:19:51 GMT',
   'content-length': '627' });
  return result; },
 function (nock) { 
@@ -3289,9 +3289,9 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(200, "hi there topic", { 'transfer-encoding': 'chunked',
   'content-type': 'text/plain',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":1,"MessageId":"eca2919ea8754e8dae0d9440e366614d","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":1,"MessageId":"f1188af7f1aa4e2d92afed4d826a85b1","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
   property: '2',
-  date: 'Sat, 20 Apr 2013 11:42:29 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3300,27 +3300,27 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(200, "hi there topic again", { 'transfer-encoding': 'chunked',
   'content-type': 'text/plain',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":2,"MessageId":"c2d567d8af164b458032bfce8f70183a","SequenceNumber":2,"State":"Active","TimeToLive":922337203685.47754}',
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":2,"MessageId":"8ab49b4b48834d17ad7caf7ccf17688a","SequenceNumber":2,"State":"Active","TimeToLive":922337203685.47754}',
   property: '1',
-  date: 'Sat, 20 Apr 2013 11:42:30 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:42:32Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:19:58Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:31 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:42:33Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic18?api-version=2013-04</id><title type=\"text\">sbtopic18</title><published>2013-04-20T11:42:03Z</published><updated>2013-04-20T11:42:03Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic18?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:42:03.3231102Z</CreatedAt><UpdatedAt>2013-04-20T11:42:03.3231102Z</UpdatedAt><AccessedAt>2013-04-20T11:42:30.9161538Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>2</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:19:49Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic18?api-version=2013-04</id><title type=\"text\">sbtopic18</title><published>2013-06-05T09:19:26Z</published><updated>2013-06-05T09:19:26Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic18?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:19:36.0887612Z</CreatedAt><UpdatedAt>2013-06-05T09:19:36.0887612Z</UpdatedAt><AccessedAt>2013-06-05T09:19:57.3507449Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>2</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:33 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3328,44 +3328,44 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic18?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:34 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:50 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%253fapi-version%253d2013-04%26ExpiresOn%3d1366459356%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d8P9dYEPoWj0dIIEwNnBroET%252fDnNcyX25Os7JpeOcXdI%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%253fapi-version%253d2013-04%26ExpiresOn%3d1370425192%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d4mjSSNJjpQyI0xiEoDYXO5UL5bmciD8TDGhQbbIapIM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'd9d3b201-6345-4c9a-bff9-ee9b928256c6',
+  'request-id': 'fe6cd854-f8a0-486d-b403-bab7b35ca502',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:36 GMT',
-  'content-length': '570' });
+  date: 'Wed, 05 Jun 2013 09:19:52 GMT',
+  'content-length': '566' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic19?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic19?api-version=2013-04</id><title type=\"text\">sbtopic19</title><published>2013-04-20T11:42:38Z</published><updated>2013-04-20T11:42:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic19?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic19?api-version=2013-04</id><title type=\"text\">sbtopic19</title><published>2013-06-05T09:19:53Z</published><updated>2013-06-05T09:19:53Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic19?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:38 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription15%253fapi-version%253d2013-04%26ExpiresOn%3d1366459359%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dUf75LVZb7QMCk%252bL9XjcKKGJlWPNUNWiK5HWKhraodxs%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription15%253fapi-version%253d2013-04%26ExpiresOn%3d1370425198%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dzHBQjreFfgQch2QLdg8lI6Nd%252f8mEfEYFMrdPJOvQ3PM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '34392c0b-14d1-4593-997b-3e9f093e93a6',
+  'request-id': 'c58754c0-b485-4b4d-aa0b-45c085a8de2a',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:39 GMT',
+  date: 'Wed, 05 Jun 2013 09:19:57 GMT',
   'content-length': '609' });
  return result; },
 function (nock) { 
@@ -3373,48 +3373,48 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic19/Subscriptions/sbsubscription15?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription15?api-version=2013-04</id><title type=\"text\">sbsubscription15</title><published>2013-04-20T11:42:41Z</published><updated>2013-04-20T11:42:41Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription15?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:42:41.0575686Z</CreatedAt><UpdatedAt>2013-04-20T11:42:41.0575686Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription15?api-version=2013-04</id><title type=\"text\">sbsubscription15</title><published>2013-06-05T09:19:55Z</published><updated>2013-06-05T09:19:55Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription15?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:19:55.3747667Z</CreatedAt><UpdatedAt>2013-06-05T09:19:55.3747667Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:40 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription16%253fapi-version%253d2013-04%26ExpiresOn%3d1366459362%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3doREAN%252b1dpT13xnTNDWrlU3NDNiFktOtOp3B5PVvuvn0%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription16%253fapi-version%253d2013-04%26ExpiresOn%3d1370425200%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dpgrQ%252fRuYlVGbepama%252fkriCYeD8dDhOSTQnpB%252fvCZW08%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '44e96869-ec5e-4ced-9646-0dd6d3a5f186',
+  'request-id': 'efa41b0b-a5ee-46db-a221-8e49b8fd0396',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:42 GMT',
-  'content-length': '609' });
+  date: 'Wed, 05 Jun 2013 09:20:00 GMT',
+  'content-length': '617' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic19/Subscriptions/sbsubscription16?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription16?api-version=2013-04</id><title type=\"text\">sbsubscription16</title><published>2013-04-20T11:42:43Z</published><updated>2013-04-20T11:42:43Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription16?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:42:43.6858498Z</CreatedAt><UpdatedAt>2013-04-20T11:42:43.6858498Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription16?api-version=2013-04</id><title type=\"text\">sbsubscription16</title><published>2013-06-05T09:20:07Z</published><updated>2013-06-05T09:20:07Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription16?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:20:07.7303915Z</CreatedAt><UpdatedAt>2013-06-05T09:20:07.7303915Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:42 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription15%252fRules%252f%2524Default%253fapi-version%253d2013-04%26ExpiresOn%3d1366459364%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dW3Ru5FcBur%252fQS2MDX6xWjg9cqhVda4OsWFAHpKBsaVU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription15%252fRules%252f%2524Default%253fapi-version%253d2013-04%26ExpiresOn%3d1370425203%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dLJ%252bFISFGYhLaQs1Xkr%252bqFnPWMh0HFHAFIwFO1vTw0tU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '037ccbba-e31f-4e5a-8852-5f8e471f1398',
+  'request-id': 'b1539d21-fcc4-47e1-953e-3e612aaccaf2',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:43 GMT',
-  'content-length': '636' });
+  date: 'Wed, 05 Jun 2013 09:20:02 GMT',
+  'content-length': '640' });
  return result; },
 function (nock) { 
 var result = 
@@ -3422,20 +3422,20 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic19/Subscriptions/sbsubscription15/Rules/$Default?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:46 GMT' });
+  date: 'Wed, 05 Jun 2013 09:19:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription15%252fRules%252fsbrule6%253fapi-version%253d2013-04%26ExpiresOn%3d1366459367%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dyZh%252bGWUAIzhpJZeS%252bNJ9joxZu6oIsKDui6zGCJa3SrA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription15%252fRules%252fsbrule6%253fapi-version%253d2013-04%26ExpiresOn%3d1370425204%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dQfhk48sx%252bGQolupbKXSBdlsUXHMDwIt8Mokd%252b0KzG9A%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '1bf8e95c-607d-421d-b264-29574a13784e',
+  'request-id': 'f0d9b879-539a-4c59-8524-cb55acf0f383',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:47 GMT',
+  date: 'Wed, 05 Jun 2013 09:20:03 GMT',
   'content-length': '635' });
  return result; },
 function (nock) { 
@@ -3443,24 +3443,24 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic19/Subscriptions/sbsubscription15/Rules/sbrule6?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription15/Rules/sbrule6?api-version=2013-04</id><title type=\"text\">sbrule6</title><published>2013-04-20T11:42:49Z</published><updated>2013-04-20T11:42:49Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription15/Rules/sbrule6?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"CorrelationFilter\"><CorrelationId>myid</CorrelationId></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:42:49.6416078Z</CreatedAt><Name>sbrule6</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription15/Rules/sbrule6?api-version=2013-04</id><title type=\"text\">sbrule6</title><published>2013-06-05T09:20:01Z</published><updated>2013-06-05T09:20:01Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic19/Subscriptions/sbsubscription15/Rules/sbrule6?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"CorrelationFilter\"><CorrelationId>myid</CorrelationId></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:01.6506383Z</CreatedAt><Name>sbrule6</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:49 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459371%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3djJjnHlpHG0VytOtOUJRE16oc2uoRtKR1F91pRXMj70M%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370425205%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d3G4ePeqHksFNRqxsbUIRb%252baS0JtHpzslgpy3zsjMQJk%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '1ddd9556-ca09-4706-a1a5-646fce598e33',
+  'request-id': '21b66946-ae59-44cf-9fb0-dc39e2eb1970',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:51 GMT',
-  'content-length': '579' });
+  date: 'Wed, 05 Jun 2013 09:20:05 GMT',
+  'content-length': '583' });
  return result; },
 function (nock) { 
 var result = 
@@ -3470,20 +3470,20 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:42:52 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription15%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459375%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dprwgHq2VERKGQEfzUZihL6ly4ZKgCvmwdraNmN%252bTyaQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription15%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370425207%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dZF1I83yXUBeasGQx%252fZAd3L46rv3j5mau8lquhDjFG9Y%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '2a22d73f-040c-4e82-91c5-33bb4c067c64',
+  'request-id': 'bbb2357e-d904-4e14-b424-8888a7d5a87d',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:42:55 GMT',
+  date: 'Wed, 05 Jun 2013 09:20:06 GMT',
   'content-length': '631' });
  return result; },
 function (nock) { 
@@ -3493,7 +3493,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(204, "", { 'content-length': '0',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:01 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3503,7 +3503,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:03 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3512,22 +3512,22 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(200, "hi there topic again", { 'transfer-encoding': 'chunked',
   'content-type': 'text/plain',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"CorrelationId":"myid","DeliveryCount":1,"EnqueuedSequenceNumber":2,"MessageId":"caeece4e585c48739191469d48c00c88","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:43:05 GMT' });
+  brokerproperties: '{"CorrelationId":"myid","DeliveryCount":1,"EnqueuedSequenceNumber":2,"MessageId":"e1d627f547284233aa7df9e71f19e250","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:20:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription16%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1366459387%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dWUDQ9g1WkT0ucSfanHXqqVOTSjSmPs2UW0ck5Jn%252fLao%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic19%252fSubscriptions%252fsbsubscription16%252fMessages%252fHead%253fapi-version%253d2013-04%26ExpiresOn%3d1370425217%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d0Pg7VGqs%252bONfbUHNuwCNlqO4Py7V7HA%252bB1PEETZ4c5k%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '67e37a5f-5fdc-4e98-834e-7fa6a29e24d7',
+  'request-id': 'f120de86-9bb9-4bad-a6b8-9b1399aa9cfc',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:06 GMT',
-  'content-length': '631' });
+  date: 'Wed, 05 Jun 2013 09:20:16 GMT',
+  'content-length': '635' });
  return result; },
 function (nock) { 
 var result = 
@@ -3536,8 +3536,8 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(200, "hi there topic", { 'transfer-encoding': 'chunked',
   'content-type': 'text/plain',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"CorrelationId":"otherid","DeliveryCount":1,"EnqueuedSequenceNumber":1,"MessageId":"e962c2ee8cad4a8fb3492ab1ef17913f","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:43:07 GMT' });
+  brokerproperties: '{"CorrelationId":"otherid","DeliveryCount":1,"EnqueuedSequenceNumber":1,"MessageId":"13fae6f53d4148fa9fd757472ac17da9","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:20:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3546,26 +3546,26 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(200, "hi there topic again", { 'transfer-encoding': 'chunked',
   'content-type': 'text/plain',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"CorrelationId":"myid","DeliveryCount":1,"EnqueuedSequenceNumber":2,"MessageId":"caeece4e585c48739191469d48c00c88","SequenceNumber":2,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:43:09 GMT' });
+  brokerproperties: '{"CorrelationId":"myid","DeliveryCount":1,"EnqueuedSequenceNumber":2,"MessageId":"e1d627f547284233aa7df9e71f19e250","SequenceNumber":2,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:20:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:43:11Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:20:15Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:10 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:43:12Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic19?api-version=2013-04</id><title type=\"text\">sbtopic19</title><published>2013-04-20T11:42:38Z</published><updated>2013-04-20T11:42:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic19?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:42:38.2208647Z</CreatedAt><UpdatedAt>2013-04-20T11:42:38.2208647Z</UpdatedAt><AccessedAt>2013-04-20T11:43:09.767134Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>2</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:20:21Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic19?api-version=2013-04</id><title type=\"text\">sbtopic19</title><published>2013-06-05T09:19:53Z</published><updated>2013-06-05T09:19:53Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic19?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:20:01.3995785Z</CreatedAt><UpdatedAt>2013-06-05T09:20:01.3995785Z</UpdatedAt><AccessedAt>2013-06-05T09:20:22.6641195Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>2</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:12 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3573,88 +3573,88 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic19?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:14 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:22 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic20%252fSubscriptions%252fsbsubscription17%252fRules%252fsbrule7%253fapi-version%253d2013-04%26ExpiresOn%3d1366459395%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dnkuGwpHajuBAx3SI2YI2URXa9NhrJK%252fjFmTjLVWd1mI%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic20%252fSubscriptions%252fsbsubscription17%252fRules%252fsbrule7%253fapi-version%253d2013-04%26ExpiresOn%3d1370425219%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dm2NnSxCj%252fBO3rU2Yy58Y0uYwUX27gpoXVTdzhExVn98%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '97055802-d459-4185-95b0-8714bed68455',
+  'request-id': '3b522d2d-fad9-42dc-a028-10b3ccf63f47',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:15 GMT',
+  date: 'Wed, 05 Jun 2013 09:20:18 GMT',
   'content-length': '631' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic20/Subscriptions/sbsubscription17/Rules/sbrule7?api-version=2013-04')
-  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:34071e01-b287-4fca-86a6-b3fb213fd8a2_G3,TimeStamp:4/20/2013 11:43:17 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:25c4085a-a946-4708-a54f-fce3a3cd6044_G7,TimeStamp:6/5/2013 9:20:20 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:16 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic20%253fapi-version%253d2013-04%26ExpiresOn%3d1366459398%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dzumYsSU%252b43oupph%252fGHt%252fh%252fCL762hglv36I%252fwhTd47Ds%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic20%253fapi-version%253d2013-04%26ExpiresOn%3d1370425225%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dDrOo0sbCEiC6f2YXSnl8Fiw4UF5uoaLCu83uTPVGJGw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '2dfd6165-7777-4c55-86f1-39d235025cfc',
+  'request-id': '213a2344-97dd-4b9e-a16c-275e1ba5e935',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:18 GMT',
-  'content-length': '586' });
+  date: 'Wed, 05 Jun 2013 09:20:24 GMT',
+  'content-length': '566' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic20?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic20?api-version=2013-04</id><title type=\"text\">sbtopic20</title><published>2013-04-20T11:43:20Z</published><updated>2013-04-20T11:43:20Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic20?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic20?api-version=2013-04</id><title type=\"text\">sbtopic20</title><published>2013-06-05T09:20:22Z</published><updated>2013-06-05T09:20:22Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic20?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:19 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic20%252fSubscriptions%252fsbsubscription17%253fapi-version%253d2013-04%26ExpiresOn%3d1366459401%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dx57KQ9oJsoX5ecEEijDqhUoxbNSAoYozOKGZM015K%252fc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic20%252fSubscriptions%252fsbsubscription17%253fapi-version%253d2013-04%26ExpiresOn%3d1370425223%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dVD58Nade3W4hPdqjbxW3MtnTIVMU5LVQOYsL3fyDCA4%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'c4a9ad60-e810-4269-8089-122bcdd5cd0d',
+  'request-id': '1e823f0e-084a-4ac4-8416-066782e6345f',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:21 GMT',
-  'content-length': '609' });
+  date: 'Wed, 05 Jun 2013 09:20:23 GMT',
+  'content-length': '605' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic20/Subscriptions/sbsubscription17?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic20/Subscriptions/sbsubscription17?api-version=2013-04</id><title type=\"text\">sbsubscription17</title><published>2013-04-20T11:43:24Z</published><updated>2013-04-20T11:43:24Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic20/Subscriptions/sbsubscription17?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:43:24.2680213Z</CreatedAt><UpdatedAt>2013-04-20T11:43:24.2680213Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic20/Subscriptions/sbsubscription17?api-version=2013-04</id><title type=\"text\">sbsubscription17</title><published>2013-06-05T09:20:34Z</published><updated>2013-06-05T09:20:34Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic20/Subscriptions/sbsubscription17?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:20:34.8457021Z</CreatedAt><UpdatedAt>2013-06-05T09:20:34.8457021Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:24 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic20/Subscriptions/sbsubscription17/Rules/sbrule7?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic20/Subscriptions/sbsubscription17/Rules/sbrule7?api-version=2013-04</id><title type=\"text\">sbrule7</title><published>2013-04-20T11:43:26Z</published><updated>2013-04-20T11:43:26Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic20/Subscriptions/sbsubscription17/Rules/sbrule7?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:26.2964502Z</CreatedAt><Name>sbrule7</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic20/Subscriptions/sbsubscription17/Rules/sbrule7?api-version=2013-04</id><title type=\"text\">sbrule7</title><published>2013-06-05T09:20:26Z</published><updated>2013-06-05T09:20:26Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic20/Subscriptions/sbsubscription17/Rules/sbrule7?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:26.4421255Z</CreatedAt><Name>sbrule7</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:26 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3662,7 +3662,7 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic20/Subscriptions/sbsubscription17/Rules/sbrule7?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:27 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:31 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3670,25 +3670,25 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic20/Subscriptions/sbsubscription17/Rules/sbrule7?api-version=2013-04')
   .reply(404, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:28 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:43:30Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:20:29Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:29 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:43:31Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic20?api-version=2013-04</id><title type=\"text\">sbtopic20</title><published>2013-04-20T11:43:20Z</published><updated>2013-04-20T11:43:20Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic20?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:43:20.5460424Z</CreatedAt><UpdatedAt>2013-04-20T11:43:20.5460424Z</UpdatedAt><AccessedAt>2013-04-20T11:43:24.11Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:20:39Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic20?api-version=2013-04</id><title type=\"text\">sbtopic20</title><published>2013-06-05T09:20:22Z</published><updated>2013-06-05T09:20:22Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic20?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:20:27.4966883Z</CreatedAt><UpdatedAt>2013-06-05T09:20:27.4966883Z</UpdatedAt><AccessedAt>2013-06-05T09:20:29.527Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:30 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3696,76 +3696,75 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic20?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:32 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:35 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%252fSubscriptions%252fsbsubscription18%252fRules%252f%253fapi-version%253d2013-04%26ExpiresOn%3d1366459414%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252bjsflw35W7NzdL9s7JyQwOjJqLwBX83UrD2tqaW6vfQ%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%252fSubscriptions%252fsbsubscription18%252fRules%252f%253fapi-version%253d2013-04%26ExpiresOn%3d1370425233%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d6wO9QUNPTmn4dolVPep6eodFBtg4hxX95d1VtG664uM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'ac97056d-0707-4bec-b8aa-f32787a2c017',
+  'request-id': 'f07d0a66-e466-49c0-97bc-5b6fe4f1ed15',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:34 GMT',
-  'content-length': '624' });
+  date: 'Wed, 05 Jun 2013 09:20:33 GMT',
+  'content-length': '620' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:d3dafccf-7c21-496b-9851-24ae2dd070a1;id=19511</id><updated>2013-04-20T11:43:36Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Publicly Listed Services</title><subtitle type=\"text\">This is the list of publicly-listed services currently available.</subtitle><id>uuid:2a9fc9cf-43be-4139-a90f-1f445b858fca;id=160292</id><updated>2013-06-05T09:20:38Z</updated><generator>Service Bus 1.0</generator></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:36 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:38 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%253fapi-version%253d2013-04%26ExpiresOn%3d1366459417%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dkdbYbu7kWC0guQfCw2M76XWuibZLbXHi09TAKfmCVeY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%253fapi-version%253d2013-04%26ExpiresOn%3d1370425235%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d7dZpOJoY0cfPoGzfGZF%252bbIWSUnvRSvAvQ0igvi%252bucoU%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '14b2c96a-c279-43bd-a28f-c0af589721ce',
+  'request-id': '39fd7a2d-8820-4721-94de-94e474f01e6d',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:37 GMT',
-  'content-length': '566' });
+  date: 'Wed, 05 Jun 2013 09:20:35 GMT',
+  'content-length': '574' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic21?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic21?api-version=2013-04</id><title type=\"text\">sbtopic21</title><published>2013-04-20T11:43:38Z</published><updated>2013-04-20T11:43:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic21?api-version=2013-04</id><title type=\"text\">sbtopic21</title><published>2013-06-05T09:20:36Z</published><updated>2013-06-05T09:20:36Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:38 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04')
-  .reply(500, "<Error><Code>500</Code><Detail>The server was unable to process the request; please retry the operation. If the problem persists, please contact your Service Bus administrator and provide the tracking id..TrackingId:810803c6-2e47-4b35-bc36-6ef5d6989b6d_G3,TimeStamp:4/20/2013 11:43:40 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
-  'content-type': 'application/xml; charset=utf-8',
+  .reply(404, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:39 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%252fSubscriptions%252fsbsubscription18%253fapi-version%253d2013-04%26ExpiresOn%3d1366459421%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dMEVLmP7ZVBsOIywhRJezMsHrPlrMd7Wqo2X%252b8oVx8ns%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%252fSubscriptions%252fsbsubscription18%253fapi-version%253d2013-04%26ExpiresOn%3d1370425238%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dixtHFH4t%252fKFU7E2Y4FSQsnfpHdbxuTOuVALAgsBl3SQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '7de56ae9-333d-4cf0-913d-afb6dbd8aef9',
+  'request-id': '62a415f2-75c6-4553-ba44-8f9f3f4db926',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:41 GMT',
+  date: 'Wed, 05 Jun 2013 09:20:38 GMT',
   'content-length': '609' });
  return result; },
 function (nock) { 
@@ -3773,65 +3772,65 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic21/Subscriptions/sbsubscription18?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18?api-version=2013-04</id><title type=\"text\">sbsubscription18</title><published>2013-04-20T11:43:42Z</published><updated>2013-04-20T11:43:42Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:43:42.6958266Z</CreatedAt><UpdatedAt>2013-04-20T11:43:42.6958266Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18?api-version=2013-04</id><title type=\"text\">sbsubscription18</title><published>2013-06-05T09:20:48Z</published><updated>2013-06-05T09:20:48Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:20:48.5720253Z</CreatedAt><UpdatedAt>2013-06-05T09:20:48.5720253Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:42 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:48 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04</id><updated>2013-04-20T11:43:44Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/$Default?api-version=2013-04</id><title type=\"text\">$Default</title><published>2013-04-20T11:43:42Z</published><updated>2013-04-20T11:43:42Z</updated><link rel=\"self\" href=\"$Default?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:42.7754478Z</CreatedAt><Name>$Default</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04</id><updated>2013-06-05T09:20:39Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/$Default?api-version=2013-04</id><title type=\"text\">$Default</title><published>2013-06-05T09:20:38Z</published><updated>2013-06-05T09:20:38Z</updated><link rel=\"self\" href=\"$Default?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:38.8817606Z</CreatedAt><Name>$Default</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:43 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%252fSubscriptions%252fsbsubscription18%252fRules%252fsbrule8%253fapi-version%253d2013-04%26ExpiresOn%3d1366459425%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dRKp%252fdMyhvtouT8zEho%252fMbHrxqvy9tQFcrTlLAvBgOGY%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%252fSubscriptions%252fsbsubscription18%252fRules%252fsbrule8%253fapi-version%253d2013-04%26ExpiresOn%3d1370425241%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dbMux%252fz6wkpFksAah6zFdyakaUD2XIRkUHuGyGbEphnc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'bfc1e633-d0ca-4354-a8f9-6c0b96df8dd0',
+  'request-id': '129ce68c-ae04-451c-bf56-eefb7a36c6b4',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:45 GMT',
-  'content-length': '635' });
+  date: 'Wed, 05 Jun 2013 09:20:41 GMT',
+  'content-length': '631' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04</id><title type=\"text\">sbrule8</title><published>2013-04-20T11:43:46Z</published><updated>2013-04-20T11:43:46Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:46.8581606Z</CreatedAt><Name>sbrule8</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04</id><title type=\"text\">sbrule8</title><published>2013-06-05T09:20:42Z</published><updated>2013-06-05T09:20:42Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:42.3768654Z</CreatedAt><Name>sbrule8</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:46 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04</id><updated>2013-04-20T11:43:48Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/$Default?api-version=2013-04</id><title type=\"text\">$Default</title><published>2013-04-20T11:43:42Z</published><updated>2013-04-20T11:43:42Z</updated><link rel=\"self\" href=\"$Default?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:42.7754478Z</CreatedAt><Name>$Default</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04</id><title type=\"text\">sbrule8</title><published>2013-04-20T11:43:46Z</published><updated>2013-04-20T11:43:46Z</updated><link rel=\"self\" href=\"sbrule8?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:46.8847965Z</CreatedAt><Name>sbrule8</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04</id><updated>2013-06-05T09:20:43Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/$Default?api-version=2013-04</id><title type=\"text\">$Default</title><published>2013-06-05T09:20:38Z</published><updated>2013-06-05T09:20:38Z</updated><link rel=\"self\" href=\"$Default?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:38.8817606Z</CreatedAt><Name>$Default</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04</id><title type=\"text\">sbrule8</title><published>2013-06-05T09:20:42Z</published><updated>2013-06-05T09:20:42Z</updated><link rel=\"self\" href=\"sbrule8?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:42.2126393Z</CreatedAt><Name>sbrule8</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:47 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%252fSubscriptions%252fsbsubscription18%252fRules%252fsbrule9%253fapi-version%253d2013-04%26ExpiresOn%3d1366459430%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dzjJ%252b9rRwIJjDZ8CgwkyVaQFLMOex42u4XVms63sgNaY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic21%252fSubscriptions%252fsbsubscription18%252fRules%252fsbrule9%253fapi-version%253d2013-04%26ExpiresOn%3d1370425244%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dWPzwYDqlDWvvaowjG0rRRL4YLJBldnZll4VyF%252fhNWSM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '9ba2185b-a15e-4c59-959e-6f9a26566d63',
+  'request-id': '67994d3c-da32-473a-a329-85b4dbfbd1f7',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:49 GMT',
+  date: 'Wed, 05 Jun 2013 09:20:43 GMT',
   'content-length': '631' });
  return result; },
 function (nock) { 
@@ -3839,37 +3838,37 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule9?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule9?api-version=2013-04</id><title type=\"text\">sbrule9</title><published>2013-04-20T11:43:51Z</published><updated>2013-04-20T11:43:51Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule9?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:51.8720164Z</CreatedAt><Name>sbrule9</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule9?api-version=2013-04</id><title type=\"text\">sbrule9</title><published>2013-06-05T09:20:45Z</published><updated>2013-06-05T09:20:45Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule9?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:45.141768Z</CreatedAt><Name>sbrule9</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:51 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04</id><updated>2013-04-20T11:43:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/$Default?api-version=2013-04</id><title type=\"text\">$Default</title><published>2013-04-20T11:43:42Z</published><updated>2013-04-20T11:43:42Z</updated><link rel=\"self\" href=\"$Default?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:42.7754478Z</CreatedAt><Name>$Default</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04</id><title type=\"text\">sbrule8</title><published>2013-04-20T11:43:46Z</published><updated>2013-04-20T11:43:46Z</updated><link rel=\"self\" href=\"sbrule8?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:46.8847965Z</CreatedAt><Name>sbrule8</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule9?api-version=2013-04</id><title type=\"text\">sbrule9</title><published>2013-04-20T11:43:52Z</published><updated>2013-04-20T11:43:52Z</updated><link rel=\"self\" href=\"sbrule9?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:43:52.1503878Z</CreatedAt><Name>sbrule9</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04</id><updated>2013-06-05T09:20:45Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/$Default?api-version=2013-04</id><title type=\"text\">$Default</title><published>2013-06-05T09:20:38Z</published><updated>2013-06-05T09:20:38Z</updated><link rel=\"self\" href=\"$Default?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:38.8817606Z</CreatedAt><Name>$Default</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule8?api-version=2013-04</id><title type=\"text\">sbrule8</title><published>2013-06-05T09:20:42Z</published><updated>2013-06-05T09:20:42Z</updated><link rel=\"self\" href=\"sbrule8?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:42.2126393Z</CreatedAt><Name>sbrule8</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21/Subscriptions/sbsubscription18/Rules/sbrule9?api-version=2013-04</id><title type=\"text\">sbrule9</title><published>2013-06-05T09:20:44Z</published><updated>2013-06-05T09:20:44Z</updated><link rel=\"self\" href=\"sbrule9?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:44.7944318Z</CreatedAt><Name>sbrule9</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:53 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:43:54Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:20:57Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:53 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:43:56Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21?api-version=2013-04</id><title type=\"text\">sbtopic21</title><published>2013-04-20T11:43:38Z</published><updated>2013-04-20T11:43:38Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic21?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:43:38.9317224Z</CreatedAt><UpdatedAt>2013-04-20T11:43:38.9317224Z</UpdatedAt><AccessedAt>2013-04-20T11:43:42.777Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:20:47Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic21?api-version=2013-04</id><title type=\"text\">sbtopic21</title><published>2013-06-05T09:20:36Z</published><updated>2013-06-05T09:20:36Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic21?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:20:36.3186577Z</CreatedAt><UpdatedAt>2013-06-05T09:20:36.3186577Z</UpdatedAt><AccessedAt>2013-06-05T09:20:38.883Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:55 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -3877,92 +3876,92 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic21?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:43:57 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:53 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%253fapi-version%253d2013-04%26ExpiresOn%3d1366459439%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dqFTN1WnfbPbr%252fVbTvQPNyipDYuANXU9ZtiLvkvi%252b2bg%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%253fapi-version%253d2013-04%26ExpiresOn%3d1370425250%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dzbI%252foo63ppmtSMwtaVMxY8ghjnAou9QMutRrYKDfUsA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '26799c0f-8933-4f8d-a15c-1b4e464f14ff',
+  'request-id': '85b71386-81d9-4fd0-807e-2b1d3044ad53',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:43:58 GMT',
-  'content-length': '574' });
+  date: 'Wed, 05 Jun 2013 09:20:49 GMT',
+  'content-length': '570' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic22?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22?api-version=2013-04</id><title type=\"text\">sbtopic22</title><published>2013-04-20T11:44:00Z</published><updated>2013-04-20T11:44:00Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22?api-version=2013-04</id><title type=\"text\">sbtopic22</title><published>2013-06-05T09:20:51Z</published><updated>2013-06-05T09:20:52Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:00 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%253fapi-version%253d2013-04%26ExpiresOn%3d1366459441%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dTJ9vZL8y5vwlUMZ0N3KlpnCq3iJfLxFjKBvWla2Sqqo%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%253fapi-version%253d2013-04%26ExpiresOn%3d1370425256%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3deUwD8GUZA6ZE7Zir9%252feWVBOoAFfJe86A%252bmUJ9i2LCBU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '0159e3ef-f3c7-48c8-af2c-9dbaefaf7ec1',
+  'request-id': 'd6a9395a-b8ff-4c6d-a303-4c98689636c1',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:01 GMT',
-  'content-length': '605' });
+  date: 'Wed, 05 Jun 2013 09:20:56 GMT',
+  'content-length': '613' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic22/Subscriptions/sbsubscription19?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19?api-version=2013-04</id><title type=\"text\">sbsubscription19</title><published>2013-04-20T11:44:02Z</published><updated>2013-04-20T11:44:02Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-04-20T11:44:02.9825414Z</CreatedAt><UpdatedAt>2013-04-20T11:44:02.9825414Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19?api-version=2013-04</id><title type=\"text\">sbsubscription19</title><published>2013-06-05T09:20:53Z</published><updated>2013-06-05T09:20:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19?api-version=2013-04\"/><content type=\"application/xml\"><SubscriptionDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DeadLetteringOnFilterEvaluationExceptions>true</DeadLetteringOnFilterEvaluationExceptions><MessageCount>0</MessageCount><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><Status>Active</Status><CreatedAt>2013-06-05T09:20:53.6047931Z</CreatedAt><UpdatedAt>2013-06-05T09:20:53.6047931Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00</AccessedAt><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></SubscriptionDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:02 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f1sbrule10%253fapi-version%253d2013-04%26ExpiresOn%3d1366459444%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d1Ij9VmKP45AFQ08SoSD3D4br2rPclAFdmcCjj76Srkw%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f1sbrule10%253fapi-version%253d2013-04%26ExpiresOn%3d1370425259%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d1W9Qbx%252fvPmXokWSj2zMmYq1iKZKkbwSxpR1OIjEs%252bRA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '5067dfa0-057e-4e52-b42d-9a917a78de12',
+  'request-id': '160e8c5e-3935-4f13-b81e-31255c97ca1b',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:03 GMT',
-  'content-length': '629' });
+  date: 'Wed, 05 Jun 2013 09:20:59 GMT',
+  'content-length': '637' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04</id><title type=\"text\">1sbrule10</title><published>2013-04-20T11:44:05Z</published><updated>2013-04-20T11:44:05Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:44:05.0269613Z</CreatedAt><Name>1sbrule10</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04</id><title type=\"text\">1sbrule10</title><published>2013-06-05T09:21:00Z</published><updated>2013-06-05T09:21:00Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:21:00.463502Z</CreatedAt><Name>1sbrule10</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:04 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f2sbrule11%253fapi-version%253d2013-04%26ExpiresOn%3d1366459447%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dSTBEu2ajyoYNUiAEpVZ3l8GLIY2PqtQ1Z6I%252bAFdifr8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f2sbrule11%253fapi-version%253d2013-04%26ExpiresOn%3d1370425260%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d7u71mo4OzvrS7rx%252fVwv8LoDqHnkjB4LA8Jzee9EmNoY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '58e55c2e-a851-426a-a06f-cfb6715b125e',
+  'request-id': '2d6fa1b1-99d2-4143-bc10-0ca9df0c2a06',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:07 GMT',
+  date: 'Wed, 05 Jun 2013 09:21:00 GMT',
   'content-length': '633' });
  return result; },
 function (nock) { 
@@ -3970,23 +3969,23 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic22/Subscriptions/sbsubscription19/Rules/2sbrule11?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/2sbrule11?api-version=2013-04</id><title type=\"text\">2sbrule11</title><published>2013-04-20T11:44:09Z</published><updated>2013-04-20T11:44:09Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/2sbrule11?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:44:09.0944249Z</CreatedAt><Name>2sbrule11</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/2sbrule11?api-version=2013-04</id><title type=\"text\">2sbrule11</title><published>2013-06-05T09:20:58Z</published><updated>2013-06-05T09:20:58Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/2sbrule11?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:58.0215795Z</CreatedAt><Name>2sbrule11</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:09 GMT' });
+  date: 'Wed, 05 Jun 2013 09:20:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f3sbrule12%253fapi-version%253d2013-04%26ExpiresOn%3d1366459450%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dAQtA7s2J1C6V5X5URwyAFBtCBV%252bjHwyHUx6ZVbFLfZQ%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f3sbrule12%253fapi-version%253d2013-04%26ExpiresOn%3d1370425259%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dcKkjPOCkvqTdAJ2TNLRDq%252bWwJYJ26oq1Wi5zKPOv9nU%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '9343bfd3-e825-41aa-881a-b7946396982f',
+  'request-id': 'bacfa19f-688b-4d23-9405-e821a5981b51',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:09 GMT',
+  date: 'Wed, 05 Jun 2013 09:20:58 GMT',
   'content-length': '633' });
  return result; },
 function (nock) { 
@@ -3994,98 +3993,98 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic22/Subscriptions/sbsubscription19/Rules/3sbrule12?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/3sbrule12?api-version=2013-04</id><title type=\"text\">3sbrule12</title><published>2013-04-20T11:44:11Z</published><updated>2013-04-20T11:44:11Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/3sbrule12?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:44:11.6041456Z</CreatedAt><Name>3sbrule12</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/3sbrule12?api-version=2013-04</id><title type=\"text\">3sbrule12</title><published>2013-06-05T09:21:09Z</published><updated>2013-06-05T09:21:09Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/3sbrule12?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:21:09.4804942Z</CreatedAt><Name>3sbrule12</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:11 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f4sbrule13%253fapi-version%253d2013-04%26ExpiresOn%3d1366459452%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dmxescTGhOA5m41JaY7YXslnAQSm5AZ80VzFdexdZVN0%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f4sbrule13%253fapi-version%253d2013-04%26ExpiresOn%3d1370425264%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dA5wlMPvxtNM9pzFuS%252fIKiFEYXFlcrrHbcbTMVMHH2Z8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '2e06f506-3cb4-4b0b-b2df-e1082126e7b0',
+  'request-id': '3f93241c-3da0-46df-a850-71741b6131ae',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:12 GMT',
-  'content-length': '629' });
+  date: 'Wed, 05 Jun 2013 09:21:04 GMT',
+  'content-length': '633' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic22/Subscriptions/sbsubscription19/Rules/4sbrule13?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/4sbrule13?api-version=2013-04</id><title type=\"text\">4sbrule13</title><published>2013-04-20T11:44:13Z</published><updated>2013-04-20T11:44:13Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/4sbrule13?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:44:13.9223645Z</CreatedAt><Name>4sbrule13</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/4sbrule13?api-version=2013-04</id><title type=\"text\">4sbrule13</title><published>2013-06-05T09:21:12Z</published><updated>2013-06-05T09:21:12Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/4sbrule13?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:21:12.1287094Z</CreatedAt><Name>4sbrule13</Name></RuleDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:13 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f%253f%252524top%253d2%2526api-version%253d2013-04%26ExpiresOn%3d1366459454%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3du%252feRrBXPs63viOCY8BLkZLzA75Nkp2kRwpqXGt%252fEpwM%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f%253f%252524top%253d2%2526api-version%253d2013-04%26ExpiresOn%3d1370425267%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dw3B5rtiX37lUUTAAoqLCD2R7vDIYDwRwU2D4k4hv4tw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'c41e674c-ea64-4cf9-baa2-ea9387240489',
+  'request-id': 'f66a0491-8573-4966-8187-acecdc275245',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:14 GMT',
-  'content-length': '649' });
+  date: 'Wed, 05 Jun 2013 09:21:06 GMT',
+  'content-length': '641' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04</id><updated>2013-04-20T11:44:16Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04&amp;%24skip=2\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/$Default?api-version=2013-04</id><title type=\"text\">$Default</title><published>2013-04-20T11:44:02Z</published><updated>2013-04-20T11:44:02Z</updated><link rel=\"self\" href=\"$Default?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:44:02.9983523Z</CreatedAt><Name>$Default</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04</id><title type=\"text\">1sbrule10</title><published>2013-04-20T11:44:05Z</published><updated>2013-04-20T11:44:05Z</updated><link rel=\"self\" href=\"1sbrule10?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:44:05.2795585Z</CreatedAt><Name>1sbrule10</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04</id><updated>2013-06-05T09:21:03Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04&amp;%24skip=2\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/$Default?api-version=2013-04</id><title type=\"text\">$Default</title><published>2013-06-05T09:20:53Z</published><updated>2013-06-05T09:20:53Z</updated><link rel=\"self\" href=\"$Default?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:53.6140128Z</CreatedAt><Name>$Default</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04</id><title type=\"text\">1sbrule10</title><published>2013-06-05T09:20:55Z</published><updated>2013-06-05T09:20:55Z</updated><link rel=\"self\" href=\"1sbrule10?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:55.6554346Z</CreatedAt><Name>1sbrule10</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:16 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f%253f%252524top%253d2%2526%252524skip%253d1%2526api-version%253d2013-04%26ExpiresOn%3d1366459456%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dXkUnr5UJPNOsptcpZdI%252bJB09QZ1CWSZ1%252fIv4MBEyrEY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic22%252fSubscriptions%252fsbsubscription19%252fRules%252f%253f%252524top%253d2%2526%252524skip%253d1%2526api-version%253d2013-04%26ExpiresOn%3d1370425264%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dU4Sp0TGkdyU2MtqFdnbTHiPzmsaNJ4Tv5klz1dUX%252faw%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '230b5691-c9ab-4d3b-b5b9-ed3423d81975',
+  'request-id': '20b8b8d1-e429-4f8a-8e19-c964dca7ee12',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:16 GMT',
-  'content-length': '671' });
+  date: 'Wed, 05 Jun 2013 09:21:04 GMT',
+  'content-length': '667' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&%24skip=1&api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=1&amp;api-version=2013-04</id><updated>2013-04-20T11:44:18Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=3&amp;api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04</id><title type=\"text\">1sbrule10</title><published>2013-04-20T11:44:05Z</published><updated>2013-04-20T11:44:05Z</updated><link rel=\"self\" href=\"1sbrule10?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:44:05.2795585Z</CreatedAt><Name>1sbrule10</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/2sbrule11?api-version=2013-04</id><title type=\"text\">2sbrule11</title><published>2013-04-20T11:44:08Z</published><updated>2013-04-20T11:44:08Z</updated><link rel=\"self\" href=\"2sbrule11?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-04-20T11:44:08.951363Z</CreatedAt><Name>2sbrule11</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Rules</title><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=1&amp;api-version=2013-04</id><updated>2013-06-05T09:21:14Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"/><link rel=\"next\" href=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=3&amp;api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/1sbrule10?api-version=2013-04</id><title type=\"text\">1sbrule10</title><published>2013-06-05T09:20:55Z</published><updated>2013-06-05T09:20:55Z</updated><link rel=\"self\" href=\"1sbrule10?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:55.6554346Z</CreatedAt><Name>1sbrule10</Name></RuleDescription></content></entry><entry xml:base=\"https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/?%24top=2&amp;%24skip=1&amp;api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22/Subscriptions/sbsubscription19/Rules/2sbrule11?api-version=2013-04</id><title type=\"text\">2sbrule11</title><published>2013-06-05T09:20:57Z</published><updated>2013-06-05T09:20:57Z</updated><link rel=\"self\" href=\"2sbrule11?api-version=2013-04\"/><content type=\"application/xml\"><RuleDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Filter i:type=\"TrueFilter\"><SqlExpression>1=1</SqlExpression><CompatibilityLevel>20</CompatibilityLevel></Filter><Action i:type=\"EmptyRuleAction\"/><CreatedAt>2013-06-05T09:20:57.9547526Z</CreatedAt><Name>2sbrule11</Name></RuleDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:18 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:44:19Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:21:16Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:18 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:44:21Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22?api-version=2013-04</id><title type=\"text\">sbtopic22</title><published>2013-04-20T11:44:00Z</published><updated>2013-04-20T11:44:00Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic22?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:44:00.5765238Z</CreatedAt><UpdatedAt>2013-04-20T11:44:00.5765238Z</UpdatedAt><AccessedAt>2013-04-20T11:44:03Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:21:06Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic22?api-version=2013-04</id><title type=\"text\">sbtopic22</title><published>2013-06-05T09:20:51Z</published><updated>2013-06-05T09:20:52Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic22?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:20:51.5115899Z</CreatedAt><UpdatedAt>2013-06-05T09:20:51.5115899Z</UpdatedAt><AccessedAt>2013-06-05T09:20:53.613Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>1</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:20 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4093,45 +4092,45 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic22?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:22 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:17 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue19%253fapi-version%253d2013-04%26ExpiresOn%3d1366459464%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d%252b6p9yyZCxJSRF3RhfJoMVh8opZ0FB6kt2%252f4eD%252bC8VBY%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue19%253fapi-version%253d2013-04%26ExpiresOn%3d1370425269%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dD27UMJcYRb%252brMkNjlaPfK8sxKFjxbKeuXoPfynBf4II%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '5cc413ce-2adb-4366-a2c0-de94097fc9bb',
+  'request-id': 'f898788f-92ed-4fb4-9559-5dc9d5870516',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:23 GMT',
-  'content-length': '578' });
+  date: 'Wed, 05 Jun 2013 09:21:09 GMT',
+  'content-length': '570' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbqueue19?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue19?api-version=2013-04</id><title type=\"text\">sbqueue19</title><published>2013-04-20T11:44:26Z</published><updated>2013-04-20T11:44:26Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue19?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbqueue19?api-version=2013-04</id><title type=\"text\">sbqueue19</title><published>2013-06-05T09:21:11Z</published><updated>2013-06-05T09:21:11Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbqueue19?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:26 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue19%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1366459468%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dWrp9FRZruIYl8VKO1yCOtXKzMnRFtpD4ZjNHRdu0iEc%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue19%252fMessages%253fapi-version%253d2013-04%26ExpiresOn%3d1370425272%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d5tM2nD97SMYYFlDE6cZSp5Hkk4w1LsJ%252fMTNFBCapLgc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '5ce621d7-7433-4071-9de3-973524142a3a',
+  'request-id': '49a80597-ea34-4b59-ab3d-45691aed2f49',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:27 GMT',
-  'content-length': '579' });
+  date: 'Wed, 05 Jun 2013 09:21:11 GMT',
+  'content-length': '583' });
  return result; },
 function (nock) { 
 var result = 
@@ -4141,21 +4140,21 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:28 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue19%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1366459470%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d7MUyKQDdFEkQYNNHadqSZRSnISrAcjYFOcllPP1FrN0%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbqueue19%252fMessages%252fHead%253ftimeout%253d5%2526api-version%253d2013-04%26ExpiresOn%3d1370425274%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dGeMY01EYY6lOhwDdE9e4hswwqyCVru%252bf9vyEAsvOuvQ%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '660d16a0-975f-48fe-bd73-24d090fd8916',
+  'request-id': '7e119fe6-d994-46e5-81ec-4ef1bfb9457f',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:30 GMT',
-  'content-length': '606' });
+  date: 'Wed, 05 Jun 2013 09:21:14 GMT',
+  'content-length': '610' });
  return result; },
 function (nock) { 
 var result = 
@@ -4163,17 +4162,17 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue19/Messages/Head?timeout=5&api-version=2013-04')
   .reply(200, "hi there", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"MessageId":"b372f1df9d4443568a370190fb359dcb","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
-  date: 'Sat, 20 Apr 2013 11:44:31 GMT' });
+  brokerproperties: '{"DeliveryCount":1,"EnqueuedSequenceNumber":0,"MessageId":"12740d6fc83e460db57bb00807ea214a","SequenceNumber":1,"State":"Active","TimeToLive":922337203685.47754}',
+  date: 'Wed, 05 Jun 2013 09:21:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:44:33Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue19?api-version=2013-04</id><title type=\"text\">sbqueue19</title><published>2013-04-20T11:44:26Z</published><updated>2013-04-20T11:44:26Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue19?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:44:26.5603999Z</CreatedAt><UpdatedAt>2013-04-20T11:44:26.5603999Z</UpdatedAt><AccessedAt>2013-04-20T11:44:32.0134202Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:21:26Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbqueue19?api-version=2013-04</id><title type=\"text\">sbqueue19</title><published>2013-06-05T09:21:11Z</published><updated>2013-06-05T09:21:11Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbqueue19?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:21:11.2084076Z</CreatedAt><UpdatedAt>2013-06-05T09:21:11.2084076Z</UpdatedAt><AccessedAt>2013-06-05T09:21:15.4892879Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:33 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
@@ -4181,96 +4180,118 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbqueue19?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:34 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:44:36Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:21:29Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:35 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:28 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(401, "Error:Code:401:SubCode:T0:Detail:ACS50012: Authentication failed.:TraceID:e156a84f-6714-41b6-a06e-d91144f47a7d:TimeStamp:2013-04-20 11:44:37Z", { 'cache-control': 'private',
+  .reply(401, "Error:Code:401:SubCode:T0:Detail:ACS50012: Authentication failed.:TraceID:8fcf7ba2-c935-4d6e-98db-7a589c18a346:TimeStamp:2013-06-05 09:21:19Z", { 'cache-control': 'private',
   'content-type': 'text/plain; charset=us-ascii',
-  'x-ms-request-id': 'e156a84f-6714-41b6-a06e-d91144f47a7d',
-  'request-id': 'e156a84f-6714-41b6-a06e-d91144f47a7d',
+  'x-ms-request-id': '8fcf7ba2-c935-4d6e-98db-7a589c18a346',
+  'request-id': '8fcf7ba2-c935-4d6e-98db-7a589c18a346',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:36 GMT',
+  date: 'Wed, 05 Jun 2013 09:21:19 GMT',
   'content-length': '141' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:44:38Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:21:20Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:38 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:44:40Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:21:21Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:40 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:20 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:44:41Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:21:27Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:40 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:26 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:44:43Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:21:32Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:43 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:32 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:44:43Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:21:32Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/odafwyzaqa?api-version=2013-04</id><title type=\"text\">odafwyzaqa</title><published>2013-06-05T09:21:32Z</published><updated>2013-06-05T09:21:32Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../odafwyzaqa?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>2048</MaxSizeInMegabytes><RequiresDuplicateDetection>true</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>13</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:21:32.473Z</CreatedAt><UpdatedAt>2013-06-05T09:21:32.563Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:43 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:32 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fodafwyzaqa%253fapi-version%253d2013-04%26ExpiresOn%3d1370425298%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dshSftFJPDwJRk952632xrzXnjxCuWUs7kiNwP74%252fUsI%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': '8d4a8cfc-b2e7-4d6f-8f34-226de138ccc5',
+  'x-content-type-options': 'nosniff',
+  date: 'Wed, 05 Jun 2013 09:21:37 GMT',
+  'content-length': '571' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .delete('/odafwyzaqa?api-version=2013-04')
+  .reply(200, "", { 'content-length': '0',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:21:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:44:45Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:21:39Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:44 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:38 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic23%253fapi-version%253d2013-04%26ExpiresOn%3d1366459486%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dcywQ9ZaRWtRqSoc%252brKGGZdlo2uZaIUvGEtT6n9wMbgA%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic23%253fapi-version%253d2013-04%26ExpiresOn%3d1370425303%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dDBGl5QGpRgchE%252bNLYuiT1lkGZjwOTGEULya40VLo914%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'c997d5ff-9b27-43a9-a36c-17e396cf899e',
+  'request-id': '91e16cde-feb1-4500-a843-cec3243e209f',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:46 GMT',
+  date: 'Wed, 05 Jun 2013 09:21:43 GMT',
   'content-length': '570' });
  return result; },
 function (nock) { 
@@ -4278,41 +4299,64 @@ var result =
 nock('http://ciserversb.servicebus.windows.net:80')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic23?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>http://ciserversb.servicebus.windows.net/sbtopic23?api-version=2013-04</id><title type=\"text\">sbtopic23</title><published>2013-04-20T11:44:47Z</published><updated>2013-04-20T11:44:47Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"http://ciserversb.servicebus.windows.net/sbtopic23?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>http://ciserversb.servicebus.windows.net/sbtopic23?api-version=2013-04</id><title type=\"text\">sbtopic23</title><published>2013-06-05T09:21:41Z</published><updated>2013-06-05T09:21:42Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"http://ciserversb.servicebus.windows.net/sbtopic23?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:48 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:44:49Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:21:43Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/wuphdixzwj?api-version=2013-04</id><title type=\"text\">wuphdixzwj</title><published>2013-06-05T09:21:41Z</published><updated>2013-06-05T09:21:41Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../wuphdixzwj?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:21:41.667Z</CreatedAt><UpdatedAt>2013-06-05T09:21:41.79Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:49 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:44:50Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic23?api-version=2013-04</id><title type=\"text\">sbtopic23</title><published>2013-04-20T11:44:47Z</published><updated>2013-04-20T11:44:47Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic23?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:44:47.787Z</CreatedAt><UpdatedAt>2013-04-20T11:44:47.973Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:49 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic23%253fapi-version%253d2013-04%26ExpiresOn%3d1366459491%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dwt4IbUHdT7JsqFw42ITK%252bYyNxc2M16ia4VisGR8J0Fs%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fwuphdixzwj%253fapi-version%253d2013-04%26ExpiresOn%3d1370425309%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dg35EaQroud%252fPkXeUp96wXyP38LLpIrEAe3wTyvpB6TI%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': 'fd5908b9-c512-44fc-beea-c90d1b1948bf',
+  'request-id': '97047b07-9a92-4229-a4ee-26f4695994b9',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:51 GMT',
+  date: 'Wed, 05 Jun 2013 09:21:48 GMT',
+  'content-length': '571' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .delete('/wuphdixzwj?api-version=2013-04')
+  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:f67ac925-fa87-4d61-9f20-ca4b778fbc0a_G0,TimeStamp:6/5/2013 9:21:57 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/xml; charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:21:56 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .get('/$Resources/Topics?api-version=2013-04')
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:21:53Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic23?api-version=2013-04</id><title type=\"text\">sbtopic23</title><published>2013-06-05T09:21:41Z</published><updated>2013-06-05T09:21:42Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic23?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:21:41.967Z</CreatedAt><UpdatedAt>2013-06-05T09:21:42.06Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:21:52 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic23%253fapi-version%253d2013-04%26ExpiresOn%3d1370425310%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dvW4N2mbTQMOK6pCIAm0cs8qodvB2HZqB9woyh%252f2efuU%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': '28772a20-1021-4f9d-bd40-5297e0b6f5a6',
+  'x-content-type-options': 'nosniff',
+  date: 'Wed, 05 Jun 2013 09:21:49 GMT',
   'content-length': '570' });
  return result; },
 function (nock) { 
@@ -4321,20 +4365,20 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic23?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:53 GMT' });
+  date: 'Wed, 05 Jun 2013 09:21:52 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic24%253fapi-version%253d2013-04%26ExpiresOn%3d1366459494%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dwCwMSaq7MejwzRinE%252b1O4976OaikJwPvIQ0P4jbd3oc%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic24%253fapi-version%253d2013-04%26ExpiresOn%3d1370425315%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3d5fxuSs93veQorIgbKvv4OaiXYwp%252bNVuRYk1gjt9BsE8%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '2c919a24-3869-4a65-8912-092940cab886',
+  'request-id': 'fc698312-2ce8-44e1-803e-aedece9e04e2',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:44:53 GMT',
+  date: 'Wed, 05 Jun 2013 09:21:55 GMT',
   'content-length': '570' });
  return result; },
 function (nock) { 
@@ -4342,41 +4386,64 @@ var result =
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/sbtopic24?api-version=2013-04', '*')
-  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic24?api-version=2013-04</id><title type=\"text\">sbtopic24</title><published>2013-04-20T11:44:55Z</published><updated>2013-04-20T11:44:56Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic24?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
+  .reply(201, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>https://ciserversb.servicebus.windows.net/sbtopic24?api-version=2013-04</id><title type=\"text\">sbtopic24</title><published>2013-06-05T09:21:56Z</published><updated>2013-06-05T09:21:56Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/sbtopic24?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><SupportOrdering>true</SupportOrdering><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=entry;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:55 GMT' });
+  date: 'Wed, 05 Jun 2013 09:22:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:44:58Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:22:00Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/rlecghqdfw?api-version=2013-04</id><title type=\"text\">rlecghqdfw</title><published>2013-06-05T09:21:55Z</published><updated>2013-06-05T09:21:55Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../rlecghqdfw?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:21:55.3553675Z</CreatedAt><UpdatedAt>2013-06-05T09:21:55.3553675Z</UpdatedAt><AccessedAt>2013-06-05T09:22:00.2050272Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:44:58 GMT' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://ciserversb.servicebus.windows.net:443')
-  .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:45:00Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic24?api-version=2013-04</id><title type=\"text\">sbtopic24</title><published>2013-04-20T11:44:55Z</published><updated>2013-04-20T11:44:56Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic24?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-04-20T11:44:55.583Z</CreatedAt><UpdatedAt>2013-04-20T11:44:56.52Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
-  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
-  server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:45:00 GMT' });
+  date: 'Wed, 05 Jun 2013 09:22:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic24%253fapi-version%253d2013-04%26ExpiresOn%3d1366459500%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dPqqf4H8XADsCwzxEzpVRHqGtyMM1TXNgTqDhCqPiu4I%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252frlecghqdfw%253fapi-version%253d2013-04%26ExpiresOn%3d1370425322%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dDFX9VwYyzFUUd351d4ogNr3AhxW0m1YAtmTluRdqPhc%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '7e2e6531-ddfd-47c0-9209-8050a1416a2f',
+  'request-id': '9947c410-af07-45e7-9d5a-a94d87340bf5',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:45:00 GMT',
+  date: 'Wed, 05 Jun 2013 09:22:02 GMT',
+  'content-length': '567' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .delete('/rlecghqdfw?api-version=2013-04')
+  .reply(404, "<Error><Code>404</Code><Detail>No service is hosted at the specified address..TrackingId:579721f7-a7f4-4676-b906-47926e4661ec_G4,TimeStamp:6/5/2013 9:22:05 AM</Detail></Error>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/xml; charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:22:05 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .get('/$Resources/Topics?api-version=2013-04')
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:22:07Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/sbtopic24?api-version=2013-04</id><title type=\"text\">sbtopic24</title><published>2013-06-05T09:21:56Z</published><updated>2013-06-05T09:21:56Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../sbtopic24?api-version=2013-04\"/><content type=\"application/xml\"><TopicDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><FilteringMessagesBeforePublishing>false</FilteringMessagesBeforePublishing><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:21:56.377Z</CreatedAt><UpdatedAt>2013-06-05T09:21:56.45Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><SubscriptionCount>0</SubscriptionCount><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></TopicDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/atom+xml;type=feed;charset=utf-8',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:22:07 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fsbtopic24%253fapi-version%253d2013-04%26ExpiresOn%3d1370425333%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dJ2qaQPFFLM24m3VVst7w7FkmQVyL02navD6pFz8jVDw%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': '1cc701a1-7766-46a8-8eb6-79f6ad38abf2',
+  'x-content-type-options': 'nosniff',
+  date: 'Wed, 05 Jun 2013 09:22:13 GMT',
   'content-length': '566' });
  return result; },
 function (nock) { 
@@ -4385,37 +4452,59 @@ nock('https://ciserversb.servicebus.windows.net:443')
   .delete('/sbtopic24?api-version=2013-04')
   .reply(200, "", { 'content-length': '0',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:45:02 GMT' });
+  date: 'Wed, 05 Jun 2013 09:22:23 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
 nock('https://ciserversb-sb.accesscontrol.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/WRAPv0.9/', '*')
-  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fQueues%253fapi-version%253d2013-04%26ExpiresOn%3d1366459503%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dBKLQDUTEomfKVsNWSMLOct8ETzAEGnjWlxhCXVbOj78%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252f%2524Resources%252fQueues%253fapi-version%253d2013-04%26ExpiresOn%3d1370425339%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dmZYTOyWMjvpi2VGdMCoXQzfFXpE5tMZxQtMt%252fOARwbA%253d&wrap_access_token_expires_in=1200", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
   expires: '-1',
-  'request-id': '4027a31b-8993-4662-bbb0-b21acdce5ab2',
+  'request-id': '926f374c-fd8a-40b9-a627-a985ee42b59a',
   'x-content-type-options': 'nosniff',
-  date: 'Sat, 20 Apr 2013 11:45:03 GMT',
-  'content-length': '582' });
+  date: 'Wed, 05 Jun 2013 09:22:18 GMT',
+  'content-length': '586' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Queues?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-04-20T11:45:04Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Queues</title><id>https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04</id><updated>2013-06-05T09:22:16Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"/><entry xml:base=\"https://ciserversb.servicebus.windows.net/$Resources/Queues?api-version=2013-04\"><id>https://ciserversb.servicebus.windows.net/uvplliplik?api-version=2013-04</id><title type=\"text\">uvplliplik</title><published>2013-06-05T09:22:16Z</published><updated>2013-06-05T09:22:16Z</updated><author><name>ciserversb</name></author><link rel=\"self\" href=\"../uvplliplik?api-version=2013-04\"/><content type=\"application/xml\"><QueueDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><LockDuration>PT1M</LockDuration><MaxSizeInMegabytes>1024</MaxSizeInMegabytes><RequiresDuplicateDetection>false</RequiresDuplicateDetection><RequiresSession>false</RequiresSession><DefaultMessageTimeToLive>P10675199DT2H48M5.4775807S</DefaultMessageTimeToLive><DeadLetteringOnMessageExpiration>false</DeadLetteringOnMessageExpiration><DuplicateDetectionHistoryTimeWindow>PT10M</DuplicateDetectionHistoryTimeWindow><MaxDeliveryCount>10</MaxDeliveryCount><EnableBatchedOperations>true</EnableBatchedOperations><SizeInBytes>0</SizeInBytes><MessageCount>0</MessageCount><IsAnonymousAccessible>false</IsAnonymousAccessible><AuthorizationRules></AuthorizationRules><Status>Active</Status><CreatedAt>2013-06-05T09:22:16.247Z</CreatedAt><UpdatedAt>2013-06-05T09:22:16.47Z</UpdatedAt><AccessedAt>0001-01-01T00:00:00Z</AccessedAt><SupportOrdering>true</SupportOrdering><CountDetails xmlns:d2p1=\"http://schemas.microsoft.com/netservices/2011/06/servicebus\"><d2p1:ActiveMessageCount>0</d2p1:ActiveMessageCount><d2p1:DeadLetterMessageCount>0</d2p1:DeadLetterMessageCount><d2p1:ScheduledMessageCount>0</d2p1:ScheduledMessageCount><d2p1:TransferMessageCount>0</d2p1:TransferMessageCount><d2p1:TransferDeadLetterMessageCount>0</d2p1:TransferDeadLetterMessageCount></CountDetails><AutoDeleteOnIdle>P10675199DT2H48M5.4775807S</AutoDeleteOnIdle><PartitioningPolicy>NoPartitioning</PartitioningPolicy><EntityAvailabilityStatus>Available</EntityAvailabilityStatus></QueueDescription></content></entry></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:45:04 GMT' });
+  date: 'Wed, 05 Jun 2013 09:22:16 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb-sb.accesscontrol.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/WRAPv0.9/', '*')
+  .reply(200, "wrap_access_token=net.windows.servicebus.action%3dListen%252cManage%252cSend%26http%253a%252f%252fschemas.microsoft.com%252faccesscontrolservice%252f2010%252f07%252fclaims%252fidentityprovider%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26Audience%3dhttp%253a%252f%252fciserversb.servicebus.windows.net%252fuvplliplik%253fapi-version%253d2013-04%26ExpiresOn%3d1370425337%26Issuer%3dhttps%253a%252f%252fciserversb-sb.accesscontrol.windows.net%252f%26HMACSHA256%3dkaOaCjTwbzBb3Gzk1DEo6BWDJtfCs25MBNeIwP01RKk%253d&wrap_access_token_expires_in=1199", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/x-www-form-urlencoded; charset=us-ascii',
+  expires: '-1',
+  'request-id': '3faee427-6a75-462a-a2e4-3ec0cdb24b90',
+  'x-content-type-options': 'nosniff',
+  date: 'Wed, 05 Jun 2013 09:22:16 GMT',
+  'content-length': '567' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversb.servicebus.windows.net:443')
+  .delete('/uvplliplik?api-version=2013-04')
+  .reply(200, "", { 'content-length': '0',
+  server: 'Microsoft-HTTPAPI/2.0',
+  date: 'Wed, 05 Jun 2013 09:22:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .get('/$Resources/Topics?api-version=2013-04')
-  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-04-20T11:45:06Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
+  .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">Topics</title><id>https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04</id><updated>2013-06-05T09:22:29Z</updated><link rel=\"self\" href=\"https://ciserversb.servicebus.windows.net/$Resources/Topics?api-version=2013-04\"/></feed>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/atom+xml;type=feed;charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
-  date: 'Sat, 20 Apr 2013 11:45:05 GMT' });
+  date: 'Wed, 05 Jun 2013 09:22:28 GMT' });
  return result; }]];

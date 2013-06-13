@@ -38,7 +38,9 @@ var testUtil;
 
 suite('tableservice-batch-tests', function () {
   suiteSetup(function (done) {
-    tableService = azure.createTableService();
+    tableService = azure.createTableService()
+      .withFilter(new azure.ExponentialRetryPolicyFilter());
+
     testUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
     testUtil.setupSuite(done);
   });
