@@ -1,3 +1,6 @@
+2013.0.13 Version 0.7.8
+* Updates to HDInsight operations
+
 2013.06.06 Version 0.7.7
 * Added support for Android notification through Service Bus Notification Hubs
 * Support prefixes when listing tables
