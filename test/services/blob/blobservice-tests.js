@@ -1216,7 +1216,7 @@ describe('BlobService', function () {
         };
 
         var blobUrl = blobServiceassert.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-        assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName + '?se=2011-10-12T11%3A53%3A40Z&sr=b&sig=P5rp4qr5wWJdT3%2Fpys210lFcBzamGwjEYXaN2sf%2FHss%3D');
+        assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName + '?se=2011-10-12T11%3A53%3A40Z&sr=b&sv=2012-02-12&sig=gDOuwDoa4F7hhQJW9ReCimoHN2qp7NF1Nu3sdHjwIfs%3D');
 
         done();
       });
@@ -1284,7 +1284,7 @@ describe('BlobService', function () {
         this.clock.restore();
 
         var blobUrl = blobServiceassert.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-        assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName + '?se=1970-01-01T00%3A10%3A00Z&sr=b&sig=78rp23g%2FozomP%2FwwJHZ8BpyLIj0t%2B97oZgzFl1w3OAU%3D');
+        assert.equal(blobUrl, 'https://host.com:80/' + containerName + '/' + blobName + '?se=1970-01-01T00%3A10%3A00Z&sr=b&sv=2012-02-12&sig=ca700zLsjqapO1sUBVHIBblj2XoJCON1V4gMSfyQZc8%3D');
 
         done();
       });
@@ -1310,7 +1310,8 @@ describe('BlobService', function () {
       assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNED_EXPIRY], '2011-10-12T11:53:40Z');
       assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNED_RESOURCE], BlobConstants.ResourceTypes.BLOB);
       assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNED_PERMISSIONS], BlobConstants.SharedAccessPermissions.READ);
-      assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNATURE], '7NIEip+VOrQ5ZV80pORPK1MOsJc62wwCNcbMvE+lQ0s=');
+      assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNED_VERSION], '2012-02-12');
+      assert.equal(sharedAccessSignature.queryString[QueryStringConstants.SIGNATURE], 'ju4tX0G79vPxMOkBb7UfNVEgrj9+ZnSMutpUemVYHLY=');
 
       done();
     });
