@@ -25,13 +25,13 @@ var azure = testutil.libRequire('azure');
 var WebResource = testutil.libRequire('http/webresource');
 var SharedAccessSignature = azure.SharedAccessSignature;
 var Constants = azure.Constants;
-var ServiceClient = azure.ServiceClient;
+var ServiceClientConstants = azure.ServiceClientConstants;
 var BlobConstants = Constants.BlobConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
 suite('sharedaccesssignature-tests', function () {
   test('GenerateSignatureContainer', function (done) {
-    var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    var credentials = new SharedAccessSignature(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
       Id: 'YWJjZGVmZw==',
@@ -52,7 +52,7 @@ suite('sharedaccesssignature-tests', function () {
   });
 
   test('GenerateSignatureBlob', function (done) {
-    var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    var credentials = new SharedAccessSignature(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
       AccessPolicy: {
@@ -72,7 +72,7 @@ suite('sharedaccesssignature-tests', function () {
   });
 
   test('ContainerSignedQueryString', function (done) {
-    var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    var credentials = new SharedAccessSignature(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
       Id: 'YWJjZGVmZw==',
@@ -99,7 +99,7 @@ suite('sharedaccesssignature-tests', function () {
   });
 
   test('BlobSignedQueryString', function (done) {
-    var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    var credentials = new SharedAccessSignature(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
       AccessPolicy: {
@@ -124,7 +124,7 @@ suite('sharedaccesssignature-tests', function () {
   });
 
   test('SignRequest', function (done) {
-    var credentials = new SharedAccessSignature(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    var credentials = new SharedAccessSignature(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
 
     var sharedAccessPolicy = {
       AccessPolicy: {

@@ -22,7 +22,7 @@ var testutil = require('../../../util/util');
 var azure = testutil.libRequire('azure');
 var SharedKeyLiteTable = testutil.libRequire('services/table/internal/sharedkeylitetable');
 var WebResource = testutil.libRequire('http/webresource');
-var ServiceClient = azure.ServiceClient;
+var ServiceClientConstants = azure.ServiceClientConstants;
 var Constants = azure.Constants;
 var HeaderConstants = Constants.HeaderConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
@@ -31,7 +31,7 @@ var sharedkey;
 
 suite('sharedkeylitetable-tests', function () {
   setup(function (done) {
-    sharedkey = new SharedKeyLiteTable(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, false);
+    sharedkey = new SharedKeyLiteTable(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY, false);
 
     done();
   });

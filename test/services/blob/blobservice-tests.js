@@ -39,6 +39,7 @@ var ExponentialRetryPolicyFilter = azure.ExponentialRetryPolicyFilter;
 var Constants = azure.Constants;
 var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
+var ServiceClientConstants = azure.ServiceClientConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
 var containerNames = [];
@@ -1294,7 +1295,7 @@ describe('BlobService', function () {
       var containerName = 'images';
       var blobName = 'pic1.png';
 
-      var devStorageBlobService = azure.createBlobService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+      var devStorageBlobService = azure.createBlobService(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
 
       var sharedAccessPolicy = {
         AccessPolicy: {
@@ -1425,8 +1426,8 @@ describe('BlobService', function () {
     var connectionString = 'UseDevelopmentStorage=true';
     var blobService = azure.createBlobService(connectionString);
 
-    assert.equal(blobService.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
-    assert.equal(blobService.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    assert.equal(blobService.storageAccount, ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT);
+    assert.equal(blobService.storageAccessKey, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
     assert.equal(blobService.protocol, 'http:');
     assert.equal(blobService.host, '127.0.0.1');
     assert.equal(blobService.port, '10000');
