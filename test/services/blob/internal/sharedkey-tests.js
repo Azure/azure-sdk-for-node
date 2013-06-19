@@ -22,7 +22,7 @@ var testutil = require('../../../util/util');
 var azure = testutil.libRequire('azure');
 var WebResource = testutil.libRequire('http/webresource');
 var SharedKey = azure.SharedKey;
-var ServiceClient = azure.ServiceClient;
+var ServiceClientConstants = azure.ServiceClientConstants;
 var Constants = azure.Constants;
 var QueryStringConstants = Constants.QueryStringConstants;
 var HeaderConstants = Constants.HeaderConstants;
@@ -31,7 +31,7 @@ var sharedkey;
 
 suite('sharedkey-tests', function () {
   setup(function (done) {
-    sharedkey = new azure.SharedKey(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, false);
+    sharedkey = new azure.SharedKey(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY, false);
 
     done();
   });
