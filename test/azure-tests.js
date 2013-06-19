@@ -21,7 +21,7 @@ var testutil = require('./util/util');
 // Lib includes
 var azure = testutil.libRequire('azure');
 var ServiceBusServiceClient = testutil.libRequire('services/core/servicebusserviceclient');
-var ServiceClient = azure.ServiceClient;
+var ServiceClientConstants = azure.ServiceClientConstants;
 
 var environmentAzureStorageAccount = 'myaccount';
 var environmentAzureStorageAccessKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
@@ -49,32 +49,32 @@ suite('azure', function () {
       firstRun = false;
 
       // On the first run store the previous azure storage account / azure storage access key from the environment
-      if (!originalAzureStorageAccount && process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT]) {
-        originalAzureStorageAccount = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
+      if (!originalAzureStorageAccount && process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT]) {
+        originalAzureStorageAccount = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
       }
 
-      if (!originalAzureStorageAccessKey && process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY]) {
-        originalAzureStorageAccessKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
+      if (!originalAzureStorageAccessKey && process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY]) {
+        originalAzureStorageAccessKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
       }
 
-      if (!originalAzureStorageDnsSuffix && process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX]) {
-        originalAzureStorageDnsSuffix = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX];
+      if (!originalAzureStorageDnsSuffix && process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX]) {
+        originalAzureStorageDnsSuffix = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX];
       }
       // On the first run store the previous azure storage account / azure storage access key from the environment
-      if (!originalServiceBusNamespace && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE]) {
-        originalServiceBusNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+      if (!originalServiceBusNamespace && process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE]) {
+        originalServiceBusNamespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
       }
 
-      if (!originalServiceBusIssuer && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER]) {
-        originalServiceBusIssuer = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
+      if (!originalServiceBusIssuer && process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER]) {
+        originalServiceBusIssuer = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
       }
 
-      if (!originalServiceBusAccessKey && process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY]) {
-        originalServiceBusAccessKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
+      if (!originalServiceBusAccessKey && process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY]) {
+        originalServiceBusAccessKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
       }
 
-      if (!originalWrapNamespace && process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE]) {
-        originalWrapNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
+      if (!originalWrapNamespace && process.env[ServiceClientConstants.EnvironmentVariables.AZURE_WRAP_NAMESPACE]) {
+        originalWrapNamespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
       }
     }
 
@@ -83,30 +83,30 @@ suite('azure', function () {
 
   teardown(function (done) {
     // Make sure emulated is never a left over after the test runs.
-    delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
+    delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
 
     if (originalAzureStorageAccount) {
-      process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = originalAzureStorageAccount;
+      process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = originalAzureStorageAccount;
     }
 
     if (originalAzureStorageAccessKey) {
-      process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = originalAzureStorageAccessKey;
+      process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = originalAzureStorageAccessKey;
     }
 
     if (originalServiceBusNamespace) {
-      process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = originalServiceBusNamespace;
+      process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = originalServiceBusNamespace;
     }
 
     if (originalServiceBusIssuer) {
-      process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER] = originalServiceBusIssuer;
+      process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER] = originalServiceBusIssuer;
     }
 
     if (originalServiceBusAccessKey) {
-      process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = originalServiceBusAccessKey;
+      process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = originalServiceBusAccessKey;
     }
 
     if (originalWrapNamespace) {
-      process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE] = originalWrapNamespace;
+      process.env[ServiceClientConstants.EnvironmentVariables.AZURE_WRAP_NAMESPACE] = originalWrapNamespace;
     }
 
     // clean up
@@ -132,20 +132,20 @@ suite('azure', function () {
   });
 
   test('IsEmulated', function (done) {
-    var ServiceClient = azure.ServiceClient;
-    delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
+    var ServiceClientConstants = azure.ServiceClientConstants;
+    delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
     assert.equal(azure.isEmulated(), false);
 
     // set some environment credentials for the live windows azure services
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     var blobService1 = azure.createBlobService();
-    assert.equal(blobService1.host, environmentAzureStorageAccount + '.' + ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService1.host, environmentAzureStorageAccount + '.' + ServiceClientConstants.CLOUD_BLOB_HOST);
     assert.equal(blobService1.usePathStyleUri, false);
 
-    process.env[ServiceClient.EnvironmentVariables.EMULATED] = true;
+    process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
     var blobService2 = azure.createBlobService();
     assert.equal(blobService2.host, '127.0.0.1');
@@ -156,21 +156,21 @@ suite('azure', function () {
 
   test('NotEmulatedExplicitCredentials', function (done) {
     // Make sure is not emulated
-    delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
+    delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
 
     // set some environment credentials for the live windows azure services
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client passing some credentials
     var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
     // Points to the live services
     assert.equal(blobService.usePathStyleUri, false);
-    assert.equal(blobService.host, parameterAzureStorageAccount.toLowerCase() + '.' + ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService.host, parameterAzureStorageAccount.toLowerCase() + '.' + ServiceClientConstants.CLOUD_BLOB_HOST);
 
-    // And credentials are the ones passed 
+    // And credentials are the ones passed
     assert.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);
     assert.equal(blobService.authenticationProvider.storageAccessKey, parameterAzureStorageAccessKey);
 
@@ -179,19 +179,19 @@ suite('azure', function () {
 
   test('EmulatedExplicitCredentials', function (done) {
     // set emulated to true
-    process.env[ServiceClient.EnvironmentVariables.EMULATED] = true;
+    process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
     // set some environment credentials for the live windows azure services
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client passing some credentials
     var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
     // Points to the credentials
     assert.equal(blobService.usePathStyleUri, false);
-    assert.equal(blobService.host + ':' + blobService.port, parameterAzureStorageAccount.toLowerCase() + '.' +  ServiceClient.CLOUD_BLOB_HOST + ':443');
+    assert.equal(blobService.host + ':' + blobService.port, parameterAzureStorageAccount.toLowerCase() + '.' +  ServiceClientConstants.CLOUD_BLOB_HOST + ':443');
 
     // But the used credentials are the ones passed because we were explicit
     assert.equal(blobService.authenticationProvider.storageAccount, parameterAzureStorageAccount);
@@ -202,42 +202,42 @@ suite('azure', function () {
 
   test('EmulatedWithoutParameters', function (done) {
     // set emulated to true
-    process.env[ServiceClient.EnvironmentVariables.EMULATED] = true;
+    process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
     // set some environment credentials for the live windows azure services
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client without passing any credentials
     var blobService = azure.createBlobService();
 
     // Points to the emulator
     assert.equal(blobService.usePathStyleUri, true);
-    assert.equal(blobService.host + ':' + blobService.port, ServiceClient.DEVSTORE_BLOB_HOST);
+    assert.equal(blobService.host + ':' + blobService.port, ServiceClientConstants.DEVSTORE_BLOB_HOST);
 
     // And uses the emulator credentials
-    assert.equal(blobService.authenticationProvider.storageAccount, ServiceClient.DEVSTORE_STORAGE_ACCOUNT);
-    assert.equal(blobService.authenticationProvider.storageAccessKey, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY);
+    assert.equal(blobService.authenticationProvider.storageAccount, ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT);
+    assert.equal(blobService.authenticationProvider.storageAccessKey, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
 
     done();
   });
 
   test('NotEmulatedWithoutParameters', function (done) {
     // Make sure is not emulated
-    delete process.env[ServiceClient.EnvironmentVariables.EMULATED];
+    delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
 
     // set some environment credentials for the live windows azure services
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client without passing any credentials
     var blobService = azure.createBlobService();
 
     // Points to the live service
     assert.equal(blobService.usePathStyleUri, false);
-    assert.equal(blobService.host, environmentAzureStorageAccount + '.' + ServiceClient.CLOUD_BLOB_HOST);
+    assert.equal(blobService.host, environmentAzureStorageAccount + '.' + ServiceClientConstants.CLOUD_BLOB_HOST);
 
     // and uses the environment variables
     assert.equal(blobService.authenticationProvider.storageAccount, environmentAzureStorageAccount);
@@ -247,21 +247,21 @@ suite('azure', function () {
   });
 
 test('MissingServiceBusIssuerAndWrapNamespace', function (done) {
-    delete process.env[ServiceClient.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
-    delete process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
+    delete process.env[ServiceClientConstants.EnvironmentVariables.AZURE_WRAP_NAMESPACE];
+    delete process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ISSUER];
 
-    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = environmentServiceBusNamespace;
-    process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = environmentServiceBusAccessKey;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] = environmentServiceBusNamespace;
+    process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY] = environmentServiceBusAccessKey;
 
     // Create service bus client without passing any credentials
     var serviceBusService = azure.createServiceBusService();
 
     // set correctly
-    assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX + '.accesscontrol.windows.net:443');
+    assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + environmentServiceBusNamespace + ServiceClientConstants.DEFAULT_WRAP_NAMESPACE_SUFFIX + '.accesscontrol.windows.net:443/WRAPv0.9');
     assert.equal(serviceBusService.authenticationProvider.accessKey, environmentServiceBusAccessKey);
 
     // defaulted correctly
-    assert.equal(serviceBusService.authenticationProvider.issuer, ServiceClient.DEFAULT_SERVICEBUS_ISSUER);
+    assert.equal(serviceBusService.authenticationProvider.issuer, ServiceClientConstants.DEFAULT_SERVICEBUS_ISSUER);
 
     done();
   });

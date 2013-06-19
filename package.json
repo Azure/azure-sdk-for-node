@@ -27,7 +27,8 @@
     "tunnel": ">= 0.0.1",
     "request": ">= 2.9.203",
     "validator": ">= 0.4.12",
-    "wns": ">= 0.5.3"
+    "wns": ">= 0.5.3",
+    "envconf": ">= 0.0.1"
   },
   "devDependencies": {
     "mocha": "*",

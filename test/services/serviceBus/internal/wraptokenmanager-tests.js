@@ -24,7 +24,7 @@ var azure = testutil.libRequire('azure');
 var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
 var WrapTokenManager = testutil.libRequire('services/serviceBus/internal/wraptokenmanager');
 
-var ServiceClient = azure.ServiceClient;
+var ServiceClientConstants = azure.ServiceClientConstants;
 
 var wrapTokenManager;
 var wrapService;
@@ -54,7 +54,7 @@ suite('wraptokenmanager-tests', function () {
   test('GetAccessToken', function (done) {
     wrapTokenManager = new WrapTokenManager();
 
-    var namespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+    var namespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var scopeUri = 'http://' + namespace + '.servicebus.windows.net/myqueue';
 
     wrapTokenManager.getAccessToken(scopeUri, function (error, wrapAccessToken) {
@@ -63,7 +63,7 @@ suite('wraptokenmanager-tests', function () {
       assert.notEqual(wrapAccessToken['wrap_access_token_expires_in'], null);
       assert.notEqual(wrapAccessToken['wrap_access_token_expires_utc'], null);
 
-      // trying to get an access token to the same scopeUri immediately 
+      // trying to get an access token to the same scopeUri immediately
       // should return the same as it should still be cached
       wrapTokenManager.getAccessToken(scopeUri, function (error2, cachedWrapAccessToken) {
         assert.equal(error2, null);
