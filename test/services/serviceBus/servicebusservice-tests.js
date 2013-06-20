@@ -27,6 +27,7 @@ var azureutil = testutil.libRequire('util/util');
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
+var ServiceClientConstants = azure.ServiceClientConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 var ServiceBusConstants = Constants.ServiceBusConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
@@ -915,7 +916,7 @@ suite('servicebusservice-tests', function () {
             assert.equal(subscription2.DeadLetteringOnMessageExpiration, subscriptionOptions.DeadLetteringOnMessageExpiration.toString());
             assert.equal(subscription2.DeadLetteringOnFilterEvaluationExceptions, subscriptionOptions.DeadLetteringOnFilterEvaluationExceptions.toString());
             assert.equal(subscription2.AutoDeleteOnIdle, subscriptionOptions.AutoDeleteOnIdle.toString());
-            
+
             // duplicate subscription
             serviceBusService.createSubscription(topicName, subscriptionName1, function (subscriptionError, duplicateSubscription) {
               assert.notEqual(subscriptionError, null);
@@ -1618,7 +1619,14 @@ suite('servicebusservice-tests', function () {
   });
 
   test('invalidAccessKeyGivesError', function (done) {
-    var serviceBusService = azure.createServiceBusService(process.env['AZURE_SERVICEBUS_NAMESPACE'], 'key');
+    azure.configure('testInvalidAccessKeyGivesError', function (c) {
+      c.serviceBus({
+        namespace: process.env['AZURE_SERVICEBUS_NAMESPACE'],
+        key: 'key'
+      });
+    });
+
+    var serviceBusService = azure.createServiceBusService(azure.config('testInvalidAccessKeyGivesError'));
     suiteUtil.setupService(serviceBusService);
 
     // fails, with an error on the callback.
@@ -1659,20 +1667,20 @@ suite('servicebusservice-tests', function () {
 
   test('storageConnectionStringsEndpointHttpExplicit', function (done) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
-    var expectedNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
-    var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
-    var expectedHost = 'http://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
+    var expectedNamespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+    var expectedKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
+    var expectedHost = 'http://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
     var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
     suiteUtil.setupService(serviceBusService);
 
     serviceBusService.createTopic(topicName, function (err) {
       assert.equal(err, null);
 
-      assert.equal(serviceBusService.host, process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net');
+      assert.equal(serviceBusService.host, process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net');
       assert.equal(serviceBusService.port, 80);
       assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
       assert.equal(serviceBusService.authenticationProvider.accessKey, expectedKey);
-      assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '-sb.accesscontrol.windows.net:443');
+      assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '-sb.accesscontrol.windows.net:443');
 
       done();
     });
@@ -1680,20 +1688,20 @@ suite('servicebusservice-tests', function () {
 
   test('storageConnectionStringsEndpointHttpsExplicit', function (done) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
-    var expectedNamespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
-    var expectedKey = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
-    var expectedHost = 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
+    var expectedNamespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+    var expectedKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
+    var expectedHost = 'https://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
     var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
     suiteUtil.setupService(serviceBusService);
 
     serviceBusService.createTopic(topicName, function (err) {
       assert.equal(err, null);
 
-      assert.equal(serviceBusService.host, process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net');
+      assert.equal(serviceBusService.host, process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net');
       assert.equal(serviceBusService.port, 443);
       assert.equal(serviceBusService.authenticationProvider.issuer, 'owner');
       assert.equal(serviceBusService.authenticationProvider.accessKey, expectedKey);
-      assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '-sb.accesscontrol.windows.net:443');
+      assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '-sb.accesscontrol.windows.net:443');
 
       done();
     });

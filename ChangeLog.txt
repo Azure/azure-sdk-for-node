@@ -1,4 +1,10 @@
-2013.0.13 Version 0.7.8
+2013.06.19 Version 0.7.9
+* First part of new SDK configuration system
+* Support for AZURE_SERVICEBUS_CONNECTION_STRING environment variable
+* Updated SAS generation logic to include version number
+* Infrastructure support for creating passwordless VMs
+
+2013.06.13 Version 0.7.8
 * Updates to HDInsight operations
 
 2013.06.06 Version 0.7.7
