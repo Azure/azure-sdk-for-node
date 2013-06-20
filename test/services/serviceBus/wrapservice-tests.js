@@ -24,7 +24,7 @@ var azure = testutil.libRequire('azure');
 var azureutil = testutil.libRequire('util/util');
 var WrapService = testutil.libRequire('services/serviceBus/wrapservice');
 
-var ServiceClient = azure.ServiceClient;
+var ServiceClientConstants = azure.ServiceClientConstants;
 var Constants = azure.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
@@ -56,7 +56,7 @@ suite('wrapservice-tests', function() {
   });
 
   test('WrapAccessToken', function (done) {
-    var namespace = process.env[ServiceClient.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
+    var namespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
 
     wrapService.wrapAccessToken('http://' + namespace + '.servicebus.windows.net/myqueue', function (error, wrapAccessToken) {
       assert.equal(error, null);

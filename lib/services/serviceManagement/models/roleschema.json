@@ -242,7 +242,8 @@
                   "Required": true,
                   "Type": "Primitive.String",
                   "RegEx": "NIL",
-                  "XmlNode": "UserPassword"
+                  "XmlNode": "UserPassword",
+                  "IncludeIfEmpty": true
                 },
               "DisableSshPasswordAuthentication": 
                 {

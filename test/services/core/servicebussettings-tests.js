@@ -15,9 +15,11 @@
 
 var should = require('should');
 var url = require('url');
+var _ = require('underscore');
 
 var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
+var EnvironmentVariables = testutil.libRequire('services/core/serviceclient').EnvironmentVariables;
 var Constants = azure.Constants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var ServiceBusSettings = azure.ServiceBusSettings;
@@ -25,22 +27,13 @@ var ServiceBusSettings = azure.ServiceBusSettings;
 suite('servicebussettings-tests', function () {
   test('testCreateFromConnectionStringWithServiceBusAutomaticCase', function () {
     // Setup
-    var expectedNamespace = 'mynamespace';
-    var expectedServiceBusEndpoint = 'https://' + expectedNamespace + '.servicebus.windows.net';
-    var expectedWrapName = 'myname';
-    var expectedWrapPassword = 'mypassword';
-    var expectedWrapEndpointUri = 'https://' + expectedNamespace + '-sb.accesscontrol.windows.net:443/WRAPv0.9';
-    var connectionString = 'Endpoint=' + expectedServiceBusEndpoint + ';SharedSecretIssuer=' + expectedWrapName + ';SharedSecretValue=' + expectedWrapPassword;
+    var expected = new ExpectedConnectionString('mynamespace', 'myname', 'mypassword');
 
     // Test
-    var actual = ServiceBusSettings.createFromConnectionString(connectionString);
+    var actual = ServiceBusSettings.createFromConnectionString(expected.connectionString);
 
     // Assert
-    actual._namespace.should.equal(expectedNamespace);
-    actual._serviceBusEndpointUri.should.equal(expectedServiceBusEndpoint);
-    actual._wrapName.should.equal(expectedWrapName);
-    actual._wrapPassword.should.equal(expectedWrapPassword);
-    actual._wrapEndpointUri.should.equal(expectedWrapEndpointUri);
+    expected.shouldMatchSettings(actual);
   });
 
   test('testCreateFromConnectionStringWithMissingServiceBusEndpointFail', function () {
@@ -64,7 +57,7 @@ suite('servicebussettings-tests', function () {
     }).should.throw('Invalid connection string setting key "' + invalidKey.toLowerCase() + '"');
   });
 
-  test('testCreateFromConnectionStringWithCaseInvesitive', function () {
+  test('testCreateFromConnectionStringWithCaseInsensitive', function () {
     // Setup
     var expectedNamespace = 'mynamespace';
     var expectedServiceBusEndpoint = 'https://' + expectedNamespace + '.servicebus.windows.net';
@@ -83,4 +76,111 @@ suite('servicebussettings-tests', function () {
     actual._wrapPassword.should.equal(expectedWrapPassword);
     actual._wrapEndpointUri.should.equal(expectedWrapEndpointUri);
   });
+
+  test('testCreateFromConfigWithConnectionStringSucceeds', function () {
+    // Setup
+    var expected = new ExpectedConnectionString('mynamespace', 'myname', 'mypassword');
+
+    azure.configure('servicebussettingstestenvironment', function (c) {
+      c.set('service bus connection string', expected.connectionString);
+    });
+
+    // Test
+    var actual = ServiceBusSettings.createFromConfig(azure.config('servicebussettingstestenvironment'));
+
+    // Assert
+    expected.shouldMatchSettings(actual);
+  });
+
+  test('testCreateFromConfigWithNoConfigUsesDefault', function () {
+    var expected = new ExpectedConnectionString('namespacefromdefault', 'wrapnamefromdefault', 'passwordfromdefault');
+    withEnvironment( { NODE_ENV: 'testenvironment' }, function () {
+      azure.configure('testenvironment', function (c) {
+        c.set('service bus connection string', expected.connectionString);
+      });
+
+      var actual = ServiceBusSettings.createFromConfig();
+
+      expected.shouldMatchSettings(actual);
+    });
+  });
+
+  test('testCreateFromConfigWithNoSettingFallsBackToEnvironmentVariable', function () {
+    var expected = new ExpectedConnectionString('namespacefromenv', 'wrapnameenv', 'passwordenv');
+    withEnvironment({ AZURE_SERVICEBUS_CONNECTION_STRING: expected.connectionString },
+     function () {
+      var actual = ServiceBusSettings.createFromConfig();
+
+      expected.shouldMatchSettings(actual);
+    });
+  });
+
+  test('testCreateFromConfigWithNoSettingFallsBackToOldEnvironmentVariables', function () {
+    var expected = new ExpectedConnectionString('mynamespace', 'mywrap', 'mysecret');
+    withEnvironment({
+        AZURE_SERVICEBUS_NAMESPACE: 'mynamespace',
+        AZURE_SERVICEBUS_ISSUER: 'mywrap',
+        AZURE_SERVICEBUS_ACCESS_KEY: 'mysecret'
+      }, function () {
+        var actual = ServiceBusSettings.createFromConfig();
+        expected.shouldMatchSettings(actual);
+      }
+    );
+  });
+
+  test('testCreateFromConfigWithIncompleteEnvironmentThrows', function () {
+    withEnvironment({
+      AZURE_SERVICEBUS_NAMESPACE: 'mynamespace',
+      AZURE_SERVICEBUS_ISSUER: null,
+      AZURE_SERVICEBUS_ACCESS_KEY: null
+    },
+      function () {
+        delete process.env.AZURE_SERVICEBUS_ISSUER;
+        delete process.env.AZURE_SERVICEBUS_ACCESS_KEY;
+        (function () {
+          ServiceBusSettings.createFromConfig();
+        }).should.throw(/Cannot find correct Service Bus settings in configuration or environment/);
+      });
+  });
 });
+
+// Helper functions for creating and verifying namespaces
+
+function ExpectedConnectionString(namespace, wrapName, wrapPassword) {
+    this.expectedNamespace = namespace;
+    this.expectedServiceBusEndpoint = 'https://' + this.expectedNamespace + '.servicebus.windows.net';
+    this.expectedWrapName = wrapName;
+    this.expectedWrapPassword = wrapPassword;
+    this.expectedWrapEndpointUri = 'https://' + this.expectedNamespace + '-sb.accesscontrol.windows.net:443/WRAPv0.9';
+    this.connectionString = 'Endpoint=' + this.expectedServiceBusEndpoint + ';SharedSecretIssuer=' + this.expectedWrapName + ';SharedSecretValue=' + this.expectedWrapPassword;
+}
+
+ExpectedConnectionString.prototype.shouldMatchSettings = function (settings) {
+    settings._namespace.should.equal(this.expectedNamespace);
+    if (settings._serviceBusEndpointUri.match(/:443$/)) {
+      this.expectedServiceBusEndpoint += ':443';
+    }
+    settings._serviceBusEndpointUri.should.equal(this.expectedServiceBusEndpoint);
+    settings._wrapName.should.equal(this.expectedWrapName);
+    settings._wrapPassword.should.equal(this.expectedWrapPassword);
+    settings._wrapEndpointUri.should.equal(this.expectedWrapEndpointUri);
+}
+
+// Helper function to save & restore the contents of the
+// process environment variables for a test
+function withEnvironment(values, testFunction) {
+  var keys = Object.keys(values);
+  var originalValues = keys.map(function (key) { return process.env[key]; } );
+  _.extend(process.env, values);
+  try {
+    testFunction();
+  } finally {
+    _.zip(keys, originalValues).forEach(function (oldVal) {
+      if (_.isUndefined(oldVal[1])) {
+        delete process.env[oldVal[0]];
+      } else {
+        process.env[oldVal[0]] = oldVal[1];
+      }
+    });
+  }
+}

@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "Windows Azure Client Library for node",
   "tags" : ["azure", "sdk"],
   "keywords": [ "node", "azure" ],
@@ -27,7 +27,8 @@
     "tunnel": ">= 0.0.1",
     "request": ">= 2.9.203",
     "validator": ">= 0.4.12",
-    "wns": ">= 0.5.3"
+    "wns": ">= 0.5.3",
+    "envconf": ">= 0.0.1"
   },
   "devDependencies": {
     "mocha": "*",
