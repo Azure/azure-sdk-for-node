@@ -678,8 +678,6 @@ describe('BlobService', function () {
             assert.equal(getErr, null);
 
             assert.notEqual(blob, null);
-            console.log(util.inspect(blob, false));
-            console.log(util.inspect(response, false));
 
             if (blob) {
               assert.notEqual(blob.metadata, null);
