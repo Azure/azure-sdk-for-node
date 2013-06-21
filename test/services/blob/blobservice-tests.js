@@ -296,6 +296,13 @@ describe('BlobService', function () {
         done();
       });
     });
+
+    it('should work with prefix parameter', function (done) {
+      blobService.listContainers({ prefix : '中文' }, function (err) {
+        assert.equal(err, null);
+        done();
+      });
+    });
   });
 
   describe('createContainerIfNotExists', function() {
