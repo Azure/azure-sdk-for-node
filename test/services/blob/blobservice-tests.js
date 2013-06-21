@@ -349,6 +349,10 @@ describe('BlobService', function () {
           assert.equal(getError, null);
           assert.notEqual(container2, null);
           if (container2) {
+            assert.equal('unlocked', container2.leaseStatus);
+            assert.equal('available', container2.leaseState);
+            assert.equal(null, container2.leaseDuration);
+            assert.notEqual(null, container2.requestId);
             assert.equal(container2.metadata.color, metadata.color);
           }
 
