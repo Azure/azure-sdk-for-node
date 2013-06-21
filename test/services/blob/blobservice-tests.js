@@ -674,10 +674,13 @@ describe('BlobService', function () {
         blobService.createBlockBlobFromText(containerName, blobName, 'hello', { metadata: metadata }, function (blobErr) {
           assert.equal(blobErr, null);
 
-          blobService.getBlobProperties(containerName, blobName, function (getErr, blob) {
+          blobService.getBlobProperties(containerName, blobName, function (getErr, blob, response) {
             assert.equal(getErr, null);
 
             assert.notEqual(blob, null);
+            console.log(util.inspect(blob, false));
+            console.log(util.inspect(response, false));
+
             if (blob) {
               assert.notEqual(blob.metadata, null);
               if (blob.metadata) {
