@@ -296,6 +296,13 @@ describe('BlobService', function () {
         done();
       });
     });
+
+    it('should work with prefix parameter', function (done) {
+      blobService.listContainers({ prefix : '中文' }, function (err) {
+        assert.equal(err, null);
+        done();
+      });
+    });
   });
 
   describe('createContainerIfNotExists', function() {
@@ -349,6 +356,10 @@ describe('BlobService', function () {
           assert.equal(getError, null);
           assert.notEqual(container2, null);
           if (container2) {
+            assert.equal('unlocked', container2.leaseStatus);
+            assert.equal('available', container2.leaseState);
+            assert.equal(null, container2.leaseDuration);
+            assert.notEqual(null, container2.requestId);
             assert.equal(container2.metadata.color, metadata.color);
           }
 
@@ -674,6 +685,7 @@ describe('BlobService', function () {
             assert.equal(getErr, null);
 
             assert.notEqual(blob, null);
+
             if (blob) {
               assert.notEqual(blob.metadata, null);
               if (blob.metadata) {
