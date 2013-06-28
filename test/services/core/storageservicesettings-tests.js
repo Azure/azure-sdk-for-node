@@ -308,7 +308,7 @@ suite('storageservicesettings-tests', function () {
     developmentStorageAccount._usePathStyleUri.should.equal(true);
   });
 
-  test('createFromConfig', function () {
+  test('createFromConfigWithNameAndKey', function () {
     var protocol = 'https';
     var expectedName = 'testAccount';
     var expectedKey = 'aprivatekey';
@@ -318,6 +318,28 @@ suite('storageservicesettings-tests', function () {
 
     azure.configure('testenvironment', function (c) {
         c.storage(expectedName, expectedKey);
+    });
+
+    var settings = StorageServiceSettings.createFromConfig(azure.config('testenvironment'));
+
+    settings._name.should.equal(expectedName);
+    settings._key.should.equal(expectedKey);
+    settings._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    settings._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    settings._tableEndpointUri.should.equal(expectedTableEndpoint);
+  });
+
+  test('createFromConfigWithConnectionString', function () {
+    var protocol = 'https';
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString  = 'defaultendpointsprotocol=' + protocol + ';accountname=' + expectedName + ';accountkey=' + expectedKey;
+    var expectedBlobEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.BLOB_BASE_DNS_NAME });
+    var expectedQueueEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.QUEUE_BASE_DNS_NAME });
+    var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.TABLE_BASE_DNS_NAME });
+
+    azure.configure('testenvironment', function (c) {
+      c.storage(connectionString);
     });
 
     var settings = StorageServiceSettings.createFromConfig(azure.config('testenvironment'));
