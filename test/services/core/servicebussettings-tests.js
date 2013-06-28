@@ -94,7 +94,7 @@ suite('servicebussettings-tests', function () {
 
   test('testCreateFromConfigWithNoConfigUsesDefault', function () {
     var expected = new ExpectedConnectionString('namespacefromdefault', 'wrapnamefromdefault', 'passwordfromdefault');
-    withEnvironment( { NODE_ENV: 'testenvironment' }, function () {
+    testutil.withEnvironment( { NODE_ENV: 'testenvironment' }, function () {
       azure.configure('testenvironment', function (c) {
         c.set('service bus connection string', expected.connectionString);
       });
@@ -107,7 +107,7 @@ suite('servicebussettings-tests', function () {
 
   test('testCreateFromConfigWithNoSettingFallsBackToEnvironmentVariable', function () {
     var expected = new ExpectedConnectionString('namespacefromenv', 'wrapnameenv', 'passwordenv');
-    withEnvironment({ AZURE_SERVICEBUS_CONNECTION_STRING: expected.connectionString },
+    testutil.withEnvironment({ AZURE_SERVICEBUS_CONNECTION_STRING: expected.connectionString },
      function () {
       var actual = ServiceBusSettings.createFromConfig();
 
@@ -117,7 +117,7 @@ suite('servicebussettings-tests', function () {
 
   test('testCreateFromConfigWithNoSettingFallsBackToOldEnvironmentVariables', function () {
     var expected = new ExpectedConnectionString('mynamespace', 'mywrap', 'mysecret');
-    withEnvironment({
+    testutil.withEnvironment({
         AZURE_SERVICEBUS_NAMESPACE: 'mynamespace',
         AZURE_SERVICEBUS_ISSUER: 'mywrap',
         AZURE_SERVICEBUS_ACCESS_KEY: 'mysecret'
@@ -129,7 +129,7 @@ suite('servicebussettings-tests', function () {
   });
 
   test('testCreateFromConfigWithIncompleteEnvironmentThrows', function () {
-    withEnvironment({
+    testutil.withEnvironment({
       AZURE_SERVICEBUS_NAMESPACE: 'mynamespace',
       AZURE_SERVICEBUS_ISSUER: null,
       AZURE_SERVICEBUS_ACCESS_KEY: null
@@ -166,21 +166,3 @@ ExpectedConnectionString.prototype.shouldMatchSettings = function (settings) {
     settings._wrapEndpointUri.should.equal(this.expectedWrapEndpointUri);
 }
 
-// Helper function to save & restore the contents of the
-// process environment variables for a test
-function withEnvironment(values, testFunction) {
-  var keys = Object.keys(values);
-  var originalValues = keys.map(function (key) { return process.env[key]; } );
-  _.extend(process.env, values);
-  try {
-    testFunction();
-  } finally {
-    _.zip(keys, originalValues).forEach(function (oldVal) {
-      if (_.isUndefined(oldVal[1])) {
-        delete process.env[oldVal[0]];
-      } else {
-        process.env[oldVal[0]] = oldVal[1];
-      }
-    });
-  }
-}
