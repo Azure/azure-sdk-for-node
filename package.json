@@ -50,8 +50,7 @@
     "unit": "node scripts/unit.js testlist.txt",
     "jshint": "jshint lib --reporter=jslint",
     "preci" : "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
-    "ci" : "node scripts/unit.js testlist.txt -xunit > noisy-test-result.xml",
-    "postci" : "node scripts/filter-testresults.js -rm noisy-test-result.xml > test-result.xml",
+    "ci" : "node scripts/unit.js testlist.txt -xunit",
     "coverage": "node scripts/unit.js testlist.txt -coverage > coverage.html"
   }
 }
