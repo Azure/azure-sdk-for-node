@@ -350,4 +350,31 @@ suite('storageservicesettings-tests', function () {
     settings._queueEndpointUri.should.equal(expectedQueueEndpoint);
     settings._tableEndpointUri.should.equal(expectedTableEndpoint);
   });
+
+  test('createFromConfigWithOptionsObject', function () {
+    var protocol = 'https';
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var dnsSuffix = 'some.host.example';
+    var expectedBlobEndpoint = url.format({ protocol: protocol, host: expectedName + '.blob.' + dnsSuffix });
+    var expectedQueueEndpoint = url.format({ protocol: protocol, host: expectedName + '.queue.' + dnsSuffix });
+    var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.table.' + dnsSuffix });
+
+    azure.configure('testenvironment', function (c) {
+      c.storage({
+        account: expectedName,
+        key: expectedKey,
+        host: dnsSuffix
+      });
+    });
+
+    var settings = StorageServiceSettings.createFromConfig(azure.config('testenvironment'));
+
+    settings._name.should.equal(expectedName);
+    settings._key.should.equal(expectedKey);
+    settings._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    settings._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    settings._tableEndpointUri.should.equal(expectedTableEndpoint);
+  });
+
 });
