@@ -377,4 +377,19 @@ suite('storageservicesettings-tests', function () {
     settings._tableEndpointUri.should.equal(expectedTableEndpoint);
   });
 
+  test('createFromConfigDevStore', function () {
+    azure.configure('testenvironment', function (c) {
+      c.devStorage();
+    });
+
+    var settings = StorageServiceSettings.createFromConfig(azure.config('testenvironment'));
+
+    settings._name.should.equal('devstoreaccount1');
+    settings._key.should.equal('Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==');
+    settings._blobEndpointUri.should.equal('http://127.0.0.1:10000');
+    settings._queueEndpointUri.should.equal('http://127.0.0.1:10001');
+    settings._tableEndpointUri.should.equal('http://127.0.0.1:10002');
+    settings._usePathStyleUri.should.equal(true);
+
+  })
 });
