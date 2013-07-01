@@ -49,7 +49,6 @@
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
     "jshint": "jshint lib --reporter=jslint",
-    "preci" : "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
     "ci" : "node scripts/unit.js testlist.txt -xunit",
     "coverage": "node scripts/unit.js testlist.txt -coverage > coverage.html"
   }
