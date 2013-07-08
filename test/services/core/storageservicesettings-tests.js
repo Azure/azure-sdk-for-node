@@ -23,6 +23,16 @@ var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var StorageServiceSettings = azure.StorageServiceSettings;
 
 suite('storageservicesettings-tests', function () {
+  var snapshot;
+
+  setup(function () {
+    snapshot = azure.config.snapshot();
+  });
+
+  teardown(function () {
+    azure.config.restore(snapshot);
+  });
+
   test('testCreateFromConnectionStringWithUseDevStore', function () {
     // Setup
     var connectionString = 'UseDevelopmentStorage=true';
@@ -391,5 +401,95 @@ suite('storageservicesettings-tests', function () {
     settings._tableEndpointUri.should.equal('http://127.0.0.1:10002');
     settings._usePathStyleUri.should.equal(true);
 
-  })
+  });
+
+  test('createFromConfigWithNoConfigUsesGlobalConfig', function () {
+    var protocol = 'https';
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var dnsSuffix = 'some.host.example';
+    var expectedBlobEndpoint = url.format({ protocol: protocol, host: expectedName + '.blob.' + dnsSuffix });
+    var expectedQueueEndpoint = url.format({ protocol: protocol, host: expectedName + '.queue.' + dnsSuffix });
+    var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.table.' + dnsSuffix });
+
+    azure.configure(function (c) {
+      c.storage({
+        account: expectedName,
+        key: expectedKey,
+        host: dnsSuffix
+      });
+    });
+
+    var settings = StorageServiceSettings.createFromConfig();
+
+    settings._name.should.equal(expectedName);
+    settings._key.should.equal(expectedKey);
+    settings._blobEndpointUri.should.equal(expectedBlobEndpoint);
+    settings._queueEndpointUri.should.equal(expectedQueueEndpoint);
+    settings._tableEndpointUri.should.equal(expectedTableEndpoint);
+  });
+
+  test('createFromEmptyConfigDefaultsToEnvironment', function () {
+    var protocol = 'https';
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString  = 'defaultendpointsprotocol=' + protocol + ';accountname=' + expectedName + ';accountkey=' + expectedKey;
+    var expectedBlobEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.BLOB_BASE_DNS_NAME });
+    var expectedQueueEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.QUEUE_BASE_DNS_NAME });
+    var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.TABLE_BASE_DNS_NAME });
+
+
+    testutil.withEnvironment({
+      AZURE_STORAGE_CONNECTION_STRING: connectionString
+    }, function () {
+      var settings = StorageServiceSettings.createFromConfig();
+
+      settings._name.should.equal(expectedName);
+      settings._key.should.equal(expectedKey);
+      settings._blobEndpointUri.should.equal(expectedBlobEndpoint);
+      settings._queueEndpointUri.should.equal(expectedQueueEndpoint);
+      settings._tableEndpointUri.should.equal(expectedTableEndpoint);
+    });
+  });
+
+  test('createFromEnvironmentPrefersConnectionStringToSeparateVariables', function () {
+    var protocol = 'https';
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString  = 'defaultendpointsprotocol=' + protocol + ';accountname=' + expectedName + ';accountkey=' + expectedKey;
+    var expectedBlobEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.BLOB_BASE_DNS_NAME });
+    var expectedQueueEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.QUEUE_BASE_DNS_NAME });
+    var expectedTableEndpoint = url.format({ protocol: protocol, host: expectedName + '.' + ConnectionStringKeys.TABLE_BASE_DNS_NAME });
+
+
+    testutil.withEnvironment({
+      AZURE_STORAGE_CONNECTION_STRING: connectionString,
+      AZURE_STORAGE_ACCOUNT: 'differentAcccount',
+      AZURE_STORAGE_ACCESS_KEY: expectedKey
+    }, function () {
+      var settings = StorageServiceSettings.createFromConfig();
+
+      settings._name.should.equal(expectedName);
+      settings._key.should.equal(expectedKey);
+      settings._blobEndpointUri.should.equal(expectedBlobEndpoint);
+      settings._queueEndpointUri.should.equal(expectedQueueEndpoint);
+      settings._tableEndpointUri.should.equal(expectedTableEndpoint);
+    });
+  });
+
+  test('createFromEnvironmentUsesSeparateVarsIfConnectionStringNotSet', function () {
+    var expectedName = 'mytestaccount';
+    var expectedKey = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+
+    testutil.withEnvironment({
+      AZURE_STORAGE_ACCOUNT: expectedName,
+      AZURE_STORAGE_ACCESS_KEY: expectedKey
+    }, function () {
+      delete process.env.AZURE_STORAGE_CONNECTION_STRING;
+      var settings = StorageServiceSettings.createFromConfig();
+
+      settings._name.should.equal(expectedName);
+      settings._key.should.equal(expectedKey);
+    });
+  });
 });

@@ -28,7 +28,7 @@
     "request": ">= 2.9.203",
     "validator": ">= 0.4.12",
     "wns": ">= 0.5.3",
-    "envconf": ">= 0.0.1"
+    "envconf": "git://github.com/christav/envconf#snapshots"
   },
   "devDependencies": {
     "mocha": "*",
@@ -48,7 +48,7 @@
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
-    "jshint": "jshint lib --reporter=jslint",
+    "jshint": "jshint --verbose lib",
     "preci" : "jshint lib --reporter=checkstyle --extra-ext '._js' > checkstyle-result.xml",
     "ci" : "node scripts/unit.js testlist.txt -xunit",
     "coverage": "node scripts/unit.js testlist.txt -coverage > coverage.html"
