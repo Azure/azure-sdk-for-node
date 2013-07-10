@@ -1,3 +1,9 @@
+2013.07.10 Version 0.7.11
+* Hooked up new configuration system to storage APIs
+* Support for AZURE_STORAGE_CONNECTION_STRING environment variable
+* Included API for websites management
+* Fixed UTF-8 support in table batch submit
+
 2013.06.26 Version 0.7.10
 * Various fixes in storage APIs
 
