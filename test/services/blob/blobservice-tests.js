@@ -1446,6 +1446,21 @@ describe('BlobService', function () {
 
     done();
   });
+
+  it('should be creatable from config', function () {
+    var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
+    var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
+    var config = azure.configure('testenvironment', function (c) {
+      c.storage(connectionString);
+    });
+
+    var blobService = azure.createBlobService(azure.config('testenvironment'));
+
+    assert.equal(blobService.storageAccount, 'myaccount');
+    assert.equal(blobService.storageAccessKey, key);
+    assert.equal(blobService.protocol, 'https:');
+    assert.equal(blobService.host, 'myaccount.blob.core.windows.net');
+  });
 });
 
 function repeat(s, n) {
