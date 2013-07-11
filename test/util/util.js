@@ -13,6 +13,7 @@
 * limitations under the License.
 */
 
+var _ = require('underscore');
 var fs = require('fs');
 
 var exports = module.exports;
@@ -80,4 +81,23 @@ exports.getCertificate = function () {
   }
 
   return null;
+};
+
+// Helper function to save & restore the contents of the
+// process environment variables for a test
+exports.withEnvironment = function (values, testFunction) {
+  var keys = Object.keys(values);
+  var originalValues = keys.map(function (key) { return process.env[key]; } );
+  _.extend(process.env, values);
+  try {
+    testFunction();
+  } finally {
+    _.zip(keys, originalValues).forEach(function (oldVal) {
+      if (_.isUndefined(oldVal[1])) {
+        delete process.env[oldVal[0]];
+      } else {
+        process.env[oldVal[0]] = oldVal[1];
+      }
+    });
+  }
 };
