@@ -31,8 +31,8 @@
     "envconf": ">= 0.0.2"
   },
   "devDependencies": {
-    "mocha": "*",
-    "jshint": "*",
+    "mocha": ">= 1.12.0",
+    "jshint": ">= 2.1.4",
     "sinon": "*",
     "should": "*",
     "nock": "*"
