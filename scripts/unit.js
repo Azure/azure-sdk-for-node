@@ -89,6 +89,14 @@ if (!process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICAT
   process.env.AZURE_APNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_KEY_FILE']).toString();
 }
 
+if (!process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
+  process.env.AZURE_MPNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_FILE'])).toString('base64');
+}
+
+if (!process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
+  process.env.AZURE_MPNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_KEY_FILE']).toString();
+}
+
 if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
   process.env.AZURE_APNS_CERTIFICATE = 'fake_certificate';
   process.env.AZURE_APNS_CERTIFICATE_KEY = 'fake_certificate_key';
@@ -97,6 +105,9 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
   process.env.AZURE_WNS_SECRET_KEY = 'key';
 
   process.env.AZURE_GCM_KEY = 'fakekey'.toString('base64');
+
+  process.env.AZURE_MPNS_CERTIFICATE = 'fake_certificate';
+  process.env.AZURE_MPNS_CERTIFICATE_KEY = 'fake_certificate_key';
 
   if (process.env.AZURE_STORAGE_ACCOUNT !== defaultStorageAccount) {
     process.env.AZURE_STORAGE_ACCOUNT = defaultStorageAccount;
