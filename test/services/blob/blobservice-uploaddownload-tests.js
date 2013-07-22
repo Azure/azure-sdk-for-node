@@ -140,19 +140,8 @@ describe('BlobService', function () {
         done();
       });
     });
-    it('should work with string path', function(done) {
-      var len = Buffer.byteLength(fileText);
-      var speedSummary = blobService.createBlockBlobFromStream(containerName, blockBlobName, blockFileName, len, uploadOptions, function (err) {
-        assert.equal(err, null);
-        assert.equal(speedSummary.getCompletePercent(), '100.0');
-        blobService.getBlobProperties(containerName, blockBlobName, function(err, blob) {
-          assert.equal(blob.contentMD5, blockBlobContentMd5);
-          done();
-        });
-      });
-    });
 
-    it('should work with file stream', function(done) {
+    it('should work with basic file stream', function(done) {
       var len = Buffer.byteLength(fileText);
       var stream = fs.createReadStream(blockFileName);
       var speedSummary = blobService.createBlockBlobFromStream(containerName, blockBlobName, stream, len, uploadOptions, function (err) {
@@ -172,7 +161,8 @@ describe('BlobService', function () {
         speedSummary : speedSummary
       };
       var len = Buffer.byteLength(fileText);
-      blobService.createBlockBlobFromStream(containerName, blockBlobName, blockFileName, len, options, function (err) {
+      var stream = fs.createReadStream(blockFileName);
+      blobService.createBlockBlobFromStream(containerName, blockBlobName, stream, len, options, function (err) {
         assert.equal(err, null);
         assert.equal(speedSummary.getTotalSize(false), Buffer.byteLength(fileText));
         assert.equal(speedSummary.getCompleteSize(false), Buffer.byteLength(fileText));
