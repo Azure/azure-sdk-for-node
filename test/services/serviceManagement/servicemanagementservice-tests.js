@@ -223,4 +223,44 @@ describe('Service Management', function () {
       executeTest();
     });
   });
+
+  describe('virtual networks', function () {
+    it('should set network configuration', function (done) {
+      var vnetObject = {
+        VirtualNetworkConfiguration: {
+          VirtualNetworkSites: [
+            {
+              Name: 'test',
+              AffinityGroup: 'test-ag',
+              AddressSpace: ['10.0.0.0/20'],
+              Subnets: [
+                {
+                  Name: 'sub1',
+                  AddressPrefix: '10.0.0.0/23'
+                }
+              ]
+            }
+          ]
+        }
+      };
+
+      service.setNetworkConfig(vnetObject, function (err, response) {
+        should.not.exist(err);
+
+        done(err);
+      });
+    });
+
+    it('should get network configuration', function (done) {
+      service.getNetworkConfig(function (err, response) {
+        should.not.exist(err);
+
+        var configuration = response.body;
+        configuration.VirtualNetworkConfiguration.VirtualNetworkSites[0].AddressSpace[0].should.equal('10.0.0.0/20');
+        configuration.VirtualNetworkConfiguration.VirtualNetworkSites[0].Subnets[0].AddressPrefix.should.equal('10.0.0.0/23');
+
+        done(err);
+      });
+    });
+  });
 });
