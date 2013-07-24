@@ -23,3 +23,5 @@ Thumbs.db
 # WebStorm #
 .idea/
 
+# docs #
+jsdoc-conf.json
