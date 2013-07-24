@@ -37,8 +37,8 @@ var fileText = 'Hello World!';
 var pageBlobBuffer = new Buffer(1 * 1024);
 var pageBlob2KBuffer = new Buffer(2 * 1024);
 var blockBlobContentMd5 = '';
-var pageBlobContentMd5 = ''; 
-var pageBlob2KContentMd5 = ''; 
+var pageBlobContentMd5 = '';
+var pageBlob2KContentMd5 = '';
 var downloadName = 'blobservice_download.tmp';
 var uploadOptions = {
   blockIdPrefix : blockIdPrefix
@@ -62,7 +62,7 @@ describe('BlobService', function () {
     blockBlobContentMd5 = writeFile(blockFileName, fileText);
     pageBlobBuffer.fill(0);
     pageBlobBuffer[0] = '1';
-    pageBlobContentMd5 = writeFile(pageFileName, pageBlobBuffer); 
+    pageBlobContentMd5 = writeFile(pageFileName, pageBlobBuffer);
     pageBlob2KBuffer.fill(0);
     pageBlob2KContentMd5 = writeFile(page2KFileName, pageBlob2KBuffer);
     suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
@@ -280,17 +280,17 @@ describe('BlobService', function () {
       });
 
       it('should work with basic block blob', function(done) {
-        blobService.getBlobToFile(containerName, blockBlobName, downloadName, function(err, md5sum) {
-          assert.equal(err, null);        
-          assert.equal(md5sum, null);
+        blobService.getBlobToFile(containerName, blockBlobName, downloadName, function(err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.clientSideContentMD5, null);
           done();
         });
       });
 
       it('should work with speed summary', function(done) {
-        var speedSummary = blobService.getBlobToFile(containerName, blockBlobName, downloadName, function(err, md5sum) {
-          assert.equal(err, null);        
-          assert.equal(md5sum, null);
+        var speedSummary = blobService.getBlobToFile(containerName, blockBlobName, downloadName, function(err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.clientSideContentMD5, null);
           assert.equal(speedSummary.getTotalSize(false), Buffer.byteLength(fileText));
           assert.equal(speedSummary.getCompleteSize(false), Buffer.byteLength(fileText));
           assert.equal(speedSummary.getCompletePercent(), '100.0');
@@ -299,10 +299,10 @@ describe('BlobService', function () {
       });
 
       it('shoud calculate content md5', function(done) {
-        var options = {checkMd5sum : true}; 
-        blobService.getBlobToFile(containerName, blockBlobName, downloadName, options, function(err, md5sum) {
-          assert.equal(err, null);        
-          assert.equal(md5sum, blockBlobContentMd5);
+        var options = {checkMd5sum : true};
+        blobService.getBlobToFile(containerName, blockBlobName, downloadName, options, function(err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.clientSideContentMD5, blockBlobContentMd5);
           done();
         });
       });
@@ -317,17 +317,17 @@ describe('BlobService', function () {
       });
 
       it('should work with basic page blob', function(done) {
-        blobService.getBlobToFile(containerName, pageBlobName, downloadName, function(err, md5sum) {
-          assert.equal(err, null);        
-          assert.equal(md5sum, null);
+        blobService.getBlobToFile(containerName, pageBlobName, downloadName, function(err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.clientSideContentMD5, null);
           done();
         });
       });
 
       it('should work with speed summary', function(done) {
-        var speedSummary = blobService.getBlobToFile(containerName, pageBlobName, downloadName, function(err, md5sum) {
-          assert.equal(err, null);        
-          assert.equal(md5sum, null);
+        var speedSummary = blobService.getBlobToFile(containerName, pageBlobName, downloadName, function(err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.clientSideContentMD5, null);
           assert.equal(speedSummary.getTotalSize(false), 1024);
           assert.equal(speedSummary.getCompleteSize(false), 1024);
           assert.equal(speedSummary.getCompletePercent(), '100.0');
@@ -336,10 +336,10 @@ describe('BlobService', function () {
       });
 
       it('shoud calculate content md5', function(done) {
-        var options = {checkMd5sum : true}; 
-        blobService.getBlobToFile(containerName, pageBlobName, downloadName, options, function(err, md5sum) {
-          assert.equal(err, null);        
-          assert.equal(md5sum, pageBlobContentMd5);
+        var options = {checkMd5sum : true};
+        blobService.getBlobToFile(containerName, pageBlobName, downloadName, options, function(err, blob) {
+          assert.equal(err, null);
+          assert.equal(blob.clientSideContentMD5, pageBlobContentMd5);
           done();
         });
       });
