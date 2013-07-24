@@ -24,6 +24,4 @@ Thumbs.db
 .idea/
 
 # docs #
-jsdoc-conf.json
-out/
 docs/
