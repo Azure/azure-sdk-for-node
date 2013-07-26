@@ -91,4 +91,24 @@ suite('servicemanagementsettings-tests', function () {
     actual._certificatePath.should.equal(expectedCertificatePath);
     actual._endpointUri.should.equal(expectedEndpointUri)
   });
+
+  test('testCreateFromConfigWorks', function () {
+    var c = azure.config.default.tempConfig(),
+      expectedSubscriptionId = 'aSubscriptionId',
+      expectedCert = 'AnInvalidCert',
+      expectedKey = 'AnInvalidKey',
+      actual;
+
+    c.configure(function (c) {
+      c.subscriptionId(expectedSubscriptionId);
+      c.serviceManagementCert(expectedCert);
+      c.serviceManagementKey(expectedKey);
+    });
+
+    actual = ServiceManagementSettings.createFromConfig(c);
+
+    actual._subscriptionId.should.equal(expectedSubscriptionId);
+    actual._certificate.should.equal(expectedCert);
+    actual._key.should.equal(expectedKey);
+  });
 });

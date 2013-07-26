@@ -29,7 +29,7 @@
     "validator": ">= 0.4.12",
     "wns": ">= 0.5.3",
     "mpns": ">= 2.0.0",
-    "envconf": ">= 0.0.2"
+    "envconf": ">= 0.0.4"
   },
   "devDependencies": {
     "mocha": ">= 1.12.0",
