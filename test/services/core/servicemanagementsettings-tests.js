@@ -111,4 +111,29 @@ suite('servicemanagementsettings-tests', function () {
     actual._certificate.should.equal(expectedCert);
     actual._key.should.equal(expectedKey);
   });
+
+  test('testCanCreateFromConfigWithFilesForKeyAndCert', function () {
+    var c = azure.config.default.tempConfig(),
+      expectedSubscriptionId = 'aSubscriptionId',
+      expectedCert = 'AnInvalidCertInAFile',
+      expectedKey = 'AnInvalidKeyInAFile',
+      actual;
+
+    testutil.withTempFileSync(expectedCert, function (certFile) {
+      testutil.withTempFileSync(expectedKey, function (keyFile) {
+
+        c.configure(function (c) {
+          c.subscriptionId(expectedSubscriptionId);
+          c.serviceManagementCertFile(certFile);
+          c.serviceManagementKeyFile(keyFile);
+        });
+
+        actual = ServiceManagementSettings.createFromConfig(c);
+
+        actual._subscriptionId.should.equal(expectedSubscriptionId);
+        actual._certificate.should.equal(expectedCert);
+        actual._key.should.equal(expectedKey);
+      });
+    });
+  });
 });
