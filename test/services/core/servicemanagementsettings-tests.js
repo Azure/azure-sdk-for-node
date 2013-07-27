@@ -94,12 +94,14 @@ suite('servicemanagementsettings-tests', function () {
 
   test('testCreateFromConfigWorks', function () {
     var c = azure.config.default.tempConfig(),
+      expectedEndpointUri = 'https://some.server.example',
       expectedSubscriptionId = 'aSubscriptionId',
       expectedCert = 'AnInvalidCert',
       expectedKey = 'AnInvalidKey',
       actual;
 
     c.configure(function (c) {
+      c.serviceManagementHostUri(expectedEndpointUri);
       c.subscriptionId(expectedSubscriptionId);
       c.serviceManagementCert(expectedCert);
       c.serviceManagementKey(expectedKey);
@@ -107,16 +109,23 @@ suite('servicemanagementsettings-tests', function () {
 
     actual = ServiceManagementSettings.createFromConfig(c);
 
+    actual._endpointUri.should.equal(expectedEndpointUri);
     actual._subscriptionId.should.equal(expectedSubscriptionId);
     actual._certificate.should.equal(expectedCert);
     actual._key.should.equal(expectedKey);
   });
 
+  function formatCert(wrapperText, certContent) {
+    return '-----BEGIN ' + wrapperText.toUpperCase() + '-----\n' +
+      certContent + '\n' +
+      '-----END ' + wrapperText.toUpperCase() + '-----\n';
+  }
+
   test('testCanCreateFromConfigWithFilesForKeyAndCert', function () {
     var c = azure.config.default.tempConfig(),
       expectedSubscriptionId = 'aSubscriptionId',
-      expectedCert = 'AnInvalidCertInAFile',
-      expectedKey = 'AnInvalidKeyInAFile',
+      expectedCert = formatCert('CERTIFICATE', 'AnInvalidCertInAFile'),
+      expectedKey = formatCert('RSA PRIVATE KEY', 'AnInvalidKeyInAFile'),
       actual;
 
     testutil.withTempFileSync(expectedCert, function (certFile) {
@@ -135,5 +144,38 @@ suite('servicemanagementsettings-tests', function () {
         actual._key.should.equal(expectedKey);
       });
     });
+  });
+
+  test('testCanCreateFromConfigWithPemFile', function () {
+    var c = azure.config.default.tempConfig(),
+      expectedSubscriptionId = 'aSubscriptionId',
+      expectedCert = formatCert('CERTIFICATE', new Buffer('AnInvalidCertInAFile').toString('base64')),
+      expectedKey = formatCert('RSA PRIVATE KEY', new Buffer('AnInvalidKeyInAFile').toString('base64')),
+      pemContent = expectedKey + expectedCert,
+      actual;
+
+    testutil.withTempFileSync(pemContent, function (pemFile) {
+
+      c.configure(function (c) {
+        c.subscriptionId(expectedSubscriptionId);
+        c.serviceManagementPemFile(pemFile);
+      });
+
+      actual = ServiceManagementSettings.createFromConfig(c);
+
+      actual._subscriptionId.should.equal(expectedSubscriptionId);
+      actual._certificate.should.equal(expectedCert);
+      actual._key.should.equal(expectedKey);
+    });
+  });
+
+  test('testCreateFromConfigWithBadFileShouldThrow', function () {
+    var c = azure.config.default.tempConfig();
+
+    (function () {
+      c.configure(function (c) {
+        c.serviceManagementPemFile('./no/such/file.pem');
+      });
+    }).should.throw();
   });
 });
