@@ -187,4 +187,6 @@ suite('servicemanagementsettings-tests', function () {
 
     actual._endpointUri.should.equal(Constants.SERVICE_MANAGEMENT_URL);
   });
+
+  test('testCreateFromConfigWithNoParamsPicksUpCurrentDefault');
 });
