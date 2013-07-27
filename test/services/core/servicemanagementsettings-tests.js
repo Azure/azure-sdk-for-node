@@ -178,4 +178,13 @@ suite('servicemanagementsettings-tests', function () {
       });
     }).should.throw();
   });
+
+  test('testCreateFromConfigWithNoEndpointShouldReturnDefault', function () {
+    var c = azure.config.default.tempConfig(),
+      actual;
+
+    actual = ServiceManagementSettings.createFromConfig(c);
+
+    actual._endpointUri.should.equal(Constants.SERVICE_MANAGEMENT_URL);
+  });
 });
