@@ -54,6 +54,7 @@ describe('APNS notifications', function () {
   beforeEach(function (done) {
     suiteUtil.setupTest(function () {
       service.listNotificationHubs(function (err, hubs) {
+        should.not.exist(err);
         var xplatHubs = hubs.filter(function (hub) {
           return hub.NotificationHubName.substr(0, hubNamePrefix.length) === hubNamePrefix;
         });
@@ -95,7 +96,7 @@ describe('APNS notifications', function () {
     });
 
     it('should send a simple message', function (done) {
-      notificationHubService.apns.send(null, { 
+      notificationHubService.apns.send(null, {
         alert: 'This is my toast message for iOS!'
       }, function (error, result) {
         should.not.exist(error);
