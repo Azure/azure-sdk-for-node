@@ -83,6 +83,8 @@ var defaultSubscription = '279b0675-cf67-467f-98f0-67ae31eb540f';
 
 if (!process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
   process.env.AZURE_APNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_FILE'])).toString('base64');
+} else if (process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
+  throw new Error('Only one of AZURE_APNS_CERTIFICATE or AZURE_APNS_CERTIFICATE_KEY can be set. Not both.')
 }
 
 if (!process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICATE_KEY_FILE) {
@@ -91,6 +93,8 @@ if (!process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICAT
 
 if (!process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
   process.env.AZURE_MPNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_FILE'])).toString('base64');
+} else if (process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
+  throw new Error('Only one of AZURE_MPNS_CERTIFICATE or AZURE_MPNS_CERTIFICATE_FILE can be set. Not both.')
 }
 
 if (!process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
