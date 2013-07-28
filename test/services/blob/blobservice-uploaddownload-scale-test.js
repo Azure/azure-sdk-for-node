@@ -29,7 +29,7 @@ describe('BlobService', function () {
     blobService = azure.createBlobService();
     suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
     if(!suiteUtil.isRecording) {
-      throw new Error('Please unset AZURE_NOCK_RECORD when running these tests');  
+      throw new Error('Please set AZURE_NOCK_RECORD when running these tests');
     }
     blobService.createContainer(containerName, function(error) {
       done();
