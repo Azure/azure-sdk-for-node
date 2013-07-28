@@ -33,12 +33,14 @@ var pageBlobName = 'pageblob_nodesdktest';
 var blockFileName = 'blobservice_test_block.tmp';
 var pageFileName = 'blobservice_test_page.tmp';
 var page2KFileName = 'blobservice_test_2K_page.tmp';
+var notExistFileName = 'blobservice_not_exist.tmp';
+var zeroSizeFileName = 'blobservice_zero_size_file.tmp';
 var fileText = 'Hello World!';
 var pageBlobBuffer = new Buffer(1 * 1024);
 var pageBlob2KBuffer = new Buffer(2 * 1024);
-var blockBlobContentMd5 = '';
-var pageBlobContentMd5 = '';
-var pageBlob2KContentMd5 = '';
+var blockBlobContentMD5 = null;
+var pageBlobContentMD5 = '';
+var pageBlob2KContentMD5 = '';
 var downloadName = 'blobservice_download.tmp';
 var uploadOptions = {
   blockIdPrefix : blockIdPrefix
@@ -59,13 +61,18 @@ function writeFile(fileName, content) {
 describe('BlobService', function () {
   before(function (done) {
     blobService = azure.createBlobService();
-    blockBlobContentMd5 = writeFile(blockFileName, fileText);
+    blockBlobContentMD5 = writeFile(blockFileName, fileText);
     pageBlobBuffer.fill(0);
     pageBlobBuffer[0] = '1';
-    pageBlobContentMd5 = writeFile(pageFileName, pageBlobBuffer);
+    pageBlobContentMD5 = writeFile(pageFileName, pageBlobBuffer);
     pageBlob2KBuffer.fill(0);
-    pageBlob2KContentMd5 = writeFile(page2KFileName, pageBlob2KBuffer);
+    pageBlob2KContentMD5 = writeFile(page2KFileName, pageBlob2KBuffer);
+    var zeroBuffer = new Buffer(0);
+    zeroFileContentMD5 = writeFile(zeroSizeFileName, zeroBuffer);
     suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
+    try {
+      fs.unlinkSync(notExistFileName);
+    } catch(e) {}
     suiteUtil.setupSuite(done);
   });
 
@@ -75,6 +82,8 @@ describe('BlobService', function () {
       fs.unlinkSync(pageFileName);
       fs.unlinkSync(page2KFileName);
       fs.unlinkSync(downloadName);
+      fs.unlinkSync(notExistFileName);
+      fs.unlinkSync(zeroSizeFileName);
     } catch(e) {}
     suiteUtil.teardownSuite(done);
   });
@@ -107,7 +116,7 @@ describe('BlobService', function () {
       blobService.createBlockBlobFromFile(containerName, blockBlobName, blockFileName, uploadOptions, function (err) {
         assert.equal(err, null);
         blobService.getBlobProperties(containerName, blockBlobName, function(err, blob) {
-          assert.equal(blob.contentMD5, blockBlobContentMd5);
+          assert.equal(blob.contentMD5, blockBlobContentMD5);
           done();
         });
       });
@@ -132,6 +141,43 @@ describe('BlobService', function () {
         });
       });
     });
+
+    it('should work with zero size file', function(done) {
+      blobService.createBlockBlobFromFile(containerName, blockBlobName, zeroSizeFileName, uploadOptions, function (err) {
+        assert.equal(err, null);
+        blobService.getBlobProperties(containerName, blockBlobName, function(err, blob) {
+          assert.equal(blob.contentLength, 0);
+          assert.equal(blob.contentMD5, zeroFileContentMD5);
+          done();
+        });
+      });
+    });
+
+    it('should work with not existing file', function(done) {
+      blobService.createBlockBlobFromFile(containerName, blockBlobName, notExistFileName, uploadOptions, function (err) {
+        assert.notEqual(err, null);
+        assert.equal(err.path, notExistFileName);
+        done();
+      });
+    });
+
+    it('should work with customize time out', function(done) {
+      uploadOptions.clientRequestTimeout = 1;
+      if(!suiteUtil.isRecording) {
+        console.warn('Skip running the test case for request time out. since we can\'t set up time out for mocked request.');
+        done();
+      } else {
+        blobService.createBlockBlobFromFile(containerName, blockBlobName, blockFileName, uploadOptions, function (err) {
+          assert.notEqual(err, null);
+          var timeoutException = err.code == 'ETIMEOUT' || err.code == 'ESOCKETTIMEDOUT' || err.code == 'ETIMEDOUT';
+          if(!timeoutException) {
+            console.warn(err.code);
+          }
+          assert.equal(timeoutException, true);
+          done();
+        });
+      }
+    });
   });
 
   describe('CreateBlockBlobFromStream', function() {
@@ -148,7 +194,7 @@ describe('BlobService', function () {
         assert.equal(err, null);
         assert.equal(speedSummary.getCompletePercent(), '100.0');
         blobService.getBlobProperties(containerName, blockBlobName, function(err, blob) {
-          assert.equal(blob.contentMD5, blockBlobContentMd5);
+          assert.equal(blob.contentMD5, blockBlobContentMD5);
           done();
         });
       });
@@ -212,7 +258,7 @@ describe('BlobService', function () {
       blobService.createPageBlobFromFile(containerName, pageBlobName, pageFileName, options, function (err) {
         assert.equal(err, null);
         blobService.getBlobProperties(containerName, pageBlobName, function(err, blob) {
-          assert.equal(blob.contentMD5, pageBlobContentMd5);
+          assert.equal(blob.contentMD5, pageBlobContentMD5);
           done();
         });
       });
@@ -227,14 +273,14 @@ describe('BlobService', function () {
       blobService.createPageBlobFromFile(containerName, pageBlobName, pageFileName, options, function (err) {
         assert.equal(err, null);
         blobService.getBlobProperties(containerName, pageBlobName, function(err, blob) {
-          assert.equal(blob.contentMD5, pageBlobContentMd5);
+          assert.equal(blob.contentMD5, pageBlobContentMD5);
           assert.equal(blob.contentLength, 1024);
           options.contentMD5Header = null;
           blobService.createPageBlobFromFile(containerName, pageBlobName, page2KFileName, options, function (err) {
             assert.equal(err, null);
             blobService.getBlobProperties(containerName, pageBlobName, function(err, blob) {
               assert.equal(blob.contentLength, 2 * 1024);
-              assert.equal(blob.contentMD5, pageBlob2KContentMd5);
+              assert.equal(blob.contentMD5, pageBlob2KContentMD5);
               done();
             });
           });
@@ -245,6 +291,26 @@ describe('BlobService', function () {
     it('should not work with the file with invalid size', function(done) {
       blobService.createPageBlobFromFile(containerName, pageBlobName, blockFileName, uploadOptions, function (err) {
         assert.equal(err.message, "The page blob size must be aligned to a 512-byte boundary. The current stream length is 12");
+        done();
+      });
+    });
+
+    it('should work with zero size file', function(done) {
+      uploadOptions.setBlobContentMD5 = true;
+      blobService.createPageBlobFromFile(containerName, blockBlobName, zeroSizeFileName, uploadOptions, function (err) {
+        assert.equal(err, null);
+        blobService.getBlobProperties(containerName, blockBlobName, function(err, blob) {
+          assert.equal(blob.contentLength, 0);
+          assert.equal(blob.contentMD5, zeroFileContentMD5);
+          done();
+        });
+      });
+    });
+
+    it('should work with not existing file', function(done) {
+      blobService.createPageBlobFromFile(containerName, blockBlobName, notExistFileName, uploadOptions, function (err) {
+        assert.notEqual(err, null);
+        assert.equal(err.path, notExistFileName);
         done();
       });
     });
@@ -299,10 +365,10 @@ describe('BlobService', function () {
       });
 
       it('shoud calculate content md5', function(done) {
-        var options = {checkMd5sum : true};
+        var options = {checkMD5sum : true};
         blobService.getBlobToFile(containerName, blockBlobName, downloadName, options, function(err, blob) {
           assert.equal(err, null);
-          assert.equal(blob.clientSideContentMD5, blockBlobContentMd5);
+          assert.equal(blob.clientSideContentMD5, blockBlobContentMD5);
           done();
         });
       });
@@ -336,10 +402,10 @@ describe('BlobService', function () {
       });
 
       it('shoud calculate content md5', function(done) {
-        var options = {checkMd5sum : true};
+        var options = {checkMD5sum : true};
         blobService.getBlobToFile(containerName, pageBlobName, downloadName, options, function(err, blob) {
           assert.equal(err, null);
-          assert.equal(blob.clientSideContentMD5, pageBlobContentMd5);
+          assert.equal(blob.clientSideContentMD5, pageBlobContentMD5);
           done();
         });
       });
