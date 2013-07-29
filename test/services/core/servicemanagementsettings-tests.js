@@ -18,6 +18,7 @@ var url = require('url');
 
 var testutil = require('../../util/util');
 var azure = testutil.libRequire('azure');
+var ServiceClientConstants = testutil.libRequire('services/core/serviceclientconstants');
 var Constants = azure.Constants;
 var ConnectionStringKeys = Constants.ConnectionStringKeys;
 var ServiceManagementSettings = azure.ServiceManagementSettings;
@@ -183,10 +184,41 @@ suite('servicemanagementsettings-tests', function () {
     var c = azure.config.default.tempConfig(),
       actual;
 
+    c.configure(function () {
+      c.serviceManagementCert('dummy cert');
+      c.serviceManagementKey('dummy key');
+    });
+    
     actual = ServiceManagementSettings.createFromConfig(c);
 
     actual._endpointUri.should.equal(Constants.SERVICE_MANAGEMENT_URL);
   });
 
-  test('testCreateFromConfigWithNoParamsPicksUpCurrentDefault');
+  test('testCreateFromConfigWithNoParamsPicksUpCertAndKeyFromEnvironment', function () {
+    var c = azure.config.default.tempConfig(),
+      expectedSubscriptionId = 'aSubscriptionId',
+      expectedCert = formatCert('CERTIFICATE', 'AnInvalidCertInAFile'),
+      expectedKey = formatCert('RSA PRIVATE KEY', 'AnInvalidKeyInAFile'),
+      actual;
+
+    testutil.withTempFileSync(expectedCert, function (certFile) {
+      testutil.withTempFileSync(expectedKey, function (keyFile) {
+
+        c.configure(function (c) {
+          c.subscriptionId(expectedSubscriptionId);
+        });
+
+        testutil.withEnvironment({
+          AZURE_CERTFILE: certFile,
+          AZURE_KEYFILE: keyFile
+        }, function () {
+          actual = ServiceManagementSettings.createFromConfig(c);
+        });
+
+        actual._subscriptionId.should.equal(expectedSubscriptionId);
+        actual._certificate.should.equal(expectedCert);
+        actual._key.should.equal(expectedKey);
+      });
+    });
+  });
 });
