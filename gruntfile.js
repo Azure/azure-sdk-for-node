@@ -5,7 +5,11 @@ module.exports = function(grunt) {
     jsdoc : {
         dist : {
             src: [
-              'lib/services/azure.js',
+              'README.md',
+              'lib/azure.js',
+              'lib/services/core/serviceclient.js',
+              'lib/services/core/exponentialretrypolicyfilter.js',
+              'lib/services/core/linearretrypolicyfilter.js',
               'lib/services/blob/*.js',
               'lib/services/queue/*.js',
               'lib/services/serviceBus/apnsservice.js',
@@ -15,10 +19,13 @@ module.exports = function(grunt) {
               'lib/services/serviceBus/wnsservice.js',
               'lib/services/serviceManagement/*.js',
               'lib/services/sqlAzure/sqlservice.js',
-              'lib/services/table/tableservice.js'
+              'lib/services/table/tableservice.js',
+              'lib/serviceruntime/roleenvironment.js'
             ], 
             options: {
-                destination: 'docs'
+                destination: 'docs',
+                // configure: 'jsdoc/jsdoc.json',
+                //template: 'jsdoc/template'
             }
         }
     },
