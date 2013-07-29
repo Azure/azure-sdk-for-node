@@ -1,3 +1,7 @@
+2013.07.29 Version 0.7.12
+* Added MPNS support
+* Added Service management vnet operations support
+
 2013.07.10 Version 0.7.11
 * Hooked up new configuration system to storage APIs
 * Support for AZURE_STORAGE_CONNECTION_STRING environment variable
