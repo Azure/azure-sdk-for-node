@@ -115,23 +115,39 @@ describe('GCM notifications', function () {
     it('should send a simple message with tags', function (done) {
       var tagsString = 'dogs';
 
+      var collapse_key_value = 'score_update';
+      var time_to_live_value = 108;
+      var default_while_idle_value = true;
+      var data_score_value = '4x8';
+      var data_time_value = '15:16.2342';
+
       var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
       notificationHubService.gcm.send(
         tagsString, {
-          collapse_key: 'score_update',
-          time_to_live: 108,
-          delay_while_idle: true,
+          collapse_key: collapse_key_value,
+          time_to_live: time_to_live_value,
+          delay_while_idle: default_while_idle_value,
           data: {
-            score: '4x8',
-            time: '15:16.2342'
+            score: data_score_value,
+            time: data_time_value
           }
         },
         function (error, result) {
           should.not.exist(error);
           result.statusCode.should.equal(201);
 
+          // Headers
           executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_TAGS].should.equal(tagsString);
           executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_FORMAT].should.equal('gcm');
+
+          // Body
+          var body = JSON.parse(executeSpy.args[0][1]);
+
+          body['collapse_key'].should.equal(collapse_key_value);
+          body['time_to_live'].should.equal(time_to_live_value);
+          body['delay_while_idle'].should.equal(default_while_idle_value);
+          body['data']['score'].should.equal(data_score_value);
+          body['data']['time'].should.equal(data_time_value);
 
           done();
         }
