@@ -17,9 +17,7 @@ var assert = require('assert');
 var fs = require('fs');
 var crypto = require('crypto');
 var util = require('util');
-var testutil = require('../../util/util');
-var azure = testutil.libRequire('azure');
-var blobtestutil = require('../../framework/blob-test-utils');
+var azure = require('../../../lib/azure');
 var testPrefix = 'blobservice-uploaddownload-scale_test';
 
 var blobService = null;
@@ -27,10 +25,6 @@ var containerName = 'blobservicescaletest';
 describe('BlobService', function () {
   before(function (done) {
     blobService = azure.createBlobService();
-    suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
-    if(!suiteUtil.isRecording) {
-      throw new Error('Please set AZURE_NOCK_RECORD when running these tests');
-    }
     blobService.createContainer(containerName, function(error) {
       done();
     });
@@ -41,7 +35,7 @@ describe('BlobService', function () {
   });
 
   var apis = ['createBlockBlobFromFile', 'createPageBlobFromFile'];
-  var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024 - 1,  4 * 1024 * 1024, 4 * 1024 * 1024 + 1, 32 * 1024 * 1024, 64 * 1024 * 1024 -1, 64 * 1024 * 1024,  64 * 1024 * 1024 + 1, 128 * 1024 * 1024];
+  var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024 - 1,  4 * 1024 * 1024, 4 * 1024 * 1024 + 1, 32 * 1024 * 1024, 64 * 1024 * 1024 -1, 64 * 1024 * 1024,  64 * 1024 * 1024 + 1, 128 * 1024 * 1024, 253 * 1024 * 1024];
   for(var i = 0; i < apis.length; i++) {
     for(var j = 0; j < sizes.length; j++) {
       it(util.format('%s should work %s bytes file', apis[i], sizes[j]), getTestFunction(apis[i], sizes[j])); 
