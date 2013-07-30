@@ -61,6 +61,7 @@ function writeFile(fileName, content) {
 describe('BlobService', function () {
   before(function (done) {
     blobService = azure.createBlobService();
+    blobService.singleBlobPutThresholdInBytes = 0;
     blockBlobContentMD5 = writeFile(blockFileName, fileText);
     pageBlobBuffer.fill(0);
     pageBlobBuffer[0] = '1';
