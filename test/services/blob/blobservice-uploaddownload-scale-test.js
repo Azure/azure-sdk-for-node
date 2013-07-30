@@ -93,6 +93,7 @@ describe('BlobService', function () {
     var fileInfo = {name: fileName, contentMD5: '', size: size};
     var offset = 0;
     var fd = fs.openSync(fileName, 'w');
+    var count = 1;
     do {
       var content = null;
       if (size >= blockSize) {
@@ -103,7 +104,8 @@ describe('BlobService', function () {
         size = 0;
       }
       if (content.length) {
-        content[0] = 1; //the buffer should not be all zero  
+        content[0] = count; //Buffer should not be all zero
+        count++;
       }
       fs.writeSync(fd, content, 0, content.length, offset);
       offset += content.length;
