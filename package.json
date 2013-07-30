@@ -51,7 +51,8 @@
     "nock": "*",
     "grunt": "~0.4.1",
     "grunt-jsdoc": "~0.4.0",
-    "grunt-devserver": "~0.4.1"
+    "grunt-devserver": "~0.4.1",
+    "grunt-github-pages": "0.0.3"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {

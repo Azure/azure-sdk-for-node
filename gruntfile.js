@@ -24,18 +24,30 @@ module.exports = function(grunt) {
             ], 
             options: {
                 destination: 'docs',
-                // configure: 'jsdoc/jsdoc.json',
-                //template: 'jsdoc/template'
+                configure: 'jsdoc/jsdoc.json',
+                template: 'jsdoc/template'
             }
         }
     },
     devserver: { options: 
       { 'type' : 'http',
         'port' : 8888,
-        'base' : './docs/'
+        'base' : 'docs'
+      }
+    },
+    githubPages: {
+      target: {
+        options: {
+          // The default commit message for the gh-pages branch
+          commitMessage: 'pushing docs to pages'
+        },
+        // The folder where your gh-pages repo is
+        src: 'docs'
       }
     }
   });
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-devserver');
+  grunt.loadNpmTasks('grunt-github-pages');
+  grunt.registerTask('publishdocs', ['githubPages:target']);
 };
