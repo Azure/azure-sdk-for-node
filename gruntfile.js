@@ -20,7 +20,8 @@ module.exports = function(grunt) {
               'lib/services/serviceManagement/*.js',
               'lib/services/sqlAzure/sqlservice.js',
               'lib/services/table/tableservice.js',
-              'lib/serviceruntime/roleenvironment.js'
+              'lib/serviceruntime/roleenvironment.js',
+              'lib/util/date.js'
             ], 
             options: {
                 destination: 'docs',
