@@ -83,18 +83,26 @@ var defaultSubscription = '279b0675-cf67-467f-98f0-67ae31eb540f';
 
 if (!process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
   process.env.AZURE_APNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_FILE'])).toString('base64');
+} else if (process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
+  throw new Error('Only one of AZURE_APNS_CERTIFICATE or AZURE_APNS_CERTIFICATE_FILE can be set. Not both.');
 }
 
 if (!process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICATE_KEY_FILE) {
   process.env.AZURE_APNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_KEY_FILE']).toString();
+} else if (process.env.AZURE_APNS_CERTIFICATE_KEY && process.env.AZURE_APNS_CERTIFICATE_KEY_FILE) {
+  throw new Error('Only one of AZURE_APNS_CERTIFICATE_KEY or AZURE_APNS_CERTIFICATE_KEY_FILE can be set. Not both.');
 }
 
 if (!process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
   process.env.AZURE_MPNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_FILE'])).toString('base64');
+} else if (process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
+  throw new Error('Only one of AZURE_MPNS_CERTIFICATE or AZURE_MPNS_CERTIFICATE_FILE can be set. Not both.');
 }
 
 if (!process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
   process.env.AZURE_MPNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_KEY_FILE']).toString();
+} else if (process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
+  throw new Error('Only one of AZURE_MPNS_CERTIFICATE_KEY or AZURE_MPNS_CERTIFICATE_KEY_FILE can be set. Not both.');
 }
 
 if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
