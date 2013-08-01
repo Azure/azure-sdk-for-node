@@ -378,7 +378,7 @@
                               "Path":
                                 {
                                   "Name": "Path",
-                                  "Required": true,
+                                  "Required": false,
                                   "Type": "Primitive.String",
                                   "RegEx": "NIL",
                                   "XmlNode": "Path"
