@@ -900,7 +900,8 @@ describe('BlobService', function () {
         fs.writeFile(fileNameSource, blobText, function () {
 
           // Create the empty page blob
-          blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, function (err) {
+          var blobOptions = {blockIdPrefix : 'blockId' };
+          blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, blobOptions, function (err) {
             assert.equal(err, null);
 
             blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, blob) {
@@ -925,7 +926,7 @@ describe('BlobService', function () {
 
         fs.writeFile(fileNameSource, blobText, function () {
           // Create the empty page blob
-          blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, { contentType: null, contentTypeHeader: null }, function (err) {
+          blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, { contentType: null, contentTypeHeader: null, blockIdPrefix : 'blockId' }, function (err) {
             assert.equal(err, null);
 
             blobService.getBlobToText(containerName, blobName, { rangeStart: 2 }, function (err3, content1, blob) {
@@ -1396,7 +1397,7 @@ describe('BlobService', function () {
         assert.ok(createResponse1.isSuccessful);
         assert.equal(createResponse1.statusCode, HttpConstants.HttpResponseCodes.Created);
 
-        var blobOptions = { contentType: 'text' };
+        var blobOptions = { contentType: 'text', blockIdPrefix : 'blockId' };
         blobService.createBlockBlobFromFile(containerName, blobName, fileNameSource, blobOptions, function (uploadError, blobResponse, uploadResponse) {
           assert.equal(uploadError, null);
           assert.notEqual(blobResponse, null);
