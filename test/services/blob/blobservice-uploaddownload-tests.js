@@ -15,6 +15,7 @@
 
 var assert = require('assert');
 var fs = require('fs');
+var path = require('path');
 var crypto = require('crypto');
 
 // Test includes
@@ -157,7 +158,7 @@ describe('BlobService', function () {
     it('should work with not existing file', function(done) {
       blobService.createBlockBlobFromFile(containerName, blockBlobName, notExistFileName, uploadOptions, function (err) {
         assert.notEqual(err, null);
-        assert.equal(err.path, notExistFileName);
+        assert.equal(path.basename(err.path), notExistFileName);
         done();
       });
     });
@@ -311,7 +312,7 @@ describe('BlobService', function () {
     it('should work with not existing file', function(done) {
       blobService.createPageBlobFromFile(containerName, blockBlobName, notExistFileName, uploadOptions, function (err) {
         assert.notEqual(err, null);
-        assert.equal(err.path, notExistFileName);
+        assert.equal(path.basename(err.path), notExistFileName);
         done();
       });
     });
