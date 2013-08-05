@@ -6,6 +6,7 @@ services/blob/internal/sharedkey-tests.js
 services/blob/internal/sharedkeylite-tests.js
 services/blob/blobservice-tests.js
 services/blob/blobservice-gb-tests.js
+services/blob/blobservice-uploaddownload-tests.js
 services/blob/filters-tests.js
 services/core/connectionstringparser-tests.js
 services/core/serviceclient-tests.js
@@ -22,6 +23,8 @@ services/serviceBus/apnsservice-registrations-tests.js
 services/serviceBus/gcmservice-tests.js
 services/serviceBus/gcmservice-registrations-tests.js
 services/serviceBus/servicebusservice-tests.js
+services/serviceBus/mpnsservice-tests.js
+services/serviceBus/mpnsservice-registrations-tests.js
 services/serviceBus/notificationhubs-tests.js
 services/serviceBus/wnsservice-tests.js
 services/serviceBus/wnsservice-registrations-tests.js

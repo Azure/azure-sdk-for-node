@@ -24,14 +24,12 @@ var notificationhubstestutil = require('../../framework/notificationhubs-test-ut
 
 var azure = testutil.libRequire('azure');
 
-var HeaderConstants = azure.Constants.HeaderConstants;
-
 var hubNames = [];
 var hubNamePrefix = 'xplathub';
 
-var testPrefix = 'gcmservice-tests';
+var testPrefix = 'mpnsservice-tests';
 
-describe('GCM notifications', function () {
+describe('MPNS notifications', function () {
   var service;
   var suiteUtil;
   var sandbox;
@@ -87,24 +85,17 @@ describe('GCM notifications', function () {
       notificationHubService = azure.createNotificationHubService(hubName);
       suiteUtil.setupService(notificationHubService);
       service.createNotificationHub(hubName, {
-          gcm: {
-            GoogleApiKey: process.env.AZURE_GCM_KEY,
-            GcmEndpoint: 'http://pushtestservice2.cloudapp.net/gcm/send'
-          }
-        }, done);
+        mpns: {
+          MpnsCertificate: process.env.AZURE_MPNS_CERTIFICATE,
+          CertificateKey: process.env.AZURE_MPNS_CERTIFICATE_KEY
+        }
+      }, done);
     });
 
-    it('should send a simple message', function (done) {
-      notificationHubService.gcm.send(null, {
-        'collapse_key': 'score_update',
-        'time_to_live': 108,
-        'delay_while_idle': true,
-        'data': {
-          'score': '4x8',
-          'time': '15:16.2342'
-        }
-      },
-      function (error, result) {
+    it('should send a simple toast message', function (done) {
+      notificationHubService.mpns.sendToast(
+        null, 'Bold Text', 'This is normal text',
+        function (error, result) {
           should.not.exist(error);
           result.statusCode.should.equal(201);
 
@@ -112,42 +103,66 @@ describe('GCM notifications', function () {
         });
     });
 
-    it('should send a simple message with tags', function (done) {
+    it('should send a simple toast message with tags', function (done) {
       var tagsString = 'dogs';
 
-      var collapse_key_value = 'score_update';
-      var time_to_live_value = 108;
-      var default_while_idle_value = true;
-      var data_score_value = '4x8';
-      var data_time_value = '15:16.2342';
-
       var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
-      notificationHubService.gcm.send(
-        tagsString, {
-          collapse_key: collapse_key_value,
-          time_to_live: time_to_live_value,
-          delay_while_idle: default_while_idle_value,
-          data: {
-            score: data_score_value,
-            time: data_time_value
-          }
-        },
+      notificationHubService.mpns.sendToast(
+        tagsString, 'Bold Text', 'This is normal text',
         function (error, result) {
           should.not.exist(error);
           result.statusCode.should.equal(201);
 
-          // Headers
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_TAGS].should.equal(tagsString);
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_FORMAT].should.equal('gcm');
+          executeSpy.args[0][0].headers['ServiceBusNotification-Tags'].should.equal(tagsString);
+          executeSpy.args[0][0].headers['ServiceBusNotification-Format'].should.equal('windowsphone');
 
-          // Body
-          var body = JSON.parse(executeSpy.args[0][1]);
+          done();
+        });
+    });
 
-          body['collapse_key'].should.equal(collapse_key_value);
-          body['time_to_live'].should.equal(time_to_live_value);
-          body['delay_while_idle'].should.equal(default_while_idle_value);
-          body['data']['score'].should.equal(data_score_value);
-          body['data']['time'].should.equal(data_time_value);
+    it('should set wrong mpns type if asked to (and fail to send)', function (done) {
+      var tagsString = 'dogs';
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.mpns.sendTile(
+        tagsString, {
+          backTitle: 'This is a tile'
+        },
+        {
+          headers: {
+            'X-WindowsPhone-Target': 'toast'
+          }
+        },
+        function (error, result) {
+          executeSpy.args[0][0].headers['ServiceBusNotification-Tags'].should.equal(tagsString);
+          executeSpy.args[0][0].headers['X-WindowsPhone-Target'].should.equal('toast');
+          executeSpy.args[0][0].headers['ServiceBusNotification-Format'].should.equal('windowsphone');
+
+          done();
+        });
+    });
+
+    it('should send a simple message', function (done) {
+      notificationHubService.mpns.send(null,
+        '<wp:Notification xmlns:wp=\"WPNotification\"><wp:Toast><wp:Text1>' +
+        'Bold Text</wp:Text1><wp:Text2>This is normal text</wp:Text2></wp:Toast>' +
+        '</wp:Notification>',
+        'toast',
+        '2',
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
+
+          done();
+        }
+      );
+    });
+
+    it('should send a tile message', function (done) {
+      notificationHubService.mpns.sendTile(null, 'attention',
+        function (error, result) {
+          should.not.exist(error);
+          result.statusCode.should.equal(201);
 
           done();
         }

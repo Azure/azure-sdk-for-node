@@ -101,3 +101,30 @@ exports.withEnvironment = function (values, testFunction) {
     });
   }
 };
+
+// Writes content to a temporary file that gets deleted
+// at the end of the test. File writes are synchronous
+
+exports.withTempFileSync = function (content, action) {
+  var path = exports.generateId('temp') + '.tmp';
+  fs.writeFileSync(path, content);
+  try {
+    action(path);
+  } finally {
+    fs.unlinkSync(path);
+  }
+}
+
+// Writes content to a temporary file that gets
+// deleted when the 'done' callback is executed.
+// Similar to withTempFileSync, but for async
+// tests. The file operations themselves are done
+// synchronously.
+
+exports.withTempFile = function (content, action) {
+  var path = exports.generateId('temp') + '.tmp';
+  fs.writeFileSync(path, content);
+  action(path, function () {
+    fs.unlinkSync(path);
+  });
+}

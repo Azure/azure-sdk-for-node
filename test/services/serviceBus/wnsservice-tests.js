@@ -52,6 +52,7 @@ describe('WNS notifications', function () {
   beforeEach(function (done) {
     suiteUtil.setupTest(function () {
       service.listNotificationHubs(function (err, hubs) {
+        should.not.exist(err);
         var xplatHubs = hubs.filter(function (hub) {
           return hub.NotificationHubName.substr(0, hubNamePrefix.length) === hubNamePrefix;
         });

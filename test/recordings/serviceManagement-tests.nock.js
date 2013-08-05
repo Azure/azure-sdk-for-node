@@ -318,4 +318,28 @@ nock('https://management.core.windows.net:443')
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': 'cf8340b653f347bbbfc6db98f09aeb80',
   date: 'Tue, 19 Mar 2013 20:19:29 GMT' });
+ return result; }],
+ [function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/networking/media', '*')
+  .reply(202, "", { 'cache-control': 'no-cache',
+  'content-length': '0',
+  server: '33.0.6198.68 (rd_rdfe_stable.130710-0833) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': 'dcc0886dd747464fa5447c362842b481',
+  date: 'Tue, 23 Jul 2013 13:27:21 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://management.core.windows.net:443')
+  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/networking/media')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"test\" AffinityGroup=\"test-ag\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/20</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"sub1\">\r\n            <AddressPrefix>10.0.0.0/23</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
+  'content-length': '749',
+  'content-type': 'text/plain',
+  server: '33.0.6198.68 (rd_rdfe_stable.130710-0833) Microsoft-HTTPAPI/2.0',
+  'x-ms-servedbyregion': 'ussouth',
+  'x-ms-request-id': 'a4afd56d873c40fabf9f1fb0011c55b4',
+  date: 'Tue, 23 Jul 2013 13:27:24 GMT' });
  return result; }]];
