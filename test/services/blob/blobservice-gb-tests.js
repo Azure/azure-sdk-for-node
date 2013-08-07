@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-var assert = require('assert');
+var should = require('should');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -54,6 +54,33 @@ describe('BlobService', function () {
     suiteUtil.teardownTest(done);
   });
 
+  describe('createBlobWithStrangeCharacters', function () {
+    var containerName;
+
+    beforeEach(function (done) {
+      containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+
+      blobService.createContainer(containerName, done);
+    });
+
+    it('should work', function (done) {
+      var blobName = 'def@#/abef?def/& &/abcde+=-';
+
+      blobService.createBlockBlobFromText(containerName, blobName, 'hi there', function (uploadError, blob, uploadResponse) {
+        should.not.exist(uploadError);
+        uploadResponse.isSuccessful.should.be.ok;
+
+        blobService.getBlobProperties(containerName, blobName, function(error, blob) {
+          should.not.exist(error);
+          uploadResponse.isSuccessful.should.be.ok;
+          should.exist(blob);
+
+          done();
+        });
+      });
+    });
+  });
+
   describe('createBlockBlobFromText', function () {
     var containerName;
 
@@ -68,12 +95,12 @@ describe('BlobService', function () {
       var blobText = '\u2488\u2460\u216B\u3128\u3129'.toString('GB18030');
 
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
-        assert.equal(uploadError, null);
-        assert.ok(uploadResponse.isSuccessful);
+        should.not.exist(uploadError);
+        uploadResponse.isSuccessful.should.be.ok;
 
         blobService.getBlobToText(containerName, blobName, function (downloadErr, blobTextResponse) {
-          assert.equal(downloadErr, null);
-          assert.equal(blobTextResponse, blobText);
+          should.not.exist(downloadErr);
+          should.equal(blobTextResponse, blobText);
 
           done();
         });
