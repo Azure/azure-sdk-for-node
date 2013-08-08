@@ -79,14 +79,12 @@ describe('BlobService', function () {
   });
 
   after(function (done) {
-    try{
-      fs.unlinkSync(blockFileName);
-      fs.unlinkSync(pageFileName);
-      fs.unlinkSync(page2KFileName);
-      fs.unlinkSync(downloadName);
-      fs.unlinkSync(notExistFileName);
-      fs.unlinkSync(zeroSizeFileName);
-    } catch(e) {}
+    try{ fs.unlinkSync(blockFileName); } catch (e) {}
+    try{ fs.unlinkSync(pageFileName); } catch (e) {}
+    try{ fs.unlinkSync(page2KFileName); } catch (e) {}
+    try{ fs.unlinkSync(downloadName); } catch (e) {}
+    try{ fs.unlinkSync(notExistFileName); } catch (e) {}
+    try{ fs.unlinkSync(zeroSizeFileName); } catch (e) {}
     suiteUtil.teardownSuite(done);
   });
 
