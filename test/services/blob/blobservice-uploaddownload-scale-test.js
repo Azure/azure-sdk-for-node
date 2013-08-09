@@ -98,7 +98,11 @@ describe('BlobService', function () {
         size = 0;
       }
       if (content.length) {
-        content[0] = count; //Buffer should not be all zero
+        if(count % 2 == 0) {
+          content[0] = 0;
+        } else {
+          content[0] = count; //Buffer should not be all zero
+        }
         count++;
       }
       fs.writeSync(fd, content, 0, content.length, offset);
