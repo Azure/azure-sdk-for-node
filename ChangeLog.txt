@@ -1,3 +1,11 @@
+2013.08.12 Version 0.7.14
+* Multiple storage fixes
+* Documentation improvements
+* Added support for large blobs upload / download
+
+2013.08.08 Version 0.7.13
+* Lock request version
+
 2013.07.29 Version 0.7.12
 * Added MPNS support
 * Added Service management vnet operations support
