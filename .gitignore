@@ -23,3 +23,6 @@ Thumbs.db
 # WebStorm #
 .idea/
 
+# docs #
+docs/
+jsdoc/
