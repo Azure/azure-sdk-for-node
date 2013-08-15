@@ -21,41 +21,145 @@ var ServiceClient = azure.ServiceClient;
 
 var sandbox;
 
-suite('serviceclient-tests', function () {
-  setup(function () {
+describe('serviceclient-tests', function () {
+  before(function () {
     sandbox = sinon.sandbox.create();
   });
 
-  teardown(function () {
+  after(function () {
     sandbox.restore();
   });
 
-  test('NormalizedErrorsAreErrors', function () {
-    var error = { 
-      Error: {
-        'detail': 'this is an error message',
-        'ResultCode': 500,
-        'somethingElse': 'goes here'
-      }
-    };
+  describe('_parseResponse', function () {
+    it('should work for XML replies with headers without content-type', function (done) {
+      var response = {
+        body: '<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>TableAlreadyExists</code>\r\n  <message xml:lang=\"en-US\">The table specified already exists.\nRequestId:ebcc9f6b-c774-4f22-b4a9-078a393394eb\nTime:2013-05-30T20:57:11.1474844Z</message>\r\n</error>',
+        headers: {
+          'cache-control': 'no-cache',
+          'transfer-encoding': 'chunked'
+        }
+      };
 
-    var normalizedError = ServiceClient.prototype._normalizeError(error);
-    normalizedError.should.be.an.instanceOf(Error);
-    normalizedError.should.have.keys('detail', 'resultcode', 'somethingelse');
+      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      should.exist(parsedResponse);
+      should.exist(parsedResponse.body.error);
+      parsedResponse.body.error.code.should.equal('TableAlreadyExists');
+
+      done();
+    });
+
+    it('should work for XML replies without headers', function (done) {
+      var response = {
+        body: '<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>TableAlreadyExists</code>\r\n  <message xml:lang=\"en-US\">The table specified already exists.\nRequestId:ebcc9f6b-c774-4f22-b4a9-078a393394eb\nTime:2013-05-30T20:57:11.1474844Z</message>\r\n</error>'
+      };
+
+      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      should.exist(parsedResponse);
+      should.exist(parsedResponse.body.error);
+      parsedResponse.body.error.code.should.equal('TableAlreadyExists');
+
+      done();
+    });
+
+    it('should work for XML replies with headers mixed casing', function (done) {
+      var response = {
+        body: '<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>TableAlreadyExists</code>\r\n  <message xml:lang=\"en-US\">The table specified already exists.\nRequestId:ebcc9f6b-c774-4f22-b4a9-078a393394eb\nTime:2013-05-30T20:57:11.1474844Z</message>\r\n</error>',
+        headers: {
+          'content-type': 'application/XML'
+        }
+      };
+
+      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      should.exist(parsedResponse);
+      should.exist(parsedResponse.body.error);
+      parsedResponse.body.error.code.should.equal('TableAlreadyExists');
+
+      done();
+    });
+
+    it('should work for strings with code without content-type', function (done) {
+      var response = {
+        body: 'code: TableAlreadyExists\r\n'
+      };
+
+      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      should.exist(parsedResponse);
+      should.exist(parsedResponse.body.error);
+      parsedResponse.body.error.code.should.equal('TableAlreadyExists');
+
+      done();
+    });
+
+    it('should work for strings with code and detail without content-type', function (done) {
+      var response = {
+        body: 'code: TableAlreadyExists\r\ndetail: The table already exists'
+      };
+
+      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      should.exist(parsedResponse);
+      should.exist(parsedResponse.body.error);
+      parsedResponse.body.error.code.should.equal('TableAlreadyExists');
+      parsedResponse.body.error.detail.should.equal('The table already exists');
+
+      done();
+    });
+
+    it('should work for JSON replies', function (done) {
+      var response = {
+        body: '{ "hithere": "Something" }',
+        headers: {
+          'content-type': 'application/json'
+        }
+      };
+
+      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      should.exist(parsedResponse);
+      parsedResponse.body.hithere.should.equal('Something');
+
+      done();
+    });
   });
 
-  test('loadenvironmentproxy', function () {
-    var serviceClient = new ServiceClient();
+  describe('NormalizedErrorsAreErrors', function () {
+    it('should work', function (done) {
+      var error = { 
+        Error: {
+          'detail': 'this is an error message',
+          'ResultCode': 500,
+          'somethingElse': 'goes here'
+        }
+      };
 
-    var loadEnvironmentProxy = sandbox.stub(serviceClient, '_loadEnvironmentProxyValue');
-    loadEnvironmentProxy.returns('http://localhost:8888');
+      var normalizedError = ServiceClient.prototype._normalizeError(error);
+      normalizedError.should.be.an.instanceOf(Error);
+      normalizedError.should.have.keys('detail', 'resultcode', 'somethingelse');
 
-    serviceClient._loadEnvironmentProxy();
+      done();
+    });
+  });
 
-    serviceClient.useProxy.should.equal(true);
-    serviceClient.proxyProtocol.should.equal('http:');
-    serviceClient.proxyPort.should.equal('8888');
-    serviceClient.proxyUrl.should.equal('localhost');
+  describe('loadenvironmentproxy', function () {
+    it('should work', function (done) {
+      var serviceClient = new ServiceClient();
+
+      var loadEnvironmentProxy = sandbox.stub(serviceClient, '_loadEnvironmentProxyValue');
+      loadEnvironmentProxy.returns('http://localhost:8888');
+
+      serviceClient._loadEnvironmentProxy();
+
+      serviceClient.useProxy.should.equal(true);
+      serviceClient.proxyProtocol.should.equal('http:');
+      serviceClient.proxyPort.should.equal('8888');
+      serviceClient.proxyUrl.should.equal('localhost');
+
+      done();
+    });
   });
 });
 
