@@ -7,6 +7,7 @@ services/blob/internal/sharedkeylite-tests.js
 services/blob/blobservice-tests.js
 services/blob/blobservice-gb-tests.js
 services/blob/blobservice-uploaddownload-tests.js
+services/blob/models/blobpagerangestream-test.js
 services/blob/filters-tests.js
 services/core/connectionstringparser-tests.js
 services/core/serviceclient-tests.js
