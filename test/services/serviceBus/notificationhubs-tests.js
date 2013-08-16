@@ -34,8 +34,11 @@ var tokenId = '0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78'
 describe('Notification hubs', function () {
   var service;
   var suiteUtil;
+  var sandbox;
 
   before(function (done) {
+    sandbox = sinon.sandbox.create();
+
     service = azure.createServiceBusService()
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 
@@ -44,6 +47,7 @@ describe('Notification hubs', function () {
   });
 
   after(function (done) {
+    sandbox.restore();
     suiteUtil.teardownSuite(done);
   });
 
@@ -225,8 +229,16 @@ describe('Notification hubs', function () {
       notificationHubService = azure.createNotificationHubService(hubName);
       suiteUtil.setupService(notificationHubService);
 
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+
       notificationHubService.send(null, { property: 'value' }, function (err) {
         should.not.exist(err);
+
+        // Body
+        var body = JSON.parse(executeSpy.args[0][1]);
+
+        should.exist(body['property']);
+        body['property'].should.equal('value');
 
         done();
       });
