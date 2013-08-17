@@ -1,3 +1,8 @@
+2013.08.19 Version 0.7.15
+* Multiple storage fixes
+* Response parsing fixes
+* Fix issue with Notification hubs template message sending
+
 2013.08.12 Version 0.7.14
 * Multiple storage fixes
 * Documentation improvements
