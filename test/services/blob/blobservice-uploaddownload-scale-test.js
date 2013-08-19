@@ -35,7 +35,7 @@ describe('BlobService', function () {
   });
 
   var apis = ['createBlockBlobFromFile', 'createPageBlobFromFile'];
-  var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024 - 1,  4 * 1024 * 1024, 4 * 1024 * 1024 + 1, 32 * 1024 * 1024, 64 * 1024 * 1024 -1, 64 * 1024 * 1024,  64 * 1024 * 1024 + 1, 128 * 1024 * 1024, 253 * 1024 * 1024];
+  var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024 - 1,  4 * 1024 * 1024, 4 * 1024 * 1024 + 1, 32 * 1024 * 1024, 64 * 1024 * 1024 -1, 64 * 1024 * 1024,  64 * 1024 * 1024 + 1, 128 * 1024 * 1024, 148 * 1024 * 1024 - 512, 148 * 1024 * 1024, 148 * 1024 * 1024 + 512, 253 * 1024 * 1024];
   for(var i = 0; i < apis.length; i++) {
     for(var j = 0; j < sizes.length; j++) {
       it(util.format('%s should work %s bytes file', apis[i], sizes[j]), getTestFunction(apis[i], sizes[j])); 
@@ -98,7 +98,11 @@ describe('BlobService', function () {
         size = 0;
       }
       if (content.length) {
-        content[0] = count; //Buffer should not be all zero
+        if(count % 2 == 0) {
+          content[0] = 0;
+        } else {
+          content[0] = count; //Buffer should not be all zero
+        }
         count++;
       }
       fs.writeSync(fd, content, 0, content.length, offset);
