@@ -18,6 +18,7 @@ services/core/servicebussettings-tests.js
 services/core/servicemanagementsettings-tests.js
 services/core/storageservicesettings-tests.js
 services/queue/queueservice-tests.js
+services/scm/scmservice-tests.js
 services/serviceBus/internal/wraptokenmanager-tests.js
 services/serviceBus/apnsservice-tests.js
 services/serviceBus/apnsservice-registrations-tests.js
