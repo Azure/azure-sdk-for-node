@@ -1165,6 +1165,32 @@ describe('BlobService', function () {
     });
   });
 
+  it('works with content types', function (done) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+    var fileName= testutil.generateId('prefix') + '.txt';
+    var blobText = 'Hello World!';
+
+    try {
+      fs.writeFileSync(fileName, blobText);
+    } catch (e) {}
+
+    var stream = fs.createReadStream(fileName);
+    var stat = fs.statSync(fileName);
+
+    blobService.createContainer(containerName, function (createErr1) {
+      assert.equal(createErr1, null);
+
+      blobService.createBlobBlockFromStream('test', containerName, blobName, stream, stat.size, function(error) {
+        try { fs.unlink(fileName); } catch (e) {}
+
+        assert.equal(error, null);
+
+        done();
+      });
+    });
+  });
+
   it('CommitBlockList', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
