@@ -1165,15 +1165,17 @@ describe('BlobService', function () {
     });
   });
 
-  it('works with content types', function (done) {
+  it('works with files without specifying content type', function (done) {
+    // This test ensures that blocks can be created from files correctly
+    // and was created to ensure that the request module does not magically add
+    // a content type to the request when the user did not specify one.
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var fileName= testutil.generateId('prefix') + '.txt';
     var blobText = 'Hello World!';
 
-    try {
-      fs.writeFileSync(fileName, blobText);
-    } catch (e) {}
+    try { fs.unlinkSync(fileName); } catch (e) {}
+    fs.writeFileSync(fileName, blobText);
 
     var stream = fs.createReadStream(fileName);
     var stat = fs.statSync(fileName);
@@ -1182,7 +1184,7 @@ describe('BlobService', function () {
       assert.equal(createErr1, null);
 
       blobService.createBlobBlockFromStream('test', containerName, blobName, stream, stat.size, function(error) {
-        try { fs.unlink(fileName); } catch (e) {}
+        try { fs.unlinkSync(fileName); } catch (e) {}
 
         assert.equal(error, null);
 
