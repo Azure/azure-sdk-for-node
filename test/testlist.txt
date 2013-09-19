@@ -12,13 +12,13 @@ services/blob/filters-tests.js
 services/core/connectionstringparser-tests.js
 services/core/serviceclient-tests.js
 services/core/exponentialretrypolicyfilter-tests.js
+services/core/hmacsha256sign-tests.js
 services/core/linearretrypolicyfilter-tests.js
 services/core/servicesettings-tests.js
 services/core/servicebussettings-tests.js
 services/core/servicemanagementsettings-tests.js
 services/core/storageservicesettings-tests.js
 services/queue/queueservice-tests.js
-services/scm/scmservice-tests.js
 services/serviceBus/internal/wraptokenmanager-tests.js
 services/serviceBus/apnsservice-tests.js
 services/serviceBus/apnsservice-registrations-tests.js
