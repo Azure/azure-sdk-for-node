@@ -1165,6 +1165,34 @@ describe('BlobService', function () {
     });
   });
 
+  it('works with files without specifying content type', function (done) {
+    // This test ensures that blocks can be created from files correctly
+    // and was created to ensure that the request module does not magically add
+    // a content type to the request when the user did not specify one.
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+    var fileName= testutil.generateId('prefix') + '.txt';
+    var blobText = 'Hello World!';
+
+    try { fs.unlinkSync(fileName); } catch (e) {}
+    fs.writeFileSync(fileName, blobText);
+
+    var stream = fs.createReadStream(fileName);
+    var stat = fs.statSync(fileName);
+
+    blobService.createContainer(containerName, function (createErr1) {
+      assert.equal(createErr1, null);
+
+      blobService.createBlobBlockFromStream('test', containerName, blobName, stream, stat.size, function(error) {
+        try { fs.unlinkSync(fileName); } catch (e) {}
+
+        assert.equal(error, null);
+
+        done();
+      });
+    });
+  });
+
   it('CommitBlockList', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
