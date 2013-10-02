@@ -22,6 +22,57 @@ var testutil = require('./util');
 var js2xml = testutil.libRequire('util/js2xml');
 
 describe('js2xml', function() {
+  describe('getElementName', function () {
+    it('should work', function (done) {
+      var xml = {
+        '$': {
+          'xmlns': 'namespace1',
+          'xmlns:a': 'namespace2'
+        },
+        'b': {
+          '$': {
+            'xmlns:b': 'namespace3'
+          }
+        }
+      };
+
+      var fullName1 = js2xml.getElementName(xml, 'elementName', 'namespace1');
+      fullName1.should.equal('elementName');
+
+      var fullName2 = js2xml.getElementName(xml, 'elementName', 'namespace2');
+      fullName2.should.equal('a:elementName');
+
+      done();
+    });
+  });
+
+  describe('getNamespaceAlias', function () {
+    it('should work', function (done) {
+      var xml = {
+        '$': {
+          'xmlns': 'namespace1',
+          'xmlns:a': 'namespace2'
+        },
+        'b': {
+          '$': {
+            'xmlns:b': 'namespace3'
+          }
+        }
+      };
+
+      var alias1 = js2xml.getNamespaceAlias(xml, 'namespace1');
+      alias1.should.equal('xmlns');
+
+      var alias2 = js2xml.getNamespaceAlias(xml, 'namespace2');
+      alias2.should.equal('xmlns:a');
+
+      var alias3 = js2xml.getNamespaceAlias(xml, 'namespace3');
+      alias3.should.equal('xmlns:b');
+
+      done();
+    });
+  });
+
   describe('createElement', function () {
     it('should work', function (done) {
       var name = 'name';
