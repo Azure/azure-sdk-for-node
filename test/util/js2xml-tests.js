@@ -22,6 +22,28 @@ var testutil = require('./util');
 var js2xml = testutil.libRequire('util/js2xml');
 
 describe('js2xml', function() {
+  describe('stripNamespaces', function () {
+    it('should work', function (done) {
+      var obj = {
+        'a:string': 'string',
+        'b:string2': [ 'string1', 'string2' ],
+        'test': 'test1',
+        'obj': {
+          'prop1': 'prop1',
+          'c:string': 'prop2'
+        }
+      };
+
+      var obj = js2xml.stripNamespaces(obj);
+      should.exist(obj['string']);
+      should.exist(obj['string2']);
+      should.exist(obj['test']);
+      should.exist(obj['obj']['prop1']);
+
+      done();
+    });
+  });
+
   describe('createElement', function () {
     it('should work', function (done) {
       var name = 'name';
