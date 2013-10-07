@@ -41,7 +41,7 @@ describe('serviceclient-tests', function () {
       };
 
       var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
-      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
       parsedResponse.body.error.code.should.equal('TableAlreadyExists');
@@ -55,7 +55,7 @@ describe('serviceclient-tests', function () {
       };
 
       var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
-      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
       parsedResponse.body.error.code.should.equal('TableAlreadyExists');
@@ -72,7 +72,7 @@ describe('serviceclient-tests', function () {
       };
 
       var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
-      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
       parsedResponse.body.error.code.should.equal('TableAlreadyExists');
@@ -86,7 +86,7 @@ describe('serviceclient-tests', function () {
       };
 
       var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
-      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
       parsedResponse.body.error.code.should.equal('TableAlreadyExists');
@@ -100,7 +100,7 @@ describe('serviceclient-tests', function () {
       };
 
       var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
-      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
       parsedResponse.body.error.code.should.equal('TableAlreadyExists');
@@ -118,7 +118,7 @@ describe('serviceclient-tests', function () {
       };
 
       var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
-      var parsedResponse = ServiceClient.prototype._parseResponse.call(obj, response);
+      var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       parsedResponse.body.hithere.should.equal('Something');
 
@@ -136,7 +136,7 @@ describe('serviceclient-tests', function () {
         }
       };
 
-      var normalizedError = ServiceClient.prototype._normalizeError(error);
+      var normalizedError = ServiceClient._normalizeError(error);
       normalizedError.should.be.an.instanceOf(Error);
       normalizedError.should.have.keys('detail', 'resultcode', 'somethingelse');
 
