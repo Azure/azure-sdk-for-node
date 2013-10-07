@@ -40,7 +40,7 @@ describe('serviceclient-tests', function () {
         }
       };
 
-      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var obj = { xml2jsSettings: ServiceClient._getDefaultXml2jsSettings() };
       var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
@@ -54,7 +54,7 @@ describe('serviceclient-tests', function () {
         body: '<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<error xmlns=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\">\r\n  <code>TableAlreadyExists</code>\r\n  <message xml:lang=\"en-US\">The table specified already exists.\nRequestId:ebcc9f6b-c774-4f22-b4a9-078a393394eb\nTime:2013-05-30T20:57:11.1474844Z</message>\r\n</error>'
       };
 
-      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var obj = { xml2jsSettings: ServiceClient._getDefaultXml2jsSettings() };
       var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
@@ -71,7 +71,7 @@ describe('serviceclient-tests', function () {
         }
       };
 
-      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var obj = { xml2jsSettings: ServiceClient._getDefaultXml2jsSettings() };
       var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
@@ -85,7 +85,7 @@ describe('serviceclient-tests', function () {
         body: 'code: TableAlreadyExists\r\n'
       };
 
-      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var obj = { xml2jsSettings: ServiceClient._getDefaultXml2jsSettings() };
       var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
@@ -99,7 +99,7 @@ describe('serviceclient-tests', function () {
         body: 'code: TableAlreadyExists\r\ndetail: The table already exists'
       };
 
-      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var obj = { xml2jsSettings: ServiceClient._getDefaultXml2jsSettings() };
       var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       should.exist(parsedResponse.body.error);
@@ -117,7 +117,7 @@ describe('serviceclient-tests', function () {
         }
       };
 
-      var obj = { xml2jsSettings: ServiceClient.prototype._getDefaultXml2jsSettings() };
+      var obj = { xml2jsSettings: ServiceClient._getDefaultXml2jsSettings() };
       var parsedResponse = ServiceClient._parseResponse.call(obj, response, obj.xml2jsSettings);
       should.exist(parsedResponse);
       parsedResponse.body.hithere.should.equal('Something');
