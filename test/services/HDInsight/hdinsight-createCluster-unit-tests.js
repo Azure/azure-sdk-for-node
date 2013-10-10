@@ -1177,7 +1177,8 @@ describe('HDInsight createCluster (under unit test)', function() {
       defaultStorageAccountKey : 'defaultKEY',
       defaultStorageContainer : 'defaultContainer',
       user : 'user',
-      password : 'password',
+      password: 'password',
+      version: 'HDInsight 1.4.0.0002',
       nodes : 4
     };
     var payload = hdInsight.convertCreationObject(clusterCreationObject);
@@ -1212,10 +1213,30 @@ describe('HDInsight createCluster (under unit test)', function() {
     payload.Resource.IntrinsicSettings.ClusterContainer.Deployment.NodeSizes.ClusterNodeSize[1].RoleType.should.be.eql('DataNode');
     payload.Resource.IntrinsicSettings.ClusterContainer.Deployment.NodeSizes.ClusterNodeSize[1].VMSize.should.be.eql('Large');
     should.not.exist(payload.Resource.IntrinsicSettings.ClusterContainer.Deployment.SqlMetaStores.SqlAzureMetaStore);
-    payload.Resource.IntrinsicSettings.ClusterContainer.Deployment.Version.should.be.eql('default');
+    payload.Resource.IntrinsicSettings.ClusterContainer.Deployment.Version.should.be.eql(clusterCreationObject.version);
     payload.Resource.IntrinsicSettings.ClusterContainer.DeploymentAction.should.be.eql('Create');
     payload.Resource.IntrinsicSettings.ClusterContainer.DnsName.should.be.eql('test');
     Validate.isValidUuid(payload.Resource.IntrinsicSettings.ClusterContainer.IncarnationID);
     payload.Resource.IntrinsicSettings.ClusterContainer.SubscriptionId.should.be.eql(hdInsightTestUtils.getSubscriptionId());
+  });
+
+  it('should convert an undefined value into the string \'default\' for a cluster\'s version ', function () {
+      performRequestStubUtil.StubAuthenticationFailed('http://test');
+      var clusterCreationObject = {
+          name: 'test',
+          location: 'East US',
+          defaultStorageAccountName: 'defaultAccount',
+          defaultStorageAccountKey: 'defaultKEY',
+          defaultStorageContainer: 'defaultContainer',
+          user: 'user',
+          password: 'password',
+          nodes: 4
+      };
+      var payload = hdInsight.convertCreationObject(clusterCreationObject);
+      should.exist(payload.Resource);
+      should.exist(payload.Resource.$);
+      should.exist(payload.Resource.$.xmlns);
+      should.exist(payload.Resource.IntrinsicSettings.ClusterContainer.Deployment.Version);
+      payload.Resource.IntrinsicSettings.ClusterContainer.Deployment.Version.should.be.eql('default');
   });
 });

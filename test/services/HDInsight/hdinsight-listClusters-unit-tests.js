@@ -97,7 +97,31 @@ describe('HDInsight listClusters (under unit test)', function() {
             Type: 'containers',
             Name: 'tsthdx00hdxcibld02',
             State: 'Started',
-            SubState: 'Running'
+            SubState: 'Running',
+            OutputItems: {
+                OutputItem: [
+                {
+                    Key: "Version",
+                    Value: "HDInsight 1.4.0.0002"
+                },
+                {
+                    Key: "CreatedDate",
+                    Value: "12/12/2004"
+                },
+                {
+                    Key: "NodesCount",
+                    Value: 3
+                },
+                {
+                    Key: "ConnectionURL",
+                    Value: "https://tsthdx00hdxcibld02.cloudapp.net"
+                },
+                {
+                    Key: "ClusterUsername",
+                    Value: "Admin"
+                }
+                ]
+            }
           }
         }
       }
@@ -121,9 +145,80 @@ describe('HDInsight listClusters (under unit test)', function() {
       _.isArray(response.body.clusters).should.be.eql(true);
       response.body.clusters.length.should.be.eql(1);
       should.exist(response.body.clusters[0]);
+      should.exist(response.body.clusters[0].Version);
       response.body.clusters[0].Name.should.be.eql('tsthdx00hdxcibld02');
       done(err);
     });
+  });
+
+  it('should get version value out of outputItems of cloud service', function (done) {
+      performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', singleResult);
+      hdInsight.listClusters(function (err, response) {
+          should.not.exist(err);
+          should.exist(response.body.clusters);
+          _.isArray(response.body.clusters).should.be.eql(true);
+          response.body.clusters.length.should.be.eql(1);
+          should.exist(response.body.clusters[0]);
+          should.exist(response.body.clusters[0].Version);
+          response.body.clusters[0].Version.should.be.eql('HDInsight 1.4.0.0002');
+          done(err);
+      });
+  });
+
+  it('should get ClusterUsername value out of outputItems of cloud service', function (done) {
+      performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', singleResult);
+      hdInsight.listClusters(function (err, response) {
+          should.not.exist(err);
+          should.exist(response.body.clusters);
+          _.isArray(response.body.clusters).should.be.eql(true);
+          response.body.clusters.length.should.be.eql(1);
+          should.exist(response.body.clusters[0]);
+          should.exist(response.body.clusters[0].Username);
+          response.body.clusters[0].Username.should.be.eql('Admin');
+          done(err);
+      });
+  });
+
+  it('should get CreatedDate value out of outputItems of cloud service', function (done) {
+      performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', singleResult);
+      hdInsight.listClusters(function (err, response) {
+          should.not.exist(err);
+          should.exist(response.body.clusters);
+          _.isArray(response.body.clusters).should.be.eql(true);
+          response.body.clusters.length.should.be.eql(1);
+          should.exist(response.body.clusters[0]);
+          should.exist(response.body.clusters[0].CreatedDate);
+          response.body.clusters[0].CreatedDate.should.be.eql('12/12/2004');
+          done(err);
+      });
+  });
+
+  it('should get NodesCount value out of outputItems of cloud service', function (done) {
+      performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', singleResult);
+      hdInsight.listClusters(function (err, response) {
+          should.not.exist(err);
+          should.exist(response.body.clusters);
+          _.isArray(response.body.clusters).should.be.eql(true);
+          response.body.clusters.length.should.be.eql(1);
+          should.exist(response.body.clusters[0]);
+          should.exist(response.body.clusters[0].Nodes);
+          response.body.clusters[0].Nodes.should.be.eql(3);
+          done(err);
+      });
+  });
+
+  it('should get ConnectionUrl value out of outputItems of cloud service', function (done) {
+      performRequestStubUtil.StubProcessRequestWithSuccess('http://test.com', singleResult);
+      hdInsight.listClusters(function (err, response) {
+          should.not.exist(err);
+          should.exist(response.body.clusters);
+          _.isArray(response.body.clusters).should.be.eql(true);
+          response.body.clusters.length.should.be.eql(1);
+          should.exist(response.body.clusters[0]);
+          should.exist(response.body.clusters[0].ConnectionURL);
+          response.body.clusters[0].ConnectionURL.should.be.eql('https://tsthdx00hdxcibld02.cloudapp.net');
+          done(err);
+      });
   });
 
   it('should provide the right headers for the request', function(done) {
