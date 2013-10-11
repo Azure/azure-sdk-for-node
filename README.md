@@ -1,6 +1,6 @@
 # Windows Azure SDK for Node.js [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
 
-This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. 
+This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage, Service Management or Service Bus. 
 
 # Library Features
 
@@ -12,9 +12,14 @@ This project provides a Node.js package that makes it easy to access Windows Azu
   </thead>
   <tbody>
     <tr><td>Blob</td><td>2012-02-12</td><td><a href="#link">Documentation</a></td></tr>
+    <tr><td>Cloud Services</td><td>2012-10-10</td><td><a href="#link">Documentation</a></td></tr>
     <tr><td>Queue</td><td>2011-08-18</td><td><a href="#link">Documentation</a></td></tr>
+    <tr><td>Notification Hubs</td><td>2013-07</td><td><a href="#link">Documentation</a></td></tr>
     <tr><td>Service Bus</td><td>2013-07</td><td><a href="#link">Documentation</a></td></tr>
-    <tr><td>Table/td><td>2011-08-18</td><td><a href="#link">Documentation</a></td></tr>
+    <tr><td>SQL Server Management</td><td>2012-10-10</td><td><a href="#link">Documentation</a></td></tr>
+    <tr><td>Virtual Machines</td><td>2012-10-10</td><td><a href="#link">Documentation</a></td></tr>
+    <tr><td>Table</td><td>2011-08-18</td><td><a href="#link">Documentation</a></td></tr>
+    <tr><td>Web Sites</td><td>2012-10-10</td><td><a href="#link">Documentation</a></td></tr>
   </tbody>
 </table>
 
