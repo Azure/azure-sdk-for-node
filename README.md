@@ -20,6 +20,7 @@ This project provides a Node.js package that makes it easy to access Windows Azu
     <tr><td>Virtual Machines</td><td>2012-10-10</td><td><a href="#link">Documentation</a></td></tr>
     <tr><td>Table</td><td>2011-08-18</td><td><a href="#link">Documentation</a></td></tr>
     <tr><td>Web Sites</td><td>2012-10-10</td><td><a href="#link">Documentation</a></td></tr>
+    <tr><td>Web Sites Deployment</td><td>N/A</td><td><a href="#link">Documentation</a></td></tr>
   </tbody>
 </table>
 
