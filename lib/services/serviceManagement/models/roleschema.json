@@ -70,6 +70,15 @@
                   "XmlNode": "AdminPassword"
                 },
                 
+              "AdminUsername":
+                {
+                  "Name": "AdminUsername",
+                  "Required": true,
+                  "Type": "Primitive.String",
+                  "RegEx": "NIL",
+                  "XmlNode": "AdminUsername"
+                },
+
               "ResetPasswordOnFirstLogon": 
                 {
                   "Name": "ResetPasswordOnFirstLogon",
