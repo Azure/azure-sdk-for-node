@@ -32,10 +32,10 @@ services/serviceBus/notificationhubs-tests.js
 services/serviceBus/wnsservice-tests.js
 services/serviceBus/wnsservice-registrations-tests.js
 services/serviceBus/wrapservice-tests.js
-services/serviceManagement/affinitygroup-tests.js
-services/serviceManagement/servicebusmanagementservice-tests.js
-services/serviceManagement/servicemanagementservice-tests.js
-services/serviceManagement/sqlmanagementservice-tests.js
+services/management/affinitygroup-tests.js
+services/management/servicemanagementservice-tests.js
+services/serviceBus/servicebusmanagementservice-tests.js
+services/sql/sqlmanagementservice-tests.js
 services/table/internal/sharedkeytable-tests.js
 services/table/internal/sharedkeylitetable-tests.js
 services/table/batchserviceclient-tests.js

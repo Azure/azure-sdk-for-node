@@ -29,7 +29,7 @@ var performRequestStubUtil;
 describe('HDInsight listClusters (under unit test)', function() {
   var subscriptionId;
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
-  var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
+  var HDInsight = require('../../../lib/services/hdinsight/hdinsightservice.js');
   var hdInsight;
   var hdInsightTestUtils;
 
