@@ -1,3 +1,9 @@
+2013.10.16 Version 0.7.16
+* Improved API documentation
+* Updated Virtual Machines API to 2013-06-01
+* Added website management wrappers preview APIs
+* Multiple bugfixes
+
 2013.08.19 Version 0.7.15
 * Multiple storage fixes
 * Fix issue with Notification Hubs template message sending
