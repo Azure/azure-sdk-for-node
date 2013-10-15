@@ -100,7 +100,7 @@ describe('SCM', function () {
                 var repositoryAuth = getRepositoryAuth(siteData).split(':');
 
                 var authentication = null;
-                if (process.env.AZURE_NOCK_RECORD) {
+                if (process.env.AZURE_NOCK_RECORD || process.env.NOCK_OFF) {
                   authentication = {
                     user: repositoryAuth[0],
                     pass: repositoryAuth[1]
