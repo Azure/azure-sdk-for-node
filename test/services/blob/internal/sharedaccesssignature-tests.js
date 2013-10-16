@@ -150,10 +150,10 @@ suite('sharedaccesssignature-tests', function () {
       .withProperty(BlobConstants.ResourceTypeProperty, BlobConstants.ResourceTypes.BLOB);
 
     webResource.path = '/images/pic1.png?comp=metadata';
-    webResource.requestUrl = '/images/pic1.png?comp=metadata';
+    webResource.uri = '/images/pic1.png?comp=metadata';
 
     credentials.signRequest(webResource, function () {
-      assert.equal('/images/pic1.png?comp=metadata&' + qs.stringify(queryString), webResource.requestUrl);
+      assert.equal('/images/pic1.png?comp=metadata&' + qs.stringify(queryString), webResource.uri);
       done();
     });
   });

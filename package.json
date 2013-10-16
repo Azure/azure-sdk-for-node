@@ -42,7 +42,9 @@
     "validator": ">= 0.4.12",
     "wns": ">= 0.5.3",
     "mpns": ">= 2.0.0",
-    "envconf": ">= 0.0.4"
+    "envconf": ">= 0.0.4",
+    "duplexer": "~0.1.1",
+    "through": "~2.3.4"
   },
   "devDependencies": {
     "mocha": ">= 1.12.0",
