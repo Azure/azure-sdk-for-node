@@ -3,7 +3,7 @@
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
@@ -14,7 +14,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
@@ -25,7 +25,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
@@ -37,7 +37,7 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">fh6h6ai8zy</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -48,7 +48,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">\n  <Server>\n    <Name>fh6h6ai8zy</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n</Servers>", { 'cache-control': 'no-cache',
   'content-length': '213',
   'content-type': 'application/xml; charset=utf-8',
@@ -60,7 +60,7 @@ nock('https://management.core.windows.net:443')
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">i2q8p4iuhk</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -71,7 +71,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/!NotValid$')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/!NotValid$')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">\n  <Code>40645</Code>\n  <Message>Servername \"!NotValid$\" cannot be empty or null. It can only be made up of lowercase letters 'a'-'z', the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the name.</Message>\n  <Severity>16</Severity>\n  <State>1</State>\n</Error>", { 'content-length': '338',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -81,7 +81,7 @@ nock('https://management.core.windows.net:443')
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">kgme6ya9ai</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -92,7 +92,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/kgme6ya9ai')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/kgme6ya9ai')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -102,7 +102,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">\n  <Server>\n    <Name>fh6h6ai8zy</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n  <Server>\n    <Name>i2q8p4iuhk</Name>\n    <AdministratorLogin>azuresdk</AdministratorLogin>\n    <Location>West US</Location>\n  </Server>\n</Servers>", { 'cache-control': 'no-cache',
   'content-length': '351',
   'content-type': 'application/xml; charset=utf-8',
@@ -113,7 +113,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/i2q8p4iuhk')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/i2q8p4iuhk')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -123,7 +123,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fh6h6ai8zy')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fh6h6ai8zy')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -134,7 +134,7 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">evnpmyhcj2</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -145,7 +145,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/evnpmyhcj2/firewallrules')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/evnpmyhcj2/firewallrules')
   .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'no-store,no-cache',
   'content-length': '121',
   'content-type': 'application/xml; charset=utf-8',
@@ -157,7 +157,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/evnpmyhcj2/firewallrules')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/evnpmyhcj2/firewallrules')
   .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'no-store,no-cache',
   'content-length': '121',
   'content-type': 'application/xml; charset=utf-8',
@@ -169,7 +169,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/evnpmyhcj2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/evnpmyhcj2')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -179,7 +179,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
@@ -191,7 +191,7 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">fn4t0e8gnv</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -202,7 +202,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fn4t0e8gnv/firewallrules')
   .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'no-store,no-cache',
   'content-length': '121',
   'content-type': 'application/xml; charset=utf-8',
@@ -215,8 +215,8 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules/nodesdk1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fn4t0e8gnv/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fn4t0e8gnv/firewallrules/nodesdk1</SelfLink><ParentLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fn4t0e8gnv</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -227,8 +227,8 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules')
-  .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ServiceResource><Name>nodesdk1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv/firewallrules/nodesdk1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource></ServiceResources>", { 'cache-control': 'no-store,no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fn4t0e8gnv/firewallrules')
+  .reply(200, "<ServiceResources xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><ServiceResource><Name>nodesdk1</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fn4t0e8gnv/firewallrules/nodesdk1</SelfLink><ParentLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fn4t0e8gnv</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource></ServiceResources>", { 'cache-control': 'no-store,no-cache',
   'content-length': '637',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -239,7 +239,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/fn4t0e8gnv')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/fn4t0e8gnv')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -249,7 +249,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
@@ -261,7 +261,7 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">d597ce28zr</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -273,8 +273,8 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/d597ce28zr/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk2</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/d597ce28zr/firewallrules/nodesdk2</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/d597ce28zr</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/d597ce28zr/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk2</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/d597ce28zr/firewallrules/nodesdk2</SelfLink><ParentLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/d597ce28zr</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -285,7 +285,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/d597ce28zr')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/d597ce28zr')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -295,7 +295,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
@@ -307,7 +307,7 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">rq9dde5i9e</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -318,7 +318,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/rq9dde5i9e/firewallrules/!NotValid$')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/rq9dde5i9e/firewallrules/!NotValid$')
   .reply(404, "<Error xmlns=\"Microsoft.SqlServer.Management.Framework.Web.Services\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Message>Resource with the name '!NotValid$' does not exist. To continue, specify a valid resource name.</Message><InnerError i:nil=\"true\"/></Error>", { 'content-length': '269',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -327,7 +327,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/rq9dde5i9e')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/rq9dde5i9e')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -337,7 +337,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
@@ -349,7 +349,7 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">bg18d09yh9</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -361,8 +361,8 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk3</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9/firewallrules/nodesdk3</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/bg18d09yh9/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk3</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/bg18d09yh9/firewallrules/nodesdk3</SelfLink><ParentLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/bg18d09yh9</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -373,7 +373,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9/firewallrules/nodesdk3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/bg18d09yh9/firewallrules/nodesdk3')
   .reply(200, "", { 'cache-control': 'no-store,no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -384,7 +384,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/bg18d09yh9')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/bg18d09yh9')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -394,7 +394,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers')
   .reply(200, "<Servers xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\"/>", { 'cache-control': 'no-cache',
   'content-length': '65',
   'content-type': 'application/xml; charset=utf-8',
@@ -406,7 +406,7 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">w4zlj0yhgr</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -418,8 +418,8 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr/firewallrules', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk4</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/w4zlj0yhgr/firewallrules', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk4</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4</SelfLink><ParentLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/w4zlj0yhgr</ParentLink><StartIPAddress>192.168.0.1</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -431,8 +431,8 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4', '*')
-  .reply(200, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk4</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr</ParentLink><StartIPAddress>192.168.0.5</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4', '*')
+  .reply(200, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk4</Name><Type>Microsoft.SqlAzure.FirewallRule</Type><State>Normal</State><SelfLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/w4zlj0yhgr/firewallrules/nodesdk4</SelfLink><ParentLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/w4zlj0yhgr</ParentLink><StartIPAddress>192.168.0.5</StartIPAddress><EndIPAddress>192.168.0.255</EndIPAddress></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '600',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -443,7 +443,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/w4zlj0yhgr')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/w4zlj0yhgr')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -454,7 +454,7 @@ nock('https://management.core.windows.net:443')
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">g24ofxx59n</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -466,8 +466,8 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/g24ofxx59n/databases', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>db1</Name><Type>Microsoft.SqlAzure.Database</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/g24ofxx59n/databases/db1</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/g24ofxx59n</ParentLink><Id>4</Id><Edition>Web</Edition><MaxSizeGB>1</MaxSizeGB><CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName><CreationDate>2013-03-19T20:22:42.0930000</CreationDate><IsFederationRoot>False</IsFederationRoot><IsSystemObject>False</IsSystemObject><SizeMB i:nil=\"true\"/><MaxSizeBytes>1073741824</MaxSizeBytes></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/g24ofxx59n/databases', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>db1</Name><Type>Microsoft.SqlAzure.Database</Type><State>Normal</State><SelfLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/g24ofxx59n/databases/db1</SelfLink><ParentLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/g24ofxx59n</ParentLink><Id>4</Id><Edition>Web</Edition><MaxSizeGB>1</MaxSizeGB><CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName><CreationDate>2013-03-19T20:22:42.0930000</CreationDate><IsFederationRoot>False</IsFederationRoot><IsSystemObject>False</IsSystemObject><SizeMB i:nil=\"true\"/><MaxSizeBytes>1073741824</MaxSizeBytes></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '808',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -478,7 +478,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/g24ofxx59n')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/g24ofxx59n')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -489,7 +489,7 @@ nock('https://management.core.windows.net:443')
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers', '*')
   .reply(201, "<ServerName xmlns=\"http://schemas.microsoft.com/sqlazure/2010/12/\">oe7hjyulqf</ServerName>", { 'cache-control': 'no-cache',
   'content-length': '90',
   'content-type': 'application/xml; charset=utf-8',
@@ -501,8 +501,8 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oe7hjyulqf/databases', '*')
-  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>db2</Name><Type>Microsoft.SqlAzure.Database</Type><State>Normal</State><SelfLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oe7hjyulqf/databases/db2</SelfLink><ParentLink>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oe7hjyulqf</ParentLink><Id>4</Id><Edition>Business</Edition><MaxSizeGB>50</MaxSizeGB><CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName><CreationDate>2013-03-19T20:22:56.4700000</CreationDate><IsFederationRoot>False</IsFederationRoot><IsSystemObject>False</IsSystemObject><SizeMB i:nil=\"true\"/><MaxSizeBytes>53687091200</MaxSizeBytes></ServiceResource>", { 'cache-control': 'no-store,no-cache',
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/oe7hjyulqf/databases', '*')
+  .reply(201, "<ServiceResource xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>db2</Name><Type>Microsoft.SqlAzure.Database</Type><State>Normal</State><SelfLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/oe7hjyulqf/databases/db2</SelfLink><ParentLink>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/oe7hjyulqf</ParentLink><Id>4</Id><Edition>Business</Edition><MaxSizeGB>50</MaxSizeGB><CollationName>SQL_Latin1_General_CP1_CI_AS</CollationName><CreationDate>2013-03-19T20:22:56.4700000</CreationDate><IsFederationRoot>False</IsFederationRoot><IsSystemObject>False</IsSystemObject><SizeMB i:nil=\"true\"/><MaxSizeBytes>53687091200</MaxSizeBytes></ServiceResource>", { 'cache-control': 'no-store,no-cache',
   'content-length': '815',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -513,7 +513,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/sqlservers/servers/oe7hjyulqf')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/sqlservers/servers/oe7hjyulqf')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',

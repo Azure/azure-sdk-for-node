@@ -12,12 +12,14 @@ services/blob/filters-tests.js
 services/core/connectionstringparser-tests.js
 services/core/serviceclient-tests.js
 services/core/exponentialretrypolicyfilter-tests.js
+services/core/hmacsha256sign-tests.js
 services/core/linearretrypolicyfilter-tests.js
 services/core/servicesettings-tests.js
 services/core/servicebussettings-tests.js
 services/core/servicemanagementsettings-tests.js
 services/core/storageservicesettings-tests.js
 services/queue/queueservice-tests.js
+services/scm/scmservice-tests.js
 services/serviceBus/internal/wraptokenmanager-tests.js
 services/serviceBus/apnsservice-tests.js
 services/serviceBus/apnsservice-registrations-tests.js
@@ -34,7 +36,6 @@ services/serviceManagement/affinitygroup-tests.js
 services/serviceManagement/servicebusmanagementservice-tests.js
 services/serviceManagement/servicemanagementservice-tests.js
 services/serviceManagement/sqlmanagementservice-tests.js
-services/serviceManagement/websitemanagementservice-tests.js
 services/table/internal/sharedkeytable-tests.js
 services/table/internal/sharedkeylitetable-tests.js
 services/table/batchserviceclient-tests.js
@@ -45,9 +46,11 @@ services/table/tableservice-tablequery-tests.js
 services/table/tableservice-tests.js
 services/table/tableservice-gb-tests.js
 services/sqlAzure/sqlservice-tests.js
+services/webSiteManagement/websitemanagementservice-tests.js
 util/date-tests.js
 util/edmtype-tests.js
 util/iso8061date-tests.js
+util/js2xml-tests.js
 util/odatahandler-tests.js
 util/util-tests.js
 util/validate-tests.js

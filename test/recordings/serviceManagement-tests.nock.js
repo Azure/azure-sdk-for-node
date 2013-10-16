@@ -3,7 +3,7 @@
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/locations')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/locations')
   .reply(200, "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Location><Name>West Europe</Name><DisplayName>West Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService></AvailableServices></Location><Location><Name>Southeast Asia</Name><DisplayName>Southeast Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService></AvailableServices></Location><Location><Name>East Asia</Name><DisplayName>East Asia</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService></AvailableServices></Location><Location><Name>North Central US</Name><DisplayName>North Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService></AvailableServices></Location><Location><Name>North Europe</Name><DisplayName>North Europe</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService></AvailableServices></Location><Location><Name>South Central US</Name><DisplayName>South Central US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService></AvailableServices></Location><Location><Name>West US</Name><DisplayName>West US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService></AvailableServices></Location><Location><Name>East US</Name><DisplayName>East US</DisplayName><AvailableServices><AvailableService>Compute</AvailableService><AvailableService>Storage</AvailableService><AvailableService>PersistentVMRole</AvailableService></AvailableServices></Location></Locations>", { 'cache-control': 'no-cache',
   'content-length': '2131',
   'content-type': 'application/xml; charset=utf-8',
@@ -14,8 +14,8 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices')
-  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices')
+  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
   'content-length': '591',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -26,10 +26,10 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices', '*')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/compute/nodesdk1',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/compute/nodesdk1',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': '490c067502cb4f8c98c5bc79f3f19d51',
   date: 'Tue, 19 Mar 2013 20:16:57 GMT' });
@@ -37,8 +37,8 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices')
-  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService><HostedService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk1</Url><ServiceName>nodesdk1</ServiceName><HostedServiceProperties><Description>Service host</Description><Location>West US</Location><Label>bm9kZXNkazE=</Label><Status>Created</Status><DateCreated>2013-03-19T20:16:56Z</DateCreated><DateLastModified>2013-03-19T20:16:56Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices')
+  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService><HostedService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk1</Url><ServiceName>nodesdk1</ServiceName><HostedServiceProperties><Description>Service host</Description><Location>West US</Location><Label>bm9kZXNkazE=</Label><Status>Created</Status><DateCreated>2013-03-19T20:16:56Z</DateCreated><DateLastModified>2013-03-19T20:16:56Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
   'content-length': '1067',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -48,7 +48,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk1')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -58,8 +58,8 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices')
-  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices')
+  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
   'content-length': '591',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -70,10 +70,10 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices', '*')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/compute/nodesdk2',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/compute/nodesdk2',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': 'f1cc6e5e3408418b895da7e442766fb4',
   date: 'Tue, 19 Mar 2013 20:17:13 GMT' });
@@ -81,8 +81,8 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk2')
-  .reply(200, "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk2</Url><ServiceName>nodesdk2</ServiceName><HostedServiceProperties><Description>Service host</Description><Location>West US</Location><Label>bm9kZXNkazI=</Label><Status>Created</Status><DateCreated>2013-03-19T20:17:13Z</DateCreated><DateLastModified>2013-03-19T20:17:13Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk2')
+  .reply(200, "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk2</Url><ServiceName>nodesdk2</ServiceName><HostedServiceProperties><Description>Service host</Description><Location>West US</Location><Label>bm9kZXNkazI=</Label><Status>Created</Status><DateCreated>2013-03-19T20:17:13Z</DateCreated><DateLastModified>2013-03-19T20:17:13Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService>", { 'cache-control': 'no-cache',
   'content-length': '578',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -92,7 +92,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk2')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -102,8 +102,8 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices')
-  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices')
+  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
   'content-length': '591',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -114,10 +114,10 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices', '*')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/compute/nodesdk3',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/compute/nodesdk3',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': 'ceefb79a742040c584d9092ea7506986',
   date: 'Tue, 19 Mar 2013 20:17:31 GMT' });
@@ -125,8 +125,8 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk3')
-  .reply(200, "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk3</Url><ServiceName>nodesdk3</ServiceName><HostedServiceProperties><Description>Service host</Description><Location>West US</Location><Label>bm9kZXNkazM=</Label><Status>Created</Status><DateCreated>2013-03-19T20:17:31Z</DateCreated><DateLastModified>2013-03-19T20:17:29Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk3')
+  .reply(200, "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk3</Url><ServiceName>nodesdk3</ServiceName><HostedServiceProperties><Description>Service host</Description><Location>West US</Location><Label>bm9kZXNkazM=</Label><Status>Created</Status><DateCreated>2013-03-19T20:17:31Z</DateCreated><DateLastModified>2013-03-19T20:17:29Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService>", { 'cache-control': 'no-cache',
   'content-length': '578',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -136,7 +136,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk3')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -146,8 +146,8 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices')
-  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices')
+  .reply(200, "<HostedServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><HostedService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/myproj</Url><ServiceName>myproj</ServiceName><HostedServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>bXlwcm9q</Label><Status>Created</Status><DateCreated>2013-03-04T11:34:55Z</DateCreated><DateLastModified>2013-03-04T11:36:38Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService></HostedServices>", { 'cache-control': 'no-cache',
   'content-length': '591',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -158,10 +158,10 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices', '*')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/compute/nodesdk4',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/compute/nodesdk4',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': '322f0255f7bb4cfb91806c9f19324c51',
   date: 'Tue, 19 Mar 2013 20:17:48 GMT' });
@@ -169,8 +169,8 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk4')
-  .reply(200, "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk4</Url><ServiceName>nodesdk4</ServiceName><HostedServiceProperties><Description>Service host</Description><Location>West US</Location><Label>bm9kZXNkazQ=</Label><Status>Created</Status><DateCreated>2013-03-19T20:17:46Z</DateCreated><DateLastModified>2013-03-19T20:17:47Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk4')
+  .reply(200, "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk4</Url><ServiceName>nodesdk4</ServiceName><HostedServiceProperties><Description>Service host</Description><Location>West US</Location><Label>bm9kZXNkazQ=</Label><Status>Created</Status><DateCreated>2013-03-19T20:17:46Z</DateCreated><DateLastModified>2013-03-19T20:17:47Z</DateLastModified><ExtendedProperties/></HostedServiceProperties></HostedService>", { 'cache-control': 'no-cache',
   'content-length': '578',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -180,7 +180,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/hostedservices/nodesdk4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/hostedservices/nodesdk4')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -190,8 +190,8 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices')
-  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/storage4dc03cac</Url><ServiceName>storage4dc03cac</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>c3RvcmFnZTRkYzAzY2Fj</Label><Status>Created</Status><Endpoints><Endpoint>http://storage4dc03cac.blob.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.queue.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices')
+  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/storage4dc03cac</Url><ServiceName>storage4dc03cac</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>c3RvcmFnZTRkYzAzY2Fj</Label><Status>Created</Status><Endpoints><Endpoint>http://storage4dc03cac.blob.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.queue.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
   'content-length': '3312',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -202,10 +202,10 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/storage/nodesdk1',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/storage/nodesdk1',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': '56f82c509b8540c7b3ce1c5795e374df',
   date: 'Tue, 19 Mar 2013 20:18:09 GMT' });
@@ -213,8 +213,8 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices')
-  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/nodesdk1</Url><ServiceName>nodesdk1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>bm9kZXNkazE=</Label><Status>ResolvingDns</Status><Endpoints><Endpoint>http://nodesdk1.blob.core.windows.net/</Endpoint><Endpoint>http://nodesdk1.queue.core.windows.net/</Endpoint><Endpoint>http://nodesdk1.table.core.windows.net/</Endpoint></Endpoints></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/storage4dc03cac</Url><ServiceName>storage4dc03cac</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>c3RvcmFnZTRkYzAzY2Fj</Label><Status>Created</Status><Endpoints><Endpoint>http://storage4dc03cac.blob.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.queue.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices')
+  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/nodesdk1</Url><ServiceName>nodesdk1</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>bm9kZXNkazE=</Label><Status>ResolvingDns</Status><Endpoints><Endpoint>http://nodesdk1.blob.core.windows.net/</Endpoint><Endpoint>http://nodesdk1.queue.core.windows.net/</Endpoint><Endpoint>http://nodesdk1.table.core.windows.net/</Endpoint></Endpoints></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/storage4dc03cac</Url><ServiceName>storage4dc03cac</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>c3RvcmFnZTRkYzAzY2Fj</Label><Status>Created</Status><Endpoints><Endpoint>http://storage4dc03cac.blob.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.queue.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
   'content-length': '3884',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -224,7 +224,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/nodesdk1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/nodesdk1')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -234,8 +234,8 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices')
-  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/storage4dc03cac</Url><ServiceName>storage4dc03cac</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>c3RvcmFnZTRkYzAzY2Fj</Label><Status>Created</Status><Endpoints><Endpoint>http://storage4dc03cac.blob.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.queue.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices')
+  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/storage4dc03cac</Url><ServiceName>storage4dc03cac</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>c3RvcmFnZTRkYzAzY2Fj</Label><Status>Created</Status><Endpoints><Endpoint>http://storage4dc03cac.blob.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.queue.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
   'content-length': '3312',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -246,10 +246,10 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/storage/nodesdk2',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/storage/nodesdk2',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': '2d978d6bb9c44292b785cde46fba2440',
   date: 'Tue, 19 Mar 2013 20:18:38 GMT' });
@@ -257,8 +257,8 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/nodesdk2')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/nodesdk2</Url><ServiceName>nodesdk2</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>bm9kZXNkazI=</Label><Status>ResolvingDns</Status><Endpoints><Endpoint>http://nodesdk2.blob.core.windows.net/</Endpoint><Endpoint>http://nodesdk2.queue.core.windows.net/</Endpoint><Endpoint>http://nodesdk2.table.core.windows.net/</Endpoint></Endpoints></StorageServiceProperties><ExtendedProperties/></StorageService>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/nodesdk2')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/nodesdk2</Url><ServiceName>nodesdk2</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>bm9kZXNkazI=</Label><Status>ResolvingDns</Status><Endpoints><Endpoint>http://nodesdk2.blob.core.windows.net/</Endpoint><Endpoint>http://nodesdk2.queue.core.windows.net/</Endpoint><Endpoint>http://nodesdk2.table.core.windows.net/</Endpoint></Endpoints></StorageServiceProperties><ExtendedProperties/></StorageService>", { 'cache-control': 'no-cache',
   'content-length': '674',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -268,7 +268,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/nodesdk2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/nodesdk2')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -278,8 +278,8 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices')
-  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/storage4dc03cac</Url><ServiceName>storage4dc03cac</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>c3RvcmFnZTRkYzAzY2Fj</Label><Status>Created</Status><Endpoints><Endpoint>http://storage4dc03cac.blob.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.queue.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices')
+  .reply(200, "<StorageServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/andrerod</Url><ServiceName>andrerod</ServiceName><StorageServiceProperties><Description/><Location>South Central US</Location><Label>YW5kcmVyb2Q=</Label><Status>Created</Status><Endpoints><Endpoint>http://andrerod.blob.core.windows.net/</Endpoint><Endpoint>http://andrerod.queue.core.windows.net/</Endpoint><Endpoint>http://andrerod.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>South Central US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>North Central US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/aogail123ds</Url><ServiceName>aogail123ds</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>East US</Location><Label>YW9nYWlsMTIzZHM=</Label><Status>Created</Status><Endpoints><Endpoint>http://aogail123ds.blob.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.queue.core.windows.net/</Endpoint><Endpoint>http://aogail123ds.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>East US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>West US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/ciserversdk</Url><ServiceName>ciserversdk</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>Y2lzZXJ2ZXJzZGs=</Label><Status>Created</Status><Endpoints><Endpoint>http://ciserversdk.blob.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.queue.core.windows.net/</Endpoint><Endpoint>http://ciserversdk.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService><StorageService><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/storage4dc03cac</Url><ServiceName>storage4dc03cac</ServiceName><StorageServiceProperties><Description i:nil=\"true\"/><Location>West US</Location><Label>c3RvcmFnZTRkYzAzY2Fj</Label><Status>Created</Status><Endpoints><Endpoint>http://storage4dc03cac.blob.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.queue.core.windows.net/</Endpoint><Endpoint>http://storage4dc03cac.table.core.windows.net/</Endpoint></Endpoints><GeoReplicationEnabled>true</GeoReplicationEnabled><GeoPrimaryRegion>West US</GeoPrimaryRegion><StatusOfPrimary/><GeoSecondaryRegion>East US</GeoSecondaryRegion><StatusOfSecondary/><LastGeoFailoverTime/></StorageServiceProperties><ExtendedProperties/></StorageService></StorageServices>", { 'cache-control': 'no-cache',
   'content-length': '3312',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -290,10 +290,10 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/storage/nodesdk3',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/storage/nodesdk3',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': '384eaa1efd374bdaa4f4ff36f82c22b4',
   date: 'Tue, 19 Mar 2013 20:19:05 GMT' });
@@ -301,8 +301,8 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/nodesdk3/keys')
-  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/nodesdk3</Url><StorageServiceKeys><Primary>qQR0f2hKM+qQcH11wCwSr45pM9EE00qIFjwnAllF6/fP9gCPggLOgXi/C87cHUU1NdWFbE/RfakIatiFCu1GZQ==</Primary><Secondary>FXqfN5jBqQpa7PRMe8wxLZwk78OYGGhlIhVlfsSiutDkZIjPVVOn48Ai2emuaiEGnpizNzBIrLWMG/6Jvr/xGQ==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/nodesdk3/keys')
+  .reply(200, "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Url>https://management.core.windows.net/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/nodesdk3</Url><StorageServiceKeys><Primary>qQR0f2hKM+qQcH11wCwSr45pM9EE00qIFjwnAllF6/fP9gCPggLOgXi/C87cHUU1NdWFbE/RfakIatiFCu1GZQ==</Primary><Secondary>FXqfN5jBqQpa7PRMe8wxLZwk78OYGGhlIhVlfsSiutDkZIjPVVOn48Ai2emuaiEGnpizNzBIrLWMG/6Jvr/xGQ==</Secondary></StorageServiceKeys></StorageService>", { 'cache-control': 'no-cache',
   'content-length': '511',
   'content-type': 'application/xml; charset=utf-8',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -312,7 +312,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/storageservices/nodesdk3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/storageservices/nodesdk3')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -323,7 +323,7 @@ nock('https://management.core.windows.net:443')
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/networking/media', '*')
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/networking/media', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.68 (rd_rdfe_stable.130710-0833) Microsoft-HTTPAPI/2.0',
@@ -334,7 +334,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/networking/media')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/networking/media')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<NetworkConfiguration xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration\">\r\n  <VirtualNetworkConfiguration>\r\n    <Dns />\r\n    <VirtualNetworkSites>\r\n      <VirtualNetworkSite name=\"test\" AffinityGroup=\"test-ag\">\r\n        <AddressSpace>\r\n          <AddressPrefix>10.0.0.0/20</AddressPrefix>\r\n        </AddressSpace>\r\n        <Subnets>\r\n          <Subnet name=\"sub1\">\r\n            <AddressPrefix>10.0.0.0/23</AddressPrefix>\r\n          </Subnet>\r\n        </Subnets>\r\n      </VirtualNetworkSite>\r\n    </VirtualNetworkSites>\r\n  </VirtualNetworkConfiguration>\r\n</NetworkConfiguration>", { 'cache-control': 'no-cache',
   'content-length': '749',
   'content-type': 'text/plain',
