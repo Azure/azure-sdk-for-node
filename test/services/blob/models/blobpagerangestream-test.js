@@ -15,7 +15,7 @@
 
 var should = require('should');
 var testutil = require('../../../util/util');
-var BlobPageRangeStream = testutil.libRequire('services/blob/models/blobpagerangestream');
+var BlobPageRangeStream = testutil.libRequire('services/blob/internal/blobpagerangestream');
 
 describe('BlobPageRangeStream', function(){
   var rangeStream = null;

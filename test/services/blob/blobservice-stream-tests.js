@@ -102,4 +102,29 @@ describe('BlobServiceStream', function () {
       });
     });
   });
+
+  it('createBlob', function (done) {
+    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+    var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
+    var blobText = 'Hello World';
+
+    blobService.createContainer(containerName, function (createError1, container1) {
+      assert.equal(createError1, null);
+      assert.notEqual(container1, null);
+
+      fs.writeFileSync(fileNameTarget, blobText);
+
+      var writeStream = blobService.createBlob(containerName, blobName, BlobConstants.BlobTypes.BLOCK, function (err, text) {
+        blobService.getBlobToText(containerName, blobName, function (err, text) {
+          assert.equal(err, null);
+
+          assert.equal(text, blobText);
+          done();
+        });
+      });
+
+      fs.createReadStream(fileNameTarget).pipe(writeStream);
+    });
+  });
 });
