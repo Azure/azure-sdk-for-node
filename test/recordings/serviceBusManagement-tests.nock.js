@@ -3,7 +3,7 @@
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/')
   .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">ServiceBus Namespaces</title><id>uuid:e4a71af7-59c9-4161-96db-8c5c4f68a195;id=2954974</id><updated>2013-03-19T20:14:45Z</updated><entry><id>uuid:e4a71af7-59c9-4161-96db-8c5c4f68a195;id=2954975</id><title type=\"text\">andrerod</title><updated>2013-02-10T23:41:46Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>andrerod</Name><Region>West Europe</Region><DefaultKey>8TWXTQQnfRoL+akrDi0/4y0RvWViwhmbB8o/X48MFcY=</DefaultKey><Status>Active</Status><CreatedAt>2013-02-10T23:41:46.413Z</CreatedAt><AcsManagementEndpoint>https://andrerod-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://andrerod.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://andrerod.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=8TWXTQQnfRoL+akrDi0/4y0RvWViwhmbB8o/X48MFcY=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:e4a71af7-59c9-4161-96db-8c5c4f68a195;id=2954976</id><title type=\"text\">ciserversb</title><updated>2013-02-09T20:00:11Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>ciserversb</Name><Region>West US</Region><DefaultKey>PS6ni/49tEqwDQ2QyqpKh4QPcyrOI80RqrNL6dRrfqw=</DefaultKey><Status>Active</Status><CreatedAt>2013-02-09T20:00:11.423Z</CreatedAt><AcsManagementEndpoint>https://ciserversb-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://ciserversb.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://ciserversb.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=PS6ni/49tEqwDQ2QyqpKh4QPcyrOI80RqrNL6dRrfqw=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:e4a71af7-59c9-4161-96db-8c5c4f68a195;id=2954977</id><title type=\"text\">nodesdk-2037</title><updated>2013-03-15T00:09:46Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-2037</Name><Region>West US</Region><DefaultKey>nHUU8Gl6kbzNhjD5q+tcJSArcAIS/2RI/qrVsPS3hio=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-15T00:09:46.15Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-2037-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-2037.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-2037.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=nHUU8Gl6kbzNhjD5q+tcJSArcAIS/2RI/qrVsPS3hio=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:e4a71af7-59c9-4161-96db-8c5c4f68a195;id=2954978</id><title type=\"text\">nodesdk-3937</title><updated>2013-03-15T00:09:56Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-3937</Name><Region>South Central US</Region><DefaultKey>aIOx1oDko7BB+tqHVWPChXHiRXRtftV5FtyIo+i1FFQ=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-15T00:09:56.367Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-3937-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-3937.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-3937.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=aIOx1oDko7BB+tqHVWPChXHiRXRtftV5FtyIo+i1FFQ=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:e4a71af7-59c9-4161-96db-8c5c4f68a195;id=2954979</id><title type=\"text\">nodesdk-415</title><updated>2013-03-16T01:18:32Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-415</Name><Region>West US</Region><DefaultKey>ek6lUzz+TcEiwHDifcZ+NJoxiafs9Hda4BdEsQl8Xqs=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-16T01:18:32.427Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-415-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-415.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-415.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=ek6lUzz+TcEiwHDifcZ+NJoxiafs9Hda4BdEsQl8Xqs=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:e4a71af7-59c9-4161-96db-8c5c4f68a195;id=2954980</id><title type=\"text\">nodesdk-6013</title><updated>2013-03-12T00:11:43Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-6013</Name><Region>West US</Region><DefaultKey>A8MDIe8EVxRxCoTLLZ/IyNuwW4QgQYytBHLtpkbhIKA=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-12T00:11:43.327Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-6013-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-6013.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-6013.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=A8MDIe8EVxRxCoTLLZ/IyNuwW4QgQYytBHLtpkbhIKA=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry></feed>", { 'cache-control': 'no-cache',
   'content-length': '6186',
   'content-type': 'application/atom+xml; type=feed; charset=utf-8',
@@ -15,7 +15,7 @@ function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1', '*')
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1', '*')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002180</id><title type=\"text\">nodesdk-1</title><updated>2013-03-19T20:14:48Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-1</Name><Region>West US</Region><DefaultKey>nLvxjF57ZrNpJ1EUml5BH5pWu4QlbQGlSqrR58CCfak=</DefaultKey><Status>Activating</Status><CreatedAt>2013-03-19T20:14:48.447Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-1-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-1.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-1.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=nLvxjF57ZrNpJ1EUml5BH5pWu4QlbQGlSqrR58CCfak=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '1027',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -26,7 +26,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/')
   .reply(200, "<feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\">ServiceBus Namespaces</title><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002205</id><updated>2013-03-19T20:14:54Z</updated><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002206</id><title type=\"text\">andrerod</title><updated>2013-02-10T23:41:46Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>andrerod</Name><Region>West Europe</Region><DefaultKey>8TWXTQQnfRoL+akrDi0/4y0RvWViwhmbB8o/X48MFcY=</DefaultKey><Status>Active</Status><CreatedAt>2013-02-10T23:41:46.413Z</CreatedAt><AcsManagementEndpoint>https://andrerod-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://andrerod.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://andrerod.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=8TWXTQQnfRoL+akrDi0/4y0RvWViwhmbB8o/X48MFcY=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002207</id><title type=\"text\">ciserversb</title><updated>2013-02-09T20:00:11Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>ciserversb</Name><Region>West US</Region><DefaultKey>PS6ni/49tEqwDQ2QyqpKh4QPcyrOI80RqrNL6dRrfqw=</DefaultKey><Status>Active</Status><CreatedAt>2013-02-09T20:00:11.423Z</CreatedAt><AcsManagementEndpoint>https://ciserversb-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://ciserversb.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://ciserversb.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=PS6ni/49tEqwDQ2QyqpKh4QPcyrOI80RqrNL6dRrfqw=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002208</id><title type=\"text\">nodesdk-1</title><updated>2013-03-19T20:14:48Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-1</Name><Region>West US</Region><Status>Activating</Status><CreatedAt>2013-03-19T20:14:48.447Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-1-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-1.servicebus.windows.net/</ServiceBusEndpoint><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002209</id><title type=\"text\">nodesdk-2037</title><updated>2013-03-15T00:09:46Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-2037</Name><Region>West US</Region><DefaultKey>nHUU8Gl6kbzNhjD5q+tcJSArcAIS/2RI/qrVsPS3hio=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-15T00:09:46.15Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-2037-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-2037.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-2037.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=nHUU8Gl6kbzNhjD5q+tcJSArcAIS/2RI/qrVsPS3hio=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002210</id><title type=\"text\">nodesdk-3937</title><updated>2013-03-15T00:09:56Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-3937</Name><Region>South Central US</Region><DefaultKey>aIOx1oDko7BB+tqHVWPChXHiRXRtftV5FtyIo+i1FFQ=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-15T00:09:56.367Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-3937-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-3937.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-3937.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=aIOx1oDko7BB+tqHVWPChXHiRXRtftV5FtyIo+i1FFQ=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002211</id><title type=\"text\">nodesdk-415</title><updated>2013-03-16T01:18:32Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-415</Name><Region>West US</Region><DefaultKey>ek6lUzz+TcEiwHDifcZ+NJoxiafs9Hda4BdEsQl8Xqs=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-16T01:18:32.427Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-415-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-415.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-415.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=ek6lUzz+TcEiwHDifcZ+NJoxiafs9Hda4BdEsQl8Xqs=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002212</id><title type=\"text\">nodesdk-6013</title><updated>2013-03-12T00:11:43Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-6013</Name><Region>West US</Region><DefaultKey>A8MDIe8EVxRxCoTLLZ/IyNuwW4QgQYytBHLtpkbhIKA=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-12T00:11:43.327Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-6013-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-6013.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-6013.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=A8MDIe8EVxRxCoTLLZ/IyNuwW4QgQYytBHLtpkbhIKA=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry></feed>", { 'cache-control': 'no-cache',
   'content-length': '6936',
   'content-type': 'application/atom+xml; type=feed; charset=utf-8',
@@ -37,7 +37,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -49,7 +49,7 @@ nock('https://management.core.windows.net:443')
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2', '*')
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2', '*')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:e4a71af7-59c9-4161-96db-8c5c4f68a195;id=2955049</id><title type=\"text\">nodesdk-2</title><updated>2013-03-19T20:15:00Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-2</Name><Region>West US</Region><DefaultKey>hQcY+8ARTIoXOXkgeT5V8kKKfctGfvim+pR4covTlOQ=</DefaultKey><Status>Activating</Status><CreatedAt>2013-03-19T20:15:00.137Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-2-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-2.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-2.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=hQcY+8ARTIoXOXkgeT5V8kKKfctGfvim+pR4covTlOQ=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '1027',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -60,7 +60,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002273</id><title type=\"text\">nodesdk-2</title><updated>2013-03-19T20:15:00Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-2</Name><Region>West US</Region><Status>Activating</Status><CreatedAt>2013-03-19T20:15:00.137Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-2-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-2.servicebus.windows.net/</ServiceBusEndpoint><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '786',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -71,7 +71,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -82,7 +82,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -93,7 +93,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -104,7 +104,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -115,7 +115,7 @@ nock('https://management.core.windows.net:443')
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3', '*')
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3', '*')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:2771d0f8-ea48-4a39-967d-c4d3a893ce9a;id=2950594</id><title type=\"text\">nodesdk-3</title><updated>2013-03-19T20:15:12Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-3</Name><Region>South Central US</Region><DefaultKey>G1KrhNaOk8Vj0tCpVhrOn3iXo2yvJ0PhnmiOc64tYEc=</DefaultKey><Status>Activating</Status><CreatedAt>2013-03-19T20:15:12.357Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-3-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-3.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-3.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=G1KrhNaOk8Vj0tCpVhrOn3iXo2yvJ0PhnmiOc64tYEc=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '1036',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -126,7 +126,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -137,7 +137,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -148,7 +148,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -159,7 +159,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -170,7 +170,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -181,7 +181,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -192,7 +192,7 @@ nock('https://management.core.windows.net:443')
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4', '*')
+.put('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4', '*')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002423</id><title type=\"text\">nodesdk-4</title><updated>2013-03-19T20:15:24Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-4</Name><Region>West US</Region><DefaultKey>vvDAZO4GkL60k/Ip2gaausbBE5l6X5pbKemRIIxmZMg=</DefaultKey><Status>Activating</Status><CreatedAt>2013-03-19T20:15:24.61Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-4-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-4.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-4.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=vvDAZO4GkL60k/Ip2gaausbBE5l6X5pbKemRIIxmZMg=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '1026',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -203,7 +203,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:13966b25-f54b-4e3f-9fd9-27b0c81a428b;id=3038477</id><title type=\"text\">nodesdk-4</title><updated>2013-03-19T20:15:24Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-4</Name><Region>West US</Region><Status>Activating</Status><CreatedAt>2013-03-19T20:15:24.61Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-4-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-4.servicebus.windows.net/</ServiceBusEndpoint><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '785',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -214,7 +214,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:2771d0f8-ea48-4a39-967d-c4d3a893ce9a;id=2950722</id><title type=\"text\">nodesdk-4</title><updated>2013-03-19T20:15:24Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-4</Name><Region>West US</Region><Status>Activating</Status><CreatedAt>2013-03-19T20:15:24.61Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-4-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-4.servicebus.windows.net/</ServiceBusEndpoint><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '785',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -225,7 +225,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002498</id><title type=\"text\">nodesdk-4</title><updated>2013-03-19T20:15:24Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-4</Name><Region>West US</Region><Status>Activating</Status><CreatedAt>2013-03-19T20:15:24.61Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-4-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-4.servicebus.windows.net/</ServiceBusEndpoint><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '785',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -236,7 +236,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(200, "<entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:2771d0f8-ea48-4a39-967d-c4d3a893ce9a;id=2950815</id><title type=\"text\">nodesdk-4</title><updated>2013-03-19T20:15:24Z</updated><content type=\"application/xml\"><NamespaceDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>nodesdk-4</Name><Region>West US</Region><DefaultKey>vvDAZO4GkL60k/Ip2gaausbBE5l6X5pbKemRIIxmZMg=</DefaultKey><Status>Active</Status><CreatedAt>2013-03-19T20:15:24.61Z</CreatedAt><AcsManagementEndpoint>https://nodesdk-4-sb.accesscontrol.windows.net/</AcsManagementEndpoint><ServiceBusEndpoint>https://nodesdk-4.servicebus.windows.net/</ServiceBusEndpoint><ConnectionString>Endpoint=sb://nodesdk-4.servicebus.windows.net/;SharedSecretIssuer=owner;SharedSecretValue=vvDAZO4GkL60k/Ip2gaausbBE5l6X5pbKemRIIxmZMg=</ConnectionString><SubscriptionId>279b0675cf67467f98f067ae31eb540f</SubscriptionId><Enabled>true</Enabled></NamespaceDescription></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '1022',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -247,7 +247,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -257,7 +257,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(200, "", { 'cache-control': 'no-cache',
   'transfer-encoding': 'chunked',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -267,7 +267,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -278,7 +278,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -289,7 +289,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -300,7 +300,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Regions/')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Regions/')
   .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><feed xmlns=\"http://www.w3.org/2005/Atom\"><title type=\"text\"></title><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002670</id><updated>2013-03-19T20:16:00Z</updated><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002671</id><title type=\"text\"></title><updated>2013-03-19T20:16:00Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>East Asia</Code><FullName>East Asia</FullName></RegionCodeDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002672</id><title type=\"text\"></title><updated>2013-03-19T20:16:00Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>West Europe</Code><FullName>West Europe</FullName></RegionCodeDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002673</id><title type=\"text\"></title><updated>2013-03-19T20:16:00Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>North Europe</Code><FullName>North Europe</FullName></RegionCodeDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002674</id><title type=\"text\"></title><updated>2013-03-19T20:16:00Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>East US</Code><FullName>East US</FullName></RegionCodeDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002675</id><title type=\"text\"></title><updated>2013-03-19T20:16:00Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>Southeast Asia</Code><FullName>Southeast Asia</FullName></RegionCodeDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002676</id><title type=\"text\"></title><updated>2013-03-19T20:16:00Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>North Central US</Code><FullName>North Central US</FullName></RegionCodeDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002677</id><title type=\"text\"></title><updated>2013-03-19T20:16:00Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>West US</Code><FullName>West US</FullName></RegionCodeDescription></content></entry><entry><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002678</id><title type=\"text\"></title><updated>2013-03-19T20:16:00Z</updated><content type=\"application/xml\"><RegionCodeDescription xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>South Central US</Code><FullName>South Central US</FullName></RegionCodeDescription></content></entry></feed>", { 'cache-control': 'no-cache',
   'content-length': '3542',
   'content-type': 'application/atom+xml; type=feed; charset=utf-8',
@@ -311,7 +311,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -322,7 +322,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -333,7 +333,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -344,7 +344,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -355,7 +355,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -366,7 +366,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -377,7 +377,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -388,7 +388,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -399,7 +399,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/CheckNamespaceAvailability/?namespace=nodesdk-5')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/CheckNamespaceAvailability/?namespace=nodesdk-5')
   .reply(200, "<?xml version=\"1.0\" encoding=\"utf-8\"?><entry xmlns=\"http://www.w3.org/2005/Atom\"><id>uuid:6ae65aa2-5867-43a3-904c-80a0be3bf0a4;id=3002870</id><title type=\"text\"></title><updated>2013-03-19T20:16:18Z</updated><content type=\"application/xml\"><NamespaceAvailability xmlns=\"http://schemas.microsoft.com/netservices/2010/10/servicebus/connect\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Result>true</Result></NamespaceAvailability></content></entry>", { 'cache-control': 'no-cache',
   'content-length': '454',
   'content-type': 'application/atom+xml; type=entry; charset=utf-8',
@@ -410,7 +410,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -421,7 +421,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -432,7 +432,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -443,7 +443,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -454,7 +454,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -465,7 +465,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -476,7 +476,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -487,7 +487,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -498,7 +498,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -509,7 +509,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -520,7 +520,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -531,7 +531,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -542,7 +542,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -553,7 +553,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -564,7 +564,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -575,7 +575,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -586,7 +586,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -597,7 +597,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -608,7 +608,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -619,7 +619,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -630,7 +630,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-2')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-2')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -641,7 +641,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-1')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -652,7 +652,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-3')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-3')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',
@@ -663,7 +663,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/services/ServiceBus/Namespaces/nodesdk-4')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/services/ServiceBus/Namespaces/nodesdk-4')
   .reply(500, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>InternalError</Code><Message>The server encountered an internal error. Please retry the request.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '229',
   'content-type': 'application/xml; charset=utf-8',

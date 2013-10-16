@@ -79,7 +79,7 @@ if (coverageOption !== -1) {
 
 var defaultStorageAccount = 'ciserversdk';
 var defaultServiceBusAccount = 'ciserversb';
-var defaultSubscription = '279b0675-cf67-467f-98f0-67ae31eb540f';
+var defaultSubscription = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
 
 if (!process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
   process.env.AZURE_APNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_FILE'])).toString('base64');

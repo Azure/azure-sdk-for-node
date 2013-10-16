@@ -255,9 +255,12 @@ describe('Service Management', function () {
       service.getNetworkConfig(function (err, response) {
         should.not.exist(err);
 
-        var configuration = response.body;
-        configuration.VirtualNetworkConfiguration.VirtualNetworkSites[0].AddressSpace[0].should.equal('10.0.0.0/20');
-        configuration.VirtualNetworkConfiguration.VirtualNetworkSites[0].Subnets[0].AddressPrefix.should.equal('10.0.0.0/23');
+        var virtualNetwork = response.body.VirtualNetworkConfiguration.VirtualNetworkSites.filter(function (vnet) {
+          return vnet.Name === 'test';
+        })[0];
+
+        virtualNetwork.AddressSpace[0].should.equal('10.0.0.0/20');
+        virtualNetwork.Subnets[0].AddressPrefix.should.equal('10.0.0.0/23');
 
         done(err);
       });
