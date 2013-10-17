@@ -74,7 +74,7 @@ describe('BlobServiceStream', function () {
     suiteUtil.teardownTest(done);
   });
 
-  it('GetBlob', function (done) {
+  it('getBlob', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
@@ -114,7 +114,7 @@ describe('BlobServiceStream', function () {
 
       fs.writeFileSync(fileNameTarget, blobText);
 
-      var writeStream = blobService.createBlob(containerName, blobName, BlobConstants.BlobTypes.BLOCK, function (err, text) {
+      var writeStream = blobService.createBlob(containerName, blobName, BlobConstants.BlobTypes.BLOCK, { blockIdPrefix: 'block' }, function (err, text) {
         blobService.getBlobToText(containerName, blobName, function (err, text) {
           assert.equal(err, null);
 
