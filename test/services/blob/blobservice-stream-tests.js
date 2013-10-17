@@ -87,8 +87,8 @@ describe('BlobServiceStream', function () {
       blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error1) {
         assert.equal(error1, null);
 
-        var readStream = blobService.getBlob(containerName, blobName);
-        readStream.on('end', function () {
+        var stream = blobService.getBlob(containerName, blobName).pipe(fs.createWriteStream(fileNameTarget));
+        stream.on('close', function () {
 
           var content = fs.readFileSync(fileNameTarget).toString();
           assert.equal(content, blobText);
@@ -98,7 +98,6 @@ describe('BlobServiceStream', function () {
           done();
         });
 
-        readStream.pipe(fs.createWriteStream(fileNameTarget));
       });
     });
   });
