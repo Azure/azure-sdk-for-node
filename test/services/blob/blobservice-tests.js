@@ -1177,13 +1177,12 @@ describe('BlobService', function () {
     try { fs.unlinkSync(fileName); } catch (e) {}
     fs.writeFileSync(fileName, blobText);
 
-    var stream = fs.createReadStream(fileName);
     var stat = fs.statSync(fileName);
 
     blobService.createContainer(containerName, function (createErr1) {
       assert.equal(createErr1, null);
 
-      blobService.createBlobBlockFromStream('test', containerName, blobName, stream, stat.size, function(error) {
+      blobService.createBlobBlockFromStream('test', containerName, blobName, fs.createReadStream(fileName), stat.size, function (error) {
         try { fs.unlinkSync(fileName); } catch (e) {}
 
         assert.equal(error, null);

@@ -4,10 +4,10 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.core.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups', '*')
+.post('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups', '*')
   .reply(201, "", { 'cache-control': 'no-cache',
   'content-length': '0',
-  location: 'https://management.core.windows.net/subscriptions/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroup/afgrp1',
+  location: 'https://management.core.windows.net/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroup/afgrp1',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
   'x-ms-request-id': 'acf2aee055f6461e80de2ae23f133be5',
   date: 'Tue, 19 Mar 2013 20:14:12 GMT' });
@@ -15,7 +15,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
   .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
   'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
@@ -26,7 +26,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups/!NotValid%24')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid%24')
   .reply(404, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>ResourceNotFound</Code><Message>The affinity group does not exist.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '199',
   'content-type': 'application/xml; charset=utf-8',
@@ -37,7 +37,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
   .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
   'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
@@ -48,7 +48,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups/afgrp1')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/afgrp1')
   .reply(200, "<AffinityGroup xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><HostedServices/><StorageServices/><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup>", { 'cache-control': 'no-cache',
   'content-length': '342',
   'content-type': 'application/xml; charset=utf-8',
@@ -59,7 +59,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
   .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
   'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
@@ -70,7 +70,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
   .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
   'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
@@ -81,7 +81,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
   .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
   'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
@@ -92,7 +92,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups/!NotValid%24')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/!NotValid%24')
   .reply(400, "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><Code>BadRequest</Code><Message>The affinity group name is invalid.</Message></Error>", { 'cache-control': 'no-cache',
   'content-length': '194',
   'content-type': 'application/xml; charset=utf-8',
@@ -103,7 +103,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
   .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"><AffinityGroup><Name>afgrp1</Name><Label>YWZncnAx</Label><Description>AG-DESC</Description><Location>West US</Location><Capabilities><Capability>PersistentVMRole</Capability></Capabilities></AffinityGroup></AffinityGroups>", { 'cache-control': 'no-cache',
   'content-length': '340',
   'content-type': 'application/xml; charset=utf-8',
@@ -114,7 +114,7 @@ nock('https://management.core.windows.net:443')
 [function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .delete('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups/afgrp1')
+  .delete('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups/afgrp1')
   .reply(200, "", { 'cache-control': 'no-cache',
   'content-length': '0',
   server: '33.0.6198.18 (rd_rdfe_stable.130314-1521) Microsoft-HTTPAPI/2.0',
@@ -124,7 +124,7 @@ nock('https://management.core.windows.net:443')
 function (nock) { 
 var result = 
 nock('https://management.core.windows.net:443')
-  .get('/279b0675-cf67-467f-98f0-67ae31eb540f/affinitygroups')
+  .get('/db1ab6f0-4769-4b27-930e-01e2ef9c123c/affinitygroups')
   .reply(200, "<AffinityGroups xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\"/>", { 'cache-control': 'no-cache',
   'content-length': '119',
   'content-type': 'application/xml; charset=utf-8',

@@ -5,6 +5,7 @@ services/blob/internal/sharedaccesssignature-tests.js
 services/blob/internal/sharedkey-tests.js
 services/blob/internal/sharedkeylite-tests.js
 services/blob/blobservice-tests.js
+services/blob/blobservice-stream-tests.js
 services/blob/blobservice-gb-tests.js
 services/blob/blobservice-uploaddownload-tests.js
 services/blob/models/blobpagerangestream-test.js

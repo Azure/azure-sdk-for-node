@@ -132,7 +132,7 @@ describe('HDInsight listClusters (under unit test)', function() {
       var webResource = performRequestStubUtil.GetLastWebResource();
       should.exist(webResource);
       webResource.path.should.be.eql('/' + subscriptionId + '/cloudservices');
-      webResource.httpVerb.should.be.eql('GET');
+      webResource.method.should.be.eql('GET');
       _.size(webResource.headers).should.be.eql(2);
       webResource.headers['x-ms-version'].should.be.eql('2011-08-18');
       webResource.headers['accept'].should.be.eql('application/xml');
