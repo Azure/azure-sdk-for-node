@@ -114,16 +114,18 @@ describe('BlobServiceStream', function () {
 
       fs.writeFileSync(fileNameTarget, blobText);
 
-      var writeStream = blobService.createBlob(containerName, blobName, BlobConstants.BlobTypes.BLOCK, { blockIdPrefix: 'block' }, function (err, text) {
+      var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createBlob(containerName, blobName, BlobConstants.BlobTypes.BLOCK, { blockIdPrefix: 'block' }));
+      stream.on('end', function () {
         blobService.getBlobToText(containerName, blobName, function (err, text) {
           assert.equal(err, null);
 
           assert.equal(text, blobText);
+
+          fs.unlinkSync(fileNameTarget);
+
           done();
         });
       });
-
-      fs.createReadStream(fileNameTarget).pipe(writeStream);
     });
   });
 });
