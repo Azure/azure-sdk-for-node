@@ -79,7 +79,7 @@ describe('HDInsight createCluster (under unit test)', function() {
       should.exist(webResource);
       var regionCloudServiceName = azureUtil.getNameSpace(hdInsightTestUtils.getSubscriptionId(), 'hdinsight' , 'East US');
       webResource.path.should.be.eql('/' + hdInsightTestUtils.getSubscriptionId() + '/cloudservices/' + regionCloudServiceName + '/resources/hdinsight/containers/' + clusterCreationObject.name);
-      webResource.httpVerb.should.be.eql('PUT');
+      webResource.method.should.be.eql('PUT');
       _.size(webResource.headers).should.be.eql(2);
       webResource.headers['x-ms-version'].should.be.eql('2011-08-18');
       webResource.headers['accept'].should.be.eql('application/xml');
