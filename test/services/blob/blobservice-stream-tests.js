@@ -74,56 +74,80 @@ describe('BlobServiceStream', function () {
     suiteUtil.teardownTest(done);
   });
 
-  it('getBlob', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
-    var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
-    var blobText = 'Hello World';
+  describe('getBlob', function () {
+    it('should be able to pipe', function (done) {
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+      var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
+      var blobText = 'Hello World';
 
-    blobService.createContainer(containerName, function (createError1, container1) {
-      assert.equal(createError1, null);
-      assert.notEqual(container1, null);
+      blobService.createContainer(containerName, function (createError1, container1) {
+        assert.equal(createError1, null);
+        assert.notEqual(container1, null);
 
-      blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error1) {
-        assert.equal(error1, null);
+        blobService.createBlockBlobFromText(containerName, blobName, blobText, function (error1) {
+          assert.equal(error1, null);
 
-        var stream = blobService.getBlob(containerName, blobName).pipe(fs.createWriteStream(fileNameTarget));
-        stream.on('close', function () {
+          var stream = blobService.getBlob(containerName, blobName).pipe(fs.createWriteStream(fileNameTarget));
+          stream.on('close', function () {
 
-          var content = fs.readFileSync(fileNameTarget).toString();
-          assert.equal(content, blobText);
+            var content = fs.readFileSync(fileNameTarget).toString();
+            assert.equal(content, blobText);
 
-          fs.unlinkSync(fileNameTarget);
+            try { fs.unlinkSync(fileNameTarget); } catch (e) {}
 
-          done();
+            done();
+          });
+
         });
-
       });
+    });
+
+    it('should emit error events', function (done) {
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+      var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
+      var blobText = 'Hello World';
+
+      var stream = blobService.getBlob(containerName, blobName);
+      stream.on('error', function (error) {
+        assert.equal(error.code, 'NotFound');
+        assert.equal(error.statusCode, '404');
+        assert.notEqual(error.requestId, null);
+
+        try { fs.unlinkSync(fileNameTarget); } catch (e) {}
+
+        done();
+      });
+
+      stream.pipe(fs.createWriteStream(fileNameTarget));
     });
   });
 
-  it('createBlob', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
-    var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
-    var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
-    var blobText = 'Hello World';
+  describe('createBlob', function () {
+    it('should be able to pipe', function (done) {
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+      var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
+      var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
+      var blobText = 'Hello World';
 
-    blobService.createContainer(containerName, function (createError1, container1) {
-      assert.equal(createError1, null);
-      assert.notEqual(container1, null);
+      blobService.createContainer(containerName, function (createError1, container1) {
+        assert.equal(createError1, null);
+        assert.notEqual(container1, null);
 
-      fs.writeFileSync(fileNameTarget, blobText);
+        fs.writeFileSync(fileNameTarget, blobText);
 
-      var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createBlob(containerName, blobName, BlobConstants.BlobTypes.BLOCK, { blockIdPrefix: 'block' }));
-      stream.on('end', function () {
-        blobService.getBlobToText(containerName, blobName, function (err, text) {
-          assert.equal(err, null);
+        var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createBlob(containerName, blobName, BlobConstants.BlobTypes.BLOCK, { blockIdPrefix: 'block' }));
+        stream.on('close', function () {
+          blobService.getBlobToText(containerName, blobName, function (err, text) {
+            assert.equal(err, null);
 
-          assert.equal(text, blobText);
+            assert.equal(text, blobText);
 
-          fs.unlinkSync(fileNameTarget);
+            try { fs.unlinkSync(fileNameTarget); } catch (e) {}
 
-          done();
+            done();
+          });
         });
       });
     });
