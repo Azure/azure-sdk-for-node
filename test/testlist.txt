@@ -48,7 +48,7 @@ services/table/tableservice-tablequery-tests.js
 services/table/tableservice-tests.js
 services/table/tableservice-gb-tests.js
 services/sqlAzure/sqlservice-tests.js
-services/webSiteManagement/websitemanagementservice-tests.js
+services/webSite/websitemanagementservice-tests.js
 util/date-tests.js
 util/edmtype-tests.js
 util/iso8061date-tests.js
