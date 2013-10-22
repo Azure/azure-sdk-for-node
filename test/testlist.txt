@@ -15,6 +15,7 @@ services/core/serviceclient-tests.js
 services/core/exponentialretrypolicyfilter-tests.js
 services/core/hmacsha256sign-tests.js
 services/core/linearretrypolicyfilter-tests.js
+services/core/filters/proxyfilter-tests.js
 services/core/servicesettings-tests.js
 services/core/servicebussettings-tests.js
 services/core/servicemanagementsettings-tests.js
