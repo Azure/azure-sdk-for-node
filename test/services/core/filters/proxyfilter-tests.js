@@ -16,6 +16,7 @@
 var _ = require('underscore');
 
 var assert = require('assert');
+var url = require('url');
 
 // Test includes
 var testutil = require('../../../util/util');
@@ -24,7 +25,7 @@ var blobtestutil = require('../../../framework/blob-test-utils');
 var azure = testutil.libRequire('azure');
 
 var containerNames = [];
-var containerNamesPrefix = 'cont';
+var containerNamesPrefix = 'contain';
 
 var testPrefix = 'proxyfilter-tests';
 
@@ -33,8 +34,9 @@ describe('Proxy filter', function () {
   var suiteUtil;
 
   before(function (done) {
+    var parsedProxy = url.parse('http://localhost:8888');
     service = azure.createBlobService()
-      .withFilter(azure.ProxyFilter.create('http://localhost:8888', false));
+      .withFilter(azure.ProxyFilter.create(parsedProxy, false));
 
     suiteUtil = blobtestutil.createBlobTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);

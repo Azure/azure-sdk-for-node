@@ -3,13 +3,12 @@
 exports.scopes = [[function (nock) { 
 var result = 
 nock('https://ciserversdk.blob.core.windows.net:443')
-  .put('/cont1?restype=container')
-  .reply(201, "", { 'last-modified': 'Tue, 22 Oct 2013 11:28:04 GMT',
-  etag: '"0x8D09D30E8CD84EC"',
+  .put('/contain1?restype=container')
+  .reply(201, "", { 'transfer-encoding': 'chunked',
+  'last-modified': 'Tue, 22 Oct 2013 16:47:33 GMT',
+  etag: '"0x8D09D5D8A6FD71A"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd989609d-499f-4f9a-a511-a079de54b553',
+  'x-ms-request-id': 'e32f1e8e-4913-4807-8412-ed007db21e9e',
   'x-ms-version': '2012-02-12',
-  date: 'Tue, 22 Oct 2013 11:28:04 GMT',
-  'transfer-encoding': 'chunked',
-  connection: 'Keep-alive' });
+  date: 'Tue, 22 Oct 2013 16:47:33 GMT' });
  return result; }]];
