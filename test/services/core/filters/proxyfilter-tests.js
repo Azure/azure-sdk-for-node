@@ -15,6 +15,7 @@
 
 var _ = require('underscore');
 
+var should = require('should');
 var assert = require('assert');
 var url = require('url');
 
@@ -23,9 +24,10 @@ var testutil = require('../../../util/util');
 var blobtestutil = require('../../../framework/blob-test-utils');
 
 var azure = testutil.libRequire('azure');
+var ProxyFilter = azure.ProxyFilter;
 
 var containerNames = [];
-var containerNamesPrefix = 'contain';
+var containerNamesPrefix = 'conta';
 
 var testPrefix = 'proxyfilter-tests';
 
@@ -34,9 +36,7 @@ describe('Proxy filter', function () {
   var suiteUtil;
 
   before(function (done) {
-    var parsedProxy = url.parse('http://localhost:8888');
-    service = azure.createBlobService()
-      .withFilter(azure.ProxyFilter.create(parsedProxy, false));
+    service = azure.createBlobService();
 
     suiteUtil = blobtestutil.createBlobTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
@@ -51,16 +51,60 @@ describe('Proxy filter', function () {
   });
 
   afterEach(function (done) {
-    suiteUtil.baseTeardownTest(done);
+    suiteUtil.teardownTest(done);
   });
 
-  it('should work for https over http', function (done) {
-    var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+  describe('when used in a service', function () {
+    it('should work for https over http', function (done) {
+      var parsedProxy = url.parse('http://localhost:8888');
+      var httpsOverHttpService = azure.createBlobService();
+      httpsOverHttpService.setProxy(parsedProxy);
 
-    service.createContainer(containerName, function (err) {
-      assert.equal(err, null);
+      suiteUtil.setupService(httpsOverHttpService);
 
-      done();
+      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+
+      httpsOverHttpService.createContainer(containerName, function (err) {
+        assert.equal(err, null);
+
+        done();
+      });
+    });
+  });
+
+  describe('setting the agent', function() {
+    it('should work for http over http', function (done) {
+      var proxyFilter = ProxyFilter.create(url.parse('http://localhost:8888'));
+      proxyFilter({ url: 'http://service.com' },
+        function (resource, callback) {
+          resource.agent.should.not.equal(null);
+          resource.agent.proxyOptions.hostname.should.equal('localhost');
+          resource.agent.proxyOptions.port.should.equal('8888');
+
+          resource.strictSSL.should.equal(false);
+
+          callback();
+        },
+        function () {
+          done();
+        });
+    });
+
+    it('should work for http over https', function (done) {
+      var proxyFilter = ProxyFilter.create(url.parse('https://localhost:8888'));
+      proxyFilter({ url: 'http://service.com' },
+        function (resource, callback) {
+          resource.agent.should.not.equal(null);
+          resource.agent.proxyOptions.hostname.should.equal('localhost');
+          resource.agent.proxyOptions.port.should.equal('8888');
+
+          resource.strictSSL.should.equal(false);
+
+          callback();
+        },
+        function () {
+          done();
+        });
     });
   });
 });
