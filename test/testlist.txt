@@ -9,13 +9,13 @@ services/blob/blobservice-stream-tests.js
 services/blob/blobservice-gb-tests.js
 services/blob/blobservice-uploaddownload-tests.js
 services/blob/models/blobpagerangestream-test.js
+services/core/filters/exponentialretrypolicyfilter-tests.js
+services/core/filters/linearretrypolicyfilter-tests.js
+services/core/filters/proxyfilter-tests.js
 services/blob/filters-tests.js
 services/core/connectionstringparser-tests.js
 services/core/serviceclient-tests.js
-services/core/exponentialretrypolicyfilter-tests.js
 services/core/hmacsha256sign-tests.js
-services/core/linearretrypolicyfilter-tests.js
-services/core/filters/proxyfilter-tests.js
 services/core/servicesettings-tests.js
 services/core/servicebussettings-tests.js
 services/core/servicemanagementsettings-tests.js
