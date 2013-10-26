@@ -143,23 +143,5 @@ describe('serviceclient-tests', function () {
       done();
     });
   });
-
-  describe('loadenvironmentproxy', function () {
-    it('should work', function (done) {
-      var serviceClient = new ServiceClient();
-
-      var loadEnvironmentProxy = sandbox.stub(serviceClient, '_loadEnvironmentProxyValue');
-      loadEnvironmentProxy.returns('http://localhost:8888');
-
-      serviceClient._loadEnvironmentProxy();
-
-      serviceClient.useProxy.should.equal(true);
-      serviceClient.proxyProtocol.should.equal('http:');
-      serviceClient.proxyPort.should.equal('8888');
-      serviceClient.proxyUrl.should.equal('localhost');
-
-      done();
-    });
-  });
 });
 
