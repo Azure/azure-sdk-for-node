@@ -9,6 +9,7 @@ services/blob/blobservice-stream-tests.js
 services/blob/blobservice-gb-tests.js
 services/blob/blobservice-uploaddownload-tests.js
 services/blob/models/blobpagerangestream-test.js
+services/core/credentials/token-tests.js
 services/core/filters/exponentialretrypolicyfilter-tests.js
 services/core/filters/linearretrypolicyfilter-tests.js
 services/core/filters/proxyfilter-tests.js
