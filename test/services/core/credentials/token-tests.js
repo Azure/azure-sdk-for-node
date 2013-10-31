@@ -30,7 +30,7 @@ describe('Token credentials', function () {
   before(function (done) {
     assert.notEqual(process.env.AZURE_ACCESS_TOKEN, null);
 
-    service = azure._createWebsiteClient(new TokenCloudCredentials({ token: process.env.AZURE_ACCESS_TOKEN, subscriptionId: process.env.AZURE_SUBSCRIPTION_ID }));
+    service = azure._createWebsiteManagementClient(new TokenCloudCredentials({ token: process.env.AZURE_ACCESS_TOKEN, subscriptionId: process.env.AZURE_SUBSCRIPTION_ID }));
     service.strictSSL = false;
     suiteUtil = new MockedTestUtils(service, testPrefix);
     suiteUtil.setupSuite(done);
