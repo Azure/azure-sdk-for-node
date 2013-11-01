@@ -8,8 +8,8 @@ module.exports = function(grunt) {
               'README.md',
               'lib/azure.js',
               'lib/services/core/serviceclient.js',
-              'lib/services/core/exponentialretrypolicyfilter.js',
-              'lib/services/core/linearretrypolicyfilter.js',
+              'lib/services/core/filters/exponentialretrypolicyfilter.js',
+              'lib/services/core/filters/linearretrypolicyfilter.js',
               'lib/services/blob/*.js',
               'lib/services/queue/*.js',
               'lib/services/serviceBus/apnsservice.js',
@@ -17,16 +17,16 @@ module.exports = function(grunt) {
               'lib/services/serviceBus/notificationhubservice.js',
               'lib/services/serviceBus/servicebusservice.js',
               'lib/services/serviceBus/wnsservice.js',
-              'lib/services/serviceManagement/*.js',
-              'lib/services/sqlAzure/sqlservice.js',
+              'lib/services/management/*.js',
+              'lib/services/sql/sqlservice.js',
               'lib/services/table/tableservice.js',
               'lib/serviceruntime/roleenvironment.js',
               'lib/util/date.js'
             ], 
             options: {
                 destination: 'docs',
-                // configure: 'jsdoc/jsdoc.json',
-                // template: 'jsdoc/template'
+                configure: 'jsdoc/jsdoc.json',
+                template: 'jsdoc/template'
             }
         }
     },

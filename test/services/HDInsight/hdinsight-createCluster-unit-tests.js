@@ -32,7 +32,7 @@ var azure = testutil.libRequire('azure');
 var performRequestStubUtil;
 
 describe('HDInsight createCluster (under unit test)', function() {
-  var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
+  var HDInsight = require('../../../lib/services/hdinsight/hdinsightservice.js');
   var hdInsight;
   var hdInsightTestUtils;
 
