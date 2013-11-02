@@ -135,8 +135,10 @@ describe('BlobServiceStream', function () {
         assert.equal(createError1, null);
         assert.notEqual(container1, null);
 
+        // Write file so that it can be piped
         fs.writeFileSync(fileNameTarget, blobText);
 
+        // Pipe file to a blob
         var stream = fs.createReadStream(fileNameTarget).pipe(blobService.createBlob(containerName, blobName, BlobConstants.BlobTypes.BLOCK, { blockIdPrefix: 'block' }));
         stream.on('close', function () {
           blobService.getBlobToText(containerName, blobName, function (err, text) {
