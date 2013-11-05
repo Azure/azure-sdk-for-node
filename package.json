@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.7.16",
+  "version": "0.7.17",
   "description": "Windows Azure Client Library for node",
   "tags": [
     "azure",
@@ -42,7 +42,9 @@
     "validator": ">= 0.4.12",
     "wns": ">= 0.5.3",
     "mpns": ">= 2.0.0",
-    "envconf": ">= 0.0.4"
+    "envconf": ">= 0.0.4",
+    "duplexer": "~0.1.1",
+    "through": "~2.3.4"
   },
   "devDependencies": {
     "mocha": ">= 1.12.0",
@@ -66,6 +68,7 @@
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
+    "update": "node scripts/update.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",
     "coverage": "node scripts/unit.js testlist.txt -coverage > coverage.html"

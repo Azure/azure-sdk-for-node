@@ -31,7 +31,7 @@ var performRequestStubUtil;
 describe('HDInsight deleteClusters (under unit test)', function() {
   var subscriptionId;
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
-  var HDInsight = require('../../../lib/services/serviceManagement/hdinsightservice.js');
+  var HDInsight = require('../../../lib/services/hdinsight/hdinsightservice.js');
   var hdInsight;
   var hdInsightTestUtils;
 
@@ -77,7 +77,7 @@ describe('HDInsight deleteClusters (under unit test)', function() {
       should.exist(webResource);
       var regionCloudServiceName = azureUtil.getNameSpace(subscriptionId, 'hdinsight' , 'East US');
       webResource.path.should.be.eql('/' + subscriptionId + '/cloudservices/' + regionCloudServiceName + '/resources/hdinsight/containers/' + 'clustername');
-      webResource.httpVerb.should.be.eql('DELETE');
+      webResource.method.should.be.eql('DELETE');
       _.size(webResource.headers).should.be.eql(2);
       webResource.headers['x-ms-version'].should.be.eql('2011-08-18');
       webResource.headers['accept'].should.be.eql('application/xml');

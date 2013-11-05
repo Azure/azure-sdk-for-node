@@ -1382,7 +1382,7 @@ describe('BlobService', function () {
     });
   });
 
-  it('GetBlobToStream', function (done) {
+  it('getBlobToStream', function (done) {
     var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
     var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
     var fileNameTarget = testutil.generateId('getBlobFile', [], suiteUtil.isMocked) + '.test';
