@@ -254,6 +254,14 @@
                   "XmlNode": "UserPassword",
                   "IncludeIfEmpty": true
                 },
+              "CustomData":
+                {
+                  "Name": "CustomData",
+                  "Required": false,
+                  "Type": "Primitive.String",
+                  "RegEx": "NIL",
+                  "XmlNode": "CustomData"
+                },
               "DisableSshPasswordAuthentication": 
                 {
                   "Name": "DisableSshPasswordAuthentication",
