@@ -1,7 +1,12 @@
+2013.11.5 Version 0.7.17
+* Added getBlob and createBlob operations that support stream piping
+* Added compute, management, network, serviceBus, sql, storage management, store and subscription preview wrappers
+* Multiple bugfixes
+
 2013.10.16 Version 0.7.16
 * Improved API documentation
 * Updated Virtual Machines API to 2013-06-01
-* Added website management wrappers preview APIs
+* Added website management preview wrappers
 * Multiple bugfixes
 
 2013.08.19 Version 0.7.15

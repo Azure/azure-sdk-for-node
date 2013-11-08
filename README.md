@@ -1,4 +1,6 @@
-# Windows Azure SDK for Node.js [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
+# Windows Azure SDK for Node.js 
+
+[![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
 
 This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. 
 
@@ -103,26 +105,20 @@ blobService.createContainerIfNotExists('taskcontainer', {publicAccessLevel : 'bl
 });
 ```
 
-To upload a file (assuming it is called task1-upload.txt, it contains the exact text "hello world" (no quotation marks), and it is placed in the same folder as the script below), the method **createBlockBlobFromStream** can be used:
+To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method **createBlob** can be used. This method will return a writable stream which can be writen to, for instance, through piping:
 
 ```Javascript
 var blobService = azure.createBlobService();
-blobService.createBlockBlobFromStream('taskcontainer', 'task1', fs.createReadStream('task1-upload.txt'), 11, function(error){
-    if(!error){
-        // Blob uploaded
-    }
-});
+
+fs.createReadStream('task1-upload.txt').pipe(blobService.createBlob('taskcontainer', 'task1', azure.Constants.BlobConstants.BlobTypes.BLOCK));
 ```
 
-To download the blob and write it to the file system, the **getBlobToStream** method can be used:
+To download the blob and write it to the file system, a similar **getBlob** method can be used:
 
 ```Javascript
 var blobService = azure.createBlobService();
-blobService.getBlobToStream('taskcontainer', 'task1', fs.createWriteStream('task1-download.txt'), function(error, serverBlob){
-    if(!error){
-        // Blob available in serverBlob.blob variable
-    }
-});
+
+blobService.getBlob('taskcontainer', 'task1').pipe(fs.createWriteStream('task1-download.txt'));
 ```
 
 To create a SAS URL you can use the **getBlobUrl** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
