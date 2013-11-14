@@ -22,7 +22,7 @@ var testutil = require('../../../util/util');
 // Lib includes
 var azure = testutil.libRequire('azure');
 var SharedKeyLiteTable = testutil.libRequire('services/table/internal/sharedkeylitetable');
-var WebResource = testutil.libRequire('http/webresource');
+var WebResource = testutil.libRequire('common/lib/http/webresource');
 var ServiceClientConstants = azure.ServiceClientConstants;
 var Constants = azure.Constants;
 var HeaderConstants = Constants.HeaderConstants;

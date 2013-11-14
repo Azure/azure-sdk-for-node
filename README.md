@@ -105,7 +105,7 @@ blobService.createContainerIfNotExists('taskcontainer', {publicAccessLevel : 'bl
 });
 ```
 
-To upload a file (assuming it is called task1-upload.txt, it contains the exact text "hello world" (no quotation marks), and it is placed in the same folder as the script below), the method **createBlob** can be used. This method will return a writable stream which can be writen to, for instance, through piping:
+To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method **createBlob** can be used. This method will return a writable stream which can be writen to, for instance, through piping:
 
 ```Javascript
 var blobService = azure.createBlobService();

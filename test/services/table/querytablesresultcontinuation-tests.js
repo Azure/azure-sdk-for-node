@@ -22,8 +22,8 @@ var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var azureutil = testutil.libRequire('util/util');
-var testutil = testutil.libRequire('util/util');
+var azureutil = testutil.libRequire('common/lib/util/util');
+var testutil = testutil.libRequire('common/lib/util/util');
 
 var ServiceClient = azure.ServiceClient;
 var TableQuery = azure.TableQuery;

@@ -20,7 +20,7 @@ var should = require('should');
 var testutil = require('./util');
 
 // Lib includes
-var edmType = testutil.libRequire('util/edmtype');
+var edmType = testutil.libRequire('common/lib/util/edmtype');
 
 describe('Edmtype', function () {
   describe('serializeQueryValue', function () {

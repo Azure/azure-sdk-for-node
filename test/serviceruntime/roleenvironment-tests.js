@@ -31,9 +31,9 @@ var RuntimeKernel = testutil.libRequire('serviceruntime/runtimekernel');
 var NamedPipeInputChannel = testutil.libRequire('serviceruntime/namedpipeinputchannel');
 var RuntimeVersionProtocolClient = testutil.libRequire('serviceruntime/runtimeversionprotocolclient');
 var RuntimeVersionManager = testutil.libRequire('serviceruntime/runtimeversionmanager');
-var Constants = testutil.libRequire('util/constants');
+var Constants = testutil.libRequire('common/lib/util/constants');
 var ServiceRuntimeConstants = Constants.ServiceRuntimeConstants;
-var azureutil = testutil.libRequire('util/util');
+var azureutil = testutil.libRequire('common/lib/util/util');
 
 var versionsEndpointPath = '\\\\.\\pipe\\versionsEndpointPath';
 var goalStatePath = '\\\\.\\pipe\\goalStatePath';
