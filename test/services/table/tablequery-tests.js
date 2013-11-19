@@ -59,7 +59,7 @@ suite('tablequery-tests', function () {
       .where('Name eq ?', 'Person');
 
     assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name eq \'Person\''), tableQuery.toQueryObject()['$filter']);
+    assert.equal('Name eq \'Person\'', tableQuery.toQueryObject()['$filter']);
     done();
   });
 
@@ -69,7 +69,7 @@ suite('tablequery-tests', function () {
       .where('Name eq ? or Name eq ?', 'Person1', 'Person2');
 
     assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name eq \'Person1\' or Name eq \'Person2\''), tableQuery.toQueryObject()['$filter']);
+    assert.equal('Name eq \'Person1\' or Name eq \'Person2\'', tableQuery.toQueryObject()['$filter']);
     done();
   });
 
@@ -80,7 +80,7 @@ suite('tablequery-tests', function () {
       .and('Visible eq true');
 
     assert.equal('Table()', tableQuery.toPath());
-    assert.equal(azureutil.encodeUri('Name eq \'Person\' and Visible eq true'), tableQuery.toQueryObject()['$filter']);
+    assert.equal('Name eq \'Person\' and Visible eq true', tableQuery.toQueryObject()['$filter']);
     done();
   });
 
@@ -96,25 +96,6 @@ suite('tablequery-tests', function () {
     assert.equal(tableQuery._replaceOperators(' &&  && '), ' and  and ');
     assert.equal(tableQuery._replaceOperators(' ||  || '), ' or  or ');
     assert.equal(tableQuery._replaceOperators('! !'), 'not not');
-
-    done();
-  });
-
-  test('ComplexPartitionKey', function (done) {
-    var complexPartitionKey = 'aHR0cDovL2ZlZWRzLmZlZWRidXJuZXIuY29tL2ppbXdhbmdzYmxvZw==';
-    var encodedComplexPartitionKey = 'aHR0cDovL2ZlZWRzLmZlZWRidXJuZXIuY29tL2ppbXdhbmdzYmxvZw%3D%3D';
-
-    var tableQuery = TableQuery.select()
-      .where('PartitionKey == ?', complexPartitionKey);
-
-    var queryObject = tableQuery.toQueryObject();
-    assert.notEqual(queryObject[QueryStringConstants.FILTER].indexOf(encodedComplexPartitionKey), -1);
-
-    tableQuery = TableQuery.select()
-      .where("PartitionKey == '" + complexPartitionKey + "'");
-
-    queryObject = tableQuery.toQueryObject();
-    assert.notEqual(queryObject[QueryStringConstants.FILTER].indexOf(encodedComplexPartitionKey), -1);
 
     done();
   });
