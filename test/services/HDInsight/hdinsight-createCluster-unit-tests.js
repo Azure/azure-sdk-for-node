@@ -18,22 +18,22 @@ var mocha = require('mocha');
 var sinon = require('sinon');
 var should = require('should');
 var _ = require('underscore');
-var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
-var azureUtil = require('../../../lib/util/util.js');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils');
+var azureUtil = require('../../../lib/common/lib/util/util');
 var uuid = require('node-uuid');
-var Validate = require('../../../lib/util/validate.js');
+var Validate = require('../../../lib/common/lib/util/validate');
 
 // Test includes
 var testutil = require('../../util/util');
 
-var PerformRequestStubUtil = require('./PerformRequestStubUtil.js');
-var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
+var PerformRequestStubUtil = require('./PerformRequestStubUtil');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils');
 
 var azure = testutil.libRequire('azure');
 var performRequestStubUtil;
 
 describe('HDInsight createCluster (under unit test)', function() {
-  var HDInsight = require('../../../lib/services/hdinsight/hdinsightservice.js');
+  var HDInsight = require('../../../lib/services/hdinsight/hdinsightservice');
   var hdInsight;
   var hdInsightTestUtils;
 

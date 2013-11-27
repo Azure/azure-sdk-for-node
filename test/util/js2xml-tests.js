@@ -20,7 +20,7 @@ var should = require('should');
 var testutil = require('./util');
 
 // Lib includes
-var js2xml = testutil.libRequire('util/js2xml');
+var js2xml = testutil.libRequire('common/lib/util/js2xml');
 
 describe('js2xml', function() {
   describe('getElementName', function () {

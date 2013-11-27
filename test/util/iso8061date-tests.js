@@ -20,7 +20,7 @@ var assert = require('assert');
 var testutil = require('./util');
 
 // Lib includes
-var ISO8061Date = testutil.libRequire('util/iso8061date');
+var ISO8061Date = testutil.libRequire('common/lib/util/iso8061date');
 
 suite('iso8061date-tests', function () {
   test('Parse', function (done) {

@@ -21,9 +21,10 @@ var util = require('util');
 var testutil = require('../../util/util');
 
 // Lib includes
-var TableQuery = testutil.libRequire('services/table/tablequery');
-var azureutil = testutil.libRequire('util/util');
-var Constants = testutil.libRequire('util/constants');
+var azure = testutil.libRequire('azure');
+var TableQuery = azure.TableQuery;
+var azureutil = testutil.libRequire('common/lib/util/util');
+var Constants = testutil.libRequire('common/lib/util/constants');
 var QueryStringConstants = Constants.QueryStringConstants;
 
 suite('tablequery-tests', function () {

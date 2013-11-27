@@ -17,7 +17,7 @@
 var mocha = require('mocha');
 var should = require('should');
 var _ = require('underscore');
-var azureUtil = require('../../../lib/util/util.js');
+var azureUtil = require('../../../lib/common/lib/util/util.js');
 
 
 // Test includes

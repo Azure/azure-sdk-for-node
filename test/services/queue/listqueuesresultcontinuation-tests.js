@@ -21,7 +21,7 @@ var testutil = require('../../util/util');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var azureutil = testutil.require('util/util');
+var azureutil = testutil.require('common/lib/util/util');
 
 var ServiceClient = azure.ServiceClient;
 var Constants = azure.Constants;

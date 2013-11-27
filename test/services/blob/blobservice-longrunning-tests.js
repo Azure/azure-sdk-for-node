@@ -24,7 +24,7 @@ var util = require('util');
 var testutil = require('../../util/util');
 
 // Lib includes
-var azureutil = testutil.libRequire('util/util');
+var azureutil = testutil.libRequire('common/lib/util/util');
 var azure = testutil.libRequire('azure');
 
 var SharedAccessSignature = azure.SharedAccessSignature;

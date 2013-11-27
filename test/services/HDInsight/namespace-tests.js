@@ -15,7 +15,7 @@
 // 
 
 // Test functions
-var azureUtil = require('../../../lib/util/util.js');
+var azureUtil = require('../../../lib/common/lib/util/util');
 
 // Test includes
 var should = require('should');

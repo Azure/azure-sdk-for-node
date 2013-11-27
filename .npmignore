@@ -4,6 +4,18 @@
 # Node #
 node_modules/
 
+# Sub-modules #
+lib/common/
+lib/services/computeManagement/
+lib/services/management/
+lib/services/networkManagement/
+lib/services/serviceBusManagement/
+lib/services/sqlManagement/
+lib/services/storageManagement/
+lib/services/storeManagement/
+lib/services/subscriptionManagement/
+lib/services/webSiteManagement/
+
 # Test folder #
 test/
 

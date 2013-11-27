@@ -29,9 +29,9 @@ var testutil = require('../../util/util');
 var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
-var azureutil = testutil.libRequire('util/util');
+var azureutil = testutil.libRequire('common/lib/util/util');
 var azure = testutil.libRequire('azure');
-var WebResource = testutil.libRequire('http/webresource');
+var WebResource = testutil.libRequire('common/lib/http/webresource');
 
 var SharedAccessSignature = azure.SharedAccessSignature;
 var BlobService = azure.BlobService;

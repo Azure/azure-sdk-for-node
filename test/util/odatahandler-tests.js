@@ -20,7 +20,7 @@ var assert = require('assert');
 var testutil = require('./util');
 
 // Lib includes
-var OdataHandler = testutil.libRequire('util/odatahandler');
+var OdataHandler = testutil.libRequire('common/lib/util/odatahandler');
 
 var fs = require('fs');
 

@@ -18,7 +18,10 @@ var _ = require('underscore');
 var util = require('util');
 var xmlbuilder = require('xmlbuilder');
 
-var Constants = require('../../lib/util/constants');
+// Test includes
+var testutil = require('./util');
+
+var Constants = testutil.libRequire('common/lib/util/constants');
 
 // Sample data builder for XML parsing tests
 

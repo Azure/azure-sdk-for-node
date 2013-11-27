@@ -22,7 +22,7 @@ var queuetestutil = require('../../framework/queue-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var azureutil = testutil.libRequire('util/util');
+var azureutil = testutil.libRequire('common/lib/util/util');
 
 var Constants = azure.Constants;
 var ServiceClientConstants = azure.ServiceClientConstants;
