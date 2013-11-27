@@ -1,3 +1,6 @@
+2013.11.27 Version 0.7.18
+* Lock xmlbuilder version
+
 2013.11.5 Version 0.7.17
 * Added getBlob and createBlob operations that support stream piping
 * Added compute, management, network, serviceBus, sql, storage management, store and subscription preview wrappers
