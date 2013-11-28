@@ -31,8 +31,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": " >= 0.7.17",
-    "xml2js": " >= 0.2.x"
+    "azure-common": " >= 0.7.17"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {

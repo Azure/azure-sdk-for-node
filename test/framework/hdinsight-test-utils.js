@@ -15,7 +15,7 @@
 // 
 
 var fs = require('fs');
-var xml2js = require('xml2js');
+var xml2js = require('azure-common').xml2js;
 var _ = require('underscore');
 var should = require('should');
 var uuid = require('node-uuid');
