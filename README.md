@@ -21,7 +21,7 @@ This project provides a Node.js package that makes it easy to access Windows Azu
 * Service Bus
     * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
     * Topics: create, list, and delete topics; create, list, and delete rules
-    * Notification hubs: create hubs, register for messages, send messages
+    * Notification hubs: create hubs, register for push notifications, send push notifications
 * Azure SQL Database
     * create, list and delete Azure SQL Database servers, databases and firewall rules
 * Service Runtime
@@ -265,7 +265,7 @@ serviceBusService.createSubscription(topic, subscription, function(error1){
 
 ## Notification Hubs
 
-Notification hubs allow you to send notifications to WNS, APNS, and GCM receivers.
+Notification hubs allow you to send notifications to WNS, APNS, GCM, and MPNS receivers.
 
 To create a notification hub, use the method **createNotificationHub**.
 
@@ -279,11 +279,13 @@ serviceBusService.createNotificationHub('hubName', function (err) {
 });
 ```
 
-To send messages to the notification hub use the methods of the **wns**, **apns**, or **gcm** objects. For a full reference on WNS method templates, check http://msdn.microsoft.com/en-us/library/windows/apps/hh779725.aspx.
+To send notification using native format to the notification hub use the methods of the **wns**, **apns**, **gcm**, **mpns** objects. For a full reference on WNS method templates, check http://msdn.microsoft.com/en-us/library/windows/apps/hh779725.aspx.
+To send template (cross-platform) notifications use the send method on the **NotificationHubService** class.
 
 ```JavaScript
 var notificationHubService = azure.createNotificationHubService('hubName');
 
+// WNS notification
 notificationHubService.wns.sendTileSquarePeekImageAndText01(
     null,
     {
@@ -300,6 +302,7 @@ notificationHubService.wns.sendTileSquarePeekImageAndText01(
         }
     });
 
+// APNS notification
 notificationHubService.apns.send(
     null,
     {
@@ -312,6 +315,7 @@ notificationHubService.apns.send(
         }
     });
 
+// GCM notification
 notificationHubService.gcm.send(
     null,
     {
@@ -322,7 +326,36 @@ notificationHubService.gcm.send(
             //message send successfully
         }
     });
+
+// MPNS notification
+notificationHubService.mpns.sendToast(
+    null,
+    {
+        text1: 'A dog',
+		text2: 'This is a dog'
+    },
+    function (error) {
+        if (!error) {
+            //message send successfully
+        }
+    });
+
+// template notification
+notificationHubService.gcm.send(
+    null,
+    {
+        message: 'This is my template notification',
+		goesTo: 'all registrations irrespective of the platform'
+    },
+    function (error) {
+        if (!error) {
+            //message send successfully
+        }
+    });
+
 ```
+
+To create registrations (for both native and template notifications), use the creation methods in the **wns**, **apns**, **gcm**, **mpns**. To retrieve, update and delete existing registrations, use the following methods in NotificationHubService: **getRegistration**, **listRegistrations**, **listRegistrationsByTag**, **updateRegistration**, and **deleteRegistration**.
 
 ## Azure SQL Database
 
