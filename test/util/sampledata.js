@@ -16,7 +16,7 @@
 
 var _ = require('underscore');
 var util = require('util');
-var xmlbuilder = require('xmlbuilder');
+var xmlbuilder = require('azure-common').xmlbuilder;
 
 // Test includes
 var testutil = require('./util');

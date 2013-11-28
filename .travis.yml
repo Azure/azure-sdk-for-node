@@ -11,4 +11,4 @@ matrix:
 
 # setup links to submodules
 before_install:
-  sh ./scripts/setup.sh
+  npm run-script setup
