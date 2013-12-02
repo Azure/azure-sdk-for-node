@@ -341,7 +341,7 @@ notificationHubService.mpns.sendToast(
     });
 
 // template notification
-notificationHubService.gcm.send(
+notificationHubService.send(
     null,
     {
         message: 'This is my template notification',
