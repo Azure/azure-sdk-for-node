@@ -20,6 +20,11 @@ test-result.xml
 # Windows #
 Thumbs.db
 
+# Credentials #
+*.cer
+*.pfx
+*.pem
+
 # WebStorm #
 .idea/
 

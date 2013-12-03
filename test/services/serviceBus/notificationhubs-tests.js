@@ -315,6 +315,36 @@ describe('Notification hubs', function () {
     });
   });
 
+  describe('create registration identifier', function () {
+    var hubName;
+    var notificationHubService;
+
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
+      notificationHubService = azure.createNotificationHubService(hubName);
+
+      suiteUtil.setupService(notificationHubService);
+      service.createNotificationHub(hubName, function () {
+        done();
+      });
+    });
+
+    it('should work', function (done) {
+      service.getNotificationHub(hubName, function (err, hub) {
+        console.log(err);
+        console.log(hub);
+
+        notificationHubService.createRegistrationId(function (err, rsp) {
+          should.not.exist(err);
+          console.log(rsp);
+
+          done();
+        });
+      });
+    });
+  });
+
   describe('update registration', function () {
     var hubName;
     var notificationHubService;
