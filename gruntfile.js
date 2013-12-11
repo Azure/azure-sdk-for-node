@@ -17,6 +17,10 @@
 module.exports = function(grunt) {
   //init stuff
   grunt.initConfig({
+    downloadNuGet: {
+      path : 'hydra',
+      src : 'http://www.nuget.org/nuget.exe'
+    },
     //jsdoc config
     jsdoc : {
         dist : {
