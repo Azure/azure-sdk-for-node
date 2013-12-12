@@ -27,5 +27,10 @@ module.exports = function(grunt) {
 
     request(config.src).pipe(nugetExeStream);
   });
+
+  grunt.registerTask('findspecdlls', 'Find the specification dlls in packages and print them out', function () {
+    var paths = grunt.file.expand("./hydra/*.Specification.*/tools/*.Specification.dll");
+    console.log(paths);
+  });
 };
 
