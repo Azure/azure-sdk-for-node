@@ -332,12 +332,8 @@ describe('Notification hubs', function () {
 
     it('should work', function (done) {
       service.getNotificationHub(hubName, function (err, hub) {
-        console.log(err);
-        console.log(hub);
-
         notificationHubService.createRegistrationId(function (err, rsp) {
           should.not.exist(err);
-          console.log(rsp);
 
           done();
         });
