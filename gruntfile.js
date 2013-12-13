@@ -21,6 +21,9 @@ module.exports = function(grunt) {
       path : 'hydra',
       src : 'http://www.nuget.org/nuget.exe'
     },
+    restorePackages: {
+      privateFeedUrl : 'https://www.myget.org/F/hydra/'
+    },
     //jsdoc config
     jsdoc : {
         dist : {
