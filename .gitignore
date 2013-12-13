@@ -34,3 +34,6 @@ Thumbs.db
 # docs #
 docs/
 jsdoc/
+
+# Copied spec DLLs
+*.Specification.dll

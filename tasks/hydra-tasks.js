@@ -78,9 +78,39 @@ module.exports = function(grunt) {
     });
   });
 
-  grunt.registerTask('findspecdlls', 'Find the specification dlls in packages and print them out', function () {
-    var paths = grunt.file.expand("./hydra/*.Specification.*/tools/*.Specification.dll");
-    console.log(paths);
+  grunt.registerTask('copySpecDlls', 'Find the specification dlls and copy them to codegen dir', function () {
+    var sourcePaths = grunt.file.expand("./hydra/*.Specification.*/tools/*.Specification.dll");
+
+    _.each(sourcePaths, function (srcFile) {
+      var filename = path.basename(srcFile);
+      var destFile = path.join('lib/services/codegen', filename);
+      grunt.file.copy(srcFile, destFile, { encoding: 'binary' });
+    });
+  });
+
+  grunt.registerTask('generateCode', 'Run hydra code generator over the specifications and generate code', function () {
+    var hydraPath = grunt.file.expand('./hydra/Hydra.Generator.*/tools/hydra.exe')[0];
+
+    var hydraXmls = grunt.file.expand('./lib/service/codegen/*.hydra.xml');
+
+    var done = this.async();
+    var outstanding = hydraXmls.length;
+
+    function whenFinished(err, result, code) {
+      if (err) {
+        console.log(result.toString());
+        grunt.fail.fatal('Code generation failed');
+      }
+
+      outstanding -= 1;
+      if (outstanding === 0) {
+        done();
+      }
+    }
+
+    _.each(hydraXmls, function (xmlFile) {
+      runExe(hydraPath, [xmlFile], whenFinished);
+    });
   });
 
   function deleteFile(filename) {
@@ -134,6 +164,7 @@ module.exports = function(grunt) {
       restorePackages: restorePackages
     };
   }
+
 
   //
   // Run a CLR executable - run it directly if on Windows,
