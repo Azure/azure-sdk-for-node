@@ -39,12 +39,12 @@ module.exports = function(grunt) {
     var restoreConfigFile = 'restore.config';
 
     var configVars = [
-      ['PRIVATE_FEED_URL', 'restorePackages.privateFeedUrl'],
-      ['PRIVATE_FEED_USER_NAME', 'restorePackages.privateFeedUserName'],
-      ['PRIVATE_FEED_PASSWORD', 'restorePackages.privateFeedPassword']
+      ['PRIVATE_FEED_URL', 'privateFeedUrl'],
+      ['PRIVATE_FEED_USER_NAME', 'privateFeedUserName'],
+      ['PRIVATE_FEED_PASSWORD', 'privateFeedPassword']
     ];
 
-    configVars = configVars.map(function (v) { return [v[0], v[1], process.env[v[0]] || grunt.config(v[1])]; });
+    configVars = configVars.map(function (v) { return [v[0], v[1], process.env[v[0]] || grunt.config('restorePackages.' + v[1])]; });
 
     var unsetVars = configVars.filter(function (v) { return !(v[2]); });
     if (unsetVars.length !== 0) {
