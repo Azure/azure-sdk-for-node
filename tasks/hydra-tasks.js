@@ -52,9 +52,7 @@ module.exports = function(grunt) {
       return;
     }
 
-    var privateFeedUrl = configVars[0][2];
-    var privateFeedUserName = configVars[1][2];
-    var privateFeedPassword = configVars[2][2];
+    var config = _.chain(configVars).map(function (v) { return [v[1], v[2]]; }).object().value();
 
     deleteFile(restoreConfigFile);
 
@@ -62,10 +60,10 @@ module.exports = function(grunt) {
 
     var done = this.async();
 
-    n.addSource('hydra', privateFeedUrl, function (err) {
+    n.addSource('hydra', config.privateFeedUrl, function (err) {
       if (err) { done(false); deleteFile(restoreConfigFile); return; }
 
-      n.updateSource('hydra', privateFeedUserName, privateFeedPassword, function (err) {
+      n.updateSource('hydra', config.privateFeedUserName, config.privateFeedPassword, function (err) {
         if (err) { done(false); deleteFile(restoreConfigFile); return; }
 
         n.restorePackages('packages.config', 'hydra', function (err) {
