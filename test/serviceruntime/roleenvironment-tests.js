@@ -54,7 +54,7 @@ function setupVersionEndpoint () {
 
   inputPipeReadDataStub.withArgs(versionsEndpointPath).yields(undefined,
     "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-    "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+    "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
     "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
     "<RuntimeServerEndpoints>" +
     "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"" + goalStatePath + "\" />" +
@@ -70,7 +70,7 @@ function setupGoalStateEndpoint () {
 
   inputPipeReadDataStub.withArgs(goalStatePath).yields(undefined,
     "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-    "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+    "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
     "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
     "<Incarnation>1</Incarnation>" +
     "<ExpectedState>Started</ExpectedState>" +
@@ -162,7 +162,7 @@ suite('roleenvironment-tests', function () {
       inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
       inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
         "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
         "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -217,7 +217,7 @@ suite('roleenvironment-tests', function () {
     inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
     inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"newDeploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -255,7 +255,7 @@ suite('roleenvironment-tests', function () {
     inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
     inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -283,7 +283,7 @@ suite('roleenvironment-tests', function () {
       // Test 3 - 2 valid local resources
       inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
         "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
         "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -316,7 +316,7 @@ suite('roleenvironment-tests', function () {
         // Test 4 - no local resources
         inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
           "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
           "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
           "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -354,7 +354,7 @@ suite('roleenvironment-tests', function () {
     inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
     inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"instanceId_fd\" updateDomain=\"instanceId_ud\">" +
@@ -457,7 +457,7 @@ suite('roleenvironment-tests', function () {
     var stub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
     stub.yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -515,7 +515,7 @@ suite('roleenvironment-tests', function () {
         stub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
         stub.yields(undefined,
           "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+          "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
           "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
           "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
           "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -567,7 +567,7 @@ suite('roleenvironment-tests', function () {
           stub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
           stub.yields(undefined,
             "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-            "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+            "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
             "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
             "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
             "<CurrentInstance id=\"instanceId\" roleName=\"role1\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -635,7 +635,7 @@ suite('roleenvironment-tests', function () {
     inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
     inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -672,7 +672,7 @@ suite('roleenvironment-tests', function () {
 
   test('startedChangedNotifications', function (done) {
     var versionsXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<RuntimeServerEndpoints>" +
       "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"" + goalStatePath + "\" />" +
@@ -680,7 +680,7 @@ suite('roleenvironment-tests', function () {
       "</RuntimeServerDiscovery>";
 
     var goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Incarnation>1</Incarnation>" +
       "<ExpectedState>Started</ExpectedState>" +
@@ -690,7 +690,7 @@ suite('roleenvironment-tests', function () {
       "</GoalState>";
 
     var environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -777,7 +777,7 @@ suite('roleenvironment-tests', function () {
     azure.RoleEnvironment.getDeploymentId(function (error, id) {
       // Update to incarnation 2
       goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Incarnation>2</Incarnation>" +
         "<ExpectedState>Started</ExpectedState>" +
@@ -789,7 +789,7 @@ suite('roleenvironment-tests', function () {
       inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(
         undefined, 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
         "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"1\">" +
@@ -808,7 +808,7 @@ suite('roleenvironment-tests', function () {
 
   test('stoppedChangedNotifications', function (done) {
     var versionsXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<RuntimeServerEndpoints>" +
       "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"" + goalStatePath + "\" />" +
@@ -816,7 +816,7 @@ suite('roleenvironment-tests', function () {
       "</RuntimeServerDiscovery>";
 
     var goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Incarnation>1</Incarnation>" +
       "<ExpectedState>Started</ExpectedState>" +
@@ -826,7 +826,7 @@ suite('roleenvironment-tests', function () {
       "</GoalState>";
 
     var environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"thisdeploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -899,7 +899,7 @@ suite('roleenvironment-tests', function () {
     azure.RoleEnvironment.getDeploymentId(function (error, id) {
       // Update to incarnation 2
       goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Incarnation>2</Incarnation>" +
         "<ExpectedState>Stopped</ExpectedState>" +
@@ -909,7 +909,7 @@ suite('roleenvironment-tests', function () {
         "</GoalState>";
 
       environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
         "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"1\">" +
@@ -939,7 +939,7 @@ suite('roleenvironment-tests', function () {
     inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
     inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -985,7 +985,7 @@ suite('roleenvironment-tests', function () {
     inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
     inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -1071,7 +1071,7 @@ suite('roleenvironment-tests', function () {
     inputFileReadDataStub = sandbox.stub(runtimeKernel.fileInputChannel, '_readData');
     inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"newDeploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"instanceId\" roleName=\"roleName\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -1099,7 +1099,7 @@ suite('roleenvironment-tests', function () {
 
   test('startedChangedCancelNotifications', function (done) {
     var versionsXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<RuntimeServerEndpoints>" +
       "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"" + goalStatePath + "\" />" +
@@ -1107,7 +1107,7 @@ suite('roleenvironment-tests', function () {
       "</RuntimeServerDiscovery>";
 
     var goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Incarnation>1</Incarnation>" +
       "<ExpectedState>Started</ExpectedState>" +
@@ -1117,7 +1117,7 @@ suite('roleenvironment-tests', function () {
       "</GoalState>";
 
     var environmentData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
       "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"0\">" +
@@ -1198,7 +1198,7 @@ suite('roleenvironment-tests', function () {
     azure.RoleEnvironment.getDeploymentId(function (error, id) {
       // Update to incarnation 2
       goalStateXml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "<GoalState xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Incarnation>2</Incarnation>" +
         "<ExpectedState>Started</ExpectedState>" +
@@ -1210,7 +1210,7 @@ suite('roleenvironment-tests', function () {
       inputFileReadDataStub.withArgs(roleEnvironmentPath).yields(
         undefined, 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+        "<RoleEnvironment xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
         "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
         "<Deployment id=\"deploymentId\" emulated=\"false\" />" +
         "<CurrentInstance id=\"test\" roleName=\"test\" faultDomain=\"0\" updateDomain=\"1\">" +
