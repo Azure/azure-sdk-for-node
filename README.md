@@ -51,6 +51,10 @@ the local Storage Emulator (with the exception of Service Bus features).
 2. To use the Storage Emulator, make sure the latest version of the Windows Azure SDK is installed on the machine, and set the EMULATED environment variable to any value ("true", "1", etc.)
 
 ## Usage
+
+For a detailed usage of this module, please check:
+http://dl.windowsazure.com/nodedocs/
+
 ### Table Storage
 
 To ensure a table exists, call **createTableIfNotExists**:
