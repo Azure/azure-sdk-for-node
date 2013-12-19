@@ -13,9 +13,6 @@ azure_error
 checkstyle-result.xml
 test-result.xml
 
-# Hydra codegen downloaded binaries #
-hydra/
-
 # Mac OS #
 .DS_Store
 .DS_Store?
@@ -35,5 +32,6 @@ Thumbs.db
 docs/
 jsdoc/
 
-# Copied spec DLLs
-*.Specification.dll
+# Nuget packages and corresponding codegen sources
+.nuget
+packages

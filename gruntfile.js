@@ -18,11 +18,8 @@ module.exports = function(grunt) {
   //init stuff
   grunt.initConfig({
     downloadNuGet: {
-      path : 'hydra',
+      path : '.nuget',
       src : 'http://www.nuget.org/nuget.exe'
-    },
-    restorePackages: {
-      privateFeedUrl : 'https://www.myget.org/F/hydra/'
     },
     //jsdoc config
     jsdoc : {

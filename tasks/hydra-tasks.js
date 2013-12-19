@@ -14,7 +14,7 @@ module.exports = function(grunt) {
       ' source = ' + grunt.config('downloadNuGet.src'));
 
     var config = {
-      path: grunt.config('downloadNuGet.path') || 'hydra',
+      path: grunt.config('downloadNuGet.path') || '.nuget',
       src: grunt.config('downloadNuGet.src') || 'http://www.nuget.org/nuget.exe'
     };
 
@@ -33,10 +33,11 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('restorePackages', 'Download any missing packages from the nuget repositories', function () {
-    var nugetPath = grunt.config('downloadNuGet.path') || 'hydra';
+    var nugetPath = grunt.config('downloadNuGet.path') || '.nuget';
     var nugetExe = path.join(nugetPath, 'nuget.exe');
-
+    var n;
     var restoreConfigFile = 'restore.config';
+    var done = this.async();
 
     var configVars = [
       ['PRIVATE_FEED_URL', 'privateFeedUrl'],
@@ -46,36 +47,46 @@ module.exports = function(grunt) {
 
     configVars = configVars.map(function (v) { return [v[0], v[1], process.env[v[0]] || grunt.config('restorePackages.' + v[1])]; });
 
-    var unsetVars = configVars.filter(function (v) { return !(v[2]); });
-    if (unsetVars.length !== 0) {
-      grunt.fail.fatal('The following environment variables must be set: ' + unsetVars.map(function (v) { return v[0]; }), 1);
-      return;
-    }
+    if (configVars[0][2]) {
+      console.log('Configuration variables set, using private feed', util.inspect(configVars));
+      var unsetVars = configVars.filter(function (v) { return v[0] != 'PRIVATE_FEED_URL' && !(v[2]); });
+      if (unsetVars.length !== 0) {
+        grunt.fail.fatal('The following environment variables must be set: ' + unsetVars.map(function (v) { return v[0]; }), 1);
+        return;
+      }
 
-    var config = _.chain(configVars).map(function (v) { return [v[1], v[2]]; }).object().value();
+      var config = _.chain(configVars).map(function (v) { return [v[1], v[2]]; }).object().value();
 
-    deleteFile(restoreConfigFile);
+      deleteFile(restoreConfigFile);
 
-    var n = nuget(nugetExe, restoreConfigFile);
+      n = nuget(nugetExe, restoreConfigFile);
 
-    var done = this.async();
 
-    n.addSource('hydra', config.privateFeedUrl, function (err) {
-      if (err) { done(false); deleteFile(restoreConfigFile); return; }
 
-      n.updateSource('hydra', config.privateFeedUserName, config.privateFeedPassword, function (err) {
+      n.addSource('hydra', config.privateFeedUrl, function (err) {
         if (err) { done(false); deleteFile(restoreConfigFile); return; }
 
-        n.restorePackages('packages.config', 'hydra', function (err) {
-          deleteFile(restoreConfigFile);
-          if (err) {
-            done(false);
-          } else {
-            done();
-          }
+        n.updateSource('hydra', config.privateFeedUserName, config.privateFeedPassword, function (err) {
+          if (err) { done(false); deleteFile(restoreConfigFile); return; }
+
+          n.restorePackages('packages.config', 'packages', function (err) {
+            deleteFile(restoreConfigFile);
+            if (err) {
+              done(false);
+            } else {
+              done();
+            }
+          });
         });
       });
-    });
+    } else {
+      console.log('No configuration for private feed, using default sources');
+      n = nuget(nugetExe);
+      n.restorePackages('packages.config', 'packages', function (err) {
+        console.log('Restore packages complete, err = ', util.inspect(err));
+        if (err) { done(false); } else { done(); }
+      });
+    }
   });
 
   grunt.registerTask('copySpecDlls', 'Find the specification dlls and copy them to codegen dir', function () {
@@ -154,8 +165,8 @@ module.exports = function(grunt) {
     }
 
     function restorePackages(packageConfigFile, packagesDir, callback) {
-      var opts = spawnOpts('restore', packageConfigFile, '-PackagesDirectory', packagesDir, '-NonInteractive');
-      grunt.util.spawn(opts, callback);
+      var opts = spawnOpts('restore', packageConfigFile, '-PackagesDirectory', packagesDir);
+      var child = grunt.util.spawn(opts, callback);
     }
 
     return {
