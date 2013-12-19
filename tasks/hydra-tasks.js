@@ -61,17 +61,22 @@ module.exports = function(grunt) {
 
       n = nuget(nugetExe, restoreConfigFile);
 
-
+      var cleanupAndFail = function(err) {
+        deleteFile(restoreConfigFile);
+        grunt.fatal(err);
+        done(false);
+      }
 
       n.addSource('hydra', config.privateFeedUrl, function (err) {
-        if (err) { done(false); deleteFile(restoreConfigFile); return; }
+        if (err) { return cleanupAndFail(err); }
 
         n.updateSource('hydra', config.privateFeedUserName, config.privateFeedPassword, function (err) {
-          if (err) { done(false); deleteFile(restoreConfigFile); return; }
+          if (err) { return cleanupAndFail(err); }
 
           n.restorePackages('packages.config', 'packages', function (err) {
             deleteFile(restoreConfigFile);
             if (err) {
+              grunt.fatal(err);
               done(false);
             } else {
               done();
@@ -89,13 +94,15 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('copySpecDlls', 'Find the specification dlls and copy them to codegen dir', function () {
-    var sourcePaths = grunt.file.expand("./hydra/*.Specification.*/tools/*.Specification.dll");
+  grunt.registerMultiTask('hydra', 'Run hydra code generator', function () {
+    var hydraExePath = grunt.file.expand('./packages/Hydra.Generator.*/tools/hydra.exe')[0];
+    var specDllName = this.target;
+    var specPath = grunt.file.expand('./packages/**/tools/' + specDllName)[0];
+    var args = [ '-f', 'js', '-d', this.data.destDir, '-s', this.data.split, '-c', this.data.clientType, specPath];
+    var done = this.async();
 
-    _.each(sourcePaths, function (srcFile) {
-      var filename = path.basename(srcFile);
-      var destFile = path.join('lib/services/codegen', filename);
-      grunt.file.copy(srcFile, destFile, { encoding: 'binary' });
+    runExe(hydraExePath, args, function (err) {
+      if (err) { grunt.fatal(err); done(false); } else { done(); }
     });
   });
 

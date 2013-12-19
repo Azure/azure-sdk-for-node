@@ -21,6 +21,14 @@ module.exports = function(grunt) {
       path : '.nuget',
       src : 'http://www.nuget.org/nuget.exe'
     },
+    hydra: {
+      'Microsoft.WindowsAzure.Management.Compute.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient',
+        destDir: 'lib/services/computeManagement',
+        split: 'microsoft.windowsazure.management.compute'
+      }
+    },
+
     //jsdoc config
     jsdoc : {
         dist : {
