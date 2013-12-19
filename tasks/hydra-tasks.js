@@ -108,7 +108,6 @@ module.exports = function(grunt) {
       console.log('No configuration for private feed, using default sources');
       n = nuget(nugetExe);
       n.restorePackages('packages.config', 'packages', function (err) {
-        console.log('Restore packages complete, err = ', util.inspect(err));
         if (err) { done(false); } else { done(); }
       });
     }
@@ -164,8 +163,7 @@ module.exports = function(grunt) {
     var argsTail = ['-NonInteractive'];
 
     if(os.platform() !== 'win32') {
-      defaultArgs.shift(nugetExe);
-      defaultArgs.shift('--runtime=v4.0.30319');
+      defaultArgs = ['--runtime=v4.0.30319', nugetExePath];
       nugetExePath = 'mono';
     }
 
@@ -216,8 +214,7 @@ module.exports = function(grunt) {
     };
 
     if (os.platform() !== 'win32') {
-      spawnOpts.args.shift(exePath);
-      spawnOpts.args.shift('--runtime=v4.0.30319');
+      spawnOpts.args = ['--runtime=v4.0.30319', exePath].concat(args);
       spawnOpts.cmd = 'mono';
     }
 
