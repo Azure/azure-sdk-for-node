@@ -38,14 +38,19 @@ module.exports = function(grunt) {
     }
 
     var nugetExePath = path.join(config.path, 'nuget.exe');
-    var nugetExeStream = fs.createWriteStream(nugetExePath);
 
-    nugetExeStream.on('finish', function (err) {
-      // Wait a few milliseconds - finish fires before the file is actually closed
-      setTimeout(function () { done(err); }, 500);
-    });
+    if (!grunt.file.exists(nugetExePath)) {
+      var nugetExeStream = fs.createWriteStream(nugetExePath);
 
-    request(config.src).pipe(nugetExeStream);
+      nugetExeStream.on('finish', function (err) {
+        // Wait a few milliseconds - finish fires before the file is actually closed
+        setTimeout(function () { done(err); }, 500);
+      });
+
+      request(config.src).pipe(nugetExeStream);
+    } else {
+      done();
+    }
   });
 
   grunt.registerTask('restorePackages', 'Download any missing packages from the nuget repositories', function () {
@@ -64,7 +69,6 @@ module.exports = function(grunt) {
     configVars = configVars.map(function (v) { return [v[0], v[1], process.env[v[0]] || grunt.config('restorePackages.' + v[1])]; });
 
     if (configVars[0][2]) {
-      console.log('Configuration variables set, using private feed', util.inspect(configVars));
       var unsetVars = configVars.filter(function (v) { return v[0] != 'PRIVATE_FEED_URL' && !(v[2]); });
       if (unsetVars.length !== 0) {
         grunt.fail.fatal('The following environment variables must be set: ' + unsetVars.map(function (v) { return v[0]; }), 1);
