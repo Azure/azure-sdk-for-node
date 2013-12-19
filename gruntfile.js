@@ -82,4 +82,5 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   grunt.registerTask('publishdocs', ['githubPages:target']);
+  grunt.registerTask('generateCode', [ 'downloadNuGet', 'restorePackages', 'hydra']);
 };

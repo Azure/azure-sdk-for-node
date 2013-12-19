@@ -10,9 +10,6 @@ module.exports = function(grunt) {
   'use strict';
 
   grunt.registerTask('downloadNuGet', 'Download the NuGet.exe file if not already present', function() {
-    grunt.log.writeln(this.name + ' task has executed, path = ' + grunt.config('downloadNuGet.path') +
-      ' source = ' + grunt.config('downloadNuGet.src'));
-
     var config = {
       path: grunt.config('downloadNuGet.path') || '.nuget',
       src: grunt.config('downloadNuGet.src') || 'http://www.nuget.org/nuget.exe'
@@ -27,7 +24,10 @@ module.exports = function(grunt) {
     var nugetExePath = path.join(config.path, 'nuget.exe');
     var nugetExeStream = fs.createWriteStream(nugetExePath);
 
-    nugetExeStream.on('finish', done);
+    nugetExeStream.on('finish', function (err) {
+      // Wait a few milliseconds - finish fires before the file is actually closed
+      setTimeout(function () { done(err); }, 500);
+    });
 
     request(config.src).pipe(nugetExeStream);
   });
