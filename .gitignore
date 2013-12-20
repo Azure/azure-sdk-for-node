@@ -31,3 +31,7 @@ Thumbs.db
 # docs #
 docs/
 jsdoc/
+
+# Nuget packages and corresponding codegen sources
+.nuget
+packages
