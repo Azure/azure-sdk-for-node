@@ -24,8 +24,43 @@ module.exports = function(grunt) {
     hydra: {
       'Microsoft.WindowsAzure.Management.Compute.Specification.dll' : {
         clientType: 'Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient',
-        destDir: 'lib/services/computeManagement',
-        split: 'microsoft.windowsazure.management.compute'
+        destDir: 'lib/services/computeManagement/lib',
+        output: 'ComputeManagementClient.js'
+      },
+      'Microsoft.WindowsAzure.Management.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.Management.ManagementClient',
+        destDir: 'lib/services/management/lib',
+        output: 'ManagementClient.js'
+      },
+      'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.Management.VirtualNetworks.VirtualNetworkManagementClient',
+        destDir: 'lib/services/networkManagement/lib',
+        output: 'virtualNetworkManagementClient.js'
+      },
+      'Microsoft.WindowsAzure.Management.ServiceBus.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.Management.ServiceBus.ServiceBusManagementClient',
+        destDir: 'lib/services/serviceBusManagement/lib',
+        output: 'serviceBusManagementClient.js'
+      },
+      'Microsoft.WindowsAzure.Management.Sql.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.Management.Sql.SqlManagementClient',
+        destDir: 'lib/services/sqlManagement/lib',
+        output: 'sqlManagementClient.js'
+      },
+      'Microsoft.WindowsAzure.Management.Storage.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.Management.Storage.StorageManagementClient',
+        destDir: 'lib/services/storageManagement/lib',
+        output: 'storageManagementClient.js'
+      },
+      'Microsoft.WindowsAzure.Management.Store.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.Management.Store.StoreManagementClient',
+        destDir: 'lib/services/storeManagement/lib',
+        output: 'storeManagementClient.js'
+      },
+      'Microsoft.WindowsAzure.Management.WebSites.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.Management.WebSites.WebSiteManagementClient',
+        destDir: 'lib/services/webSiteManagement/lib',
+        output: 'webSiteManagementClient.js'
       }
     },
 
