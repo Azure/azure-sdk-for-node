@@ -117,7 +117,17 @@ module.exports = function(grunt) {
     var hydraExePath = grunt.file.expand('./packages/Hydra.Generator.*/tools/hydra.exe')[0];
     var specDllName = this.target;
     var specPath = grunt.file.expand('./packages/**/tools/' + specDllName)[0];
-    var args = [ '-f', 'js', '-d', this.data.destDir, '-s', this.data.split, '-c', this.data.clientType, specPath];
+    var args;
+    if (this.data.split) {
+      args = [ '-f', 'js', '-d', this.data.destDir, '-s', this.data.split, '-c', this.data.clientType, specPath];
+    } else if (this.data.output) {
+      args = [ '-f', 'js', '-d', this.data.destDir, '-o', this.data.output, '-c', this.data.clientType, specPath];
+    } else {
+      // this will most likely be an error on the CLI, but pass it anyways to make sure 
+      // we throw the right error
+      args = [ '-f', 'js', '-d', this.data.destDir, '-c', this.data.clientType, specPath];
+    }
+
     var done = this.async();
 
     runExe(hydraExePath, args, function (err) {
