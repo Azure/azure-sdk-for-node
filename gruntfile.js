@@ -37,6 +37,18 @@ module.exports = function(grunt) {
         destDir: 'lib/services/networkManagement/lib',
         output: 'virtualNetworkManagementClient.js'
       },
+      'Microsoft.WindowsAzure.Management.Scheduler.Specification.dll' : [
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient',
+          destDir: 'lib/services/schedulerManagement/lib',
+          output: 'schedulerManagementClient.js'
+        },
+        {
+          clientType: 'Microsoft.WindowsAzure.Scheduler.SchedulerClient',
+          destDir: 'lib/services/scheduler/lib',
+          output: 'schedulerClient.js'
+        }
+      ],
       'Microsoft.WindowsAzure.Management.ServiceBus.Specification.dll' : {
         clientType: 'Microsoft.WindowsAzure.Management.ServiceBus.ServiceBusManagementClient',
         destDir: 'lib/services/serviceBusManagement/lib',
