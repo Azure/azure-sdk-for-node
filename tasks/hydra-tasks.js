@@ -118,21 +118,36 @@ module.exports = function(grunt) {
     var specDllName = this.target;
     var specPath = grunt.file.expand('./packages/**/tools/' + specDllName)[0];
     var args;
-    if (this.data.split) {
-      args = [ '-f', 'js', '-d', this.data.destDir, '-s', this.data.split, '-c', this.data.clientType, specPath];
-    } else if (this.data.output) {
-      args = [ '-f', 'js', '-d', this.data.destDir, '-o', this.data.output, '-c', this.data.clientType, specPath];
+
+    var data;
+    if (Object.prototype.toString.call(this.data) === '[object Array]') {
+      data = this.data;
     } else {
-      // this will most likely be an error on the CLI, but pass it anyways to make sure 
-      // we throw the right error
-      args = [ '-f', 'js', '-d', this.data.destDir, '-c', this.data.clientType, specPath];
+      data = [ this.data ];
     }
 
-    var done = this.async();
+    function generate(elements, cb) {
+      if (elements.length <= 0) {
+        return cb();
+      }
 
-    runExe(hydraExePath, args, function (err) {
-      if (err) { grunt.fatal(err); done(false); } else { done(); }
-    });
+      var element = elements.pop();
+      if (element.split) {
+        args = [ '-f', 'js', '-d', element.destDir, '-s', element.split, '-c', element.clientType, specPath];
+      } else if (element.output) {
+        args = [ '-f', 'js', '-d', element.destDir, '-o', element.output, '-c', element.clientType, specPath];
+      } else {
+        // this will most likely be an error on the CLI, but pass it anyways to make sure 
+        // we throw the right error
+        args = [ '-f', 'js', '-d', element.destDir, '-c', element.clientType, specPath];
+      }
+
+      runExe(hydraExePath, args, function (err) {
+        if (err) { grunt.fatal(err); cb(false); } else { generate(elements, cb); }
+      });
+    }
+
+    generate(data, this.async());
   });
 
   grunt.registerTask('generateCode', 'Run hydra code generator over the specifications and generate code', function () {

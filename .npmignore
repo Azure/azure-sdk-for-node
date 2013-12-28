@@ -9,6 +9,8 @@ lib/common/
 lib/services/computeManagement/
 lib/services/management/
 lib/services/networkManagement/
+lib/services/scheduler/
+lib/services/schedulerManagement/
 lib/services/serviceBusManagement/
 lib/services/sqlManagement/
 lib/services/storageManagement/
