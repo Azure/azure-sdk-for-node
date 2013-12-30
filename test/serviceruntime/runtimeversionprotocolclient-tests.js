@@ -33,7 +33,7 @@ suite('runtimeversionprotocolclient-tests', function () {
 
     stub.withArgs(versionsEndpointPath).callsArgWith(1, undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<RuntimeServerEndpoints>" +
       "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
@@ -59,7 +59,7 @@ suite('runtimeversionprotocolclient-tests', function () {
 
     stub.withArgs(versionsEndpointPath).callsArgWith(1, undefined,
       "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" +
+      "<RuntimeServerDiscovery xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
       "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" +
       "<RuntimeServerEndpoints>" +
       "<RuntimeServerEndpoint version=\"2011-03-08\" path=\"SomePath.GoalState\" />" +
