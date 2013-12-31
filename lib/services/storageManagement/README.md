@@ -2,13 +2,12 @@
 
 This project provides a Node.js package that makes it easy to manage Windows Azure Storage. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
-- **Windows Azure Storage Management API version: 2013-03-01**
+- **API version: 2013-03-01**
 
 ## Features
 
-- Create, get, update and delete storage account.
-- Get and regenerate access key.
-- Check storage account name availability.
+- Manage storage account
+- Manage access key
 
 ## How to Install
 
@@ -18,27 +17,36 @@ npm install azure-mgmt-storage
 
 ## How to Use
 
+### Authentication
+
+This library support management certificate authentication. To authenticate the library for the REST API calls, you need to
+* Have a management certificate set up in your Windows Azure subscription. You can do this by
+  * Either uploading a certificate in the [Windows Azure management portal](https://manage.windowsazure.com).
+  * Or use the [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
+* Obtain the .pem file of your certificate. If you used [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat) to set it up. You can run ``azure account cert export`` to get the .pem file.
+* Open the .pem file in a text editor and **certvalue** and **keyvalue**.
+
 ### Create the StorageManagementClient
 
 ```javascript
 var storageManagement = require("azure-mgmt-storage");
 
-var storageManagementClient = storageManagement.createcreateStorageManagementClient({
-  subscriptionId : "<your subscription id>",
-  certvalue : "<your management certificate value>",
-  keyvalue : "<your management certificate key value>"
+var storageManagementClient = storageManagement.createStorageManagementClient({
+  subscriptionId: "<your subscription id>",
+  certvalue: "<your management certificate value>",
+  keyvalue: "<your management certificate key value>"
 });
 ```
 
-### Managing Storage Account
+### Manage Storage Account
 
 ```javascript
 // Create a Storage account.
 storageManagementClient.storageAccounts.create({
-  serviceName : "storage01",
-  location : "West US",
-  label : "Storage 01"
-  geoReplicationEnabled : true
+  serviceName: "storage01",
+  location: "West US",
+  label: "Storage 01"
+  geoReplicationEnabled: true
 }, function (err, result) {
   if (err) {
     console.error(err);
@@ -74,8 +82,8 @@ storageManagementClient.storageAccounts.get("storage01", function (err, result) 
 
 // Update a Storage account.
 storageManagementClient.storageAccounts.update("storage01", {
-  geoReplicationEnabled : false,
-  description : "This is a demo Storage account."
+  geoReplicationEnabled: false,
+  description: "This is a demo Storage account."
 }, function (err, result) {
   if (err) {
     console.error(err);
@@ -94,7 +102,7 @@ storageManagementClient.storageAccounts.delete("storage01", function (err, resul
 });
 ```
 
-### Managing Access Key
+### Manage Access Key
 
 ```javascript
 // Get the primary key and secondary key of a Storage account.
@@ -109,8 +117,8 @@ storageManagementClient.storageAccounts.getKeys("storage01", function (err, resu
 
 // Regenerate the secondary key of a Storage account.
 storageManagementClient.storageAccounts.regenerateKeys({
-  serviceName : "storage01",
-  keyType : "Secondary"
+  serviceName: "storage01",
+  keyType: "Secondary"
 }, function (err, result) {
   if (err) {
     console.error(err);
@@ -122,15 +130,7 @@ storageManagementClient.storageAccounts.regenerateKeys({
 
 ## Related projects
 
-- Windows Azure SDK for Node.js - All-up
-  - GitHub repo: https://github.com/WindowsAzure/azure-sdk-for-node
-  - NPM: https://npmjs.org/package/azure
-- Windows Azure SDK for Node.js - Storage Blob
-  - GitHub repo: https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/blob
-  - NPM: https://npmjs.org/package/azure-storage-blob
-- Windows Azure SDK for Node.js - Storage Table
-  - GitHub repo: https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/table
-  - NPM: https://npmjs.org/package/azure-storage-table
-- Windows Azure SDK for Node.js - Storage Queue
-  - GitHub repo: https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/queue
-  - NPM: https://npmjs.org/package/azure-storage-queue
+- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js - Storage Blob](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/blob)
+- [Windows Azure SDK for Node.js - Storage Table](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/table)
+- [Windows Azure SDK for Node.js - Storage Queue](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/queue)
