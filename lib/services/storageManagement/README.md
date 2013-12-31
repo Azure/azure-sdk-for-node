@@ -24,18 +24,21 @@ This library support management certificate authentication. To authenticate the 
   * Either uploading a certificate in the [Windows Azure management portal](https://manage.windowsazure.com).
   * Or use the [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
 * Obtain the .pem file of your certificate. If you used [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat) to set it up. You can run ``azure account cert export`` to get the .pem file.
-* Open the .pem file in a text editor and **certvalue** and **keyvalue**.
+* Open the .pem file in a text editor to get the  **cert value** and **key value**.
 
 ### Create the StorageManagementClient
 
 ```javascript
-var storageManagement = require("azure-mgmt-storage");
+var common            = require("azure-common"),
+    storageManagement = require("azure-mgmt-storage");
 
-var storageManagementClient = storageManagement.createStorageManagementClient({
+var storageManagementClient = storageManagement.createStorageManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",
-  certvalue: "<your management certificate value>",
-  keyvalue: "<your management certificate key value>"
-});
+  cert: "<your management certificate value>",
+  key: "<your management certificate key value>"
+}));
+
+var storageAccountName = "storage01";
 ```
 
 ### Manage Storage Account
@@ -43,9 +46,9 @@ var storageManagementClient = storageManagement.createStorageManagementClient({
 ```javascript
 // Create a Storage account.
 storageManagementClient.storageAccounts.create({
-  serviceName: "storage01",
+  serviceName: storageAccountName,
   location: "West US",
-  label: "Storage 01"
+  label: "Storage 01",
   geoReplicationEnabled: true
 }, function (err, result) {
   if (err) {
@@ -60,28 +63,26 @@ storageManagementClient.storageAccounts.list(function (err, result) {
   if (err) {
     console.error(err);
   } else {
-    console.info("Name\t\tLocation");
-    console.info("====\t\t========");
-    for (int i = 0; i < result.storageServices.length; i++) {
-      var output = result.storageServices[i].serviceName + "\t\t" +
-        result.storageServices[i].location;
+    for (var i = 0; i < result.storageServices.length; i++) {
+      var output = result.storageServices[i].serviceName + ", " +
+        result.storageServices[i].properties.location;
       console.info(output);
     }
   }
 });
 
 // Get a Storage account by name.
-storageManagementClient.storageAccounts.get("storage01", function (err, result) {
+storageManagementClient.storageAccounts.get(storageAccountName, function (err, result) {
   if (err) {
     console.error(err);
   } else {
-    console.info("Name:\t" + result.serviceName);
-    console.info("URI:\t" + result.uri);
+    console.info("Name: " + result.serviceName);
+    console.info("URI: " + result.uri);
   }
 });
 
 // Update a Storage account.
-storageManagementClient.storageAccounts.update("storage01", {
+storageManagementClient.storageAccounts.update(storageAccountName, {
   geoReplicationEnabled: false,
   description: "This is a demo Storage account."
 }, function (err, result) {
@@ -93,7 +94,7 @@ storageManagementClient.storageAccounts.update("storage01", {
 });
 
 // Delete a Storage account.
-storageManagementClient.storageAccounts.delete("storage01", function (err, result) {
+storageManagementClient.storageAccounts.delete(storageAccountName, function (err, result) {
   if (err) {
     console.error(err);
   } else {
@@ -106,24 +107,24 @@ storageManagementClient.storageAccounts.delete("storage01", function (err, resul
 
 ```javascript
 // Get the primary key and secondary key of a Storage account.
-storageManagementClient.storageAccounts.getKeys("storage01", function (err, result) {
+storageManagementClient.storageAccounts.getKeys(storageAccountName, function (err, result) {
   if (err) {
     console.error(err);
   } else {
-    console.info("Primary key:\t" + result.primaryKey);
-    console.info("Secondary key:\t" + result.secondaryKey);
+    console.info("Primary key: " + result.primaryKey);
+    console.info("Secondary key: " + result.secondaryKey);
   }
 });
 
 // Regenerate the secondary key of a Storage account.
 storageManagementClient.storageAccounts.regenerateKeys({
-  serviceName: "storage01",
+  serviceName: storageAccountName,
   keyType: "Secondary"
 }, function (err, result) {
   if (err) {
     console.error(err);
   } else {
-    console.info("New secondary key:\t" + result.secondaryKey);
+    console.info("New secondary key: " + result.secondaryKey);
   }
 });
 ```
