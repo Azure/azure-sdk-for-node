@@ -25,21 +25,48 @@ This library support management certificate authentication. To authenticate the 
   * Either uploading a certificate in the [Windows Azure management portal](https://manage.windowsazure.com).
   * Or use the [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
 * Obtain the .pem file of your certificate. If you used [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat) to set it up. You can run ``azure account cert export`` to get the .pem file.
-* Open the .pem file in a text editor and **certvalue** and **keyvalue**.
+* Open the .pem file in a text editor to get the **cert value** and **key value**.
 
 ### Create the WebSiteManagementClient
 
 ```javascript
-var webSiteManagement = require("azure-mgmt-website");
+var common            = require("azure-common"),
+    webSiteManagement = require("azure-mgmt-website");
 
-var webSiteManagementClient = webSiteManagement.createWebSiteManagementClient({
+var webSiteName = "guangwebsite01";
+
+var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",
-  certvalue: "<your management certificate value>",
-  keyvalue: "<your management certificate key value>"
-});
+  cert: "<your management certificate value>",
+  key: "<your management certificate key value>"
+}));
 ```
 
 ### Manage Web Site
+
+```javascript
+// Get all the available webspaces under a subscription.
+webSiteManagementClient.webSpaces.list(function (err, result) {
+    if (err) {
+    console.error(err);
+  } else {
+    console.info(result);
+  }
+});
+
+// Create a web site.
+webSiteManagementClient.webSites.create("westuswebspace", {
+  name: webSiteName,
+  hostNames: [webSiteName + ".azurewebsites.net"],
+  webSpaceName: "westuswebspace"
+}, function (err, result) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.info(result);
+  }
+});
+```
 
 ## Related projects
 
