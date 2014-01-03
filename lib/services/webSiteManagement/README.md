@@ -33,7 +33,7 @@ This library support management certificate authentication. To authenticate the 
 var common            = require("azure-common"),
     webSiteManagement = require("azure-mgmt-website");
 
-var webSiteName = "guangwebsite01";
+var webSiteName = "website01";
 
 var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",

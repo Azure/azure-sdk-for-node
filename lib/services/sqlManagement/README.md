@@ -29,21 +29,54 @@ This library support management certificate authentication. To authenticate the 
   * Either uploading a certificate in the [Windows Azure management portal](https://manage.windowsazure.com).
   * Or use the [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
 * Obtain the .pem file of your certificate. If you used [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat) to set it up. You can run ``azure account cert export`` to get the .pem file.
-* Open the .pem file in a text editor and **certvalue** and **keyvalue**.
+* Open the .pem file in a text editor to get the **cert value** and **key value**.
 
 ### Create the SqlManagementClient
 
 ```javascript
-var sqlManagement = require("azure-mgmt-sql");
+var common        = require("azure-common"),
+    sqlManagement = require("azure-mgmt-sql");
 
-var sqlManagementClient = sqlManagement.createSqlManagementClient({
+var sqlDatabaseName = "database01";
+
+var sqlManagementClient = sqlManagement.createSqlManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",
-  certvalue: "<your management certificate value>",
-  keyvalue: "<your management certificate key value>"
-});
+  cert: "<your management certificate value>",
+  key: "<your management certificate key value>"
+}));
 ```
 
 ### Manage Database
+
+```javascript
+// Create a SQL database server.
+sqlManagementClient.servers.create({
+  administratorUserName: "<your admin user name>",
+  administratorPassword: "<your admin password>",
+  location: "West US"
+}, function (err, result) {
+  if (err) {
+    console.error(err);
+  } else {
+    sqlServerName = result.serverName;
+    console.info(result);
+
+    // Create a SQL database.
+    sqlManagementClient.databases.create(result.serverName, {
+      name: sqlDatabaseName,
+      edition: common.Constants.SqlAzureConstants.WEB_EDITION,
+      collationName: common.Constants.SqlAzureConstants.DEFAULT_COLLATION_NAME,
+      maximumDatabaseSizeInGB: common.Constants.SqlAzureConstants.WEB_1GB
+    }, function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.info(result);
+      }
+    });
+  }
+});
+```
 
 ## Related projects
 
