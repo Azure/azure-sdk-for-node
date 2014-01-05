@@ -16,6 +16,7 @@
 // 
 
 var fs = require('fs');
+var path = require('path');
 
 var args = (process.ARGV || process.argv);
 
@@ -109,6 +110,10 @@ if (!process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICAT
 
 if (!process.env.AZURE_ACCESS_TOKEN) {
   process.env.AZURE_ACCESS_TOKEN = defaultAccessToken;
+}
+
+if (!process.env.AZURE_CERTIFICATE_PEM_FILE) {
+  process.env.AZURE_CERTIFICATE_PEM_FILE = path.join(__dirname, '../test/data/certificate.pem');
 }
 
 if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
