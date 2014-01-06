@@ -29,127 +29,101 @@ This library support management certificate authentication. To authenticate the 
   * Either uploading a certificate in the [Windows Azure management portal](https://manage.windowsazure.com).
   * Or use the [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
 * Obtain the .pem file of your certificate. If you used [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat) to set it up. You can run ``azure account cert export`` to get the .pem file.
-* Open the .pem file in a text editor and **certvalue** and **keyvalue**.
+* Open the .pem file in a text editor to get the **cert value** and **key value**.
 
 ### Create the ComputeManagementClient
 
 ```javascript
-var computeManagement = require("azure-mgmt-compute");
+var common            = require("azure-common"),
+    computeManagement = require("azure-mgmt-compute");
 
-// Create a client using management certificate authentication
-var computeManagementClient = computeManagement.createComputeManagementClient({
+var computeManagementClient = computeManagement.createComputeManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",
-  certvalue: "<your management certificate value>",
-  keyvalue: "<your management certificate key value>"
-});
+  cert: "<your management certificate value>",
+  key: "<your management certificate key value>"
+}));
 ``` 
 
 ### Manage Virtual Machine
 
 ```javascript
-// Create a virtual Machine.
-computeManagementClient.virtualMachines.create("service01", "deployment01", {
-  roleName: "vm01"
-}, function (err, result) {
+var serviceName = "cloudservice01";
+var deploymentName = "deployment01";
+var virualMachineName = "vm01";
+var storageAccountName = "storage01";
+var diskContainerName = "vhds";
+
+// List all the virtual machine images you can use.
+computeManagementClient.virtualMachineImages.list(function (err, result) {
   if (err) {
     console.error(err);
   } else {
-    console.info(result.statusCode);
+    console.info(result);
   }
 });
 
-// List all virtual machines under a subscription.
-computeManagementClient.virtualMachines.list(function (err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    console.info("Name\t\tLocation");
-    console.info("====\t\t========");
-    // TODO
-  }
-});
-
-// Get a virtual machine by name.
-computeManagementClient.storageAccounts.get("service01", "deployment01", "vm01", function (err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    // TODO
-  }
-});
-
-// Update a virtual machine.
-computeManagementClient.virtualMachines.update("service01", "deployment01", "vm01", {
-  roleSize: "large"
-}, function (err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    console.info(result.statusCode);
-  }
-});
-
-// Delete a virtual machine.
-computeManagementClient.virtualMachines.delete("service01", "deployment01", "vm01", function (err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    console.info(result.statusCode);
-  }
-});
-```
-
-### Manage Cloud Service
-
-```javascript
 // Create a cloud service.
 computeManagementClient.hostedServices.create({
-  serviceName: "cloudservice01",
-  label: "Cloud Service 01",
+  serviceName: serviceName,
+  label: "cloud service 01",
   location: "West US"
 }, function (err, result) {
   if (err) {
     console.error(err);
   } else {
-    // TODO
-  }
-});
+    console.info(result);
 
-// List all the cloud services under a subscription.
-computeManagementClient.hostedServices.list(function (err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    // TODO
-  }
-});
-
-// Get a cloud service by name.
-computeManagementClient.hostedServices.get("cloudservice01", function (err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    // TODO
-  }
-});
-
-// Update a cloud service.
-computeManagementClient.hostedServices.update("cloudservice01", {
-  description: "some description"
-}, function (err, result) {
-  if (err) {
-    console.error(err);
-  } else {
-    // TODO
-  }
-});
-
-// Delete a cloud service.
-computeManagementClient.hostedServices.delete(function (err, result) {
-    if (err) {
-    console.error(err);
-  } else {
-    // TODO
+    // Create a virtual machine in the cloud service.
+    computeManagementClient.virtualMachines.createDeployment(serviceName, {
+      name: deploymentName,
+      deploymentSlot: "Production",
+      label: "deployment 01",
+      roles: [{
+        roleName: virualMachineName,
+        roleType: "PersistentVMRole",
+        label: "virutal machine 01",
+        oSVirtualHardDisk: {
+          sourceImageName: "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201312.01-en.us-127GB.vhd",
+          mediaLink: "http://"+ storageAccountName + ".blob.core.windows.net/" + diskContainerName + "/" +
+            serviceName + "-" + virualMachineName + "-" + Math.floor((Math.random()*100)+1) + ".vhd"
+        },
+        dataVirtualHardDisks: [],
+        configurationSets: [{
+          configurationSetType: "WindowsProvisioningConfiguration",
+          adminUserName: "guang",
+          adminPassword: "p@ssw0rd",
+          computerName: virualMachineName,
+          enableAutomaticUpdates: true,
+          resetPasswordOnFirstLogon: false,
+          storedCertificateSettings: [],
+          inputEndpoints: [],
+          windowsRemoteManagement: {
+            listeners: [{
+              listenerType: "Https"
+            }]
+          }
+        }, {
+          configurationSetType: "NetworkConfiguration",
+          subnetNames: [],
+          storedCertificateSettings: [],
+          inputEndpoints: [{
+            localPort: 3389,
+            protocol: "tcp",
+            name: "RemoteDesktop"
+          }, {
+            localPort: 5986,
+            protocol: "tcp",
+            name: "WinRmHTTPS"
+          }]
+        }]
+      }]
+    }, function (err, result) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.info(result);
+      }
+    });
   }
 });
 ```
