@@ -27,27 +27,27 @@ This library support management certificate authentication. To authenticate the 
   * Either uploading a certificate in the [Windows Azure management portal](https://manage.windowsazure.com).
   * Or use the [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
 * Obtain the .pem file of your certificate. If you used [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat) to set it up. You can run ``azure account cert export`` to get the .pem file.
-* Open the .pem file in a text editor to get the **cert value** and **key value**.
 
 ### Create the ServiceBusManagementClient
 
 ```javascript
-var common               = require("azure-common"),
-    serviceBusManagement = require("azure-mgmt-sb");
+var fs           = require("fs"),
+    common       = require("azure-common"),
+    sbManagement = require("azure-mgmt-sb");
 
-var namespaceName = "database01";
-
-var serviceBusManagementClient = serviceBusManagement.createServiceBusManagementClient(new common.CertificateCloudCredentials({
+var sbManagementClient = sbManagement.createServiceBusManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",
-  cert: "<your management certificate value>",
-  key: "<your management certificate key value>"
+  pem: fs.readFileSync("<your pem file>")
 }));
 ```
 
 ### Manage Namespace
 
 ```javascript
-serviceBusManagementClient.namespaces.create(namespaceName, "West US", function (err, result) {
+var namespaceName = "namespace01";
+
+// Create a namespace.
+sbManagementClient.namespaces.create(namespaceName, "West US", function (err, result) {
   if (err) {
     console.error(err);
   } else {

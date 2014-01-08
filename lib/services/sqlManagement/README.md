@@ -34,21 +34,21 @@ This library support management certificate authentication. To authenticate the 
 ### Create the SqlManagementClient
 
 ```javascript
-var common        = require("azure-common"),
+var fs            = require("fs"),
+    common        = require("azure-common"),
     sqlManagement = require("azure-mgmt-sql");
-
-var sqlDatabaseName = "database01";
 
 var sqlManagementClient = sqlManagement.createSqlManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",
-  cert: "<your management certificate value>",
-  key: "<your management certificate key value>"
+  pem: fs.readFileSync("<your pem file>")
 }));
 ```
 
 ### Manage Database
 
 ```javascript
+var sqlDatabaseName = "database01";
+
 // Create a SQL database server.
 sqlManagementClient.servers.create({
   administratorUserName: "<your admin user name>",

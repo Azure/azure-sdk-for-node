@@ -25,26 +25,25 @@ This library support management certificate authentication. To authenticate the 
   * Either uploading a certificate in the [Windows Azure management portal](https://manage.windowsazure.com).
   * Or use the [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
 * Obtain the .pem file of your certificate. If you used [Windows Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat) to set it up. You can run ``azure account cert export`` to get the .pem file.
-* Open the .pem file in a text editor to get the **cert value** and **key value**.
 
 ### Create the WebSiteManagementClient
 
 ```javascript
-var common            = require("azure-common"),
+var fs                = require("fs"),
+    common            = require("azure-common"),
     webSiteManagement = require("azure-mgmt-website");
-
-var webSiteName = "website01";
 
 var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",
-  cert: "<your management certificate value>",
-  key: "<your management certificate key value>"
+  pem: fs.readFileSync("<your pem file>")
 }));
 ```
 
 ### Manage Web Site
 
 ```javascript
+var webSiteName = "website01";
+
 // Get all the available webspaces under a subscription.
 webSiteManagementClient.webSpaces.list(function (err, result) {
     if (err) {
