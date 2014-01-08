@@ -89,8 +89,8 @@ computeManagementClient.hostedServices.create({
         dataVirtualHardDisks: [],
         configurationSets: [{
           configurationSetType: "WindowsProvisioningConfiguration",
-          adminUserName: "guang",
-          adminPassword: "p@ssw0rd",
+          adminUserName: "<your admin user name>",
+          adminPassword: "<your admin password>",
           computerName: virualMachineName,
           enableAutomaticUpdates: true,
           resetPasswordOnFirstLogon: false,
