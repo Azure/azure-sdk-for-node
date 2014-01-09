@@ -262,7 +262,7 @@ describe('Notification hubs', function () {
         }, function () {
           notificationHubService.apns.createTemplateRegistration(
             tokenId,
-            'tag1',
+            ['tag1', 'tag3'],
             {
               alert: '$(alertMessage1)'
             },
@@ -286,7 +286,7 @@ describe('Notification hubs', function () {
 
       var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
 
-      notificationHubService.send(['tag1', 'tag2'], { property: 'value' }, function (err) {
+      notificationHubService.send(['tag1', 'tag2', 'tag3'], { property: 'value' }, function (err) {
         should.not.exist(err);
 
         // Body
