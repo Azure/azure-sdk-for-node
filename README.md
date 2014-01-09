@@ -1,6 +1,6 @@
 # Windows Azure SDK for Node.js 
 
-[![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) | [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
+[![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
 
 This project provides a Node.js package that makes it easy to consume and manage Windows Azure Services.
 
@@ -38,13 +38,13 @@ npm install azure
 
 ### Install the fine-grained modules
 
-* Core management: "npm install azure-mgmt"
-* Compute management: "npm install azure-mgmt-compute"
-* Web Site management: "npm install azure-mgmt-website"
-* Virtual Network managment: "npm install azure-mgmt-vnet"
-* Storage Account management: "npm install azure-mgmt-storage"
-* SQL Database management: "npm install azure-mgmt-sql"
-* Service Bus management: "npm install azure-mgmt-sb"
+* Core management: ``npm install azure-mgmt``
+* Compute management: ``npm install azure-mgmt-compute``
+* Web Site management: ``npm install azure-mgmt-website``
+* Virtual Network managment: ``npm install azure-mgmt-vnet``
+* Storage Account management: ``npm install azure-mgmt-storage``
+* SQL Database management: ``npm install azure-mgmt-sql``
+* Service Bus management: ``npm install azure-mgmt-sb``
 
 ## Usage
 
