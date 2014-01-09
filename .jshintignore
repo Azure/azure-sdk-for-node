@@ -1,0 +1,14 @@
+lib/common/node_modules/*
+lib/services/computeManagement/node_modules/*
+lib/services/management/node_modules/*
+lib/services/networkManagement/node_modules/*
+lib/services/scheduler/node_modules/*
+lib/services/schedulerManagement/node_modules/*
+lib/services/serviceBusManagement/node_modules/*
+lib/services/sqlManagement/node_modules/*
+lib/services/storageManagement/node_modules/*
+lib/services/storeManagement/node_modules/*
+lib/services/subscriptionManagement/node_modules/*
+lib/services/webSiteManagement/node_modules/*
+packages
+.git
