@@ -39,7 +39,7 @@
     "node-uuid": "> = 1.2.0",
     "tunnel": ">= 0.0.1",
     "request": "2.27.0",
-    "validator": "3.1.0",
+    "validator": "2.1.0",
     "wns": ">= 0.5.3",
     "mpns": ">= 2.0.0",
     "envconf": ">= 0.0.4",
