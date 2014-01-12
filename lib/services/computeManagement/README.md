@@ -128,5 +128,5 @@ computeManagementClient.hostedServices.create({
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
 - [Windows Azure SDK for Node.js - Network Management](https://github.com/andrerod/azure-sdk-for-node/tree/master/lib/services/networkManagement)

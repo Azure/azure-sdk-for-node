@@ -79,4 +79,4 @@ sqlManagementClient.servers.create({
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
