@@ -30,9 +30,8 @@ This library support management certificate authentication. To authenticate the 
 ### Create the ManagementClient
 
 ```javascript
-var fs         = require("fs"),
-    common     = require("azure-common"),
-    management = require("azure-mgmt");
+var fs         = require('fs'),
+    management = require('azure-mgmt');
 
 var managementClient = management.createManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",

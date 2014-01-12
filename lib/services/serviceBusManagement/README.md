@@ -31,9 +31,8 @@ This library support management certificate authentication. To authenticate the 
 ### Create the ServiceBusManagementClient
 
 ```javascript
-var fs           = require("fs"),
-    common       = require("azure-common"),
-    sbManagement = require("azure-mgmt-sb");
+var fs           = require('fs'),
+    sbManagement = require('azure-mgmt-sb');
 
 var sbManagementClient = sbManagement.createServiceBusManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",

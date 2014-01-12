@@ -28,9 +28,8 @@ This library support management certificate authentication. To authenticate the 
 ### Create the StorageManagementClient
 
 ```javascript
-var fs                = require("fs"),
-    common            = require("azure-common"),
-    storageManagement = require("azure-mgmt-storage");
+var fs                = require('fs'),
+    storageManagement = require('azure-mgmt-storage');
 
 var storageManagementClient = storageManagement.createStorageManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",

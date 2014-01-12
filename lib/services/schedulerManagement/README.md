@@ -28,7 +28,7 @@ This library support management certificate authentication. To authenticate the 
 ### Create the SchedulerManagementClient
 
 ```javascript
-var schedulerManagement = require("azure-mgmt-scheduler");
+var schedulerManagement = require('azure-mgmt-scheduler');
 
 var schedulerManagementClient = schedulerManagement.createSchedulerManagementClient({
   subscriptionId: "<your subscription id>",

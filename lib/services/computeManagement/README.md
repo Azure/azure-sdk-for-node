@@ -33,8 +33,8 @@ This library support management certificate authentication. To authenticate the 
 ### Create the ComputeManagementClient
 
 ```javascript
-var fs                = require("fs"),
-    computeManagement = require("azure-mgmt-compute");
+var fs                = require('fs'),
+    computeManagement = require('azure-mgmt-compute');
 
 var computeManagementClient = computeManagement.createComputeManagementClient(new common.CertificateCloudCredentials({
   subscriptionId: "<your subscription id>",
