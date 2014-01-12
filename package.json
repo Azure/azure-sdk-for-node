@@ -46,7 +46,7 @@
     "wns": ">= 0.5.3",
     "mpns": ">= 2.0.0",
     "node-uuid": ">= 1.2.0",
-    "validator": "~3.1.0"
+    "validator": ">= 3.1.0"
   },
   "devDependencies": {
     "mocha": ">= 1.12.0",
