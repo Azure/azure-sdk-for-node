@@ -28,10 +28,10 @@ This library support management certificate authentication. To authenticate the 
 ### Create the StoreManagementClient
 
 ```javascript
-var storeManagement = require("azure-mgmt-store");
+var storeManagement = require('azure-mgmt-store');
 
 var storeManagementClient = storeManagement.createStoreManagementClient({
-  subscriptionId: "<your subscription id>",
+  subscriptionId: '<your subscription id>',
   certvalue: "<your management certificate value>",
   keyvalue: "<your management certificate key value>"
 });

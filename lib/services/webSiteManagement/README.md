@@ -29,13 +29,12 @@ This library support management certificate authentication. To authenticate the 
 ### Create the WebSiteManagementClient
 
 ```javascript
-var fs                = require("fs"),
-    common            = require("azure-common"),
-    webSiteManagement = require("azure-mgmt-website");
+var fs                = require('fs'),
+    webSiteManagement = require('azure-mgmt-website');
 
 var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 

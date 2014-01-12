@@ -28,10 +28,10 @@ This library support management certificate authentication. To authenticate the 
 ### Create the SchedulerManagementClient
 
 ```javascript
-var schedulerManagement = require("azure-mgmt-scheduler");
+var schedulerManagement = require('azure-mgmt-scheduler');
 
 var schedulerManagementClient = schedulerManagement.createSchedulerManagementClient({
-  subscriptionId: "<your subscription id>",
+  subscriptionId: '<your subscription id>',
   certvalue: "<your management certificate value>",
   keyvalue: "<your management certificate key value>"
 });
@@ -41,5 +41,5 @@ var schedulerManagementClient = schedulerManagement.createSchedulerManagementCli
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
 - [Windows Azure SDK for Node.js - Scheduler](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/scheduler)
