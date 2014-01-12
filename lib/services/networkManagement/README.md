@@ -34,8 +34,8 @@ var fs             = require('fs'),
     vnetManagement = require('azure-mgmt-vnet');
 
 var vnetManagementClient = vnetManagement.createVirtualNetworkManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 

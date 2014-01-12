@@ -35,8 +35,8 @@ var fs           = require('fs'),
     sbManagement = require('azure-mgmt-sb');
 
 var sbManagementClient = sbManagement.createServiceBusManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 

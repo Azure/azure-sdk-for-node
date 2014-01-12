@@ -37,8 +37,8 @@ var fs                = require('fs'),
     computeManagement = require('azure-mgmt-compute');
 
 var computeManagementClient = computeManagement.createComputeManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ``` 
 

@@ -32,8 +32,8 @@ var fs                = require('fs'),
     storageManagement = require('azure-mgmt-storage');
 
 var storageManagementClient = storageManagement.createStorageManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 

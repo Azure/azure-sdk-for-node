@@ -38,8 +38,8 @@ var fs            = require('fs'),
     sqlManagement = require('azure-mgmt-sql');
 
 var sqlManagementClient = sqlManagement.createSqlManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 

@@ -34,8 +34,8 @@ var fs         = require('fs'),
     management = require('azure-mgmt');
 
 var managementClient = management.createManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 
