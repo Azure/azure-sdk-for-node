@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.7.19",
+  "version": "0.8.0",
   "description": "Windows Azure Client Library for node",
   "tags": [
     "azure",
@@ -31,20 +31,21 @@
     }
   ],
   "dependencies": {
-    "xml2js": "0.2.7",
-    "xmlbuilder": "0.4.3",
-    "mime": ">= 1.2.4",
-    "dateformat": "1.0.2-1.2.3",
+    "azure-common": "0.9.0-pre.1",
+    "azure-mgmt-compute": "0.9.0-pre.1",
+    "azure-mgmt": "0.9.0-pre.1",
+    "azure-mgmt-vnet": "0.9.0-pre.1",
+    "azure-mgmt-sb": "0.9.0-pre.1",
+    "azure-mgmt-sql": "0.9.0-pre.1",
+    "azure-mgmt-storage": "0.9.0-pre.1",
+    "azure-mgmt-website": "0.9.0-pre.1",
+    "azure-scheduler": "0.9.0-pre.1",
+    "mime": "~1.2.4",
     "underscore": "~1.4.0",
-    "node-uuid": "~1.2.0",
-    "tunnel": "~0.0.2",
     "request": "2.27.0",
-    "validator": "2.1.0",
     "wns": "~0.5.3",
     "mpns": "~2.0.0",
-    "envconf": "~0.0.4",
-    "duplexer": "~0.1.1",
-    "through": "~2.3.4"
+    "node-uuid": "~1.2.0"
   },
   "devDependencies": {
     "mocha": "1.16.0",
@@ -52,10 +53,9 @@
     "sinon": "*",
     "should": "1.2.x",
     "nock": "*",
-    "grunt": "~0.4.1",
-    "grunt-jsdoc": "~0.4.0",
-    "grunt-devserver": "~0.4.1",
-    "grunt-github-pages": "0.0.3"
+    "grunt": "~0.4.2",
+    "grunt-jsdoc": "~0.5.1",
+    "grunt-devserver": "~0.4.1"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {
@@ -68,6 +68,7 @@
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
+    "setup": "node scripts/setup.js",
     "update": "node scripts/update.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",

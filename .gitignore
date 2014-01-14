@@ -20,9 +20,17 @@ test-result.xml
 # Windows #
 Thumbs.db
 
+# Credentials #
+*.cer
+*.pfx
+*.pem
+
 # WebStorm #
 .idea/
 
 # docs #
 docs/
-jsdoc/
+
+# Nuget packages and corresponding codegen sources
+.nuget
+packages

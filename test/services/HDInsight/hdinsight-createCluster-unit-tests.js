@@ -1,38 +1,39 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 var mocha = require('mocha');
 var sinon = require('sinon');
 var should = require('should');
 var _ = require('underscore');
-var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
-var azureUtil = require('../../../lib/util/util.js');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils');
+var azureUtil = require('../../../lib/common/lib/util/util');
 var uuid = require('node-uuid');
-var Validate = require('../../../lib/util/validate.js');
+var Validate = require('../../../lib/common/lib/util/validate');
 
 // Test includes
 var testutil = require('../../util/util');
 
-var PerformRequestStubUtil = require('./PerformRequestStubUtil.js');
-var HDInsightTestUtils = require('../../framework/hdinsight-test-utils.js');
+var PerformRequestStubUtil = require('./PerformRequestStubUtil');
+var HDInsightTestUtils = require('../../framework/hdinsight-test-utils');
 
 var azure = testutil.libRequire('azure');
 var performRequestStubUtil;
 
 describe('HDInsight createCluster (under unit test)', function() {
-  var HDInsight = require('../../../lib/services/hdinsight/hdinsightservice.js');
+  var HDInsight = require('../../../lib/services/hdinsight/hdinsightservice');
   var hdInsight;
   var hdInsightTestUtils;
 

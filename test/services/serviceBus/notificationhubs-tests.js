@@ -1,17 +1,18 @@
-/**
-* Copyright (c) Microsoft.  All rights reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*   http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
 
 var _ = require('underscore');
 
@@ -245,6 +246,60 @@ describe('Notification hubs', function () {
     });
   });
 
+  describe('tags', function () {
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
+      notificationHubService = azure.createNotificationHubService(hubName);
+
+      suiteUtil.setupService(notificationHubService);
+      service.createNotificationHub(hubName, {
+          apns: {
+            ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
+            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
+            Endpoint: 'pushtestservice2.cloudapp.net'
+          }
+        }, function () {
+          notificationHubService.apns.createTemplateRegistration(
+            tokenId,
+            ['tag1', 'tag3'],
+            {
+              alert: '$(alertMessage1)'
+            },
+            function (error, reg) {
+              notificationHubService.apns.createTemplateRegistration(
+                tokenId,
+                'tag2',
+                {
+                  alert: '$(alertMessage1)'
+                },
+                function (error, reg) {
+                  done();
+                });
+            });
+      });
+    });
+
+    it('should be able to send a template message to multiple tags', function (done) {
+      notificationHubService = azure.createNotificationHubService(hubName);
+      suiteUtil.setupService(notificationHubService);
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+
+      notificationHubService.send(['tag1', 'tag2', 'tag3'], { property: 'value' }, function (err) {
+        should.not.exist(err);
+
+        // Body
+        var body = JSON.parse(executeSpy.args[0][1]);
+
+        should.exist(body['property']);
+        body['property'].should.equal('value');
+
+        done();
+      });
+    });
+  });
+
   describe('Shared Access Signature', function () {
     var notificationHubService;
     var notificationListenHubService;
@@ -310,6 +365,76 @@ describe('Notification hubs', function () {
         result.statusCode.should.equal(401);
 
         done();
+      });
+    });
+  });
+
+  describe('create registration identifier', function () {
+    var hubName;
+    var notificationHubService;
+
+    beforeEach(function (done) {
+      hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
+      notificationHubService = azure.createNotificationHubService(hubName);
+
+      suiteUtil.setupService(notificationHubService);
+      service.createNotificationHub(hubName, {
+          apns: {
+            ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
+            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
+            Endpoint: 'pushtestservice2.cloudapp.net'
+          }
+        }, function () {
+        done();
+      });
+    });
+
+    it('should work', function (done) {
+      service.getNotificationHub(hubName, function (err, hub) {
+        notificationHubService.createRegistrationId(function (err, registrationId, rsp) {
+          should.not.exist(err);
+          should.exist(registrationId);
+          should.exist(rsp);
+
+          done();
+        });
+      });
+    });
+
+    it('should be able to use the registration identifier', function (done) {
+      service.getNotificationHub(hubName, function (err, hub) {
+        notificationHubService.createRegistrationId(function (err, registrationId, rsp) {
+          should.not.exist(err);
+          should.exist(registrationId);
+          should.exist(rsp);
+
+          notificationHubService.apns.createOrUpdateTemplateRegistration(
+            registrationId,
+            tokenId,
+            null,
+            {
+              alert: '$(alertMessage1)'
+            },
+            function (error) {
+              should.not.exist(error);
+
+              notificationHubService.getRegistration(registrationId, function (err, getRegistration) {
+                should.not.exist(err);
+                should.exist(getRegistration);
+
+                // Create or update again to test update. This time with the raw createOrUpdate.
+                getRegistration.BodyTemplate = JSON.stringify({ aps: { alert: '$(alertMessage2)' } });
+                notificationHubService.createOrUpdateRegistration(
+                  getRegistration,
+                  function (error) {
+                    should.not.exist(error);
+
+                    done();
+                  });
+              });
+            });
+        });
       });
     });
   });
