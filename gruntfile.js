@@ -80,28 +80,34 @@ module.exports = function(grunt) {
     jsdoc : {
         dist : {
             src: [
-              'README.md',
-              'lib/azure.js',
-              'lib/common/lib/services/serviceclient.js',
-              'lib/common/lib/services/filters/exponentialretrypolicyfilter.js',
-              'lib/common/lib/services/filters/linearretrypolicyfilter.js',
-              'lib/common/lib/util/date.js',
-              'lib/services/blob/*.js',
-              'lib/services/queue/*.js',
-              'lib/services/serviceBus/apnsservice.js',
-              'lib/services/serviceBus/gcmservice.js',
-              'lib/services/serviceBus/notificationhubservice.js',
-              'lib/services/serviceBus/servicebusservice.js',
-              'lib/services/serviceBus/wnsservice.js',
-              'lib/services/management/lib/*.js',
-              'lib/services/sql/sqlservice.js',
-              'lib/services/table/tableservice.js',
-              'lib/serviceruntime/roleenvironment.js',
+                  "README.md",
+                  "lib/azure.js",
+                  "lib/serviceruntime/roleenvironment.js",
+                  "lib/services/blob/blobservice.js",
+                  "lib/services/computeManagement/lib/computeManagementClient.js",
+                  "lib/services/hdinsight/hdinsightservice.js",
+                  "lib/services/management/lib/managementClient.js",
+                  "lib/services/networkManagement/lib/virtualNetworkManagementClient.js",
+                  "lib/services/queue/queueservice.js",
+                  "lib/services/scm/scmservice.js",
+                  "lib/services/serviceBus/notificationhubservice.js",
+                  "lib/services/serviceBus/apnsservice.js",
+                  "lib/services/serviceBus/gcmservice.js",
+                  "lib/services/serviceBus/mpnsservice.js",
+                  "lib/services/serviceBus/wnsservice.js",
+                  "lib/services/serviceBus/servicebusservice.js",
+                  "lib/services/serviceBusManagement/lib/serviceBusManagementClient.js",
+                  "lib/services/sql/sqlService.js",
+                  "lib/services/sqlManagement/lib/sqlManagementClient.js",
+                  "lib/services/storageManagement/lib/storageManagementClient.js",
+                  "lib/services/storeManagement/lib/storeManagementClient.js",
+                  "lib/services/subscriptionManagement/lib/subscriptionClient.js",
+                  "lib/services/table/tableservice.js",
+                  "lib/services/webSiteManagement/lib/webSiteManagementClient.js"
             ],
             options: {
                 destination: 'docs',
-                configure: 'jsdoc/jsdoc.json',
-                template: 'jsdoc/template'
+                configure: 'jsdoc/jsdoc.json'
             }
         }
     },
@@ -110,22 +116,11 @@ module.exports = function(grunt) {
         'port' : 8888,
         'base' : 'docs'
       }
-    },
-    githubPages: {
-      target: {
-        options: {
-          // The default commit message for the gh-pages branch
-          commitMessage: 'pushing docs to pages'
-        },
-        // The folder where your gh-pages repo is
-        src: 'docs'
-      }
     }
   });
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-devserver');
-  grunt.loadNpmTasks('grunt-github-pages');
-
+  
   grunt.loadTasks('tasks');
 
   grunt.registerTask('publishdocs', ['githubPages:target']);
