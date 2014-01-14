@@ -34,7 +34,7 @@ This library support management certificate authentication. To authenticate the 
 var fs           = require('fs'),
     sbManagement = require('azure-mgmt-sb');
 
-var sbManagementClient = sbManagement.createServiceBusManagementClient(new common.CertificateCloudCredentials({
+var sbManagementClient = sbManagement.createServiceBusManagementClient(sbManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
   pem: fs.readFileSync('<your pem file>')
 }));

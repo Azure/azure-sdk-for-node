@@ -30,11 +30,11 @@ This library support management certificate authentication. To authenticate the 
 ```javascript
 var schedulerManagement = require('azure-mgmt-scheduler');
 
-var schedulerManagementClient = schedulerManagement.createSchedulerManagementClient({
+var schedulerManagementClient = schedulerManagement.createSchedulerManagementClient(schedulerManagement.createCloudCertificateCredentials({
   subscriptionId: '<your subscription id>',
-  certvalue: "<your management certificate value>",
-  keyvalue: "<your management certificate key value>"
-});
+  certvalue: '<your management certificate value>',
+  keyvalue: '<your management certificate key value>'
+}));
 ```
 
 ### Manage Job Collection

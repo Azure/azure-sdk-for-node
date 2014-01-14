@@ -36,7 +36,7 @@ This library support management certificate authentication. To authenticate the 
 var fs                = require('fs'),
     computeManagement = require('azure-mgmt-compute');
 
-var computeManagementClient = computeManagement.createComputeManagementClient(new common.CertificateCloudCredentials({
+var computeManagementClient = computeManagement.createComputeManagementClient(computeManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
   pem: fs.readFileSync('<your pem file>')
 }));

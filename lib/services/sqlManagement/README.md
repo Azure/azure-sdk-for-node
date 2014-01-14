@@ -37,7 +37,7 @@ This library support management certificate authentication. To authenticate the 
 var fs            = require('fs'),
     sqlManagement = require('azure-mgmt-sql');
 
-var sqlManagementClient = sqlManagement.createSqlManagementClient(new common.CertificateCloudCredentials({
+var sqlManagementClient = sqlManagement.createSqlManagementClient(sqlManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
   pem: fs.readFileSync('<your pem file>')
 }));
