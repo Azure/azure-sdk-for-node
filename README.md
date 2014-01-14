@@ -1,57 +1,58 @@
-# Windows Azure SDK for Node.js 
+# Windows Azure SDK for Node.js
 
 [![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
 
-This project provides a Node.js package that makes it easy to access Windows Azure Services like Table Storage and Service Bus. 
+This project provides a Node.js package that makes it easy to consume and manage Windows Azure Services.
 
-# Library Features
+# Features
 
-* Tables
-    * create and delete tables
-    * create, query, insert, update, merge, and delete entities
-* Blobs
-    * create, list, and delete containers, work with container metadata and permissions, list blobs in container
-    * create block and page blobs (from a stream, a file, or a string), work with blob blocks and pages, delete blobs
-    * work with blob properties, metadata, leases, snapshot a blob
-* HD Insight
-    * create, list and delete HDInsight clusters
-* Storage Queues
-    * create, list, and delete queues, and work with queue metadata
-    * create, get, peek, update, delete messages
+* Storage
+    * Blob
+    * Table
+    * Storage Queue
 * Service Bus
-    * Queues: create, list and delete queues; create, list, and delete subscriptions; send, receive, unlock and delete messages
-    * Topics: create, list, and delete topics; create, list, and delete rules
-    * Notification hubs: create hubs, register for push notifications, send push notifications
-* Azure SQL Database
-    * create, list and delete Azure SQL Database servers, databases and firewall rules
+    * Queue
+    * Topic
+    * Notification Hub
 * Service Runtime
-    * discover addresses and ports for the endpoints of other role instances in your service
-    * get configuration settings and access local resources
-    * get role instance information for current role and other role instances
-    * query and set the status of the current role
+* [Core management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/management/README.md)
+* [Compute management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/computeManagement/README.md)
+    * Virtual Machine
+    * Cloud Service
+* [Web Site management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/webSiteManagement/README.md)
+* [Virtual Network managment](https://github.com/WindowsAzure/azure-sdk-for-node/blob/dev/lib/services/networkManagement/README.md)
+* [Storage Account management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/storageManagement/README.md)
+* [SQL Database management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/sqlManagement/README.md)
+* [Service Bus management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/serviceBusManagement/README.md)
+* HDInsight management
 
 # Getting Started
-## Download Source Code
 
-To get the source code of the SDK via **git** just type:
+## Install from npm
 
-    git clone https://github.com/WindowsAzure/azure-sdk-for-node.git
-    cd ./azure-sdk-for-node
+We provide both fine-grained modules for different Windows Azure services which you can install separately, and an all-up module which contains everything.
 
-## Install the npm package
+**Notice**: we haven't provided fine-grained modules for every supported Windows Azure services yet. This will come soon.
 
-You can install the azure npm package directly.
+### Install the all-up module
 
-    npm install azure
+```
+npm install azure
+```
 
-You can use these packages against the cloud Windows Azure Services, or against
-the local Storage Emulator (with the exception of Service Bus features).
+### Install the fine-grained modules
 
-1. To use the cloud services, you need to first create an account with Windows Azure. To use the storage services, you need to set the AZURE_STORAGE_ACCOUNT and the AZURE_STORAGE_ACCESS_KEY environment variables to the storage account name and primary access key you obtain from the Azure Portal. To use Service Bus, you need to set the AZURE_SERVICEBUS_NAMESPACE and the AZURE_SERVICEBUS_ACCESS_KEY environment variables to the service bus namespace and the default key you obtain from the Azure Portal.
-2. To use the Storage Emulator, make sure the latest version of the Windows Azure SDK is installed on the machine, and set the EMULATED environment variable to any value ("true", "1", etc.)
+* Core management: ``npm install azure-mgmt``
+* Compute management: ``npm install azure-mgmt-compute``
+* Web Site management: ``npm install azure-mgmt-website``
+* Virtual Network managment: ``npm install azure-mgmt-vnet``
+* Storage Account management: ``npm install azure-mgmt-storage``
+* SQL Database management: ``npm install azure-mgmt-sql``
+* Service Bus management: ``npm install azure-mgmt-sb``
 
-# Usage
-## Table Storage
+## Usage
+
+### Table Storage
 
 To ensure a table exists, call **createTableIfNotExists**:
 
@@ -71,9 +72,9 @@ var tableService = azure.createTableService(),
         PartitionKey : 'tasksSeattle',
         RowKey: '1',
         Description: 'Take out the trash',
-        DueDate: new Date(2011, 12, 14, 12) 
+        DueDate: new Date(2011, 12, 14, 12)
     };
-tableService.insertEntity('tasktable', task1, function(error){ 
+tableService.insertEntity('tasktable', task1, function(error){
     if(!error){
         // Entity inserted
     }
@@ -93,7 +94,7 @@ tableService.queryEntity('tasktable', 'tasksSeattle', '1', function(error, serve
 
 ## Blob Storage
 
-The **createContainerIfNotExists** method can be used to create a 
+The **createContainerIfNotExists** method can be used to create a
 container in which to store a blob:
 
 ```Javascript
@@ -127,7 +128,7 @@ To create a SAS URL you can use the **getBlobUrl** method. Additionally you can 
 var blobService = azure.createBlobService();
 
 //create a SAS that expires in an hour
-var sharedAccessPolicy = { 
+var sharedAccessPolicy = {
     AccessPolicy: {
         Expiry: azure.date.minutesFromNow(60);
     }
@@ -168,7 +169,7 @@ var queueService = azure.createQueueService(),
 queueService.getMessages(queueName, function(error, serverMessages){
     if(!error){
         // Process the message in less than 30 seconds, the message
-        // text is available in serverMessages[0].messagetext 
+        // text is available in serverMessages[0].messagetext
 
         queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error){
             if(!error){
@@ -332,7 +333,7 @@ notificationHubService.mpns.sendToast(
     null,
     {
         text1: 'A dog',
-		text2: 'This is a dog'
+        text2: 'This is a dog'
     },
     function (error) {
         if (!error) {
@@ -345,7 +346,7 @@ notificationHubService.send(
     null,
     {
         message: 'This is my template notification',
-		goesTo: 'all registrations irrespective of the platform'
+        goesTo: 'all registrations irrespective of the platform'
     },
     function (error) {
         if (!error) {
@@ -357,76 +358,11 @@ notificationHubService.send(
 
 To create registrations (for both native and template notifications), use the creation methods in the **wns**, **apns**, **gcm**, **mpns**. To retrieve, update and delete existing registrations, use the following methods in NotificationHubService: **getRegistration**, **listRegistrations**, **listRegistrationsByTag**, **updateRegistration**, and **deleteRegistration**.
 
-## Azure SQL Database
-
-The Azure SQL Database functions allow you to manage Azure SQL servers, databases and firewall rules.
-
-### Servers
-You can add, delete and list SQL Server instances
-
-```Javascript
-var authentication={keyvalue:'...', certvalue:'...' };
-var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
-
-//create a new server
-//admin, password, location, callback
-sqlMgmt.createServer('sqladmin', 'Pa$$w0rd', 'West US', function(error, serverName) {
-    console.log('created server ' + serverName);
-});
-
-//list out servers
-sqlMgmt.listServers(function(error, servers) {
-    console.log('servers\n' + servers);
-});
-
-```
-
-### Firewall rules
-You can list, create and delete firewall rules
-
-```Javascript
-var authentication={keyvalue:'...', certvalue:'...'};
-var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
-
-//create a new rule
-//server, rule name, start ip, end ip, callback
-sqlMgmt.createServerFirewallRule(serverName, 'myrule', '192.168.100.0', '192.168.100.255',
-    function(error, rule) {
-        console.log('Rule created:\n' + rule);
-    }
-);
-
-//list rules
-sqlMgmt.listServerFirewallRules(serverName, function(error, rules) {
-    console.log('Rules:\n:' + rules);
-});
-
-```
-
-### Databases
-You can list, create and delete databases
-
-```Javascript
-var sqlService = new azure.createSqlService(serverName, 'sqlAdmin', 'Pa$$w0rd');
-
-//create a new database
-//db name, callback
-sqlServer.createServerDatabase('mydb', function(error, db) {
-  console.log('DB Created:\n' + db);
-});
-
-//list databases
-sqlServer.listServerDatabases(function(error, dbs) {
-  console.log('Databases:\n' + dbs);
-});
-
-```
-
 ## Service Runtime
 
 The Service Runtime allows you to interact with the machine environment where the current role is running. Please note that these commands will only work if your code is running in a worker role inside the Azure emulator or in the cloud.
 
-The **isAvailable** method lets you determine whether the service runtime endpoint is running on the local machine.  It is good practice to enclose any code that 
+The **isAvailable** method lets you determine whether the service runtime endpoint is running on the local machine.  It is good practice to enclose any code that
 uses service runtime in the isAvailable callback.
 
 ```JavaScript
@@ -443,17 +379,17 @@ The **getConfigurationSettings** method lets you obtain values from the role's .
 azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
     if (!error) {
         // You can get the value of setting "setting1" via settings['setting1']
-    }        
+    }
 });
 ```
 
-The **getLocalResources** method lets you find the path to defined local storage resources for the current role.  For example, the DiagnosticStore 
+The **getLocalResources** method lets you find the path to defined local storage resources for the current role.  For example, the DiagnosticStore
 resource which is defined for every role provides a location for runtime diagnostics and logs.
 
 ```Javascript
 azure.RoleEnvironment.getLocalResources(function(error, resources) {
     if(!error){
-        // You can get the path to the role's diagnostics store via 
+        // You can get the path to the role's diagnostics store via
         // resources['DiagnosticStore']['path']
     }
 });
@@ -476,26 +412,22 @@ The **getRoles** method lets you obtain information about endpoints in role inst
 azure.RoleEnvironment.getRoles(function(error, roles) {
     if(!error){
         // You can get information about "instance1" of "role1" via roles['role1']['instance1']
-    } 
+    }
 });
 ```
 
-**For more examples please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs)**
-
 # Need Help?
 
-Be sure to check out the Windows Azure [Developer Forums on Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489) if you have trouble with the provided code.
-
-# Contribute Code or Provide Feedback
-
-If you would like to become an active contributor to this project please follow the instructions provided in [Windows Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
-
-If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-node/issues) section of the project.
+* [Windows Azure Forums on MSDN and Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489)
+* IRC channel on freenode: node-azure
 
 # Learn More
 
-For documentation on how to host Node.js applications on Windows Azure, please see the [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/).
+* [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/)
+* [API reference](http://dl.windowsazure.com/nodedocs/)
+* [Windows Azure Cross-Platform CLI](http://github.com/windowsazure/azure-sdk-tools-xplat)
 
-For documentation on the Azure cross platform CLI tool for Mac and Linux, please see our readme [here] (http://github.com/windowsazure/azure-sdk-tools-xplat)
+# Contribute
 
-Check out our new IRC channel on freenode, node-azure.
+* If you would like to become an active contributor to this project please follow the instructions provided in [Windows Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
+* If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-node/issues) section of the project.

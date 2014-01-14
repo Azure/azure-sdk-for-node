@@ -1,3 +1,6 @@
+2013.01.10 Version 0.7.19
+* Lock validator version
+
 2013.11.27 Version 0.7.18
 * Lock xmlbuilder version
 
