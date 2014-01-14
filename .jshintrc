@@ -23,5 +23,6 @@
   "strict": false,
   "trailing": true,
   "undef": true,
-  "unused": true
+  "unused": true,
+  "shadow": true
 }
