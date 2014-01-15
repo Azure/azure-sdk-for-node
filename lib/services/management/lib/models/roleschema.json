@@ -217,7 +217,15 @@
                             "XmlNode": "Thumbprint"
                           }
                       }
-                  }
+                  },
+              "CustomData":
+                {
+                  "Name": "CustomData",
+                  "Required": false,
+                  "Type": "Primitive.String",
+                  "RegEx": "NIL",
+                  "XmlNode": "CustomData"
+                }
             },
           "LinuxProvisioningConfiguration": 
             {
@@ -325,7 +333,15 @@
                              }
                          }
                      }
-                 }
+                 },
+              "CustomData":
+                {
+                  "Name": "CustomData",
+                  "Required": false,
+                  "Type": "Primitive.String",
+                  "RegEx": "NIL",
+                  "XmlNode": "CustomData"
+                }
             },
           "NetworkConfiguration": 
             {
