@@ -137,7 +137,7 @@ module.exports = function(grunt) {
       } else if (element.output) {
         args = [ '-f', 'js', '-d', element.destDir, '-o', element.output, '-c', element.clientType, specPath];
       } else {
-        // this will most likely be an error on the CLI, but pass it anyways to make sure 
+        // this will most likely be an error on the CLI, but pass it anyways to make sure
         // we throw the right error
         args = [ '-f', 'js', '-d', element.destDir, '-c', element.clientType, specPath];
       }
@@ -210,7 +210,7 @@ module.exports = function(grunt) {
     }
 
     function updateSource(sourceName, userName, password, callback) {
-      var opts = spawnOpts('sources', 'update', '-name', sourceName, '-username', userName, '-password', 'password');
+      var opts = spawnOpts('sources', 'update', '-name', sourceName, '-username', userName, '-password', password);
       grunt.util.spawn(opts, callback);
     }
 
