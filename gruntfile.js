@@ -76,7 +76,7 @@ module.exports = function(grunt) {
       },
       'Microsoft.Azure.Management.Resources.Specification.dll' : {
         clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
-        destDir: 'lib/services/resourcesManagement/lib',
+        destDir: 'lib/services/resourceManagement/lib',
         output: 'resourceManagementClient.js'
       }
     },
