@@ -28,13 +28,12 @@ This library support management certificate authentication. To authenticate the 
 ### Create the StorageManagementClient
 
 ```javascript
-var fs                = require("fs"),
-    common            = require("azure-common"),
-    storageManagement = require("azure-mgmt-storage");
+var fs                = require('fs'),
+    storageManagement = require('azure-mgmt-storage');
 
-var storageManagementClient = storageManagement.createStorageManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+var storageManagementClient = storageManagement.createStorageManagementClient(storageManagement.createCertificateCloudCredentials({
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 
@@ -130,7 +129,7 @@ storageManagementClient.storageAccounts.regenerateKeys({
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
 - [Windows Azure SDK for Node.js - Storage Blob](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/blob)
 - [Windows Azure SDK for Node.js - Storage Table](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/table)
 - [Windows Azure SDK for Node.js - Storage Queue](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/queue)

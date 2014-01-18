@@ -1,3 +1,8 @@
+2013.01.15 Version 0.8.0
+* Added the Preview Service Management libraries as separate modules
+* Added ability to consume PEM files directly from the Service Management libraries
+* Added support for createOrUpdate and createRegistrationId in the Notification Hubs libraries
+
 2013.01.10 Version 0.7.19
 * Lock validator version
 

@@ -28,17 +28,17 @@ This library support management certificate authentication. To authenticate the 
 ### Create the StoreManagementClient
 
 ```javascript
-var storeManagement = require("azure-mgmt-store");
+var storeManagement = require('azure-mgmt-store');
 
-var storeManagementClient = storeManagement.createStoreManagementClient({
-  subscriptionId: "<your subscription id>",
-  certvalue: "<your management certificate value>",
-  keyvalue: "<your management certificate key value>"
-});
+var storeManagementClient = storeManagement.createStoreManagementClient(storeManagement.createCertificateCloudCredentials({
+  subscriptionId: '<your subscription id>',
+  certvalue: '<your management certificate value>',
+  keyvalue: '<your management certificate key value>'
+}));
 ```
 
 ### Manage Add-On
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
