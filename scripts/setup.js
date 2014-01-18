@@ -25,6 +25,8 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/subscriptionManagement/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement/' },
   { cmd: 'npm install', path: 'lib/services/webSiteManagement/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/ResourceManagement/' },
+  { cmd: 'npm install', path: 'lib/services/resourceManagement/' },
   { cmd: 'npm link lib/common/' },
   { cmd: 'npm link lib/services/computeManagement/' },
   { cmd: 'npm link lib/services/management/' },
@@ -36,7 +38,8 @@ var cmds = [
   { cmd: 'npm link lib/services/storageManagement/' },
   { cmd: 'npm link lib/services/storeManagement/' },
   { cmd: 'npm link lib/services/subscriptionManagement/' },
-  { cmd: 'npm link lib/services/webSiteManagement/' }
+  { cmd: 'npm link lib/services/webSiteManagement/' },
+  { cmd: 'npm link lib/services/resourceManagement/' }
 ];
 
 function executeCmds(cmds) {

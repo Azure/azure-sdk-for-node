@@ -73,6 +73,11 @@ module.exports = function(grunt) {
         clientType: 'Microsoft.WindowsAzure.Management.WebSites.WebSiteManagementClient',
         destDir: 'lib/services/webSiteManagement/lib',
         output: 'webSiteManagementClient.js'
+      },
+      'Microsoft.Azure.Management.Resources.Specification.dll' : {
+        clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
+        destDir: 'lib/services/resourceManagement/lib',
+        output: 'resourceManagementClient.js'
       }
     },
 
@@ -120,7 +125,7 @@ module.exports = function(grunt) {
   });
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-devserver');
-  
+
   grunt.loadTasks('tasks');
 
   grunt.registerTask('publishdocs', ['githubPages:target']);
