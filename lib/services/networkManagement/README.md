@@ -30,13 +30,12 @@ This library support management certificate authentication. To authenticate the 
 ### Create the VirtualNetworkManagementClient
 
 ```javascript
-var fs             = require("fs"),
-    common         = require("azure-common"),
-    vnetManagement = require("azure-mgmt-vnet");
+var fs             = require('fs'),
+    vnetManagement = require('azure-mgmt-vnet');
 
-var vnetManagementClient = vnetManagement.createVirtualNetworkManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+var vnetManagementClient = vnetManagement.createVirtualNetworkManagementClient(vnetManagement.createCertificateCloudCredentials({
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 
@@ -100,5 +99,5 @@ vnetManagementClient.networks.getConfiguration(function (err, result) {
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
 - [Windows Azure SDK for Node.js - Compute Management](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/computeManagement)

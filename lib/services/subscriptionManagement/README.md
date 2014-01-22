@@ -28,10 +28,10 @@ This library support management certificate authentication. To authenticate the 
 ### Create the SubscriptionClient
 
 ```javascript
-var subscriptionManagement = require("azure-mgmt-subscription");
+var subscriptionManagement = require('azure-mgmt-subscription');
 
 var subscriptionClient = subscriptionManagement.createSubscriptionClient({
-  subscriptionId: "<your subscription id>",
+  subscriptionId: '<your subscription id>',
   certvalue: "<your management certificate value>",
   keyvalue: "<your management certificate key value>"
 });
