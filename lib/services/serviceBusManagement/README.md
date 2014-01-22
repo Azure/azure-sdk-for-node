@@ -31,13 +31,12 @@ This library support management certificate authentication. To authenticate the 
 ### Create the ServiceBusManagementClient
 
 ```javascript
-var fs           = require("fs"),
-    common       = require("azure-common"),
-    sbManagement = require("azure-mgmt-sb");
+var fs           = require('fs'),
+    sbManagement = require('azure-mgmt-sb');
 
-var sbManagementClient = sbManagement.createServiceBusManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+var sbManagementClient = sbManagement.createServiceBusManagementClient(sbManagement.createCertificateCloudCredentials({
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 
@@ -58,5 +57,5 @@ sbManagementClient.namespaces.create(namespaceName, "West US", function (err, re
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
 - [Windows Azure SDK for Node.js - Service Bus](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/serviceBus)

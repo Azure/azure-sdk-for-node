@@ -34,13 +34,12 @@ This library support management certificate authentication. To authenticate the 
 ### Create the SqlManagementClient
 
 ```javascript
-var fs            = require("fs"),
-    common        = require("azure-common"),
-    sqlManagement = require("azure-mgmt-sql");
+var fs            = require('fs'),
+    sqlManagement = require('azure-mgmt-sql');
 
-var sqlManagementClient = sqlManagement.createSqlManagementClient(new common.CertificateCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  pem: fs.readFileSync("<your pem file>")
+var sqlManagementClient = sqlManagement.createSqlManagementClient(sqlManagement.createCertificateCloudCredentials({
+  subscriptionId: '<your subscription id>',
+  pem: fs.readFileSync('<your pem file>')
 }));
 ```
 
@@ -80,4 +79,4 @@ sqlManagementClient.servers.create({
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
