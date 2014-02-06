@@ -96,7 +96,7 @@ describe('WNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
-          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', null, { registrationId: 'myname' }, function (error, registration) {
+          notificationHubService.wns.createNativeRegistration('http://db3.notify.windows.com/fake/superfake', null, function (error, registration) {
             should.not.exist(error);
             registrationId = registration.RegistrationId;
 
