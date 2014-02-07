@@ -78,6 +78,11 @@ module.exports = function(grunt) {
         clientType: 'Microsoft.WindowsAzure.WebSitesExtensions.WebSiteExtensionsClient',
         destDir: 'lib/services/webSiteManagement/lib',
         output: 'webSiteExtensionsClient.js'
+      },
+      'Microsoft.WindowsAzure.Subscriptions.Specification.dll': {
+        clientType: 'Microsoft.WindowsAzure.Subscriptions.SubscriptionClient',
+        destDir: 'lib/services/subscriptionManagement/lib',
+        output: 'subscriptionClient.js'
       }
     },
 
@@ -126,7 +131,7 @@ module.exports = function(grunt) {
   });
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-devserver');
-  
+
   grunt.loadTasks('tasks');
 
   grunt.registerTask('publishdocs', ['githubPages:target']);
