@@ -39,7 +39,7 @@
     "azure-mgmt-sql": "0.9.1-pre.2",
     "azure-mgmt-storage": "0.9.1-pre.2",
     "azure-mgmt-website": "0.9.1-pre.2",
-    "azure-mgmt-subscription": "0.9.0-pre.1",
+    "azure-mgmt-subscription": "0.9.1-pre.2",
     "mime": "~1.2.4",
     "underscore": "~1.4.0",
     "request": "2.27.0",
