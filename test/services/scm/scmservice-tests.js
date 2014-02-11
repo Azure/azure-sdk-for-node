@@ -48,6 +48,8 @@ describe('SCM', function () {
       { serializetype: 'XML'});
 
     suiteUtil = new MockedTestUtils(service, testPrefix);
+    suiteUtil.isMocked = true;
+    suiteUtil.isRecording = false;
     suiteUtil.setupSuite(done);
   });
 

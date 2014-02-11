@@ -96,7 +96,7 @@ describe('MPNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
-          notificationHubService.mpns.createNativeRegistration('http://sn1.notify.live.net/fake/superfake', null, { registrationId: 'myname' }, function (error, registration) {
+          notificationHubService.mpns.createNativeRegistration('http://sn1.notify.live.net/fake/superfake', null, function (error, registration) {
             should.not.exist(error);
             registrationId = registration.RegistrationId;
 
