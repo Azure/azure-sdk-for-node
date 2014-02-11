@@ -34,6 +34,8 @@ describe('Token credentials', function () {
     service = azure.createWebSiteManagementClient(new TokenCloudCredentials({ token: process.env.AZURE_ACCESS_TOKEN, subscriptionId: process.env.AZURE_SUBSCRIPTION_ID }));
     service.strictSSL = false;
     suiteUtil = new MockedTestUtils(service, testPrefix);
+    suiteUtil.isMocked = true;
+    suiteUtil.isRecording = false;
     suiteUtil.setupSuite(done);
   });
 

@@ -40,6 +40,8 @@ describe('Proxy filter', function () {
     service = azure.createBlobService();
 
     suiteUtil = blobtestutil.createBlobTestUtils(service, testPrefix);
+    suiteUtil.isMocked = true;
+    suiteUtil.isRecording = false;
     suiteUtil.setupSuite(done);
   });
 

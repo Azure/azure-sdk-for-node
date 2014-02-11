@@ -227,10 +227,30 @@ describe('Service Management', function () {
 
   describe('virtual networks', function () {
     it('should set network configuration', function (done) {
-      var vnetObject = {
-        VirtualNetworkConfiguration: {
-          VirtualNetworkSites: [
-            {
+	   service.getNetworkConfig(function (err, response) {
+		 var virtualNetwork = response.body.VirtualNetworkConfiguration.VirtualNetworkSites.filter(function (vnet) {
+		  return vnet.Name === 'test';
+		})[0];
+		if(virtualNetwork){
+			var vnetObject = {
+			VirtualNetworkConfiguration: {
+			  VirtualNetworkSites: [
+				{
+				  Name: 'test',
+				  AffinityGroup: 'test-ag',
+				  AddressSpace: ['10.0.0.0/20'],
+				  Subnets: [
+					{
+					  Name: 'sub1',
+					  AddressPrefix: '10.0.0.0/23'
+					}
+				  ]
+				}
+			  ]
+			}
+		  };
+		} else {
+			var networkElem = {
               Name: 'test',
               AffinityGroup: 'test-ag',
               AddressSpace: ['10.0.0.0/20'],
@@ -240,16 +260,15 @@ describe('Service Management', function () {
                   AddressPrefix: '10.0.0.0/23'
                 }
               ]
-            }
-          ]
-        }
-      };
-
-      service.setNetworkConfig(vnetObject, function (err, response) {
-        should.not.exist(err);
-
-        done(err);
-      });
+            };
+			var vnetObject = response.body;			
+			vnetObject.VirtualNetworkConfiguration.VirtualNetworkSites.push(networkElem);
+		}
+		service.setNetworkConfig(vnetObject, function (err, response) {
+			should.not.exist(err);
+			done(err);
+		});
+	  });
     });
 
     it('should get network configuration', function (done) {

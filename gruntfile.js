@@ -74,6 +74,16 @@ module.exports = function(grunt) {
         destDir: 'lib/services/webSiteManagement/lib',
         output: 'webSiteManagementClient.js'
       },
+      'Microsoft.WindowsAzure.WebSitesExtensions.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.WebSitesExtensions.WebSiteExtensionsClient',
+        destDir: 'lib/services/webSiteManagement/lib',
+        output: 'webSiteExtensionsClient.js'
+      },
+      'Microsoft.WindowsAzure.Subscriptions.Specification.dll': {
+        clientType: 'Microsoft.WindowsAzure.Subscriptions.SubscriptionClient',
+        destDir: 'lib/services/subscriptionManagement/lib',
+        output: 'subscriptionClient.js'
+      },
       'Microsoft.Azure.Management.Resources.Specification.dll' : {
         clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
         destDir: 'lib/services/resourceManagement/lib',
@@ -108,7 +118,8 @@ module.exports = function(grunt) {
                   "lib/services/storeManagement/lib/storeManagementClient.js",
                   "lib/services/subscriptionManagement/lib/subscriptionClient.js",
                   "lib/services/table/tableservice.js",
-                  "lib/services/webSiteManagement/lib/webSiteManagementClient.js"
+                  "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
+                  "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js"
             ],
             options: {
                 destination: 'docs',
