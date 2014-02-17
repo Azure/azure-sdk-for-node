@@ -10,5 +10,6 @@ lib/services/storageManagement/node_modules/*
 lib/services/storeManagement/node_modules/*
 lib/services/subscriptionManagement/node_modules/*
 lib/services/webSiteManagement/node_modules/*
+lib/services/resourceManagement/node_modules/*
 packages
 .git
