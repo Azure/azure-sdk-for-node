@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         output: 'ManagementClient.js'
       },
       'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.VirtualNetworks.VirtualNetworkManagementClient',
+        clientType: 'Microsoft.WindowsAzure.Management.Network.VirtualNetworkManagementClient',
         destDir: 'lib/services/networkManagement/lib',
         output: 'virtualNetworkManagementClient.js'
       },
