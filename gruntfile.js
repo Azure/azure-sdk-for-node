@@ -88,6 +88,11 @@ module.exports = function(grunt) {
         clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
         destDir: 'lib/services/resourceManagement/lib',
         output: 'resourceManagementClient.js'
+      },
+      'Microsoft.Azure.Gallery.Specification.dll': {
+        clientType: 'Microsoft.Azure.Gallery.GalleryClient',
+        destDir: 'lib/services/gallery/lib',
+        output: 'galleryClient.js'
       }
     },
 
