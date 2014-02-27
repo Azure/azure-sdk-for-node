@@ -10,7 +10,7 @@ This project provides a Node.js package for accessing the Azure Gallery. Right n
 ## How to Install
 
 ```bash
-npm install azure-mgmt-compute
+npm install azure-gallery
 ```
 
 ## How to Use
