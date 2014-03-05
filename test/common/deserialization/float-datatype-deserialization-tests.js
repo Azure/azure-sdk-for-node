@@ -15,6 +15,7 @@
 // 
 
 var should = require('should');
+var assert = require('assert');
 var testutil = require('../../util/util');
 var util = require('util');
 var tc = require('../../stubs/Test.Serialization');
@@ -50,8 +51,7 @@ suite('float-datatype-deserialization-tests', function () {
     .reply(200, "<FLOATVALUE>9007199254740993</FLOATVALUE>");
     testclient.deserialization.getFloat(function (error, result) {
       should.exist(error);
-      error.should.match(/Cannot parse an integer beyond 2^53/);
-      should.not.exist(result.floatValue);
+      error.should.match(/Cannot parse a number beyond 2^53/);
     });
     done();
   });
@@ -100,7 +100,6 @@ suite('float-datatype-deserialization-tests', function () {
     testclient.deserialization.getFloat(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse NaN to a float/);
-      should.not.exist(result.floatValue);
     });
     done();
   });
@@ -113,7 +112,6 @@ suite('float-datatype-deserialization-tests', function () {
     testclient.deserialization.getFloat(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse Number.NEGATIVE_INFINITY to an integer/);
-      should.not.exist(result.floatValue);
     });
     done();
   });
@@ -126,12 +124,11 @@ suite('float-datatype-deserialization-tests', function () {
     testclient.deserialization.getFloat(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse Number.NEGATIVE_INFINITY to a float/);
-      should.not.exist(result.floatValue);
     });
     done();
   });
   
-  test('GetFloat with an empty value should throw an error', function (done) {
+  test('GetFloat with an empty element should throw an error', function (done) {
     nock("http://helloworld")
     .get("/GetFloat")
     .reply(200, "<FLOATVALUE></FLOATVALUE>");
@@ -142,23 +139,24 @@ suite('float-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetFloat with a null value should throw an error', function (done) {
+  test('GetFloat with a null element should throw an error', function (done) {
     nock("http://helloworld")
     .get("/GetFloat")
     .reply(200, "<FLOATVALUE />");
     testclient.deserialization.getFloat(function (error, result) {
       should.exist(error);
-      error.should.match(/Cannot deserialize a null to an int/);
+      error.should.match(/Cannot deserialize a null to a float/);
     });
     done();
   });
   
-  test('GetFloat with an nil value should throw an error', function (done) {
+  test('GetFloat with an nil element should throw an error', function (done) {
     nock("http://helloworld")
     .get("/GetFloat")
     .reply(200, "<FLOATVALUE xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getFloat(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot deserialize a null to a float/);
     });
     done();
   });
@@ -187,72 +185,73 @@ suite('float-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetFloatNullable with a null value should deserialize into undefined value', function (done) {
+  test('GetFloatNullable with a null element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetFloatNullable")
     .reply(200, "<INTVALUE />");
     testclient.deserialization.getFloatNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.floatValue.should.equal(null);
+      assert.equal(result.floatValue, null);
     });
     done();
   });
 // 
-  test('GetFloatNullable with an empty value should deserialize into undefined', function (done) {
+  test('GetFloatNullable with an empty element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetFloatNullable")
     .reply(200, "<FLOATVALUE></FLOATVALUE>");
     testclient.deserialization.getFloatNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.floatValue.should.be.NaN;
+      assert.equal(result.floatValue, null);
     });
     done();
   });
   
-  test('GetFloatNullable with a nil value should throw an error', function (done) {
+  test('GetFloatNullable with a nil element should throw an error', function (done) {
     nock("http://helloworld")
     .get("/GetFloatNullable")
     .reply(200, "<FLOATVALUE xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getFloatNullable(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot deserialize a null to a float/);
     });
     done();
   });
   
-  test('GetFloatNilableNullable with a null value should deserialize into undefined value', function (done) {
+  test('GetFloatNilableNullable with a null element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetFloatNilableNullable")
     .reply(200, "<FLOATVALUE />");
     testclient.deserialization.getFloatNilableNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.floatValue.should.be.NaN;
+      assert.equal(result.floatValue, null);
     });
     done();
   });
   
-  test('GetFloatNilableNullable with an empty value should deserialize into undefined', function (done) {
+  test('GetFloatNilableNullable with an empty element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetFloatNilableNullable")
     .reply(200, "<FLOATVALUE></FLOATVALUE>");
     testclient.deserialization.getFloatNilableNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.floatValue.should.be.NaN;
+      assert.equal(result.floatValue, null);
     });
     done();
   });
   
-  test('GetFloatNilableNullable with a nil value should deserialize into undefined', function (done) {
+  test('GetFloatNilableNullable with a nil value should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetFloatNilableNullable")
     .reply(200, "<FLOATVALUE xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getFloatNilableNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      should.not.exist(result.floatValue);
+      assert.equal(result.floatValue, null);
     });
     done();
   });

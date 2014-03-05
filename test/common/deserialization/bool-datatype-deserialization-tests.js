@@ -15,6 +15,7 @@
 // 
 
 var should = require('should');
+var assert = require('assert');
 var testutil = require('../../util/util');
 var tc = require('../../stubs/Test.Serialization');
 var fs = require('fs');
@@ -63,6 +64,7 @@ suite('bool-datatype-deserialization-tests', function () {
     .reply(200, "<BoolValue></BoolValue>");
     testclient.deserialization.getBool(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot parse a null value to a bool/);
     });
     done();
   });
@@ -73,6 +75,7 @@ suite('bool-datatype-deserialization-tests', function () {
     .reply(200, "<BoolValue />");
     testclient.deserialization.getBool(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot parse a null value to a bool/);
     });
     done();
   });
@@ -83,6 +86,7 @@ suite('bool-datatype-deserialization-tests', function () {
     .reply(200, "<BoolValue xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getBool(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot parse a null value to a bool/);
     });
     done();
   });
@@ -118,7 +122,7 @@ suite('bool-datatype-deserialization-tests', function () {
     testclient.deserialization.getBoolNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.boolValue.should.equal(null);
+      assert.equal(result.boolValue, null);;
     });
     done();
   });
@@ -130,7 +134,7 @@ suite('bool-datatype-deserialization-tests', function () {
     testclient.deserialization.getBoolNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.boolValue.should.equal(null);
+      assert.equal(result.boolValue, null);;
     });
     done();
   });
@@ -141,6 +145,7 @@ suite('bool-datatype-deserialization-tests', function () {
     .reply(200, "<BoolValue xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getBoolNullable(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot parse a null value to a bool/);
     });
     done();
   });
@@ -175,7 +180,7 @@ suite('bool-datatype-deserialization-tests', function () {
     testclient.deserialization.getBoolNilableNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.boolValue.should.equal(null);
+      assert.equal(result.boolValue, null);;
     });
     done();
   });
@@ -187,7 +192,7 @@ suite('bool-datatype-deserialization-tests', function () {
     testclient.deserialization.getBoolNilableNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.boolValue.should.equal(null);
+      assert.equal(result.boolValue, null);;
     });
     done();
   });
@@ -197,10 +202,10 @@ suite('bool-datatype-deserialization-tests', function () {
     .get("/GetBoolNilableNullable")
     .reply(200, "<BOOLVALUE xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getBoolNilableNullable(function (error, result) {
-        console.log('result' + util.inspect(result));
-        should.not.exist(error);
-        should.exist(result);
-        should.not.exist(result.boolValue);
+      should.not.exist(error);
+      should.exist(result);
+      console.log(util.inspect(result));
+      assert.equal(result.boolValue, null);;
     });
     done();
   });

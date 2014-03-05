@@ -1,4 +1,7 @@
 common/deserialization/bool-datatype-deserialization-tests.js
+common/deserialization/enum-datatype-deserialization-tests.js
+common/deserialization/array-datatype-deserialization-tests.js
+common/deserialization/dictionary-datatype-deserialization-tests.js
 common/deserialization/int-datatype-deserialization-tests.js
 common/deserialization/string-datatype-deserialization-tests.js
 common/deserialization/datetime-datatype-deserialization-tests.js

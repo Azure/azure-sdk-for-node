@@ -15,6 +15,7 @@
 // 
 
 var should = require('should');
+var assert = require('assert');
 var testutil = require('../../util/util');
 var util = require('util');
 var tc = require('../../stubs/Test.Serialization');
@@ -51,7 +52,7 @@ suite('int-datatype-deserialization-tests', function () {
     testclient.deserialization.getInt(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse an integer beyond 2^53/);
-      should.not.exist(result.intValue);
+      assert.equal(result.intValue, null);
     });
     done();
   });
@@ -76,7 +77,6 @@ suite('int-datatype-deserialization-tests', function () {
     testclient.deserialization.getInt(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse Number.MAX_VALUE to an integer/);
-      should.not.exist(result.intValue);
     });
     done();
   });
@@ -89,7 +89,6 @@ suite('int-datatype-deserialization-tests', function () {
     testclient.deserialization.getInt(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse Number.MIN_VALUE to an integer/);
-      should.not.exist(result.intValue);
     });
     done();
   });
@@ -102,7 +101,6 @@ suite('int-datatype-deserialization-tests', function () {
     testclient.deserialization.getInt(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse NaN to an integer/);
-      should.not.exist(result.intValue);
     });
     done();
   });
@@ -115,7 +113,6 @@ suite('int-datatype-deserialization-tests', function () {
     testclient.deserialization.getInt(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse Number.NEGATIVE_INFINITY to an integer/);
-      should.not.exist(result.intValue);
     });
     done();
   });
@@ -128,7 +125,6 @@ suite('int-datatype-deserialization-tests', function () {
     testclient.deserialization.getInt(function (error, result) {
       should.exist(error);
       error.should.match(/Cannot parse Number.NEGATIVE_INFINITY to an integer/);
-      should.not.exist(result.intValue);
     });
     done();
   });
@@ -161,6 +157,7 @@ suite('int-datatype-deserialization-tests', function () {
     .reply(200, "<IntValue xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getInt(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot deserialize a null to an int/);
     });
     done();
   });
@@ -189,72 +186,73 @@ suite('int-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetIntNullable with a null value should deserialize into null', function (done) {
+  test('GetIntNullable with a null element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetIntNullable")
     .reply(200, "<INTVALUE />");
     testclient.deserialization.getIntNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.intValue.should.equal(null);
+      assert.equal(result.intValue, null);
     });
     done();
   });
  
-  test('GetIntNullable with an empty value should deserialize into null', function (done) {
+  test('GetIntNullable with an empty element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetIntNullable")
     .reply(200, "<IntValue></IntValue>");
     testclient.deserialization.getIntNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.intValue.should.be.NaN;
+      assert.equal(result.intValue, null);
     });
     done();
   });
   
-  test('GetIntNullable with a nil value should throw an error', function (done) {
+  test('GetIntNullable with a nil element should throw an error', function (done) {
     nock("http://helloworld")
     .get("/GetIntNullable")
     .reply(200, "<IntValue xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getIntNullable(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot deserialize a null to an int/);
     });
     done();
   });
   
-  test('GetIntNilableNullable with a null value should deserialize into null', function (done) {
+  test('GetIntNilableNullable with a null element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetIntNilableNullable")
     .reply(200, "<IntValue />");
     testclient.deserialization.getIntNilableNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.intValue.should.be.NaN;
+      assert.equal(result.intValue, null);
     });
     done();
   });
   
-  test('GetIntNilableNullable with an empty value should deserialize into null', function (done) {
+  test('GetIntNilableNullable with an empty element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetIntNilableNullable")
     .reply(200, "<IntValue></IntValue>");
     testclient.deserialization.getIntNilableNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      result.intValue.should.be.NaN;
+      assert.equal(result.intValue, null);
     });
     done();
   });
   
-  test('GetIntNilableNullable with a nil value should not be deserialized', function (done) {
+  test('GetIntNilableNullable with a nil element should be deserialized into null', function (done) {
     nock("http://helloworld")
     .get("/GetIntNilableNullable")
     .reply(200, "<IntValue xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getIntNilableNullable(function (error, result) {
       should.not.exist(error);
       should.exist(result);
-      should.not.exist(result.intValue);
+      assert.equal(result.intValue, null);
     });
     done();
   });

@@ -15,6 +15,7 @@
 // 
 
 var should = require('should');
+var assert = require('assert');
 var testutil = require('../../util/util');
 var util = require('util');
 var tc = require('../../stubs/Test.Serialization');
@@ -90,6 +91,7 @@ suite('datetime-datatype-deserialization-tests', function () {
     .reply(200, "<DateTimeValue></DateTimeValue>");
     testclient.deserialization.getDateTime(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot parse a null value to DateTime/);
     });
     done();
   });
@@ -100,6 +102,7 @@ suite('datetime-datatype-deserialization-tests', function () {
     .reply(200, "<DateTimeValue xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getDateTime(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot parse a null value to DateTime/);
     });
     done();
   });
@@ -110,50 +113,51 @@ suite('datetime-datatype-deserialization-tests', function () {
     .reply(200, "<DateTimeValue />");
     testclient.deserialization.getDateTime(function (error, result) {
       should.exist(error);
+      error.should.match(/Cannot parse a null value to DateTime/);
     });
     done();
   });
   
-  test('GetDateTimeNilableNullable with a nil value should deserialize into undefined value', function (done) {
+  test('GetDateTimeNilableNullable with a nil element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetDateTimeNilableNullable")
     .reply(200, "<DateTimeValue xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getDateTimeNilableNullable(function (error, result) {
       should.not.exist(error);
-      should.not.exist(result.dateTimeValue);
+      assert.euqal(result.dateTimeValue, null);
     });
     done();
   });
   
-  test('GetDateTimeNilableNullable with an empty value should deserialize into undefined', function (done) {
+  test('GetDateTimeNilableNullable with an empty element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetDateTimeNilableNullable")
     .reply(200, "<DateTimeValue></DateTimeValue>");
     testclient.deserialization.getDateTimeNilableNullable(function (error, result) {
       should.not.exist(error);
-      result.dateTimeValue.should.equal(undefined);
+      assert.equal(result.dateTimeValue, null);
     });
     done();
   });
   
-  test('GetDateTimeNilableNullable with null element should deserialize into undefined', function (done) {
+  test('GetDateTimeNilableNullable with null element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetDateTime")
     .reply(200, "<DateTimeValue />");
     testclient.deserialization.getDateTime(function (error, result) {
       should.not.exist(error);
-      result.dateTimeValue.should.equal(undefined);
+      assert.equal(result.dateTimeValue, null);
     });
     done();
   });
   
-  test('GetDateTimeNullable with a nil value should deserialize into undefined value', function (done) {
+  test('GetDateTimeNullable with a nil element should deserialize into null', function (done) {
     nock("http://helloworld")
     .get("/GetDateTimeNullable")
     .reply(200, "<DateTimeValue xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getDateTimeNullable(function (error, result) {
       should.not.exist(error);
-      should.not.exist(result.dateTimeValue);
+      assert.equal(result.dateTimeValue, null);
     });
     done();
   });
@@ -164,7 +168,7 @@ suite('datetime-datatype-deserialization-tests', function () {
     .reply(200, "<DateTimeValue></DateTimeValue>");
     testclient.deserialization.GetDateTimeNullable(function (error, result) {
       should.not.exist(error);
-      result.dateTimeValue.should.equal(null);
+      assert.equal(result.dateTimeValue, null);
     });
     done();
   });
@@ -175,7 +179,7 @@ suite('datetime-datatype-deserialization-tests', function () {
     .reply(200, "<DateTimeValue />");
     testclient.deserialization.getDateTime(function (error, result) {
       should.not.exist(error);
-      result.dateTimeValue.should.equal(null);
+      assert.equal(result.dateTimeValue, null);
     });
     done();
   });

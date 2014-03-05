@@ -72,10 +72,11 @@ suite('string-datatype-deserialization-tests', function () {
   });
   
   test('GetString with a typewriter string should deserialize properly', function (done) {
-    var typewriter = "   `~!@#$%^&*()_+1234567890-=qwertyuiop[]  {{}}QWERTYUIOP|\\asdfghjkl;'ASDFGHJKL:\"zxcvbnm,./ZXCVBNM&lt;&gt;&quot;?   ";
+    var encodedTypewriter = "   `~!@#$%^&*()_+1234567890-=qwertyuiop[]  {{}}QWERTYUIOP|\\asdfghjkl;'ASDFGHJKL:\"zxcvbnm,./ZXCVBNM&lt;&gt;&quot;&apos;&amp;?   ";
+    var typewriter = "   `~!@#$%^&*()_+1234567890-=qwertyuiop[]  {{}}QWERTYUIOP|\\asdfghjkl;'ASDFGHJKL:\"zxcvbnm,./ZXCVBNM<>\"'&?   ";
     nock("http://helloworld")
     .get("/GetString")
-    .reply(200, "<STRINGVALUE>" + typewriter + "</STRINGVALUE>");
+    .reply(200, "<STRINGVALUE>" + encodedTypewriter + "</STRINGVALUE>");
     testclient.deserialization.getString(function (error, result) {
       should.not.exist(error);
       should.exist(result);
@@ -84,7 +85,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "㐀㒣㕴㕵㙉㙊䵯䵰䶴䶵" should deserialize properly', function (done) {
+  test('GetString with a string in the following format "Extension A" should deserialize properly', function (done) {
     var str = "㐀㒣㕴㕵㙉㙊䵯䵰䶴䶵";
     nock("http://helloworld")
     .get("/GetString")
@@ -97,7 +98,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "𠀀𠀁𠀂𠀃𪛑𪛒𪛓𪛔𪛕𪛖" should deserialize properly', function (done) {
+  test('GetString with a string in the following format "Extension B" should deserialize properly', function (done) {
     var str = "𠀀𠀁𠀂𠀃𪛑𪛒𪛓𪛔𪛕𪛖";
     nock("http://helloworld")
     .get("/GetString")
@@ -110,7 +111,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "᠀᠐᠙ᠠᡷᢀᡨᡩᡪᡫ" should deserialize properly', function (done) {
+  test('GetString with a string in the following format Mongolian should deserialize properly', function (done) {
     var str = "᠀᠐᠙ᠠᡷᢀᡨᡩᡪᡫ";
     nock("http://helloworld")
     .get("/GetString")
@@ -123,7 +124,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "ༀཇཉཪཱྋ྾࿌࿏ྼྙ" should deserialize properly', function (done) {
+  test('GetString with a string in the following format Tibetan should deserialize properly', function (done) {
     var str = "ༀཇཉཪཱྋ྾࿌࿏ྼྙ";
     nock("http://helloworld")
     .get("/GetString")
@@ -136,7 +137,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "ꀀꒌꂋꂌꂍꂎꂔꂕ꒐꓆" should deserialize properly', function (done) {
+  test('GetString with a string in the following format Yi should deserialize properly', function (done) {
     var str = "ꀀꒌꂋꂌꂍꂎꂔꂕ꒐꓆";
     nock("http://helloworld")
     .get("/GetString")
@@ -149,7 +150,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "،؟ئبتجدرشعەﭖﭙﯓﯿﺉﺒﻺﻼ" should deserialize properly', function (done) {
+  test('GetString with a string in the following format Uighur should deserialize properly', function (done) {
     var str = "،؟ئبتجدرشعەﭖﭙﯓﯿﺉﺒﻺﻼ";
     nock("http://helloworld")
     .get("/GetString")
@@ -162,7 +163,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "ᥐᥥᥦᥧᥨᥭᥰᥱᥲᥴ" should deserialize properly', function (done) {
+  test('GetString with a string in the following format Tai Le should deserialize properly', function (done) {
     var str = "ᥐᥥᥦᥧᥨᥭᥰᥱᥲᥴ";
     nock("http://helloworld")
     .get("/GetString")
@@ -175,7 +176,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "ᄓᄕᇬᇌᇜᇱㄱㅣ가힝" should deserialize properly', function (done) {
+  test('GetString with a string in the following format Hangul should deserialize properly', function (done) {
     var str = "ᄓᄕᇬᇌᇜᇱㄱㅣ가힝";
     nock("http://helloworld")
     .get("/GetString")
@@ -188,7 +189,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with a string in the following format "ĉĆăĀüøòõÝÙ¿Ã" should deserialize properly', function (done) {
+  test('GetString with a string in the following format Latin should deserialize properly', function (done) {
     var str = "ĉĆăĀüøòõÝÙ¿Ã";
     nock("http://helloworld")
     .get("/GetString")
@@ -201,14 +202,26 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with empty ("") should deserialize into empty string', function (done) {
+  test('GetString with empty element should deserialize into an empty string', function (done) {
     nock("http://helloworld")
     .get("/GetString")
-    .reply(200, "<STRINGVALUE>" + "" + "</STRINGVALUE>");
+    .reply(200, "<STRINGVALUE></STRINGVALUE>");
     testclient.deserialization.getString(function (error, result) {
       should.not.exist(error);
-      should.exist(result);
+      should.exist(resut);
       result.stringValue.should.equal("");
+    });
+    done();
+  });
+  
+  test('GetString with null element should deserialize into an empty string', function (done) {
+    nock("http://helloworld")
+    .get("/GetString")
+    .reply(200, "<STRINGVALUE />");
+    testclient.deserialization.getString(function (error, result) {
+    should.not.exist(error);
+    should.exist(resut);
+    result.stringValue.should.equal("");
     });
     done();
   });
@@ -225,17 +238,18 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with nil value should not be deserialized', function (done) {
+  test('GetString with nil element should throw an error', function (done) {
     nock("http://helloworld")
     .get("/GetString")
     .reply(200, "<STRINGVALUE xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getString(function (error, result) {
-      should.not.exist(result.stringValue);
+      should.exist(error);
+      error.should.match(/Cannot deserialize a nil element/);
     });
     done();
   });
   
-  test('GetString with null element should deserialize into empty string', function (done) {
+  test('GetStringNilable with null element should deserialize into empty string', function (done) {
     nock("http://helloworld")
     .get("/GetString")
     .reply(200, "<STRINGVALUE />");
@@ -247,18 +261,18 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringNilable with a nil value should not be deserialized', function (done) {
+  test('GetStringNilable with a nil element should deserialize to null', function (done) {
     nock("http://helloworld")
     .get("/GetStringNilable")
     .reply(200, "<STRINGVALUE xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
     testclient.deserialization.getStringNilable(function (error, result) {
       should.not.exist(error);
-      should.not.exist(result.stringValue);
+      assert.equal(result.stringValue, null);
     });
     done();
   });
   
-  test('GetStringNilable with an empty value should deserialize into empty sytring', function (done) {
+  test('GetStringNilable with an empty element should deserialize into empty sytring', function (done) {
     nock("http://helloworld")
     .get("/GetStringNilable")
     .reply(200, "<STRINGVALUE></STRINGVALUE>");
@@ -312,7 +326,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "㐀㒣㕴㕵㙉㙊䵯䵰䶴䶵" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Extension A should deserialize properly', function (done) {
     var str = "㐀㒣㕴㕵㙉㙊䵯䵰䶴䶵";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -326,7 +340,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "𠀀𠀁𠀂𠀃𪛑𪛒𪛓𪛔𪛕𪛖" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Extension B should deserialize properly', function (done) {
     var str = "𠀀𠀁𠀂𠀃𪛑𪛒𪛓𪛔𪛕𪛖";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -340,7 +354,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "᠀᠐᠙ᠠᡷᢀᡨᡩᡪᡫ" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Mongolian should deserialize properly', function (done) {
     var str = "᠀᠐᠙ᠠᡷᢀᡨᡩᡪᡫ";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -354,7 +368,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "ༀཇཉཪཱྋ྾࿌࿏ྼྙ" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Tibetan should deserialize properly', function (done) {
     var str = "ༀཇཉཪཱྋ྾࿌࿏ྼྙ";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -368,7 +382,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "ꀀꒌꂋꂌꂍꂎꂔꂕ꒐꓆" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Yi should deserialize properly', function (done) {
     var str = "ꀀꒌꂋꂌꂍꂎꂔꂕ꒐꓆";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -382,7 +396,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "،؟ئبتجدرشعەﭖﭙﯓﯿﺉﺒﻺﻼ" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Uighur should deserialize properly', function (done) {
     var str = "،؟ئبتجدرشعەﭖﭙﯓﯿﺉﺒﻺﻼ";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -396,7 +410,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "ᥐᥥᥦᥧᥨᥭᥰᥱᥲᥴ" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Tai Le should deserialize properly', function (done) {
     var str = "ᥐᥥᥦᥧᥨᥭᥰᥱᥲᥴ";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -410,7 +424,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "ᄓᄕᇬᇌᇜᇱㄱㅣ가힝" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Hangul should deserialize properly', function (done) {
     var str = "ᄓᄕᇬᇌᇜᇱㄱㅣ가힝";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -424,7 +438,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetStringBase64Encoded with a string in the following format "ĉĆăĀüøòõÝÙ¿Ã" should deserialize properly', function (done) {
+  test('GetStringBase64Encoded with a string in the following format Latin should deserialize properly', function (done) {
     var str = "ĉĆăĀüøòõÝÙ¿Ã";
     var b64encodedstr = new Buffer(str).toString('base64');
     nock("http://helloworld")
@@ -438,7 +452,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with nil value should not be deserialized', function (done) {
+  test('GetStringBase64Encoded with nil value should not be deserialized', function (done) {
     nock("http://helloworld")
     .get("/GetStringBase64Encoded")
     .reply(200, "<STRINGBASE64ENCODEDVALUE xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:nil=\"true\" />");
@@ -448,7 +462,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with null element should deserialize into empty string', function (done) {
+  test('GetStringBase64Encoded with null element should deserialize into empty string', function (done) {
     nock("http://helloworld")
     .get("/GetStringBase64Encoded")
     .reply(200, "<STRINGBASE64ENCODEDVALUE />");
@@ -460,7 +474,7 @@ suite('string-datatype-deserialization-tests', function () {
     done();
   });
   
-  test('GetString with an empty element should deserialize into empty string', function (done) {
+  test('GetStringBase64Encoded with an empty element should deserialize into empty string', function (done) {
     nock("http://helloworld")
     .get("/GetStringBase64Encoded")
     .reply(200, "<STRINGBASE64ENCODEDVALUE></STRINGBASE64ENCODEDVALUE>");
