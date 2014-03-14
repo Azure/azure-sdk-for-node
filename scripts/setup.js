@@ -29,8 +29,6 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/resourceManagement/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/gallery/' },
   { cmd: 'npm install', path: 'lib/services/gallery/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/monitoring/' },
-  { cmd: 'npm install', path: 'lib/services/monitoring/' },
   { cmd: 'npm link lib/common/' },
   { cmd: 'npm link lib/services/computeManagement/' },
   { cmd: 'npm link lib/services/management/' },
