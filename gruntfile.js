@@ -33,22 +33,23 @@ module.exports = function(grunt) {
         output: 'ManagementClient.js'
       },
       'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.Network.VirtualNetworkManagementClient',
+        clientType: 'Microsoft.WindowsAzure.Management.Network.NetworkManagementClient',
         destDir: 'lib/services/networkManagement/lib',
-        output: 'virtualNetworkManagementClient.js'
+        output: 'networkManagementClient.js'
       },
-      'Microsoft.WindowsAzure.Management.Scheduler.Specification.dll' : [
-        {
-          clientType: 'Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient',
-          destDir: 'lib/services/schedulerManagement/lib',
-          output: 'schedulerManagementClient.js'
-        },
-        {
-          clientType: 'Microsoft.WindowsAzure.Scheduler.SchedulerClient',
-          destDir: 'lib/services/scheduler/lib',
-          output: 'schedulerClient.js'
-        }
-      ],
+      // TODO: Commenting out until hydra supports TimeSpan for Javascript
+      // 'Microsoft.WindowsAzure.Management.Scheduler.Specification.dll' : [
+      //   {
+      //     clientType: 'Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient',
+      //     destDir: 'lib/services/schedulerManagement/lib',
+      //     output: 'schedulerManagementClient.js'
+      //   },
+      //   {
+      //     clientType: 'Microsoft.WindowsAzure.Scheduler.SchedulerClient',
+      //     destDir: 'lib/services/scheduler/lib',
+      //     output: 'schedulerClient.js'
+      //   }
+      // ],
       'Microsoft.WindowsAzure.Management.ServiceBus.Specification.dll' : {
         clientType: 'Microsoft.WindowsAzure.Management.ServiceBus.ServiceBusManagementClient',
         destDir: 'lib/services/serviceBusManagement/lib',
