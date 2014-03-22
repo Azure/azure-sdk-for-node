@@ -37,6 +37,7 @@ module.exports = function(grunt) {
         destDir: 'lib/services/networkManagement/lib',
         output: 'networkManagementClient.js'
       },
+      // TODO: Commenting out until hydra supports TimeSpan for Javascript
       // 'Microsoft.WindowsAzure.Management.Scheduler.Specification.dll' : [
       //   {
       //     clientType: 'Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient',
