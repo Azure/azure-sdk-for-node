@@ -33,7 +33,7 @@ This library support management certificate authentication. To authenticate the 
 var fs             = require('fs'),
     vnetManagement = require('azure-mgmt-vnet');
 
-var vnetManagementClient = vnetManagement.createVirtualNetworkManagementClient(vnetManagement.createCertificateCloudCredentials({
+var vnetManagementClient = vnetManagement.createNetworkManagementClient(vnetManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
   pem: fs.readFileSync('<your pem file>')
 }));

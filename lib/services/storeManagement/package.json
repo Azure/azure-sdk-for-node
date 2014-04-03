@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.1-pre.2",
+  "version": "0.9.2",
   "description": "Windows Azure Store Management Client Library for node",
   "tags": [
     "azure",
@@ -31,7 +31,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.1-pre.2"
+    "azure-common": "0.9.2"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {
