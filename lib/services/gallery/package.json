@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
   "version": "2.0.0-pre.1",
-  "description": "Windows Azure Gallery Client Library for node",
+  "description": "Microsoft Azure Gallery Client Library for node",
   "tags": [
     "azure",
     "sdk"
