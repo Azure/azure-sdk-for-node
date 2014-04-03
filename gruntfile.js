@@ -33,22 +33,23 @@ module.exports = function(grunt) {
         output: 'ManagementClient.js'
       },
       'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.VirtualNetworks.VirtualNetworkManagementClient',
+        clientType: 'Microsoft.WindowsAzure.Management.Network.NetworkManagementClient',
         destDir: 'lib/services/networkManagement/lib',
-        output: 'virtualNetworkManagementClient.js'
+        output: 'networkManagementClient.js'
       },
-      'Microsoft.WindowsAzure.Management.Scheduler.Specification.dll' : [
-        {
-          clientType: 'Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient',
-          destDir: 'lib/services/schedulerManagement/lib',
-          output: 'schedulerManagementClient.js'
-        },
-        {
-          clientType: 'Microsoft.WindowsAzure.Scheduler.SchedulerClient',
-          destDir: 'lib/services/scheduler/lib',
-          output: 'schedulerClient.js'
-        }
-      ],
+      // TODO: Commenting out until hydra supports TimeSpan for Javascript
+      // 'Microsoft.WindowsAzure.Management.Scheduler.Specification.dll' : [
+      //   {
+      //     clientType: 'Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient',
+      //     destDir: 'lib/services/schedulerManagement/lib',
+      //     output: 'schedulerManagementClient.js'
+      //   },
+      //   {
+      //     clientType: 'Microsoft.WindowsAzure.Scheduler.SchedulerClient',
+      //     destDir: 'lib/services/scheduler/lib',
+      //     output: 'schedulerClient.js'
+      //   }
+      // ],
       'Microsoft.WindowsAzure.Management.ServiceBus.Specification.dll' : {
         clientType: 'Microsoft.WindowsAzure.Management.ServiceBus.ServiceBusManagementClient',
         destDir: 'lib/services/serviceBusManagement/lib',
@@ -78,7 +79,50 @@ module.exports = function(grunt) {
         clientType: 'Microsoft.WindowsAzure.WebSitesExtensions.WebSiteExtensionsClient',
         destDir: 'lib/services/webSiteManagement/lib',
         output: 'webSiteExtensionsClient.js'
-      }
+      },
+      'Microsoft.WindowsAzure.Subscriptions.Specification.dll': {
+        clientType: 'Microsoft.WindowsAzure.Subscriptions.SubscriptionClient',
+        destDir: 'lib/services/subscriptionManagement/lib',
+        output: 'subscriptionClient.js'
+      },
+      'Microsoft.Azure.Management.Resources.Specification.dll' : {
+        clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
+        destDir: 'lib/services/resourceManagement/lib',
+        output: 'resourceManagementClient.js'
+      },
+      'Microsoft.Azure.Gallery.Specification.dll': {
+        clientType: 'Microsoft.Azure.Gallery.GalleryClient',
+        destDir: 'lib/services/gallery/lib',
+        output: 'galleryClient.js'
+      },
+      'Microsoft.WindowsAzure.Management.Monitoring.Specification.dll': [
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Events.EventsClient',
+          destDir: 'lib/services/monitoring/lib',
+          output: 'eventsClient.js'
+        },
+        // TODO: Turn back on once hydra supports timespans for javascript
+        // {
+        //   clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Alerts.AlertsClient',
+        //   destDir: 'lib/services/monitoring/lib',
+        //   output: 'alertsClient.js'
+        // },
+        // {
+        //   clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Autoscale.AutoscaleClient',
+        //   destDir: 'lib/services/monitoring/lib',
+        //   output: 'autoscaleClient.js'
+        // },
+        // {
+        //   clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Metrics.MetricsClient',
+        //   destDir: 'lib/services/monitoring/lib',
+        //   output: 'metricsClient.js'
+        // },
+        // {
+        //   clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Usages.UsagesClient',
+        //   destDir: 'lib/services/monitoring/lib',
+        //   output: 'usagesClient.js'
+        // }
+      ]
     },
 
     //jsdoc config
@@ -126,7 +170,7 @@ module.exports = function(grunt) {
   });
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-devserver');
-  
+
   grunt.loadTasks('tasks');
 
   grunt.registerTask('publishdocs', ['githubPages:target']);

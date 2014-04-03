@@ -194,6 +194,7 @@ module.exports = function(grunt) {
 
     if (configFile) {
       argsTail.push('-configFile', configFile);
+      grunt.file.write(configFile, '<configuration></configuration>');
     }
 
     function spawnOpts() {
