@@ -45,7 +45,9 @@
     "request": "2.27.0",
     "wns": "~0.5.3",
     "mpns": "~2.0.0",
-    "node-uuid": "~1.2.0"
+    "node-uuid": "~1.2.0",
+    "azure-mgmt-resource": "~2.0.0-pre.1",
+    "azure-gallery": "~2.0.0-pre.1"
   },
   "devDependencies": {
     "mocha": "1.16.0",
