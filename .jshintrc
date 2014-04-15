@@ -22,7 +22,7 @@
   "sub": true,
   "strict": false,
   "trailing": true,
-  "undef": false,
+  "undef": true,
   "unused": true,
   "shadow": true
 }
