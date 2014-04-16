@@ -161,7 +161,7 @@ queueService.createMessage('taskqueue', 'Hello world!', function(error){
 });
 ```
 
-It is then possible to call the **getMessage** method, process the message and then call **deleteMessage** inside the callback. This two-step process ensures messages don't get lost when they are removed from the queue.
+It is then possible to call the **getMessages** method, process the message and then call **deleteMessage** inside the callback. This two-step process ensures messages don't get lost when they are removed from the queue.
 
 ```Javascript
 var queueService = azure.createQueueService(),
