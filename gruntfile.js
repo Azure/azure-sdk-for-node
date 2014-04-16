@@ -32,6 +32,23 @@ module.exports = function(grunt) {
         destDir: 'lib/services/management/lib',
         output: 'ManagementClient.js'
       },
+      'Microsoft.WindowsAzure.Management.Monitoring.Specification.dll' : [
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Alerts.AlertsClient',
+          destDir: 'lib/services/monitoring/lib',
+          output: 'alertsClient.js'
+        },
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Autoscale.AutoscaleClient',
+          destDir: 'lib/services/monitoring/lib',
+          output: 'autoscaleClient.js'
+        },
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Metrics.MetricsClient',
+          destDir: 'lib/services/monitoring/lib',
+          output: 'metricsClient.js'
+        }
+      ],
       'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
         clientType: 'Microsoft.WindowsAzure.Management.Network.VirtualNetworkManagementClient',
         destDir: 'lib/services/networkManagement/lib',
@@ -97,6 +114,9 @@ module.exports = function(grunt) {
                   "lib/services/computeManagement/lib/computeManagementClient.js",
                   "lib/services/hdinsight/hdinsightservice.js",
                   "lib/services/management/lib/managementClient.js",
+                  "lib/services/monitoring/lib/autoscaleClient.js",
+                  "lib/services/monitoring/lib/alertsClient.js",
+                  "lib/services/monitoring/lib/metricsClient.js",
                   "lib/services/networkManagement/lib/virtualNetworkManagementClient.js",
                   "lib/services/queue/queueservice.js",
                   "lib/services/scm/scmservice.js",
