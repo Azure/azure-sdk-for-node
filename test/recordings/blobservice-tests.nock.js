@@ -2,2611 +2,2689 @@
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont1?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:07 GMT',
-  etag: '"0x8D0A5E9B7439573"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:33 GMT',
+  etag: '"0x8D1292DCDB6492B"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '972af32f-d8c4-43b8-be94-8839577691b9',
+  'x-ms-request-id': 'ca1421e2-a1ea-4a37-a9c1-ec8cf4ad9931',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:07 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont1/blobs/blob1', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:09 GMT',
-  etag: '"0x8D0A5E9B7DF6131"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:34 GMT',
+  etag: '"0x8D1292DCE301401"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a967bc6c-4436-4c2e-b892-2a9346fd736d',
+  'x-ms-request-id': '1c1b0bd6-beea-4b8b-9fc3-ded478ac151b',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:09 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont1/blobs/blob1')
   .reply(200, "", { 'content-length': '12',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:09 GMT',
-  etag: '"0x8D0A5E9B7DF6131"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:34 GMT',
+  etag: '"0x8D1292DCE301401"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '78893378-9521-4b66-afd6-7cfdd7412f3d',
+  'x-ms-request-id': 'e381475d-feeb-47e9-b9ac-79706302d278',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:51:10 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont1</Name><Url>https://ciserversdk.blob.core.windows.net/cont1</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:07 GMT</Last-Modified><Etag>\"0x8D0A5E9B7439573\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont1</Name><Url>https://ciserversdk.blob.core.windows.net/cont1</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:58:33 GMT</Last-Modified><Etag>\"0x8D1292DCDB6492B\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '76b7eeb1-f6a5-43a3-ab64-ff08f16b8999',
+  'x-ms-request-id': '38fb8274-8347-46bb-9609-8f36296ac8b0',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:10 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont1?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '49dce80b-d33f-4bfa-af57-b2c5d481085a',
+  'x-ms-request-id': '20dcd540-fde5-4091-8650-6e9b330e6509',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:11 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:37 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont2?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:12 GMT',
-  etag: '"0x8D0A5E9BA15BDF7"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:38 GMT',
+  etag: '"0x8D1292DD0700129"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c6c36920-8533-4213-8986-ca71221cfcc0',
+  'x-ms-request-id': 'c47d957f-2ec0-4fa4-98f1-7db32ea4d224',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:12 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont2/blob2?comp=block&blockid=dGVzdA%3D%3D', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1b00503e-4f30-4f75-81d5-19f1d20ac121',
+  'x-ms-request-id': '493dc97a-1258-497a-af2a-4e6f73dc6d35',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:14 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont2</Name><Url>https://ciserversdk.blob.core.windows.net/cont2</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:12 GMT</Last-Modified><Etag>\"0x8D0A5E9BA15BDF7\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont2</Name><Url>https://ciserversdk.blob.core.windows.net/cont2</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:58:38 GMT</Last-Modified><Etag>\"0x8D1292DD0700129\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7767e15d-3ed6-4d81-a51a-ead2409bd956',
+  'x-ms-request-id': 'bc72b559-01b6-4a7a-ab15-9eec55372b63',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:14 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont2?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd3eeafa4-23bb-4903-afc3-8d25b23c51bc',
+  'x-ms-request-id': 'cfc9df15-00c7-4c16-b603-ada19de016ab',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:16 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:40 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont3?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:17 GMT',
-  etag: '"0x8D0A5E9BCD0DB72"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:41 GMT',
+  etag: '"0x8D1292DD27A459E"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8fbeef3e-5975-4a86-a344-84151d1e511a',
+  'x-ms-request-id': 'fc5dfadf-1bec-4c13-9520-63040641d0b0',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:16 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont3/blob3?comp=block&blockid=aWQx', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': '+v4bYMJBB8zY9FYiE+RISQ==',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3d311fac-26be-462e-be8b-0311f688adfe',
+  'x-ms-request-id': '0fd38871-2f20-4e19-8965-fb4d44d47a26',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:18 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont3/blob3?comp=block&blockid=aWQy', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': '0ew/46o7Dr2zfyv3zd8n3A==',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '57aa95b3-06e8-41c6-b614-57a267c872ac',
+  'x-ms-request-id': '786d67b3-6605-4c5d-afb5-a38a4f34ce07',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:19 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont3/blob3?comp=blocklist', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'KcspZeGLGUJmthMz3gpEnA==',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:20 GMT',
-  etag: '"0x8D0A5E9BE73820D"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:44 GMT',
+  etag: '"0x8D1292DD405E9E1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b993ef48-518c-4b9f-9aaa-981ed2ca5256',
+  'x-ms-request-id': '346380b1-ebfc-4263-8b0f-28f764935233',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:19 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont3/blob3?comp=blocklist&blocklisttype=all')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><BlockList><CommittedBlocks><Block><Name>aWQx</Name><Size>3</Size></Block><Block><Name>aWQy</Name><Size>3</Size></Block></CommittedBlocks><UncommittedBlocks /></BlockList>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:20 GMT',
-  etag: '"0x8D0A5E9BE73820D"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:44 GMT',
+  etag: '"0x8D1292DD405E9E1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9f6c4391-617a-423a-bca6-1e5af3d332c2',
+  'x-ms-request-id': '82386bf8-c4fd-4bd8-84f1-49448cc3506b',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-content-length': '6',
-  date: 'Sat, 02 Nov 2013 13:51:20 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont3</Name><Url>https://ciserversdk.blob.core.windows.net/cont3</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:17 GMT</Last-Modified><Etag>\"0x8D0A5E9BCD0DB72\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont3</Name><Url>https://ciserversdk.blob.core.windows.net/cont3</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:58:41 GMT</Last-Modified><Etag>\"0x8D1292DD27A459E\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '632ea8af-0630-4ffc-914f-afbb13e4a548',
+  'x-ms-request-id': 'bd67733d-88d4-4b30-a851-8ed5217dfb51',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:22 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont3?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '15ddd9db-c77e-4d2b-9d64-41b293986d7b',
+  'x-ms-request-id': '64ef4a5e-6183-4566-8316-585517c5f998',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:23 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:43 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont4?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:24 GMT',
-  etag: '"0x8D0A5E9C10D0C54"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:49 GMT',
+  etag: '"0x8D1292DD7029C26"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '885ff473-dd0e-47b3-a6f7-800c4e2450e7',
+  'x-ms-request-id': '5574501f-0eb4-4b20-871c-b7079a2190ef',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:24 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont4/blob4?comp=block&blockid=aWQx', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': '+v4bYMJBB8zY9FYiE+RISQ==',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8c0e758d-b124-4615-9e86-eeb3bbb37ea6',
+  'x-ms-request-id': '34e6c54f-70d5-4852-854a-e2e889b61bdf',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:23 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont4</Name><Url>https://ciserversdk.blob.core.windows.net/cont4</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:24 GMT</Last-Modified><Etag>\"0x8D0A5E9C10D0C54\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont4</Name><Url>https://ciserversdk.blob.core.windows.net/cont4</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:58:49 GMT</Last-Modified><Etag>\"0x8D1292DD7029C26\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4a7ab769-51c6-4508-afaf-a008e804c607',
+  'x-ms-request-id': '25f33560-0ed5-4d63-9926-3f6f1a0eb2f2',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:25 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont4?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7048412d-a5d2-4b2a-9454-5dd8d52776ea',
+  'x-ms-request-id': 'ee339f30-b4ec-4f98-9307-88033469cdae',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:26 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:50 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont5?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:28 GMT',
-  etag: '"0x8D0A5E9C348C595"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:50 GMT',
+  etag: '"0x8D1292DD7D7A2F2"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '80d3ea49-c597-443f-9a11-5e38432d5ef2',
+  'x-ms-request-id': '4929687d-4c7b-4b3e-8a5b-6c5fdccaa59b',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:27 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont5/blob5', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:28 GMT',
-  etag: '"0x8D0A5E9C3B1CE29"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:51 GMT',
+  etag: '"0x8D1292DD87D6841"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7dc11b7c-9f62-4580-982f-cc7e51d005a2',
+  'x-ms-request-id': 'f6f0d98f-d6ab-4329-bdf7-6c54d60883e5',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:28 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont5/blob5')
   .reply(200, "", { 'content-length': '11',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:28 GMT',
-  etag: '"0x8D0A5E9C3B1CE29"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:51 GMT',
+  etag: '"0x8D1292DD87D6841"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6b7b4565-579c-4995-94ae-a8510cf237a8',
+  'x-ms-request-id': '9ecae5b4-2194-4bd2-bb7e-f94880349b85',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:51:28 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont5/blob5?comp=blocklist&blocklisttype=all')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><BlockList><CommittedBlocks /><UncommittedBlocks /></BlockList>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:28 GMT',
-  etag: '"0x8D0A5E9C3B1CE29"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:51 GMT',
+  etag: '"0x8D1292DD87D6841"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '11a08662-31de-45b4-aa77-3583b589b4ae',
+  'x-ms-request-id': '5a90e39f-db00-4926-b5d7-1904fba7adc3',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-content-length': '11',
-  date: 'Sat, 02 Nov 2013 13:51:30 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont5/blob5')
   .reply(206, "Hello World", { 'content-length': '11',
   'content-type': 'text/plain;charset="utf-8"',
   'content-range': 'bytes 0-10/11',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:28 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:51 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5E9C3B1CE29"',
+  etag: '"0x8D1292DD87D6841"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2b07fa54-905f-4532-a429-d04312514ddc',
+  'x-ms-request-id': 'b9b7f5f9-93e7-473e-9192-7d0fba652301',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:51:30 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont5</Name><Url>https://ciserversdk.blob.core.windows.net/cont5</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:28 GMT</Last-Modified><Etag>\"0x8D0A5E9C348C595\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont5</Name><Url>https://ciserversdk.blob.core.windows.net/cont5</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:58:50 GMT</Last-Modified><Etag>\"0x8D1292DD7D7A2F2\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5db17984-2bc9-4975-99c0-d09d9ba814a1',
+  'x-ms-request-id': 'a1f23b19-ca4b-460a-be9c-6e63e4d1d04e',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:32 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont5?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ff97d5a-b063-4bee-8096-0fcf9bb19339',
+  'x-ms-request-id': '97cd6124-918a-4e4d-8aff-882bd0ef515f',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:34 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:57 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont6?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:35 GMT',
-  etag: '"0x8D0A5E9C7D40287"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:56 GMT',
+  etag: '"0x8D1292DDB3B142F"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a02aeba1-cc1f-401e-aeca-203f760bd2c7',
+  'x-ms-request-id': '0f756af3-3fed-4eec-ac7d-0cb610038550',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:35 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont6/blob6', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:36 GMT',
-  etag: '"0x8D0A5E9C8167D93"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:57 GMT',
+  etag: '"0x8D1292DDBDD3511"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd2d85bb8-06f2-434d-a752-c81cc3a97348',
+  'x-ms-request-id': '3cb2487a-93bc-4b55-8886-f7ba6548e31c',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:35 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont6/blob6')
   .reply(200, "Hello World", { 'content-length': '11',
   'content-type': 'text',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:36 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:57 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5E9C8167D93"',
+  etag: '"0x8D1292DDBDD3511"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a18d3b7f-9793-48af-a134-853ef48c6dfb',
+  'x-ms-request-id': '6c8aa08b-09ea-4976-a672-126ffe77d494',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:51:36 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont6/blob6')
   .reply(200, "", { 'content-length': '11',
   'content-type': 'text',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:36 GMT',
-  etag: '"0x8D0A5E9C8167D93"',
+  'last-modified': 'Fri, 18 Apr 2014 14:58:57 GMT',
+  etag: '"0x8D1292DDBDD3511"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4d783452-c447-4591-b10a-1c4f41193664',
+  'x-ms-request-id': 'fef6f356-063f-4eea-8afe-be1d685fb5cf',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:51:37 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont6</Name><Url>https://ciserversdk.blob.core.windows.net/cont6</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:35 GMT</Last-Modified><Etag>\"0x8D0A5E9C7D40287\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont6</Name><Url>https://ciserversdk.blob.core.windows.net/cont6</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:58:56 GMT</Last-Modified><Etag>\"0x8D1292DDB3B142F\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '699a1c7e-9f89-4a60-8dcc-95b9e170caec',
+  'x-ms-request-id': '4ba021bc-c1ca-4922-9a78-dbb50a3f6d5d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:38 GMT' });
+  date: 'Fri, 18 Apr 2014 14:58:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont6?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6061cd98-9165-4751-9fc1-f3e5f749ee0c',
+  'x-ms-request-id': 'd6d408db-17cc-442f-8251-e44e38093a89',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:40 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:01 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2652fe71-41ad-42d6-995a-09f0d02bcfa8',
+  'x-ms-request-id': '3d7b5eae-97fc-4023-8b92-07feb4b9f6ea',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:40 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:01 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '48dd3858-bc68-4a54-9d59-6ee34ae62f6e',
+  'x-ms-request-id': '2dae0bef-208f-4efe-a0ca-6ae9c9ff0038',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:42 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:02 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '251c1cf7-7749-4dad-9ea3-aa8a9744cc8d',
+  'x-ms-request-id': '6d6bc9a1-b130-42d4-9f21-3ce4e9102711',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:43 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:02 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e166c5d1-c4e5-40d8-8e21-27138eff3457',
+  'x-ms-request-id': '68b8b6da-985a-47dc-bc51-080bc3de792e',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:43 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:02 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont7?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:45 GMT',
-  etag: '"0x8D0A5E9CD8C58EA"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:05 GMT',
+  etag: '"0x8D1292DE069038E"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '44ae798f-f554-45e0-ba51-a454ab26ed3a',
+  'x-ms-request-id': '0ed9e0f9-8a09-419d-baf0-badaca1142c3',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:45 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont7?restype=container')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:49cc59a1-7dab-4fe2-b508-ca020a93db6e\nTime:2013-11-02T13:51:47.2560724Z</Message></Error>", { 'content-length': '230',
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:d1de42ca-a2db-4566-bd0c-79c022c616ae\nTime:2014-04-18T14:59:05.3669083Z</Message></Error>", { 'content-length': '230',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '49cc59a1-7dab-4fe2-b508-ca020a93db6e',
+  'x-ms-request-id': 'd1de42ca-a2db-4566-bd0c-79c022c616ae',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:46 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont7</Name><Url>https://ciserversdk.blob.core.windows.net/cont7</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:45 GMT</Last-Modified><Etag>\"0x8D0A5E9CD8C58EA\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont7</Name><Url>https://ciserversdk.blob.core.windows.net/cont7</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:05 GMT</Last-Modified><Etag>\"0x8D1292DE069038E\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8ab29998-e17a-4899-8ad8-d21240fc28f2',
+  'x-ms-request-id': '24e8625c-0a3b-437d-bcd3-c7ecf3f3cbdd',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:46 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont7?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a8a15027-c4c2-41a9-8fd0-f2758906407a',
+  'x-ms-request-id': '488a18ca-2a97-45a7-8732-9cebcdb8ed2b',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:48 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:08 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3fc8cf28-76cb-465b-b2fb-76c007508a80',
+  'x-ms-request-id': 'fc51aa81-2d20-4552-b64b-291523b1e2aa',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:48 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:09 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=properties&restype=service')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>true</Read><Write>false</Write><Delete>false</Delete><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Logging><Metrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Metrics><DefaultServiceVersion>2009-09-19</DefaultServiceVersion></StorageServiceProperties>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1f4b47b1-cd1a-404a-8dc3-0ec491721608',
+  'x-ms-request-id': 'c5c56765-6b5b-4cb2-bcab-f9413e654aa2',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:51 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4a5a8558-8bb5-4089-9015-9998ac3f7b49',
+  'x-ms-request-id': '18447624-9a5e-49f8-a055-20e6a80dd573',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:51 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:08 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=properties&restype=service')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>true</Read><Write>false</Write><Delete>false</Delete><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Logging><Metrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Metrics><DefaultServiceVersion>2009-09-19</DefaultServiceVersion></StorageServiceProperties>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '05d5889b-6f00-4289-ba40-6791b410034d',
+  'x-ms-request-id': 'ad5ca55d-fd44-4282-8c81-47ca6a5114d6',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:52 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/?comp=properties&restype=service', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '74654620-b50e-4818-a9c1-06920d32c28f',
+  'x-ms-request-id': '11203853-0092-4083-aed6-5cc97e9f7325',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:53 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=properties&restype=service')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><StorageServiceProperties><Logging><Version>1.0</Version><Read>true</Read><Write>false</Write><Delete>false</Delete><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Logging><Metrics><Version>1.0</Version><Enabled>false</Enabled><RetentionPolicy><Enabled>false</Enabled></RetentionPolicy></Metrics><DefaultServiceVersion>2009-09-19</DefaultServiceVersion></StorageServiceProperties>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '20d08fd6-1ae5-4ac5-acc1-482d93add9c7',
+  'x-ms-request-id': '81ab01a3-014b-4abe-b9f0-31069c3d3169',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:54 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:12 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd6700308-1673-41eb-a74b-f4e713d3c026',
+  'x-ms-request-id': 'bef2764d-d860-40fc-9d9b-4ccc726d6f40',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:55 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:13 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont8?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:57 GMT',
-  etag: '"0x8D0A5E9D491E9C0"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:14 GMT',
+  etag: '"0x8D1292DE5C117D9"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '60a923b7-42dd-4c14-81bb-824b5737f61f',
+  'x-ms-request-id': '89a7feb6-c436-4086-9e4e-890a1d645578',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:56 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont9?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:57 GMT',
-  etag: '"0x8D0A5E9D4E37D62"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:15 GMT',
+  etag: '"0x8D1292DE658A9D7"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c44ef118-d280-446a-af2f-f899bd8b6b79',
+  'x-ms-request-id': '01c576a9-1eeb-4bf2-a540-71cc03f38d78',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:57 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont10?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:58 GMT',
-  etag: '"0x8D0A5E9D562076A"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:16 GMT',
+  etag: '"0x8D1292DE6F1C9BE"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6523c6de-cb1e-4994-862e-4d74deb25b0b',
+  'x-ms-request-id': 'e6f39a9f-4d16-4f29-9103-c1033f364fc0',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:58 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont11?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:51:59 GMT',
-  etag: '"0x8D0A5E9D61A91CE"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:16 GMT',
+  etag: '"0x8D1292DE6E670F9"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ea8d66ca-d7a2-4e73-a927-78eb933dd64c',
+  'x-ms-request-id': 'b7a0be4d-e271-4564-accb-e4b05f4cc71d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:51:59 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list&maxresults=3&include=metadata')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><MaxResults>3</MaxResults><Containers><Container><Name>cont10</Name><Url>https://ciserversdk.blob.core.windows.net/cont10</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:58 GMT</Last-Modified><Etag>\"0x8D0A5E9D562076A\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata><color>brown</color><containernumber>03</containernumber><somemetadataname>SomeMetadataValue</somemetadataname></Metadata></Container><Container><Name>cont11</Name><Url>https://ciserversdk.blob.core.windows.net/cont11</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:59 GMT</Last-Modified><Etag>\"0x8D0A5E9D61A91CE\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata><color>blue</color><containernumber>04</containernumber><somemetadataname>SomeMetadataValue</somemetadataname></Metadata></Container><Container><Name>cont8</Name><Url>https://ciserversdk.blob.core.windows.net/cont8</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:57 GMT</Last-Modified><Etag>\"0x8D0A5E9D491E9C0\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata><color>orange</color><containernumber>01</containernumber><somemetadataname>SomeMetadataValue</somemetadataname></Metadata></Container></Containers><NextMarker>/ciserversdk/cont9</NextMarker></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><MaxResults>3</MaxResults><Containers><Container><Name>cont10</Name><Url>https://ciserversdk.blob.core.windows.net/cont10</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:16 GMT</Last-Modified><Etag>\"0x8D1292DE6F1C9BE\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata><color>brown</color><containernumber>03</containernumber><somemetadataname>SomeMetadataValue</somemetadataname></Metadata></Container><Container><Name>cont11</Name><Url>https://ciserversdk.blob.core.windows.net/cont11</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:16 GMT</Last-Modified><Etag>\"0x8D1292DE6E670F9\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata><color>blue</color><containernumber>04</containernumber><somemetadataname>SomeMetadataValue</somemetadataname></Metadata></Container><Container><Name>cont8</Name><Url>https://ciserversdk.blob.core.windows.net/cont8</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:14 GMT</Last-Modified><Etag>\"0x8D1292DE5C117D9\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata><color>orange</color><containernumber>01</containernumber><somemetadataname>SomeMetadataValue</somemetadataname></Metadata></Container></Containers><NextMarker>/ciserversdk/cont9</NextMarker></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8e079df3-c74f-4c33-8493-dc763684e903',
+  'x-ms-request-id': '6e0bd6a7-3cf3-4d52-a57e-da72d72a527b',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:00 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list&marker=%2Fciserversdk%2Fcont9&maxresults=3&include=metadata')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Marker>/ciserversdk/cont9</Marker><MaxResults>3</MaxResults><Containers><Container><Name>cont9</Name><Url>https://ciserversdk.blob.core.windows.net/cont9</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:57 GMT</Last-Modified><Etag>\"0x8D0A5E9D4E37D62\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata><color>pink</color><containernumber>02</containernumber><somemetadataname>SomeMetadataValue</somemetadataname></Metadata></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Marker>/ciserversdk/cont9</Marker><MaxResults>3</MaxResults><Containers><Container><Name>cont9</Name><Url>https://ciserversdk.blob.core.windows.net/cont9</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:15 GMT</Last-Modified><Etag>\"0x8D1292DE658A9D7\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties><Metadata><color>pink</color><containernumber>02</containernumber><somemetadataname>SomeMetadataValue</somemetadataname></Metadata></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'de23585b-0a06-4e12-8bd0-e024424351aa',
+  'x-ms-request-id': 'adc93610-ebf5-43a9-bb26-9a0c2a5e98dd',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:01 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont10</Name><Url>https://ciserversdk.blob.core.windows.net/cont10</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:58 GMT</Last-Modified><Etag>\"0x8D0A5E9D562076A\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>cont11</Name><Url>https://ciserversdk.blob.core.windows.net/cont11</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:59 GMT</Last-Modified><Etag>\"0x8D0A5E9D61A91CE\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>cont8</Name><Url>https://ciserversdk.blob.core.windows.net/cont8</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:57 GMT</Last-Modified><Etag>\"0x8D0A5E9D491E9C0\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>cont9</Name><Url>https://ciserversdk.blob.core.windows.net/cont9</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:51:57 GMT</Last-Modified><Etag>\"0x8D0A5E9D4E37D62\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont10</Name><Url>https://ciserversdk.blob.core.windows.net/cont10</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:16 GMT</Last-Modified><Etag>\"0x8D1292DE6F1C9BE\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>cont11</Name><Url>https://ciserversdk.blob.core.windows.net/cont11</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:16 GMT</Last-Modified><Etag>\"0x8D1292DE6E670F9\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>cont8</Name><Url>https://ciserversdk.blob.core.windows.net/cont8</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:14 GMT</Last-Modified><Etag>\"0x8D1292DE5C117D9\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>cont9</Name><Url>https://ciserversdk.blob.core.windows.net/cont9</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:15 GMT</Last-Modified><Etag>\"0x8D1292DE658A9D7\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6aa0cf76-7254-49b9-9b5d-8486b484733c',
+  'x-ms-request-id': 'c815e7ee-abfc-45be-9cc7-c02518396993',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:01 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont9?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4b27fa54-3ea7-43bc-91c4-302917b8e430',
+  'x-ms-request-id': '2733ea75-5b4d-4084-910a-82df13ba5dee',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:02 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont8?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'adfc92b0-000c-486b-b0d3-9a36336199db',
+  'x-ms-request-id': '2989cdac-42e0-48d2-ae01-9411441a14b1',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:04 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont11?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'be28b93e-8229-45c4-98e6-6d103c8372a1',
+  'x-ms-request-id': 'af3e0087-00c9-4552-bb47-9c5532f18066',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:04 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont10?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c33bd570-9ac6-49bb-8407-3cae7a5db167',
+  'x-ms-request-id': 'b4a3b3fe-ea75-4e8f-9d0f-2118d56f643f',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:06 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:21 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '02452d28-05d0-44e4-9668-ae0217aebb55',
+  'x-ms-request-id': 'a47bb3b7-2235-48fa-8702-9c81d1a82954',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:07 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2672c66b-3552-4a43-82a4-bf1d5c840749',
+  'x-ms-request-id': '42ccad39-0af6-4af8-aea9-30df74f11db9',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:08 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:22 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list&prefix=%E4%B8%AD%E6%96%87')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Prefix>中文</Prefix><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'abf25ca4-7f9f-42ce-8b0f-a2a4036793f7',
+  'x-ms-request-id': 'dd1237ed-96af-41d7-b40f-a582467f2166',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:09 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '204e89d9-0c11-4b64-9cdc-7e63ffbdb362',
+  'x-ms-request-id': '80a8e4e2-6bcb-4792-be5c-7109f458599e',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:10 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:25 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont12?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:11 GMT',
-  etag: '"0x8D0A5E9DD600C73"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:25 GMT',
+  etag: '"0x8D1292DECA0FC51"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dacd26b2-a1a1-4894-93c4-439701510733',
+  'x-ms-request-id': 'cfe298ed-aa94-4021-adb9-59db2404c09e',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:11 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont12?restype=container')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:47156c89-ec1c-4b7b-925c-76eeb4e53658\nTime:2013-11-02T13:52:11.9035974Z</Message></Error>", { 'content-length': '230',
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ContainerAlreadyExists</Code><Message>The specified container already exists.\nRequestId:d5f17be9-a971-48f4-ac00-2c6406867000\nTime:2014-04-18T14:59:26.2855942Z</Message></Error>", { 'content-length': '230',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '47156c89-ec1c-4b7b-925c-76eeb4e53658',
+  'x-ms-request-id': 'd5f17be9-a971-48f4-ac00-2c6406867000',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:11 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont12</Name><Url>https://ciserversdk.blob.core.windows.net/cont12</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:11 GMT</Last-Modified><Etag>\"0x8D0A5E9DD600C73\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont12</Name><Url>https://ciserversdk.blob.core.windows.net/cont12</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:25 GMT</Last-Modified><Etag>\"0x8D1292DECA0FC51\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '37a484b0-7624-4797-9597-ad176a7d24bd',
+  'x-ms-request-id': '7e6f6f43-f01a-4aa3-b824-f82b76c153b5',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:12 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:24 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont12?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fc16092e-adc1-4d48-8714-6ed1def4ae2e',
+  'x-ms-request-id': '4236cbd8-381a-49a7-8f8f-3e22e7d1724b',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:14 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:27 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '098e93bc-fe9a-4c0f-a988-f36443cc5c45',
+  'x-ms-request-id': 'd0943c8a-39e8-41b0-a6a8-3eeab5c9d1cc',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:15 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:27 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont13?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:16 GMT',
-  etag: '"0x8D0A5E9E0323C80"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:29 GMT',
+  etag: '"0x8D1292DEED69989"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7b9b8be8-301f-4844-bda2-4c06e7e1d8cc',
+  'x-ms-request-id': '16a167a0-39aa-4931-a29c-05e59f44936d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:16 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont13?restype=container')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:16 GMT',
-  etag: '"0x8D0A5E9E0323C80"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:29 GMT',
+  etag: '"0x8D1292DEED69989"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '34830a91-5a83-4c6f-9d47-9007cf366fac',
+  'x-ms-request-id': 'b6ee3ffa-2760-4db3-ab4d-5f2d30161524',
   'x-ms-version': '2012-02-12',
   'x-ms-meta-color': 'blue',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
-  date: 'Sat, 02 Nov 2013 13:52:16 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont13</Name><Url>https://ciserversdk.blob.core.windows.net/cont13</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:16 GMT</Last-Modified><Etag>\"0x8D0A5E9E0323C80\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont13</Name><Url>https://ciserversdk.blob.core.windows.net/cont13</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:29 GMT</Last-Modified><Etag>\"0x8D1292DEED69989\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7ef15df4-d98c-4900-b22c-6c3c985fc9f8',
+  'x-ms-request-id': '0b334d94-f7f7-45ef-9849-46f23c4300e2',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:18 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont13?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0495d361-e398-45a7-97dd-dae02320ee7d',
+  'x-ms-request-id': '1cfca40e-c175-4502-ba5e-941ab7ec2a84',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:18 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:31 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont14?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:20 GMT',
-  etag: '"0x8D0A5E9E2920507"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:32 GMT',
+  etag: '"0x8D1292DF0A578E1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '291b307c-254e-473a-bbd6-dc1ee297bdb7',
+  'x-ms-request-id': 'ddb3e1ae-848b-4ce6-818b-ff13d9b021a0',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:19 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont14?restype=container&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:21 GMT',
-  etag: '"0x8D0A5E9E35844EF"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:32 GMT',
+  etag: '"0x8D1292DF0FBB437"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1ccc3115-13d2-4c97-b223-f686550758a8',
+  'x-ms-request-id': '246c4091-cd7c-4d0a-9d58-ef8ccc972e4d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:21 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont14?restype=container&comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:21 GMT',
-  etag: '"0x8D0A5E9E35844EF"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:32 GMT',
+  etag: '"0x8D1292DF0FBB437"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5b6ee8b4-a6a4-4fb7-89af-54b7894bb5ab',
+  'x-ms-request-id': '1e513fa2-c1d8-4c05-896b-86c7507ca637',
   'x-ms-version': '2012-02-12',
   'x-ms-meta-class': 'test',
-  date: 'Sat, 02 Nov 2013 13:52:21 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont14</Name><Url>https://ciserversdk.blob.core.windows.net/cont14</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:21 GMT</Last-Modified><Etag>\"0x8D0A5E9E35844EF\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont14</Name><Url>https://ciserversdk.blob.core.windows.net/cont14</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:32 GMT</Last-Modified><Etag>\"0x8D1292DF0FBB437\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1e4ef90d-4457-407a-adec-79142a825673',
+  'x-ms-request-id': '9b0aa21b-008e-4587-9ba3-dc7bdf93d8ae',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:22 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:34 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont14?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f938a388-a9eb-4d5f-ac17-e7b829d6a675',
+  'x-ms-request-id': '130050ef-3fd7-48d7-9292-974c1d7dcdc5',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:23 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:35 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont15?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:26 GMT',
-  etag: '"0x8D0A5E9E622BFA7"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:36 GMT',
+  etag: '"0x8D1292DF31B6091"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8a974bd5-8b8d-4605-9e47-76158a78a3cc',
+  'x-ms-request-id': '3318da24-5a5c-44b0-9e93-72e699dd0514',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:25 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont15?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:26 GMT',
-  etag: '"0x8D0A5E9E622BFA7"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:36 GMT',
+  etag: '"0x8D1292DF31B6091"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '49972c43-6c9c-4254-b6f8-984b26c62578',
+  'x-ms-request-id': '1e70a8af-32af-4f23-82bf-c1dc970b2806',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:26 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont15</Name><Url>https://ciserversdk.blob.core.windows.net/cont15</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:26 GMT</Last-Modified><Etag>\"0x8D0A5E9E622BFA7\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont15</Name><Url>https://ciserversdk.blob.core.windows.net/cont15</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:36 GMT</Last-Modified><Etag>\"0x8D1292DF31B6091\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c687e90d-5117-44ec-b838-25f926594643',
+  'x-ms-request-id': '698d8619-52ac-40ef-91e2-51ce9405f175',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:27 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont15?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '24bbcc0f-3ce0-4e3a-8005-2eb3bb3b52cf',
+  'x-ms-request-id': '44319080-c0eb-4289-b2bc-10be1b69af63',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:28 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:37 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont16?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:29 GMT',
-  etag: '"0x8D0A5E9E7A32461"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:41 GMT',
+  etag: '"0x8D1292DF5F4B3A7"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7e848e95-1737-48c6-8459-c70f0f820e54',
+  'x-ms-request-id': '066f9557-4f33-46e3-9450-903251e42830',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:28 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont16?restype=container&comp=acl')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:30 GMT',
-  etag: '"0x8D0A5E9E8A6BE15"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:41 GMT',
+  etag: '"0x8D1292DF5F4B3A8"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '74664410-d6c1-4489-a61f-e5fc9a268bbd',
+  'x-ms-request-id': 'abbf9b22-a98b-48e7-9768-e6501c4df443',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:29 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:39 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont16?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:30 GMT',
-  etag: '"0x8D0A5E9E8A6BE15"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:41 GMT',
+  etag: '"0x8D1292DF5F4B3A8"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eba4c3d6-0b16-4fbe-abf3-3ea3f86eedc0',
+  'x-ms-request-id': 'c8a46355-11fe-44d7-9e76-de837344d1df',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-public-access': 'blob',
-  date: 'Sat, 02 Nov 2013 13:52:30 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont16?restype=container&comp=acl')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:32 GMT',
-  etag: '"0x8D0A5E9E9CF8E3E"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:41 GMT',
+  etag: '"0x8D1292DF60A1579"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dc2d63e0-f0f6-4b4f-8ad4-244449b0817e',
+  'x-ms-request-id': 'dab32519-cb2c-48a7-8d1b-9b19f773d87d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:31 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont16?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:32 GMT',
-  etag: '"0x8D0A5E9E9CF8E3E"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:41 GMT',
+  etag: '"0x8D1292DF60A1579"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'afa296d5-eb2d-40b4-8d2d-4c87d2513903',
+  'x-ms-request-id': 'e92e95b5-dacf-4e6c-bc4f-d5d7674b6c88',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-public-access': 'container',
-  date: 'Sat, 02 Nov 2013 13:52:37 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont16</Name><Url>https://ciserversdk.blob.core.windows.net/cont16</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:32 GMT</Last-Modified><Etag>\"0x8D0A5E9E9CF8E3E\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont16</Name><Url>https://ciserversdk.blob.core.windows.net/cont16</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:41 GMT</Last-Modified><Etag>\"0x8D1292DF60A1579\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4b828e72-6788-46f7-87de-da7a3a66f01d',
+  'x-ms-request-id': '47957d68-ade4-4395-8346-e602bf03d2df',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:39 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont16?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5afa4c12-7eb8-4187-821c-3a18b35360b9',
+  'x-ms-request-id': 'c0984efe-0c46-420a-a8fd-b92ab8af108b',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:40 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:48 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont17?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:41 GMT',
-  etag: '"0x8D0A5E9EEC224A4"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:50 GMT',
+  etag: '"0x8D1292DFB5F2374"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4a45731c-2255-4e28-8485-89a68b8192e9',
+  'x-ms-request-id': '57e2f18e-a1a8-4b74-b36e-101c736bf578',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:40 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont17?restype=container&comp=acl', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:42 GMT',
-  etag: '"0x8D0A5E9EFA95B05"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:50 GMT',
+  etag: '"0x8D1292DFB7DCAD3"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b8ef21c7-a075-442e-aae0-bd13c8dcf13e',
+  'x-ms-request-id': '38bc5b35-e722-486b-879a-930d15e227e3',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:42 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont17?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers><SignedIdentifier><Id>readwrite</Id><AccessPolicy><Start>2012-11-10T00:00:00.0000000Z</Start><Expiry>2012-11-10T00:10:00.9990000Z</Expiry><Permission>rw</Permission></AccessPolicy></SignedIdentifier><SignedIdentifier><Id>read</Id><AccessPolicy><Expiry>2012-11-10T00:00:00.0000000Z</Expiry><Permission>r</Permission></AccessPolicy></SignedIdentifier></SignedIdentifiers>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:42 GMT',
-  etag: '"0x8D0A5E9EFA95B05"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:50 GMT',
+  etag: '"0x8D1292DFB7DCAD3"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1bfb5d4e-235c-4d79-a11d-e1065788f644',
+  'x-ms-request-id': '8ca53530-edd8-46ab-a743-335ca5ed6ff6',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-public-access': 'blob',
-  date: 'Sat, 02 Nov 2013 13:52:43 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont17?restype=container&comp=acl')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:44 GMT',
-  etag: '"0x8D0A5E9F0CFBA1E"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:52 GMT',
+  etag: '"0x8D1292DFC6AC8F4"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '69c17e11-f867-4b27-8487-4d7a5ba85881',
+  'x-ms-request-id': '93d95a3e-9d0f-46c8-81dc-7c632993771f',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:43 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont17?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers />", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:44 GMT',
-  etag: '"0x8D0A5E9F0CFBA1E"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:52 GMT',
+  etag: '"0x8D1292DFC6AC8F4"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '1c1ed973-798e-4a38-9b40-e8f75ba74014',
+  'x-ms-request-id': 'f96482f7-0c20-466a-b2ee-e45ae31a28c9',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-public-access': 'container',
-  date: 'Sat, 02 Nov 2013 13:52:44 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:52 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont17</Name><Url>https://ciserversdk.blob.core.windows.net/cont17</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:44 GMT</Last-Modified><Etag>\"0x8D0A5E9F0CFBA1E\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont17</Name><Url>https://ciserversdk.blob.core.windows.net/cont17</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:52 GMT</Last-Modified><Etag>\"0x8D1292DFC6AC8F4\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2a3f4c98-f459-4264-9b17-348eeb3f8d5d',
+  'x-ms-request-id': '47d5e5d6-b7da-45e0-8f47-9f2bb389d01e',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:45 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont17?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eedf660a-06ed-4020-83f5-ee695c1f54f0',
+  'x-ms-request-id': '70b25201-fb45-4539-8048-7d2e8b637762',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:46 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:54 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont18?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:48 GMT',
-  etag: '"0x8D0A5E9F332159B"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:57 GMT',
+  etag: '"0x8D1292DFF6726E7"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0afdd703-715e-48e6-a5eb-f4415233e438',
+  'x-ms-request-id': 'c9202ba2-3987-4cfb-847c-cfcf934de5c4',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:47 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont18?restype=container&comp=acl', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:49 GMT',
-  etag: '"0x8D0A5E9F3B4C496"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:57 GMT',
+  etag: '"0x8D1292DFF6726E8"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '143c57ef-7631-43ca-b111-5e77e8769451',
+  'x-ms-request-id': '7bfabcb2-6d04-480d-af2c-76ba0c9f7fbc',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:48 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont18?restype=container&comp=acl')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><SignedIdentifiers><SignedIdentifier><Id>id1</Id><AccessPolicy><Start>2009-10-10T00:00:00.1230000Z</Start><Expiry>2009-10-11T00:00:00.4560000Z</Expiry><Permission>r</Permission></AccessPolicy></SignedIdentifier><SignedIdentifier><Id>id2</Id><AccessPolicy><Start>2009-11-10T00:00:00.0060000Z</Start><Expiry>2009-11-11T00:00:00.4000000Z</Expiry><Permission>w</Permission></AccessPolicy></SignedIdentifier></SignedIdentifiers>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:49 GMT',
-  etag: '"0x8D0A5E9F3B4C496"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:57 GMT',
+  etag: '"0x8D1292DFF6726E8"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4c892df8-981b-4a12-a2fe-12791711cedb',
+  'x-ms-request-id': '3c6032a2-20b0-4760-8cc2-f517f4bb86f5',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:49 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:56 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont18</Name><Url>https://ciserversdk.blob.core.windows.net/cont18</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:49 GMT</Last-Modified><Etag>\"0x8D0A5E9F3B4C496\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont18</Name><Url>https://ciserversdk.blob.core.windows.net/cont18</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:57 GMT</Last-Modified><Etag>\"0x8D1292DFF6726E8\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a3864ce0-9ee3-40a0-88f8-894067767a21',
+  'x-ms-request-id': 'a359465a-d2d0-47b9-87b7-d894728ead02',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:50 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont18?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fc262e26-f7c2-4eba-90a3-785120fe463f',
+  'x-ms-request-id': '84876bec-68cf-4306-ba91-1e20cb3c4a57',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:51 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:58 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont19?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:53 GMT',
-  etag: '"0x8D0A5E9F607548D"',
+  'last-modified': 'Fri, 18 Apr 2014 14:59:59 GMT',
+  etag: '"0x8D1292E00B8334E"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '62c371c4-93c3-468b-ad08-796db9464fb0',
+  'x-ms-request-id': '089d528e-6845-4120-ade8-7bcb5607406e',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:53 GMT' });
+  date: 'Fri, 18 Apr 2014 14:59:58 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont19/blob7', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:53 GMT',
-  etag: '"0x8D0A5E9F61FB9FF"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:00 GMT',
+  etag: '"0x8D1292E01515F61"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '02261b24-ceb0-4b6f-ba68-6739ad6a4587',
+  'x-ms-request-id': 'b6c58cc9-dcca-4b67-9e6d-fdee800fad63',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:52 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont19/blob7')
   .reply(200, "Hello World", { 'content-length': '11',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:53 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:00 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5E9F61FB9FF"',
+  etag: '"0x8D1292E01515F61"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9bb383f8-d8f1-4008-baca-05aed27c3db9',
+  'x-ms-request-id': 'f48c00b1-4660-4da0-a283-42b3f0f2b823',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:52:53 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont19</Name><Url>https://ciserversdk.blob.core.windows.net/cont19</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:53 GMT</Last-Modified><Etag>\"0x8D0A5E9F607548D\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont19</Name><Url>https://ciserversdk.blob.core.windows.net/cont19</Url><Properties><Last-Modified>Fri, 18 Apr 2014 14:59:59 GMT</Last-Modified><Etag>\"0x8D1292E00B8334E\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ea6930ad-bb3f-4e13-a241-b20475518d7c',
+  'x-ms-request-id': 'a043eeee-3ac1-4a70-8d03-bd364342d23b',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:55 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont19?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '4edb972c-3d31-496e-a66a-58991682d7dd',
+  'x-ms-request-id': 'e7f6ca14-4f0c-4cd7-9366-0c799957b1e0',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:56 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:02 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont20?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:57 GMT',
-  etag: '"0x8D0A5E9F8C09AB1"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:03 GMT',
+  etag: '"0x8D1292E03521B48"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'afde17a2-fc65-481e-9edd-228749d5fc11',
+  'x-ms-request-id': 'f3bd0584-807a-4ea5-aa7d-04bee16db19f',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:57 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:02 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont20/blob8', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:58 GMT',
-  etag: '"0x8D0A5E9F953A9CC"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:04 GMT',
+  etag: '"0x8D1292E03CF0991"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c44902e8-e5c9-4f13-935c-44f8d3b8425b',
+  'x-ms-request-id': 'bbd7a415-97f3-4e20-8dfe-372171ebbaaf',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:52:58 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:06 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont20/blob8?comp=snapshot')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:58 GMT',
-  etag: '"0x8D0A5E9F953A9CC"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:04 GMT',
+  etag: '"0x8D1292E03CF0991"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '714b2fdc-f911-4729-ba85-eed7b3b7cb42',
+  'x-ms-request-id': 'badaec1e-dce5-40ab-88e4-bcdd5df93287',
   'x-ms-version': '2012-02-12',
-  'x-ms-snapshot': '2013-11-02T13:52:59.7843647Z',
-  date: 'Sat, 02 Nov 2013 13:52:59 GMT' });
+  'x-ms-snapshot': '2014-04-18T15:00:05.2745073Z',
+  date: 'Fri, 18 Apr 2014 15:00:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont20/blob8')
   .reply(200, "Hello World", { 'content-length': '11',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:52:58 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:04 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5E9F953A9CC"',
+  etag: '"0x8D1292E03CF0991"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '990b98d9-d5f5-402b-ab5b-63de7db97e8e',
+  'x-ms-request-id': 'dec982cb-d038-4a33-a50b-c24c9b418f43',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:52:59 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont20</Name><Url>https://ciserversdk.blob.core.windows.net/cont20</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:52:57 GMT</Last-Modified><Etag>\"0x8D0A5E9F8C09AB1\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont20</Name><Url>https://ciserversdk.blob.core.windows.net/cont20</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:03 GMT</Last-Modified><Etag>\"0x8D1292E03521B48\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '00985355-b143-4a21-8c54-b14d779bd291',
+  'x-ms-request-id': '6dd627cf-4338-4fe7-806b-461d5f05dad7',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:01 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont20?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2e2c4359-58b7-4176-b45b-715fe9e44a60',
+  'x-ms-request-id': '871722ab-dd0a-4e34-8ab6-58fdcaa20b85',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:02 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:06 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont21?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:04 GMT',
-  etag: '"0x8D0A5E9FC91BFD7"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:08 GMT',
+  etag: '"0x8D1292E06392DCE"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c1f43098-540b-46bd-8bac-b471216bd7fc',
+  'x-ms-request-id': 'cab0e091-5ecf-491d-9c45-46b8d42174a6',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:03 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont21/blob9', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'XUFAKrxLKna5cZ2REBfFkg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:04 GMT',
-  etag: '"0x8D0A5E9FCD6F421"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:09 GMT',
+  etag: '"0x8D1292E06AB7591"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '230441c7-afee-4f0a-a349-cf660f54f5b1',
+  'x-ms-request-id': 'ab8ec60f-31d6-483a-9ec0-8e6ac9beb7b5',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:05 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont21/blob9?comp=lease')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '67f1e5ef-4b47-483c-922e-5a9a6b95b404',
+  'x-ms-request-id': '84cee4b9-ad8f-4904-b4a3-03036b146870',
   'x-ms-version': '2012-02-12',
-  'x-ms-lease-id': 'c9c02b46-ada0-49d0-bdab-dc21f856930c',
-  date: 'Sat, 02 Nov 2013 13:53:05 GMT' });
+  'x-ms-lease-id': 'aa1e8cf4-dd2f-47f4-9a5d-5103d0a36b2a',
+  date: 'Fri, 18 Apr 2014 15:00:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont21/blob9?comp=lease')
-  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseAlreadyPresent</Code><Message>There is already a lease present.\nRequestId:0dddd573-1479-4d42-b5e6-7f99a9d6823c\nTime:2013-11-02T13:53:06.9404117Z</Message></Error>", { 'content-length': '221',
+  .reply(409, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseAlreadyPresent</Code><Message>There is already a lease present.\nRequestId:84f62894-9f77-48ec-80cf-76e9caa74dfe\nTime:2014-04-18T15:00:10.7927132Z</Message></Error>", { 'content-length': '221',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0dddd573-1479-4d42-b5e6-7f99a9d6823c',
+  'x-ms-request-id': '84f62894-9f77-48ec-80cf-76e9caa74dfe',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:06 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:09 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont21/blob9')
-  .reply(412, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the blob and no lease ID was specified in the request.\nRequestId:13889276-00f4-4d85-92c4-9e8e820cce96\nTime:2013-11-02T13:53:08.0475639Z</Message></Error>", { 'content-length': '267',
+  .reply(412, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>LeaseIdMissing</Code><Message>There is currently a lease on the blob and no lease ID was specified in the request.\nRequestId:30827937-9a04-4f26-99e4-ead0e22e713c\nTime:2014-04-18T15:00:11.6085860Z</Message></Error>", { 'content-length': '267',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '13889276-00f4-4d85-92c4-9e8e820cce96',
+  'x-ms-request-id': '30827937-9a04-4f26-99e4-ead0e22e713c',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:07 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:10 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont21</Name><Url>https://ciserversdk.blob.core.windows.net/cont21</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:04 GMT</Last-Modified><Etag>\"0x8D0A5E9FC91BFD7\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont21</Name><Url>https://ciserversdk.blob.core.windows.net/cont21</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:08 GMT</Last-Modified><Etag>\"0x8D1292E06392DCE\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2ad11380-7acb-41ca-9a6b-e2f0bcade5f2',
+  'x-ms-request-id': '83d76076-d2d6-4fd5-a465-39f012b654ce',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:08 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont21?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5be374cf-e838-40e8-a6f3-8a281f8b9142',
+  'x-ms-request-id': '05af6470-8217-4d29-9e45-e468c08c74ce',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:08 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:13 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont22?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:11 GMT',
-  etag: '"0x8D0A5EA00F3BC50"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:15 GMT',
+  etag: '"0x8D1292E0A9BD44A"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3a8491ba-903c-45c8-bcff-5681cd325b56',
+  'x-ms-request-id': 'a0b1de90-eb0b-4eb4-bee4-e9a10bc25784',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:11 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont22/blob10', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'XUFAKrxLKna5cZ2REBfFkg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:14 GMT',
-  etag: '"0x8D0A5EA02AE4FD8"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:15 GMT',
+  etag: '"0x8D1292E0A10C0A1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ff4732a9-fcac-4465-b150-505586643a75',
+  'x-ms-request-id': 'bc0f6a9a-e1f2-4f82-aff1-bef57c25fec3',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:14 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont22/blob10')
   .reply(200, "", { 'content-length': '5',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': 'XUFAKrxLKna5cZ2REBfFkg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:14 GMT',
-  etag: '"0x8D0A5EA02AE4FD8"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:15 GMT',
+  etag: '"0x8D1292E0A10C0A1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6814201b-747a-4251-a16c-064f423b14a1',
+  'x-ms-request-id': '992929d0-5d9e-414a-95e0-ccc3ff22d488',
   'x-ms-version': '2012-02-12',
   'x-ms-meta-color': 'blue',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:53:14 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont22</Name><Url>https://ciserversdk.blob.core.windows.net/cont22</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:11 GMT</Last-Modified><Etag>\"0x8D0A5EA00F3BC50\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont22</Name><Url>https://ciserversdk.blob.core.windows.net/cont22</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:15 GMT</Last-Modified><Etag>\"0x8D1292E0A9BD44A\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '876195ad-a0de-4d2a-9ab9-4e723f3d290b',
+  'x-ms-request-id': '7079609b-3bfb-4b1f-bb5d-11d1789bc252',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:17 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont22?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fff94931-2d97-41e8-8e3a-2ddde01adb85',
+  'x-ms-request-id': '1c671e5f-d9fe-40f3-83d4-84ec1c0a9a01',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:17 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:17 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont23?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:18 GMT',
-  etag: '"0x8D0A5EA05171412"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:18 GMT',
+  etag: '"0x8D1292E0C1DCC4A"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '95d6b4a2-6da2-4614-aaeb-1b5916f5bca4',
+  'x-ms-request-id': 'c1bdd3ab-a575-4a08-a113-c11adba15b75',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:17 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont23/blob11', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'XUFAKrxLKna5cZ2REBfFkg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:19 GMT',
-  etag: '"0x8D0A5EA05A77F14"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:19 GMT',
+  etag: '"0x8D1292E0C8FA351"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2876101d-c294-41c4-9f25-a6e6b51505ef',
+  'x-ms-request-id': '45928530-5efc-4fe0-ab55-901ffcfa73f4',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:18 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont23/blob11?comp=properties')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:20 GMT',
-  etag: '"0x8D0A5EA063CE517"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:19 GMT',
+  etag: '"0x8D1292E0D054881"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b70d951d-eebc-4600-b1af-bc77262bcc7e',
+  'x-ms-request-id': '7a7ba221-306b-4551-b7ad-7b0f3dd48bd7',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:19 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont23/blob11')
   .reply(200, "", { 'cache-control': 'true',
   'content-length': '5',
   'content-type': 'text',
   'content-encoding': 'utf8',
   'content-language': 'pt',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:20 GMT',
-  etag: '"0x8D0A5EA063CE517"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:19 GMT',
+  etag: '"0x8D1292E0D054881"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7359b9e7-aca4-4373-8832-df12c9745d64',
+  'x-ms-request-id': 'b125bcc3-1fca-444c-b41f-2c69ed2407ce',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:53:21 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont23</Name><Url>https://ciserversdk.blob.core.windows.net/cont23</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:18 GMT</Last-Modified><Etag>\"0x8D0A5EA05171412\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont23</Name><Url>https://ciserversdk.blob.core.windows.net/cont23</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:18 GMT</Last-Modified><Etag>\"0x8D1292E0C1DCC4A\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '369cb1bf-c8c9-45b8-bd4e-2bad04ce9540',
+  'x-ms-request-id': '45805980-93dc-424a-b31c-7efefa293033',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:22 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont23?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a24ac097-d3c6-437d-96f6-78c15195e6fc',
+  'x-ms-request-id': '64f56d78-06ac-45ad-9eb2-a59708278ae2',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:23 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:21 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont24?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:24 GMT',
-  etag: '"0x8D0A5EA08AD1563"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:24 GMT',
+  etag: '"0x8D1292E0FBD512A"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'de33b202-dbb8-40ac-a25a-4f8402d9fc03',
+  'x-ms-request-id': '0c433e16-93f8-43be-a3cf-c9cf09b26eb2',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:23 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont24/blob12', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'XUFAKrxLKna5cZ2REBfFkg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:25 GMT',
-  etag: '"0x8D0A5EA0965FF2D"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:24 GMT',
+  etag: '"0x8D1292E0F7FBE61"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7d2f2d26-7e44-4014-abba-8bb4dedbd5db',
+  'x-ms-request-id': '31b0d348-e511-40f2-a6c5-2135dd8fac4f',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:25 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:23 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont24/blob12?comp=metadata')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:25 GMT',
-  etag: '"0x8D0A5EA0965FF2D"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:24 GMT',
+  etag: '"0x8D1292E0F7FBE61"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'cf123782-d1d6-49fd-8940-53087f704956',
+  'x-ms-request-id': '0fee4e94-5f72-4116-b589-6f390a294674',
   'x-ms-version': '2012-02-12',
   'x-ms-meta-color': 'blue',
-  date: 'Sat, 02 Nov 2013 13:53:26 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont24</Name><Url>https://ciserversdk.blob.core.windows.net/cont24</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:24 GMT</Last-Modified><Etag>\"0x8D0A5EA08AD1563\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont24</Name><Url>https://ciserversdk.blob.core.windows.net/cont24</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:24 GMT</Last-Modified><Etag>\"0x8D1292E0FBD512A\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '29b0fb7a-0295-4024-9560-6f69022f897f',
+  'x-ms-request-id': '90057ffb-f49d-404c-8c48-b784e19795e9',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:26 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:25 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont24?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd080f23a-f9b2-46a7-a87a-cc24a82c0a39',
+  'x-ms-request-id': 'c62bee36-1a19-4871-ae7f-76bbb4e4f883',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:28 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:25 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont25?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:30 GMT',
-  etag: '"0x8D0A5EA0BF3FF13"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:27 GMT',
+  etag: '"0x8D1292E11C7EC01"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e809ae2f-2016-4c0e-b9f2-1e017a63af1b',
+  'x-ms-request-id': 'b4665182-b7a5-4999-b869-7347546818a0',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:29 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont25/blob13')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:30 GMT',
-  etag: '"0x8D0A5EA0C4D53A4"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:28 GMT',
+  etag: '"0x8D1292E11D2AF11"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8d57fa3a-db16-4618-880a-70cd4bd4ef45',
+  'x-ms-request-id': 'e52cd519-bbad-4cf5-a89b-f619a2482e31',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:30 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:28 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont25/blob13?comp=page', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'hWqCH89IXa3HIcoVA3zIWw==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:31 GMT',
-  etag: '"0x8D0A5EA0CE63C2E"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:28 GMT',
+  etag: '"0x8D1292E12666391"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd2f768c6-703a-4f94-90ad-aeae9de1c9ba',
+  'x-ms-request-id': '6eadf0f2-d3b5-4c84-b11d-5e3073f55bd7',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-sequence-number': '0',
-  date: 'Sat, 02 Nov 2013 13:53:31 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont25/blob13')
   .reply(200, "Hello, World!                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ", { 'content-length': '1024',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:31 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:28 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA0CE63C2E"',
+  etag: '"0x8D1292E12666391"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0e5a20de-dcf7-471e-89e1-e2eb1abb73c9',
+  'x-ms-request-id': '189d801c-f948-4109-bac9-f8ec21725f66',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'PageBlob',
   'x-ms-blob-sequence-number': '0',
-  date: 'Sat, 02 Nov 2013 13:53:31 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont25/blob13?comp=page')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:33 GMT',
-  etag: '"0x8D0A5EA0E19BAFD"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:30 GMT',
+  etag: '"0x8D1292E13541EF1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c327eeb1-65f0-4868-a392-4bbf9c009845',
+  'x-ms-request-id': '38fec539-ae0d-41f2-8f39-73c383dd1767',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-sequence-number': '0',
-  date: 'Sat, 02 Nov 2013 13:53:33 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:30 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont25/blob13?comp=page', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'm+VKVRpGcfXpe9/QtKa0Yg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:34 GMT',
-  etag: '"0x8D0A5EA0EB0F5CC"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:31 GMT',
+  etag: '"0x8D1292E13FA4A01"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '66182c89-2ca9-401f-93f5-8820bb7814c9',
+  'x-ms-request-id': '2ce67545-4fbc-4198-9441-8b02d437a8b4',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-sequence-number': '0',
-  date: 'Sat, 02 Nov 2013 13:53:34 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont25/blob13?comp=page', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'm+VKVRpGcfXpe9/QtKa0Yg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:35 GMT',
-  etag: '"0x8D0A5EA0F46A9F1"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:32 GMT',
+  etag: '"0x8D1292E14902161"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '15761647-81ec-4669-80f7-413ee6c968a6',
+  'x-ms-request-id': 'a6829800-0158-42df-9b9f-9c60bd25cfb3',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-sequence-number': '0',
-  date: 'Sat, 02 Nov 2013 13:53:34 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont25/blob13')
   .reply(200, "Hello, World!                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Hello, World!                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ", { 'content-length': '1024',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:35 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:32 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA0F46A9F1"',
+  etag: '"0x8D1292E14902161"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6be68f50-621d-4c2e-aa16-585e2a02381c',
+  'x-ms-request-id': 'c1a7d4de-ef3b-4a91-95c8-a2ce63cf6f89',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'PageBlob',
   'x-ms-blob-sequence-number': '0',
-  date: 'Sat, 02 Nov 2013 13:53:35 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont25</Name><Url>https://ciserversdk.blob.core.windows.net/cont25</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:30 GMT</Last-Modified><Etag>\"0x8D0A5EA0BF3FF13\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont25</Name><Url>https://ciserversdk.blob.core.windows.net/cont25</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:27 GMT</Last-Modified><Etag>\"0x8D1292E11C7EC01\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ee278da8-4b4c-421e-bc04-10ed272fa690',
+  'x-ms-request-id': '9892adbc-83d5-43a7-9db5-75afa87ea017',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:37 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:33 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont25?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ebdc07ad-7f98-4d60-89ed-42705222700e',
+  'x-ms-request-id': '120b649a-ae6c-463d-9fa3-21cce0ab27d3',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:37 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:34 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont26?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:38 GMT',
-  etag: '"0x8D0A5EA111B7578"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:35 GMT',
+  etag: '"0x8D1292E16787170"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd74e0b48-d796-4fa5-a816-1c2889b0016c',
+  'x-ms-request-id': 'af559aee-494e-4392-866d-dd6b2e43e3b0',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:38 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:35 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont26/blob14', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'XUFAKrxLKna5cZ2REBfFkg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:40 GMT',
-  etag: '"0x8D0A5EA122D8935"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:36 GMT',
+  etag: '"0x8D1292E17069FA1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fa83491f-f7e8-4538-a3bc-79ae07ef9698',
+  'x-ms-request-id': 'f57a9f46-520e-4357-914e-14b029f1fb3f',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:41 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .head('/cont26/blob14')
   .reply(200, "", { 'content-length': '5',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': 'XUFAKrxLKna5cZ2REBfFkg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:40 GMT',
-  etag: '"0x8D0A5EA122D8935"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:36 GMT',
+  etag: '"0x8D1292E17069FA1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '2c676052-2fc6-46ed-b603-056551c2c9fc',
+  'x-ms-request-id': '12be829a-1cfd-48f6-903e-f32d5494198b',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:53:41 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:36 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont26/blob14', '*')
-  .reply(412, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ConditionNotMet</Code><Message>The condition specified using HTTP conditional header(s) is not met.\nRequestId:b939a35e-3649-45ed-b65c-b0b6885e9b79\nTime:2013-11-02T13:53:42.9476325Z</Message></Error>", { 'content-length': '252',
+  .reply(412, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>ConditionNotMet</Code><Message>The condition specified using HTTP conditional header(s) is not met.\nRequestId:1c26fc00-e16e-4ea2-a691-fc6fae27e83e\nTime:2014-04-18T15:00:38.4838727Z</Message></Error>", { 'content-length': '252',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b939a35e-3649-45ed-b65c-b0b6885e9b79',
+  'x-ms-request-id': '1c26fc00-e16e-4ea2-a691-fc6fae27e83e',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:42 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:37 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont26</Name><Url>https://ciserversdk.blob.core.windows.net/cont26</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:38 GMT</Last-Modified><Etag>\"0x8D0A5EA111B7578\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont26</Name><Url>https://ciserversdk.blob.core.windows.net/cont26</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:35 GMT</Last-Modified><Etag>\"0x8D1292E16787170\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f91f55b8-869f-4b4f-b919-089a0b60ba5e',
+  'x-ms-request-id': '911fb888-f212-4c2c-99f8-31d8d8314124',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:43 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont26?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f6410a40-aac9-4695-8416-39bf5c8e457a',
+  'x-ms-request-id': 'a1a362dd-1784-4e72-8724-2bbe33e83f2b',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:44 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:40 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont27?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:45 GMT',
-  etag: '"0x8D0A5EA152D8E09"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:41 GMT',
+  etag: '"0x8D1292E19B7A2C4"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '10db6c65-620f-4857-a94c-c487003c1cd2',
+  'x-ms-request-id': '68e3dc54-bec5-47b2-8581-b1b6fa3d809d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:45 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:40 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont27/blob15%20a', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:46 GMT',
-  etag: '"0x8D0A5EA15F97726"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:41 GMT',
+  etag: '"0x8D1292E1A114791"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '94ad5500-f19e-41a7-a9f3-34f8ac23b7de',
+  'x-ms-request-id': '22ae0143-cfa0-4fbf-89eb-34cfe34dd177',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:46 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:42 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont27/blob15%20a')
   .reply(200, "Hello World", { 'content-length': '11',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:46 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:41 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA15F97726"',
+  etag: '"0x8D1292E1A114791"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e82b6788-2df9-4804-9545-4046b650ec06',
+  'x-ms-request-id': 'b8dbbe83-7cb4-42af-aebe-45bd4e188ea9',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:53:48 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:41 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont27</Name><Url>https://ciserversdk.blob.core.windows.net/cont27</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:45 GMT</Last-Modified><Etag>\"0x8D0A5EA152D8E09\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont27</Name><Url>https://ciserversdk.blob.core.windows.net/cont27</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:41 GMT</Last-Modified><Etag>\"0x8D1292E19B7A2C4\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'b0fccd50-0617-470b-94d6-583b0b18a19f',
+  'x-ms-request-id': '9172dcd6-14b0-49f1-bf42-e9ae7ffb5266',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:48 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:43 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont27?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '41ed3f8d-6620-467d-944b-4a6e24120368',
+  'x-ms-request-id': '85376bba-0832-45b0-80db-2501ff0ce57d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:50 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:45 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont28?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:52 GMT',
-  etag: '"0x8D0A5EA19243CB4"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:45 GMT',
+  etag: '"0x8D1292E1C0AD61E"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8232f712-2a1c-498b-a6bd-23c625aa5688',
+  'x-ms-request-id': '4b6e410c-bc86-44f8-b827-79be82b4e127',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:52 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:44 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont28/blob16', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'ZajifYh5KDgxtmS9i38K1A==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:51 GMT',
-  etag: '"0x8D0A5EA18DE337C"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:45 GMT',
+  etag: '"0x8D1292E1C8777B1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a24a070c-c799-4eb3-97a1-2bbc54ae480a',
+  'x-ms-request-id': '54f2d939-3506-4664-93c2-cbc12dcaf40a',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:51 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:45 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont28/blob16')
   .reply(206, "ll", { 'content-length': '2',
   'content-type': 'text/plain;charset="utf-8"',
   'content-range': 'bytes 2-3/13',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:51 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:45 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA18DE337C"',
+  etag: '"0x8D1292E1C8777B1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '16e7e110-c224-42a0-87a6-3b0a67023dc5',
+  'x-ms-request-id': '4418abdb-6f8c-4f7b-ad7f-f85ce4641db9',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:53:52 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:46 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont28</Name><Url>https://ciserversdk.blob.core.windows.net/cont28</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:52 GMT</Last-Modified><Etag>\"0x8D0A5EA19243CB4\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont28</Name><Url>https://ciserversdk.blob.core.windows.net/cont28</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:45 GMT</Last-Modified><Etag>\"0x8D1292E1C0AD61E\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'fc307fa3-4903-472f-a195-0f77e626c2c0',
+  'x-ms-request-id': '00affa6d-3c7b-4087-b074-99077c883034',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:54 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont28?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '000cf5e0-ad61-4a74-9eff-1989ce13a193',
+  'x-ms-request-id': '488ae14a-3e3b-4ed0-84f0-ff961003ff88',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:55 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:47 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont29?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:55 GMT',
-  etag: '"0x8D0A5EA1B560762"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:47 GMT',
+  etag: '"0x8D1292E1D97DB2F"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7a0f935f-49ed-4684-a443-624c21128434',
+  'x-ms-request-id': 'e5d45155-b748-4ab3-a6e0-8cf8172b35ce',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:55 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:47 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont29/blob17', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'ZajifYh5KDgxtmS9i38K1A==',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:56 GMT',
-  etag: '"0x8D0A5EA1BD789C9"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:50 GMT',
+  etag: '"0x8D1292E1F1A3081"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '441529b4-5f4d-4568-8e2b-9e3f53267a59',
+  'x-ms-request-id': '4888e2f6-bf23-4bb1-8eff-55ec71e3f9f5',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:53:57 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:50 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont29/blob17')
   .reply(206, "llo, World!", { 'content-length': '11',
   'content-type': 'text/plain;charset="utf-8"',
   'content-range': 'bytes 2-12/13',
-  'last-modified': 'Sat, 02 Nov 2013 13:53:56 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:50 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA1BD789C9"',
+  etag: '"0x8D1292E1F1A3081"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '3cb948a1-58ff-4476-bf2d-8b1ddf38e200',
+  'x-ms-request-id': '4582154a-cb58-426c-86e4-aebea283605d',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:53:58 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:49 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont29</Name><Url>https://ciserversdk.blob.core.windows.net/cont29</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:53:55 GMT</Last-Modified><Etag>\"0x8D0A5EA1B560762\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont29</Name><Url>https://ciserversdk.blob.core.windows.net/cont29</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:47 GMT</Last-Modified><Etag>\"0x8D1292E1D97DB2F\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e764f2ea-f814-4ccd-b662-b0b2f254440f',
+  'x-ms-request-id': '13d5a1b9-ce7c-4cf3-bfb9-a757eac58b63',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:01 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:51 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont29?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5c438c0c-88c4-4143-9759-2c1a76ff0931',
+  'x-ms-request-id': '548ec3df-2235-4a61-9042-75890d4bf1b3',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:02 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:54 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont30?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:02 GMT',
-  etag: '"0x8D0A5EA1F83A928"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:53 GMT',
+  etag: '"0x8D1292E213103CE"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5cdd1e5f-4bb2-4631-a840-eddcd7b92e18',
+  'x-ms-request-id': '067a5489-c956-48d6-932f-0b64883bf2e8',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:02 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:53 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont30/blob18', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:04 GMT',
-  etag: '"0x8D0A5EA209BE7D6"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:54 GMT',
+  etag: '"0x8D1292E21A659A1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0194c361-3482-4e02-8d50-f8a0445611d6',
+  'x-ms-request-id': '0e84623a-8320-4831-9e69-1afe3e776f2c',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:04 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:54 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont30/blob18')
   .reply(206, "llo World!", { 'content-length': '10',
   'content-type': 'image/bmp',
   'content-range': 'bytes 2-11/12',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:04 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:54 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA209BE7D6"',
+  etag: '"0x8D1292E21A659A1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dc06e9bf-c37c-416d-9903-5e2c5447e1d5',
+  'x-ms-request-id': 'dc2ba1a6-ba86-4ca1-bf7d-574f17064393',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:54:05 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont30</Name><Url>https://ciserversdk.blob.core.windows.net/cont30</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:02 GMT</Last-Modified><Etag>\"0x8D0A5EA1F83A928\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont30</Name><Url>https://ciserversdk.blob.core.windows.net/cont30</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:53 GMT</Last-Modified><Etag>\"0x8D1292E213103CE\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a7027cfe-4d30-403d-a814-ddb2d3d46415',
+  'x-ms-request-id': '91c13eaa-0dda-41d9-a780-267c4ef2a47f',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:06 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:55 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont30?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c477d9c0-5d34-4236-ad02-5dfa377285a0',
+  'x-ms-request-id': '09fc153b-a80a-44c8-b1fc-292b608ed5e2',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:08 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:56 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont31?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:09 GMT',
-  etag: '"0x8D0A5EA236B0CBE"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:57 GMT',
+  etag: '"0x8D1292E2391B6F0"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0a660045-0a7a-4636-8d0e-1466299ece0e',
+  'x-ms-request-id': 'b422858b-648d-454d-a6d8-760567dcdb82',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:08 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:57 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont31/blob19', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:09 GMT',
-  etag: '"0x8D0A5EA23A0D72F"',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:58 GMT',
+  etag: '"0x8D1292E241FBE11"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '21c3298c-4d95-4417-9053-ee62b5ca4cfa',
+  'x-ms-request-id': '2879a14a-cbe8-4e6c-8e2b-e65026422285',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:09 GMT' });
+  date: 'Fri, 18 Apr 2014 15:00:59 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont31/blob19')
   .reply(206, "llo World!", { 'content-length': '10',
   'content-type': 'application/octet-stream',
   'content-range': 'bytes 2-11/12',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:09 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:00:58 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA23A0D72F"',
+  etag: '"0x8D1292E241FBE11"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5cc719c1-5141-4691-ad27-339b78835340',
+  'x-ms-request-id': '3de8f21f-d6f4-4037-908d-0c92096a27e1',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:54:09 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont31</Name><Url>https://ciserversdk.blob.core.windows.net/cont31</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:09 GMT</Last-Modified><Etag>\"0x8D0A5EA236B0CBE\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont31</Name><Url>https://ciserversdk.blob.core.windows.net/cont31</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:00:57 GMT</Last-Modified><Etag>\"0x8D1292E2391B6F0\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '085231c5-62df-44ef-8ca1-b36849d40ba2',
+  'x-ms-request-id': '1707829f-e160-43cc-ac15-2d117efe8b81',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:09 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:00 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont31?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e5aa1936-ab31-4a83-9575-47279bdf93ce',
+  'x-ms-request-id': '46177940-389f-4203-b165-59a6307a65d7',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:11 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:00 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont32?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:13 GMT',
-  etag: '"0x8D0A5EA25A701FE"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:01 GMT',
+  etag: '"0x8D1292E261339B3"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd320c457-cceb-4fbf-b060-80edb6cf3678',
+  'x-ms-request-id': 'd6d83163-8e64-4560-9926-756e9e946d4c',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:12 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:01 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont33?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:14 GMT',
-  etag: '"0x8D0A5EA26763447"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:04 GMT',
+  etag: '"0x8D1292E277EEF06"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'faef35ce-e3cd-40ad-aa70-f668b0e5161e',
+  'x-ms-request-id': '5b420c0f-32c3-4314-a720-99ba61e09234',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:13 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:03 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont32/blob20', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': '/TPi6K08sb3T6o9WM/z1xw==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:15 GMT',
-  etag: '"0x8D0A5EA2728DC93"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:03 GMT',
+  etag: '"0x8D1292E27133481"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9135ae4f-ff82-4f87-8653-fc26b933b44b',
+  'x-ms-request-id': '5bda2c82-e803-460a-a3d6-ccdd119c2cea',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:14 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont33/blob21')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:16 GMT',
-  etag: '"0x8D0A5EA27BB5C53"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:04 GMT',
+  etag: '"0x8D1292E2790C8F1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd1e4c98b-6d37-443b-becd-f1f2fc96052d',
+  'x-ms-request-id': '7c830a24-845f-4c39-9be1-6b7d33eff886',
   'x-ms-version': '2012-02-12',
-  'x-ms-copy-id': '572e4e96-fd04-4fd4-b7a6-54db59c5474d',
+  'x-ms-copy-id': '82e6af27-1211-4c30-88c7-2be38e196b78',
   'x-ms-copy-status': 'success',
-  date: 'Sat, 02 Nov 2013 13:54:15 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:05 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont33/blob21')
   .reply(200, "hi there", { 'content-length': '8',
   'content-type': 'text/plain;charset="utf-8"',
   'content-md5': '/TPi6K08sb3T6o9WM/z1xw==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:16 GMT',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:04 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA27BB5C53"',
+  etag: '"0x8D1292E2790C8F1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '25da871a-7337-453e-bba5-171d9cd2c442',
+  'x-ms-request-id': '4b7adc43-e36a-4f68-92ec-86d634a21a97',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  'x-ms-copy-id': '572e4e96-fd04-4fd4-b7a6-54db59c5474d',
+  'x-ms-copy-id': '82e6af27-1211-4c30-88c7-2be38e196b78',
   'x-ms-copy-source': 'https://ciserversdk.blob.core.windows.net:443/cont32/blob20',
   'x-ms-copy-status': 'success',
   'x-ms-copy-progress': '8/8',
-  'x-ms-copy-completion-time': 'Sat, 02 Nov 2013 13:54:15 GMT',
-  date: 'Sat, 02 Nov 2013 13:54:17 GMT' });
+  'x-ms-copy-completion-time': 'Fri, 18 Apr 2014 15:01:05 GMT',
+  date: 'Fri, 18 Apr 2014 15:01:04 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont32</Name><Url>https://ciserversdk.blob.core.windows.net/cont32</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:13 GMT</Last-Modified><Etag>\"0x8D0A5EA25A701FE\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>cont33</Name><Url>https://ciserversdk.blob.core.windows.net/cont33</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:14 GMT</Last-Modified><Etag>\"0x8D0A5EA26763447\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont32</Name><Url>https://ciserversdk.blob.core.windows.net/cont32</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:01 GMT</Last-Modified><Etag>\"0x8D1292E261339B3\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container><Container><Name>cont33</Name><Url>https://ciserversdk.blob.core.windows.net/cont33</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:04 GMT</Last-Modified><Etag>\"0x8D1292E277EEF06\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '51b8660f-cf3b-402c-853b-1545155cfdd9',
+  'x-ms-request-id': '77f039d0-27b0-4eac-838d-45b2f06ea8e5',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:18 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont33?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eb2e0ebb-0cd3-4797-9d0b-849906386b78',
+  'x-ms-request-id': 'd4939c31-3cdf-4005-8d48-6751fe55f483',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:19 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont32?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dc3598f6-53d6-43e3-8e8f-57d3fec6408a',
+  'x-ms-request-id': '073b36de-ff13-4226-bcfb-e6e02cf4c990',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:19 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:07 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont34?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:22 GMT',
-  etag: '"0x8D0A5EA2AE9406E"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:08 GMT',
+  etag: '"0x8D1292E29F0469E"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'ffaa63e3-8c63-48e6-817b-c73673199f9e',
+  'x-ms-request-id': '82eec7a5-26ba-45c9-a7cb-2ad0c684c547',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:21 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:07 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont34?restype=container&comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5be65137-8e86-4050-9d56-9a33634f84cd',
+  'x-ms-request-id': 'cbc0f140-10c6-4fd5-acdb-b164e83ea776',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:21 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:08 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont34/blob22', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'IDrV/6HXxlCtaB/f85Zc0g==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:23 GMT',
-  etag: '"0x8D0A5EA2BE4AEE8"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:10 GMT',
+  etag: '"0x8D1292E2B113D21"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5971f006-1e05-4416-900e-96459859f550',
+  'x-ms-request-id': 'c6af6dac-fbeb-4bcb-b97e-781ec58e99ea',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:23 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont34?restype=container&comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs><Blob><Name>blob22</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:23 GMT</Last-Modified><Etag>0x8D0A5EA2BE4AEE8</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs><Blob><Name>blob22</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:10 GMT</Last-Modified><Etag>0x8D1292E2B113D21</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '0197c635-9397-465a-9d3e-995006dc9649',
+  'x-ms-request-id': '0237f21c-a64f-4257-b2be-20d22db09c74',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:24 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:11 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont34/blob23', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'boCcvaBzKsSEWRalkBb5VA==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:25 GMT',
-  etag: '"0x8D0A5EA2D176A62"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:12 GMT',
+  etag: '"0x8D1292E2C1BCF51"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'dde993ef-2e6e-49b3-9d64-007920c61836',
+  'x-ms-request-id': 'e160b120-6c77-42e6-a005-a4fdb78d7dcb',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:25 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont34?restype=container&comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs><Blob><Name>blob22</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:23 GMT</Last-Modified><Etag>0x8D0A5EA2BE4AEE8</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob><Blob><Name>blob23</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob23</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:25 GMT</Last-Modified><Etag>0x8D0A5EA2D176A62</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>boCcvaBzKsSEWRalkBb5VA==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs><Blob><Name>blob22</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:10 GMT</Last-Modified><Etag>0x8D1292E2B113D21</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob><Blob><Name>blob23</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob23</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:12 GMT</Last-Modified><Etag>0x8D1292E2C1BCF51</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>boCcvaBzKsSEWRalkBb5VA==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '445fd6cd-1cf2-4915-8589-cd30d50c911f',
+  'x-ms-request-id': 'e2ed371f-6406-45c5-8d6c-08b52dc536ce',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:27 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont34/blob22?comp=snapshot')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:23 GMT',
-  etag: '"0x8D0A5EA2BE4AEE8"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:10 GMT',
+  etag: '"0x8D1292E2B113D21"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a96e0b4c-0c1a-4984-a99b-dc8c4c76104c',
+  'x-ms-request-id': '22ab28fb-62a7-47f1-a710-45ac3a2c3b7c',
   'x-ms-version': '2012-02-12',
-  'x-ms-snapshot': '2013-11-02T13:54:27.7131567Z',
-  date: 'Sat, 02 Nov 2013 13:54:27 GMT' });
+  'x-ms-snapshot': '2014-04-18T15:01:13.6985073Z',
+  date: 'Fri, 18 Apr 2014 15:01:14 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont34?restype=container&comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs><Blob><Name>blob22</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:23 GMT</Last-Modified><Etag>0x8D0A5EA2BE4AEE8</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob><Blob><Name>blob23</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob23</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:25 GMT</Last-Modified><Etag>0x8D0A5EA2D176A62</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>boCcvaBzKsSEWRalkBb5VA==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs><Blob><Name>blob22</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:10 GMT</Last-Modified><Etag>0x8D1292E2B113D21</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob><Blob><Name>blob23</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob23</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:12 GMT</Last-Modified><Etag>0x8D1292E2C1BCF51</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>boCcvaBzKsSEWRalkBb5VA==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8f16afa2-b9d3-4e5d-9f90-06c42525c572',
+  'x-ms-request-id': '23b655cc-72a9-43aa-bff3-7ecc0a582675',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:29 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:13 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont34?restype=container&comp=list&include=snapshots')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs><Blob><Name>blob22</Name><Snapshot>2013-11-02T13:54:27.7131567Z</Snapshot><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22?snapshot=2013-11-02T13%3a54%3a27.7131567Z</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:23 GMT</Last-Modified><Etag>0x8D0A5EA2BE4AEE8</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType></Properties></Blob><Blob><Name>blob22</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:23 GMT</Last-Modified><Etag>0x8D0A5EA2BE4AEE8</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob><Blob><Name>blob23</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob23</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:25 GMT</Last-Modified><Etag>0x8D0A5EA2D176A62</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>boCcvaBzKsSEWRalkBb5VA==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults ContainerName=\"https://ciserversdk.blob.core.windows.net/cont34\"><Blobs><Blob><Name>blob22</Name><Snapshot>2014-04-18T15:01:13.6985073Z</Snapshot><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22?snapshot=2014-04-18T15%3a01%3a13.6985073Z</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:10 GMT</Last-Modified><Etag>0x8D1292E2B113D21</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType></Properties></Blob><Blob><Name>blob22</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob22</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:10 GMT</Last-Modified><Etag>0x8D1292E2B113D21</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>IDrV/6HXxlCtaB/f85Zc0g==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob><Blob><Name>blob23</Name><Url>https://ciserversdk.blob.core.windows.net/cont34/blob23</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:12 GMT</Last-Modified><Etag>0x8D1292E2C1BCF51</Etag><Content-Length>6</Content-Length><Content-Type>text/plain;charset=\"utf-8\"</Content-Type><Content-Encoding /><Content-Language /><Content-MD5>boCcvaBzKsSEWRalkBb5VA==</Content-MD5><Cache-Control /><BlobType>BlockBlob</BlobType><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Blob></Blobs><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '52da3436-bd07-49d8-aba9-5286df69bd2b',
+  'x-ms-request-id': 'a0bcad28-8144-433b-858b-eec5a985f0c2',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:29 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:16 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont34</Name><Url>https://ciserversdk.blob.core.windows.net/cont34</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:22 GMT</Last-Modified><Etag>\"0x8D0A5EA2AE9406E\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont34</Name><Url>https://ciserversdk.blob.core.windows.net/cont34</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:08 GMT</Last-Modified><Etag>\"0x8D1292E29F0469E\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd90e2730-fc61-4883-b3c8-783cc64f48e6',
+  'x-ms-request-id': 'a3d17bd8-7787-4365-800f-5696c916dfe9',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:29 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:15 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont34?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'a08cc9fd-c14c-4699-b57e-c1775bd3de59',
+  'x-ms-request-id': '056d42f4-f7e5-4ce0-a6cf-19d116a2f060',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:31 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:17 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont35?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:33 GMT',
-  etag: '"0x8D0A5EA31A0558F"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:17 GMT',
+  etag: '"0x8D1292E2F7BFCF5"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'aa808348-7cc4-47f7-9eda-b23c2c6793cb',
+  'x-ms-request-id': '9bd84d8a-308f-4547-8417-7f4a29dea792',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:32 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:17 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont35/blob24')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:33 GMT',
-  etag: '"0x8D0A5EA31E2F48E"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:18 GMT',
+  etag: '"0x8D1292E2FD88931"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'eb314762-43af-4cea-a1d7-494a7e559dee',
+  'x-ms-request-id': 'c9a47cfd-792d-4a66-a530-69f1e71888e9',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:33 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:18 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont35/blob24?comp=page', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'm+VKVRpGcfXpe9/QtKa0Yg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:34 GMT',
-  etag: '"0x8D0A5EA327C795C"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:19 GMT',
+  etag: '"0x8D1292E30764FD1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '799b2ce2-b990-444d-a05f-0a22584459c7',
+  'x-ms-request-id': '1d469c60-0c0e-473e-ac42-60b809855728',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-sequence-number': '0',
-  date: 'Sat, 02 Nov 2013 13:54:34 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont35/blob24?comp=pagelist')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><PageList><PageRange><Start>0</Start><End>511</End></PageRange></PageList>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:34 GMT',
-  etag: '"0x8D0A5EA327C795C"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:19 GMT',
+  etag: '"0x8D1292E30764FD1"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'c5d55785-824c-45b8-8d2a-463b97602c9f',
+  'x-ms-request-id': '277ffb30-660a-4695-9341-8cf3c4c443df',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-content-length': '1073741824',
-  date: 'Sat, 02 Nov 2013 13:54:35 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:19 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont35/blob24?comp=page', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-md5': 'm+VKVRpGcfXpe9/QtKa0Yg==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:36 GMT',
-  etag: '"0x8D0A5EA33AE9892"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:21 GMT',
+  etag: '"0x8D1292E31835301"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '5db68684-1a05-456d-b9b4-fc162acae195',
+  'x-ms-request-id': '8fa4b912-3da1-4cbd-b96a-9be49b5f7dab',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-sequence-number': '0',
-  date: 'Sat, 02 Nov 2013 13:54:37 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:20 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/cont35/blob24?comp=pagelist')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><PageList><PageRange><Start>0</Start><End>511</End></PageRange><PageRange><Start>1048576</Start><End>1049087</End></PageRange></PageList>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:36 GMT',
-  etag: '"0x8D0A5EA33AE9892"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:21 GMT',
+  etag: '"0x8D1292E31835301"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '91ca630c-f8eb-4fc6-9255-ecad24fe356b',
+  'x-ms-request-id': 'ce515658-f1d4-410b-a94d-f5e801e610bc',
   'x-ms-version': '2012-02-12',
   'x-ms-blob-content-length': '1073741824',
-  date: 'Sat, 02 Nov 2013 13:54:38 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:21 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont35</Name><Url>https://ciserversdk.blob.core.windows.net/cont35</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:33 GMT</Last-Modified><Etag>\"0x8D0A5EA31A0558F\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont35</Name><Url>https://ciserversdk.blob.core.windows.net/cont35</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:17 GMT</Last-Modified><Etag>\"0x8D1292E2F7BFCF5\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6de7f3d5-7ad8-4fb9-82c9-5bc303c8ccbc',
+  'x-ms-request-id': '32d12d33-d93b-4c7d-b357-8f8e68f81034',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:38 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:22 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont35?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '88b2b1b5-f5e6-4868-a3d5-8261337aef96',
+  'x-ms-request-id': '4192c5b5-d1da-456f-99f3-ff35ea831971',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:40 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:22 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'f3e54827-f119-41be-b1d0-f7db26eedb72',
+  'x-ms-request-id': '61c11276-1082-4514-a685-4f2cfa59a744',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:40 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:23 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'bd0249f3-f57c-4901-8715-9d02ac59aa4c',
+  'x-ms-request-id': '0f80e4f6-1e6b-42ef-9818-f0cd88f8decd',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:41 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:24 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '66ee2eff-6cf4-42be-bd69-697c3dd12e1d',
+  'x-ms-request-id': 'ff090d23-48c3-40d5-950c-775adc26ce96',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:41 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:25 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .put('/cont37?restype=container')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:44 GMT',
-  etag: '"0x8D0A5EA380DC8C0"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:27 GMT',
+  etag: '"0x8D1292E3559E14C"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '8250e67f-360d-4a6f-bdfb-bf94103e0f8c',
+  'x-ms-request-id': '81a12997-d5aa-452f-8997-ce8191accf9d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:43 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/cont37?restype=container&comp=acl', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:45 GMT',
-  etag: '"0x8D0A5EA38F0B546"',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:27 GMT',
+  etag: '"0x8D1292E356470FF"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'e69d250e-faf3-4903-bdc4-d4a1106794a1',
+  'x-ms-request-id': '711250d6-dbb3-4efb-a6e7-b0c83edf10b3',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:44 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/cont37/blob26', '*')
+.put('/cont37/blob26%20foobar', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:45 GMT',
-  etag: '"0x8D0A5EA39202AFE"',
+  'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:28 GMT',
+  etag: '"0x8D1292E36099E71"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '9cee5b53-ad9c-49cf-9bd8-025d69d6d6cd',
+  'x-ms-request-id': 'f419cf72-51fb-4af3-b0d7-e500ec785913',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:45 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:27 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
-  .get('/cont37/blob26?se=2099-04-15T11%3A53%3A40Z&sr=b&si=readwrite&sv=2012-02-12&sig=1Tq2HC9jX59vwtuq%2BW409QHL4Oo9YU1gt%2FBtBttorrU%3D')
-  .reply(200, "Hello World!", { 'content-length': '12',
+nock('https://ciserversdk.blob.core.windows.net:443:443')
+  .get('/cont37/blob26%20foobar?se=2099-04-15T11%3A53%3A40Z&sr=b&si=readwrite&sv=2012-02-12&sig=428mdH0D7CkykgmhjqfevNdMU0Xn8BPtZY3lWfLYCnc%3D')
+  .reply(200, "Hello World", { 'content-length': '11',
   'content-type': 'text/plain;charset="utf-8"',
-  'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
-  'last-modified': 'Sat, 02 Nov 2013 13:54:45 GMT',
+  'content-md5': 'sQqNsWTgdUEFt6mb5y4/5Q==',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:28 GMT',
   'accept-ranges': 'bytes',
-  etag: '"0x8D0A5EA39202AFE"',
+  etag: '"0x8D1292E36099E71"',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '7daa00ea-d90c-4358-ad7d-e2b6499088af',
+  'x-ms-request-id': 'e8d5d627-5e27-4335-8e0f-3b47f31f890b',
   'x-ms-version': '2012-02-12',
   'x-ms-lease-status': 'unlocked',
   'x-ms-lease-state': 'available',
   'x-ms-blob-type': 'BlockBlob',
-  date: 'Sat, 02 Nov 2013 13:54:46 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:29 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
-  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont37</Name><Url>https://ciserversdk.blob.core.windows.net/cont37</Url><Properties><Last-Modified>Sat, 02 Nov 2013 13:54:45 GMT</Last-Modified><Etag>\"0x8D0A5EA38F0B546\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont37</Name><Url>https://ciserversdk.blob.core.windows.net/cont37</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:27 GMT</Last-Modified><Etag>\"0x8D1292E356470FF\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '6494c74c-be92-4653-9147-5fd20f57fe6c',
+  'x-ms-request-id': '92fceeb1-d510-4ecf-8b92-bb338110be75',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:47 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:32 GMT' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .delete('/cont37?restype=container')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'd9f37be4-c464-4a57-841e-0324d8cac46c',
+  'x-ms-request-id': '8bc26ddd-c016-4dcf-bfcd-ed14fd66eb9d',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:49 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:32 GMT' });
  return result; }],
 [function (nock) { 
 var result = 
-nock('https://ciserversdk.blob.core.windows.net:443')
+nock('https://ciserversdk.blob.core.windows.net:443:443')
+  .put('/cont38?restype=container')
+  .reply(201, "", { 'transfer-encoding': 'chunked',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:32 GMT',
+  etag: '"0x8D1292E387147AE"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'b7ea3aed-e875-42a7-9c11-3f3b8b377b8a',
+  'x-ms-version': '2012-02-12',
+  date: 'Fri, 18 Apr 2014 15:01:32 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/cont38?restype=container&comp=acl', '*')
+  .reply(200, "", { 'transfer-encoding': 'chunked',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:32 GMT',
+  etag: '"0x8D1292E38787BEB"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '189b5637-9e7f-4e2f-ad62-73291b1fb66f',
+  'x-ms-version': '2012-02-12',
+  date: 'Fri, 18 Apr 2014 15:01:32 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/cont38/blob27', '*')
+  .reply(201, "", { 'transfer-encoding': 'chunked',
+  'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:33 GMT',
+  etag: '"0x8D1292E3918DA41"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '59052191-5653-4ab7-879c-09939cd74a3b',
+  'x-ms-version': '2012-02-12',
+  date: 'Fri, 18 Apr 2014 15:01:33 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443:443')
+  .get('/cont38/blob27?se=2099-04-15T11%3A53%3A40Z&sr=b&si=readwrite&sv=2012-02-12&sig=EBFiohGgV%2FQLLpd9plGGQRSZxZKEp5s%2BDzTQ4ZrNK2A%3D')
+  .reply(200, "Hello World!", { 'content-length': '12',
+  'content-type': 'text/plain;charset="utf-8"',
+  'content-md5': '7Qdih1MuhjZehB6Sv8UNjA==',
+  'last-modified': 'Fri, 18 Apr 2014 15:01:33 GMT',
+  'accept-ranges': 'bytes',
+  etag: '"0x8D1292E3918DA41"',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': 'e8fb9ccf-e331-4189-b696-51ba8f7c10f9',
+  'x-ms-version': '2012-02-12',
+  'x-ms-lease-status': 'unlocked',
+  'x-ms-lease-state': 'available',
+  'x-ms-blob-type': 'BlockBlob',
+  date: 'Fri, 18 Apr 2014 15:01:34 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443:443')
+  .get('/?comp=list')
+  .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers><Container><Name>cont38</Name><Url>https://ciserversdk.blob.core.windows.net/cont38</Url><Properties><Last-Modified>Fri, 18 Apr 2014 15:01:32 GMT</Last-Modified><Etag>\"0x8D1292E38787BEB\"</Etag><LeaseStatus>unlocked</LeaseStatus><LeaseState>available</LeaseState></Properties></Container></Containers><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
+  'content-type': 'application/xml',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '6cedf451-a8ba-485d-b0d3-4b19503240bc',
+  'x-ms-version': '2012-02-12',
+  date: 'Fri, 18 Apr 2014 15:01:35 GMT' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443:443')
+  .delete('/cont38?restype=container')
+  .reply(202, "", { 'transfer-encoding': 'chunked',
+  server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-request-id': '123267a3-9333-4be5-85b8-18c9de66efa1',
+  'x-ms-version': '2012-02-12',
+  date: 'Fri, 18 Apr 2014 15:01:37 GMT' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('https://ciserversdk.blob.core.windows.net:443:443')
   .get('/?comp=list')
   .reply(200, "﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><EnumerationResults AccountName=\"https://ciserversdk.blob.core.windows.net/\"><Containers /><NextMarker /></EnumerationResults>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml',
   server: 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': 'affa71c6-73f0-4408-9947-7bc696a07b72',
+  'x-ms-request-id': '03b78c6a-6959-4065-83fe-b0d327e4a6b8',
   'x-ms-version': '2012-02-12',
-  date: 'Sat, 02 Nov 2013 13:54:49 GMT' });
+  date: 'Fri, 18 Apr 2014 15:01:36 GMT' });
  return result; }]];
