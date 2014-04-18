@@ -1263,6 +1263,52 @@ describe('BlobService', function () {
         done();
       });
 
+      it('should work with container acl permissions and spaces in name', function (done) {
+        var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
+        var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked) + ' foobar';
+        var blobText = 'Hello World';
+        var fileNameSource = testutil.generateId('prefix') + '.txt'; // fake bmp file with text...
+
+        blobService.createContainer(containerName, function (err) {
+          assert.equal(err, null);
+
+          var startTime = new Date('April 15, 2013 11:53:40 am GMT');
+
+          var readWriteSharedAccessPolicy = {
+            Id: 'readwrite',
+            AccessPolicy: {
+              Start: startTime,
+              Permissions: 'rwdl'
+            }
+          };
+
+          blobService.setContainerAcl(containerName, null, { signedIdentifiers: [ readWriteSharedAccessPolicy ] }, function (err) {
+            assert.equal(err, null);
+
+            blobService.createBlockBlobFromText(containerName, blobName, blobText, function (uploadError, blob, uploadResponse) {
+              assert.equal(uploadError, null);
+              assert.ok(uploadResponse.isSuccessful);
+
+              var blobUrl = blobService.getBlobUrl(containerName, blobName, {
+                Id: 'readwrite',
+                AccessPolicy: {
+                  Expiry: new Date('April 15, 2099 11:53:40 am GMT')
+                }
+              });
+
+              function responseCallback(err, rsp) {
+                assert.equal(rsp.statusCode, 200);
+                assert.equal(err, null);
+
+                fs.unlink(fileNameSource, done);
+              }
+
+              request.get(blobUrl, responseCallback).pipe(fs.createWriteStream(fileNameSource));
+            });
+          });
+        });
+      });
+
       it('should work with container acl permissions', function (done) {
         var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
@@ -1476,7 +1522,7 @@ describe('BlobService', function () {
     done();
   });
 
-  it('should be creatable from config', function () {
+  it('should be creatable from config', function (done) {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
     var config = azure.configure('testenvironment', function (c) {
@@ -1489,6 +1535,8 @@ describe('BlobService', function () {
     assert.equal(blobService.storageAccessKey, key);
     assert.equal(blobService.protocol, 'https:');
     assert.equal(blobService.host, 'myaccount.blob.core.windows.net');
+
+    done();
   });
 });
 
