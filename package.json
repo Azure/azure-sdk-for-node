@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.8.1",
+  "version": "0.9.2",
   "description": "Windows Azure Client Library for node",
   "tags": [
     "azure",
@@ -31,15 +31,15 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.1-pre.2",
-    "azure-mgmt-compute": "0.9.1-pre.2",
-    "azure-mgmt": "0.9.1-pre.2",
-    "azure-mgmt-vnet": "0.9.1-pre.2",
-    "azure-mgmt-sb": "0.9.1-pre.2",
-    "azure-mgmt-sql": "0.9.1-pre.2",
-    "azure-mgmt-storage": "0.9.1-pre.2",
-    "azure-mgmt-website": "0.9.1-pre.2",
-    "azure-mgmt-subscription": "0.9.1-pre.2",
+    "azure-common": "0.9.2",
+    "azure-mgmt-compute": "0.9.2",
+    "azure-mgmt": "0.9.2",
+    "azure-mgmt-vnet": "0.9.2",
+    "azure-mgmt-sb": "0.9.2",
+    "azure-mgmt-sql": "0.9.2",
+    "azure-mgmt-storage": "0.9.2",
+    "azure-mgmt-website": "0.9.2",
+    "azure-mgmt-subscription": "0.9.2",
     "mime": "~1.2.4",
     "underscore": "~1.4.0",
     "request": "2.27.0",
