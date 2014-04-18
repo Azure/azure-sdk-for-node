@@ -84,7 +84,6 @@ var defaultServiceBusAccount = 'ciserversb';
 var defaultSubscription = 'db1ab6f0-4769-4b27-930e-01e2ef9c123c';
 var defaultAccessToken = 'access_token';
 
-/*
 if (!process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
   process.env.AZURE_APNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_APNS_CERTIFICATE_FILE'])).toString('base64');
 } else if (process.env.AZURE_APNS_CERTIFICATE && process.env.AZURE_APNS_CERTIFICATE_FILE) {
@@ -109,7 +108,7 @@ if (!process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICAT
 } else if (process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
   throw new Error('Only one of AZURE_MPNS_CERTIFICATE_KEY or AZURE_MPNS_CERTIFICATE_KEY_FILE can be set. Not both.');
 }
-*/
+
 if (!process.env.AZURE_ACCESS_TOKEN) {
   process.env.AZURE_ACCESS_TOKEN = defaultAccessToken;
 }
