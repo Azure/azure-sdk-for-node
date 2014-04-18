@@ -50,6 +50,12 @@ npm install azure
 * SQL Database management: ``npm install azure-mgmt-sql``
 * Service Bus management: ``npm install azure-mgmt-sb``
 
+### Hacking on Nitrous.IO
+
+Start hacking on Azure for Node.JS on [Nitrous.IO](https://www.nitrous.io/?utm_source=github.com&utm_campaign=azure-azure-sdk-for-node&utm_medium=hackonnitrous) in a matter of seconds
+
+[![Hack Azure/azure-sdk-for-node on Nitrous.IO](https://d3o0mnbgv6k92a.cloudfront.net/assets/hack-l-v1-3cc067e71372f6045e1949af9d96095b.png)](https://www.nitrous.io/hack_button?source=embed&runtime=nodejs&repo=Azure%2Fazure-sdk-for-node)
+
 ## Usage
 
 ### Table Storage
