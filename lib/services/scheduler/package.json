@@ -31,7 +31,8 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.2"
+    "azure-common": "0.9.2",
+    "moment": "2.6.0"
   },
   "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
   "repository": {

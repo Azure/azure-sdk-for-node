@@ -8,6 +8,7 @@ node_modules/
 lib/common/
 lib/services/computeManagement/
 lib/services/management/
+lib/services/monitoring/
 lib/services/networkManagement/
 lib/services/scheduler/
 lib/services/schedulerManagement/
