@@ -1,8 +1,8 @@
-# Windows Azure SDK for Node.js
+# Microsoft Azure SDK for Node.js
 
 [![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node)
 
-This project provides a Node.js package that makes it easy to consume and manage Windows Azure Services.
+This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Services.
 
 # Features
 
@@ -15,24 +15,24 @@ This project provides a Node.js package that makes it easy to consume and manage
     * Topic
     * Notification Hub
 * Service Runtime
-* [Core management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/management/README.md)
-* [Compute management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/computeManagement/README.md)
+* [Core management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/management/README.md)
+* [Compute management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/computeManagement/README.md)
     * Virtual Machine
     * Cloud Service
-* [Web Site management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/webSiteManagement/README.md)
-* [Virtual Network managment](https://github.com/WindowsAzure/azure-sdk-for-node/blob/dev/lib/services/networkManagement/README.md)
-* [Storage Account management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/storageManagement/README.md)
-* [SQL Database management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/sqlManagement/README.md)
-* [Service Bus management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/serviceBusManagement/README.md)
+* [Web Site management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/webSiteManagement/README.md)
+* [Virtual Network managment](https://github.com/Azure/azure-sdk-for-node/blob/dev/lib/services/networkManagement/README.md)
+* [Storage Account management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/storageManagement/README.md)
+* [SQL Database management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/sqlManagement/README.md)
+* [Service Bus management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/serviceBusManagement/README.md)
 * HDInsight management
 
 # Getting Started
 
 ## Install from npm
 
-We provide both fine-grained modules for different Windows Azure services which you can install separately, and an all-up module which contains everything.
+We provide both fine-grained modules for different Microsoft Azure services which you can install separately, and an all-up module which contains everything.
 
-**Notice**: we haven't provided fine-grained modules for every supported Windows Azure services yet. This will come soon.
+**Notice**: we haven't provided fine-grained modules for every supported Microsoft Azure services yet. This will come soon.
 
 ### Install the all-up module
 
@@ -161,7 +161,7 @@ queueService.createMessage('taskqueue', 'Hello world!', function(error){
 });
 ```
 
-It is then possible to call the **getMessages** method, process the message and then call **deleteMessage** inside the callback. This two-step process ensures messages don't get lost when they are removed from the queue.
+It is then possible to call the **getMessage** method, process the message and then call **deleteMessage** inside the callback. This two-step process ensures messages don't get lost when they are removed from the queue.
 
 ```Javascript
 var queueService = azure.createQueueService(),
@@ -418,16 +418,16 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 
 # Need Help?
 
-* [Windows Azure Forums on MSDN and Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489)
+* [Microsoft Azure Forums on MSDN and Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489)
 * IRC channel on freenode: node-azure
 
 # Learn More
 
-* [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/)
+* [Microsoft Azure Node.js Developer Center](http://azure.microsoft.com/en-us/develop/nodejs/)
 * [API reference](http://dl.windowsazure.com/nodedocs/)
-* [Windows Azure Cross-Platform CLI](http://github.com/windowsazure/azure-sdk-tools-xplat)
+* [Microsoft Azure Cross-Platform CLI](http://github.com/azure/azure-sdk-tools-xplat)
 
 # Contribute
 
-* If you would like to become an active contributor to this project please follow the instructions provided in [Windows Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
-* If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-node/issues) section of the project.
+* If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
+* If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-node/issues) section of the project.
