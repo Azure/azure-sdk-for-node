@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 var mocha = require('mocha');
@@ -34,7 +34,7 @@ describe('Service Management', function () {
 
   before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
-    var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
+    var auth = testutil.getAuthenticationCertificate();
     service = azure.createServiceManagementService(
       subscriptionId, auth,
       { serializetype: 'XML'});
@@ -60,7 +60,7 @@ describe('Service Management', function () {
       service.listLocations(function (err, response) {
         should.exist(response.body);
         should.exist(response.body.filter(function (location) {
-          return location.DisplayName === 'West Europe' && 
+          return location.DisplayName === 'West Europe' &&
                  location.Name === 'West Europe' &&
                  location.AvailableServices !== undefined &&
                  location.AvailableServices.AvailableService !== undefined &&
@@ -228,47 +228,47 @@ describe('Service Management', function () {
   describe('virtual networks', function () {
     it('should set network configuration', function (done) {
 	   service.getNetworkConfig(function (err, response) {
-		 var virtualNetwork = response.body.VirtualNetworkConfiguration.VirtualNetworkSites.filter(function (vnet) {
-		  return vnet.Name === 'test';
-		})[0];
-		if(virtualNetwork){
-			var vnetObject = {
-			VirtualNetworkConfiguration: {
-			  VirtualNetworkSites: [
-				{
-				  Name: 'test',
-				  AffinityGroup: 'test-ag',
-				  AddressSpace: ['10.0.0.0/20'],
-				  Subnets: [
-					{
-					  Name: 'sub1',
-					  AddressPrefix: '10.0.0.0/23'
-					}
-				  ]
-				}
-			  ]
-			}
-		  };
-		} else {
-			var networkElem = {
-              Name: 'test',
-              AffinityGroup: 'test-ag',
-              AddressSpace: ['10.0.0.0/20'],
-              Subnets: [
-                {
-                  Name: 'sub1',
-                  AddressPrefix: '10.0.0.0/23'
-                }
-              ]
-            };
-			var vnetObject = response.body;			
-			vnetObject.VirtualNetworkConfiguration.VirtualNetworkSites.push(networkElem);
-		}
-		service.setNetworkConfig(vnetObject, function (err, response) {
-			should.not.exist(err);
-			done(err);
-		});
-	  });
+  		 var virtualNetwork = response.body.VirtualNetworkConfiguration.VirtualNetworkSites.filter(function (vnet) {
+    		  return vnet.Name === 'test';
+    		})[0];
+    		if(virtualNetwork) {
+    			var vnetObject = {
+      			VirtualNetworkConfiguration: {
+      			  VirtualNetworkSites: [
+      				{
+      				  Name: 'test',
+      				  AffinityGroup: 'test-ag',
+      				  AddressSpace: ['10.0.0.0/20'],
+      				  Subnets: [
+      					{
+      					  Name: 'sub1',
+      					  AddressPrefix: '10.0.0.0/23'
+      					}
+      				  ]
+      				}
+      			  ]
+      			}
+    		  };
+    		} else {
+    			var networkElem = {
+                  Name: 'test',
+                  AffinityGroup: 'test-ag',
+                  AddressSpace: ['10.0.0.0/20'],
+                  Subnets: [
+                    {
+                      Name: 'sub1',
+                      AddressPrefix: '10.0.0.0/23'
+                    }
+                  ]
+                };
+    			var vnetObject = response.body;
+    			vnetObject.VirtualNetworkConfiguration.VirtualNetworkSites.push(networkElem);
+    		}
+    		service.setNetworkConfig(vnetObject, function (err, response) {
+    			should.not.exist(err);
+    			done(err);
+    		});
+  	  });
     });
 
     it('should get network configuration', function (done) {
