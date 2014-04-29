@@ -45,7 +45,7 @@
     "azure-mgmt-scheduler": "0.9.1-pre.3",
     "azure-mgmt-resource": "2.0.0-pre.2",
     "mime": "~1.2.4",
-    "underscore": "~1.4.0",
+    "underscore": "1.4.x",
     "request": "2.27.0",
     "wns": "~0.5.3",
     "mpns": "~2.0.0",
