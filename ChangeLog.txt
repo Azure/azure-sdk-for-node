@@ -1,4 +1,4 @@
-2014.04.29 Version 0.9.3
+2014.04.29 Version 0.9.4
 * Added Monitoring and Scheduler clients
 * Regeneration / update of all management clients
 * Trimming extra spaces in urls

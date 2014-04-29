@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Windows Azure Client Library for node",
   "tags": [
     "azure",
