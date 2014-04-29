@@ -1,3 +1,14 @@
+2014.04.29 Version 0.9.5
+* Turning on monitoring and scheduler features in rollup package
+* Fixing references to monitoring client in azure.js
+
+2014.04.29 Version 0.9.4
+* Added Monitoring and Scheduler clients
+* Regeneration / update of all management clients
+* Trimming extra spaces in urls
+* Added "skipEncoding" option when writing blobs
+* Returning status codes on management library errors
+
 2013.01.30 Version 0.8.1
 * Added web jobs APIs
 * Support for expiration in template messages in Notification Hubs
