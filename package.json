@@ -43,6 +43,7 @@
     "azure-monitoring": "0.9.1-pre.3",
     "azure-scheduler": "0.9.1-pre.3",
     "azure-mgmt-scheduler": "0.9.1-pre.3",
+    "azure-mgmt-resource": "2.0.0-pre.2",
     "mime": "~1.2.4",
     "underscore": "~1.4.0",
     "request": "2.27.0",
