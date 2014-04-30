@@ -16,7 +16,7 @@
 
 var _ = require('underscore');
 var fs = require('fs');
-var certutils = require('../../lib/common/lib/util/certutils');
+var certutils = require('../../node_modules/azure-common/lib/util/certutils');
 
 var exports = module.exports;
 
