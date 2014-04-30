@@ -1,3 +1,6 @@
+2014.04.29 Version 0.9.6
+* Fixing missing dependencies in submodules
+
 2014.04.29 Version 0.9.5
 * Turning on monitoring and scheduler features in rollup package
 * Fixing references to monitoring client in azure.js
