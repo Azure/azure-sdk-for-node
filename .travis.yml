@@ -3,13 +3,16 @@ node_js:
   - "0.11"
   - "0.10"
   - "0.8"
-  - "0.6"
+
 
 matrix:
   allow_failures:
-    - node_js: "0.6"
     - node_js: "0.11"
 
 # setup links to submodules
 before_install:
   npm run-script setup
+
+install:
+  - npm update -g npm
+  - npm install

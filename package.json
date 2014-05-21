@@ -57,7 +57,7 @@
     "jshint": ">= 2.1.4",
     "sinon": "*",
     "should": "1.2.x",
-    "nock": "*",
+    "nock": "0.30.1",
     "grunt": "~0.4.2",
     "grunt-jsdoc": "~0.5.1",
     "grunt-devserver": "~0.4.1"
