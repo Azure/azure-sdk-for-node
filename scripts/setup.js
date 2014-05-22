@@ -3,6 +3,8 @@ var exec = require('child_process').exec;
 
 var cmds = [
   { cmd: 'npm install', path: 'lib/common/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/legacyStorage' },
+  { cmd: 'npm install', path: 'lib/services/legacyStorage' },
   { cmd: 'npm link ../../common/', path: 'lib/services/computeManagement/' },
   { cmd: 'npm install', path: 'lib/services/computeManagement/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/management/' },
@@ -32,6 +34,7 @@ var cmds = [
   { cmd: 'npm link ../../common/', path: 'lib/services/gallery/' },
   { cmd: 'npm install', path: 'lib/services/gallery/' },
   { cmd: 'npm link lib/common/' },
+  { cmd: 'npm link lib/services/legacyStorage' },
   { cmd: 'npm link lib/services/computeManagement/' },
   { cmd: 'npm link lib/services/management/' },
   { cmd: 'npm link lib/services/networkManagement/' },
