@@ -1,18 +1,18 @@
-﻿// 
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var assert = require('assert');
 
@@ -29,18 +29,21 @@ var testutil = require('../../util/util');
 var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
-var azureutil = testutil.libRequire('common/lib/util/util');
-var azure = testutil.libRequire('azure');
-var WebResource = testutil.libRequire('common/lib/http/webresource');
+var common = require('azure-common');
+var storage = require('azure-storage-legacy');
 
-var SharedAccessSignature = azure.SharedAccessSignature;
-var BlobService = azure.BlobService;
-var ServiceClient = azure.ServiceClient;
-var ExponentialRetryPolicyFilter = azure.ExponentialRetryPolicyFilter;
-var Constants = azure.Constants;
+var azureutil = common.util;
+var azure = testutil.libRequire('azure');
+var WebResource = common.WebResource;
+
+var SharedAccessSignature = storage.SharedAccessSignature;
+var BlobService = storage.BlobService;
+var ServiceClient = common.ServiceClient;
+var ExponentialRetryPolicyFilter = common.ExponentialRetryPolicyFilter;
+var Constants = common.Constants;
 var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
-var ServiceClientConstants = azure.ServiceClientConstants;
+var ServiceClientConstants = common.ServiceClientConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
 var containerNames = [];
@@ -56,8 +59,8 @@ var suiteUtil;
 
 describe('BlobService', function () {
   before(function (done) {
-    blobService = azure.createBlobService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    blobService = storage.createBlobService()
+      .withFilter(new common.ExponentialRetryPolicyFilter());
 
     suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
     suiteUtil.setupSuite(done);
@@ -1234,7 +1237,7 @@ describe('BlobService', function () {
         var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
         var blobName = testutil.generateId(blobNamesPrefix, blobNames, suiteUtil.isMocked);
 
-        var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
+        var blobServiceassert = storage.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
         var blobUrl = blobServiceassert.getBlobUrl(containerName);
         assert.equal(blobUrl, 'https://host.com:80/' + containerName);
@@ -1249,7 +1252,7 @@ describe('BlobService', function () {
         var containerName = 'container';
         var blobName = 'blob';
 
-        var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
+        var blobServiceassert = storage.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
         var sharedAccessPolicy = {
           AccessPolicy: {
@@ -1358,14 +1361,14 @@ describe('BlobService', function () {
         var containerName = 'container';
         var blobName = 'blob';
 
-        var blobServiceassert = azure.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
+        var blobServiceassert = storage.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
         // Mock Date just to ensure a fixed signature
         this.clock = sinon.useFakeTimers(0, 'Date');
 
         var sharedAccessPolicy = {
           AccessPolicy: {
-            Expiry: azure.date.minutesFromNow(10)
+            Expiry: storage.date.minutesFromNow(10)
           }
         };
 
@@ -1382,7 +1385,7 @@ describe('BlobService', function () {
       var containerName = 'images';
       var blobName = 'pic1.png';
 
-      var devStorageBlobService = azure.createBlobService(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
+      var devStorageBlobService = storage.createBlobService(ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
 
       var sharedAccessPolicy = {
         AccessPolicy: {
@@ -1499,7 +1502,7 @@ describe('BlobService', function () {
   it('storageConnectionStrings', function (done) {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
-    var blobService = azure.createBlobService(connectionString);
+    var blobService = storage.createBlobService(connectionString);
 
     assert.equal(blobService.storageAccount, 'myaccount');
     assert.equal(blobService.storageAccessKey, key);
@@ -1525,11 +1528,11 @@ describe('BlobService', function () {
   it('should be creatable from config', function (done) {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
-    var config = azure.configure('testenvironment', function (c) {
+    var config = common.configure('testenvironment', function (c) {
       c.storage(connectionString);
     });
 
-    var blobService = azure.createBlobService(azure.config('testenvironment'));
+    var blobService = storage.createBlobService(common.config('testenvironment'));
 
     assert.equal(blobService.storageAccount, 'myaccount');
     assert.equal(blobService.storageAccessKey, key);

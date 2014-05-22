@@ -1,31 +1,31 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var assert = require('assert');
 var fs = require('fs');
 var crypto = require('crypto');
 var util = require('util');
-var azure = require('../../../lib/azure');
+var storage = require('azure-storage-legacy');
 var testPrefix = 'blobservice-uploaddownload-scale_test';
 
 var blobService = null;
 var containerName = 'blobservicescaletest';
 describe('BlobService', function () {
   before(function (done) {
-    blobService = azure.createBlobService();
+    blobService = storage.createBlobService();
     blobService.createContainer(containerName, function(error) {
       done();
     });
@@ -39,7 +39,7 @@ describe('BlobService', function () {
   var sizes = [0, 1024, 1024 * 1024, 4 * 1024 * 1024 - 1,  4 * 1024 * 1024, 4 * 1024 * 1024 + 1, 32 * 1024 * 1024, 64 * 1024 * 1024 -1, 64 * 1024 * 1024,  64 * 1024 * 1024 + 1, 128 * 1024 * 1024, 148 * 1024 * 1024 - 512, 148 * 1024 * 1024, 148 * 1024 * 1024 + 512, 253 * 1024 * 1024];
   for(var i = 0; i < apis.length; i++) {
     for(var j = 0; j < sizes.length; j++) {
-      it(util.format('%s should work %s bytes file', apis[i], sizes[j]), getTestFunction(apis[i], sizes[j])); 
+      it(util.format('%s should work %s bytes file', apis[i], sizes[j]), getTestFunction(apis[i], sizes[j]));
     }
   }
 
@@ -60,7 +60,7 @@ describe('BlobService', function () {
             blobService.getBlobProperties(containerName, blobName, function(error, blob) {
               assert.equal(blob.contentMD5, fileInfo.contentMD5);
               assert.equal(blob.contentLength, fileInfo.size);
-              var downloadFileName = blobName + '_download.tmp';  
+              var downloadFileName = blobName + '_download.tmp';
               var downloadOptioins = {checkMD5sum: true}
               blobService.getBlobToFile(containerName, blobName, downloadFileName, downloadOptioins, function(error, blob) {
                 assert.equal(error, null);
@@ -92,10 +92,10 @@ describe('BlobService', function () {
     do {
       var content = null;
       if (size >= blockSize) {
-        content = internalBuffer; 
+        content = internalBuffer;
         size -= blockSize;
       } else {
-        content = new Buffer(size); 
+        content = new Buffer(size);
         size = 0;
       }
       if (content.length) {
@@ -110,7 +110,7 @@ describe('BlobService', function () {
       offset += content.length;
       md5hash.update(content);
     } while(size)
-    
+
     fileInfo.contentMD5 = md5hash.digest('base64');
     callback(null, fileInfo);
   }
