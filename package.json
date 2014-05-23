@@ -32,6 +32,7 @@
   ],
   "dependencies": {
     "azure-common": "0.9.5",
+    "azure-storage-legacy": "0.9.7",
     "azure-mgmt-compute": "0.9.5",
     "azure-mgmt": "0.9.5",
     "azure-mgmt-vnet": "0.9.5",
