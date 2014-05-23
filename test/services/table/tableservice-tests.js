@@ -1,18 +1,18 @@
-﻿// 
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var assert = require('assert');
 var should = require('should');
@@ -23,12 +23,16 @@ var testutil = require('../../util/util');
 var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
-var azure = testutil.libRequire('azure');
-var azureutil = testutil.libRequire('common/lib/util/util');
+var common = testutil.libRequire('azure');
 
-var ServiceClientConstants = azure.ServiceClientConstants;
-var TableQuery = azure.TableQuery;
-var Constants = azure.Constants;
+var common = require('azure-common');
+var storage = require('azure-storage-legacy');
+
+var azureutil = common.util;
+
+var ServiceClientConstants = common.ServiceClientConstants;
+var TableQuery = storage.TableQuery;
+var Constants = common.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
@@ -58,8 +62,8 @@ var suiteUtil;
 
 suite('tableservice-tests', function () {
   suiteSetup(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    tableService = storage.createTableService()
+      .withFilter(new common.ExponentialRetryPolicyFilter());
 
     suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
     suiteUtil.setupSuite(done);
@@ -81,16 +85,16 @@ suite('tableservice-tests', function () {
     var storageAccount = 'account';
     var storageAccountKey = new Buffer('key').toString('base64');
 
-    var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net');
+    var service = storage.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net');
     assert.equal(service.port, 443);
 
-    var service = azure.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net:21');
+    var service = storage.createTableService(storageAccount, storageAccountKey, 'https://account.table.core.windows.net:21');
     assert.equal(service.port, 21);
 
-    service = azure.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net');
+    service = storage.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net');
     assert.equal(service.port, 80);
 
-    service = azure.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net:81');
+    service = storage.createTableService(storageAccount, storageAccountKey, 'http://account.table.core.windows.net:81');
     assert.equal(service.port, 81);
 
     done();
@@ -834,7 +838,7 @@ suite('tableservice-tests', function () {
             assert.equal(error4, null);
 
             // Create table query with passing partition key only
-            var tableQuery = azure.TableQuery.select()
+            var tableQuery = storage.TableQuery.select()
             .from(tableName)
             .whereKeys(entity1.PartitionKey);
 
@@ -855,7 +859,7 @@ suite('tableservice-tests', function () {
   test('storageConnectionStrings', function (done) {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
-    var tableService = azure.createTableService(connectionString);
+    var tableService = storage.createTableService(connectionString);
 
     assert.equal(tableService.storageAccount, 'myaccount');
     assert.equal(tableService.storageAccessKey, key);
@@ -866,7 +870,7 @@ suite('tableservice-tests', function () {
 
   test('storageConnectionStringsDevStore', function (done) {
     var connectionString = 'UseDevelopmentStorage=true';
-    var tableService = azure.createTableService(connectionString);
+    var tableService = storage.createTableService(connectionString);
 
     assert.equal(tableService.storageAccount, ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT);
     assert.equal(tableService.storageAccessKey, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
@@ -891,7 +895,7 @@ suite('tableservice-tests', function () {
     }
     var connectionString = util.format('%s;AccountName=%s;AccountKey=%s', host, expectedName, expectedKey);
 
-    tableService = azure.createTableService(connectionString);
+    tableService = storage.createTableService(connectionString);
 
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
@@ -912,7 +916,7 @@ suite('tableservice-tests', function () {
     var storageDnsSuffix = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] || 'core.windows.net';
     var expectedTableEndpoint = 'http://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.' + storageDnsSuffix;
     var connectionString = 'DefaultEndpointsProtocol=' + expectedProtocol + ';AccountName=' + expectedName + ';AccountKey=' + expectedKey + ';TableEndpoint=' + expectedTableEndpoint;
-    var tableService = azure.createTableService(connectionString);
+    var tableService = storage.createTableService(connectionString);
 
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
@@ -933,7 +937,7 @@ suite('tableservice-tests', function () {
     var expectedKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
     var storageDnsSuffix = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] || 'core.windows.net';
     var expectedTableEndpoint = 'http://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] + '.table.' + storageDnsSuffix;
-    var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+    var tableService = storage.createTableService(expectedName, expectedKey, expectedTableEndpoint);
 
     tableService.createTable(tableName, function (err) {
       assert.equal(err, null);
@@ -950,7 +954,7 @@ suite('tableservice-tests', function () {
     var expectedName = ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT;
     var expectedKey = ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY;
     var expectedTableEndpoint = ServiceClientConstants.DEVSTORE_TABLE_HOST;
-    var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+    var tableService = storage.createTableService(expectedName, expectedKey, expectedTableEndpoint);
 
     assert.equal(tableService.storageAccount, expectedName);
     assert.equal(tableService.storageAccessKey, expectedKey);
@@ -966,7 +970,7 @@ suite('tableservice-tests', function () {
     var expectedName = ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT;
     var expectedKey = ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY;
     var expectedTableEndpoint = 'http://' + ServiceClientConstants.DEVSTORE_TABLE_HOST;
-    var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+    var tableService = storage.createTableService(expectedName, expectedKey, expectedTableEndpoint);
 
     assert.equal(tableService.storageAccount, expectedName);
     assert.equal(tableService.storageAccessKey, expectedKey);
@@ -982,7 +986,7 @@ suite('tableservice-tests', function () {
     var expectedName = ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT;
     var expectedKey = ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY;
     var expectedTableEndpoint = 'https://' + ServiceClientConstants.DEVSTORE_TABLE_HOST;
-    var tableService = azure.createTableService(expectedName, expectedKey, expectedTableEndpoint);
+    var tableService = storage.createTableService(expectedName, expectedKey, expectedTableEndpoint);
 
     assert.equal(tableService.storageAccount, expectedName);
     assert.equal(tableService.storageAccessKey, expectedKey);
