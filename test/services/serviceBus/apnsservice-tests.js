@@ -107,6 +107,17 @@ describe('APNS notifications', function () {
       });
     });
 
+    it('should send a simple message when payload matches APNS specs', function (done) {
+      notificationHubService.apns.send(null, {
+        aps: { alert: 'This is my toast message for iOS!' }
+      }, function (error, result) {
+        should.not.exist(error);
+        result.statusCode.should.equal(201);
+
+        done();
+      });
+    });
+
     it('should send a simple message with tags', function (done) {
       var tagsString = 'dogs';
       var expiryDate = new Date();
