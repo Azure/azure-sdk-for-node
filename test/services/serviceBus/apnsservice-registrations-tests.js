@@ -185,6 +185,23 @@ describe('APNS notifications registrations', function () {
               done();
           });
         });
+
+        it('should work when payload matches APNS specs', function (done) {
+          notificationHubService.apns.createTemplateRegistration(
+            tokenId,
+            null,
+            {
+              aps: {
+                alert: '$(alertMessage1)'
+              }
+            },
+            function (error, registration) {
+              should.not.exist(error);
+              registrationId = registration.RegistrationId;
+
+              done();
+          });
+        });
       });
 
       describe('update alert', function () {
