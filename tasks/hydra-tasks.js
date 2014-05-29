@@ -114,9 +114,9 @@ module.exports = function(grunt) {
   });
 
   grunt.registerMultiTask('hydra', 'Run hydra code generator', function () {
-    var hydraExePath = grunt.file.expand('./packages/Hydra.Generator.*/tools/hydra.exe')[0];
+    var hydraExePath = newest(grunt.file.expand('./packages/Hydra.Generator.*/tools/hydra.exe'));
     var specDllName = this.target;
-    var specPath = grunt.file.expand('./packages/**/tools/' + specDllName)[0];
+    var specPath = newest(grunt.file.expand('./packages/**/tools/' + specDllName));
     var args;
 
     var data;
@@ -150,35 +150,16 @@ module.exports = function(grunt) {
     generate(data, this.async());
   });
 
-  grunt.registerTask('generateCode', 'Run hydra code generator over the specifications and generate code', function () {
-    var hydraPath = grunt.file.expand('./hydra/Hydra.Generator.*/tools/hydra.exe')[0];
-
-    var hydraXmls = grunt.file.expand('./lib/service/codegen/*.hydra.xml');
-
-    var done = this.async();
-    var outstanding = hydraXmls.length;
-
-    function whenFinished(err, result, code) {
-      if (err) {
-        console.log(result.toString());
-        grunt.fail.fatal('Code generation failed');
-      }
-
-      outstanding -= 1;
-      if (outstanding === 0) {
-        done();
-      }
-    }
-
-    _.each(hydraXmls, function (xmlFile) {
-      runExe(hydraPath, [xmlFile], whenFinished);
-    });
-  });
-
   function deleteFile(filename) {
     if (grunt.file.exists(filename)) {
       grunt.file.delete(filename);
     }
+  }
+
+  // Get the newest file by version number out of an array
+  function newest(files) {
+    // newest version will sort last
+    return files.sort().pop();
   }
 
   // helper function/object to make it easier to run nuget
