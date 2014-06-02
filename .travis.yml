@@ -11,5 +11,5 @@ matrix:
 
 # setup links to submodules
 before_install:
-  - npm install -g npm@1.4.9
+  - npm update -g npm
   - npm run-script setup
