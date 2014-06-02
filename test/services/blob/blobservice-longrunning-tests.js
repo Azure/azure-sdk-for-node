@@ -1,18 +1,18 @@
-﻿// 
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var assert = require('assert');
 
@@ -24,13 +24,13 @@ var util = require('util');
 var testutil = require('../../util/util');
 
 // Lib includes
-var azureutil = testutil.libRequire('common/lib/util/util');
-var azure = testutil.libRequire('azure');
+var common = require('azure-common');
+var storage = require('azure-storage-legacy');
 
-var SharedAccessSignature = azure.SharedAccessSignature;
-var BlobService = azure.BlobService;
-var ServiceClient = azure.ServiceClient;
-var Constants = azure.Constants;
+var SharedAccessSignature = storage.SharedAccessSignature;
+var BlobService = storage.BlobService;
+var ServiceClient = common.ServiceClient;
+var Constants = common.Constants;
 var HttpConstants = Constants.HttpConstants;
 var BlobConstants = Constants.BlobConstants;
 
@@ -45,7 +45,7 @@ var currentTestName;
 
 suite('blobservice-longrunning-tests', function () {
   setup(function (done) {
-    blobService = azure.createBlobService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, ServiceClient.DEVSTORE_BLOB_HOST);
+    blobService = storage.createBlobService(ServiceClient.DEVSTORE_STORAGE_ACCOUNT, ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY, ServiceClient.DEVSTORE_BLOB_HOST);
 
     done();
   });
@@ -226,11 +226,11 @@ suite('blobservice-longrunning-tests', function () {
     var blobName = testutil.generateId(blobNamesPrefix, blobNames);
     var blobText = 'text';
 
-    var sharedBlobClient = azure.createBlobService();
+    var sharedBlobClient = storage.createBlobService();
     var sharedAccessSignature = new SharedAccessSignature(sharedBlobClient.storageAccount, sharedBlobClient.storageAccessKey);
     sharedBlobClient.authenticationProvider = sharedAccessSignature;
 
-    var managementBlobClient = azure.createBlobService();
+    var managementBlobClient = storage.createBlobService();
 
     managementBlobClient.createContainer(containerName, function (createError, container1, createResponse) {
       assert.equal(createError, null);

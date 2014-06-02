@@ -1,18 +1,18 @@
-﻿// 
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var assert = require('assert');
 
@@ -22,10 +22,12 @@ var queuetestutil = require('../../framework/queue-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var azureutil = testutil.libRequire('common/lib/util/util');
+var common = require('azure-common');
+var storage = require('azure-storage-legacy');
+var azureutil = common.util;
 
-var Constants = azure.Constants;
-var ServiceClientConstants = azure.ServiceClientConstants;
+var Constants = common.Constants;
+var ServiceClientConstants = common.ServiceClientConstants;
 var HttpConstants = Constants.HttpConstants;
 
 var queueService;
@@ -39,8 +41,8 @@ var suiteUtil;
 
 suite('queueservice-tests', function () {
   suiteSetup(function (done) {
-    queueService = azure.createQueueService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    queueService = storage.createQueueService()
+      .withFilter(new common.ExponentialRetryPolicyFilter());
 
     suiteUtil = queuetestutil.createQueueTestUtils(queueService, testPrefix);
     suiteUtil.setupSuite(done);
@@ -466,7 +468,7 @@ suite('queueservice-tests', function () {
   test('storageConnectionStrings', function (done) {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=' + key;
-    var queueService = azure.createQueueService(connectionString);
+    var queueService = storage.createQueueService(connectionString);
 
     assert.equal(queueService.storageAccount, 'myaccount');
     assert.equal(queueService.storageAccessKey, key);
@@ -477,7 +479,7 @@ suite('queueservice-tests', function () {
 
   test('storageConnectionStringsDevStore', function (done) {
     var connectionString = 'UseDevelopmentStorage=true';
-    var queueService = azure.createQueueService(connectionString);
+    var queueService = storage.createQueueService(connectionString);
 
     assert.equal(queueService.storageAccount, ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT);
     assert.equal(queueService.storageAccessKey, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
