@@ -29,18 +29,18 @@ var testutil = require('../../util/util');
 var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
-var azureutil = testutil.libRequire('common/lib/util/util');
-var azure = testutil.libRequire('azure');
-var WebResource = testutil.libRequire('common/lib/http/webresource');
+var common = require('azure-common');
+var storage = require('azure-storage-legacy');
 
-var SharedAccessSignature = azure.SharedAccessSignature;
-var BlobService = azure.BlobService;
-var ServiceClient = azure.ServiceClient;
-var ExponentialRetryPolicyFilter = azure.ExponentialRetryPolicyFilter;
-var Constants = azure.Constants;
+var WebResource = common.WebResource;
+var SharedAccessSignature = storage.SharedAccessSignature;
+var BlobService = storage.BlobService;
+var ServiceClient = common.ServiceClient;
+var ExponentialRetryPolicyFilter = common.ExponentialRetryPolicyFilter;
+var Constants = common.Constants;
 var BlobConstants = Constants.BlobConstants;
 var HttpConstants = Constants.HttpConstants;
-var ServiceClientConstants = azure.ServiceClientConstants;
+var ServiceClientConstants = common.ServiceClientConstants;
 var QueryStringConstants = Constants.QueryStringConstants;
 
 var containerNames = [];
@@ -58,8 +58,8 @@ var suiteUtil;
 
 describe('BlobServiceStream', function () {
   before(function (done) {
-    blobService = azure.createBlobService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    blobService = storage.createBlobService()
+      .withFilter(new ExponentialRetryPolicyFilter());
 
     suiteUtil = blobtestutil.createBlobTestUtils(blobService, testPrefix);
     suiteUtil.setupSuite(done);

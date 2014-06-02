@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 var mocha = require('mocha');
@@ -22,7 +22,8 @@ var testutil = require('../../util/util');
 var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
-var azure = testutil.libRequire('azure');
+var common = require('azure-common');
+var storage = require('azure-storage-legacy');
 
 var tableNames = [];
 var tablePrefix = 'tableservice';
@@ -34,8 +35,8 @@ var suiteUtil;
 
 describe('tableservice', function () {
   before(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    tableService = storage.createTableService()
+      .withFilter(new common.ExponentialRetryPolicyFilter());
 
     suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
     suiteUtil.setupSuite(done);
@@ -108,7 +109,7 @@ describe('tableservice', function () {
     it('should store data with encoded fields', function (done) {
       tableService.insertEntity(tableName, entity1, function (err) {
         if (err) { return done(err); }
-        var tableQuery = azure.TableQuery.select().from(tableName);
+        var tableQuery = storage.TableQuery.select().from(tableName);
 
         tableService.queryEntities(tableQuery, function (err, entries) {
           if (err) { return done(err); }
