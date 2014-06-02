@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.1-pre.5",
+  "version": "0.9.1-pre.6",
   "description": "Windows Azure Scheduler Management Client Library for node",
   "tags": [
     "azure",
