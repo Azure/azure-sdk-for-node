@@ -14,5 +14,6 @@ lib/services/subscriptionManagement/node_modules/*
 lib/services/webSiteManagement/node_modules/*
 lib/services/resourceManagement/node_modules/*
 lib/services/gallery/node_modules/*
+lib/services/policy/node_modules/*
 packages
 .git

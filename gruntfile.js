@@ -115,7 +115,12 @@ module.exports = function(grunt) {
         clientType: 'Microsoft.Azure.Gallery.GalleryClient',
         destDir: 'lib/services/gallery/lib',
         output: 'galleryClient.js'
-      }
+      },
+      'Microsoft.Azure.Policy.Specification.dll': {
+        clientType: 'Microsoft.Azure.Policy.PolicyManagementClient',
+        destDir: 'lib/services/policy/lib',
+        output: 'policyManagementClient.js'
+      }      
     },
 
     //jsdoc config
@@ -150,7 +155,8 @@ module.exports = function(grunt) {
                   "lib/services/subscriptionManagement/lib/subscriptionClient.js",
                   "lib/services/table/tableservice.js",
                   "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
-                  "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js"
+                  "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js",
+                  "lib/services/policy/lib/policyManagementClient.js"
             ],
             options: {
                 destination: 'docs',

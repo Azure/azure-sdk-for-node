@@ -46,6 +46,7 @@
     "azure-mgmt-scheduler": "0.9.1-pre.5",
     "azure-mgmt-resource": "2.0.0-pre.4",
     "azure-gallery": "2.0.0-pre.4",
+    "azure-policy": "0.9.0-pre",
     "mime": "~1.2.4",
     "underscore": "1.4.x",
     "request": "2.27.0",
