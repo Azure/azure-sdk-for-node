@@ -1,3 +1,14 @@
+2014.06.03 Version 0.9.8
+* Fix for blob streaming
+* Split out storage into azure-storage-legacy module
+* fix for apns notification hub payload format
+* updated all service clients to support overriding timeouts
+* Test suite fixes
+
+2014.05.02 Version 0.9.7
+* Updated all service clients with codegen fixes
+* Exposing some cert management functions from azure-common
+
 2014.04.29 Version 0.9.6
 * Fixing missing dependencies in submodules
 

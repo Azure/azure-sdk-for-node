@@ -1,4 +1,5 @@
 lib/common/node_modules/*
+lib/services/legacyStorage/node_modules/*
 lib/services/computeManagement/node_modules/*
 lib/services/management/node_modules/*
 lib/services/networkManagement/node_modules/*
