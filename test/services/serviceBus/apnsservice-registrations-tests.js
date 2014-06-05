@@ -187,7 +187,7 @@ describe('APNS notifications registrations', function () {
         });
       });
 
-      describe('create alert using createOrUpdateTemplate and template with aps at top level', function () {
+      describe('create alert using createTemplateRegistration and template with aps at top level', function () {
         var registrationId;
 
         afterEach(function (done) {
@@ -195,7 +195,7 @@ describe('APNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
-          notificationHubService.apns.createOrUpdateTemplateRegistration(
+          notificationHubService.apns.createTemplateRegistration(
             tokenId,
             null,
             {
