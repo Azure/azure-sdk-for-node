@@ -37,6 +37,7 @@ services/serviceBus/wnsservice-registrations-tests.js
 services/serviceBus/wrapservice-tests.js
 services/management/affinitygroup-tests.js
 services/management/servicemanagementservice-tests.js
+services/resourceManagement/resourceManagement-tests.js
 services/serviceBus/servicebusmanagementservice-tests.js
 services/sql/sqlmanagementservice-tests.js
 services/sql/sqlservice-tests.js
