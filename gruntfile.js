@@ -115,6 +115,11 @@ module.exports = function(grunt) {
         clientType: 'Microsoft.Azure.Gallery.GalleryClient',
         destDir: 'lib/services/gallery/lib',
         output: 'galleryClient.js'
+      },
+      'Microsoft.Azure.Management.WebSites.Specification.dll': {
+        clientType: 'Microsoft.Azure.Management.WebSites.WebSiteManagementClient',
+        destDir: 'lib/services/webSiteManagement2/lib',
+        output: 'webSiteManagementClient.js'
       }
     },
 
@@ -150,7 +155,8 @@ module.exports = function(grunt) {
                   "lib/services/subscriptionManagement/lib/subscriptionClient.js",
                   "lib/services/table/tableservice.js",
                   "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
-                  "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js"
+                  "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js",
+                  "lib/services/webSiteManagement2/lib/webSiteManagementClient.js"
             ],
             options: {
                 destination: 'docs',
