@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "Windows Azure Virtual Network Management Client Library for node",
   "tags": [
     "azure",

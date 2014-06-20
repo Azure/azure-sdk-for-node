@@ -1,3 +1,8 @@
+2014.06.19 Version 0.9.9
+* ARM website wrappers
+* Various bug fixes in management packages
+* Helper constructor for resource identifiers
+
 2014.06.03 Version 0.9.8
 * Fix for blob streaming
 * Split out storage into azure-storage-legacy module
@@ -23,16 +28,16 @@
 * Added "skipEncoding" option when writing blobs
 * Returning status codes on management library errors
 
-2013.01.30 Version 0.8.1
+2014.01.30 Version 0.8.1
 * Added web jobs APIs
 * Support for expiration in template messages in Notification Hubs
 
-2013.01.15 Version 0.8.0
+2014.01.15 Version 0.8.0
 * Added the Preview Service Management libraries as separate modules
 * Added ability to consume PEM files directly from the Service Management libraries
 * Added support for createOrUpdate and createRegistrationId in the Notification Hubs libraries
 
-2013.01.10 Version 0.7.19
+2014.01.10 Version 0.7.19
 * Lock validator version
 
 2013.11.27 Version 0.7.18
