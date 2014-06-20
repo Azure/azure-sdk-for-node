@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.1-pre.6",
+  "version": "0.9.1-pre.7",
   "description": "Windows Azure Monitoring Client Library for node",
   "tags": [
     "azure",
