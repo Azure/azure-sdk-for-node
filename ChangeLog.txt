@@ -1,3 +1,6 @@
+2014.06.23 Version 0.9.10
+* Bug fix for url filter creation
+
 2014.06.19 Version 0.9.9
 * ARM website wrappers
 * Various bug fixes in management packages
