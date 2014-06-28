@@ -106,11 +106,18 @@ module.exports = function(grunt) {
         destDir: 'lib/services/subscriptionManagement/lib',
         output: 'subscriptionClient.js'
       },
-      'Microsoft.Azure.Management.Resources.Specification.dll' : {
-        clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
-        destDir: 'lib/services/resourceManagement/lib',
-        output: 'resourceManagementClient.js'
-      },
+      'Microsoft.Azure.Management.Resources.Specification.dll' : [
+        {
+          clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
+          destDir: 'lib/services/resourceManagement/lib',
+          output: 'resourceManagementClient.js'
+        },
+        {
+          clientType: 'Microsoft.Azure.Subscriptions.SubscriptionClient',
+          destDir: 'lib/services/resourceManagement/lib',
+          output: 'subscriptionClient.js'
+        }
+      ],
       'Microsoft.Azure.Gallery.Specification.dll': {
         clientType: 'Microsoft.Azure.Gallery.GalleryClient',
         destDir: 'lib/services/gallery/lib',
