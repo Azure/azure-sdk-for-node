@@ -22,12 +22,12 @@ module.exports = function(grunt) {
       src : 'http://www.nuget.org/nuget.exe'
     },
     packageVersions: {
-      'azure': '0.9.10',
+      'azure': '0.9.11',
       'azure-common': '0.9.5',
       'azure-gallery': '2.0.0-pre.7',
       'azure-mgmt': '0.9.8',
       'azure-mgmt-compute': '0.9.8',
-      'azure-mgmt-resource': '2.0.0-pre.7',
+      'azure-mgmt-resource': '2.0.0-pre.8',
       'azure-mgmt-sb': '0.9.8',
       'azure-mgmt-scheduler': '0.9.1-pre.8',
       'azure-mgmt-sql': '0.9.8',

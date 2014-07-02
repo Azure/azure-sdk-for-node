@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.10",
+  "version": "0.9.11",
   "description": "Windows Azure Client Library for node",
   "tags": [
     "azure",
@@ -45,7 +45,7 @@
     "azure-monitoring": "0.9.1-pre.8",
     "azure-scheduler": "0.9.1-pre.8",
     "azure-mgmt-scheduler": "0.9.1-pre.8",
-    "azure-mgmt-resource": "2.0.0-pre.7",
+    "azure-mgmt-resource": "2.0.0-pre.8",
     "azure-gallery": "2.0.0-pre.7",
     "mime": "~1.2.4",
     "underscore": "1.4.x",
