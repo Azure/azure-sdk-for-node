@@ -18,6 +18,7 @@ lib/services/storageManagement/
 lib/services/storeManagement/
 lib/services/subscriptionManagement/
 lib/services/webSiteManagement/
+lib/services/webSiteManagement2/
 lib/services/legacyStorage/
 
 # Test folder #
