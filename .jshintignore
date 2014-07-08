@@ -16,5 +16,6 @@ lib/services/resourceManagement/node_modules/*
 lib/services/gallery/node_modules/*
 lib/services/policy/node_modules/*
 lib/services/graph.rbac/node_modules/*
+lib/services/webSiteManagement2/node_modules/*
 packages
 .git
