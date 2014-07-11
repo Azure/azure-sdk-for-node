@@ -38,7 +38,9 @@ examples/tasklist/
 tools/
 tasks/
 scripts/
+gruntfile.js
 
 # Nuget packages #
 .nuget/
 packages/
+packages.config

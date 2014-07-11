@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       src : 'http://www.nuget.org/nuget.exe'
     },
     packageVersions: {
-      'azure': '0.9.11',
+      'azure': '0.9.12',
       'azure-common': '0.9.5',
       'azure-gallery': '2.0.0-pre.7',
       'azure-mgmt': '0.9.8',
