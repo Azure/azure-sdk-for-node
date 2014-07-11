@@ -34,5 +34,11 @@ examples/serviceexplorer/
 examples/servicemanagement/
 examples/tasklist/
 
-# Tools #
+# Tools and dev scripts #
 tools/
+tasks/
+scripts/
+
+# Nuget packages #
+.nuget/
+packages/
