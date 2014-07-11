@@ -136,10 +136,10 @@ module.exports = function(grunt) {
         destDir: 'lib/services/gallery/lib',
         output: 'galleryClient.js'
       },
-      'Microsoft.Azure.Policy.Specification.dll': {
-        clientType: 'Microsoft.Azure.Policy.PolicyManagementClient',
-        destDir: 'lib/services/policy/lib',
-        output: 'policyManagementClient.js'
+      'Microsoft.Azure.Management.Authorization.Specification.dll': {
+        clientType: 'Microsoft.Azure.Management.Authorization.AuthorizationManagementClient',
+        destDir: 'lib/services/authorizationManagement/lib',
+        output: 'authorizationManagementClient.js'
       },
       'Microsoft.Azure.Graph.RBAC.Specification.dll': {
         clientType: 'Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient',
@@ -186,7 +186,7 @@ module.exports = function(grunt) {
                   "lib/services/table/tableservice.js",
                   "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
                   "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js",
-                  "lib/services/policy/lib/policyManagementClient.js",
+                  "lib/services/authorizationManagement/lib/authorizationManagementClient.js",
                   "lib/services/graph.rbac/lib/graphRbacManagementClient.js",
                   "lib/services/webSiteManagement2/lib/webSiteManagementClient.js"
             ],
