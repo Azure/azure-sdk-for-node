@@ -1,5 +1,5 @@
 {
-  "name": "azure-policy",
+  "name": "azure-mgmt-authorization",
   "author": "Microsoft Corporation",
   "contributors": [
     "Cowlishaw, Mark <markcowl@microsoft.com>",
