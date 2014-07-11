@@ -33,8 +33,8 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/resourceManagement/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/gallery/' },
   { cmd: 'npm install', path: 'lib/services/gallery/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/policy/' },
-  { cmd: 'npm install', path: 'lib/services/policy/' },  
+  { cmd: 'npm link ../../common/', path: 'lib/services/authorizationManagement/' },
+  { cmd: 'npm install', path: 'lib/services/authorizationManagement/' },  
   { cmd: 'npm link ../../common/', path: 'lib/services/graph.rbac/' },
   { cmd: 'npm install', path: 'lib/services/graph.rbac/' },    
   { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement2/' },
@@ -55,7 +55,7 @@ var cmds = [
   { cmd: 'npm link lib/services/webSiteManagement/' },
   { cmd: 'npm link lib/services/resourceManagement/' },
   { cmd: 'npm link lib/services/gallery/' },
-  { cmd: 'npm link lib/services/policy/' },
+  { cmd: 'npm link lib/services/authorizationManagement/' },
   { cmd: 'npm link lib/services/graph.rbac/' },
   { cmd: 'npm link lib/services/webSiteManagement2/' }
 ];
