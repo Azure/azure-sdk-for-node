@@ -34,5 +34,13 @@ examples/serviceexplorer/
 examples/servicemanagement/
 examples/tasklist/
 
-# Tools #
+# Tools and dev scripts #
 tools/
+tasks/
+scripts/
+gruntfile.js
+
+# Nuget packages #
+.nuget/
+packages/
+packages.config
