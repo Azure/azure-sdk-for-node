@@ -187,6 +187,32 @@ describe('APNS notifications registrations', function () {
         });
       });
 
+      describe('create alert using createTemplateRegistration and template with aps at top level', function () {
+        var registrationId;
+
+        afterEach(function (done) {
+          notificationHubService.deleteRegistration(registrationId, done);
+        });
+
+        it('should work', function (done) {
+          notificationHubService.apns.createTemplateRegistration(
+            tokenId,
+            null,
+            {
+              aps: {
+                alert: '$(alertMessage1)'
+              },
+              secondProperty: '$(secondText)'
+            },
+            function (error, registration) {
+              should.not.exist(error);
+              registrationId = registration.RegistrationId;
+
+              done();
+            });
+        });
+      });
+
       describe('update alert', function () {
         var registrationId;
 
