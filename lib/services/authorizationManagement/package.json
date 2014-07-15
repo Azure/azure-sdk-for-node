@@ -1,5 +1,5 @@
 {
-  "name": "azure-policy",
+  "name": "azure-mgmt-authorization",
   "author": "Microsoft Corporation",
   "contributors": [
     "Cowlishaw, Mark <markcowl@microsoft.com>",
@@ -8,7 +8,7 @@
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>"
   ],
   "version": "0.9.0-pre",
-  "description": "Microsoft Azure Policy Client Library for node",
+  "description": "Microsoft Azure Authorization Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -17,7 +17,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/policy.js",
+  "main": "./lib/authorization.js",
   "engines": {
     "node": ">= 0.6.15"
   },
