@@ -23,6 +23,7 @@ var servicebustestutil = require('../../framework/servicebus-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
+var azureSb = require('azure-sb');
 var azureutil = testutil.libRequire('common/lib/util/util');
 
 var ServiceClient = azure.ServiceClient;
@@ -52,7 +53,7 @@ var testPrefix = 'servicebusservice-tests';
 
 suite('servicebusservice-tests', function () {
   suiteSetup(function (done) {
-    serviceBusService = azure.createServiceBusService()
+    serviceBusService = azureSb.createServiceBusService()
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 
     suiteUtil = servicebustestutil.createServiceBusTestUtils(serviceBusService, testPrefix);
@@ -1627,7 +1628,7 @@ suite('servicebusservice-tests', function () {
       });
     });
 
-    var serviceBusService = azure.createServiceBusService(azure.config('testInvalidAccessKeyGivesError'));
+    var serviceBusService = azureSb.createServiceBusService(azure.config('testInvalidAccessKeyGivesError'));
     suiteUtil.setupService(serviceBusService);
 
     // fails, with an error on the callback.
@@ -1640,7 +1641,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('invalidNamespaceGivesError', function (done) {
-    var serviceBusService = azure.createServiceBusService('BoGuS', process.env['AZURE_SERVICEBUS_ACCESS_KEY']);
+    var serviceBusService = azureSb.createServiceBusService('BoGuS', process.env['AZURE_SERVICEBUS_ACCESS_KEY']);
     suiteUtil.setupService(serviceBusService);
 
     // fails, with an error on the callback.
@@ -1655,7 +1656,7 @@ suite('servicebusservice-tests', function () {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'Endpoint=http://ablal-martvue.servicebus.windows.net/;StsEndpoint=https://ablal-martvue-sb.accesscontrol.windows.net;SharedSecretIssuer=owner;SharedSecretValue=' + key;
 
-    var serviceBusService = azure.createServiceBusService(connectionString);
+    var serviceBusService = azureSb.createServiceBusService(connectionString);
     suiteUtil.setupService(serviceBusService);
 
     assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');
@@ -1671,7 +1672,7 @@ suite('servicebusservice-tests', function () {
     var expectedNamespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var expectedKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
     var expectedHost = 'http://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
-    var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
+    var serviceBusService = azureSb.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
     suiteUtil.setupService(serviceBusService);
 
     serviceBusService.createTopic(topicName, function (err) {
@@ -1692,7 +1693,7 @@ suite('servicebusservice-tests', function () {
     var expectedNamespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var expectedKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
     var expectedHost = 'https://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
-    var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
+    var serviceBusService = azureSb.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
     suiteUtil.setupService(serviceBusService);
 
     serviceBusService.createTopic(topicName, function (err) {
@@ -1712,7 +1713,7 @@ suite('servicebusservice-tests', function () {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'Endpoint=sb://ablal-martvue.servicebus.windows.net/;StsEndpoint=https://ablal-martvue-sb.accesscontrol.windows.net;SharedSecretIssuer=owner;SharedSecretValue=' + key;
 
-    var serviceBusService = azure.createServiceBusService(connectionString);
+    var serviceBusService = azureSb.createServiceBusService(connectionString);
     suiteUtil.setupService(serviceBusService);
 
     assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');

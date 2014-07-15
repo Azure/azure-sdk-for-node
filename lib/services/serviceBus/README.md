@@ -10,7 +10,7 @@ This project provides a Node.js package for accessing the Azure ServiceBus servi
 ## How to Install
 
 ```bash
-npm install azure-hdinsight
+npm install azure-sb
 ```
 
 ## How to Use
