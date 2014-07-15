@@ -19,7 +19,12 @@ before_install:
   - cd azure-sdk-tools-xplat
   - node scripts/link-to-sdk.js
   - npm install
-  - cd ../azure-sdk-for-node
   
 script:
-  - node scripts/travis-scripts.js
+  - cd ../azure-sdk-for-node
+  - npm test
+  - cd ../azure-sdk-tools-xplat
+  - npm run unit
+  - node bin/azure config mode arm
+  - npm run unit-arm
+  
