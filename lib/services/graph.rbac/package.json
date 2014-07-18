@@ -17,7 +17,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/graph.rbac.js",
+  "main": "./lib/graphRbac.js",
   "engines": {
     "node": ">= 0.6.15"
   },
