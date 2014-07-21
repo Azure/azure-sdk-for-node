@@ -1,5 +1,5 @@
 {
-  "name": "azure-hdinsight",
+  "name": "azure-mgmt-hdinsight",
   "author": "Microsoft Corporation",
   "contributors": [
     "Block, Glenn <gblock@microsoft.com>",
