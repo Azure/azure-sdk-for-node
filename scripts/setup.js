@@ -37,8 +37,6 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/webSiteManagement2/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/hdinsight/' },
   { cmd: 'npm install', path: 'lib/services/hdinsight/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/sql/' },
-  { cmd: 'npm install', path: 'lib/services/sql/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/serviceBus/' },
   { cmd: 'npm install', path: 'lib/services/serviceBus/' },
   { cmd: 'npm link lib/common/' },
@@ -59,7 +57,6 @@ var cmds = [
   { cmd: 'npm link lib/services/gallery/' },
   { cmd: 'npm link lib/services/webSiteManagement2/' },
   { cmd: 'npm link lib/services/hdinsight/' },
-  { cmd: 'npm link lib/services/sql/' },
   { cmd: 'npm link lib/services/serviceBus/' }
 ];
 

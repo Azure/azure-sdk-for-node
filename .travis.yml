@@ -12,8 +12,8 @@ matrix:
 # setup links to submodules
 before_install:
   - npm update -g npm
-  - npm install
   - npm run-script setup
+  - npm install
   - cd ..
   - git clone https://github.com/azure/azure-sdk-tools-xplat.git
   - cd azure-sdk-tools-xplat
