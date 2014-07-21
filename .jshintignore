@@ -17,6 +17,5 @@ lib/services/gallery/node_modules/*
 lib/services/webSiteManagement2/node_modules/*
 lib/services/serviceBus/node_modules/*
 lib/services/hdinsight/node_modules/*
-lib/services/sql/node_modules/*
 packages
 .git

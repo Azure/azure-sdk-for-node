@@ -25,9 +25,9 @@ module.exports = function(grunt) {
       'azure': '0.9.12',
       'azure-common': '0.9.5',
       'azure-gallery': '2.0.0-pre.7',
-      'azure-hdinsight': '0.9.8',
       'azure-mgmt': '0.9.8',
       'azure-mgmt-compute': '0.9.8',
+      'azure-mgmt-hdinsight': '0.9.8',
       'azure-mgmt-resource': '2.0.0-pre.8',
       'azure-mgmt-sb': '0.9.8',
       'azure-mgmt-scheduler': '0.9.1-pre.8',
@@ -41,8 +41,7 @@ module.exports = function(grunt) {
       'azure-rm-website': '0.9.0-pre.2',
       'azure-sb': '0.9.8',
       'azure-scheduler': '0.9.1-pre.8',
-      'azure-storage-legacy': '0.9.8',
-      'azure-sql': '0.9.8'
+      'azure-storage-legacy': '0.9.8'
     },
     hydra: {
       'Microsoft.WindowsAzure.Management.Compute.Specification.dll' : {
