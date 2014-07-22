@@ -11,5 +11,19 @@ matrix:
 
 # setup links to submodules
 before_install:
-  - npm install -g npm@1.4.9
+  - npm update -g npm
   - npm run-script setup
+  - npm install
+  - cd ..
+  - git clone https://github.com/azure/azure-sdk-tools-xplat.git
+  - cd azure-sdk-tools-xplat
+  - git checkout dev
+  - node scripts/link-to-sdk.js
+  - npm install
+  
+script:
+  - cd ../azure-sdk-for-node
+  - npm test
+  - cd ../azure-sdk-tools-xplat
+  - npm run unit
+  - npm run unit-arm

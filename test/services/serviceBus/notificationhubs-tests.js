@@ -24,6 +24,7 @@ var testutil = require('../../util/util');
 var notificationhubstestutil = require('../../framework/notificationhubs-test-utils');
 
 var azure = testutil.libRequire('azure');
+var azureSb = require('azure-sb');
 
 var hubNames = [];
 var hubNamePrefix = 'xplathub';
@@ -40,7 +41,7 @@ describe('Notification hubs', function () {
   before(function (done) {
     sandbox = sinon.sandbox.create();
 
-    service = azure.createServiceBusService()
+    service = azureSb.createServiceBusService()
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);

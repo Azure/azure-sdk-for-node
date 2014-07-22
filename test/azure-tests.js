@@ -21,7 +21,7 @@ var testutil = require('./util/util');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var ServiceBusServiceClient = testutil.libRequire('services/serviceBus/servicebusserviceclient');
+var ServiceBusServiceClient = testutil.libRequire('services/serviceBus/lib/servicebusserviceclient');
 var ServiceClientConstants = azure.ServiceClientConstants;
 
 var environmentAzureStorageAccount = 'myaccount';
