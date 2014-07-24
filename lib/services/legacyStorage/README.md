@@ -1,4 +1,4 @@
-# Windows Azure SDK for Node.js - Legacy Storage
+# Microsoft Azure SDK for Node.js - Legacy Storage
 
 This project provides a Node.js package that lets you consume Azure storage services.
 This package exists to provide back compatibility with previous versions of the azure
@@ -153,7 +153,7 @@ queueService.getMessages(queueName, function(error, serverMessages){
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
-- [Windows Azure SDK for Node.js - Storage Blob](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/blob)
-- [Windows Azure SDK for Node.js - Storage Table](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/table)
-- [Windows Azure SDK for Node.js - Storage Queue](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/queue)
+- [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js - Storage Blob](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/blob)
+- [Microsoft Azure SDK for Node.js - Storage Table](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/table)
+- [Microsoft Azure SDK for Node.js - Storage Queue](https://github.com/WindowsAzure/azure-sdk-for-node/tree/master/lib/services/queue)

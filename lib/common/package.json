@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
   "version": "0.9.5",
-  "description": "Windows Azure Common Client Library for node",
+  "description": "Microsoft Azure Common Client Library for node",
   "tags": [
     "azure",
     "sdk"
