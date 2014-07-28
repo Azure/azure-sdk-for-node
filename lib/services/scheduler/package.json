@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
   "version": "0.9.1-pre.8",
-  "description": "Windows Azure Scheduler Client Library for node",
+  "description": "Microsoft Azure Scheduler Client Library for node",
   "tags": [
     "azure",
     "sdk"

@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
   "version": "0.9.0-pre.2",
-  "description": "Windows Azure WebSite Management Client Library for node",
+  "description": "Microsoft Azure WebSite Management Client Library for node",
   "tags": [
     "azure",
     "sdk"

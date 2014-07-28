@@ -83,7 +83,7 @@ function setupGoalStateEndpoint () {
 
 suite('roleenvironment-tests', function () {
   setup(function (done) {
-    // Set windows azure runtime endpoint
+    // Set microsoft azure runtime endpoint
     originalWaRuntimeEndpoint = process.env['WaRuntimeEndpoint'];
     process.env['WaRuntimeEndpoint'] = versionsEndpointPath;
 

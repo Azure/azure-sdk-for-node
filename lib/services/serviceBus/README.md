@@ -1,4 +1,4 @@
-# Windows Azure SDK for Node.js - Gallery
+# Microsoft Azure SDK for Node.js - Gallery
 
 This project provides a Node.js package for accessing the Azure ServiceBus service. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
@@ -21,4 +21,4 @@ npm install azure-sb
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)

@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
   "version": "0.9.8",
-  "description": "Windows Azure Service Bus Management Client Library for node",
+  "description": "Microsoft Azure Service Bus Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
