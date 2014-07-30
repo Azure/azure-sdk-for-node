@@ -24,6 +24,7 @@ var util = require('util');
 var MockedTestUtils = require('./mocked-test-utils');
 var testutil = require('../util/util');
 var azure = testutil.libRequire('azure');
+var azureHDInsight = require('azure-mgmt-hdinsight');
 var hdInsight;
 var creds;
 
@@ -33,7 +34,7 @@ function HDInsightTestUtils(callback) {
     var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
     creds = result;
     should.exist(result);
-    hdInsight = azure.createHDInsightService(self.getDefaultCreds().subscriptionId, auth);
+    hdInsight = azureHDInsight.createHDInsightService(self.getDefaultCreds().subscriptionId, auth);
     HDInsightTestUtils.super_.call(self, hdInsight, 'hdinsight-tests');
     callback();
   });

@@ -23,6 +23,7 @@ var testutil = require('../../util/util');
 var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
+var azureSql = require('azure-mgmt-sql');
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
@@ -67,7 +68,7 @@ describe('SQL Azure Database', function () {
 
         serverName = name;
 
-        service = azure.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, DATABASE_HOST);
+        service = azureSql.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, DATABASE_HOST);
         suiteUtil.setupService(service);
 
         // add firewall rule for all the ip range

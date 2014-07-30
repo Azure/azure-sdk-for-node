@@ -1,6 +1,6 @@
-# Windows Azure SDK for Node.js - Web Site Management
+# Microsoft Azure SDK for Node.js - Web Site Management
 
-This project provides a Node.js package that makes it easy to manage Windows Azure Web Site. Right now it supports:
+This project provides a Node.js package that makes it easy to manage Microsoft Azure Web Site. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
 - **API version: 2013-08-01**
 
@@ -34,4 +34,4 @@ var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(we
 
 ## Related projects
 
-- [Windows Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)

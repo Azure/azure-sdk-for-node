@@ -1,6 +1,6 @@
 # Microsoft Azure SDK for Node.js - Gallery
 
-This project provides a Node.js package for accessing the Azure Gallery. Right now it supports:
+This project provides a Node.js package for accessing the Azure ServiceBus service. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
 - **API version: **
 
@@ -10,14 +10,14 @@ This project provides a Node.js package for accessing the Azure Gallery. Right n
 ## How to Install
 
 ```bash
-npm install azure-gallery
+npm install azure-sb
 ```
 
 ## How to Use
 
 ### Authentication
 
-### Create the gallery client
+### Create the ServiceBus service
 
 ## Related projects
 
