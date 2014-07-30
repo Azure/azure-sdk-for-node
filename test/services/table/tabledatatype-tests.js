@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var assert = require('assert');
 var _ = require('underscore');
@@ -22,12 +22,14 @@ var testutil = require('../../util/util');
 var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
-var azure = testutil.libRequire('azure');
-var azureutil = testutil.libRequire('common/lib/util/util');
+var common = require('azure-common');
+var storage = require('azure-storage-legacy');
 
-var ServiceClient = azure.ServiceClient;
-var TableQuery = azure.TableQuery;
-var Constants = azure.Constants;
+var azureutil = common.util;
+
+var ServiceClient = common.ServiceClient;
+var TableQuery = storage.TableQuery;
+var Constants = common.Constants;
 var HttpConstants = Constants.HttpConstants;
 var StorageErrorCodeStrings = Constants.StorageErrorCodeStrings;
 
@@ -41,8 +43,8 @@ var suiteUtil;
 
 describe('Table Service', function () {
   before(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    tableService = storage.createTableService()
+      .withFilter(new common.ExponentialRetryPolicyFilter());
 
     suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
     suiteUtil.setupSuite(done);
@@ -129,7 +131,7 @@ describe('Table Service', function () {
     });
 
     it('should contain two entities', function (done) {
-      var tableQuery = azure.TableQuery.select().from(tableName);
+      var tableQuery = storage.TableQuery.select().from(tableName);
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.equal(results.length, 2);
@@ -138,7 +140,7 @@ describe('Table Service', function () {
     });
 
     it('should be able to query by integer value', function (done) {
-      var tableQuery = azure.TableQuery.select().from(tableName).where('IntNumberValue eq ?', entity.IntNumberValue);
+      var tableQuery = storage.TableQuery.select().from(tableName).where('IntNumberValue eq ?', entity.IntNumberValue);
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
@@ -151,7 +153,7 @@ describe('Table Service', function () {
     });
 
     it('should be able to query by double value', function (done) {
-      var tableQuery = azure.TableQuery.select().from(tableName).where('DoubleNumberValue eq ?', entity.DoubleNumberValue);
+      var tableQuery = storage.TableQuery.select().from(tableName).where('DoubleNumberValue eq ?', entity.DoubleNumberValue);
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
@@ -164,7 +166,7 @@ describe('Table Service', function () {
     });
 
     it('should be able to query by false boolean value', function (done) {
-      var tableQuery = azure.TableQuery.select().from(tableName).where('FalseBooleanValue eq ?', entity.FalseBooleanValue);
+      var tableQuery = storage.TableQuery.select().from(tableName).where('FalseBooleanValue eq ?', entity.FalseBooleanValue);
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
@@ -177,7 +179,7 @@ describe('Table Service', function () {
     });
 
     it('should be able to query by true boolean value', function (done) {
-      var tableQuery = azure.TableQuery.select().from(tableName).where('TrueBooleanValue eq ?', entity.TrueBooleanValue);
+      var tableQuery = storage.TableQuery.select().from(tableName).where('TrueBooleanValue eq ?', entity.TrueBooleanValue);
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
@@ -190,7 +192,7 @@ describe('Table Service', function () {
     });
 
     it('should be able to query by string value', function (done) {
-      var tableQuery = azure.TableQuery.select().from(tableName).where('StringValue eq ?', entity.StringValue);
+      var tableQuery = storage.TableQuery.select().from(tableName).where('StringValue eq ?', entity.StringValue);
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);
@@ -203,7 +205,7 @@ describe('Table Service', function () {
     });
 
     it('should be able to query by date value', function (done) {
-      var tableQuery = azure.TableQuery.select().from(tableName).where('DateValue eq ?', entity.DateValue);
+      var tableQuery = storage.TableQuery.select().from(tableName).where('DateValue eq ?', entity.DateValue);
       tableService.queryEntities(tableQuery, function (err, results) {
         assert.equal(err, null);
         assert.notEqual(results, null);

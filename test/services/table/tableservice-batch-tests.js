@@ -1,18 +1,18 @@
-﻿// 
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var assert = require('assert');
 
@@ -21,12 +21,14 @@ var testutil = require('../../util/util');
 var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
-var azure = testutil.libRequire('azure');
-var azureutil = testutil.libRequire('common/lib/util/util');
+var common = require('azure-common');
+var storage = require('azure-storage-legacy');
 
-var ServiceClient = azure.ServiceClient;
-var TableQuery = azure.TableQuery;
-var Constants = azure.Constants;
+var azureutil = common.util;
+
+var ServiceClient = common.ServiceClient;
+var TableQuery = storage.TableQuery;
+var Constants = common.Constants;
 var HttpConstants = Constants.HttpConstants;
 
 var tableNames = [];
@@ -39,8 +41,8 @@ var testUtil;
 
 suite('tableservice-batch-tests', function () {
   suiteSetup(function (done) {
-    tableService = azure.createTableService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
+    tableService = storage.createTableService()
+      .withFilter(new common.ExponentialRetryPolicyFilter());
 
     testUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
     testUtil.setupSuite(done);
@@ -364,7 +366,7 @@ suite('tableservice-batch-tests', function () {
 
 function generateEntities(count) {
   var entities = [];
-  
+
   for(var i = 0 ; i < count ; i++) {
     var entity = {
       PartitionKey: 'partition1',

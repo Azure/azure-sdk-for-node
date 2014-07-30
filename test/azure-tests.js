@@ -21,7 +21,7 @@ var testutil = require('./util/util');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var ServiceBusServiceClient = testutil.libRequire('services/serviceBus/servicebusserviceclient');
+var ServiceBusServiceClient = testutil.libRequire('services/serviceBus/lib/servicebusserviceclient');
 var ServiceClientConstants = azure.ServiceClientConstants;
 
 var environmentAzureStorageAccount = 'myaccount';
@@ -137,7 +137,7 @@ suite('azure', function () {
     delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
     assert.equal(azure.isEmulated(), false);
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
@@ -159,7 +159,7 @@ suite('azure', function () {
     // Make sure is not emulated
     delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
@@ -182,7 +182,7 @@ suite('azure', function () {
     // set emulated to true
     process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
@@ -205,7 +205,7 @@ suite('azure', function () {
     // set emulated to true
     process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
@@ -228,7 +228,7 @@ suite('azure', function () {
     // Make sure is not emulated
     delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;

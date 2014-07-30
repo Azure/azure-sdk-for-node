@@ -8,6 +8,7 @@ node_modules/
 lib/common/
 lib/services/computeManagement/
 lib/services/management/
+lib/services/monitoring/
 lib/services/networkManagement/
 lib/services/scheduler/
 lib/services/schedulerManagement/
@@ -17,6 +18,10 @@ lib/services/storageManagement/
 lib/services/storeManagement/
 lib/services/subscriptionManagement/
 lib/services/webSiteManagement/
+lib/services/webSiteManagement2/
+lib/services/legacyStorage/
+lib/services/serviceBus
+lib/services/hdinsight
 
 # Test folder #
 test/
@@ -31,5 +36,13 @@ examples/serviceexplorer/
 examples/servicemanagement/
 examples/tasklist/
 
-# Tools #
+# Tools and dev scripts #
 tools/
+tasks/
+scripts/
+gruntfile.js
+
+# Nuget packages #
+.nuget/
+packages/
+packages.config
