@@ -263,7 +263,7 @@ describe('Notification hubs', function () {
       service.createNotificationHub(hubName, {
           apns: {
             ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
-            CertificateKey: '',
+            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
             Endpoint: 'pushtestservice2.cloudapp.net'
           }
         }, function () {
@@ -318,7 +318,7 @@ describe('Notification hubs', function () {
       service.createNotificationHub(hubName, {
           apns: {
             ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
-            CertificateKey: '',
+            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
             Endpoint: 'pushtestservice2.cloudapp.net'
           }
         },
@@ -389,7 +389,7 @@ describe('Notification hubs', function () {
       service.createNotificationHub(hubName, {
           apns: {
             ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
-            CertificateKey: '',
+            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
             Endpoint: 'pushtestservice2.cloudapp.net'
           }
         }, function () {
