@@ -70,12 +70,18 @@ describe('Notification hubs', function () {
   });
 
   afterEach(function (done) {
-    // Schedule deleting notification hubs
-    _.each(hubNames, function (notificationHub) {
-      service.deleteNotificationHub(notificationHub, function () {});
-    });
+    var deleteHubs = function (hubs) {
+      if (hubs.length === 0) {
+        suiteUtil.baseTeardownTest(done);
+      } else {
+        var currentHub = hubs.pop();
+        service.deleteNotificationHub(currentHub, function () {
+          deleteHubs(hubs);
+        });
+      }
+    };
 
-    suiteUtil.baseTeardownTest(done);
+    deleteHubs(hubNames);
   });
 
   describe('Create notification hub', function () {
