@@ -250,6 +250,9 @@ describe('APNS notifications registrations', function () {
 
               executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"}}]]></BodyTemplate>');
 
+              // Current version of sinon does not appear to support multiple calls on same spy.
+              sandbox.restore();
+
               done();
             });
         });
@@ -259,7 +262,6 @@ describe('APNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
-          sandbox.restore();
           executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
           notificationHubService.apns.updateTemplateRegistration(
             registrationId,
@@ -278,7 +280,6 @@ describe('APNS notifications registrations', function () {
         });
 
         it('should work when payload member exists', function (done) {
-          sandbox.restore();
           executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
           notificationHubService.apns.updateTemplateRegistration(
             registrationId,
@@ -301,7 +302,6 @@ describe('APNS notifications registrations', function () {
         });
 
         it('should work when aps exists without modifying payload as extra data', function (done) {
-          sandbox.restore();
           executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
           notificationHubService.apns.updateTemplateRegistration(
             registrationId,
