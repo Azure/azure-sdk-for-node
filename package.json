@@ -66,13 +66,13 @@
     "grunt-jsdoc": "~0.5.1",
     "grunt-devserver": "~0.4.1"
   },
-  "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
-    "url": "git@github.com:WindowsAzure/azure-sdk-for-node.git"
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit",
