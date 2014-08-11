@@ -588,6 +588,88 @@ suite('servicebusservice-tests', function () {
     });
   });
 
+  test('LockCanBeRenewedForPeekLockedMessage', function (done) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      assert.equal(createError, null);
+      assert.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        assert.equal(sendError, null);
+
+        // Peek the message
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
+          assert.equal(receiveError1, null);
+          assert.equal(message1.body, messageText);
+
+          assert.notEqual(message1.location, null);
+          assert.notEqual(message1.brokerProperties.LockToken, null);
+          assert.notEqual(message1.brokerProperties.LockedUntilUtc, null);
+
+          // Renew lock for message
+          serviceBusService.renewLockForMessage(message1.location, function (renewLockError) {
+            assert.equal(renewLockError, null);
+
+            // deleted message
+            serviceBusService.unlockMessage(message1.location, function (unlockError) {
+              assert.equal(unlockError, null);
+
+              serviceBusService.receiveQueueMessage(queueName, function (receiveError2, receiveMessage2) {
+                assert.equal(receiveError2, null);
+                assert.notEqual(receiveMessage2, null);
+
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
+  test('LockCanBeRenewedForPeekLockedMessageWithObject', function (done) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      assert.equal(createError, null);
+      assert.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        assert.equal(sendError, null);
+
+        // Peek the message
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
+          assert.equal(receiveError1, null);
+          assert.equal(message1.body, messageText);
+
+          assert.notEqual(message1.location, null);
+          assert.notEqual(message1.brokerProperties.LockToken, null);
+          assert.notEqual(message1.brokerProperties.LockedUntilUtc, null);
+
+          // Renew lock for message
+          serviceBusService.renewLockForMessage(message1, function (renewLockError) {
+            assert.equal(renewLockError, null);
+
+            // deleted message
+            serviceBusService.unlockMessage(message1, function (unlockError) {
+              assert.equal(unlockError, null);
+
+              serviceBusService.receiveQueueMessage(queueName, function (receiveError2, receiveMessage2) {
+                assert.equal(receiveError2, null);
+                assert.notEqual(receiveMessage2, null);
+
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
   test('CreateTopic', function (done) {
     var topicName = testutil.generateId(topicNamesPrefix, topicNames, suiteUtil.isMocked);
     var topicOptions = {
