@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.9",
+  "version": "0.9.10",
   "description": "Microsoft Azure Storage Management Client Library for node",
   "tags": [
     "azure",
@@ -31,15 +31,15 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.6"
+    "azure-common": "0.9.7"
   },
-  "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
-    "url": "git@github.com:WindowsAzure/azure-sdk-for-node.git"
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
     "test": "npm -s run-script jshint"

@@ -57,12 +57,13 @@ describe('APNS notifications registrations', function () {
   beforeEach(function (done) {
     suiteUtil.setupTest(function () {
       service.listNotificationHubs(function (err, hubs) {
+        should.not.exist(err);
         var xplatHubs = hubs.filter(function (hub) {
           return hub.NotificationHubName.substr(0, hubNamePrefix.length) === hubNamePrefix;
         });
 
         _.each(xplatHubs, function (hub) {
-          service.deleteNotificationHub(hub.NotificationHubName, function () {});
+          service.deleteNotificationHub(hub.NotificationHubName, function () { });
         });
 
         done();
@@ -73,7 +74,7 @@ describe('APNS notifications registrations', function () {
   afterEach(function (done) {
     // Schedule deleting notification hubs
     _.each(hubNames, function (notificationHub) {
-      service.deleteNotificationHub(notificationHub, function () {});
+      service.deleteNotificationHub(notificationHub, function () { });
     });
 
     suiteUtil.baseTeardownTest(done);
@@ -90,12 +91,12 @@ describe('APNS notifications registrations', function () {
 
       suiteUtil.setupService(notificationHubService);
       service.createNotificationHub(hubName, {
-          apns: {
-            ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
-            CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
-            Endpoint: 'pushtestservice2.cloudapp.net'
-          }
-        }, done);
+        apns: {
+          ApnsCertificate: process.env.AZURE_APNS_CERTIFICATE,
+          CertificateKey: process.env.AZURE_APNS_CERTIFICATE_KEY,
+          Endpoint: 'pushtestservice2.cloudapp.net'
+        }
+      }, done);
     });
 
     describe('native', function () {
@@ -118,7 +119,7 @@ describe('APNS notifications registrations', function () {
 
       describe('list', function () {
         beforeEach(function (done) {
-          notificationHubService.apns.createNativeRegistration(tokenId, [ 'mytag'], done);
+          notificationHubService.apns.createNativeRegistration(tokenId, ['mytag'], done);
         });
 
         it('should work without filtering', function (done) {
@@ -172,6 +173,7 @@ describe('APNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
+          var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
           notificationHubService.apns.createTemplateRegistration(
             tokenId,
             null,
@@ -182,11 +184,14 @@ describe('APNS notifications registrations', function () {
               should.not.exist(error);
               registrationId = registration.RegistrationId;
 
+              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"}}]]></BodyTemplate>');
+
               done();
-          });
+            });
         });
 
         it('should work when payload matches APNS specs', function (done) {
+          var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
           notificationHubService.apns.createTemplateRegistration(
             tokenId,
             null,
@@ -199,15 +204,40 @@ describe('APNS notifications registrations', function () {
               should.not.exist(error);
               registrationId = registration.RegistrationId;
 
+              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"}}]]></BodyTemplate>');
+
               done();
-          });
+            });
+        });
+
+        it('should work when payload matches APNS specs and has extra data', function (done) {
+          var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+          notificationHubService.apns.createTemplateRegistration(
+            tokenId,
+            null,
+            {
+              aps: {
+                alert: '$(alertMessage1)'
+              },
+              extraData: '$(data)'
+            },
+            function (error, registration) {
+              should.not.exist(error);
+              registrationId = registration.RegistrationId;
+
+              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"},"extraData":"$(data)"}]]></BodyTemplate>');
+
+              done();
+            });
         });
       });
 
       describe('update alert', function () {
         var registrationId;
+        var executeSpy;
 
         beforeEach(function (done) {
+          executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
           notificationHubService.apns.createTemplateRegistration(
             tokenId,
             null,
@@ -218,6 +248,11 @@ describe('APNS notifications registrations', function () {
               should.not.exist(error);
               registrationId = registration.RegistrationId;
 
+              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"}}]]></BodyTemplate>');
+
+              // Current version of sinon does not appear to support multiple calls on same spy.
+              sandbox.restore();
+
               done();
             });
         });
@@ -227,6 +262,7 @@ describe('APNS notifications registrations', function () {
         });
 
         it('should work', function (done) {
+          executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
           notificationHubService.apns.updateTemplateRegistration(
             registrationId,
             tokenId,
@@ -236,6 +272,52 @@ describe('APNS notifications registrations', function () {
             },
             function (error) {
               should.not.exist(error);
+
+              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(newAlertMessage1)"}}]]></BodyTemplate>');
+
+              done();
+            });
+        });
+
+        it('should work when payload member exists', function (done) {
+          executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+          notificationHubService.apns.updateTemplateRegistration(
+            registrationId,
+            tokenId,
+            null,
+            {
+              alert: '$(newAlertMessage1)',
+              payload: {
+                data1: '$(data1)',
+                data2: '$(data2)',
+              }
+            },
+            function (error) {
+              should.not.exist(error);
+
+              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(newAlertMessage1)"},"data1":"$(data1)","data2":"$(data2)"}]]></BodyTemplate>');
+
+              done();
+            });
+        });
+
+        it('should work when aps exists without modifying payload as extra data', function (done) {
+          executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+          notificationHubService.apns.updateTemplateRegistration(
+            registrationId,
+            tokenId,
+            null,
+            {
+              aps: { alert: '$(newAlertMessage1)' },
+              payload: {
+                data1: '$(data1)',
+                data2: '$(data2)',
+              }
+            },
+            function (error) {
+              should.not.exist(error);
+
+              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(newAlertMessage1)"},"payload":{"data1":"$(data1)","data2":"$(data2)"}}]]></BodyTemplate>');
 
               done();
             });

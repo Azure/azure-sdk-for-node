@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "Microsoft Azure Common Client Library for node",
   "tags": [
     "azure",
@@ -42,13 +42,13 @@
     "duplexer": "~0.1.1",
     "through": "~2.3.4"
   },
-  "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
-    "url": "git@github.com:WindowsAzure/azure-sdk-for-node.git"
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
     "test": "npm -s run-script jshint"

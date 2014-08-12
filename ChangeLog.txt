@@ -1,3 +1,16 @@
+2014.08.11 Version 0.9.14
+* Bug fixes to notification hub client
+* Updated repo pointers in package.json files
+
+2014.07.30 Version 0.9.13
+* Updates to service management clients
+* Fixes to notification hub client
+* Separated out service bus, and hdinsight management into separate modules
+* Obsolete service management APIs removed
+
+2014.07.02 Version 0.9.11
+* Updated service management clients
+
 2014.06.23 Version 0.9.10
 * Bug fix for url filter creation
 
