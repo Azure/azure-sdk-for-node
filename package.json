@@ -14,7 +14,7 @@
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>",
     "Lu, Jianghao <jianghlu@microsoft.com>"
   ],
-  "version": "0.9.14",
+  "version": "0.9.15",
   "description": "Microsoft Azure Client Library for node",
   "tags": [
     "azure",
@@ -40,7 +40,7 @@
     "azure-mgmt-compute": "0.9.10",
     "azure-mgmt": "0.9.10",
     "azure-mgmt-vnet": "0.9.10",
-    "azure-mgmt-sb": "0.9.10",
+    "azure-mgmt-sb": "0.9.11",
     "azure-mgmt-sql": "0.9.10",
     "azure-mgmt-storage": "0.9.10",
     "azure-mgmt-website": "0.9.10",
