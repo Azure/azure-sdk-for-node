@@ -156,7 +156,35 @@ describe('serviceclient-tests', function () {
       };
       var normalizedError = ServiceClient._normalizeError(error, {statusCode: 404});
       normalizedError.should.be.an.instanceOf(Error);
-      normalizedError.should.have.keys('message', 'statusCode');
+      normalizedError.should.have.keys('code', 'statusCode');
+      done();
+    });
+
+    it('in odata error format with message as a string instead of object should be parsed properly', function (done) {
+      var error = {
+        'odata.error': {
+          'code': 'Request_ResourceNotFound',
+          'message' : 'Resource \'helloworld\' does not exist or one of its queried reference-property objects are not present.'
+        }
+      };
+      var normalizedError = ServiceClient._normalizeError(error, {statusCode: 404});
+      normalizedError.should.be.an.instanceOf(Error);
+      normalizedError.should.have.keys('code', 'statusCode');
+      done();
+    });
+
+    it('in odata error format with message object not having the \'value\' key should be parsed properly', function (done) {
+      var error = {
+        'odata.error': {
+          'code': 'Request_ResourceNotFound',
+          'message' : {
+            'lang': 'en'
+          }
+        }
+      };
+      var normalizedError = ServiceClient._normalizeError(error, {statusCode: 404});
+      normalizedError.should.be.an.instanceOf(Error);
+      normalizedError.should.have.keys('code', 'statusCode');
       done();
     });
   });
