@@ -1,3 +1,6 @@
+2014.08.12 Version 0.9.15
+* Fixed dependencies in the azure-sb module
+
 2014.08.11 Version 0.9.14
 * Bug fixes to notification hub client
 * Updated repo pointers in package.json files

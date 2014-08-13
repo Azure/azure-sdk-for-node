@@ -14,7 +14,7 @@
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>",
     "Lu, Jianghao <jianghlu@microsoft.com>"
   ],
-  "version": "0.9.14",
+  "version": "0.9.15",
   "description": "Microsoft Azure Client Library for node",
   "tags": [
     "azure",
@@ -52,12 +52,10 @@
     "azure-mgmt-resource": "2.0.0-pre.10",
     "azure-gallery": "2.0.0-pre.9",
     "azure-mgmt-hdinsight": "0.9.10",
-    "azure-sb": "0.9.10",
+    "azure-sb": "0.9.11",
     "mime": "~1.2.4",
     "underscore": "1.4.x",
     "request": "2.27.0",
-    "wns": "~0.5.3",
-    "mpns": "~2.0.0",
     "node-uuid": "~1.2.0"
   },
   "devDependencies": {
