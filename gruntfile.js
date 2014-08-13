@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       'azure-mgmt-compute': '0.9.10',
       'azure-mgmt-hdinsight': '0.9.10',
       'azure-mgmt-resource': '2.0.0-pre.10',
-      'azure-mgmt-sb': '0.9.11',
+      'azure-mgmt-sb': '0.9.10',
       'azure-mgmt-scheduler': '0.9.1-pre.10',
       'azure-mgmt-sql': '0.9.10',
       'azure-mgmt-storage': '0.9.10',
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
       'azure-mgmt-website': '0.9.10',
       'azure-monitoring': '0.9.1-pre.10',
       'azure-rm-website': '0.9.0-pre.4',
-      'azure-sb': '0.9.10',
+      'azure-sb': '0.9.11',
       'azure-scheduler': '0.9.1-pre.10',
       'azure-storage-legacy': '0.9.10'
     },
