@@ -128,7 +128,7 @@ describe('serviceclient-tests', function () {
   });
 
   describe('NormalizedErrors', function () {
-    it('should be parsed properly', function (done) {
+    it('not in odata error format should be parsed properly', function (done) {
       var error = { 
         Error: {
           'detail': 'this is an error message',
