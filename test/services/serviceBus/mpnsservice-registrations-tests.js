@@ -18,6 +18,7 @@ var _ = require('underscore');
 
 var should = require('should');
 var sinon = require('sinon');
+var fs = require('fs');
 
 // Test includes
 var testutil = require('../../util/util');
@@ -36,6 +37,14 @@ describe('MPNS notifications registrations', function () {
   var sandbox;
 
   before(function (done) {
+    if (!process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
+      process.env.AZURE_MPNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_FILE'])).toString('base64');
+    }
+
+    if (!process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
+      process.env.AZURE_MPNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_KEY_FILE']).toString();
+    }
+
     sandbox = sinon.sandbox.create();
 
     service = azure.createServiceBusService()

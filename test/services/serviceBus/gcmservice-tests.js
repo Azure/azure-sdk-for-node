@@ -138,8 +138,8 @@ describe('GCM notifications', function () {
           result.statusCode.should.equal(201);
 
           // Headers
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_TAGS].should.equal(tagsString);
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_FORMAT].should.equal('gcm');
+          executeSpy.args[0][0].headers['ServiceBusNotification-Tags'].should.equal(tagsString);
+          executeSpy.args[0][0].headers['ServiceBusNotification-Format'].should.equal('gcm');
 
           // Body
           var body = JSON.parse(executeSpy.args[0][1]);

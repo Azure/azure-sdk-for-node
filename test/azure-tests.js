@@ -247,7 +247,7 @@ test('MissingServiceBusIssuerAndWrapNamespace', function (done) {
     var serviceBusService = azure.createServiceBusService();
 
     // set correctly
-    assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + environmentServiceBusNamespace + ServiceClient.DEFAULT_WRAP_NAMESPACE_SUFFIX + '.accesscontrol.windows.net:443');
+    assert.equal(serviceBusService.authenticationProvider.acsHost, 'https://' + environmentServiceBusNamespace + '-sb.accesscontrol.windows.net:443/WRAPv0.9');
     assert.equal(serviceBusService.authenticationProvider.accessKey, environmentServiceBusAccessKey);
 
     // defaulted correctly

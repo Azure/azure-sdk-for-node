@@ -198,9 +198,9 @@ describe('APNS notifications', function () {
           should.not.exist(error);
           result.statusCode.should.equal(201);
 
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_TAGS].should.equal(tagsString);
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_APNS_EXPIRY].should.equal(expiryDate.toISOString());
-          executeSpy.args[0][0].headers[HeaderConstants.SERVICE_BUS_NOTIFICATION_FORMAT].should.equal('apple');
+          executeSpy.args[0][0].headers['ServiceBusNotification-Tags'].should.equal(tagsString);
+          executeSpy.args[0][0].headers['ServiceBusNotification-ApnsExpiry'].should.equal(expiryDate.toISOString());
+          executeSpy.args[0][0].headers['ServiceBusNotification-Format'].should.equal('apple');
 
           done();
         }

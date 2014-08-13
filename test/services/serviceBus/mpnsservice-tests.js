@@ -15,7 +15,7 @@
 // 
 
 var _ = require('underscore');
-
+var fs = require('fs');
 var should = require('should');
 var sinon = require('sinon');
 
@@ -37,6 +37,14 @@ describe('MPNS notifications', function () {
 
   before(function (done) {
     sandbox = sinon.sandbox.create();
+
+    if (!process.env.AZURE_MPNS_CERTIFICATE && process.env.AZURE_MPNS_CERTIFICATE_FILE) {
+      process.env.AZURE_MPNS_CERTIFICATE = new Buffer(fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_FILE'])).toString('base64');
+    }
+
+    if (!process.env.AZURE_MPNS_CERTIFICATE_KEY && process.env.AZURE_MPNS_CERTIFICATE_KEY_FILE) {
+      process.env.AZURE_MPNS_CERTIFICATE_KEY = fs.readFileSync(process.env['AZURE_MPNS_CERTIFICATE_KEY_FILE']).toString();
+    }
 
     service = azure.createServiceBusService()
       .withFilter(new azure.ExponentialRetryPolicyFilter());
