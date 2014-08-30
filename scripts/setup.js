@@ -39,6 +39,10 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/graph.rbac/' },    
   { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement2/' },
   { cmd: 'npm install', path: 'lib/services/webSiteManagement2/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/hdinsight/' },
+  { cmd: 'npm install', path: 'lib/services/hdinsight/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/serviceBus/' },
+  { cmd: 'npm install', path: 'lib/services/serviceBus/' },
   { cmd: 'npm link lib/common/' },
   { cmd: 'npm link lib/services/legacyStorage' },
   { cmd: 'npm link lib/services/computeManagement/' },
@@ -55,9 +59,11 @@ var cmds = [
   { cmd: 'npm link lib/services/webSiteManagement/' },
   { cmd: 'npm link lib/services/resourceManagement/' },
   { cmd: 'npm link lib/services/gallery/' },
+  { cmd: 'npm link lib/services/webSiteManagement2/' },
+  { cmd: 'npm link lib/services/hdinsight/' },
+  { cmd: 'npm link lib/services/serviceBus/' },
   { cmd: 'npm link lib/services/authorizationManagement/' },
-  { cmd: 'npm link lib/services/graph.rbac/' },
-  { cmd: 'npm link lib/services/webSiteManagement2/' }
+  { cmd: 'npm link lib/services/graph.rbac/' }
 ];
 
 function executeCmds(cmds) {

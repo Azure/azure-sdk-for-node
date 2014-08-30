@@ -24,6 +24,7 @@ var testutil = require('../../util/util');
 var notificationhubstestutil = require('../../framework/notificationhubs-test-utils');
 
 var azure = testutil.libRequire('azure');
+var azureSb = require('azure-sb');
 
 var hubNames = [];
 var hubNamePrefix = 'xplathub';
@@ -40,7 +41,7 @@ describe('Notification hubs', function () {
   before(function (done) {
     sandbox = sinon.sandbox.create();
 
-    service = azure.createServiceBusService()
+    service = azureSb.createServiceBusService()
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 
     suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
@@ -69,12 +70,18 @@ describe('Notification hubs', function () {
   });
 
   afterEach(function (done) {
-    // Schedule deleting notification hubs
-    _.each(hubNames, function (notificationHub) {
-      service.deleteNotificationHub(notificationHub, function () {});
-    });
+    var deleteHubs = function (hubs) {
+      if (hubs.length === 0) {
+        suiteUtil.baseTeardownTest(done);
+      } else {
+        var currentHub = hubs.pop();
+        service.deleteNotificationHub(currentHub, function () {
+          deleteHubs(hubs);
+        });
+      }
+    };
 
-    suiteUtil.baseTeardownTest(done);
+    deleteHubs(hubNames);
   });
 
   describe('Create notification hub', function () {

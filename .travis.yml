@@ -13,3 +13,18 @@ matrix:
 before_install:
   - npm update -g npm
   - npm run-script setup
+  - npm install
+  # comment out because of the access problem to the private repo
+  #- cd ..
+  #- git clone https://github.com/azure/azure-sdk-tools-xplat-pr.git
+  #- cd azure-sdk-tools-xplat-pr
+  #- git checkout dev
+  #- node scripts/link-to-sdk.js pr
+  #- npm install
+  
+script:
+  #- cd ../azure-sdk-for-node-pr
+  - npm test
+  # - cd ../azure-sdk-tools-xplat-pr
+  #- npm run unit
+  #- npm run unit-arm
