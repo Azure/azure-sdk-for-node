@@ -128,15 +128,32 @@ module.exports = function(grunt) {
         destDir: 'lib/services/subscriptionManagement/lib',
         output: 'subscriptionClient.js'
       },
-      'Microsoft.Azure.Management.Resources.Specification.dll' : {
-        clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
-        destDir: 'lib/services/resourceManagement/lib',
-        output: 'resourceManagementClient.js'
-      },
+      'Microsoft.Azure.Management.Resources.Specification.dll' : [
+        {
+          clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
+          destDir: 'lib/services/resourceManagement/lib',
+          output: 'resourceManagementClient.js'
+        },
+        {
+          clientType: 'Microsoft.Azure.Subscriptions.SubscriptionClient',
+          destDir: 'lib/services/resourceManagement/lib',
+          output: 'subscriptionClient.js'
+        }
+      ],
       'Microsoft.Azure.Gallery.Specification.dll': {
         clientType: 'Microsoft.Azure.Gallery.GalleryClient',
         destDir: 'lib/services/gallery/lib',
         output: 'galleryClient.js'
+      },
+      'Microsoft.Azure.Management.Authorization.Specification.dll': {
+        clientType: 'Microsoft.Azure.Management.Authorization.AuthorizationManagementClient',
+        destDir: 'lib/services/authorizationManagement/lib',
+        output: 'authorizationManagementClient.js'
+      },
+      'Microsoft.Azure.Graph.RBAC.Specification.dll': {
+        clientType: 'Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient',
+        destDir: 'lib/services/graph.rbac/lib',
+        output: 'graphRbacManagementClient.js'
       },
       'Microsoft.Azure.Management.WebSites.Specification.dll': {
         clientType: 'Microsoft.Azure.Management.WebSites.WebSiteManagementClient',
@@ -178,6 +195,8 @@ module.exports = function(grunt) {
                   "lib/services/table/tableservice.js",
                   "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
                   "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js",
+                  "lib/services/authorizationManagement/lib/authorizationManagementClient.js",
+                  "lib/services/graph.rbac/lib/graphRbacManagementClient.js",
                   "lib/services/webSiteManagement2/lib/webSiteManagementClient.js"
             ],
             options: {
