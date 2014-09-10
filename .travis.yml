@@ -14,17 +14,17 @@ before_install:
   - npm update -g npm
   - npm run-script setup
   - npm install
-  # comment out because of the access problem to the private repo
+  # comment out till xplat integration from private repository is done
   #- cd ..
-  #- git clone https://github.com/azure/azure-sdk-tools-xplat-pr.git
-  #- cd azure-sdk-tools-xplat-pr
+  #- git clone https://github.com/azure/azure-sdk-tools-xplat.git
+  #- cd azure-sdk-tools-xplat
   #- git checkout dev
-  #- node scripts/link-to-sdk.js pr
+  #- node scripts/link-to-sdk.js
   #- npm install
   
 script:
-  #- cd ../azure-sdk-for-node-pr
+  #- cd ../azure-sdk-for-node
   - npm test
-  # - cd ../azure-sdk-tools-xplat-pr
+  # - cd ../azure-sdk-tools-xplat
   #- npm run unit
   #- npm run unit-arm
