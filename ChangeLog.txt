@@ -1,3 +1,7 @@
+2014.09.10 Version 0.9.16
+* Release new azure authorization clients
+* Release new subscription client of azure resource management
+
 2014.08.12 Version 0.9.15
 * Fixed dependencies in the azure-sb module
 
