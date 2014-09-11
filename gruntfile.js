@@ -22,26 +22,27 @@ module.exports = function(grunt) {
       src : 'http://www.nuget.org/nuget.exe'
     },
     packageVersions: {
-      'azure': '0.9.15',
-      'azure-common': '0.9.7',
-      'azure-gallery': '2.0.0-pre.9',
-      'azure-mgmt': '0.9.10',
-      'azure-mgmt-compute': '0.9.10',
-      'azure-mgmt-hdinsight': '0.9.10',
-      'azure-mgmt-resource': '2.0.0-pre.10',
-      'azure-mgmt-sb': '0.9.10',
-      'azure-mgmt-scheduler': '0.9.1-pre.10',
-      'azure-mgmt-sql': '0.9.10',
-      'azure-mgmt-storage': '0.9.10',
-      'azure-mgmt-store': '0.9.10',
-      'azure-mgmt-subscription': '0.9.10',
-      'azure-mgmt-vnet': '0.9.10',
-      'azure-mgmt-website': '0.9.10',
-      'azure-monitoring': '0.9.1-pre.10',
-      'azure-rm-website': '0.9.0-pre.4',
-      'azure-sb': '0.9.11',
-      'azure-scheduler': '0.9.1-pre.10',
-      'azure-storage-legacy': '0.9.10'
+      'azure': '0.9.16',
+      'azure-common': '0.9.8',
+      'azure-gallery': '2.0.0-pre.10',
+      'azure-mgmt': '0.9.11',
+      'azure-mgmt-compute': '0.9.11',
+      'azure-mgmt-hdinsight': '0.9.11',
+      'azure-mgmt-resource': '2.0.0-pre.11',
+      'azure-mgmt-sb': '0.9.11',
+      'azure-mgmt-scheduler': '0.9.1-pre.11',
+      'azure-mgmt-sql': '0.9.11',
+      'azure-mgmt-storage': '0.9.11',
+      'azure-mgmt-store': '0.9.11',
+      'azure-mgmt-subscription': '0.9.11',
+      'azure-mgmt-vnet': '0.9.11',
+      'azure-mgmt-website': '0.9.11',
+      'azure-monitoring': '0.9.1-pre.11',
+      'azure-rm-website': '0.9.0-pre.5',
+      'azure-sb': '0.9.12',
+      'azure-scheduler': '0.9.1-pre.11',
+      'azure-storage-legacy': '0.9.11',
+      'azure-mgmt-authorization': '0.9.0-pre.1'
     },
     hydra: {
       'Microsoft.WindowsAzure.Management.Compute.Specification.dll' : {
@@ -128,15 +129,32 @@ module.exports = function(grunt) {
         destDir: 'lib/services/subscriptionManagement/lib',
         output: 'subscriptionClient.js'
       },
-      'Microsoft.Azure.Management.Resources.Specification.dll' : {
-        clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
-        destDir: 'lib/services/resourceManagement/lib',
-        output: 'resourceManagementClient.js'
-      },
+      'Microsoft.Azure.Management.Resources.Specification.dll' : [
+        {
+          clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
+          destDir: 'lib/services/resourceManagement/lib',
+          output: 'resourceManagementClient.js'
+        },
+        {
+          clientType: 'Microsoft.Azure.Subscriptions.SubscriptionClient',
+          destDir: 'lib/services/resourceManagement/lib',
+          output: 'subscriptionClient.js'
+        }
+      ],
       'Microsoft.Azure.Gallery.Specification.dll': {
         clientType: 'Microsoft.Azure.Gallery.GalleryClient',
         destDir: 'lib/services/gallery/lib',
         output: 'galleryClient.js'
+      },
+      'Microsoft.Azure.Management.Authorization.Specification.dll': {
+        clientType: 'Microsoft.Azure.Management.Authorization.AuthorizationManagementClient',
+        destDir: 'lib/services/authorizationManagement/lib',
+        output: 'authorizationManagementClient.js'
+      },
+      'Microsoft.Azure.Graph.RBAC.Specification.dll': {
+        clientType: 'Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient',
+        destDir: 'lib/services/graph.rbac/lib',
+        output: 'graphRbacManagementClient.js'
       },
       'Microsoft.Azure.Management.WebSites.Specification.dll': {
         clientType: 'Microsoft.Azure.Management.WebSites.WebSiteManagementClient',
@@ -178,6 +196,8 @@ module.exports = function(grunt) {
                   "lib/services/table/tableservice.js",
                   "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
                   "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js",
+                  "lib/services/authorizationManagement/lib/authorizationManagementClient.js",
+                  "lib/services/graph.rbac/lib/graphRbacManagementClient.js",
                   "lib/services/webSiteManagement2/lib/webSiteManagementClient.js"
             ],
             options: {
