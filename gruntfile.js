@@ -153,7 +153,7 @@ module.exports = function(grunt) {
       },
       'Microsoft.Azure.Graph.RBAC.Specification.dll': {
         clientType: 'Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient',
-        destDir: 'lib/services/graph.rbac/lib',
+        destDir: 'lib/services/extra/lib',
         output: 'graphRbacManagementClient.js'
       },
       'Microsoft.Azure.Management.WebSites.Specification.dll': {
