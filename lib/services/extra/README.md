@@ -10,7 +10,7 @@ This project provides a Node.js package for accessing the Azure PAS. Right now i
 ## How to Install
 
 ```bash
-npm install azure-graph.rbac
+npm install azure-extra
 ```
 
 ## How to Use
