@@ -1,5 +1,5 @@
 {
-  "name": "azure-graph.rbac",
+  "name": "azure-extra",
   "author": "Microsoft Corporation",
   "contributors": [
     "Cowlishaw, Mark <markcowl@microsoft.com>",
@@ -7,8 +7,8 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>"
   ],
-  "version": "0.9.0-pre",
-  "description": "Microsoft Azure Graph RBAC Client Library for node",
+  "version": "0.1.0",
+  "description": "Microsoft Azure Client Library in node for miscellaneous items",
   "tags": [
     "azure",
     "sdk"
