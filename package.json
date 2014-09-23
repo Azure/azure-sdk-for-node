@@ -56,7 +56,7 @@
     "azure-sb": "0.9.12",
     "mime": "~1.2.4",
     "underscore": "1.4.x",
-    "request": "2.27.0",
+    "request": "2.40.0",
     "node-uuid": "~1.2.0"
   },
   "devDependencies": {
