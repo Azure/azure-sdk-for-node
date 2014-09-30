@@ -4,14 +4,13 @@ node_js:
   - "0.10"
   - "0.8"
 
-
 matrix:
   allow_failures:
     - node_js: "0.11"
 
 # setup links to submodules
 before_install:
-  - npm update -g npm
+  - npm install -g npm@1.4.23
   - npm run-script setup
   - npm install
   - cd ..
@@ -20,7 +19,7 @@ before_install:
   - git checkout dev
   - node scripts/link-to-sdk.js
   - npm install
-  
+
 script:
   - cd ../azure-sdk-for-node
   - npm test
