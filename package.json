@@ -36,7 +36,6 @@
   ],
   "dependencies": {
     "azure-common": "0.9.8",
-    "azure-storage-legacy": "0.9.11",
     "azure-mgmt-compute": "0.9.11",
     "azure-mgmt": "0.9.11",
     "azure-mgmt-vnet": "0.9.11",
@@ -57,7 +56,8 @@
     "mime": "~1.2.4",
     "underscore": "1.4.x",
     "request": "2.27.0",
-    "node-uuid": "~1.2.0"
+    "node-uuid": "~1.2.0",
+    "azure-storage": "0.3.3"
   },
   "devDependencies": {
     "mocha": "1.16.0",
