@@ -7,6 +7,7 @@ node_js:
 matrix:
   allow_failures:
     - node_js: "0.11"
+    - node_js: "0.8"
 
 # setup links to submodules
 before_install:
