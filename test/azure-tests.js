@@ -21,6 +21,7 @@ var testutil = require('./util/util');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
+var storage = testutil.libRequire('services/legacyStorage');
 var ServiceBusServiceClient = testutil.libRequire('services/serviceBus/lib/servicebusserviceclient');
 var ServiceClientConstants = azure.ServiceClientConstants;
 
@@ -142,13 +143,13 @@ suite('azure', function () {
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
-    var blobService1 = azure.createBlobService();
+    var blobService1 = storage.createBlobService();
     assert.equal(blobService1.host, environmentAzureStorageAccount + '.' + ServiceClientConstants.CLOUD_BLOB_HOST);
     assert.equal(blobService1.usePathStyleUri, false);
 
     process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
-    var blobService2 = azure.createBlobService();
+    var blobService2 = storage.createBlobService();
     assert.equal(blobService2.host, '127.0.0.1');
     assert.equal(blobService2.usePathStyleUri, true);
 
@@ -165,7 +166,7 @@ suite('azure', function () {
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client passing some credentials
-    var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
+    var blobService = storage.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
     // Points to the live services
     assert.equal(blobService.usePathStyleUri, false);
@@ -188,7 +189,7 @@ suite('azure', function () {
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client passing some credentials
-    var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
+    var blobService = storage.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
     // Points to the credentials
     assert.equal(blobService.usePathStyleUri, false);
@@ -211,7 +212,7 @@ suite('azure', function () {
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client without passing any credentials
-    var blobService = azure.createBlobService();
+    var blobService = storage.createBlobService();
 
     // Points to the emulator
     assert.equal(blobService.usePathStyleUri, true);
@@ -234,7 +235,7 @@ suite('azure', function () {
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client without passing any credentials
-    var blobService = azure.createBlobService();
+    var blobService = storage.createBlobService();
 
     // Points to the live service
     assert.equal(blobService.usePathStyleUri, false);

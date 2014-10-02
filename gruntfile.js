@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       src : 'http://www.nuget.org/nuget.exe'
     },
     packageVersions: {
-      'azure': '0.9.16',
+      'azure': '0.10.0',
       'azure-common': '0.9.8',
       'azure-gallery': '2.0.0-pre.10',
       'azure-mgmt': '0.9.11',
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       'azure-rm-website': '0.9.0-pre.5',
       'azure-sb': '0.9.12',
       'azure-scheduler': '0.9.1-pre.11',
-      'azure-storage-legacy': '0.9.11',
+      'azure-storage-legacy': '0.9.12',
       'azure-mgmt-authorization': '0.9.0-pre.1'
     },
     hydra: {
