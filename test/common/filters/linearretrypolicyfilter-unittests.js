@@ -60,7 +60,7 @@ suite('linearretrypolicyfilter-unittests', function () {
           timesCalled ++;
           retryCallback(true, null, response, null);
         } else {
-          throw "Fail to retry on HTTP 408";
+          throw "Should not retry on HTTP 404";
         }
       };
     };
