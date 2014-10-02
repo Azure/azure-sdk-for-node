@@ -14,7 +14,7 @@
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>",
     "Lu, Jianghao <jianghlu@microsoft.com>"
   ],
-  "version": "0.9.16",
+  "version": "0.10.0",
   "description": "Microsoft Azure Client Library for node",
   "tags": [
     "azure",
