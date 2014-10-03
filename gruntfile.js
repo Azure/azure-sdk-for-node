@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       'azure-gallery': '2.0.0-pre.11',
       'azure-mgmt': '0.9.12',
       'azure-mgmt-compute': '0.9.12',
-      'azure-mgmt-hdinsight': '0.9.13',
+      'azure-mgmt-hdinsight': '0.9.12',
       'azure-mgmt-resource': '2.0.0-pre.12',
       'azure-mgmt-sb': '0.9.12',
       'azure-mgmt-scheduler': '0.9.1-pre.12',
