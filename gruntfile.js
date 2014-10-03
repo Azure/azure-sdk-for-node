@@ -42,7 +42,8 @@ module.exports = function(grunt) {
       'azure-sb': '0.9.13',
       'azure-scheduler': '0.9.1-pre.12',
       'azure-storage-legacy': '0.9.12',
-      'azure-mgmt-authorization': '0.9.0-pre.2'
+      'azure-mgmt-authorization': '0.9.0-pre.2',
+      'azure-extra': '0.1.1'
     },
     hydra: {
       'Microsoft.WindowsAzure.Management.Compute.Specification.dll' : {
