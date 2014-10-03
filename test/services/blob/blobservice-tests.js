@@ -30,7 +30,7 @@ var blobtestutil = require('../../framework/blob-test-utils');
 
 // Lib includes
 var common = require('azure-common');
-var storage = require('azure-storage-legacy');
+var storage = testutil.libRequire('services/legacyStorage');
 
 var azureutil = common.util;
 var azure = testutil.libRequire('azure');
@@ -1514,7 +1514,7 @@ describe('BlobService', function () {
 
   it('storageConnectionStringsDevStore', function (done) {
     var connectionString = 'UseDevelopmentStorage=true';
-    var blobService = azure.createBlobService(connectionString);
+    var blobService = storage.createBlobService(connectionString);
 
     assert.equal(blobService.storageAccount, ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT);
     assert.equal(blobService.storageAccessKey, ServiceClientConstants.DEVSTORE_STORAGE_ACCESS_KEY);
