@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.1-pre.11",
+  "version": "0.9.1-pre.12",
   "description": "Microsoft Azure Monitoring Client Library for node",
   "tags": [
     "azure",
@@ -31,7 +31,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.8",
+    "azure-common": "0.9.9",
     "underscore": "1.4.x",
     "moment": "2.6.0"
   },
