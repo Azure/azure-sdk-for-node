@@ -5,9 +5,10 @@
     "Cowlishaw, Mark <markcowl@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>",
-    "Mkrtchyan, Hovsep <hovsepm@microsoft.com>"
+    "Mkrtchyan, Hovsep <hovsepm@microsoft.com>", 
+    "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Microsoft Azure Client Library in node for miscellaneous items",
   "tags": [
     "azure",
