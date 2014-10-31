@@ -60,8 +60,8 @@ module.exports = function(grunt) {
     var done = this.async();
 
     var configVars = [
-      ['PRIVATE_FEED_LOCATION', 'privateFeedLocation'],
-      ['PRIVATE_FEED_URL', 'privateFeedUrl'],
+      ['PRIVATE_FEED_LOCATION', 'privateFeedLocation'], //default file share based feed
+      ['PRIVATE_FEED_URL', 'privateFeedUrl'], //web based nuget feed
       ['PRIVATE_FEED_USER_NAME', 'privateFeedUserName'],
       ['PRIVATE_FEED_PASSWORD', 'privateFeedPassword']
     ];
@@ -70,6 +70,8 @@ module.exports = function(grunt) {
 
     var primaryFeed = configVars[0][2];
     var secondaryFeed = configVars[1][2];
+
+    //error if web based feed was selected, but no credentail provided
     if (!primaryFeed && secondaryFeed) {
       var unsetVars = configVars.filter(function (v) { return v[0] != 'PRIVATE_FEED_LOCATION' && v[0] != 'PRIVATE_FEED_URL' && !(v[2]); });
       if (unsetVars.length !== 0) {
@@ -196,9 +198,11 @@ module.exports = function(grunt) {
     }
 
     function addSource(sourceName, sourceUrl, callback) {
-      if (sourceUrl){
+      if (sourceUrl) {
         var opts = spawnOpts('sources', 'add', '-name', sourceName, '-source', sourceUrl);
         grunt.util.spawn(opts, callback);
+      } else {
+        callback();
       }
     }
 
@@ -206,6 +210,8 @@ module.exports = function(grunt) {
       if (userName && password) {
         var opts = spawnOpts('sources', 'update', '-name', sourceName, '-username', userName, '-password', password);
         grunt.util.spawn(opts, callback);
+      } else {
+        callback();
       }
     }
 
