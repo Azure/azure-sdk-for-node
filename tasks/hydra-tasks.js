@@ -21,10 +21,10 @@ var path = require('path');
 var request = require('request');
 var util = require('util');
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   'use strict';
 
-  grunt.registerTask('downloadNuGet', 'Download the NuGet.exe file if not already present', function() {
+  grunt.registerTask('downloadNuGet', 'Download the NuGet.exe file if not already present', function () {
     var config = {
       path: grunt.config('downloadNuGet.path') || '.nuget',
       src: grunt.config('downloadNuGet.src') || 'http://www.nuget.org/nuget.exe'
@@ -97,21 +97,17 @@ module.exports = function(grunt) {
         if (err) { return cleanupAndFail(err); }
 
         //will be no-op if the feedUrl is not set
-        n.addSource('secondaryFeed', config.privateFeedUrl, function (err) {
+        n.addSourceRequiringCredentials('secondaryFeed', config.privateFeedUrl, config.privateFeedUserName, config.privateFeedPassword, function (err) {
           if (err) { return cleanupAndFail(err); }
 
-          n.updateSource('secondaryFeed', config.privateFeedUserName, config.privateFeedPassword, function (err) {
-            if (err) { return cleanupAndFail(err); }
-
-            n.restorePackages('packages.config', 'packages', function (err) {
-              deleteFile(restoreConfigFile);
-              if (err) {
-                grunt.fatal(err);
-                done(false);
-              } else {
-                done();
-              }
-            });
+          n.restorePackages('packages.config', 'packages', function (err) {
+            deleteFile(restoreConfigFile);
+            if (err) {
+              grunt.fatal(err);
+              done(false);
+            } else {
+              done();
+            }
           });
         });
       });
@@ -134,7 +130,7 @@ module.exports = function(grunt) {
     if (Object.prototype.toString.call(this.data) === '[object Array]') {
       data = this.data;
     } else {
-      data = [ this.data ];
+      data = [this.data];
     }
 
     function generate(elements, cb) {
@@ -144,13 +140,13 @@ module.exports = function(grunt) {
 
       var element = elements.pop();
       if (element.split) {
-        args = [ '-f', 'js', '-d', element.destDir, '-s', element.split, '-c', element.clientType, specPath];
+        args = ['-f', 'js', '-d', element.destDir, '-s', element.split, '-c', element.clientType, specPath];
       } else if (element.output) {
-        args = [ '-f', 'js', '-d', element.destDir, '-o', element.output, '-c', element.clientType, specPath];
+        args = ['-f', 'js', '-d', element.destDir, '-o', element.output, '-c', element.clientType, specPath];
       } else {
         // this will most likely be an error on the CLI, but pass it anyways to make sure
         // we throw the right error
-        args = [ '-f', 'js', '-d', element.destDir, '-c', element.clientType, specPath];
+        args = ['-f', 'js', '-d', element.destDir, '-c', element.clientType, specPath];
       }
 
       runExe(hydraExePath, args, function (err) {
@@ -179,7 +175,7 @@ module.exports = function(grunt) {
     var defaultArgs = [];
     var argsTail = ['-NonInteractive'];
 
-    if(os.platform() !== 'win32') {
+    if (os.platform() !== 'win32') {
       defaultArgs = ['--runtime=v4.0.30319', nugetExePath];
       nugetExePath = 'mono';
     }
@@ -207,9 +203,18 @@ module.exports = function(grunt) {
     }
 
     function updateSource(sourceName, userName, password, callback) {
-      if (userName && password) {
-        var opts = spawnOpts('sources', 'update', '-name', sourceName, '-username', userName, '-password', password);
-        grunt.util.spawn(opts, callback);
+      var opts = spawnOpts('sources', 'update', '-name', sourceName, '-username', userName, '-password', password);
+      grunt.util.spawn(opts, callback);
+    }
+
+    function addSourceRequiringCredentials(sourceName, sourceUrl, userName, password, callback) {
+      if (sourceUrl && userName && password) {
+        addSource(sourceName, sourceUrl, function (error) {
+          if (error) {
+            callback(error);
+          }
+          updateSource(sourceName, userName, password, callback);
+        });
       } else {
         callback();
       }
@@ -222,7 +227,7 @@ module.exports = function(grunt) {
 
     return {
       addSource: addSource,
-      updateSource: updateSource,
+      addSourceRequiringCredentials: addSourceRequiringCredentials,
       restorePackages: restorePackages
     };
   }
