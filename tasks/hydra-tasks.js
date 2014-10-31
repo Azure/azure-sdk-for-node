@@ -60,7 +60,7 @@ module.exports = function (grunt) {
     var done = this.async();
 
     var configVars = [
-      ['PRIVATE_FEED_LOCATION', 'privateFeedLocation'], //default file share based feed
+      ['PRIVATE_FEED_LOCATION', 'privateFeedLocation'], //default file share based nuget feed
       ['PRIVATE_FEED_URL', 'privateFeedUrl'], //web based nuget feed
       ['PRIVATE_FEED_USER_NAME', 'privateFeedUserName'],
       ['PRIVATE_FEED_PASSWORD', 'privateFeedPassword']
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
     var primaryFeed = configVars[0][2];
     var secondaryFeed = configVars[1][2];
 
-    //error if web based feed was selected, but no credentail provided
+    //error if web based feed was selected, but no credentails were provided
     if (!primaryFeed && secondaryFeed) {
       var unsetVars = configVars.filter(function (v) { return v[0] != 'PRIVATE_FEED_LOCATION' && v[0] != 'PRIVATE_FEED_URL' && !(v[2]); });
       if (unsetVars.length !== 0) {
