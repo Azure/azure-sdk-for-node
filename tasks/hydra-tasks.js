@@ -14,13 +14,12 @@
 // limitations under the License.
 //
 
-_ = require('underscore');
-child_process = require('child_process');
-fs = require('fs');
-os = require('os');
-path = require('path');
-request = require('request');
-util = require('util');
+var _ = require('underscore');
+var fs = require('fs');
+var os = require('os');
+var path = require('path');
+var request = require('request');
+var util = require('util');
 
 module.exports = function(grunt) {
   'use strict';
@@ -61,6 +60,7 @@ module.exports = function(grunt) {
     var done = this.async();
 
     var configVars = [
+      ['PRIVATE_FEED_LOCATION', 'privateFeedLocation'],
       ['PRIVATE_FEED_URL', 'privateFeedUrl'],
       ['PRIVATE_FEED_USER_NAME', 'privateFeedUserName'],
       ['PRIVATE_FEED_PASSWORD', 'privateFeedPassword']
@@ -68,39 +68,48 @@ module.exports = function(grunt) {
 
     configVars = configVars.map(function (v) { return [v[0], v[1], process.env[v[0]] || grunt.config('restorePackages.' + v[1])]; });
 
-    if (configVars[0][2]) {
-      var unsetVars = configVars.filter(function (v) { return v[0] != 'PRIVATE_FEED_URL' && !(v[2]); });
+    var primaryFeed = configVars[0][2];
+    var secondaryFeed = configVars[1][2];
+    if (!primaryFeed && secondaryFeed) {
+      var unsetVars = configVars.filter(function (v) { return v[0] != 'PRIVATE_FEED_LOCATION' && v[0] != 'PRIVATE_FEED_URL' && !(v[2]); });
       if (unsetVars.length !== 0) {
         grunt.fail.fatal('The following environment variables must be set: ' + unsetVars.map(function (v) { return v[0]; }), 1);
         return;
       }
+    }
 
+    if (primaryFeed || secondaryFeed) {
       var config = _.chain(configVars).map(function (v) { return [v[1], v[2]]; }).object().value();
 
       deleteFile(restoreConfigFile);
 
       n = nuget(nugetExe, restoreConfigFile);
 
-      var cleanupAndFail = function(err) {
+      var cleanupAndFail = function (err) {
         deleteFile(restoreConfigFile);
         grunt.fatal(err);
         done(false);
-      }
+      };
 
-      n.addSource('hydra', config.privateFeedUrl, function (err) {
+      n.addSource('primaryFeed', config.privateFeedLocation, function (err) {
         if (err) { return cleanupAndFail(err); }
 
-        n.updateSource('hydra', config.privateFeedUserName, config.privateFeedPassword, function (err) {
+        //will be no-op if the feedUrl is not set
+        n.addSource('secondaryFeed', config.privateFeedUrl, function (err) {
           if (err) { return cleanupAndFail(err); }
 
-          n.restorePackages('packages.config', 'packages', function (err) {
-            deleteFile(restoreConfigFile);
-            if (err) {
-              grunt.fatal(err);
-              done(false);
-            } else {
-              done();
-            }
+          n.updateSource('secondaryFeed', config.privateFeedUserName, config.privateFeedPassword, function (err) {
+            if (err) { return cleanupAndFail(err); }
+
+            n.restorePackages('packages.config', 'packages', function (err) {
+              deleteFile(restoreConfigFile);
+              if (err) {
+                grunt.fatal(err);
+                done(false);
+              } else {
+                done();
+              }
+            });
           });
         });
       });
@@ -187,13 +196,17 @@ module.exports = function(grunt) {
     }
 
     function addSource(sourceName, sourceUrl, callback) {
-      var opts = spawnOpts('sources', 'add', '-name', sourceName, '-source', sourceUrl);
-      grunt.util.spawn(opts, callback);
+      if (sourceUrl){
+        var opts = spawnOpts('sources', 'add', '-name', sourceName, '-source', sourceUrl);
+        grunt.util.spawn(opts, callback);
+      }
     }
 
     function updateSource(sourceName, userName, password, callback) {
-      var opts = spawnOpts('sources', 'update', '-name', sourceName, '-username', userName, '-password', password);
-      grunt.util.spawn(opts, callback);
+      if (userName && password) {
+        var opts = spawnOpts('sources', 'update', '-name', sourceName, '-username', userName, '-password', password);
+        grunt.util.spawn(opts, callback);
+      }
     }
 
     function restorePackages(packageConfigFile, packagesDir, callback) {
