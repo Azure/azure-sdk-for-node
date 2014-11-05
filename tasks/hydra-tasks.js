@@ -60,25 +60,18 @@ module.exports = function (grunt) {
     var done = this.async();
 
     var configVars = [
-      ['PRIVATE_FEED_LOCATION', 'privateFeedLocation'], //default file share based nuget feed
-      ['PRIVATE_FEED_URL', 'privateFeedUrl'], //web based nuget feed
+      ['PRIVATE_FEED_URL', 'privateFeedUrl'], 
       ['PRIVATE_FEED_USER_NAME', 'privateFeedUserName'],
-      ['PRIVATE_FEED_PASSWORD', 'privateFeedPassword']
+      ['PRIVATE_FEED_PASSWORD', 'privateFeedPassword'],
+      ['SECONDARY_FEED_URL', 'secondaryFeedUrl'],
+      ['SECONDARY_FEED_USER_NAME', 'secondaryFeedUserName'],
+      ['SECONDARY_FEED_PASSWORD', 'secondaryFeedPassword']
     ];
 
     configVars = configVars.map(function (v) { return [v[0], v[1], process.env[v[0]] || grunt.config('restorePackages.' + v[1])]; });
 
     var primaryFeed = configVars[0][2];
-    var secondaryFeed = configVars[1][2];
-
-    //error if web based feed was selected, but no credentails were provided
-    if (!primaryFeed && secondaryFeed) {
-      var unsetVars = configVars.filter(function (v) { return v[0] != 'PRIVATE_FEED_LOCATION' && v[0] != 'PRIVATE_FEED_URL' && !(v[2]); });
-      if (unsetVars.length !== 0) {
-        grunt.fail.fatal('The following environment variables must be set: ' + unsetVars.map(function (v) { return v[0]; }), 1);
-        return;
-      }
-    }
+    var secondaryFeed = configVars[3][2];
 
     if (primaryFeed || secondaryFeed) {
       var config = _.chain(configVars).map(function (v) { return [v[1], v[2]]; }).object().value();
@@ -93,11 +86,10 @@ module.exports = function (grunt) {
         done(false);
       };
 
-      n.addSource('primaryFeed', config.privateFeedLocation, function (err) {
+      n.configSource('primaryFeed', config.privateFeedUrl, config.privateFeedUserName, config.privateFeedPassword, function (err) {
         if (err) { return cleanupAndFail(err); }
 
-        //will be no-op if the feedUrl is not set
-        n.addSourceRequiringCredentials('secondaryFeed', config.privateFeedUrl, config.privateFeedUserName, config.privateFeedPassword, function (err) {
+        n.configSource('secondaryFeed', config.secondaryFeedUrl, config.secondaryFeedUserName, config.secondaryFeedPassword, function (err) {
           if (err) { return cleanupAndFail(err); }
 
           n.restorePackages('packages.config', 'packages', function (err) {
@@ -194,12 +186,8 @@ module.exports = function (grunt) {
     }
 
     function addSource(sourceName, sourceUrl, callback) {
-      if (sourceUrl) {
-        var opts = spawnOpts('sources', 'add', '-name', sourceName, '-source', sourceUrl);
-        grunt.util.spawn(opts, callback);
-      } else {
-        callback();
-      }
+      var opts = spawnOpts('sources', 'add', '-name', sourceName, '-source', sourceUrl);
+      grunt.util.spawn(opts, callback);
     }
 
     function updateSource(sourceName, userName, password, callback) {
@@ -207,13 +195,18 @@ module.exports = function (grunt) {
       grunt.util.spawn(opts, callback);
     }
 
-    function addSourceRequiringCredentials(sourceName, sourceUrl, userName, password, callback) {
-      if (sourceUrl && userName && password) {
+    function configSource(sourceName, sourceUrl, userName, password, callback) {
+      if (sourceUrl) {
         addSource(sourceName, sourceUrl, function (error) {
           if (error) {
             callback(error);
           }
-          updateSource(sourceName, userName, password, callback);
+          if (userName && password) {
+            updateSource(sourceName, userName, password, callback);
+          }
+          else {
+            callback();
+          }
         });
       } else {
         callback();
@@ -226,8 +219,7 @@ module.exports = function (grunt) {
     }
 
     return {
-      addSource: addSource,
-      addSourceRequiringCredentials: addSourceRequiringCredentials,
+      configSource: configSource,
       restorePackages: restorePackages
     };
   }
