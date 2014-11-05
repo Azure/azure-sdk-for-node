@@ -1,6 +1,4 @@
-var path = require('path');
-var exec = require('child_process').exec;
-
+var executeCmds = require('./executeCmds.js');
 var cmds = [
   { cmd: 'npm install', path: 'lib/common/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/legacyStorage' },
@@ -66,31 +64,4 @@ var cmds = [
   { cmd: 'npm link lib/services/extra/' }
 ];
 
-function executeCmds(cmds) {
-  if (cmds.length > 0) {
-    var current = cmds.shift();
-    var cwd;
-    if (current.path) {
-      cwd = path.join(__dirname, '/../', current.path);
-    } else {
-      cwd = path.join(__dirname, '/../');
-    }
-
-    exec(current.cmd, { cwd: cwd }, function (err, stdout, stderr) {
-      if (stdout) {
-        console.log(stdout);
-      }
-      if (stderr) {
-        console.log(stderr);
-      }
-
-      if (err) {
-        console.log(err);
-      } else {
-        executeCmds(cmds);
-      }
-    });
-  }
-}
-
-executeCmds(cmds);
+executeCmds.execute(cmds);
