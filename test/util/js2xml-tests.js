@@ -193,6 +193,24 @@ describe('js2xml', function() {
       done();
     });
 
+    it('should respect attribute namespace', function (done) {
+      var name1 = 'name1';
+      var name2 = 'name2';
+      var value2 = 3;
+
+      var element1 = js2xml.createElement(name1);
+      var attribute1 = js2xml.createAttribute(name2, 'ns');
+      js2xml.setElementValue(element1, value2);
+      js2xml.setAttributeValue(attribute1, 'value');
+      js2xml.addAttribute(element1, attribute1);
+
+      var result = js2xml.serializeDocument(element1);
+
+      result.should.equal('<?xml version="1.0" encoding="utf-8" standalone="yes"?><name1 a:name2="value" xmlns:a="ns">' + value2 + '</name1>');
+
+      done();
+    });
+
     it('should work with a child and attributes', function (done) {
       var name1 = 'name1';
       var name2 = 'name2';
