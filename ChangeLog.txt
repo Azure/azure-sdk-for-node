@@ -1,3 +1,7 @@
+2014.11.07 Version 0.10.1
+* Fixed parsing of sql db error messages with xml namespace
+* Implemented Renew-Lock for Message in ServiceBus
+
 2014.10.02 Version 0.10.0
 * Switch to use "azure-storage" from "azure-storage-legacy"
 * Fix retry logic on http status code 408 
