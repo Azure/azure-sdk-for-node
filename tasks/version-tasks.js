@@ -15,11 +15,10 @@
 
 'use strict';
 
-_ = require('underscore');
-child_process = require('child_process');
-fs = require('fs');
-path = require('path');
-util = require('util');
+var _ = require('underscore');
+var fs = require('fs');
+var path = require('path');
+var util = require('util');
 
 module.exports = function (grunt) {
   grunt.registerTask('updateVersions', 'Update versions of packages and dependencies', function () {
@@ -45,7 +44,7 @@ module.exports = function (grunt) {
     });
 
     _.keys(packages).sort().forEach(function (packageName) {
-      grunt.log.writeln(util.format("'%s': '%s'", packageName, packages[packageName]));
+      grunt.log.writeln(util.format('\'%s\': \'%s\'', packageName, packages[packageName]));
     });
   });
 
