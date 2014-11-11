@@ -22,6 +22,7 @@ var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
+var storage = testutil.libRequire('services/legacyStorage');
 
 var ServiceClient = azure.ServiceClient;
 var LinearRetryPolicyFilter = azure.LinearRetryPolicyFilter;
@@ -41,7 +42,7 @@ var suiteUtil;
 suite('linearretrypolicyfilter-tests', function () {
   suiteSetup(function (done) {
     linearRetryPolicyFilter = new LinearRetryPolicyFilter();
-    tableService = azure.createTableService().withFilter(linearRetryPolicyFilter);
+    tableService = storage.createTableService().withFilter(linearRetryPolicyFilter);
     suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
     suiteUtil.setupSuite(done);
   });
