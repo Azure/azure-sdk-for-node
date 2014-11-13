@@ -71,12 +71,12 @@ module.exports = function(grunt) {
           clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Metrics.MetricsClient',
           destDir: 'lib/services/monitoring/lib',
           output: 'metricsClient.js'
-        },
+        }/*,
         {
           clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Events.EventsClient',
           destDir: 'lib/services/monitoring/lib',
           output: 'eventsClient.js'
-        }
+        }*/
       ],
       'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
         clientType: 'Microsoft.WindowsAzure.Management.Network.NetworkManagementClient',

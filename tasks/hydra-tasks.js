@@ -113,7 +113,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerMultiTask('hydra', 'Run hydra code generator', function () {
-    var hydraExePath = newest(grunt.file.expand('./packages/Hydra.Generator.*/tools/hydra.exe'));
+    var hydraExePath = newest(grunt.file.expand('./packages/Hyak.Generator.*/tools/hyak.exe'));
     var specDllName = this.target;
     var specPath = newest(grunt.file.expand('./packages/**/tools/' + specDllName));
     var args;
