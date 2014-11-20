@@ -14,8 +14,8 @@ before_install:
   - npm run-script setup
   - npm install
   - cd ..
-  - git clone https://github.com/azure/azure-sdk-tools-xplat.git
-  - cd azure-sdk-tools-xplat
+  - git clone https://github.com/azure/azure-xplat-cli.git
+  - cd azure-xplat-cli
   - git checkout dev
   - node scripts/link-to-sdk.js
   - npm install
@@ -23,5 +23,5 @@ before_install:
 script:
   - cd ../azure-sdk-for-node
   - npm test
-  - cd ../azure-sdk-tools-xplat
+  - cd ../azure-xplat-cli
 #  - npm test
