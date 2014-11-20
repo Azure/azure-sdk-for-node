@@ -299,7 +299,7 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 
 * [Microsoft Azure Node.js Developer Center](http://azure.microsoft.com/en-us/develop/nodejs/)
 * [API reference](http://dl.windowsazure.com/nodedocs/)
-* [Microsoft Azure Cross-Platform CLI](http://github.com/azure/azure-sdk-tools-xplat)
+* [Microsoft Azure Cross-Platform CLI](http://github.com/azure/azure-xplat-cli)
 
 # Contribute
 
