@@ -1,3 +1,16 @@
+2014.11.07 Version 0.10.1
+* Fixed parsing of sql db error messages with xml namespace
+* Implemented Renew-Lock for Message in ServiceBus
+
+2014.10.02 Version 0.10.0
+* Switch to use "azure-storage" from "azure-storage-legacy"
+* Fix retry logic on http status code 408 
+
+2014.09.10 Version 0.9.16
+* Release new azure authorization clients
+* Release new subscription client of azure resource management
+* Better odata error parsing in azure common package
+
 2014.08.12 Version 0.9.15
 * Fixed dependencies in the azure-sb module
 

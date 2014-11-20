@@ -1,6 +1,4 @@
-var path = require('path');
-var exec = require('child_process').exec;
-
+var executeCmds = require('./executeCmds.js');
 var cmds = [
   { cmd: 'npm install', path: 'lib/common/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/legacyStorage' },
@@ -35,8 +33,8 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/gallery/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/authorizationManagement/' },
   { cmd: 'npm install', path: 'lib/services/authorizationManagement/' },  
-  { cmd: 'npm link ../../common/', path: 'lib/services/graph.rbac/' },
-  { cmd: 'npm install', path: 'lib/services/graph.rbac/' },    
+  { cmd: 'npm link ../../common/', path: 'lib/services/extra/' },
+  { cmd: 'npm install', path: 'lib/services/extra/' },    
   { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement2/' },
   { cmd: 'npm install', path: 'lib/services/webSiteManagement2/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/hdinsight/' },
@@ -63,34 +61,7 @@ var cmds = [
   { cmd: 'npm link lib/services/hdinsight/' },
   { cmd: 'npm link lib/services/serviceBus/' },
   { cmd: 'npm link lib/services/authorizationManagement/' },
-  { cmd: 'npm link lib/services/graph.rbac/' }
+  { cmd: 'npm link lib/services/extra/' }
 ];
 
-function executeCmds(cmds) {
-  if (cmds.length > 0) {
-    var current = cmds.shift();
-    var cwd;
-    if (current.path) {
-      cwd = path.join(__dirname, '/../', current.path);
-    } else {
-      cwd = path.join(__dirname, '/../');
-    }
-
-    exec(current.cmd, { cwd: cwd }, function (err, stdout, stderr) {
-      if (stdout) {
-        console.log(stdout);
-      }
-      if (stderr) {
-        console.log(stderr);
-      }
-
-      if (err) {
-        console.log(err);
-      } else {
-        executeCmds(cmds);
-      }
-    });
-  }
-}
-
-executeCmds(cmds);
+executeCmds.execute(cmds);

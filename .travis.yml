@@ -4,27 +4,24 @@ node_js:
   - "0.10"
   - "0.8"
 
-
 matrix:
   allow_failures:
     - node_js: "0.11"
 
 # setup links to submodules
 before_install:
-  - npm update -g npm
+  - npm install -g npm@1.4.23
   - npm run-script setup
   - npm install
-  # comment out because of the access problem to the private repo
-  #- cd ..
-  #- git clone https://github.com/azure/azure-sdk-tools-xplat-pr.git
-  #- cd azure-sdk-tools-xplat-pr
-  #- git checkout dev
-  #- node scripts/link-to-sdk.js pr
-  #- npm install
-  
+  - cd ..
+  - git clone https://github.com/azure/azure-xplat-cli.git
+  - cd azure-xplat-cli
+  - git checkout dev
+  - node scripts/link-to-sdk.js
+  - npm install
+
 script:
-  #- cd ../azure-sdk-for-node-pr
+  - cd ../azure-sdk-for-node
   - npm test
-  # - cd ../azure-sdk-tools-xplat-pr
-  #- npm run unit
-  #- npm run unit-arm
+  - cd ../azure-xplat-cli
+#  - npm test

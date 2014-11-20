@@ -22,26 +22,28 @@ module.exports = function(grunt) {
       src : 'http://www.nuget.org/nuget.exe'
     },
     packageVersions: {
-      'azure': '0.9.15',
-      'azure-common': '0.9.7',
-      'azure-gallery': '2.0.0-pre.9',
-      'azure-mgmt': '0.9.10',
-      'azure-mgmt-compute': '0.9.10',
-      'azure-mgmt-hdinsight': '0.9.10',
-      'azure-mgmt-resource': '2.0.0-pre.10',
-      'azure-mgmt-sb': '0.9.10',
-      'azure-mgmt-scheduler': '0.9.1-pre.10',
-      'azure-mgmt-sql': '0.9.10',
-      'azure-mgmt-storage': '0.9.10',
-      'azure-mgmt-store': '0.9.10',
-      'azure-mgmt-subscription': '0.9.10',
-      'azure-mgmt-vnet': '0.9.10',
-      'azure-mgmt-website': '0.9.10',
-      'azure-monitoring': '0.9.1-pre.10',
-      'azure-rm-website': '0.9.0-pre.4',
-      'azure-sb': '0.9.11',
-      'azure-scheduler': '0.9.1-pre.10',
-      'azure-storage-legacy': '0.9.10'
+      'azure': '0.10.1',
+      'azure-common': '0.9.9',
+      'azure-gallery': '2.0.0-pre.11',
+      'azure-mgmt': '0.9.12',
+      'azure-mgmt-compute': '0.9.12',
+      'azure-mgmt-hdinsight': '0.9.12',
+      'azure-mgmt-resource': '2.0.0-pre.12',
+      'azure-mgmt-sb': '0.9.12',
+      'azure-mgmt-scheduler': '0.9.1-pre.12',
+      'azure-mgmt-sql': '0.9.13',
+      'azure-mgmt-storage': '0.9.12',
+      'azure-mgmt-store': '0.9.12',
+      'azure-mgmt-subscription': '0.9.12',
+      'azure-mgmt-vnet': '0.9.13',
+      'azure-mgmt-website': '0.9.12',
+      'azure-monitoring': '0.9.1-pre.12',
+      'azure-rm-website': '0.9.0-pre.6',
+      'azure-sb': '0.9.14',
+      'azure-scheduler': '0.9.1-pre.12',
+      'azure-storage-legacy': '0.9.12',
+      'azure-mgmt-authorization': '0.9.0-pre.2',
+      'azure-extra': '0.1.3'
     },
     hydra: {
       'Microsoft.WindowsAzure.Management.Compute.Specification.dll' : {
@@ -69,12 +71,12 @@ module.exports = function(grunt) {
           clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Metrics.MetricsClient',
           destDir: 'lib/services/monitoring/lib',
           output: 'metricsClient.js'
-        },
+        }/*,
         {
           clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Events.EventsClient',
           destDir: 'lib/services/monitoring/lib',
           output: 'eventsClient.js'
-        }
+        }*/
       ],
       'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
         clientType: 'Microsoft.WindowsAzure.Management.Network.NetworkManagementClient',
@@ -152,7 +154,7 @@ module.exports = function(grunt) {
       },
       'Microsoft.Azure.Graph.RBAC.Specification.dll': {
         clientType: 'Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient',
-        destDir: 'lib/services/graph.rbac/lib',
+        destDir: 'lib/services/extra/lib',
         output: 'graphRbacManagementClient.js'
       },
       'Microsoft.Azure.Management.WebSites.Specification.dll': {

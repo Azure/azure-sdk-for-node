@@ -22,6 +22,7 @@ var tabletestutil = require('../../framework/table-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
+var storage = testutil.libRequire('services/legacyStorage');
 
 var ServiceClient = azure.ServiceClient;
 var ExponentialRetryPolicyFilter = azure.ExponentialRetryPolicyFilter;
@@ -40,7 +41,7 @@ var suiteUtil;
 suite('exponentialretrypolicyfilter-tests', function () {
   suiteSetup(function (done) {
     exponentialRetryPolicyFilter = new ExponentialRetryPolicyFilter();
-    tableService = azure.createTableService().withFilter(exponentialRetryPolicyFilter);
+    tableService = storage.createTableService().withFilter(exponentialRetryPolicyFilter);
     suiteUtil = tabletestutil.createTableTestUtils(tableService, testPrefix);
     suiteUtil.setupSuite(done);
   });
