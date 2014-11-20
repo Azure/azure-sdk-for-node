@@ -21,7 +21,7 @@ before_install:
   - npm install
 
 script:
-  - cd ../azure-sdk-for-node
+  - cd ../azure-sdk-for-node-pr
   - npm test
   - cd ../azure-xplat-cli
   - npm test
