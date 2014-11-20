@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 var should = require('should');
 var mocha = require('mocha');
@@ -23,6 +23,7 @@ var testutil = require('../../util/util');
 var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
+var azureSql = require('azure-mgmt-sql');
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';
@@ -42,7 +43,7 @@ describe('SQL Azure Database', function () {
 
   before(function (done) {
     var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
-    var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
+    var auth = testutil.getAuthenticationCertificate();
     var hostOptions = { serializetype: 'XML' };
     if (process.env['AZURE_MANAGEMENT_HOST']) {
       hostOptions.host = process.env['AZURE_MANAGEMENT_HOST'];
@@ -67,7 +68,7 @@ describe('SQL Azure Database', function () {
 
         serverName = name;
 
-        service = azure.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, DATABASE_HOST);
+        service = azureSql.createSqlService(serverName, SERVER_ADMIN_USERNAME, SERVER_ADMIN_PASSWORD, DATABASE_HOST);
         suiteUtil.setupService(service);
 
         // add firewall rule for all the ip range

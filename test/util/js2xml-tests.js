@@ -47,6 +47,23 @@ describe('js2xml', function() {
     });
   });
 
+  describe('getElement', function () {
+    it('should work', function (done) {
+      var xml = {
+        '$': {
+          'xmlns': 'namespace1',
+          'xmlns:a': 'namespace2'
+        },
+        'DateTimeValue': { }
+      };
+
+      var element = js2xml.getElement(xml, xml, 'DateTimeValue', '');
+      (element === null).should.be.true;
+
+      done();
+    });
+  });
+
   describe('getNamespaceAlias', function () {
     it('should work', function (done) {
       var xml = {

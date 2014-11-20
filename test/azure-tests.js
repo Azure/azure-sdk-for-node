@@ -21,7 +21,8 @@ var testutil = require('./util/util');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
-var ServiceBusServiceClient = testutil.libRequire('services/serviceBus/servicebusserviceclient');
+var storage = testutil.libRequire('services/legacyStorage');
+var ServiceBusServiceClient = testutil.libRequire('services/serviceBus/lib/servicebusserviceclient');
 var ServiceClientConstants = azure.ServiceClientConstants;
 
 var environmentAzureStorageAccount = 'myaccount';
@@ -137,18 +138,18 @@ suite('azure', function () {
     delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
     assert.equal(azure.isEmulated(), false);
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
-    var blobService1 = azure.createBlobService();
+    var blobService1 = storage.createBlobService();
     assert.equal(blobService1.host, environmentAzureStorageAccount + '.' + ServiceClientConstants.CLOUD_BLOB_HOST);
     assert.equal(blobService1.usePathStyleUri, false);
 
     process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
-    var blobService2 = azure.createBlobService();
+    var blobService2 = storage.createBlobService();
     assert.equal(blobService2.host, '127.0.0.1');
     assert.equal(blobService2.usePathStyleUri, true);
 
@@ -159,13 +160,13 @@ suite('azure', function () {
     // Make sure is not emulated
     delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client passing some credentials
-    var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
+    var blobService = storage.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
     // Points to the live services
     assert.equal(blobService.usePathStyleUri, false);
@@ -182,13 +183,13 @@ suite('azure', function () {
     // set emulated to true
     process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client passing some credentials
-    var blobService = azure.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
+    var blobService = storage.createBlobService(parameterAzureStorageAccount, parameterAzureStorageAccessKey);
 
     // Points to the credentials
     assert.equal(blobService.usePathStyleUri, false);
@@ -205,13 +206,13 @@ suite('azure', function () {
     // set emulated to true
     process.env[ServiceClientConstants.EnvironmentVariables.EMULATED] = true;
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client without passing any credentials
-    var blobService = azure.createBlobService();
+    var blobService = storage.createBlobService();
 
     // Points to the emulator
     assert.equal(blobService.usePathStyleUri, true);
@@ -228,13 +229,13 @@ suite('azure', function () {
     // Make sure is not emulated
     delete process.env[ServiceClientConstants.EnvironmentVariables.EMULATED];
 
-    // set some environment credentials for the live windows azure services
+    // set some environment credentials for the live microsoft azure services
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT] = environmentAzureStorageAccount;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY] = environmentAzureStorageAccessKey;
     process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_DNS_SUFFIX] = environmentAzureStorageDnsSuffix;
 
     // Create blob client without passing any credentials
-    var blobService = azure.createBlobService();
+    var blobService = storage.createBlobService();
 
     // Points to the live service
     assert.equal(blobService.usePathStyleUri, false);

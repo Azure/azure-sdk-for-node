@@ -21,6 +21,30 @@ module.exports = function(grunt) {
       path : '.nuget',
       src : 'http://www.nuget.org/nuget.exe'
     },
+    packageVersions: {
+      'azure': '0.10.1',
+      'azure-common': '0.9.9',
+      'azure-gallery': '2.0.0-pre.11',
+      'azure-mgmt': '0.9.12',
+      'azure-mgmt-compute': '0.9.12',
+      'azure-mgmt-hdinsight': '0.9.12',
+      'azure-mgmt-resource': '2.0.0-pre.12',
+      'azure-mgmt-sb': '0.9.12',
+      'azure-mgmt-scheduler': '0.9.1-pre.12',
+      'azure-mgmt-sql': '0.9.13',
+      'azure-mgmt-storage': '0.9.12',
+      'azure-mgmt-store': '0.9.12',
+      'azure-mgmt-subscription': '0.9.12',
+      'azure-mgmt-vnet': '0.9.13',
+      'azure-mgmt-website': '0.9.12',
+      'azure-monitoring': '0.9.1-pre.12',
+      'azure-rm-website': '0.9.0-pre.6',
+      'azure-sb': '0.9.14',
+      'azure-scheduler': '0.9.1-pre.12',
+      'azure-storage-legacy': '0.9.12',
+      'azure-mgmt-authorization': '0.9.0-pre.2',
+      'azure-extra': '0.1.3'
+    },
     hydra: {
       'Microsoft.WindowsAzure.Management.Compute.Specification.dll' : {
         clientType: 'Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient',
@@ -32,10 +56,32 @@ module.exports = function(grunt) {
         destDir: 'lib/services/management/lib',
         output: 'ManagementClient.js'
       },
+      'Microsoft.WindowsAzure.Management.Monitoring.Specification.dll' : [
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Alerts.AlertsClient',
+          destDir: 'lib/services/monitoring/lib',
+          output: 'alertsClient.js'
+        },
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Autoscale.AutoscaleClient',
+          destDir: 'lib/services/monitoring/lib',
+          output: 'autoscaleClient.js'
+        },
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Metrics.MetricsClient',
+          destDir: 'lib/services/monitoring/lib',
+          output: 'metricsClient.js'
+        },
+        {
+          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Events.EventsClient',
+          destDir: 'lib/services/monitoring/lib',
+          output: 'eventsClient.js'
+        }
+      ],
       'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.VirtualNetworks.VirtualNetworkManagementClient',
+        clientType: 'Microsoft.WindowsAzure.Management.Network.NetworkManagementClient',
         destDir: 'lib/services/networkManagement/lib',
-        output: 'virtualNetworkManagementClient.js'
+        output: 'networkManagementClient.js'
       },
       'Microsoft.WindowsAzure.Management.Scheduler.Specification.dll' : [
         {
@@ -73,6 +119,48 @@ module.exports = function(grunt) {
         clientType: 'Microsoft.WindowsAzure.Management.WebSites.WebSiteManagementClient',
         destDir: 'lib/services/webSiteManagement/lib',
         output: 'webSiteManagementClient.js'
+      },
+      'Microsoft.WindowsAzure.WebSitesExtensions.Specification.dll' : {
+        clientType: 'Microsoft.WindowsAzure.WebSitesExtensions.WebSiteExtensionsClient',
+        destDir: 'lib/services/webSiteManagement/lib',
+        output: 'webSiteExtensionsClient.js'
+      },
+      'Microsoft.WindowsAzure.Subscriptions.Specification.dll': {
+        clientType: 'Microsoft.WindowsAzure.Subscriptions.SubscriptionClient',
+        destDir: 'lib/services/subscriptionManagement/lib',
+        output: 'subscriptionClient.js'
+      },
+      'Microsoft.Azure.Management.Resources.Specification.dll' : [
+        {
+          clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
+          destDir: 'lib/services/resourceManagement/lib',
+          output: 'resourceManagementClient.js'
+        },
+        {
+          clientType: 'Microsoft.Azure.Subscriptions.SubscriptionClient',
+          destDir: 'lib/services/resourceManagement/lib',
+          output: 'subscriptionClient.js'
+        }
+      ],
+      'Microsoft.Azure.Gallery.Specification.dll': {
+        clientType: 'Microsoft.Azure.Gallery.GalleryClient',
+        destDir: 'lib/services/gallery/lib',
+        output: 'galleryClient.js'
+      },
+      'Microsoft.Azure.Management.Authorization.Specification.dll': {
+        clientType: 'Microsoft.Azure.Management.Authorization.AuthorizationManagementClient',
+        destDir: 'lib/services/authorizationManagement/lib',
+        output: 'authorizationManagementClient.js'
+      },
+      'Microsoft.Azure.Graph.RBAC.Specification.dll': {
+        clientType: 'Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient',
+        destDir: 'lib/services/extra/lib',
+        output: 'graphRbacManagementClient.js'
+      },
+      'Microsoft.Azure.Management.WebSites.Specification.dll': {
+        clientType: 'Microsoft.Azure.Management.WebSites.WebSiteManagementClient',
+        destDir: 'lib/services/webSiteManagement2/lib',
+        output: 'webSiteManagementClient.js'
       }
     },
 
@@ -87,6 +175,10 @@ module.exports = function(grunt) {
                   "lib/services/computeManagement/lib/computeManagementClient.js",
                   "lib/services/hdinsight/hdinsightservice.js",
                   "lib/services/management/lib/managementClient.js",
+                  "lib/services/monitoring/lib/autoscaleClient.js",
+                  "lib/services/monitoring/lib/alertsClient.js",
+                  "lib/services/monitoring/lib/metricsClient.js",
+                  "lib/services/monitoring/lib/eventsClient.js",
                   "lib/services/networkManagement/lib/virtualNetworkManagementClient.js",
                   "lib/services/queue/queueservice.js",
                   "lib/services/scm/scmservice.js",
@@ -103,7 +195,11 @@ module.exports = function(grunt) {
                   "lib/services/storeManagement/lib/storeManagementClient.js",
                   "lib/services/subscriptionManagement/lib/subscriptionClient.js",
                   "lib/services/table/tableservice.js",
-                  "lib/services/webSiteManagement/lib/webSiteManagementClient.js"
+                  "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
+                  "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js",
+                  "lib/services/authorizationManagement/lib/authorizationManagementClient.js",
+                  "lib/services/graph.rbac/lib/graphRbacManagementClient.js",
+                  "lib/services/webSiteManagement2/lib/webSiteManagementClient.js"
             ],
             options: {
                 destination: 'docs',
@@ -120,7 +216,7 @@ module.exports = function(grunt) {
   });
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-devserver');
-  
+
   grunt.loadTasks('tasks');
 
   grunt.registerTask('publishdocs', ['githubPages:target']);

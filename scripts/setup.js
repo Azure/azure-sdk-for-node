@@ -1,14 +1,16 @@
-var path = require('path');
-var exec = require('child_process').exec;
-
+var executeCmds = require('./executeCmds.js');
 var cmds = [
   { cmd: 'npm install', path: 'lib/common/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/legacyStorage' },
+  { cmd: 'npm install', path: 'lib/services/legacyStorage' },
   { cmd: 'npm link ../../common/', path: 'lib/services/computeManagement/' },
   { cmd: 'npm install', path: 'lib/services/computeManagement/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/management/' },
   { cmd: 'npm install', path: 'lib/services/management/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/networkManagement/' },
   { cmd: 'npm install', path: 'lib/services/networkManagement/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/monitoring/' },
+  { cmd: 'npm install', path: 'lib/services/monitoring/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/scheduler/' },
   { cmd: 'npm install', path: 'lib/services/scheduler/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/schedulerManagement/' },
@@ -25,10 +27,26 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/subscriptionManagement/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement/' },
   { cmd: 'npm install', path: 'lib/services/webSiteManagement/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/resourceManagement/' },
+  { cmd: 'npm install', path: 'lib/services/resourceManagement/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/gallery/' },
+  { cmd: 'npm install', path: 'lib/services/gallery/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/authorizationManagement/' },
+  { cmd: 'npm install', path: 'lib/services/authorizationManagement/' },  
+  { cmd: 'npm link ../../common/', path: 'lib/services/extra/' },
+  { cmd: 'npm install', path: 'lib/services/extra/' },    
+  { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement2/' },
+  { cmd: 'npm install', path: 'lib/services/webSiteManagement2/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/hdinsight/' },
+  { cmd: 'npm install', path: 'lib/services/hdinsight/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/serviceBus/' },
+  { cmd: 'npm install', path: 'lib/services/serviceBus/' },
   { cmd: 'npm link lib/common/' },
+  { cmd: 'npm link lib/services/legacyStorage' },
   { cmd: 'npm link lib/services/computeManagement/' },
   { cmd: 'npm link lib/services/management/' },
   { cmd: 'npm link lib/services/networkManagement/' },
+  { cmd: 'npm link lib/services/monitoring/' },
   { cmd: 'npm link lib/services/scheduler/' },
   { cmd: 'npm link lib/services/schedulerManagement/' },
   { cmd: 'npm link lib/services/serviceBusManagement/' },
@@ -36,34 +54,14 @@ var cmds = [
   { cmd: 'npm link lib/services/storageManagement/' },
   { cmd: 'npm link lib/services/storeManagement/' },
   { cmd: 'npm link lib/services/subscriptionManagement/' },
-  { cmd: 'npm link lib/services/webSiteManagement/' }
+  { cmd: 'npm link lib/services/webSiteManagement/' },
+  { cmd: 'npm link lib/services/resourceManagement/' },
+  { cmd: 'npm link lib/services/gallery/' },
+  { cmd: 'npm link lib/services/webSiteManagement2/' },
+  { cmd: 'npm link lib/services/hdinsight/' },
+  { cmd: 'npm link lib/services/serviceBus/' },
+  { cmd: 'npm link lib/services/authorizationManagement/' },
+  { cmd: 'npm link lib/services/extra/' }
 ];
 
-function executeCmds(cmds) {
-  if (cmds.length > 0) {
-    var current = cmds.shift();
-    var cwd;
-    if (current.path) {
-      cwd = path.join(__dirname, '/../', current.path);
-    } else {
-      cwd = path.join(__dirname, '/../');
-    }
-
-    exec(current.cmd, { cwd: cwd }, function (err, stdout, stderr) {
-      if (stdout) {
-        console.log(stdout);
-      }
-      if (stderr) {
-        console.log(stderr);
-      }
-
-      if (err) {
-        console.log(err);
-      } else {
-        executeCmds(cmds);
-      }
-    });
-  }
-}
-
-executeCmds(cmds);
+executeCmds.execute(cmds);

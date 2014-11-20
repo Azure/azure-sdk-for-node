@@ -1,6 +1,6 @@
 // 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -97,12 +97,88 @@ describe('APNS notifications', function () {
     });
 
     it('should send a simple message', function (done) {
-      notificationHubService.apns.send(null, {
-        alert: 'This is my toast message for iOS!'
-      }, function (error, result) {
+      var sendPayload = {
+        alert: 'This is my toast message for iOS simple!'
+      };
+
+      var expectedPayload = {
+        aps: { alert: 'This is my toast message for iOS simple!' }
+      };
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.apns.send(null, sendPayload, function (error, result) {
         should.not.exist(error);
         result.statusCode.should.equal(201);
 
+        executeSpy.args[0][1].should.equal(JSON.stringify(expectedPayload));
+        done();
+      });
+    });
+
+    it('should send a simple message with payload in apn format', function (done) {
+      var sendPayload = {
+        alert: 'This is my toast message for iOS apn format!',
+        payload: { innerMember: 'Apn promotes payload members to members at same level as aps' }
+      };
+
+      var expectedPayload = {
+        aps: { alert: 'This is my toast message for iOS apn format!' },
+        innerMember: 'Apn promotes payload members to members at same level as aps'
+      };
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.apns.send(null, sendPayload, function (error, result) {
+        should.not.exist(error);
+        result.statusCode.should.equal(201);
+
+        executeSpy.args[0][1].should.equal(JSON.stringify(expectedPayload));
+        done();
+      });
+    });
+
+    it('should send a simple message when payload matches APNS specs', function (done) {
+      var sendPayload = {
+        aps: { alert: 'This is my toast message for iOS apns specs!' }
+      };
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.apns.send(null, sendPayload, function (error, result) {
+        should.not.exist(error);
+        result.statusCode.should.equal(201);
+
+        executeSpy.args[0][1].should.equal(JSON.stringify(sendPayload));
+        done();
+      });
+    });
+
+    it('should send a simple message when payload matches APNS specs and not change other members', function (done) {
+      var sendPayload = {
+        aps: { alert: 'This is my toast message for iOS apns spec with data!' },
+        otherMember: 'Members outside of aps are useful for sending data in notification'
+      }
+      
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.apns.send(null, sendPayload, function (error, result) {
+        should.not.exist(error);
+        result.statusCode.should.equal(201);
+
+        executeSpy.args[0][1].should.equal(JSON.stringify(sendPayload));
+        done();
+      });
+    });
+
+    it('should send a simple message when payload matches APNS specs and not change payload member', function (done) {
+      var sendPayload = {
+        aps: { alert: 'This is my toast message for iOS apns with payload extra!' },
+        payload: { data: 'Members outside of aps are useful for sending data in notification' }
+      };
+
+      var executeSpy = sandbox.spy(notificationHubService, '_executeRequest');
+      notificationHubService.apns.send(null, sendPayload, function (error, result) {
+        should.not.exist(error);
+        result.statusCode.should.equal(201);
+
+        executeSpy.args[0][1].should.equal(JSON.stringify(sendPayload));
         done();
       });
     });
@@ -115,7 +191,7 @@ describe('APNS notifications', function () {
       notificationHubService.apns.send(
         tagsString,
         {
-          alert: 'This is my toast message for iOS!',
+          alert: 'This is my toast message for iOS with tags!',
           expiry: expiryDate
         },
         function (error, result) {

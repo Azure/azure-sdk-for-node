@@ -1,0 +1,45 @@
+{
+  "name": "azure-mgmt-authorization",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Cowlishaw, Mark <markcowl@microsoft.com>",
+    "Rodrigues, Andre <andrerod@microsoft.com>",
+    "Tavares, Chris <ctavares@microsoft.com>",
+    "Mkrtchyan, Hovsep <hovsepm@microsoft.com>"
+  ],
+  "version": "0.9.0-pre.2",
+  "description": "Microsoft Azure Authorization Management Client Library for node",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/authorization.js",
+  "engines": {
+    "node": ">= 0.6.15"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "azure-common": "0.9.9",
+    "underscore": "1.4.x"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}

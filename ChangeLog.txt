@@ -1,9 +1,75 @@
-2013.01.15 Version 0.8.0
+2014.11.07 Version 0.10.1
+* Fixed parsing of sql db error messages with xml namespace
+* Implemented Renew-Lock for Message in ServiceBus
+
+2014.10.02 Version 0.10.0
+* Switch to use "azure-storage" from "azure-storage-legacy"
+* Fix retry logic on http status code 408 
+
+2014.09.10 Version 0.9.16
+* Release new azure authorization clients
+* Release new subscription client of azure resource management
+* Better odata error parsing in azure common package
+
+2014.08.12 Version 0.9.15
+* Fixed dependencies in the azure-sb module
+
+2014.08.11 Version 0.9.14
+* Bug fixes to notification hub client
+* Updated repo pointers in package.json files
+
+2014.07.30 Version 0.9.13
+* Updates to service management clients
+* Fixes to notification hub client
+* Separated out service bus, and hdinsight management into separate modules
+* Obsolete service management APIs removed
+
+2014.07.02 Version 0.9.11
+* Updated service management clients
+
+2014.06.23 Version 0.9.10
+* Bug fix for url filter creation
+
+2014.06.19 Version 0.9.9
+* ARM website wrappers
+* Various bug fixes in management packages
+* Helper constructor for resource identifiers
+
+2014.06.03 Version 0.9.8
+* Fix for blob streaming
+* Split out storage into azure-storage-legacy module
+* fix for apns notification hub payload format
+* updated all service clients to support overriding timeouts
+* Test suite fixes
+
+2014.05.02 Version 0.9.7
+* Updated all service clients with codegen fixes
+* Exposing some cert management functions from azure-common
+
+2014.04.29 Version 0.9.6
+* Fixing missing dependencies in submodules
+
+2014.04.29 Version 0.9.5
+* Turning on monitoring and scheduler features in rollup package
+* Fixing references to monitoring client in azure.js
+
+2014.04.29 Version 0.9.4
+* Added Monitoring and Scheduler clients
+* Regeneration / update of all management clients
+* Trimming extra spaces in urls
+* Added "skipEncoding" option when writing blobs
+* Returning status codes on management library errors
+
+2014.01.30 Version 0.8.1
+* Added web jobs APIs
+* Support for expiration in template messages in Notification Hubs
+
+2014.01.15 Version 0.8.0
 * Added the Preview Service Management libraries as separate modules
 * Added ability to consume PEM files directly from the Service Management libraries
 * Added support for createOrUpdate and createRegistrationId in the Notification Hubs libraries
 
-2013.01.10 Version 0.7.19
+2014.01.10 Version 0.7.19
 * Lock validator version
 
 2013.11.27 Version 0.7.18

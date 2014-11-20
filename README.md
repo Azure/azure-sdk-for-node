@@ -1,38 +1,35 @@
-# Windows Azure SDK for Node.js
+# Microsoft Azure SDK for Node.js
 
-[![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/WindowsAzure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/WindowsAzure/azure-sdk-for-node)
+[![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node)
 
-This project provides a Node.js package that makes it easy to consume and manage Windows Azure Services.
+This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Services.
 
 # Features
 
-* Storage
-    * Blob
-    * Table
-    * Storage Queue
+* [Storage](https://github.com/Azure/azure-storage-node/blob/master/README.md)
 * Service Bus
     * Queue
     * Topic
     * Notification Hub
 * Service Runtime
-* [Core management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/management/README.md)
-* [Compute management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/computeManagement/README.md)
+* [Core management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/management/README.md)
+* [Compute management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/computeManagement/README.md)
     * Virtual Machine
     * Cloud Service
-* [Web Site management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/webSiteManagement/README.md)
-* [Virtual Network managment](https://github.com/WindowsAzure/azure-sdk-for-node/blob/dev/lib/services/networkManagement/README.md)
-* [Storage Account management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/storageManagement/README.md)
-* [SQL Database management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/sqlManagement/README.md)
-* [Service Bus management](https://github.com/WindowsAzure/azure-sdk-for-node/blob/master/lib/services/serviceBusManagement/README.md)
+* [Web Site management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/webSiteManagement/README.md)
+* [Virtual Network managment](https://github.com/Azure/azure-sdk-for-node/blob/dev/lib/services/networkManagement/README.md)
+* [Storage Account management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/storageManagement/README.md)
+* [SQL Database management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/sqlManagement/README.md)
+* [Service Bus management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/serviceBusManagement/README.md)
 * HDInsight management
 
 # Getting Started
 
 ## Install from npm
 
-We provide both fine-grained modules for different Windows Azure services which you can install separately, and an all-up module which contains everything.
+We provide both fine-grained modules for different Microsoft Azure services which you can install separately, and an all-up module which contains everything.
 
-**Notice**: we haven't provided fine-grained modules for every supported Windows Azure services yet. This will come soon.
+**Notice**: we haven't provided fine-grained modules for every supported Microsoft Azure services yet. This will come soon.
 
 ### Install the all-up module
 
@@ -42,6 +39,7 @@ npm install azure
 
 ### Install the fine-grained modules
 
+* Storage: ``npm install azure-storage``
 * Core management: ``npm install azure-mgmt``
 * Compute management: ``npm install azure-mgmt-compute``
 * Web Site management: ``npm install azure-mgmt-website``
@@ -50,135 +48,11 @@ npm install azure
 * SQL Database management: ``npm install azure-mgmt-sql``
 * Service Bus management: ``npm install azure-mgmt-sb``
 
-## Usage
+### Usage
 
-### Table Storage
+## Storage 
 
-To ensure a table exists, call **createTableIfNotExists**:
-
-```Javascript
-var tableService = azure.createTableService();
-tableService.createTableIfNotExists('tasktable', function(error){
-    if(!error){
-        // Table exists
-    }
-});
-```
-A new entity can be added by calling **insertEntity**:
-
-```Javascript
-var tableService = azure.createTableService(),
-    task1 = {
-        PartitionKey : 'tasksSeattle',
-        RowKey: '1',
-        Description: 'Take out the trash',
-        DueDate: new Date(2011, 12, 14, 12)
-    };
-tableService.insertEntity('tasktable', task1, function(error){
-    if(!error){
-        // Entity inserted
-    }
-});
-```
-
-The method **queryEntity** can then be used to fetch the entity that was just inserted:
-
-```Javascript
-var tableService = azure.createTableService();
-tableService.queryEntity('tasktable', 'tasksSeattle', '1', function(error, serverEntity){
-    if(!error){
-        // Entity available in serverEntity variable
-    }
-});
-```
-
-## Blob Storage
-
-The **createContainerIfNotExists** method can be used to create a
-container in which to store a blob:
-
-```Javascript
-var blobService = azure.createBlobService();
-blobService.createContainerIfNotExists('taskcontainer', {publicAccessLevel : 'blob'}, function(error){
-    if(!error){
-        // Container exists and is public
-    }
-});
-```
-
-To upload a file (assuming it is called task1-upload.txt and it is placed in the same folder as the script below), the method **createBlob** can be used. This method will return a writable stream which can be writen to, for instance, through piping:
-
-```Javascript
-var blobService = azure.createBlobService();
-
-fs.createReadStream('task1-upload.txt').pipe(blobService.createBlob('taskcontainer', 'task1', azure.Constants.BlobConstants.BlobTypes.BLOCK));
-```
-
-To download the blob and write it to the file system, a similar **getBlob** method can be used:
-
-```Javascript
-var blobService = azure.createBlobService();
-
-blobService.getBlob('taskcontainer', 'task1').pipe(fs.createWriteStream('task1-download.txt'));
-```
-
-To create a SAS URL you can use the **getBlobUrl** method. Additionally you can use the **date** helper functions to easily create a SAS that expires at some point relative to the current time.
-
-```Javascript
-var blobService = azure.createBlobService();
-
-//create a SAS that expires in an hour
-var sharedAccessPolicy = {
-    AccessPolicy: {
-        Expiry: azure.date.minutesFromNow(60);
-    }
-};
-
-var sasUrl = blobService.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-```
-
-## Storage Queues
-
-The **createQueueIfNotExists** method can be used to ensure a queue exists:
-
-```Javascript
-var queueService = azure.createQueueService();
-queueService.createQueueIfNotExists('taskqueue', function(error){
-    if(!error){
-        // Queue exists
-    }
-});
-```
-
-The **createMessage** method can then be called to insert the message into the queue:
-
-```Javascript
-var queueService = azure.createQueueService();
-queueService.createMessage('taskqueue', 'Hello world!', function(error){
-    if(!error){
-        // Message inserted
-    }
-});
-```
-
-It is then possible to call the **getMessage** method, process the message and then call **deleteMessage** inside the callback. This two-step process ensures messages don't get lost when they are removed from the queue.
-
-```Javascript
-var queueService = azure.createQueueService(),
-    queueName = 'taskqueue';
-queueService.getMessages(queueName, function(error, serverMessages){
-    if(!error){
-        // Process the message in less than 30 seconds, the message
-        // text is available in serverMessages[0].messagetext
-
-        queueService.deleteMessage(queueName, serverMessages[0].messageid, serverMessages[0].popreceipt, function(error){
-            if(!error){
-                // Message deleted
-            }
-        });
-    }
-});
-```
+For using Storage Blobs, Tables, Files, and Queues visit the Microsoft Azure Storage SDK for Node.js [ReadMe](https://github.com/Azure/azure-storage-node/blob/master/README.md) file.
 
 ## Service Bus Queues
 
@@ -418,16 +292,16 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 
 # Need Help?
 
-* [Windows Azure Forums on MSDN and Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489)
+* [Microsoft Azure Forums on MSDN and Stack Overflow](http://go.microsoft.com/fwlink/?LinkId=234489)
 * IRC channel on freenode: node-azure
 
 # Learn More
 
-* [Windows Azure Node.js Developer Center](http://www.windowsazure.com/en-us/develop/nodejs/)
+* [Microsoft Azure Node.js Developer Center](http://azure.microsoft.com/en-us/develop/nodejs/)
 * [API reference](http://dl.windowsazure.com/nodedocs/)
-* [Windows Azure Cross-Platform CLI](http://github.com/windowsazure/azure-sdk-tools-xplat)
+* [Microsoft Azure Cross-Platform CLI](http://github.com/azure/azure-sdk-tools-xplat)
 
 # Contribute
 
-* If you would like to become an active contributor to this project please follow the instructions provided in [Windows Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
-* If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/WindowsAzure/azure-sdk-for-node/issues) section of the project.
+* If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
+* If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-node/issues) section of the project.

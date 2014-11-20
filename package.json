@@ -8,10 +8,14 @@
     "Georgiev, Yavor <yavorg@microsoft.com>",
     "Janczuk, Tomasz <tjanczuk@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Tavares, Chris <ctavares@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Wang, Yugang <yugangw@microsoft.com>",
+    "Mkrtchyan, Hovsep <hovsepm@microsoft.com>",
+    "Lu, Jianghao <jianghlu@microsoft.com>"
   ],
-  "version": "0.8.0",
-  "description": "Windows Azure Client Library for node",
+  "version": "0.10.1",
+  "description": "Microsoft Azure Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -31,38 +35,47 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.0-pre.1",
-    "azure-mgmt-compute": "0.9.0-pre.1",
-    "azure-mgmt": "0.9.0-pre.1",
-    "azure-mgmt-vnet": "0.9.0-pre.1",
-    "azure-mgmt-sb": "0.9.0-pre.1",
-    "azure-mgmt-sql": "0.9.0-pre.1",
-    "azure-mgmt-storage": "0.9.0-pre.1",
-    "azure-mgmt-website": "0.9.0-pre.1",
+    "azure-common": "0.9.9",
+    "azure-mgmt-compute": "0.9.12",
+    "azure-mgmt": "0.9.12",
+    "azure-mgmt-vnet": "0.9.13",
+    "azure-mgmt-sb": "0.9.12",
+    "azure-mgmt-sql": "0.9.13",
+    "azure-mgmt-storage": "0.9.12",
+    "azure-mgmt-website": "0.9.12",
+    "azure-rm-website": "0.9.0-pre.6",
+    "azure-mgmt-subscription": "0.9.12",
+    "azure-monitoring": "0.9.1-pre.12",
+    "azure-scheduler": "0.9.1-pre.12",
+    "azure-mgmt-scheduler": "0.9.1-pre.12",
+    "azure-mgmt-resource": "2.0.0-pre.12",
+    "azure-gallery": "2.0.0-pre.11",
+    "azure-mgmt-hdinsight": "0.9.12",
+    "azure-mgmt-authorization": "0.9.0-pre.2",
+    "azure-sb": "0.9.14",
     "mime": "~1.2.4",
-    "underscore": "~1.4.0",
+    "underscore": "1.4.x",
     "request": "2.27.0",
-    "wns": "~0.5.3",
-    "mpns": "~2.0.0",
-    "node-uuid": "~1.2.0"
+    "node-uuid": "~1.2.0",
+    "azure-storage": "0.3.3"
   },
   "devDependencies": {
     "mocha": "1.16.0",
     "jshint": ">= 2.1.4",
     "sinon": "*",
     "should": "1.2.x",
-    "nock": "*",
+    "nock": "0.30.1",
     "grunt": "~0.4.2",
     "grunt-jsdoc": "~0.5.1",
     "grunt-devserver": "~0.4.1"
   },
-  "homepage": "http://github.com/WindowsAzure/azure-sdk-for-node",
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
-    "url": "git@github.com:WindowsAzure/azure-sdk-for-node.git"
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/WindowsAzure/azure-sdk-for-node/issues"
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
     "test": "npm -s run-script jshint && npm -s run-script unit",

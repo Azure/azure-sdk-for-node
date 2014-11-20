@@ -14,64 +14,15 @@
 // limitations under the License.
 // 
 
-var _ = require('underscore');
-
 var should = require('should');
-var assert = require('assert');
 var url = require('url');
 
 // Test includes
 var testutil = require('../../util/util');
-var blobtestutil = require('../../framework/blob-test-utils');
-
 var azure = testutil.libRequire('azure');
 var ProxyFilter = azure.ProxyFilter;
 
-var containerNames = [];
-var containerNamesPrefix = 'conta';
-
-var testPrefix = 'proxyfilter-tests';
-
 describe('Proxy filter', function () {
-  var service;
-  var suiteUtil;
-
-  before(function (done) {
-    service = azure.createBlobService();
-
-    suiteUtil = blobtestutil.createBlobTestUtils(service, testPrefix);
-    suiteUtil.setupSuite(done);
-  });
-
-  after(function (done) {
-    suiteUtil.teardownSuite(done);
-  });
-
-  beforeEach(function (done) {
-    suiteUtil.setupTest(done);
-  });
-
-  afterEach(function (done) {
-    suiteUtil.teardownTest(done);
-  });
-
-  describe('when used in a service', function () {
-    it('should work for https over http', function (done) {
-      var parsedProxy = url.parse('http://localhost:8888');
-      var httpsOverHttpService = azure.createBlobService();
-      httpsOverHttpService.setProxy(parsedProxy);
-
-      suiteUtil.setupService(httpsOverHttpService);
-
-      var containerName = testutil.generateId(containerNamesPrefix, containerNames, suiteUtil.isMocked);
-
-      httpsOverHttpService.createContainer(containerName, function (err) {
-        assert.equal(err, null);
-
-        done();
-      });
-    });
-  });
 
   describe('setting the agent', function() {
     it('should work for http over http', function (done) {

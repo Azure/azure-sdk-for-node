@@ -23,6 +23,7 @@ var servicebustestutil = require('../../framework/servicebus-test-utils');
 
 // Lib includes
 var azure = testutil.libRequire('azure');
+var azureSb = require('azure-sb');
 var azureutil = testutil.libRequire('common/lib/util/util');
 
 var ServiceClient = azure.ServiceClient;
@@ -52,7 +53,7 @@ var testPrefix = 'servicebusservice-tests';
 
 suite('servicebusservice-tests', function () {
   suiteSetup(function (done) {
-    serviceBusService = azure.createServiceBusService()
+    serviceBusService = azureSb.createServiceBusService()
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 
     suiteUtil = servicebustestutil.createServiceBusTestUtils(serviceBusService, testPrefix);
@@ -580,6 +581,88 @@ suite('servicebusservice-tests', function () {
               assert.notEqual(receiveMessage2, null);
 
               done();
+            });
+          });
+        });
+      });
+    });
+  });
+
+  test('LockCanBeRenewedForPeekLockedMessage', function (done) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      assert.equal(createError, null);
+      assert.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        assert.equal(sendError, null);
+
+        // Peek the message
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
+          assert.equal(receiveError1, null);
+          assert.equal(message1.body, messageText);
+
+          assert.notEqual(message1.location, null);
+          assert.notEqual(message1.brokerProperties.LockToken, null);
+          assert.notEqual(message1.brokerProperties.LockedUntilUtc, null);
+
+          // Renew lock for message
+          serviceBusService.renewLockForMessage(message1.location, function (renewLockError) {
+            assert.equal(renewLockError, null);
+
+            // deleted message
+            serviceBusService.unlockMessage(message1.location, function (unlockError) {
+              assert.equal(unlockError, null);
+
+              serviceBusService.receiveQueueMessage(queueName, function (receiveError2, receiveMessage2) {
+                assert.equal(receiveError2, null);
+                assert.notEqual(receiveMessage2, null);
+
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
+  test('LockCanBeRenewedForPeekLockedMessageWithObject', function (done) {
+    var queueName = testutil.generateId(queueNamesPrefix, queueNames, suiteUtil.isMocked);
+    var messageText = 'hi there again';
+
+    serviceBusService.createQueue(queueName, function (createError, queue) {
+      assert.equal(createError, null);
+      assert.notEqual(queue, null);
+
+      serviceBusService.sendQueueMessage(queueName, messageText, function (sendError) {
+        assert.equal(sendError, null);
+
+        // Peek the message
+        serviceBusService.receiveQueueMessage(queueName, { isPeekLock: true, timeoutIntervalInS: 5 }, function (receiveError1, message1) {
+          assert.equal(receiveError1, null);
+          assert.equal(message1.body, messageText);
+
+          assert.notEqual(message1.location, null);
+          assert.notEqual(message1.brokerProperties.LockToken, null);
+          assert.notEqual(message1.brokerProperties.LockedUntilUtc, null);
+
+          // Renew lock for message
+          serviceBusService.renewLockForMessage(message1, function (renewLockError) {
+            assert.equal(renewLockError, null);
+
+            // deleted message
+            serviceBusService.unlockMessage(message1, function (unlockError) {
+              assert.equal(unlockError, null);
+
+              serviceBusService.receiveQueueMessage(queueName, function (receiveError2, receiveMessage2) {
+                assert.equal(receiveError2, null);
+                assert.notEqual(receiveMessage2, null);
+
+                done();
+              });
             });
           });
         });
@@ -1627,7 +1710,7 @@ suite('servicebusservice-tests', function () {
       });
     });
 
-    var serviceBusService = azure.createServiceBusService(azure.config('testInvalidAccessKeyGivesError'));
+    var serviceBusService = azureSb.createServiceBusService(azure.config('testInvalidAccessKeyGivesError'));
     suiteUtil.setupService(serviceBusService);
 
     // fails, with an error on the callback.
@@ -1640,7 +1723,7 @@ suite('servicebusservice-tests', function () {
   });
 
   test('invalidNamespaceGivesError', function (done) {
-    var serviceBusService = azure.createServiceBusService('BoGuS', process.env['AZURE_SERVICEBUS_ACCESS_KEY']);
+    var serviceBusService = azureSb.createServiceBusService('BoGuS', process.env['AZURE_SERVICEBUS_ACCESS_KEY']);
     suiteUtil.setupService(serviceBusService);
 
     // fails, with an error on the callback.
@@ -1655,7 +1738,7 @@ suite('servicebusservice-tests', function () {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'Endpoint=http://ablal-martvue.servicebus.windows.net/;StsEndpoint=https://ablal-martvue-sb.accesscontrol.windows.net;SharedSecretIssuer=owner;SharedSecretValue=' + key;
 
-    var serviceBusService = azure.createServiceBusService(connectionString);
+    var serviceBusService = azureSb.createServiceBusService(connectionString);
     suiteUtil.setupService(serviceBusService);
 
     assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');
@@ -1671,7 +1754,7 @@ suite('servicebusservice-tests', function () {
     var expectedNamespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var expectedKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
     var expectedHost = 'http://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
-    var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
+    var serviceBusService = azureSb.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
     suiteUtil.setupService(serviceBusService);
 
     serviceBusService.createTopic(topicName, function (err) {
@@ -1692,7 +1775,7 @@ suite('servicebusservice-tests', function () {
     var expectedNamespace = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE];
     var expectedKey = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_ACCESS_KEY];
     var expectedHost = 'https://' + process.env[ServiceClientConstants.EnvironmentVariables.AZURE_SERVICEBUS_NAMESPACE] + '.servicebus.windows.net';
-    var serviceBusService = azure.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
+    var serviceBusService = azureSb.createServiceBusService(expectedNamespace, expectedKey, undefined, undefined, expectedHost);
     suiteUtil.setupService(serviceBusService);
 
     serviceBusService.createTopic(topicName, function (err) {
@@ -1712,7 +1795,7 @@ suite('servicebusservice-tests', function () {
     var key = 'AhlzsbLRkjfwObuqff3xrhB2yWJNh1EMptmcmxFJ6fvPTVX3PZXwrG2YtYWf5DPMVgNsteKStM5iBLlknYFVoA==';
     var connectionString = 'Endpoint=sb://ablal-martvue.servicebus.windows.net/;StsEndpoint=https://ablal-martvue-sb.accesscontrol.windows.net;SharedSecretIssuer=owner;SharedSecretValue=' + key;
 
-    var serviceBusService = azure.createServiceBusService(connectionString);
+    var serviceBusService = azureSb.createServiceBusService(connectionString);
     suiteUtil.setupService(serviceBusService);
 
     assert.equal(serviceBusService.host, 'ablal-martvue.servicebus.windows.net');

@@ -1,0 +1,45 @@
+{
+  "name": "azure-extra",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Cowlishaw, Mark <markcowl@microsoft.com>",
+    "Rodrigues, Andre <andrerod@microsoft.com>",
+    "Tavares, Chris <ctavares@microsoft.com>",
+    "Mkrtchyan, Hovsep <hovsepm@microsoft.com>"
+  ],
+  "version": "0.1.3",
+  "description": "Microsoft Azure Client Library in node for miscellaneous items",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/graphRbac.js",
+  "engines": {
+    "node": ">= 0.6.15"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "azure-common": "0.9.9",
+    "underscore": "1.4.x"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}
