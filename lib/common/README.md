@@ -4,4 +4,4 @@ This project provides a Node.js package that serves as the building block for th
 
 ## Related projects
 
-- [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
