@@ -170,7 +170,7 @@
 * Install message updated to remind users the CLI is now a separate package.
 
 2012.11.20 Version 0.6.8
- * CLI functionality has been pulled out into a new "azure-cli" module. See https://github.com/WindowsAzure/azure-sdk-tools-xplat for details.
+ * CLI functionality has been pulled out into a new "azure-cli" module. See https://github.com/Azure/azure-xplat-cli for details.
  * Add support for sb: in ServiceBus connection strings.
  * Add functions to ServiceManagement for managing storage accounts.
  * Merged #314 from @smarx for allowing empty partition keys on the client.

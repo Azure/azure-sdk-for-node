@@ -23,8 +23,8 @@ npm install azure-mgmt-website
 This library support management certificate authentication. To authenticate the library for the REST API calls, you need to
 * Have a management certificate set up in your Microsoft Azure subscription. You can do this by
   * Either uploading a certificate in the [Microsoft Azure management portal](https://manage.windowsazure.com).
-  * Or use the [Microsoft Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
-* Obtain the .pem file of your certificate. If you used [Microsoft Azure Xplat-CLI](https://github.com/WindowsAzure/azure-sdk-tools-xplat) to set it up. You can run ``azure account cert export`` to get the .pem file.
+  * Or use the [Microsoft Azure Xplat-CLI](https://github.com/Azure/azure-xplat-cli).
+* Obtain the .pem file of your certificate. If you used [Microsoft Azure Xplat-CLI](https://github.com/Azure/azure-xplat-cli) to set it up. You can run ``azure account cert export`` to get the .pem file.
 
 ### Create the WebSiteManagementClient
 
