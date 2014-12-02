@@ -1,3 +1,4 @@
+common/credentials/cert-tests.js
 common/credentials/token-tests.js
 common/filters/linearretrypolicyfilter-unittests.js
 common/filters/exponentialretrypolicyfilter-unittests.js
