@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.12",
+  "version": "0.9.13",
   "description": "Microsoft Azure WebSite Management Client Library for node",
   "tags": [
     "azure",
