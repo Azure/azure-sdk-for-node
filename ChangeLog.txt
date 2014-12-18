@@ -1,3 +1,9 @@
+2014.12.02 Version 0.10.2
+* Documentation link fixes for servicebus management client
+* Fixed CertificateCloudCredentials to accept the pem as buffer or string
+* Updated travis.yml
+* Updated null and undefined check for several attributes in separate modules
+
 2014.11.07 Version 0.10.1
 * Fixed parsing of sql db error messages with xml namespace
 * Implemented Renew-Lock for Message in ServiceBus
@@ -170,7 +176,7 @@
 * Install message updated to remind users the CLI is now a separate package.
 
 2012.11.20 Version 0.6.8
- * CLI functionality has been pulled out into a new "azure-cli" module. See https://github.com/WindowsAzure/azure-sdk-tools-xplat for details.
+ * CLI functionality has been pulled out into a new "azure-cli" module. See https://github.com/Azure/azure-xplat-cli for details.
  * Add support for sb: in ServiceBus connection strings.
  * Add functions to ServiceManagement for managing storage accounts.
  * Merged #314 from @smarx for allowing empty partition keys on the client.
