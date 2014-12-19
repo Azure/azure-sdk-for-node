@@ -13,14 +13,14 @@ var cmds = [
 ];
 
 var updatePackageVersion = process.argv[2] && (process.argv[2].indexOf('updatePackageVersion') === 0);
-var clearSpecPackages = process.argv[3] && (process.argv[3].indexOf('clearSpecPackages') === 0);
+var removeExistingSpecPackages = process.argv[3] && (process.argv[3].indexOf('removeExistingSpecPackages') === 0);
 
 console.log('***********');
-console.log('*Info: Make sure spec version was updated in <repository-root>\\packages.config');
+console.log('*Info: Please make sure spec version was updated in <repository-root>\\packages.config');
 if (updatePackageVersion) {
-  console.log('*Info: Make sure the version was updated in <repository-root>\\gruntfile.js');
+  console.log('*Info: Please make sure the version was updated in <repository-root>\\gruntfile.js');
 }
-console.log('*After you commit changs to remote, you can access tarball using link such as ' +
+console.log('*After you commit changes to remote, you can access tarball using link such as ' +
             'https://github.com/Azure/azure-sdk-for-node/tarball/dev/lib/services/computeManagement/');
 console.log('***********');
 
@@ -28,8 +28,9 @@ if (updatePackageVersion) {
   cmds.push({ cmd: 'grunt updateVersions' });
 }
 
-if (clearSpecPackages) {
-  cmds.unshift({ cmd: 'rmdir /s /q "' + __dirname + '\\..\\packages' + '"' });
+if (removeExistingSpecPackages) {
+  var packagesFolder = '"' + __dirname + '\\..\\packages' + '"';
+  cmds.unshift({ cmd: 'if exist ' + packagesFolder + ' rmdir /s /q ' + packagesFolder });
 }
 
 executeCmds.execute(cmds);
