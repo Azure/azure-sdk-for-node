@@ -40,8 +40,7 @@
     "validator": "~3.1.0",
     "envconf": "~0.0.4",
     "duplexer": "~0.1.1",
-    "through": "~2.3.4",
-    "keep-alive-agent": "0.0.1"
+    "through": "~2.3.4"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
