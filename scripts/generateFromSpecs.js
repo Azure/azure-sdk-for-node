@@ -12,8 +12,16 @@ var cmds = [
   { cmd: 'grunt generateCode'},
 ];
 
-var updatePackageVersion = process.argv[2] && (process.argv[2].indexOf('updatePackageVersion') === 0);
-var removeExistingSpecPackages = process.argv[3] && (process.argv[3].indexOf('removeExistingSpecPackages') === 0);
+var updatePackageVersion = false;
+var removeExistingSpecPackages = false;
+
+process.argv.forEach(function(v){
+  if (v.indexOf('updatePackageVersion') === 0){
+    updatePackageVersion = true;
+  } else if (v.indexOf('removeExistingSpecPackages') === 0) {
+    removeExistingSpecPackages = true; 
+  } 
+});
 
 console.log('***********');
 console.log('*Info: Please make sure spec version was updated in <repository-root>\\packages.config');
