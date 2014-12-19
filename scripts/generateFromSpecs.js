@@ -14,16 +14,28 @@ var cmds = [
 
 var updatePackageVersion = false;
 var removeExistingSpecPackages = false;
+var showHelp;
 
 process.argv.forEach(function(v){
-  if (v.indexOf('updatePackageVersion') === 0){
+  v = v.toLowerCase();
+  if (v.indexOf('updatePackageVersion') !== -1){
     updatePackageVersion = true;
-  } else if (v.indexOf('removeExistingSpecPackages') === 0) {
+  } else if (v.indexOf('removeExistingSpecPackages') !== -1) {
     removeExistingSpecPackages = true; 
-  } 
+  } else if (v.indexOf('help') !== -1) {
+    showHelp = true;
+  }
 });
 
 console.log('***********');
+if (showHelp) {
+  console.log('Use \'updatePackageVersion\' if you want to update your library\'s package version.');
+  console.log('Use \'removeExistingSpecPackages\' to delete any existing spec packages. ' +
+    'Recommended when you have older packages downloaded before');
+  process.exit();
+}
+
+
 console.log('*Info: Please make sure spec version was updated in <repository-root>\\packages.config');
 if (updatePackageVersion) {
   console.log('*Info: Please make sure the version was updated in <repository-root>\\gruntfile.js');
