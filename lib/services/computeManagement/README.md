@@ -38,7 +38,7 @@ var fs                = require('fs'),
 
 var computeManagementClient = computeManagement.createComputeManagementClient(computeManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
-  pem: fs.readFileSync('<your pem file>')
+  pem: fs.readFileSync('<your pem file>', 'utf-8')
 }));
 ``` 
 
