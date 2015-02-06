@@ -24,4 +24,4 @@ script:
   - cd ../azure-sdk-for-node-pr
   - npm test
   - cd ../azure-xplat-cli
-#  - npm test
+  - npm test
