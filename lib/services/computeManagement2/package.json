@@ -3,16 +3,16 @@
   "author": "Microsoft Corporation",
   "contributors": [
     "Huang, Pengfei <phuang@microsoft.com>",
-    "Block, Glenn <gblock@microsoft.com>",
-    "Cowlishaw, Mark <markcowl@microsoft.com>",
-    "Dejardin, Louis <loudej@microsoft.com>",
-    "Georgiev, Yavor <yavorg@microsoft.com>",
-    "Janczuk, Tomasz <tjanczuk@microsoft.com>",
-    "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Onalan, Alp <alpon@microsoft.com>",
+    "Lee, Hyonho <Hyonho.Lee@microsoft.com>",
+    "Cigdem Celik Aydin <ccelik@microsoft.com>",
+	"Rohit Bhat <robhat@microsoft.com>",
+	"Ahmed El Baz <ahelbaz@microsoft.com>",
+    "Wang, Yugang <yugangw@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>"
   ],
   "version": "0.1.0",
-  "description": "Microsoft Azure Compute Management Client Library for node",
+  "description": "Microsoft Azure Compute Resource Provider Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
