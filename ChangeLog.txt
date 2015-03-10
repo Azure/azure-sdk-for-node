@@ -1,3 +1,16 @@
+2015.02.09 Version 0.10.4
+* regenerate client lib code for the latest service api
+
+2015.01.21 Version 0.10.3
+* Added option to overwrite the http agent
+* Minor script fixes
+
+2014.12.02 Version 0.10.2
+* Documentation link fixes for servicebus management client
+* Fixed CertificateCloudCredentials to accept the pem as buffer or string
+* Updated travis.yml
+* Updated null and undefined check for several attributes in separate modules
+
 2014.11.07 Version 0.10.1
 * Fixed parsing of sql db error messages with xml namespace
 * Implemented Renew-Lock for Message in ServiceBus
