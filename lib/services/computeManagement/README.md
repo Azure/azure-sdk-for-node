@@ -52,7 +52,7 @@ var storageAccountName = "storage01";
 var diskContainerName = "vhds";
 
 // List all the virtual machine images you can use.
-computeManagementClient.virtualMachineImages.list(function (err, result) {
+computeManagementClient.virtualMachineVMImages.list(function (err, result) {
   if (err) {
     console.error(err);
   } else {
