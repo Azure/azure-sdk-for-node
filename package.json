@@ -55,7 +55,7 @@
     "azure-rm-website": "0.9.0-pre.9",
     "mime": "~1.2.4",
     "underscore": "1.4.x",
-    "request": "2.27.0",
+    "request": "2.45.0",
     "node-uuid": "~1.2.0",
     "azure-storage": "0.3.3"
   },
