@@ -17,10 +17,6 @@
 module.exports = function(grunt) {
   //init stuff
   grunt.initConfig({
-    downloadNuGet: {
-      path : '.nuget',
-      src : 'http://www.nuget.org/nuget.exe'
-    },
     packageVersions: {
       'azure': '0.10.4',
       'azure-common': '0.9.10',
@@ -45,125 +41,6 @@ module.exports = function(grunt) {
       'azure-storage-legacy': '0.9.13',
       'azure-extra': '0.1.6'
     },
-    hydra: {
-      'Microsoft.WindowsAzure.Management.Compute.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient',
-        destDir: 'lib/services/computeManagement/lib',
-        output: 'ComputeManagementClient.js'
-      },
-      'Microsoft.WindowsAzure.Management.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.ManagementClient',
-        destDir: 'lib/services/management/lib',
-        output: 'ManagementClient.js'
-      },
-      'Microsoft.WindowsAzure.Management.Monitoring.Specification.dll' : [
-        {
-          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Alerts.AlertsClient',
-          destDir: 'lib/services/monitoring/lib',
-          output: 'alertsClient.js'
-        },
-        {
-          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Autoscale.AutoscaleClient',
-          destDir: 'lib/services/monitoring/lib',
-          output: 'autoscaleClient.js'
-        },
-        {
-          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Metrics.MetricsClient',
-          destDir: 'lib/services/monitoring/lib',
-          output: 'metricsClient.js'
-        }/*,
-        {
-          clientType: 'Microsoft.WindowsAzure.Management.Monitoring.Events.EventsClient',
-          destDir: 'lib/services/monitoring/lib',
-          output: 'eventsClient.js'
-        }*/
-      ],
-      'Microsoft.WindowsAzure.Management.Network.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.Network.NetworkManagementClient',
-        destDir: 'lib/services/networkManagement/lib',
-        output: 'networkManagementClient.js'
-      },
-      'Microsoft.WindowsAzure.Management.Scheduler.Specification.dll' : [
-        {
-          clientType: 'Microsoft.WindowsAzure.Management.Scheduler.SchedulerManagementClient',
-          destDir: 'lib/services/schedulerManagement/lib',
-          output: 'schedulerManagementClient.js'
-        },
-        {
-          clientType: 'Microsoft.WindowsAzure.Scheduler.SchedulerClient',
-          destDir: 'lib/services/scheduler/lib',
-          output: 'schedulerClient.js'
-        }
-      ],
-      'Microsoft.WindowsAzure.Management.ServiceBus.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.ServiceBus.ServiceBusManagementClient',
-        destDir: 'lib/services/serviceBusManagement/lib',
-        output: 'serviceBusManagementClient.js'
-      },
-      'Microsoft.WindowsAzure.Management.Sql.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.Sql.SqlManagementClient',
-        destDir: 'lib/services/sqlManagement/lib',
-        output: 'sqlManagementClient.js'
-      },
-      'Microsoft.WindowsAzure.Management.Storage.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.Storage.StorageManagementClient',
-        destDir: 'lib/services/storageManagement/lib',
-        output: 'storageManagementClient.js'
-      },
-      'Microsoft.WindowsAzure.Management.Store.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.Store.StoreManagementClient',
-        destDir: 'lib/services/storeManagement/lib',
-        output: 'storeManagementClient.js'
-      },
-      'Microsoft.WindowsAzure.Management.WebSites.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.Management.WebSites.WebSiteManagementClient',
-        destDir: 'lib/services/webSiteManagement/lib',
-        output: 'webSiteManagementClient.js'
-      },
-      'Microsoft.WindowsAzure.WebSitesExtensions.Specification.dll' : {
-        clientType: 'Microsoft.WindowsAzure.WebSitesExtensions.WebSiteExtensionsClient',
-        destDir: 'lib/services/webSiteManagement/lib',
-        output: 'webSiteExtensionsClient.js'
-      },
-      'Microsoft.WindowsAzure.Subscriptions.Specification.dll': {
-        clientType: 'Microsoft.WindowsAzure.Subscriptions.SubscriptionClient',
-        destDir: 'lib/services/subscriptionManagement/lib',
-        output: 'subscriptionClient.js'
-      },
-      'Microsoft.Azure.Management.Resources.Specification.dll' : [
-        {
-          clientType: 'Microsoft.Azure.Management.Resources.ResourceManagementClient',
-          destDir: 'lib/services/resourceManagement/lib',
-          output: 'resourceManagementClient.js'
-        },
-        {
-          clientType: 'Microsoft.Azure.Subscriptions.SubscriptionClient',
-          destDir: 'lib/services/resourceManagement/lib',
-          output: 'subscriptionClient.js'
-        }
-      ],
-      'Microsoft.Azure.Gallery.Specification.dll': {
-        clientType: 'Microsoft.Azure.Gallery.GalleryClient',
-        destDir: 'lib/services/gallery/lib',
-        output: 'galleryClient.js'
-      },
-      'Microsoft.Azure.Management.Authorization.Specification.dll': {
-        clientType: 'Microsoft.Azure.Management.Authorization.AuthorizationManagementClient',
-        destDir: 'lib/services/authorizationManagement/lib',
-        output: 'authorizationManagementClient.js'
-      },
-      'Microsoft.Azure.Graph.RBAC.Specification.dll': {
-        clientType: 'Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient',
-        destDir: 'lib/services/extra/lib',
-        output: 'graphRbacManagementClient.js'
-      },
-      'Microsoft.Azure.Management.WebSites.Specification.dll': {
-        clientType: 'Microsoft.Azure.Management.WebSites.WebSiteManagementClient',
-        destDir: 'lib/services/webSiteManagement2/lib',
-        output: 'webSiteManagementClient.js'
-      }
-    },
-
     //jsdoc config
     jsdoc : {
         dist : {
@@ -220,5 +97,4 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   grunt.registerTask('publishdocs', ['githubPages:target']);
-  grunt.registerTask('generateCode', [ 'downloadNuGet', 'restorePackages', 'hydra']);
 };
