@@ -81,7 +81,6 @@
     "test": "npm -s run-script jshint && npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
     "setup": "node scripts/setup.js",
-    "update": "node scripts/update.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",
     "coverage": "node scripts/unit.js testlist.txt -coverage > coverage.html"
