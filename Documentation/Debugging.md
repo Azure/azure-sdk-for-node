@@ -81,9 +81,9 @@ The Visual Studio plugin for node.js can be downloaded from [here](http://nodejs
 
 ### For debugging the tests:
   * From the menu bar go to Project --> Properties and set the environment variables required for running tests.
-    * The list of environment variables can be found over [here](https://github.com/Azure/azure-sdk-for-node/wiki/Setting-up-environment-variables-for-running-xplat-cli-tests)
-    * If the need arises to add a new environment variable for tests please update the [wiki](https://github.com/Azure/azure-sdk-for-node/wiki/Setting-up-environment-variables-for-running-xplat-cli-tests) to keep the list current
+    * The list of environment variables can be found over [here](./EnvironmentVariables.md)
+    * If the need arises to add a new environment variable for tests please update the [Documentation](EnvironmentVariables.md) to keep the list current
     * Visual Studio can also be opened from **"Visual Studio Debugger Cmd Prompt"** usually located at "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\Shortcuts\Developer Command Prompt for VS2013.lnk" to set the environment variables. Then open the .sln file from the prompt.
-  * In the Solution Explorer, click on a test that needs to be debugged. For example: "azure-sdk-for-node\test\commands\cli.account.affinitygroup-tests.js"
+  * In the Solution Explorer, click on a test that needs to be debugged. For example: "azure-sdk-for-node\test\services\sql\sqlmanagementservice-tests.js"
   * In the **Properties** pane select **"Mocha"** as the Test Framework. Save All the changes. 
   * The tests shall be seen in the "Test Explorer". Right Click on any Test and Select "Debug Selected Test".
