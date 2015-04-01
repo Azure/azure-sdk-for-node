@@ -53,26 +53,20 @@ A test-file can have multiple suites and multiple tests within a suite.
 ```js
 describe.skip('list', function () {
   it('should work', function (done) {
-    suite.execute('location list --json', function (result) {
-      result.exitStatus.should.equal(0);
-      //verify the command indeed produces something valid such as a well known provider: sql provider
-      var allResources = JSON.parse(result.text);
-      allResources.some(function (res) {
-        return res.name.match(/Microsoft.Sql\/servers/gi);
-      }).should.be.true;
-      done();
+    service.listGeoRegions(function (err, geoRegions) {
+        should.exist(geoRegions);
+        geoRegions.length.should.be.above(0);
+        geoRegions[0].Name.should.not.be.null;
+        done();
     });
   });
 
   it('should not work', function (done) {
-    suite.execute('location list --json', function (result) {
-      result.exitStatus.should.equal(1);
-      //verify the command indeed produces something valid such as a well known provider: sql provider
-      var allResources = JSON.parse(result.text);
-      allResources.some(function (res) {
-        return res.name.match(/Microsoft.Sql\/servers/gi);
-      }).should.be.false;
-      done();
+   service.listGeoRegions(function (err, geoRegions) {
+        should.exist(geoRegions);
+        geoRegions.length.should.be.above(0);
+        geoRegions[0].Name.should.not.be.null;
+        done();
     });
   });
 });
