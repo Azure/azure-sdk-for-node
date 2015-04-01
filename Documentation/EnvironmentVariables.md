@@ -3,56 +3,50 @@
 From an admin cmd console/terminal, at the root directory of your cloned repo, run the following for environment setup:
 * **Windows**
 ```
-set AZURE_GITHUB_PASSWORD=github password/access token
-set AZURE_GITHUB_REPOSITORY=username/reponame
-set AZURE_GITHUB_USERNAME=github_username
-set AZURE_GIT_USERNAME=git_username
-set AZURE_ARM_TEST_STORAGEACCOUNT=storage_account_name_created_in_the_subscription
-set AZURE_ARM_TEST_LOCATION=South Central US
-set AZURE_STORAGE_TEST_LOCATION=West US
-set AZURE_STORAGE_ACCESS_KEY=access-key_of_the_storage_account
-set AZURE_STORAGE_ACCOUNT=storage_account_name_created_in_the_subscription
-set AZURE_SITE_TEST_LOCATION=West US
-set AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=storage_account;AccountKey=access_key
-set AZURE_SCM_SITE_SUFFIX=.scm.azurewebsites.net
-set AZURE_AD_TEST_PASSWORD=your_password
+set AZURE_APNS_CERTIFICATE_FILE=[path-to-your-certificatefile.pfx] 
+set AZURE_APNS_CERTIFICATE_KEY=[your-certificate-key]
+set AZURE_CERTIFICATE_FILE=[path-to-your-certificatefile.cer]
+set AZURE_CERTIFICATE_KEY_FILE=[path-to-your-certificatefile.pfx]
+set AZURE_MPNS_CERTIFICATE_FILE=[path-to-the.pfx]
+set AZURE_MPNS_CERTIFICATE_KEY=[certificate-key]
+set AZURE_SERVICEBUS_ACCESS_KEY=[your-access-key]
+set AZURE_SERVICEBUS_ISSUER=owner 
+set AZURE_SERVICEBUS_NAMESPACE=[your-servicebus-namespace]
+set AZURE_STORAGE_ACCESS_KEY=[your-storage-account-access-key]
+set AZURE_STORAGE_ACCOUNT=[your-storage-account-name]
+set AZURE_SUBSCRIPTION_ID=[your-subscripotion-id {a guid}]
+set AZURE_MANAGEMENT_HOST=management.core.windows.net
+set AZURE_SQL_TEST_LOCATION=West US
+set AZURE_STORAGE_DNS_SUFFIX=core.windows.net
+set AZURE_SQL_DNS_SUFFIX=core.windows.net
+set AZURE_WNS_PACKAGE_SID=package
+set AZURE_WNS_SECRET_KEY=key
+set AZURE_GCM_KEY=[your-GCMKey]
+set NOCK_OFF=true 
 ```
 
 * **OS X**, **Linux**
 ```
-export AZURE_GIT_USERNAME=git_username
-export AZURE_GITHUB_PASSWORD=github password/access token
-export AZURE_GITHUB_REPOSITORY=username/reponame
-export AZURE_GITHUB_USERNAME=github_username
-export AZURE_ARM_TEST_STORAGEACCOUNT=storage_account_name_created_in_the_subscription
-export AZURE_ARM_TEST_LOCATION="South Central US"
-export AZURE_STORAGE_TEST_LOCATION="West US"
-export AZURE_STORAGE_ACCESS_KEY=access-key_of_the_storage_account
-export AZURE_STORAGE_ACCOUNT=storage_account_name_created_in_the_subscription
-export AZURE_SITE_TEST_LOCATION="West US"
-export AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=storage_account;AccountKey=access_key
-export AZURE_SCM_SITE_SUFFIX=.scm.azurewebsites.net
-export AZURE_AD_TEST_PASSWORD=your_password
-```
-
-### Running VM Tests
-Following environment variables need to be set for running vm tests:
-* **Windows**
-```
-set AZURE_COMMUNITY_IMAGE_ID=vmdepot-40432-1-1 (Select any Image ID from deployment script of any image selected from https://vmdepot.msopentech.com)
-set AZURE_STORAGE_ACCESS_KEY=storage account access key
-set AZURE_STORAGE_ACCOUNT=storage account name
-set BLOB_SOURCE_PATH=path to the disk in a blob
-set SSHCERT=path to the pem file
-```
-
-* **OS X**, **Linux**
-```
-export AZURE_COMMUNITY_IMAGE_ID=vmdepot-40432-1-1 (Select any Image ID from deployment script of any image selected from https://vmdepot.msopentech.com)
-export AZURE_STORAGE_ACCESS_KEY=storage account access key
-export AZURE_STORAGE_ACCOUNT=storage account name
-export BLOB_SOURCE_PATH=path to the disk in a blob
-export SSHCERT=path to the pem file
+export AZURE_APNS_CERTIFICATE_FILE=[path-to-your-certificatefile.pfx] 
+export AZURE_APNS_CERTIFICATE_KEY=[your-certificate-key]
+export AZURE_CERTIFICATE_FILE=[path-to-your-certificatefile.cer]
+export AZURE_CERTIFICATE_KEY_FILE=[path-to-your-certificatefile.pfx]
+export AZURE_MPNS_CERTIFICATE_FILE=[path-to-the.pfx]
+export AZURE_MPNS_CERTIFICATE_KEY=[certificate-key]
+export AZURE_SERVICEBUS_ACCESS_KEY=[your-access-key]
+export AZURE_SERVICEBUS_ISSUER=owner 
+export AZURE_SERVICEBUS_NAMESPACE=[your-servicebus-namespace]
+export AZURE_STORAGE_ACCESS_KEY=[your-storage-account-access-key]
+export AZURE_STORAGE_ACCOUNT=[your-storage-account-name]
+export AZURE_SUBSCRIPTION_ID=[your-subscripotion-id {a guid}]
+export AZURE_MANAGEMENT_HOST=management.core.windows.net
+export AZURE_SQL_TEST_LOCATION="West US"
+export AZURE_STORAGE_DNS_SUFFIX=core.windows.net
+export AZURE_SQL_DNS_SUFFIX=core.windows.net
+export AZURE_WNS_PACKAGE_SID=package
+export AZURE_WNS_SECRET_KEY=key
+export AZURE_GCM_KEY=[your-GCMKey]
+export NOCK_OFF=true 
 ```
 
 #### Note: Not all tests require all these environment variables, and if a required one is not set the test will fail and tell you which ones need to be set.
