@@ -24,4 +24,4 @@ git push origin mybranch
 
 * Installing the required npm modules from the root directory```npm install```
 
-Now, the Node SDK is ready for executing current commands and developing new commands.
+Now, the Node SDK is ready for you to make a marvelous contribution :+1
