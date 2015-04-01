@@ -14,6 +14,7 @@ git push origin dev (if there are any updates)
 Note: It is a best practice to create a separate branch for your feature from the dev branch. 
 In this way the dev branch in your fork can always be synced easily with upstream and is 
 not polluted with your current changes.
+
 git checkout -b mybranch 
 git push origin mybranch
 ```
