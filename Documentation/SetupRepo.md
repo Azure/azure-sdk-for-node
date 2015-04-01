@@ -11,7 +11,9 @@ git remote add upstream git@github.com:Azure/azure-sdk-for-node.git
 git pull upstream dev
 git push origin dev (if there are any updates)
 
-Note: It is a best practice to create a separate branch for your feature from the dev branch. In this way the dev branch in your fork can always be synced easily with upstream and is not polluted with your current changes.
+Note: It is a best practice to create a separate branch for your feature from the dev branch. 
+In this way the dev branch in your fork can always be synced easily with upstream and is 
+not polluted with your current changes.
 git checkout -b mybranch 
 git push origin mybranch
 ```
