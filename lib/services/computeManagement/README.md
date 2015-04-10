@@ -38,7 +38,7 @@ var fs                = require('fs'),
 
 var computeManagementClient = computeManagement.createComputeManagementClient(computeManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
-  pem: fs.readFileSync('<your pem file>')
+  pem: fs.readFileSync('<your pem file>', 'utf-8')
 }));
 ``` 
 
@@ -52,7 +52,7 @@ var storageAccountName = "storage01";
 var diskContainerName = "vhds";
 
 // List all the virtual machine images you can use.
-computeManagementClient.virtualMachineImages.list(function (err, result) {
+computeManagementClient.virtualMachineVMImages.list(function (err, result) {
   if (err) {
     console.error(err);
   } else {

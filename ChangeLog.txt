@@ -1,3 +1,8 @@
+2015.03.25 Version 0.10.5
+* Used newer 'request' package version of '2.45.0'
+* Updated website client lib to accept status code of 200 on 'createPublishingUser'
+* Updated compute client readme file
+
 2015.02.09 Version 0.10.4
 * regenerate client lib code for the latest service api
 
