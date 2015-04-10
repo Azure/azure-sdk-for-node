@@ -22,6 +22,9 @@ This project provides a Node.js package that makes it easy to consume and manage
 * [SQL Database management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/sqlManagement/README.md)
 * [Service Bus management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/serviceBusManagement/README.md)
 * HDInsight management
+* Key Vault
+    * [Key Vault management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/keyVaultManagement/README.md)
+    * [Key Vault client](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/keyVault/README.md)
 
 # Getting Started
 
