@@ -2,16 +2,12 @@
   "name": "azure-mgmt-keyvault",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Barnes, Sean <Sean.Barnes@microsoft.com>",
-    "Cantor, Noah <nocantor@microsoft.com>",
     "Colombo, Fernando <fcolombo@microsoft.com>",
     "Gupta, Divya <Divya.Gupta@microsoft.com>",
-    "Hu, Jason <jasonhu@microsoft.com>",
     "Kostal, Greg <gkostal@microsoft.com>",
-    "Mortazavi, Pooneh <pomortaz@exchange.microsoft.com>",
-    "Simmer, Jeff <jesimmer@microsoft.com>",
     "Wilson, Hervey <herveyw@microsoft.com>",
-    "Zhong, Yuhui <yuhuiz@microsoft.com>"
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Wang, Yugang <yugangw@microsoft.com>"
   ],
   "version": "0.9.1",
   "description": "Microsoft Azure Key Vault Client Library for node",

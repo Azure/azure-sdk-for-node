@@ -26,28 +26,28 @@ var AzureKeyVault = require('azure-keyvault');
 var AdalNode      = require('adal-node'); // Used for authentication
 var Hoek          = require('hoek'); // Used for base64url encoding
 
-// Authentication
-var tenant = 'myTenant';
-var authorityUrl = 'https://login.windows.net/' + tenant;
-var clientId = '<client GUID>';
-var clientSecret = '<portal supplied client secret>';
-var resource = 'https://vault.azure.net';
+// Create an authentication context
+var tenantId = '<the tenant GUID>';
+var authorityUrl = 'https://login.windows.net/' + tenantId;
 
+// Acquire an access token for this client application
 var context = new AdalNode.AuthenticationContext(authorityUrl);
-context.acquireTokenWithClientCredentials(resource, clientId, clientSecret, function(err, tokenResponse) {
+var clientId = '<the client app id, as provided by the portal>';
+var clientSecret = '<the client secret, as provided by the portal>';
+
+context.acquireTokenWithClientCredentials(AzureKeyVault.RESOURCE_ID, clientId, clientSecret, function(err, response) {
   if (err) {
     throw new Error('Unable to authenticate: ' + err.stack);
   }
-
   var credentials = new AzureCommon.TokenCloudCredentials({
-    subscriptionId : subscriptionId,
+    subscriptionId : '<the subscription GUID>',
     authorizationScheme : response.tokenType,
     token : response.accessToken
   });
   
   // Creates an Azure Key Vault client with the credentials.
-  var vaultUri = 'https://myVault.vault.azure.net';
-  var keyVault = new KeyVault.KeyVaultClient(credentials, vaultUri);
+  var vaultUri = 'https://myvault.vault.azure.net'; // IMPORTANT: Replace 'myvault' with your vault's name.
+  var client = new AzureKeyVault.KeyVaultClient(credentials, vaultUri);
   
   // Creates a key
   var request = {
@@ -80,7 +80,7 @@ context.acquireTokenWithClientCredentials(resource, clientId, clientSecret, func
       // Decrypts data with the same key.
       var request = {
         alg: "RSA_OAEP",
-        value: cipherText;
+        value: cipherText
       };
       
       client.keys.decryptData(kid, request, function(err, result) {
