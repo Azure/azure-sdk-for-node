@@ -66,7 +66,7 @@ context.acquireTokenWithClientCredentials(AzureKeyVault.RESOURCE_ID, clientId, c
     // Encrypts some data with the new key.
     var secret = 'Chocolate is hidden in the toothpaste cabinet';
     var request = {
-      alg: "RSA_OAEP",
+      alg: "RSA-OAEP",
       value: Hoek.base64urlEncode(secret)
     };
 
@@ -79,10 +79,10 @@ context.acquireTokenWithClientCredentials(AzureKeyVault.RESOURCE_ID, clientId, c
       
       // Decrypts data with the same key.
       var request = {
-        alg: "RSA_OAEP",
+        alg: "RSA-OAEP",
         value: cipherText
       };
-      
+
       client.keys.decryptData(kid, request, function(err, result) {
         if (err) throw err;
         
