@@ -1,4 +1,4 @@
-# Microsoft Azure SDK for Node.js - Web Site Management
+# Microsoft Azure SDK for Node.js - Resource Management
 
 This project provides a Node.js package that makes it easy to manage Azure resources. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
