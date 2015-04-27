@@ -1,17 +1,16 @@
 {
-  "name": "azure-mgmt-website",
+  "name": "azure-mgmt-keyvault",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Block, Glenn <gblock@microsoft.com>",
-    "Cowlishaw, Mark <markcowl@microsoft.com>",
-    "Dejardin, Louis <loudej@microsoft.com>",
-    "Georgiev, Yavor <yavorg@microsoft.com>",
-    "Janczuk, Tomasz <tjanczuk@microsoft.com>",
-    "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Colombo, Fernando <fcolombo@microsoft.com>",
+    "Gupta, Divya <Divya.Gupta@microsoft.com>",
+    "Kostal, Greg <gkostal@microsoft.com>",
+    "Wilson, Hervey <herveyw@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.9.16",
-  "description": "Microsoft Azure WebSite Management Client Library for node",
+  "version": "0.9.1",
+  "description": "Microsoft Azure Key Vault Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -20,7 +19,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/website.js",
+  "main": "./lib/keyVault.js",
   "engines": {
     "node": ">= 0.6.15"
   },
@@ -31,9 +30,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.12",
-    "underscore": "1.4.x",
-    "moment": "2.6.0"
+    "azure-common": "0.9.10"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
