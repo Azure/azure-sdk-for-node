@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       'azure-common': '0.9.11',
       'azure-mgmt-authorization': '0.9.0-pre.6',
       'azure-mgmt-compute': '0.9.16',
-	  'azure-mgmt-dns': '0.9.0',
+      'azure-mgmt-dns': '0.9.0',
       'azure-gallery': '2.0.0-pre.15',
       'azure-mgmt-hdinsight': '0.9.15',
       'azure-mgmt': '0.9.16',
