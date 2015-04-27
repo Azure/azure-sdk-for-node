@@ -1,17 +1,11 @@
 {
-  "name": "azure-mgmt-vnet",
+  "name": "azure-mgmt-trafficManager",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Block, Glenn <gblock@microsoft.com>",
-    "Cowlishaw, Mark <markcowl@microsoft.com>",
-    "Dejardin, Louis <loudej@microsoft.com>",
-    "Georgiev, Yavor <yavorg@microsoft.com>",
-    "Janczuk, Tomasz <tjanczuk@microsoft.com>",
-    "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Guerra, Alberto <alguerra@microsoft.com>"
   ],
-  "version": "0.9.17",
-  "description": "Microsoft Azure Virtual Network Management Client Library for node",
+  "version": "0.9.0",
+  "description": "Microsoft Azure Traffic Manager Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -20,7 +14,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/network.js",
+  "main": "./lib/trafficManager.js",
   "engines": {
     "node": ">= 0.6.15"
   },

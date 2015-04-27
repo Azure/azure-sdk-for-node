@@ -12,7 +12,8 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>",
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>",
-    "Lu, Jianghao <jianghlu@microsoft.com>"
+    "Lu, Jianghao <jianghlu@microsoft.com>",
+	"Guerra, Alberto <alguerra@microsoft.com>"
   ],
   "version": "0.10.5",
   "description": "Microsoft Azure Client Library for node",
