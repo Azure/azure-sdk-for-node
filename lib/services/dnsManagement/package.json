@@ -1,5 +1,5 @@
 {
-  "name": "azure-mgmt-website",
+  "name": "azure-mgmt-dns",
   "author": "Microsoft Corporation",
   "contributors": [
     "Block, Glenn <gblock@microsoft.com>",
@@ -10,8 +10,8 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.16",
-  "description": "Microsoft Azure WebSite Management Client Library for node",
+  "version": "0.9.0",
+  "description": "Microsoft Azure DNS Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -20,7 +20,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/website.js",
+  "main": "./lib/dns.js",
   "engines": {
     "node": ">= 0.6.15"
   },
@@ -31,9 +31,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.12",
-    "underscore": "1.4.x",
-    "moment": "2.6.0"
+    "azure-common": "0.9.12"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
