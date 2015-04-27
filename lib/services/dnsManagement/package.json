@@ -1,11 +1,26 @@
 {
+<<<<<<< HEAD:lib/services/dnsManagement/package.json
   "name": "azure-mgmt-dns",
+=======
+  "name": "azure-mgmt-vnet",
+>>>>>>> parent of 956e037... Fixing package.json:lib/services/trafficManagerManagement/package.json
   "author": "Microsoft Corporation",
   "contributors": [
-    "Guerra, Alberto <alguerra@microsoft.com>"
+    "Block, Glenn <gblock@microsoft.com>",
+    "Cowlishaw, Mark <markcowl@microsoft.com>",
+    "Dejardin, Louis <loudej@microsoft.com>",
+    "Georgiev, Yavor <yavorg@microsoft.com>",
+    "Janczuk, Tomasz <tjanczuk@microsoft.com>",
+    "Rodrigues, Andre <andrerod@microsoft.com>",
+    "Tavares, Chris <ctavares@microsoft.com>"
   ],
+<<<<<<< HEAD:lib/services/dnsManagement/package.json
   "version": "0.9.0",
   "description": "Microsoft Azure DNS Management Client Library for node",
+=======
+  "version": "0.9.17",
+  "description": "Microsoft Azure Virtual Network Management Client Library for node",
+>>>>>>> parent of 956e037... Fixing package.json:lib/services/trafficManagerManagement/package.json
   "tags": [
     "azure",
     "sdk"
@@ -14,7 +29,11 @@
     "node",
     "azure"
   ],
+<<<<<<< HEAD:lib/services/dnsManagement/package.json
   "main": "./lib/dns.js",
+=======
+  "main": "./lib/network.js",
+>>>>>>> parent of 956e037... Fixing package.json:lib/services/trafficManagerManagement/package.json
   "engines": {
     "node": ">= 0.6.15"
   },
