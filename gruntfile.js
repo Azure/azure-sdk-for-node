@@ -74,7 +74,6 @@ module.exports = function(grunt) {
                   "lib/services/storeManagement/lib/storeManagementClient.js",
                   "lib/services/subscriptionManagement/lib/subscriptionClient.js",
                   "lib/services/table/tableservice.js",
-				  "lib/services/trafficManagerManagement/lib/trafficManagerManagementClient.js",
                   "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
                   "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js",
                   "lib/services/authorizationManagement/lib/authorizationManagementClient.js",
