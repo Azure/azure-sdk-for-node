@@ -37,7 +37,6 @@ module.exports = function(grunt) {
       'azure-mgmt-storage': '0.9.16',
       'azure-mgmt-store': '0.9.16',
       'azure-mgmt-subscription': '0.9.16',
-	  'azure-mgmt-trafficManager': '0.9.0',
       'azure-mgmt-website': '0.9.16',
       'azure-rm-website': '0.9.0-pre.10',
       'azure-storage-legacy': '0.9.14',
