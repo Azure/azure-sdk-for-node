@@ -18,7 +18,7 @@ module.exports = function(grunt) {
   //init stuff
   grunt.initConfig({
     packageVersions: {
-      'azure': '0.10.5',
+      'azure': '0.10.6',
       'azure-common': '0.9.12', 
       'azure-asm-compute': '0.10.0', 
       'azure-asm-hdinsight': '0.10.0',
