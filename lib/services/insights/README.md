@@ -11,7 +11,7 @@ This project provides a Node.js package that makes it easy to use the Azure Insi
 ## How to Install
 
 ```bash
-npm install azure-mgmt-insights
+npm install azure-arm-insights
 ```
 
 ## How to Use
@@ -24,7 +24,7 @@ npm install azure-mgmt-insights
 
 ```javascript
 var common               = require("azure-common"),
-    insightsClientLib    = require("azure-mgmt-insights");
+    insightsClientLib    = require("azure-arm-insights");
 
 var insightsManagementClient = insightsClientLib.createInsightsManagementClient(new common.TokenCloudCredentials({
   subscriptionId: "<your subscription id>",

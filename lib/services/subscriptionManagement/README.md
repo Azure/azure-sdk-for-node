@@ -11,7 +11,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-subscription
+npm install azure-asm-subscription
 ```
 
 ## How to Use
@@ -28,7 +28,7 @@ This library support management certificate authentication. To authenticate the 
 ### Create the SubscriptionClient
 
 ```javascript
-var subscriptionManagement = require('azure-mgmt-subscription');
+var subscriptionManagement = require('azure-asm-subscription');
 
 var subscriptionClient = subscriptionManagement.createSubscriptionClient({
   subscriptionId: '<your subscription id>',

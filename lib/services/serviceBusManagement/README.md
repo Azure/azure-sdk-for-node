@@ -15,7 +15,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-sb
+npm install azure-asm-sb
 ```
 
 ## How to Use
@@ -32,7 +32,7 @@ This library support management certificate authentication. To authenticate the 
 
 ```javascript
 var fs           = require('fs'),
-    sbManagement = require('azure-mgmt-sb');
+    sbManagement = require('azure-asm-sb');
 
 var sbManagementClient = sbManagement.createServiceBusManagementClient(sbManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',

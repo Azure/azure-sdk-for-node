@@ -11,7 +11,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-store
+npm install azure-asm-store
 ```
 
 ## How to Use
@@ -28,7 +28,7 @@ This library support management certificate authentication. To authenticate the 
 ### Create the StoreManagementClient
 
 ```javascript
-var storeManagement = require('azure-mgmt-store');
+var storeManagement = require('azure-asm-store');
 
 var storeManagementClient = storeManagement.createStoreManagementClient(storeManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',

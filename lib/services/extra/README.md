@@ -22,7 +22,7 @@ npm install azure-extra
 ```javascript
 var fs = require("fs"),
 common = require("azure-common"),
-graphRbacManagement = require("azure-graph.rbac");
+graphRbacManagement = require("azure-extra");
 
 var graphRbacManagementClient = graphRbacManagement.createGraphRbacManagementClient(new common.TokenCloudCredentials({
   tenantId: "<your tenant id>"

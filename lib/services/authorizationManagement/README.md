@@ -10,7 +10,7 @@ This project provides a Node.js package for accessing the Azure PAS. Right now i
 ## How to Install
 
 ```bash
-npm install azure-authorization
+npm install azure-arm-authorization
 ```
 
 ## How to Use
@@ -22,7 +22,7 @@ npm install azure-authorization
 ```javascript
 var fs = require("fs"),
 common = require("azure-common"),
-authorizationManagement = require("azure-authorization");
+authorizationManagement = require("azure-arm-authorization");
 
 var authorizationManagementClient = authorizationManagement.createAuthorizationManagementClient(new common.TokenCloudCredentials({
   subscriptionId: "<your subscription id>",
