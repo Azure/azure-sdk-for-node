@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "2.0.0-pre.15",
+  "version": "2.0.0-pre.16",
   "description": "Microsoft Azure Gallery Client Library for node",
   "tags": [
     "azure",
