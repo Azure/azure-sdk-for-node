@@ -40,7 +40,7 @@
     "azure-asm-hdinsight": "0.10.0",
     "azure-asm-mgmt": "0.10.0",
     "azure-monitoring": "0.9.1-pre.16",
-    "azure-asm-network": "0.10.0"
+    "azure-asm-network": "0.10.0",
     "azure-scheduler": "0.9.1-pre.16",
     "azure-asm-scheduler": "0.10.0",
     "azure-sb": "0.9.16",
@@ -57,7 +57,7 @@
     "azure-gallery": "2.0.0-pre.15",
     "azure-arm-insights": "0.10.0",
     "azure-keyvault": "0.9.2",
-    "azure-arm-keyvault": "0.10.0"
+    "azure-arm-keyvault": "0.10.0",
     "azure-arm-network": "0.10.0",
     "azure-arm-resource": "0.10.0",
     "azure-arm-storage": "0.10.0",
