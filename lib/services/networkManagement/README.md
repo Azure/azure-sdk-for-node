@@ -14,7 +14,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-vnet
+npm install azure-asm-network
 ```
 
 ## How to Use
@@ -31,7 +31,7 @@ This library support management certificate authentication. To authenticate the 
 
 ```javascript
 var fs             = require('fs'),
-    vnetManagement = require('azure-mgmt-vnet');
+    vnetManagement = require('azure-asm-network');
 
 var vnetManagementClient = vnetManagement.createNetworkManagementClient(vnetManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',

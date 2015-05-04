@@ -13,7 +13,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-website
+npm install azure-asm-website
 ```
 
 ## How to Use
@@ -30,7 +30,7 @@ This library support management certificate authentication. To authenticate the 
 
 ```javascript
 var fs                = require('fs'),
-    webSiteManagement = require('azure-mgmt-website');
+    webSiteManagement = require('azure-asm-website');
 
 var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(webSiteManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',

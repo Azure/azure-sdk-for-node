@@ -13,7 +13,7 @@ This project provides a Node.js package that makes it easy to manage basic Micro
 ## How to Install
 
 ```bash
-npm install azure-mgmt
+npm install azure-asm-mgmt
 ```
 
 ## How to Use
@@ -31,7 +31,7 @@ This library support management certificate authentication. To authenticate the 
 
 ```javascript
 var fs         = require('fs'),
-    management = require('azure-mgmt');
+    management = require('azure-asm-mgmt');
 
 var managementClient = management.createManagementClient(management.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',

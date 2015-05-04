@@ -1,5 +1,5 @@
 {
-  "name": "azure-mgmt-storage2",
+  "name": "azure-arm-storage",
   "author": "Microsoft Corporation",
   "contributors": [
     "Gerner, Emily <emgerner@microsoft.com>",
@@ -11,7 +11,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.2.0",
+  "version": "0.10.0",
   "description": "Microsoft Azure Storage Resource Provider Management Client Library for Node",
   "tags": [
     "azure",
@@ -32,7 +32,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.10"
+    "azure-common": "0.9.12"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

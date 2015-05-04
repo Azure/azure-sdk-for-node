@@ -1,11 +1,11 @@
 {
-  "name": "azure-mgmt-network2",
+  "name": "azure-arm-network",
   "author": "Microsoft Corporation",
   "contributors": [
     "Siegemund, Frank <franksie@microsoft.com>",
     "Rajendran, Deepak <derajen@microsoft.com>",
   ],
-  "version": "2.0.1-preview",
+  "version": "0.10.0",
   "description": "Microsoft Azure Network Resource Provider Management Client Library for node",
   "tags": [
     "azure",

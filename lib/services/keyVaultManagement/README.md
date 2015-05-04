@@ -11,7 +11,7 @@ This project provides a Node.js package for managing vaults on Azure Key Vault. 
 ## How to Install
 
 ```bash
-npm install azure-mgmt-keyvault
+npm install azure-arm-keyvault
 ```
 
 ## How to Use
@@ -20,7 +20,7 @@ The following example creates a new vault.
 
 ```javascript
 var AzureCommon       = require('azure-common');
-var AzureMgmtKeyVault = require('azure-mgmt-keyvault');
+var AzureMgmtKeyVault = require('azure-arm-keyvault');
 var AdalNode          = require('adal-node'); // Used for authentication
 
 var userName = 'someone@myorg.com';

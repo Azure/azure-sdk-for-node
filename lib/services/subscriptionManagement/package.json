@@ -1,5 +1,5 @@
 {
-  "name": "azure-mgmt-subscription",
+  "name": "azure-asm-subscription",
   "author": "Microsoft Corporation",
   "contributors": [
     "Block, Glenn <gblock@microsoft.com>",
@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.16",
+  "version": "0.10.0",
   "description": "Microsoft Azure Subscription Management Client Library for node",
   "tags": [
     "azure",

@@ -11,7 +11,7 @@ This project provides a Node.js package that makes it easy to manage Azure resou
 ## How to Install
 
 ```bash
-npm install azure-mgmt-resource
+npm install azure-arm-resource
 ```
 
 ## How to Use
@@ -25,7 +25,7 @@ npm install azure-mgmt-resource
 ```javascript
 var fs                = require("fs"),
     common            = require("azure-common"),
-    resourceManagement = require("azure-mgmt-resource");
+    resourceManagement = require("azure-arm-resource");
 
 var resourceManagementClient = resourceManagement.createResourceManagementClient(new common.TokenCloudCredentials({
   subscriptionId: "<your subscription id>",

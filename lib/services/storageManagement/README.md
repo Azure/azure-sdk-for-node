@@ -12,7 +12,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-storage
+npm install azure-asm-storage
 ```
 
 ## How to Use
@@ -29,7 +29,7 @@ This library support management certificate authentication. To authenticate the 
 
 ```javascript
 var fs                = require('fs'),
-    storageManagement = require('azure-mgmt-storage');
+    storageManagement = require('azure-asm-storage');
 
 var storageManagementClient = storageManagement.createStorageManagementClient(storageManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
