@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                   "lib/serviceruntime/roleenvironment.js",
                   "lib/services/blob/blobservice.js",
                   "lib/services/computeManagement/lib/computeManagementClient.js",
-				          "lib/services/dnsManagement/lib/dnsManagementClient.js",
+                  "lib/services/dnsManagement/lib/dnsManagementClient.js",
                   "lib/services/hdinsight/hdinsightservice.js",
                   "lib/services/management/lib/managementClient.js",
                   "lib/services/monitoring/lib/autoscaleClient.js",
