@@ -41,6 +41,10 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/hdinsight/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/serviceBus/' },
   { cmd: 'npm install', path: 'lib/services/serviceBus/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/keyVault/' },
+  { cmd: 'npm install', path: 'lib/services/keyVault/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/keyVaultManagement/' },
+  { cmd: 'npm install', path: 'lib/services/keyVaultManagement/' },
   { cmd: 'npm link lib/common/' },
   { cmd: 'npm link lib/services/legacyStorage' },
   { cmd: 'npm link lib/services/computeManagement/' },
@@ -60,6 +64,8 @@ var cmds = [
   { cmd: 'npm link lib/services/webSiteManagement2/' },
   { cmd: 'npm link lib/services/hdinsight/' },
   { cmd: 'npm link lib/services/serviceBus/' },
+  { cmd: 'npm link lib/services/keyVault/' },
+  { cmd: 'npm link lib/services/keyVaultManagement/' },
   { cmd: 'npm link lib/services/authorizationManagement/' },
   { cmd: 'npm link lib/services/extra/' }
 ];
