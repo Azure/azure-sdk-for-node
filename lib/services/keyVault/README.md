@@ -104,5 +104,5 @@ context.acquireTokenWithClientCredentials(AzureKeyVault.RESOURCE_ID, clientId, c
 
 ## Related projects
 
-- [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
-- [Microsoft Azure SDK for Node.js - Key Vault Management](https://github.com/WindowsAzure/azure-mgmt-keyvault-for-node)
+- [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js - Key Vault Management](https://github.com/Azure/azure-sdk-for-node/tree/dev/lib/services/keyVault)

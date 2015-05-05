@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       'azure-asm-store': '0.10.0',
       'azure-asm-storage': '0.10.0',
       'azure-asm-subscription': '0.10.0',
-      'azure-asm-trafficMnager': '0.10.0',
+      'azure-asm-trafficmanager': '0.10.0',
       'azure-asm-website': '0.10.0',
       'azure-arm-authorization': '0.10.0',
       'azure-arm-compute': '0.10.0',

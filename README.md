@@ -43,13 +43,13 @@ npm install azure
 ### Install the fine-grained modules
 
 * Storage: ``npm install azure-storage``
-* Core management: ``npm install azure-mgmt``
-* Compute management: ``npm install azure-mgmt-compute``
-* Web Site management: ``npm install azure-mgmt-website``
-* Virtual Network managment: ``npm install azure-mgmt-vnet``
-* Storage Account management: ``npm install azure-mgmt-storage``
-* SQL Database management: ``npm install azure-mgmt-sql``
-* Service Bus management: ``npm install azure-mgmt-sb``
+* Core management: ``npm install azure-asm-mgmt``
+* Compute management: ``npm install azure-asm-compute``
+* Web Site management: ``npm install azure-asm-website``
+* Virtual Network managment: ``npm install azure-asm-network``
+* Storage Account management: ``npm install azure-asm-storage``
+* SQL Database management: ``npm install azure-asm-sql``
+* Service Bus management: ``npm install azure-asm-sb``
 
 ### Usage
 
