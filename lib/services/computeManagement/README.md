@@ -17,7 +17,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-compute
+npm install azure-asm-compute
 ```
 
 ## How to Use
@@ -34,7 +34,7 @@ This library support management certificate authentication. To authenticate the 
 
 ```javascript
 var fs                = require('fs'),
-    computeManagement = require('azure-mgmt-compute');
+    computeManagement = require('azure-asm-compute');
 
 var computeManagementClient = computeManagement.createComputeManagementClient(computeManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',

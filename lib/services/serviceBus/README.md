@@ -2,7 +2,6 @@
 
 This project provides a Node.js package for accessing the Azure ServiceBus service. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
-- **API version: **
 
 ## Features
 

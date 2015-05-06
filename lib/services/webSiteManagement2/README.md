@@ -11,7 +11,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-rm-website
+npm install azure-arm-website
 ```
 
 ## How to Use
@@ -24,7 +24,7 @@ npm install azure-rm-website
 
 ```javascript
 var fs                = require('fs'),
-    webSiteManagement = require('azure-rm-website');
+    webSiteManagement = require('azure-arm-website');
 
 var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(webSiteManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',

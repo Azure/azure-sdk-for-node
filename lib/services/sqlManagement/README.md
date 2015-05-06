@@ -17,7 +17,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-sql
+npm install azure-asm-sql
 ```
 
 ## How to Use
@@ -35,7 +35,7 @@ This library support management certificate authentication. To authenticate the 
 
 ```javascript
 var fs            = require('fs'),
-    sqlManagement = require('azure-mgmt-sql');
+    sqlManagement = require('azure-asm-sql');
 
 var sqlManagementClient = sqlManagement.createSqlManagementClient(sqlManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
