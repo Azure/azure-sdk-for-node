@@ -42,9 +42,9 @@ var cmds = [
   { cmd: 'npm link ../../common/', path: 'lib/services/gallery/' },
   { cmd: 'npm install', path: 'lib/services/gallery/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/authorizationManagement/' },
-  { cmd: 'npm install', path: 'lib/services/authorizationManagement/' },  
+  { cmd: 'npm install', path: 'lib/services/authorizationManagement/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/extra/' },
-  { cmd: 'npm install', path: 'lib/services/extra/' },    
+  { cmd: 'npm install', path: 'lib/services/extra/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement2/' },
   { cmd: 'npm install', path: 'lib/services/webSiteManagement2/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/hdinsight/' },
@@ -57,6 +57,8 @@ var cmds = [
   { cmd: 'npm install', path: 'lib/services/keyVault/' },
   { cmd: 'npm link ../../common/', path: 'lib/services/keyVaultManagement/' },
   { cmd: 'npm install', path: 'lib/services/keyVaultManagement/' },
+  { cmd: 'npm link ../../common/', path: 'lib/services/apiAppManagement/' },
+  { cmd: 'npm install', path: 'lib/services/apiAppManagement/' },
   { cmd: 'npm link lib/common/' },
   { cmd: 'npm link lib/services/legacyStorage' },
   { cmd: 'npm link lib/services/computeManagement/' },
@@ -85,6 +87,7 @@ var cmds = [
   { cmd: 'npm link lib/services/keyVaultManagement/' },
   { cmd: 'npm link lib/services/insights/' },
   { cmd: 'npm link lib/services/authorizationManagement/' },
+  { cmd: 'npm link lib/services/apiAppManagement/' },
   { cmd: 'npm link lib/services/extra/' }
 ];
 
