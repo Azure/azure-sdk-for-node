@@ -24,7 +24,7 @@ var util = require('util');
 var MockedTestUtils = require('./mocked-test-utils');
 var testutil = require('../util/util');
 var azure = testutil.libRequire('azure');
-var azureHDInsight = require('azure-mgmt-hdinsight');
+var azureHDInsight = require('azure-asm-hdinsight');
 var hdInsight;
 var creds;
 

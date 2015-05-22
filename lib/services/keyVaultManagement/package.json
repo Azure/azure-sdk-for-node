@@ -1,0 +1,46 @@
+{
+  "name": "azure-arm-keyvault",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Colombo, Fernando <fcolombo@microsoft.com>",
+    "Gupta, Divya <Divya.Gupta@microsoft.com>",
+    "Kostal, Greg <gkostal@microsoft.com>",
+    "Wilson, Hervey <herveyw@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Wang, Yugang <yugangw@microsoft.com>"
+  ],
+  "version": "0.10.0",
+  "description": "Microsoft Azure Key Vault Client Library for node",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/keyVault.js",
+  "engines": {
+    "node": ">= 0.6.15"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "azure-common": "0.9.12"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}

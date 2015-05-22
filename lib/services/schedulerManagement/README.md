@@ -11,7 +11,7 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-mgmt-scheduler
+npm install azure-asm-scheduler
 ```
 
 ## How to Use
@@ -28,7 +28,7 @@ This library support management certificate authentication. To authenticate the 
 ### Create the SchedulerManagementClient
 
 ```javascript
-var schedulerManagement = require('azure-mgmt-scheduler');
+var schedulerManagement = require('azure-asm-scheduler');
 
 var schedulerManagementClient = schedulerManagement.createSchedulerManagementClient(schedulerManagement.createCloudCertificateCredentials({
   subscriptionId: '<your subscription id>',

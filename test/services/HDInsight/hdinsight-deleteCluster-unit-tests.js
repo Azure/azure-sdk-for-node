@@ -32,7 +32,7 @@ var performRequestStubUtil;
 describe('HDInsight deleteClusters (under unit test)', function() {
   var subscriptionId;
   var auth = { keyvalue: testutil.getCertificateKey(), certvalue: testutil.getCertificate() };
-  var HDInsight = require('azure-mgmt-hdinsight').HDInsightService;
+  var HDInsight = require('azure-asm-hdinsight').HDInsightService;
   var hdInsight;
   var hdInsightTestUtils;
 

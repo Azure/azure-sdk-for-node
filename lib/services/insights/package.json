@@ -1,0 +1,49 @@
+{
+  "name": "azure-arm-insights",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Kamath, Prarthana <pkamath@microsoft.com>",
+    "Vannelli, Leo <leovann@microsoft.com>",
+    "Shen, Andy <andyshen@microsoft.com>",
+    "Ruela, Vinicius <viruela@microsoft.com>",
+    "Moussa, George <georgenm@microsoft.com>",
+    "McKinlay, David <davmc@microsofto.com>",
+    "Kulkarni, Jagadish <jagadisk@microsoft.com>",
+    "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
+  ],
+  "version": "0.10.0",
+  "description": "Microsoft Azure Insights Client Library for node",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/insights.js",
+  "engines": {
+    "node": ">= 0.6.15"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "azure-common": "0.9.12",
+    "moment": "2.6.0"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}
