@@ -7,7 +7,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>"
   ],
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Microsoft Azure Client Library in node for miscellaneous items",
   "tags": [
     "azure",
