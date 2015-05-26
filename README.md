@@ -53,7 +53,7 @@ npm install azure
 
 ### Usage
 
-## Storage 
+## Storage
 
 For using Storage Blobs, Tables, Files, and Queues visit the Microsoft Azure Storage SDK for Node.js [ReadMe](https://github.com/Azure/azure-storage-node/blob/master/README.md) file.
 
@@ -308,3 +308,21 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 
 * If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
 * If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-node/issues) section of the project.
+
+## Getting Started Developing
+What to get started hacking on the code, super! Follow the following instructions to get up and running. These
+instructions expect you have Git and a supported version of Node installed.
+
+1. Fork it
+2. Git Clone your fork (`git clone {your repo}`)
+3. Move into sdk directory (`cd azure-sdk-for-node`)
+4. Install all dependencies (`npm install`)
+5. Run the tests (`npm test`). You should see all tests passing.
+
+## Contributing Code to the Project
+You found something you'd like to change, great! Please submit a pull request and we'll do our best to work with you to
+get your code included into the project.
+
+1. Commit your changes (`git commit -am 'Add some feature'`)
+2. Push to the branch (`git push origin my-new-feature`)
+3. Create new Pull Request
