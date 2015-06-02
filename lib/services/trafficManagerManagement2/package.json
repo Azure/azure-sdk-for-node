@@ -1,5 +1,5 @@
 {
-  "name": "azure-asm-trafficManager",
+  "name": "azure-arm-trafficManager",
   "author": "Microsoft Corporation",
   "contributors": [
     "Block, Glenn <gblock@microsoft.com>",
