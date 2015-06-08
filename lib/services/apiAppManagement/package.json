@@ -5,7 +5,7 @@
     "Cowlishaw, Mark <markcowl@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Microsoft Azure ApiApp Management Client Library for node",
   "tags": [
     "azure",
@@ -28,7 +28,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.12",
+    "azure-common": "^0.9.13",
     "underscore": "1.4.x",
     "moment": "2.6.0"
   },
