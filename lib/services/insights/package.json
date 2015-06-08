@@ -11,7 +11,7 @@
     "Kulkarni, Jagadish <jagadisk@microsoft.com>",
     "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
   ],
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Microsoft Azure Insights Client Library for node",
   "tags": [
     "azure",
@@ -32,7 +32,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.12",
+    "azure-common": "^0.9.13",
     "moment": "2.6.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
