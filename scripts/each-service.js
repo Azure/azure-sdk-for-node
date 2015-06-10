@@ -18,27 +18,23 @@ var servicesRoot = path.join(sdkRoot, 'lib/services');
 //
 
 function ServiceStream() {
-  stream.Readable.call(this, { objectMode: true });
-  this.readAll = false;
+  var self = this;
+  stream.Readable.call(self, { objectMode: true });
+  fs.readdir(servicesRoot, function (err, files) {
+    if (err) {
+      return self.emit('error', err);
+    }
+
+    self.push(path.join(sdkRoot, 'lib/common'));
+    files.map(function (f) { return path.join(servicesRoot, f); })
+      .forEach(self.push.bind(self));
+    self.push(null);
+  });
 }
 
 util.inherits(ServiceStream, stream.Readable);
 
 ServiceStream.prototype._read = function () {
-  var self = this;
-  if (!self.readAll) {
-    self.readAll = true;
-    fs.readdir(servicesRoot, function (err, files) {
-      if (err) {
-        return self.emit('error', err);
-      }
-
-      self.push(path.join(sdkRoot, 'lib/common'));
-      files.map(function (f) { return path.join(servicesRoot, f); })
-        .forEach(self.push.bind(self));
-      self.push(null);
-    });
-  }
 };
 
 //
@@ -92,3 +88,13 @@ function forEachService(iterator, done) {
 }
 
 module.exports = forEachService;
+module.exports.test = function () {
+  forEachService(function (service, next) {
+    console.log(service.packageJson.name, ":", service.path);
+    next();
+  },
+  function (err) {
+    if (err) { console.log('Failed with error', err); }
+    else { console.log('done'); }
+  });
+};
