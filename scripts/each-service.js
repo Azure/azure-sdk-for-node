@@ -52,7 +52,8 @@ ReadPackageJsonStream.prototype._transform = function(servicepath, encoding, cal
   packagejsonpath = path.join(servicepath, 'package.json');
   fs.exists(packagejsonpath, function (exists) {
     if (exists) {
-      fs.readFile(packagejsonpath, {encoding: 'utf8'}, function (err, text) {
+      fs.readFile(packagejsonpath, function (err, buffer) {
+        var text = buffer.toString();
         if (err) { return callback(err); }
         var json = JSON.parse(text.trim());
         self.push({path: servicepath, packageJson: json});
@@ -88,13 +89,3 @@ function forEachService(iterator, done) {
 }
 
 module.exports = forEachService;
-module.exports.test = function () {
-  forEachService(function (service, next) {
-    console.log(service.packageJson.name, ":", service.path);
-    next();
-  },
-  function (err) {
-    if (err) { console.log('Failed with error', err); }
-    else { console.log('done'); }
-  });
-};
