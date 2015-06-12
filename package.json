@@ -35,8 +35,8 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.12", 
-    "azure-asm-compute": "0.10.0", 
+    "azure-common": "0.9.12",
+    "azure-asm-compute": "0.10.0",
     "azure-asm-hdinsight": "0.10.0",
     "azure-asm-mgmt": "0.10.0",
     "azure-monitoring": "0.10.0",
