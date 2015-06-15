@@ -18,88 +18,105 @@ npm install azure-keyvault
 
 ## How to Use
 
-The following example creates a key and uses it for encrypt and decrypt some data.
+The following example writes and reads a secret, creates a key and uses it for encrypt and decrypt some data.
 
 ```javascript
-var AzureCommon   = require('azure-common');
-var AzureKeyVault = require('azure-keyvault');
-var AdalNode      = require('adal-node'); // Used for authentication
-var Hoek          = require('hoek'); // Used for base64url encoding
+var async = require('async');
+var adalNode = require('adal-node'); // Used for authentication
+var azureKeyVault = require('azure-keyvault');
 
-// Create an authentication context
-var tenantId = '<the tenant GUID>';
-var authorityUrl = 'https://login.windows.net/' + tenantId;
+var clientId = '<your client id>';
+var clientSecret = '<your client secret>';
 
-// Acquire an access token for this client application
-var context = new AdalNode.AuthenticationContext(authorityUrl);
-var clientId = '<the client app id, as provided by the portal>';
-var clientSecret = '<the client secret, as provided by the portal>';
+var credentials = new azureKeyVault.KeyVaultCredentials(authenticator);
+var client = new azureKeyVault.KeyVaultClient(credentials);
 
-context.acquireTokenWithClientCredentials(AzureKeyVault.RESOURCE_ID, clientId, clientSecret, function(err, response) {
-  if (err) {
-    throw new Error('Unable to authenticate: ' + err.stack);
-  }
-  var credentials = new AzureCommon.TokenCloudCredentials({
-    subscriptionId : '<the subscription GUID>',
-    authorizationScheme : response.tokenType,
-    token : response.accessToken
-  });
-  
-  // Creates an Azure Key Vault client with the credentials.
-  var vaultUri = 'https://myvault.vault.azure.net'; // IMPORTANT: Replace 'myvault' with your vault's name.
-  var client = new AzureKeyVault.KeyVaultClient(credentials, vaultUri);
-  
-  // Creates a key
-  var request = {
-    kty: "RSA",
-    key_ops: ["encrypt", "decrypt"],
-    attributes: { enabled: true }
-  };
+var vaultUri = 'https://<my vault>.vault.azure.net';
+var secret = 'Chocolate is hidden in the toothpaste cabinet';
+var secretId;
+var kid;
+var plainText = '1234567890';
+var cipherText;
 
-  console.info('Creating key...');
-  client.keys.create(vaultUri, 'mykey', request, function(err, result) {
-    if (err) throw err;
-    
-    console.info('Key created: ' + JSON.stringify(result, null, ' '));
-    var kid = result.key.kid;
+async.series([  
 
-    // Encrypts some data with the new key.
-    var secret = 'Chocolate is hidden in the toothpaste cabinet';
-    var request = {
-      alg: "RSA-OAEP",
-      value: Hoek.base64urlEncode(secret)
-    };
-
-    console.info('Encrypting text...');
-    client.keys.encryptData(kid, request, function(err, result) {
+  function (next) {
+    // Writes a secret
+    var request = { value: secret };
+    console.info('Writing secret...');
+    client.setSecret(vaultUri, 'mySecret', request, function(err, result) {
       if (err) throw err;
-      
-      console.info('Encryption result: ' + JSON.stringify(result, null, ' '));
-      var cipherText = result.value;
-      
-      // Decrypts data with the same key.
-      var request = {
-        alg: "RSA-OAEP",
-        value: cipherText
-      };
-
-      client.keys.decryptData(kid, request, function(err, result) {
-        if (err) throw err;
-        
-        console.info('Data decrypted: ' + JSON.stringify(result, null, ' '));
-        var plainText = Hoek.base64urlDecode(result.value);
-        if (plainText == secret) {
-           console.info("Secrets match.");
-        } else {
-          throw 'Was expecting "' + secret + '", not "'+ plainText +'".';
-        }
-      });
-        
+      console.info('Secret written: ' + JSON.stringify(result, null, ' '));
+      secretId = result.id;
+      next();
     });
-    
-  });
+  },
 
-});
+  function (next) {
+    // Reads a secret
+    console.info('Reading secret...');
+    client.getSecret(secretId, function(err, result) {
+      if (err) throw err;
+      console.info('Secret read: ' + JSON.stringify(result, null, ' '));
+      next();
+    });
+  },
+
+  function (next) {
+    // Creates a key
+    var request = { kty: "RSA", key_ops: ["encrypt", "decrypt"] };
+    console.info('Creating key...');
+    client.createKey(vaultUri, 'mykey', request, function(err, result) {
+      if (err) throw err;
+      console.info('Key created: ' + JSON.stringify(result));
+      kid = result.key.kid;
+      next();
+    });
+  },
+
+  function (next) {
+    // Encrypts some data with the key.
+    console.info('Encrypting text...');
+    client.encrypt(kid, 'RSA-OAEP', new Buffer(plainText), function(err, result) {
+      if (err) throw err;
+      console.info('Encryption result: ' + JSON.stringify(result));
+      cipherText = result.value;
+      next();
+    });
+  },
+  
+  function (next) {
+    // Decrypts data with the key.
+    console.info('Decrypting text...');
+    client.decrypt(kid, 'RSA-OAEP', cipherText, function(err, result) {
+      if (err) throw err;
+      console.info('Decryption result: ' + JSON.stringify(result));
+      var decrypted = result.value.toString();
+      if (decrypted !== plainText) {
+        throw new Error('Was expecting "' + plainText + '", not "' + decrypted + '".');
+      }
+      next();
+    });
+  },
+  
+  function (next) {
+    console.info('Finished with success!');
+    next();
+  }
+
+]);
+
+function authenticator(challenge, callback) {
+  // Create a new authentication context.
+  var context = new adalNode.AuthenticationContext(challenge.authorization);
+  // Use the context to acquire an authentication token.
+  return context.acquireTokenWithClientCredentials(challenge.resource, clientId, clientSecret, function(err, tokenResponse) {
+      if (err) throw err;
+      // Calculate the value to be set in the request's Authorization header and resume the call.
+      var authorizationValue = tokenResponse.tokenType + ' ' + tokenResponse.accessToken;
+      return callback(null, authorizationValue);
+  });
+}
 ```
 
 ## Related projects
