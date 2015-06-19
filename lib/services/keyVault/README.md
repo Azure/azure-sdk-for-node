@@ -1,8 +1,8 @@
 # Microsoft Azure SDK for Node.js - Key Vault
 
 This project provides a Node.js package for accessing keys and secrets on Azure Key Vault. Right now it supports:
-- **Node.js version: 0.6.15 or higher**
-- **REST API version: 2015-02-01-preview**
+- **Node.js version: 0.8.28 or higher**
+- **REST API version: 2015-06-01**
 
 ## Features
 
