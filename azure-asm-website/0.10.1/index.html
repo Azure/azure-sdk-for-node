@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials</a></li><li><a href="CommandsOperations-CommandsOperations.html">CommandsOperations~CommandsOperations</a></li><li><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html">ContinuousWebJobOperations~ContinuousWebJobOperations</a></li><li><a href="DeploymentOperations-DeploymentOperations.html">DeploymentOperations~DeploymentOperations</a></li><li><a href="DiagnosticOperations-DiagnosticOperations.html">DiagnosticOperations~DiagnosticOperations</a></li><li><a href="RepositoryOperations-RepositoryOperations.html">RepositoryOperations~RepositoryOperations</a></li><li><a href="ScmService.html">ScmService</a></li><li><a href="SettingsOperations-SettingsOperations.html">SettingsOperations~SettingsOperations</a></li><li><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html">TriggeredWebJobOperations~TriggeredWebJobOperations</a></li><li><a href="WebHostingPlanOperations-WebHostingPlanOperations.html">WebHostingPlanOperations~WebHostingPlanOperations</a></li><li><a href="WebSiteExtensionsClient-WebSiteExtensionsClient.html">WebSiteExtensionsClient~WebSiteExtensionsClient</a></li><li><a href="WebSiteManagementClient-WebSiteManagementClient.html">WebSiteManagementClient~WebSiteManagementClient</a></li><li><a href="WebsiteManagementService.html">WebsiteManagementService</a></li><li><a href="WebSiteOperations-WebSiteOperations.html">WebSiteOperations~WebSiteOperations</a></li><li><a href="WebSpaceOperations-WebSpaceOperations.html">WebSpaceOperations~WebSpaceOperations</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createScmService">createScmService</a></li><li><a href="global.html#createWebSiteExtensionsClient">createWebSiteExtensionsClient</a></li><li><a href="global.html#createWebSiteManagementClient">createWebSiteManagementClient</a></li><li><a href="global.html#createWebsiteManagementService">createWebsiteManagementService</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	<span class="page-title">Index</span>
+	
+	
+
+
+
+    <h3>azure-asm-website 0.10.1</h3>
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1>Microsoft Azure SDK for Node.js - Web Site Management</h1><p>This project provides a Node.js package that makes it easy to manage Microsoft Azure Web Site. Right now it supports:</p>
+<ul>
+<li><strong>Node.js version: 0.6.15 or higher</strong></li>
+<li><strong>API version: 2013-08-01</strong></li>
+</ul>
+<h2>Features</h2><ul>
+<li>Manage web space</li>
+<li>Manage web site</li>
+<li>Manage web farm</li>
+</ul>
+<h2>How to Install</h2><pre class="prettyprint source lang-bash"><code>npm install azure-asm-website</code></pre><h2>How to Use</h2><h3>Authentication</h3><p>This library support management certificate authentication. To authenticate the library for the REST API calls, you need to</p>
+<ul>
+<li>Have a management certificate set up in your Microsoft Azure subscription. You can do this by<ul>
+<li>Either uploading a certificate in the <a href="https://manage.windowsazure.com">Microsoft Azure management portal</a>.</li>
+<li>Or use the <a href="https://github.com/Azure/azure-xplat-cli">Microsoft Azure Xplat-CLI</a>.</li>
+</ul>
+</li>
+<li>Obtain the .pem file of your certificate. If you used <a href="https://github.com/Azure/azure-xplat-cli">Microsoft Azure Xplat-CLI</a> to set it up. You can run <code>azure account cert export</code> to get the .pem file.</li>
+</ul>
+<h3>Create the WebSiteManagementClient</h3><pre class="prettyprint source lang-javascript"><code>var fs                = require('fs'),
+    webSiteManagement = require('azure-asm-website');
+
+var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(webSiteManagement.createCertificateCloudCredentials({
+  subscriptionId: '&lt;your subscription id>',
+  pem: fs.readFileSync('&lt;your pem file>')
+}));</code></pre><h3>Manage Web Site</h3><pre class="prettyprint source lang-javascript"><code>var webSiteName = &quot;website01&quot;;
+
+// Get all the available webspaces under a subscription.
+webSiteManagementClient.webSpaces.list(function (err, result) {
+    if (err) {
+    console.error(err);
+  } else {
+    console.info(result);
+  }
+});
+
+// Create a web site.
+webSiteManagementClient.webSites.create(&quot;westuswebspace&quot;, {
+  name: webSiteName,
+  hostNames: [webSiteName + &quot;.azurewebsites.net&quot;],
+  webSpaceName: &quot;westuswebspace&quot;
+}, function (err, result) {
+  if (err) {
+    console.error(err);
+  } else {
+    console.info(result);
+  }
+});</code></pre><h2>Related projects</h2><ul>
+<li><a href="https://github.com/WindowsAzure/azure-sdk-for-node">Microsoft Azure SDK for Node.js - All-up</a></li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

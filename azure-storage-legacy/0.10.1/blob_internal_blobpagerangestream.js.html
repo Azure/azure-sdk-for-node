@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: blob/internal/blobpagerangestream.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BatchServiceClient.html">BatchServiceClient</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="SharedKey.html">SharedKey</a></li><li><a href="SharedKeyLite.html">SharedKeyLite</a></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a></li><li><a href="SharedKeyTable.html">SharedKeyTable</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: blob/internal/blobpagerangestream.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+var azureCommon = require('azure-common');
+var Constants = azureCommon.Constants;
+
+var EventEmitter = require('events').EventEmitter;
+
+/**
+* PageBlob page range stream
+*/
+function BlobPageRangeStream (blobServiceClient, container, blob) {
+  this.blobServiceClient = blobServiceClient;
+  this.container = container;
+  this.blob = blob;
+  this.rangeSize = -1;
+  this._emitter = new EventEmitter();
+  this._paused = false;
+  this._emittedAll = false;
+  this._emittedRangeIndex = 0;
+  this._rangelist = [];
+  this._isEmitting = false;
+  this._startOffset = 0;
+  this._rangeStreamEnded = false;
+  this._dataOffset = 0;
+}
+
+/**
+* Add event listener
+*/
+BlobPageRangeStream.prototype.on = function(event, listener) {
+  this._emitter.on(event, listener);
+};
+
+/**
+* Get page list
+*/
+BlobPageRangeStream.prototype.list = function(options) {
+  var self = this;
+  var start = this._startOffset;
+  var singleRangeSize = Constants.BlobConstants.MAX_SINGLE_GET_PAGE_RANGE_SIZE;
+  var end = this._startOffset + singleRangeSize - 1;
+  //http://blogs.msdn.com/b/windowsazurestorage/archive/2012/03/26/getting-the-page-ranges-of-a-large-page-blob-in-segments.aspx
+  this.blobServiceClient.listBlobRegions(this.container, this.blob, start, end, options, function(error, ranges, response) {
+    if (error) throw error;
+    var totalSize = parseInt(response.headers[Constants.HeaderConstants.CONTENT_LENGTH_HEADER], 10);
+    var endOffset = totalSize - 1;
+    var rangeEnd = Math.min(end, endOffset);
+    self.rangeSize = totalSize;
+    if (!ranges.length) {
+      //Convert single page blob to page blob range
+      //start bigger than end means there is no valid page regions
+      ranges.push({start : start, end : rangeEnd, dataSize: 0});
+    } else if(ranges[ranges.length - 1].end !== rangeEnd) {
+      //Don't forget the zero chunk at the end of range
+      ranges.push({start : ranges[ranges.length - 1].end + 1, end : rangeEnd, dataSize: 0});
+    }
+
+    if(end >= endOffset) {
+      self._rangeStreamEnded = true;
+    }
+    self.resizeAndSaveRanges(ranges);
+    self._startOffset += singleRangeSize;
+    self._emitPageRange();
+    if(end &lt; endOffset) {
+      process.nextTick(function(){
+        self.list(options);
+        self = ranges = null;
+      });
+    }
+  });
+};
+
+/**
+* Resize page regions into small pieces which are not larger than 4MB
+*/
+BlobPageRangeStream.prototype.resizeAndSaveRanges = function(ranges) {
+  var rangeList = this._rangelist;
+  var offset = 0;
+  var range = null;
+  for(var i = 0, len = ranges.length; i &lt; len; i++) {
+    range = ranges[i];
+    offset = range.start;
+    if(this._dataOffset != range.start) {
+      //Padding zero for empty page range
+      var zeroDataRange = {type : 'Page', size : -1, dataSize : 0, start : this._dataOffset, end : range.start - 1};
+      this.splitPageRanges(zeroDataRange, rangeList);
+    }
+
+    this.splitPageRanges(range, rangeList);
+    this._dataOffset = range.end + 1;
+  }
+};
+
+/**
+* Split large ranges into small pieces in order to get rid of OOM
+* For example, [0, 10G - 1] => [0, 4M - 1], [4M, 8M - 1] ... [10G - 4M, 10G - 1]
+*/
+BlobPageRangeStream.prototype.splitPageRanges = function(range, rangeList) {
+  var rangeSize = range.end - range.start + 1;
+  var offset = range.start;
+  var limitedSize = 0;
+  var maxSize = Constants.BlobConstants.DEFAULT_WRITE_PAGE_SIZE_IN_BYTES;
+  while(rangeSize > 0) {
+    var newRange = {type : 'Page', size : 0, dataSize : 0, start : -1, end : -1};
+    limitedSize = Math.min(rangeSize, maxSize);
+    newRange.start = offset;
+    newRange.size = limitedSize;
+    if(range.dataSize === 0) {
+      newRange.dataSize = 0;
+    } else {
+      newRange.dataSize = limitedSize;
+    }
+    offset += limitedSize;
+    newRange.end = offset - 1;
+    rangeList.push(newRange);
+    rangeSize -= limitedSize;
+  }
+};
+
+/**
+* Emit page range
+*/
+BlobPageRangeStream.prototype._emitPageRange = function () {
+  if(this._paused || this._emittedAll || this._isEmitting) return;
+  this._isEmitting = true;
+  try {
+    for(; this._emittedRangeIndex &lt; this._rangelist.length; this._emittedRangeIndex++) {
+      if(this._paused) {
+        return;
+      }
+      var range = this._rangelist[this._emittedRangeIndex];
+      this._emitter.emit('range', range);
+      this._rangelist[this._emittedRangeIndex] = null;
+    }
+
+    if(this._rangeStreamEnded) {
+      this._rangelist = null;
+      this._emittedAll = true;
+      this._emitter.emit('end');
+    }//Otherwise we should wait for the other getPageRanges
+  } finally {
+    this._isEmitting = false;
+  }
+};
+
+/**
+* Pause the stream
+*/
+BlobPageRangeStream.prototype.pause = function () {
+  this._paused = true;
+};
+
+/**
+* Resume the stream
+*/
+BlobPageRangeStream.prototype.resume = function () {
+  this._paused = false;
+  if(!this._isEmitting) {
+    this._emitPageRange();
+  }
+};
+
+module.exports = BlobPageRangeStream;
+</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

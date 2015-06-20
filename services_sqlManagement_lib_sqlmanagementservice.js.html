@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: services/sqlManagement/lib/sqlmanagementservice.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-date.html">date</a></li><li><a href="module-RoleEnvironment.html">RoleEnvironment</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AddOnOperations-AddOnOperations.html">AddOnOperations~AddOnOperations</a></li><li><a href="AffinityGroupOperations-AffinityGroupOperations.html">AffinityGroupOperations~AffinityGroupOperations</a></li><li><a href="AgentDiagnosticSettingsOperations-AgentDiagnosticSettingsOperations.html">AgentDiagnosticSettingsOperations~AgentDiagnosticSettingsOperations</a></li><li><a href="AlertOperations-AlertOperations.html">AlertOperations~AlertOperations</a></li><li><a href="AlertsClient-AlertsClient.html">AlertsClient~AlertsClient</a></li><li><a href="AnonymousCloudCredentials.html">AnonymousCloudCredentials</a></li><li><a href="ApiAppManagementClient-ApiAppManagementClient.html">ApiAppManagementClient~ApiAppManagementClient</a></li><li><a href="ApiAppOperations-ApiAppOperations.html">ApiAppOperations~ApiAppOperations</a></li><li><a href="ApnsService.html">ApnsService</a></li><li><a href="ApplicationGatewayOperations-ApplicationGatewayOperations.html">ApplicationGatewayOperations~ApplicationGatewayOperations</a></li><li><a href="ApplicationOperations-ApplicationOperations.html">ApplicationOperations~ApplicationOperations</a></li><li><a href="AuthorizationManagementClient-AuthorizationManagementClient.html">AuthorizationManagementClient~AuthorizationManagementClient</a></li><li><a href="AutomatedExportOperations-AutomatedExportOperations.html">AutomatedExportOperations~AutomatedExportOperations</a></li><li><a href="AutoscaleClient-AutoscaleClient.html">AutoscaleClient~AutoscaleClient</a></li><li><a href="AutoscaleOperations-AutoscaleOperations.html">AutoscaleOperations~AutoscaleOperations</a></li><li><a href="AvailabilitySetOperations-AvailabilitySetOperations.html">AvailabilitySetOperations~AvailabilitySetOperations</a></li><li><a href="BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials</a></li><li><a href="BasicAuthenticationCloudCredentials-BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials~BasicAuthenticationCloudCredentials</a></li><li><a href="BatchServiceClient.html">BatchServiceClient</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="CertificateCloudCredentials.html">CertificateCloudCredentials</a></li><li><a href="ClientRootCertificateOperations-ClientRootCertificateOperations.html">ClientRootCertificateOperations~ClientRootCertificateOperations</a></li><li><a href="CloudServiceManagementClient-CloudServiceManagementClient.html">CloudServiceManagementClient~CloudServiceManagementClient</a></li><li><a href="CloudServiceOperations-CloudServiceOperations.html">CloudServiceOperations~CloudServiceOperations</a></li><li><a href="ClusterOperations-ClusterOperations.html">ClusterOperations~ClusterOperations</a></li><li><a href="CommandsOperations-CommandsOperations.html">CommandsOperations~CommandsOperations</a></li><li><a href="ComputeManagementClient-ComputeManagementClient.html">ComputeManagementClient~ComputeManagementClient</a></li><li><a href="ConnectionStringParser.html">ConnectionStringParser</a></li><li><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html">ContinuousWebJobOperations~ContinuousWebJobOperations</a></li><li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="createHDInsightCluster2ManagementClient.html">createHDInsightCluster2ManagementClient</a></li><li><a href="createHDInsightClusterManagementClient.html">createHDInsightClusterManagementClient</a></li><li><a href="createHDInsightJobManagementClient.html">createHDInsightJobManagementClient</a></li><li><a href="createSqlService.html">createSqlService</a></li><li><a href="DacOperations-DacOperations.html">DacOperations~DacOperations</a></li><li><a href="DatabaseCopyOperations-DatabaseCopyOperations.html">DatabaseCopyOperations~DatabaseCopyOperations</a></li><li><a href="DatabaseOperationOperations-DatabaseOperationOperations.html">DatabaseOperationOperations~DatabaseOperationOperations</a></li><li><a href="DatabaseOperations-DatabaseOperations.html">DatabaseOperations~DatabaseOperations</a></li><li><a href="DefinitionOperations-DefinitionOperations.html">DefinitionOperations~DefinitionOperations</a></li><li><a href="DeploymentOperationOperations-DeploymentOperationOperations.html">DeploymentOperationOperations~DeploymentOperationOperations</a></li><li><a href="DeploymentOperations-DeploymentOperations.html">DeploymentOperations~DeploymentOperations</a></li><li><a href="DiagnosticOperations-DiagnosticOperations.html">DiagnosticOperations~DiagnosticOperations</a></li><li><a href="DnsManagementClient-DnsManagementClient.html">DnsManagementClient~DnsManagementClient</a></li><li><a href="DNSServerOperations-DNSServerOperations.html">DNSServerOperations~DNSServerOperations</a></li><li><a href="EventDataOperations-EventDataOperations.html">EventDataOperations~EventDataOperations</a></li><li><a href="EventOperations-EventOperations.html">EventOperations~EventOperations</a></li><li><a href="EventsClient-EventsClient.html">EventsClient~EventsClient</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="ExtensionImageOperations-ExtensionImageOperations.html">ExtensionImageOperations~ExtensionImageOperations</a></li><li><a href="FeatureClient-FeatureClient.html">FeatureClient~FeatureClient</a></li><li><a href="Features-Features.html">Features~Features</a></li><li><a href="FirewallRuleOperations-FirewallRuleOperations.html">FirewallRuleOperations~FirewallRuleOperations</a></li><li><a href="GalleryClient-GalleryClient.html">GalleryClient~GalleryClient</a></li><li><a href="GatewayOperations-GatewayOperations.html">GatewayOperations~GatewayOperations</a></li><li><a href="GcmService.html">GcmService</a></li><li><a href="GraphRbacManagementClient-GraphRbacManagementClient.html">GraphRbacManagementClient~GraphRbacManagementClient</a></li><li><a href="GroupOperations-GroupOperations.html">GroupOperations~GroupOperations</a></li><li><a href="HDInsightCluster2ManagementClient-HDInsightCluster2ManagementClient.html">HDInsightCluster2ManagementClient~HDInsightCluster2ManagementClient</a></li><li><a href="HDInsightClusterManagementClient-HDInsightClusterManagementClient.html">HDInsightClusterManagementClient~HDInsightClusterManagementClient</a></li><li><a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html">HDInsightJobManagementClient~HDInsightJobManagementClient</a></li><li><a href="HDInsightService.html">HDInsightService</a></li><li><a href="HmacSha256Sign.html">HmacSha256Sign</a></li><li><a href="HostedServiceOperations-HostedServiceOperations.html">HostedServiceOperations~HostedServiceOperations</a></li><li><a href="IncidentOperations-IncidentOperations.html">IncidentOperations~IncidentOperations</a></li><li><a href="InsightsClient-InsightsClient.html">InsightsClient~InsightsClient</a></li><li><a href="InsightsManagementClient-InsightsManagementClient.html">InsightsManagementClient~InsightsManagementClient</a></li><li><a href="ItemOperations-ItemOperations.html">ItemOperations~ItemOperations</a></li><li><a href="JobCollectionOperations-JobCollectionOperations.html">JobCollectionOperations~JobCollectionOperations</a></li><li><a href="JobOperations-JobOperations.html">JobOperations~JobOperations</a></li><li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyOperations-KeyOperations.html">KeyOperations~KeyOperations</a></li><li><a href="global.html#KeyVaultClient">KeyVaultClient</a></li><li><a href="KeyVaultInternalClient-KeyVaultInternalClient.html">KeyVaultInternalClient~KeyVaultInternalClient</a></li><li><a href="KeyVaultManagementClient-KeyVaultManagementClient.html">KeyVaultManagementClient~KeyVaultManagementClient</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="LoadBalancerOperations-LoadBalancerOperations.html">LoadBalancerOperations~LoadBalancerOperations</a></li><li><a href="LocalNetworkGatewayOperations-LocalNetworkGatewayOperations.html">LocalNetworkGatewayOperations~LocalNetworkGatewayOperations</a></li><li><a href="LocationOperations-LocationOperations.html">LocationOperations~LocationOperations</a></li><li><a href="ManagementCertificateOperations-ManagementCertificateOperations.html">ManagementCertificateOperations~ManagementCertificateOperations</a></li><li><a href="ManagementClient-ManagementClient.html">ManagementClient~ManagementClient</a></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations~MetricDefinitionOperations</a></li><li><a href="MetricOperations-MetricOperations.html">MetricOperations~MetricOperations</a></li><li><a href="MetricsClient-MetricsClient.html">MetricsClient~MetricsClient</a></li><li><a href="MetricSettingOperations-MetricSettingOperations.html">MetricSettingOperations~MetricSettingOperations</a></li><li><a href="MetricValueOperations-MetricValueOperations.html">MetricValueOperations~MetricValueOperations</a></li><li><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html">MonitoringConfigurationOperations~MonitoringConfigurationOperations</a></li><li><a href="MpnsService.html">MpnsService</a></li><li><a href="NamespaceOperations-NamespaceOperations.html">NamespaceOperations~NamespaceOperations</a></li><li><a href="NetworkInterfaceOperations-NetworkInterfaceOperations.html">NetworkInterfaceOperations~NetworkInterfaceOperations</a></li><li><a href="NetworkManagementClient-NetworkManagementClient.html">NetworkManagementClient~NetworkManagementClient</a></li><li><a href="NetworkOperations-NetworkOperations.html">NetworkOperations~NetworkOperations</a></li><li><a href="NetworkResourceProviderClient-NetworkResourceProviderClient.html">NetworkResourceProviderClient~NetworkResourceProviderClient</a></li><li><a href="NetworkSecurityGroupOperations-NetworkSecurityGroupOperations.html">NetworkSecurityGroupOperations~NetworkSecurityGroupOperations</a></li><li><a href="NotificationHubOperations-NotificationHubOperations.html">NotificationHubOperations~NotificationHubOperations</a></li><li><a href="NotificationHubService.html">NotificationHubService</a></li><li><a href="ObjectOperations-ObjectOperations.html">ObjectOperations~ObjectOperations</a></li><li><a href="OperatingSystemOperations-OperatingSystemOperations.html">OperatingSystemOperations~OperatingSystemOperations</a></li><li><a href="PermissionOperations-PermissionOperations.html">PermissionOperations~PermissionOperations</a></li><li><a href="ProfileOperations-ProfileOperations.html">ProfileOperations~ProfileOperations</a></li><li><a href="ProviderOperations-ProviderOperations.html">ProviderOperations~ProviderOperations</a></li><li><a href="PublicIpAddressOperations-PublicIpAddressOperations.html">PublicIpAddressOperations~PublicIpAddressOperations</a></li><li><a href="QueueOperations-QueueOperations.html">QueueOperations~QueueOperations</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="QuotaOperations-QuotaOperations.html">QuotaOperations~QuotaOperations</a></li><li><a href="RecordSetOperations-RecordSetOperations.html">RecordSetOperations~RecordSetOperations</a></li><li><a href="RecoverableDatabaseOperations-RecoverableDatabaseOperations.html">RecoverableDatabaseOperations~RecoverableDatabaseOperations</a></li><li><a href="RecoverDatabaseOperations-RecoverDatabaseOperations.html">RecoverDatabaseOperations~RecoverDatabaseOperations</a></li><li><a href="RelayOperations-RelayOperations.html">RelayOperations~RelayOperations</a></li><li><a href="RepositoryOperations-RepositoryOperations.html">RepositoryOperations~RepositoryOperations</a></li><li><a href="ReservedIPOperations-ReservedIPOperations.html">ReservedIPOperations~ReservedIPOperations</a></li><li><a href="ResourceGroupOperations-ResourceGroupOperations.html">ResourceGroupOperations~ResourceGroupOperations</a></li><li><a href="ResourceManagementClient-ResourceManagementClient.html">ResourceManagementClient~ResourceManagementClient</a></li><li><a href="ResourceOperations-ResourceOperations.html">ResourceOperations~ResourceOperations</a></li><li><a href="ResourceProviderOperationDetailsOperations-ResourceProviderOperationDetailsOperations.html">ResourceProviderOperationDetailsOperations~ResourceProviderOperationDetailsOperations</a></li><li><a href="RestorableDroppedDatabaseOperations-RestorableDroppedDatabaseOperations.html">RestorableDroppedDatabaseOperations~RestorableDroppedDatabaseOperations</a></li><li><a href="RestoreDatabaseOperations-RestoreDatabaseOperations.html">RestoreDatabaseOperations~RestoreDatabaseOperations</a></li><li><a href="RoleAssignmentOperations-RoleAssignmentOperations.html">RoleAssignmentOperations~RoleAssignmentOperations</a></li><li><a href="RoleDefinitionOperations-RoleDefinitionOperations.html">RoleDefinitionOperations~RoleDefinitionOperations</a></li><li><a href="RoleSizeOperations-RoleSizeOperations.html">RoleSizeOperations~RoleSizeOperations</a></li><li><a href="RouteOperations-RouteOperations.html">RouteOperations~RouteOperations</a></li><li><a href="RuleOperations-RuleOperations.html">RuleOperations~RuleOperations</a></li><li><a href="SchedulerClient-SchedulerClient.html">SchedulerClient~SchedulerClient</a></li><li><a href="SchedulerManagementClient-SchedulerManagementClient.html">SchedulerManagementClient~SchedulerManagementClient</a></li><li><a href="ScmService.html">ScmService</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li><li><a href="SecretOperations-SecretOperations.html">SecretOperations~SecretOperations</a></li><li><a href="SecurityRuleOperations-SecurityRuleOperations.html">SecurityRuleOperations~SecurityRuleOperations</a></li><li><a href="ServerOperations-ServerOperations.html">ServerOperations~ServerOperations</a></li><li><a href="ServiceBusManagementClient-ServiceBusManagementClient.html">ServiceBusManagementClient~ServiceBusManagementClient</a></li><li><a href="ServiceBusService.html">ServiceBusService</a></li><li><a href="ServiceBusServiceBase.html">ServiceBusServiceBase</a></li><li><a href="ServiceBusServiceClient.html">ServiceBusServiceClient</a></li><li><a href="ServiceCertificateOperations-ServiceCertificateOperations.html">ServiceCertificateOperations~ServiceCertificateOperations</a></li><li><a href="ServiceDiagnosticSettingsOperations-ServiceDiagnosticSettingsOperations.html">ServiceDiagnosticSettingsOperations~ServiceDiagnosticSettingsOperations</a></li><li><a href="ServiceManagementClient.html">ServiceManagementClient</a></li><li><a href="ServiceObjectiveOperations-ServiceObjectiveOperations.html">ServiceObjectiveOperations~ServiceObjectiveOperations</a></li><li><a href="ServicePrincipalOperations-ServicePrincipalOperations.html">ServicePrincipalOperations~ServicePrincipalOperations</a></li><li><a href="SettingOperations-SettingOperations.html">SettingOperations~SettingOperations</a></li><li><a href="SettingsOperations-SettingsOperations.html">SettingsOperations~SettingsOperations</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="SharedKey.html">SharedKey</a></li><li><a href="SharedKeyLite.html">SharedKeyLite</a></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a></li><li><a href="SharedKeyTable.html">SharedKeyTable</a></li><li><a href="SkuOperations-SkuOperations.html">SkuOperations~SkuOperations</a></li><li><a href="SourceControlOperations-SourceControlOperations.html">SourceControlOperations~SourceControlOperations</a></li><li><a href="SqlManagementClient-SqlManagementClient.html">SqlManagementClient~SqlManagementClient</a></li><li><a href="SqlManagementService.html">SqlManagementService</a></li><li><a href="SqlService.html">SqlService</a></li><li><a href="SqlServiceClient.html">SqlServiceClient</a></li><li><a href="StaticIPOperations-StaticIPOperations.html">StaticIPOperations~StaticIPOperations</a></li><li><a href="StorageAccountOperations-StorageAccountOperations.html">StorageAccountOperations~StorageAccountOperations</a></li><li><a href="StorageDiagnosticSettingsOperations-StorageDiagnosticSettingsOperations.html">StorageDiagnosticSettingsOperations~StorageDiagnosticSettingsOperations</a></li><li><a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient~StorageManagementClient</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="StoreManagementClient-StoreManagementClient.html">StoreManagementClient~StoreManagementClient</a></li><li><a href="SubnetOperations-SubnetOperations.html">SubnetOperations~SubnetOperations</a></li><li><a href="SubscriptionClient-SubscriptionClient.html">SubscriptionClient~SubscriptionClient</a></li><li><a href="SubscriptionOperations-SubscriptionOperations.html">SubscriptionOperations~SubscriptionOperations</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li><li><a href="TagOperations-TagOperations.html">TagOperations~TagOperations</a></li><li><a href="TemplateOperations-TemplateOperations.html">TemplateOperations~TemplateOperations</a></li><li><a href="TenantOperations-TenantOperations.html">TenantOperations~TenantOperations</a></li><li><a href="TokenCloudCredentials.html">TokenCloudCredentials</a></li><li><a href="TopicOperations-TopicOperations.html">TopicOperations~TopicOperations</a></li><li><a href="TrafficManagerManagementClient-TrafficManagerManagementClient.html">TrafficManagerManagementClient~TrafficManagerManagementClient</a></li><li><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html">TriggeredWebJobOperations~TriggeredWebJobOperations</a></li><li><a href="UsageMetricsOperations-UsageMetricsOperations.html">UsageMetricsOperations~UsageMetricsOperations</a></li><li><a href="UsageOperations-UsageOperations.html">UsageOperations~UsageOperations</a></li><li><a href="UserOperations-UserOperations.html">UserOperations~UserOperations</a></li><li><a href="VaultOperations-VaultOperations.html">VaultOperations~VaultOperations</a></li><li><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html">VirtualMachineDiskOperations~VirtualMachineDiskOperations</a></li><li><a href="VirtualMachineExtensionOperations-VirtualMachineExtensionOperations.html">VirtualMachineExtensionOperations~VirtualMachineExtensionOperations</a></li><li><a href="VirtualMachineOperations-VirtualMachineOperations.html">VirtualMachineOperations~VirtualMachineOperations</a></li><li><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html">VirtualMachineOSImageOperations~VirtualMachineOSImageOperations</a></li><li><a href="VirtualMachineSizeOperations-VirtualMachineSizeOperations.html">VirtualMachineSizeOperations~VirtualMachineSizeOperations</a></li><li><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html">VirtualMachineVMImageOperations~VirtualMachineVMImageOperations</a></li><li><a href="VirtualNetworkGatewayConnectionOperations-VirtualNetworkGatewayConnectionOperations.html">VirtualNetworkGatewayConnectionOperations~VirtualNetworkGatewayConnectionOperations</a></li><li><a href="VirtualNetworkGatewayOperations-VirtualNetworkGatewayOperations.html">VirtualNetworkGatewayOperations~VirtualNetworkGatewayOperations</a></li><li><a href="VirtualNetworkOperations-VirtualNetworkOperations.html">VirtualNetworkOperations~VirtualNetworkOperations</a></li><li><a href="WebHostingPlanOperations-WebHostingPlanOperations.html">WebHostingPlanOperations~WebHostingPlanOperations</a></li><li><a href="WebResource.html">WebResource</a></li><li><a href="WebSiteExtensionsClient-WebSiteExtensionsClient.html">WebSiteExtensionsClient~WebSiteExtensionsClient</a></li><li><a href="WebSiteManagementClient-WebSiteManagementClient.html">WebSiteManagementClient~WebSiteManagementClient</a></li><li><a href="WebsiteManagementService.html">WebsiteManagementService</a></li><li><a href="WebSiteOperations-WebSiteOperations.html">WebSiteOperations~WebSiteOperations</a></li><li><a href="WebSpaceOperations-WebSpaceOperations.html">WebSpaceOperations~WebSpaceOperations</a></li><li><a href="WnsService.html">WnsService</a></li><li><a href="ZoneOperations-ZoneOperations.html">ZoneOperations~ZoneOperations</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#allRequired">allRequired</a></li><li><a href="global.html#atLeastOne">atLeastOne</a></li><li><a href="global.html#AuthorizationManagementClient">AuthorizationManagementClient</a></li><li><a href="global.html#baseIdentifier">baseIdentifier</a></li><li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#blobNameIsValid">blobNameIsValid</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CLOUD_BLOB_HOST">CLOUD_BLOB_HOST</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#ComputeManagementClient">ComputeManagementClient</a></li><li><a href="global.html#containerNameIsValid">containerNameIsValid</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createApiAppManagementClient">createApiAppManagementClient</a></li><li><a href="global.html#createAuthorizationManagementClient">createAuthorizationManagementClient</a></li><li><a href="global.html#createAutoScaleClient">createAutoScaleClient</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createCloudServiceManagementClient">createCloudServiceManagementClient</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createComputeManagementClient">createComputeManagementClient</a></li><li><a href="global.html#createDnsManagementClient">createDnsManagementClient</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li><li><a href="global.html#createGalleryClient">createGalleryClient</a></li><li><a href="global.html#createGraphRbacManagementClient">createGraphRbacManagementClient</a></li><li><a href="global.html#createHDInsightService">createHDInsightService</a></li><li><a href="global.html#createInsightsClient">createInsightsClient</a></li><li><a href="global.html#createInsightsManagementClient">createInsightsManagementClient</a></li><li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createManagementClient">createManagementClient</a></li><li><a href="global.html#createMetricsClient">createMetricsClient</a></li><li><a href="global.html#createNetworkManagementClient">createNetworkManagementClient</a></li><li><a href="global.html#createNetworkResourceProviderClient">createNetworkResourceProviderClient</a></li><li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createResourceFeatureClient">createResourceFeatureClient</a></li><li><a href="global.html#createResourceIdentity">createResourceIdentity</a></li><li><a href="global.html#createResourceManagementClient">createResourceManagementClient</a></li><li><a href="global.html#createResourceSubscriptionClient">createResourceSubscriptionClient</a></li><li><a href="global.html#createSchedulerClient">createSchedulerClient</a></li><li><a href="global.html#createSchedulerManagementClient">createSchedulerManagementClient</a></li><li><a href="global.html#createScmService">createScmService</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#createServiceBusManagementClient">createServiceBusManagementClient</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createSqlManagementClient">createSqlManagementClient</a></li><li><a href="global.html#createSqlManagementService">createSqlManagementService</a></li><li><a href="global.html#createStorageManagementClient">createStorageManagementClient</a></li><li><a href="global.html#createStoreManagementClient">createStoreManagementClient</a></li><li><a href="global.html#createSubscriptionClient">createSubscriptionClient</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTrafficManagerManagementClient">createTrafficManagerManagementClient</a></li><li><a href="global.html#createWebSiteExtensionsClient">createWebSiteExtensionsClient</a></li><li><a href="global.html#createWebSiteManagementClient">createWebSiteManagementClient</a></li><li><a href="global.html#createWebSiteManagementClient2">createWebSiteManagementClient2</a></li><li><a href="global.html#createWebsiteManagementService">createWebsiteManagementService</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#DEFAULT_PROTOCOL">DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEFAULT_SERVICEBUS_ISSUER">DEFAULT_SERVICEBUS_ISSUER</a></li><li><a href="global.html#DEFAULT_WRAP_NAMESPACE_SUFFIX">DEFAULT_WRAP_NAMESPACE_SUFFIX</a></li><li><a href="global.html#DEVSTORE_DEFAULT_PROTOCOL">DEVSTORE_DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEVSTORE_STORAGE_ACCOUNT">DEVSTORE_STORAGE_ACCOUNT</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#format">format</a></li><li><a href="global.html#getContentMd5">getContentMd5</a></li><li><a href="global.html#getNameSpace">getNameSpace</a></li><li><a href="global.html#getValidator">getValidator</a></li><li><a href="global.html#GraphRbacManagementClient">GraphRbacManagementClient</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#identifier">identifier</a></li><li><a href="global.html#inArrayInsensitive">inArrayInsensitive</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isBase64Encoded">isBase64Encoded</a></li><li><a href="global.html#isBufferAllZero">isBufferAllZero</a></li><li><a href="global.html#isEmulated">isEmulated</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isValidFunction">isValidFunction</a></li><li><a href="global.html#isValidHDInsightCreationObject">isValidHDInsightCreationObject</a></li><li><a href="global.html#isValidUri">isValidUri</a></li><li><a href="global.html#KEY_PATT">KEY_PATT</a></li><li><a href="global.html#KEYVAULT_RESOURCE_ID">KEYVAULT_RESOURCE_ID</a></li><li><a href="global.html#KeyVaultCredentials">KeyVaultCredentials</a></li><li><a href="global.html#KeyVaultManagementClient">KeyVaultManagementClient</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#ManagementClient">ManagementClient</a></li><li><a href="global.html#matchedSpecification">matchedSpecification</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#namespaceNameIsValid">namespaceNameIsValid</a></li><li><a href="global.html#noMatchConnectionString">noMatchConnectionString</a></li><li><a href="global.html#noMatchSettings">noMatchSettings</a></li><li><a href="global.html#objectFirstKey">objectFirstKey</a></li><li><a href="global.html#ObjectIdentifier">ObjectIdentifier</a></li><li><a href="global.html#objectIsEmpty">objectIsEmpty</a></li><li><a href="global.html#objectIsFunction">objectIsFunction</a></li><li><a href="global.html#objectIsInt">objectIsInt</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectIsString">objectIsString</a></li><li><a href="global.html#objectKeysLength">objectKeysLength</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#optional">optional</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#parseAndValidateKeys">parseAndValidateKeys</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#propertyType">propertyType</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#queueNameIsValid">queueNameIsValid</a></li><li><a href="global.html#removeBOM">removeBOM</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#serializeEntry">serializeEntry</a></li><li><a href="global.html#serializeQueryValue">serializeQueryValue</a></li><li><a href="global.html#ServiceBusSettings">ServiceBusSettings</a></li><li><a href="global.html#ServiceManagementSettings">ServiceManagementSettings</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#setting">setting</a></li><li><a href="global.html#settingWithFunc">settingWithFunc</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#SqlServerAcs">SqlServerAcs</a></li><li><a href="global.html#StorageServiceSettings">StorageServiceSettings</a></li><li><a href="global.html#stringEndsWith">stringEndsWith</a></li><li><a href="global.html#stringFormat">stringFormat</a></li><li><a href="global.html#stringIsDate">stringIsDate</a></li><li><a href="global.html#stringIsEmpty">stringIsEmpty</a></li><li><a href="global.html#stringIsFloat">stringIsFloat</a></li><li><a href="global.html#stringIsInt">stringIsInt</a></li><li><a href="global.html#stringIsNumber">stringIsNumber</a></li><li><a href="global.html#stringStartsWith">stringStartsWith</a></li><li><a href="global.html#tableNameIsValid">tableNameIsValid</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li><li><a href="global.html#truncatedISO8061Date">truncatedISO8061Date</a></li><li><a href="global.html#tryGetValueChain">tryGetValueChain</a></li><li><a href="global.html#tryGetValueInsensitive">tryGetValueInsensitive</a></li><li><a href="global.html#unserializeValue">unserializeValue</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#validateCallback">validateCallback</a></li><li><a href="global.html#vault">vault</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#WrapService">WrapService</a></li><li><a href="global.html#WrapTokenManager">WrapTokenManager</a></li><li><a href="global.html#zeroBuffer">zeroBuffer</a></li><li><a href="global.html#zeroPaddingString">zeroPaddingString</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: services/sqlManagement/lib/sqlmanagementservice.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Module dependencies.
+var util = require('util');
+var _ = require('underscore');
+
+var azureCommon = require('azure-common');
+var ServiceManagementClient = azureCommon.ServiceManagementClient;
+var ServiceManagementSettings = azureCommon.ServiceManagementSettings;
+var WebResource = azureCommon.WebResource;
+
+var js2xml = azureCommon.js2xml;
+var Constants = azureCommon.Constants;
+var SqlAzureConstants = Constants.SqlAzureConstants;
+
+function setDefaultDbCreationOptions(opts) {
+  if (!opts.edition) {
+    opts.edition = SqlAzureConstants.WEB_EDITION;
+  }
+
+  if (!opts.maxsize) {
+    if (opts.edition === SqlAzureConstants.WEB_EDITION) {
+      opts.maxsize = SqlAzureConstants.WEB_1GB;
+    } else {
+      opts.maxsize = SqlAzureConstants.BUSINESS_10GB;
+    }
+  }
+
+  if (!opts.collation) {
+    opts.collation = SqlAzureConstants.DEFAULT_COLLATION_NAME;
+  }
+}
+
+/**
+*
+* Creates a new SqlManagementService object
+* @class
+* The SqlManagementService object allows you to perform managment operations on Microsoft Azure SQL Database Servers.
+* @constructor
+*
+* @param {string} configOrSubscriptionId                               Configuration, subscription ID for the account or the connection string
+* @param {object} authentication                                       The authentication object for the client.
+*                                                                      You must use either keyfile/certfile or keyvalue/certvalue
+*                                                                      to provide a management certificate to authenticate
+*                                                                      service requests.
+* @param {string} [authentication.keyfile]                             The path to a file that contains the PEM encoded key
+* @param {string} [authentication.certfile]                            The path to a file that contains the PEM encoded certificate
+* @param {string} [authentication.keyvalue]                            A string that contains the PEM encoded key
+* @param {string} [authentication.certvalue]                           A string that contains the PEM encoded certificate
+* @param {object} [hostOptions]                                        The host options to override defaults.
+* @param {string} [hostOptions.host='management.core.windows.net']     The management endpoint.
+* @param {string} [hostOptions.apiversion='2012-03-01']                The API vesion to be used.
+*/
+function SqlManagementService(configOrSubscriptionId, authentication, hostOptions) {
+  var settings = ServiceManagementSettings.createFromParameters(configOrSubscriptionId, authentication, hostOptions);
+
+  SqlManagementService['super_'].call(this, settings);
+  this.subscriptionId = settings._subscriptionId;
+}
+
+util.inherits(SqlManagementService, ServiceManagementClient);
+
+/**
+* Lists the available SQL Database servers.
+*
+* @param {Function(error, results, response)} callback   `error` will contain information
+*                                                        if an error occurs; otherwise `results` will contain
+*                                                        the list of available SQL Database servers information.
+*                                                        `response` will contain information related to this operation.
+*
+* @example
+* var azure = require('azure');
+* var authentication={keyvalue:'...', certvalue:'...' };
+* var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
+* sqlMgmt.listServers(function(error, servers) {
+*   if(!error) {
+*     console.log('servers\n' + servers);
+*   }
+* });
+*/
+SqlManagementService.prototype.listServers = function (callback) {
+  var path = this._makePath('servers');
+  var webResource = WebResource.get(path);
+
+  this.performRequest(webResource, null, null, function (responseObject, next) {
+    if (!responseObject.error) {
+      responseObject.sqlServers = [];
+      if (responseObject.response.body.Servers &amp;&amp; responseObject.response.body.Servers.Server) {
+        responseObject.sqlServers = responseObject.response.body.Servers.Server;
+        if (!_.isArray(responseObject.sqlServers)) {
+          responseObject.sqlServers = [ responseObject.sqlServers ];
+        }
+      }
+    }
+
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.sqlServers, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  });
+};
+
+/**
+* Deletes a SQL Database server.
+*
+* @param {string}   name                            The SQL Server name.
+* @param {Function(error, response)} callback       `error` will contain information
+*                                                   if an error occurs; otherwise `response` will contain information related to this operation.
+*/
+SqlManagementService.prototype.deleteServer = function (name, callback) {
+  var path = this._makePath('servers') + '/' + name;
+  var webResource = WebResource.del(path);
+
+  this.performRequest(webResource, null, null, function (responseObject, next) {
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  });
+};
+
+/**
+* Creates a SQL Database server.
+*
+* @param {string}   administratorLogin          The administrator's login.
+* @param {string}   administratorLoginPassword  The administrator's password.
+* @param {string}   location                    The server's location.
+* @param {Function(error, server, response)} callback        `error` will contain information
+*                                                            if an error occurs; otherwise `server` will contain
+*                                                            the new server information.
+*                                                            `response` will contain information related to this operation.
+*
+* @example
+* var azure = require('azure');
+* var authentication={keyvalue:'...', certvalue:'...' };
+* var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
+* sqlMgmt.createServer('sqladmin', 'Pa$$w0rd', 'West US', function(error, serverName) {
+*   if(!error) {
+*     console.log('created server ' + serverName);
+*   }
+* });
+*/
+SqlManagementService.prototype.createServer = function (administratorLogin, administratorLoginPassword, location, callback) {
+  var path = this._makePath('servers');
+  var webResource = WebResource.post(path);
+
+  var createServerRequestBody = {
+    Server: {
+      '$': {
+        xmlns: 'http://schemas.microsoft.com/sqlazure/2010/12/',
+        'xmlns:i': 'http://www.w3.org/2001/XMLSchema-instance'
+      },
+      AdministratorLogin: administratorLogin,
+      AdministratorLoginPassword: administratorLoginPassword,
+      Location: location
+    }
+  };
+
+  var createServerRequestBodyXml = js2xml.serialize(createServerRequestBody);
+
+  this.performRequest(webResource, createServerRequestBodyXml, null, function (responseObject, next) {
+    if (!responseObject.error) {
+      responseObject.serverName = null;
+      if (responseObject.response.body.ServerName) {
+        responseObject.serverName = responseObject.response.body.ServerName[Constants.XML_VALUE_MARKER];
+      }
+    }
+
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.serverName, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  });
+};
+
+/**
+* Lists SQL Database server firewall rules.
+*
+* @param {string}   serverName                             The server name.
+* @param {Function(error, results, response)} callback     `error` will contain information
+*                                                           if an error occurs; otherwise `results` will contain
+*                                                           the firewall rules.
+*                                                           `response` will contain information related to this operation.
+*
+* @example
+* var azure = require('azure');
+* var authentication={keyvalue:'...', certvalue:'...'};
+* var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
+* sqlMgmt.listServerFirewallRules(serverName, function(error, rules) {
+*   if(!error) {
+*     console.log('Rules:\n:' + rules);
+*   }
+* });
+*/
+SqlManagementService.prototype.listServerFirewallRules = function (serverName, callback) {
+  var path = this._makePath('servers') + '/' + serverName + '/firewallrules';
+  var webResource = WebResource.get(path);
+
+  this.performRequest(webResource, null, null, function (responseObject, next) {
+    if (!responseObject.error) {
+      responseObject.firewallRules = [];
+
+      if (responseObject.response.body.ServiceResources &amp;&amp; responseObject.response.body.ServiceResources.ServiceResource) {
+        responseObject.firewallRules = responseObject.response.body.ServiceResources.ServiceResource;
+
+        if (!_.isArray(responseObject.firewallRules)) {
+          responseObject.firewallRules = [ responseObject.firewallRules ];
+        }
+      }
+    }
+
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.firewallRules, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  });
+};
+
+/**
+* Deletes a SQL Database server firewall rule.
+*
+* @param {string}   serverName                      The server name.
+* @param {string}   ruleName                        The rule name.
+* @param {Function(error, response)} callback       `error` will contain information
+*                                                   if an error occurs; otherwise `response` will contain information related to this operation.
+*/
+SqlManagementService.prototype.deleteServerFirewallRule = function (serverName, ruleName, callback) {
+  var path = this._makePath('servers') + '/' + serverName + '/firewallrules/' + ruleName;
+  var webResource = WebResource.del(path);
+
+  this.performRequest(webResource, null, null, function (responseObject, next) {
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  });
+};
+
+/**
+* Creates a SQL Database server firewall rule.
+*
+* @param {string}   serverName                           The server name.
+* @param {string}   ruleName                             The rule name.
+* @param {string}   startIPAddress                       The starting IP address for the rule.
+* @param {string}   endIPAddress                         The ending IP address for the rule.
+* @param {Function(error, rule, response)} callback      `error` will contain information
+*                                                        if an error occurs; otherwise `rule` will contain
+*                                                        the new rule information.
+*                                                        `response` will contain information related to this operation.
+*
+* @example
+* var azure = require('azure');
+* var authentication={keyvalue:'...', certvalue:'...'};
+* var sqlMgmt = new azure.createSqlManagementService(subscriptionId, authentication);
+* sqlMgmt.createServerFirewallRule(serverName, 'myrule', '192.168.100.0', '192.168.100.255', function(error, rule) {
+*   if(!error) {
+*     console.log('Rule created:\n' + rule);
+*   }
+* });
+*/
+SqlManagementService.prototype.createServerFirewallRule = function (serverName, ruleName, startIPAddress, endIPAddress, callback) {
+  var path = this._makePath('servers') + '/' + serverName + '/firewallrules';
+  var webResource = WebResource.post(path);
+
+  var createRuleRequestBody = {
+    ServiceResource: {
+      '$': {
+        xmlns: 'http://schemas.microsoft.com/windowsazure',
+        'xmlns:i': 'http://www.w3.org/2001/XMLSchema-instance'
+      },
+      Name: ruleName,
+      StartIPAddress: startIPAddress,
+      EndIPAddress: endIPAddress
+    }
+  };
+
+  var createRuleRequestBodyXml = js2xml.serialize(createRuleRequestBody);
+
+  this.performRequest(webResource, createRuleRequestBodyXml, null, function (responseObject, next) {
+    if (!responseObject.error) {
+      responseObject.firewallRule = [];
+
+      if (responseObject.response.body.ServiceResource) {
+        responseObject.firewallRule = responseObject.response.body.ServiceResource;
+      }
+    }
+
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.firewallRule, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  });
+};
+
+/**
+* Updates a SQL Database server firewall rule.
+*
+* @param {string}   serverName                           The server name.
+* @param {string}   ruleName                             The rule name.
+* @param {string}   startIPAddress                       The starting IP address for the rule.
+* @param {string}   endIPAddress                         The ending IP address for the rule.
+* @param {Function(error, rule, response)} callback      `error` will contain information
+*                                                        if an error occurs; otherwise `rule` will contain
+*                                                        the updated rule information.
+*                                                        `response` will contain information related to this operation.
+*/
+SqlManagementService.prototype.updateServerFirewallRule = function (serverName, ruleName, startIPAddress, endIPAddress, callback) {
+  var path = this._makePath('servers') + '/' + serverName + '/firewallrules/' + ruleName;
+  var webResource = WebResource.put(path);
+
+  var updateServerRequestBody = {
+    ServiceResource: {
+      '$': {
+        xmlns: 'http://schemas.microsoft.com/windowsazure',
+        'xmlns:i': 'http://www.w3.org/2001/XMLSchema-instance'
+      },
+      Name: ruleName,
+      StartIPAddress: startIPAddress,
+      EndIPAddress: endIPAddress
+    }
+  };
+
+  var updateServerRequestBodyXml = js2xml.serialize(updateServerRequestBody);
+
+  this.performRequest(webResource, updateServerRequestBodyXml, null, function (responseObject, next) {
+    if (!responseObject.error) {
+      responseObject.firewallRule = [];
+
+      if (responseObject.response.body.ServiceResource) {
+        responseObject.firewallRule = responseObject.response.body.ServiceResource;
+      }
+    }
+
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.firewallRule, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  });
+};
+
+/**
+* Create a new database.
+*
+* @param {string}          serverName                                            The server name
+* @param {string}          databaseName                                          Name of database to create
+* @param {object}          [options]                                             Creation options.
+* @param {string}          [options.edition='Web']                               'Web' or 'Business'.
+* @param {number}          [options.maxsize=1|10]                                     Max DB size in GB, defaults to 1 for web, 10 for business, only certain values are valid
+* @param {string}          [options.collation='SQL_Latin1_General_CP1_CI_AS']    sql collation name
+* @param {Function(err, createResult, response)} callback                        `error` will contain information
+*                                                                                if an error occurs; otherwise `createResult` will contain
+*                                                                                the new database information.
+*                                                                                `response` will contain information related to this operation.
+*/
+SqlManagementService.prototype.createDatabase = function (serverName, databaseName, optionsOrCallback, callback) {
+  var options = optionsOrCallback;
+  if (_.isFunction(optionsOrCallback)) {
+    callback = optionsOrCallback;
+    options = {};
+  }
+  setDefaultDbCreationOptions(options);
+
+  var path = this._makePath('servers/' + serverName + '/databases');
+  var webResource = WebResource.post(path);
+
+  var createDatabaseRequestBody = {
+    ServiceResource: {
+      '$' : {
+        xmlns: 'http://schemas.microsoft.com/windowsazure'
+      },
+      Name: databaseName,
+      Edition: options.edition,
+      MaxSizeGB: options.maxsize,
+      CollationName: options.collation
+    }
+  };
+
+  var createDatabaseRequestBodyXml = js2xml.serialize(createDatabaseRequestBody);
+
+  this.performRequest(webResource, createDatabaseRequestBodyXml, null, function (responseObject, next) {
+    if (!responseObject.error) {
+      responseObject.database = [];
+
+      if (responseObject.response.body.ServiceResource) {
+        responseObject.database = responseObject.response.body.ServiceResource;
+      }
+    }
+
+    var finalCallback = function (returnObject) {
+      callback(returnObject.error, returnObject.database, returnObject.response);
+    };
+
+    next(responseObject, finalCallback);
+  });
+
+};
+
+SqlManagementService.prototype._makePath = function (operationName) {
+  return '/' + this.subscriptionId + '/services/sqlservers/' + operationName;
+};
+
+module.exports = SqlManagementService;
+</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

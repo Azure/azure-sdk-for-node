@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: services/storageserviceclient.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-date.html">date</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AnonymousCloudCredentials.html">AnonymousCloudCredentials</a></li><li><a href="CertificateCloudCredentials.html">CertificateCloudCredentials</a></li><li><a href="ConnectionStringParser.html">ConnectionStringParser</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="HmacSha256Sign.html">HmacSha256Sign</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="ServiceManagementClient.html">ServiceManagementClient</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="TokenCloudCredentials.html">TokenCloudCredentials</a></li><li><a href="WebResource.html">WebResource</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#allRequired">allRequired</a></li><li><a href="global.html#atLeastOne">atLeastOne</a></li><li><a href="global.html#blobNameIsValid">blobNameIsValid</a></li><li><a href="global.html#CLOUD_BLOB_HOST">CLOUD_BLOB_HOST</a></li><li><a href="global.html#containerNameIsValid">containerNameIsValid</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#DEFAULT_PROTOCOL">DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEFAULT_SERVICEBUS_ISSUER">DEFAULT_SERVICEBUS_ISSUER</a></li><li><a href="global.html#DEFAULT_WRAP_NAMESPACE_SUFFIX">DEFAULT_WRAP_NAMESPACE_SUFFIX</a></li><li><a href="global.html#DEVSTORE_DEFAULT_PROTOCOL">DEVSTORE_DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEVSTORE_STORAGE_ACCOUNT">DEVSTORE_STORAGE_ACCOUNT</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#format">format</a></li><li><a href="global.html#getContentMd5">getContentMd5</a></li><li><a href="global.html#getNameSpace">getNameSpace</a></li><li><a href="global.html#getValidator">getValidator</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#inArrayInsensitive">inArrayInsensitive</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isBase64Encoded">isBase64Encoded</a></li><li><a href="global.html#isBufferAllZero">isBufferAllZero</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isValidFunction">isValidFunction</a></li><li><a href="global.html#isValidHDInsightCreationObject">isValidHDInsightCreationObject</a></li><li><a href="global.html#isValidUri">isValidUri</a></li><li><a href="global.html#KEY_PATT">KEY_PATT</a></li><li><a href="global.html#matchedSpecification">matchedSpecification</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#namespaceNameIsValid">namespaceNameIsValid</a></li><li><a href="global.html#noMatchConnectionString">noMatchConnectionString</a></li><li><a href="global.html#noMatchSettings">noMatchSettings</a></li><li><a href="global.html#objectFirstKey">objectFirstKey</a></li><li><a href="global.html#objectIsEmpty">objectIsEmpty</a></li><li><a href="global.html#objectIsFunction">objectIsFunction</a></li><li><a href="global.html#objectIsInt">objectIsInt</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectIsString">objectIsString</a></li><li><a href="global.html#objectKeysLength">objectKeysLength</a></li><li><a href="global.html#optional">optional</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#parseAndValidateKeys">parseAndValidateKeys</a></li><li><a href="global.html#propertyType">propertyType</a></li><li><a href="global.html#queueNameIsValid">queueNameIsValid</a></li><li><a href="global.html#removeBOM">removeBOM</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#serializeEntry">serializeEntry</a></li><li><a href="global.html#serializeQueryValue">serializeQueryValue</a></li><li><a href="global.html#ServiceBusSettings">ServiceBusSettings</a></li><li><a href="global.html#ServiceManagementSettings">ServiceManagementSettings</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#setting">setting</a></li><li><a href="global.html#settingWithFunc">settingWithFunc</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#StorageServiceSettings">StorageServiceSettings</a></li><li><a href="global.html#stringEndsWith">stringEndsWith</a></li><li><a href="global.html#stringFormat">stringFormat</a></li><li><a href="global.html#stringIsDate">stringIsDate</a></li><li><a href="global.html#stringIsEmpty">stringIsEmpty</a></li><li><a href="global.html#stringIsFloat">stringIsFloat</a></li><li><a href="global.html#stringIsInt">stringIsInt</a></li><li><a href="global.html#stringIsNumber">stringIsNumber</a></li><li><a href="global.html#stringStartsWith">stringStartsWith</a></li><li><a href="global.html#tableNameIsValid">tableNameIsValid</a></li><li><a href="global.html#truncatedISO8061Date">truncatedISO8061Date</a></li><li><a href="global.html#tryGetValueChain">tryGetValueChain</a></li><li><a href="global.html#tryGetValueInsensitive">tryGetValueInsensitive</a></li><li><a href="global.html#unserializeValue">unserializeValue</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#zeroBuffer">zeroBuffer</a></li><li><a href="global.html#zeroPaddingString">zeroPaddingString</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: services/storageserviceclient.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">﻿// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Module dependencies.
+var _ = require('underscore');
+var util = require('util');
+
+var azureutil = require('../util/util');
+
+var StorageServiceSettings = require('./storageservicesettings');
+
+var ServiceClient = require('./serviceclient');
+var Constants = require('../util/constants');
+var ServiceClientConstants = require('./serviceclientconstants');
+var HeaderConstants = Constants.HeaderConstants;
+var QueryStringConstants = Constants.QueryStringConstants;
+
+/**
+* Creates a new ServiceClient object.
+*
+* @constructor
+* @param {string} storageAccount           The storage account.
+* @param {string} storageAccessKey         The storage access key.
+* @param {string} host                     The host for the service.
+* @param {bool}   usePathStyleUri          Boolean value indicating wether to use path style uris.
+* @param {object} authenticationProvider   The authentication provider object (e.g. sharedkey / sharedkeytable / sharedaccesssignature).
+*/
+function StorageServiceClient(storageAccount, storageAccessKey, host, usePathStyleUri, authenticationProvider) {
+  this._setAccountCredentials(storageAccount, storageAccessKey);
+  this.apiVersion = HeaderConstants.TARGET_STORAGE_VERSION;
+  this.usePathStyleUri = usePathStyleUri;
+
+  StorageServiceClient['super_'].call(this, host, authenticationProvider);
+
+  this._initDefaultFilter();
+}
+
+util.inherits(StorageServiceClient, ServiceClient);
+
+// Validation error messages
+StorageServiceClient.incorrectStorageAccountErr = 'You must supply an account name or use the environment variable AZURE_STORAGE_ACCOUNT if you are not running in the emulator.';
+StorageServiceClient.incorrectStorageAccessKeyErr = 'You must supply an account key or use the environment variable AZURE_STORAGE_ACCESS_KEY if you are not running in the emulator.';
+
+/**
+* Gets the storage settings.
+*
+* @param {string} [storageAccountOrConnectionString]  The storage account or the connection string.
+* @param {string} [storageAccessKey]                  The storage access key.
+* @param {string} [host]                              The host address.
+*
+* @return {StorageServiceSettings}
+*/
+StorageServiceClient.getStorageSettings = function (storageAccountOrConnectionString, storageAccessKey, host) {
+  var storageServiceSettings;
+
+  if (_.isString(storageAccountOrConnectionString) &amp;&amp; !storageAccessKey) {
+    // If storageAccountOrConnectionString was passed and no accessKey was passed, assume connection string
+    storageServiceSettings = StorageServiceSettings.createFromConnectionString(storageAccountOrConnectionString);
+  } else if (!(storageAccountOrConnectionString &amp;&amp; storageAccessKey) &amp;&amp; ServiceClient.isEmulated()) {
+    // Dev storage scenario
+    storageServiceSettings = StorageServiceSettings.getDevelopmentStorageAccountSettings();
+  } else if (storageAccountOrConnectionString &amp;&amp; storageAccessKey) {
+    storageServiceSettings = StorageServiceSettings.createExplicitlyOrFromEnvironment(storageAccountOrConnectionString, storageAccessKey, host);
+  } else {
+    storageServiceSettings = StorageServiceSettings.createFromConfig(storageAccountOrConnectionString);
+  }
+
+  return storageServiceSettings;
+};
+
+/**
+* Builds the request options to be passed to the http.request method.
+*
+* @param {WebResource} webResource The webresource where to build the options from.
+* @param {object}      options     The request options.
+* @param {function(error, requestOptions)}  callback  The callback function.
+* @return {undefined}
+*/
+StorageServiceClient.prototype._buildRequestOptions = function (webResource, body, options, callback) {
+  webResource.withHeader(HeaderConstants.STORAGE_VERSION_HEADER, this.apiVersion);
+  webResource.withHeader(HeaderConstants.DATE_HEADER, new Date().toUTCString());
+  webResource.withHeader(HeaderConstants.ACCEPT_HEADER, 'application/atom+xml,application/xml');
+  webResource.withHeader(HeaderConstants.ACCEPT_CHARSET_HEADER, 'UTF-8');
+
+  if (options) {
+    if (options.timeoutIntervalInMs) {
+      webResource.withQueryOption(QueryStringConstants.TIMEOUT, options.timeoutIntervalInMs);
+    }
+
+    if (options.accessConditions) {
+      webResource.withHeaders(options.accessConditions,
+        HeaderConstants.IF_MATCH,
+        HeaderConstants.IF_MODIFIED_SINCE,
+        HeaderConstants.IF_NONE_MATCH,
+        HeaderConstants.IF_UNMODIFIED_SINCE);
+    }
+
+    if (options.sourceAccessConditions) {
+      webResource.withHeaders(options.sourceAccessConditions,
+        HeaderConstants.SOURCE_IF_MATCH_HEADER,
+        HeaderConstants.SOURCE_IF_MODIFIED_SINCE_HEADER,
+        HeaderConstants.SOURCE_IF_NONE_MATCH_HEADER,
+        HeaderConstants.SOURCE_IF_UNMODIFIED_SINCE_HEADER);
+    }
+  }
+
+  StorageServiceClient['super_'].prototype._buildRequestOptions.call(this, webResource, body, options, callback);
+};
+
+/**
+* Retrieves the normalized path to be used in a request.
+* This takes into consideration the usePathStyleUri object field
+* which specifies if the request is against the emulator or against
+* the live service. It also adds a leading "/" to the path in case
+* it's not there before.
+*
+* @param {string} path The path to be normalized.
+* @return {string} The normalized path.
+*/
+StorageServiceClient.prototype._getPath = function (path) {
+  if (path === null || path === undefined) {
+    path = '/';
+  } else if (path.indexOf('/') !== 0) {
+    path = '/' + path;
+  }
+
+  if (this.usePathStyleUri) {
+    path = '/' + this.storageAccount + path;
+  }
+
+  return path;
+};
+
+/**
+* Sets the account credentials taking into consideration the isEmulated value and the environment variables:
+* AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY.
+*
+* @param {string} storageAccount          The storage account.
+* @param {string} storageAccessKey        The storage access key.
+* @return {undefined}
+*/
+StorageServiceClient.prototype._setAccountCredentials = function (storageAccount, storageAccessKey) {
+  if (azureutil.objectIsNull(storageAccount)) {
+    if (process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT]) {
+      storageAccount = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCOUNT];
+    } else if (ServiceClient.isEmulated()) {
+      storageAccount = ServiceClientConstants.DEVSTORE_STORAGE_ACCOUNT;
+    }
+  }
+
+  if (azureutil.objectIsNull(storageAccessKey)) {
+    if (process.env[ServiceClientConstants.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY]) {
+      storageAccessKey = process.env[ServiceClient.EnvironmentVariables.AZURE_STORAGE_ACCESS_KEY];
+    } else if (ServiceClient.isEmulated()) {
+      storageAccessKey = ServiceClient.DEVSTORE_STORAGE_ACCESS_KEY;
+    }
+  }
+
+  if (!azureutil.objectIsString(storageAccount) || azureutil.stringIsEmpty(storageAccount)) {
+    throw new Error(StorageServiceClient.incorrectStorageAccountErr);
+  }
+
+  if (!azureutil.objectIsString(storageAccessKey) || azureutil.stringIsEmpty(storageAccessKey)) {
+    throw new Error(StorageServiceClient.incorrectStorageAccessKeyErr);
+  }
+
+  this.storageAccount = storageAccount;
+  this.storageAccessKey = storageAccessKey;
+};
+
+module.exports = StorageServiceClient;
+</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

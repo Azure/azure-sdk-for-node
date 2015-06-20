@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: services/storageManagement/lib/storageManagementClient.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-date.html">date</a></li><li><a href="module-RoleEnvironment.html">RoleEnvironment</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AddOnOperations-AddOnOperations.html">AddOnOperations~AddOnOperations</a></li><li><a href="AffinityGroupOperations-AffinityGroupOperations.html">AffinityGroupOperations~AffinityGroupOperations</a></li><li><a href="AgentDiagnosticSettingsOperations-AgentDiagnosticSettingsOperations.html">AgentDiagnosticSettingsOperations~AgentDiagnosticSettingsOperations</a></li><li><a href="AlertOperations-AlertOperations.html">AlertOperations~AlertOperations</a></li><li><a href="AlertsClient-AlertsClient.html">AlertsClient~AlertsClient</a></li><li><a href="AnonymousCloudCredentials.html">AnonymousCloudCredentials</a></li><li><a href="ApiAppManagementClient-ApiAppManagementClient.html">ApiAppManagementClient~ApiAppManagementClient</a></li><li><a href="ApiAppOperations-ApiAppOperations.html">ApiAppOperations~ApiAppOperations</a></li><li><a href="ApnsService.html">ApnsService</a></li><li><a href="ApplicationGatewayOperations-ApplicationGatewayOperations.html">ApplicationGatewayOperations~ApplicationGatewayOperations</a></li><li><a href="ApplicationOperations-ApplicationOperations.html">ApplicationOperations~ApplicationOperations</a></li><li><a href="AuthorizationManagementClient-AuthorizationManagementClient.html">AuthorizationManagementClient~AuthorizationManagementClient</a></li><li><a href="AutomatedExportOperations-AutomatedExportOperations.html">AutomatedExportOperations~AutomatedExportOperations</a></li><li><a href="AutoscaleClient-AutoscaleClient.html">AutoscaleClient~AutoscaleClient</a></li><li><a href="AutoscaleOperations-AutoscaleOperations.html">AutoscaleOperations~AutoscaleOperations</a></li><li><a href="AvailabilitySetOperations-AvailabilitySetOperations.html">AvailabilitySetOperations~AvailabilitySetOperations</a></li><li><a href="BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials</a></li><li><a href="BasicAuthenticationCloudCredentials-BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials~BasicAuthenticationCloudCredentials</a></li><li><a href="BatchServiceClient.html">BatchServiceClient</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="CertificateCloudCredentials.html">CertificateCloudCredentials</a></li><li><a href="ClientRootCertificateOperations-ClientRootCertificateOperations.html">ClientRootCertificateOperations~ClientRootCertificateOperations</a></li><li><a href="CloudServiceManagementClient-CloudServiceManagementClient.html">CloudServiceManagementClient~CloudServiceManagementClient</a></li><li><a href="CloudServiceOperations-CloudServiceOperations.html">CloudServiceOperations~CloudServiceOperations</a></li><li><a href="ClusterOperations-ClusterOperations.html">ClusterOperations~ClusterOperations</a></li><li><a href="CommandsOperations-CommandsOperations.html">CommandsOperations~CommandsOperations</a></li><li><a href="ComputeManagementClient-ComputeManagementClient.html">ComputeManagementClient~ComputeManagementClient</a></li><li><a href="ConnectionStringParser.html">ConnectionStringParser</a></li><li><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html">ContinuousWebJobOperations~ContinuousWebJobOperations</a></li><li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="createHDInsightCluster2ManagementClient.html">createHDInsightCluster2ManagementClient</a></li><li><a href="createHDInsightClusterManagementClient.html">createHDInsightClusterManagementClient</a></li><li><a href="createHDInsightJobManagementClient.html">createHDInsightJobManagementClient</a></li><li><a href="createSqlService.html">createSqlService</a></li><li><a href="DacOperations-DacOperations.html">DacOperations~DacOperations</a></li><li><a href="DatabaseCopyOperations-DatabaseCopyOperations.html">DatabaseCopyOperations~DatabaseCopyOperations</a></li><li><a href="DatabaseOperationOperations-DatabaseOperationOperations.html">DatabaseOperationOperations~DatabaseOperationOperations</a></li><li><a href="DatabaseOperations-DatabaseOperations.html">DatabaseOperations~DatabaseOperations</a></li><li><a href="DefinitionOperations-DefinitionOperations.html">DefinitionOperations~DefinitionOperations</a></li><li><a href="DeploymentOperationOperations-DeploymentOperationOperations.html">DeploymentOperationOperations~DeploymentOperationOperations</a></li><li><a href="DeploymentOperations-DeploymentOperations.html">DeploymentOperations~DeploymentOperations</a></li><li><a href="DiagnosticOperations-DiagnosticOperations.html">DiagnosticOperations~DiagnosticOperations</a></li><li><a href="DnsManagementClient-DnsManagementClient.html">DnsManagementClient~DnsManagementClient</a></li><li><a href="DNSServerOperations-DNSServerOperations.html">DNSServerOperations~DNSServerOperations</a></li><li><a href="EventDataOperations-EventDataOperations.html">EventDataOperations~EventDataOperations</a></li><li><a href="EventOperations-EventOperations.html">EventOperations~EventOperations</a></li><li><a href="EventsClient-EventsClient.html">EventsClient~EventsClient</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="ExtensionImageOperations-ExtensionImageOperations.html">ExtensionImageOperations~ExtensionImageOperations</a></li><li><a href="FeatureClient-FeatureClient.html">FeatureClient~FeatureClient</a></li><li><a href="Features-Features.html">Features~Features</a></li><li><a href="FirewallRuleOperations-FirewallRuleOperations.html">FirewallRuleOperations~FirewallRuleOperations</a></li><li><a href="GalleryClient-GalleryClient.html">GalleryClient~GalleryClient</a></li><li><a href="GatewayOperations-GatewayOperations.html">GatewayOperations~GatewayOperations</a></li><li><a href="GcmService.html">GcmService</a></li><li><a href="GraphRbacManagementClient-GraphRbacManagementClient.html">GraphRbacManagementClient~GraphRbacManagementClient</a></li><li><a href="GroupOperations-GroupOperations.html">GroupOperations~GroupOperations</a></li><li><a href="HDInsightCluster2ManagementClient-HDInsightCluster2ManagementClient.html">HDInsightCluster2ManagementClient~HDInsightCluster2ManagementClient</a></li><li><a href="HDInsightClusterManagementClient-HDInsightClusterManagementClient.html">HDInsightClusterManagementClient~HDInsightClusterManagementClient</a></li><li><a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html">HDInsightJobManagementClient~HDInsightJobManagementClient</a></li><li><a href="HDInsightService.html">HDInsightService</a></li><li><a href="HmacSha256Sign.html">HmacSha256Sign</a></li><li><a href="HostedServiceOperations-HostedServiceOperations.html">HostedServiceOperations~HostedServiceOperations</a></li><li><a href="IncidentOperations-IncidentOperations.html">IncidentOperations~IncidentOperations</a></li><li><a href="InsightsClient-InsightsClient.html">InsightsClient~InsightsClient</a></li><li><a href="InsightsManagementClient-InsightsManagementClient.html">InsightsManagementClient~InsightsManagementClient</a></li><li><a href="ItemOperations-ItemOperations.html">ItemOperations~ItemOperations</a></li><li><a href="JobCollectionOperations-JobCollectionOperations.html">JobCollectionOperations~JobCollectionOperations</a></li><li><a href="JobOperations-JobOperations.html">JobOperations~JobOperations</a></li><li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyOperations-KeyOperations.html">KeyOperations~KeyOperations</a></li><li><a href="global.html#KeyVaultClient">KeyVaultClient</a></li><li><a href="KeyVaultInternalClient-KeyVaultInternalClient.html">KeyVaultInternalClient~KeyVaultInternalClient</a></li><li><a href="KeyVaultManagementClient-KeyVaultManagementClient.html">KeyVaultManagementClient~KeyVaultManagementClient</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="LoadBalancerOperations-LoadBalancerOperations.html">LoadBalancerOperations~LoadBalancerOperations</a></li><li><a href="LocalNetworkGatewayOperations-LocalNetworkGatewayOperations.html">LocalNetworkGatewayOperations~LocalNetworkGatewayOperations</a></li><li><a href="LocationOperations-LocationOperations.html">LocationOperations~LocationOperations</a></li><li><a href="ManagementCertificateOperations-ManagementCertificateOperations.html">ManagementCertificateOperations~ManagementCertificateOperations</a></li><li><a href="ManagementClient-ManagementClient.html">ManagementClient~ManagementClient</a></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations~MetricDefinitionOperations</a></li><li><a href="MetricOperations-MetricOperations.html">MetricOperations~MetricOperations</a></li><li><a href="MetricsClient-MetricsClient.html">MetricsClient~MetricsClient</a></li><li><a href="MetricSettingOperations-MetricSettingOperations.html">MetricSettingOperations~MetricSettingOperations</a></li><li><a href="MetricValueOperations-MetricValueOperations.html">MetricValueOperations~MetricValueOperations</a></li><li><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html">MonitoringConfigurationOperations~MonitoringConfigurationOperations</a></li><li><a href="MpnsService.html">MpnsService</a></li><li><a href="NamespaceOperations-NamespaceOperations.html">NamespaceOperations~NamespaceOperations</a></li><li><a href="NetworkInterfaceOperations-NetworkInterfaceOperations.html">NetworkInterfaceOperations~NetworkInterfaceOperations</a></li><li><a href="NetworkManagementClient-NetworkManagementClient.html">NetworkManagementClient~NetworkManagementClient</a></li><li><a href="NetworkOperations-NetworkOperations.html">NetworkOperations~NetworkOperations</a></li><li><a href="NetworkResourceProviderClient-NetworkResourceProviderClient.html">NetworkResourceProviderClient~NetworkResourceProviderClient</a></li><li><a href="NetworkSecurityGroupOperations-NetworkSecurityGroupOperations.html">NetworkSecurityGroupOperations~NetworkSecurityGroupOperations</a></li><li><a href="NotificationHubOperations-NotificationHubOperations.html">NotificationHubOperations~NotificationHubOperations</a></li><li><a href="NotificationHubService.html">NotificationHubService</a></li><li><a href="ObjectOperations-ObjectOperations.html">ObjectOperations~ObjectOperations</a></li><li><a href="OperatingSystemOperations-OperatingSystemOperations.html">OperatingSystemOperations~OperatingSystemOperations</a></li><li><a href="PermissionOperations-PermissionOperations.html">PermissionOperations~PermissionOperations</a></li><li><a href="ProfileOperations-ProfileOperations.html">ProfileOperations~ProfileOperations</a></li><li><a href="ProviderOperations-ProviderOperations.html">ProviderOperations~ProviderOperations</a></li><li><a href="PublicIpAddressOperations-PublicIpAddressOperations.html">PublicIpAddressOperations~PublicIpAddressOperations</a></li><li><a href="QueueOperations-QueueOperations.html">QueueOperations~QueueOperations</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="QuotaOperations-QuotaOperations.html">QuotaOperations~QuotaOperations</a></li><li><a href="RecordSetOperations-RecordSetOperations.html">RecordSetOperations~RecordSetOperations</a></li><li><a href="RecoverableDatabaseOperations-RecoverableDatabaseOperations.html">RecoverableDatabaseOperations~RecoverableDatabaseOperations</a></li><li><a href="RecoverDatabaseOperations-RecoverDatabaseOperations.html">RecoverDatabaseOperations~RecoverDatabaseOperations</a></li><li><a href="RelayOperations-RelayOperations.html">RelayOperations~RelayOperations</a></li><li><a href="RepositoryOperations-RepositoryOperations.html">RepositoryOperations~RepositoryOperations</a></li><li><a href="ReservedIPOperations-ReservedIPOperations.html">ReservedIPOperations~ReservedIPOperations</a></li><li><a href="ResourceGroupOperations-ResourceGroupOperations.html">ResourceGroupOperations~ResourceGroupOperations</a></li><li><a href="ResourceManagementClient-ResourceManagementClient.html">ResourceManagementClient~ResourceManagementClient</a></li><li><a href="ResourceOperations-ResourceOperations.html">ResourceOperations~ResourceOperations</a></li><li><a href="ResourceProviderOperationDetailsOperations-ResourceProviderOperationDetailsOperations.html">ResourceProviderOperationDetailsOperations~ResourceProviderOperationDetailsOperations</a></li><li><a href="RestorableDroppedDatabaseOperations-RestorableDroppedDatabaseOperations.html">RestorableDroppedDatabaseOperations~RestorableDroppedDatabaseOperations</a></li><li><a href="RestoreDatabaseOperations-RestoreDatabaseOperations.html">RestoreDatabaseOperations~RestoreDatabaseOperations</a></li><li><a href="RoleAssignmentOperations-RoleAssignmentOperations.html">RoleAssignmentOperations~RoleAssignmentOperations</a></li><li><a href="RoleDefinitionOperations-RoleDefinitionOperations.html">RoleDefinitionOperations~RoleDefinitionOperations</a></li><li><a href="RoleSizeOperations-RoleSizeOperations.html">RoleSizeOperations~RoleSizeOperations</a></li><li><a href="RouteOperations-RouteOperations.html">RouteOperations~RouteOperations</a></li><li><a href="RuleOperations-RuleOperations.html">RuleOperations~RuleOperations</a></li><li><a href="SchedulerClient-SchedulerClient.html">SchedulerClient~SchedulerClient</a></li><li><a href="SchedulerManagementClient-SchedulerManagementClient.html">SchedulerManagementClient~SchedulerManagementClient</a></li><li><a href="ScmService.html">ScmService</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li><li><a href="SecretOperations-SecretOperations.html">SecretOperations~SecretOperations</a></li><li><a href="SecurityRuleOperations-SecurityRuleOperations.html">SecurityRuleOperations~SecurityRuleOperations</a></li><li><a href="ServerOperations-ServerOperations.html">ServerOperations~ServerOperations</a></li><li><a href="ServiceBusManagementClient-ServiceBusManagementClient.html">ServiceBusManagementClient~ServiceBusManagementClient</a></li><li><a href="ServiceBusService.html">ServiceBusService</a></li><li><a href="ServiceBusServiceBase.html">ServiceBusServiceBase</a></li><li><a href="ServiceBusServiceClient.html">ServiceBusServiceClient</a></li><li><a href="ServiceCertificateOperations-ServiceCertificateOperations.html">ServiceCertificateOperations~ServiceCertificateOperations</a></li><li><a href="ServiceDiagnosticSettingsOperations-ServiceDiagnosticSettingsOperations.html">ServiceDiagnosticSettingsOperations~ServiceDiagnosticSettingsOperations</a></li><li><a href="ServiceManagementClient.html">ServiceManagementClient</a></li><li><a href="ServiceObjectiveOperations-ServiceObjectiveOperations.html">ServiceObjectiveOperations~ServiceObjectiveOperations</a></li><li><a href="ServicePrincipalOperations-ServicePrincipalOperations.html">ServicePrincipalOperations~ServicePrincipalOperations</a></li><li><a href="SettingOperations-SettingOperations.html">SettingOperations~SettingOperations</a></li><li><a href="SettingsOperations-SettingsOperations.html">SettingsOperations~SettingsOperations</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="SharedKey.html">SharedKey</a></li><li><a href="SharedKeyLite.html">SharedKeyLite</a></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a></li><li><a href="SharedKeyTable.html">SharedKeyTable</a></li><li><a href="SkuOperations-SkuOperations.html">SkuOperations~SkuOperations</a></li><li><a href="SourceControlOperations-SourceControlOperations.html">SourceControlOperations~SourceControlOperations</a></li><li><a href="SqlManagementClient-SqlManagementClient.html">SqlManagementClient~SqlManagementClient</a></li><li><a href="SqlManagementService.html">SqlManagementService</a></li><li><a href="SqlService.html">SqlService</a></li><li><a href="SqlServiceClient.html">SqlServiceClient</a></li><li><a href="StaticIPOperations-StaticIPOperations.html">StaticIPOperations~StaticIPOperations</a></li><li><a href="StorageAccountOperations-StorageAccountOperations.html">StorageAccountOperations~StorageAccountOperations</a></li><li><a href="StorageDiagnosticSettingsOperations-StorageDiagnosticSettingsOperations.html">StorageDiagnosticSettingsOperations~StorageDiagnosticSettingsOperations</a></li><li><a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient~StorageManagementClient</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="StoreManagementClient-StoreManagementClient.html">StoreManagementClient~StoreManagementClient</a></li><li><a href="SubnetOperations-SubnetOperations.html">SubnetOperations~SubnetOperations</a></li><li><a href="SubscriptionClient-SubscriptionClient.html">SubscriptionClient~SubscriptionClient</a></li><li><a href="SubscriptionOperations-SubscriptionOperations.html">SubscriptionOperations~SubscriptionOperations</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li><li><a href="TagOperations-TagOperations.html">TagOperations~TagOperations</a></li><li><a href="TemplateOperations-TemplateOperations.html">TemplateOperations~TemplateOperations</a></li><li><a href="TenantOperations-TenantOperations.html">TenantOperations~TenantOperations</a></li><li><a href="TokenCloudCredentials.html">TokenCloudCredentials</a></li><li><a href="TopicOperations-TopicOperations.html">TopicOperations~TopicOperations</a></li><li><a href="TrafficManagerManagementClient-TrafficManagerManagementClient.html">TrafficManagerManagementClient~TrafficManagerManagementClient</a></li><li><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html">TriggeredWebJobOperations~TriggeredWebJobOperations</a></li><li><a href="UsageMetricsOperations-UsageMetricsOperations.html">UsageMetricsOperations~UsageMetricsOperations</a></li><li><a href="UsageOperations-UsageOperations.html">UsageOperations~UsageOperations</a></li><li><a href="UserOperations-UserOperations.html">UserOperations~UserOperations</a></li><li><a href="VaultOperations-VaultOperations.html">VaultOperations~VaultOperations</a></li><li><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html">VirtualMachineDiskOperations~VirtualMachineDiskOperations</a></li><li><a href="VirtualMachineExtensionOperations-VirtualMachineExtensionOperations.html">VirtualMachineExtensionOperations~VirtualMachineExtensionOperations</a></li><li><a href="VirtualMachineOperations-VirtualMachineOperations.html">VirtualMachineOperations~VirtualMachineOperations</a></li><li><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html">VirtualMachineOSImageOperations~VirtualMachineOSImageOperations</a></li><li><a href="VirtualMachineSizeOperations-VirtualMachineSizeOperations.html">VirtualMachineSizeOperations~VirtualMachineSizeOperations</a></li><li><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html">VirtualMachineVMImageOperations~VirtualMachineVMImageOperations</a></li><li><a href="VirtualNetworkGatewayConnectionOperations-VirtualNetworkGatewayConnectionOperations.html">VirtualNetworkGatewayConnectionOperations~VirtualNetworkGatewayConnectionOperations</a></li><li><a href="VirtualNetworkGatewayOperations-VirtualNetworkGatewayOperations.html">VirtualNetworkGatewayOperations~VirtualNetworkGatewayOperations</a></li><li><a href="VirtualNetworkOperations-VirtualNetworkOperations.html">VirtualNetworkOperations~VirtualNetworkOperations</a></li><li><a href="WebHostingPlanOperations-WebHostingPlanOperations.html">WebHostingPlanOperations~WebHostingPlanOperations</a></li><li><a href="WebResource.html">WebResource</a></li><li><a href="WebSiteExtensionsClient-WebSiteExtensionsClient.html">WebSiteExtensionsClient~WebSiteExtensionsClient</a></li><li><a href="WebSiteManagementClient-WebSiteManagementClient.html">WebSiteManagementClient~WebSiteManagementClient</a></li><li><a href="WebsiteManagementService.html">WebsiteManagementService</a></li><li><a href="WebSiteOperations-WebSiteOperations.html">WebSiteOperations~WebSiteOperations</a></li><li><a href="WebSpaceOperations-WebSpaceOperations.html">WebSpaceOperations~WebSpaceOperations</a></li><li><a href="WnsService.html">WnsService</a></li><li><a href="ZoneOperations-ZoneOperations.html">ZoneOperations~ZoneOperations</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#allRequired">allRequired</a></li><li><a href="global.html#atLeastOne">atLeastOne</a></li><li><a href="global.html#AuthorizationManagementClient">AuthorizationManagementClient</a></li><li><a href="global.html#baseIdentifier">baseIdentifier</a></li><li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#blobNameIsValid">blobNameIsValid</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CLOUD_BLOB_HOST">CLOUD_BLOB_HOST</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#ComputeManagementClient">ComputeManagementClient</a></li><li><a href="global.html#containerNameIsValid">containerNameIsValid</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createApiAppManagementClient">createApiAppManagementClient</a></li><li><a href="global.html#createAuthorizationManagementClient">createAuthorizationManagementClient</a></li><li><a href="global.html#createAutoScaleClient">createAutoScaleClient</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createCloudServiceManagementClient">createCloudServiceManagementClient</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createComputeManagementClient">createComputeManagementClient</a></li><li><a href="global.html#createDnsManagementClient">createDnsManagementClient</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li><li><a href="global.html#createGalleryClient">createGalleryClient</a></li><li><a href="global.html#createGraphRbacManagementClient">createGraphRbacManagementClient</a></li><li><a href="global.html#createHDInsightService">createHDInsightService</a></li><li><a href="global.html#createInsightsClient">createInsightsClient</a></li><li><a href="global.html#createInsightsManagementClient">createInsightsManagementClient</a></li><li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createManagementClient">createManagementClient</a></li><li><a href="global.html#createMetricsClient">createMetricsClient</a></li><li><a href="global.html#createNetworkManagementClient">createNetworkManagementClient</a></li><li><a href="global.html#createNetworkResourceProviderClient">createNetworkResourceProviderClient</a></li><li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createResourceFeatureClient">createResourceFeatureClient</a></li><li><a href="global.html#createResourceIdentity">createResourceIdentity</a></li><li><a href="global.html#createResourceManagementClient">createResourceManagementClient</a></li><li><a href="global.html#createResourceSubscriptionClient">createResourceSubscriptionClient</a></li><li><a href="global.html#createSchedulerClient">createSchedulerClient</a></li><li><a href="global.html#createSchedulerManagementClient">createSchedulerManagementClient</a></li><li><a href="global.html#createScmService">createScmService</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#createServiceBusManagementClient">createServiceBusManagementClient</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createSqlManagementClient">createSqlManagementClient</a></li><li><a href="global.html#createSqlManagementService">createSqlManagementService</a></li><li><a href="global.html#createStorageManagementClient">createStorageManagementClient</a></li><li><a href="global.html#createStoreManagementClient">createStoreManagementClient</a></li><li><a href="global.html#createSubscriptionClient">createSubscriptionClient</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTrafficManagerManagementClient">createTrafficManagerManagementClient</a></li><li><a href="global.html#createWebSiteExtensionsClient">createWebSiteExtensionsClient</a></li><li><a href="global.html#createWebSiteManagementClient">createWebSiteManagementClient</a></li><li><a href="global.html#createWebSiteManagementClient2">createWebSiteManagementClient2</a></li><li><a href="global.html#createWebsiteManagementService">createWebsiteManagementService</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#DEFAULT_PROTOCOL">DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEFAULT_SERVICEBUS_ISSUER">DEFAULT_SERVICEBUS_ISSUER</a></li><li><a href="global.html#DEFAULT_WRAP_NAMESPACE_SUFFIX">DEFAULT_WRAP_NAMESPACE_SUFFIX</a></li><li><a href="global.html#DEVSTORE_DEFAULT_PROTOCOL">DEVSTORE_DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEVSTORE_STORAGE_ACCOUNT">DEVSTORE_STORAGE_ACCOUNT</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#format">format</a></li><li><a href="global.html#getContentMd5">getContentMd5</a></li><li><a href="global.html#getNameSpace">getNameSpace</a></li><li><a href="global.html#getValidator">getValidator</a></li><li><a href="global.html#GraphRbacManagementClient">GraphRbacManagementClient</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#identifier">identifier</a></li><li><a href="global.html#inArrayInsensitive">inArrayInsensitive</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isBase64Encoded">isBase64Encoded</a></li><li><a href="global.html#isBufferAllZero">isBufferAllZero</a></li><li><a href="global.html#isEmulated">isEmulated</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isValidFunction">isValidFunction</a></li><li><a href="global.html#isValidHDInsightCreationObject">isValidHDInsightCreationObject</a></li><li><a href="global.html#isValidUri">isValidUri</a></li><li><a href="global.html#KEY_PATT">KEY_PATT</a></li><li><a href="global.html#KEYVAULT_RESOURCE_ID">KEYVAULT_RESOURCE_ID</a></li><li><a href="global.html#KeyVaultCredentials">KeyVaultCredentials</a></li><li><a href="global.html#KeyVaultManagementClient">KeyVaultManagementClient</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#ManagementClient">ManagementClient</a></li><li><a href="global.html#matchedSpecification">matchedSpecification</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#namespaceNameIsValid">namespaceNameIsValid</a></li><li><a href="global.html#noMatchConnectionString">noMatchConnectionString</a></li><li><a href="global.html#noMatchSettings">noMatchSettings</a></li><li><a href="global.html#objectFirstKey">objectFirstKey</a></li><li><a href="global.html#ObjectIdentifier">ObjectIdentifier</a></li><li><a href="global.html#objectIsEmpty">objectIsEmpty</a></li><li><a href="global.html#objectIsFunction">objectIsFunction</a></li><li><a href="global.html#objectIsInt">objectIsInt</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectIsString">objectIsString</a></li><li><a href="global.html#objectKeysLength">objectKeysLength</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#optional">optional</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#parseAndValidateKeys">parseAndValidateKeys</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#propertyType">propertyType</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#queueNameIsValid">queueNameIsValid</a></li><li><a href="global.html#removeBOM">removeBOM</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#serializeEntry">serializeEntry</a></li><li><a href="global.html#serializeQueryValue">serializeQueryValue</a></li><li><a href="global.html#ServiceBusSettings">ServiceBusSettings</a></li><li><a href="global.html#ServiceManagementSettings">ServiceManagementSettings</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#setting">setting</a></li><li><a href="global.html#settingWithFunc">settingWithFunc</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#SqlServerAcs">SqlServerAcs</a></li><li><a href="global.html#StorageServiceSettings">StorageServiceSettings</a></li><li><a href="global.html#stringEndsWith">stringEndsWith</a></li><li><a href="global.html#stringFormat">stringFormat</a></li><li><a href="global.html#stringIsDate">stringIsDate</a></li><li><a href="global.html#stringIsEmpty">stringIsEmpty</a></li><li><a href="global.html#stringIsFloat">stringIsFloat</a></li><li><a href="global.html#stringIsInt">stringIsInt</a></li><li><a href="global.html#stringIsNumber">stringIsNumber</a></li><li><a href="global.html#stringStartsWith">stringStartsWith</a></li><li><a href="global.html#tableNameIsValid">tableNameIsValid</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li><li><a href="global.html#truncatedISO8061Date">truncatedISO8061Date</a></li><li><a href="global.html#tryGetValueChain">tryGetValueChain</a></li><li><a href="global.html#tryGetValueInsensitive">tryGetValueInsensitive</a></li><li><a href="global.html#unserializeValue">unserializeValue</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#validateCallback">validateCallback</a></li><li><a href="global.html#vault">vault</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#WrapService">WrapService</a></li><li><a href="global.html#WrapTokenManager">WrapTokenManager</a></li><li><a href="global.html#zeroBuffer">zeroBuffer</a></li><li><a href="global.html#zeroPaddingString">zeroPaddingString</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: services/storageManagement/lib/storageManagementClient.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">/* jshint latedef:false */
+/* jshint forin:false */
+/* jshint noempty:false */
+
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Warning: This code was generated by a tool.
+// 
+// Changes to this file may cause incorrect behavior and will be lost if the
+// code is regenerated.
+
+'use strict';
+
+var util = require('util');
+var azureCommon = require('azure-common');
+var xml = azureCommon.xml2js;
+var js2xml = azureCommon.js2xml;
+var Service = azureCommon.Service;
+var WebResource = azureCommon.WebResource;
+
+var StorageManagementClient = ( /** @lends StorageManagementClient */ function() {
+  /**
+   * @class
+   * The Service Management API provides programmatic access to much of the
+   * functionality available through the Management Portal. The Service
+   * Management API is a REST API. All API operations are performed over SSL
+   * and are mutually authenticated using X.509 v3 certificates.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/ee460799.aspx for
+   * more information)
+   * Initializes a new instance of the StorageManagementClient class.
+   * @constructor
+   * 
+   * @param {SubscriptionCloudCredentials} credentials Gets subscription
+   * credentials which uniquely identify Microsoft Azure subscription. The
+   * subscription ID forms part of the URI for every service call.
+   * 
+   * @param {string} [credentials.subscriptionId]
+   * 
+   * @param {string} [baseUri] Gets the URI used as the base for all cloud
+   * service requests.
+   * 
+   * @param {Array} filters
+   */
+  function StorageManagementClient(credentials, baseUri, filters) {
+    if (credentials === null || credentials === undefined) {
+      throw new Error('credentials cannot be null.');
+    }
+    
+    StorageManagementClient['super_'].call(this, credentials, filters);
+    
+    this.credentials = credentials;
+    this.baseUri = baseUri;
+    if (this.baseUri === null || this.baseUri === undefined) {
+      this.baseUri = 'https://management.core.windows.net';
+    }
+    if (this.apiVersion === null || this.apiVersion === undefined) {
+      this.apiVersion = '2014-10-01';
+    }
+    if (this.longRunningOperationInitialTimeout === null || this.longRunningOperationInitialTimeout === undefined) {
+      this.longRunningOperationInitialTimeout = -1;
+    }
+    if (this.longRunningOperationRetryTimeout === null || this.longRunningOperationRetryTimeout === undefined) {
+      this.longRunningOperationRetryTimeout = -1;
+    }
+    /**
+     * Provides an instance of the
+     * [StorageAccountOperations](-StorageAccountOperations.html) object.
+     * @type {object}
+     */
+    this.storageAccounts = new StorageAccountOperations(this);
+  }
+  
+  util.inherits(StorageManagementClient, Service);
+  
+  /**
+   * The Get Operation Status operation returns the status of the specified
+   * operation. After calling an asynchronous operation, you can call Get
+   * Operation Status to determine whether the operation has succeeded,
+   * failed, or is still in progress.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/ee460783.aspx for
+   * more information)
+   * 
+   * @param {string} requestId The request ID for the request you wish to
+   * track. The request ID is returned in the x-ms-request-id response header
+   * for every request.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageManagementClient.prototype.getOperationStatus = function(requestId, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (requestId === null || requestId === undefined) {
+      return callback(new Error('requestId cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.credentials.subscriptionId !== null &amp;&amp; this.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.credentials.subscriptionId);
+    }
+    url2 = url2 + '/operations/';
+    url2 = url2 + encodeURIComponent(requestId);
+    var baseUrl = this.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Send Request
+    return this.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      if (statusCode === 200) {
+        var responseContent = body;
+        result = {};
+        var options = {};
+        options.trim = false;
+        options.strict = false;
+        xml.parseString(responseContent, options, function (err2, responseDoc) {
+          if (err2 !== null &amp;&amp; err2 !== undefined) {
+            return callback(err2);
+          }
+          
+          var operationElement = js2xml.getElement(responseDoc, responseDoc, 'OPERATION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+          if (operationElement !== null &amp;&amp; operationElement !== undefined) {
+            var idElement = js2xml.getElement(responseDoc, operationElement, 'ID', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (idElement !== null &amp;&amp; idElement !== undefined) {
+              var idInstance = idElement;
+              result.id = idInstance;
+            }
+            
+            var statusElement = js2xml.getElement(responseDoc, operationElement, 'STATUS', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (statusElement !== null &amp;&amp; statusElement !== undefined &amp;&amp; statusElement.length !== 0) {
+              var statusInstance = statusElement;
+              result.status = statusInstance;
+            }
+            
+            var httpStatusCodeElement = js2xml.getElement(responseDoc, operationElement, 'HTTPSTATUSCODE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (httpStatusCodeElement !== null &amp;&amp; httpStatusCodeElement !== undefined &amp;&amp; httpStatusCodeElement.length !== 0) {
+              var httpStatusCodeInstance = httpStatusCodeElement;
+              result.httpStatusCode = httpStatusCodeInstance;
+            }
+            
+            var errorElement = js2xml.getElement(responseDoc, operationElement, 'ERROR', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (errorElement !== null &amp;&amp; errorElement !== undefined) {
+              var errorInstance = {};
+              result.error = errorInstance;
+              
+              var codeElement = js2xml.getElement(responseDoc, errorElement, 'CODE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (codeElement !== null &amp;&amp; codeElement !== undefined) {
+                var codeInstance = codeElement;
+                errorInstance.code = codeInstance;
+              }
+              
+              var messageElement = js2xml.getElement(responseDoc, errorElement, 'MESSAGE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (messageElement !== null &amp;&amp; messageElement !== undefined) {
+                var messageInstance = messageElement;
+                errorInstance.message = messageInstance;
+              }
+            }
+          }
+          
+        });
+      }
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  return StorageManagementClient;
+})();
+exports.StorageManagementClient = StorageManagementClient;
+
+var StorageAccountOperations = ( /** @lends StorageAccountOperations */ function() {
+  /**
+   * @class
+   * The Service Management API includes operations for managing the storage
+   * accounts beneath your subscription.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/ee460790.aspx for
+   * more information)
+   * __NOTE__: An instance of this class is automatically created for an
+   * instance of the [StorageManagementClient] {@link
+   * StorageManagementClient~StorageManagementClient}.
+   * See [storageAccounts] {@link
+   * StorageManagementClient~StorageManagementClient#storageAccounts}.
+   * Initializes a new instance of the StorageAccountOperations class.
+   * @constructor
+   * 
+   * @param {StorageManagementClient} client Reference to the service client.
+   */
+  function StorageAccountOperations(client) {
+    this.client = client;
+  }
+  
+  /**
+   * The Begin Creating Storage Account operation creates a new storage account
+   * in Azure.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx for
+   * more information)
+   * 
+   * @param {StorageAccountCreateParameters} parameters Parameters supplied to
+   * the Begin Creating Storage Account operation.
+   * 
+   * @param {string} parameters.name A name for the storage account, unique
+   * within Azure. Storage account names must be between 3 and 24 characters
+   * in length, and must use numbers and lower-case letters only. This name is
+   * the DNS prefix name and can be used to access blobs, queues, and tables
+   * in the storage account. For example:
+   * http://ServiceName.blob.core.windows.net/mycontainer/.
+   * 
+   * @param {string} [parameters.description] A description for the storage
+   * account. The description may be up to 1024 characters in length.
+   * 
+   * @param {string} parameters.label A name for the storage account, specified
+   * as abase64-encoded string. The name may be up to 100 characters in
+   * length. The name can be used identify the storage account for your
+   * tracking purposes.
+   * 
+   * @param {string} [parameters.affinityGroup] The name of an existing
+   * affinity group in the specified subscription. Required if Location is not
+   * specified. You can include either a Location or AffinityGroup element in
+   * the request body, but not both. To list available affinity groups, use
+   * the List Affinity Groups operation.
+   * 
+   * @param {string} [parameters.location] The location where the storage
+   * account is created. Required if AffinityGroup is not specified. You can
+   * include either a Location or AffinityGroup element in the request body,
+   * but not both. To list available locations, use the List Locations
+   * operation.
+   * 
+   * @param {object} [parameters.extendedProperties] Represents the name of an
+   * extended storage account property. Each extended property must have a
+   * defined name and a value. You can have a maximum of 50 extended property
+   * name/value pairs. The maximum length of the Name element is 64
+   * characters, only alphanumeric characters and underscores are valid in the
+   * Name, and the name must start with a letter. Attempting to use other
+   * characters, starting the Name with a non-letter character, or entering a
+   * name that is identical to that of another extended property owned by the
+   * same storage account will result in a status code 400 (Bad Request)
+   * error. Each extended property value has a maximum length of 255
+   * characters.
+   * 
+   * @param {string} [parameters.accountType] Specifies whether the account
+   * supports locally-redundant storage, geo-redundant storage, zone-redundant
+   * storage, or read access geo-redundant storage. Possible values
+   * are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.beginCreating = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.description !== null &amp;&amp; parameters.description !== undefined &amp;&amp; parameters.description.length > 1024) {
+      return callback(new Error('parameters.description is outside the valid range.'));
+    }
+    if (parameters.label === null || parameters.label === undefined) {
+      return callback(new Error('parameters.label cannot be null.'));
+    }
+    if (parameters.label.length > 100) {
+      return callback(new Error('parameters.label is outside the valid range.'));
+    }
+    if (parameters.name === null || parameters.name === undefined) {
+      return callback(new Error('parameters.name cannot be null.'));
+    }
+    if (parameters.name.length &lt; 3) {
+      return callback(new Error('parameters.name is outside the valid range.'));
+    }
+    if (parameters.name.length > 24) {
+      return callback(new Error('parameters.name is outside the valid range.'));
+    }
+    for (var loweredIndex1 = 0; loweredIndex1 &lt; parameters.name.length; loweredIndex1 = loweredIndex1 + 1) {
+      var nameChar = parameters.name[loweredIndex1];
+      if (nameChar === nameChar.toLowerCase() === false &amp;&amp; isNaN(parseInt(nameChar, 10)) === false === false) {
+        return callback(new Error('parameters.name is outside the valid range.'));
+      }
+    }
+    // TODO: Validate parameters.name is a valid DNS name.
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/services/storageservices';
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'POST';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/xml';
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Serialize Request
+    var requestContent = null;
+    var requestDoc = {};
+    
+    var createStorageServiceInputElement = js2xml.createElement('CreateStorageServiceInput', 'http://schemas.microsoft.com/windowsazure');
+    js2xml.addChildElement(requestDoc, createStorageServiceInputElement);
+    
+    var serviceNameElement = js2xml.createElement('ServiceName', 'http://schemas.microsoft.com/windowsazure');
+    js2xml.setElementValue(serviceNameElement, parameters.name);
+    js2xml.addChildElement(createStorageServiceInputElement, serviceNameElement);
+    
+    if (parameters.description !== null &amp;&amp; parameters.description !== undefined) {
+      var descriptionElement = js2xml.createElement('Description', 'http://schemas.microsoft.com/windowsazure');
+      js2xml.setElementValue(descriptionElement, parameters.description);
+      js2xml.addChildElement(createStorageServiceInputElement, descriptionElement);
+    }
+    else if (parameters.description !== undefined) {
+      var emptyElement = js2xml.createElement('Description', 'http://schemas.microsoft.com/windowsazure');
+      var nilAttribute = js2xml.createAttribute('nil', 'http://www.w3.org/2001/XMLSchema-instance');
+      js2xml.setAttributeValue(nilAttribute, 'true');
+      js2xml.addAttribute(emptyElement, nilAttribute);
+      js2xml.addChildElement(createStorageServiceInputElement, emptyElement);
+    }
+    
+    var labelElement = js2xml.createElement('Label', 'http://schemas.microsoft.com/windowsazure');
+    js2xml.setElementValue(labelElement, new Buffer(parameters.label).toString('base64'));
+    js2xml.addChildElement(createStorageServiceInputElement, labelElement);
+    
+    if (parameters.affinityGroup !== null &amp;&amp; parameters.affinityGroup !== undefined) {
+      var affinityGroupElement = js2xml.createElement('AffinityGroup', 'http://schemas.microsoft.com/windowsazure');
+      js2xml.setElementValue(affinityGroupElement, parameters.affinityGroup);
+      js2xml.addChildElement(createStorageServiceInputElement, affinityGroupElement);
+    }
+    
+    if (parameters.location !== null &amp;&amp; parameters.location !== undefined) {
+      var locationElement = js2xml.createElement('Location', 'http://schemas.microsoft.com/windowsazure');
+      js2xml.setElementValue(locationElement, parameters.location);
+      js2xml.addChildElement(createStorageServiceInputElement, locationElement);
+    }
+    
+    if (parameters.extendedProperties !== null &amp;&amp; parameters.extendedProperties !== undefined) {
+      var extendedPropertiesDictionaryElement = js2xml.createElement('ExtendedProperties', 'http://schemas.microsoft.com/windowsazure');
+      for (var extendedPropertiesKey in parameters.extendedProperties) {
+        var extendedPropertiesValue = parameters.extendedProperties[extendedPropertiesKey];
+        var extendedPropertiesElement = js2xml.createElement('ExtendedProperty', 'http://schemas.microsoft.com/windowsazure');
+        js2xml.addChildElement(extendedPropertiesDictionaryElement, extendedPropertiesElement);
+        
+        var extendedPropertiesKeyElement = js2xml.createElement('Name', 'http://schemas.microsoft.com/windowsazure');
+        js2xml.setElementValue(extendedPropertiesKeyElement, extendedPropertiesKey);
+        js2xml.addChildElement(extendedPropertiesElement, extendedPropertiesKeyElement);
+        
+        var extendedPropertiesValueElement = js2xml.createElement('Value', 'http://schemas.microsoft.com/windowsazure');
+        js2xml.setElementValue(extendedPropertiesValueElement, extendedPropertiesValue);
+        js2xml.addChildElement(extendedPropertiesElement, extendedPropertiesValueElement);
+      }
+      js2xml.addChildElement(createStorageServiceInputElement, extendedPropertiesDictionaryElement);
+    }
+    
+    if (parameters.accountType !== null &amp;&amp; parameters.accountType !== undefined) {
+      var accountTypeElement = js2xml.createElement('AccountType', 'http://schemas.microsoft.com/windowsazure');
+      js2xml.setElementValue(accountTypeElement, parameters.accountType);
+      js2xml.addChildElement(createStorageServiceInputElement, accountTypeElement);
+    }
+    
+    requestContent = js2xml.serializeDocument(requestDoc);
+    httpRequest.body = requestContent;
+    httpRequest.headers['Content-Length'] = Buffer.isBuffer(requestContent) ? requestContent.length : Buffer.byteLength(requestContent, 'UTF8');
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 202) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      result = {};
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The Check Name Availability operation checks if a storage account name is
+   * available for use in Azure.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/jj154125.aspx for
+   * more information)
+   * 
+   * @param {string} accountName The desired storage account name to check for
+   * availability.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.checkNameAvailability = function(accountName, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (accountName === null || accountName === undefined) {
+      return callback(new Error('accountName cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/services/storageservices/operations/isavailable/';
+    url2 = url2 + encodeURIComponent(accountName);
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      if (statusCode === 200) {
+        var responseContent = body;
+        result = {};
+        var options = {};
+        options.trim = false;
+        options.strict = false;
+        xml.parseString(responseContent, options, function (err2, responseDoc) {
+          if (err2 !== null &amp;&amp; err2 !== undefined) {
+            return callback(err2);
+          }
+          
+          var availabilityResponseElement = js2xml.getElement(responseDoc, responseDoc, 'AVAILABILITYRESPONSE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+          if (availabilityResponseElement !== null &amp;&amp; availabilityResponseElement !== undefined) {
+            var resultElement = js2xml.getElement(responseDoc, availabilityResponseElement, 'RESULT', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (resultElement !== null &amp;&amp; resultElement !== undefined &amp;&amp; resultElement.length !== 0) {
+              var resultInstance = resultElement === 'true';
+              result.isAvailable = resultInstance;
+            }
+            
+            var reasonElement = js2xml.getElement(responseDoc, availabilityResponseElement, 'REASON', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (reasonElement !== null &amp;&amp; reasonElement !== undefined) {
+              var isNil = false;
+              var nilAttribute = js2xml.getAttribute(responseDoc, reasonElement, 'NIL', 'HTTP://WWW.W3.ORG/2001/XMLSCHEMA-INSTANCE');
+              if (nilAttribute !== null &amp;&amp; nilAttribute !== undefined) {
+                isNil = nilAttribute === 'true';
+              }
+              if (isNil === false) {
+                var reasonInstance = reasonElement;
+                result.reason = reasonInstance;
+              }
+            }
+          }
+          
+        });
+      }
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The Create Storage Account operation creates a new storage account in
+   * Azure.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx for
+   * more information)
+   * 
+   * @param {StorageAccountCreateParameters} parameters Parameters supplied to
+   * the Create Storage Account operation.
+   * 
+   * @param {string} parameters.name A name for the storage account, unique
+   * within Azure. Storage account names must be between 3 and 24 characters
+   * in length, and must use numbers and lower-case letters only. This name is
+   * the DNS prefix name and can be used to access blobs, queues, and tables
+   * in the storage account. For example:
+   * http://ServiceName.blob.core.windows.net/mycontainer/.
+   * 
+   * @param {string} [parameters.description] A description for the storage
+   * account. The description may be up to 1024 characters in length.
+   * 
+   * @param {string} parameters.label A name for the storage account, specified
+   * as abase64-encoded string. The name may be up to 100 characters in
+   * length. The name can be used identify the storage account for your
+   * tracking purposes.
+   * 
+   * @param {string} [parameters.affinityGroup] The name of an existing
+   * affinity group in the specified subscription. Required if Location is not
+   * specified. You can include either a Location or AffinityGroup element in
+   * the request body, but not both. To list available affinity groups, use
+   * the List Affinity Groups operation.
+   * 
+   * @param {string} [parameters.location] The location where the storage
+   * account is created. Required if AffinityGroup is not specified. You can
+   * include either a Location or AffinityGroup element in the request body,
+   * but not both. To list available locations, use the List Locations
+   * operation.
+   * 
+   * @param {object} [parameters.extendedProperties] Represents the name of an
+   * extended storage account property. Each extended property must have a
+   * defined name and a value. You can have a maximum of 50 extended property
+   * name/value pairs. The maximum length of the Name element is 64
+   * characters, only alphanumeric characters and underscores are valid in the
+   * Name, and the name must start with a letter. Attempting to use other
+   * characters, starting the Name with a non-letter character, or entering a
+   * name that is identical to that of another extended property owned by the
+   * same storage account will result in a status code 400 (Bad Request)
+   * error. Each extended property value has a maximum length of 255
+   * characters.
+   * 
+   * @param {string} [parameters.accountType] Specifies whether the account
+   * supports locally-redundant storage, geo-redundant storage, zone-redundant
+   * storage, or read access geo-redundant storage. Possible values
+   * are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.create = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    var client2 = this.client;
+    
+    return client2.storageAccounts.beginCreating(parameters, function (err, result) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var delayInSeconds = 30;
+      if (client2.longRunningOperationInitialTimeout >= 0) {
+        delayInSeconds = client2.longRunningOperationInitialTimeout;
+      }
+      
+      var pollOperation = function () {
+        setTimeout(function () {
+          return client2.getOperationStatus(result.requestId, function (err2, result2) {
+            if (err2 !== null &amp;&amp; err2 !== undefined) {
+              return callback(err2);
+            } else {
+              if (result2.status !== 'InProgress') {
+                if (result2.status !== 'Succeeded') {
+                  if (result2.error !== null &amp;&amp; result2.error !== undefined) {
+                    var ex = new Error(result2.error.code + ' : ' + result2.error.message);
+                    ex.error = new Error();
+                    ex.error.code = result2.error.code;
+                    ex.error.message = result2.error.message;
+                    return callback(ex);
+                  } else {
+                    var ex = new Error('');
+                    return callback(ex);
+                  }
+                }
+                
+                return callback(null, result2);
+              } else {
+                delayInSeconds = 30;
+                if (client2.longRunningOperationRetryTimeout >= 0) {
+                  delayInSeconds = client2.longRunningOperationRetryTimeout;
+                }
+                pollOperation();
+              }
+            }
+          });
+        }, delayInSeconds * 1000);
+      };
+      
+      pollOperation();
+    });
+  };
+  
+  /**
+   * The Delete Storage Account operation deletes the specified storage account
+   * from Azure.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/hh264517.aspx for
+   * more information)
+   * 
+   * @param {string} accountName The name of the storage account to be deleted.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.deleteMethod = function(accountName, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (accountName === null || accountName === undefined) {
+      return callback(new Error('accountName cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/services/storageservices/';
+    url2 = url2 + encodeURIComponent(accountName);
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'DELETE';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      result = {};
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The Get Storage Account Properties operation returns system properties for
+   * the specified storage account.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/ee460802.aspx for
+   * more information)
+   * 
+   * @param {string} accountName Name of the storage account to get properties
+   * for.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.get = function(accountName, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (accountName === null || accountName === undefined) {
+      return callback(new Error('accountName cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/services/storageservices/';
+    url2 = url2 + encodeURIComponent(accountName);
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      if (statusCode === 200) {
+        var responseContent = body;
+        result = {};
+        var options = {};
+        options.trim = false;
+        options.strict = false;
+        xml.parseString(responseContent, options, function (err2, responseDoc) {
+          if (err2 !== null &amp;&amp; err2 !== undefined) {
+            return callback(err2);
+          }
+          
+          var storageServiceElement = js2xml.getElement(responseDoc, responseDoc, 'STORAGESERVICE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+          if (storageServiceElement !== null &amp;&amp; storageServiceElement !== undefined) {
+            var storageServiceInstance = { extendedProperties: {} };
+            result.storageAccount = storageServiceInstance;
+            
+            var urlElement = js2xml.getElement(responseDoc, storageServiceElement, 'URL', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (urlElement !== null &amp;&amp; urlElement !== undefined) {
+              var urlInstance = urlElement;
+              storageServiceInstance.uri = urlInstance;
+            }
+            
+            var serviceNameElement = js2xml.getElement(responseDoc, storageServiceElement, 'SERVICENAME', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (serviceNameElement !== null &amp;&amp; serviceNameElement !== undefined) {
+              var serviceNameInstance = serviceNameElement;
+              storageServiceInstance.name = serviceNameInstance;
+            }
+            
+            var storageServicePropertiesElement = js2xml.getElement(responseDoc, storageServiceElement, 'STORAGESERVICEPROPERTIES', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (storageServicePropertiesElement !== null &amp;&amp; storageServicePropertiesElement !== undefined) {
+              var storageServicePropertiesInstance = { endpoints: [] };
+              storageServiceInstance.properties = storageServicePropertiesInstance;
+              
+              var descriptionElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'DESCRIPTION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (descriptionElement !== null &amp;&amp; descriptionElement !== undefined) {
+                var isNil = false;
+                var nilAttribute = js2xml.getAttribute(responseDoc, descriptionElement, 'NIL', 'HTTP://WWW.W3.ORG/2001/XMLSCHEMA-INSTANCE');
+                if (nilAttribute !== null &amp;&amp; nilAttribute !== undefined) {
+                  isNil = nilAttribute === 'true';
+                }
+                if (isNil === false) {
+                  var descriptionInstance = descriptionElement;
+                  storageServicePropertiesInstance.description = descriptionInstance;
+                }
+              }
+              
+              var affinityGroupElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'AFFINITYGROUP', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (affinityGroupElement !== null &amp;&amp; affinityGroupElement !== undefined) {
+                var affinityGroupInstance = affinityGroupElement;
+                storageServicePropertiesInstance.affinityGroup = affinityGroupInstance;
+              }
+              
+              var locationElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'LOCATION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (locationElement !== null &amp;&amp; locationElement !== undefined) {
+                var locationInstance = locationElement;
+                storageServicePropertiesInstance.location = locationInstance;
+              }
+              
+              var labelElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'LABEL', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (labelElement !== null &amp;&amp; labelElement !== undefined) {
+                var labelInstance = new Buffer(labelElement, 'base64').toString('utf8');
+                storageServicePropertiesInstance.label = labelInstance;
+              }
+              
+              var statusElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'STATUS', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (statusElement !== null &amp;&amp; statusElement !== undefined &amp;&amp; statusElement.length !== 0) {
+                var statusInstance = statusElement;
+                storageServicePropertiesInstance.status = statusInstance;
+              }
+              
+              var endpointsSequenceElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'ENDPOINTS', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (endpointsSequenceElement !== null &amp;&amp; endpointsSequenceElement !== undefined) {
+                for (var loweredIndex1 = 0; loweredIndex1 &lt; js2xml.getElements(responseDoc, endpointsSequenceElement, 'ENDPOINT', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE').length; loweredIndex1 = loweredIndex1 + 1) {
+                  var endpointsElement = js2xml.getElements(responseDoc, endpointsSequenceElement, 'ENDPOINT', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE')[loweredIndex1];
+                  storageServicePropertiesInstance.endpoints.push(endpointsElement);
+                }
+              }
+              
+              var geoPrimaryRegionElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'GEOPRIMARYREGION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (geoPrimaryRegionElement !== null &amp;&amp; geoPrimaryRegionElement !== undefined) {
+                var geoPrimaryRegionInstance = geoPrimaryRegionElement;
+                storageServicePropertiesInstance.geoPrimaryRegion = geoPrimaryRegionInstance;
+              }
+              
+              var statusOfPrimaryElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'STATUSOFPRIMARY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (statusOfPrimaryElement !== null &amp;&amp; statusOfPrimaryElement !== undefined &amp;&amp; statusOfPrimaryElement.length !== 0) {
+                var statusOfPrimaryInstance = statusOfPrimaryElement;
+                storageServicePropertiesInstance.statusOfGeoPrimaryRegion = statusOfPrimaryInstance;
+              }
+              
+              var lastGeoFailoverTimeElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'LASTGEOFAILOVERTIME', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (lastGeoFailoverTimeElement !== null &amp;&amp; lastGeoFailoverTimeElement !== undefined &amp;&amp; lastGeoFailoverTimeElement.length !== 0) {
+                var lastGeoFailoverTimeInstance = new Date(lastGeoFailoverTimeElement);
+                storageServicePropertiesInstance.lastGeoFailoverTime = lastGeoFailoverTimeInstance;
+              }
+              
+              var geoSecondaryRegionElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'GEOSECONDARYREGION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (geoSecondaryRegionElement !== null &amp;&amp; geoSecondaryRegionElement !== undefined) {
+                var geoSecondaryRegionInstance = geoSecondaryRegionElement;
+                storageServicePropertiesInstance.geoSecondaryRegion = geoSecondaryRegionInstance;
+              }
+              
+              var statusOfSecondaryElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'STATUSOFSECONDARY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (statusOfSecondaryElement !== null &amp;&amp; statusOfSecondaryElement !== undefined &amp;&amp; statusOfSecondaryElement.length !== 0) {
+                var statusOfSecondaryInstance = statusOfSecondaryElement;
+                storageServicePropertiesInstance.statusOfGeoSecondaryRegion = statusOfSecondaryInstance;
+              }
+              
+              var accountTypeElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'ACCOUNTTYPE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (accountTypeElement !== null &amp;&amp; accountTypeElement !== undefined) {
+                var accountTypeInstance = accountTypeElement;
+                storageServicePropertiesInstance.accountType = accountTypeInstance;
+              }
+            }
+            
+            var extendedPropertiesSequenceElement = js2xml.getElement(responseDoc, storageServiceElement, 'EXTENDEDPROPERTIES', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (extendedPropertiesSequenceElement !== null &amp;&amp; extendedPropertiesSequenceElement !== undefined) {
+              for (var loweredIndex2 = 0; loweredIndex2 &lt; js2xml.getElements(responseDoc, extendedPropertiesSequenceElement, 'EXTENDEDPROPERTY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE').length; loweredIndex2 = loweredIndex2 + 1) {
+                var extendedPropertiesElement = js2xml.getElements(responseDoc, extendedPropertiesSequenceElement, 'EXTENDEDPROPERTY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE')[loweredIndex2];
+                var extendedPropertiesKey = js2xml.getElement(responseDoc, extendedPropertiesElement, 'NAME', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                var extendedPropertiesValue = js2xml.getElement(responseDoc, extendedPropertiesElement, 'VALUE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                storageServiceInstance.extendedProperties[extendedPropertiesKey] = extendedPropertiesValue;
+              }
+            }
+          }
+          
+        });
+      }
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The Get Storage Keys operation returns the primary and secondary access
+   * keys for the specified storage account.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/ee460785.aspx for
+   * more information)
+   * 
+   * @param {string} accountName The name of the desired storage account.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.getKeys = function(accountName, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (accountName === null || accountName === undefined) {
+      return callback(new Error('accountName cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/services/storageservices/';
+    url2 = url2 + encodeURIComponent(accountName);
+    url2 = url2 + '/keys';
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      if (statusCode === 200) {
+        var responseContent = body;
+        result = {};
+        var options = {};
+        options.trim = false;
+        options.strict = false;
+        xml.parseString(responseContent, options, function (err2, responseDoc) {
+          if (err2 !== null &amp;&amp; err2 !== undefined) {
+            return callback(err2);
+          }
+          
+          var storageServiceElement = js2xml.getElement(responseDoc, responseDoc, 'STORAGESERVICE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+          if (storageServiceElement !== null &amp;&amp; storageServiceElement !== undefined) {
+            var urlElement = js2xml.getElement(responseDoc, storageServiceElement, 'URL', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (urlElement !== null &amp;&amp; urlElement !== undefined) {
+              var urlInstance = urlElement;
+              result.uri = urlInstance;
+            }
+            
+            var storageServiceKeysElement = js2xml.getElement(responseDoc, storageServiceElement, 'STORAGESERVICEKEYS', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (storageServiceKeysElement !== null &amp;&amp; storageServiceKeysElement !== undefined) {
+              var primaryElement = js2xml.getElement(responseDoc, storageServiceKeysElement, 'PRIMARY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (primaryElement !== null &amp;&amp; primaryElement !== undefined) {
+                var primaryInstance = primaryElement;
+                result.primaryKey = primaryInstance;
+              }
+              
+              var secondaryElement = js2xml.getElement(responseDoc, storageServiceKeysElement, 'SECONDARY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (secondaryElement !== null &amp;&amp; secondaryElement !== undefined) {
+                var secondaryInstance = secondaryElement;
+                result.secondaryKey = secondaryInstance;
+              }
+            }
+          }
+          
+        });
+      }
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The List Storage Accounts operation lists the storage accounts available
+   * under the current subscription.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/ee460787.aspx for
+   * more information)
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.list = function(callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/services/storageservices';
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      if (statusCode === 200) {
+        var responseContent = body;
+        result = { storageAccounts: [] };
+        var options = {};
+        options.trim = false;
+        options.strict = false;
+        xml.parseString(responseContent, options, function (err2, responseDoc) {
+          if (err2 !== null &amp;&amp; err2 !== undefined) {
+            return callback(err2);
+          }
+          
+          var storageServicesSequenceElement = js2xml.getElement(responseDoc, responseDoc, 'STORAGESERVICES', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+          if (storageServicesSequenceElement !== null &amp;&amp; storageServicesSequenceElement !== undefined) {
+            for (var loweredIndex1 = 0; loweredIndex1 &lt; js2xml.getElements(responseDoc, storageServicesSequenceElement, 'STORAGESERVICE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE').length; loweredIndex1 = loweredIndex1 + 1) {
+              var storageServicesElement = js2xml.getElements(responseDoc, storageServicesSequenceElement, 'STORAGESERVICE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE')[loweredIndex1];
+              var storageServiceInstance = { extendedProperties: {} };
+              result.storageAccounts.push(storageServiceInstance);
+              
+              var urlElement = js2xml.getElement(responseDoc, storageServicesElement, 'URL', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (urlElement !== null &amp;&amp; urlElement !== undefined) {
+                var urlInstance = urlElement;
+                storageServiceInstance.uri = urlInstance;
+              }
+              
+              var serviceNameElement = js2xml.getElement(responseDoc, storageServicesElement, 'SERVICENAME', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (serviceNameElement !== null &amp;&amp; serviceNameElement !== undefined) {
+                var serviceNameInstance = serviceNameElement;
+                storageServiceInstance.name = serviceNameInstance;
+              }
+              
+              var storageServicePropertiesElement = js2xml.getElement(responseDoc, storageServicesElement, 'STORAGESERVICEPROPERTIES', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (storageServicePropertiesElement !== null &amp;&amp; storageServicePropertiesElement !== undefined) {
+                var storageServicePropertiesInstance = { endpoints: [] };
+                storageServiceInstance.properties = storageServicePropertiesInstance;
+                
+                var descriptionElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'DESCRIPTION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (descriptionElement !== null &amp;&amp; descriptionElement !== undefined) {
+                  var isNil = false;
+                  var nilAttribute = js2xml.getAttribute(responseDoc, descriptionElement, 'NIL', 'HTTP://WWW.W3.ORG/2001/XMLSCHEMA-INSTANCE');
+                  if (nilAttribute !== null &amp;&amp; nilAttribute !== undefined) {
+                    isNil = nilAttribute === 'true';
+                  }
+                  if (isNil === false) {
+                    var descriptionInstance = descriptionElement;
+                    storageServicePropertiesInstance.description = descriptionInstance;
+                  }
+                }
+                
+                var affinityGroupElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'AFFINITYGROUP', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (affinityGroupElement !== null &amp;&amp; affinityGroupElement !== undefined) {
+                  var affinityGroupInstance = affinityGroupElement;
+                  storageServicePropertiesInstance.affinityGroup = affinityGroupInstance;
+                }
+                
+                var locationElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'LOCATION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (locationElement !== null &amp;&amp; locationElement !== undefined) {
+                  var locationInstance = locationElement;
+                  storageServicePropertiesInstance.location = locationInstance;
+                }
+                
+                var labelElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'LABEL', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (labelElement !== null &amp;&amp; labelElement !== undefined) {
+                  var labelInstance = new Buffer(labelElement, 'base64').toString('utf8');
+                  storageServicePropertiesInstance.label = labelInstance;
+                }
+                
+                var statusElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'STATUS', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (statusElement !== null &amp;&amp; statusElement !== undefined &amp;&amp; statusElement.length !== 0) {
+                  var statusInstance = statusElement;
+                  storageServicePropertiesInstance.status = statusInstance;
+                }
+                
+                var endpointsSequenceElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'ENDPOINTS', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (endpointsSequenceElement !== null &amp;&amp; endpointsSequenceElement !== undefined) {
+                  for (var loweredIndex2 = 0; loweredIndex2 &lt; js2xml.getElements(responseDoc, endpointsSequenceElement, 'ENDPOINT', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE').length; loweredIndex2 = loweredIndex2 + 1) {
+                    var endpointsElement = js2xml.getElements(responseDoc, endpointsSequenceElement, 'ENDPOINT', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE')[loweredIndex2];
+                    storageServicePropertiesInstance.endpoints.push(endpointsElement);
+                  }
+                }
+                
+                var geoPrimaryRegionElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'GEOPRIMARYREGION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (geoPrimaryRegionElement !== null &amp;&amp; geoPrimaryRegionElement !== undefined) {
+                  var geoPrimaryRegionInstance = geoPrimaryRegionElement;
+                  storageServicePropertiesInstance.geoPrimaryRegion = geoPrimaryRegionInstance;
+                }
+                
+                var statusOfPrimaryElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'STATUSOFPRIMARY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (statusOfPrimaryElement !== null &amp;&amp; statusOfPrimaryElement !== undefined &amp;&amp; statusOfPrimaryElement.length !== 0) {
+                  var statusOfPrimaryInstance = statusOfPrimaryElement;
+                  storageServicePropertiesInstance.statusOfGeoPrimaryRegion = statusOfPrimaryInstance;
+                }
+                
+                var lastGeoFailoverTimeElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'LASTGEOFAILOVERTIME', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (lastGeoFailoverTimeElement !== null &amp;&amp; lastGeoFailoverTimeElement !== undefined &amp;&amp; lastGeoFailoverTimeElement.length !== 0) {
+                  var lastGeoFailoverTimeInstance = new Date(lastGeoFailoverTimeElement);
+                  storageServicePropertiesInstance.lastGeoFailoverTime = lastGeoFailoverTimeInstance;
+                }
+                
+                var geoSecondaryRegionElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'GEOSECONDARYREGION', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (geoSecondaryRegionElement !== null &amp;&amp; geoSecondaryRegionElement !== undefined) {
+                  var geoSecondaryRegionInstance = geoSecondaryRegionElement;
+                  storageServicePropertiesInstance.geoSecondaryRegion = geoSecondaryRegionInstance;
+                }
+                
+                var statusOfSecondaryElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'STATUSOFSECONDARY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (statusOfSecondaryElement !== null &amp;&amp; statusOfSecondaryElement !== undefined &amp;&amp; statusOfSecondaryElement.length !== 0) {
+                  var statusOfSecondaryInstance = statusOfSecondaryElement;
+                  storageServicePropertiesInstance.statusOfGeoSecondaryRegion = statusOfSecondaryInstance;
+                }
+                
+                var accountTypeElement = js2xml.getElement(responseDoc, storageServicePropertiesElement, 'ACCOUNTTYPE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                if (accountTypeElement !== null &amp;&amp; accountTypeElement !== undefined) {
+                  var accountTypeInstance = accountTypeElement;
+                  storageServicePropertiesInstance.accountType = accountTypeInstance;
+                }
+              }
+              
+              var extendedPropertiesSequenceElement = js2xml.getElement(responseDoc, storageServicesElement, 'EXTENDEDPROPERTIES', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (extendedPropertiesSequenceElement !== null &amp;&amp; extendedPropertiesSequenceElement !== undefined) {
+                for (var loweredIndex3 = 0; loweredIndex3 &lt; js2xml.getElements(responseDoc, extendedPropertiesSequenceElement, 'EXTENDEDPROPERTY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE').length; loweredIndex3 = loweredIndex3 + 1) {
+                  var extendedPropertiesElement = js2xml.getElements(responseDoc, extendedPropertiesSequenceElement, 'EXTENDEDPROPERTY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE')[loweredIndex3];
+                  var extendedPropertiesKey = js2xml.getElement(responseDoc, extendedPropertiesElement, 'NAME', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                  var extendedPropertiesValue = js2xml.getElement(responseDoc, extendedPropertiesElement, 'VALUE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+                  storageServiceInstance.extendedProperties[extendedPropertiesKey] = extendedPropertiesValue;
+                }
+              }
+            }
+          }
+          
+        });
+      }
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The Regenerate Keys operation regenerates the primary or secondary access
+   * key for the specified storage account.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/ee460795.aspx for
+   * more information)
+   * 
+   * @param {StorageAccountRegenerateKeysParameters} parameters Parameters
+   * supplied to the Regenerate Keys operation.
+   * 
+   * @param {string} parameters.name The name of the desired storage account.
+   * 
+   * @param {StorageKeyType} parameters.keyType Specifies which key to
+   * regenerate.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.regenerateKeys = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.keyType === null || parameters.keyType === undefined) {
+      return callback(new Error('parameters.keyType cannot be null.'));
+    }
+    if (parameters.name === null || parameters.name === undefined) {
+      return callback(new Error('parameters.name cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/services/storageservices/';
+    url2 = url2 + encodeURIComponent(parameters.name);
+    url2 = url2 + '/keys';
+    var queryParameters = [];
+    queryParameters.push('action=regenerate');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'POST';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/xml';
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Serialize Request
+    var requestContent = null;
+    var requestDoc = {};
+    
+    var regenerateKeysElement = js2xml.createElement('RegenerateKeys', 'http://schemas.microsoft.com/windowsazure');
+    js2xml.addChildElement(requestDoc, regenerateKeysElement);
+    
+    var keyTypeElement = js2xml.createElement('KeyType', 'http://schemas.microsoft.com/windowsazure');
+    js2xml.setElementValue(keyTypeElement, parameters.keyType !== null &amp;&amp; parameters.keyType !== undefined ? parameters.keyType.toString() : 'Primary');
+    js2xml.addChildElement(regenerateKeysElement, keyTypeElement);
+    
+    requestContent = js2xml.serializeDocument(requestDoc);
+    httpRequest.body = requestContent;
+    httpRequest.headers['Content-Length'] = Buffer.isBuffer(requestContent) ? requestContent.length : Buffer.byteLength(requestContent, 'UTF8');
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      if (statusCode === 200) {
+        var responseContent = body;
+        result = {};
+        var options = {};
+        options.trim = false;
+        options.strict = false;
+        xml.parseString(responseContent, options, function (err2, responseDoc) {
+          if (err2 !== null &amp;&amp; err2 !== undefined) {
+            return callback(err2);
+          }
+          
+          var storageServiceElement = js2xml.getElement(responseDoc, responseDoc, 'STORAGESERVICE', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+          if (storageServiceElement !== null &amp;&amp; storageServiceElement !== undefined) {
+            var urlElement = js2xml.getElement(responseDoc, storageServiceElement, 'URL', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (urlElement !== null &amp;&amp; urlElement !== undefined) {
+              var urlInstance = urlElement;
+              result.uri = urlInstance;
+            }
+            
+            var storageServiceKeysElement = js2xml.getElement(responseDoc, storageServiceElement, 'STORAGESERVICEKEYS', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+            if (storageServiceKeysElement !== null &amp;&amp; storageServiceKeysElement !== undefined) {
+              var primaryElement = js2xml.getElement(responseDoc, storageServiceKeysElement, 'PRIMARY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (primaryElement !== null &amp;&amp; primaryElement !== undefined) {
+                var primaryInstance = primaryElement;
+                result.primaryKey = primaryInstance;
+              }
+              
+              var secondaryElement = js2xml.getElement(responseDoc, storageServiceKeysElement, 'SECONDARY', 'HTTP://SCHEMAS.MICROSOFT.COM/WINDOWSAZURE');
+              if (secondaryElement !== null &amp;&amp; secondaryElement !== undefined) {
+                var secondaryInstance = secondaryElement;
+                result.secondaryKey = secondaryInstance;
+              }
+            }
+          }
+          
+        });
+      }
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The Update Storage Account operation updates the label and the
+   * description, and enables or disables the geo-replication status for a
+   * storage account in Azure.  (see
+   * http://msdn.microsoft.com/en-us/library/windowsazure/hh264516.aspx for
+   * more information)
+   * 
+   * @param {string} accountName Name of the storage account to update.
+   * 
+   * @param {StorageAccountUpdateParameters} parameters Parameters supplied to
+   * the Update Storage Account operation.
+   * 
+   * @param {string} [parameters.description]
+   * 
+   * @param {string} [parameters.label] A name for the storage account,
+   * base64-encoded. The name may be up to 100 characters in length. The name
+   * can be used identify the storage account for your tracking purposes.
+   * 
+   * @param {object} [parameters.extendedProperties] Represents the name of an
+   * extended storage account property. Each extended property must have a
+   * defined name and a value. You can have a maximum of 50 extended property
+   * name/value pairs. The maximum length of the Name element is 64
+   * characters, only alphanumeric characters and underscores are valid in the
+   * Name, and the name must start with a letter. Attempting to use other
+   * characters, starting the Name with a non-letter character, or entering a
+   * name that is identical to that of another extended property owned by the
+   * same storage account will result in a status code 400 (Bad Request)
+   * error. Each extended property value has a maximum length of 255
+   * characters. You can delete an extended property by setting the value to
+   * NULL.
+   * 
+   * @param {string} [parameters.accountType] Specifies whether the account
+   * supports locally-redundant storage, geo-redundant storage, zone-redundant
+   * storage, or read access geo-redundant storage. Possible values
+   * are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  StorageAccountOperations.prototype.update = function(accountName, parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (accountName === null || accountName === undefined) {
+      return callback(new Error('accountName cannot be null.'));
+    }
+    if (accountName.length &lt; 3) {
+      return callback(new Error('accountName is outside the valid range.'));
+    }
+    if (accountName.length > 24) {
+      return callback(new Error('accountName is outside the valid range.'));
+    }
+    for (var loweredIndex1 = 0; loweredIndex1 &lt; accountName.length; loweredIndex1 = loweredIndex1 + 1) {
+      var accountNameChar = accountName[loweredIndex1];
+      if (accountNameChar === accountNameChar.toLowerCase() === false &amp;&amp; isNaN(parseInt(accountNameChar, 10)) === false === false) {
+        return callback(new Error('accountName is outside the valid range.'));
+      }
+    }
+    // TODO: Validate accountName is a valid DNS name.
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.description !== null &amp;&amp; parameters.description !== undefined &amp;&amp; parameters.description.length > 1024) {
+      return callback(new Error('parameters.description is outside the valid range.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/services/storageservices/';
+    url2 = url2 + encodeURIComponent(accountName);
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'PUT';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/xml';
+    httpRequest.headers['x-ms-version'] = '2014-10-01';
+    
+    // Serialize Request
+    var requestContent = null;
+    var requestDoc = {};
+    
+    var updateStorageServiceInputElement = js2xml.createElement('UpdateStorageServiceInput', 'http://schemas.microsoft.com/windowsazure');
+    js2xml.addChildElement(requestDoc, updateStorageServiceInputElement);
+    
+    if (parameters.description !== null &amp;&amp; parameters.description !== undefined) {
+      var descriptionElement = js2xml.createElement('Description', 'http://schemas.microsoft.com/windowsazure');
+      js2xml.setElementValue(descriptionElement, parameters.description);
+      js2xml.addChildElement(updateStorageServiceInputElement, descriptionElement);
+    }
+    else if (parameters.description !== undefined) {
+      var emptyElement = js2xml.createElement('Description', 'http://schemas.microsoft.com/windowsazure');
+      var nilAttribute = js2xml.createAttribute('nil', 'http://www.w3.org/2001/XMLSchema-instance');
+      js2xml.setAttributeValue(nilAttribute, 'true');
+      js2xml.addAttribute(emptyElement, nilAttribute);
+      js2xml.addChildElement(updateStorageServiceInputElement, emptyElement);
+    }
+    
+    if (parameters.label !== null &amp;&amp; parameters.label !== undefined) {
+      var labelElement = js2xml.createElement('Label', 'http://schemas.microsoft.com/windowsazure');
+      js2xml.setElementValue(labelElement, new Buffer(parameters.label).toString('base64'));
+      js2xml.addChildElement(updateStorageServiceInputElement, labelElement);
+    }
+    
+    if (parameters.extendedProperties !== null &amp;&amp; parameters.extendedProperties !== undefined) {
+      var extendedPropertiesDictionaryElement = js2xml.createElement('ExtendedProperties', 'http://schemas.microsoft.com/windowsazure');
+      for (var extendedPropertiesKey in parameters.extendedProperties) {
+        var extendedPropertiesValue = parameters.extendedProperties[extendedPropertiesKey];
+        var extendedPropertiesElement = js2xml.createElement('ExtendedProperty', 'http://schemas.microsoft.com/windowsazure');
+        js2xml.addChildElement(extendedPropertiesDictionaryElement, extendedPropertiesElement);
+        
+        var extendedPropertiesKeyElement = js2xml.createElement('Name', 'http://schemas.microsoft.com/windowsazure');
+        js2xml.setElementValue(extendedPropertiesKeyElement, extendedPropertiesKey);
+        js2xml.addChildElement(extendedPropertiesElement, extendedPropertiesKeyElement);
+        
+        var extendedPropertiesValueElement = js2xml.createElement('Value', 'http://schemas.microsoft.com/windowsazure');
+        js2xml.setElementValue(extendedPropertiesValueElement, extendedPropertiesValue);
+        js2xml.addChildElement(extendedPropertiesElement, extendedPropertiesValueElement);
+      }
+      js2xml.addChildElement(updateStorageServiceInputElement, extendedPropertiesDictionaryElement);
+    }
+    
+    if (parameters.accountType !== null &amp;&amp; parameters.accountType !== undefined) {
+      var accountTypeElement = js2xml.createElement('AccountType', 'http://schemas.microsoft.com/windowsazure');
+      js2xml.setElementValue(accountTypeElement, parameters.accountType);
+      js2xml.addChildElement(updateStorageServiceInputElement, accountTypeElement);
+    }
+    
+    requestContent = js2xml.serializeDocument(requestDoc);
+    httpRequest.body = requestContent;
+    httpRequest.headers['Content-Length'] = Buffer.isBuffer(requestContent) ? requestContent.length : Buffer.byteLength(requestContent, 'UTF8');
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      result = {};
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  return StorageAccountOperations;
+})();
+</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: sqlserviceclient.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="createSqlService.html">createSqlService</a></li><li><a href="DacOperations-DacOperations.html">DacOperations~DacOperations</a></li><li><a href="DatabaseCopyOperations-DatabaseCopyOperations.html">DatabaseCopyOperations~DatabaseCopyOperations</a></li><li><a href="DatabaseOperationOperations-DatabaseOperationOperations.html">DatabaseOperationOperations~DatabaseOperationOperations</a></li><li><a href="DatabaseOperations-DatabaseOperations.html">DatabaseOperations~DatabaseOperations</a></li><li><a href="FirewallRuleOperations-FirewallRuleOperations.html">FirewallRuleOperations~FirewallRuleOperations</a></li><li><a href="QuotaOperations-QuotaOperations.html">QuotaOperations~QuotaOperations</a></li><li><a href="RecoverableDatabaseOperations-RecoverableDatabaseOperations.html">RecoverableDatabaseOperations~RecoverableDatabaseOperations</a></li><li><a href="RecoverDatabaseOperations-RecoverDatabaseOperations.html">RecoverDatabaseOperations~RecoverDatabaseOperations</a></li><li><a href="RestorableDroppedDatabaseOperations-RestorableDroppedDatabaseOperations.html">RestorableDroppedDatabaseOperations~RestorableDroppedDatabaseOperations</a></li><li><a href="RestoreDatabaseOperations-RestoreDatabaseOperations.html">RestoreDatabaseOperations~RestoreDatabaseOperations</a></li><li><a href="ServerOperations-ServerOperations.html">ServerOperations~ServerOperations</a></li><li><a href="ServiceObjectiveOperations-ServiceObjectiveOperations.html">ServiceObjectiveOperations~ServiceObjectiveOperations</a></li><li><a href="SqlManagementClient-SqlManagementClient.html">SqlManagementClient~SqlManagementClient</a></li><li><a href="SqlManagementService.html">SqlManagementService</a></li><li><a href="SqlService.html">SqlService</a></li><li><a href="SqlServiceClient.html">SqlServiceClient</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createSqlManagementService">createSqlManagementService</a></li><li><a href="global.html#SqlServerAcs">SqlServerAcs</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: sqlserviceclient.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Module dependencies.
+var util = require('util');
+
+var azureCommon = require('azure-common');
+var ServiceClient = azureCommon.ServiceClient;
+var SqlServerAcs = require('./sqlserveracs');
+
+var Constants = azureCommon.Constants;
+var HeaderConstants = Constants.HeaderConstants;
+
+/**
+* Creates a new SqlServiceClient object.
+*
+* @constructor
+* @param {string} serverName                   The SQL server name.
+* @param {string} administratorLogin           The SQL Server administrator login.
+* @param {string} administratorLoginPassword   The SQL Server administrator login password.
+* @param {string} host                         The host for the service.
+* @param {string} acsHost                      The acs host. Usually the same as the sb namespace with "-sb" suffix.
+* @param {object} [authenticationProvider]     The authentication provider.
+*/
+function SqlServiceClient(serverName, administratorLogin, administratorLoginPassword, host, acsHost, authenticationProvider) {
+  SqlServiceClient['super_'].call(this, host, authenticationProvider);
+
+  this.authenticationProvider = authenticationProvider;
+  if (!this.authenticationProvider) {
+    this.authenticationProvider = new SqlServerAcs(acsHost, serverName, administratorLogin, administratorLoginPassword);
+  }
+}
+
+util.inherits(SqlServiceClient, ServiceClient);
+
+/**
+* Builds the request options to be passed to the http.request method.
+*
+* @param {WebResource} webResource The webresource where to build the options from.
+* @param {object}      options     The request options.
+* @param {function(error, requestOptions)}  callback  The callback function.
+*/
+SqlServiceClient.prototype._buildRequestOptions = function (webResource, body, options, callback) {
+  webResource.withHeader(HeaderConstants.ACCEPT_CHARSET_HEADER, 'UTF-8');
+
+  // If wrap is used, make sure proxy settings are in sync
+  if (this.useProxy &amp;&amp;
+      this.authenticationProvider &amp;&amp;
+      this.authenticationProvider.wrapTokenManager &amp;&amp;
+      this.authenticationProvider.wrapTokenManager.wrapService) {
+    this.authenticationProvider.wrapTokenManager.wrapService.setProxy(this.proxyUrl, this.proxyPort);
+  }
+
+  SqlServiceClient['super_'].prototype._buildRequestOptions.call(this, webResource, body, options, callback);
+};
+
+module.exports = SqlServiceClient;</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: services/servicemanagementclient.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-date.html">date</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AnonymousCloudCredentials.html">AnonymousCloudCredentials</a></li><li><a href="CertificateCloudCredentials.html">CertificateCloudCredentials</a></li><li><a href="ConnectionStringParser.html">ConnectionStringParser</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="HmacSha256Sign.html">HmacSha256Sign</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="ServiceManagementClient.html">ServiceManagementClient</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="TokenCloudCredentials.html">TokenCloudCredentials</a></li><li><a href="WebResource.html">WebResource</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#allRequired">allRequired</a></li><li><a href="global.html#atLeastOne">atLeastOne</a></li><li><a href="global.html#blobNameIsValid">blobNameIsValid</a></li><li><a href="global.html#CLOUD_BLOB_HOST">CLOUD_BLOB_HOST</a></li><li><a href="global.html#containerNameIsValid">containerNameIsValid</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#DEFAULT_PROTOCOL">DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEFAULT_SERVICEBUS_ISSUER">DEFAULT_SERVICEBUS_ISSUER</a></li><li><a href="global.html#DEFAULT_WRAP_NAMESPACE_SUFFIX">DEFAULT_WRAP_NAMESPACE_SUFFIX</a></li><li><a href="global.html#DEVSTORE_DEFAULT_PROTOCOL">DEVSTORE_DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEVSTORE_STORAGE_ACCOUNT">DEVSTORE_STORAGE_ACCOUNT</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#format">format</a></li><li><a href="global.html#getContentMd5">getContentMd5</a></li><li><a href="global.html#getNameSpace">getNameSpace</a></li><li><a href="global.html#getValidator">getValidator</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#inArrayInsensitive">inArrayInsensitive</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isBase64Encoded">isBase64Encoded</a></li><li><a href="global.html#isBufferAllZero">isBufferAllZero</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isValidFunction">isValidFunction</a></li><li><a href="global.html#isValidHDInsightCreationObject">isValidHDInsightCreationObject</a></li><li><a href="global.html#isValidUri">isValidUri</a></li><li><a href="global.html#KEY_PATT">KEY_PATT</a></li><li><a href="global.html#matchedSpecification">matchedSpecification</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#namespaceNameIsValid">namespaceNameIsValid</a></li><li><a href="global.html#noMatchConnectionString">noMatchConnectionString</a></li><li><a href="global.html#noMatchSettings">noMatchSettings</a></li><li><a href="global.html#objectFirstKey">objectFirstKey</a></li><li><a href="global.html#objectIsEmpty">objectIsEmpty</a></li><li><a href="global.html#objectIsFunction">objectIsFunction</a></li><li><a href="global.html#objectIsInt">objectIsInt</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectIsString">objectIsString</a></li><li><a href="global.html#objectKeysLength">objectKeysLength</a></li><li><a href="global.html#optional">optional</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#parseAndValidateKeys">parseAndValidateKeys</a></li><li><a href="global.html#propertyType">propertyType</a></li><li><a href="global.html#queueNameIsValid">queueNameIsValid</a></li><li><a href="global.html#removeBOM">removeBOM</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#serializeEntry">serializeEntry</a></li><li><a href="global.html#serializeQueryValue">serializeQueryValue</a></li><li><a href="global.html#ServiceBusSettings">ServiceBusSettings</a></li><li><a href="global.html#ServiceManagementSettings">ServiceManagementSettings</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#setting">setting</a></li><li><a href="global.html#settingWithFunc">settingWithFunc</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#StorageServiceSettings">StorageServiceSettings</a></li><li><a href="global.html#stringEndsWith">stringEndsWith</a></li><li><a href="global.html#stringFormat">stringFormat</a></li><li><a href="global.html#stringIsDate">stringIsDate</a></li><li><a href="global.html#stringIsEmpty">stringIsEmpty</a></li><li><a href="global.html#stringIsFloat">stringIsFloat</a></li><li><a href="global.html#stringIsInt">stringIsInt</a></li><li><a href="global.html#stringIsNumber">stringIsNumber</a></li><li><a href="global.html#stringStartsWith">stringStartsWith</a></li><li><a href="global.html#tableNameIsValid">tableNameIsValid</a></li><li><a href="global.html#truncatedISO8061Date">truncatedISO8061Date</a></li><li><a href="global.html#tryGetValueChain">tryGetValueChain</a></li><li><a href="global.html#tryGetValueInsensitive">tryGetValueInsensitive</a></li><li><a href="global.html#unserializeValue">unserializeValue</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#zeroBuffer">zeroBuffer</a></li><li><a href="global.html#zeroPaddingString">zeroPaddingString</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: services/servicemanagementclient.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Module dependencies.
+var util = require('util');
+var fs = require('fs');
+var url = require('url');
+
+var ServiceClient = require('./serviceclient');
+var Constants = require('../util/constants');
+var ServiceClientConstants = require('./serviceclientconstants');
+var HeaderConstants = Constants.HeaderConstants;
+
+/**
+* Creates a new ServiceManagementClient object.
+*
+* @constructor
+* @param {object} settingsOrAuthentication Either a settings object or an
+*                                          authentication details object
+* @param {string} hostOptions             The host options to override defaults.
+*                                         {
+*                                            host: 'management.core.windows.net',
+*                                            port: optional port number
+*                                            apiversion: '2012-03-01'
+*                                         }
+*/
+function ServiceManagementClient(settingsOrAuthentication, hostOptions) {
+  ServiceManagementClient['super_'].call(this);
+  if (settingsOrAuthentication._endpointUri) {
+    this._setAuthenticationFromSettings(settingsOrAuthentication);
+    this._setServiceHostFromSettings(settingsOrAuthentication);
+  } else {
+    // TODO: Will remove this path once everything's switched over to new config
+    this._setAuthentication(settingsOrAuthentication);
+    this._setServiceHost(hostOptions);
+  }
+
+  var self = this;
+
+  this.authenticationProvider = {
+    signRequest: function (webResource, callback) {
+      webResource.authentication = {
+        keyvalue: self.keyvalue,
+        certvalue: self.certvalue
+      };
+
+      callback(null);
+    }
+  };
+}
+
+util.inherits(ServiceManagementClient, ServiceClient);
+
+/**
+* Error messages.
+*/
+ServiceManagementClient.missingKeyValue = 'Client private key certificate is required';
+ServiceManagementClient.missingCertValue = 'Client public certificate is required';
+
+// Default API Version
+ServiceManagementClient.DefaultAPIVersion = '2012-03-01';
+
+/**
+* Sets the client authentication credentials using provided values
+* private key and public certificate values may be passed as strings, or will be read from files
+*
+* @return {Void}
+*/
+ServiceManagementClient.prototype._setAuthentication = function (authentication) {
+  this.keyvalue = null;
+  this.certvalue = null;
+
+  if (authentication) {
+    if (typeof authentication.keyvalue === 'string' &amp;&amp; authentication.keyvalue.length > 0) {
+      this.keyvalue = authentication.keyvalue;
+    } else if (typeof authentication.keyfile === 'string' &amp;&amp; authentication.keyfile.length > 0) {
+      this.keyvalue = fs.readFileSync(authentication.keyfile, 'ascii');
+    }
+    if (typeof authentication.certvalue === 'string' &amp;&amp; authentication.certvalue.length > 0) {
+      this.certvalue = authentication.certvalue;
+    } else if (typeof authentication.certfile === 'string' &amp;&amp; authentication.certfile.length > 0) {
+      this.certvalue = fs.readFileSync(authentication.certfile, 'ascii');
+    }
+  }
+
+  if (this.keyvalue === null || this.keyvalue.length === 0) {
+    var keyfile = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_KEYFILE];
+    if (typeof keyfile === 'string' &amp;&amp; keyfile.length > 0) {
+      this.keyvalue = fs.readFileSync(keyfile, 'ascii');
+    }
+  }
+
+  if (this.certvalue === null || this.certvalue.length === 0) {
+    var certfile = process.env[ServiceClientConstants.EnvironmentVariables.AZURE_CERTFILE];
+    if (typeof certfile === 'string' &amp;&amp; certfile.length > 0) {
+      this.certvalue = fs.readFileSync(certfile, 'ascii');
+    }
+  }
+
+  if (this.keyvalue === null || this.keyvalue.length === 0) {
+    throw new Error(ServiceManagementClient.missingKeyValue);
+  }
+
+  if (this.certvalue === null || this.certvalue.length === 0) {
+    throw new Error(ServiceManagementClient.missingCertValue);
+  }
+};
+
+/**
+* Sets the client authentication credentials using the
+* values provided in the settings object.
+*/
+ServiceManagementClient.prototype._setAuthenticationFromSettings = function (settings) {
+  this.keyvalue = settings._key;
+  this.certvalue = settings._certificate;
+};
+
+/**
+* Sets the service host options using provided values
+* Options are host name, serialization type, and API version string
+* If not specified, then the defaults are used
+*
+* @return {Void}
+*/
+ServiceManagementClient.prototype._setServiceHost = function (hostOptions) {
+  this.host = ServiceClientConstants.CLOUD_SERVICE_MANAGEMENT_HOST;
+  this.apiversion = ServiceManagementClient.DefaultAPIVersion;
+  this.port = null;
+  this.protocol = Constants.HTTPS;
+
+  if (hostOptions) {
+    if (hostOptions.host) {
+      this.host = hostOptions.host;
+    }
+    if (hostOptions.apiversion) {
+      this.apiversion = hostOptions.apiversion;
+    }
+    if (hostOptions.port) {
+      this.port = hostOptions.port;
+    }
+  }
+};
+
+ServiceManagementClient.prototype._setServiceHostFromSettings = function(settings) {
+  this.apiversion = ServiceManagementClient.DefaultAPIVersion;
+  var hostUrl = url.parse(settings._endpointUri);
+  this.host = hostUrl.hostname;
+  this.protocol = hostUrl.protocol;
+  this.port = hostUrl.port;
+};
+
+/**
+* Builds the request options to be passed to the http.request method.
+*
+* @param {WebResource} webResource The webresource where to build the options from.
+* @param {object}      options     The request options.
+* @param {function(error, requestOptions)}  callback  The callback function.
+* @return {undefined}
+*/
+ServiceManagementClient.prototype._buildRequestOptions = function (webResource, body, options, callback) {
+  if (!webResource.headers || !webResource.headers[HeaderConstants.CONTENT_TYPE]) {
+    webResource.withHeader(HeaderConstants.CONTENT_TYPE, 'application/xml');
+  }
+
+  if (!webResource.headers || !webResource.headers[HeaderConstants.ACCEPT_HEADER]) {
+    webResource.withHeader(HeaderConstants.ACCEPT_HEADER, 'application/xml');
+  }
+
+  webResource.withHeader(HeaderConstants.ACCEPT_CHARSET_HEADER, 'UTF-8');
+  webResource.withHeader(HeaderConstants.STORAGE_VERSION_HEADER, this.apiversion);
+
+  ServiceManagementClient['super_'].prototype._buildRequestOptions.call(this, webResource, body, options, callback);
+};
+
+module.exports = ServiceManagementClient;
+</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

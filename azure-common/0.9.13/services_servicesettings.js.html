@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: services/servicesettings.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-date.html">date</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AnonymousCloudCredentials.html">AnonymousCloudCredentials</a></li><li><a href="CertificateCloudCredentials.html">CertificateCloudCredentials</a></li><li><a href="ConnectionStringParser.html">ConnectionStringParser</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="HmacSha256Sign.html">HmacSha256Sign</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="ServiceManagementClient.html">ServiceManagementClient</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="TokenCloudCredentials.html">TokenCloudCredentials</a></li><li><a href="WebResource.html">WebResource</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#allRequired">allRequired</a></li><li><a href="global.html#atLeastOne">atLeastOne</a></li><li><a href="global.html#blobNameIsValid">blobNameIsValid</a></li><li><a href="global.html#CLOUD_BLOB_HOST">CLOUD_BLOB_HOST</a></li><li><a href="global.html#containerNameIsValid">containerNameIsValid</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#DEFAULT_PROTOCOL">DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEFAULT_SERVICEBUS_ISSUER">DEFAULT_SERVICEBUS_ISSUER</a></li><li><a href="global.html#DEFAULT_WRAP_NAMESPACE_SUFFIX">DEFAULT_WRAP_NAMESPACE_SUFFIX</a></li><li><a href="global.html#DEVSTORE_DEFAULT_PROTOCOL">DEVSTORE_DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEVSTORE_STORAGE_ACCOUNT">DEVSTORE_STORAGE_ACCOUNT</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#format">format</a></li><li><a href="global.html#getContentMd5">getContentMd5</a></li><li><a href="global.html#getNameSpace">getNameSpace</a></li><li><a href="global.html#getValidator">getValidator</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#inArrayInsensitive">inArrayInsensitive</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isBase64Encoded">isBase64Encoded</a></li><li><a href="global.html#isBufferAllZero">isBufferAllZero</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isValidFunction">isValidFunction</a></li><li><a href="global.html#isValidHDInsightCreationObject">isValidHDInsightCreationObject</a></li><li><a href="global.html#isValidUri">isValidUri</a></li><li><a href="global.html#KEY_PATT">KEY_PATT</a></li><li><a href="global.html#matchedSpecification">matchedSpecification</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#namespaceNameIsValid">namespaceNameIsValid</a></li><li><a href="global.html#noMatchConnectionString">noMatchConnectionString</a></li><li><a href="global.html#noMatchSettings">noMatchSettings</a></li><li><a href="global.html#objectFirstKey">objectFirstKey</a></li><li><a href="global.html#objectIsEmpty">objectIsEmpty</a></li><li><a href="global.html#objectIsFunction">objectIsFunction</a></li><li><a href="global.html#objectIsInt">objectIsInt</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectIsString">objectIsString</a></li><li><a href="global.html#objectKeysLength">objectKeysLength</a></li><li><a href="global.html#optional">optional</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#parseAndValidateKeys">parseAndValidateKeys</a></li><li><a href="global.html#propertyType">propertyType</a></li><li><a href="global.html#queueNameIsValid">queueNameIsValid</a></li><li><a href="global.html#removeBOM">removeBOM</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#serializeEntry">serializeEntry</a></li><li><a href="global.html#serializeQueryValue">serializeQueryValue</a></li><li><a href="global.html#ServiceBusSettings">ServiceBusSettings</a></li><li><a href="global.html#ServiceManagementSettings">ServiceManagementSettings</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#setting">setting</a></li><li><a href="global.html#settingWithFunc">settingWithFunc</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#StorageServiceSettings">StorageServiceSettings</a></li><li><a href="global.html#stringEndsWith">stringEndsWith</a></li><li><a href="global.html#stringFormat">stringFormat</a></li><li><a href="global.html#stringIsDate">stringIsDate</a></li><li><a href="global.html#stringIsEmpty">stringIsEmpty</a></li><li><a href="global.html#stringIsFloat">stringIsFloat</a></li><li><a href="global.html#stringIsInt">stringIsInt</a></li><li><a href="global.html#stringIsNumber">stringIsNumber</a></li><li><a href="global.html#stringStartsWith">stringStartsWith</a></li><li><a href="global.html#tableNameIsValid">tableNameIsValid</a></li><li><a href="global.html#truncatedISO8061Date">truncatedISO8061Date</a></li><li><a href="global.html#tryGetValueChain">tryGetValueChain</a></li><li><a href="global.html#tryGetValueInsensitive">tryGetValueInsensitive</a></li><li><a href="global.html#unserializeValue">unserializeValue</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#zeroBuffer">zeroBuffer</a></li><li><a href="global.html#zeroPaddingString">zeroPaddingString</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: services/servicesettings.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+var ut = require('util');
+var url = require('url');
+
+var util = require('../util/util');
+
+var Constants = require('../util/constants');
+var ConnectionStringParser = require('./connectionstringparser');
+
+exports = module.exports;
+
+/**
+* The default protocol.
+*/
+exports.DEFAULT_PROTOCOL = Constants.HTTPS;
+
+var NoMatchError = function (msg, constr) {
+  Error.captureStackTrace(this, constr || this);
+  this.message = msg || 'Error';
+};
+
+ut.inherits(NoMatchError, Error);
+NoMatchError.prototype.name = 'NoMatchError';
+
+exports.NoMatchError = NoMatchError;
+
+/**
+* Throws an exception if the connection string format does not match any of the
+* available formats.
+*
+* @param {string} connectionString The invalid formatted connection string.
+* @return none
+*/
+exports.noMatchConnectionString = function (connectionString) {
+  throw new NoMatchError('The provided connection string "' + connectionString + '" does not have complete configuration settings.');
+};
+
+/**
+* Throws an exception if the settings dont match any of the
+* available formats.
+*
+* @param {object} settings The invalid settings.
+* @return none
+*/
+exports.noMatchSettings = function (settings) {
+  throw new NoMatchError('The provided settings ' + JSON.stringify(settings) + ' are not complete.');
+};
+
+/**
+* Parses the connection string and then validate that the parsed keys belong to
+* the validSettingKeys
+*
+* @param {string} connectionString The user provided connection string.
+* @param {array}  validKeys        The valid keys.
+* @return {array} The tokenized connection string keys.
+*/
+exports.parseAndValidateKeys = function (connectionString, validKeys) {
+  var tokenizedSettings = ConnectionStringParser.parse(connectionString);
+
+  // Assure that all given keys are valid.
+  Object.keys(tokenizedSettings).forEach(function (key) {
+    if (!util.inArrayInsensitive(key, validKeys)) {
+      throw new Error('Invalid connection string setting key "' + key + '"');
+    }
+  });
+
+  return tokenizedSettings;
+};
+
+/**
+* Creates an anonymous function that acts as predicate to perform a validation.
+*
+* @param array   {requirements} The array of conditions to satisfy.
+* @param boolean {isRequired}   Either these conditions are all required or all
+* optional.
+* @param boolean {atLeastOne}   Indicates that at least one requirement must
+* succeed.
+* @return {function}
+*/
+exports.getValidator = function (requirements, isRequired, atLeastOne) {
+  return function (userSettings) {
+    var oneFound = false;
+    var result = { };
+
+    for (var key in userSettings) {
+      if (userSettings.hasOwnProperty(key)) {
+        result[key.toLowerCase()] = userSettings[key];
+      }
+    }
+
+    for (var requirement in requirements) {
+      if (requirements.hasOwnProperty(requirement)) {
+        var settingName = requirements[requirement].SettingName.toLowerCase();
+
+        // Check if the setting name exists in the provided user settings.
+        if (result[settingName]) {
+          // Check if the provided user setting value is valid.
+          var validationFunc = requirements[requirement].SettingConstraint;
+          var isValid = validationFunc(result[settingName]);
+
+          if (isValid) {
+            // Remove the setting as indicator for successful validation.
+            delete result[settingName];
+            oneFound = true;
+          }
+        } else if (isRequired) {
+          // If required then fail because the setting does not exist
+          return null;
+        }
+      }
+    }
+
+    if (atLeastOne) {
+      // At least one requirement must succeed, otherwise fail.
+      return oneFound ? result : null;
+    } else {
+      return result;
+    }
+  };
+};
+
+/**
+* Creates a setting value condition that validates it is one of the
+* passed valid values.
+*
+* @param {string} name The setting key name.
+* @return {array}
+*/
+exports.setting = function (name) {
+  var validValues = Array.prototype.slice.call(arguments, 1, arguments.length);
+
+  var predicate = function (settingValue) {
+    var validValuesString = JSON.stringify(validValues);
+    if (validValues.length === 0) {
+      // No restrictions, succeed.
+      return true;
+    }
+
+    // Check to find if the settingValue is valid or not.
+    for (var index = 0; index &lt; validValues.length; index++) {
+      if (settingValue.toString() == validValues[index].toString()) {
+        // SettingValue is found in valid values set, succeed.
+        return true;
+      }
+    }
+
+    // settingValue is missing in valid values set, fail.
+    throw new Error('The provided config value ' + settingValue + ' does not belong to the valid values subset:\n' + validValuesString);
+  };
+
+  return exports.settingWithFunc(name, predicate);
+};
+
+/**
+* Creates an "at lease one" predicate for the provided list of requirements.
+*
+* @return callable
+*/
+exports.atLeastOne = function () {
+  var allSettings = arguments;
+  return exports.getValidator(allSettings, false, true);
+};
+
+/**
+* Creates an optional predicate for the provided list of requirements.
+*
+* @return {function}
+*/
+exports.optional = function () {
+  var optionalSettings = arguments;
+  return exports.getValidator(optionalSettings, false, false);
+};
+
+/**
+* Creates an required predicate for the provided list of requirements.
+*
+* @return {function}
+*/
+exports.allRequired = function () {
+  var requiredSettings = arguments;
+  return exports.getValidator(requiredSettings, true, false);
+};
+
+/**
+* Creates a setting value condition using the passed predicate.
+*
+* @param {string}   name      The setting key name.
+* @param {function} predicate The setting value predicate.
+* @return {array}
+*/
+exports.settingWithFunc = function (name, predicate) {
+  var requirement = {};
+  requirement.SettingName = name;
+  requirement.SettingConstraint = predicate;
+
+  return requirement;
+};
+
+
+/**
+* Tests to see if a given list of settings matches a set of filters exactly.
+*
+* @param array $settings The settings to check.
+* @return boolean If any filter returns null, false. If there are any settings
+* left over after all filters are processed, false. Otherwise true.
+*/
+exports.matchedSpecification = function (settings) {
+  var constraints = Array.prototype.slice.call(arguments, 1, arguments.length);
+
+  for (var constraint in constraints) {
+    if (constraints.hasOwnProperty(constraint)) {
+      var remainingSettings = constraints[constraint](settings);
+
+      if (!remainingSettings) {
+        return false;
+      } else {
+        settings = remainingSettings;
+      }
+    }
+  }
+
+  return util.objectKeysLength(settings) === 0;
+};
+
+/*
+* Returns a parsed host from a full host name.
+*
+* @param {string} uri The full host to be parsed.
+* @return {object} THe parsed host as returned by the method "url.parse".
+*/
+exports.parseHost = function (uri) {
+  var defaultedProtocol = false;
+  if (uri.indexOf('http') === -1) {
+    uri = exports.DEFAULT_PROTOCOL + '//' + uri;
+    defaultedProtocol = true;
+  }
+
+  var parsedUrl = url.parse(uri);
+  parsedUrl.defaultedProtocol = defaultedProtocol;
+  return parsedUrl;
+};</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

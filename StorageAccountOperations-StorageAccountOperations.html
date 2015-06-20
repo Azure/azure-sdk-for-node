@@ -1,0 +1,10700 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Class: StorageAccountOperations</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-date.html">date</a></li><li><a href="module-RoleEnvironment.html">RoleEnvironment</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AddOnOperations-AddOnOperations.html">AddOnOperations~AddOnOperations</a></li><li><a href="AffinityGroupOperations-AffinityGroupOperations.html">AffinityGroupOperations~AffinityGroupOperations</a></li><li><a href="AgentDiagnosticSettingsOperations-AgentDiagnosticSettingsOperations.html">AgentDiagnosticSettingsOperations~AgentDiagnosticSettingsOperations</a></li><li><a href="AlertOperations-AlertOperations.html">AlertOperations~AlertOperations</a></li><li><a href="AlertsClient-AlertsClient.html">AlertsClient~AlertsClient</a></li><li><a href="AnonymousCloudCredentials.html">AnonymousCloudCredentials</a></li><li><a href="ApiAppManagementClient-ApiAppManagementClient.html">ApiAppManagementClient~ApiAppManagementClient</a></li><li><a href="ApiAppOperations-ApiAppOperations.html">ApiAppOperations~ApiAppOperations</a></li><li><a href="ApnsService.html">ApnsService</a></li><li><a href="ApplicationGatewayOperations-ApplicationGatewayOperations.html">ApplicationGatewayOperations~ApplicationGatewayOperations</a></li><li><a href="ApplicationOperations-ApplicationOperations.html">ApplicationOperations~ApplicationOperations</a></li><li><a href="AuthorizationManagementClient-AuthorizationManagementClient.html">AuthorizationManagementClient~AuthorizationManagementClient</a></li><li><a href="AutomatedExportOperations-AutomatedExportOperations.html">AutomatedExportOperations~AutomatedExportOperations</a></li><li><a href="AutoscaleClient-AutoscaleClient.html">AutoscaleClient~AutoscaleClient</a></li><li><a href="AutoscaleOperations-AutoscaleOperations.html">AutoscaleOperations~AutoscaleOperations</a></li><li><a href="AvailabilitySetOperations-AvailabilitySetOperations.html">AvailabilitySetOperations~AvailabilitySetOperations</a></li><li><a href="BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials</a></li><li><a href="BasicAuthenticationCloudCredentials-BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials~BasicAuthenticationCloudCredentials</a></li><li><a href="BatchServiceClient.html">BatchServiceClient</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="CertificateCloudCredentials.html">CertificateCloudCredentials</a></li><li><a href="ClientRootCertificateOperations-ClientRootCertificateOperations.html">ClientRootCertificateOperations~ClientRootCertificateOperations</a></li><li><a href="CloudServiceManagementClient-CloudServiceManagementClient.html">CloudServiceManagementClient~CloudServiceManagementClient</a></li><li><a href="CloudServiceOperations-CloudServiceOperations.html">CloudServiceOperations~CloudServiceOperations</a></li><li><a href="ClusterOperations-ClusterOperations.html">ClusterOperations~ClusterOperations</a></li><li><a href="CommandsOperations-CommandsOperations.html">CommandsOperations~CommandsOperations</a></li><li><a href="ComputeManagementClient-ComputeManagementClient.html">ComputeManagementClient~ComputeManagementClient</a></li><li><a href="ConnectionStringParser.html">ConnectionStringParser</a></li><li><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html">ContinuousWebJobOperations~ContinuousWebJobOperations</a></li><li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="createHDInsightCluster2ManagementClient.html">createHDInsightCluster2ManagementClient</a></li><li><a href="createHDInsightClusterManagementClient.html">createHDInsightClusterManagementClient</a></li><li><a href="createHDInsightJobManagementClient.html">createHDInsightJobManagementClient</a></li><li><a href="createSqlService.html">createSqlService</a></li><li><a href="DacOperations-DacOperations.html">DacOperations~DacOperations</a></li><li><a href="DatabaseCopyOperations-DatabaseCopyOperations.html">DatabaseCopyOperations~DatabaseCopyOperations</a></li><li><a href="DatabaseOperationOperations-DatabaseOperationOperations.html">DatabaseOperationOperations~DatabaseOperationOperations</a></li><li><a href="DatabaseOperations-DatabaseOperations.html">DatabaseOperations~DatabaseOperations</a></li><li><a href="DefinitionOperations-DefinitionOperations.html">DefinitionOperations~DefinitionOperations</a></li><li><a href="DeploymentOperationOperations-DeploymentOperationOperations.html">DeploymentOperationOperations~DeploymentOperationOperations</a></li><li><a href="DeploymentOperations-DeploymentOperations.html">DeploymentOperations~DeploymentOperations</a></li><li><a href="DiagnosticOperations-DiagnosticOperations.html">DiagnosticOperations~DiagnosticOperations</a></li><li><a href="DnsManagementClient-DnsManagementClient.html">DnsManagementClient~DnsManagementClient</a></li><li><a href="DNSServerOperations-DNSServerOperations.html">DNSServerOperations~DNSServerOperations</a></li><li><a href="EventDataOperations-EventDataOperations.html">EventDataOperations~EventDataOperations</a></li><li><a href="EventOperations-EventOperations.html">EventOperations~EventOperations</a></li><li><a href="EventsClient-EventsClient.html">EventsClient~EventsClient</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="ExtensionImageOperations-ExtensionImageOperations.html">ExtensionImageOperations~ExtensionImageOperations</a></li><li><a href="FeatureClient-FeatureClient.html">FeatureClient~FeatureClient</a></li><li><a href="Features-Features.html">Features~Features</a></li><li><a href="FirewallRuleOperations-FirewallRuleOperations.html">FirewallRuleOperations~FirewallRuleOperations</a></li><li><a href="GalleryClient-GalleryClient.html">GalleryClient~GalleryClient</a></li><li><a href="GatewayOperations-GatewayOperations.html">GatewayOperations~GatewayOperations</a></li><li><a href="GcmService.html">GcmService</a></li><li><a href="GraphRbacManagementClient-GraphRbacManagementClient.html">GraphRbacManagementClient~GraphRbacManagementClient</a></li><li><a href="GroupOperations-GroupOperations.html">GroupOperations~GroupOperations</a></li><li><a href="HDInsightCluster2ManagementClient-HDInsightCluster2ManagementClient.html">HDInsightCluster2ManagementClient~HDInsightCluster2ManagementClient</a></li><li><a href="HDInsightClusterManagementClient-HDInsightClusterManagementClient.html">HDInsightClusterManagementClient~HDInsightClusterManagementClient</a></li><li><a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html">HDInsightJobManagementClient~HDInsightJobManagementClient</a></li><li><a href="HDInsightService.html">HDInsightService</a></li><li><a href="HmacSha256Sign.html">HmacSha256Sign</a></li><li><a href="HostedServiceOperations-HostedServiceOperations.html">HostedServiceOperations~HostedServiceOperations</a></li><li><a href="IncidentOperations-IncidentOperations.html">IncidentOperations~IncidentOperations</a></li><li><a href="InsightsClient-InsightsClient.html">InsightsClient~InsightsClient</a></li><li><a href="InsightsManagementClient-InsightsManagementClient.html">InsightsManagementClient~InsightsManagementClient</a></li><li><a href="ItemOperations-ItemOperations.html">ItemOperations~ItemOperations</a></li><li><a href="JobCollectionOperations-JobCollectionOperations.html">JobCollectionOperations~JobCollectionOperations</a></li><li><a href="JobOperations-JobOperations.html">JobOperations~JobOperations</a></li><li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyOperations-KeyOperations.html">KeyOperations~KeyOperations</a></li><li><a href="global.html#KeyVaultClient">KeyVaultClient</a></li><li><a href="KeyVaultInternalClient-KeyVaultInternalClient.html">KeyVaultInternalClient~KeyVaultInternalClient</a></li><li><a href="KeyVaultManagementClient-KeyVaultManagementClient.html">KeyVaultManagementClient~KeyVaultManagementClient</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="LoadBalancerOperations-LoadBalancerOperations.html">LoadBalancerOperations~LoadBalancerOperations</a></li><li><a href="LocalNetworkGatewayOperations-LocalNetworkGatewayOperations.html">LocalNetworkGatewayOperations~LocalNetworkGatewayOperations</a></li><li><a href="LocationOperations-LocationOperations.html">LocationOperations~LocationOperations</a></li><li><a href="ManagementCertificateOperations-ManagementCertificateOperations.html">ManagementCertificateOperations~ManagementCertificateOperations</a></li><li><a href="ManagementClient-ManagementClient.html">ManagementClient~ManagementClient</a></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations~MetricDefinitionOperations</a></li><li><a href="MetricOperations-MetricOperations.html">MetricOperations~MetricOperations</a></li><li><a href="MetricsClient-MetricsClient.html">MetricsClient~MetricsClient</a></li><li><a href="MetricSettingOperations-MetricSettingOperations.html">MetricSettingOperations~MetricSettingOperations</a></li><li><a href="MetricValueOperations-MetricValueOperations.html">MetricValueOperations~MetricValueOperations</a></li><li><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html">MonitoringConfigurationOperations~MonitoringConfigurationOperations</a></li><li><a href="MpnsService.html">MpnsService</a></li><li><a href="NamespaceOperations-NamespaceOperations.html">NamespaceOperations~NamespaceOperations</a></li><li><a href="NetworkInterfaceOperations-NetworkInterfaceOperations.html">NetworkInterfaceOperations~NetworkInterfaceOperations</a></li><li><a href="NetworkManagementClient-NetworkManagementClient.html">NetworkManagementClient~NetworkManagementClient</a></li><li><a href="NetworkOperations-NetworkOperations.html">NetworkOperations~NetworkOperations</a></li><li><a href="NetworkResourceProviderClient-NetworkResourceProviderClient.html">NetworkResourceProviderClient~NetworkResourceProviderClient</a></li><li><a href="NetworkSecurityGroupOperations-NetworkSecurityGroupOperations.html">NetworkSecurityGroupOperations~NetworkSecurityGroupOperations</a></li><li><a href="NotificationHubOperations-NotificationHubOperations.html">NotificationHubOperations~NotificationHubOperations</a></li><li><a href="NotificationHubService.html">NotificationHubService</a></li><li><a href="ObjectOperations-ObjectOperations.html">ObjectOperations~ObjectOperations</a></li><li><a href="OperatingSystemOperations-OperatingSystemOperations.html">OperatingSystemOperations~OperatingSystemOperations</a></li><li><a href="PermissionOperations-PermissionOperations.html">PermissionOperations~PermissionOperations</a></li><li><a href="ProfileOperations-ProfileOperations.html">ProfileOperations~ProfileOperations</a></li><li><a href="ProviderOperations-ProviderOperations.html">ProviderOperations~ProviderOperations</a></li><li><a href="PublicIpAddressOperations-PublicIpAddressOperations.html">PublicIpAddressOperations~PublicIpAddressOperations</a></li><li><a href="QueueOperations-QueueOperations.html">QueueOperations~QueueOperations</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="QuotaOperations-QuotaOperations.html">QuotaOperations~QuotaOperations</a></li><li><a href="RecordSetOperations-RecordSetOperations.html">RecordSetOperations~RecordSetOperations</a></li><li><a href="RecoverableDatabaseOperations-RecoverableDatabaseOperations.html">RecoverableDatabaseOperations~RecoverableDatabaseOperations</a></li><li><a href="RecoverDatabaseOperations-RecoverDatabaseOperations.html">RecoverDatabaseOperations~RecoverDatabaseOperations</a></li><li><a href="RelayOperations-RelayOperations.html">RelayOperations~RelayOperations</a></li><li><a href="RepositoryOperations-RepositoryOperations.html">RepositoryOperations~RepositoryOperations</a></li><li><a href="ReservedIPOperations-ReservedIPOperations.html">ReservedIPOperations~ReservedIPOperations</a></li><li><a href="ResourceGroupOperations-ResourceGroupOperations.html">ResourceGroupOperations~ResourceGroupOperations</a></li><li><a href="ResourceManagementClient-ResourceManagementClient.html">ResourceManagementClient~ResourceManagementClient</a></li><li><a href="ResourceOperations-ResourceOperations.html">ResourceOperations~ResourceOperations</a></li><li><a href="ResourceProviderOperationDetailsOperations-ResourceProviderOperationDetailsOperations.html">ResourceProviderOperationDetailsOperations~ResourceProviderOperationDetailsOperations</a></li><li><a href="RestorableDroppedDatabaseOperations-RestorableDroppedDatabaseOperations.html">RestorableDroppedDatabaseOperations~RestorableDroppedDatabaseOperations</a></li><li><a href="RestoreDatabaseOperations-RestoreDatabaseOperations.html">RestoreDatabaseOperations~RestoreDatabaseOperations</a></li><li><a href="RoleAssignmentOperations-RoleAssignmentOperations.html">RoleAssignmentOperations~RoleAssignmentOperations</a></li><li><a href="RoleDefinitionOperations-RoleDefinitionOperations.html">RoleDefinitionOperations~RoleDefinitionOperations</a></li><li><a href="RoleSizeOperations-RoleSizeOperations.html">RoleSizeOperations~RoleSizeOperations</a></li><li><a href="RouteOperations-RouteOperations.html">RouteOperations~RouteOperations</a></li><li><a href="RuleOperations-RuleOperations.html">RuleOperations~RuleOperations</a></li><li><a href="SchedulerClient-SchedulerClient.html">SchedulerClient~SchedulerClient</a></li><li><a href="SchedulerManagementClient-SchedulerManagementClient.html">SchedulerManagementClient~SchedulerManagementClient</a></li><li><a href="ScmService.html">ScmService</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li><li><a href="SecretOperations-SecretOperations.html">SecretOperations~SecretOperations</a></li><li><a href="SecurityRuleOperations-SecurityRuleOperations.html">SecurityRuleOperations~SecurityRuleOperations</a></li><li><a href="ServerOperations-ServerOperations.html">ServerOperations~ServerOperations</a></li><li><a href="ServiceBusManagementClient-ServiceBusManagementClient.html">ServiceBusManagementClient~ServiceBusManagementClient</a></li><li><a href="ServiceBusService.html">ServiceBusService</a></li><li><a href="ServiceBusServiceBase.html">ServiceBusServiceBase</a></li><li><a href="ServiceBusServiceClient.html">ServiceBusServiceClient</a></li><li><a href="ServiceCertificateOperations-ServiceCertificateOperations.html">ServiceCertificateOperations~ServiceCertificateOperations</a></li><li><a href="ServiceDiagnosticSettingsOperations-ServiceDiagnosticSettingsOperations.html">ServiceDiagnosticSettingsOperations~ServiceDiagnosticSettingsOperations</a></li><li><a href="ServiceManagementClient.html">ServiceManagementClient</a></li><li><a href="ServiceObjectiveOperations-ServiceObjectiveOperations.html">ServiceObjectiveOperations~ServiceObjectiveOperations</a></li><li><a href="ServicePrincipalOperations-ServicePrincipalOperations.html">ServicePrincipalOperations~ServicePrincipalOperations</a></li><li><a href="SettingOperations-SettingOperations.html">SettingOperations~SettingOperations</a></li><li><a href="SettingsOperations-SettingsOperations.html">SettingsOperations~SettingsOperations</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="SharedKey.html">SharedKey</a></li><li><a href="SharedKeyLite.html">SharedKeyLite</a></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a></li><li><a href="SharedKeyTable.html">SharedKeyTable</a></li><li><a href="SkuOperations-SkuOperations.html">SkuOperations~SkuOperations</a></li><li><a href="SourceControlOperations-SourceControlOperations.html">SourceControlOperations~SourceControlOperations</a></li><li><a href="SqlManagementClient-SqlManagementClient.html">SqlManagementClient~SqlManagementClient</a></li><li><a href="SqlManagementService.html">SqlManagementService</a></li><li><a href="SqlService.html">SqlService</a></li><li><a href="SqlServiceClient.html">SqlServiceClient</a></li><li><a href="StaticIPOperations-StaticIPOperations.html">StaticIPOperations~StaticIPOperations</a></li><li><a href="StorageAccountOperations-StorageAccountOperations.html">StorageAccountOperations~StorageAccountOperations</a></li><li><a href="StorageDiagnosticSettingsOperations-StorageDiagnosticSettingsOperations.html">StorageDiagnosticSettingsOperations~StorageDiagnosticSettingsOperations</a></li><li><a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient~StorageManagementClient</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="StoreManagementClient-StoreManagementClient.html">StoreManagementClient~StoreManagementClient</a></li><li><a href="SubnetOperations-SubnetOperations.html">SubnetOperations~SubnetOperations</a></li><li><a href="SubscriptionClient-SubscriptionClient.html">SubscriptionClient~SubscriptionClient</a></li><li><a href="SubscriptionOperations-SubscriptionOperations.html">SubscriptionOperations~SubscriptionOperations</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li><li><a href="TagOperations-TagOperations.html">TagOperations~TagOperations</a></li><li><a href="TemplateOperations-TemplateOperations.html">TemplateOperations~TemplateOperations</a></li><li><a href="TenantOperations-TenantOperations.html">TenantOperations~TenantOperations</a></li><li><a href="TokenCloudCredentials.html">TokenCloudCredentials</a></li><li><a href="TopicOperations-TopicOperations.html">TopicOperations~TopicOperations</a></li><li><a href="TrafficManagerManagementClient-TrafficManagerManagementClient.html">TrafficManagerManagementClient~TrafficManagerManagementClient</a></li><li><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html">TriggeredWebJobOperations~TriggeredWebJobOperations</a></li><li><a href="UsageMetricsOperations-UsageMetricsOperations.html">UsageMetricsOperations~UsageMetricsOperations</a></li><li><a href="UsageOperations-UsageOperations.html">UsageOperations~UsageOperations</a></li><li><a href="UserOperations-UserOperations.html">UserOperations~UserOperations</a></li><li><a href="VaultOperations-VaultOperations.html">VaultOperations~VaultOperations</a></li><li><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html">VirtualMachineDiskOperations~VirtualMachineDiskOperations</a></li><li><a href="VirtualMachineExtensionOperations-VirtualMachineExtensionOperations.html">VirtualMachineExtensionOperations~VirtualMachineExtensionOperations</a></li><li><a href="VirtualMachineOperations-VirtualMachineOperations.html">VirtualMachineOperations~VirtualMachineOperations</a></li><li><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html">VirtualMachineOSImageOperations~VirtualMachineOSImageOperations</a></li><li><a href="VirtualMachineSizeOperations-VirtualMachineSizeOperations.html">VirtualMachineSizeOperations~VirtualMachineSizeOperations</a></li><li><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html">VirtualMachineVMImageOperations~VirtualMachineVMImageOperations</a></li><li><a href="VirtualNetworkGatewayConnectionOperations-VirtualNetworkGatewayConnectionOperations.html">VirtualNetworkGatewayConnectionOperations~VirtualNetworkGatewayConnectionOperations</a></li><li><a href="VirtualNetworkGatewayOperations-VirtualNetworkGatewayOperations.html">VirtualNetworkGatewayOperations~VirtualNetworkGatewayOperations</a></li><li><a href="VirtualNetworkOperations-VirtualNetworkOperations.html">VirtualNetworkOperations~VirtualNetworkOperations</a></li><li><a href="WebHostingPlanOperations-WebHostingPlanOperations.html">WebHostingPlanOperations~WebHostingPlanOperations</a></li><li><a href="WebResource.html">WebResource</a></li><li><a href="WebSiteExtensionsClient-WebSiteExtensionsClient.html">WebSiteExtensionsClient~WebSiteExtensionsClient</a></li><li><a href="WebSiteManagementClient-WebSiteManagementClient.html">WebSiteManagementClient~WebSiteManagementClient</a></li><li><a href="WebsiteManagementService.html">WebsiteManagementService</a></li><li><a href="WebSiteOperations-WebSiteOperations.html">WebSiteOperations~WebSiteOperations</a></li><li><a href="WebSpaceOperations-WebSpaceOperations.html">WebSpaceOperations~WebSpaceOperations</a></li><li><a href="WnsService.html">WnsService</a></li><li><a href="ZoneOperations-ZoneOperations.html">ZoneOperations~ZoneOperations</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#allRequired">allRequired</a></li><li><a href="global.html#atLeastOne">atLeastOne</a></li><li><a href="global.html#AuthorizationManagementClient">AuthorizationManagementClient</a></li><li><a href="global.html#baseIdentifier">baseIdentifier</a></li><li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#blobNameIsValid">blobNameIsValid</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CLOUD_BLOB_HOST">CLOUD_BLOB_HOST</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#ComputeManagementClient">ComputeManagementClient</a></li><li><a href="global.html#containerNameIsValid">containerNameIsValid</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createApiAppManagementClient">createApiAppManagementClient</a></li><li><a href="global.html#createAuthorizationManagementClient">createAuthorizationManagementClient</a></li><li><a href="global.html#createAutoScaleClient">createAutoScaleClient</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createCloudServiceManagementClient">createCloudServiceManagementClient</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createComputeManagementClient">createComputeManagementClient</a></li><li><a href="global.html#createDnsManagementClient">createDnsManagementClient</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li><li><a href="global.html#createGalleryClient">createGalleryClient</a></li><li><a href="global.html#createGraphRbacManagementClient">createGraphRbacManagementClient</a></li><li><a href="global.html#createHDInsightService">createHDInsightService</a></li><li><a href="global.html#createInsightsClient">createInsightsClient</a></li><li><a href="global.html#createInsightsManagementClient">createInsightsManagementClient</a></li><li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createManagementClient">createManagementClient</a></li><li><a href="global.html#createMetricsClient">createMetricsClient</a></li><li><a href="global.html#createNetworkManagementClient">createNetworkManagementClient</a></li><li><a href="global.html#createNetworkResourceProviderClient">createNetworkResourceProviderClient</a></li><li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createResourceFeatureClient">createResourceFeatureClient</a></li><li><a href="global.html#createResourceIdentity">createResourceIdentity</a></li><li><a href="global.html#createResourceManagementClient">createResourceManagementClient</a></li><li><a href="global.html#createResourceSubscriptionClient">createResourceSubscriptionClient</a></li><li><a href="global.html#createSchedulerClient">createSchedulerClient</a></li><li><a href="global.html#createSchedulerManagementClient">createSchedulerManagementClient</a></li><li><a href="global.html#createScmService">createScmService</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#createServiceBusManagementClient">createServiceBusManagementClient</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createSqlManagementClient">createSqlManagementClient</a></li><li><a href="global.html#createSqlManagementService">createSqlManagementService</a></li><li><a href="global.html#createStorageManagementClient">createStorageManagementClient</a></li><li><a href="global.html#createStoreManagementClient">createStoreManagementClient</a></li><li><a href="global.html#createSubscriptionClient">createSubscriptionClient</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTrafficManagerManagementClient">createTrafficManagerManagementClient</a></li><li><a href="global.html#createWebSiteExtensionsClient">createWebSiteExtensionsClient</a></li><li><a href="global.html#createWebSiteManagementClient">createWebSiteManagementClient</a></li><li><a href="global.html#createWebSiteManagementClient2">createWebSiteManagementClient2</a></li><li><a href="global.html#createWebsiteManagementService">createWebsiteManagementService</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#DEFAULT_PROTOCOL">DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEFAULT_SERVICEBUS_ISSUER">DEFAULT_SERVICEBUS_ISSUER</a></li><li><a href="global.html#DEFAULT_WRAP_NAMESPACE_SUFFIX">DEFAULT_WRAP_NAMESPACE_SUFFIX</a></li><li><a href="global.html#DEVSTORE_DEFAULT_PROTOCOL">DEVSTORE_DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEVSTORE_STORAGE_ACCOUNT">DEVSTORE_STORAGE_ACCOUNT</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#format">format</a></li><li><a href="global.html#getContentMd5">getContentMd5</a></li><li><a href="global.html#getNameSpace">getNameSpace</a></li><li><a href="global.html#getValidator">getValidator</a></li><li><a href="global.html#GraphRbacManagementClient">GraphRbacManagementClient</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#identifier">identifier</a></li><li><a href="global.html#inArrayInsensitive">inArrayInsensitive</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isBase64Encoded">isBase64Encoded</a></li><li><a href="global.html#isBufferAllZero">isBufferAllZero</a></li><li><a href="global.html#isEmulated">isEmulated</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isValidFunction">isValidFunction</a></li><li><a href="global.html#isValidHDInsightCreationObject">isValidHDInsightCreationObject</a></li><li><a href="global.html#isValidUri">isValidUri</a></li><li><a href="global.html#KEY_PATT">KEY_PATT</a></li><li><a href="global.html#KEYVAULT_RESOURCE_ID">KEYVAULT_RESOURCE_ID</a></li><li><a href="global.html#KeyVaultCredentials">KeyVaultCredentials</a></li><li><a href="global.html#KeyVaultManagementClient">KeyVaultManagementClient</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#ManagementClient">ManagementClient</a></li><li><a href="global.html#matchedSpecification">matchedSpecification</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#namespaceNameIsValid">namespaceNameIsValid</a></li><li><a href="global.html#noMatchConnectionString">noMatchConnectionString</a></li><li><a href="global.html#noMatchSettings">noMatchSettings</a></li><li><a href="global.html#objectFirstKey">objectFirstKey</a></li><li><a href="global.html#ObjectIdentifier">ObjectIdentifier</a></li><li><a href="global.html#objectIsEmpty">objectIsEmpty</a></li><li><a href="global.html#objectIsFunction">objectIsFunction</a></li><li><a href="global.html#objectIsInt">objectIsInt</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectIsString">objectIsString</a></li><li><a href="global.html#objectKeysLength">objectKeysLength</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#optional">optional</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#parseAndValidateKeys">parseAndValidateKeys</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#propertyType">propertyType</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#queueNameIsValid">queueNameIsValid</a></li><li><a href="global.html#removeBOM">removeBOM</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#serializeEntry">serializeEntry</a></li><li><a href="global.html#serializeQueryValue">serializeQueryValue</a></li><li><a href="global.html#ServiceBusSettings">ServiceBusSettings</a></li><li><a href="global.html#ServiceManagementSettings">ServiceManagementSettings</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#setting">setting</a></li><li><a href="global.html#settingWithFunc">settingWithFunc</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#SqlServerAcs">SqlServerAcs</a></li><li><a href="global.html#StorageServiceSettings">StorageServiceSettings</a></li><li><a href="global.html#stringEndsWith">stringEndsWith</a></li><li><a href="global.html#stringFormat">stringFormat</a></li><li><a href="global.html#stringIsDate">stringIsDate</a></li><li><a href="global.html#stringIsEmpty">stringIsEmpty</a></li><li><a href="global.html#stringIsFloat">stringIsFloat</a></li><li><a href="global.html#stringIsInt">stringIsInt</a></li><li><a href="global.html#stringIsNumber">stringIsNumber</a></li><li><a href="global.html#stringStartsWith">stringStartsWith</a></li><li><a href="global.html#tableNameIsValid">tableNameIsValid</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li><li><a href="global.html#truncatedISO8061Date">truncatedISO8061Date</a></li><li><a href="global.html#tryGetValueChain">tryGetValueChain</a></li><li><a href="global.html#tryGetValueInsensitive">tryGetValueInsensitive</a></li><li><a href="global.html#unserializeValue">unserializeValue</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#validateCallback">validateCallback</a></li><li><a href="global.html#vault">vault</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#WrapService">WrapService</a></li><li><a href="global.html#WrapTokenManager">WrapTokenManager</a></li><li><a href="global.html#zeroBuffer">zeroBuffer</a></li><li><a href="global.html#zeroPaddingString">zeroPaddingString</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Class: StorageAccountOperations</h1>
+<section>
+
+<header>
+    
+        <h2>
+        StorageAccountOperations
+        </h2>
+        
+            <div class="class-description"><p>Operations for managing storage accounts.
+<strong>NOTE</strong>: An instance of this class is automatically created for an
+instance of the [StorageManagementClient] <a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient~StorageManagementClient</a>.
+See [storageAccounts] <a href="StorageManagementClient-StorageManagementClient.html#storageAccounts">StorageManagementClient~StorageManagementClient#storageAccounts</a>.
+Initializes a new instance of the StorageAccountOperations class.</p></div>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<dt>
+    <h4 class="name" id="StorageAccountOperations"><span class="type-signature"></span>new StorageAccountOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageManagementClient</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Reference to the service client.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-341">line 341</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="beginCreate"><span class="type-signature"></span>beginCreate<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Asynchronously creates a new storage account with the specified
+parameters. Existing accounts cannot be updated with this API and should
+instead use the Update Storage Account API. If an account is already
+created and subsequent PUT request is issued with exact same set of
+properties, then HTTP 200 would be returned.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The parameters to
+provide for the created account.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">AccountType</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the account type.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the location of the
+resource. This will be one of the supported and registered Azure Geo
+Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of
+a resource cannot be changed once it is created.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets a list of key value pairs
+that describe the resource. These tags can be used in viewing and
+grouping this resource (across resource groups). A maximum of 15 tags can
+be provided for a resource. Each tag must have a key no greater than 128
+characters and value no greater than 256 characters.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-379">line 379</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="beginCreating"><span class="type-signature"></span>beginCreating<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Begin Creating Storage Account operation creates a new storage account
+in Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied to
+the Begin Creating Storage Account operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account, unique
+within Azure. Storage account names must be between 3 and 24 characters
+in length, and must use numbers and lower-case letters only. This name is
+the DNS prefix name and can be used to access blobs, queues, and tables
+in the storage account. For example:
+http://ServiceName.blob.core.windows.net/mycontainer/.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A description for the storage
+account. The description may be up to 1024 characters in length.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account, specified
+as abase64-encoded string. The name may be up to 100 characters in
+length. The name can be used identify the storage account for your
+tracking purposes.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>affinityGroup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of an existing
+affinity group in the specified subscription. Required if Location is not
+specified. You can include either a Location or AffinityGroup element in
+the request body, but not both. To list available affinity groups, use
+the List Affinity Groups operation.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The location where the storage
+account is created. Required if AffinityGroup is not specified. You can
+include either a Location or AffinityGroup element in the request body,
+but not both. To list available locations, use the List Locations
+operation.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>extendedProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Represents the name of an
+extended storage account property. Each extended property must have a
+defined name and a value. You can have a maximum of 50 extended property
+name/value pairs. The maximum length of the Name element is 64
+characters, only alphanumeric characters and underscores are valid in the
+Name, and the name must start with a letter. Attempting to use other
+characters, starting the Name with a non-letter character, or entering a
+name that is identical to that of another extended property owned by the
+same storage account will result in a status code 400 (Bad Request)
+error. Each extended property value has a maximum length of 255
+characters.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies whether the account
+supports locally-redundant storage, geo-redundant storage, zone-redundant
+storage, or read access geo-redundant storage. Possible values
+are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-300">line 300</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="checkNameAvailability"><span class="type-signature"></span>checkNameAvailability<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks that account name is valid and is not in use.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-683">line 683</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="checkNameAvailability"><span class="type-signature"></span>checkNameAvailability<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Check Name Availability operation checks if a storage account name is
+available for use in Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/jj154125.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The desired storage account name to check for
+availability.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-467">line 467</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Asynchronously creates a new storage account with the specified
+parameters. Existing accounts cannot be updated with this API and should
+instead use the Update Storage Account API. If an account is already
+created and subsequent create request is issued with exact same set of
+properties, the request succeeds.The max number of storage accounts that
+can be created per subscription is limited to 20.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The parameters to
+provide for the created account.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">AccountType</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the account type.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the location of the
+resource. This will be one of the supported and registered Azure Geo
+Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of
+a resource cannot be changed once it is created.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets a list of key value pairs
+that describe the resource. These tags can be used in viewing and
+grouping this resource (across resource groups). A maximum of 15 tags can
+be provided for a resource. Each tag must have a key no greater than 128
+characters and value no greater than 256 characters.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-829">line 829</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Create Storage Account operation creates a new storage account in
+Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied to
+the Create Storage Account operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account, unique
+within Azure. Storage account names must be between 3 and 24 characters
+in length, and must use numbers and lower-case letters only. This name is
+the DNS prefix name and can be used to access blobs, queues, and tables
+in the storage account. For example:
+http://ServiceName.blob.core.windows.net/mycontainer/.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A description for the storage
+account. The description may be up to 1024 characters in length.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account, specified
+as abase64-encoded string. The name may be up to 100 characters in
+length. The name can be used identify the storage account for your
+tracking purposes.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>affinityGroup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of an existing
+affinity group in the specified subscription. Required if Location is not
+specified. You can include either a Location or AffinityGroup element in
+the request body, but not both. To list available affinity groups, use
+the List Affinity Groups operation.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The location where the storage
+account is created. Required if AffinityGroup is not specified. You can
+include either a Location or AffinityGroup element in the request body,
+but not both. To list available locations, use the List Locations
+operation.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>extendedProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Represents the name of an
+extended storage account property. Each extended property must have a
+defined name and a value. You can have a maximum of 50 extended property
+name/value pairs. The maximum length of the Name element is 64
+characters, only alphanumeric characters and underscores are valid in the
+Name, and the name must start with a letter. Attempting to use other
+characters, starting the Name with a non-letter character, or entering a
+name that is identical to that of another extended property owned by the
+same storage account will result in a status code 400 (Bad Request)
+error. Each extended property value has a maximum length of 255
+characters.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies whether the account
+supports locally-redundant storage, geo-redundant storage, zone-redundant
+storage, or read access geo-redundant storage. Possible values
+are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-620">line 620</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Deletes a storage account in Microsoft Azure.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-891">line 891</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Delete Storage Account operation deletes the specified storage account
+from Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/hh264517.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account to be deleted.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-684">line 684</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Get Storage Account Properties operation returns system properties for
+the specified storage account.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460802.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the storage account to get properties
+for.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-759">line 759</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getKeys"><span class="type-signature"></span>getKeys<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Get Storage Keys operation returns the primary and secondary access
+keys for the specified storage account.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460785.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the desired storage account.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-960">line 960</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getProperties"><span class="type-signature"></span>getProperties<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the properties for the specified storage account including but not
+limited to name, account type, location, and account status. The ListKeys
+operation should be used to retrieve storage keys.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-993">line 993</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The List Storage Accounts operation lists the storage accounts available
+under the current subscription.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460787.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-1069">line 1069</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Lists all the storage accounts available under the subscription. Note that
+storage keys are not returned; use the ListKeys operation for this.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-1250">line 1250</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="listByResourceGroup"><span class="type-signature"></span>listByResourceGroup<span class="signature">(resourceGroupName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Lists all the storage accounts available under the given resource group.
+Note that storage keys are not returned; use the ListKeys operation for
+this.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-1502">line 1502</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="listKeys"><span class="type-signature"></span>listKeys<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Lists the access keys for the specified storage account.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-1758">line 1758</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="regenerateKey"><span class="type-signature"></span>regenerateKey<span class="signature">(resourceGroupName, accountName, regenerateKey, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Regenerates the access keys for the specified storage account.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>regenerateKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">KeyName</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Specifies name of the key which should be
+regenerated.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-1887">line 1887</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="regenerateKeys"><span class="type-signature"></span>regenerateKeys<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Regenerate Keys operation regenerates the primary or secondary access
+key for the specified storage account.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460795.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountRegenerateKeysParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters
+supplied to the Regenerate Keys operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the desired storage account.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>keyType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageKeyType</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Specifies which key to
+regenerate.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-1275">line 1275</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Updates the account type or tags for a storage account. It can also be
+used to add a custom domain (note that custom domains cannot be added via
+the Create operation). Only one custom domain is supported per storage
+account. This API can only be used to update one of tags, accountType, or
+customDomain per call. To update multiple of these properties, call the
+API multiple times with one change per call. This call does not change
+the storage keys for the account. If you want to change storage account
+keys, use the RegenerateKey operation. The location and name of the
+storage account cannot be changed after creation.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountUpdateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The parameters to
+update on the account. Note that only one property can be changed at a
+time using this API.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">AccountType</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the account
+type. Note that StandardZRS and PremiumLRS accounts cannot be changed to
+other account types, and other account types cannot be changed to
+StandardZRS or PremiumLRS.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>customDomain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CustomDomain</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>User domain assigned to
+the storage account. Name is the CNAME source. Only one custom domain is
+supported per storage account at this time. To clear the existing custom
+domain, use an empty string for the custom domain name property.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the custom
+domain name. Name is the CNAME source.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useSubDomain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Indicates whether
+indirect CName validation is enabled. Default value is false. This should
+only be set on updates</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets a list of key value pairs
+that describe the resource. These tags can be used in viewing and
+grouping this resource (across resource groups). A maximum of 15 tags can
+be provided for a resource. Each tag must have a key no greater than 128
+characters and value no greater than 256 characters. This is a full
+replace so all the existing tags will be replaced on Update.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-2065">line 2065</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Update Storage Account operation updates the label and the
+description, and enables or disables the geo-replication status for a
+storage account in Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/hh264516.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the storage account to update.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountUpdateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied to
+the Update Storage Account operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account,
+base64-encoded. The name may be up to 100 characters in length. The name
+can be used identify the storage account for your tracking purposes.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>extendedProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Represents the name of an
+extended storage account property. Each extended property must have a
+defined name and a value. You can have a maximum of 50 extended property
+name/value pairs. The maximum length of the Name element is 64
+characters, only alphanumeric characters and underscores are valid in the
+Name, and the name must start with a letter. Attempting to use other
+characters, starting the Name with a non-letter character, or entering a
+name that is identical to that of another extended property owned by the
+same storage account will result in a status code 400 (Bad Request)
+error. Each extended property value has a maximum length of 255
+characters. You can delete an extended property by setting the value to
+NULL.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies whether the account
+supports locally-redundant storage, geo-redundant storage, zone-redundant
+storage, or read access geo-redundant storage. Possible values
+are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-1440">line 1440</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+	<h1 class="page-title">Class: StorageAccountOperations</h1>
+<section>
+
+<header>
+    
+        <h2>
+        StorageAccountOperations
+        </h2>
+        
+            <div class="class-description"><p>The Service Management API includes operations for managing the storage
+accounts beneath your subscription.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460790.aspx for
+more information)
+<strong>NOTE</strong>: An instance of this class is automatically created for an
+instance of the [StorageManagementClient] <a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient~StorageManagementClient</a>.
+See [storageAccounts] <a href="StorageManagementClient-StorageManagementClient.html#storageAccounts">StorageManagementClient~StorageManagementClient#storageAccounts</a>.
+Initializes a new instance of the StorageAccountOperations class.</p></div>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<dt>
+    <h4 class="name" id="StorageAccountOperations"><span class="type-signature"></span>new StorageAccountOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageManagementClient</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Reference to the service client.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-239">line 239</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="beginCreate"><span class="type-signature"></span>beginCreate<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Asynchronously creates a new storage account with the specified
+parameters. Existing accounts cannot be updated with this API and should
+instead use the Update Storage Account API. If an account is already
+created and subsequent PUT request is issued with exact same set of
+properties, then HTTP 200 would be returned.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The parameters to
+provide for the created account.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">AccountType</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the account type.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the location of the
+resource. This will be one of the supported and registered Azure Geo
+Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of
+a resource cannot be changed once it is created.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets a list of key value pairs
+that describe the resource. These tags can be used in viewing and
+grouping this resource (across resource groups). A maximum of 15 tags can
+be provided for a resource. Each tag must have a key no greater than 128
+characters and value no greater than 256 characters.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-379">line 379</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="beginCreating"><span class="type-signature"></span>beginCreating<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Begin Creating Storage Account operation creates a new storage account
+in Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied to
+the Begin Creating Storage Account operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account, unique
+within Azure. Storage account names must be between 3 and 24 characters
+in length, and must use numbers and lower-case letters only. This name is
+the DNS prefix name and can be used to access blobs, queues, and tables
+in the storage account. For example:
+http://ServiceName.blob.core.windows.net/mycontainer/.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A description for the storage
+account. The description may be up to 1024 characters in length.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account, specified
+as abase64-encoded string. The name may be up to 100 characters in
+length. The name can be used identify the storage account for your
+tracking purposes.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>affinityGroup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of an existing
+affinity group in the specified subscription. Required if Location is not
+specified. You can include either a Location or AffinityGroup element in
+the request body, but not both. To list available affinity groups, use
+the List Affinity Groups operation.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The location where the storage
+account is created. Required if AffinityGroup is not specified. You can
+include either a Location or AffinityGroup element in the request body,
+but not both. To list available locations, use the List Locations
+operation.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>extendedProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Represents the name of an
+extended storage account property. Each extended property must have a
+defined name and a value. You can have a maximum of 50 extended property
+name/value pairs. The maximum length of the Name element is 64
+characters, only alphanumeric characters and underscores are valid in the
+Name, and the name must start with a letter. Attempting to use other
+characters, starting the Name with a non-letter character, or entering a
+name that is identical to that of another extended property owned by the
+same storage account will result in a status code 400 (Bad Request)
+error. Each extended property value has a maximum length of 255
+characters.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies whether the account
+supports locally-redundant storage, geo-redundant storage, zone-redundant
+storage, or read access geo-redundant storage. Possible values
+are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-300">line 300</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="checkNameAvailability"><span class="type-signature"></span>checkNameAvailability<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Checks that account name is valid and is not in use.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-683">line 683</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="checkNameAvailability"><span class="type-signature"></span>checkNameAvailability<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Check Name Availability operation checks if a storage account name is
+available for use in Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/jj154125.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The desired storage account name to check for
+availability.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-467">line 467</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Asynchronously creates a new storage account with the specified
+parameters. Existing accounts cannot be updated with this API and should
+instead use the Update Storage Account API. If an account is already
+created and subsequent create request is issued with exact same set of
+properties, the request succeeds.The max number of storage accounts that
+can be created per subscription is limited to 20.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The parameters to
+provide for the created account.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">AccountType</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the account type.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the location of the
+resource. This will be one of the supported and registered Azure Geo
+Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of
+a resource cannot be changed once it is created.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets a list of key value pairs
+that describe the resource. These tags can be used in viewing and
+grouping this resource (across resource groups). A maximum of 15 tags can
+be provided for a resource. Each tag must have a key no greater than 128
+characters and value no greater than 256 characters.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-829">line 829</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Create Storage Account operation creates a new storage account in
+Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied to
+the Create Storage Account operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account, unique
+within Azure. Storage account names must be between 3 and 24 characters
+in length, and must use numbers and lower-case letters only. This name is
+the DNS prefix name and can be used to access blobs, queues, and tables
+in the storage account. For example:
+http://ServiceName.blob.core.windows.net/mycontainer/.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A description for the storage
+account. The description may be up to 1024 characters in length.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account, specified
+as abase64-encoded string. The name may be up to 100 characters in
+length. The name can be used identify the storage account for your
+tracking purposes.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>affinityGroup</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of an existing
+affinity group in the specified subscription. Required if Location is not
+specified. You can include either a Location or AffinityGroup element in
+the request body, but not both. To list available affinity groups, use
+the List Affinity Groups operation.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>location</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The location where the storage
+account is created. Required if AffinityGroup is not specified. You can
+include either a Location or AffinityGroup element in the request body,
+but not both. To list available locations, use the List Locations
+operation.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>extendedProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Represents the name of an
+extended storage account property. Each extended property must have a
+defined name and a value. You can have a maximum of 50 extended property
+name/value pairs. The maximum length of the Name element is 64
+characters, only alphanumeric characters and underscores are valid in the
+Name, and the name must start with a letter. Attempting to use other
+characters, starting the Name with a non-letter character, or entering a
+name that is identical to that of another extended property owned by the
+same storage account will result in a status code 400 (Bad Request)
+error. Each extended property value has a maximum length of 255
+characters.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies whether the account
+supports locally-redundant storage, geo-redundant storage, zone-redundant
+storage, or read access geo-redundant storage. Possible values
+are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-620">line 620</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Deletes a storage account in Microsoft Azure.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-891">line 891</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Delete Storage Account operation deletes the specified storage account
+from Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/hh264517.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account to be deleted.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-684">line 684</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Get Storage Account Properties operation returns system properties for
+the specified storage account.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460802.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the storage account to get properties
+for.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-759">line 759</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getKeys"><span class="type-signature"></span>getKeys<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Get Storage Keys operation returns the primary and secondary access
+keys for the specified storage account.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460785.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the desired storage account.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-960">line 960</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getProperties"><span class="type-signature"></span>getProperties<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the properties for the specified storage account including but not
+limited to name, account type, location, and account status. The ListKeys
+operation should be used to retrieve storage keys.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-993">line 993</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The List Storage Accounts operation lists the storage accounts available
+under the current subscription.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460787.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-1069">line 1069</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Lists all the storage accounts available under the subscription. Note that
+storage keys are not returned; use the ListKeys operation for this.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-1250">line 1250</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="listByResourceGroup"><span class="type-signature"></span>listByResourceGroup<span class="signature">(resourceGroupName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Lists all the storage accounts available under the given resource group.
+Note that storage keys are not returned; use the ListKeys operation for
+this.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-1502">line 1502</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="listKeys"><span class="type-signature"></span>listKeys<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Lists the access keys for the specified storage account.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-1758">line 1758</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="regenerateKey"><span class="type-signature"></span>regenerateKey<span class="signature">(resourceGroupName, accountName, regenerateKey, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Regenerates the access keys for the specified storage account.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>regenerateKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">KeyName</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Specifies name of the key which should be
+regenerated.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-1887">line 1887</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="regenerateKeys"><span class="type-signature"></span>regenerateKeys<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Regenerate Keys operation regenerates the primary or secondary access
+key for the specified storage account.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/ee460795.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountRegenerateKeysParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters
+supplied to the Regenerate Keys operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the desired storage account.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>keyType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageKeyType</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Specifies which key to
+regenerate.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-1275">line 1275</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Updates the account type or tags for a storage account. It can also be
+used to add a custom domain (note that custom domains cannot be added via
+the Create operation). Only one custom domain is supported per storage
+account. This API can only be used to update one of tags, accountType, or
+customDomain per call. To update multiple of these properties, call the
+API multiple times with one change per call. This call does not change
+the storage keys for the account. If you want to change storage account
+keys, use the RegenerateKey operation. The location and name of the
+storage account cannot be changed after creation.</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group within
+the user’s subscription.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name of the storage account within the
+specified resource group. Storage account names must be between 3 and 24
+characters in length and use numbers and lower-case letters only.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountUpdateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The parameters to
+update on the account. Note that only one property can be changed at a
+time using this API.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">AccountType</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the account
+type. Note that StandardZRS and PremiumLRS accounts cannot be changed to
+other account types, and other account types cannot be changed to
+StandardZRS or PremiumLRS.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>customDomain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CustomDomain</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>User domain assigned to
+the storage account. Name is the CNAME source. Only one custom domain is
+supported per storage account at this time. To clear the existing custom
+domain, use an empty string for the custom domain name property.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the custom
+domain name. Name is the CNAME source.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>useSubDomain</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Indicates whether
+indirect CName validation is enabled. Default value is false. This should
+only be set on updates</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets a list of key value pairs
+that describe the resource. These tags can be used in viewing and
+grouping this resource (across resource groups). A maximum of 15 tags can
+be provided for a resource. Each tag must have a key no greater than 128
+characters and value no greater than 256 characters. This is a full
+replace so all the existing tags will be replaced on Update.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement2_lib_storageManagementClient.js.html">services/storageManagement2/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement2_lib_storageManagementClient.js.html#sunlight-1-line-2065">line 2065</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>The Update Storage Account operation updates the label and the
+description, and enables or disables the geo-replication status for a
+storage account in Azure.  (see
+http://msdn.microsoft.com/en-us/library/windowsazure/hh264516.aspx for
+more information)</p>
+    </div>
+    
+
+    
+
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>accountName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the storage account to update.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">StorageAccountUpdateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied to
+the Update Storage Account operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A name for the storage account,
+base64-encoded. The name may be up to 100 characters in length. The name
+can be used identify the storage account for your tracking purposes.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>extendedProperties</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Represents the name of an
+extended storage account property. Each extended property must have a
+defined name and a value. You can have a maximum of 50 extended property
+name/value pairs. The maximum length of the Name element is 64
+characters, only alphanumeric characters and underscores are valid in the
+Name, and the name must start with a letter. Attempting to use other
+characters, starting the Name with a non-letter character, or entering a
+name that is identical to that of another extended property owned by the
+same storage account will result in a status code 400 (Bad Request)
+error. Each extended property value has a maximum length of 255
+characters. You can delete an extended property by setting the value to
+NULL.</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>accountType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies whether the account
+supports locally-redundant storage, geo-redundant storage, zone-redundant
+storage, or read access geo-redundant storage. Possible values
+are:'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', and 'Standard_RAGRS'.</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="services_storageManagement_lib_storageManagementClient.js.html">services/storageManagement/lib/storageManagementClient.js</a>,
+				 <a href="services_storageManagement_lib_storageManagementClient.js.html#sunlight-1-line-1440">line 1440</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Stream</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

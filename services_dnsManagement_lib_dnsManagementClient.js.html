@@ -1,0 +1,3420 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: services/dnsManagement/lib/dnsManagementClient.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-date.html">date</a></li><li><a href="module-RoleEnvironment.html">RoleEnvironment</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AddOnOperations-AddOnOperations.html">AddOnOperations~AddOnOperations</a></li><li><a href="AffinityGroupOperations-AffinityGroupOperations.html">AffinityGroupOperations~AffinityGroupOperations</a></li><li><a href="AgentDiagnosticSettingsOperations-AgentDiagnosticSettingsOperations.html">AgentDiagnosticSettingsOperations~AgentDiagnosticSettingsOperations</a></li><li><a href="AlertOperations-AlertOperations.html">AlertOperations~AlertOperations</a></li><li><a href="AlertsClient-AlertsClient.html">AlertsClient~AlertsClient</a></li><li><a href="AnonymousCloudCredentials.html">AnonymousCloudCredentials</a></li><li><a href="ApiAppManagementClient-ApiAppManagementClient.html">ApiAppManagementClient~ApiAppManagementClient</a></li><li><a href="ApiAppOperations-ApiAppOperations.html">ApiAppOperations~ApiAppOperations</a></li><li><a href="ApnsService.html">ApnsService</a></li><li><a href="ApplicationGatewayOperations-ApplicationGatewayOperations.html">ApplicationGatewayOperations~ApplicationGatewayOperations</a></li><li><a href="ApplicationOperations-ApplicationOperations.html">ApplicationOperations~ApplicationOperations</a></li><li><a href="AuthorizationManagementClient-AuthorizationManagementClient.html">AuthorizationManagementClient~AuthorizationManagementClient</a></li><li><a href="AutomatedExportOperations-AutomatedExportOperations.html">AutomatedExportOperations~AutomatedExportOperations</a></li><li><a href="AutoscaleClient-AutoscaleClient.html">AutoscaleClient~AutoscaleClient</a></li><li><a href="AutoscaleOperations-AutoscaleOperations.html">AutoscaleOperations~AutoscaleOperations</a></li><li><a href="AvailabilitySetOperations-AvailabilitySetOperations.html">AvailabilitySetOperations~AvailabilitySetOperations</a></li><li><a href="BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials</a></li><li><a href="BasicAuthenticationCloudCredentials-BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials~BasicAuthenticationCloudCredentials</a></li><li><a href="BatchServiceClient.html">BatchServiceClient</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="CertificateCloudCredentials.html">CertificateCloudCredentials</a></li><li><a href="ClientRootCertificateOperations-ClientRootCertificateOperations.html">ClientRootCertificateOperations~ClientRootCertificateOperations</a></li><li><a href="CloudServiceManagementClient-CloudServiceManagementClient.html">CloudServiceManagementClient~CloudServiceManagementClient</a></li><li><a href="CloudServiceOperations-CloudServiceOperations.html">CloudServiceOperations~CloudServiceOperations</a></li><li><a href="ClusterOperations-ClusterOperations.html">ClusterOperations~ClusterOperations</a></li><li><a href="CommandsOperations-CommandsOperations.html">CommandsOperations~CommandsOperations</a></li><li><a href="ComputeManagementClient-ComputeManagementClient.html">ComputeManagementClient~ComputeManagementClient</a></li><li><a href="ConnectionStringParser.html">ConnectionStringParser</a></li><li><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html">ContinuousWebJobOperations~ContinuousWebJobOperations</a></li><li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="createHDInsightCluster2ManagementClient.html">createHDInsightCluster2ManagementClient</a></li><li><a href="createHDInsightClusterManagementClient.html">createHDInsightClusterManagementClient</a></li><li><a href="createHDInsightJobManagementClient.html">createHDInsightJobManagementClient</a></li><li><a href="createSqlService.html">createSqlService</a></li><li><a href="DacOperations-DacOperations.html">DacOperations~DacOperations</a></li><li><a href="DatabaseCopyOperations-DatabaseCopyOperations.html">DatabaseCopyOperations~DatabaseCopyOperations</a></li><li><a href="DatabaseOperationOperations-DatabaseOperationOperations.html">DatabaseOperationOperations~DatabaseOperationOperations</a></li><li><a href="DatabaseOperations-DatabaseOperations.html">DatabaseOperations~DatabaseOperations</a></li><li><a href="DefinitionOperations-DefinitionOperations.html">DefinitionOperations~DefinitionOperations</a></li><li><a href="DeploymentOperationOperations-DeploymentOperationOperations.html">DeploymentOperationOperations~DeploymentOperationOperations</a></li><li><a href="DeploymentOperations-DeploymentOperations.html">DeploymentOperations~DeploymentOperations</a></li><li><a href="DiagnosticOperations-DiagnosticOperations.html">DiagnosticOperations~DiagnosticOperations</a></li><li><a href="DnsManagementClient-DnsManagementClient.html">DnsManagementClient~DnsManagementClient</a></li><li><a href="DNSServerOperations-DNSServerOperations.html">DNSServerOperations~DNSServerOperations</a></li><li><a href="EventDataOperations-EventDataOperations.html">EventDataOperations~EventDataOperations</a></li><li><a href="EventOperations-EventOperations.html">EventOperations~EventOperations</a></li><li><a href="EventsClient-EventsClient.html">EventsClient~EventsClient</a></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="ExtensionImageOperations-ExtensionImageOperations.html">ExtensionImageOperations~ExtensionImageOperations</a></li><li><a href="FeatureClient-FeatureClient.html">FeatureClient~FeatureClient</a></li><li><a href="Features-Features.html">Features~Features</a></li><li><a href="FirewallRuleOperations-FirewallRuleOperations.html">FirewallRuleOperations~FirewallRuleOperations</a></li><li><a href="GalleryClient-GalleryClient.html">GalleryClient~GalleryClient</a></li><li><a href="GatewayOperations-GatewayOperations.html">GatewayOperations~GatewayOperations</a></li><li><a href="GcmService.html">GcmService</a></li><li><a href="GraphRbacManagementClient-GraphRbacManagementClient.html">GraphRbacManagementClient~GraphRbacManagementClient</a></li><li><a href="GroupOperations-GroupOperations.html">GroupOperations~GroupOperations</a></li><li><a href="HDInsightCluster2ManagementClient-HDInsightCluster2ManagementClient.html">HDInsightCluster2ManagementClient~HDInsightCluster2ManagementClient</a></li><li><a href="HDInsightClusterManagementClient-HDInsightClusterManagementClient.html">HDInsightClusterManagementClient~HDInsightClusterManagementClient</a></li><li><a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html">HDInsightJobManagementClient~HDInsightJobManagementClient</a></li><li><a href="HDInsightService.html">HDInsightService</a></li><li><a href="HmacSha256Sign.html">HmacSha256Sign</a></li><li><a href="HostedServiceOperations-HostedServiceOperations.html">HostedServiceOperations~HostedServiceOperations</a></li><li><a href="IncidentOperations-IncidentOperations.html">IncidentOperations~IncidentOperations</a></li><li><a href="InsightsClient-InsightsClient.html">InsightsClient~InsightsClient</a></li><li><a href="InsightsManagementClient-InsightsManagementClient.html">InsightsManagementClient~InsightsManagementClient</a></li><li><a href="ItemOperations-ItemOperations.html">ItemOperations~ItemOperations</a></li><li><a href="JobCollectionOperations-JobCollectionOperations.html">JobCollectionOperations~JobCollectionOperations</a></li><li><a href="JobOperations-JobOperations.html">JobOperations~JobOperations</a></li><li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyOperations-KeyOperations.html">KeyOperations~KeyOperations</a></li><li><a href="global.html#KeyVaultClient">KeyVaultClient</a></li><li><a href="KeyVaultInternalClient-KeyVaultInternalClient.html">KeyVaultInternalClient~KeyVaultInternalClient</a></li><li><a href="KeyVaultManagementClient-KeyVaultManagementClient.html">KeyVaultManagementClient~KeyVaultManagementClient</a></li><li><a href="LinearRetryPolicyFilter.html">LinearRetryPolicyFilter</a></li><li><a href="LoadBalancerOperations-LoadBalancerOperations.html">LoadBalancerOperations~LoadBalancerOperations</a></li><li><a href="LocalNetworkGatewayOperations-LocalNetworkGatewayOperations.html">LocalNetworkGatewayOperations~LocalNetworkGatewayOperations</a></li><li><a href="LocationOperations-LocationOperations.html">LocationOperations~LocationOperations</a></li><li><a href="ManagementCertificateOperations-ManagementCertificateOperations.html">ManagementCertificateOperations~ManagementCertificateOperations</a></li><li><a href="ManagementClient-ManagementClient.html">ManagementClient~ManagementClient</a></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations~MetricDefinitionOperations</a></li><li><a href="MetricOperations-MetricOperations.html">MetricOperations~MetricOperations</a></li><li><a href="MetricsClient-MetricsClient.html">MetricsClient~MetricsClient</a></li><li><a href="MetricSettingOperations-MetricSettingOperations.html">MetricSettingOperations~MetricSettingOperations</a></li><li><a href="MetricValueOperations-MetricValueOperations.html">MetricValueOperations~MetricValueOperations</a></li><li><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html">MonitoringConfigurationOperations~MonitoringConfigurationOperations</a></li><li><a href="MpnsService.html">MpnsService</a></li><li><a href="NamespaceOperations-NamespaceOperations.html">NamespaceOperations~NamespaceOperations</a></li><li><a href="NetworkInterfaceOperations-NetworkInterfaceOperations.html">NetworkInterfaceOperations~NetworkInterfaceOperations</a></li><li><a href="NetworkManagementClient-NetworkManagementClient.html">NetworkManagementClient~NetworkManagementClient</a></li><li><a href="NetworkOperations-NetworkOperations.html">NetworkOperations~NetworkOperations</a></li><li><a href="NetworkResourceProviderClient-NetworkResourceProviderClient.html">NetworkResourceProviderClient~NetworkResourceProviderClient</a></li><li><a href="NetworkSecurityGroupOperations-NetworkSecurityGroupOperations.html">NetworkSecurityGroupOperations~NetworkSecurityGroupOperations</a></li><li><a href="NotificationHubOperations-NotificationHubOperations.html">NotificationHubOperations~NotificationHubOperations</a></li><li><a href="NotificationHubService.html">NotificationHubService</a></li><li><a href="ObjectOperations-ObjectOperations.html">ObjectOperations~ObjectOperations</a></li><li><a href="OperatingSystemOperations-OperatingSystemOperations.html">OperatingSystemOperations~OperatingSystemOperations</a></li><li><a href="PermissionOperations-PermissionOperations.html">PermissionOperations~PermissionOperations</a></li><li><a href="ProfileOperations-ProfileOperations.html">ProfileOperations~ProfileOperations</a></li><li><a href="ProviderOperations-ProviderOperations.html">ProviderOperations~ProviderOperations</a></li><li><a href="PublicIpAddressOperations-PublicIpAddressOperations.html">PublicIpAddressOperations~PublicIpAddressOperations</a></li><li><a href="QueueOperations-QueueOperations.html">QueueOperations~QueueOperations</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="QuotaOperations-QuotaOperations.html">QuotaOperations~QuotaOperations</a></li><li><a href="RecordSetOperations-RecordSetOperations.html">RecordSetOperations~RecordSetOperations</a></li><li><a href="RecoverableDatabaseOperations-RecoverableDatabaseOperations.html">RecoverableDatabaseOperations~RecoverableDatabaseOperations</a></li><li><a href="RecoverDatabaseOperations-RecoverDatabaseOperations.html">RecoverDatabaseOperations~RecoverDatabaseOperations</a></li><li><a href="RelayOperations-RelayOperations.html">RelayOperations~RelayOperations</a></li><li><a href="RepositoryOperations-RepositoryOperations.html">RepositoryOperations~RepositoryOperations</a></li><li><a href="ReservedIPOperations-ReservedIPOperations.html">ReservedIPOperations~ReservedIPOperations</a></li><li><a href="ResourceGroupOperations-ResourceGroupOperations.html">ResourceGroupOperations~ResourceGroupOperations</a></li><li><a href="ResourceManagementClient-ResourceManagementClient.html">ResourceManagementClient~ResourceManagementClient</a></li><li><a href="ResourceOperations-ResourceOperations.html">ResourceOperations~ResourceOperations</a></li><li><a href="ResourceProviderOperationDetailsOperations-ResourceProviderOperationDetailsOperations.html">ResourceProviderOperationDetailsOperations~ResourceProviderOperationDetailsOperations</a></li><li><a href="RestorableDroppedDatabaseOperations-RestorableDroppedDatabaseOperations.html">RestorableDroppedDatabaseOperations~RestorableDroppedDatabaseOperations</a></li><li><a href="RestoreDatabaseOperations-RestoreDatabaseOperations.html">RestoreDatabaseOperations~RestoreDatabaseOperations</a></li><li><a href="RoleAssignmentOperations-RoleAssignmentOperations.html">RoleAssignmentOperations~RoleAssignmentOperations</a></li><li><a href="RoleDefinitionOperations-RoleDefinitionOperations.html">RoleDefinitionOperations~RoleDefinitionOperations</a></li><li><a href="RoleSizeOperations-RoleSizeOperations.html">RoleSizeOperations~RoleSizeOperations</a></li><li><a href="RouteOperations-RouteOperations.html">RouteOperations~RouteOperations</a></li><li><a href="RuleOperations-RuleOperations.html">RuleOperations~RuleOperations</a></li><li><a href="SchedulerClient-SchedulerClient.html">SchedulerClient~SchedulerClient</a></li><li><a href="SchedulerManagementClient-SchedulerManagementClient.html">SchedulerManagementClient~SchedulerManagementClient</a></li><li><a href="ScmService.html">ScmService</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li><li><a href="SecretOperations-SecretOperations.html">SecretOperations~SecretOperations</a></li><li><a href="SecurityRuleOperations-SecurityRuleOperations.html">SecurityRuleOperations~SecurityRuleOperations</a></li><li><a href="ServerOperations-ServerOperations.html">ServerOperations~ServerOperations</a></li><li><a href="ServiceBusManagementClient-ServiceBusManagementClient.html">ServiceBusManagementClient~ServiceBusManagementClient</a></li><li><a href="ServiceBusService.html">ServiceBusService</a></li><li><a href="ServiceBusServiceBase.html">ServiceBusServiceBase</a></li><li><a href="ServiceBusServiceClient.html">ServiceBusServiceClient</a></li><li><a href="ServiceCertificateOperations-ServiceCertificateOperations.html">ServiceCertificateOperations~ServiceCertificateOperations</a></li><li><a href="ServiceDiagnosticSettingsOperations-ServiceDiagnosticSettingsOperations.html">ServiceDiagnosticSettingsOperations~ServiceDiagnosticSettingsOperations</a></li><li><a href="ServiceManagementClient.html">ServiceManagementClient</a></li><li><a href="ServiceObjectiveOperations-ServiceObjectiveOperations.html">ServiceObjectiveOperations~ServiceObjectiveOperations</a></li><li><a href="ServicePrincipalOperations-ServicePrincipalOperations.html">ServicePrincipalOperations~ServicePrincipalOperations</a></li><li><a href="SettingOperations-SettingOperations.html">SettingOperations~SettingOperations</a></li><li><a href="SettingsOperations-SettingsOperations.html">SettingsOperations~SettingsOperations</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="SharedKey.html">SharedKey</a></li><li><a href="SharedKeyLite.html">SharedKeyLite</a></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a></li><li><a href="SharedKeyTable.html">SharedKeyTable</a></li><li><a href="SkuOperations-SkuOperations.html">SkuOperations~SkuOperations</a></li><li><a href="SourceControlOperations-SourceControlOperations.html">SourceControlOperations~SourceControlOperations</a></li><li><a href="SqlManagementClient-SqlManagementClient.html">SqlManagementClient~SqlManagementClient</a></li><li><a href="SqlManagementService.html">SqlManagementService</a></li><li><a href="SqlService.html">SqlService</a></li><li><a href="SqlServiceClient.html">SqlServiceClient</a></li><li><a href="StaticIPOperations-StaticIPOperations.html">StaticIPOperations~StaticIPOperations</a></li><li><a href="StorageAccountOperations-StorageAccountOperations.html">StorageAccountOperations~StorageAccountOperations</a></li><li><a href="StorageDiagnosticSettingsOperations-StorageDiagnosticSettingsOperations.html">StorageDiagnosticSettingsOperations~StorageDiagnosticSettingsOperations</a></li><li><a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient~StorageManagementClient</a></li><li><a href="StorageServiceClient.html">StorageServiceClient</a></li><li><a href="StoreManagementClient-StoreManagementClient.html">StoreManagementClient~StoreManagementClient</a></li><li><a href="SubnetOperations-SubnetOperations.html">SubnetOperations~SubnetOperations</a></li><li><a href="SubscriptionClient-SubscriptionClient.html">SubscriptionClient~SubscriptionClient</a></li><li><a href="SubscriptionOperations-SubscriptionOperations.html">SubscriptionOperations~SubscriptionOperations</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li><li><a href="TagOperations-TagOperations.html">TagOperations~TagOperations</a></li><li><a href="TemplateOperations-TemplateOperations.html">TemplateOperations~TemplateOperations</a></li><li><a href="TenantOperations-TenantOperations.html">TenantOperations~TenantOperations</a></li><li><a href="TokenCloudCredentials.html">TokenCloudCredentials</a></li><li><a href="TopicOperations-TopicOperations.html">TopicOperations~TopicOperations</a></li><li><a href="TrafficManagerManagementClient-TrafficManagerManagementClient.html">TrafficManagerManagementClient~TrafficManagerManagementClient</a></li><li><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html">TriggeredWebJobOperations~TriggeredWebJobOperations</a></li><li><a href="UsageMetricsOperations-UsageMetricsOperations.html">UsageMetricsOperations~UsageMetricsOperations</a></li><li><a href="UsageOperations-UsageOperations.html">UsageOperations~UsageOperations</a></li><li><a href="UserOperations-UserOperations.html">UserOperations~UserOperations</a></li><li><a href="VaultOperations-VaultOperations.html">VaultOperations~VaultOperations</a></li><li><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html">VirtualMachineDiskOperations~VirtualMachineDiskOperations</a></li><li><a href="VirtualMachineExtensionOperations-VirtualMachineExtensionOperations.html">VirtualMachineExtensionOperations~VirtualMachineExtensionOperations</a></li><li><a href="VirtualMachineOperations-VirtualMachineOperations.html">VirtualMachineOperations~VirtualMachineOperations</a></li><li><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html">VirtualMachineOSImageOperations~VirtualMachineOSImageOperations</a></li><li><a href="VirtualMachineSizeOperations-VirtualMachineSizeOperations.html">VirtualMachineSizeOperations~VirtualMachineSizeOperations</a></li><li><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html">VirtualMachineVMImageOperations~VirtualMachineVMImageOperations</a></li><li><a href="VirtualNetworkGatewayConnectionOperations-VirtualNetworkGatewayConnectionOperations.html">VirtualNetworkGatewayConnectionOperations~VirtualNetworkGatewayConnectionOperations</a></li><li><a href="VirtualNetworkGatewayOperations-VirtualNetworkGatewayOperations.html">VirtualNetworkGatewayOperations~VirtualNetworkGatewayOperations</a></li><li><a href="VirtualNetworkOperations-VirtualNetworkOperations.html">VirtualNetworkOperations~VirtualNetworkOperations</a></li><li><a href="WebHostingPlanOperations-WebHostingPlanOperations.html">WebHostingPlanOperations~WebHostingPlanOperations</a></li><li><a href="WebResource.html">WebResource</a></li><li><a href="WebSiteExtensionsClient-WebSiteExtensionsClient.html">WebSiteExtensionsClient~WebSiteExtensionsClient</a></li><li><a href="WebSiteManagementClient-WebSiteManagementClient.html">WebSiteManagementClient~WebSiteManagementClient</a></li><li><a href="WebsiteManagementService.html">WebsiteManagementService</a></li><li><a href="WebSiteOperations-WebSiteOperations.html">WebSiteOperations~WebSiteOperations</a></li><li><a href="WebSpaceOperations-WebSpaceOperations.html">WebSpaceOperations~WebSpaceOperations</a></li><li><a href="WnsService.html">WnsService</a></li><li><a href="ZoneOperations-ZoneOperations.html">ZoneOperations~ZoneOperations</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#_">_</a></li><li><a href="global.html#allRequired">allRequired</a></li><li><a href="global.html#atLeastOne">atLeastOne</a></li><li><a href="global.html#AuthorizationManagementClient">AuthorizationManagementClient</a></li><li><a href="global.html#baseIdentifier">baseIdentifier</a></li><li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#blobNameIsValid">blobNameIsValid</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CLOUD_BLOB_HOST">CLOUD_BLOB_HOST</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#ComputeManagementClient">ComputeManagementClient</a></li><li><a href="global.html#containerNameIsValid">containerNameIsValid</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createApiAppManagementClient">createApiAppManagementClient</a></li><li><a href="global.html#createAuthorizationManagementClient">createAuthorizationManagementClient</a></li><li><a href="global.html#createAutoScaleClient">createAutoScaleClient</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createCloudServiceManagementClient">createCloudServiceManagementClient</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createComputeManagementClient">createComputeManagementClient</a></li><li><a href="global.html#createDnsManagementClient">createDnsManagementClient</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li><li><a href="global.html#createGalleryClient">createGalleryClient</a></li><li><a href="global.html#createGraphRbacManagementClient">createGraphRbacManagementClient</a></li><li><a href="global.html#createHDInsightService">createHDInsightService</a></li><li><a href="global.html#createInsightsClient">createInsightsClient</a></li><li><a href="global.html#createInsightsManagementClient">createInsightsManagementClient</a></li><li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createManagementClient">createManagementClient</a></li><li><a href="global.html#createMetricsClient">createMetricsClient</a></li><li><a href="global.html#createNetworkManagementClient">createNetworkManagementClient</a></li><li><a href="global.html#createNetworkResourceProviderClient">createNetworkResourceProviderClient</a></li><li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createResourceFeatureClient">createResourceFeatureClient</a></li><li><a href="global.html#createResourceIdentity">createResourceIdentity</a></li><li><a href="global.html#createResourceManagementClient">createResourceManagementClient</a></li><li><a href="global.html#createResourceSubscriptionClient">createResourceSubscriptionClient</a></li><li><a href="global.html#createSchedulerClient">createSchedulerClient</a></li><li><a href="global.html#createSchedulerManagementClient">createSchedulerManagementClient</a></li><li><a href="global.html#createScmService">createScmService</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#createServiceBusManagementClient">createServiceBusManagementClient</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createSqlManagementClient">createSqlManagementClient</a></li><li><a href="global.html#createSqlManagementService">createSqlManagementService</a></li><li><a href="global.html#createStorageManagementClient">createStorageManagementClient</a></li><li><a href="global.html#createStoreManagementClient">createStoreManagementClient</a></li><li><a href="global.html#createSubscriptionClient">createSubscriptionClient</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createTrafficManagerManagementClient">createTrafficManagerManagementClient</a></li><li><a href="global.html#createWebSiteExtensionsClient">createWebSiteExtensionsClient</a></li><li><a href="global.html#createWebSiteManagementClient">createWebSiteManagementClient</a></li><li><a href="global.html#createWebSiteManagementClient2">createWebSiteManagementClient2</a></li><li><a href="global.html#createWebsiteManagementService">createWebsiteManagementService</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#DEFAULT_PROTOCOL">DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEFAULT_SERVICEBUS_ISSUER">DEFAULT_SERVICEBUS_ISSUER</a></li><li><a href="global.html#DEFAULT_WRAP_NAMESPACE_SUFFIX">DEFAULT_WRAP_NAMESPACE_SUFFIX</a></li><li><a href="global.html#DEVSTORE_DEFAULT_PROTOCOL">DEVSTORE_DEFAULT_PROTOCOL</a></li><li><a href="global.html#DEVSTORE_STORAGE_ACCOUNT">DEVSTORE_STORAGE_ACCOUNT</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#format">format</a></li><li><a href="global.html#getContentMd5">getContentMd5</a></li><li><a href="global.html#getNameSpace">getNameSpace</a></li><li><a href="global.html#getValidator">getValidator</a></li><li><a href="global.html#GraphRbacManagementClient">GraphRbacManagementClient</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#identifier">identifier</a></li><li><a href="global.html#inArrayInsensitive">inArrayInsensitive</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isBase64Encoded">isBase64Encoded</a></li><li><a href="global.html#isBufferAllZero">isBufferAllZero</a></li><li><a href="global.html#isEmulated">isEmulated</a></li><li><a href="global.html#isInt">isInt</a></li><li><a href="global.html#isValidFunction">isValidFunction</a></li><li><a href="global.html#isValidHDInsightCreationObject">isValidHDInsightCreationObject</a></li><li><a href="global.html#isValidUri">isValidUri</a></li><li><a href="global.html#KEY_PATT">KEY_PATT</a></li><li><a href="global.html#KEYVAULT_RESOURCE_ID">KEYVAULT_RESOURCE_ID</a></li><li><a href="global.html#KeyVaultCredentials">KeyVaultCredentials</a></li><li><a href="global.html#KeyVaultManagementClient">KeyVaultManagementClient</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#ManagementClient">ManagementClient</a></li><li><a href="global.html#matchedSpecification">matchedSpecification</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#namespaceNameIsValid">namespaceNameIsValid</a></li><li><a href="global.html#noMatchConnectionString">noMatchConnectionString</a></li><li><a href="global.html#noMatchSettings">noMatchSettings</a></li><li><a href="global.html#objectFirstKey">objectFirstKey</a></li><li><a href="global.html#ObjectIdentifier">ObjectIdentifier</a></li><li><a href="global.html#objectIsEmpty">objectIsEmpty</a></li><li><a href="global.html#objectIsFunction">objectIsFunction</a></li><li><a href="global.html#objectIsInt">objectIsInt</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectIsString">objectIsString</a></li><li><a href="global.html#objectKeysLength">objectKeysLength</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#optional">optional</a></li><li><a href="global.html#parse">parse</a></li><li><a href="global.html#parseAndValidateKeys">parseAndValidateKeys</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#propertyType">propertyType</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#queueNameIsValid">queueNameIsValid</a></li><li><a href="global.html#removeBOM">removeBOM</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#serializeEntry">serializeEntry</a></li><li><a href="global.html#serializeQueryValue">serializeQueryValue</a></li><li><a href="global.html#ServiceBusSettings">ServiceBusSettings</a></li><li><a href="global.html#ServiceManagementSettings">ServiceManagementSettings</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#setting">setting</a></li><li><a href="global.html#settingWithFunc">settingWithFunc</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#SqlServerAcs">SqlServerAcs</a></li><li><a href="global.html#StorageServiceSettings">StorageServiceSettings</a></li><li><a href="global.html#stringEndsWith">stringEndsWith</a></li><li><a href="global.html#stringFormat">stringFormat</a></li><li><a href="global.html#stringIsDate">stringIsDate</a></li><li><a href="global.html#stringIsEmpty">stringIsEmpty</a></li><li><a href="global.html#stringIsFloat">stringIsFloat</a></li><li><a href="global.html#stringIsInt">stringIsInt</a></li><li><a href="global.html#stringIsNumber">stringIsNumber</a></li><li><a href="global.html#stringStartsWith">stringStartsWith</a></li><li><a href="global.html#tableNameIsValid">tableNameIsValid</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li><li><a href="global.html#truncatedISO8061Date">truncatedISO8061Date</a></li><li><a href="global.html#tryGetValueChain">tryGetValueChain</a></li><li><a href="global.html#tryGetValueInsensitive">tryGetValueInsensitive</a></li><li><a href="global.html#unserializeValue">unserializeValue</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#validateCallback">validateCallback</a></li><li><a href="global.html#vault">vault</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#WrapService">WrapService</a></li><li><a href="global.html#WrapTokenManager">WrapTokenManager</a></li><li><a href="global.html#zeroBuffer">zeroBuffer</a></li><li><a href="global.html#zeroPaddingString">zeroPaddingString</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: services/dnsManagement/lib/dnsManagementClient.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">/* jshint latedef:false */
+/* jshint forin:false */
+/* jshint noempty:false */
+
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Warning: This code was generated by a tool.
+// 
+// Changes to this file may cause incorrect behavior and will be lost if the
+// code is regenerated.
+
+'use strict';
+
+var util = require('util');
+var _ = require('underscore');
+var azureCommon = require('azure-common');
+var Service = azureCommon.Service;
+var WebResource = azureCommon.WebResource;
+
+var DnsManagementClient = ( /** @lends DnsManagementClient */ function() {
+  /**
+   * @class
+   * Client for managing DNS zones and record.
+   * Initializes a new instance of the DnsManagementClient class.
+   * @constructor
+   * 
+   * @param {SubscriptionCloudCredentials} credentials Gets subscription
+   * credentials which uniquely identify Microsoft Azure subscription. The
+   * subscription ID forms part of the URI for every service call.
+   * 
+   * @param {string} [credentials.subscriptionId]
+   * 
+   * @param {string} [baseUri] Gets the URI used as the base for all cloud
+   * service requests.
+   * 
+   * @param {Array} filters
+   */
+  function DnsManagementClient(credentials, baseUri, filters) {
+    if (credentials === null || credentials === undefined) {
+      throw new Error('credentials cannot be null.');
+    }
+    
+    DnsManagementClient['super_'].call(this, credentials, filters);
+    
+    this.credentials = credentials;
+    this.baseUri = baseUri;
+    if (this.baseUri === null || this.baseUri === undefined) {
+      this.baseUri = 'https://management.azure.com';
+    }
+    if (this.apiVersion === null || this.apiVersion === undefined) {
+      this.apiVersion = '2015-05-04-preview';
+    }
+    if (this.longRunningOperationInitialTimeout === null || this.longRunningOperationInitialTimeout === undefined) {
+      this.longRunningOperationInitialTimeout = -1;
+    }
+    if (this.longRunningOperationRetryTimeout === null || this.longRunningOperationRetryTimeout === undefined) {
+      this.longRunningOperationRetryTimeout = -1;
+    }
+    /**
+     * Provides an instance of the
+     * [RecordSetOperations](-RecordSetOperations.html) object.
+     * @type {object}
+     */
+    this.recordSets = new RecordSetOperations(this);
+    /**
+     * Provides an instance of the [ZoneOperations](-ZoneOperations.html)
+     * object.
+     * @type {object}
+     */
+    this.zones = new ZoneOperations(this);
+  }
+  
+  util.inherits(DnsManagementClient, Service);
+  
+  
+  return DnsManagementClient;
+})();
+exports.DnsManagementClient = DnsManagementClient;
+
+var RecordSetOperations = ( /** @lends RecordSetOperations */ function() {
+  /**
+   * @class
+   * Operations for managing the RecordSets in a DNS zone.
+   * __NOTE__: An instance of this class is automatically created for an
+   * instance of the [DnsManagementClient] {@link
+   * DnsManagementClient~DnsManagementClient}.
+   * See [recordSets] {@link
+   * DnsManagementClient~DnsManagementClient#recordSets}.
+   * Initializes a new instance of the RecordSetOperations class.
+   * @constructor
+   * 
+   * @param {DnsManagementClient} client Reference to the service client.
+   */
+  function RecordSetOperations(client) {
+    this.client = client;
+  }
+  
+  /**
+   * Creates a RecordSet within a DNS zone.
+   * 
+   * @param {string} resourceGroupName The name of the resource group.
+   * 
+   * @param {string} zoneName The name of the zone without a terminating dot.
+   * 
+   * @param {string} relativeRecordSetName The name of the RecordSet, relative
+   * to the name of the zone.
+   * 
+   * @param {RecordType} recordType The type of DNS record.
+   * 
+   * @param {RecordSetCreateOrUpdateParameters} parameters Parameters supplied
+   * to the CreateOrUpdate operation.
+   * 
+   * @param {RecordSet} parameters.recordSet Gets or sets information about the
+   * RecordSet being created or updated.
+   * 
+   * @param {string} [parameters.recordSet.eTag] Gets or sets the ETag of the
+   * RecordSet.
+   * 
+   * @param {RecordSetProperties} [parameters.recordSet.properties] Gets or
+   * sets the properties of the RecordSet.
+   * 
+   * @param {number} [parameters.recordSet.properties.ttl] Gets or sets the TTL
+   * of the records in the RecordSet.
+   * 
+   * @param {array} [parameters.recordSet.properties.aRecords] Gets or sets the
+   * list of A records in the RecordSet.
+   * 
+   * @param {array} [parameters.recordSet.properties.aaaaRecords] Gets or sets
+   * the list of AAAA records in the RecordSet.
+   * 
+   * @param {array} [parameters.recordSet.properties.mxRecords] Gets or sets
+   * the list of MX records in the RecordSet.
+   * 
+   * @param {array} [parameters.recordSet.properties.nsRecords] Gets or sets
+   * the list of NS records in the RecordSet.
+   * 
+   * @param {array} [parameters.recordSet.properties.ptrRecords] Gets or sets
+   * the list of PTR records in the RecordSet.
+   * 
+   * @param {array} [parameters.recordSet.properties.srvRecords] Gets or sets
+   * the list of SRV records in the RecordSet.
+   * 
+   * @param {array} [parameters.recordSet.properties.txtRecords] Gets or sets
+   * the list of TXT records in the RecordSet.
+   * 
+   * @param {CnameRecord} [parameters.recordSet.properties.cnameRecord] Gets or
+   * sets the CNAME record in the RecordSet.
+   * 
+   * @param {string} [parameters.recordSet.properties.cnameRecord.cname] Gets
+   * or sets the canonical name for this record without a terminating dot.
+   * 
+   * @param {SoaRecord} [parameters.recordSet.properties.soaRecord] Gets or
+   * sets the SOA record in the RecordSet.
+   * 
+   * @param {string} [parameters.recordSet.properties.soaRecord.host] Gets or
+   * sets the domain name of the authoritative name server, without a
+   * temrinating dot.
+   * 
+   * @param {string} [parameters.recordSet.properties.soaRecord.email] Gets or
+   * sets the email for this record.
+   * 
+   * @param {number} [parameters.recordSet.properties.soaRecord.serialNumber]
+   * Gets or sets the serial number for this record.
+   * 
+   * @param {number} [parameters.recordSet.properties.soaRecord.refreshTime]
+   * Gets or sets the refresh value for this record.
+   * 
+   * @param {number} [parameters.recordSet.properties.soaRecord.retryTime] Gets
+   * or sets the retry time for this record.
+   * 
+   * @param {number} [parameters.recordSet.properties.soaRecord.expireTime]
+   * Gets or sets the expire time for this record.
+   * 
+   * @param {number} [parameters.recordSet.properties.soaRecord.minimumTtl]
+   * Gets or sets the minimum TTL value for this record.
+   * 
+   * @param {string} [parameters.recordSet.id] Gets or sets the ID of the
+   * resource.
+   * 
+   * @param {string} [parameters.recordSet.name] Gets or sets the name of the
+   * resource.
+   * 
+   * @param {string} [parameters.recordSet.type] Gets or sets the type of the
+   * resource.
+   * 
+   * @param {string} parameters.recordSet.location Gets or sets the location of
+   * the resource.
+   * 
+   * @param {object} [parameters.recordSet.tags] Gets or sets the tags attached
+   * to the resource.
+   * 
+   * @param {string} [parameters.ifNoneMatch] Gets or sets the If-None-Match
+   * precondition. Set to '*' to force Create-If-Not-Exist. Other values will
+   * be ignored.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  RecordSetOperations.prototype.createOrUpdate = function(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    if (zoneName === null || zoneName === undefined) {
+      return callback(new Error('zoneName cannot be null.'));
+    }
+    if (relativeRecordSetName === null || relativeRecordSetName === undefined) {
+      return callback(new Error('relativeRecordSetName cannot be null.'));
+    }
+    if (recordType === null || recordType === undefined) {
+      return callback(new Error('recordType cannot be null.'));
+    }
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.recordSet === null || parameters.recordSet === undefined) {
+      return callback(new Error('parameters.recordSet cannot be null.'));
+    }
+    if (parameters.recordSet.location === null || parameters.recordSet.location === undefined) {
+      return callback(new Error('parameters.recordSet.location cannot be null.'));
+    }
+    if (parameters.recordSet.properties !== null &amp;&amp; parameters.recordSet.properties !== undefined) {
+      if (parameters.recordSet.properties.aaaaRecords !== null &amp;&amp; parameters.recordSet.properties.aaaaRecords !== undefined) {
+        for (var loweredIndex1 = 0; loweredIndex1 &lt; parameters.recordSet.properties.aaaaRecords.length; loweredIndex1 = loweredIndex1 + 1) {
+          var aaaaRecordsParameterItem = parameters.recordSet.properties.aaaaRecords[loweredIndex1];
+          if (aaaaRecordsParameterItem.ipv6Address === null || aaaaRecordsParameterItem.ipv6Address === undefined) {
+            return callback(new Error('parameters.recordSet.properties.aaaaRecords.ipv6Address cannot be null.'));
+          }
+        }
+      }
+      if (parameters.recordSet.properties.aRecords !== null &amp;&amp; parameters.recordSet.properties.aRecords !== undefined) {
+        for (var loweredIndex2 = 0; loweredIndex2 &lt; parameters.recordSet.properties.aRecords.length; loweredIndex2 = loweredIndex2 + 1) {
+          var aRecordsParameterItem = parameters.recordSet.properties.aRecords[loweredIndex2];
+          if (aRecordsParameterItem.ipv4Address === null || aRecordsParameterItem.ipv4Address === undefined) {
+            return callback(new Error('parameters.recordSet.properties.aRecords.ipv4Address cannot be null.'));
+          }
+        }
+      }
+      if (parameters.recordSet.properties.cnameRecord !== null &amp;&amp; parameters.recordSet.properties.cnameRecord !== undefined) {
+        if (parameters.recordSet.properties.cnameRecord.cname === null || parameters.recordSet.properties.cnameRecord.cname === undefined) {
+          return callback(new Error('parameters.recordSet.properties.cnameRecord.cname cannot be null.'));
+        }
+      }
+      if (parameters.recordSet.properties.mxRecords !== null &amp;&amp; parameters.recordSet.properties.mxRecords !== undefined) {
+        for (var loweredIndex3 = 0; loweredIndex3 &lt; parameters.recordSet.properties.mxRecords.length; loweredIndex3 = loweredIndex3 + 1) {
+          var mxRecordsParameterItem = parameters.recordSet.properties.mxRecords[loweredIndex3];
+          if (mxRecordsParameterItem.exchange === null || mxRecordsParameterItem.exchange === undefined) {
+            return callback(new Error('parameters.recordSet.properties.mxRecords.exchange cannot be null.'));
+          }
+          if (mxRecordsParameterItem.preference === null || mxRecordsParameterItem.preference === undefined) {
+            return callback(new Error('parameters.recordSet.properties.mxRecords.preference cannot be null.'));
+          }
+        }
+      }
+      if (parameters.recordSet.properties.nsRecords !== null &amp;&amp; parameters.recordSet.properties.nsRecords !== undefined) {
+        for (var loweredIndex4 = 0; loweredIndex4 &lt; parameters.recordSet.properties.nsRecords.length; loweredIndex4 = loweredIndex4 + 1) {
+          var nsRecordsParameterItem = parameters.recordSet.properties.nsRecords[loweredIndex4];
+          if (nsRecordsParameterItem.nsdname === null || nsRecordsParameterItem.nsdname === undefined) {
+            return callback(new Error('parameters.recordSet.properties.nsRecords.nsdname cannot be null.'));
+          }
+        }
+      }
+      if (parameters.recordSet.properties.ptrRecords !== null &amp;&amp; parameters.recordSet.properties.ptrRecords !== undefined) {
+        for (var loweredIndex5 = 0; loweredIndex5 &lt; parameters.recordSet.properties.ptrRecords.length; loweredIndex5 = loweredIndex5 + 1) {
+          var ptrRecordsParameterItem = parameters.recordSet.properties.ptrRecords[loweredIndex5];
+          if (ptrRecordsParameterItem.ptrdname === null || ptrRecordsParameterItem.ptrdname === undefined) {
+            return callback(new Error('parameters.recordSet.properties.ptrRecords.ptrdname cannot be null.'));
+          }
+        }
+      }
+      if (parameters.recordSet.properties.soaRecord !== null &amp;&amp; parameters.recordSet.properties.soaRecord !== undefined) {
+        if (parameters.recordSet.properties.soaRecord.email === null || parameters.recordSet.properties.soaRecord.email === undefined) {
+          return callback(new Error('parameters.recordSet.properties.soaRecord.email cannot be null.'));
+        }
+        if (parameters.recordSet.properties.soaRecord.expireTime === null || parameters.recordSet.properties.soaRecord.expireTime === undefined) {
+          return callback(new Error('parameters.recordSet.properties.soaRecord.expireTime cannot be null.'));
+        }
+        if (parameters.recordSet.properties.soaRecord.host === null || parameters.recordSet.properties.soaRecord.host === undefined) {
+          return callback(new Error('parameters.recordSet.properties.soaRecord.host cannot be null.'));
+        }
+        if (parameters.recordSet.properties.soaRecord.minimumTtl === null || parameters.recordSet.properties.soaRecord.minimumTtl === undefined) {
+          return callback(new Error('parameters.recordSet.properties.soaRecord.minimumTtl cannot be null.'));
+        }
+        if (parameters.recordSet.properties.soaRecord.refreshTime === null || parameters.recordSet.properties.soaRecord.refreshTime === undefined) {
+          return callback(new Error('parameters.recordSet.properties.soaRecord.refreshTime cannot be null.'));
+        }
+        if (parameters.recordSet.properties.soaRecord.retryTime === null || parameters.recordSet.properties.soaRecord.retryTime === undefined) {
+          return callback(new Error('parameters.recordSet.properties.soaRecord.retryTime cannot be null.'));
+        }
+        if (parameters.recordSet.properties.soaRecord.serialNumber === null || parameters.recordSet.properties.soaRecord.serialNumber === undefined) {
+          return callback(new Error('parameters.recordSet.properties.soaRecord.serialNumber cannot be null.'));
+        }
+      }
+      if (parameters.recordSet.properties.srvRecords !== null &amp;&amp; parameters.recordSet.properties.srvRecords !== undefined) {
+        for (var loweredIndex6 = 0; loweredIndex6 &lt; parameters.recordSet.properties.srvRecords.length; loweredIndex6 = loweredIndex6 + 1) {
+          var srvRecordsParameterItem = parameters.recordSet.properties.srvRecords[loweredIndex6];
+          if (srvRecordsParameterItem.port === null || srvRecordsParameterItem.port === undefined) {
+            return callback(new Error('parameters.recordSet.properties.srvRecords.port cannot be null.'));
+          }
+          if (srvRecordsParameterItem.priority === null || srvRecordsParameterItem.priority === undefined) {
+            return callback(new Error('parameters.recordSet.properties.srvRecords.priority cannot be null.'));
+          }
+          if (srvRecordsParameterItem.target === null || srvRecordsParameterItem.target === undefined) {
+            return callback(new Error('parameters.recordSet.properties.srvRecords.target cannot be null.'));
+          }
+          if (srvRecordsParameterItem.weight === null || srvRecordsParameterItem.weight === undefined) {
+            return callback(new Error('parameters.recordSet.properties.srvRecords.weight cannot be null.'));
+          }
+        }
+      }
+      if (parameters.recordSet.properties.ttl === null || parameters.recordSet.properties.ttl === undefined) {
+        return callback(new Error('parameters.recordSet.properties.ttl cannot be null.'));
+      }
+      if (parameters.recordSet.properties.txtRecords !== null &amp;&amp; parameters.recordSet.properties.txtRecords !== undefined) {
+        for (var loweredIndex7 = 0; loweredIndex7 &lt; parameters.recordSet.properties.txtRecords.length; loweredIndex7 = loweredIndex7 + 1) {
+          var txtRecordsParameterItem = parameters.recordSet.properties.txtRecords[loweredIndex7];
+          if (txtRecordsParameterItem.value === null || txtRecordsParameterItem.value === undefined) {
+            return callback(new Error('parameters.recordSet.properties.txtRecords.value cannot be null.'));
+          }
+        }
+      }
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones/';
+    url2 = url2 + encodeURIComponent(zoneName);
+    url2 = url2 + '/';
+    url2 = url2 + encodeURIComponent(recordType !== null &amp;&amp; recordType !== undefined ? recordType.toString() : 'A');
+    url2 = url2 + '/';
+    url2 = url2 + relativeRecordSetName;
+    var queryParameters = [];
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'PUT';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    if (parameters.recordSet.eTag !== null &amp;&amp; parameters.recordSet.eTag !== undefined) {
+      httpRequest.headers['If-Match'] = parameters.recordSet.eTag;
+    }
+    if (parameters.ifNoneMatch !== null &amp;&amp; parameters.ifNoneMatch !== undefined) {
+      httpRequest.headers['If-None-Match'] = parameters.ifNoneMatch;
+    }
+    
+    // Serialize Request
+    var requestContent = null;
+    var requestDoc = null;
+    
+    var recordSetCreateOrUpdateParametersValue = {};
+    requestDoc = recordSetCreateOrUpdateParametersValue;
+    
+    if (parameters.recordSet.eTag !== null &amp;&amp; parameters.recordSet.eTag !== undefined) {
+      recordSetCreateOrUpdateParametersValue['etag'] = parameters.recordSet.eTag;
+    }
+    
+    if (parameters.recordSet.properties !== null &amp;&amp; parameters.recordSet.properties !== undefined) {
+      var propertiesValue = {};
+      recordSetCreateOrUpdateParametersValue['properties'] = propertiesValue;
+      
+      propertiesValue['TTL'] = parameters.recordSet.properties.ttl;
+      
+      if (parameters.recordSet.properties.aRecords !== null &amp;&amp; parameters.recordSet.properties.aRecords !== undefined) {
+        var aRecordsArray = [];
+        for (var loweredIndex8 = 0; loweredIndex8 &lt; parameters.recordSet.properties.aRecords.length; loweredIndex8 = loweredIndex8 + 1) {
+          var aRecordsItem = parameters.recordSet.properties.aRecords[loweredIndex8];
+          var aRecordValue = {};
+          aRecordsArray.push(aRecordValue);
+          
+          aRecordValue['ipv4Address'] = aRecordsItem.ipv4Address;
+        }
+        propertiesValue['ARecords'] = aRecordsArray;
+      }
+      
+      if (parameters.recordSet.properties.aaaaRecords !== null &amp;&amp; parameters.recordSet.properties.aaaaRecords !== undefined) {
+        var aAAARecordsArray = [];
+        for (var loweredIndex9 = 0; loweredIndex9 &lt; parameters.recordSet.properties.aaaaRecords.length; loweredIndex9 = loweredIndex9 + 1) {
+          var aAAARecordsItem = parameters.recordSet.properties.aaaaRecords[loweredIndex9];
+          var aaaaRecordValue = {};
+          aAAARecordsArray.push(aaaaRecordValue);
+          
+          aaaaRecordValue['ipv6Address'] = aAAARecordsItem.ipv6Address;
+        }
+        propertiesValue['AAAARecords'] = aAAARecordsArray;
+      }
+      
+      if (parameters.recordSet.properties.mxRecords !== null &amp;&amp; parameters.recordSet.properties.mxRecords !== undefined) {
+        var mXRecordsArray = [];
+        for (var loweredIndex10 = 0; loweredIndex10 &lt; parameters.recordSet.properties.mxRecords.length; loweredIndex10 = loweredIndex10 + 1) {
+          var mXRecordsItem = parameters.recordSet.properties.mxRecords[loweredIndex10];
+          var mxRecordValue = {};
+          mXRecordsArray.push(mxRecordValue);
+          
+          mxRecordValue['preference'] = mXRecordsItem.preference;
+          
+          mxRecordValue['exchange'] = mXRecordsItem.exchange;
+        }
+        propertiesValue['MXRecords'] = mXRecordsArray;
+      }
+      
+      if (parameters.recordSet.properties.nsRecords !== null &amp;&amp; parameters.recordSet.properties.nsRecords !== undefined) {
+        var nSRecordsArray = [];
+        for (var loweredIndex11 = 0; loweredIndex11 &lt; parameters.recordSet.properties.nsRecords.length; loweredIndex11 = loweredIndex11 + 1) {
+          var nSRecordsItem = parameters.recordSet.properties.nsRecords[loweredIndex11];
+          var nsRecordValue = {};
+          nSRecordsArray.push(nsRecordValue);
+          
+          nsRecordValue['nsdname'] = nSRecordsItem.nsdname;
+        }
+        propertiesValue['NSRecords'] = nSRecordsArray;
+      }
+      
+      if (parameters.recordSet.properties.ptrRecords !== null &amp;&amp; parameters.recordSet.properties.ptrRecords !== undefined) {
+        var pTRRecordsArray = [];
+        for (var loweredIndex12 = 0; loweredIndex12 &lt; parameters.recordSet.properties.ptrRecords.length; loweredIndex12 = loweredIndex12 + 1) {
+          var pTRRecordsItem = parameters.recordSet.properties.ptrRecords[loweredIndex12];
+          var ptrRecordValue = {};
+          pTRRecordsArray.push(ptrRecordValue);
+          
+          ptrRecordValue['ptrdname'] = pTRRecordsItem.ptrdname;
+        }
+        propertiesValue['PTRRecords'] = pTRRecordsArray;
+      }
+      
+      if (parameters.recordSet.properties.srvRecords !== null &amp;&amp; parameters.recordSet.properties.srvRecords !== undefined) {
+        var sRVRecordsArray = [];
+        for (var loweredIndex13 = 0; loweredIndex13 &lt; parameters.recordSet.properties.srvRecords.length; loweredIndex13 = loweredIndex13 + 1) {
+          var sRVRecordsItem = parameters.recordSet.properties.srvRecords[loweredIndex13];
+          var srvRecordValue = {};
+          sRVRecordsArray.push(srvRecordValue);
+          
+          srvRecordValue['priority'] = sRVRecordsItem.priority;
+          
+          srvRecordValue['weight'] = sRVRecordsItem.weight;
+          
+          srvRecordValue['port'] = sRVRecordsItem.port;
+          
+          srvRecordValue['target'] = sRVRecordsItem.target;
+        }
+        propertiesValue['SRVRecords'] = sRVRecordsArray;
+      }
+      
+      if (parameters.recordSet.properties.txtRecords !== null &amp;&amp; parameters.recordSet.properties.txtRecords !== undefined) {
+        var tXTRecordsArray = [];
+        for (var loweredIndex14 = 0; loweredIndex14 &lt; parameters.recordSet.properties.txtRecords.length; loweredIndex14 = loweredIndex14 + 1) {
+          var tXTRecordsItem = parameters.recordSet.properties.txtRecords[loweredIndex14];
+          var txtRecordValue = {};
+          tXTRecordsArray.push(txtRecordValue);
+          
+          txtRecordValue['value'] = tXTRecordsItem.value;
+        }
+        propertiesValue['TXTRecords'] = tXTRecordsArray;
+      }
+      
+      if (parameters.recordSet.properties.cnameRecord !== null &amp;&amp; parameters.recordSet.properties.cnameRecord !== undefined) {
+        var cNAMERecordValue = {};
+        propertiesValue['CNAMERecord'] = cNAMERecordValue;
+        
+        cNAMERecordValue['cname'] = parameters.recordSet.properties.cnameRecord.cname;
+      }
+      
+      if (parameters.recordSet.properties.soaRecord !== null &amp;&amp; parameters.recordSet.properties.soaRecord !== undefined) {
+        var sOARecordValue = {};
+        propertiesValue['SOARecord'] = sOARecordValue;
+        
+        sOARecordValue['host'] = parameters.recordSet.properties.soaRecord.host;
+        
+        sOARecordValue['email'] = parameters.recordSet.properties.soaRecord.email;
+        
+        sOARecordValue['serialNumber'] = parameters.recordSet.properties.soaRecord.serialNumber;
+        
+        sOARecordValue['refreshTime'] = parameters.recordSet.properties.soaRecord.refreshTime;
+        
+        sOARecordValue['retryTime'] = parameters.recordSet.properties.soaRecord.retryTime;
+        
+        sOARecordValue['expireTime'] = parameters.recordSet.properties.soaRecord.expireTime;
+        
+        sOARecordValue['minimumTTL'] = parameters.recordSet.properties.soaRecord.minimumTtl;
+      }
+    }
+    
+    if (parameters.recordSet.id !== null &amp;&amp; parameters.recordSet.id !== undefined) {
+      recordSetCreateOrUpdateParametersValue['id'] = parameters.recordSet.id;
+    }
+    
+    if (parameters.recordSet.name !== null &amp;&amp; parameters.recordSet.name !== undefined) {
+      recordSetCreateOrUpdateParametersValue['name'] = parameters.recordSet.name;
+    }
+    
+    if (parameters.recordSet.type !== null &amp;&amp; parameters.recordSet.type !== undefined) {
+      recordSetCreateOrUpdateParametersValue['type'] = parameters.recordSet.type;
+    }
+    
+    recordSetCreateOrUpdateParametersValue['location'] = parameters.recordSet.location;
+    
+    if (parameters.recordSet.tags !== null &amp;&amp; parameters.recordSet.tags !== undefined) {
+      var tagsDictionary = {};
+      for (var tagsKey in parameters.recordSet.tags) {
+        var tagsValue = parameters.recordSet.tags[tagsKey];
+        tagsDictionary[tagsKey] = tagsValue;
+      }
+      recordSetCreateOrUpdateParametersValue['tags'] = tagsDictionary;
+    }
+    
+    requestContent = JSON.stringify(requestDoc);
+    httpRequest.body = requestContent;
+    httpRequest.headers['Content-Length'] = Buffer.isBuffer(requestContent) ? requestContent.length : Buffer.byteLength(requestContent, 'UTF8');
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var recordSetInstance = { tags: {} };
+        result.recordSet = recordSetInstance;
+        
+        var etagValue = responseDoc['etag'];
+        if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+          var etagInstance = etagValue;
+          recordSetInstance.eTag = etagInstance;
+        }
+        
+        var propertiesValue2 = responseDoc['properties'];
+        if (propertiesValue2 !== null &amp;&amp; propertiesValue2 !== undefined) {
+          var propertiesInstance = { aaaaRecords: [], aRecords: [], mxRecords: [], nsRecords: [], ptrRecords: [], srvRecords: [], txtRecords: [] };
+          recordSetInstance.properties = propertiesInstance;
+          
+          var tTLValue = propertiesValue2['TTL'];
+          if (tTLValue !== null &amp;&amp; tTLValue !== undefined) {
+            var tTLInstance = tTLValue;
+            propertiesInstance.ttl = tTLInstance;
+          }
+          
+          var aRecordsArray2 = propertiesValue2['ARecords'];
+          if (aRecordsArray2 !== null &amp;&amp; aRecordsArray2 !== undefined) {
+            propertiesInstance.aRecords = [];
+            for (var loweredIndex15 = 0; loweredIndex15 &lt; aRecordsArray2.length; loweredIndex15 = loweredIndex15 + 1) {
+              var aRecordsValue = aRecordsArray2[loweredIndex15];
+              var aRecordInstance = {};
+              propertiesInstance.aRecords.push(aRecordInstance);
+              
+              var ipv4AddressValue = aRecordsValue['ipv4Address'];
+              if (ipv4AddressValue !== null &amp;&amp; ipv4AddressValue !== undefined) {
+                var ipv4AddressInstance = ipv4AddressValue;
+                aRecordInstance.ipv4Address = ipv4AddressInstance;
+              }
+            }
+          }
+          
+          var aAAARecordsArray2 = propertiesValue2['AAAARecords'];
+          if (aAAARecordsArray2 !== null &amp;&amp; aAAARecordsArray2 !== undefined) {
+            propertiesInstance.aaaaRecords = [];
+            for (var loweredIndex16 = 0; loweredIndex16 &lt; aAAARecordsArray2.length; loweredIndex16 = loweredIndex16 + 1) {
+              var aAAARecordsValue = aAAARecordsArray2[loweredIndex16];
+              var aaaaRecordInstance = {};
+              propertiesInstance.aaaaRecords.push(aaaaRecordInstance);
+              
+              var ipv6AddressValue = aAAARecordsValue['ipv6Address'];
+              if (ipv6AddressValue !== null &amp;&amp; ipv6AddressValue !== undefined) {
+                var ipv6AddressInstance = ipv6AddressValue;
+                aaaaRecordInstance.ipv6Address = ipv6AddressInstance;
+              }
+            }
+          }
+          
+          var mXRecordsArray2 = propertiesValue2['MXRecords'];
+          if (mXRecordsArray2 !== null &amp;&amp; mXRecordsArray2 !== undefined) {
+            propertiesInstance.mxRecords = [];
+            for (var loweredIndex17 = 0; loweredIndex17 &lt; mXRecordsArray2.length; loweredIndex17 = loweredIndex17 + 1) {
+              var mXRecordsValue = mXRecordsArray2[loweredIndex17];
+              var mxRecordInstance = {};
+              propertiesInstance.mxRecords.push(mxRecordInstance);
+              
+              var preferenceValue = mXRecordsValue['preference'];
+              if (preferenceValue !== null &amp;&amp; preferenceValue !== undefined) {
+                var preferenceInstance = preferenceValue;
+                mxRecordInstance.preference = preferenceInstance;
+              }
+              
+              var exchangeValue = mXRecordsValue['exchange'];
+              if (exchangeValue !== null &amp;&amp; exchangeValue !== undefined) {
+                var exchangeInstance = exchangeValue;
+                mxRecordInstance.exchange = exchangeInstance;
+              }
+            }
+          }
+          
+          var nSRecordsArray2 = propertiesValue2['NSRecords'];
+          if (nSRecordsArray2 !== null &amp;&amp; nSRecordsArray2 !== undefined) {
+            propertiesInstance.nsRecords = [];
+            for (var loweredIndex18 = 0; loweredIndex18 &lt; nSRecordsArray2.length; loweredIndex18 = loweredIndex18 + 1) {
+              var nSRecordsValue = nSRecordsArray2[loweredIndex18];
+              var nsRecordInstance = {};
+              propertiesInstance.nsRecords.push(nsRecordInstance);
+              
+              var nsdnameValue = nSRecordsValue['nsdname'];
+              if (nsdnameValue !== null &amp;&amp; nsdnameValue !== undefined) {
+                var nsdnameInstance = nsdnameValue;
+                nsRecordInstance.nsdname = nsdnameInstance;
+              }
+            }
+          }
+          
+          var pTRRecordsArray2 = propertiesValue2['PTRRecords'];
+          if (pTRRecordsArray2 !== null &amp;&amp; pTRRecordsArray2 !== undefined) {
+            propertiesInstance.ptrRecords = [];
+            for (var loweredIndex19 = 0; loweredIndex19 &lt; pTRRecordsArray2.length; loweredIndex19 = loweredIndex19 + 1) {
+              var pTRRecordsValue = pTRRecordsArray2[loweredIndex19];
+              var ptrRecordInstance = {};
+              propertiesInstance.ptrRecords.push(ptrRecordInstance);
+              
+              var ptrdnameValue = pTRRecordsValue['ptrdname'];
+              if (ptrdnameValue !== null &amp;&amp; ptrdnameValue !== undefined) {
+                var ptrdnameInstance = ptrdnameValue;
+                ptrRecordInstance.ptrdname = ptrdnameInstance;
+              }
+            }
+          }
+          
+          var sRVRecordsArray2 = propertiesValue2['SRVRecords'];
+          if (sRVRecordsArray2 !== null &amp;&amp; sRVRecordsArray2 !== undefined) {
+            propertiesInstance.srvRecords = [];
+            for (var loweredIndex20 = 0; loweredIndex20 &lt; sRVRecordsArray2.length; loweredIndex20 = loweredIndex20 + 1) {
+              var sRVRecordsValue = sRVRecordsArray2[loweredIndex20];
+              var srvRecordInstance = {};
+              propertiesInstance.srvRecords.push(srvRecordInstance);
+              
+              var priorityValue = sRVRecordsValue['priority'];
+              if (priorityValue !== null &amp;&amp; priorityValue !== undefined) {
+                var priorityInstance = priorityValue;
+                srvRecordInstance.priority = priorityInstance;
+              }
+              
+              var weightValue = sRVRecordsValue['weight'];
+              if (weightValue !== null &amp;&amp; weightValue !== undefined) {
+                var weightInstance = weightValue;
+                srvRecordInstance.weight = weightInstance;
+              }
+              
+              var portValue = sRVRecordsValue['port'];
+              if (portValue !== null &amp;&amp; portValue !== undefined) {
+                var portInstance = portValue;
+                srvRecordInstance.port = portInstance;
+              }
+              
+              var targetValue = sRVRecordsValue['target'];
+              if (targetValue !== null &amp;&amp; targetValue !== undefined) {
+                var targetInstance = targetValue;
+                srvRecordInstance.target = targetInstance;
+              }
+            }
+          }
+          
+          var tXTRecordsArray2 = propertiesValue2['TXTRecords'];
+          if (tXTRecordsArray2 !== null &amp;&amp; tXTRecordsArray2 !== undefined) {
+            propertiesInstance.txtRecords = [];
+            for (var loweredIndex21 = 0; loweredIndex21 &lt; tXTRecordsArray2.length; loweredIndex21 = loweredIndex21 + 1) {
+              var tXTRecordsValue = tXTRecordsArray2[loweredIndex21];
+              var txtRecordInstance = {};
+              propertiesInstance.txtRecords.push(txtRecordInstance);
+              
+              var valueValue = tXTRecordsValue['value'];
+              if (valueValue !== null &amp;&amp; valueValue !== undefined) {
+                var valueInstance = valueValue;
+                txtRecordInstance.value = valueInstance;
+              }
+            }
+          }
+          
+          var cNAMERecordValue2 = propertiesValue2['CNAMERecord'];
+          if (cNAMERecordValue2 !== null &amp;&amp; cNAMERecordValue2 !== undefined) {
+            var cNAMERecordInstance = {};
+            propertiesInstance.cnameRecord = cNAMERecordInstance;
+            
+            var cnameValue = cNAMERecordValue2['cname'];
+            if (cnameValue !== null &amp;&amp; cnameValue !== undefined) {
+              var cnameInstance = cnameValue;
+              cNAMERecordInstance.cname = cnameInstance;
+            }
+          }
+          
+          var sOARecordValue2 = propertiesValue2['SOARecord'];
+          if (sOARecordValue2 !== null &amp;&amp; sOARecordValue2 !== undefined) {
+            var sOARecordInstance = {};
+            propertiesInstance.soaRecord = sOARecordInstance;
+            
+            var hostValue = sOARecordValue2['host'];
+            if (hostValue !== null &amp;&amp; hostValue !== undefined) {
+              var hostInstance = hostValue;
+              sOARecordInstance.host = hostInstance;
+            }
+            
+            var emailValue = sOARecordValue2['email'];
+            if (emailValue !== null &amp;&amp; emailValue !== undefined) {
+              var emailInstance = emailValue;
+              sOARecordInstance.email = emailInstance;
+            }
+            
+            var serialNumberValue = sOARecordValue2['serialNumber'];
+            if (serialNumberValue !== null &amp;&amp; serialNumberValue !== undefined) {
+              var serialNumberInstance = serialNumberValue;
+              sOARecordInstance.serialNumber = serialNumberInstance;
+            }
+            
+            var refreshTimeValue = sOARecordValue2['refreshTime'];
+            if (refreshTimeValue !== null &amp;&amp; refreshTimeValue !== undefined) {
+              var refreshTimeInstance = refreshTimeValue;
+              sOARecordInstance.refreshTime = refreshTimeInstance;
+            }
+            
+            var retryTimeValue = sOARecordValue2['retryTime'];
+            if (retryTimeValue !== null &amp;&amp; retryTimeValue !== undefined) {
+              var retryTimeInstance = retryTimeValue;
+              sOARecordInstance.retryTime = retryTimeInstance;
+            }
+            
+            var expireTimeValue = sOARecordValue2['expireTime'];
+            if (expireTimeValue !== null &amp;&amp; expireTimeValue !== undefined) {
+              var expireTimeInstance = expireTimeValue;
+              sOARecordInstance.expireTime = expireTimeInstance;
+            }
+            
+            var minimumTTLValue = sOARecordValue2['minimumTTL'];
+            if (minimumTTLValue !== null &amp;&amp; minimumTTLValue !== undefined) {
+              var minimumTTLInstance = minimumTTLValue;
+              sOARecordInstance.minimumTtl = minimumTTLInstance;
+            }
+          }
+        }
+        
+        var idValue = responseDoc['id'];
+        if (idValue !== null &amp;&amp; idValue !== undefined) {
+          var idInstance = idValue;
+          recordSetInstance.id = idInstance;
+        }
+        
+        var nameValue = responseDoc['name'];
+        if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+          var nameInstance = nameValue;
+          recordSetInstance.name = nameInstance;
+        }
+        
+        var typeValue = responseDoc['type'];
+        if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+          var typeInstance = typeValue;
+          recordSetInstance.type = typeInstance;
+        }
+        
+        var locationValue = responseDoc['location'];
+        if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+          var locationInstance = locationValue;
+          recordSetInstance.location = locationInstance;
+        }
+        
+        var tagsSequenceElement = responseDoc['tags'];
+        if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+          for (var property in tagsSequenceElement) {
+            var tagsKey2 = property;
+            var tagsValue2 = tagsSequenceElement[property];
+            recordSetInstance.tags[tagsKey2] = tagsValue2;
+          }
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Removes a RecordSet from a DNS zone.
+   * 
+   * @param {string} resourceGroupName The name of the resource group.
+   * 
+   * @param {string} zoneName The name of the zone without a terminating dot.
+   * 
+   * @param {string} relativeRecordSetName The name of the RecordSet, relative
+   * to the name of the zone.
+   * 
+   * @param {RecordType} recordType The type of DNS record.
+   * 
+   * @param {RecordSetDeleteParameters} parameters The parameters supplied to
+   * delete a record set.
+   * 
+   * @param {string} [parameters.ifMatch] Gets or sets the If-Match
+   * pre-condition. The delete operation will be performedonly if the ETag of
+   * the zone on the server matches this value.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  RecordSetOperations.prototype.deleteMethod = function(resourceGroupName, zoneName, relativeRecordSetName, recordType, parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    if (zoneName === null || zoneName === undefined) {
+      return callback(new Error('zoneName cannot be null.'));
+    }
+    if (relativeRecordSetName === null || relativeRecordSetName === undefined) {
+      return callback(new Error('relativeRecordSetName cannot be null.'));
+    }
+    if (recordType === null || recordType === undefined) {
+      return callback(new Error('recordType cannot be null.'));
+    }
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones/';
+    url2 = url2 + encodeURIComponent(zoneName);
+    url2 = url2 + '/';
+    url2 = url2 + encodeURIComponent(recordType !== null &amp;&amp; recordType !== undefined ? recordType.toString() : 'A');
+    url2 = url2 + '/';
+    url2 = url2 + relativeRecordSetName;
+    var queryParameters = [];
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'DELETE';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    if (parameters.ifMatch !== null &amp;&amp; parameters.ifMatch !== undefined) {
+      httpRequest.headers['If-Match'] = parameters.ifMatch;
+    }
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      result = {};
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Gets a RecordSet.
+   * 
+   * @param {string} resourceGroupName The name of the resource group.
+   * 
+   * @param {string} zoneName The name of the zone without a terminating dot.
+   * 
+   * @param {string} relativeRecordSetName The name of the RecordSet, relative
+   * to the name of the zone.
+   * 
+   * @param {RecordType} recordType The type of DNS record.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  RecordSetOperations.prototype.get = function(resourceGroupName, zoneName, relativeRecordSetName, recordType, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    if (zoneName === null || zoneName === undefined) {
+      return callback(new Error('zoneName cannot be null.'));
+    }
+    if (relativeRecordSetName === null || relativeRecordSetName === undefined) {
+      return callback(new Error('relativeRecordSetName cannot be null.'));
+    }
+    if (recordType === null || recordType === undefined) {
+      return callback(new Error('recordType cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones/';
+    url2 = url2 + encodeURIComponent(zoneName);
+    url2 = url2 + '/';
+    url2 = url2 + encodeURIComponent(recordType !== null &amp;&amp; recordType !== undefined ? recordType.toString() : 'A');
+    url2 = url2 + '/';
+    url2 = url2 + relativeRecordSetName;
+    var queryParameters = [];
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var recordSetInstance = { tags: {} };
+        result.recordSet = recordSetInstance;
+        
+        var etagValue = responseDoc['etag'];
+        if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+          var etagInstance = etagValue;
+          recordSetInstance.eTag = etagInstance;
+        }
+        
+        var propertiesValue = responseDoc['properties'];
+        if (propertiesValue !== null &amp;&amp; propertiesValue !== undefined) {
+          var propertiesInstance = { aaaaRecords: [], aRecords: [], mxRecords: [], nsRecords: [], ptrRecords: [], srvRecords: [], txtRecords: [] };
+          recordSetInstance.properties = propertiesInstance;
+          
+          var tTLValue = propertiesValue['TTL'];
+          if (tTLValue !== null &amp;&amp; tTLValue !== undefined) {
+            var tTLInstance = tTLValue;
+            propertiesInstance.ttl = tTLInstance;
+          }
+          
+          var aRecordsArray = propertiesValue['ARecords'];
+          if (aRecordsArray !== null &amp;&amp; aRecordsArray !== undefined) {
+            propertiesInstance.aRecords = [];
+            for (var loweredIndex1 = 0; loweredIndex1 &lt; aRecordsArray.length; loweredIndex1 = loweredIndex1 + 1) {
+              var aRecordsValue = aRecordsArray[loweredIndex1];
+              var aRecordInstance = {};
+              propertiesInstance.aRecords.push(aRecordInstance);
+              
+              var ipv4AddressValue = aRecordsValue['ipv4Address'];
+              if (ipv4AddressValue !== null &amp;&amp; ipv4AddressValue !== undefined) {
+                var ipv4AddressInstance = ipv4AddressValue;
+                aRecordInstance.ipv4Address = ipv4AddressInstance;
+              }
+            }
+          }
+          
+          var aAAARecordsArray = propertiesValue['AAAARecords'];
+          if (aAAARecordsArray !== null &amp;&amp; aAAARecordsArray !== undefined) {
+            propertiesInstance.aaaaRecords = [];
+            for (var loweredIndex2 = 0; loweredIndex2 &lt; aAAARecordsArray.length; loweredIndex2 = loweredIndex2 + 1) {
+              var aAAARecordsValue = aAAARecordsArray[loweredIndex2];
+              var aaaaRecordInstance = {};
+              propertiesInstance.aaaaRecords.push(aaaaRecordInstance);
+              
+              var ipv6AddressValue = aAAARecordsValue['ipv6Address'];
+              if (ipv6AddressValue !== null &amp;&amp; ipv6AddressValue !== undefined) {
+                var ipv6AddressInstance = ipv6AddressValue;
+                aaaaRecordInstance.ipv6Address = ipv6AddressInstance;
+              }
+            }
+          }
+          
+          var mXRecordsArray = propertiesValue['MXRecords'];
+          if (mXRecordsArray !== null &amp;&amp; mXRecordsArray !== undefined) {
+            propertiesInstance.mxRecords = [];
+            for (var loweredIndex3 = 0; loweredIndex3 &lt; mXRecordsArray.length; loweredIndex3 = loweredIndex3 + 1) {
+              var mXRecordsValue = mXRecordsArray[loweredIndex3];
+              var mxRecordInstance = {};
+              propertiesInstance.mxRecords.push(mxRecordInstance);
+              
+              var preferenceValue = mXRecordsValue['preference'];
+              if (preferenceValue !== null &amp;&amp; preferenceValue !== undefined) {
+                var preferenceInstance = preferenceValue;
+                mxRecordInstance.preference = preferenceInstance;
+              }
+              
+              var exchangeValue = mXRecordsValue['exchange'];
+              if (exchangeValue !== null &amp;&amp; exchangeValue !== undefined) {
+                var exchangeInstance = exchangeValue;
+                mxRecordInstance.exchange = exchangeInstance;
+              }
+            }
+          }
+          
+          var nSRecordsArray = propertiesValue['NSRecords'];
+          if (nSRecordsArray !== null &amp;&amp; nSRecordsArray !== undefined) {
+            propertiesInstance.nsRecords = [];
+            for (var loweredIndex4 = 0; loweredIndex4 &lt; nSRecordsArray.length; loweredIndex4 = loweredIndex4 + 1) {
+              var nSRecordsValue = nSRecordsArray[loweredIndex4];
+              var nsRecordInstance = {};
+              propertiesInstance.nsRecords.push(nsRecordInstance);
+              
+              var nsdnameValue = nSRecordsValue['nsdname'];
+              if (nsdnameValue !== null &amp;&amp; nsdnameValue !== undefined) {
+                var nsdnameInstance = nsdnameValue;
+                nsRecordInstance.nsdname = nsdnameInstance;
+              }
+            }
+          }
+          
+          var pTRRecordsArray = propertiesValue['PTRRecords'];
+          if (pTRRecordsArray !== null &amp;&amp; pTRRecordsArray !== undefined) {
+            propertiesInstance.ptrRecords = [];
+            for (var loweredIndex5 = 0; loweredIndex5 &lt; pTRRecordsArray.length; loweredIndex5 = loweredIndex5 + 1) {
+              var pTRRecordsValue = pTRRecordsArray[loweredIndex5];
+              var ptrRecordInstance = {};
+              propertiesInstance.ptrRecords.push(ptrRecordInstance);
+              
+              var ptrdnameValue = pTRRecordsValue['ptrdname'];
+              if (ptrdnameValue !== null &amp;&amp; ptrdnameValue !== undefined) {
+                var ptrdnameInstance = ptrdnameValue;
+                ptrRecordInstance.ptrdname = ptrdnameInstance;
+              }
+            }
+          }
+          
+          var sRVRecordsArray = propertiesValue['SRVRecords'];
+          if (sRVRecordsArray !== null &amp;&amp; sRVRecordsArray !== undefined) {
+            propertiesInstance.srvRecords = [];
+            for (var loweredIndex6 = 0; loweredIndex6 &lt; sRVRecordsArray.length; loweredIndex6 = loweredIndex6 + 1) {
+              var sRVRecordsValue = sRVRecordsArray[loweredIndex6];
+              var srvRecordInstance = {};
+              propertiesInstance.srvRecords.push(srvRecordInstance);
+              
+              var priorityValue = sRVRecordsValue['priority'];
+              if (priorityValue !== null &amp;&amp; priorityValue !== undefined) {
+                var priorityInstance = priorityValue;
+                srvRecordInstance.priority = priorityInstance;
+              }
+              
+              var weightValue = sRVRecordsValue['weight'];
+              if (weightValue !== null &amp;&amp; weightValue !== undefined) {
+                var weightInstance = weightValue;
+                srvRecordInstance.weight = weightInstance;
+              }
+              
+              var portValue = sRVRecordsValue['port'];
+              if (portValue !== null &amp;&amp; portValue !== undefined) {
+                var portInstance = portValue;
+                srvRecordInstance.port = portInstance;
+              }
+              
+              var targetValue = sRVRecordsValue['target'];
+              if (targetValue !== null &amp;&amp; targetValue !== undefined) {
+                var targetInstance = targetValue;
+                srvRecordInstance.target = targetInstance;
+              }
+            }
+          }
+          
+          var tXTRecordsArray = propertiesValue['TXTRecords'];
+          if (tXTRecordsArray !== null &amp;&amp; tXTRecordsArray !== undefined) {
+            propertiesInstance.txtRecords = [];
+            for (var loweredIndex7 = 0; loweredIndex7 &lt; tXTRecordsArray.length; loweredIndex7 = loweredIndex7 + 1) {
+              var tXTRecordsValue = tXTRecordsArray[loweredIndex7];
+              var txtRecordInstance = {};
+              propertiesInstance.txtRecords.push(txtRecordInstance);
+              
+              var valueValue = tXTRecordsValue['value'];
+              if (valueValue !== null &amp;&amp; valueValue !== undefined) {
+                var valueInstance = valueValue;
+                txtRecordInstance.value = valueInstance;
+              }
+            }
+          }
+          
+          var cNAMERecordValue = propertiesValue['CNAMERecord'];
+          if (cNAMERecordValue !== null &amp;&amp; cNAMERecordValue !== undefined) {
+            var cNAMERecordInstance = {};
+            propertiesInstance.cnameRecord = cNAMERecordInstance;
+            
+            var cnameValue = cNAMERecordValue['cname'];
+            if (cnameValue !== null &amp;&amp; cnameValue !== undefined) {
+              var cnameInstance = cnameValue;
+              cNAMERecordInstance.cname = cnameInstance;
+            }
+          }
+          
+          var sOARecordValue = propertiesValue['SOARecord'];
+          if (sOARecordValue !== null &amp;&amp; sOARecordValue !== undefined) {
+            var sOARecordInstance = {};
+            propertiesInstance.soaRecord = sOARecordInstance;
+            
+            var hostValue = sOARecordValue['host'];
+            if (hostValue !== null &amp;&amp; hostValue !== undefined) {
+              var hostInstance = hostValue;
+              sOARecordInstance.host = hostInstance;
+            }
+            
+            var emailValue = sOARecordValue['email'];
+            if (emailValue !== null &amp;&amp; emailValue !== undefined) {
+              var emailInstance = emailValue;
+              sOARecordInstance.email = emailInstance;
+            }
+            
+            var serialNumberValue = sOARecordValue['serialNumber'];
+            if (serialNumberValue !== null &amp;&amp; serialNumberValue !== undefined) {
+              var serialNumberInstance = serialNumberValue;
+              sOARecordInstance.serialNumber = serialNumberInstance;
+            }
+            
+            var refreshTimeValue = sOARecordValue['refreshTime'];
+            if (refreshTimeValue !== null &amp;&amp; refreshTimeValue !== undefined) {
+              var refreshTimeInstance = refreshTimeValue;
+              sOARecordInstance.refreshTime = refreshTimeInstance;
+            }
+            
+            var retryTimeValue = sOARecordValue['retryTime'];
+            if (retryTimeValue !== null &amp;&amp; retryTimeValue !== undefined) {
+              var retryTimeInstance = retryTimeValue;
+              sOARecordInstance.retryTime = retryTimeInstance;
+            }
+            
+            var expireTimeValue = sOARecordValue['expireTime'];
+            if (expireTimeValue !== null &amp;&amp; expireTimeValue !== undefined) {
+              var expireTimeInstance = expireTimeValue;
+              sOARecordInstance.expireTime = expireTimeInstance;
+            }
+            
+            var minimumTTLValue = sOARecordValue['minimumTTL'];
+            if (minimumTTLValue !== null &amp;&amp; minimumTTLValue !== undefined) {
+              var minimumTTLInstance = minimumTTLValue;
+              sOARecordInstance.minimumTtl = minimumTTLInstance;
+            }
+          }
+        }
+        
+        var idValue = responseDoc['id'];
+        if (idValue !== null &amp;&amp; idValue !== undefined) {
+          var idInstance = idValue;
+          recordSetInstance.id = idInstance;
+        }
+        
+        var nameValue = responseDoc['name'];
+        if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+          var nameInstance = nameValue;
+          recordSetInstance.name = nameInstance;
+        }
+        
+        var typeValue = responseDoc['type'];
+        if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+          var typeInstance = typeValue;
+          recordSetInstance.type = typeInstance;
+        }
+        
+        var locationValue = responseDoc['location'];
+        if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+          var locationInstance = locationValue;
+          recordSetInstance.location = locationInstance;
+        }
+        
+        var tagsSequenceElement = responseDoc['tags'];
+        if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+          for (var property in tagsSequenceElement) {
+            var tagsKey = property;
+            var tagsValue = tagsSequenceElement[property];
+            recordSetInstance.tags[tagsKey] = tagsValue;
+          }
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Lists the RecordSets of a specified type in a DNS zone.
+   * 
+   * @param {string} resourceGroupName The name of the resource group that
+   * contains the zone.
+   * 
+   * @param {string} zoneName The name of the zone from which to enumerate
+   * RecordsSets.
+   * 
+   * @param {RecordType} [recordType] The type of record sets to enumerate.
+   * 
+   * @param {RecordSetListParameters} [parametersOrCallback] Query parameters.
+   * If null is passed returns the default number of zones.
+   * 
+   * @param {string} [parametersOrCallback.top] Gets or sets the number of
+   * elements to retrieve (first N elements).
+   * 
+   * @param {string} [parametersOrCallback.filter] Gets or sets the filter for
+   * the records enumeration.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  RecordSetOperations.prototype.list = function(resourceGroupName, zoneName, recordType, parametersOrCallback, callback) {
+    var parameters = parametersOrCallback;
+    if (_.isFunction(parameters)) {
+      callback = parameters;
+      parameters = null;
+    }
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    if (zoneName === null || zoneName === undefined) {
+      return callback(new Error('zoneName cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones/';
+    url2 = url2 + encodeURIComponent(zoneName);
+    url2 = url2 + '/';
+    if (recordType !== null &amp;&amp; recordType !== undefined) {
+      url2 = url2 + encodeURIComponent(recordType !== null &amp;&amp; recordType !== undefined ? recordType.toString() : 'A');
+    }
+    var queryParameters = [];
+    if (parameters !== null &amp;&amp; parameters !== undefined &amp;&amp; parameters.top !== null &amp;&amp; parameters.top !== undefined) {
+      queryParameters.push('$top=' + encodeURIComponent(parameters.top));
+    }
+    var odataFilter = [];
+    if (parameters !== null &amp;&amp; parameters !== undefined &amp;&amp; parameters.filter !== null &amp;&amp; parameters.filter !== undefined) {
+      odataFilter.push(encodeURIComponent(parameters.filter));
+    }
+    if (odataFilter.length > 0) {
+      queryParameters.push('$filter=' + odataFilter.join(null));
+    }
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = { recordSets: [] };
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var valueArray = responseDoc['value'];
+        if (valueArray !== null &amp;&amp; valueArray !== undefined) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var recordSetInstance = { tags: {} };
+            result.recordSets.push(recordSetInstance);
+            
+            var etagValue = valueValue['etag'];
+            if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+              var etagInstance = etagValue;
+              recordSetInstance.eTag = etagInstance;
+            }
+            
+            var propertiesValue = valueValue['properties'];
+            if (propertiesValue !== null &amp;&amp; propertiesValue !== undefined) {
+              var propertiesInstance = { aaaaRecords: [], aRecords: [], mxRecords: [], nsRecords: [], ptrRecords: [], srvRecords: [], txtRecords: [] };
+              recordSetInstance.properties = propertiesInstance;
+              
+              var tTLValue = propertiesValue['TTL'];
+              if (tTLValue !== null &amp;&amp; tTLValue !== undefined) {
+                var tTLInstance = tTLValue;
+                propertiesInstance.ttl = tTLInstance;
+              }
+              
+              var aRecordsArray = propertiesValue['ARecords'];
+              if (aRecordsArray !== null &amp;&amp; aRecordsArray !== undefined) {
+                propertiesInstance.aRecords = [];
+                for (var loweredIndex2 = 0; loweredIndex2 &lt; aRecordsArray.length; loweredIndex2 = loweredIndex2 + 1) {
+                  var aRecordsValue = aRecordsArray[loweredIndex2];
+                  var aRecordInstance = {};
+                  propertiesInstance.aRecords.push(aRecordInstance);
+                  
+                  var ipv4AddressValue = aRecordsValue['ipv4Address'];
+                  if (ipv4AddressValue !== null &amp;&amp; ipv4AddressValue !== undefined) {
+                    var ipv4AddressInstance = ipv4AddressValue;
+                    aRecordInstance.ipv4Address = ipv4AddressInstance;
+                  }
+                }
+              }
+              
+              var aAAARecordsArray = propertiesValue['AAAARecords'];
+              if (aAAARecordsArray !== null &amp;&amp; aAAARecordsArray !== undefined) {
+                propertiesInstance.aaaaRecords = [];
+                for (var loweredIndex3 = 0; loweredIndex3 &lt; aAAARecordsArray.length; loweredIndex3 = loweredIndex3 + 1) {
+                  var aAAARecordsValue = aAAARecordsArray[loweredIndex3];
+                  var aaaaRecordInstance = {};
+                  propertiesInstance.aaaaRecords.push(aaaaRecordInstance);
+                  
+                  var ipv6AddressValue = aAAARecordsValue['ipv6Address'];
+                  if (ipv6AddressValue !== null &amp;&amp; ipv6AddressValue !== undefined) {
+                    var ipv6AddressInstance = ipv6AddressValue;
+                    aaaaRecordInstance.ipv6Address = ipv6AddressInstance;
+                  }
+                }
+              }
+              
+              var mXRecordsArray = propertiesValue['MXRecords'];
+              if (mXRecordsArray !== null &amp;&amp; mXRecordsArray !== undefined) {
+                propertiesInstance.mxRecords = [];
+                for (var loweredIndex4 = 0; loweredIndex4 &lt; mXRecordsArray.length; loweredIndex4 = loweredIndex4 + 1) {
+                  var mXRecordsValue = mXRecordsArray[loweredIndex4];
+                  var mxRecordInstance = {};
+                  propertiesInstance.mxRecords.push(mxRecordInstance);
+                  
+                  var preferenceValue = mXRecordsValue['preference'];
+                  if (preferenceValue !== null &amp;&amp; preferenceValue !== undefined) {
+                    var preferenceInstance = preferenceValue;
+                    mxRecordInstance.preference = preferenceInstance;
+                  }
+                  
+                  var exchangeValue = mXRecordsValue['exchange'];
+                  if (exchangeValue !== null &amp;&amp; exchangeValue !== undefined) {
+                    var exchangeInstance = exchangeValue;
+                    mxRecordInstance.exchange = exchangeInstance;
+                  }
+                }
+              }
+              
+              var nSRecordsArray = propertiesValue['NSRecords'];
+              if (nSRecordsArray !== null &amp;&amp; nSRecordsArray !== undefined) {
+                propertiesInstance.nsRecords = [];
+                for (var loweredIndex5 = 0; loweredIndex5 &lt; nSRecordsArray.length; loweredIndex5 = loweredIndex5 + 1) {
+                  var nSRecordsValue = nSRecordsArray[loweredIndex5];
+                  var nsRecordInstance = {};
+                  propertiesInstance.nsRecords.push(nsRecordInstance);
+                  
+                  var nsdnameValue = nSRecordsValue['nsdname'];
+                  if (nsdnameValue !== null &amp;&amp; nsdnameValue !== undefined) {
+                    var nsdnameInstance = nsdnameValue;
+                    nsRecordInstance.nsdname = nsdnameInstance;
+                  }
+                }
+              }
+              
+              var pTRRecordsArray = propertiesValue['PTRRecords'];
+              if (pTRRecordsArray !== null &amp;&amp; pTRRecordsArray !== undefined) {
+                propertiesInstance.ptrRecords = [];
+                for (var loweredIndex6 = 0; loweredIndex6 &lt; pTRRecordsArray.length; loweredIndex6 = loweredIndex6 + 1) {
+                  var pTRRecordsValue = pTRRecordsArray[loweredIndex6];
+                  var ptrRecordInstance = {};
+                  propertiesInstance.ptrRecords.push(ptrRecordInstance);
+                  
+                  var ptrdnameValue = pTRRecordsValue['ptrdname'];
+                  if (ptrdnameValue !== null &amp;&amp; ptrdnameValue !== undefined) {
+                    var ptrdnameInstance = ptrdnameValue;
+                    ptrRecordInstance.ptrdname = ptrdnameInstance;
+                  }
+                }
+              }
+              
+              var sRVRecordsArray = propertiesValue['SRVRecords'];
+              if (sRVRecordsArray !== null &amp;&amp; sRVRecordsArray !== undefined) {
+                propertiesInstance.srvRecords = [];
+                for (var loweredIndex7 = 0; loweredIndex7 &lt; sRVRecordsArray.length; loweredIndex7 = loweredIndex7 + 1) {
+                  var sRVRecordsValue = sRVRecordsArray[loweredIndex7];
+                  var srvRecordInstance = {};
+                  propertiesInstance.srvRecords.push(srvRecordInstance);
+                  
+                  var priorityValue = sRVRecordsValue['priority'];
+                  if (priorityValue !== null &amp;&amp; priorityValue !== undefined) {
+                    var priorityInstance = priorityValue;
+                    srvRecordInstance.priority = priorityInstance;
+                  }
+                  
+                  var weightValue = sRVRecordsValue['weight'];
+                  if (weightValue !== null &amp;&amp; weightValue !== undefined) {
+                    var weightInstance = weightValue;
+                    srvRecordInstance.weight = weightInstance;
+                  }
+                  
+                  var portValue = sRVRecordsValue['port'];
+                  if (portValue !== null &amp;&amp; portValue !== undefined) {
+                    var portInstance = portValue;
+                    srvRecordInstance.port = portInstance;
+                  }
+                  
+                  var targetValue = sRVRecordsValue['target'];
+                  if (targetValue !== null &amp;&amp; targetValue !== undefined) {
+                    var targetInstance = targetValue;
+                    srvRecordInstance.target = targetInstance;
+                  }
+                }
+              }
+              
+              var tXTRecordsArray = propertiesValue['TXTRecords'];
+              if (tXTRecordsArray !== null &amp;&amp; tXTRecordsArray !== undefined) {
+                propertiesInstance.txtRecords = [];
+                for (var loweredIndex8 = 0; loweredIndex8 &lt; tXTRecordsArray.length; loweredIndex8 = loweredIndex8 + 1) {
+                  var tXTRecordsValue = tXTRecordsArray[loweredIndex8];
+                  var txtRecordInstance = {};
+                  propertiesInstance.txtRecords.push(txtRecordInstance);
+                  
+                  var valueValue2 = tXTRecordsValue['value'];
+                  if (valueValue2 !== null &amp;&amp; valueValue2 !== undefined) {
+                    var valueInstance = valueValue2;
+                    txtRecordInstance.value = valueInstance;
+                  }
+                }
+              }
+              
+              var cNAMERecordValue = propertiesValue['CNAMERecord'];
+              if (cNAMERecordValue !== null &amp;&amp; cNAMERecordValue !== undefined) {
+                var cNAMERecordInstance = {};
+                propertiesInstance.cnameRecord = cNAMERecordInstance;
+                
+                var cnameValue = cNAMERecordValue['cname'];
+                if (cnameValue !== null &amp;&amp; cnameValue !== undefined) {
+                  var cnameInstance = cnameValue;
+                  cNAMERecordInstance.cname = cnameInstance;
+                }
+              }
+              
+              var sOARecordValue = propertiesValue['SOARecord'];
+              if (sOARecordValue !== null &amp;&amp; sOARecordValue !== undefined) {
+                var sOARecordInstance = {};
+                propertiesInstance.soaRecord = sOARecordInstance;
+                
+                var hostValue = sOARecordValue['host'];
+                if (hostValue !== null &amp;&amp; hostValue !== undefined) {
+                  var hostInstance = hostValue;
+                  sOARecordInstance.host = hostInstance;
+                }
+                
+                var emailValue = sOARecordValue['email'];
+                if (emailValue !== null &amp;&amp; emailValue !== undefined) {
+                  var emailInstance = emailValue;
+                  sOARecordInstance.email = emailInstance;
+                }
+                
+                var serialNumberValue = sOARecordValue['serialNumber'];
+                if (serialNumberValue !== null &amp;&amp; serialNumberValue !== undefined) {
+                  var serialNumberInstance = serialNumberValue;
+                  sOARecordInstance.serialNumber = serialNumberInstance;
+                }
+                
+                var refreshTimeValue = sOARecordValue['refreshTime'];
+                if (refreshTimeValue !== null &amp;&amp; refreshTimeValue !== undefined) {
+                  var refreshTimeInstance = refreshTimeValue;
+                  sOARecordInstance.refreshTime = refreshTimeInstance;
+                }
+                
+                var retryTimeValue = sOARecordValue['retryTime'];
+                if (retryTimeValue !== null &amp;&amp; retryTimeValue !== undefined) {
+                  var retryTimeInstance = retryTimeValue;
+                  sOARecordInstance.retryTime = retryTimeInstance;
+                }
+                
+                var expireTimeValue = sOARecordValue['expireTime'];
+                if (expireTimeValue !== null &amp;&amp; expireTimeValue !== undefined) {
+                  var expireTimeInstance = expireTimeValue;
+                  sOARecordInstance.expireTime = expireTimeInstance;
+                }
+                
+                var minimumTTLValue = sOARecordValue['minimumTTL'];
+                if (minimumTTLValue !== null &amp;&amp; minimumTTLValue !== undefined) {
+                  var minimumTTLInstance = minimumTTLValue;
+                  sOARecordInstance.minimumTtl = minimumTTLInstance;
+                }
+              }
+            }
+            
+            var idValue = valueValue['id'];
+            if (idValue !== null &amp;&amp; idValue !== undefined) {
+              var idInstance = idValue;
+              recordSetInstance.id = idInstance;
+            }
+            
+            var nameValue = valueValue['name'];
+            if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+              var nameInstance = nameValue;
+              recordSetInstance.name = nameInstance;
+            }
+            
+            var typeValue = valueValue['type'];
+            if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+              var typeInstance = typeValue;
+              recordSetInstance.type = typeInstance;
+            }
+            
+            var locationValue = valueValue['location'];
+            if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+              var locationInstance = locationValue;
+              recordSetInstance.location = locationInstance;
+            }
+            
+            var tagsSequenceElement = valueValue['tags'];
+            if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+              for (var property in tagsSequenceElement) {
+                var tagsKey = property;
+                var tagsValue = tagsSequenceElement[property];
+                recordSetInstance.tags[tagsKey] = tagsValue;
+              }
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue !== null &amp;&amp; nextLinkValue !== undefined) {
+          var nextLinkInstance = nextLinkValue;
+          result.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Lists all RecordSets in a DNS zone.
+   * 
+   * @param {string} resourceGroupName The name of the resource group that
+   * contains the zone.
+   * 
+   * @param {string} zoneName The name of the zone from which to enumerate
+   * RecordSets.
+   * 
+   * @param {RecordSetListParameters} [parametersOrCallback] Query parameters.
+   * If null is passed returns the default number of zones.
+   * 
+   * @param {string} [parametersOrCallback.top] Gets or sets the number of
+   * elements to retrieve (first N elements).
+   * 
+   * @param {string} [parametersOrCallback.filter] Gets or sets the filter for
+   * the records enumeration.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  RecordSetOperations.prototype.listAll = function(resourceGroupName, zoneName, parametersOrCallback, callback) {
+    var parameters = parametersOrCallback;
+    if (_.isFunction(parameters)) {
+      callback = parameters;
+      parameters = null;
+    }
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    if (zoneName === null || zoneName === undefined) {
+      return callback(new Error('zoneName cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones/';
+    url2 = url2 + encodeURIComponent(zoneName);
+    url2 = url2 + '/recordsets';
+    var queryParameters = [];
+    if (parameters !== null &amp;&amp; parameters !== undefined &amp;&amp; parameters.top !== null &amp;&amp; parameters.top !== undefined) {
+      queryParameters.push('$top=' + encodeURIComponent(parameters.top));
+    }
+    var odataFilter = [];
+    if (parameters !== null &amp;&amp; parameters !== undefined &amp;&amp; parameters.filter !== null &amp;&amp; parameters.filter !== undefined) {
+      odataFilter.push(encodeURIComponent(parameters.filter));
+    }
+    if (odataFilter.length > 0) {
+      queryParameters.push('$filter=' + odataFilter.join(null));
+    }
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = { recordSets: [] };
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var valueArray = responseDoc['value'];
+        if (valueArray !== null &amp;&amp; valueArray !== undefined) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var recordSetInstance = { tags: {} };
+            result.recordSets.push(recordSetInstance);
+            
+            var etagValue = valueValue['etag'];
+            if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+              var etagInstance = etagValue;
+              recordSetInstance.eTag = etagInstance;
+            }
+            
+            var propertiesValue = valueValue['properties'];
+            if (propertiesValue !== null &amp;&amp; propertiesValue !== undefined) {
+              var propertiesInstance = { aaaaRecords: [], aRecords: [], mxRecords: [], nsRecords: [], ptrRecords: [], srvRecords: [], txtRecords: [] };
+              recordSetInstance.properties = propertiesInstance;
+              
+              var tTLValue = propertiesValue['TTL'];
+              if (tTLValue !== null &amp;&amp; tTLValue !== undefined) {
+                var tTLInstance = tTLValue;
+                propertiesInstance.ttl = tTLInstance;
+              }
+              
+              var aRecordsArray = propertiesValue['ARecords'];
+              if (aRecordsArray !== null &amp;&amp; aRecordsArray !== undefined) {
+                propertiesInstance.aRecords = [];
+                for (var loweredIndex2 = 0; loweredIndex2 &lt; aRecordsArray.length; loweredIndex2 = loweredIndex2 + 1) {
+                  var aRecordsValue = aRecordsArray[loweredIndex2];
+                  var aRecordInstance = {};
+                  propertiesInstance.aRecords.push(aRecordInstance);
+                  
+                  var ipv4AddressValue = aRecordsValue['ipv4Address'];
+                  if (ipv4AddressValue !== null &amp;&amp; ipv4AddressValue !== undefined) {
+                    var ipv4AddressInstance = ipv4AddressValue;
+                    aRecordInstance.ipv4Address = ipv4AddressInstance;
+                  }
+                }
+              }
+              
+              var aAAARecordsArray = propertiesValue['AAAARecords'];
+              if (aAAARecordsArray !== null &amp;&amp; aAAARecordsArray !== undefined) {
+                propertiesInstance.aaaaRecords = [];
+                for (var loweredIndex3 = 0; loweredIndex3 &lt; aAAARecordsArray.length; loweredIndex3 = loweredIndex3 + 1) {
+                  var aAAARecordsValue = aAAARecordsArray[loweredIndex3];
+                  var aaaaRecordInstance = {};
+                  propertiesInstance.aaaaRecords.push(aaaaRecordInstance);
+                  
+                  var ipv6AddressValue = aAAARecordsValue['ipv6Address'];
+                  if (ipv6AddressValue !== null &amp;&amp; ipv6AddressValue !== undefined) {
+                    var ipv6AddressInstance = ipv6AddressValue;
+                    aaaaRecordInstance.ipv6Address = ipv6AddressInstance;
+                  }
+                }
+              }
+              
+              var mXRecordsArray = propertiesValue['MXRecords'];
+              if (mXRecordsArray !== null &amp;&amp; mXRecordsArray !== undefined) {
+                propertiesInstance.mxRecords = [];
+                for (var loweredIndex4 = 0; loweredIndex4 &lt; mXRecordsArray.length; loweredIndex4 = loweredIndex4 + 1) {
+                  var mXRecordsValue = mXRecordsArray[loweredIndex4];
+                  var mxRecordInstance = {};
+                  propertiesInstance.mxRecords.push(mxRecordInstance);
+                  
+                  var preferenceValue = mXRecordsValue['preference'];
+                  if (preferenceValue !== null &amp;&amp; preferenceValue !== undefined) {
+                    var preferenceInstance = preferenceValue;
+                    mxRecordInstance.preference = preferenceInstance;
+                  }
+                  
+                  var exchangeValue = mXRecordsValue['exchange'];
+                  if (exchangeValue !== null &amp;&amp; exchangeValue !== undefined) {
+                    var exchangeInstance = exchangeValue;
+                    mxRecordInstance.exchange = exchangeInstance;
+                  }
+                }
+              }
+              
+              var nSRecordsArray = propertiesValue['NSRecords'];
+              if (nSRecordsArray !== null &amp;&amp; nSRecordsArray !== undefined) {
+                propertiesInstance.nsRecords = [];
+                for (var loweredIndex5 = 0; loweredIndex5 &lt; nSRecordsArray.length; loweredIndex5 = loweredIndex5 + 1) {
+                  var nSRecordsValue = nSRecordsArray[loweredIndex5];
+                  var nsRecordInstance = {};
+                  propertiesInstance.nsRecords.push(nsRecordInstance);
+                  
+                  var nsdnameValue = nSRecordsValue['nsdname'];
+                  if (nsdnameValue !== null &amp;&amp; nsdnameValue !== undefined) {
+                    var nsdnameInstance = nsdnameValue;
+                    nsRecordInstance.nsdname = nsdnameInstance;
+                  }
+                }
+              }
+              
+              var pTRRecordsArray = propertiesValue['PTRRecords'];
+              if (pTRRecordsArray !== null &amp;&amp; pTRRecordsArray !== undefined) {
+                propertiesInstance.ptrRecords = [];
+                for (var loweredIndex6 = 0; loweredIndex6 &lt; pTRRecordsArray.length; loweredIndex6 = loweredIndex6 + 1) {
+                  var pTRRecordsValue = pTRRecordsArray[loweredIndex6];
+                  var ptrRecordInstance = {};
+                  propertiesInstance.ptrRecords.push(ptrRecordInstance);
+                  
+                  var ptrdnameValue = pTRRecordsValue['ptrdname'];
+                  if (ptrdnameValue !== null &amp;&amp; ptrdnameValue !== undefined) {
+                    var ptrdnameInstance = ptrdnameValue;
+                    ptrRecordInstance.ptrdname = ptrdnameInstance;
+                  }
+                }
+              }
+              
+              var sRVRecordsArray = propertiesValue['SRVRecords'];
+              if (sRVRecordsArray !== null &amp;&amp; sRVRecordsArray !== undefined) {
+                propertiesInstance.srvRecords = [];
+                for (var loweredIndex7 = 0; loweredIndex7 &lt; sRVRecordsArray.length; loweredIndex7 = loweredIndex7 + 1) {
+                  var sRVRecordsValue = sRVRecordsArray[loweredIndex7];
+                  var srvRecordInstance = {};
+                  propertiesInstance.srvRecords.push(srvRecordInstance);
+                  
+                  var priorityValue = sRVRecordsValue['priority'];
+                  if (priorityValue !== null &amp;&amp; priorityValue !== undefined) {
+                    var priorityInstance = priorityValue;
+                    srvRecordInstance.priority = priorityInstance;
+                  }
+                  
+                  var weightValue = sRVRecordsValue['weight'];
+                  if (weightValue !== null &amp;&amp; weightValue !== undefined) {
+                    var weightInstance = weightValue;
+                    srvRecordInstance.weight = weightInstance;
+                  }
+                  
+                  var portValue = sRVRecordsValue['port'];
+                  if (portValue !== null &amp;&amp; portValue !== undefined) {
+                    var portInstance = portValue;
+                    srvRecordInstance.port = portInstance;
+                  }
+                  
+                  var targetValue = sRVRecordsValue['target'];
+                  if (targetValue !== null &amp;&amp; targetValue !== undefined) {
+                    var targetInstance = targetValue;
+                    srvRecordInstance.target = targetInstance;
+                  }
+                }
+              }
+              
+              var tXTRecordsArray = propertiesValue['TXTRecords'];
+              if (tXTRecordsArray !== null &amp;&amp; tXTRecordsArray !== undefined) {
+                propertiesInstance.txtRecords = [];
+                for (var loweredIndex8 = 0; loweredIndex8 &lt; tXTRecordsArray.length; loweredIndex8 = loweredIndex8 + 1) {
+                  var tXTRecordsValue = tXTRecordsArray[loweredIndex8];
+                  var txtRecordInstance = {};
+                  propertiesInstance.txtRecords.push(txtRecordInstance);
+                  
+                  var valueValue2 = tXTRecordsValue['value'];
+                  if (valueValue2 !== null &amp;&amp; valueValue2 !== undefined) {
+                    var valueInstance = valueValue2;
+                    txtRecordInstance.value = valueInstance;
+                  }
+                }
+              }
+              
+              var cNAMERecordValue = propertiesValue['CNAMERecord'];
+              if (cNAMERecordValue !== null &amp;&amp; cNAMERecordValue !== undefined) {
+                var cNAMERecordInstance = {};
+                propertiesInstance.cnameRecord = cNAMERecordInstance;
+                
+                var cnameValue = cNAMERecordValue['cname'];
+                if (cnameValue !== null &amp;&amp; cnameValue !== undefined) {
+                  var cnameInstance = cnameValue;
+                  cNAMERecordInstance.cname = cnameInstance;
+                }
+              }
+              
+              var sOARecordValue = propertiesValue['SOARecord'];
+              if (sOARecordValue !== null &amp;&amp; sOARecordValue !== undefined) {
+                var sOARecordInstance = {};
+                propertiesInstance.soaRecord = sOARecordInstance;
+                
+                var hostValue = sOARecordValue['host'];
+                if (hostValue !== null &amp;&amp; hostValue !== undefined) {
+                  var hostInstance = hostValue;
+                  sOARecordInstance.host = hostInstance;
+                }
+                
+                var emailValue = sOARecordValue['email'];
+                if (emailValue !== null &amp;&amp; emailValue !== undefined) {
+                  var emailInstance = emailValue;
+                  sOARecordInstance.email = emailInstance;
+                }
+                
+                var serialNumberValue = sOARecordValue['serialNumber'];
+                if (serialNumberValue !== null &amp;&amp; serialNumberValue !== undefined) {
+                  var serialNumberInstance = serialNumberValue;
+                  sOARecordInstance.serialNumber = serialNumberInstance;
+                }
+                
+                var refreshTimeValue = sOARecordValue['refreshTime'];
+                if (refreshTimeValue !== null &amp;&amp; refreshTimeValue !== undefined) {
+                  var refreshTimeInstance = refreshTimeValue;
+                  sOARecordInstance.refreshTime = refreshTimeInstance;
+                }
+                
+                var retryTimeValue = sOARecordValue['retryTime'];
+                if (retryTimeValue !== null &amp;&amp; retryTimeValue !== undefined) {
+                  var retryTimeInstance = retryTimeValue;
+                  sOARecordInstance.retryTime = retryTimeInstance;
+                }
+                
+                var expireTimeValue = sOARecordValue['expireTime'];
+                if (expireTimeValue !== null &amp;&amp; expireTimeValue !== undefined) {
+                  var expireTimeInstance = expireTimeValue;
+                  sOARecordInstance.expireTime = expireTimeInstance;
+                }
+                
+                var minimumTTLValue = sOARecordValue['minimumTTL'];
+                if (minimumTTLValue !== null &amp;&amp; minimumTTLValue !== undefined) {
+                  var minimumTTLInstance = minimumTTLValue;
+                  sOARecordInstance.minimumTtl = minimumTTLInstance;
+                }
+              }
+            }
+            
+            var idValue = valueValue['id'];
+            if (idValue !== null &amp;&amp; idValue !== undefined) {
+              var idInstance = idValue;
+              recordSetInstance.id = idInstance;
+            }
+            
+            var nameValue = valueValue['name'];
+            if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+              var nameInstance = nameValue;
+              recordSetInstance.name = nameInstance;
+            }
+            
+            var typeValue = valueValue['type'];
+            if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+              var typeInstance = typeValue;
+              recordSetInstance.type = typeInstance;
+            }
+            
+            var locationValue = valueValue['location'];
+            if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+              var locationInstance = locationValue;
+              recordSetInstance.location = locationInstance;
+            }
+            
+            var tagsSequenceElement = valueValue['tags'];
+            if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+              for (var property in tagsSequenceElement) {
+                var tagsKey = property;
+                var tagsValue = tagsSequenceElement[property];
+                recordSetInstance.tags[tagsKey] = tagsValue;
+              }
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue !== null &amp;&amp; nextLinkValue !== undefined) {
+          var nextLinkInstance = nextLinkValue;
+          result.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Lists RecordSets in a DNS zone. Depending on the previous call, it will
+   * list all types or by type.
+   * 
+   * @param {string} nextLink NextLink from the previous successful call to
+   * List operation.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  RecordSetOperations.prototype.listNext = function(nextLink, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (nextLink === null || nextLink === undefined) {
+      return callback(new Error('nextLink cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + nextLink;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = { recordSets: [] };
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var valueArray = responseDoc['value'];
+        if (valueArray !== null &amp;&amp; valueArray !== undefined) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var recordSetInstance = { tags: {} };
+            result.recordSets.push(recordSetInstance);
+            
+            var etagValue = valueValue['etag'];
+            if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+              var etagInstance = etagValue;
+              recordSetInstance.eTag = etagInstance;
+            }
+            
+            var propertiesValue = valueValue['properties'];
+            if (propertiesValue !== null &amp;&amp; propertiesValue !== undefined) {
+              var propertiesInstance = { aaaaRecords: [], aRecords: [], mxRecords: [], nsRecords: [], ptrRecords: [], srvRecords: [], txtRecords: [] };
+              recordSetInstance.properties = propertiesInstance;
+              
+              var tTLValue = propertiesValue['TTL'];
+              if (tTLValue !== null &amp;&amp; tTLValue !== undefined) {
+                var tTLInstance = tTLValue;
+                propertiesInstance.ttl = tTLInstance;
+              }
+              
+              var aRecordsArray = propertiesValue['ARecords'];
+              if (aRecordsArray !== null &amp;&amp; aRecordsArray !== undefined) {
+                propertiesInstance.aRecords = [];
+                for (var loweredIndex2 = 0; loweredIndex2 &lt; aRecordsArray.length; loweredIndex2 = loweredIndex2 + 1) {
+                  var aRecordsValue = aRecordsArray[loweredIndex2];
+                  var aRecordInstance = {};
+                  propertiesInstance.aRecords.push(aRecordInstance);
+                  
+                  var ipv4AddressValue = aRecordsValue['ipv4Address'];
+                  if (ipv4AddressValue !== null &amp;&amp; ipv4AddressValue !== undefined) {
+                    var ipv4AddressInstance = ipv4AddressValue;
+                    aRecordInstance.ipv4Address = ipv4AddressInstance;
+                  }
+                }
+              }
+              
+              var aAAARecordsArray = propertiesValue['AAAARecords'];
+              if (aAAARecordsArray !== null &amp;&amp; aAAARecordsArray !== undefined) {
+                propertiesInstance.aaaaRecords = [];
+                for (var loweredIndex3 = 0; loweredIndex3 &lt; aAAARecordsArray.length; loweredIndex3 = loweredIndex3 + 1) {
+                  var aAAARecordsValue = aAAARecordsArray[loweredIndex3];
+                  var aaaaRecordInstance = {};
+                  propertiesInstance.aaaaRecords.push(aaaaRecordInstance);
+                  
+                  var ipv6AddressValue = aAAARecordsValue['ipv6Address'];
+                  if (ipv6AddressValue !== null &amp;&amp; ipv6AddressValue !== undefined) {
+                    var ipv6AddressInstance = ipv6AddressValue;
+                    aaaaRecordInstance.ipv6Address = ipv6AddressInstance;
+                  }
+                }
+              }
+              
+              var mXRecordsArray = propertiesValue['MXRecords'];
+              if (mXRecordsArray !== null &amp;&amp; mXRecordsArray !== undefined) {
+                propertiesInstance.mxRecords = [];
+                for (var loweredIndex4 = 0; loweredIndex4 &lt; mXRecordsArray.length; loweredIndex4 = loweredIndex4 + 1) {
+                  var mXRecordsValue = mXRecordsArray[loweredIndex4];
+                  var mxRecordInstance = {};
+                  propertiesInstance.mxRecords.push(mxRecordInstance);
+                  
+                  var preferenceValue = mXRecordsValue['preference'];
+                  if (preferenceValue !== null &amp;&amp; preferenceValue !== undefined) {
+                    var preferenceInstance = preferenceValue;
+                    mxRecordInstance.preference = preferenceInstance;
+                  }
+                  
+                  var exchangeValue = mXRecordsValue['exchange'];
+                  if (exchangeValue !== null &amp;&amp; exchangeValue !== undefined) {
+                    var exchangeInstance = exchangeValue;
+                    mxRecordInstance.exchange = exchangeInstance;
+                  }
+                }
+              }
+              
+              var nSRecordsArray = propertiesValue['NSRecords'];
+              if (nSRecordsArray !== null &amp;&amp; nSRecordsArray !== undefined) {
+                propertiesInstance.nsRecords = [];
+                for (var loweredIndex5 = 0; loweredIndex5 &lt; nSRecordsArray.length; loweredIndex5 = loweredIndex5 + 1) {
+                  var nSRecordsValue = nSRecordsArray[loweredIndex5];
+                  var nsRecordInstance = {};
+                  propertiesInstance.nsRecords.push(nsRecordInstance);
+                  
+                  var nsdnameValue = nSRecordsValue['nsdname'];
+                  if (nsdnameValue !== null &amp;&amp; nsdnameValue !== undefined) {
+                    var nsdnameInstance = nsdnameValue;
+                    nsRecordInstance.nsdname = nsdnameInstance;
+                  }
+                }
+              }
+              
+              var pTRRecordsArray = propertiesValue['PTRRecords'];
+              if (pTRRecordsArray !== null &amp;&amp; pTRRecordsArray !== undefined) {
+                propertiesInstance.ptrRecords = [];
+                for (var loweredIndex6 = 0; loweredIndex6 &lt; pTRRecordsArray.length; loweredIndex6 = loweredIndex6 + 1) {
+                  var pTRRecordsValue = pTRRecordsArray[loweredIndex6];
+                  var ptrRecordInstance = {};
+                  propertiesInstance.ptrRecords.push(ptrRecordInstance);
+                  
+                  var ptrdnameValue = pTRRecordsValue['ptrdname'];
+                  if (ptrdnameValue !== null &amp;&amp; ptrdnameValue !== undefined) {
+                    var ptrdnameInstance = ptrdnameValue;
+                    ptrRecordInstance.ptrdname = ptrdnameInstance;
+                  }
+                }
+              }
+              
+              var sRVRecordsArray = propertiesValue['SRVRecords'];
+              if (sRVRecordsArray !== null &amp;&amp; sRVRecordsArray !== undefined) {
+                propertiesInstance.srvRecords = [];
+                for (var loweredIndex7 = 0; loweredIndex7 &lt; sRVRecordsArray.length; loweredIndex7 = loweredIndex7 + 1) {
+                  var sRVRecordsValue = sRVRecordsArray[loweredIndex7];
+                  var srvRecordInstance = {};
+                  propertiesInstance.srvRecords.push(srvRecordInstance);
+                  
+                  var priorityValue = sRVRecordsValue['priority'];
+                  if (priorityValue !== null &amp;&amp; priorityValue !== undefined) {
+                    var priorityInstance = priorityValue;
+                    srvRecordInstance.priority = priorityInstance;
+                  }
+                  
+                  var weightValue = sRVRecordsValue['weight'];
+                  if (weightValue !== null &amp;&amp; weightValue !== undefined) {
+                    var weightInstance = weightValue;
+                    srvRecordInstance.weight = weightInstance;
+                  }
+                  
+                  var portValue = sRVRecordsValue['port'];
+                  if (portValue !== null &amp;&amp; portValue !== undefined) {
+                    var portInstance = portValue;
+                    srvRecordInstance.port = portInstance;
+                  }
+                  
+                  var targetValue = sRVRecordsValue['target'];
+                  if (targetValue !== null &amp;&amp; targetValue !== undefined) {
+                    var targetInstance = targetValue;
+                    srvRecordInstance.target = targetInstance;
+                  }
+                }
+              }
+              
+              var tXTRecordsArray = propertiesValue['TXTRecords'];
+              if (tXTRecordsArray !== null &amp;&amp; tXTRecordsArray !== undefined) {
+                propertiesInstance.txtRecords = [];
+                for (var loweredIndex8 = 0; loweredIndex8 &lt; tXTRecordsArray.length; loweredIndex8 = loweredIndex8 + 1) {
+                  var tXTRecordsValue = tXTRecordsArray[loweredIndex8];
+                  var txtRecordInstance = {};
+                  propertiesInstance.txtRecords.push(txtRecordInstance);
+                  
+                  var valueValue2 = tXTRecordsValue['value'];
+                  if (valueValue2 !== null &amp;&amp; valueValue2 !== undefined) {
+                    var valueInstance = valueValue2;
+                    txtRecordInstance.value = valueInstance;
+                  }
+                }
+              }
+              
+              var cNAMERecordValue = propertiesValue['CNAMERecord'];
+              if (cNAMERecordValue !== null &amp;&amp; cNAMERecordValue !== undefined) {
+                var cNAMERecordInstance = {};
+                propertiesInstance.cnameRecord = cNAMERecordInstance;
+                
+                var cnameValue = cNAMERecordValue['cname'];
+                if (cnameValue !== null &amp;&amp; cnameValue !== undefined) {
+                  var cnameInstance = cnameValue;
+                  cNAMERecordInstance.cname = cnameInstance;
+                }
+              }
+              
+              var sOARecordValue = propertiesValue['SOARecord'];
+              if (sOARecordValue !== null &amp;&amp; sOARecordValue !== undefined) {
+                var sOARecordInstance = {};
+                propertiesInstance.soaRecord = sOARecordInstance;
+                
+                var hostValue = sOARecordValue['host'];
+                if (hostValue !== null &amp;&amp; hostValue !== undefined) {
+                  var hostInstance = hostValue;
+                  sOARecordInstance.host = hostInstance;
+                }
+                
+                var emailValue = sOARecordValue['email'];
+                if (emailValue !== null &amp;&amp; emailValue !== undefined) {
+                  var emailInstance = emailValue;
+                  sOARecordInstance.email = emailInstance;
+                }
+                
+                var serialNumberValue = sOARecordValue['serialNumber'];
+                if (serialNumberValue !== null &amp;&amp; serialNumberValue !== undefined) {
+                  var serialNumberInstance = serialNumberValue;
+                  sOARecordInstance.serialNumber = serialNumberInstance;
+                }
+                
+                var refreshTimeValue = sOARecordValue['refreshTime'];
+                if (refreshTimeValue !== null &amp;&amp; refreshTimeValue !== undefined) {
+                  var refreshTimeInstance = refreshTimeValue;
+                  sOARecordInstance.refreshTime = refreshTimeInstance;
+                }
+                
+                var retryTimeValue = sOARecordValue['retryTime'];
+                if (retryTimeValue !== null &amp;&amp; retryTimeValue !== undefined) {
+                  var retryTimeInstance = retryTimeValue;
+                  sOARecordInstance.retryTime = retryTimeInstance;
+                }
+                
+                var expireTimeValue = sOARecordValue['expireTime'];
+                if (expireTimeValue !== null &amp;&amp; expireTimeValue !== undefined) {
+                  var expireTimeInstance = expireTimeValue;
+                  sOARecordInstance.expireTime = expireTimeInstance;
+                }
+                
+                var minimumTTLValue = sOARecordValue['minimumTTL'];
+                if (minimumTTLValue !== null &amp;&amp; minimumTTLValue !== undefined) {
+                  var minimumTTLInstance = minimumTTLValue;
+                  sOARecordInstance.minimumTtl = minimumTTLInstance;
+                }
+              }
+            }
+            
+            var idValue = valueValue['id'];
+            if (idValue !== null &amp;&amp; idValue !== undefined) {
+              var idInstance = idValue;
+              recordSetInstance.id = idInstance;
+            }
+            
+            var nameValue = valueValue['name'];
+            if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+              var nameInstance = nameValue;
+              recordSetInstance.name = nameInstance;
+            }
+            
+            var typeValue = valueValue['type'];
+            if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+              var typeInstance = typeValue;
+              recordSetInstance.type = typeInstance;
+            }
+            
+            var locationValue = valueValue['location'];
+            if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+              var locationInstance = locationValue;
+              recordSetInstance.location = locationInstance;
+            }
+            
+            var tagsSequenceElement = valueValue['tags'];
+            if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+              for (var property in tagsSequenceElement) {
+                var tagsKey = property;
+                var tagsValue = tagsSequenceElement[property];
+                recordSetInstance.tags[tagsKey] = tagsValue;
+              }
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue !== null &amp;&amp; nextLinkValue !== undefined) {
+          var nextLinkInstance = nextLinkValue;
+          result.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  return RecordSetOperations;
+})();
+
+var ZoneOperations = ( /** @lends ZoneOperations */ function() {
+  /**
+   * @class
+   * Operations for managing DNS zones.
+   * __NOTE__: An instance of this class is automatically created for an
+   * instance of the [DnsManagementClient] {@link
+   * DnsManagementClient~DnsManagementClient}.
+   * See [zones] {@link DnsManagementClient~DnsManagementClient#zones}.
+   * Initializes a new instance of the ZoneOperations class.
+   * @constructor
+   * 
+   * @param {DnsManagementClient} client Reference to the service client.
+   */
+  function ZoneOperations(client) {
+    this.client = client;
+  }
+  
+  /**
+   * Creates a DNS zone within a resource group.
+   * 
+   * @param {string} resourceGroupName The name of the resource group.
+   * 
+   * @param {string} zoneName The name of the zone without a terminating dot.
+   * 
+   * @param {ZoneCreateOrUpdateParameters} parameters Parameters supplied to
+   * the CreateOrUpdate operation.
+   * 
+   * @param {Zone} parameters.zone Gets or sets information about the zone
+   * being created or updated.
+   * 
+   * @param {string} [parameters.zone.eTag] Gets or sets the ETag of the zone
+   * that is being updated, as received from a Get operation.
+   * 
+   * @param {ZoneProperties} [parameters.zone.properties] Gets or sets the
+   * properties of the zone.
+   * 
+   * @param {number} [parameters.zone.properties.maxNumberOfRecordSets] Gets or
+   * sets the maximum number of record sets that can be created in this zone.
+   * 
+   * @param {number} [parameters.zone.properties.numberOfRecordSets] Gets or
+   * sets the current number of record sets in this zone.
+   * 
+   * @param {string} [parameters.zone.id] Gets or sets the ID of the resource.
+   * 
+   * @param {string} [parameters.zone.name] Gets or sets the name of the
+   * resource.
+   * 
+   * @param {string} [parameters.zone.type] Gets or sets the type of the
+   * resource.
+   * 
+   * @param {string} parameters.zone.location Gets or sets the location of the
+   * resource.
+   * 
+   * @param {object} [parameters.zone.tags] Gets or sets the tags attached to
+   * the resource.
+   * 
+   * @param {string} [parameters.ifNoneMatch] Gets or sets the If-None-Match
+   * precondition. Set to '*' to force Create-If-Not-Exist. Other values will
+   * be ignored.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  ZoneOperations.prototype.createOrUpdate = function(resourceGroupName, zoneName, parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    if (zoneName === null || zoneName === undefined) {
+      return callback(new Error('zoneName cannot be null.'));
+    }
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.zone === null || parameters.zone === undefined) {
+      return callback(new Error('parameters.zone cannot be null.'));
+    }
+    if (parameters.zone.location === null || parameters.zone.location === undefined) {
+      return callback(new Error('parameters.zone.location cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones/';
+    url2 = url2 + encodeURIComponent(zoneName);
+    var queryParameters = [];
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'PUT';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    if (parameters.zone.eTag !== null &amp;&amp; parameters.zone.eTag !== undefined) {
+      httpRequest.headers['If-Match'] = parameters.zone.eTag;
+    }
+    if (parameters.ifNoneMatch !== null &amp;&amp; parameters.ifNoneMatch !== undefined) {
+      httpRequest.headers['If-None-Match'] = parameters.ifNoneMatch;
+    }
+    
+    // Serialize Request
+    var requestContent = null;
+    var requestDoc = null;
+    
+    var zoneCreateOrUpdateParametersValue = {};
+    requestDoc = zoneCreateOrUpdateParametersValue;
+    
+    if (parameters.zone.eTag !== null &amp;&amp; parameters.zone.eTag !== undefined) {
+      zoneCreateOrUpdateParametersValue['etag'] = parameters.zone.eTag;
+    }
+    
+    if (parameters.zone.properties !== null &amp;&amp; parameters.zone.properties !== undefined) {
+      var propertiesValue = {};
+      zoneCreateOrUpdateParametersValue['properties'] = propertiesValue;
+      
+      if (parameters.zone.properties.maxNumberOfRecordSets !== null &amp;&amp; parameters.zone.properties.maxNumberOfRecordSets !== undefined) {
+        propertiesValue['maxNumberOfRecordSets'] = parameters.zone.properties.maxNumberOfRecordSets;
+      }
+      
+      if (parameters.zone.properties.numberOfRecordSets !== null &amp;&amp; parameters.zone.properties.numberOfRecordSets !== undefined) {
+        propertiesValue['numberOfRecordSets'] = parameters.zone.properties.numberOfRecordSets;
+      }
+    }
+    
+    if (parameters.zone.id !== null &amp;&amp; parameters.zone.id !== undefined) {
+      zoneCreateOrUpdateParametersValue['id'] = parameters.zone.id;
+    }
+    
+    if (parameters.zone.name !== null &amp;&amp; parameters.zone.name !== undefined) {
+      zoneCreateOrUpdateParametersValue['name'] = parameters.zone.name;
+    }
+    
+    if (parameters.zone.type !== null &amp;&amp; parameters.zone.type !== undefined) {
+      zoneCreateOrUpdateParametersValue['type'] = parameters.zone.type;
+    }
+    
+    zoneCreateOrUpdateParametersValue['location'] = parameters.zone.location;
+    
+    if (parameters.zone.tags !== null &amp;&amp; parameters.zone.tags !== undefined) {
+      var tagsDictionary = {};
+      for (var tagsKey in parameters.zone.tags) {
+        var tagsValue = parameters.zone.tags[tagsKey];
+        tagsDictionary[tagsKey] = tagsValue;
+      }
+      zoneCreateOrUpdateParametersValue['tags'] = tagsDictionary;
+    }
+    
+    requestContent = JSON.stringify(requestDoc);
+    httpRequest.body = requestContent;
+    httpRequest.headers['Content-Length'] = Buffer.isBuffer(requestContent) ? requestContent.length : Buffer.byteLength(requestContent, 'UTF8');
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var zoneInstance = { tags: {} };
+        result.zone = zoneInstance;
+        
+        var etagValue = responseDoc['etag'];
+        if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+          var etagInstance = etagValue;
+          zoneInstance.eTag = etagInstance;
+        }
+        
+        var propertiesValue2 = responseDoc['properties'];
+        if (propertiesValue2 !== null &amp;&amp; propertiesValue2 !== undefined) {
+          var propertiesInstance = {};
+          zoneInstance.properties = propertiesInstance;
+          
+          var maxNumberOfRecordSetsValue = propertiesValue2['maxNumberOfRecordSets'];
+          if (maxNumberOfRecordSetsValue !== null &amp;&amp; maxNumberOfRecordSetsValue !== undefined) {
+            var maxNumberOfRecordSetsInstance = maxNumberOfRecordSetsValue;
+            propertiesInstance.maxNumberOfRecordSets = maxNumberOfRecordSetsInstance;
+          }
+          
+          var numberOfRecordSetsValue = propertiesValue2['numberOfRecordSets'];
+          if (numberOfRecordSetsValue !== null &amp;&amp; numberOfRecordSetsValue !== undefined) {
+            var numberOfRecordSetsInstance = numberOfRecordSetsValue;
+            propertiesInstance.numberOfRecordSets = numberOfRecordSetsInstance;
+          }
+        }
+        
+        var idValue = responseDoc['id'];
+        if (idValue !== null &amp;&amp; idValue !== undefined) {
+          var idInstance = idValue;
+          zoneInstance.id = idInstance;
+        }
+        
+        var nameValue = responseDoc['name'];
+        if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+          var nameInstance = nameValue;
+          zoneInstance.name = nameInstance;
+        }
+        
+        var typeValue = responseDoc['type'];
+        if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+          var typeInstance = typeValue;
+          zoneInstance.type = typeInstance;
+        }
+        
+        var locationValue = responseDoc['location'];
+        if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+          var locationInstance = locationValue;
+          zoneInstance.location = locationInstance;
+        }
+        
+        var tagsSequenceElement = responseDoc['tags'];
+        if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+          for (var property in tagsSequenceElement) {
+            var tagsKey2 = property;
+            var tagsValue2 = tagsSequenceElement[property];
+            zoneInstance.tags[tagsKey2] = tagsValue2;
+          }
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Removes a DNS zone from a resource group.
+   * 
+   * @param {string} resourceGroupName The name of the resource group.
+   * 
+   * @param {string} zoneName The name of the zone without a terminating dot.
+   * 
+   * @param {ZoneDeleteParameters} parameters The parameters supplied to delete
+   * a zone
+   * 
+   * @param {string} [parameters.ifMatch] Gets or sets the If-Match
+   * pre-condition. The delete operation will be performedonly if the ETag of
+   * the zone on the server matches this value.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  ZoneOperations.prototype.deleteMethod = function(resourceGroupName, zoneName, parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    if (zoneName === null || zoneName === undefined) {
+      return callback(new Error('zoneName cannot be null.'));
+    }
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones/';
+    url2 = url2 + encodeURIComponent(zoneName);
+    var queryParameters = [];
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'DELETE';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    if (parameters.ifMatch !== null &amp;&amp; parameters.ifMatch !== undefined) {
+      httpRequest.headers['If-Match'] = parameters.ifMatch;
+    }
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      result = {};
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Gets a DNS zone.
+   * 
+   * @param {string} resourceGroupName The name of the resource group.
+   * 
+   * @param {string} zoneName The name of the zone without a terminating dot.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  ZoneOperations.prototype.get = function(resourceGroupName, zoneName, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    if (zoneName === null || zoneName === undefined) {
+      return callback(new Error('zoneName cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones/';
+    url2 = url2 + encodeURIComponent(zoneName);
+    var queryParameters = [];
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var zoneInstance = { tags: {} };
+        result.zone = zoneInstance;
+        
+        var etagValue = responseDoc['etag'];
+        if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+          var etagInstance = etagValue;
+          zoneInstance.eTag = etagInstance;
+        }
+        
+        var propertiesValue = responseDoc['properties'];
+        if (propertiesValue !== null &amp;&amp; propertiesValue !== undefined) {
+          var propertiesInstance = {};
+          zoneInstance.properties = propertiesInstance;
+          
+          var maxNumberOfRecordSetsValue = propertiesValue['maxNumberOfRecordSets'];
+          if (maxNumberOfRecordSetsValue !== null &amp;&amp; maxNumberOfRecordSetsValue !== undefined) {
+            var maxNumberOfRecordSetsInstance = maxNumberOfRecordSetsValue;
+            propertiesInstance.maxNumberOfRecordSets = maxNumberOfRecordSetsInstance;
+          }
+          
+          var numberOfRecordSetsValue = propertiesValue['numberOfRecordSets'];
+          if (numberOfRecordSetsValue !== null &amp;&amp; numberOfRecordSetsValue !== undefined) {
+            var numberOfRecordSetsInstance = numberOfRecordSetsValue;
+            propertiesInstance.numberOfRecordSets = numberOfRecordSetsInstance;
+          }
+        }
+        
+        var idValue = responseDoc['id'];
+        if (idValue !== null &amp;&amp; idValue !== undefined) {
+          var idInstance = idValue;
+          zoneInstance.id = idInstance;
+        }
+        
+        var nameValue = responseDoc['name'];
+        if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+          var nameInstance = nameValue;
+          zoneInstance.name = nameInstance;
+        }
+        
+        var typeValue = responseDoc['type'];
+        if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+          var typeInstance = typeValue;
+          zoneInstance.type = typeInstance;
+        }
+        
+        var locationValue = responseDoc['location'];
+        if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+          var locationInstance = locationValue;
+          zoneInstance.location = locationInstance;
+        }
+        
+        var tagsSequenceElement = responseDoc['tags'];
+        if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+          for (var property in tagsSequenceElement) {
+            var tagsKey = property;
+            var tagsValue = tagsSequenceElement[property];
+            zoneInstance.tags[tagsKey] = tagsValue;
+          }
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Lists the DNS zones within a resource group.
+   * 
+   * @param {string} resourceGroupName The name of the resource group.
+   * 
+   * @param {ZoneListParameters} [parametersOrCallback] Query parameters. If
+   * null is passed returns the default number of zones.
+   * 
+   * @param {string} [parametersOrCallback.top] Gets or sets the number of
+   * elements to retrieve (first N elements).
+   * 
+   * @param {string} [parametersOrCallback.filter] Gets or sets the filter for
+   * the records enumeration.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  ZoneOperations.prototype.list = function(resourceGroupName, parametersOrCallback, callback) {
+    var parameters = parametersOrCallback;
+    if (_.isFunction(parameters)) {
+      callback = parameters;
+      parameters = null;
+    }
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (resourceGroupName === null || resourceGroupName === undefined) {
+      return callback(new Error('resourceGroupName cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + '/subscriptions/';
+    if (this.client.credentials.subscriptionId !== null &amp;&amp; this.client.credentials.subscriptionId !== undefined) {
+      url2 = url2 + encodeURIComponent(this.client.credentials.subscriptionId);
+    }
+    url2 = url2 + '/resourceGroups/';
+    url2 = url2 + encodeURIComponent(resourceGroupName);
+    url2 = url2 + '/providers/';
+    url2 = url2 + 'Microsoft.Network';
+    url2 = url2 + '/dnszones';
+    var queryParameters = [];
+    if (parameters !== null &amp;&amp; parameters !== undefined &amp;&amp; parameters.top !== null &amp;&amp; parameters.top !== undefined) {
+      queryParameters.push('$top=' + encodeURIComponent(parameters.top));
+    }
+    var odataFilter = [];
+    if (parameters !== null &amp;&amp; parameters !== undefined &amp;&amp; parameters.filter !== null &amp;&amp; parameters.filter !== undefined) {
+      odataFilter.push(encodeURIComponent(parameters.filter));
+    }
+    if (odataFilter.length > 0) {
+      queryParameters.push('$filter=' + odataFilter.join(null));
+    }
+    queryParameters.push('api-version=2015-05-04-preview');
+    if (queryParameters.length > 0) {
+      url2 = url2 + '?' + queryParameters.join('&amp;');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = { zones: [] };
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var valueArray = responseDoc['value'];
+        if (valueArray !== null &amp;&amp; valueArray !== undefined) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var zoneInstance = { tags: {} };
+            result.zones.push(zoneInstance);
+            
+            var etagValue = valueValue['etag'];
+            if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+              var etagInstance = etagValue;
+              zoneInstance.eTag = etagInstance;
+            }
+            
+            var propertiesValue = valueValue['properties'];
+            if (propertiesValue !== null &amp;&amp; propertiesValue !== undefined) {
+              var propertiesInstance = {};
+              zoneInstance.properties = propertiesInstance;
+              
+              var maxNumberOfRecordSetsValue = propertiesValue['maxNumberOfRecordSets'];
+              if (maxNumberOfRecordSetsValue !== null &amp;&amp; maxNumberOfRecordSetsValue !== undefined) {
+                var maxNumberOfRecordSetsInstance = maxNumberOfRecordSetsValue;
+                propertiesInstance.maxNumberOfRecordSets = maxNumberOfRecordSetsInstance;
+              }
+              
+              var numberOfRecordSetsValue = propertiesValue['numberOfRecordSets'];
+              if (numberOfRecordSetsValue !== null &amp;&amp; numberOfRecordSetsValue !== undefined) {
+                var numberOfRecordSetsInstance = numberOfRecordSetsValue;
+                propertiesInstance.numberOfRecordSets = numberOfRecordSetsInstance;
+              }
+            }
+            
+            var idValue = valueValue['id'];
+            if (idValue !== null &amp;&amp; idValue !== undefined) {
+              var idInstance = idValue;
+              zoneInstance.id = idInstance;
+            }
+            
+            var nameValue = valueValue['name'];
+            if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+              var nameInstance = nameValue;
+              zoneInstance.name = nameInstance;
+            }
+            
+            var typeValue = valueValue['type'];
+            if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+              var typeInstance = typeValue;
+              zoneInstance.type = typeInstance;
+            }
+            
+            var locationValue = valueValue['location'];
+            if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+              var locationInstance = locationValue;
+              zoneInstance.location = locationInstance;
+            }
+            
+            var tagsSequenceElement = valueValue['tags'];
+            if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+              for (var property in tagsSequenceElement) {
+                var tagsKey = property;
+                var tagsValue = tagsSequenceElement[property];
+                zoneInstance.tags[tagsKey] = tagsValue;
+              }
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue !== null &amp;&amp; nextLinkValue !== undefined) {
+          var nextLinkInstance = nextLinkValue;
+          result.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * Lists the DNS zones within a resource group.
+   * 
+   * @param {string} nextLink NextLink from the previous successful call to
+   * List operation.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  ZoneOperations.prototype.listNext = function(nextLink, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (nextLink === null || nextLink === undefined) {
+      return callback(new Error('nextLink cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '';
+    url2 = url2 + nextLink;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err !== null &amp;&amp; err !== undefined) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode >= 400) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = { zones: [] };
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc !== null &amp;&amp; responseDoc !== undefined) {
+        var valueArray = responseDoc['value'];
+        if (valueArray !== null &amp;&amp; valueArray !== undefined) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var zoneInstance = { tags: {} };
+            result.zones.push(zoneInstance);
+            
+            var etagValue = valueValue['etag'];
+            if (etagValue !== null &amp;&amp; etagValue !== undefined) {
+              var etagInstance = etagValue;
+              zoneInstance.eTag = etagInstance;
+            }
+            
+            var propertiesValue = valueValue['properties'];
+            if (propertiesValue !== null &amp;&amp; propertiesValue !== undefined) {
+              var propertiesInstance = {};
+              zoneInstance.properties = propertiesInstance;
+              
+              var maxNumberOfRecordSetsValue = propertiesValue['maxNumberOfRecordSets'];
+              if (maxNumberOfRecordSetsValue !== null &amp;&amp; maxNumberOfRecordSetsValue !== undefined) {
+                var maxNumberOfRecordSetsInstance = maxNumberOfRecordSetsValue;
+                propertiesInstance.maxNumberOfRecordSets = maxNumberOfRecordSetsInstance;
+              }
+              
+              var numberOfRecordSetsValue = propertiesValue['numberOfRecordSets'];
+              if (numberOfRecordSetsValue !== null &amp;&amp; numberOfRecordSetsValue !== undefined) {
+                var numberOfRecordSetsInstance = numberOfRecordSetsValue;
+                propertiesInstance.numberOfRecordSets = numberOfRecordSetsInstance;
+              }
+            }
+            
+            var idValue = valueValue['id'];
+            if (idValue !== null &amp;&amp; idValue !== undefined) {
+              var idInstance = idValue;
+              zoneInstance.id = idInstance;
+            }
+            
+            var nameValue = valueValue['name'];
+            if (nameValue !== null &amp;&amp; nameValue !== undefined) {
+              var nameInstance = nameValue;
+              zoneInstance.name = nameInstance;
+            }
+            
+            var typeValue = valueValue['type'];
+            if (typeValue !== null &amp;&amp; typeValue !== undefined) {
+              var typeInstance = typeValue;
+              zoneInstance.type = typeInstance;
+            }
+            
+            var locationValue = valueValue['location'];
+            if (locationValue !== null &amp;&amp; locationValue !== undefined) {
+              var locationInstance = locationValue;
+              zoneInstance.location = locationInstance;
+            }
+            
+            var tagsSequenceElement = valueValue['tags'];
+            if (tagsSequenceElement !== null &amp;&amp; tagsSequenceElement !== undefined) {
+              for (var property in tagsSequenceElement) {
+                var tagsKey = property;
+                var tagsValue = tagsSequenceElement[property];
+                zoneInstance.tags[tagsKey] = tagsValue;
+              }
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue !== null &amp;&amp; nextLinkValue !== undefined) {
+          var nextLinkInstance = nextLinkValue;
+          result.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  return ZoneOperations;
+})();
+</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>

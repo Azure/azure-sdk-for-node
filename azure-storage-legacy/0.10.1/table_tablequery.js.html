@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Azure SDK for Node Source: table/tablequery.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
+	</div>
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BatchServiceClient.html">BatchServiceClient</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="SharedKey.html">SharedKey</a></li><li><a href="SharedKeyLite.html">SharedKeyLite</a></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a></li><li><a href="SharedKeyTable.html">SharedKeyTable</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: table/tablequery.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">﻿// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Module dependencies.
+var _ = require('underscore');
+
+var azureCommon = require('azure-common');
+var azureutil = azureCommon.util;
+var edmType = azureCommon.edmType;
+var Constants = azureCommon.Constants;
+var QueryStringConstants = Constants.QueryStringConstants;
+
+/**
+ * Creates a new TableQuery object.
+ *
+ * @constructor
+ */
+function TableQuery() {
+  this._fields = null;
+  this._from = '';
+  this._where = [];
+  this._top = null;
+  this._partitionKey = null;
+  this._nextPartitionKey = null;
+  this._rowKey = null;
+  this._nextRowKey = null;
+}
+
+/**
+* Constructs a TableQuery specifying the select clause.
+*
+* @param {array} fields The fields to be selected.
+* @return {TableQuery} A table query object with the select clause.
+*/
+TableQuery.select = function () {
+  var tableQuery = new TableQuery();
+
+  if (arguments) {
+    tableQuery._fields = [];
+    _.each(arguments, function (argument) {
+      tableQuery._fields.push(argument);
+    });
+  }
+
+  return tableQuery;
+};
+
+/**
+ * Specifies the from clause.
+ *
+ * @param {string} name The table from where to select the entitites from.
+ * @return {TableQuery} A table query object with the from clause.
+ */
+TableQuery.prototype.from = function (name) {
+  this._from = name;
+  return this;
+};
+
+/**
+ * Specifies the partition and row keys.
+ *
+ * @param {string} partitionKey The partition key for the entities to query.
+ * @param {string} rowKey       The row key for the entities to query.
+ * @return {TableQuery} A table query object with the where clause.
+ */
+TableQuery.prototype.whereKeys = function (partitionKey, rowKey) {
+  this._partitionKey = partitionKey;
+  this._rowKey = rowKey;
+  return this;
+};
+
+/**
+ * Specifies the next keys.
+ *
+ * @param {string} nextPartitionKey The next partition key for the entities to start querying from.
+ * @param {string} nextRowKey       The next row key for the entities to start querying from.
+ * @return {TableQuery} A table query object with the where clause.
+ */
+TableQuery.prototype.whereNextKeys = function (nextPartitionKey, nextRowKey) {
+  this._nextPartitionKey = nextPartitionKey;
+  this._nextRowKey = nextRowKey;
+  return this;
+};
+
+/**
+ * Specifies the where clause.
+ *
+ * @param {string}       condition   The condition string.
+ * @param {string|array} value       Value(s) to insert in question mark (?) parameters.
+ * @return {TableQuery} A table query object with the where clause.
+ */
+TableQuery.prototype.where = function (condition) {
+  condition = this._replaceOperators(condition);
+  if (arguments.length > 1) {
+    var quotedArguments = [arguments[0]];
+    for (var i = 1; i &lt; arguments.length; i++) {
+      quotedArguments.push(edmType.serializeQueryValue(arguments[i]));
+    }
+
+    condition = azureutil.stringFormat.apply(this, quotedArguments);
+  }
+
+  this._where.push(condition);
+  return this;
+};
+
+/**
+ * Specifies an AND where condition.
+ *
+ * @param {string}       condition   The condition string.
+ * @param {array}        arguments   Any number of arguments to be replaced in the condition by the question mark (?).
+ * @return {TableQuery} A table query object with the and clause.
+ */
+TableQuery.prototype.and = function (condition) {
+  if (this._where.length === 0) {
+    throw new Error('And operator needs to be used after where');
+  }
+
+  condition = this._replaceOperators(condition);
+  if (arguments.length > 1) {
+    var quotedArguments = [arguments[0]];
+    for (var i = 1; i &lt; arguments.length; i++) {
+      quotedArguments.push(edmType.serializeQueryValue(arguments[i]));
+    }
+
+    condition = azureutil.stringFormat.apply(this, quotedArguments);
+  }
+
+  this._where.push(' and ' + condition);
+  return this;
+};
+
+/**
+ * Specifies an OR where condition.
+ *
+ * @param {string}       condition   The condition.
+ * @param {array}        arguments   Any number of arguments to be replaced in the condition by the question mark (?).
+ * @return {TableQuery} A table query object with the or clause.
+ */
+TableQuery.prototype.or = function (condition) {
+  if (this._where.length === 0) {
+    throw new Error('Or operator needs to be used after where');
+  }
+
+  condition = this._replaceOperators(condition);
+  if (arguments.length > 1) {
+    var quotedArguments = [arguments[0]];
+    for (var i = 1; i &lt; arguments.length; i++) {
+      quotedArguments.push(edmType.serializeQueryValue(arguments[i]));
+    }
+
+    condition = azureutil.stringFormat.apply(this, quotedArguments);
+  }
+
+  var binaryOperation = ' or ';
+
+  this._where.push(binaryOperation + condition);
+  return this;
+};
+
+/**
+ * Specifies the top clause.
+ *
+ * @param {int} top The number of items to fetch.
+ * @return {TableQuery} A table query object with the top clause.
+ */
+TableQuery.prototype.top = function (top) {
+  this._top = top;
+  return this;
+};
+
+/**
+ * Returns the query string object for the query.
+ *
+ * @return {object} JSON object representing the query string arguments for the query.
+ */
+TableQuery.prototype.toQueryObject = function () {
+  var query = {};
+  if (this._fields &amp;&amp; this._fields.length > 0) {
+    for (var field in this._fields) {
+      if (this._fields.hasOwnProperty(field)) {
+        this._fields[field] = this._fields[field];
+      }
+    }
+
+    query[QueryStringConstants.SELECT] = this._fields.join(',');
+  }
+
+  if (this._where.length > 0 ||
+     (this._partitionKey &amp;&amp; !this._rowKey)) {
+
+    var filter = this._where.join('');
+    if (this._partitionKey &amp;&amp; !this._rowKey) {
+      if (this._where.length > 0) {
+        filter += ' and ';
+      }
+
+      filter += 'PartitionKey eq \'' + this._partitionKey + '\'';
+    }
+
+    query[QueryStringConstants.FILTER] = filter;
+  }
+
+  if (this._top) {
+    query[QueryStringConstants.TOP] = this._top;
+  }
+
+  if (this._nextPartitionKey) {
+    query[QueryStringConstants.NEXT_PARTITION_KEY] = this._nextPartitionKey;
+  }
+
+  if (this._nextRowKey) {
+    query[QueryStringConstants.NEXT_ROW_KEY] = this._nextRowKey;
+  }
+
+  return query;
+};
+
+/**
+* Returns the URL path.
+*
+* @return {string} The path string.
+*/
+TableQuery.prototype.toPath = function () {
+  var path = '';
+
+  if (this._partitionKey &amp;&amp; this._rowKey) {
+    path += 'PartitionKey=\'' + this._partitionKey + '\'';
+    path += ', RowKey=\'' + this._rowKey + '\'';
+  }
+
+  return (this._from + '(' + path + ')');
+};
+
+// Functions
+
+/**
+ * Replace operators.
+ *
+ * @param {string} whereClause The text where to replace the operators.
+ * @return {string} The string with the replaced operators.
+ */
+TableQuery.prototype._replaceOperators = function (whereClause) {
+  whereClause = whereClause.replace(/ == /g, ' eq ');
+  whereClause = whereClause.replace(/ != /g, ' ne ');
+  whereClause = whereClause.replace(/ >= /g, ' ge ');
+  whereClause = whereClause.replace(/ > /g, ' gt ');
+  whereClause = whereClause.replace(/ &lt;= /g, ' le ');
+  whereClause = whereClause.replace(/ &lt; /g, ' lt ');
+  whereClause = whereClause.replace(/ \&amp;\&amp; /g, ' and ');
+  whereClause = whereClause.replace(/ \|\| /g, ' or ');
+  whereClause = whereClause.replace(/!/g, 'not');
+
+  return whereClause;
+};
+
+module.exports = TableQuery;</pre>
+	</article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	Copyright (c) Microsoft and contributors.  All rights reserved.
+	</span>
+	<br />
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
+	on Fri Jun 19th 2015 using the <a
+	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<!--<script src="scripts/sunlight.js"></script>-->
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/bootstrap-dropdown.js"></script>
+<script src="scripts/toc.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "h1,h2,h3,h4",
+		showAndHide : false,
+		scrollTo    : "100px"
+	} );
+
+	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			lang = "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+</body>
+</html>
