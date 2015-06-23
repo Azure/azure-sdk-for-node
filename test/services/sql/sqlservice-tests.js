@@ -23,7 +23,7 @@ var testutil = require('../../util/util');
 var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 var azure = testutil.libRequire('azure');
-var azureSql = require('azure-mgmt-sql');
+var azureSql = require('azure-asm-sql');
 
 var SERVER_ADMIN_USERNAME = 'azuresdk';
 var SERVER_ADMIN_PASSWORD = 'PassWord!1';

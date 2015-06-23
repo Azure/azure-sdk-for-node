@@ -1,8 +1,7 @@
-# Microsoft Azure SDK for Node.js - Gallery
+# Microsoft Azure SDK for Node.js - HDInsight
 
 This project provides a Node.js package for accessing the Azure HDInsight. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
-- **API version: **
 
 ## Features
 
@@ -10,14 +9,8 @@ This project provides a Node.js package for accessing the Azure HDInsight. Right
 ## How to Install
 
 ```bash
-npm install azure-mgmt-hdinsight
+npm install azure-asm-hdinsight
 ```
-
-## How to Use
-
-### Authentication
-
-### Create the HDInsight client
 
 ## Related projects
 

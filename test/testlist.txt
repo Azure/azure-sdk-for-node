@@ -15,6 +15,8 @@ common/storageservicesettings-tests.js
 serviceruntime/roleenvironment-tests.js
 serviceruntime/runtimeversionmanager-tests.js
 serviceruntime/runtimeversionprotocolclient-tests.js
+services/keyVault/keyVault-key-tests.js
+services/keyVault/keyVault-secret-tests.js
 services/blob/internal/sharedaccesssignature-tests.js
 services/blob/internal/sharedkey-tests.js
 services/blob/internal/sharedkeylite-tests.js
@@ -60,9 +62,10 @@ util/odatahandler-tests.js
 util/util-tests.js
 util/validate-tests.js
 azure-tests.js
-services/HDInsight/hdinsight-listClusters-unit-tests.js
-services/HDInsight/hdinsight-createCluster-unit-tests.js
-services/HDInsight/hdinsight-deleteCluster-unit-tests.js
-services/HDInsight/namespace-tests.js
+#TODO: enable these tests again after we port the code to dev branch
+#services/HDInsight/hdinsight-listClusters-unit-tests.js
+#services/HDInsight/hdinsight-createCluster-unit-tests.js
+#services/HDInsight/hdinsight-deleteCluster-unit-tests.js
+#services/HDInsight/namespace-tests.js
 # These tests are waiting for the CI system to get the proper setup.
 # services/HDInsight/hdinsight-tests.js

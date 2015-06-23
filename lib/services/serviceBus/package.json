@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.15",
+  "version": "0.10.1",
   "description": "Microsoft Azure Service Bus Service Library for node",
   "tags": [
     "azure",
@@ -31,7 +31,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.10",
+    "azure-common": "^0.9.13",
     "underscore": "1.4.x",
     "wns": "~0.5.3",
     "mpns": "~2.0.0"

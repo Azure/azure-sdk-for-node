@@ -22,6 +22,9 @@ This project provides a Node.js package that makes it easy to consume and manage
 * [SQL Database management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/sqlManagement/README.md)
 * [Service Bus management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/serviceBusManagement/README.md)
 * HDInsight management
+* Key Vault
+    * [Key Vault management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/keyVaultManagement/README.md)
+    * [Key Vault client](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/keyVault/README.md)
 
 # Getting Started
 
@@ -40,17 +43,17 @@ npm install azure
 ### Install the fine-grained modules
 
 * Storage: ``npm install azure-storage``
-* Core management: ``npm install azure-mgmt``
-* Compute management: ``npm install azure-mgmt-compute``
-* Web Site management: ``npm install azure-mgmt-website``
-* Virtual Network managment: ``npm install azure-mgmt-vnet``
-* Storage Account management: ``npm install azure-mgmt-storage``
-* SQL Database management: ``npm install azure-mgmt-sql``
-* Service Bus management: ``npm install azure-mgmt-sb``
+* Core management: ``npm install azure-asm-mgmt``
+* Compute management: ``npm install azure-asm-compute``
+* Web Site management: ``npm install azure-asm-website``
+* Virtual Network managment: ``npm install azure-asm-network``
+* Storage Account management: ``npm install azure-asm-storage``
+* SQL Database management: ``npm install azure-asm-sql``
+* Service Bus management: ``npm install azure-asm-sb``
 
 ### Usage
 
-## Storage 
+## Storage
 
 For using Storage Blobs, Tables, Files, and Queues visit the Microsoft Azure Storage SDK for Node.js [ReadMe](https://github.com/Azure/azure-storage-node/blob/master/README.md) file.
 
@@ -305,3 +308,21 @@ azure.RoleEnvironment.getRoles(function(error, roles) {
 
 * If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
 * If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-for-node/issues) section of the project.
+
+## Getting Started Developing
+What to get started hacking on the code, super! Follow the following instructions to get up and running. These
+instructions expect you have Git and a supported version of Node installed.
+
+1. Fork it
+2. Git Clone your fork (`git clone {your repo}`)
+3. Move into sdk directory (`cd azure-sdk-for-node`)
+4. Install all dependencies (`npm install`)
+5. Run the tests (`npm test`). You should see all tests passing.
+
+## Contributing Code to the Project
+You found something you'd like to change, great! Please submit a pull request and we'll do our best to work with you to
+get your code included into the project.
+
+1. Commit your changes (`git commit -am 'Add some feature'`)
+2. Push to the branch (`git push origin my-new-feature`)
+3. Create new Pull Request

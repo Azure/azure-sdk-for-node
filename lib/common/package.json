@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.10",
+  "version": "0.9.13",
   "description": "Microsoft Azure Common Client Library for node",
   "tags": [
     "azure",
@@ -36,8 +36,8 @@
     "dateformat": "1.0.2-1.2.3",
     "underscore": "1.4.x",
     "tunnel": "~0.0.2",
-    "request": "2.27.0",
-    "validator": "~3.1.0",
+    "request": "2.45.0",
+    "validator": "~3.22.2",
     "envconf": "~0.0.4",
     "duplexer": "~0.1.1",
     "through": "~2.3.4"

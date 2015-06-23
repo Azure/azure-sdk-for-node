@@ -1,67 +1,40 @@
-var executeCmds = require('./executeCmds.js');
-var cmds = [
-  { cmd: 'npm install', path: 'lib/common/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/legacyStorage' },
-  { cmd: 'npm install', path: 'lib/services/legacyStorage' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/computeManagement/' },
-  { cmd: 'npm install', path: 'lib/services/computeManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/management/' },
-  { cmd: 'npm install', path: 'lib/services/management/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/networkManagement/' },
-  { cmd: 'npm install', path: 'lib/services/networkManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/monitoring/' },
-  { cmd: 'npm install', path: 'lib/services/monitoring/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/scheduler/' },
-  { cmd: 'npm install', path: 'lib/services/scheduler/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/schedulerManagement/' },
-  { cmd: 'npm install', path: 'lib/services/schedulerManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/serviceBusManagement/' },
-  { cmd: 'npm install', path: 'lib/services/serviceBusManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/sqlManagement/' },
-  { cmd: 'npm install', path: 'lib/services/sqlManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/storageManagement/' },
-  { cmd: 'npm install', path: 'lib/services/storageManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/storeManagement/' },
-  { cmd: 'npm install', path: 'lib/services/storeManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/subscriptionManagement/' },
-  { cmd: 'npm install', path: 'lib/services/subscriptionManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement/' },
-  { cmd: 'npm install', path: 'lib/services/webSiteManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/resourceManagement/' },
-  { cmd: 'npm install', path: 'lib/services/resourceManagement/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/gallery/' },
-  { cmd: 'npm install', path: 'lib/services/gallery/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/authorizationManagement/' },
-  { cmd: 'npm install', path: 'lib/services/authorizationManagement/' },  
-  { cmd: 'npm link ../../common/', path: 'lib/services/extra/' },
-  { cmd: 'npm install', path: 'lib/services/extra/' },    
-  { cmd: 'npm link ../../common/', path: 'lib/services/webSiteManagement2/' },
-  { cmd: 'npm install', path: 'lib/services/webSiteManagement2/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/hdinsight/' },
-  { cmd: 'npm install', path: 'lib/services/hdinsight/' },
-  { cmd: 'npm link ../../common/', path: 'lib/services/serviceBus/' },
-  { cmd: 'npm install', path: 'lib/services/serviceBus/' },
-  { cmd: 'npm link lib/common/' },
-  { cmd: 'npm link lib/services/legacyStorage' },
-  { cmd: 'npm link lib/services/computeManagement/' },
-  { cmd: 'npm link lib/services/management/' },
-  { cmd: 'npm link lib/services/networkManagement/' },
-  { cmd: 'npm link lib/services/monitoring/' },
-  { cmd: 'npm link lib/services/scheduler/' },
-  { cmd: 'npm link lib/services/schedulerManagement/' },
-  { cmd: 'npm link lib/services/serviceBusManagement/' },
-  { cmd: 'npm link lib/services/sqlManagement/' },
-  { cmd: 'npm link lib/services/storageManagement/' },
-  { cmd: 'npm link lib/services/storeManagement/' },
-  { cmd: 'npm link lib/services/subscriptionManagement/' },
-  { cmd: 'npm link lib/services/webSiteManagement/' },
-  { cmd: 'npm link lib/services/resourceManagement/' },
-  { cmd: 'npm link lib/services/gallery/' },
-  { cmd: 'npm link lib/services/webSiteManagement2/' },
-  { cmd: 'npm link lib/services/hdinsight/' },
-  { cmd: 'npm link lib/services/serviceBus/' },
-  { cmd: 'npm link lib/services/authorizationManagement/' },
-  { cmd: 'npm link lib/services/extra/' }
-];
+/**
+* Copyright (c) Microsoft.  All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
-executeCmds.execute(cmds);
+'use strict';
+
+var path = require('path');
+var eachService = require('./each-service');
+var executeCmds = require('./executeCmds.js');
+
+var cmds = [];
+var sdkRootPath = path.join(__dirname, '..');
+
+eachService(function(serviceData, next) {
+    var relpath = path.relative(sdkRootPath, serviceData.path);
+    if(serviceData.packageJson.name === 'azure-common') {
+      cmds.push({cmd: 'npm install', path: relpath });
+      cmds.push({ cmd: 'npm link ' + relpath });
+    } else {
+      cmds.push({ cmd: 'npm link ../../common/', path: relpath });
+      cmds.push({ cmd: 'npm install', path: relpath });
+      cmds.push({ cmd: 'npm link ' + relpath });
+    }
+    next();
+  },
+  function () {
+    executeCmds.execute(cmds);
+  }
+);

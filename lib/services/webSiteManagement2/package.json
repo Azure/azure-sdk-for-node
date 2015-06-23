@@ -1,5 +1,5 @@
 {
-  "name": "azure-rm-website",
+  "name": "azure-arm-website",
   "author": "Microsoft Corporation",
   "contributors": [
     "Block, Glenn <gblock@microsoft.com>",
@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.9.0-pre.9",
+  "version": "0.10.1",
   "description": "Microsoft Azure WebSite Management Client Library for node",
   "tags": [
     "azure",
@@ -31,7 +31,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.10",
+    "azure-common": "^0.9.13",
     "underscore": "1.4.x",
     "moment": "2.6.0"
   },

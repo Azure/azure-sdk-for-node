@@ -1,4 +1,4 @@
-# Microsoft Azure SDK for Node.js - Web Site Management
+# Microsoft Azure SDK for Node.js - Resource Management
 
 This project provides a Node.js package that makes it easy to manage Azure resources. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
@@ -11,7 +11,7 @@ This project provides a Node.js package that makes it easy to manage Azure resou
 ## How to Install
 
 ```bash
-npm install azure-mgmt-resource
+npm install azure-arm-resource
 ```
 
 ## How to Use
@@ -25,7 +25,7 @@ npm install azure-mgmt-resource
 ```javascript
 var fs                = require("fs"),
     common            = require("azure-common"),
-    resourceManagement = require("azure-mgmt-resource");
+    resourceManagement = require("azure-arm-resource");
 
 var resourceManagementClient = resourceManagement.createResourceManagementClient(new common.TokenCloudCredentials({
   subscriptionId: "<your subscription id>",
