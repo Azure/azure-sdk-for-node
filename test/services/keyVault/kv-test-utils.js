@@ -18,7 +18,6 @@
 
 var Testutil = require('../../util/util');
 var KeyVault = Testutil.libRequire('services/keyVault');
-var Jwk = KeyVault.Jwk;
 var AuthenticationContext = require('adal-node').AuthenticationContext;
 var Forge = require('node-forge');
 var BigInteger = Forge.jsbn.BigInteger;
@@ -113,7 +112,7 @@ function clone(obj) {
     return new Buffer(obj);
   }
   if (obj instanceof Object) {
-    if (obj instanceof Jwk.JsonWebKey) result = new Jwk.JsonWebKey();
+    if (obj instanceof KeyVault.JsonWebKey) result = new KeyVault.JsonWebKey();
     else
     if (obj instanceof KeyVault.KeyAttributes) result = new KeyVault.KeyAttributes();
     else
