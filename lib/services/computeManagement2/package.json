@@ -45,6 +45,5 @@
   },
   "scripts": {
     "test": "npm -s run-script jshint"
-  },
-  "underscore": "1.4.x"
+  }
 }
