@@ -1,5 +1,5 @@
 {
-  "name": "azure-arm-trafficManager",
+  "name": "azure-arm-trafficmanager",
   "author": "Microsoft Corporation",
   "contributors": [
     "Block, Glenn <gblock@microsoft.com>",
@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
 	"Guerra, Alberto <alguerra@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Microsoft Azure Traffic Manager Management Client Library for node",
   "tags": [
     "azure",
