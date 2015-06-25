@@ -5,5 +5,5 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ## How to Install
 
 ```bash
-npm install azure-arm-trafficManager
+npm install azure-arm-trafficmanager
 ```
