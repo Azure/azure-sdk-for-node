@@ -17,7 +17,7 @@ This project provides a Node.js package that makes it easy to consume and manage
     * Virtual Machine
     * Cloud Service
 * [Web Site management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/webSiteManagement/README.md)
-* [Virtual Network managment](https://github.com/Azure/azure-sdk-for-node/blob/dev/lib/services/networkManagement/README.md)
+* [Virtual Network managment](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/networkManagement/README.md)
 * [Storage Account management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/storageManagement/README.md)
 * [SQL Database management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/sqlManagement/README.md)
 * [Service Bus management](https://github.com/Azure/azure-sdk-for-node/blob/master/lib/services/serviceBusManagement/README.md)
