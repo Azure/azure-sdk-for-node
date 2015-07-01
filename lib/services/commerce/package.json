@@ -2,16 +2,9 @@
   "name": "azure-arm-commerce",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Gerner, Emily <emgerner@microsoft.com>",
-    "Wang, Jun <jwa@microsoft.com>",
-    "Huang, Pengfei <phuang@microsoft.com>",
-    "Shintre, Amol <Amol.Shintre@microsoft.com>",
-    "Onalan, Alp <alpon@microsoft.com>",
-    "Lee, Hyonho <Hyonho.Lee@microsoft.com>",
-    "Wang, Yugang <yugangw@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>"
+    "Commerce Platform Usage Team <cpusage@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.1.0",
   "description": "Microsoft Azure Commerce Usage Aggregates Management Client Library for Node",
   "tags": [
     "azure",
