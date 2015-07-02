@@ -67,8 +67,8 @@
     "request": "2.45.0",
     "node-uuid": "~1.2.0",
     "azure-storage": "0.3.3",
-    "ms-rest": "./runtime/msRest",
-    "ms-rest-azure": "./runtime/msRestAzure"
+    "ms-rest": "file:./runtime/msRest",
+    "ms-rest-azure": "file:./runtime/msRestAzure"
   },
   "devDependencies": {
     "azure-storage-legacy": "0.9.14",
@@ -98,7 +98,7 @@
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "test": "npm -s run-script unit",
     "unit": "node scripts/unit.js testlist.txt",
     "setup": "node scripts/setup.js",
     "jshint": "jshint lib --reporter=jslint",
