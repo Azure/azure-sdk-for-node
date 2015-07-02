@@ -30,7 +30,7 @@ function MockedTestUtils(service, testPrefix) {
   this.recordingsFile = __dirname + '/../recordings/' + this.testPrefix + '.nock.js';
   this.isMocked = !process.env.NOCK_OFF;
   this.isRecording = process.env.AZURE_NOCK_RECORD;
-
+  this.isPlayback = !process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD;
   this.setupService(service);
 }
 
