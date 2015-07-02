@@ -2,14 +2,15 @@ language: node_js
 node_js:
   - "0.12"
   - "0.10"
-  - "0.8"
 
 matrix:
   allow_failures:
+   - "0.8"
 
 # setup links to submodules
 before_install:
   - npm install
+  - npm install -g npm@2.11.2
 
 script:
   - npm test
