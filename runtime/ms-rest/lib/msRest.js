@@ -23,9 +23,9 @@ exports.TokenCredentials = require('./credentials/tokenCredentials');
 exports.BasicAuthenticationCredentials = require('./credentials/basicAuthenticationCredentials');
 
 // Other filters
-exports.ProxyFilter = require('./filters/proxyFilter');
-exports.LogFilter = require('./filters/logFilter');
-exports.SigningFilter = require('./filters/signingFilter');
+exports.ProxyFilter = require('./filters/proxyfilter');
+exports.LogFilter = require('./filters/logfilter');
+exports.SigningFilter = require('./filters/signingfilter');
 exports.ExponentialRetryPolicyFilter = require('./filters/exponentialretrypolicyfilter');
 
 exports.validate = require('./validate');
