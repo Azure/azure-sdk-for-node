@@ -2,25 +2,15 @@ language: node_js
 node_js:
   - "0.12"
   - "0.10"
-  - "0.8"
 
 matrix:
   allow_failures:
+   - "0.8"
 
 # setup links to submodules
 before_install:
-  - npm install -g npm@1.4.23
-  - npm run-script setup
-  - npm install
-  - cd ..
-  - git clone https://github.com/azure/azure-xplat-cli.git
-  - cd azure-xplat-cli
-  - git checkout dev
-  - node scripts/link-to-sdk.js
+  - npm install -g npm@2.11.2
   - npm install
 
 script:
-  - cd ../azure-sdk-for-node
-  - npm test
-  - cd ../azure-xplat-cli
   - npm test
