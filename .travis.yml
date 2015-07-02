@@ -9,8 +9,8 @@ matrix:
 
 # setup links to submodules
 before_install:
-  - npm install
   - npm install -g npm@2.11.2
+  - npm install
 
 script:
   - npm test

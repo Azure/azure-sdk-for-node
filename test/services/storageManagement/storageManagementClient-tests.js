@@ -24,8 +24,7 @@ var MockedTestUtils = require('../../framework/mocked-test-utils');
 
 
 var dump = util.inspect;
-var StorageManagementClient = require('../../../lib/services/storageManagement2/lib/StorageManagementClient');
-
+var StorageManagementClient = require('../../../lib/services/storageManagement2/lib/storageManagementClient');
 var testPrefix = 'storagemanagementservice-tests';
 
 var service;
