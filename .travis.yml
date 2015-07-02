@@ -9,7 +9,6 @@ matrix:
 
 # setup links to submodules
 before_install:
-  - npm install -g npm@2.7.4
   - npm install
 
 script:
