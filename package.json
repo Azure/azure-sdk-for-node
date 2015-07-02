@@ -67,8 +67,8 @@
     "request": "2.45.0",
     "node-uuid": "~1.2.0",
     "azure-storage": "0.3.3",
-    "ms-rest": "file:./runtime/msRest",
-    "ms-rest-azure": "file:./runtime/msRestAzure"
+    "ms-rest": "file:./runtime/ms-rest",
+    "ms-rest-azure": "file:./runtime/ms-rest-azure"
   },
   "devDependencies": {
     "azure-storage-legacy": "0.9.14",

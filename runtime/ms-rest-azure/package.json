@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "async": "0.2.7",
-    "ms-rest": "file:../msRest"
+    "ms-rest": "file:../ms-rest"
   },
   "devDependencies": {
     "jshint": "2.6.3",
