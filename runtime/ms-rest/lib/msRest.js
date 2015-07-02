@@ -14,7 +14,7 @@ if (nodeVersion.major === 0 &&
 exports.Constants = require('./constants');
 exports.Logger = require('./logger');
 
-exports.WebResource = require('./webResource');
+exports.WebResource = require('./webresource');
 exports.ServiceClient = require('./serviceClient');
 exports.HttpOperationResponse = require('./httpOperationResponse');
 
