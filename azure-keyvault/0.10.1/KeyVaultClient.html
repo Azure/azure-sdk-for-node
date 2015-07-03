@@ -1,66 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: KeyVaultClient</title>
+    <meta charset="utf-8">
+    <title>KeyVaultClient - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyVaultClient.html">KeyVaultClient</a></li><li><a href="KeyVaultCredentials.html">KeyVaultCredentials</a></li><li><a href="ObjectIdentifier.html">ObjectIdentifier</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyVaultClient.html">KeyVaultClient</a><ul class='methods'><li data-type='method'><a href="KeyVaultClient.html#backupKey">backupKey</a></li><li data-type='method'><a href="KeyVaultClient.html#createKey">createKey</a></li><li data-type='method'><a href="KeyVaultClient.html#decrypt">decrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteKey">deleteKey</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteSecret">deleteSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#encrypt">encrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#getKey">getKey</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeys">getKeys</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeysNext">getKeysNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersions">getKeyVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersionsNext">getKeyVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecret">getSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecrets">getSecrets</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretsNext">getSecretsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersions">getSecretVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersionsNext">getSecretVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#importKey">importKey</a></li><li data-type='method'><a href="KeyVaultClient.html#restoreKey">restoreKey</a></li><li data-type='method'><a href="KeyVaultClient.html#setSecret">setSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#sign">sign</a></li><li data-type='method'><a href="KeyVaultClient.html#unwrapKey">unwrapKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateKey">updateKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateSecret">updateSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#verify">verify</a></li><li data-type='method'><a href="KeyVaultClient.html#withFilter">withFilter</a></li><li data-type='method'><a href="KeyVaultClient.html#wrapKey">wrapKey</a></li></ul></li><li><a href="KeyVaultCredentials.html">KeyVaultCredentials</a></li><li><a href="ObjectIdentifier.html">ObjectIdentifier</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li></ul><h3>Namespaces</h3><ul><li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">KeyVaultClient</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: KeyVaultClient</h1>
 <section>
 
 <header>
@@ -72,54 +50,55 @@
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
-    <h4 class="name" id="KeyVaultClient"><span class="type-signature"></span>new KeyVaultClient<span class="signature">(<span class="optional">credentials</span>, <span class="optional">baseUri</span>, <span class="optional">filters</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>A Key Vault client object.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="KeyVaultClient"><span class="type-signature"></span>new KeyVaultClient<span class="signature">(credentials<span class="signature-attributes">opt</span>, baseUri<span class="signature-attributes">opt</span>, filters<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>A Key Vault client object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -152,7 +131,7 @@
             <td class="description last"><p>The credentials, typically a <a href="KeyVaultCredentials.html"><code>KeyVaultCredentials</code></a> object. If null, an authentication filter must be provided.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -185,7 +164,7 @@
             <td class="description last"><p>Ignored, may be null.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -218,21 +197,16 @@
             <td class="description last"><p>Extra filters to attach to the client.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -242,52 +216,50 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-61">line 61</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line61">line 61</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -298,7 +270,7 @@
 
     
 
-    
+     
 
     
 
@@ -307,49 +279,51 @@
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
+
+    
+
     <h4 class="name" id="backupKey"><span class="type-signature"></span>backupKey<span class="signature">(vault, keyName, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a BACKUP KEY operation, which backs up a key and all its versions.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a BACKUP KEY operation, which backs up a key and all its versions.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -372,7 +346,7 @@
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -395,7 +369,7 @@
             <td class="description last"><p>The key name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -418,21 +392,16 @@
             <td class="description last"><p>A callback that will be called on completion. The value is a sequence of bytes suitable for the RESTORE KEY operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -442,98 +411,98 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-295">line 295</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line295">line 295</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="createKey"><span class="type-signature"></span>createKey<span class="signature">(vault, keyName, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a CREATE KEY operation, which creates a key and stores in the service.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a CREATE KEY operation, which creates a key and stores in the service.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -564,7 +533,7 @@
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -595,7 +564,7 @@
             <td class="description last"><p>The key name. If a key with this name already exists, the service creates a new version and set as current.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -626,7 +595,7 @@
             <td class="description last"><p>The key type. Use a constant from <a href="JsonWebKeyType.html"><code>JsonWebKeyType</code></a>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -659,7 +628,7 @@
             <td class="description last"><p>The key size. Must be valid for the key type. If omitted, a default for the key type is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -692,7 +661,7 @@
             <td class="description last"><p>The allowed operations on the key. Each can be a constant from <code>JsonWebKeyOperation</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -725,7 +694,7 @@
             <td class="description last"><p>Initial attributes. If omitted, a service defined default is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -758,7 +727,7 @@
             <td class="description last"><p>User defined tags to be associated with the key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -789,21 +758,16 @@
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -813,96 +777,96 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-239">line 239</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line239">line 239</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="decrypt"><span class="type-signature"></span>decrypt<span class="signature">(keyIdentifier, algorithm, cipherText, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a DECRYPT operation using the specified key.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a DECRYPT operation using the specified key.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -925,7 +889,7 @@
             <td class="description last"><p>The key identifier. It may or may not contain a version path. If a version is not provided, the latest key version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -948,7 +912,7 @@
             <td class="description last"><p>The algorithm name. Use a constant from <a href="JsonWebKeyEncryptionAlgorithms.html"><code>JsonWebKeyEncryptionAlgorithms</code></a>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -971,7 +935,7 @@
             <td class="description last"><p>A <code>Buffer</code> containing the data to be decrypted.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -994,21 +958,16 @@
             <td class="description last"><p>A callback that will be called on completion. The value will contain the plaintext.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1018,97 +977,97 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-104">line 104</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line104">line 104</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="deleteKey"><span class="type-signature"></span>deleteKey<span class="signature">(vault, keyName, callback)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a DELETE KEY operation, which deletes a key and all its versions.
+
+
+
+<div class="description">
+    <p>Performs a DELETE KEY operation, which deletes a key and all its versions.
 This method returns data about the current version of deleted key.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1131,7 +1090,7 @@ This method returns data about the current version of deleted key.</p>
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1154,7 +1113,7 @@ This method returns data about the current version of deleted key.</p>
             <td class="description last"><p>The key name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1177,21 +1136,16 @@ This method returns data about the current version of deleted key.</p>
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1201,97 +1155,97 @@ This method returns data about the current version of deleted key.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-252">line 252</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line252">line 252</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="deleteSecret"><span class="type-signature"></span>deleteSecret<span class="signature">(vault, secretName, callback)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a DELETE SECRET operation, which deletes a secret and all its versions.
+
+
+
+<div class="description">
+    <p>Performs a DELETE SECRET operation, which deletes a secret and all its versions.
 This method returns data about the current version of the deleted secret.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1314,7 +1268,7 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1337,7 +1291,7 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>The secret name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1360,21 +1314,16 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1384,96 +1333,96 @@ This method returns data about the current version of the deleted secret.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-365">line 365</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line365">line 365</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="encrypt"><span class="type-signature"></span>encrypt<span class="signature">(keyIdentifier, algorithm, plainText, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs an ENCRYPT operation using the specified key.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs an ENCRYPT operation using the specified key.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1496,7 +1445,7 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>The key identifier. It may or may not contain a version path. If a version is not provided, the latest key version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1519,7 +1468,7 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>The algorithm name. Use a constant from <a href="JsonWebKeyEncryptionAlgorithms.html"><code>JsonWebKeyEncryptionAlgorithms</code></a>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1542,7 +1491,7 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>A <code>Buffer</code> containing the data to be encrypted.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1565,21 +1514,16 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>A callback that will be called on completion. The value will contain the ciphertext.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1589,96 +1533,96 @@ This method returns data about the current version of the deleted secret.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-90">line 90</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line90">line 90</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getKey"><span class="type-signature"></span>getKey<span class="signature">(keyIdentifier, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a GET KEY operation, which retrieves key attributes from the service.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a GET KEY operation, which retrieves key attributes from the service.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1701,7 +1645,7 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>The key identifier. It may or may not contain a version path. If a version is not provided, the latest key version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1724,21 +1668,16 @@ This method returns data about the current version of the deleted secret.</p>
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1748,97 +1687,97 @@ This method returns data about the current version of the deleted secret.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-173">line 173</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line173">line 173</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getKeys"><span class="type-signature"></span>getKeys<span class="signature">(vault, maxresults, callback)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a GET KEYS operation, which lists keys of a vault.
+
+
+
+<div class="description">
+    <p>Performs a GET KEYS operation, which lists keys of a vault.
 This operation may use paging. Call <code>#getKeysNext</code> to retrieve more pages.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1861,7 +1800,7 @@ This operation may use paging. Call <code>#getKeysNext</code> to retrieve more p
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1884,7 +1823,7 @@ This operation may use paging. Call <code>#getKeysNext</code> to retrieve more p
             <td class="description last"><p>The maximum number of keys to return. This is the total number of keys, not the size of first page.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1907,21 +1846,16 @@ This operation may use paging. Call <code>#getKeysNext</code> to retrieve more p
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1931,96 +1865,96 @@ This operation may use paging. Call <code>#getKeysNext</code> to retrieve more p
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-186">line 186</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line186">line 186</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getKeysNext"><span class="type-signature"></span>getKeysNext<span class="signature">(nextLink, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Resumes a GET KEYS operation by returning the next page.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Resumes a GET KEYS operation by returning the next page.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2043,7 +1977,7 @@ This operation may use paging. Call <code>#getKeysNext</code> to retrieve more p
             <td class="description last"><p>The value returned by a previous call to <code>#getKeys</code> or <code>#getKeysNext</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2066,21 +2000,16 @@ This operation may use paging. Call <code>#getKeysNext</code> to retrieve more p
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2090,97 +2019,97 @@ This operation may use paging. Call <code>#getKeysNext</code> to retrieve more p
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-197">line 197</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line197">line 197</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getKeyVersions"><span class="type-signature"></span>getKeyVersions<span class="signature">(vault, keyName, maxresults, callback)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a GET KEY VERSIONS operation, which lists all versions of a key.
+
+
+
+<div class="description">
+    <p>Performs a GET KEY VERSIONS operation, which lists all versions of a key.
 This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve more pages.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2203,7 +2132,7 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2226,7 +2155,7 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
             <td class="description last"><p>The key name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2249,7 +2178,7 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
             <td class="description last"><p>The maximum number of key versions to return. This is the total number of items, not the size of first page.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2272,21 +2201,16 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2296,96 +2220,96 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-211">line 211</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line211">line 211</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getKeyVersionsNext"><span class="type-signature"></span>getKeyVersionsNext<span class="signature">(nextLink, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Resumes a GET KEY VERSIONS operation by returning the next page.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Resumes a GET KEY VERSIONS operation by returning the next page.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2408,7 +2332,7 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
             <td class="description last"><p>The value returned by a previous call to <code>#getKeyVersions</code> or <code>#getKeyVersionsNext</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2431,21 +2355,16 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2455,96 +2374,96 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-222">line 222</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line222">line 222</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getSecret"><span class="type-signature"></span>getSecret<span class="signature">(secretIdentifier, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a GET SECRET operation, which retrieves secret attributes from the service.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a GET SECRET operation, which retrieves secret attributes from the service.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2567,7 +2486,7 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
             <td class="description last"><p>The secret identifier. It may or may not contain a version path. If a version is not provided, the latest secret version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2590,21 +2509,16 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2614,97 +2528,97 @@ This operation may use paging. Call <code>#getKeyVersionsNext</code> to retrieve
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-321">line 321</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line321">line 321</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getSecrets"><span class="type-signature"></span>getSecrets<span class="signature">(vault, maxresults, callback)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a GET SECRETS operation, which lists secrets of a vault.
+
+
+
+<div class="description">
+    <p>Performs a GET SECRETS operation, which lists secrets of a vault.
 This operation may use paging. Call <code>#getSecretsNext</code> to retrieve more pages.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2727,7 +2641,7 @@ This operation may use paging. Call <code>#getSecretsNext</code> to retrieve mor
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2750,7 +2664,7 @@ This operation may use paging. Call <code>#getSecretsNext</code> to retrieve mor
             <td class="description last"><p>The maximum number of secrets to return. This is the total number of secrets, not the size of first page.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2773,21 +2687,16 @@ This operation may use paging. Call <code>#getSecretsNext</code> to retrieve mor
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2797,96 +2706,96 @@ This operation may use paging. Call <code>#getSecretsNext</code> to retrieve mor
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-379">line 379</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line379">line 379</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getSecretsNext"><span class="type-signature"></span>getSecretsNext<span class="signature">(nextLink, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Resumes a GET SECRETS operation by returning the next page.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Resumes a GET SECRETS operation by returning the next page.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2909,7 +2818,7 @@ This operation may use paging. Call <code>#getSecretsNext</code> to retrieve mor
             <td class="description last"><p>The value returned by a previous call to <code>#getSecrets</code> or <code>#getSecretsNext</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2932,21 +2841,16 @@ This operation may use paging. Call <code>#getSecretsNext</code> to retrieve mor
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2956,97 +2860,97 @@ This operation may use paging. Call <code>#getSecretsNext</code> to retrieve mor
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-390">line 390</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line390">line 390</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getSecretVersions"><span class="type-signature"></span>getSecretVersions<span class="signature">(vault, secretName, maxresults, callback)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a GET SECRET VERSIONS operation, which lists all versions of a secret.
+
+
+
+<div class="description">
+    <p>Performs a GET SECRET VERSIONS operation, which lists all versions of a secret.
 This operation may use paging. Call <code>#getSecretVersionsNext</code> to retrieve more pages.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3069,7 +2973,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3092,7 +2996,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>The secret name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3115,7 +3019,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>The maximum number of secret versions to return. This is the total number of items, not the size of first page.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3138,21 +3042,16 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3162,96 +3061,96 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-404">line 404</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line404">line 404</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getSecretVersionsNext"><span class="type-signature"></span>getSecretVersionsNext<span class="signature">(nextLink, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Resumes a GET SECRET VERSIONS operation by returning the next page.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Resumes a GET SECRET VERSIONS operation by returning the next page.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3274,7 +3173,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>The value returned by a previous call to <code>#getSecretVersions</code> or <code>#getSecretVersionsNext</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3297,21 +3196,16 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3321,98 +3215,98 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-415">line 415</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line415">line 415</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="importKey"><span class="type-signature"></span>importKey<span class="signature">(vault, keyName, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs an IMPORT KEY operation, which imports existing key material into a new key that is stored on the service.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs an IMPORT KEY operation, which imports existing key material into a new key that is stored on the service.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3443,7 +3337,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3474,7 +3368,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>The key name. If a key with this name already exists, the service creates a new version and set as current.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3505,7 +3399,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>A <a href="JsonWebKey.html"><code>JsonWebKey</code></a> that describes the key to be imported. The kid property is ignored.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3538,7 +3432,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>true to import as a &quot;hardware&quot; key, false to import as &quot;software&quot; key. Default is false.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3571,7 +3465,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>Initial attributes. If omitted, a service defined default is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3604,7 +3498,7 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>User defined tags to be associated with the key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3635,21 +3529,16 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3659,97 +3548,97 @@ This operation may use paging. Call <code>#getSecretVersionsNext</code> to retri
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-282">line 282</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line282">line 282</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="restoreKey"><span class="type-signature"></span>restoreKey<span class="signature">(vault, backupValue, callback)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a RESTORE KEY operation, which restores a key and all its versions. The key to be restored must not exist previously.
+
+
+
+<div class="description">
+    <p>Performs a RESTORE KEY operation, which restores a key and all its versions. The key to be restored must not exist previously.
 This method returns data about the restored key. Despite all versions are being restored, only the current version is returned.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3772,7 +3661,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3795,7 +3684,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A sequence of bytes obtained through the BACKUP KEY operation.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3818,21 +3707,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3842,98 +3726,98 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-309">line 309</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line309">line 309</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="setSecret"><span class="type-signature"></span>setSecret<span class="signature">(vault, secretName, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a SET SECRET operation, which stores a secret in the service.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a SET SECRET operation, which stores a secret in the service.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3964,7 +3848,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The vault identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3995,7 +3879,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The secret name. If a secret with this name already exists, the service creates a new version and set as current.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4026,7 +3910,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The secret value.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4059,7 +3943,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The value's content type.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4092,7 +3976,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Initial attributes. If omitted, a service defined default is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4125,7 +4009,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>User defined tags to be associated with the secret.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4156,21 +4040,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4180,96 +4059,96 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-337">line 337</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line337">line 337</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="sign"><span class="type-signature"></span>sign<span class="signature">(keyIdentifier, algorithm, digest, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a SIGN operation using the specified key.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a SIGN operation using the specified key.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4292,7 +4171,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The key identifier. It may or may not contain a version path. If a version is not provided, the latest key version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4315,7 +4194,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The algorithm name. Use a constant from <a href="JsonWebKeySignatureAlgorithms.html"><code>JsonWebKeySignatureAlgorithms</code></a>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4338,7 +4217,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A <code>Buffer</code> containing the digest to be signed. It must be a valid digest.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4361,21 +4240,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A callback that will be called on completion. The value will contain the signature.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4385,96 +4259,96 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-118">line 118</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line118">line 118</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="unwrapKey"><span class="type-signature"></span>unwrapKey<span class="signature">(keyIdentifier, algorithm, cipherText, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs an UNWRAP KEY operation using the specified key.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs an UNWRAP KEY operation using the specified key.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4497,7 +4371,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The key identifier. It may or may not contain a version path. If a version is not provided, the latest key version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4520,7 +4394,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The algorithm name. Use a constant from <a href="JsonWebKeyEncryptionAlgorithms.html"><code>JsonWebKeyEncryptionAlgorithms</code></a>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4543,7 +4417,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A <code>Buffer</code> containing the wrapped key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4566,21 +4440,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A callback that will be called on completion. The value will contain the unwrapped key material.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4590,98 +4459,98 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-161">line 161</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line161">line 161</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="updateKey"><span class="type-signature"></span>updateKey<span class="signature">(keyIdentifier, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs an UPDATE KEY operation, which updates attributes of a key version.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs an UPDATE KEY operation, which updates attributes of a key version.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4712,7 +4581,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The key identifier. It may or may not contain a version path. If a version is not provided, the latest key version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4745,7 +4614,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>If informed, changes allowed operations. Each can be a constant from <code>JsonWebKeyOperation</code>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4778,7 +4647,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>If informed, changes attributes.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4811,7 +4680,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>If informed, replaces all tags.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4842,21 +4711,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4866,98 +4730,98 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-266">line 266</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line266">line 266</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="updateSecret"><span class="type-signature"></span>updateSecret<span class="signature">(secretIdentifier, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs an UPDATE SECRET operation, which updates attributes of a secret version.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs an UPDATE SECRET operation, which updates attributes of a secret version.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4988,7 +4852,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The secret identifier. It may or may not contain a version path. If a version is not provided, the latest secret version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5021,7 +4885,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>If informed, changes the value's content type.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5054,7 +4918,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>If informed, changes attributes.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5087,7 +4951,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>If informed, replaces all tags.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5118,21 +4982,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A callback that will be called on completion.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5142,96 +5001,96 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-352">line 352</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line352">line 352</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="verify"><span class="type-signature"></span>verify<span class="signature">(keyIdentifier, algorithm, digest, signature, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a VERIFY operation using the specified key.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a VERIFY operation using the specified key.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5254,7 +5113,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The key identifier. It may or may not contain a version path. If a version is not provided, the latest key version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5277,7 +5136,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The algorithm name. Use a constant from <a href="JsonWebKeySignatureAlgorithms.html"><code>JsonWebKeySignatureAlgorithms</code></a>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5300,7 +5159,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A <code>Buffer</code> containing the digest that was signed.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5323,7 +5182,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A <code>Buffer</code> containing the signature to be verified.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5346,21 +5205,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A callback that will be called on completion. The value will be true if the signature is valid for the digest.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5370,84 +5224,79 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-133">line 133</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line133">line 133</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="withFilter"><span class="type-signature"></span>withFilter<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>See <code>Service#withFilter</code>.</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>See <code>Service#withFilter</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5457,96 +5306,96 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-75">line 75</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line75">line 75</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="wrapKey"><span class="type-signature"></span>wrapKey<span class="signature">(keyIdentifier, algorithm, key, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Performs a WRAP KEY operation using the specified key.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Performs a WRAP KEY operation using the specified key.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5569,7 +5418,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The key identifier. It may or may not contain a version path. If a version is not provided, the latest key version is used.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5592,7 +5441,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The algorithm name. Use a constant from <a href="JsonWebKeyEncryptionAlgorithms.html"><code>JsonWebKeyEncryptionAlgorithms</code></a>.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5615,7 +5464,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A <code>Buffer</code> containing the key material to be wrapped.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5638,21 +5487,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>A callback that will be called on completion. The value will contain the wrapped key.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5662,100 +5506,100 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-147">line 147</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line147">line 147</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
 
-        </dl>
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
         <h3 class="subsection-title">Type Definitions</h3>
 
-        <dl>
+        
                 
-<dt>
-    <h4 class="name" id="~boolCallback"><span class="type-signature"></span>boolCallback<span class="signature">(<span class="optional">err</span>, <span class="optional">result</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+    <h4 class="name" id="~boolCallback"><span class="type-signature"></span>boolCallback<span class="signature">(err<span class="signature-attributes">opt</span>, result<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5788,7 +5632,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Error information. Only informed if the operation was not successful.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5822,25 +5666,25 @@ This method returns data about the restored key. Despite all versions are being 
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5863,7 +5707,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Identifier of the key used to perform the operation.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5886,28 +5730,23 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The operation result.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5917,94 +5756,94 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-430">line 430</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line430">line 430</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
             
                 
-<dt>
-    <h4 class="name" id="~keyBundleCallback"><span class="type-signature"></span>keyBundleCallback<span class="signature">(<span class="optional">err</span>, <span class="optional">result</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+    <h4 class="name" id="~keyBundleCallback"><span class="type-signature"></span>keyBundleCallback<span class="signature">(err<span class="signature-attributes">opt</span>, result<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6037,7 +5876,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Error information. Only informed if the operation was not successful.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6070,21 +5909,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>An object describing a key stored in the service. Only informed on success.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -6094,94 +5928,94 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-438">line 438</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line438">line 438</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
             
                 
-<dt>
-    <h4 class="name" id="~keyListCallback"><span class="type-signature"></span>keyListCallback<span class="signature">(<span class="optional">err</span>, <span class="optional">result</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+    <h4 class="name" id="~keyListCallback"><span class="type-signature"></span>keyListCallback<span class="signature">(err<span class="signature-attributes">opt</span>, result<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6214,7 +6048,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Error information. Only informed if the operation was not successful.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6248,27 +6082,27 @@ This method returns data about the restored key. Despite all versions are being 
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6296,14 +6130,33 @@ This method returns data about the restored key. Despite all versions are being 
 
             
 
-            <td class="description last"><p>An array of objects, each describing a key stored in the service.</p></td>
-        </tr>
+            <td class="description last"><p>An array of objects, each describing a key stored in the service.</p>
+                <h6>Properties</h6>
+                
 
-	
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
 
         <tr>
             
-                <td class="name"><code>value[].kid</code></td>
+                <td class="name"><code>kid</code></td>
             
 
             <td class="type">
@@ -6316,25 +6169,17 @@ This method returns data about the restored key. Despite all versions are being 
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last"><p>The key identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
-                <td class="name"><code>value[].attributes</code></td>
+                <td class="name"><code>attributes</code></td>
             
 
             <td class="type">
@@ -6347,21 +6192,20 @@ This method returns data about the restored key. Despite all versions are being 
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last"><p>The key attributes.</p></td>
         </tr>
 
-	
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
 
         <tr>
             
@@ -6394,28 +6238,23 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>An optional string containing the continuation link, if more pages are available in the service.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -6425,94 +6264,94 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-444">line 444</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line444">line 444</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
             
                 
-<dt>
-    <h4 class="name" id="~secretBundleCallback"><span class="type-signature"></span>secretBundleCallback<span class="signature">(<span class="optional">err</span>, <span class="optional">result</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+    <h4 class="name" id="~secretBundleCallback"><span class="type-signature"></span>secretBundleCallback<span class="signature">(err<span class="signature-attributes">opt</span>, result<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6545,7 +6384,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Error information. Only informed if the operation was not successful.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6578,21 +6417,16 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>An object describing a secret stored in the service. Only informed on success.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -6602,94 +6436,94 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-454">line 454</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line454">line 454</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
             
                 
-<dt>
-    <h4 class="name" id="~secretListCallback"><span class="type-signature"></span>secretListCallback<span class="signature">(<span class="optional">err</span>, <span class="optional">result</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+    <h4 class="name" id="~secretListCallback"><span class="type-signature"></span>secretListCallback<span class="signature">(err<span class="signature-attributes">opt</span>, result<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6722,7 +6556,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Error information. Only informed if the operation was not successful.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6756,27 +6590,27 @@ This method returns data about the restored key. Despite all versions are being 
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6804,14 +6638,33 @@ This method returns data about the restored key. Despite all versions are being 
 
             
 
-            <td class="description last"><p>An array of objects, each describing a secret stored in the service.</p></td>
-        </tr>
+            <td class="description last"><p>An array of objects, each describing a secret stored in the service.</p>
+                <h6>Properties</h6>
+                
 
-	
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
 
         <tr>
             
-                <td class="name"><code>value[].id</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
@@ -6824,25 +6677,17 @@ This method returns data about the restored key. Despite all versions are being 
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last"><p>The secret identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
-                <td class="name"><code>value[].attributes</code></td>
+                <td class="name"><code>attributes</code></td>
             
 
             <td class="type">
@@ -6855,21 +6700,20 @@ This method returns data about the restored key. Despite all versions are being 
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
             <td class="description last"><p>The secret attributes.</p></td>
         </tr>
 
-	
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
 
         <tr>
             
@@ -6902,28 +6746,23 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>An optional string containing the continuation link, if more pages are available in the service.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -6933,94 +6772,94 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-460">line 460</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line460">line 460</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
             
                 
-<dt>
-    <h4 class="name" id="~valueCallback"><span class="type-signature"></span>valueCallback<span class="signature">(<span class="optional">err</span>, <span class="optional">result</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+    <h4 class="name" id="~valueCallback"><span class="type-signature"></span>valueCallback<span class="signature">(err<span class="signature-attributes">opt</span>, result<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -7053,7 +6892,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Error information. Only informed if the operation was not successful.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7087,25 +6926,25 @@ This method returns data about the restored key. Despite all versions are being 
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -7128,7 +6967,7 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>Identifier of the key used to perform the operation.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7151,28 +6990,23 @@ This method returns data about the restored key. Despite all versions are being 
             <td class="description last"><p>The operation result. The content is defined by the operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -7182,54 +7016,52 @@ This method returns data about the restored key. Despite all versions are being 
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="keyVault.js.html">keyVault.js</a>,
-				 <a href="keyVault.js.html#sunlight-1-line-422">line 422</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="keyVault.js.html">keyVault.js</a>, <a href="keyVault.js.html#line422">line 422</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
 
-            </dl>
+
+
+
+
+
+
+
+
+
+
+
+            
     
 
     
@@ -7240,102 +7072,15 @@ This method returns data about the restored key. Despite all versions are being 
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Wed Jun 24th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:02 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: ZoneOperations</title>
+    <meta charset="utf-8">
+    <title>ZoneOperations - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="DnsManagementClient-DnsManagementClient.html">DnsManagementClient~DnsManagementClient</a></li><li><a href="RecordSetOperations-RecordSetOperations.html">RecordSetOperations~RecordSetOperations</a></li><li><a href="ZoneOperations-ZoneOperations.html">ZoneOperations~ZoneOperations</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createDnsManagementClient">createDnsManagementClient</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="DnsManagementClient-DnsManagementClient.html">DnsManagementClient</a></li><li><a href="RecordSetOperations-RecordSetOperations.html">RecordSetOperations</a><ul class='methods'><li data-type='method'><a href="RecordSetOperations-RecordSetOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="RecordSetOperations-RecordSetOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RecordSetOperations-RecordSetOperations.html#get">get</a></li><li data-type='method'><a href="RecordSetOperations-RecordSetOperations.html#list">list</a></li><li data-type='method'><a href="RecordSetOperations-RecordSetOperations.html#listAll">listAll</a></li><li data-type='method'><a href="RecordSetOperations-RecordSetOperations.html#listNext">listNext</a></li></ul></li><li><a href="ZoneOperations-ZoneOperations.html">ZoneOperations</a><ul class='methods'><li data-type='method'><a href="ZoneOperations-ZoneOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ZoneOperations-ZoneOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ZoneOperations-ZoneOperations.html#get">get</a></li><li data-type='method'><a href="ZoneOperations-ZoneOperations.html#list">list</a></li><li data-type='method'><a href="ZoneOperations-ZoneOperations.html#listNext">listNext</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createDnsManagementClient">createDnsManagementClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">ZoneOperations</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: ZoneOperations</h1>
 <section>
 
 <header>
@@ -64,55 +49,58 @@
         
             <div class="class-description"><p>Operations for managing DNS zones.
 <strong>NOTE</strong>: An instance of this class is automatically created for an
-instance of the [DnsManagementClient] <a href="DnsManagementClient-DnsManagementClient.html">DnsManagementClient~DnsManagementClient</a>.
-See [zones] <a href="DnsManagementClient-DnsManagementClient.html#zones">DnsManagementClient~DnsManagementClient#zones</a>.
+instance of the [DnsManagementClient] <a href="DnsManagementClient-DnsManagementClient.html"><code>DnsManagementClient~DnsManagementClient</code></a>.
+See [zones] <a href="DnsManagementClient-DnsManagementClient.html#zones"><code>DnsManagementClient~DnsManagementClient#zones</code></a>.
 Initializes a new instance of the ZoneOperations class.</p></div>
         
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
+
+    
+    <h2>Constructor</h2>
+    
+
     <h4 class="name" id="ZoneOperations"><span class="type-signature"></span>new ZoneOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -135,21 +123,16 @@ Initializes a new instance of the ZoneOperations class.</p></div>
             <td class="description last"><p>Reference to the service client.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -159,52 +142,50 @@ Initializes a new instance of the ZoneOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="dnsManagementClient.js.html">dnsManagementClient.js</a>,
-				 <a href="dnsManagementClient.js.html#sunlight-1-line-2419">line 2419</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dnsManagementClient.js.html">dnsManagementClient.js</a>, <a href="dnsManagementClient.js.html#line2419">line 2419</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -215,7 +196,7 @@ Initializes a new instance of the ZoneOperations class.</p></div>
 
     
 
-    
+     
 
     
 
@@ -224,49 +205,51 @@ Initializes a new instance of the ZoneOperations class.</p></div>
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
+
+    
+
     <h4 class="name" id="createOrUpdate"><span class="type-signature"></span>createOrUpdate<span class="signature">(resourceGroupName, zoneName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a DNS zone within a resource group.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Creates a DNS zone within a resource group.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -289,7 +272,7 @@ Initializes a new instance of the ZoneOperations class.</p></div>
             <td class="description last"><p>The name of the resource group.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -312,7 +295,7 @@ Initializes a new instance of the ZoneOperations class.</p></div>
             <td class="description last"><p>The name of the zone without a terminating dot.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -337,27 +320,27 @@ the CreateOrUpdate operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -390,27 +373,27 @@ being created or updated.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -444,7 +427,7 @@ being created or updated.</p>
 that is being updated, as received from a Get operation.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -479,27 +462,27 @@ properties of the zone.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -533,7 +516,7 @@ properties of the zone.</p>
 sets the maximum number of record sets that can be created in this zone.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -567,14 +550,14 @@ sets the maximum number of record sets that can be created in this zone.</p></td
 sets the current number of record sets in this zone.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -607,7 +590,7 @@ sets the current number of record sets in this zone.</p></td>
             <td class="description last"><p>Gets or sets the ID of the resource.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -641,7 +624,7 @@ sets the current number of record sets in this zone.</p></td>
 resource.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -675,7 +658,7 @@ resource.</p></td>
 resource.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -707,7 +690,7 @@ resource.</p></td>
 resource.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -741,14 +724,14 @@ resource.</p></td>
 the resource.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -783,14 +766,14 @@ precondition. Set to '*' to force Create-If-Not-Exist. Other values will
 be ignored.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -813,21 +796,16 @@ be ignored.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -837,119 +815,118 @@ be ignored.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="dnsManagementClient.js.html">dnsManagementClient.js</a>,
-				 <a href="dnsManagementClient.js.html#sunlight-1-line-2470">line 2470</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dnsManagementClient.js.html">dnsManagementClient.js</a>, <a href="dnsManagementClient.js.html#line2470">line 2470</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(resourceGroupName, zoneName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Removes a DNS zone from a resource group.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Removes a DNS zone from a resource group.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -972,7 +949,7 @@ be ignored.</p></td>
             <td class="description last"><p>The name of the resource group.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -995,7 +972,7 @@ be ignored.</p></td>
             <td class="description last"><p>The name of the zone without a terminating dot.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1020,27 +997,27 @@ a zone</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1075,14 +1052,14 @@ pre-condition. The delete operation will be performedonly if the ETag of
 the zone on the server matches this value.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1105,21 +1082,16 @@ the zone on the server matches this value.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1129,119 +1101,118 @@ the zone on the server matches this value.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="dnsManagementClient.js.html">dnsManagementClient.js</a>,
-				 <a href="dnsManagementClient.js.html#sunlight-1-line-2695">line 2695</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dnsManagementClient.js.html">dnsManagementClient.js</a>, <a href="dnsManagementClient.js.html#line2695">line 2695</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(resourceGroupName, zoneName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets a DNS zone.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Gets a DNS zone.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1264,7 +1235,7 @@ the zone on the server matches this value.</p></td>
             <td class="description last"><p>The name of the resource group.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1287,7 +1258,7 @@ the zone on the server matches this value.</p></td>
             <td class="description last"><p>The name of the zone without a terminating dot.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1310,21 +1281,16 @@ the zone on the server matches this value.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1334,121 +1300,120 @@ the zone on the server matches this value.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="dnsManagementClient.js.html">dnsManagementClient.js</a>,
-				 <a href="dnsManagementClient.js.html#sunlight-1-line-2786">line 2786</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dnsManagementClient.js.html">dnsManagementClient.js</a>, <a href="dnsManagementClient.js.html#line2786">line 2786</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(resourceGroupName, <span class="optional">parametersOrCallback</span>, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Lists the DNS zones within a resource group.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(resourceGroupName, parametersOrCallback<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Lists the DNS zones within a resource group.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1479,7 +1444,7 @@ the zone on the server matches this value.</p></td>
             <td class="description last"><p>The name of the resource group.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1514,27 +1479,27 @@ null is passed returns the default number of zones.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1568,7 +1533,7 @@ null is passed returns the default number of zones.</p>
 elements to retrieve (first N elements).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1602,14 +1567,14 @@ elements to retrieve (first N elements).</p></td>
 the records enumeration.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1640,21 +1605,16 @@ the records enumeration.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1664,119 +1624,118 @@ the records enumeration.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="dnsManagementClient.js.html">dnsManagementClient.js</a>,
-				 <a href="dnsManagementClient.js.html#sunlight-1-line-2946">line 2946</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dnsManagementClient.js.html">dnsManagementClient.js</a>, <a href="dnsManagementClient.js.html#line2946">line 2946</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listNext"><span class="type-signature"></span>listNext<span class="signature">(nextLink, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Lists the DNS zones within a resource group.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Lists the DNS zones within a resource group.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1800,7 +1759,7 @@ the records enumeration.</p></td>
 List operation.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1823,21 +1782,16 @@ List operation.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1847,77 +1801,74 @@ List operation.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="dnsManagementClient.js.html">dnsManagementClient.js</a>,
-				 <a href="dnsManagementClient.js.html#sunlight-1-line-3121">line 3121</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dnsManagementClient.js.html">dnsManagementClient.js</a>, <a href="dnsManagementClient.js.html#line3121">line 3121</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
+
+    
+
 
 
         
-    
-    
-</dd>
-
-        </dl>
     
 
     
@@ -1930,102 +1881,15 @@ List operation.</p></td>
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:48:57 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

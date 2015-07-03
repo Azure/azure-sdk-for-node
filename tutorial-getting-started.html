@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Getting Started - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Azure SDK Packages</h3><ul><h3>Azure Services</h3><ul><li><a href="azure-extra/latest">azure-extra</a></li><li><a href="azure-gallery/latest">azure-gallery</a></li><li><a href="azure-keyvault/latest">azure-keyvault</a></li><li><a href="azure-monitoring/latest">azure-monitoring</a></li><li><a href="azure-sb/latest">azure-sb</a></li><li><a href="azure-scheduler/latest">azure-scheduler</a></li><li><a href="azure-storage-legacy/latest">azure-storage-legacy</a></li></ul><h3>Resource Management</h3><ul><li><a href="azure-arm-apiapp/latest">azure-arm-apiapp</a></li><li><a href="azure-arm-authorization/latest">azure-arm-authorization</a></li><li><a href="azure-arm-compute/latest">azure-arm-compute</a></li><li><a href="azure-arm-dns/latest">azure-arm-dns</a></li><li><a href="azure-arm-insights/latest">azure-arm-insights</a></li><li><a href="azure-arm-keyvault/latest">azure-arm-keyvault</a></li><li><a href="azure-arm-network/latest">azure-arm-network</a></li><li><a href="azure-arm-resource/latest">azure-arm-resource</a></li><li><a href="azure-arm-storage/latest">azure-arm-storage</a></li><li><a href="azure-arm-trafficmanager/latest">azure-arm-trafficmanager</a></li><li><a href="azure-arm-website/latest">azure-arm-website</a></li></ul><h3>Service Management</h3><ul><li><a href="azure-asm-compute/latest">azure-asm-compute</a></li><li><a href="azure-asm-hdinsight/latest">azure-asm-hdinsight</a></li><li><a href="azure-asm-mgmt/latest">azure-asm-mgmt</a></li><li><a href="azure-asm-network/latest">azure-asm-network</a></li><li><a href="azure-asm-sb/latest">azure-asm-sb</a></li><li><a href="azure-asm-scheduler/latest">azure-asm-scheduler</a></li><li><a href="azure-asm-sql/latest">azure-asm-sql</a></li><li><a href="azure-asm-storage/latest">azure-asm-storage</a></li><li><a href="azure-asm-store/latest">azure-asm-store</a></li><li><a href="azure-asm-subscription/latest">azure-asm-subscription</a></li><li><a href="azure-asm-trafficmanager/latest">azure-asm-trafficmanager</a></li><li><a href="azure-asm-website/latest">azure-asm-website</a></li></ul><h3>Common Libs</h3><ul><li><a href="azure-common/latest">azure-common</a></li></ul></ul><h3>Tutorials</h3><ul><li><a href="tutorial-getting-started.html">Getting Started</a><ul><li><a href="tutorial-service-bus.html">Service Bus</a><ul><li><a href="tutorial-service-bus-topics.html">Topics</a></li><li><a href="tutorial-service-bus-queues.html">Queues</a></li></ul></li><li><a href="tutorial-notification-hubs.html">Notification Hubs</a></li><li><a href="tutorial-service-runtime.html">Service Runtime</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createAutoScaleClient">createAutoScaleClient</a></li><li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createComputeManagementClient">createComputeManagementClient</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li><li><a href="global.html#createGalleryClient">createGalleryClient</a></li><li><a href="global.html#createHDInsightService">createHDInsightService</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createManagementClient">createManagementClient</a></li><li><a href="global.html#createMetricsClient">createMetricsClient</a></li><li><a href="global.html#createNetworkManagementClient">createNetworkManagementClient</a></li><li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createResourceManagementClient">createResourceManagementClient</a></li><li><a href="global.html#createSchedulerClient">createSchedulerClient</a></li><li><a href="global.html#createSchedulerManagementClient">createSchedulerManagementClient</a></li><li><a href="global.html#createScmService">createScmService</a></li><li><a href="global.html#createServiceBusManagementClient">createServiceBusManagementClient</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createSqlManagementClient">createSqlManagementClient</a></li><li><a href="global.html#createSqlManagementService">createSqlManagementService</a></li><li><a href="global.html#createSqlService">createSqlService</a></li><li><a href="global.html#createStorageManagementClient">createStorageManagementClient</a></li><li><a href="global.html#createSubscriptionClient">createSubscriptionClient</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createWebSiteExtensionsClient">createWebSiteExtensionsClient</a></li><li><a href="global.html#createWebSiteManagementClient">createWebSiteManagementClient</a></li><li><a href="global.html#createWebSiteManagementClient2">createWebSiteManagementClient2</a></li><li><a href="global.html#createWebsiteManagementService">createWebsiteManagementService</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#isEmulated">isEmulated</a></li><li><a href="global.html#KEYVAULT_RESOURCE_ID">KEYVAULT_RESOURCE_ID</a></li><li><a href="global.html#KeyVaultClient">KeyVaultClient</a></li><li><a href="global.html#KeyVaultManagementClient">KeyVaultManagementClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">Getting Started</h1>
+    
+
+    <section>
+
+<article>
+    <h2>Install from npm</h2><p>We provide both fine-grained modules for different Microsoft Azure services which you can install separately, and an
+all-up module which contains everything.</p>
+<h3>Install the all-up module</h3><p><code>npm install azure</code></p>
+<p><strong>Note</strong>: the all-up module will often lag behind the fine-grained modules. If you want the latest and greatest, include
+the fine-grained modules individually.</p>
+<h3>Install individual modules</h3><table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Azure Services</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/marketplace/">Gallery</a></td>
+<td style="text-align:left"><code>npm install azure-gallery</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/key-vault/">Key Vault</a></td>
+<td style="text-align:left"><code>npm install azure-keyvault</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://msdn.microsoft.com/library/azure/dn306639.aspx">Monitoring</a></td>
+<td style="text-align:left"><code>npm install azure-monitoring</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/scheduler/">Scheduler</a></td>
+<td style="text-align:left"><code>npm install azure-scheduler</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/service-bus/">Service Bus</a></td>
+<td style="text-align:left"><code>npm install azure-sb</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/storage/">Storage</a></td>
+<td style="text-align:left"><code>npm install azure-storage</code></td>
+</tr>
+<tr>
+<td style="text-align:left">&nbsp;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Azure Resource Management</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/app-service/api/">API Apps</a></td>
+<td style="text-align:left"><code>npm install azure-arm-apiapp</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-configure/">Authorization</a></td>
+<td style="text-align:left"><code>npm install azure-arm-authorization</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/virtual-machines/">Compute</a></td>
+<td style="text-align:left"><code>npm install azure-arm-compute</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/">Resource Manager</a></td>
+<td style="text-align:left"><code>npm install azure-arm-resource</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/dns/">DNS</a></td>
+<td style="text-align:left"><code>npm install azure-arm-dns</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://msdn.microsoft.com/en-us/library/azure/dn931943.aspx">Insights</a></td>
+<td style="text-align:left"><code>npm install azure-arm-insights</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/key-vault/">Key Vault</a></td>
+<td style="text-align:left"><code>npm install azure-arm-keyvault</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/virtual-network/">Virtual Networks</a></td>
+<td style="text-align:left"><code>npm install azure-arm-network</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/storage/">Storage</a></td>
+<td style="text-align:left"><code>npm install azure-arm-storage</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/traffic-manager/">Traffic Manager</a></td>
+<td style="text-align:left"><code>npm install azure-arm-trafficManager</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/app-service/web/">WebApps (WebSites)</a></td>
+<td style="text-align:left"><code>npm install azure-arm-website</code></td>
+</tr>
+<tr>
+<td style="text-align:left">&nbsp;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Azure Service Management</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/virtual-machines/">Compute</a></td>
+<td style="text-align:left"><code>npm install azure-asm-compute</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/hdinsight/">HDInsight</a></td>
+<td style="text-align:left"><code>npm install azure-asm-hdinsight</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/service-bus/">Service Bus</a></td>
+<td style="text-align:left"><code>npm install azure-asm-sb</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://msdn.microsoft.com/en-us/library/azure/ee460799.aspx">Service Manager</a></td>
+<td style="text-align:left"><code>npm install azure-asm-mgmt</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/marketplace/">Store</a></td>
+<td style="text-align:left"><code>npm install azure-asm-store</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/scheduler/">Scheduler</a></td>
+<td style="text-align:left"><code>npm install azure-asm-scheduler</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/sql-database/">SQL Database</a></td>
+<td style="text-align:left"><code>npm install azure-asm-sql</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/storage/">Storage</a></td>
+<td style="text-align:left"><code>npm install azure-asm-storage</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://msdn.microsoft.com/en-us/library/azure/gg715315.aspx">Subscriptions</a></td>
+<td style="text-align:left"><code>npm install azure-asm-subscription</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/traffic-manager/">Traffic Manager</a></td>
+<td style="text-align:left"><code>npm install azure-asm-trafficManager</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/virtual-network/">Virtual Networks</a></td>
+<td style="text-align:left"><code>npm install azure-asm-network</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://azure.microsoft.com/en-us/services/app-service/web/">WebSites</a></td>
+<td style="text-align:left"><code>npm install azure-asm-website</code></td>
+</tr>
+<tr>
+<td style="text-align:left">&nbsp;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Base Libraries</strong></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Common SDK Functionality</td>
+<td style="text-align:left"><code>npm install azure-common</code></td>
+</tr>
+</tbody>
+</table>
+
+    
+      <h3>Related Topics</h3>
+
+      <ul>
+        
+
+        
+          
+              <li><a href="tutorial-service-bus.html">Getting Started: Service Bus</a></li>
+          
+              <li><a href="tutorial-notification-hubs.html">Getting Started: Notification Hubs</a></li>
+          
+              <li><a href="tutorial-service-runtime.html">Getting Started: Service Runtime</a></li>
+          
+      </ul>
+      
+    
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:24 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

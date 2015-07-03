@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: StorageAccountOperations</title>
+    <meta charset="utf-8">
+    <title>StorageAccountOperations - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="StorageAccountOperations-StorageAccountOperations.html">StorageAccountOperations~StorageAccountOperations</a></li><li><a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient~StorageManagementClient</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createStorageManagementClient">createStorageManagementClient</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="StorageAccountOperations-StorageAccountOperations.html">StorageAccountOperations</a><ul class='methods'><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#checkNameAvailability">checkNameAvailability</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#create">create</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#getProperties">getProperties</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#list">list</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#listKeys">listKeys</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#regenerateKey">regenerateKey</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#update">update</a></li></ul></li><li><a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient</a><ul class='methods'><li data-type='method'><a href="StorageManagementClient-StorageManagementClient.html#getCreateOperationStatus">getCreateOperationStatus</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createStorageManagementClient">createStorageManagementClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">StorageAccountOperations</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: StorageAccountOperations</h1>
 <section>
 
 <header>
@@ -64,55 +49,58 @@
         
             <div class="class-description"><p>Operations for managing storage accounts.
 <strong>NOTE</strong>: An instance of this class is automatically created for an
-instance of the [StorageManagementClient] <a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient~StorageManagementClient</a>.
-See [storageAccounts] <a href="StorageManagementClient-StorageManagementClient.html#storageAccounts">StorageManagementClient~StorageManagementClient#storageAccounts</a>.
+instance of the [StorageManagementClient] <a href="StorageManagementClient-StorageManagementClient.html"><code>StorageManagementClient~StorageManagementClient</code></a>.
+See [storageAccounts] <a href="StorageManagementClient-StorageManagementClient.html#storageAccounts"><code>StorageManagementClient~StorageManagementClient#storageAccounts</code></a>.
 Initializes a new instance of the StorageAccountOperations class.</p></div>
         
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
+
+    
+    <h2>Constructor</h2>
+    
+
     <h4 class="name" id="StorageAccountOperations"><span class="type-signature"></span>new StorageAccountOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -135,21 +123,16 @@ Initializes a new instance of the StorageAccountOperations class.</p></div>
             <td class="description last"><p>Reference to the service client.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -159,52 +142,50 @@ Initializes a new instance of the StorageAccountOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-341">line 341</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line341">line 341</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -215,7 +196,7 @@ Initializes a new instance of the StorageAccountOperations class.</p></div>
 
     
 
-    
+     
 
     
 
@@ -224,53 +205,55 @@ Initializes a new instance of the StorageAccountOperations class.</p></div>
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
+
+    
+
     <h4 class="name" id="beginCreate"><span class="type-signature"></span>beginCreate<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Asynchronously creates a new storage account with the specified
+
+
+
+<div class="description">
+    <p>Asynchronously creates a new storage account with the specified
 parameters. Existing accounts cannot be updated with this API and should
 instead use the Update Storage Account API. If an account is already
 created and subsequent PUT request is issued with exact same set of
 properties, then HTTP 200 would be returned.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -294,7 +277,7 @@ properties, then HTTP 200 would be returned.</p>
 the user’s subscription.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -319,7 +302,7 @@ specified resource group. Storage account names must be between 3 and 24
 characters in length and use numbers and lower-case letters only.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -344,27 +327,27 @@ provide for the created account.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -395,7 +378,7 @@ provide for the created account.</p>
             <td class="description last"><p>Gets or sets the account type.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -429,7 +412,7 @@ Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of
 a resource cannot be changed once it is created.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -466,14 +449,14 @@ be provided for a resource. Each tag must have a key no greater than 128
 characters and value no greater than 256 characters.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -496,21 +479,16 @@ characters and value no greater than 256 characters.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -520,119 +498,118 @@ characters and value no greater than 256 characters.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-379">line 379</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line379">line 379</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="checkNameAvailability"><span class="type-signature"></span>checkNameAvailability<span class="signature">(accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Checks that account name is valid and is not in use.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Checks that account name is valid and is not in use.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -657,7 +634,7 @@ specified resource group. Storage account names must be between 3 and 24
 characters in length and use numbers and lower-case letters only.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -680,21 +657,16 @@ characters in length and use numbers and lower-case letters only.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -704,124 +676,123 @@ characters in length and use numbers and lower-case letters only.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-683">line 683</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line683">line 683</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Asynchronously creates a new storage account with the specified
+
+
+
+<div class="description">
+    <p>Asynchronously creates a new storage account with the specified
 parameters. Existing accounts cannot be updated with this API and should
 instead use the Update Storage Account API. If an account is already
 created and subsequent create request is issued with exact same set of
 properties, the request succeeds.The max number of storage accounts that
 can be created per subscription is limited to 20.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -845,7 +816,7 @@ can be created per subscription is limited to 20.</p>
 the user’s subscription.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -870,7 +841,7 @@ specified resource group. Storage account names must be between 3 and 24
 characters in length and use numbers and lower-case letters only.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -895,27 +866,27 @@ provide for the created account.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -946,7 +917,7 @@ provide for the created account.</p>
             <td class="description last"><p>Gets or sets the account type.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -980,7 +951,7 @@ Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of
 a resource cannot be changed once it is created.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1017,14 +988,14 @@ be provided for a resource. Each tag must have a key no greater than 128
 characters and value no greater than 256 characters.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1047,21 +1018,16 @@ characters and value no greater than 256 characters.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1071,119 +1037,118 @@ characters and value no greater than 256 characters.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-829">line 829</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line829">line 829</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Deletes a storage account in Microsoft Azure.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Deletes a storage account in Microsoft Azure.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1207,7 +1172,7 @@ characters and value no greater than 256 characters.</p></td>
 the user’s subscription.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1232,7 +1197,7 @@ specified resource group. Storage account names must be between 3 and 24
 characters in length and use numbers and lower-case letters only.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1255,21 +1220,16 @@ characters in length and use numbers and lower-case letters only.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1279,121 +1239,120 @@ characters in length and use numbers and lower-case letters only.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-891">line 891</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line891">line 891</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getProperties"><span class="type-signature"></span>getProperties<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Returns the properties for the specified storage account including but not
+
+
+
+<div class="description">
+    <p>Returns the properties for the specified storage account including but not
 limited to name, account type, location, and account status. The ListKeys
 operation should be used to retrieve storage keys.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1417,7 +1376,7 @@ operation should be used to retrieve storage keys.</p>
 the user’s subscription.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1442,7 +1401,7 @@ specified resource group. Storage account names must be between 3 and 24
 characters in length and use numbers and lower-case letters only.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1465,21 +1424,16 @@ characters in length and use numbers and lower-case letters only.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1489,120 +1443,119 @@ characters in length and use numbers and lower-case letters only.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-993">line 993</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line993">line 993</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Lists all the storage accounts available under the subscription. Note that
+
+
+
+<div class="description">
+    <p>Lists all the storage accounts available under the subscription. Note that
 storage keys are not returned; use the ListKeys operation for this.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1625,21 +1578,16 @@ storage keys are not returned; use the ListKeys operation for this.</p>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1649,121 +1597,120 @@ storage keys are not returned; use the ListKeys operation for this.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-1250">line 1250</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line1250">line 1250</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listByResourceGroup"><span class="type-signature"></span>listByResourceGroup<span class="signature">(resourceGroupName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Lists all the storage accounts available under the given resource group.
+
+
+
+<div class="description">
+    <p>Lists all the storage accounts available under the given resource group.
 Note that storage keys are not returned; use the ListKeys operation for
 this.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1787,7 +1734,7 @@ this.</p>
 the user’s subscription.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1810,21 +1757,16 @@ the user’s subscription.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1834,119 +1776,118 @@ the user’s subscription.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-1502">line 1502</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line1502">line 1502</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listKeys"><span class="type-signature"></span>listKeys<span class="signature">(resourceGroupName, accountName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Lists the access keys for the specified storage account.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Lists the access keys for the specified storage account.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1969,7 +1910,7 @@ the user’s subscription.</p></td>
             <td class="description last"><p>The name of the resource group.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1992,7 +1933,7 @@ the user’s subscription.</p></td>
             <td class="description last"><p>The name of the storage account.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2015,21 +1956,16 @@ the user’s subscription.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2039,119 +1975,118 @@ the user’s subscription.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-1758">line 1758</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line1758">line 1758</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="regenerateKey"><span class="type-signature"></span>regenerateKey<span class="signature">(resourceGroupName, accountName, regenerateKey, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Regenerates the access keys for the specified storage account.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Regenerates the access keys for the specified storage account.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2175,7 +2110,7 @@ the user’s subscription.</p></td>
 the user’s subscription.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2200,7 +2135,7 @@ specified resource group. Storage account names must be between 3 and 24
 characters in length and use numbers and lower-case letters only.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2224,7 +2159,7 @@ characters in length and use numbers and lower-case letters only.</p></td>
 regenerated.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2247,21 +2182,16 @@ regenerated.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2271,88 +2201,86 @@ regenerated.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-1887">line 1887</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line1887">line 1887</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(resourceGroupName, accountName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates the account type or tags for a storage account. It can also be
+
+
+
+<div class="description">
+    <p>Updates the account type or tags for a storage account. It can also be
 used to add a custom domain (note that custom domains cannot be added via
 the Create operation). Only one custom domain is supported per storage
 account. This API can only be used to update one of tags, accountType, or
@@ -2361,37 +2289,38 @@ API multiple times with one change per call. This call does not change
 the storage keys for the account. If you want to change storage account
 keys, use the RegenerateKey operation. The location and name of the
 storage account cannot be changed after creation.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2415,7 +2344,7 @@ storage account cannot be changed after creation.</p>
 the user’s subscription.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2440,7 +2369,7 @@ specified resource group. Storage account names must be between 3 and 24
 characters in length and use numbers and lower-case letters only.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2466,27 +2395,27 @@ time using this API.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2522,7 +2451,7 @@ other account types, and other account types cannot be changed to
 StandardZRS or PremiumLRS.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2559,27 +2488,27 @@ domain, use an empty string for the custom domain name property.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2613,7 +2542,7 @@ domain, use an empty string for the custom domain name property.</p>
 domain name. Name is the CNAME source.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2648,14 +2577,14 @@ indirect CName validation is enabled. Default value is false. This should
 only be set on updates</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2693,14 +2622,14 @@ characters and value no greater than 256 characters. This is a full
 replace so all the existing tags will be replaced on Update.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2723,21 +2652,16 @@ replace so all the existing tags will be replaced on Update.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2747,77 +2671,74 @@ replace so all the existing tags will be replaced on Update.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storageManagementClient.js.html">storageManagementClient.js</a>,
-				 <a href="storageManagementClient.js.html#sunlight-1-line-2065">line 2065</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line2065">line 2065</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
+
+    
+
 
 
         
-    
-    
-</dd>
-
-        </dl>
     
 
     
@@ -2830,102 +2751,15 @@ replace so all the existing tags will be replaced on Update.</p></td>
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:18 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

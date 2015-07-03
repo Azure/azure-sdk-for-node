@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: EventDataOperations</title>
+    <meta charset="utf-8">
+    <title>EventDataOperations - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="AlertsClient-AlertsClient.html">AlertsClient~AlertsClient</a></li><li><a href="AutoscaleClient-AutoscaleClient.html">AutoscaleClient~AutoscaleClient</a></li><li><a href="EventDataOperations-EventDataOperations.html">EventDataOperations~EventDataOperations</a></li><li><a href="EventsClient-EventsClient.html">EventsClient~EventsClient</a></li><li><a href="IncidentOperations-IncidentOperations.html">IncidentOperations~IncidentOperations</a></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations~MetricDefinitionOperations</a></li><li><a href="MetricsClient-MetricsClient.html">MetricsClient~MetricsClient</a></li><li><a href="MetricSettingOperations-MetricSettingOperations.html">MetricSettingOperations~MetricSettingOperations</a></li><li><a href="MetricValueOperations-MetricValueOperations.html">MetricValueOperations~MetricValueOperations</a></li><li><a href="RuleOperations-RuleOperations.html">RuleOperations~RuleOperations</a></li><li><a href="SettingOperations-SettingOperations.html">SettingOperations~SettingOperations</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AlertsClient-AlertsClient.html">AlertsClient</a></li><li><a href="AutoscaleClient-AutoscaleClient.html">AutoscaleClient</a></li><li><a href="EventDataOperations-EventDataOperations.html">EventDataOperations</a><ul class='methods'><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEvents">listEvents</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForCorrelationId">listEventsForCorrelationId</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForEventSource">listEventsForEventSource</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResource">listEventsForResource</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResourceGroup">listEventsForResourceGroup</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResourceProvider">listEventsForResourceProvider</a></li></ul></li><li><a href="EventsClient-EventsClient.html">EventsClient</a></li><li><a href="IncidentOperations-IncidentOperations.html">IncidentOperations</a><ul class='methods'><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#get">get</a></li><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#listActiveForSubscription">listActiveForSubscription</a></li><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#listForRule">listForRule</a></li></ul></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations</a><ul class='methods'><li data-type='method'><a href="MetricDefinitionOperations-MetricDefinitionOperations.html#list">list</a></li></ul></li><li><a href="MetricsClient-MetricsClient.html">MetricsClient</a></li><li><a href="MetricSettingOperations-MetricSettingOperations.html">MetricSettingOperations</a><ul class='methods'><li data-type='method'><a href="MetricSettingOperations-MetricSettingOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="MetricSettingOperations-MetricSettingOperations.html#list">list</a></li></ul></li><li><a href="MetricValueOperations-MetricValueOperations.html">MetricValueOperations</a><ul class='methods'><li data-type='method'><a href="MetricValueOperations-MetricValueOperations.html#list">list</a></li></ul></li><li><a href="RuleOperations-RuleOperations.html">RuleOperations</a><ul class='methods'><li data-type='method'><a href="RuleOperations-RuleOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#get">get</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#list">list</a></li></ul></li><li><a href="SettingOperations-SettingOperations.html">SettingOperations</a><ul class='methods'><li data-type='method'><a href="SettingOperations-SettingOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="SettingOperations-SettingOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="SettingOperations-SettingOperations.html#get">get</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">EventDataOperations</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: EventDataOperations</h1>
 <section>
 
 <header>
@@ -64,55 +49,58 @@
         
             <div class="class-description"><p>Operations for event data.
 <strong>NOTE</strong>: An instance of this class is automatically created for an
-instance of the [EventsClient] <a href="EventsClient-EventsClient.html">EventsClient~EventsClient</a>.
-See [eventData] <a href="EventsClient-EventsClient.html#eventData">EventsClient~EventsClient#eventData</a>.
+instance of the [EventsClient] <a href="EventsClient-EventsClient.html"><code>EventsClient~EventsClient</code></a>.
+See [eventData] <a href="EventsClient-EventsClient.html#eventData"><code>EventsClient~EventsClient#eventData</code></a>.
 Initializes a new instance of the EventDataOperations class.</p></div>
         
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
+
+    
+    <h2>Constructor</h2>
+    
+
     <h4 class="name" id="EventDataOperations"><span class="type-signature"></span>new EventDataOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -135,21 +123,16 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>Reference to the service client.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -159,52 +142,50 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="eventsClient.js.html">eventsClient.js</a>,
-				 <a href="eventsClient.js.html#sunlight-1-line-98">line 98</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="eventsClient.js.html">eventsClient.js</a>, <a href="eventsClient.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -215,7 +196,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
     
 
-    
+     
 
     
 
@@ -224,49 +205,51 @@ Initializes a new instance of the EventDataOperations class.</p></div>
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
+
+    
+
     <h4 class="name" id="listEvents"><span class="type-signature"></span>listEvents<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The List Event Values operation lists the events.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>The List Event Values operation lists the events.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -290,27 +273,27 @@ Initializes a new instance of the EventDataOperations class.</p></div>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -341,7 +324,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The start time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -374,7 +357,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The end time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -407,7 +390,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The event channels.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -440,14 +423,14 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The next link token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -470,21 +453,16 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -494,119 +472,118 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="eventsClient.js.html">eventsClient.js</a>,
-				 <a href="eventsClient.js.html#sunlight-1-line-119">line 119</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="eventsClient.js.html">eventsClient.js</a>, <a href="eventsClient.js.html#line119">line 119</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listEventsForCorrelationId"><span class="type-signature"></span>listEventsForCorrelationId<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The List Event Values operation lists the events.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>The List Event Values operation lists the events.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -630,27 +607,27 @@ Initializes a new instance of the EventDataOperations class.</p></div>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -681,7 +658,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The event correlation id.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -712,7 +689,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The start time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -745,7 +722,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The end time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -778,7 +755,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The event channels.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -811,14 +788,14 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The next link token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -841,21 +818,16 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -865,119 +837,118 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="eventsClient.js.html">eventsClient.js</a>,
-				 <a href="eventsClient.js.html#sunlight-1-line-492">line 492</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="eventsClient.js.html">eventsClient.js</a>, <a href="eventsClient.js.html#line492">line 492</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listEventsForEventSource"><span class="type-signature"></span>listEventsForEventSource<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The List Event Values operation lists the events.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>The List Event Values operation lists the events.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1001,27 +972,27 @@ Initializes a new instance of the EventDataOperations class.</p></div>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1052,7 +1023,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The event source.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1083,7 +1054,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The start time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1116,7 +1087,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The end time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1149,7 +1120,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The event channels.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1182,14 +1153,14 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The next link token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1212,21 +1183,16 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1236,119 +1202,118 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="eventsClient.js.html">eventsClient.js</a>,
-				 <a href="eventsClient.js.html#sunlight-1-line-869">line 869</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="eventsClient.js.html">eventsClient.js</a>, <a href="eventsClient.js.html#line869">line 869</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listEventsForResource"><span class="type-signature"></span>listEventsForResource<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The List Event Values operation lists the events.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>The List Event Values operation lists the events.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1372,27 +1337,27 @@ Initializes a new instance of the EventDataOperations class.</p></div>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1423,7 +1388,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The id of the resource.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1454,7 +1419,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The start time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1487,7 +1452,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The end time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1520,7 +1485,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The event channels.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1553,14 +1518,14 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The next link token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1583,21 +1548,16 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1607,119 +1567,118 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="eventsClient.js.html">eventsClient.js</a>,
-				 <a href="eventsClient.js.html#sunlight-1-line-1246">line 1246</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="eventsClient.js.html">eventsClient.js</a>, <a href="eventsClient.js.html#line1246">line 1246</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listEventsForResourceGroup"><span class="type-signature"></span>listEventsForResourceGroup<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The List Event Values operation lists the events.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>The List Event Values operation lists the events.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1743,27 +1702,27 @@ Initializes a new instance of the EventDataOperations class.</p></div>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1794,7 +1753,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The resource group name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1825,7 +1784,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The start time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1858,7 +1817,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The end time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1891,7 +1850,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The event channels.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1924,14 +1883,14 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The next link token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1954,21 +1913,16 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1978,119 +1932,118 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="eventsClient.js.html">eventsClient.js</a>,
-				 <a href="eventsClient.js.html#sunlight-1-line-1623">line 1623</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="eventsClient.js.html">eventsClient.js</a>, <a href="eventsClient.js.html#line1623">line 1623</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listEventsForResourceProvider"><span class="type-signature"></span>listEventsForResourceProvider<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The List Event Values operation lists the events.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>The List Event Values operation lists the events.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2114,27 +2067,27 @@ Initializes a new instance of the EventDataOperations class.</p></div>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2165,7 +2118,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The resource provider.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2196,7 +2149,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The start time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2229,7 +2182,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The end time of the events.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2262,7 +2215,7 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The event channels.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2295,14 +2248,14 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"><p>The next link token.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2325,21 +2278,16 @@ Initializes a new instance of the EventDataOperations class.</p></div>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2349,77 +2297,74 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="eventsClient.js.html">eventsClient.js</a>,
-				 <a href="eventsClient.js.html#sunlight-1-line-2000">line 2000</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="eventsClient.js.html">eventsClient.js</a>, <a href="eventsClient.js.html#line2000">line 2000</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
+
+    
+
 
 
         
-    
-    
-</dd>
-
-        </dl>
     
 
     
@@ -2432,102 +2377,15 @@ Initializes a new instance of the EventDataOperations class.</p></div>
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:06 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

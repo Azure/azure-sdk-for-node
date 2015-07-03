@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: TableService</title>
+    <meta charset="utf-8">
+    <title>TableService - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="BatchServiceClient.html">BatchServiceClient</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="SharedKey.html">SharedKey</a></li><li><a href="SharedKeyLite.html">SharedKeyLite</a></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a></li><li><a href="SharedKeyTable.html">SharedKeyTable</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="BatchServiceClient.html">BatchServiceClient</a><ul class='methods'><li data-type='method'><a href="BatchServiceClient.html#addOperation">addOperation</a></li><li data-type='method'><a href="BatchServiceClient.html#beginBatch">beginBatch</a></li><li data-type='method'><a href="BatchServiceClient.html#commitBatch">commitBatch</a></li><li data-type='method'><a href="BatchServiceClient.html#hasOperations">hasOperations</a></li><li data-type='method'><a href="BatchServiceClient.html#isInBatch">isInBatch</a></li><li data-type='method'><a href="BatchServiceClient.html#processOperation">processOperation</a></li><li data-type='method'><a href="BatchServiceClient.html#processResponse">processResponse</a></li><li data-type='method'><a href="BatchServiceClient.html#rollback">rollback</a></li></ul></li><li><a href="BlobService.html">BlobService</a><ul class='methods'><li data-type='method'><a href="BlobService.html#_createBlobFromChunkStream">_createBlobFromChunkStream</a></li><li data-type='method'><a href="BlobService.html#abortCopyBlob">abortCopyBlob</a></li><li data-type='method'><a href="BlobService.html#acquireLease">acquireLease</a></li><li data-type='method'><a href="BlobService.html#breakLease">breakLease</a></li><li data-type='method'><a href="BlobService.html#clearBlobPages">clearBlobPages</a></li><li data-type='method'><a href="BlobService.html#commitBlobBlocks">commitBlobBlocks</a></li><li data-type='method'><a href="BlobService.html#copyBlob">copyBlob</a></li><li data-type='method'><a href="BlobService.html#createBlob">createBlob</a></li><li data-type='method'><a href="BlobService.html#createBlobBlockFromStream">createBlobBlockFromStream</a></li><li data-type='method'><a href="BlobService.html#createBlobBlockFromText">createBlobBlockFromText</a></li><li data-type='method'><a href="BlobService.html#createBlobPagesFromStream">createBlobPagesFromStream</a></li><li data-type='method'><a href="BlobService.html#createBlobPagesFromText">createBlobPagesFromText</a></li><li data-type='method'><a href="BlobService.html#createBlobSnapshot">createBlobSnapshot</a></li><li data-type='method'><a href="BlobService.html#createBlockBlobFromFile">createBlockBlobFromFile</a></li><li data-type='method'><a href="BlobService.html#createBlockBlobFromStream">createBlockBlobFromStream</a></li><li data-type='method'><a href="BlobService.html#createBlockBlobFromText">createBlockBlobFromText</a></li><li data-type='method'><a href="BlobService.html#createContainer">createContainer</a></li><li data-type='method'><a href="BlobService.html#createContainerIfNotExists">createContainerIfNotExists</a></li><li data-type='method'><a href="BlobService.html#createPageBlob">createPageBlob</a></li><li data-type='method'><a href="BlobService.html#createPageBlobFromFile">createPageBlobFromFile</a></li><li data-type='method'><a href="BlobService.html#createPageBlobFromStream">createPageBlobFromStream</a></li><li data-type='method'><a href="BlobService.html#deleteBlob">deleteBlob</a></li><li data-type='method'><a href="BlobService.html#deleteContainer">deleteContainer</a></li><li data-type='method'><a href="BlobService.html#generateBlockIdPrefix">generateBlockIdPrefix</a></li><li data-type='method'><a href="BlobService.html#generateSharedAccessSignature">generateSharedAccessSignature</a></li><li data-type='method'><a href="BlobService.html#getBlob">getBlob</a></li><li data-type='method'><a href="BlobService.html#getBlobMetadata">getBlobMetadata</a></li><li data-type='method'><a href="BlobService.html#getBlobProperties">getBlobProperties</a></li><li data-type='method'><a href="BlobService.html#getBlobToFile">getBlobToFile</a></li><li data-type='method'><a href="BlobService.html#getBlobToStream">getBlobToStream</a></li><li data-type='method'><a href="BlobService.html#getBlobToText">getBlobToText</a></li><li data-type='method'><a href="BlobService.html#getBlobUrl">getBlobUrl</a></li><li data-type='method'><a href="BlobService.html#getBlockId">getBlockId</a></li><li data-type='method'><a href="BlobService.html#getContainerAcl">getContainerAcl</a></li><li data-type='method'><a href="BlobService.html#getContainerMetadata">getContainerMetadata</a></li><li data-type='method'><a href="BlobService.html#getContainerProperties">getContainerProperties</a></li><li data-type='method'><a href="BlobService.html#getServiceProperties">getServiceProperties</a></li><li data-type='method'><a href="BlobService.html#listBlobBlocks">listBlobBlocks</a></li><li data-type='method'><a href="BlobService.html#listBlobRegions">listBlobRegions</a></li><li data-type='method'><a href="BlobService.html#listBlobs">listBlobs</a></li><li data-type='method'><a href="BlobService.html#listContainers">listContainers</a></li><li data-type='method'><a href="BlobService.html#putBlockBlobFromFile">putBlockBlobFromFile</a></li><li data-type='method'><a href="BlobService.html#putBlockBlobFromStream">putBlockBlobFromStream</a></li><li data-type='method'><a href="BlobService.html#releaseLease">releaseLease</a></li><li data-type='method'><a href="BlobService.html#renewLease">renewLease</a></li><li data-type='method'><a href="BlobService.html#setBlobMetadata">setBlobMetadata</a></li><li data-type='method'><a href="BlobService.html#setBlobProperties">setBlobProperties</a></li><li data-type='method'><a href="BlobService.html#setContainerAcl">setContainerAcl</a></li><li data-type='method'><a href="BlobService.html#setContainerMetadata">setContainerMetadata</a></li><li data-type='method'><a href="BlobService.html#setServiceProperties">setServiceProperties</a></li></ul></li><li><a href="QueueService.html">QueueService</a><ul class='methods'><li data-type='method'><a href="QueueService.html#clearMessages">clearMessages</a></li><li data-type='method'><a href="QueueService.html#createMessage">createMessage</a></li><li data-type='method'><a href="QueueService.html#createQueue">createQueue</a></li><li data-type='method'><a href="QueueService.html#createQueueIfNotExists">createQueueIfNotExists</a></li><li data-type='method'><a href="QueueService.html#deleteMessage">deleteMessage</a></li><li data-type='method'><a href="QueueService.html#deleteQueue">deleteQueue</a></li><li data-type='method'><a href="QueueService.html#getMessages">getMessages</a></li><li data-type='method'><a href="QueueService.html#getQueueMetadata">getQueueMetadata</a></li><li data-type='method'><a href="QueueService.html#getServiceProperties">getServiceProperties</a></li><li data-type='method'><a href="QueueService.html#listQueues">listQueues</a></li><li data-type='method'><a href="QueueService.html#peekMessages">peekMessages</a></li><li data-type='method'><a href="QueueService.html#setQueueMetadata">setQueueMetadata</a></li><li data-type='method'><a href="QueueService.html#setServiceProperties">setServiceProperties</a></li><li data-type='method'><a href="QueueService.html#updateMessage">updateMessage</a></li></ul></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a><ul class='methods'><li data-type='method'><a href="SharedAccessSignature.html#_generateSignature">_generateSignature</a></li><li data-type='method'><a href="SharedAccessSignature.html#_permissionMatchesRequest">_permissionMatchesRequest</a></li><li data-type='method'><a href="SharedAccessSignature.html#generateSignedQueryString">generateSignedQueryString</a></li><li data-type='method'><a href="SharedAccessSignature.html#signRequest">signRequest</a></li></ul></li><li><a href="SharedKey.html">SharedKey</a><ul class='methods'><li data-type='method'><a href="SharedKey.html#signRequest">signRequest</a></li></ul></li><li><a href="SharedKeyLite.html">SharedKeyLite</a><ul class='methods'><li data-type='method'><a href="SharedKeyLite.html#signRequest">signRequest</a></li></ul></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a><ul class='methods'><li data-type='method'><a href="SharedKeyLiteTable.html#signRequest">signRequest</a></li></ul></li><li><a href="SharedKeyTable.html">SharedKeyTable</a><ul class='methods'><li data-type='method'><a href="SharedKeyTable.html#signRequest">signRequest</a></li></ul></li><li><a href="TableQuery.html">TableQuery</a><ul class='methods'><li data-type='method'><a href="TableQuery.html#.select">select</a></li><li data-type='method'><a href="TableQuery.html#_replaceOperators">_replaceOperators</a></li><li data-type='method'><a href="TableQuery.html#and">and</a></li><li data-type='method'><a href="TableQuery.html#from">from</a></li><li data-type='method'><a href="TableQuery.html#or">or</a></li><li data-type='method'><a href="TableQuery.html#top">top</a></li><li data-type='method'><a href="TableQuery.html#toPath">toPath</a></li><li data-type='method'><a href="TableQuery.html#toQueryObject">toQueryObject</a></li><li data-type='method'><a href="TableQuery.html#where">where</a></li><li data-type='method'><a href="TableQuery.html#whereKeys">whereKeys</a></li><li data-type='method'><a href="TableQuery.html#whereNextKeys">whereNextKeys</a></li></ul></li><li><a href="TableService.html">TableService</a><ul class='methods'><li data-type='method'><a href="TableService.html#createTable">createTable</a></li><li data-type='method'><a href="TableService.html#createTableIfNotExists">createTableIfNotExists</a></li><li data-type='method'><a href="TableService.html#deleteEntity">deleteEntity</a></li><li data-type='method'><a href="TableService.html#deleteTable">deleteTable</a></li><li data-type='method'><a href="TableService.html#getServiceProperties">getServiceProperties</a></li><li data-type='method'><a href="TableService.html#getTable">getTable</a></li><li data-type='method'><a href="TableService.html#insertEntity">insertEntity</a></li><li data-type='method'><a href="TableService.html#insertOrMergeEntity">insertOrMergeEntity</a></li><li data-type='method'><a href="TableService.html#insertOrReplaceEntity">insertOrReplaceEntity</a></li><li data-type='method'><a href="TableService.html#mergeEntity">mergeEntity</a></li><li data-type='method'><a href="TableService.html#queryEntities">queryEntities</a></li><li data-type='method'><a href="TableService.html#queryEntity">queryEntity</a></li><li data-type='method'><a href="TableService.html#queryTables">queryTables</a></li><li data-type='method'><a href="TableService.html#setServiceProperties">setServiceProperties</a></li><li data-type='method'><a href="TableService.html#updateEntity">updateEntity</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">TableService</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: TableService</h1>
 <section>
 
 <header>
@@ -71,55 +56,58 @@ contains key-value pairs. There is no schema, so each row in a table may store a
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
-    <h4 class="name" id="TableService"><span class="type-signature"></span>new TableService<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>, <span class="optional">authenticationProvider</span>)</span><span class="type-signature"></span></h4>
+
     
+    <h2>Constructor</h2>
     
-</dt>
-<dd>
+
+    <h4 class="name" id="TableService"><span class="type-signature"></span>new TableService<span class="signature">(storageAccountOrConnectionString<span class="signature-attributes">opt</span>, storageAccessKey<span class="signature-attributes">opt</span>, host<span class="signature-attributes">opt</span>, authenticationProvider<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
     
-    
-    <div class="description">
-        <p>Creates a new TableService object.
+
+
+
+<div class="description">
+    <p>Creates a new TableService object.
 If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY environment variables will be used.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -152,7 +140,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -185,7 +173,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -218,7 +206,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The host address.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -251,21 +239,16 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The authentication provider.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -275,52 +258,50 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-60">line 60</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -342,7 +323,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-    
+     
 
     
 
@@ -351,54 +332,56 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
-    <h4 class="name" id="createTable"><span class="type-signature"></span>createTable<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new table within a storage account.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createTable"><span class="type-signature"></span>createTable<span class="signature">(table, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a new table within a storage account.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -429,7 +412,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -463,27 +446,27 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -516,14 +499,14 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -556,21 +539,16 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
                                                            the new table information.</code>response` will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -580,120 +558,119 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-237">line 237</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line237">line 237</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createTableIfNotExists"><span class="type-signature"></span>createTableIfNotExists<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new table within a storage account if it doesnt exists.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createTableIfNotExists"><span class="type-signature"></span>createTableIfNotExists<span class="signature">(table, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a new table within a storage account if it doesnt exists.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -724,7 +701,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -758,27 +735,27 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -811,14 +788,14 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -852,21 +829,16 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -876,132 +848,130 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-292">line 292</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line292">line 292</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
+
+    <h5>Example</h5>
     
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure&#x27;);
+    <pre class="prettyprint"><code>var azure = require('azure');
 var tableService = azure.createTableService();
-tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
+tableService.createTableIfNotExists('tasktable', function(error) {
   if(!error) { 
     // Table created or exists
   }
-});</pre>
+});</code></pre>
 
 
-    
-</dd>
 
         
             
-<dt>
-    <h4 class="name" id="deleteEntity"><span class="type-signature"></span>deleteEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Deletes an entity within a table.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="deleteEntity"><span class="type-signature"></span>deleteEntity<span class="signature">(table, entityDescriptor, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Deletes an entity within a table.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1032,7 +1002,7 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1063,7 +1033,7 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The entity descriptor.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1097,27 +1067,27 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1150,7 +1120,7 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>Boolean value indicating weather the etag should be matched or not.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1183,14 +1153,14 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1224,21 +1194,16 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1248,120 +1213,119 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-857">line 857</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line857">line 857</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="deleteTable"><span class="type-signature"></span>deleteTable<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Deletes a table from a storage account.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="deleteTable"><span class="type-signature"></span>deleteTable<span class="signature">(table, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Deletes a table from a storage account.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1392,7 +1356,7 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1426,27 +1390,27 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1479,14 +1443,14 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1519,21 +1483,16 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1543,120 +1502,119 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-318">line 318</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line318">line 318</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="getServiceProperties"><span class="type-signature"></span>getServiceProperties<span class="signature">(<span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets the properties of a storage account’s Table service, including Microsoft Azure Storage Analytics.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="getServiceProperties"><span class="type-signature"></span>getServiceProperties<span class="signature">(options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Gets the properties of a storage account’s Table service, including Microsoft Azure Storage Analytics.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1690,27 +1648,27 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1743,14 +1701,14 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1784,21 +1742,16 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                                                              <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1808,120 +1761,119 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-112">line 112</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line112">line 112</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="getTable"><span class="type-signature"></span>getTable<span class="signature">(table, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets a table properties.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="getTable"><span class="type-signature"></span>getTable<span class="signature">(table, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Gets a table properties.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1952,7 +1904,7 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1986,27 +1938,27 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2039,14 +1991,14 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2080,21 +2032,16 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2104,120 +2051,119 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-194">line 194</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line194">line 194</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="insertEntity"><span class="type-signature"></span>insertEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Inserts a new entity into a table.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="insertEntity"><span class="type-signature"></span>insertEntity<span class="signature">(table, entityDescriptor, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Inserts a new entity into a table.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2248,7 +2194,7 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2279,7 +2225,7 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The entity descriptor.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2313,27 +2259,27 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2366,14 +2312,14 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2407,21 +2353,16 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2431,138 +2372,136 @@ tableService.createTableIfNotExists(&#x27;tasktable&#x27;, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-553">line 553</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line553">line 553</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
+
+    <h5>Example</h5>
     
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure&#x27;);
+    <pre class="prettyprint"><code>var azure = require('azure');
 var tableService = azure.createTableService();
 var task1 = {
-  PartitionKey : &#x27;tasksSeattle&#x27;,
-  RowKey: &#x27;1&#x27;,
-  Description: &#x27;Take out the trash&#x27;,
+  PartitionKey : 'tasksSeattle',
+  RowKey: '1',
+  Description: 'Take out the trash',
   DueDate: new Date(2011, 12, 14, 12)
 };
-tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
+tableService.insertEntity('tasktable', task1, function(error) {
   if(!error) {
     // Entity inserted
   }
-}); </pre>
+}); </code></pre>
 
 
-    
-</dd>
 
         
             
-<dt>
-    <h4 class="name" id="insertOrMergeEntity"><span class="type-signature"></span>insertOrMergeEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Inserts or updates an existing entity within a table by merging new property values into the entity.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="insertOrMergeEntity"><span class="type-signature"></span>insertOrMergeEntity<span class="signature">(table, entityDescriptor, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Inserts or updates an existing entity within a table by merging new property values into the entity.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2593,7 +2532,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2624,7 +2563,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The entity descriptor.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2658,27 +2597,27 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2711,14 +2650,14 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2752,21 +2691,16 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2776,120 +2710,119 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-796">line 796</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line796">line 796</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="insertOrReplaceEntity"><span class="type-signature"></span>insertOrReplaceEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Inserts or updates a new entity into a table.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="insertOrReplaceEntity"><span class="type-signature"></span>insertOrReplaceEntity<span class="signature">(table, entityDescriptor, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Inserts or updates a new entity into a table.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2920,7 +2853,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2951,7 +2884,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The entity descriptor.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2985,27 +2918,27 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3038,14 +2971,14 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3079,21 +3012,16 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3103,120 +3031,119 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-612">line 612</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line612">line 612</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="mergeEntity"><span class="type-signature"></span>mergeEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates an existing entity within a table by merging new property values into the entity.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="mergeEntity"><span class="type-signature"></span>mergeEntity<span class="signature">(table, entityDescriptor, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Updates an existing entity within a table by merging new property values into the entity.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3247,7 +3174,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3278,7 +3205,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The entity descriptor.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3312,27 +3239,27 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3365,7 +3292,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>Boolean value indicating weather the etag should be matched or not.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3398,14 +3325,14 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3439,21 +3366,16 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3463,120 +3385,119 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-735">line 735</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line735">line 735</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="queryEntities"><span class="type-signature"></span>queryEntities<span class="signature">(tableQuery, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Queries data in a table.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="queryEntities"><span class="type-signature"></span>queryEntities<span class="signature">(tableQuery, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Queries data in a table.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3607,7 +3528,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The query to perform.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3641,27 +3562,27 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3694,14 +3615,14 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3737,21 +3658,16 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                                                                                        <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3761,120 +3677,119 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-467">line 467</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line467">line 467</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="queryEntity"><span class="type-signature"></span>queryEntity<span class="signature">(table, partitionKey, rowKey, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Queries an entity in a table.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="queryEntity"><span class="type-signature"></span>queryEntity<span class="signature">(table, partitionKey, rowKey, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Queries an entity in a table.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3905,7 +3820,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3936,7 +3851,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The partition key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3967,7 +3882,7 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The row key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4001,27 +3916,27 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4054,14 +3969,14 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4094,21 +4009,16 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4118,132 +4028,130 @@ tableService.insertEntity(&#x27;tasktable&#x27;, task1, function(error) {
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-424">line 424</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line424">line 424</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
+
+    <h5>Example</h5>
     
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">var azure = require(&#x27;azure&#x27;);
+    <pre class="prettyprint"><code>var azure = require('azure');
 var tableService = azure.createTableService();
-tableService.queryEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;1&#x27;, function(error, serverEntity) {
+tableService.queryEntity('tasktable', 'tasksSeattle', '1', function(error, serverEntity) {
   if(!error) {
     // Entity available in serverEntity variable
   }
-}); </pre>
+}); </code></pre>
 
 
-    
-</dd>
 
         
             
-<dt>
-    <h4 class="name" id="queryTables"><span class="type-signature"></span>queryTables<span class="signature">(<span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Enumerates the tables in a storage account.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="queryTables"><span class="type-signature"></span>queryTables<span class="signature">(options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Enumerates the tables in a storage account.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4277,27 +4185,27 @@ tableService.queryEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4330,7 +4238,7 @@ tableService.queryEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;
             <td class="description last"><p>Prefix of tables to query</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4363,7 +4271,7 @@ tableService.queryEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;
             <td class="description last"><p>The next table name marker.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4396,14 +4304,14 @@ tableService.queryEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4439,21 +4347,16 @@ tableService.queryEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;
                                                                                        <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4463,121 +4366,120 @@ tableService.queryEntity(&#x27;tasktable&#x27;, &#x27;tasksSeattle&#x27;, &#x27;
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-359">line 359</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line359">line 359</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="setServiceProperties"><span class="type-signature"></span>setServiceProperties<span class="signature">(serviceProperties, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+    <h4 class="name" id="setServiceProperties"><span class="type-signature"></span>setServiceProperties<span class="signature">(serviceProperties, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sets the properties of a storage account’s Table service, including Microsoft Azure Storage Analytics.
+
+
+
+<div class="description">
+    <p>Sets the properties of a storage account’s Table service, including Microsoft Azure Storage Analytics.
 You can also use this operation to set the default request version for all incoming requests that do not have a version specified.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4608,7 +4510,7 @@ You can also use this operation to set the default request version for all incom
             <td class="description last"><p>The service properties.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4642,27 +4544,27 @@ You can also use this operation to set the default request version for all incom
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4695,14 +4597,14 @@ You can also use this operation to set the default request version for all incom
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4734,21 +4636,16 @@ You can also use this operation to set the default request version for all incom
                                                            if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4758,120 +4655,119 @@ You can also use this operation to set the default request version for all incom
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-152">line 152</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line152">line 152</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="updateEntity"><span class="type-signature"></span>updateEntity<span class="signature">(table, entityDescriptor, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates an existing entity within a table by replacing it.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="updateEntity"><span class="type-signature"></span>updateEntity<span class="signature">(table, entityDescriptor, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Updates an existing entity within a table by replacing it.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="TableService.html">TableService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4902,7 +4798,7 @@ You can also use this operation to set the default request version for all incom
             <td class="description last"><p>The table name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4933,7 +4829,7 @@ You can also use this operation to set the default request version for all incom
             <td class="description last"><p>The entity descriptor.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4967,27 +4863,27 @@ You can also use this operation to set the default request version for all incom
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5020,7 +4916,7 @@ You can also use this operation to set the default request version for all incom
             <td class="description last"><p>Boolean value indicating weather the etag should be matched or not.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5053,14 +4949,14 @@ You can also use this operation to set the default request version for all incom
             <td class="description last"><p>The timeout interval, in milliseconds, to use for the request.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5094,21 +4990,16 @@ You can also use this operation to set the default request version for all incom
                                                            <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5118,73 +5009,70 @@ You can also use this operation to set the default request version for all incom
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_tableservice.js.html">table/tableservice.js</a>,
-				 <a href="table_tableservice.js.html#sunlight-1-line-673">line 673</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_tableservice.js.html">table/tableservice.js</a>, <a href="table_tableservice.js.html#line673">line 673</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
+
+    
+
 
 
         
-    
-    
-</dd>
-
-        </dl>
     
 
     
@@ -5197,102 +5085,15 @@ You can also use this operation to set the default request version for all incom
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:04 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

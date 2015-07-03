@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: AddOnOperations</title>
+    <meta charset="utf-8">
+    <title>AddOnOperations - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="AddOnOperations-AddOnOperations.html">AddOnOperations~AddOnOperations</a></li><li><a href="CloudServiceOperations-CloudServiceOperations.html">CloudServiceOperations~CloudServiceOperations</a></li><li><a href="StoreManagementClient-StoreManagementClient.html">StoreManagementClient~StoreManagementClient</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createStoreManagementClient">createStoreManagementClient</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AddOnOperations-AddOnOperations.html">AddOnOperations</a><ul class='methods'><li data-type='method'><a href="AddOnOperations-AddOnOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="AddOnOperations-AddOnOperations.html#beginDeleting">beginDeleting</a></li><li data-type='method'><a href="AddOnOperations-AddOnOperations.html#create">create</a></li><li data-type='method'><a href="AddOnOperations-AddOnOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="AddOnOperations-AddOnOperations.html#update">update</a></li></ul></li><li><a href="CloudServiceOperations-CloudServiceOperations.html">CloudServiceOperations</a><ul class='methods'><li data-type='method'><a href="CloudServiceOperations-CloudServiceOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="CloudServiceOperations-CloudServiceOperations.html#create">create</a></li><li data-type='method'><a href="CloudServiceOperations-CloudServiceOperations.html#list">list</a></li></ul></li><li><a href="StoreManagementClient-StoreManagementClient.html">StoreManagementClient</a><ul class='methods'><li data-type='method'><a href="StoreManagementClient-StoreManagementClient.html#getOperationStatus">getOperationStatus</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createStoreManagementClient">createStoreManagementClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">AddOnOperations</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: AddOnOperations</h1>
 <section>
 
 <header>
@@ -65,55 +50,58 @@
             <div class="class-description"><p>Provides REST operations for working with Store add-ins from the Windows
 Azure store service.
 <strong>NOTE</strong>: An instance of this class is automatically created for an
-instance of the [StoreManagementClient] <a href="StoreManagementClient-StoreManagementClient.html">StoreManagementClient~StoreManagementClient</a>.
-See [addOns] <a href="StoreManagementClient-StoreManagementClient.html#addOns">StoreManagementClient~StoreManagementClient#addOns</a>.
+instance of the [StoreManagementClient] <a href="StoreManagementClient-StoreManagementClient.html"><code>StoreManagementClient~StoreManagementClient</code></a>.
+See [addOns] <a href="StoreManagementClient-StoreManagementClient.html#addOns"><code>StoreManagementClient~StoreManagementClient#addOns</code></a>.
 Initializes a new instance of the AddOnOperations class.</p></div>
         
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
+
+    
+    <h2>Constructor</h2>
+    
+
     <h4 class="name" id="AddOnOperations"><span class="type-signature"></span>new AddOnOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -136,21 +124,16 @@ Initializes a new instance of the AddOnOperations class.</p></div>
             <td class="description last"><p>Reference to the service client.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -160,52 +143,50 @@ Initializes a new instance of the AddOnOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storeManagementClient.js.html">storeManagementClient.js</a>,
-				 <a href="storeManagementClient.js.html#sunlight-1-line-238">line 238</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storeManagementClient.js.html">storeManagementClient.js</a>, <a href="storeManagementClient.js.html#line238">line 238</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -216,7 +197,7 @@ Initializes a new instance of the AddOnOperations class.</p></div>
 
     
 
-    
+     
 
     
 
@@ -225,50 +206,52 @@ Initializes a new instance of the AddOnOperations class.</p></div>
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
+
+    
+
     <h4 class="name" id="beginCreating"><span class="type-signature"></span>beginCreating<span class="signature">(cloudServiceName, resourceName, addOnName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The Create Store Item operation creates Windows Azure Store entries in a
+
+
+
+<div class="description">
+    <p>The Create Store Item operation creates Windows Azure Store entries in a
 Windows Azure subscription.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -292,7 +275,7 @@ Windows Azure subscription.</p>
 this store item will be assigned.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -315,7 +298,7 @@ this store item will be assigned.</p></td>
             <td class="description last"><p>The name of this resource.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -338,7 +321,7 @@ this store item will be assigned.</p></td>
             <td class="description last"><p>The add on name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -363,27 +346,27 @@ the Create procedure will function.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -414,7 +397,7 @@ the Create procedure will function.</p>
             <td class="description last"><p>The type of store item to be created.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -445,7 +428,7 @@ the Create procedure will function.</p>
             <td class="description last"><p>The selected plan for this store addon.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -479,14 +462,14 @@ the Create procedure will function.</p>
 store addon.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -509,21 +492,16 @@ store addon.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -533,120 +511,119 @@ store addon.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storeManagementClient.js.html">storeManagementClient.js</a>,
-				 <a href="storeManagementClient.js.html#sunlight-1-line-267">line 267</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storeManagementClient.js.html">storeManagementClient.js</a>, <a href="storeManagementClient.js.html#line267">line 267</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="beginDeleting"><span class="type-signature"></span>beginDeleting<span class="signature">(cloudServiceName, resourceProviderNamespace, resourceProviderType, resourceProviderName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The Delete Store Item operation deletes Windows Azure Store entries that
+
+
+
+<div class="description">
+    <p>The Delete Store Item operation deletes Windows Azure Store entries that
 re provisioned for a subscription.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -670,7 +647,7 @@ re provisioned for a subscription.</p>
 this store item will be assigned.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -694,7 +671,7 @@ this store item will be assigned.</p></td>
 store item resides.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -717,7 +694,7 @@ store item resides.</p></td>
             <td class="description last"><p>The type of store item to be deleted.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -740,7 +717,7 @@ store item resides.</p></td>
             <td class="description last"><p>The name of this resource provider.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -763,21 +740,16 @@ store item resides.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -787,120 +759,119 @@ store item resides.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storeManagementClient.js.html">storeManagementClient.js</a>,
-				 <a href="storeManagementClient.js.html#sunlight-1-line-393">line 393</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storeManagementClient.js.html">storeManagementClient.js</a>, <a href="storeManagementClient.js.html#line393">line 393</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(cloudServiceName, resourceName, addOnName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The Create Store Item operation creates Windows Azure Store entries in a
+
+
+
+<div class="description">
+    <p>The Create Store Item operation creates Windows Azure Store entries in a
 Windows Azure subscription.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -924,7 +895,7 @@ Windows Azure subscription.</p>
 this store item will be assigned.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -947,7 +918,7 @@ this store item will be assigned.</p></td>
             <td class="description last"><p>The name of this resource.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -970,7 +941,7 @@ this store item will be assigned.</p></td>
             <td class="description last"><p>The add on name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -995,27 +966,27 @@ the Create procedure will function.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1046,7 +1017,7 @@ the Create procedure will function.</p>
             <td class="description last"><p>The type of store item to be created.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1077,7 +1048,7 @@ the Create procedure will function.</p>
             <td class="description last"><p>The selected plan for this store addon.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1111,14 +1082,14 @@ the Create procedure will function.</p>
 store addon.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1141,21 +1112,16 @@ store addon.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1165,120 +1131,119 @@ store addon.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storeManagementClient.js.html">storeManagementClient.js</a>,
-				 <a href="storeManagementClient.js.html#sunlight-1-line-495">line 495</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storeManagementClient.js.html">storeManagementClient.js</a>, <a href="storeManagementClient.js.html#line495">line 495</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(cloudServiceName, resourceProviderNamespace, resourceProviderType, resourceProviderName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The Delete Store Item operation deletes Windows Azure Storeentries that
+
+
+
+<div class="description">
+    <p>The Delete Store Item operation deletes Windows Azure Storeentries that
 are provisioned for a subscription.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1302,7 +1267,7 @@ are provisioned for a subscription.</p>
 this store item will be assigned.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1326,7 +1291,7 @@ this store item will be assigned.</p></td>
 store item resides.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1349,7 +1314,7 @@ store item resides.</p></td>
             <td class="description last"><p>The type of store item to be deleted.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1372,7 +1337,7 @@ store item resides.</p></td>
             <td class="description last"><p>The name of this resource provider.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1395,21 +1360,16 @@ store item resides.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1419,120 +1379,119 @@ store item resides.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storeManagementClient.js.html">storeManagementClient.js</a>,
-				 <a href="storeManagementClient.js.html#sunlight-1-line-568">line 568</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storeManagementClient.js.html">storeManagementClient.js</a>, <a href="storeManagementClient.js.html#line568">line 568</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(cloudServiceName, resourceName, addOnName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>The Update Store Item operation creates Windows Azure Store entries in a
+
+
+
+<div class="description">
+    <p>The Update Store Item operation creates Windows Azure Store entries in a
 Windows Azure subscription.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1556,7 +1515,7 @@ Windows Azure subscription.</p>
 this store item will be assigned.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1579,7 +1538,7 @@ this store item will be assigned.</p></td>
             <td class="description last"><p>The name of this resource.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1602,7 +1561,7 @@ this store item will be assigned.</p></td>
             <td class="description last"><p>The addon name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1627,27 +1586,27 @@ the Create procedure will function.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1678,7 +1637,7 @@ the Create procedure will function.</p>
             <td class="description last"><p>The type of store item to be created.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1709,7 +1668,7 @@ the Create procedure will function.</p>
             <td class="description last"><p>The selected plan for this store addon.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1743,14 +1702,14 @@ the Create procedure will function.</p>
 store addon.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1773,21 +1732,16 @@ store addon.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1797,77 +1751,74 @@ store addon.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storeManagementClient.js.html">storeManagementClient.js</a>,
-				 <a href="storeManagementClient.js.html#sunlight-1-line-648">line 648</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storeManagementClient.js.html">storeManagementClient.js</a>, <a href="storeManagementClient.js.html#line648">line 648</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
+
+    
+
 
 
         
-    
-    
-</dd>
-
-        </dl>
     
 
     
@@ -1880,102 +1831,15 @@ store addon.</p></td>
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:19 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

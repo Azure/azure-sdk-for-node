@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: MpnsService</title>
+    <meta charset="utf-8">
+    <title>MpnsService - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="ApnsService.html">ApnsService</a></li><li><a href="GcmService.html">GcmService</a></li><li><a href="MpnsService.html">MpnsService</a></li><li><a href="NotificationHubService.html">NotificationHubService</a></li><li><a href="ServiceBusService.html">ServiceBusService</a></li><li><a href="ServiceBusServiceBase.html">ServiceBusServiceBase</a></li><li><a href="ServiceBusServiceClient.html">ServiceBusServiceClient</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="WnsService.html">WnsService</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#validateCallback">validateCallback</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#WrapService">WrapService</a></li><li><a href="global.html#WrapTokenManager">WrapTokenManager</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ApnsService.html">ApnsService</a><ul class='methods'><li data-type='method'><a href="ApnsService.html#createNativeRegistration">createNativeRegistration</a></li><li data-type='method'><a href="ApnsService.html#createOrUpdateNativeRegistration">createOrUpdateNativeRegistration</a></li><li data-type='method'><a href="ApnsService.html#createOrUpdateTemplateRegistration">createOrUpdateTemplateRegistration</a></li><li data-type='method'><a href="ApnsService.html#createTemplateRegistration">createTemplateRegistration</a></li><li data-type='method'><a href="ApnsService.html#listRegistrationsByToken">listRegistrationsByToken</a></li><li data-type='method'><a href="ApnsService.html#send">send</a></li><li data-type='method'><a href="ApnsService.html#updateTemplateRegistration">updateTemplateRegistration</a></li></ul></li><li><a href="GcmService.html">GcmService</a><ul class='methods'><li data-type='method'><a href="GcmService.html#createNativeRegistration">createNativeRegistration</a></li><li data-type='method'><a href="GcmService.html#createOrUpdateNativeRegistration">createOrUpdateNativeRegistration</a></li><li data-type='method'><a href="GcmService.html#createOrUpdateTemplateRegistration">createOrUpdateTemplateRegistration</a></li><li data-type='method'><a href="GcmService.html#createTemplateRegistration">createTemplateRegistration</a></li><li data-type='method'><a href="GcmService.html#listRegistrationsByGcmRegistrationId">listRegistrationsByGcmRegistrationId</a></li><li data-type='method'><a href="GcmService.html#send">send</a></li><li data-type='method'><a href="GcmService.html#updateTemplateRegistration">updateTemplateRegistration</a></li></ul></li><li><a href="MpnsService.html">MpnsService</a><ul class='methods'><li data-type='method'><a href="MpnsService.html#createFlipTileRegistration">createFlipTileRegistration</a></li><li data-type='method'><a href="MpnsService.html#createNativeRegistration">createNativeRegistration</a></li><li data-type='method'><a href="MpnsService.html#createOrUpdateNativeRegistration">createOrUpdateNativeRegistration</a></li><li data-type='method'><a href="MpnsService.html#createOrUpdateRawTemplateRegistration">createOrUpdateRawTemplateRegistration</a></li><li data-type='method'><a href="MpnsService.html#createRawTemplateRegistration">createRawTemplateRegistration</a></li><li data-type='method'><a href="MpnsService.html#createTileRegistration">createTileRegistration</a></li><li data-type='method'><a href="MpnsService.html#createToastRegistration">createToastRegistration</a></li><li data-type='method'><a href="MpnsService.html#listRegistrationsByChannel">listRegistrationsByChannel</a></li><li data-type='method'><a href="MpnsService.html#send">send</a></li><li data-type='method'><a href="MpnsService.html#sendFlipTile">sendFlipTile</a></li><li data-type='method'><a href="MpnsService.html#sendTile">sendTile</a></li><li data-type='method'><a href="MpnsService.html#sendToast">sendToast</a></li><li data-type='method'><a href="MpnsService.html#updateFlipTileRegistration">updateFlipTileRegistration</a></li><li data-type='method'><a href="MpnsService.html#updatesRawTemplateRegistration">updatesRawTemplateRegistration</a></li><li data-type='method'><a href="MpnsService.html#updatesToastRegistration">updatesToastRegistration</a></li><li data-type='method'><a href="MpnsService.html#updateTileRegistration">updateTileRegistration</a></li></ul></li><li><a href="NotificationHubService.html">NotificationHubService</a><ul class='methods'><li data-type='method'><a href="NotificationHubService.html#createOrUpdateRegistration">createOrUpdateRegistration</a></li><li data-type='method'><a href="NotificationHubService.html#createRegistrationId">createRegistrationId</a></li><li data-type='method'><a href="NotificationHubService.html#deleteRegistration">deleteRegistration</a></li><li data-type='method'><a href="NotificationHubService.html#getRegistration">getRegistration</a></li><li data-type='method'><a href="NotificationHubService.html#listRegistrations">listRegistrations</a></li><li data-type='method'><a href="NotificationHubService.html#listRegistrationsByTag">listRegistrationsByTag</a></li><li data-type='method'><a href="NotificationHubService.html#send">send</a></li><li data-type='method'><a href="NotificationHubService.html#updateRegistration">updateRegistration</a></li></ul></li><li><a href="ServiceBusService.html">ServiceBusService</a><ul class='methods'><li data-type='method'><a href="ServiceBusService.html#createNotificationHub">createNotificationHub</a></li><li data-type='method'><a href="ServiceBusService.html#createQueue">createQueue</a></li><li data-type='method'><a href="ServiceBusService.html#createQueueIfNotExists">createQueueIfNotExists</a></li><li data-type='method'><a href="ServiceBusService.html#createRule">createRule</a></li><li data-type='method'><a href="ServiceBusService.html#createSubscription">createSubscription</a></li><li data-type='method'><a href="ServiceBusService.html#createTopic">createTopic</a></li><li data-type='method'><a href="ServiceBusService.html#createTopicIfNotExists">createTopicIfNotExists</a></li><li data-type='method'><a href="ServiceBusService.html#deleteMessage">deleteMessage</a></li><li data-type='method'><a href="ServiceBusService.html#deleteNotificationHub">deleteNotificationHub</a></li><li data-type='method'><a href="ServiceBusService.html#deleteQueue">deleteQueue</a></li><li data-type='method'><a href="ServiceBusService.html#deleteRule">deleteRule</a></li><li data-type='method'><a href="ServiceBusService.html#deleteSubscription">deleteSubscription</a></li><li data-type='method'><a href="ServiceBusService.html#deleteTopic">deleteTopic</a></li><li data-type='method'><a href="ServiceBusService.html#getNotificationHub">getNotificationHub</a></li><li data-type='method'><a href="ServiceBusService.html#getQueue">getQueue</a></li><li data-type='method'><a href="ServiceBusService.html#getRule">getRule</a></li><li data-type='method'><a href="ServiceBusService.html#getSubscription">getSubscription</a></li><li data-type='method'><a href="ServiceBusService.html#getTopic">getTopic</a></li><li data-type='method'><a href="ServiceBusService.html#listNotificationHubs">listNotificationHubs</a></li><li data-type='method'><a href="ServiceBusService.html#listQueues">listQueues</a></li><li data-type='method'><a href="ServiceBusService.html#listRules">listRules</a></li><li data-type='method'><a href="ServiceBusService.html#listSubscriptions">listSubscriptions</a></li><li data-type='method'><a href="ServiceBusService.html#listTopics">listTopics</a></li><li data-type='method'><a href="ServiceBusService.html#receiveQueueMessage">receiveQueueMessage</a></li><li data-type='method'><a href="ServiceBusService.html#receiveSubscriptionMessage">receiveSubscriptionMessage</a></li><li data-type='method'><a href="ServiceBusService.html#renewLockForMessage">renewLockForMessage</a></li><li data-type='method'><a href="ServiceBusService.html#sendQueueMessage">sendQueueMessage</a></li><li data-type='method'><a href="ServiceBusService.html#sendTopicMessage">sendTopicMessage</a></li><li data-type='method'><a href="ServiceBusService.html#unlockMessage">unlockMessage</a></li></ul></li><li><a href="ServiceBusServiceBase.html">ServiceBusServiceBase</a><ul class='methods'><li data-type='method'><a href="ServiceBusServiceBase.html#_createResource">_createResource</a></li><li data-type='method'><a href="ServiceBusServiceBase.html#_deleteResource">_deleteResource</a></li><li data-type='method'><a href="ServiceBusServiceBase.html#_executeRequest">_executeRequest</a></li><li data-type='method'><a href="ServiceBusServiceBase.html#_getResource">_getResource</a></li><li data-type='method'><a href="ServiceBusServiceBase.html#_listResources">_listResources</a></li></ul></li><li><a href="ServiceBusServiceClient.html">ServiceBusServiceClient</a><ul class='methods'><li data-type='method'><a href="ServiceBusServiceClient.html#_buildRequestOptions">_buildRequestOptions</a></li></ul></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a><ul class='methods'><li data-type='method'><a href="SharedAccessSignature.html#signRequest">signRequest</a></li></ul></li><li><a href="WnsService.html">WnsService</a><ul class='methods'><li data-type='method'><a href="WnsService.html#createNativeRegistration">createNativeRegistration</a></li><li data-type='method'><a href="WnsService.html#createOrUpdateNativeRegistration">createOrUpdateNativeRegistration</a></li><li data-type='method'><a href="WnsService.html#createOrUpdateRawTemplateRegistration">createOrUpdateRawTemplateRegistration</a></li><li data-type='method'><a href="WnsService.html#createRawTemplateRegistration">createRawTemplateRegistration</a></li><li data-type='method'><a href="WnsService.html#createTile*Registration">createTile*Registration</a></li><li data-type='method'><a href="WnsService.html#createToast*Registration">createToast*Registration</a></li><li data-type='method'><a href="WnsService.html#listRegistrationsByChannel">listRegistrationsByChannel</a></li><li data-type='method'><a href="WnsService.html#send">send</a></li><li data-type='method'><a href="WnsService.html#sendBadge">sendBadge</a></li><li data-type='method'><a href="WnsService.html#sendRaw">sendRaw</a></li><li data-type='method'><a href="WnsService.html#sendTile*">sendTile*</a></li><li data-type='method'><a href="WnsService.html#sendToast*">sendToast*</a></li><li data-type='method'><a href="WnsService.html#updatesRawTemplateRegistration">updatesRawTemplateRegistration</a></li><li data-type='method'><a href="WnsService.html#updateTile*Registration">updateTile*Registration</a></li><li data-type='method'><a href="WnsService.html#updateToast*Registration">updateToast*Registration</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#validateCallback">validateCallback</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#WrapService">WrapService</a></li><li><a href="global.html#WrapTokenManager">WrapTokenManager</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">MpnsService</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: MpnsService</h1>
 <section>
 
 <header>
@@ -67,54 +52,57 @@
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
+
+    
+    <h2>Constructor</h2>
+    
+
     <h4 class="name" id="MpnsService"><span class="type-signature"></span>new MpnsService<span class="signature">(notificationHubService)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new MpnsService object.</p>
-<p><strong>Note</strong>: An instance of this object is created automatically when a <a href="NotificationHubService.html">NotificationHubService</a>
-object is created. See <a href="NotificationHubService.html#gcm">NotificationHubService#gcm</a>.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Creates a new MpnsService object.</p>
+<p><strong>Note</strong>: An instance of this object is created automatically when a <a href="NotificationHubService.html"><code>NotificationHubService</code></a>
+object is created. See <a href="NotificationHubService.html#gcm"><code>NotificationHubService#gcm</code></a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -137,21 +125,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The notification hub service.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -161,52 +144,50 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-45">line 45</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -217,7 +198,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-    
+     
 
     
 
@@ -226,51 +207,53 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
-    <h4 class="name" id="createFlipTileRegistration"><span class="type-signature"></span>createFlipTileRegistration<span class="signature">(channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a registration with a FlipTile template (Only Windows Phone version 7.8 or later). For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj206971.aspx.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createFlipTileRegistration"><span class="type-signature"></span>createFlipTileRegistration<span class="signature">(channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a registration with a FlipTile template (Only Windows Phone version 7.8 or later). For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj206971.aspx.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -301,7 +284,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The ChannelUri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -335,7 +318,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -367,25 +350,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -408,7 +391,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the background image for the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -431,7 +414,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The number that appears on the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -454,7 +437,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The title text of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -477,7 +460,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the image that is shown on the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -500,7 +483,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Title for the backside side of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -523,7 +506,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text for the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -546,7 +529,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>ID of a related, secondary tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -569,7 +552,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the background image for the tile when it is reduced to its small size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -592,7 +575,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the background image for the tile when it is expanded to its wide size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -615,7 +598,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Content for the back tile when the tile is expanded to its wide size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -638,14 +621,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the image to be on the backside of the tile when the tile is expanded to its wide size.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -679,27 +662,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -732,14 +715,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -770,21 +753,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -794,117 +772,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-250">line 250</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line250">line 250</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createNativeRegistration"><span class="type-signature"></span>createNativeRegistration<span class="signature">(channel, tags, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a native MPNS registration.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createNativeRegistration"><span class="type-signature"></span>createNativeRegistration<span class="signature">(channel, tags, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a native MPNS registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -935,7 +912,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The device channel uri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -969,7 +946,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1002,7 +979,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The request options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1033,21 +1010,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1057,117 +1029,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-203">line 203</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line203">line 203</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createOrUpdateNativeRegistration"><span class="type-signature"></span>createOrUpdateNativeRegistration<span class="signature">(registrationId, channel, tags, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates or updates a native MPNS registration.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createOrUpdateNativeRegistration"><span class="type-signature"></span>createOrUpdateNativeRegistration<span class="signature">(registrationId, channel, tags, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates or updates a native MPNS registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1198,7 +1169,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The registration identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1229,7 +1200,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The device channel uri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1263,7 +1234,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1296,7 +1267,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The request options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1327,21 +1298,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1351,117 +1317,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-231">line 231</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line231">line 231</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createOrUpdateRawTemplateRegistration"><span class="type-signature"></span>createOrUpdateRawTemplateRegistration<span class="signature">(registrationId, channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a raw template registration.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createOrUpdateRawTemplateRegistration"><span class="type-signature"></span>createOrUpdateRawTemplateRegistration<span class="signature">(registrationId, channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a raw template registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1492,7 +1457,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The registration identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1523,7 +1488,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The device channel uri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1557,7 +1522,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1588,7 +1553,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The template for the registration.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1622,27 +1587,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1675,14 +1640,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers to include.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1713,21 +1678,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1737,117 +1697,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-361">line 361</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line361">line 361</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createRawTemplateRegistration"><span class="type-signature"></span>createRawTemplateRegistration<span class="signature">(channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a raw template registration.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createRawTemplateRegistration"><span class="type-signature"></span>createRawTemplateRegistration<span class="signature">(channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a raw template registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1878,7 +1837,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The device channel uri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1912,7 +1871,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1943,7 +1902,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The template for the registration.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1977,27 +1936,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2030,14 +1989,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers to include.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2068,21 +2027,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2092,117 +2046,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-331">line 331</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line331">line 331</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createTileRegistration"><span class="type-signature"></span>createTileRegistration<span class="signature">(channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a registration with a Tile template. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createTileRegistration"><span class="type-signature"></span>createTileRegistration<span class="signature">(channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a registration with a Tile template. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2233,7 +2186,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The ChannelUri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2267,7 +2220,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2299,25 +2252,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2340,7 +2293,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the background image for the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2363,7 +2316,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The number that appears on the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2386,7 +2339,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The title text of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2409,7 +2362,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the image that is shown on the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2432,7 +2385,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Title for the backside side of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2455,7 +2408,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text for the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2478,14 +2431,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>ID of a related, secondary tile.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2519,27 +2472,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2572,14 +2525,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2610,21 +2563,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2634,117 +2582,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-277">line 277</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line277">line 277</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createToastRegistration"><span class="type-signature"></span>createToastRegistration<span class="signature">(channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a registration with a Toast template For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createToastRegistration"><span class="type-signature"></span>createToastRegistration<span class="signature">(channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a registration with a Toast template For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2775,7 +2722,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The ChannelUri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2809,7 +2756,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2841,25 +2788,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2882,7 +2829,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text1</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2905,7 +2852,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text2</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2928,14 +2875,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>(optional) (Only for Windows Phone version 7.5 or later)</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2969,27 +2916,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3022,14 +2969,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3060,21 +3007,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3084,117 +3026,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-300">line 300</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line300">line 300</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="listRegistrationsByChannel"><span class="type-signature"></span>listRegistrationsByChannel<span class="signature">(channel, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Retrieves a registration by channel.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="listRegistrationsByChannel"><span class="type-signature"></span>listRegistrationsByChannel<span class="signature">(channel, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Retrieves a registration by channel.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3225,7 +3166,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The ChannelUri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3259,27 +3200,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3312,7 +3253,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Specifies the maximum number of registration to obtain from the call.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3345,14 +3286,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Specifies the number of registrations to skip in the call.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3383,21 +3324,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3407,117 +3343,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-502">line 502</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line502">line 502</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(tags, payload, targetName, notificationClass, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sends a custom MPNS notification. Use this method if you want to have full control on the payload.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(tags, payload, targetName, notificationClass, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Sends a custom MPNS notification. Use this method if you want to have full control on the payload.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3548,7 +3483,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>A single tag or tag expression.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3579,7 +3514,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The message's XML payload.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3610,7 +3545,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The target name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3641,7 +3576,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The notification class.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3675,27 +3610,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3728,14 +3663,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3766,21 +3701,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3790,117 +3720,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-605">line 605</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line605">line 605</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="sendFlipTile"><span class="type-signature"></span>sendFlipTile<span class="signature">(tags, payload, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sends a FlipTile notification (Only Windows Phone version 7.8 or later). For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj206971.aspx.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="sendFlipTile"><span class="type-signature"></span>sendFlipTile<span class="signature">(tags, payload, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Sends a FlipTile notification (Only Windows Phone version 7.8 or later). For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj206971.aspx.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3931,7 +3860,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>A single tag or tag expression.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3963,25 +3892,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4004,7 +3933,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the background image for the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4027,7 +3956,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The number that appears on the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4050,7 +3979,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The title text of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4073,7 +4002,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the image that is shown on the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4096,7 +4025,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Title for the backside side of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4119,7 +4048,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text for the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4142,7 +4071,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>ID of a related, secondary tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4165,7 +4094,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the background image for the tile when it is reduced to its small size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4188,7 +4117,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the background image for the tile when it is expanded to its wide size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4211,7 +4140,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Content for the back tile when the tile is expanded to its wide size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4234,14 +4163,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the image to be on the backside of the tile when the tile is expanded to its wide size.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4275,27 +4204,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4328,14 +4257,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4366,21 +4295,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4390,117 +4314,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-527">line 527</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line527">line 527</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="sendTile"><span class="type-signature"></span>sendTile<span class="signature">(tags, payload, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sends a Tile notification. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="sendTile"><span class="type-signature"></span>sendTile<span class="signature">(tags, payload, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Sends a Tile notification. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4531,7 +4454,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>A single tag or tag expression.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4563,25 +4486,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4604,7 +4527,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the background image for the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4627,7 +4550,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>the number that appears on the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4650,7 +4573,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>the title text of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4673,7 +4596,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the image that is shown on the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4696,7 +4619,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Title for the backside side of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4719,7 +4642,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text for the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4742,14 +4665,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>ID of a related, secondary tile.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4783,27 +4706,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4836,14 +4759,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4874,21 +4797,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4898,117 +4816,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-553">line 553</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line553">line 553</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="sendToast"><span class="type-signature"></span>sendToast<span class="signature">(tags, payload, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sends a Toast notification. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="sendToast"><span class="type-signature"></span>sendToast<span class="signature">(tags, payload, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Sends a Toast notification. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5039,7 +4956,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>A single tag or tag expression.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5071,25 +4988,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5112,7 +5029,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text1</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5135,7 +5052,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text2</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5158,14 +5075,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>(optional) (Only for Windows Phone version 7.5 or later)</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5199,27 +5116,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5252,14 +5169,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5290,21 +5207,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5314,117 +5226,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-575">line 575</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line575">line 575</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="updateFlipTileRegistration"><span class="type-signature"></span>updateFlipTileRegistration<span class="signature">(registrationId, channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates a registration with a FlipTile template (Only Windows Phone version 7.8 or later). For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj206971.aspx.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="updateFlipTileRegistration"><span class="type-signature"></span>updateFlipTileRegistration<span class="signature">(registrationId, channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Updates a registration with a FlipTile template (Only Windows Phone version 7.8 or later). For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj206971.aspx.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5455,7 +5366,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The registration identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5486,7 +5397,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The ChannelUri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5520,7 +5431,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5552,25 +5463,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5593,7 +5504,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the background image for the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5616,7 +5527,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The number that appears on the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5639,7 +5550,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The title text of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5662,7 +5573,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the image that is shown on the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5685,7 +5596,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Title for the backside side of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5708,7 +5619,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text for the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5731,7 +5642,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>ID of a related, secondary tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5754,7 +5665,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the background image for the tile when it is reduced to its small size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5777,7 +5688,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the background image for the tile when it is expanded to its wide size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5800,7 +5711,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Content for the back tile when the tile is expanded to its wide size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5823,14 +5734,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI for the image to be on the backside of the tile when the tile is expanded to its wide size.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5864,27 +5775,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5917,14 +5828,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5955,21 +5866,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5979,117 +5885,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-380">line 380</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line380">line 380</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="updatesRawTemplateRegistration"><span class="type-signature"></span>updatesRawTemplateRegistration<span class="signature">(registrationId, channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates a raw template registration.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="updatesRawTemplateRegistration"><span class="type-signature"></span>updatesRawTemplateRegistration<span class="signature">(registrationId, channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Updates a raw template registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6120,7 +6025,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The registration identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6151,7 +6056,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The ChannelUri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6185,7 +6090,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6216,7 +6121,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The template for the registration.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6250,27 +6155,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6303,7 +6208,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers to include.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6336,14 +6241,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The etag to include.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6374,21 +6279,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -6398,117 +6298,116 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-467">line 467</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line467">line 467</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="updatesToastRegistration"><span class="type-signature"></span>updatesToastRegistration<span class="signature">(registrationId, channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates a registration with a Toast template. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="updatesToastRegistration"><span class="type-signature"></span>updatesToastRegistration<span class="signature">(registrationId, channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Updates a registration with a Toast template. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6539,7 +6438,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The registration identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6570,7 +6469,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The ChannelUri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6604,7 +6503,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6636,25 +6535,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6677,7 +6576,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text1</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6700,7 +6599,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text2</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6723,14 +6622,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>(optional) (Only for Windows Phone version 7.5 or later)</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6764,27 +6663,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6817,14 +6716,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6855,21 +6754,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -6879,118 +6773,117 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-434">line 434</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line434">line 434</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="updateTileRegistration"><span class="type-signature"></span>updateTileRegistration<span class="signature">(registrationId, channel, tags, template, <span class="optional">options</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
+
+    <h4 class="name" id="updateTileRegistration"><span class="type-signature"></span>updateTileRegistration<span class="signature">(registrationId, channel, tags, template, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {undefined}</span></h4>
+
     
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates a registration with a Tile template. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
+
+
+
+<div class="description">
+    <p>Updates a registration with a Tile template. For more information see http://msdn.microsoft.com/en-us/library/windowsazure/jj553779.aspx.</p>
 <p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -7021,7 +6914,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The registration identifier.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7052,7 +6945,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The ChannelUri.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7086,7 +6979,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The tags (comma-separated list, no spaces).</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7118,25 +7011,25 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -7159,7 +7052,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the background image for the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7182,7 +7075,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The number that appears on the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7205,7 +7098,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The title text of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7228,7 +7121,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The URI of the image that is shown on the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7251,7 +7144,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Title for the backside side of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7274,7 +7167,7 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>Text for the backside of the tile.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7297,14 +7190,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>ID of a related, secondary tile.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7338,27 +7231,27 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -7391,14 +7284,14 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The mpns headers.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -7429,21 +7322,16 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
             <td class="description last"><p>The callback function.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -7453,73 +7341,70 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="mpnsservice.js.html">mpnsservice.js</a>,
-				 <a href="mpnsservice.js.html#sunlight-1-line-409">line 409</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mpnsservice.js.html">mpnsservice.js</a>, <a href="mpnsservice.js.html#line409">line 409</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">undefined</span>
 
 
-	</dd>
+    </dd>
 </dl>
+
+    
+
 
 
         
-    
-    
-</dd>
-
-        </dl>
     
 
     
@@ -7532,102 +7417,15 @@ object is created. See <a href="NotificationHubService.html#gcm">NotificationHub
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:14 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

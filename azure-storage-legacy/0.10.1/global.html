@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Global</title>
+    <meta charset="utf-8">
+    <title>Global - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="BatchServiceClient.html">BatchServiceClient</a></li><li><a href="BlobService.html">BlobService</a></li><li><a href="QueueService.html">QueueService</a></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a></li><li><a href="SharedKey.html">SharedKey</a></li><li><a href="SharedKeyLite.html">SharedKeyLite</a></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a></li><li><a href="SharedKeyTable.html">SharedKeyTable</a></li><li><a href="TableQuery.html">TableQuery</a></li><li><a href="TableService.html">TableService</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="BatchServiceClient.html">BatchServiceClient</a><ul class='methods'><li data-type='method'><a href="BatchServiceClient.html#addOperation">addOperation</a></li><li data-type='method'><a href="BatchServiceClient.html#beginBatch">beginBatch</a></li><li data-type='method'><a href="BatchServiceClient.html#commitBatch">commitBatch</a></li><li data-type='method'><a href="BatchServiceClient.html#hasOperations">hasOperations</a></li><li data-type='method'><a href="BatchServiceClient.html#isInBatch">isInBatch</a></li><li data-type='method'><a href="BatchServiceClient.html#processOperation">processOperation</a></li><li data-type='method'><a href="BatchServiceClient.html#processResponse">processResponse</a></li><li data-type='method'><a href="BatchServiceClient.html#rollback">rollback</a></li></ul></li><li><a href="BlobService.html">BlobService</a><ul class='methods'><li data-type='method'><a href="BlobService.html#_createBlobFromChunkStream">_createBlobFromChunkStream</a></li><li data-type='method'><a href="BlobService.html#abortCopyBlob">abortCopyBlob</a></li><li data-type='method'><a href="BlobService.html#acquireLease">acquireLease</a></li><li data-type='method'><a href="BlobService.html#breakLease">breakLease</a></li><li data-type='method'><a href="BlobService.html#clearBlobPages">clearBlobPages</a></li><li data-type='method'><a href="BlobService.html#commitBlobBlocks">commitBlobBlocks</a></li><li data-type='method'><a href="BlobService.html#copyBlob">copyBlob</a></li><li data-type='method'><a href="BlobService.html#createBlob">createBlob</a></li><li data-type='method'><a href="BlobService.html#createBlobBlockFromStream">createBlobBlockFromStream</a></li><li data-type='method'><a href="BlobService.html#createBlobBlockFromText">createBlobBlockFromText</a></li><li data-type='method'><a href="BlobService.html#createBlobPagesFromStream">createBlobPagesFromStream</a></li><li data-type='method'><a href="BlobService.html#createBlobPagesFromText">createBlobPagesFromText</a></li><li data-type='method'><a href="BlobService.html#createBlobSnapshot">createBlobSnapshot</a></li><li data-type='method'><a href="BlobService.html#createBlockBlobFromFile">createBlockBlobFromFile</a></li><li data-type='method'><a href="BlobService.html#createBlockBlobFromStream">createBlockBlobFromStream</a></li><li data-type='method'><a href="BlobService.html#createBlockBlobFromText">createBlockBlobFromText</a></li><li data-type='method'><a href="BlobService.html#createContainer">createContainer</a></li><li data-type='method'><a href="BlobService.html#createContainerIfNotExists">createContainerIfNotExists</a></li><li data-type='method'><a href="BlobService.html#createPageBlob">createPageBlob</a></li><li data-type='method'><a href="BlobService.html#createPageBlobFromFile">createPageBlobFromFile</a></li><li data-type='method'><a href="BlobService.html#createPageBlobFromStream">createPageBlobFromStream</a></li><li data-type='method'><a href="BlobService.html#deleteBlob">deleteBlob</a></li><li data-type='method'><a href="BlobService.html#deleteContainer">deleteContainer</a></li><li data-type='method'><a href="BlobService.html#generateBlockIdPrefix">generateBlockIdPrefix</a></li><li data-type='method'><a href="BlobService.html#generateSharedAccessSignature">generateSharedAccessSignature</a></li><li data-type='method'><a href="BlobService.html#getBlob">getBlob</a></li><li data-type='method'><a href="BlobService.html#getBlobMetadata">getBlobMetadata</a></li><li data-type='method'><a href="BlobService.html#getBlobProperties">getBlobProperties</a></li><li data-type='method'><a href="BlobService.html#getBlobToFile">getBlobToFile</a></li><li data-type='method'><a href="BlobService.html#getBlobToStream">getBlobToStream</a></li><li data-type='method'><a href="BlobService.html#getBlobToText">getBlobToText</a></li><li data-type='method'><a href="BlobService.html#getBlobUrl">getBlobUrl</a></li><li data-type='method'><a href="BlobService.html#getBlockId">getBlockId</a></li><li data-type='method'><a href="BlobService.html#getContainerAcl">getContainerAcl</a></li><li data-type='method'><a href="BlobService.html#getContainerMetadata">getContainerMetadata</a></li><li data-type='method'><a href="BlobService.html#getContainerProperties">getContainerProperties</a></li><li data-type='method'><a href="BlobService.html#getServiceProperties">getServiceProperties</a></li><li data-type='method'><a href="BlobService.html#listBlobBlocks">listBlobBlocks</a></li><li data-type='method'><a href="BlobService.html#listBlobRegions">listBlobRegions</a></li><li data-type='method'><a href="BlobService.html#listBlobs">listBlobs</a></li><li data-type='method'><a href="BlobService.html#listContainers">listContainers</a></li><li data-type='method'><a href="BlobService.html#putBlockBlobFromFile">putBlockBlobFromFile</a></li><li data-type='method'><a href="BlobService.html#putBlockBlobFromStream">putBlockBlobFromStream</a></li><li data-type='method'><a href="BlobService.html#releaseLease">releaseLease</a></li><li data-type='method'><a href="BlobService.html#renewLease">renewLease</a></li><li data-type='method'><a href="BlobService.html#setBlobMetadata">setBlobMetadata</a></li><li data-type='method'><a href="BlobService.html#setBlobProperties">setBlobProperties</a></li><li data-type='method'><a href="BlobService.html#setContainerAcl">setContainerAcl</a></li><li data-type='method'><a href="BlobService.html#setContainerMetadata">setContainerMetadata</a></li><li data-type='method'><a href="BlobService.html#setServiceProperties">setServiceProperties</a></li></ul></li><li><a href="QueueService.html">QueueService</a><ul class='methods'><li data-type='method'><a href="QueueService.html#clearMessages">clearMessages</a></li><li data-type='method'><a href="QueueService.html#createMessage">createMessage</a></li><li data-type='method'><a href="QueueService.html#createQueue">createQueue</a></li><li data-type='method'><a href="QueueService.html#createQueueIfNotExists">createQueueIfNotExists</a></li><li data-type='method'><a href="QueueService.html#deleteMessage">deleteMessage</a></li><li data-type='method'><a href="QueueService.html#deleteQueue">deleteQueue</a></li><li data-type='method'><a href="QueueService.html#getMessages">getMessages</a></li><li data-type='method'><a href="QueueService.html#getQueueMetadata">getQueueMetadata</a></li><li data-type='method'><a href="QueueService.html#getServiceProperties">getServiceProperties</a></li><li data-type='method'><a href="QueueService.html#listQueues">listQueues</a></li><li data-type='method'><a href="QueueService.html#peekMessages">peekMessages</a></li><li data-type='method'><a href="QueueService.html#setQueueMetadata">setQueueMetadata</a></li><li data-type='method'><a href="QueueService.html#setServiceProperties">setServiceProperties</a></li><li data-type='method'><a href="QueueService.html#updateMessage">updateMessage</a></li></ul></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a><ul class='methods'><li data-type='method'><a href="SharedAccessSignature.html#_generateSignature">_generateSignature</a></li><li data-type='method'><a href="SharedAccessSignature.html#_permissionMatchesRequest">_permissionMatchesRequest</a></li><li data-type='method'><a href="SharedAccessSignature.html#generateSignedQueryString">generateSignedQueryString</a></li><li data-type='method'><a href="SharedAccessSignature.html#signRequest">signRequest</a></li></ul></li><li><a href="SharedKey.html">SharedKey</a><ul class='methods'><li data-type='method'><a href="SharedKey.html#signRequest">signRequest</a></li></ul></li><li><a href="SharedKeyLite.html">SharedKeyLite</a><ul class='methods'><li data-type='method'><a href="SharedKeyLite.html#signRequest">signRequest</a></li></ul></li><li><a href="SharedKeyLiteTable.html">SharedKeyLiteTable</a><ul class='methods'><li data-type='method'><a href="SharedKeyLiteTable.html#signRequest">signRequest</a></li></ul></li><li><a href="SharedKeyTable.html">SharedKeyTable</a><ul class='methods'><li data-type='method'><a href="SharedKeyTable.html#signRequest">signRequest</a></li></ul></li><li><a href="TableQuery.html">TableQuery</a><ul class='methods'><li data-type='method'><a href="TableQuery.html#.select">select</a></li><li data-type='method'><a href="TableQuery.html#_replaceOperators">_replaceOperators</a></li><li data-type='method'><a href="TableQuery.html#and">and</a></li><li data-type='method'><a href="TableQuery.html#from">from</a></li><li data-type='method'><a href="TableQuery.html#or">or</a></li><li data-type='method'><a href="TableQuery.html#top">top</a></li><li data-type='method'><a href="TableQuery.html#toPath">toPath</a></li><li data-type='method'><a href="TableQuery.html#toQueryObject">toQueryObject</a></li><li data-type='method'><a href="TableQuery.html#where">where</a></li><li data-type='method'><a href="TableQuery.html#whereKeys">whereKeys</a></li><li data-type='method'><a href="TableQuery.html#whereNextKeys">whereNextKeys</a></li></ul></li><li><a href="TableService.html">TableService</a><ul class='methods'><li data-type='method'><a href="TableService.html#createTable">createTable</a></li><li data-type='method'><a href="TableService.html#createTableIfNotExists">createTableIfNotExists</a></li><li data-type='method'><a href="TableService.html#deleteEntity">deleteEntity</a></li><li data-type='method'><a href="TableService.html#deleteTable">deleteTable</a></li><li data-type='method'><a href="TableService.html#getServiceProperties">getServiceProperties</a></li><li data-type='method'><a href="TableService.html#getTable">getTable</a></li><li data-type='method'><a href="TableService.html#insertEntity">insertEntity</a></li><li data-type='method'><a href="TableService.html#insertOrMergeEntity">insertOrMergeEntity</a></li><li data-type='method'><a href="TableService.html#insertOrReplaceEntity">insertOrReplaceEntity</a></li><li data-type='method'><a href="TableService.html#mergeEntity">mergeEntity</a></li><li data-type='method'><a href="TableService.html#queryEntities">queryEntities</a></li><li data-type='method'><a href="TableService.html#queryEntity">queryEntity</a></li><li data-type='method'><a href="TableService.html#queryTables">queryTables</a></li><li data-type='method'><a href="TableService.html#setServiceProperties">setServiceProperties</a></li><li data-type='method'><a href="TableService.html#updateEntity">updateEntity</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#BatchOperation">BatchOperation</a></li><li><a href="global.html#BlobBlockRangeStream">BlobBlockRangeStream</a></li><li><a href="global.html#BlobPageRangeStream">BlobPageRangeStream</a></li><li><a href="global.html#ChunkAllocator">ChunkAllocator</a></li><li><a href="global.html#ChunkStream">ChunkStream</a></li><li><a href="global.html#ChunkStreamWithStream">ChunkStreamWithStream</a></li><li><a href="global.html#CommonOperation">CommonOperation</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#FileReadStream">FileReadStream</a></li><li><a href="global.html#ListBlobsResultContinuation">ListBlobsResultContinuation</a></li><li><a href="global.html#ListContainersResultContinuation">ListContainersResultContinuation</a></li><li><a href="global.html#ListQueuesResultContinuation">ListQueuesResultContinuation</a></li><li><a href="global.html#OperationState">OperationState</a></li><li><a href="global.html#QueryTablesResultContinuation">QueryTablesResultContinuation</a></li><li><a href="global.html#RestOperation">RestOperation</a></li><li><a href="global.html#SpeedSummary">SpeedSummary</a></li><li><a href="global.html#toHumanReadableSize">toHumanReadableSize</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">Global</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Global</h1>
 <section>
 
 <header>
@@ -65,21 +50,15 @@
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
 
         
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -89,25 +68,29 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
@@ -121,38 +104,31 @@
 
     
 
-    
+     
 
     
 
     
         <h3 class="subsection-title">Members</h3>
 
-        <dl>
+        
             
-<dt class="name" id="OperationState">
-    <h4><span class="type-signature"></span>OperationState<span class="type-signature"></span></h4>
+<h4 class="name" id="OperationState"><span class="type-signature"></span>OperationState<span class="type-signature"></span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Operation state</p>
-    </div>
-    
 
-    
 
-    
+
+<div class="description">
+    <p>Operation state</p>
+</div>
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -162,59 +138,60 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_batchoperation.js.html">blob/internal/batchoperation.js</a>,
-				 <a href="blob_internal_batchoperation.js.html#sunlight-1-line-72">line 72</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_batchoperation.js.html">blob/internal/batchoperation.js</a>, <a href="blob_internal_batchoperation.js.html#line72">line 72</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
 
-        </dl>
+
+
+
+        
     
 
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
+
+    
+
     <h4 class="name" id="BatchOperation"><span class="type-signature"></span>BatchOperation<span class="signature">()</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Concurrent execute batch operation and call operation callback randomly or in sequence.
+
+
+
+<div class="description">
+    <p>Concurrent execute batch operation and call operation callback randomly or in sequence.
 Random mode is for uploading.</p>
 <ol>
 <li>Fire user callback when the operation is done.
@@ -223,25 +200,21 @@ Sequence mode is for downloading.</li>
 <li>BatchOperation guarantee the user callback is fired one by one.</li>
 <li>The next user callback can't be fired util the current one complete.</li>
 </ol>
-    </div>
-    
+</div>
 
-    
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -251,84 +224,79 @@ Sequence mode is for downloading.</li>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_batchoperation.js.html">blob/internal/batchoperation.js</a>,
-				 <a href="blob_internal_batchoperation.js.html#sunlight-1-line-43">line 43</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_batchoperation.js.html">blob/internal/batchoperation.js</a>, <a href="blob_internal_batchoperation.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="BlobBlockRangeStream"><span class="type-signature"></span>BlobBlockRangeStream<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>BlockBlob block range stream</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>BlockBlob block range stream</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -338,84 +306,79 @@ Sequence mode is for downloading.</li>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_blobblockrangestream.js.html">blob/internal/blobblockrangestream.js</a>,
-				 <a href="blob_internal_blobblockrangestream.js.html#sunlight-1-line-25">line 25</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_blobblockrangestream.js.html">blob/internal/blobblockrangestream.js</a>, <a href="blob_internal_blobblockrangestream.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="BlobPageRangeStream"><span class="type-signature"></span>BlobPageRangeStream<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>PageBlob page range stream</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>PageBlob page range stream</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -425,86 +388,81 @@ Sequence mode is for downloading.</li>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_blobpagerangestream.js.html">blob/internal/blobpagerangestream.js</a>,
-				 <a href="blob_internal_blobpagerangestream.js.html#sunlight-1-line-25">line 25</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_blobpagerangestream.js.html">blob/internal/blobpagerangestream.js</a>, <a href="blob_internal_blobpagerangestream.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="ChunkAllocator"><span class="type-signature"></span>ChunkAllocator<span class="signature">()</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Chunked memory pool allocator.
+
+
+
+<div class="description">
+    <p>Chunked memory pool allocator.
 It could dramatically reduce the memory usage.
 However, it can't dramatically reduce the CPU time since GC in v8 is very efficient.</p>
-    </div>
-    
+</div>
 
-    
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -514,102 +472,102 @@ However, it can't dramatically reduce the CPU time since GC in v8 is very effici
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_chunkAllocator.js.html">blob/internal/chunkAllocator.js</a>,
-				 <a href="blob_internal_chunkAllocator.js.html#sunlight-1-line-23">line 23</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_chunkAllocator.js.html">blob/internal/chunkAllocator.js</a>, <a href="blob_internal_chunkAllocator.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="ChunkStream"><span class="type-signature"></span>ChunkStream<span class="signature">(options)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Chunk stream</p>
+
+
+
+<div class="description">
+    <p>Chunk stream</p>
 <ol>
 <li>Calculate md5</li>
 <li>Track reading offset</li>
 <li>Work with customize memory allocator</li>
 <li>Buffer data from stream.</li>
 </ol>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -632,21 +590,16 @@ However, it can't dramatically reduce the CPU time since GC in v8 is very effici
             <td class="description last"><p>stream.Readable options</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -656,102 +609,102 @@ However, it can't dramatically reduce the CPU time since GC in v8 is very effici
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_chunkStream.js.html">blob/internal/chunkStream.js</a>,
-				 <a href="blob_internal_chunkStream.js.html#sunlight-1-line-34">line 34</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_chunkStream.js.html">blob/internal/chunkStream.js</a>, <a href="blob_internal_chunkStream.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="ChunkStreamWithStream"><span class="type-signature"></span>ChunkStreamWithStream<span class="signature">(options)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Chunk stream</p>
+
+
+
+<div class="description">
+    <p>Chunk stream</p>
 <ol>
 <li>Calculate md5</li>
 <li>Track reading offset</li>
 <li>Work with customize memory allocator</li>
 <li>Buffer data from stream.</li>
 </ol>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -774,21 +727,16 @@ However, it can't dramatically reduce the CPU time since GC in v8 is very effici
             <td class="description last"><p>stream.Readable options</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -798,84 +746,79 @@ However, it can't dramatically reduce the CPU time since GC in v8 is very effici
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_chunkStreamWithStream.js.html">blob/internal/chunkStreamWithStream.js</a>,
-				 <a href="blob_internal_chunkStreamWithStream.js.html#sunlight-1-line-29">line 29</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_chunkStreamWithStream.js.html">blob/internal/chunkStreamWithStream.js</a>, <a href="blob_internal_chunkStreamWithStream.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="CommonOperation"><span class="type-signature"></span>CommonOperation<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Common operation wrapper</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>Common operation wrapper</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -885,99 +828,99 @@ However, it can't dramatically reduce the CPU time since GC in v8 is very effici
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_batchoperation.js.html">blob/internal/batchoperation.js</a>,
-				 <a href="blob_internal_batchoperation.js.html#sunlight-1-line-378">line 378</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_batchoperation.js.html">blob/internal/batchoperation.js</a>, <a href="blob_internal_batchoperation.js.html#line378">line 378</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="createBlobService"><span class="type-signature"></span>createBlobService<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>, <span class="optional">authenticationProvider</span>)</span><span class="type-signature"> &rarr; {<a href="BlobService.html">BlobService</a>}</span></h4>
+
     
+
+    <h4 class="name" id="createBlobService"><span class="type-signature"></span>createBlobService<span class="signature">(storageAccountOrConnectionString<span class="signature-attributes">opt</span>, storageAccessKey<span class="signature-attributes">opt</span>, host<span class="signature-attributes">opt</span>, authenticationProvider<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="BlobService.html">BlobService</a>}</span></h4>
+
     
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new <a href="BlobService.html">BlobService</a> object.
+
+
+
+<div class="description">
+    <p>Creates a new <a href="BlobService.html"><code>BlobService</code></a> object.
 If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY environment variables will be used.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1010,7 +953,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1043,7 +986,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1076,7 +1019,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The host address.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1109,21 +1052,16 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The authentication provider.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1133,123 +1071,122 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storage.js.html">storage.js</a>,
-				 <a href="storage.js.html#sunlight-1-line-67">line 67</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>A new BlobService object.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="BlobService.html">BlobService</a></span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createQueueService"><span class="type-signature"></span>createQueueService<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>, <span class="optional">authenticationProvider</span>)</span><span class="type-signature"> &rarr; {<a href="QueueService.html">QueueService</a>}</span></h4>
+
     
+
+    <h4 class="name" id="createQueueService"><span class="type-signature"></span>createQueueService<span class="signature">(storageAccountOrConnectionString<span class="signature-attributes">opt</span>, storageAccessKey<span class="signature-attributes">opt</span>, host<span class="signature-attributes">opt</span>, authenticationProvider<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="QueueService.html">QueueService</a>}</span></h4>
+
     
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new <a href="QueueService.html">QueueService</a> object.
+
+
+
+<div class="description">
+    <p>Creates a new <a href="QueueService.html"><code>QueueService</code></a> object.
 If no storageAccount or storageAccessKey are provided, the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY
 environment variables will be used.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1282,7 +1219,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1315,7 +1252,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1348,7 +1285,7 @@ environment variables will be used.</p>
             <td class="description last"><p>The host address.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1381,21 +1318,16 @@ environment variables will be used.</p>
             <td class="description last"><p>The authentication provider.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1405,122 +1337,121 @@ environment variables will be used.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storage.js.html">storage.js</a>,
-				 <a href="storage.js.html#sunlight-1-line-89">line 89</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line89">line 89</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>A new QueueService object.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="QueueService.html">QueueService</a></span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
-    <h4 class="name" id="createTableService"><span class="type-signature"></span>createTableService<span class="signature">(<span class="optional">storageAccountOrConnectionString</span>, <span class="optional">storageAccessKey</span>, <span class="optional">host</span>, <span class="optional">authenticationProvider</span>)</span><span class="type-signature"> &rarr; {<a href="TableService.html">TableService</a>}</span></h4>
+
     
+
+    <h4 class="name" id="createTableService"><span class="type-signature"></span>createTableService<span class="signature">(storageAccountOrConnectionString<span class="signature-attributes">opt</span>, storageAccessKey<span class="signature-attributes">opt</span>, host<span class="signature-attributes">opt</span>, authenticationProvider<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="TableService.html">TableService</a>}</span></h4>
+
     
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new <a href="TableService.html">TableService</a> object.
+
+
+
+<div class="description">
+    <p>Creates a new <a href="TableService.html"><code>TableService</code></a> object.
 If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT and AZURE_STORAGE_ACCESS_KEY environment variables will be used.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1553,7 +1484,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The storage account or the connection string.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1586,7 +1517,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The storage access key.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1619,7 +1550,7 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The host address.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1652,21 +1583,16 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>The authentication provider.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1676,125 +1602,124 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="storage.js.html">storage.js</a>,
-				 <a href="storage.js.html#sunlight-1-line-45">line 45</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storage.js.html">storage.js</a>, <a href="storage.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>A new TableService object.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type"><a href="TableService.html">TableService</a></span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="FileReadStream"><span class="type-signature"></span>FileReadStream<span class="signature">(options)</span><span class="type-signature"></span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>File read stream</p>
+
+
+
+<div class="description">
+    <p>File read stream</p>
 <ol>
 <li>Calculate md5</li>
 <li>Track reading offset</li>
 <li>Could with customize memory allocator</li>
 <li>Buffer data from file or stream.</li>
 </ol>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1817,21 +1742,16 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
             <td class="description last"><p>stream.Readable options</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1841,84 +1761,79 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_filereadstream.js.html">blob/internal/filereadstream.js</a>,
-				 <a href="blob_internal_filereadstream.js.html#sunlight-1-line-34">line 34</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_filereadstream.js.html">blob/internal/filereadstream.js</a>, <a href="blob_internal_filereadstream.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="ListBlobsResultContinuation"><span class="type-signature"></span>ListBlobsResultContinuation<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new ListBlobsResultContinuation object.</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>Creates a new ListBlobsResultContinuation object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1928,84 +1843,79 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_models_listblobsresultcontinuation.js.html">blob/models/listblobsresultcontinuation.js</a>,
-				 <a href="blob_models_listblobsresultcontinuation.js.html#sunlight-1-line-23">line 23</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_models_listblobsresultcontinuation.js.html">blob/models/listblobsresultcontinuation.js</a>, <a href="blob_models_listblobsresultcontinuation.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="ListContainersResultContinuation"><span class="type-signature"></span>ListContainersResultContinuation<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new ListContainersResultContinuation object.</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>Creates a new ListContainersResultContinuation object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2015,84 +1925,79 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_models_listcontainersresultcontinuation.js.html">blob/models/listcontainersresultcontinuation.js</a>,
-				 <a href="blob_models_listcontainersresultcontinuation.js.html#sunlight-1-line-23">line 23</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_models_listcontainersresultcontinuation.js.html">blob/models/listcontainersresultcontinuation.js</a>, <a href="blob_models_listcontainersresultcontinuation.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="ListQueuesResultContinuation"><span class="type-signature"></span>ListQueuesResultContinuation<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new ListQueuesResultContinuation object.</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>Creates a new ListQueuesResultContinuation object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2102,84 +2007,79 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="queue_models_listqueuesresultcontinuation.js.html">queue/models/listqueuesresultcontinuation.js</a>,
-				 <a href="queue_models_listqueuesresultcontinuation.js.html#sunlight-1-line-23">line 23</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="queue_models_listqueuesresultcontinuation.js.html">queue/models/listqueuesresultcontinuation.js</a>, <a href="queue_models_listqueuesresultcontinuation.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="QueryTablesResultContinuation"><span class="type-signature"></span>QueryTablesResultContinuation<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new QueryTablesResultContinuation object.</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>Creates a new QueryTablesResultContinuation object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2189,84 +2089,79 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="table_models_querytablesresultcontinuation.js.html">table/models/querytablesresultcontinuation.js</a>,
-				 <a href="table_models_querytablesresultcontinuation.js.html#sunlight-1-line-26">line 26</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="table_models_querytablesresultcontinuation.js.html">table/models/querytablesresultcontinuation.js</a>, <a href="table_models_querytablesresultcontinuation.js.html#line26">line 26</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="RestOperation"><span class="type-signature"></span>RestOperation<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Rest operation in sdk</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>Rest operation in sdk</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2276,84 +2171,79 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_batchoperation.js.html">blob/internal/batchoperation.js</a>,
-				 <a href="blob_internal_batchoperation.js.html#sunlight-1-line-339">line 339</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_batchoperation.js.html">blob/internal/batchoperation.js</a>, <a href="blob_internal_batchoperation.js.html#line339">line 339</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="SpeedSummary"><span class="type-signature"></span>SpeedSummary<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Blob upload/download speed summary</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>Blob upload/download speed summary</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2363,84 +2253,79 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_speedsummary.js.html">blob/internal/speedsummary.js</a>,
-				 <a href="blob_internal_speedsummary.js.html#sunlight-1-line-25">line 25</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_speedsummary.js.html">blob/internal/speedsummary.js</a>, <a href="blob_internal_speedsummary.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="toHumanReadableSize"><span class="type-signature"></span>toHumanReadableSize<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Convert the size to human readable size</p>
-    </div>
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+<div class="description">
+    <p>Convert the size to human readable size</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2450,54 +2335,52 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="blob_internal_speedsummary.js.html">blob/internal/speedsummary.js</a>,
-				 <a href="blob_internal_speedsummary.js.html#sunlight-1-line-40">line 40</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob_internal_speedsummary.js.html">blob/internal/speedsummary.js</a>, <a href="blob_internal_speedsummary.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
 
-        </dl>
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
@@ -2510,102 +2393,15 @@ If no storageaccount or storageaccesskey are provided, the AZURE_STORAGE_ACCOUNT
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:04 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

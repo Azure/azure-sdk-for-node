@@ -1,52 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: JobOperations</title>
+    <meta charset="utf-8">
+    <title>JobOperations - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="BasicAuthenticationCloudCredentials-BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials~BasicAuthenticationCloudCredentials</a></li><li><a href="ClusterOperations-ClusterOperations.html">ClusterOperations~ClusterOperations</a></li><li><a href="createBasicAuthenticationCloudCredentials.html">createBasicAuthenticationCloudCredentials</a></li><li><a href="createHDInsightCluster2ManagementClient.html">createHDInsightCluster2ManagementClient</a></li><li><a href="createHDInsightClusterManagementClient.html">createHDInsightClusterManagementClient</a></li><li><a href="createHDInsightJobManagementClient.html">createHDInsightJobManagementClient</a></li><li><a href="HDInsightCluster2ManagementClient-HDInsightCluster2ManagementClient.html">HDInsightCluster2ManagementClient~HDInsightCluster2ManagementClient</a></li><li><a href="HDInsightClusterManagementClient-HDInsightClusterManagementClient.html">HDInsightClusterManagementClient~HDInsightClusterManagementClient</a></li><li><a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html">HDInsightJobManagementClient~HDInsightJobManagementClient</a></li><li><a href="HDInsightService.html">HDInsightService</a></li><li><a href="JobOperations-JobOperations.html">JobOperations~JobOperations</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="BasicAuthenticationCloudCredentials-BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials</a><ul class='methods'><li data-type='method'><a href="BasicAuthenticationCloudCredentials-BasicAuthenticationCloudCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="ClusterOperations-ClusterOperations.html">ClusterOperations</a><ul class='methods'><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#beginDeleting">beginDeleting</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#beginDeleting">beginDeleting</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#create">create</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#create">create</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#get">get</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#get">get</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#list">list</a></li><li data-type='method'><a href="ClusterOperations-ClusterOperations.html#list">list</a></li></ul></li><li><a href="createBasicAuthenticationCloudCredentials.html">createBasicAuthenticationCloudCredentials</a></li><li><a href="createHDInsightCluster2ManagementClient.html">createHDInsightCluster2ManagementClient</a></li><li><a href="createHDInsightClusterManagementClient.html">createHDInsightClusterManagementClient</a></li><li><a href="createHDInsightJobManagementClient.html">createHDInsightJobManagementClient</a></li><li><a href="HDInsightCluster2ManagementClient-HDInsightCluster2ManagementClient.html">HDInsightCluster2ManagementClient</a><ul class='methods'><li data-type='method'><a href="HDInsightCluster2ManagementClient-HDInsightCluster2ManagementClient.html#getOperationStatus">getOperationStatus</a></li></ul></li><li><a href="HDInsightClusterManagementClient-HDInsightClusterManagementClient.html">HDInsightClusterManagementClient</a><ul class='methods'><li data-type='method'><a href="HDInsightClusterManagementClient-HDInsightClusterManagementClient.html#getOperationStatus">getOperationStatus</a></li></ul></li><li><a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html">HDInsightJobManagementClient</a></li><li><a href="HDInsightService.html">HDInsightService</a><ul class='methods'><li data-type='method'><a href="HDInsightService.html#convertCreationObject">convertCreationObject</a></li><li data-type='method'><a href="HDInsightService.html#createCluster">createCluster</a></li><li data-type='method'><a href="HDInsightService.html#deleteCluster">deleteCluster</a></li><li data-type='method'><a href="HDInsightService.html#listClusters">listClusters</a></li></ul></li><li><a href="JobOperations-JobOperations.html">JobOperations</a><ul class='methods'><li data-type='method'><a href="JobOperations-JobOperations.html#getJob">getJob</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#listJobs">listJobs</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#submitHiveJob">submitHiveJob</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#submitMapReduceJob">submitMapReduceJob</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#submitMapReduceStreamingJob">submitMapReduceStreamingJob</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#submitPigJob">submitPigJob</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">JobOperations</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: JobOperations</h1>
 <section>
 
 <header>
@@ -57,55 +49,58 @@
         
             <div class="class-description"><p>Operations for managing jobs against HDInsight clusters.
 <strong>NOTE</strong>: An instance of this class is automatically created for an
-instance of the [HDInsightJobManagementClient] <a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html">HDInsightJobManagementClient~HDInsightJobManagementClient</a>.
-See [jobManagement] <a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html#jobManagement">HDInsightJobManagementClient~HDInsightJobManagementClient#jobManagement</a>.
+instance of the [HDInsightJobManagementClient] <a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html"><code>HDInsightJobManagementClient~HDInsightJobManagementClient</code></a>.
+See [jobManagement] <a href="HDInsightJobManagementClient-HDInsightJobManagementClient.html#jobManagement"><code>HDInsightJobManagementClient~HDInsightJobManagementClient#jobManagement</code></a>.
 Initializes a new instance of the JobOperations class.</p></div>
         
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
+
+    
+    <h2>Constructor</h2>
+    
+
     <h4 class="name" id="JobOperations"><span class="type-signature"></span>new JobOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -129,21 +124,16 @@ Initializes a new instance of the JobOperations class.</p></div>
 client.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -153,52 +143,50 @@ client.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>,
-				 <a href="hDInsightJobManagementClient.js.html#sunlight-1-line-93">line 93</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>, <a href="hDInsightJobManagementClient.js.html#line93">line 93</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -209,7 +197,7 @@ client.</p></td>
 
     
 
-    
+     
 
     
 
@@ -218,51 +206,53 @@ client.</p></td>
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
-    <h4 class="name" id="getJob"><span class="type-signature"></span>getJob<span class="signature">(<span class="optional">jobId</span>, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets the list of jobs from the specified HDInsight cluster.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="getJob"><span class="type-signature"></span>getJob<span class="signature">(jobId<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Gets the list of jobs from the specified HDInsight cluster.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -295,7 +285,7 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -326,21 +316,16 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -350,119 +335,118 @@ client.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>,
-				 <a href="hDInsightJobManagementClient.js.html#sunlight-1-line-106">line 106</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>, <a href="hDInsightJobManagementClient.js.html#line106">line 106</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listJobs"><span class="type-signature"></span>listJobs<span class="signature">(callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Gets the list of jobs from the specified HDInsight cluster.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Gets the list of jobs from the specified HDInsight cluster.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -485,21 +469,16 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -509,119 +488,118 @@ client.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>,
-				 <a href="hDInsightJobManagementClient.js.html#sunlight-1-line-568">line 568</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>, <a href="hDInsightJobManagementClient.js.html#line568">line 568</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="submitHiveJob"><span class="type-signature"></span>submitHiveJob<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Submits an Hive job to an HDINSIGHT cluster.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Submits an Hive job to an HDINSIGHT cluster.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -645,27 +623,27 @@ client.</p></td>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -698,7 +676,7 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -731,7 +709,7 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -764,7 +742,7 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -797,7 +775,7 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -830,7 +808,7 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -863,7 +841,7 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -896,7 +874,7 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -929,14 +907,14 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -959,21 +937,16 @@ client.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -983,119 +956,118 @@ client.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>,
-				 <a href="hDInsightJobManagementClient.js.html#sunlight-1-line-681">line 681</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>, <a href="hDInsightJobManagementClient.js.html#line681">line 681</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="submitMapReduceJob"><span class="type-signature"></span>submitMapReduceJob<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Submits a MapReduce job to an HDINSIGHT cluster.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Submits a MapReduce job to an HDINSIGHT cluster.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1120,27 +1092,27 @@ parameters.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1173,7 +1145,7 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1206,7 +1178,7 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1239,7 +1211,7 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1272,7 +1244,7 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1305,7 +1277,7 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1338,7 +1310,7 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1371,7 +1343,7 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1404,7 +1376,7 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1437,14 +1409,14 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1467,21 +1439,16 @@ parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1491,119 +1458,118 @@ parameters.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>,
-				 <a href="hDInsightJobManagementClient.js.html#sunlight-1-line-791">line 791</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>, <a href="hDInsightJobManagementClient.js.html#line791">line 791</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="submitMapReduceStreamingJob"><span class="type-signature"></span>submitMapReduceStreamingJob<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Submits a MapReduce streaming job to an HDINSIGHT cluster.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Submits a MapReduce streaming job to an HDINSIGHT cluster.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1628,27 +1594,27 @@ job parameters.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1681,7 +1647,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1714,7 +1680,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1747,7 +1713,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1780,7 +1746,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1813,7 +1779,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1846,7 +1812,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1879,7 +1845,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1912,7 +1878,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1945,7 +1911,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1978,7 +1944,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2011,14 +1977,14 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2041,21 +2007,16 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2065,119 +2026,118 @@ job parameters.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>,
-				 <a href="hDInsightJobManagementClient.js.html#sunlight-1-line-905">line 905</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>, <a href="hDInsightJobManagementClient.js.html#line905">line 905</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="submitPigJob"><span class="type-signature"></span>submitPigJob<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Submits an Hive job to an HDINSIGHT cluster.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Submits an Hive job to an HDINSIGHT cluster.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2201,27 +2161,27 @@ job parameters.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2254,7 +2214,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2287,7 +2247,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2320,7 +2280,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2353,7 +2313,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2386,7 +2346,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2419,7 +2379,7 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2452,14 +2412,14 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2482,21 +2442,16 @@ job parameters.</p>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2506,77 +2461,74 @@ job parameters.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>,
-				 <a href="hDInsightJobManagementClient.js.html#sunlight-1-line-1009">line 1009</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="hDInsightJobManagementClient.js.html">hDInsightJobManagementClient.js</a>, <a href="hDInsightJobManagementClient.js.html#line1009">line 1009</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
+
+    
+
 
 
         
-    
-    
-</dd>
-
-        </dl>
     
 
     
@@ -2589,102 +2541,15 @@ job parameters.</p>
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:48:59 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

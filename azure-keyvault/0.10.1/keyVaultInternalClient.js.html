@@ -1,71 +1,47 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Source: keyVaultInternalClient.js</title>
+    <meta charset="utf-8">
+    <title>keyVaultInternalClient.js - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyVaultClient.html">KeyVaultClient</a></li><li><a href="KeyVaultCredentials.html">KeyVaultCredentials</a></li><li><a href="ObjectIdentifier.html">ObjectIdentifier</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
+<label for="nav-trigger" class="overlay"></label>
 
-<div class="container">
-<div class="row">
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyVaultClient.html">KeyVaultClient</a><ul class='methods'><li data-type='method'><a href="KeyVaultClient.html#backupKey">backupKey</a></li><li data-type='method'><a href="KeyVaultClient.html#createKey">createKey</a></li><li data-type='method'><a href="KeyVaultClient.html#decrypt">decrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteKey">deleteKey</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteSecret">deleteSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#encrypt">encrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#getKey">getKey</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeys">getKeys</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeysNext">getKeysNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersions">getKeyVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersionsNext">getKeyVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecret">getSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecrets">getSecrets</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretsNext">getSecretsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersions">getSecretVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersionsNext">getSecretVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#importKey">importKey</a></li><li data-type='method'><a href="KeyVaultClient.html#restoreKey">restoreKey</a></li><li data-type='method'><a href="KeyVaultClient.html#setSecret">setSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#sign">sign</a></li><li data-type='method'><a href="KeyVaultClient.html#unwrapKey">unwrapKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateKey">updateKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateSecret">updateSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#verify">verify</a></li><li data-type='method'><a href="KeyVaultClient.html#withFilter">withFilter</a></li><li data-type='method'><a href="KeyVaultClient.html#wrapKey">wrapKey</a></li></ul></li><li><a href="KeyVaultCredentials.html">KeyVaultCredentials</a></li><li><a href="ObjectIdentifier.html">ObjectIdentifier</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li></ul><h3>Namespaces</h3><ul><li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li></ul>
+</nav>
 
-	
-	<div class="col-md-12">
-	
-		<div id="main">
-			
-
-		<h1 class="page-title">Source: keyVaultInternalClient.js</h1>
+<div id="main">
     
-<section>
-	<article>
-		<pre
-			class="sunlight-highlight-javascript linenums">/* jshint latedef:false */
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">keyVaultInternalClient.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* jshint latedef:false */
 /* jshint forin:false */
 /* jshint noempty:false */
 
@@ -2011,106 +1987,22 @@ var SecretOperations = ( /** @lends SecretOperations */ function() {
   
   return SecretOperations;
 })();
-</pre>
-	</article>
-</section>
+</code></pre>
+        </article>
+    </section>
 
 
 
-
-
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
 
 </div>
-</div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Wed Jun 24th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:02 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

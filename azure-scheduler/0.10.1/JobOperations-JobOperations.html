@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: JobOperations</title>
+    <meta charset="utf-8">
+    <title>JobOperations - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="JobOperations-JobOperations.html">JobOperations~JobOperations</a></li><li><a href="SchedulerClient-SchedulerClient.html">SchedulerClient~SchedulerClient</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createSchedulerClient">createSchedulerClient</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="JobOperations-JobOperations.html">JobOperations</a><ul class='methods'><li data-type='method'><a href="JobOperations-JobOperations.html#create">create</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#get">get</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#getHistory">getHistory</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#getHistoryWithFilter">getHistoryWithFilter</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#list">list</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#listWithFilter">listWithFilter</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#updateJobCollectionState">updateJobCollectionState</a></li><li data-type='method'><a href="JobOperations-JobOperations.html#updateState">updateState</a></li></ul></li><li><a href="SchedulerClient-SchedulerClient.html">SchedulerClient</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createSchedulerClient">createSchedulerClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">JobOperations</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: JobOperations</h1>
 <section>
 
 <header>
@@ -63,55 +48,58 @@
         </h2>
         
             <div class="class-description"><p><strong>NOTE</strong>: An instance of this class is automatically created for an
-instance of the [SchedulerClient] <a href="SchedulerClient-SchedulerClient.html">SchedulerClient~SchedulerClient</a>.
-See [jobs] <a href="SchedulerClient-SchedulerClient.html#jobs">SchedulerClient~SchedulerClient#jobs</a>.
+instance of the [SchedulerClient] <a href="SchedulerClient-SchedulerClient.html"><code>SchedulerClient~SchedulerClient</code></a>.
+See [jobs] <a href="SchedulerClient-SchedulerClient.html#jobs"><code>SchedulerClient~SchedulerClient#jobs</code></a>.
 Initializes a new instance of the JobOperations class.</p></div>
         
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
+
+    
+    <h2>Constructor</h2>
+    
+
     <h4 class="name" id="JobOperations"><span class="type-signature"></span>new JobOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -134,21 +122,16 @@ Initializes a new instance of the JobOperations class.</p></div>
             <td class="description last"><p>Reference to the service client.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -158,52 +141,50 @@ Initializes a new instance of the JobOperations class.</p></div>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-109">line 109</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line109">line 109</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -214,7 +195,7 @@ Initializes a new instance of the JobOperations class.</p></div>
 
     
 
-    
+     
 
     
 
@@ -223,50 +204,52 @@ Initializes a new instance of the JobOperations class.</p></div>
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
+
+    
+
     <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new Job, allowing the service to generate a job id. Use
+
+
+
+<div class="description">
+    <p>Creates a new Job, allowing the service to generate a job id. Use
 CreateOrUpdate if a user-chosen job id is required.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -291,27 +274,27 @@ definition for a Create Job operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -345,7 +328,7 @@ definition for a Create Job operation.</p>
 ISO-8601.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -377,27 +360,27 @@ ISO-8601.</p></td>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -429,7 +412,7 @@ ISO-8601.</p></td>
 of http, https, storageQueue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -464,27 +447,27 @@ job action.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -518,7 +501,7 @@ job action.</p>
 Type of the Retry Policy. Can be either 'fixed' or 'none'.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -552,7 +535,7 @@ Type of the Retry Policy. Can be either 'fixed' or 'none'.</p></td>
 interval between retries.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -586,14 +569,14 @@ interval between retries.</p></td>
 a retry should be attempted.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -628,27 +611,27 @@ the job.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -682,7 +665,7 @@ the job.</p>
 action. Can be one of http, https, storageQueue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -717,27 +700,27 @@ for a http or https action type.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -771,7 +754,7 @@ for a http or https action type.</p>
 Uri of the endpoint to invoke.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -805,7 +788,7 @@ Uri of the endpoint to invoke.</p></td>
 sets Http method e.g. GET, PUT, POST, DELETE.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -839,7 +822,7 @@ sets Http method e.g. GET, PUT, POST, DELETE.</p></td>
 sets Header name value pairs to supply with the http/https action.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -873,7 +856,7 @@ sets Header name value pairs to supply with the http/https action.</p></td>
 the request body.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -908,27 +891,27 @@ request authentication.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -962,21 +945,21 @@ request authentication.</p>
 authentication type</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1010,27 +993,27 @@ authentication type</p></td>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1064,7 +1047,7 @@ authentication type</p></td>
 the storage account for the queue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1097,7 +1080,7 @@ the storage account for the queue.</p></td>
             <td class="description last"><p>Name of the queue to send to.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1131,7 +1114,7 @@ the storage account for the queue.</p></td>
 key for the storage account to send message to the queue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1164,21 +1147,21 @@ key for the storage account to send message to the queue.</p></td>
             <td class="description last"><p>Content of the message to send to the queue.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1213,27 +1196,27 @@ https action type.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1267,7 +1250,7 @@ https action type.</p>
 endpoint to invoke.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1301,7 +1284,7 @@ endpoint to invoke.</p></td>
 method e.g. GET, PUT, POST, DELETE.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1335,7 +1318,7 @@ method e.g. GET, PUT, POST, DELETE.</p></td>
 name value pairs to supply with the http/https action.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1369,7 +1352,7 @@ name value pairs to supply with the http/https action.</p></td>
 body.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1403,27 +1386,27 @@ body.</p></td>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1457,21 +1440,21 @@ body.</p></td>
 authentication type</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1506,27 +1489,27 @@ content for a queue message action type.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1560,7 +1543,7 @@ content for a queue message action type.</p>
 of the storage account for the queue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1594,7 +1577,7 @@ of the storage account for the queue.</p></td>
 queue to send to.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1628,7 +1611,7 @@ queue to send to.</p></td>
 storage account to send message to the queue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1662,21 +1645,21 @@ storage account to send message to the queue.</p></td>
 message to send to the queue.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1711,27 +1694,27 @@ job.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1765,7 +1748,7 @@ job.</p>
 frequency of recurrence.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1799,7 +1782,7 @@ frequency of recurrence.</p></td>
 recurrence at the given frequency.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1833,7 +1816,7 @@ recurrence at the given frequency.</p></td>
 will execute. Optional. Default will recur infinitely</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1867,7 +1850,7 @@ will execute. Optional. Default will recur infinitely</p></td>
 after which no more occurrences will execute.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1902,27 +1885,27 @@ schedule for the job.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1956,7 +1939,7 @@ schedule for the job.</p>
 hour that the job should execute at.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1990,7 +1973,7 @@ hour that the job should execute at.</p></td>
 that the job should execute at.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2024,7 +2007,7 @@ that the job should execute at.</p></td>
 the job should execute on.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2058,7 +2041,7 @@ the job should execute on.</p></td>
 should execute in.  Must be between 1 and 12.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2092,7 +2075,7 @@ should execute in.  Must be between 1 and 12.</p></td>
 month that the job should execute on.  Must be between 1 and 31.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2125,28 +2108,28 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"><p>Occurrences of days within a month.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2169,21 +2152,16 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2193,120 +2171,119 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-262">line 262</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line262">line 262</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="createOrUpdate"><span class="type-signature"></span>createOrUpdate<span class="signature">(jobId, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
     
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new Job with a user-provided job id, or updates an existing job,
+
+
+
+<div class="description">
+    <p>Creates a new Job with a user-provided job id, or updates an existing job,
 replacing its definition with that specified.</p>
-    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-    
-    
-    
-        <h5>Parameters:</h5>
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2329,7 +2306,7 @@ replacing its definition with that specified.</p>
             <td class="description last"><p>Id of the job to create or update.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2354,27 +2331,27 @@ job definition for a CreateOrUpdate Job operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2408,7 +2385,7 @@ job definition for a CreateOrUpdate Job operation.</p>
 ISO-8601.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2440,27 +2417,27 @@ ISO-8601.</p></td>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2492,7 +2469,7 @@ ISO-8601.</p></td>
 of http, https, storageQueue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2527,27 +2504,27 @@ job action.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2581,7 +2558,7 @@ job action.</p>
 Type of the Retry Policy. Can be either 'fixed' or 'none'.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2615,7 +2592,7 @@ Type of the Retry Policy. Can be either 'fixed' or 'none'.</p></td>
 interval between retries.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2649,14 +2626,14 @@ interval between retries.</p></td>
 a retry should be attempted.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2691,27 +2668,27 @@ the job.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2745,7 +2722,7 @@ the job.</p>
 action. Can be one of http, https, storageQueue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2780,27 +2757,27 @@ for a http or https action type.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2834,7 +2811,7 @@ for a http or https action type.</p>
 Uri of the endpoint to invoke.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2868,7 +2845,7 @@ Uri of the endpoint to invoke.</p></td>
 sets Http method e.g. GET, PUT, POST, DELETE.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2902,7 +2879,7 @@ sets Http method e.g. GET, PUT, POST, DELETE.</p></td>
 sets Header name value pairs to supply with the http/https action.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2936,7 +2913,7 @@ sets Header name value pairs to supply with the http/https action.</p></td>
 the request body.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2971,27 +2948,27 @@ request authentication.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3025,21 +3002,21 @@ request authentication.</p>
 authentication type</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3073,27 +3050,27 @@ authentication type</p></td>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3127,7 +3104,7 @@ authentication type</p></td>
 the storage account for the queue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3160,7 +3137,7 @@ the storage account for the queue.</p></td>
             <td class="description last"><p>Name of the queue to send to.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3194,7 +3171,7 @@ the storage account for the queue.</p></td>
 key for the storage account to send message to the queue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3227,21 +3204,21 @@ key for the storage account to send message to the queue.</p></td>
             <td class="description last"><p>Content of the message to send to the queue.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3276,27 +3253,27 @@ https action type.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3330,7 +3307,7 @@ https action type.</p>
 endpoint to invoke.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3364,7 +3341,7 @@ endpoint to invoke.</p></td>
 method e.g. GET, PUT, POST, DELETE.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3398,7 +3375,7 @@ method e.g. GET, PUT, POST, DELETE.</p></td>
 name value pairs to supply with the http/https action.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3432,7 +3409,7 @@ name value pairs to supply with the http/https action.</p></td>
 body.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3466,27 +3443,27 @@ body.</p></td>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3520,21 +3497,21 @@ body.</p></td>
 authentication type</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3569,27 +3546,27 @@ content for a queue message action type.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3623,7 +3600,7 @@ content for a queue message action type.</p>
 of the storage account for the queue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3657,7 +3634,7 @@ of the storage account for the queue.</p></td>
 queue to send to.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3691,7 +3668,7 @@ queue to send to.</p></td>
 storage account to send message to the queue.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3725,21 +3702,21 @@ storage account to send message to the queue.</p></td>
 message to send to the queue.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3774,27 +3751,27 @@ job.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3828,7 +3805,7 @@ job.</p>
 frequency of recurrence.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3862,7 +3839,7 @@ frequency of recurrence.</p></td>
 recurrence at the given frequency.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3896,7 +3873,7 @@ recurrence at the given frequency.</p></td>
 will execute. Optional. Default will recur infinitely</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3930,7 +3907,7 @@ will execute. Optional. Default will recur infinitely</p></td>
 after which no more occurrences will execute.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3965,27 +3942,27 @@ schedule for the job.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4019,7 +3996,7 @@ schedule for the job.</p>
 hour that the job should execute at.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4053,7 +4030,7 @@ hour that the job should execute at.</p></td>
 that the job should execute at.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4087,7 +4064,7 @@ that the job should execute at.</p></td>
 the job should execute on.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4121,7 +4098,7 @@ the job should execute on.</p></td>
 should execute in.  Must be between 1 and 12.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4155,7 +4132,7 @@ should execute in.  Must be between 1 and 12.</p></td>
 month that the job should execute on.  Must be between 1 and 31.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4188,28 +4165,28 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"><p>Occurrences of days within a month.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4232,21 +4209,16 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4256,119 +4228,118 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-1446">line 1446</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line1446">line 1446</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(jobId, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Deletes a job.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Deletes a job.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4391,7 +4362,7 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"><p>Id of the job to delete.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4414,21 +4385,16 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4438,119 +4404,118 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-2492">line 2492</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line2492">line 2492</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(jobId, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Get the definition and status of a job.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Get the definition and status of a job.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4573,7 +4538,7 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"><p>Id of the job to get.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4596,21 +4561,16 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4620,119 +4580,118 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-2575">line 2575</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line2575">line 2575</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getHistory"><span class="type-signature"></span>getHistory<span class="signature">(jobId, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Get the execution history of a Job.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Get the execution history of a Job.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4755,7 +4714,7 @@ month that the job should execute on.  Must be between 1 and 31.</p></td>
             <td class="description last"><p>Id of the job to get the history of.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4780,27 +4739,27 @@ Job History operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4834,7 +4793,7 @@ Job History operation.</p>
 history list from which to begin requesting entries.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4868,14 +4827,14 @@ history list from which to begin requesting entries.</p></td>
 request, in the of range [1..100].</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4898,21 +4857,16 @@ request, in the of range [1..100].</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4922,119 +4876,118 @@ request, in the of range [1..100].</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-3213">line 3213</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line3213">line 3213</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getHistoryWithFilter"><span class="type-signature"></span>getHistoryWithFilter<span class="signature">(jobId, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Get the execution history of a Job with a filter on the job Status.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Get the execution history of a Job with a filter on the job Status.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5057,7 +5010,7 @@ request, in the of range [1..100].</p></td>
             <td class="description last"><p>Id of the job to get the history of.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5082,27 +5035,27 @@ to the Get Job History With Filter operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5135,7 +5088,7 @@ it only return job execution attempts having a particular Status,
 'completed' or 'failed'.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5169,7 +5122,7 @@ it only return job execution attempts having a particular Status,
 history list from which to begin requesting entries.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5203,14 +5156,14 @@ history list from which to begin requesting entries.</p></td>
 request, in the of range [1..100].</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5233,21 +5186,16 @@ request, in the of range [1..100].</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5257,119 +5205,118 @@ request, in the of range [1..100].</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-3398">line 3398</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line3398">line 3398</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Get the list of all jobs in a job collection.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Get the list of all jobs in a job collection.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5394,27 +5341,27 @@ operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5448,7 +5395,7 @@ operation.</p>
 list from which to begin requesting entries.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5482,14 +5429,14 @@ list from which to begin requesting entries.</p></td>
 the of range [1..100].</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5512,21 +5459,16 @@ the of range [1..100].</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5536,119 +5478,118 @@ the of range [1..100].</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-3585">line 3585</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line3585">line 3585</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listWithFilter"><span class="type-signature"></span>listWithFilter<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Get the list of jobs in a job collection matching a filter on job state.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Get the list of jobs in a job collection matching a filter on job state.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5673,27 +5614,27 @@ List Jobs with filter operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5726,7 +5667,7 @@ return job execution attempts having a particular State, enabled,
 disabled, faulted, or completed.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5760,7 +5701,7 @@ disabled, faulted, or completed.</p></td>
 list from which to begin requesting entries.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5794,14 +5735,14 @@ list from which to begin requesting entries.</p></td>
 the of range [1..100].</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -5824,21 +5765,16 @@ the of range [1..100].</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -5848,119 +5784,118 @@ the of range [1..100].</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-4236">line 4236</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line4236">line 4236</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="updateJobCollectionState"><span class="type-signature"></span>updateJobCollectionState<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Update the state of all jobs in a job collections.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Update the state of all jobs in a job collections.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -5985,25 +5920,25 @@ supplied to the Update Jobs State operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6027,14 +5962,14 @@ supplied to the Update Jobs State operation.</p>
 'disabled'.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6057,21 +5992,16 @@ supplied to the Update Jobs State operation.</p>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -6081,119 +6011,118 @@ supplied to the Update Jobs State operation.</p>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-4888">line 4888</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line4888">line 4888</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
 
+    
 
-        
-    
-    
-</dd>
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="updateState"><span class="type-signature"></span>updateState<span class="signature">(jobId, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Update the state of a job.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Update the state of a job.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6216,7 +6145,7 @@ supplied to the Update Jobs State operation.</p>
             <td class="description last"><p>Id of the job to update.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6241,27 +6170,27 @@ Update Job State operation.</p>
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -6293,7 +6222,7 @@ Update Job State operation.</p>
 'disabled'.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6327,14 +6256,14 @@ Update Job State operation.</p>
 circumstances associated with this job state update.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -6357,21 +6286,16 @@ circumstances associated with this job state update.</p></td>
             <td class="description last"></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -6381,77 +6305,74 @@ circumstances associated with this job state update.</p></td>
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="schedulerClient.js.html">schedulerClient.js</a>,
-				 <a href="schedulerClient.js.html#sunlight-1-line-5542">line 5542</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="schedulerClient.js.html">schedulerClient.js</a>, <a href="schedulerClient.js.html#line5542">line 5542</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     <p>The response stream.</p>
 </div>
 
 
 
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Stream</span>
 
 
-	</dd>
+    </dd>
 </dl>
+
+    
+
 
 
         
-    
-    
-</dd>
-
-        </dl>
     
 
     
@@ -6464,102 +6385,15 @@ circumstances associated with this job state update.</p></td>
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:12 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

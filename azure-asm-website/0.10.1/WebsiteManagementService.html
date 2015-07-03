@@ -1,59 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: WebsiteManagementService</title>
+    <meta charset="utf-8">
+    <title>WebsiteManagementService - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials</a></li><li><a href="CommandsOperations-CommandsOperations.html">CommandsOperations~CommandsOperations</a></li><li><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html">ContinuousWebJobOperations~ContinuousWebJobOperations</a></li><li><a href="DeploymentOperations-DeploymentOperations.html">DeploymentOperations~DeploymentOperations</a></li><li><a href="DiagnosticOperations-DiagnosticOperations.html">DiagnosticOperations~DiagnosticOperations</a></li><li><a href="RepositoryOperations-RepositoryOperations.html">RepositoryOperations~RepositoryOperations</a></li><li><a href="ScmService.html">ScmService</a></li><li><a href="SettingsOperations-SettingsOperations.html">SettingsOperations~SettingsOperations</a></li><li><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html">TriggeredWebJobOperations~TriggeredWebJobOperations</a></li><li><a href="WebHostingPlanOperations-WebHostingPlanOperations.html">WebHostingPlanOperations~WebHostingPlanOperations</a></li><li><a href="WebSiteExtensionsClient-WebSiteExtensionsClient.html">WebSiteExtensionsClient~WebSiteExtensionsClient</a></li><li><a href="WebSiteManagementClient-WebSiteManagementClient.html">WebSiteManagementClient~WebSiteManagementClient</a></li><li><a href="WebsiteManagementService.html">WebsiteManagementService</a></li><li><a href="WebSiteOperations-WebSiteOperations.html">WebSiteOperations~WebSiteOperations</a></li><li><a href="WebSpaceOperations-WebSpaceOperations.html">WebSpaceOperations~WebSpaceOperations</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createScmService">createScmService</a></li><li><a href="global.html#createWebSiteExtensionsClient">createWebSiteExtensionsClient</a></li><li><a href="global.html#createWebSiteManagementClient">createWebSiteManagementClient</a></li><li><a href="global.html#createWebsiteManagementService">createWebsiteManagementService</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="BasicAuthenticationCloudCredentials.html">BasicAuthenticationCloudCredentials</a><ul class='methods'><li data-type='method'><a href="BasicAuthenticationCloudCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="CommandsOperations-CommandsOperations.html">CommandsOperations</a><ul class='methods'><li data-type='method'><a href="CommandsOperations-CommandsOperations.html#invoke">invoke</a></li></ul></li><li><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html">ContinuousWebJobOperations</a><ul class='methods'><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#get">get</a></li><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#getSettings">getSettings</a></li><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#list">list</a></li><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#setSettings">setSettings</a></li><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#start">start</a></li><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#stop">stop</a></li><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#uploadFile">uploadFile</a></li><li data-type='method'><a href="ContinuousWebJobOperations-ContinuousWebJobOperations.html#uploadZip">uploadZip</a></li></ul></li><li><a href="DeploymentOperations-DeploymentOperations.html">DeploymentOperations</a><ul class='methods'><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#get">get</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#getLog">getLog</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#list">list</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#listLogs">listLogs</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#redeploy">redeploy</a></li></ul></li><li><a href="DiagnosticOperations-DiagnosticOperations.html">DiagnosticOperations</a><ul class='methods'><li data-type='method'><a href="DiagnosticOperations-DiagnosticOperations.html#getSettings">getSettings</a></li><li data-type='method'><a href="DiagnosticOperations-DiagnosticOperations.html#updateSettings">updateSettings</a></li></ul></li><li><a href="RepositoryOperations-RepositoryOperations.html">RepositoryOperations</a><ul class='methods'><li data-type='method'><a href="RepositoryOperations-RepositoryOperations.html#deleteMethod">deleteMethod</a></li></ul></li><li><a href="ScmService.html">ScmService</a><ul class='methods'><li data-type='method'><a href="ScmService.html#getDumpToStream">getDumpToStream</a></li><li data-type='method'><a href="ScmService.html#getLogStream">getLogStream</a></li></ul></li><li><a href="SettingsOperations-SettingsOperations.html">SettingsOperations</a><ul class='methods'><li data-type='method'><a href="SettingsOperations-SettingsOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="SettingsOperations-SettingsOperations.html#get">get</a></li><li data-type='method'><a href="SettingsOperations-SettingsOperations.html#list">list</a></li><li data-type='method'><a href="SettingsOperations-SettingsOperations.html#update">update</a></li></ul></li><li><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html">TriggeredWebJobOperations</a><ul class='methods'><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#get">get</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#getRun">getRun</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#getSettings">getSettings</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#list">list</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#listRuns">listRuns</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#run">run</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#setSettings">setSettings</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#uploadFile">uploadFile</a></li><li data-type='method'><a href="TriggeredWebJobOperations-TriggeredWebJobOperations.html#uploadZip">uploadZip</a></li></ul></li><li><a href="WebHostingPlanOperations-WebHostingPlanOperations.html">WebHostingPlanOperations</a><ul class='methods'><li data-type='method'><a href="WebHostingPlanOperations-WebHostingPlanOperations.html#create">create</a></li><li data-type='method'><a href="WebHostingPlanOperations-WebHostingPlanOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="WebHostingPlanOperations-WebHostingPlanOperations.html#get">get</a></li><li data-type='method'><a href="WebHostingPlanOperations-WebHostingPlanOperations.html#getHistoricalUsageMetrics">getHistoricalUsageMetrics</a></li><li data-type='method'><a href="WebHostingPlanOperations-WebHostingPlanOperations.html#list">list</a></li><li data-type='method'><a href="WebHostingPlanOperations-WebHostingPlanOperations.html#update">update</a></li></ul></li><li><a href="WebSiteExtensionsClient-WebSiteExtensionsClient.html">WebSiteExtensionsClient</a></li><li><a href="WebSiteManagementClient-WebSiteManagementClient.html">WebSiteManagementClient</a><ul class='methods'><li data-type='method'><a href="WebSiteManagementClient-WebSiteManagementClient.html#getOperationStatus">getOperationStatus</a></li><li data-type='method'><a href="WebSiteManagementClient-WebSiteManagementClient.html#registerSubscription">registerSubscription</a></li><li data-type='method'><a href="WebSiteManagementClient-WebSiteManagementClient.html#unregisterSubscription">unregisterSubscription</a></li></ul></li><li><a href="WebsiteManagementService.html">WebsiteManagementService</a><ul class='methods'><li data-type='method'><a href="WebsiteManagementService.html#createPublishingUser">createPublishingUser</a></li><li data-type='method'><a href="WebsiteManagementService.html#createServerFarm">createServerFarm</a></li><li data-type='method'><a href="WebsiteManagementService.html#createSite">createSite</a></li><li data-type='method'><a href="WebsiteManagementService.html#createSiteRepository">createSiteRepository</a></li><li data-type='method'><a href="WebsiteManagementService.html#deleteSite">deleteSite</a></li><li data-type='method'><a href="WebsiteManagementService.html#deleteSiteRepository">deleteSiteRepository</a></li><li data-type='method'><a href="WebsiteManagementService.html#getServerFarm">getServerFarm</a></li><li data-type='method'><a href="WebsiteManagementService.html#getSite">getSite</a></li><li data-type='method'><a href="WebsiteManagementService.html#getSiteConfiguration">getSiteConfiguration</a></li><li data-type='method'><a href="WebsiteManagementService.html#listDNSSuffix">listDNSSuffix</a></li><li data-type='method'><a href="WebsiteManagementService.html#listGeoRegions">listGeoRegions</a></li><li data-type='method'><a href="WebsiteManagementService.html#listPublishingUsers">listPublishingUsers</a></li><li data-type='method'><a href="WebsiteManagementService.html#listSites">listSites</a></li><li data-type='method'><a href="WebsiteManagementService.html#listWebspaces">listWebspaces</a></li><li data-type='method'><a href="WebsiteManagementService.html#syncSiteRepository">syncSiteRepository</a></li><li data-type='method'><a href="WebsiteManagementService.html#updateServerFarm">updateServerFarm</a></li><li data-type='method'><a href="WebsiteManagementService.html#updateSite">updateSite</a></li><li data-type='method'><a href="WebsiteManagementService.html#updateSiteConfiguration">updateSiteConfiguration</a></li></ul></li><li><a href="WebSiteOperations-WebSiteOperations.html">WebSiteOperations</a><ul class='methods'><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#applySlotConfiguration">applySlotConfiguration</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#backup">backup</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#beginSwappingSlots">beginSwappingSlots</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#create">create</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#createHybridConnection">createHybridConnection</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#createRepository">createRepository</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#deleteHybridConnection">deleteHybridConnection</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#deleteRepository">deleteRepository</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#discover">discover</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#generatePassword">generatePassword</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#get">get</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getBackupConfiguration">getBackupConfiguration</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getConfiguration">getConfiguration</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getHistoricalUsageMetrics">getHistoricalUsageMetrics</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getHybridConnection">getHybridConnection</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getInstanceIds">getInstanceIds</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getPublishProfile">getPublishProfile</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getRepository">getRepository</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getSlotConfigNames">getSlotConfigNames</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#getUsageMetrics">getUsageMetrics</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#isHostnameAvailable">isHostnameAvailable</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#listBackups">listBackups</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#listHybridConnections">listHybridConnections</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#resetSlotConfiguration">resetSlotConfiguration</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#restart">restart</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#restore">restore</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#swapSlots">swapSlots</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#syncRepository">syncRepository</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#update">update</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#updateBackupConfiguration">updateBackupConfiguration</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#updateConfiguration">updateConfiguration</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#updateHybridConnection">updateHybridConnection</a></li><li data-type='method'><a href="WebSiteOperations-WebSiteOperations.html#updateSlotConfigNames">updateSlotConfigNames</a></li></ul></li><li><a href="WebSpaceOperations-WebSpaceOperations.html">WebSpaceOperations</a><ul class='methods'><li data-type='method'><a href="WebSpaceOperations-WebSpaceOperations.html#createPublishingUser">createPublishingUser</a></li><li data-type='method'><a href="WebSpaceOperations-WebSpaceOperations.html#get">get</a></li><li data-type='method'><a href="WebSpaceOperations-WebSpaceOperations.html#getDnsSuffix">getDnsSuffix</a></li><li data-type='method'><a href="WebSpaceOperations-WebSpaceOperations.html#list">list</a></li><li data-type='method'><a href="WebSpaceOperations-WebSpaceOperations.html#listGeoRegions">listGeoRegions</a></li><li data-type='method'><a href="WebSpaceOperations-WebSpaceOperations.html#listPublishingUsers">listPublishingUsers</a></li><li data-type='method'><a href="WebSpaceOperations-WebSpaceOperations.html#listWebSites">listWebSites</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createScmService">createScmService</a></li><li><a href="global.html#createWebSiteExtensionsClient">createWebSiteExtensionsClient</a></li><li><a href="global.html#createWebSiteManagementClient">createWebSiteManagementClient</a></li><li><a href="global.html#createWebsiteManagementService">createWebsiteManagementService</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">WebsiteManagementService</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: WebsiteManagementService</h1>
 <section>
 
 <header>
@@ -67,54 +52,57 @@
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
-    <h4 class="name" id="WebsiteManagementService"><span class="type-signature"></span>new WebsiteManagementService<span class="signature">(configOrSubscriptionId, authentication, <span class="optional">hostOptions</span>)</span><span class="type-signature"></span></h4>
+
     
+    <h2>Constructor</h2>
     
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new WebsiteManagementService object.</p>
-    </div>
-    
+
+    <h4 class="name" id="WebsiteManagementService"><span class="type-signature"></span>new WebsiteManagementService<span class="signature">(configOrSubscriptionId, authentication, hostOptions<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
+
+
+<div class="description">
+    <p>Creates a new WebsiteManagementService object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -145,7 +133,7 @@
             <td class="description last"><p>Configuration information, subscription ID for the account or the connection string</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -180,27 +168,27 @@
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -233,7 +221,7 @@
             <td class="description last"><p>The path to a file that contains the PEM encoded key</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -266,7 +254,7 @@
             <td class="description last"><p>The path to a file that contains the PEM encoded certificate</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -299,7 +287,7 @@
             <td class="description last"><p>A string that contains the PEM encoded key</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -332,14 +320,14 @@
             <td class="description last"><p>A string that contains the PEM encoded certificate</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -373,29 +361,29 @@
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Default</th>
-		
+        
+        <th>Default</th>
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -434,7 +422,7 @@
             <td class="description last"><p>The management endpoint.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -473,28 +461,23 @@
             <td class="description last"><p>The API vesion to be used.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -504,52 +487,50 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-50">line 50</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line50">line 50</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -560,7 +541,7 @@
 
     
 
-    
+     
 
     
 
@@ -569,54 +550,56 @@
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
-    <h4 class="name" id="createPublishingUser"><span class="type-signature"></span>createPublishingUser<span class="signature">(username, password, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new publishing user.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createPublishingUser"><span class="type-signature"></span>createPublishingUser<span class="signature">(username, password, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a new publishing user.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -647,7 +630,7 @@
             <td class="description last"><p>The publishing user username.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -678,7 +661,7 @@
             <td class="description last"><p>The publishing user password.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -712,27 +695,27 @@
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -765,14 +748,14 @@
             <td class="description last"><p>The publishing user name.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -804,21 +787,16 @@
                                                       if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -828,101 +806,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-194">line 194</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line194">line 194</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="createServerFarm"><span class="type-signature"></span>createServerFarm<span class="signature">(webspaceName, serverFarmName, numberOfWorkers, workerSize, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new server farm.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createServerFarm"><span class="type-signature"></span>createServerFarm<span class="signature">(webspaceName, serverFarmName, numberOfWorkers, workerSize, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a new server farm.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -953,7 +931,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -984,7 +962,7 @@
             <td class="description last"><p>The server farm name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1015,7 +993,7 @@
             <td class="description last"><p>The number of workers.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1046,7 +1024,7 @@
             <td class="description last"><p>The worker size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1079,7 +1057,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1111,21 +1089,16 @@
                                                       if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1135,101 +1108,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-533">line 533</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line533">line 533</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="createSite"><span class="type-signature"></span>createSite<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a new website.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createSite"><span class="type-signature"></span>createSite<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a new website.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1260,7 +1233,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1291,7 +1264,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1325,27 +1298,27 @@
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1378,14 +1351,14 @@
             <td class="description last"><p>The properties to include.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1419,21 +1392,16 @@
                                                             <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1443,101 +1411,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-334">line 334</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line334">line 334</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="createSiteRepository"><span class="type-signature"></span>createSiteRepository<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Creates a website repository.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="createSiteRepository"><span class="type-signature"></span>createSiteRepository<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Creates a website repository.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1568,7 +1536,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1599,7 +1567,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1632,7 +1600,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1664,21 +1632,16 @@
                                                       if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1688,101 +1651,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-658">line 658</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line658">line 658</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="deleteSite"><span class="type-signature"></span>deleteSite<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Deletes a website.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="deleteSite"><span class="type-signature"></span>deleteSite<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Deletes a website.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -1813,7 +1776,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1844,7 +1807,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1877,7 +1840,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -1909,21 +1872,16 @@
                                                if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1933,101 +1891,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-378">line 378</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line378">line 378</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="deleteSiteRepository"><span class="type-signature"></span>deleteSiteRepository<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Deletes a website repository.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="deleteSiteRepository"><span class="type-signature"></span>deleteSiteRepository<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Deletes a website repository.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2058,7 +2016,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2089,7 +2047,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2122,7 +2080,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2154,21 +2112,16 @@
                                                       if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2178,101 +2131,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-689">line 689</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line689">line 689</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="getServerFarm"><span class="type-signature"></span>getServerFarm<span class="signature">(webspaceName, serverFarmName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Retrieves a server farm.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="getServerFarm"><span class="type-signature"></span>getServerFarm<span class="signature">(webspaceName, serverFarmName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Retrieves a server farm.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2303,7 +2256,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2334,7 +2287,7 @@
             <td class="description last"><p>The server farm name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2367,7 +2320,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2399,21 +2352,16 @@
                                                       if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2423,101 +2371,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-623">line 623</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line623">line 623</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="getSite"><span class="type-signature"></span>getSite<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Retrieves the existing web site.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="getSite"><span class="type-signature"></span>getSite<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Retrieves the existing web site.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2548,7 +2496,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2579,7 +2527,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2613,27 +2561,27 @@
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2666,14 +2614,14 @@
             <td class="description last"><p>The properties to include.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2707,21 +2655,16 @@
                                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2731,101 +2674,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-291">line 291</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line291">line 291</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="getSiteConfiguration"><span class="type-signature"></span>getSiteConfiguration<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Retrieves a site configuration.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="getSiteConfiguration"><span class="type-signature"></span>getSiteConfiguration<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Retrieves a site configuration.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -2856,7 +2799,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2887,7 +2830,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2920,7 +2863,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -2954,21 +2897,16 @@
                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -2978,99 +2916,99 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-455">line 455</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line455">line 455</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listDNSSuffix"><span class="type-signature"></span>listDNSSuffix<span class="signature">(callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>lists the DNS suffix.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>lists the DNS suffix.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3096,21 +3034,16 @@
                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3120,99 +3053,99 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-165">line 165</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line165">line 165</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listGeoRegions"><span class="type-signature"></span>listGeoRegions<span class="signature">(callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Lists the available geographic regions that are available for hosting web sites.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Lists the available geographic regions that are available for hosting web sites.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3238,21 +3171,16 @@
                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3262,99 +3190,99 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-101">line 101</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line101">line 101</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listPublishingUsers"><span class="type-signature"></span>listPublishingUsers<span class="signature">(callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Lists the available publishing users.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Lists the available publishing users.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3380,21 +3308,16 @@
                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3404,101 +3327,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-133">line 133</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line133">line 133</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="listSites"><span class="type-signature"></span>listSites<span class="signature">(webspaceName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Retrieves the existing websites.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="listSites"><span class="type-signature"></span>listSites<span class="signature">(webspaceName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Retrieves the existing websites.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3529,7 +3452,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3563,27 +3486,27 @@
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3616,14 +3539,14 @@
             <td class="description last"><p>The properties to include.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3657,21 +3580,16 @@
                                                             <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3681,99 +3599,99 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-245">line 245</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line245">line 245</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="listWebspaces"><span class="type-signature"></span>listWebspaces<span class="signature">(callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Lists the available webspaces.</p>
-    </div>
-    
 
     
 
+
+
+<div class="description">
+    <p>Lists the available webspaces.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
 
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3799,21 +3717,16 @@
                                                       <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -3823,101 +3736,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-70">line 70</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line70">line 70</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="syncSiteRepository"><span class="type-signature"></span>syncSiteRepository<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Sync a website repository.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="syncSiteRepository"><span class="type-signature"></span>syncSiteRepository<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Sync a website repository.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -3948,7 +3861,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -3979,7 +3892,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4012,7 +3925,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4044,21 +3957,16 @@
                                                       if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4068,101 +3976,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-716">line 716</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line716">line 716</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="updateServerFarm"><span class="type-signature"></span>updateServerFarm<span class="signature">(webspaceName, serverFarmName, numberOfWorkers, workerSize, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates a server farm.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="updateServerFarm"><span class="type-signature"></span>updateServerFarm<span class="signature">(webspaceName, serverFarmName, numberOfWorkers, workerSize, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Updates a server farm.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4193,7 +4101,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4224,7 +4132,7 @@
             <td class="description last"><p>The server farm name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4255,7 +4163,7 @@
             <td class="description last"><p>The number of workers.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4286,7 +4194,7 @@
             <td class="description last"><p>The worker size.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4319,7 +4227,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4351,21 +4259,16 @@
                                                       if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4375,101 +4278,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-579">line 579</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line579">line 579</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="updateSite"><span class="type-signature"></span>updateSite<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates an existing web site.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="updateSite"><span class="type-signature"></span>updateSite<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Updates an existing web site.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4500,7 +4403,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4531,7 +4434,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4565,27 +4468,27 @@
                 <h6>Properties</h6>
                 
 
-<table class="params table table-striped">
+<table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+    <tr>
+        
+        <th>Name</th>
+        
 
-		<th>Type</th>
+        <th>Type</th>
 
-		
-		<th>Argument</th>
-		
+        
+        <th>Attributes</th>
+        
 
-		
+        
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4618,14 +4521,14 @@
             <td class="description last"><p>The properties to include.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
             </td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4659,21 +4562,16 @@
                                                             <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4683,101 +4581,101 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-409">line 409</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line409">line 409</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
         
             
-<dt>
-    <h4 class="name" id="updateSiteConfiguration"><span class="type-signature"></span>updateSiteConfiguration<span class="signature">(webspaceName, siteName, <span class="optional">options</span>, callback)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Updates a site configuration.</p>
-    </div>
-    
 
     
 
+    <h4 class="name" id="updateSiteConfiguration"><span class="type-signature"></span>updateSiteConfiguration<span class="signature">(webspaceName, siteName, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
     
+
+
+
+<div class="description">
+    <p>Updates a site configuration.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>This:</h5>
+    <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
+
+
+
+    <h5>Parameters:</h5>
     
-    
-        <h5>This:</h5>
-        <ul><li>{<a href="WebsiteManagementService.html">WebsiteManagementService</a>}</li></ul>
-    
-    
-        <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
         
 
-<table class="params table table-striped">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
+        <th>Type</th>
 
-		<th>Type</th>
+        
+        <th>Attributes</th>
+        
 
-		
-		<th>Argument</th>
-		
+        
 
-		
+        <th class="last">Description</th>
+    </tr>
+    </thead>
 
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-
-	<tbody>
-	
+    <tbody>
+    
 
         <tr>
             
@@ -4808,7 +4706,7 @@
             <td class="description last"><p>The webspace name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4839,7 +4737,7 @@
             <td class="description last"><p>The site name.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4872,7 +4770,7 @@
             <td class="description last"><p>The options.</p></td>
         </tr>
 
-	
+    
 
         <tr>
             
@@ -4904,21 +4802,16 @@
                                                       if an error occurs; otherwise <code>response</code> will contain information related to this operation.</p></td>
         </tr>
 
-	
-	</tbody>
+    
+    </tbody>
 </table>
 
-    
-    
-    
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -4928,54 +4821,52 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="websitemanagementservice.js.html">websitemanagementservice.js</a>,
-				 <a href="websitemanagementservice.js.html#sunlight-1-line-490">line 490</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="websitemanagementservice.js.html">websitemanagementservice.js</a>, <a href="websitemanagementservice.js.html#line490">line 490</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
 
-        </dl>
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
@@ -4988,102 +4879,15 @@
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Fri Jun 19th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:22 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>

@@ -1,66 +1,44 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Azure SDK for Node Class: JsonWebKey</title>
+    <meta charset="utf-8">
+    <title>JsonWebKey - Documentation</title>
 
-	<!--[if lt IE 9]>
-	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
-
-	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
-
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">Azure SDK for Node</a>
-	</div>
-	<div class="navbar-collapse">
-		<ul class="nav navbar-nav">
-			
-			<li class="dropdown">
-				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyVaultClient.html">KeyVaultClient</a></li><li><a href="KeyVaultCredentials.html">KeyVaultCredentials</a></li><li><a href="ObjectIdentifier.html">ObjectIdentifier</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li>
-				</ul>
-			</li>
-			
-			<li class="dropdown">
-				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
-				<ul class="dropdown-menu ">
-					<li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li>
-				</ul>
-			</li>
-			
-		</ul>
-	</div>
-</div>
-</div>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="JsonWebKey.html">JsonWebKey</a></li><li><a href="KeyAttributes.html">KeyAttributes</a></li><li><a href="KeyBundle.html">KeyBundle</a></li><li><a href="KeyVaultClient.html">KeyVaultClient</a><ul class='methods'><li data-type='method'><a href="KeyVaultClient.html#backupKey">backupKey</a></li><li data-type='method'><a href="KeyVaultClient.html#createKey">createKey</a></li><li data-type='method'><a href="KeyVaultClient.html#decrypt">decrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteKey">deleteKey</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteSecret">deleteSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#encrypt">encrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#getKey">getKey</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeys">getKeys</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeysNext">getKeysNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersions">getKeyVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersionsNext">getKeyVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecret">getSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecrets">getSecrets</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretsNext">getSecretsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersions">getSecretVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersionsNext">getSecretVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#importKey">importKey</a></li><li data-type='method'><a href="KeyVaultClient.html#restoreKey">restoreKey</a></li><li data-type='method'><a href="KeyVaultClient.html#setSecret">setSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#sign">sign</a></li><li data-type='method'><a href="KeyVaultClient.html#unwrapKey">unwrapKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateKey">updateKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateSecret">updateSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#verify">verify</a></li><li data-type='method'><a href="KeyVaultClient.html#withFilter">withFilter</a></li><li data-type='method'><a href="KeyVaultClient.html#wrapKey">wrapKey</a></li></ul></li><li><a href="KeyVaultCredentials.html">KeyVaultCredentials</a></li><li><a href="ObjectIdentifier.html">ObjectIdentifier</a></li><li><a href="SecretAttributes.html">SecretAttributes</a></li><li><a href="SecretBundle.html">SecretBundle</a></li></ul><h3>Namespaces</h3><ul><li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">JsonWebKey</h1>
+    
+
+    
 
 
-<div class="container">
-<div class="row">
 
-	
-	<div class="col-md-8">
-	
-		<div id="main">
-			
 
-	<h1 class="page-title">Class: JsonWebKey</h1>
 <section>
 
 <header>
@@ -72,36 +50,32 @@
     
 </header>
 
-
 <article>
     <div class="container-overview">
     
         
-<dt>
+
+    
+
     <h4 class="name" id="JsonWebKey"><span class="type-signature"></span>new JsonWebKey<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
 
     
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -111,52 +85,50 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-64">line 64</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
-    
-    
 
-    
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-</dd>
+
+
+
+
+
+
+
+
+
+
+
 
     
     </div>
@@ -167,48 +139,41 @@
 
     
 
-    
+     
 
     
 
     
         <h3 class="subsection-title">Members</h3>
 
-        <dl>
+        
             
-<dt class="name" id="d">
-    <h4><span class="type-signature"></span>d<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="d"><span class="type-signature"></span>d<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>An RSA private key component.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>An RSA private key component.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -218,76 +183,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-99">line 99</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line99">line 99</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="dp">
-    <h4><span class="type-signature"></span>dp<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="dp"><span class="type-signature"></span>dp<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>An RSA private key component.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>An RSA private key component.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -297,76 +255,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-114">line 114</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line114">line 114</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="dq">
-    <h4><span class="type-signature"></span>dq<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="dq"><span class="type-signature"></span>dq<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>An RSA private key component.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>An RSA private key component.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -376,76 +327,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-119">line 119</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line119">line 119</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="e">
-    <h4><span class="type-signature"></span>e<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="e"><span class="type-signature"></span>e<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The RSA public exponent.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>The RSA public exponent.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -455,76 +399,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-94">line 94</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line94">line 94</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="k">
-    <h4><span class="type-signature"></span>k<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="k"><span class="type-signature"></span>k<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Symmetric key material.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>Symmetric key material.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -534,76 +471,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-84">line 84</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line84">line 84</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="key_hsm">
-    <h4><span class="type-signature"></span>key_hsm<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="key_hsm"><span class="type-signature"></span>key_hsm<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>HSM Token, used with &quot;Bring Your Own Key&quot;.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>HSM Token, used with &quot;Bring Your Own Key&quot;.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -613,76 +543,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-129">line 129</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line129">line 129</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="key_ops">
-    <h4><span class="type-signature"></span>key_ops<span class="type-signature"> :Array.&lt;string></span></h4>
+<h4 class="name" id="key_ops"><span class="type-signature"></span>key_ops<span class="type-signature"> :Array.&lt;string></span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>An array describing the operations supported by this key.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>An array describing the operations supported by this key.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Array.&lt;string></span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -692,76 +615,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-79">line 79</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line79">line 79</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="kid">
-    <h4><span class="type-signature"></span>kid<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="kid"><span class="type-signature"></span>kid<span class="type-signature"> :string</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The key identifier.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>The key identifier.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">string</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -771,76 +687,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-69">line 69</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line69">line 69</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="kty">
-    <h4><span class="type-signature"></span>kty<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="kty"><span class="type-signature"></span>kty<span class="type-signature"> :string</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The key type. Typically is one of <a href="JsonWebKeyType.html"><code>JsonWebKeyType</code></a> constants.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>The key type. Typically is one of <a href="JsonWebKeyType.html"><code>JsonWebKeyType</code></a> constants.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">string</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -850,76 +759,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-74">line 74</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line74">line 74</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="n">
-    <h4><span class="type-signature"></span>n<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="n"><span class="type-signature"></span>n<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>The RSA public modulus.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>The RSA public modulus.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -929,76 +831,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-89">line 89</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line89">line 89</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="p">
-    <h4><span class="type-signature"></span>p<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="p"><span class="type-signature"></span>p<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>An RSA private key component.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>An RSA private key component.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1008,76 +903,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-104">line 104</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line104">line 104</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="q">
-    <h4><span class="type-signature"></span>q<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="q"><span class="type-signature"></span>q<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>An RSA private key component.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>An RSA private key component.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1087,76 +975,69 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-109">line 109</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line109">line 109</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
+
+
+
 
         
             
-<dt class="name" id="qi">
-    <h4><span class="type-signature"></span>qi<span class="type-signature"> :Buffer</span></h4>
+<h4 class="name" id="qi"><span class="type-signature"></span>qi<span class="type-signature"> :Buffer</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>An RSA private key component.</p>
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    <p>An RSA private key component.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Buffer</span>
 
 
-            </li>
-        </ul>
-    
+        </li>
+    </ul>
 
-    
+
+
+
+
 <dl class="details">
-	
-
-	
-
-	
-
-	
 
     
 
@@ -1166,42 +1047,42 @@
 
     
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
-	
+    
 
+    
 
+    
 
-	
-	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="jwk.js.html">jwk.js</a>,
-				 <a href="jwk.js.html#sunlight-1-line-124">line 124</a>
-			</li>
-		</ul>
-	</dd>
-	
+    
 
-	
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jwk.js.html">jwk.js</a>, <a href="jwk.js.html#line124">line 124</a>
+    </li></ul></dd>
+    
 
-	
+    
 
-	
+    
+
+    
 </dl>
 
 
-    
-</dd>
 
-        </dl>
+
+
+
+        
     
 
     
@@ -1216,102 +1097,15 @@
 
 
 
-		</div>
-	</div>
-
-	<div class="clearfix"></div>
-
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3"></div>
-		</div>
-	
-
-</div>
 </div>
 
+<br class="clear">
 
 <footer>
-
-
-	<span class="copyright">
-	Copyright (c) Microsoft and contributors.  All rights reserved.
-	</span>
-	<br />
-
-<span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a>
-	on Wed Jun 24th 2015 using the <a
-	href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
-</span>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 00:49:02 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
-<!--<script src="scripts/sunlight.js"></script>-->
-<script src="scripts/docstrap.lib.js"></script>
-<script src="scripts/bootstrap-dropdown.js"></script>
-<script src="scripts/toc.js"></script>
-
-<script>
-$( function () {
-	$( "[id*='$']" ).each( function () {
-		var $this = $( this );
-
-		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
-	} );
-
-	$( "#toc" ).toc( {
-		anchorName  : function ( i, heading, prefix ) {
-			return $( heading ).attr( "id" ) || ( prefix + i );
-		},
-		selectors   : "h1,h2,h3,h4",
-		showAndHide : false,
-		scrollTo    : "100px"
-	} );
-
-	$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
-	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
-	$( '.dropdown-toggle' ).dropdown();
-	//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
-
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
-		var $this = $( this );
-
-		var example = $this.find( "code" );
-		exampleText = example.html();
-		var lang = /{@lang (.*?)}/.exec( exampleText );
-		if ( lang && lang[1] ) {
-			exampleText = exampleText.replace( lang[0], "" );
-			example.html( exampleText );
-			lang = lang[1];
-		} else {
-			lang = "javascript";
-		}
-
-		if ( lang ) {
-
-			$this
-			.addClass( "sunlight-highlight-" + lang )
-			.addClass( "linenums" )
-			.html( example.html() );
-
-		}
-	} );
-
-	Sunlight.highlightAll( {
-		lineNumbers : true,
-		showMenu : true,
-		enableDoclinks : true
-	} );
-} );
-</script>
-
-
-
-<!--Navigation and Symbol Display-->
-
-
-<!--Google Analytics-->
-
-
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
 </body>
 </html>
