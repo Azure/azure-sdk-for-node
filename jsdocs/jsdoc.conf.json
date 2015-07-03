@@ -1,11 +1,13 @@
 {
   "tags": {
-    "allowUnknownTags": true
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
   },
   "plugins": ["plugins/markdown"],
   "templates": {
+    "logoFile": "",
     "cleverLinks": false,
-    "monospaceLinks": false,
+    "monospaceLinks": true,
     "dateFormat": "ddd MMM Do YYYY",
     "outputSourceFiles": true,
     "outputSourcePath": true,
@@ -13,15 +15,22 @@
     "footer": "",
     "copyright": "Copyright (c) Microsoft and contributors.  All rights reserved.",
     "navType": "vertical",
-    "theme": "cosmo",
+    "theme": "flatly",
     "linenums": true,
     "collapseSymbols": false,
     "inverseNav": true,
     "highlightTutorialCode": true,
-    "protocol": "http://"
+    "protocol": "html://",
+    "methodHeadingReturns": true,
+    "encoding": "utf8",
+    "private": true,
+    "recurse": true
   },
   "markdown": {
     "parser": "gfm",
     "hardwrap": true
+  },
+  "source": {
+    "excludePattern": "(node_modules/|docs)"
   }
 }
