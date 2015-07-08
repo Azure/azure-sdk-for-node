@@ -1,4 +1,4 @@
-# Microsoft Azure SDK for Node.js - Gallery
+# Microsoft Azure SDK for Node.js - Redis
 
 This project provides a Node.js package for accessing the Azure Redis Cache Client. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
@@ -15,9 +15,9 @@ npm install azure-arm-rediscache
 
 ## How to Use
 
-### Authentication
+###<to be added>
 
-### Create the gallery client
+### Create the redis client
 
 ## Related projects
 
