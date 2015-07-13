@@ -4,7 +4,7 @@
   "contributors": [
     "Thaniyulla Parambath, Alfan <alfantp@microsoft.com>",
     "Dacosta, Carlyle <cadaco@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>"
   ],
   "version": "0.0.1",
   "description": "Microsoft Azure Redis Cache Client Library for node",
