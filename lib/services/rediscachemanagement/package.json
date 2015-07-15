@@ -1,12 +1,13 @@
 {
-  "name": "azure-arm-network",
+  "name": "azure-arm-rediscache",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Siegemund, Frank <franksie@microsoft.com>",
-    "Rajendran, Deepak <derajen@microsoft.com>"
+    "Thaniyulla Parambath, Alfan <alfantp@microsoft.com>",
+    "Dacosta, Carlyle <cadaco@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.10.4",
-  "description": "Microsoft Azure Network Resource Provider Management Client Library for node",
+  "version": "0.0.1",
+  "description": "Microsoft Azure Redis Cache Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -15,7 +16,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/network.js",
+  "main": "./lib/rediscache.js",
   "engines": {
     "node": ">= 0.6.15"
   },
