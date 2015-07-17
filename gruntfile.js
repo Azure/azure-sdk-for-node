@@ -19,44 +19,85 @@ module.exports = function(grunt) {
   var _ = require('underscore');
   var path = require('path');
   var fs = require('fs');
-
   var jsdocOptions = {
     destination: 'docs',
-    template: "jsdocs/template",
-    configure: "jsdocs/template/jsdoc.conf.json",
-    tutorials: "examples"
+    template: 'node_modules/minami',
+    configure: 'jsdocs/jsdoc.conf.json',
   };
 
 
-  var sources = _.map(glob.sync("lib/**/package.json", {}), function(pack) {
-    return _.map(["/**/*.js", '/package.json', "/README.md"], function(i) {
+  var sources = _.map(glob.sync('lib/**/package.json', {}), function(pack) {
+    return _.map(['/**/*.js', '/package.json', '/README.md'], function(i) {
       return path.dirname(pack) + i;
     });
   });
 
+  var modifyDefaultConfig = function(confName, jsdocOptions, mutatorFn){
+    var confPath = path.join("jsdocs", confName);
+    if(fs.existsSync(confPath)){
+      fs.unlinkSync(confPath);
+    }
+    var defaultConf = JSON.parse(fs.readFileSync(jsdocOptions.configure));
+    fs.writeFileSync(confPath, JSON.stringify(mutatorFn(defaultConf)));
+    return confPath;
+  }
+
   var jsdocConfig = {};
   _.each(sources, function(source) {
+    var examplesPath = path.join(path.dirname(source[1]), 'examples');
+    var docOptions = _.clone(jsdocOptions);
+
+    if(fs.existsSync(examplesPath)) {
+      docOptions.tutorials = examplesPath;
+    }
+
+    docOptions.configure = modifyDefaultConfig('child.conf.json', docOptions, function(config){
+      config.templates.repoUrl = JSON.parse(fs.readFileSync('package.json')).repository.url;
+      config.templates.childPackage = true;
+      return config;
+    });
+
     jsdocConfig[JSON.parse(fs.readFileSync(source[1])).name] = {
       src: source,
-      options: jsdocOptions
+      options: docOptions
     };
   });
-
-  jsdocConfig['Azure'] = {
-    src: ["lib/**/*.js", "README.md"],
-    options: jsdocOptions
-  };
 
   var packageVersions = {};
   _.each(sources, function(source) {
     var pack = JSON.parse(fs.readFileSync(source[1]));
-    packageVersions[pack.name] = pack.version;
+    packageVersions[pack.name] = pack;
+
   });
+
+  var docOptions = _.clone(jsdocOptions);
+  docOptions.tutorials = 'examples';
+
+  docOptions.configure = modifyDefaultConfig('main.conf.json', docOptions, function(config){
+    config.templates.repoUrl = JSON.parse(fs.readFileSync('package.json')).repository.url;
+    config.templates.packages = packageVersions;
+    return config;
+  });
+
+  jsdocConfig['azure'] = {
+    src: ['lib/azure.js', 'README.md'],
+    options: docOptions
+  };
+
+  var packagesLatestSymlinkMapping = Object.keys(packageVersions).map(function(name){
+    return {src: path.join('docs', name, packageVersions[name].version), dest: path.join('docs', name, 'latest')};
+  });
+
+  symlinkConfig = {
+    options: { overwrite: true },
+    expanded: {files: packagesLatestSymlinkMapping}
+  }
 
   //init stuff
   grunt.initConfig({
     packageVersions: packageVersions,
     jsdoc: jsdocConfig,
+    symlink: symlinkConfig,
     connect: {
       options: {
         port: 9000,
@@ -74,6 +115,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-symlink');
   grunt.loadTasks('tasks');
   grunt.registerTask('publishdocs', ['githubPages:target']);
+  grunt.registerTask('genDocs', ['jsdoc', 'symlink']);
 };
