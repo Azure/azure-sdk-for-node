@@ -1,16 +1,16 @@
-# Microsoft Azure SDK for Node.js - Gallery
+## Getting Started with Azure Service Bus
 
-This project provides a Node.js package for accessing the Azure ServiceBus service. Right now it supports:
-- **Node.js version: 0.6.15 or higher**
+Whether an application or service runs in the cloud or on premises, it often needs to interact with other applications or services. To provide a broadly useful way to do this, Azure offers Service Bus. This article takes a look at this technology, describing what it is and why you might want to use it.
 
+Let's get started using Azure Service Bus.
 
-## How to Install
+### How to Install
 
 ```bash
 npm install azure-sb
 ```
 
-## How to Use
+### The basics of producers and consumers
 
 ```node
 var azure = require('azure');
@@ -18,7 +18,7 @@ var azure = require('azure');
 function checkForMessages(sbService, queueName, callback) {
   sbService.receiveQueueMessage(queueName, { isPeekLock: true }, function (err, lockedMessage) {
     if (err) {
-      if (err == 'No messages to receive') {
+      if (err === 'No messages to receive') {
         console.log('No messages');
       } else {
         callback(err);
@@ -71,8 +71,3 @@ sbService.createQueueIfNotExists(queueName, function (err) {
   }
 });
 ```
-Thanks to [@noodlefrenzy](https://github.com/noodlefrenzy) for the great example. The original is [here](https://github.com/noodlefrenzy/node-cerulean/blob/master/lib/index.js).
-
-## Related projects
-
-- [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
