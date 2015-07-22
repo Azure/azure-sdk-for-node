@@ -8,9 +8,12 @@
     "Georgiev, Yavor <yavorg@microsoft.com>",
     "Janczuk, Tomasz <tjanczuk@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Tavares, Chris <ctavares@microsoft.com>",
+    "Huang, Pengfei <phuang@microsoft.com>",
+    "Onalan, Alp <alpon@microsoft.com>",
+    "Lee, Hyonho <Hyonho.Lee@microsoft.com>"
   ],
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Microsoft Azure Compute Management Client Library for node",
   "tags": [
     "azure",
@@ -31,7 +34,8 @@
     }
   ],
   "dependencies": {
-    "azure-common": "0.9.12"
+    "azure-common": "^0.9.13",
+    "underscore": "1.4.x"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
