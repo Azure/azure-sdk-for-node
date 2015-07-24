@@ -1,18 +1,13 @@
 {
-  "name": "azure-arm-storage",
+  "name": "azure-arm-rediscache",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Gerner, Emily <emgerner@microsoft.com>",
-    "Wang, Jun <jwa@microsoft.com>",
-    "Huang, Pengfei <phuang@microsoft.com>",
-    "Shintre, Amol <Amol.Shintre@microsoft.com>",
-    "Onalan, Alp <alpon@microsoft.com>",
-    "Lee, Hyonho <Hyonho.Lee@microsoft.com>",
-    "Wang, Yugang <yugangw@microsoft.com>",
+    "Thaniyulla Parambath, Alfan <alfantp@microsoft.com>",
+    "Dacosta, Carlyle <cadaco@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.10.1",
-  "description": "Microsoft Azure Storage Resource Provider Management Client Library for Node",
+  "version": "0.0.1",
+  "description": "Microsoft Azure Redis Cache Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -21,7 +16,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/storage.js",
+  "main": "./lib/rediscache.js",
   "engines": {
     "node": ">= 0.6.15"
   },

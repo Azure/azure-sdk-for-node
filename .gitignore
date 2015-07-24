@@ -32,6 +32,8 @@ Thumbs.db
 
 # docs #
 docs/
+main.conf.json
+child.conf.json
 
 # temporary test artifacts
 test/tmp/*

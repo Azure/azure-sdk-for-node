@@ -15,93 +15,108 @@
 //
 
 module.exports = function(grunt) {
+  var glob = require('glob');
+  var _ = require('underscore');
+  var path = require('path');
+  var fs = require('fs');
+  var jsdocOptions = {
+    destination: 'docs',
+    template: 'node_modules/minami',
+    configure: 'jsdocs/jsdoc.conf.json',
+  };
+
+
+  var sources = _.map(glob.sync('lib/**/package.json', {}), function(pack) {
+    return _.map(['/**/*.js', '/package.json', '/README.md'], function(i) {
+      return path.dirname(pack) + i;
+    });
+  });
+
+  var modifyDefaultConfig = function(confName, jsdocOptions, mutatorFn){
+    var confPath = path.join("jsdocs", confName);
+    if(fs.existsSync(confPath)){
+      fs.unlinkSync(confPath);
+    }
+    var defaultConf = JSON.parse(fs.readFileSync(jsdocOptions.configure));
+    fs.writeFileSync(confPath, JSON.stringify(mutatorFn(defaultConf)));
+    return confPath;
+  }
+
+  var jsdocConfig = {};
+  _.each(sources, function(source) {
+    var examplesPath = path.join(path.dirname(source[1]), 'examples');
+    var docOptions = _.clone(jsdocOptions);
+
+    if(fs.existsSync(examplesPath)) {
+      docOptions.tutorials = examplesPath;
+    }
+
+    docOptions.configure = modifyDefaultConfig('child.conf.json', docOptions, function(config){
+      config.templates.repoUrl = JSON.parse(fs.readFileSync('package.json')).repository.url;
+      config.templates.childPackage = true;
+      return config;
+    });
+
+    jsdocConfig[JSON.parse(fs.readFileSync(source[1])).name] = {
+      src: source,
+      options: docOptions
+    };
+  });
+
+  var packageVersions = {};
+  _.each(sources, function(source) {
+    var pack = JSON.parse(fs.readFileSync(source[1]));
+    packageVersions[pack.name] = pack;
+
+  });
+
+  var docOptions = _.clone(jsdocOptions);
+  docOptions.tutorials = 'examples';
+
+  docOptions.configure = modifyDefaultConfig('main.conf.json', docOptions, function(config){
+    config.templates.repoUrl = JSON.parse(fs.readFileSync('package.json')).repository.url;
+    config.templates.packages = packageVersions;
+    return config;
+  });
+
+  jsdocConfig['azure'] = {
+    src: ['lib/azure.js', 'README.md'],
+    options: docOptions
+  };
+
+  var packagesLatestSymlinkMapping = Object.keys(packageVersions).map(function(name){
+    return {src: path.join('docs', name, packageVersions[name].version), dest: path.join('docs', name, 'latest')};
+  });
+
+  symlinkConfig = {
+    options: { overwrite: true },
+    expanded: {files: packagesLatestSymlinkMapping}
+  }
+
   //init stuff
   grunt.initConfig({
-    packageVersions: {
-      'azure': '0.10.6',
-      'azure-common': '0.9.12', 
-      'azure-asm-compute': '0.10.0', 
-      'azure-asm-hdinsight': '0.10.0',
-      'azure-asm-mgmt': '0.10.0',
-      'azure-monitoring': '0.9.1-pre.16',
-      'azure-asm-network': '0.10.0'
-      'azure-scheduler': '0.9.1-pre.16',
-      'azure-asm-scheduler': '0.10.0',
-      'azure-sb': '0.9.16',
-      'azure-asm-sb': '0.10.0',
-      'azure-asm-sql': '0.10.0',
-      'azure-asm-store': '0.10.0',
-      'azure-asm-storage': '0.10.0',
-      'azure-asm-subscription': '0.10.0',
-      'azure-asm-trafficmanager': '0.10.0',
-      'azure-asm-website': '0.10.0',
-      'azure-arm-authorization': '0.10.0',
-      'azure-arm-compute': '0.10.0',
-      'azure-arm-dns': '0.10.0',
-      'azure-arm-insights': '0.10.0',
-      'azure-arm-keyvault': '0.10.0'
-      'azure-arm-network': '0.10.0',
-      'azure-arm-resource': '0.10.0',
-      'azure-arm-storage': '0.10.0',
-      'azure-arm-website': '0.10.0'
-      'azure-keyvault': '0.9.2',
-      'azure-gallery': '2.0.0-pre.15',
-    },
-    //jsdoc config
-    jsdoc : {
-        dist : {
-            src: [
-                  "README.md",
-                  "lib/azure.js",
-                  "lib/serviceruntime/roleenvironment.js",
-                  "lib/services/blob/blobservice.js",
-                  "lib/services/computeManagement/lib/computeManagementClient.js",
-                  "lib/services/dnsManagement/lib/dnsManagementClient.js",
-                  "lib/services/hdinsight/hdinsightservice.js",
-                  "lib/services/management/lib/managementClient.js",
-                  "lib/services/monitoring/lib/autoscaleClient.js",
-                  "lib/services/monitoring/lib/alertsClient.js",
-                  "lib/services/monitoring/lib/metricsClient.js",
-                  "lib/services/monitoring/lib/eventsClient.js",
-                  "lib/services/networkManagement/lib/virtualNetworkManagementClient.js",
-                  "lib/services/queue/queueservice.js",
-                  "lib/services/scm/scmservice.js",
-                  "lib/services/serviceBus/notificationhubservice.js",
-                  "lib/services/serviceBus/apnsservice.js",
-                  "lib/services/serviceBus/gcmservice.js",
-                  "lib/services/serviceBus/mpnsservice.js",
-                  "lib/services/serviceBus/wnsservice.js",
-                  "lib/services/serviceBus/servicebusservice.js",
-                  "lib/services/serviceBusManagement/lib/serviceBusManagementClient.js",
-                  "lib/services/sql/sqlService.js",
-                  "lib/services/sqlManagement/lib/sqlManagementClient.js",
-                  "lib/services/storageManagement/lib/storageManagementClient.js",
-                  "lib/services/storeManagement/lib/storeManagementClient.js",
-                  "lib/services/subscriptionManagement/lib/subscriptionClient.js",
-                  "lib/services/table/tableservice.js",
-                  "lib/services/webSiteManagement/lib/webSiteManagementClient.js",
-                  "lib/services/webSiteManagement/lib/webSiteExtensionsClient.js",
-                  "lib/services/authorizationManagement/lib/authorizationManagementClient.js",
-                  "lib/services/graph.rbac/lib/graphRbacManagementClient.js",
-                  "lib/services/webSiteManagement2/lib/webSiteManagementClient.js"
-            ],
-            options: {
-                destination: 'docs',
-                configure: 'jsdoc/jsdoc.json'
-            }
+    packageVersions: packageVersions,
+    jsdoc: jsdocConfig,
+    symlink: symlinkConfig,
+    connect: {
+      options: {
+        port: 9000,
+        // Change this to '0.0.0.0' to access the server from outside.
+        hostname: '0.0.0.0',
+        keepalive: true
+      },
+      server: {
+        options: {
+          base: './docs',
         }
-    },
-    devserver: { options:
-      { 'type' : 'http',
-        'port' : 8888,
-        'base' : 'docs'
       }
     }
   });
+
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.loadNpmTasks('grunt-devserver');
-
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-symlink');
   grunt.loadTasks('tasks');
-
   grunt.registerTask('publishdocs', ['githubPages:target']);
+  grunt.registerTask('genDocs', ['jsdoc', 'symlink']);
 };
