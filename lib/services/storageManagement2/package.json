@@ -21,7 +21,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/storage.js",
+  "main": "./lib/storageManagementClient.js",
   "engines": {
     "node": ">= 0.6.15"
   },

@@ -1,2 +1,4 @@
-
+services/resourceManagement/subscriptionClient-tests.js
+services/resourceManagement/featureClient-tests.js
+services/resourceManagement/resourceManagementClient-tests.js
 services/storageManagement/storageManagementClient-tests.js

@@ -111,9 +111,12 @@ MockedTestUtils.prototype.baseTeardownTest = function (callback) {
         line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
               '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
         
-        scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
-          'var result = ' + line + ' return result; }';
-        lineWritten = true;
+        if (line.match(/\/oauth2\/token\//ig) === null && 
+              line.match(/login\.windows\.net/ig) === null && line.match(/login\.windows-ppe\.net/ig) === null) {
+          scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
+                'var result = ' + line + ' return result; }';
+          lineWritten = true;
+        }
       }
     });
     scope += ']';

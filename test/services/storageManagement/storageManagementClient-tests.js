@@ -21,21 +21,21 @@ var msRestAzure = require('ms-rest-azure');
 
 var testutil = require('../../util/util');
 var MockedTestUtils = require('../../framework/mocked-test-utils');
-
-
-var dump = util.inspect;
+var FileTokenCache = require('../../../lib/util/fileTokenCache');
 var StorageManagementClient = require('../../../lib/services/storageManagement2/lib/storageManagementClient');
 var testPrefix = 'storagemanagementservice-tests';
 
 var service;
 var suiteUtil;
-var subscriptionId = process.env['SUBSCRIPTION_ID'];
-var clientId = process.env['CLIENT_ID'];
-var domain = process.env['DOMAIN'];
-var username = process.env['USERNAME'];
-var password = process.env['PASSWORD'];
+var subscriptionId = process.env['SUBSCRIPTION_ID'] || 'subscription-id';
+var clientId = process.env['CLIENT_ID'] || 'client-id';
+var domain = process.env['DOMAIN'] || 'domain';
+var username = process.env['USERNAME'] || 'username@example.com';
+var password = process.env['PASSWORD'] || 'dummypassword';
 var clientRedirectUri = 'clientRedirectUri';
-var credentials = new msRestAzure.UserTokenCredentials(clientId, domain, username, password, clientRedirectUri);
+var tokenCache = new FileTokenCache('../tmp/tokenstore.json');
+var options = { 'tokenCache': tokenCache };
+var credentials = new msRestAzure.UserTokenCredentials(clientId, domain, username, password, clientRedirectUri, options);
 var client = new StorageManagementClient(credentials, subscriptionId);
 var accountName = 'testac113';
 var groupName = 'csmrg7947';
@@ -56,7 +56,12 @@ describe('Storage Management', function () {
   
   before(function (done) {
     suiteUtil = new MockedTestUtils(client, testPrefix);
-    suiteUtil.setupSuite(done);
+    suiteUtil.setupSuite(function () {
+      if (suiteUtil.isPlayback) {
+        client.longRunningOperationRetryTimeoutInSeconds = 0;
+      }
+      done();
+    });
   });
   
   after(function (done) {

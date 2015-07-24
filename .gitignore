@@ -4,6 +4,8 @@ targets/*
 # Visual Studio #
 *.suo
 *.user
+.ntvs_analysis.dat
+obj/*
 
 # Node #
 test/recordings/
@@ -31,6 +33,5 @@ Thumbs.db
 # docs #
 docs/
 
-# Nuget packages and corresponding codegen sources
-.nuget
-packages
+# temporary test artifacts
+test/tmp/*
