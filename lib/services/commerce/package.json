@@ -4,7 +4,7 @@
   "contributors": [
     "Commerce Platform Usage Team <cpusage@microsoft.com>"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Microsoft Azure Commerce Usage Aggregates Management Client Library for Node",
   "tags": [
     "azure",
