@@ -39,7 +39,7 @@
     "azure-asm-compute": "0.10.0",
     "azure-asm-hdinsight": "0.10.0",
     "azure-asm-mgmt": "0.10.0",
-    "azure-monitoring": "0.10.0",
+    "azure-monitoring": "0.10.1",
     "azure-asm-network": "0.10.0",
     "azure-scheduler": "0.10.0",
     "azure-asm-scheduler": "0.10.0",
