@@ -78,7 +78,7 @@ describe('Resource Management Client', function () {
       client.resourceGroups.createOrUpdate(groupName, groupParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result.body);
-        result.response.statusCode.should.equal(201);
+        result.response.statusCode.should.equal(200);
         //get a specific resource group
         client.resourceGroups.get(groupName, function (err, result) {
           should.not.exist(err);
@@ -121,7 +121,7 @@ describe('Resource Management Client', function () {
       client.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result.body);
-        result.response.statusCode.should.equal(201);
+        result.response.statusCode.should.equal(200);
         //create a resource in the resource group
         client.resources.createOrUpdate(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName , apiVersion, params, function (err, result) {
           should.not.exist(err);
@@ -201,7 +201,7 @@ describe('Resource Management Client', function () {
       client.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result.body);
-        //result.response.statusCode.should.equal(201);
+        result.response.statusCode.should.equal(200);
         //validate a deployment
         client.deployments.validate(resourceGroupName, deploymentName, deploymentParameters, function (err, result) {
           should.not.exist(err);

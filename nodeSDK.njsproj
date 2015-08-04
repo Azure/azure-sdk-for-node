@@ -20,19 +20,27 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include=".jshintignore" />
     <Content Include=".jshintrc" />
     <Content Include=".npmignore" />
     <Content Include=".travis.yml" />
     <Content Include="ChangeLog.txt" />
     <Content Include="CONTRIBUTORS.txt" />
+    <Content Include="lib\services\commerce\LICENSE.txt" />
+    <Content Include="lib\services\commerce\package.json" />
+    <Content Include="lib\services\commerce\README.md" />
+    <Content Include="lib\services\rediscachemanagement\LICENSE.txt" />
+    <Content Include="lib\services\rediscachemanagement\package.json" />
+    <Content Include="lib\services\rediscachemanagement\README.md" />
+    <Content Include="lib\services\resourceManagement\AuthorizationClient.json" />
     <Content Include="lib\services\resourceManagement\FeatureClient.json" />
     <Content Include="lib\services\resourceManagement\ResourceManagementClient.json" />
     <Content Include="lib\services\resourceManagement\SubscriptionClient.json" />
+    <Content Include="lib\services\storageManagement2\generate.cmd" />
     <Content Include="lib\services\storageManagement2\LICENSE.txt" />
     <Content Include="lib\services\storageManagement2\package.json" />
     <Content Include="lib\services\storageManagement2\README.md" />
-    <Content Include="lib\services\storageManagement2\StorageManagementClient.json" />
     <Content Include="LICENSE.txt" />
     <Content Include="package.json" />
     <Content Include="CONTRIBUTING.md" />
@@ -46,6 +54,22 @@
     <Content Include="Documentation\SetupRepo.md" />
     <Content Include="Documentation\TestModes.md" />
     <Compile Include="lib\azure.js" />
+    <Compile Include="lib\services\authorizationManagement\lib\authorization.js" />
+    <Compile Include="lib\services\authorizationManagement\lib\authorizationManagementClient.js" />
+    <Compile Include="lib\services\commerce\lib\commerce.js" />
+    <Compile Include="lib\services\commerce\lib\usageAggregationManagementClient.js" />
+    <Compile Include="lib\services\rediscachemanagement\lib\rediscache.js" />
+    <Compile Include="lib\services\rediscachemanagement\lib\redisManagementClient.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\authorizationClient.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\models\deploymentExtendedFilter.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\models\genericResourceFilter.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\models\index.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\models\managementLock.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\models\managementLockListResult.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\models\managementLockProperties.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\models\resourceGroupFilter.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\operations\index.js" />
+    <Compile Include="lib\services\resourceManagement\lib\authorization\operations\managementLocks.js" />
     <Compile Include="lib\services\resourceManagement\lib\feature\featureClient.js" />
     <Compile Include="lib\services\resourceManagement\lib\feature\models\deploymentExtendedFilter.js" />
     <Compile Include="lib\services\resourceManagement\lib\feature\models\featureOperationsListResult.js" />
@@ -53,7 +77,7 @@
     <Compile Include="lib\services\resourceManagement\lib\feature\models\featureResult.js" />
     <Compile Include="lib\services\resourceManagement\lib\feature\models\genericResourceFilter.js" />
     <Compile Include="lib\services\resourceManagement\lib\feature\models\index.js" />
-    <Compile Include="lib\services\resourceManagement\lib\feature\models\resourceGroupExtendedFilter.js" />
+    <Compile Include="lib\services\resourceManagement\lib\feature\models\resourceGroupFilter.js" />
     <Compile Include="lib\services\resourceManagement\lib\feature\operations\features.js" />
     <Compile Include="lib\services\resourceManagement\lib\feature\operations\index.js" />
     <Compile Include="lib\services\resourceManagement\lib\resource\models\basicDependency.js" />
@@ -77,10 +101,9 @@
     <Compile Include="lib\services\resourceManagement\lib\resource\models\providerListResult.js" />
     <Compile Include="lib\services\resourceManagement\lib\resource\models\providerResourceType.js" />
     <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceGroup.js" />
-    <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceGroupExtended.js" />
-    <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceGroupExtendedFilter.js" />
-    <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceGroupFormatResourceProperties.js" />
+    <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceGroupFilter.js" />
     <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceGroupListResult.js" />
+    <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceGroupProperties.js" />
     <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceListResult.js" />
     <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceManagementError.js" />
     <Compile Include="lib\services\resourceManagement\lib\resource\models\resourceManagementErrorWithDetails.js" />
@@ -106,7 +129,7 @@
     <Compile Include="lib\services\resourceManagement\lib\subscription\models\deploymentExtendedFilter.js" />
     <Compile Include="lib\services\resourceManagement\lib\subscription\models\genericResourceFilter.js" />
     <Compile Include="lib\services\resourceManagement\lib\subscription\models\index.js" />
-    <Compile Include="lib\services\resourceManagement\lib\subscription\models\resourceGroupExtendedFilter.js" />
+    <Compile Include="lib\services\resourceManagement\lib\subscription\models\resourceGroupFilter.js" />
     <Compile Include="lib\services\resourceManagement\lib\subscription\models\subscription.js" />
     <Compile Include="lib\services\resourceManagement\lib\subscription\models\subscriptionListResult.js" />
     <Compile Include="lib\services\resourceManagement\lib\subscription\models\tenantIdDescription.js" />
@@ -151,6 +174,8 @@
       <TestFramework>
       </TestFramework>
     </Compile>
+    <Compile Include="lib\util\fileTokenCache.js" />
+    <Compile Include="lib\util\fileTokenStorage.js" />
     <Compile Include="runtime\ms-rest-azure\lib\azureEnvironment.js" />
     <Compile Include="runtime\ms-rest-azure\lib\azureServiceClient.js" />
     <Compile Include="runtime\ms-rest-azure\lib\cloudError.js" />
@@ -474,8 +499,6 @@
     <Compile Include="lib\services\apiAppManagement\lib\apiApp.js" />
     <Compile Include="lib\services\apiAppManagement\lib\apiAppManagementClient.js" />
     <Compile Include="lib\services\apiAppManagement\lib\getDeploymentTemplate.js" />
-    <Compile Include="lib\services\authorizationManagement\lib\authorization.js" />
-    <Compile Include="lib\services\authorizationManagement\lib\authorizationManagementClient.js" />
     <Compile Include="lib\services\computeManagement\lib\compute.js" />
     <Compile Include="lib\services\computeManagement\lib\computeManagementClient.js" />
     <Compile Include="lib\services\computeManagement2\lib\compute.js" />
@@ -549,10 +572,7 @@
     <Compile Include="lib\services\networkManagement\lib\networkManagementClient.js" />
     <Compile Include="lib\services\networkManagement2\lib\network.js" />
     <Compile Include="lib\services\networkManagement2\lib\networkResourceProviderClient.js" />
-    <Compile Include="lib\services\resourceManagement\lib\featureClient.js" />
     <Compile Include="lib\services\resourceManagement\lib\resource.js" />
-    <Compile Include="lib\services\resourceManagement\lib\resourceManagementClient.js" />
-    <Compile Include="lib\services\resourceManagement\lib\subscriptionClient.js" />
     <Compile Include="lib\services\scheduler\lib\scheduler.js" />
     <Compile Include="lib\services\scheduler\lib\schedulerClient.js" />
     <Compile Include="lib\services\schedulerManagement\lib\cloudServiceManagementClient.js" />
@@ -672,6 +692,10 @@
     <Compile Include="test\serviceruntime\roleenvironment-tests.js" />
     <Compile Include="test\serviceruntime\runtimeversionmanager-tests.js" />
     <Compile Include="test\serviceruntime\runtimeversionprotocolclient-tests.js" />
+    <Compile Include="test\services\resourceManagement\authorizationClient-tests.js">
+      <SubType>Code</SubType>
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\services\resourceManagement\featureClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
@@ -731,7 +755,7 @@
     <Compile Include="test\services\sql\sqlmanagementservice-tests.js" />
     <Compile Include="test\services\sql\sqlservice-tests.js" />
     <Compile Include="test\services\storageManagement\storageManagementClient-tests.js">
-      <TestFramework>ExportRunner</TestFramework>
+      <TestFramework>Mocha</TestFramework>
     </Compile>
     <Compile Include="test\services\table\batchserviceclient-tests.js" />
     <Compile Include="test\services\table\queryentitiesresultcontinuation-tests.js" />
@@ -750,6 +774,8 @@
     <Compile Include="test\services\serviceBus\internal\wraptokenmanager-tests.js" />
     <Compile Include="test\services\table\internal\sharedkeylitetable-tests.js" />
     <Compile Include="test\services\table\internal\sharedkeytable-tests.js" />
+    <Content Include="tools\autorest.gen.cmd" />
+    <Content Include="tools\NuGet.exe" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Documentation" />
@@ -812,6 +838,8 @@
     <Folder Include="lib\services\apiAppManagement\lib" />
     <Folder Include="lib\services\authorizationManagement" />
     <Folder Include="lib\services\authorizationManagement\lib" />
+    <Folder Include="lib\services\commerce\" />
+    <Folder Include="lib\services\commerce\lib\" />
     <Folder Include="lib\services\computeManagement" />
     <Folder Include="lib\services\computeManagement\lib" />
     <Folder Include="lib\services\computeManagement2" />
@@ -848,8 +876,13 @@
     <Folder Include="lib\services\networkManagement\lib" />
     <Folder Include="lib\services\networkManagement2" />
     <Folder Include="lib\services\networkManagement2\lib" />
+    <Folder Include="lib\services\rediscachemanagement\" />
+    <Folder Include="lib\services\rediscachemanagement\lib\" />
     <Folder Include="lib\services\resourceManagement" />
     <Folder Include="lib\services\resourceManagement\lib" />
+    <Folder Include="lib\services\resourceManagement\lib\authorization\" />
+    <Folder Include="lib\services\resourceManagement\lib\authorization\models\" />
+    <Folder Include="lib\services\resourceManagement\lib\authorization\operations\" />
     <Folder Include="lib\services\resourceManagement\lib\feature\" />
     <Folder Include="lib\services\resourceManagement\lib\feature\models\" />
     <Folder Include="lib\services\resourceManagement\lib\feature\operations\" />
@@ -891,6 +924,7 @@
     <Folder Include="lib\services\webSiteManagement\lib\credentials" />
     <Folder Include="lib\services\webSiteManagement2" />
     <Folder Include="lib\services\webSiteManagement2\lib" />
+    <Folder Include="lib\util\" />
     <Folder Include="runtime" />
     <Folder Include="runtime\ms-rest-azure\" />
     <Folder Include="runtime\ms-rest-azure\lib\" />
@@ -929,6 +963,7 @@
     <Folder Include="test\services\table\internal" />
     <Folder Include="test\services\webSiteManagement" />
     <Folder Include="test\util" />
+    <Folder Include="tools\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
