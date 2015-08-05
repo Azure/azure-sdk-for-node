@@ -39,7 +39,11 @@ services/serviceBus/notificationhubs-tests.js
 services/serviceBus/wnsservice-tests.js
 services/serviceBus/wnsservice-registrations-tests.js
 services/serviceBus/wrapservice-tests.js
-services/resourceManagement/resourceManagement-tests.js
+services/resourceManagement/resourceManagementClient-tests.js
+services/resourceManagement/authorizationClient-tests.js
+services/resourceManagement/featureClient-tests.js
+services/resourceManagement/subscriptionClient-tests.js
+services/storageManagement/storageManagementClient-tests.js
 services/sql/sqlmanagementservice-tests.js
 services/sql/sqlservice-tests.js
 services/table/internal/sharedkeytable-tests.js
@@ -52,7 +56,6 @@ services/table/tableservice-tablequery-tests.js
 services/table/tableservice-tests.js
 # TODO: find out why it's broken
 # services/table/tableservice-gb-tests.js
-services/storageManagement/storageManagementClient-tests.js
 services/webSiteManagement/websitemanagementservice-tests.js
 util/date-tests.js
 util/edmtype-tests.js
