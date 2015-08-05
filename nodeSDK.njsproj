@@ -33,10 +33,11 @@
     <Content Include="lib\services\rediscachemanagement\LICENSE.txt" />
     <Content Include="lib\services\rediscachemanagement\package.json" />
     <Content Include="lib\services\rediscachemanagement\README.md" />
-    <Content Include="lib\services\resourceManagement\AuthorizationClient.json" />
-    <Content Include="lib\services\resourceManagement\FeatureClient.json" />
-    <Content Include="lib\services\resourceManagement\ResourceManagementClient.json" />
-    <Content Include="lib\services\resourceManagement\SubscriptionClient.json" />
+    <Content Include="lib\services\resourceManagement\generate.cmd" />
+    <Content Include="lib\services\resourceManagement\generateAuthorization.cmd" />
+    <Content Include="lib\services\resourceManagement\generateFeature.cmd" />
+    <Content Include="lib\services\resourceManagement\generateResource.cmd" />
+    <Content Include="lib\services\resourceManagement\generateSubscription.cmd" />
     <Content Include="lib\services\storageManagement2\generate.cmd" />
     <Content Include="lib\services\storageManagement2\LICENSE.txt" />
     <Content Include="lib\services\storageManagement2\package.json" />
@@ -650,6 +651,7 @@
     <Compile Include="test\recordings\affinityGroup-tests.nock.js" />
     <Compile Include="test\recordings\apnsservice-registrations-tests.nock.js" />
     <Compile Include="test\recordings\apnsservice-tests.nock.js" />
+    <Compile Include="test\recordings\authorizationClient-tests.nock.js" />
     <Compile Include="test\recordings\batchserviceclient-tests.nock.js" />
     <Compile Include="test\recordings\blobservice-gb-tests.nock.js" />
     <Compile Include="test\recordings\blobservice-stream-tests.nock.js" />
