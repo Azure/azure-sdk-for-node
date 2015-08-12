@@ -15,19 +15,17 @@ npm install azure-arm-rediscache
 
 ## How to Use
 
-### Initialise the client
+### Initialise the client and managing Redis Cache
 
 ```javascript
 var AzureCommon       = require('azure-common');
 var AzureMgmtRedisCache = require('azure-arm-rediscache');
   
-### Create an Azure Redis Cache Management client.
+// Create an Azure Redis Cache Management client.
   client = new AzureMgmtRedisCache.createRedisCacheManagementClient(new common.TokenCloudCredentials({
   subscriptionId: "<your subscription id>",
   token: "<your token here>"
 }));
-
-### Manage Azure Redis Cache
 
   var resourceGroup = 'myResourceGroup';
   var cacheName = 'myNewCache';
@@ -56,7 +54,7 @@ var AzureMgmtRedisCache = require('azure-arm-rediscache');
     if (err) throw err;
     console.info('Cache created: ' + JSON.stringify(result.resource, null, ' '));
   });
-```
+
 
 //Show properties of an existing Azure Redis Cache
 
@@ -65,7 +63,7 @@ var AzureMgmtRedisCache = require('azure-arm-rediscache');
     if (err) throw err;
     console.info('Cache properties: ' + JSON.stringify(result.resource, null, ' '));
   });
-```
+
 
 //list all caches within a resource group
 
@@ -74,7 +72,7 @@ var AzureMgmtRedisCache = require('azure-arm-rediscache');
     if (err) throw err;
     console.info('Caches: ' + JSON.stringify(result.value, null, ' '));
   });
-```
+
 
 //show primary and secondary keys of the cache
 
@@ -83,7 +81,7 @@ var AzureMgmtRedisCache = require('azure-arm-rediscache');
     if (err) throw err;
     console.info('Cache keys: ' + JSON.stringify(result, null, ' '));
   });
-```
+
 
 //regenerate  keys of the cache
   var parameters = {
