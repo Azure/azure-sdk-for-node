@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{cef9375a-02ed-4638-8402-fd341e5c9b1a}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>gruntfile.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -640,6 +640,7 @@
     <Compile Include="test\framework\authentication.js" />
     <Compile Include="test\framework\blob-test-utils.js" />
     <Compile Include="test\framework\hdinsight-test-utils.js" />
+    <Compile Include="test\framework\mock-token-cache.js" />
     <Compile Include="test\framework\mocked-test-utils.js" />
     <Compile Include="test\framework\nock-helper.js" />
     <Compile Include="test\framework\notificationhubs-test-utils.js" />
