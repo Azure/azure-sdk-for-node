@@ -234,8 +234,8 @@ _.extend(ArmTestUtils.prototype, {
         nocked.setEnvironment();
       }
       
-      this.originalTokenCache = FileTokenCache;
-      adalAuth.tokenCache = new MockTokenCache();
+      this.originalTokenCache = this.tokenCache;
+      this.tokenCache = new MockTokenCache();
     } else {
       this.setEnvironmentDefaults();
     }
@@ -243,6 +243,8 @@ _.extend(ArmTestUtils.prototype, {
     callback();
     //write the suite level testids and uuids to a suite recordings file
     if (this.isMocked && this.isRecording) {
+      this.writeRecordingHeader(this.getSuiteRecordingsFile());
+      fs.appendFileSync(this.getSuiteRecordingsFile(), '];\n');
       this.writeGeneratedUuids(this.getSuiteRecordingsFile());
       this.writeGeneratedRandomTestIds(this.getSuiteRecordingsFile());
     }
@@ -273,6 +275,7 @@ _.extend(ArmTestUtils.prototype, {
     nockHelper.nockHttp();
     if (this.isMocked && this.isRecording) {
       // nock recording
+      this.writeRecordingHeader();
       nockHelper.nock.recorder.rec(true);
     }
     
@@ -290,6 +293,9 @@ _.extend(ArmTestUtils.prototype, {
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
+      
+      this.originalTokenCache = this.tokenCache;
+      this.tokenCache = new MockTokenCache();
       
       if (nocked.scopes.length === 1) {
         nocked.scopes[0].forEach(function (createScopeFunc) {
@@ -350,6 +356,7 @@ _.extend(ArmTestUtils.prototype, {
         nockHelper.nock.recorder.clear();
       } else {
         //playback mode
+        this.tokenCache = this.originalTokenCache;
         nockHelper.nock.cleanAll();
       }
     }
@@ -389,6 +396,20 @@ _.extend(ArmTestUtils.prototype, {
     }
   },
   
+  /**
+   * Writes the recording header to the specified file.
+   *
+   * @param {string} filename        (Optional) The file name to which the recording header needs to be added
+   *                                 If the filename is not provided then it will get the current test recording file.
+   */
+  writeRecordingHeader: function (filename) {
+    var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
+    filename = filename || this.getTestRecordingsFile();
+    fs.writeFileSync(filename, _.template(template, {
+      requiredEnvironment: this.requiredEnvironment
+    }));
+  },
+
   /**
    * Generates an unique identifier using a prefix, based on a currentList and repeatable or not depending on the isMocked flag.
    *
@@ -441,6 +462,21 @@ _.extend(ArmTestUtils.prototype, {
       }
     }
     return newNumber;
+  },
+  
+  /**
+   * A helper function to handle wrapping an existing method in sinon.
+   *
+   * @param {ojbect} sinonObj    either sinon or a sinon sandbox instance
+   * @param {object} object      The object containing the method to wrap
+   * @param {string} property    property name of method to wrap
+   * @param {function (function)} setup function that receives the original function,
+   *                              returns new function that runs when method is called.
+   * @return {object}             The created stub.
+   */
+  wrap: function (sinonObj, object, property, setup) {
+    var original = object[property];
+    return sinonObj.stub(object, property, setup(original));
   }
 
 });

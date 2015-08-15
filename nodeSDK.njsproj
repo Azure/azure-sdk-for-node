@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{cef9375a-02ed-4638-8402-fd341e5c9b1a}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <StartupFile>gruntfile.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -637,6 +637,7 @@
     <Compile Include="test\common\storageservicesettings-tests.js" />
     <Compile Include="test\data\app.js" />
     <Content Include="test\framework\creds.xml" />
+    <Compile Include="test\framework\arm-test-utils.js" />
     <Compile Include="test\framework\authentication.js" />
     <Compile Include="test\framework\blob-test-utils.js" />
     <Compile Include="test\framework\hdinsight-test-utils.js" />
