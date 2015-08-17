@@ -1,4 +1,4 @@
-﻿<% // This file contains the preamble for mock recordings, as an underscore template
+<% // This file contains the preamble for mock recordings, as an underscore template
 
 // Helper function to handle possibly null values
 function q(value) {

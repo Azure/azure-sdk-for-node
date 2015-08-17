@@ -232,6 +232,7 @@
     <Content Include="runtime\ms-rest\package.json" />
     <Content Include="runtime\ms-rest\README.md" />
     <Content Include="runtime\ms-rest\test\testlist.txt" />
+    <Content Include="test\framework\preamble.template" />
     <Content Include="test\testlist.txt" />
     <Compile Include="test\azure-tests.js" />
     <Content Include="examples\blobuploader\package.json" />

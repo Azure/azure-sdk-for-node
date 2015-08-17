@@ -26,7 +26,7 @@ var StorageManagementClient = require('../../../lib/services/storageManagement2/
 var testPrefix = 'storagemanagementservice-tests';
 var groupPrefix = 'nodeTestGroup';
 var accountPrefix = 'testacc';
-var createdGroups = ['nodeTestGroup9399'];
+var createdGroups = [];
 var createdAccounts = [];
 
 var requiredEnvironment = [
@@ -46,13 +46,13 @@ describe('Storage Management', function () {
   
   before(function (done) {
     suite = new ArmTestUtils(this, testPrefix, requiredEnvironment);
-    client = new StorageManagementClient(suite.createUserCredentials(), suite.subscriptionId);
     suite.setupSuite(function () {
-      groupName = 'nodeTestGroup9399';//suite.generateId(groupPrefix, createdGroups, suite.isMocked);
+      groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
+      client = new StorageManagementClient(suite.createUserCredentials(), suite.subscriptionId);
       accountName = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       acclocation = process.env['AZURE_TEST_LOCATION'];
       accType = 'Standard_LRS';
-      createParameters = {
+      createParameters =   {
         location: acclocation,
         properties: {
           accountType: accType,
@@ -65,12 +65,20 @@ describe('Storage Management', function () {
       if (suite.isPlayback) {
         client.longRunningOperationRetryTimeoutInSeconds = 0;
       }
-      done();
+      suite.createResourcegroup(groupName, acclocation, function (err, result) {
+        should.not.exist(err);
+        done();
+      });
     });
   });
   
   after(function (done) {
-    suite.teardownSuite(done);
+    suite.teardownSuite(function () {
+      suite.deleteResourcegroup(groupName, function (err, result) {
+        should.not.exist(err);
+        done();
+      });
+    });
   });
   
   beforeEach(function (done) {
