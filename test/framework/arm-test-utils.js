@@ -17,12 +17,14 @@
 
 var fs = require('fs');
 var path = require('path');
+var sinon = require('sinon');
 var _ = require('underscore');
 var util = require('util');
 var FileTokenCache = require('../../lib/util/fileTokenCache');
 var MockTokenCache = require('./mock-token-cache');
 var nockHelper = require('./nock-helper');
 var msRestAzure = require('ms-rest-azure');
+var ResourceManagementClient = require('../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
 
 /**
  * @class
@@ -55,7 +57,6 @@ function ArmTestUtils(mochaSuiteObject, testPrefix, env) {
   this.isMocked = !process.env.NOCK_OFF;
   this.isRecording = process.env.AZURE_NOCK_RECORD;
   this.isPlayback = !process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD;
-  
   //authentication info
   this.subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'] || 'subscription-id';
   this.clientId = process.env['CLIENT_ID'] || 'client-id';
@@ -65,19 +66,66 @@ function ArmTestUtils(mochaSuiteObject, testPrefix, env) {
   this.secret = process.env['APPLICATION_SECRET'] || 'dummysecret';
   this.clientRedirectUri = process.env['CLIENT_REDIRECT_URI'] || 'clientRedirectUri';
   this.tokenCache = new FileTokenCache(this.getTockenCacheFilePath());
-  
+  //subscriptionId should be recorded for playback
+  env.push('AZURE_SUBSCRIPTION_ID');
   // Normalize environment
   this.normalizeEnvironment(env);
   this.validateEnvironment();
-  
   //track & restore generated uuids to be used as part of request url, like a RBAC role assignment name
   this.uuidsGenerated = [];
   this.currentUuid = 0;
   this.randomTestIdsGenerated = [];
   this.numberOfRandomTestIdGenerated = 0;
+  //stub necessary methods if in playback mode
+  this._stubMethods();
 }
 
 _.extend(ArmTestUtils.prototype, {
+  _stubMethods: function () {
+    if (this.isPlayback) {
+      sinon.stub(msRestAzure.UserTokenCredentials.prototype, 'signRequest', function (webResource, callback) {
+        return callback(null);
+      });
+
+      sinon.stub(msRestAzure.ApplicationTokenCredentials.prototype, 'signRequest', function (webResource, callback) {
+        return callback(null);
+      });
+
+      sinon.stub(this, 'createResourcegroup', function (groupName, location, callback) {
+        return callback(null);
+      });
+
+      sinon.stub(this, 'deleteResourcegroup', function (groupName, callback) {
+        return callback(null);
+      });
+    }
+  },
+  
+  _setupResourceManagementClient: function () {
+   this.resourceManagement = new ResourceManagementClient(this.createUserCredentials(), this.subscriptionId);
+   if (this.isPlayback) {
+    this.resourceManagement.longRunningOperationRetryTimeoutInSeconds = 0;
+   }
+  },
+
+  createResourcegroup: function (groupName, location, callback) {
+    console.log('Creating Resource Group: ' + groupName);
+    //if (!this.isPlayback) {
+      if (!this.resourceManagement) { this._setupResourceManagementClient(); }
+      return this.resourceManagement.resourceGroups.createOrUpdate(groupName, {'location': location}, callback);
+    //}
+    //return callback(null);
+  },
+
+  deleteResourcegroup: function (groupName, callback) {
+    console.log('Deleting Resource Group: ' + groupName);
+    //if (!this.isPlayback) {
+      if (!this.resourceManagement) { this._setupResourceManagementClient(); }
+      return this.resourceManagement.resourceGroups.deleteMethod(groupName, callback);
+    //}
+    //return callback(null);
+  },
+
   /**
    * Creates a new UserTokenCredentials object.
    * 
@@ -105,7 +153,6 @@ _.extend(ArmTestUtils.prototype, {
     return this.recordingsDirectory;
   },
   
-  
   /**
    * Provides the recordings directory for the test suite
    *
@@ -120,7 +167,7 @@ _.extend(ArmTestUtils.prototype, {
    *
    * @param {string} dir The test recordings directory
    */
- setRecordingsDirectory: function (dir) {
+  setRecordingsDirectory: function (dir) {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
@@ -137,7 +184,6 @@ _.extend(ArmTestUtils.prototype, {
     this.normalizeTestName(this.currentTest) + ".nock.js";
     return this.testRecordingsFile;
   },
-  
   
   normalizeTestName: function (str) {
     return str.replace(/[{}\[\]'";\(\)#@~`!%&\^\$\+=,\/\\?<>\|\*:]/ig, '').replace(/(\s+)/ig, '_');
@@ -206,8 +252,6 @@ _.extend(ArmTestUtils.prototype, {
     return this.suiteRecordingsFile;
   },
   
-  
-  
   /**
    * Performs the specified actions before executing the suite. Records the random test ids and uuids generated during the
    * suite setup and restores them in playback
@@ -233,9 +277,10 @@ _.extend(ArmTestUtils.prototype, {
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
-      
-      this.originalTokenCache = FileTokenCache;
-      adalAuth.tokenCache = new MockTokenCache();
+
+      this.subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
+      this.originalTokenCache = this.tokenCache;
+      this.tokenCache = new MockTokenCache();
     } else {
       this.setEnvironmentDefaults();
     }
@@ -243,16 +288,18 @@ _.extend(ArmTestUtils.prototype, {
     callback();
     //write the suite level testids and uuids to a suite recordings file
     if (this.isMocked && this.isRecording) {
+      this.writeRecordingHeader(this.getSuiteRecordingsFile());
+      fs.appendFileSync(this.getSuiteRecordingsFile(), '];\n');
       this.writeGeneratedUuids(this.getSuiteRecordingsFile());
       this.writeGeneratedRandomTestIds(this.getSuiteRecordingsFile());
     }
   },
   
   /**
- * Performs the specified actions after executing the suite.
- *
- * @param {function} callback  A hook to provide the steps to execute after the suite has completed execution
- */
+   * Performs the specified actions after executing the suite.
+   *
+   * @param {function} callback  A hook to provide the steps to execute after the suite has completed execution
+   */
   teardownSuite: function(callback) {
     if (this.isMocked) {
       delete process.env.AZURE_ENABLE_STRICT_SSL;
@@ -273,6 +320,7 @@ _.extend(ArmTestUtils.prototype, {
     nockHelper.nockHttp();
     if (this.isMocked && this.isRecording) {
       // nock recording
+      this.writeRecordingHeader();
       nockHelper.nock.recorder.rec(true);
     }
     
@@ -291,6 +339,9 @@ _.extend(ArmTestUtils.prototype, {
         nocked.setEnvironment();
       }
       
+      this.originalTokenCache = this.tokenCache;
+      this.tokenCache = new MockTokenCache();
+
       if (nocked.scopes.length === 1) {
         nocked.scopes[0].forEach(function (createScopeFunc) {
           createScopeFunc(nockHelper.nock);
@@ -350,6 +401,7 @@ _.extend(ArmTestUtils.prototype, {
         nockHelper.nock.recorder.clear();
       } else {
         //playback mode
+        this.tokenCache = this.originalTokenCache;
         nockHelper.nock.cleanAll();
       }
     }
@@ -388,6 +440,20 @@ _.extend(ArmTestUtils.prototype, {
       this.randomTestIdsGenerated.length = 0;
     }
   },
+
+  /**
+   * Writes the recording header to the specified file.
+   *
+   * @param {string} filename        (Optional) The file name to which the recording header needs to be added
+   *                                 If the filename is not provided then it will get the current test recording file.
+   */
+  writeRecordingHeader: function (filename) {
+    var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
+    filename = filename || this.getTestRecordingsFile();
+    fs.writeFileSync(filename, _.template(template, {
+      requiredEnvironment: this.requiredEnvironment
+    }));
+  },
   
   /**
    * Generates an unique identifier using a prefix, based on a currentList and repeatable or not depending on the isMocked flag.
@@ -423,6 +489,20 @@ _.extend(ArmTestUtils.prototype, {
     return newNumber;
   },
   
+  /**
+   * A helper function to handle wrapping an existing method in sinon.
+   *
+   * @param {ojbect} sinonObj    either sinon or a sinon sandbox instance
+   * @param {object} object      The object containing the method to wrap
+   * @param {string} property    property name of method to wrap
+   * @param {function (function)} setup function that receives the original function,
+   *                              returns new function that runs when method is called.
+   * @return {object}             The created stub.
+   */
+  wrap: function (sinonObj, object, property, setup) {
+    var original = object[property];
+    return sinonObj.stub(object, property, setup(original));
+  },
   
   /**
    * A helper function to generate a random id.
@@ -442,7 +522,6 @@ _.extend(ArmTestUtils.prototype, {
     }
     return newNumber;
   }
-
 });
 
 exports = module.exports = ArmTestUtils;

@@ -9,7 +9,6 @@ packages/*
 obj/*
 
 # Node #
-test/recordings/
 node_modules/
 npm-debug.log
 azure_error

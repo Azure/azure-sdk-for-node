@@ -82,7 +82,7 @@
     "jshint": "2.6.3",
     "minami": "git://github.com/devigned/minami#master",
     "mocha": "1.16.0",
-    "nock": "2.9.1",
+    "nock": "0.16",
     "node-forge": "0.6.30",
     "random-js": "1.0.4",
     "should": "1.2.x",
