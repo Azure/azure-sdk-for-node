@@ -98,8 +98,9 @@
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "test": "npm -s run-script jshint && npm -s run-script unit && npm -s run-script unit-arm",
     "unit": "node scripts/unit.js testlist.txt",
+    "unit-arm": "node scripts/unit-arm.js testlistarm.txt",
     "setup": "node scripts/setup.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",

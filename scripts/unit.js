@@ -140,11 +140,11 @@ if (!process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD) {
     process.env.AZURE_SERVICEBUS_ACCESS_KEY = new Buffer('fake_key').toString('base64');
   }
 
-  /*if (process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
+  if (process.env.AZURE_SUBSCRIPTION_ID !== defaultSubscription) {
     process.env.AZURE_SUBSCRIPTION_ID = defaultSubscription;
     process.env.AZURE_CERTIFICATE = 'fake_certificate';
     process.env.AZURE_CERTIFICATE_KEY = 'fake_certificate_key';
-  }*/
+  }
 }
 
 require('../node_modules/mocha/bin/mocha');

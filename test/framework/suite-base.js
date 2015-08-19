@@ -28,7 +28,7 @@ var ResourceManagementClient = require('../../lib/services/resourceManagement/li
 
 /**
  * @class
- * Initializes a new instance of the ArmTestUtils class.
+ * Initializes a new instance of the SuiteBase class.
  * @constructor
  * 
  * @param {object} mochaSuiteObject - The mocha suite object
@@ -43,12 +43,11 @@ var ResourceManagementClient = require('../../lib/services/resourceManagement/li
  *   { name: 'AZURE_AD_TEST_PASSWORD'},
  * ];
  */
-function ArmTestUtils(mochaSuiteObject, testPrefix, env) {
+function SuiteBase(mochaSuiteObject, testPrefix, env) {
   this.mochaSuiteObject = mochaSuiteObject;
   this.testPrefix = this.normalizeTestName(testPrefix);
   this.mockServerClient;
   this.currentTest = '';
-  this.scopeWritten;
   //Recording info
   this.setRecordingsDirectory(__dirname + '/../recordings/' + this.testPrefix + '/');
   this.suiteRecordingsFile = this.getRecordingsDirectory() + 'suite.' + this.testPrefix + '.nock.js';
@@ -65,8 +64,10 @@ function ArmTestUtils(mochaSuiteObject, testPrefix, env) {
   this.password = process.env['PASSWORD'] || 'dummypassword';
   this.secret = process.env['APPLICATION_SECRET'] || 'dummysecret';
   this.clientRedirectUri = process.env['CLIENT_REDIRECT_URI'] || 'clientRedirectUri';
-  this.tokenCache = new FileTokenCache(this.getTockenCacheFilePath());
+  this.tokenCache = new FileTokenCache(path.resolve(path.join(__dirname, '../tmp/tokenstore.json')));
+  this._setCredentials();
   //subscriptionId should be recorded for playback
+  if (!env) { env = []; }
   env.push('AZURE_SUBSCRIPTION_ID');
   // Normalize environment
   this.normalizeEnvironment(env);
@@ -80,68 +81,87 @@ function ArmTestUtils(mochaSuiteObject, testPrefix, env) {
   this._stubMethods();
 }
 
-_.extend(ArmTestUtils.prototype, {
-  _stubMethods: function () {
+_.extend(SuiteBase.prototype, {
+
+  _setCredentials: function () {
+    if (!this.isPlayback) {
+      if ((process.env['PASSWORD'] && process.env['APPLICATION_SECRET']) || 
+          (!process.env['PASSWORD'] && !process.env['APPLICATION_SECRET'])) {
+        throw new Error('You must either set the envt. variables \'USERNAME\' ' + 
+                        'and \'PASSWORD\' for running tests as a user or set the ' + 
+                        'envt. variable \'APPLICATION_SECRET\' for running tests ' + 
+                        'as a service-principal, but not both.');
+      }
+
+      if (process.env['PASSWORD']) {
+        this.credentials = this._createUserCredentials();
+      } else if (process.env['APPLICATION_SECRET']) {
+        this.credentials = this._createApplicationCredentials();
+      }
+    } else {
+      //The type of credential object does not matter in playback mode as authentication 
+      //header is not recorded. Hence we always default to UsertokenCredentials.
+      this.credentials = this._createUserCredentials();
+    } 
+  },
+  
+  /**
+   * Creates the UserTokenCredentials object.
+   * 
+   * @returns {ms-rest-azure.UserTokenCredentials} The user token credentials object.
+   */
+  _createUserCredentials: function () {
+    return new msRestAzure.UserTokenCredentials(this.clientId, this.domain, this.username, 
+                                                this.password, this.clientRedirectUri, 
+                                                { 'tokenCache': this.tokenCache });
+  },
+  
+  /**
+   * Creates the ApplicationTokenCredentials object.
+   * 
+   * @returns {ms-rest-azure.ApplicationTokenCredentials} The application token credentials object.
+   */
+  _createApplicationCredentials: function () {
+    return new msRestAzure.ApplicationTokenCredentials(this.clientId, this.domain, this.secret, { 'tokenCache': this.tokenCache });
+  },
+
+  /**
+   * Creates a ResourceManagementClient and sets it as a property of the suite.
+   */
+  _setupResourceManagementClient: function () {
+    if (!this.resourceManagement) {
+      this.resourceManagement = new ResourceManagementClient(this.userCredentials, this.subscriptionId);
+    }
     if (this.isPlayback) {
-      sinon.stub(msRestAzure.UserTokenCredentials.prototype, 'signRequest', function (webResource, callback) {
-        return callback(null);
-      });
-
-      sinon.stub(msRestAzure.ApplicationTokenCredentials.prototype, 'signRequest', function (webResource, callback) {
-        return callback(null);
-      });
-
-      sinon.stub(this, 'createResourcegroup', function (groupName, location, callback) {
-        return callback(null);
-      });
-
-      sinon.stub(this, 'deleteResourcegroup', function (groupName, callback) {
-        return callback(null);
-      });
+      this.resourceManagement.longRunningOperationRetryTimeoutInSeconds = 0;
     }
   },
   
-  _setupResourceManagementClient: function () {
-   this.resourceManagement = new ResourceManagementClient(this.createUserCredentials(), this.subscriptionId);
-   if (this.isPlayback) {
-    this.resourceManagement.longRunningOperationRetryTimeoutInSeconds = 0;
-   }
-  },
-
-  createResourcegroup: function (groupName, location, callback) {
-    console.log('Creating Resource Group: ' + groupName);
-    //if (!this.isPlayback) {
-      if (!this.resourceManagement) { this._setupResourceManagementClient(); }
-      return this.resourceManagement.resourceGroups.createOrUpdate(groupName, {'location': location}, callback);
-    //}
-    //return callback(null);
-  },
-
-  deleteResourcegroup: function (groupName, callback) {
-    console.log('Deleting Resource Group: ' + groupName);
-    //if (!this.isPlayback) {
-      if (!this.resourceManagement) { this._setupResourceManagementClient(); }
-      return this.resourceManagement.resourceGroups.deleteMethod(groupName, callback);
-    //}
-    //return callback(null);
-  },
-
   /**
-   * Creates a new UserTokenCredentials object.
+   * Creates a new ResourceGroup with the specified name and location.
    * 
-   * @returns {ms-rest-azure.UserTokenCredentials} The user token credentials object
+   * @param {string} groupName - The resourcegroup name
+   * @param {string} location - The location
+   * 
+   * @returns {function} callback(err, result) - It contains error and result for the create request.
    */
-  createUserCredentials: function () {
-    return new msRestAzure.UserTokenCredentials(this.clientId, this.domain, this.username, this.password, this.clientRedirectUri, { 'tokenCache': this.tokenCache });
+  createResourcegroup: function (groupName, location, callback) {
+    console.log('Creating Resource Group: \'' + groupName + '\' at location: \'' + location + '\'');
+    this._setupResourceManagementClient();
+    return this.resourceManagement.resourceGroups.createOrUpdate(groupName, {'location': location}, callback);
   },
   
   /**
-   * Creates a new ApplicationTokenCredentials object.
+   * Deletes the specified ResourceGroup.
    * 
-   * @returns {ms-rest-azure.ApplicationTokenCredentials} The application token credentials object
+   * @param {string} groupName - The resourcegroup name
+   * 
+   * @returns {function} callback(err, result) - It contains error and result for the delete request.
    */
-  createApplicationCredentials: function () {
-    return new msRestAzure.ApplicationTokenCredentials(this.clientId, this.domain, this.secret, { 'tokenCache': this.tokenCache });
+  deleteResourcegroup: function (groupName, callback) {
+    console.log('Deleting Resource Group: ' + groupName);
+    if (!this.resourceManagement) { this._setupResourceManagementClient(); }
+    return this.resourceManagement.resourceGroups.deleteMethod(groupName, callback);
   },
   
   /**
@@ -151,15 +171,6 @@ _.extend(ArmTestUtils.prototype, {
    */
   getRecordingsDirectory: function () {
     return this.recordingsDirectory;
-  },
-  
-  /**
-   * Provides the recordings directory for the test suite
-   *
-   * @returns {string} The test recordings directory
-   */
-  getTockenCacheFilePath: function () {
-    return path.resolve(path.join(__dirname, '../tmp/tokenstore.json'));
   },
   
   /**
@@ -190,15 +201,6 @@ _.extend(ArmTestUtils.prototype, {
   },
   
   normalizeEnvironment: function (env) {
-    env = env.filter(function (e) {
-      if (e.requiresCert || e.requiresToken) {
-        this.requiresCert = e.requiresCert;
-        this.requiresToken = e.requiresToken;
-        return false;
-      }
-      return true;
-    });
-    
     this.requiredEnvironment = env.map(function (env) {
       if (typeof (env) === 'string') {
         return { name: env, secure: false };
@@ -224,10 +226,6 @@ _.extend(ArmTestUtils.prototype, {
     if (missing.length > 0) {
       messages.push('This test requires the following environment variables which are not set: ' +
         missing.join(', '));
-    }
-    
-    if (this.requiresCert && this.requiresToken) {
-      messages.push('This test is marked as requiring both a certificate and a token. This is impossible, please fix the test setup.');
     }
     
     if (messages.length > 0) {
@@ -538,19 +536,39 @@ _.extend(ArmTestUtils.prototype, {
   },
   
   /**
-   * A helper function to handle wrapping an existing method in sinon.
-   *
-   * @param {ojbect} sinonObj    either sinon or a sinon sandbox instance
-   * @param {object} object      The object containing the method to wrap
-   * @param {string} property    property name of method to wrap
-   * @param {function (function)} setup function that receives the original function,
-   *                              returns new function that runs when method is called.
-   * @return {object}             The created stub.
+   * Stubs certain methods to make them work in playback mode.
    */
-  wrap: function (sinonObj, object, property, setup) {
-    var original = object[property];
-    return sinonObj.stub(object, property, setup(original));
+  _stubMethods: function () {
+    if (this.isPlayback) {
+      if (msRestAzure.UserTokenCredentials.prototype.signRequest.restore) {
+        msRestAzure.UserTokenCredentials.prototype.signRequest.restore();
+      }
+      sinon.stub(msRestAzure.UserTokenCredentials.prototype, 'signRequest', function (webResource, callback) {
+        return callback(null);
+      });
+      
+      if (msRestAzure.ApplicationTokenCredentials.prototype.signRequest.restore) {
+        msRestAzure.ApplicationTokenCredentials.prototype.signRequest.restore();
+      }
+      sinon.stub(msRestAzure.ApplicationTokenCredentials.prototype, 'signRequest', function (webResource, callback) {
+        return callback(null);
+      });
+      
+      if (this.createResourcegroup.restore) {
+        this.createResourcegroup.restore();
+      }
+      sinon.stub(this, 'createResourcegroup', function (groupName, location, callback) {
+        return callback(null);
+      });
+      
+      if (this.deleteResourcegroup.restore) {
+        this.deleteResourcegroup.restore();
+      }
+      sinon.stub(this, 'deleteResourcegroup', function (groupName, callback) {
+        return callback(null);
+      });
+    }
   }
 });
 
-exports = module.exports = ArmTestUtils;
+exports = module.exports = SuiteBase;

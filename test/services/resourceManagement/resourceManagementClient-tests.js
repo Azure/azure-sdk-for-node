@@ -20,65 +20,62 @@ var util = require('util');
 var msRestAzure = require('ms-rest-azure');
 
 var testutil = require('../../util/util');
-var MockedTestUtils = require('../../framework/mocked-test-utils');
+var SuiteBase = require('../../framework/suite-base');
 
 
 var dump = util.inspect;
 var ResourceManagementClient = require('../../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
 var testPrefix = 'resourceManagement-tests';
+var requiredEnvironment = [
+  { name: 'AZURE_TEST_LOCATION', defaultValue: 'West US' }
+];
 
-var service;
-var suiteUtil;
-var subscriptionId = process.env['SUBSCRIPTION_ID'] || 'subscription-id';
-var clientId = process.env['CLIENT_ID'] || 'client-id';
-var domain = process.env['DOMAIN'] || 'domain';
-var username = process.env['USERNAME'] || 'username@example.com';
-var password = process.env['PASSWORD'] || 'dummypassword';
-var clientRedirectUri = 'clientRedirectUri';
-var credentials = new msRestAzure.UserTokenCredentials(clientId, domain, username, password, clientRedirectUri);
-var client = new ResourceManagementClient(credentials, subscriptionId);
-var groupName = 'mytestg1012';
-var testLocation = 'West US';
-var groupParameters = {
-  location: testLocation,
-  tags: {
-    tag1: 'val1',
-    tag2: 'val2'
-  }
-};
+var suite;
+var client;
+var groupName;
+var testLocation;
+var groupParameters;
 
 describe('Resource Management Client', function () {
   
   before(function (done) {
-    suiteUtil = new MockedTestUtils(client, testPrefix);
-    suiteUtil.setupSuite(function () {
-      if (suiteUtil.isPlayback) {
+    suite = new SuiteBase(this, testPrefix, requiredEnvironment);
+    suite.setupSuite(function () {
+      client = new ResourceManagementClient(suite.credentials, suite.subscriptionId);
+      testLocation = process.env['AZURE_TEST_LOCATION'];
+      groupParameters = {
+        location: testLocation,
+        tags: {
+          tag1: 'val1',
+          tag2: 'val2'
+        }
+      };
+      if (suite.isPlayback) {
         client.longRunningOperationRetryTimeoutInSeconds = 0;
-        client.credentials = {};
       }
       done();
     });
   });
   
   after(function (done) {
-    suiteUtil.teardownSuite(done);
+    suite.teardownSuite(done);
   });
   
   beforeEach(function (done) {
-    suiteUtil.setupTest(done);
+    suite.setupTest(done);
   });
   
   afterEach(function (done) {
-    suiteUtil.baseTeardownTest(done);
+    suite.baseTeardownTest(done);
   });
   
   describe('Group Operations', function () {
+    var groupName = 'testg102';
     it('should work to create, get, list and delete a resource group', function (done) {
       //create a resource group
       client.resourceGroups.createOrUpdate(groupName, groupParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result.body);
-        result.response.statusCode.should.equal(200);
         //get a specific resource group
         client.resourceGroups.get(groupName, function (err, result) {
           should.not.exist(err);
@@ -121,7 +118,6 @@ describe('Resource Management Client', function () {
       client.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result.body);
-        result.response.statusCode.should.equal(200);
         //create a resource in the resource group
         client.resources.createOrUpdate(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName , apiVersion, params, function (err, result) {
           should.not.exist(err);
@@ -201,7 +197,6 @@ describe('Resource Management Client', function () {
       client.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result.body);
-        result.response.statusCode.should.equal(200);
         //validate a deployment
         client.deployments.validate(resourceGroupName, deploymentName, deploymentParameters, function (err, result) {
           should.not.exist(err);

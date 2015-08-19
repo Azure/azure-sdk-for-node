@@ -20,7 +20,7 @@ var util = require('util');
 var msRestAzure = require('ms-rest-azure');
 
 var testutil = require('../../util/util');
-var ArmTestUtils = require('../../framework/arm-test-utils');
+var SuiteBase = require('../../framework/suite-base');
 var FileTokenCache = require('../../../lib/util/fileTokenCache');
 var StorageManagementClient = require('../../../lib/services/storageManagement2/lib/storageManagementClient');
 var testPrefix = 'storagemanagementservice-tests';
@@ -30,7 +30,6 @@ var createdGroups = [];
 var createdAccounts = [];
 
 var requiredEnvironment = [
-  { requiresToken: true },
   { name: 'AZURE_TEST_LOCATION', defaultValue: 'West US' }
 ];
 
@@ -45,10 +44,10 @@ var createParameters;
 describe('Storage Management', function () {
   
   before(function (done) {
-    suite = new ArmTestUtils(this, testPrefix, requiredEnvironment);
+    suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function () {
       groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-      client = new StorageManagementClient(suite.createUserCredentials(), suite.subscriptionId);
+      client = new StorageManagementClient(suite.credentials, suite.subscriptionId);
       accountName = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       acclocation = process.env['AZURE_TEST_LOCATION'];
       accType = 'Standard_LRS';
