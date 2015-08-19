@@ -31,97 +31,97 @@ var hubNamePrefix = 'xplathubnxt';
 var testPrefix = 'installation-management-tests';
 
 describe('Installation Management tests', function () {
-    var service;
-    var suiteUtil;
-    var sandbox;
-    
-    before(function (done) {
-        sandbox = sinon.sandbox.create();
-        
-        service = azure.createServiceBusService()
-      .withFilter(new azure.ExponentialRetryPolicyFilter());
-        
-        suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
-        suiteUtil.setupSuite(done);
-    });
-    
-    after(function (done) {
-        sandbox.restore();
-        suiteUtil.teardownSuite(done);
-    });
-    
-    beforeEach(function (done) {
-        suiteUtil.setupTest(function () {
-            service.listNotificationHubs(function (err, hubs, rsp) {
-                var xplatHubs = hubs.filter(function (hub) {
-                    return hub.NotificationHubName.substr(0, hubNamePrefix.length) === hubNamePrefix;
-                });
-                
-                _.each(xplatHubs, function (hub) {
-                    service.deleteNotificationHub(hub.NotificationHubName, function () { });
-                });
-                
-                done();
-            });
-        });
-    });
-    
-    afterEach(function (done) {
-        // Schedule deleting notification hubs
-        _.each(hubNames, function (notificationHub) {
-            service.deleteNotificationHub(notificationHub, function () { });
-        });
-        
-        suiteUtil.baseTeardownTest(done);
-    });
-    
-    describe('installations', function () {
-        var hubName;
-        var notificationHubService;
-        
-        beforeEach(function (done) {
-            hubName = hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
-            
-            notificationHubService = azure.createNotificationHubService(hubName);
-            suiteUtil.setupService(notificationHubService);
-            service.createNotificationHub(hubName, done);
-        });
-        
-        describe('createOrUpdate', function () {
-            var installationId = '1234567';
-                
-            afterEach(function (done) {
-                notificationHubService.deleteInstallation(installationId, done);
-            });
-                
-            it('should work', function (done) {
-                notificationHubService.createOrUpdateInstallation({
-                    installationId: installationId,
-                    pushChannel: 'http://db3.notify.windows.com/fake/superfake',
-                    platform: 'wns'
-                }, function(error, response) {
-                    should.not.exist(error);
-                    
-                    done();
-                });
-            });
+  var service;
+  var suiteUtil;
+  var sandbox;
+
+  before(function (done) {
+    sandbox = sinon.sandbox.create();
+
+    service = azure.createServiceBusService()
+  .withFilter(new azure.ExponentialRetryPolicyFilter());
+
+    suiteUtil = notificationhubstestutil.createNotificationHubsTestUtils(service, testPrefix);
+    suiteUtil.setupSuite(done);
+  });
+
+  after(function (done) {
+    sandbox.restore();
+    suiteUtil.teardownSuite(done);
+  });
+
+  beforeEach(function (done) {
+    suiteUtil.setupTest(function () {
+      service.listNotificationHubs(function (err, hubs, rsp) {
+        var xplatHubs = hubs.filter(function (hub) {
+          return hub.NotificationHubName.substr(0, hubNamePrefix.length) === hubNamePrefix;
         });
 
-        describe('get', function () {
-            var installationId = '1234567';
-            
-            afterEach(function (done) {
-                notificationHubService.deleteInstallation(installationId, done);
-            });
-            
-            it('should work', function (done) {
-                notificationHubService.getInstallation(installationId, function (error, installation, response) {
-                    should.not.exist(error);
-                    var id = installation.installationId;
-                    
-                    done();
-                });
-            });
+        _.each(xplatHubs, function (hub) {
+          service.deleteNotificationHub(hub.NotificationHubName, function () { });
         });
+
+        done();
+      });
     });
+  });
+
+  afterEach(function (done) {
+    // Schedule deleting notification hubs
+    _.each(hubNames, function (notificationHub) {
+      service.deleteNotificationHub(notificationHub, function () { });
+    });
+
+    suiteUtil.baseTeardownTest(done);
+  });
+
+  describe('installations', function () {
+    var hubName;
+    var notificationHubService;
+
+    beforeEach(function (done) {
+      hubName = hubName = testutil.generateId(hubNamePrefix, hubNames, suiteUtil.isMocked);
+
+      notificationHubService = azure.createNotificationHubService(hubName);
+      suiteUtil.setupService(notificationHubService);
+      service.createNotificationHub(hubName, done);
+    });
+
+    describe('createOrUpdate', function () {
+      var installationId = '1234567';
+
+      afterEach(function (done) {
+        notificationHubService.deleteInstallation(installationId, done);
+      });
+
+      it('should work', function (done) {
+        notificationHubService.createOrUpdateInstallation({
+          installationId: installationId,
+          pushChannel: 'http://db3.notify.windows.com/fake/superfake',
+          platform: 'wns'
+        }, function (error, response) {
+          should.not.exist(error);
+
+          done();
+        });
+      });
+    });
+
+    describe('get', function () {
+      var installationId = '1234567';
+
+      afterEach(function (done) {
+        notificationHubService.deleteInstallation(installationId, done);
+      });
+
+      it('should work', function (done) {
+        notificationHubService.getInstallation(installationId, function (error, installation, response) {
+          should.not.exist(error);
+          var id = installation.installationId;
+
+          done();
+        });
+      });
+    });
+  });
 });
