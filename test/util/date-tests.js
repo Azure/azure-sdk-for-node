@@ -22,11 +22,13 @@ var azure = testutil.libRequire('azure');
 
 suite('date-tests', function () {
   setup(function () {
-    this.clock = sinon.useFakeTimers(0, 'Date');
+    this.clock = sinon.useFakeTimers(0);
   });
 
   teardown(function () {
-    this.clock.restore();
+    if (this.clock.restore) {
+      this.clock.restore();
+    }
   });
 
   test('daysFromNow', function () {

@@ -1364,7 +1364,7 @@ describe('BlobService', function () {
         var blobServiceassert = storage.createBlobService('storageAccount', 'storageAccessKey', 'host.com:80');
 
         // Mock Date just to ensure a fixed signature
-        this.clock = sinon.useFakeTimers(0, 'Date');
+        this.clock = sinon.useFakeTimers(0);
 
         var sharedAccessPolicy = {
           AccessPolicy: {
