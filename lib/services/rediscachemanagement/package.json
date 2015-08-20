@@ -6,7 +6,7 @@
     "Dacosta, Carlyle <cadaco@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Microsoft Azure Redis Cache Client Library for node",
   "tags": [
     "azure",

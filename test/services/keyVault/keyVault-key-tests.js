@@ -214,7 +214,7 @@ describe('Key Vault keys', function () {
       }
             
       function importToHardware(next) {
-        doImport(false, next);        
+        doImport(true, next);        
       }
 
       series([

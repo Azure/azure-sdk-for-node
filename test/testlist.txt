@@ -39,6 +39,7 @@ services/serviceBus/notificationhubs-tests.js
 services/serviceBus/wnsservice-tests.js
 services/serviceBus/wnsservice-registrations-tests.js
 services/serviceBus/wrapservice-tests.js
+services/serviceBus/installation-management-tests.js
 services/sql/sqlmanagementservice-tests.js
 services/sql/sqlservice-tests.js
 services/table/internal/sharedkeytable-tests.js
