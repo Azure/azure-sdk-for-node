@@ -8,9 +8,10 @@
     "Georgiev, Yavor <yavorg@microsoft.com>",
     "Janczuk, Tomasz <tjanczuk@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Tavares, Chris <ctavares@microsoft.com>",
+    "Kulshrestha, Ankur <ankurkul@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Microsoft Azure Service Bus Service Library for node",
   "tags": [
     "azure",
@@ -31,7 +32,7 @@
     }
   ],
   "dependencies": {
-    "azure-common": "^0.9.13",
+    "azure-common": "^0.9.14",
     "underscore": "1.4.x",
     "wns": "~0.5.3",
     "mpns": "~2.0.0"

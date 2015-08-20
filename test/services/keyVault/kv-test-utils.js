@@ -225,12 +225,7 @@ exports.validateKeyList = function(result, expected) {
 };
 
 exports.getTestKey = function(suiteUtil) {  
-  if (suiteUtil.isMocked || suiteUtil.isRecording) {
-    return getWellKnownKey();
-  }
-  var rsa = Forge.pki.rsa;
-  var key = rsa.generateKeyPair(2048).privateKey;
-  return key;
+  return getWellKnownKey();
 };
 
 function getWellKnownKey() {
