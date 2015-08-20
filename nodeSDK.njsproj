@@ -657,7 +657,6 @@
     <Compile Include="test\recordings\apnsservice-registrations-tests.nock.js" />
     <Compile Include="test\recordings\apnsservice-tests.nock.js" />
     <Compile Include="test\recordings\authorizationClient-tests.nock.js" />
-    <Compile Include="test\recordings\authorizationClient-tests\.nock.js" />
     <Compile Include="test\recordings\authorizationClient-tests\Authorization_Client_Management_Lock_Operations_should_work_for_all_operations_possible.nock.js" />
     <Compile Include="test\recordings\authorizationClient-tests\Authorization_Client_Management_Lock_Operations_should_work_for_all_operations_possible.nock.js" />
     <Compile Include="test\recordings\authorizationClient-tests\suite.authorizationClient-tests.nock.js" />
@@ -756,6 +755,9 @@
     <Compile Include="test\services\resourceManagement\subscriptionClient-tests.js">
       <SubType>Code</SubType>
       <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\services\serviceBus\installation-management-tests.js">
+      <TestFramework>ExportRunner</TestFramework>
     </Compile>
     <Compile Include="test\util\base64-tests.js" />
     <Compile Include="test\util\date-tests.js" />
