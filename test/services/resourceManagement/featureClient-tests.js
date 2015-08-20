@@ -20,44 +20,40 @@ var util = require('util');
 var msRestAzure = require('ms-rest-azure');
 var _ = require('underscore');
 var testutil = require('../../util/util');
-var MockedTestUtils = require('../../framework/mocked-test-utils');
+var SuiteBase = require('../../framework/suite-base');
 
 
 var dump = util.inspect;
 var FeatureClient = require('../../../lib/services/resourceManagement/lib/feature/featureClient');
 var testPrefix = 'featureClient-tests';
-
-var service;
-var suiteUtil;
-var subscriptionId = process.env['SUBSCRIPTION_ID'] || 'subscription-id';
-var clientId = process.env['CLIENT_ID'] || 'client-id';
-var domain = process.env['DOMAIN'] || 'domain';
-var username = process.env['USERNAME'] || 'username@example.com';
-var password = process.env['PASSWORD'] || 'dummypassword';
-var clientRedirectUri = 'clientRedirectUri';
 var resourceProvider = 'Microsoft.Sql';
 var featureName = 'IndexAdvisor';
-
-var credentials = new msRestAzure.UserTokenCredentials(clientId, domain, username, password, clientRedirectUri);
-var client = new FeatureClient(credentials, subscriptionId);
+var client;
+var suite;
 
 describe('Feature Client', function () {
   
   before(function (done) {
-    suiteUtil = new MockedTestUtils(client, testPrefix);
-    suiteUtil.setupSuite(done);
+    suite = new SuiteBase(this, testPrefix);
+    suite.setupSuite(function () {
+      client = new FeatureClient(suite.credentials, suite.subscriptionId);
+      if (suite.isPlayback) {
+        client.longRunningOperationRetryTimeoutInSeconds = 0;
+      }
+      done();
+    });
   });
   
   after(function (done) {
-    suiteUtil.teardownSuite(done);
+    suite.teardownSuite(done);
   });
   
   beforeEach(function (done) {
-    suiteUtil.setupTest(done);
+    suite.setupTest(done);
   });
   
   afterEach(function (done) {
-    suiteUtil.baseTeardownTest(done);
+    suite.baseTeardownTest(done);
   });
   
   it('should list features of an RP', function (done) {

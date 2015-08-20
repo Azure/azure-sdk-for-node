@@ -20,78 +20,85 @@ var util = require('util');
 var msRestAzure = require('ms-rest-azure');
 var _ = require('underscore');
 var testutil = require('../../util/util');
-var MockedTestUtils = require('../../framework/mocked-test-utils');
+var SuiteBase = require('../../framework/suite-base');
 
 
 var dump = util.inspect;
 var AuthorizationClient = require('../../../lib/services/resourceManagement/lib/authorization/authorizationClient');
 var ResourceManagementClient = require('../../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
 var testPrefix = 'authorizationClient-tests';
+var groupPrefix = 'nodeTestGroup';
+var createdGroups = [];
 
-var service;
-var suiteUtil;
-var subscriptionId = process.env['SUBSCRIPTION_ID'] || 'subscription-id';
-var clientId = process.env['CLIENT_ID'] || 'client-id';
-var domain = process.env['DOMAIN'] || 'domain';
-var username = process.env['USERNAME'] || 'username@example.com';
-var password = process.env['PASSWORD'] || 'dummypassword';
-var clientRedirectUri = 'clientRedirectUri';
-var resourceProvider = 'Microsoft.Sql';
-var featureName = 'IndexAdvisor';
+var requiredEnvironment = [
+  { name: 'AZURE_TEST_LOCATION', defaultValue: 'West US' }
+];
 
-var credentials = new msRestAzure.UserTokenCredentials(clientId, domain, username, password, clientRedirectUri);
-var client = new AuthorizationClient(credentials, subscriptionId);
-var resourceManagementClient = new ResourceManagementClient(credentials, subscriptionId);
-var testLocation = 'West US';
-var groupParameters = {
-  location: testLocation,
-  tags: {
-    tag1: 'val1',
-    tag2: 'val2'
-  }
-};
+var suite;
+var client;
+var testLocation;
+var groupName;
 
 describe('Authorization Client', function () {
-  
   before(function (done) {
-    suiteUtil = new MockedTestUtils(client, testPrefix);
-    suiteUtil.setupSuite(done);
+    suite = new SuiteBase(this, testPrefix, requiredEnvironment);
+    suite.setupSuite(function () {
+      groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
+      client = new AuthorizationClient(suite.credentials, suite.subscriptionId);
+      testLocation = process.env['AZURE_TEST_LOCATION'];
+      if (suite.isPlayback) {
+        client.longRunningOperationRetryTimeoutInSeconds = 0;
+      }
+      suite.createResourcegroup(groupName, testLocation, function (err, result) {
+        should.not.exist(err);
+        done();
+      });
+    });
   });
   
   after(function (done) {
-    suiteUtil.teardownSuite(done);
+    suite.teardownSuite(function () {
+      suite.deleteResourcegroup(groupName, function (err, result) {
+        should.not.exist(err);
+        done();
+      });
+    });
   });
   
   beforeEach(function (done) {
-    suiteUtil.setupTest(done);
+    suite.setupTest(done);
   });
   
   afterEach(function (done) {
-    suiteUtil.baseTeardownTest(done);
+    suite.baseTeardownTest(done);
   });
   
   describe('Management Lock Operations', function () {
-    var groupName = 'testg101';
     var lockName = 'testlock1';
     var lockLevel = 'CanNotDelete';
     it('should work for all operations possible', function (done) {
-      //create a resource group
-      resourceManagementClient.resourceGroups.createOrUpdate(groupName, groupParameters, function (err, result) {
+      var lockParameters = {
+        properties: {
+          level: lockLevel,
+          notes: 'Optional text.'
+        }
+      };
+      client.managementLocks.createOrUpdateAtResourceGroupLevel(groupName, lockName, lockParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result.body);
-        var lockParameters = {
-          properties: {
-            level: lockLevel,
-            notes: 'Optional text.'
-          }
-        };
-        client.managementLocks.createOrUpdateAtResourceGroupLevel(groupName, lockName, lockParameters, function (err, result) {
-          should.not.exist(err);
-          should.exist(result.body);
-          client.managementLocks.get(lockName, function (error, result) {
-            //should.not.exist(err);
-            //should.exist(result.body);
-            client.managementLocks.listAtResourceGroupLevel(groupName, { properties: { level: lockLevel } }, function (err, result) {
+        client.managementLocks.get(lockName, function (error, result) {
+          //should.not.exist(err);
+          //should.exist(result.body);
+          client.managementLocks.listAtResourceGroupLevel(groupName, { properties: { level: lockLevel } }, function (err, result) {
+            should.not.exist(err);
+            should.exist(result.body);
+            result.response.statusCode.should.equal(200);
+            var locks = result.body.value;
+            locks.length.should.be.above(0);
+            locks.some(function (item) {
+              return item.name.should.equal(lockName);
+            }).should.be.true;
+            client.managementLocks.listAtSubscriptionLevel(null, function (err, result) {
               should.not.exist(err);
               should.exist(result.body);
               result.response.statusCode.should.equal(200);
@@ -100,20 +107,10 @@ describe('Authorization Client', function () {
               locks.some(function (item) {
                 return item.name.should.equal(lockName);
               }).should.be.true;
-              client.managementLocks.listAtSubscriptionLevel(null, function (err, result) {
+              client.managementLocks.deleteAtResourceGroupLevel(groupName, lockName, function (err, result) {
                 should.not.exist(err);
-                should.exist(result.body);
                 result.response.statusCode.should.equal(200);
-                var locks = result.body.value;
-                locks.length.should.be.above(0);
-                locks.some(function (item) {
-                  return item.name.should.equal(lockName);
-                }).should.be.true;
-                client.managementLocks.deleteAtResourceGroupLevel(groupName, lockName, function (err, result) {
-                  should.not.exist(err);
-                  result.response.statusCode.should.equal(200);
-                  done();
-                });
+                done();
               });
             });
           });

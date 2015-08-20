@@ -82,7 +82,7 @@
     "jshint": "2.6.3",
     "minami": "git://github.com/devigned/minami#master",
     "mocha": "1.16.0",
-    "nock": "2.9.1",
+    "nock": "0.16",
     "node-forge": "0.6.30",
     "random-js": "1.0.4",
     "should": "1.2.x",
@@ -98,8 +98,9 @@
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit",
+    "test": "npm -s run-script jshint && npm -s run-script unit && npm -s run-script unit-arm",
     "unit": "node scripts/unit.js testlist.txt",
+    "unit-arm": "node scripts/unit-arm.js testlistarm.txt",
     "setup": "node scripts/setup.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",

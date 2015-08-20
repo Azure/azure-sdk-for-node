@@ -20,67 +20,76 @@ var util = require('util');
 var msRestAzure = require('ms-rest-azure');
 
 var testutil = require('../../util/util');
-var MockedTestUtils = require('../../framework/mocked-test-utils');
+var SuiteBase = require('../../framework/suite-base');
 var FileTokenCache = require('../../../lib/util/fileTokenCache');
 var StorageManagementClient = require('../../../lib/services/storageManagement2/lib/storageManagementClient');
 var testPrefix = 'storagemanagementservice-tests';
+var groupPrefix = 'nodeTestGroup';
+var accountPrefix = 'testacc';
+var createdGroups = [];
+var createdAccounts = [];
 
-var service;
-var suiteUtil;
-var subscriptionId = process.env['SUBSCRIPTION_ID'] || 'subscription-id';
-var clientId = process.env['CLIENT_ID'] || 'client-id';
-var domain = process.env['DOMAIN'] || 'domain';
-var username = process.env['USERNAME'] || 'username@example.com';
-var password = process.env['PASSWORD'] || 'dummypassword';
-var clientRedirectUri = 'clientRedirectUri';
-var tokenCache = new FileTokenCache('D:\\sdk\\xplat1\\azure-sdk-for-node\\test\\tmp\\tokenstore.json');
-var options = { 'tokenCache': tokenCache };
-var credentials = new msRestAzure.UserTokenCredentials(clientId, domain, username, password, clientRedirectUri, options);
-var client = new StorageManagementClient(credentials, subscriptionId);
-var accountName = 'testac113';
-var groupName = 'csmrg7947';
-var acclocation = 'West US';
-var accType = 'Standard_LRS';
-var createParameters = {
-  location: acclocation,
-  properties: {
-    accountType: accType,
-  },
-  tags: {
-    tag1: 'val1',
-    tag2: 'val2'
-  }
-};
+var requiredEnvironment = [
+  { name: 'AZURE_TEST_LOCATION', defaultValue: 'West US' }
+];
+
+var suite;
+var client;
+var accountName;
+var groupName;
+var acclocation;
+var accType;
+var createParameters;
 
 describe('Storage Management', function () {
   
   before(function (done) {
-    suiteUtil = new MockedTestUtils(client, testPrefix);
-    suiteUtil.setupSuite(function () {
-      if (suiteUtil.isPlayback) {
+    suite = new SuiteBase(this, testPrefix, requiredEnvironment);
+    suite.setupSuite(function () {
+      groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
+      client = new StorageManagementClient(suite.credentials, suite.subscriptionId);
+      accountName = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
+      acclocation = process.env['AZURE_TEST_LOCATION'];
+      accType = 'Standard_LRS';
+      createParameters =   {
+        location: acclocation,
+        properties: {
+          accountType: accType,
+        },
+        tags: {
+          tag1: 'val1',
+          tag2: 'val2'
+        }
+      };
+      if (suite.isPlayback) {
         client.longRunningOperationRetryTimeoutInSeconds = 0;
       }
-      done();
+      suite.createResourcegroup(groupName, acclocation, function (err, result) {
+        should.not.exist(err);
+        done();
+      });
     });
   });
   
   after(function (done) {
-    suiteUtil.teardownSuite(done);
+    suite.teardownSuite(function () {
+      suite.deleteResourcegroup(groupName, function (err, result) {
+        should.not.exist(err);
+        done();
+      });
+    });
   });
   
   beforeEach(function (done) {
-    suiteUtil.setupTest(done);
+    suite.setupTest(done);
   });
   
   afterEach(function (done) {
-    suiteUtil.baseTeardownTest(done);
+    suite.baseTeardownTest(done);
   });
   
   describe('storage accounts', function () {
     it('should create an account correctly', function (done) {
-      if (suiteUtil.isPlayback) {
-        client.longRunningOperationRetryTimeoutInSeconds = 0;
-      }
       client.storageAccounts.create(groupName, accountName, createParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result.body);
