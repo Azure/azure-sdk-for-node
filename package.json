@@ -60,7 +60,7 @@
     "azure-arm-keyvault": "0.10.0",
     "azure-arm-network": "0.10.0",
     "azure-arm-resource": "0.10.0",
-	"azure-arm-rediscache": "0.0.2",
+    "azure-arm-rediscache": "0.0.2",
     "azure-arm-storage": "0.10.0",
     "azure-arm-website": "0.10.0",
     "mime": "~1.2.4",
