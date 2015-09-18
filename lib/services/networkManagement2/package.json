@@ -5,7 +5,7 @@
     "Siegemund, Frank <franksie@microsoft.com>",
     "Rajendran, Deepak <derajen@microsoft.com>"
   ],
-  "version": "0.10.4",
+  "version": "0.10.5",
   "description": "Microsoft Azure Network Resource Provider Management Client Library for node",
   "tags": [
     "azure",
