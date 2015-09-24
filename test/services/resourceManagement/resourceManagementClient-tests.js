@@ -75,28 +75,28 @@ describe('Resource Management Client', function () {
       //create a resource group
       client.resourceGroups.createOrUpdate(groupName, groupParameters, function (err, result) {
         should.not.exist(err);
-        should.exist(result.body);
+        should.exist(result);
         //get a specific resource group
-        client.resourceGroups.get(groupName, function (err, result) {
+        client.resourceGroups.get(groupName, function (err, result, request, response) {
           should.not.exist(err);
-          should.exist(result.body);
-          result.response.statusCode.should.equal(200);
-          var group = result.body;
+          should.exist(result);
+          response.statusCode.should.equal(200);
+          var group = result;
           group.name.should.equal(groupName);
           group.location.should.equal('westus');
           group.properties.provisioningState.should.equal('Succeeded');
           //list all the resource groups in the subscription
-          client.resourceGroups.list(null, null, function (err, result) {
+          client.resourceGroups.list(null, null, function (err, result, request, response) {
             should.not.exist(err);
-            should.exist(result.body);
-            result.response.statusCode.should.equal(200);
-            var groups = result.body.value;
+            should.exist(result);
+            response.statusCode.should.equal(200);
+            var groups = result.value;
             groups.length.should.be.above(0);
             groups.some(function (gr) { return (gr.name === groupName); }).should.be.true;
             //delete a specific resource group
-            client.resourceGroups.deleteMethod(groupName, function (err, result) {
+            client.resourceGroups.deleteMethod(groupName, function (err, result, request, response) {
               should.not.exist(err);
-              result.response.statusCode.should.equal(200);
+              response.statusCode.should.equal(200);
               done();
             });
           });
@@ -117,35 +117,35 @@ describe('Resource Management Client', function () {
       //create a resource group
       client.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, function (err, result) {
         should.not.exist(err);
-        should.exist(result.body);
+        should.exist(result);
         //create a resource in the resource group
-        client.resources.createOrUpdate(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName , apiVersion, params, function (err, result) {
+        client.resources.createOrUpdate(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName , apiVersion, params, function (err, result, request, response) {
           should.not.exist(err);
-          result.response.statusCode.should.equal(200);
-          result.body.name.should.equal(resourceName);
+          response.statusCode.should.equal(200);
+          result.name.should.equal(resourceName);
           //get the specified resource
-          client.resources.get(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, apiVersion, function (err, result) {
+          client.resources.get(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, apiVersion, function (err, result, request, response) {
             should.not.exist(err);
-            result.response.statusCode.should.equal(200);
-            result.body.name.should.equal(resourceName);
-            result.body.type.should.equal(resourceProviderNamespace + '/' + resourceType);
-            result.body.location.should.equal(testLocation);
+            response.statusCode.should.equal(200);
+            result.name.should.equal(resourceName);
+            result.type.should.equal(resourceProviderNamespace + '/' + resourceType);
+            result.location.should.equal(testLocation);
             //list all the resources
-            client.resources.list(null, null, function (err, result) {
+            client.resources.list(null, null, function (err, result, request, response) {
               should.not.exist(err);
-              result.response.statusCode.should.equal(200);
-              var resources = result.body.value;
+              response.statusCode.should.equal(200);
+              var resources = result.value;
               resources.length.should.be.above(0);
               resources.some(function (re) { return (re.name === resourceName); }).should.be.true;
               //delete the specified resource
-              client.resources.deleteMethod(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, apiVersion, function (err, result) {
+              client.resources.deleteMethod(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, apiVersion, function (err, result, request, response) {
                 should.not.exist(err);
-                result.response.statusCode.should.equal(200);
-                should.not.exist(result.body);
+                response.statusCode.should.equal(200);
+                should.not.exist(result);
                 //delete the resource group
-                client.resourceGroups.deleteMethod(resourceGroupName, function (err, result) {
+                client.resourceGroups.deleteMethod(resourceGroupName, function (err, result, request, response) {
                   should.not.exist(err);
-                  result.response.statusCode.should.equal(200);
+                  response.statusCode.should.equal(200);
                   done();
                 });
               });
@@ -196,34 +196,34 @@ describe('Resource Management Client', function () {
       //create a resource group
       client.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, function (err, result) {
         should.not.exist(err);
-        should.exist(result.body);
+        should.exist(result);
         //validate a deployment
-        client.deployments.validate(resourceGroupName, deploymentName, deploymentParameters, function (err, result) {
+        client.deployments.validate(resourceGroupName, deploymentName, deploymentParameters, function (err, result, request, response) {
           should.not.exist(err);
-          result.response.statusCode.should.equal(200);
-          result.body.name.should.equal(deploymentName);
+          response.statusCode.should.equal(200);
+          //result.properties.name.should.equal(deploymentName);
           //create a deployment
-          client.deployments.createOrUpdate(resourceGroupName, deploymentName, deploymentParameters, function (err, result) {
+          client.deployments.createOrUpdate(resourceGroupName, deploymentName, deploymentParameters, function (err, result, request, response) {
             should.not.exist(err);
-            //result.response.statusCode.should.equal(200); 201
-            result.body.name.should.equal(deploymentName);
+            //response.statusCode.should.equal(200); 201
+            result.name.should.equal(deploymentName);
             //get a deployment
-            client.deployments.get(resourceGroupName, deploymentName, function (err, result) {
+            client.deployments.get(resourceGroupName, deploymentName, function (err, result, request, response) {
               should.not.exist(err);
-              result.response.statusCode.should.equal(200);
-              result.body.name.should.equal(deploymentName);
-              result.body.properties.mode.should.equal('Incremental');
+              response.statusCode.should.equal(200);
+              result.name.should.equal(deploymentName);
+              result.properties.mode.should.equal('Incremental');
               //list a deployment
-              client.deployments.list(resourceGroupName, null, null, function (err, result) {
+              client.deployments.list(resourceGroupName, null, null, function (err, result, request, response) {
                 should.not.exist(err);
-                result.response.statusCode.should.equal(200);
-                var deployments = result.body.value;
+                response.statusCode.should.equal(200);
+                var deployments = result.value;
                 deployments.length.should.be.above(0);
                 deployments.some(function (de) { return (de.name === deploymentName); }).should.be.true;
                 //delete the resource group
-                client.resourceGroups.deleteMethod(resourceGroupName, function (err, result) {
+                client.resourceGroups.deleteMethod(resourceGroupName, function (err, result, request, response) {
                   should.not.exist(err);
-                  result.response.statusCode.should.equal(200);
+                  response.statusCode.should.equal(200);
                   done();
                 });
               });
@@ -236,30 +236,30 @@ describe('Resource Management Client', function () {
 
   describe('Resource Provider operations', function () {
     it('should work to list, register, get and unregister resource providers', function (done) {
-      client.providers.list(null, function (err, result) {
+      client.providers.list(null, function (err, result, request, response) {
         should.not.exist(err);
-        result.response.statusCode.should.equal(200);
-        var providers = result.body.value;
+        response.statusCode.should.equal(200);
+        var providers = result.value;
         providers.length.should.be.above(0);
         var unregisteredProviders = providers.filter(function (item) { return item.registrationState === 'NotRegistered'; });
         var providerNamespace = unregisteredProviders[0].namespace;
-        client.providers.register(providerNamespace, function (err, result) {
+        client.providers.register(providerNamespace, function (err, result, request, response) {
           should.not.exist(err);
-          result.response.statusCode.should.equal(200);
-          result.body.namespace.should.equal(providerNamespace);
-          result.body.registrationState.should.equal('Registering');
-          result.body.resourceTypes.length.should.be.above(0);
-          client.providers.get(providerNamespace, function (err, result) {
+          response.statusCode.should.equal(200);
+          result.namespace.should.equal(providerNamespace);
+          result.registrationState.should.equal('Registering');
+          result.resourceTypes.length.should.be.above(0);
+          client.providers.get(providerNamespace, function (err, result, request, response) {
             should.not.exist(err);
-            result.response.statusCode.should.equal(200);
-            result.body.namespace.should.equal(providerNamespace);
-            result.body.registrationState.should.match(/^Register(ing|ed)$/ig);
-            result.body.resourceTypes.length.should.be.above(0);
-            client.providers.unregister(providerNamespace, function (err, result) {
+            response.statusCode.should.equal(200);
+            result.namespace.should.equal(providerNamespace);
+            result.registrationState.should.match(/^Register(ing|ed)$/ig);
+            result.resourceTypes.length.should.be.above(0);
+            client.providers.unregister(providerNamespace, function (err, result, request, response) {
               should.not.exist(err);
-              result.response.statusCode.should.equal(200);
-              result.body.namespace.should.equal(providerNamespace);
-              result.body.registrationState.should.equal('Unregistering');
+              response.statusCode.should.equal(200);
+              result.namespace.should.equal(providerNamespace);
+              result.registrationState.should.equal('Unregistering');
               done();
             });
           });

@@ -130,7 +130,7 @@ _.extend(SuiteBase.prototype, {
    */
   _setupResourceManagementClient: function () {
     if (!this.resourceManagement) {
-      this.resourceManagement = new ResourceManagementClient(this.userCredentials, this.subscriptionId);
+      this.resourceManagement = new ResourceManagementClient(this.credentials, this.subscriptionId);
     }
     if (this.isPlayback) {
       this.resourceManagement.longRunningOperationRetryTimeoutInSeconds = 0;

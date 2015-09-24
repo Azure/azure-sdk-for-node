@@ -6,6 +6,24 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
+nock('http://management.azure.com:443')
+  .post('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Features/providers/Microsoft.Sql/features/IndexAdvisor/register?api-version=2014-08-01-preview')
+  .reply(200, "{\"name\":\"Microsoft.Sql/IndexAdvisor\",\"properties\":{\"state\":\"Pending\"},\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Features/providers/Microsoft.Sql/features/IndexAdvisor\",\"type\":\"Microsoft.Features/providers/features\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '251',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  vary: 'Accept-Encoding',
+  'x-ms-request-id': 'westus:4f89a1b1-3ef1-4696-8271-f3d350df881b',
+  'x-ms-ratelimit-remaining-subscription-writes': '1193',
+  'x-ms-correlation-request-id': '9a46ed25-0824-4021-bdfe-18ce490635e7',
+  'x-ms-routing-request-id': 'WESTUS:20150924T032639Z:9a46ed25-0824-4021-bdfe-18ce490635e7',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 24 Sep 2015 03:26:38 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
 nock('https://management.azure.com:443')
   .post('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Features/providers/Microsoft.Sql/features/IndexAdvisor/register?api-version=2014-08-01-preview')
   .reply(200, "{\"name\":\"Microsoft.Sql/IndexAdvisor\",\"properties\":{\"state\":\"Pending\"},\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Features/providers/Microsoft.Sql/features/IndexAdvisor\",\"type\":\"Microsoft.Features/providers/features\"}", { 'cache-control': 'no-cache',
@@ -14,10 +32,11 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   vary: 'Accept-Encoding',
-  'x-ms-request-id': 'westus:45363f01-4b0d-47c9-923b-5649f69daa90',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '86db829c-2c7a-4b20-a331-65c36a50680a',
-  'x-ms-routing-request-id': 'WESTUS:20150819T184230Z:86db829c-2c7a-4b20-a331-65c36a50680a',
+  'x-ms-request-id': 'westus:4f89a1b1-3ef1-4696-8271-f3d350df881b',
+  'x-ms-ratelimit-remaining-subscription-writes': '1193',
+  'x-ms-correlation-request-id': '9a46ed25-0824-4021-bdfe-18ce490635e7',
+  'x-ms-routing-request-id': 'WESTUS:20150924T032639Z:9a46ed25-0824-4021-bdfe-18ce490635e7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 19 Aug 2015 18:42:29 GMT' });
+  date: 'Thu, 24 Sep 2015 03:26:38 GMT',
+  connection: 'close' });
  return result; }]];
