@@ -55,33 +55,33 @@ describe('Subscription Management Client', function () {
   });
   
   it('should get a specified subscription', function (done) {
-    client.subscriptions.get(suite.subscriptionId, function (err, result) {
+    client.subscriptions.get(suite.subscriptionId, function (err, result, request, response) {
       should.not.exist(err);
-      should.exist(result.body);
-      result.response.statusCode.should.equal(200);
-      result.body.subscriptionId.should.equal(suite.subscriptionId);
-      result.body.state.should.equal('Enabled');
+      should.exist(result);
+      response.statusCode.should.equal(200);
+      result.subscriptionId.should.equal(suite.subscriptionId);
+      result.state.should.equal('Enabled');
       done();
     });
   });
   
   it('should list all the subscriptions', function (done) {
-    client.subscriptions.list(function (err, result) {
+    client.subscriptions.list(function (err, result, request, response) {
       should.not.exist(err);
-      should.exist(result.body);
-      result.response.statusCode.should.equal(200);
-      result.body.value.length.should.be.above(0);
-      result.body.value.some(function (item) { return _.isEqual(item.subscriptionId, suite.subscriptionId); }).should.be.true;
+      should.exist(result);
+      response.statusCode.should.equal(200);
+      result.value.length.should.be.above(0);
+      result.value.some(function (item) { return _.isEqual(item.subscriptionId, suite.subscriptionId); }).should.be.true;
       done();
     });
   });
 
   it('should list all the tenants', function (done) {
-    client.tenants.list(function (err, result) {
+    client.tenants.list(function (err, result, request, response) {
       should.not.exist(err);
-      should.exist(result.body);
-      result.response.statusCode.should.equal(200);
-      result.body.value.length.should.be.above(0);
+      should.exist(result);
+      response.statusCode.should.equal(200);
+      result.value.length.should.be.above(0);
       done();
     });
   });
