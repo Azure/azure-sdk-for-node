@@ -8,36 +8,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup6241/providers/Microsoft.Storage/storageAccounts/testacc6964?api-version=2015-05-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodetestgroup6241/providers/Microsoft.Storage/storageAccounts/testacc6964\",\"name\":\"testacc6964\",\"location\":\"West US\",\"type\":\"Microsoft.Storage/storageAccounts\",\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"accountType\":\"Standard_LRS\",\"primaryEndpoints\":{\"blob\":\"https://testacc6964.blob.core.windows.net/\",\"queue\":\"https://testacc6964.queue.core.windows.net/\",\"table\":\"https://testacc6964.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"statusOfPrimary\":\"Available\",\"creationTime\":\"2015-09-24T03:26:42.1050813Z\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup2893/providers/Microsoft.Storage/storageAccounts/testacc6316?api-version=2015-05-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodetestgroup2893/providers/Microsoft.Storage/storageAccounts/testacc6316\",\"location\":\"West US\",\"name\":\"testacc6316\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-09-25T05:01:21.3250159Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc6316.blob.core.windows.net/\",\"queue\":\"https://testacc6316.queue.core.windows.net/\",\"table\":\"https://testacc6316.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '632',
-  'content-type': 'application/json; charset=utf-8',
+  'content-length': '633',
+  'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '9e97f623-62c9-411a-b239-4298a04401f0',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14991',
-  'x-ms-correlation-request-id': 'e0d232e4-47e1-412f-95cd-970568f59c31',
-  'x-ms-routing-request-id': 'WESTUS:20150924T032708Z:e0d232e4-47e1-412f-95cd-970568f59c31',
+  'x-ms-request-id': '64409381-c3b5-401d-92e2-f297e6504494',
+  server: 'Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14990',
+  'x-ms-correlation-request-id': '64409381-c3b5-401d-92e2-f297e6504494',
+  'x-ms-routing-request-id': 'WESTUS:20150925T050148Z:64409381-c3b5-401d-92e2-f297e6504494',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 24 Sep 2015 03:27:08 GMT',
+  date: 'Fri, 25 Sep 2015 05:01:48 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup6241/providers/Microsoft.Storage/storageAccounts/testacc6964?api-version=2015-05-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodetestgroup6241/providers/Microsoft.Storage/storageAccounts/testacc6964\",\"name\":\"testacc6964\",\"location\":\"West US\",\"type\":\"Microsoft.Storage/storageAccounts\",\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"accountType\":\"Standard_LRS\",\"primaryEndpoints\":{\"blob\":\"https://testacc6964.blob.core.windows.net/\",\"queue\":\"https://testacc6964.queue.core.windows.net/\",\"table\":\"https://testacc6964.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"statusOfPrimary\":\"Available\",\"creationTime\":\"2015-09-24T03:26:42.1050813Z\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup2893/providers/Microsoft.Storage/storageAccounts/testacc6316?api-version=2015-05-01-preview')
+  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodetestgroup2893/providers/Microsoft.Storage/storageAccounts/testacc6316\",\"location\":\"West US\",\"name\":\"testacc6316\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-09-25T05:01:21.3250159Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc6316.blob.core.windows.net/\",\"queue\":\"https://testacc6316.queue.core.windows.net/\",\"table\":\"https://testacc6316.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '632',
-  'content-type': 'application/json; charset=utf-8',
+  'content-length': '633',
+  'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '9e97f623-62c9-411a-b239-4298a04401f0',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14991',
-  'x-ms-correlation-request-id': 'e0d232e4-47e1-412f-95cd-970568f59c31',
-  'x-ms-routing-request-id': 'WESTUS:20150924T032708Z:e0d232e4-47e1-412f-95cd-970568f59c31',
+  'x-ms-request-id': '64409381-c3b5-401d-92e2-f297e6504494',
+  server: 'Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14990',
+  'x-ms-correlation-request-id': '64409381-c3b5-401d-92e2-f297e6504494',
+  'x-ms-routing-request-id': 'WESTUS:20150925T050148Z:64409381-c3b5-401d-92e2-f297e6504494',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 24 Sep 2015 03:27:08 GMT',
+  date: 'Fri, 25 Sep 2015 05:01:48 GMT',
   connection: 'close' });
  return result; }]];

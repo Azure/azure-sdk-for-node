@@ -14,11 +14,11 @@ nock('http://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-tenant-reads': '14999',
-  'x-ms-request-id': '9ba2d255-aa7a-4dcc-88b3-f25f4935c088',
-  'x-ms-correlation-request-id': '9ba2d255-aa7a-4dcc-88b3-f25f4935c088',
-  'x-ms-routing-request-id': 'WESTUS:20150924T032640Z:9ba2d255-aa7a-4dcc-88b3-f25f4935c088',
+  'x-ms-request-id': '21a2f972-2c74-4363-aa51-ff335bde3676',
+  'x-ms-correlation-request-id': '21a2f972-2c74-4363-aa51-ff335bde3676',
+  'x-ms-routing-request-id': 'WESTUS:20150925T050119Z:21a2f972-2c74-4363-aa51-ff335bde3676',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 24 Sep 2015 03:26:39 GMT',
+  date: 'Fri, 25 Sep 2015 05:01:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -31,10 +31,10 @@ nock('https://management.azure.com:443')
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-tenant-reads': '14999',
-  'x-ms-request-id': '9ba2d255-aa7a-4dcc-88b3-f25f4935c088',
-  'x-ms-correlation-request-id': '9ba2d255-aa7a-4dcc-88b3-f25f4935c088',
-  'x-ms-routing-request-id': 'WESTUS:20150924T032640Z:9ba2d255-aa7a-4dcc-88b3-f25f4935c088',
+  'x-ms-request-id': '21a2f972-2c74-4363-aa51-ff335bde3676',
+  'x-ms-correlation-request-id': '21a2f972-2c74-4363-aa51-ff335bde3676',
+  'x-ms-routing-request-id': 'WESTUS:20150925T050119Z:21a2f972-2c74-4363-aa51-ff335bde3676',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 24 Sep 2015 03:26:39 GMT',
+  date: 'Fri, 25 Sep 2015 05:01:18 GMT',
   connection: 'close' });
  return result; }]];
