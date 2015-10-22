@@ -11,7 +11,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Microsoft Azure Compute Resource Provider Management Client Library for node",
   "tags": [
     "azure",
