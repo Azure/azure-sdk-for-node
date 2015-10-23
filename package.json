@@ -28,12 +28,7 @@
   "engines": {
     "node": ">= 0.6.15"
   },
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "0.9.12",
     "azure-asm-compute": "0.10.0",
