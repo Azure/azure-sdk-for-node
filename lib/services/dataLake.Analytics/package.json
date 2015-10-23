@@ -1,5 +1,5 @@
 {
-  "name": "azure-arm-dlanalytics",
+  "name": "azure-arm-datalake-analytics",
   "author": "Microsoft Corporation",
   "contributors": [
     "Goldsmith, Benjamin <begoldsm@microsoft.com>"

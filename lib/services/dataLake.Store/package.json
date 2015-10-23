@@ -1,5 +1,5 @@
 {
-  "name": "azure-arm-dlstore",
+  "name": "azure-arm-datalake-store",
   "author": "Microsoft Corporation",
   "contributors": [
     "Goldsmith, Benjamin <begoldsm@microsoft.com>"
