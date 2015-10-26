@@ -14,7 +14,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/dataLake.js",
+  "main": "./lib/dataLakeStore.js",
   "engines": {
     "node": ">= 0.6.15"
   },
