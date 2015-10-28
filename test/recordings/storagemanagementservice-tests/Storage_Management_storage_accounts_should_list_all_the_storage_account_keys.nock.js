@@ -8,36 +8,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4662/providers/Microsoft.Storage/storageAccounts/testacc1561/listKeys?api-version=2015-05-01-preview')
-  .reply(200, "{\"key1\":\"feOtd1R3yAzZEhESalD7nApMAhrRS8MYmYXSMo3cGqgJq7Zz99bi2I2peimO4L9fMraIVBbr037JMYjKrDemzw==\",\"key2\":\"pFBrlM254qznIXRofMamXsCTLCiMI8ltc3JW2EnNBJf4NKFUbifqG5ArbClqZv9ZBRMvScyFjb561Is38bUUJQ==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup9856/providers/Microsoft.Storage/storageAccounts/testacc79/listKeys?api-version=2015-05-01-preview')
+  .reply(200, "{\"key1\":\"loGefxP+JLAvFdiO4cdhgj77pV9Ig5vWU/++DPQSwH8iZQS2AOkikG7OSKp9Jit6vZ5wqMPoKLCTHGFvwu2CAg==\",\"key2\":\"4bLlPaS4PhOJu7/QmZ/a8BxjOn2YWX40mboGx08clCOZHh/Li6niD5CHBjQF2rxRlr/vIRYwWvvS0dDthtEFWg==\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/json; charset=utf-8',
+  'content-length': '198',
+  'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'fd42645f-d3f3-4b39-b146-a3097deccafe',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1190',
-  'x-ms-correlation-request-id': '11504500-6a6b-4089-949a-9d333f0b85ad',
-  'x-ms-routing-request-id': 'EASTUS:20150817T072812Z:11504500-6a6b-4089-949a-9d333f0b85ad',
+  'x-ms-request-id': '1173cdea-7901-4d3b-8b7a-7dc4d6f43623',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '1173cdea-7901-4d3b-8b7a-7dc4d6f43623',
+  'x-ms-routing-request-id': 'WESTUS:20151027T002439Z:1173cdea-7901-4d3b-8b7a-7dc4d6f43623',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 17 Aug 2015 07:28:12 GMT',
+  date: 'Tue, 27 Oct 2015 00:24:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4662/providers/Microsoft.Storage/storageAccounts/testacc1561/listKeys?api-version=2015-05-01-preview')
-  .reply(200, "{\"key1\":\"feOtd1R3yAzZEhESalD7nApMAhrRS8MYmYXSMo3cGqgJq7Zz99bi2I2peimO4L9fMraIVBbr037JMYjKrDemzw==\",\"key2\":\"pFBrlM254qznIXRofMamXsCTLCiMI8ltc3JW2EnNBJf4NKFUbifqG5ArbClqZv9ZBRMvScyFjb561Is38bUUJQ==\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup9856/providers/Microsoft.Storage/storageAccounts/testacc79/listKeys?api-version=2015-05-01-preview')
+  .reply(200, "{\"key1\":\"loGefxP+JLAvFdiO4cdhgj77pV9Ig5vWU/++DPQSwH8iZQS2AOkikG7OSKp9Jit6vZ5wqMPoKLCTHGFvwu2CAg==\",\"key2\":\"4bLlPaS4PhOJu7/QmZ/a8BxjOn2YWX40mboGx08clCOZHh/Li6niD5CHBjQF2rxRlr/vIRYwWvvS0dDthtEFWg==\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '197',
-  'content-type': 'application/json; charset=utf-8',
+  'content-length': '198',
+  'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'fd42645f-d3f3-4b39-b146-a3097deccafe',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1190',
-  'x-ms-correlation-request-id': '11504500-6a6b-4089-949a-9d333f0b85ad',
-  'x-ms-routing-request-id': 'EASTUS:20150817T072812Z:11504500-6a6b-4089-949a-9d333f0b85ad',
+  'x-ms-request-id': '1173cdea-7901-4d3b-8b7a-7dc4d6f43623',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '1173cdea-7901-4d3b-8b7a-7dc4d6f43623',
+  'x-ms-routing-request-id': 'WESTUS:20151027T002439Z:1173cdea-7901-4d3b-8b7a-7dc4d6f43623',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 17 Aug 2015 07:28:12 GMT',
+  date: 'Tue, 27 Oct 2015 00:24:39 GMT',
   connection: 'close' });
  return result; }]];

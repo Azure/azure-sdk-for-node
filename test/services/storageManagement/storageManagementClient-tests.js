@@ -51,11 +51,9 @@ describe('Storage Management', function () {
       accountName = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       acclocation = process.env['AZURE_TEST_LOCATION'];
       accType = 'Standard_LRS';
-      createParameters =   {
+      createParameters = {
         location: acclocation,
-        properties: {
-          accountType: accType,
-        },
+        accountType: accType,
         tags: {
           tag1: 'val1',
           tag2: 'val2'
@@ -90,20 +88,20 @@ describe('Storage Management', function () {
   
   describe('storage accounts', function () {
     it('should create an account correctly', function (done) {
-      client.storageAccounts.create(groupName, accountName, createParameters, function (err, result) {
+      client.storageAccounts.create(groupName, accountName, createParameters, function (err, result, request, response) {
         should.not.exist(err);
-        should.exist(result.body);
-        result.response.statusCode.should.equal(200);
+        should.exist(result);
+        response.statusCode.should.equal(200);
         done();
       });
     });
     
     it('should get properties of the specified storage account', function (done) {
-      client.storageAccounts.getProperties(groupName, accountName, function (err, result) {
+      client.storageAccounts.getProperties(groupName, accountName, function (err, result, request, response) {
         should.not.exist(err);
-        should.exist(result.body);
-        result.response.statusCode.should.equal(200);
-        var account = result.body;
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var account = result;
         account.name.should.equal(accountName);
         account.location.should.equal(acclocation);
         account.type.should.equal('Microsoft.Storage/storageAccounts');
@@ -112,11 +110,11 @@ describe('Storage Management', function () {
     });
     
     it('should list all the storage accounts in the subscription', function (done) {
-      client.storageAccounts.list(function (err, result) {
+      client.storageAccounts.list(function (err, result, request, response) {
         should.not.exist(err);
-        should.exist(result.body);
-        result.response.statusCode.should.equal(200);
-        var accounts = result.body.value;
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var accounts = result.value;
         accounts.length.should.be.above(0);
         accounts.some(function (ac) { return ac.name === accountName }).should.be.true;
         done();
@@ -124,11 +122,11 @@ describe('Storage Management', function () {
     });
     
     it('should list all the storage accounts in the resourcegroup', function (done) {
-      client.storageAccounts.listByResourceGroup(groupName, function (err, result) {
+      client.storageAccounts.listByResourceGroup(groupName, function (err, result, request, response) {
         should.not.exist(err);
-        should.exist(result.body);
-        result.response.statusCode.should.equal(200);
-        var accounts = result.body.value;
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var accounts = result.value;
         accounts.length.should.be.above(0);
         accounts.some(function (ac) { return ac.name === accountName }).should.be.true;
         done();
@@ -136,11 +134,11 @@ describe('Storage Management', function () {
     });
     
     it('should list all the storage account keys', function (done) {
-      client.storageAccounts.listKeys(groupName, accountName, function (err, result) {
+      client.storageAccounts.listKeys(groupName, accountName, function (err, result, request, response) {
         should.not.exist(err);
-        should.exist(result.body);
-        result.response.statusCode.should.equal(200);
-        var keys = result.body;
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var keys = result;
         should.exist(keys.key1);
         should.exist(keys.key2);
         done();
@@ -148,16 +146,16 @@ describe('Storage Management', function () {
     });
     
     it('should regenerate storage account keys', function (done) {
-      client.storageAccounts.listKeys(groupName, accountName, function (err, result) {
+      client.storageAccounts.listKeys(groupName, accountName, function (err, result, request, response) {
         should.not.exist(err);
-        should.exist(result.body);
-        result.response.statusCode.should.equal(200);
-        var keys = result.body;
-        client.storageAccounts.regenerateKey(groupName, accountName, { keyName: 'key1' }, function (err, result) {
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var keys = result;
+        client.storageAccounts.regenerateKey(groupName, accountName, { keyName: 'key1' }, function (err, result, request, response) {
           should.not.exist(err);
-          should.exist(result.body);
-          result.response.statusCode.should.equal(200);
-          var regeneratedkeys = result.body;
+          should.exist(result);
+          response.statusCode.should.equal(200);
+          var regeneratedkeys = result;
           keys.key2.should.equal(regeneratedkeys.key2);
           keys.key1.should.not.equal(regeneratedkeys.key1);
           done();
@@ -166,9 +164,9 @@ describe('Storage Management', function () {
     });
     
     it('should delete the specified storage account', function (done) {
-      client.storageAccounts.deleteMethod(groupName, accountName, function (err, result) {
+      client.storageAccounts.deleteMethod(groupName, accountName, function (err, result, request, response) {
         should.not.exist(err);
-        result.response.statusCode.should.equal(200);
+        response.statusCode.should.equal(200);
         done();
       });
     });

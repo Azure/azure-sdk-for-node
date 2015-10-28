@@ -157,20 +157,18 @@
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccountKeys.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccountListResult.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccountListResult.js" />
-    <Compile Include="lib\services\storageManagement2\lib\models\storageAccountProperties.js" />
-    <Compile Include="lib\services\storageManagement2\lib\models\storageAccountProperties.js" />
-    <Compile Include="lib\services\storageManagement2\lib\models\storageAccountPropertiesCreateParameters.js" />
-    <Compile Include="lib\services\storageManagement2\lib\models\storageAccountPropertiesCreateParameters.js" />
-    <Compile Include="lib\services\storageManagement2\lib\models\storageAccountPropertiesUpdateParameters.js" />
-    <Compile Include="lib\services\storageManagement2\lib\models\storageAccountPropertiesUpdateParameters.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccountRegenerateKeyParameters.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccountRegenerateKeyParameters.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccountUpdateParameters.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccountUpdateParameters.js" />
+    <Compile Include="lib\services\storageManagement2\lib\models\usage.js" />
+    <Compile Include="lib\services\storageManagement2\lib\models\usageListResult.js" />
+    <Compile Include="lib\services\storageManagement2\lib\models\usageName.js" />
     <Compile Include="lib\services\storageManagement2\lib\operations\index.js" />
     <Compile Include="lib\services\storageManagement2\lib\operations\index.js" />
     <Compile Include="lib\services\storageManagement2\lib\operations\storageAccounts.js" />
     <Compile Include="lib\services\storageManagement2\lib\operations\storageAccounts.js" />
+    <Compile Include="lib\services\storageManagement2\lib\operations\usageOperations.js" />
     <Compile Include="lib\services\storageManagement2\lib\storageManagementClient.js">
       <TestFramework>
       </TestFramework>

@@ -57,12 +57,12 @@ describe('Feature Client', function () {
   });
   
   it('should list features of an RP', function (done) {
-    client.features.list(resourceProvider, function (err, result) {
+    client.features.list(resourceProvider, function (err, result, request, response) {
       should.not.exist(err);
-      should.exist(result.body);
-      result.response.statusCode.should.equal(200);
-      result.body.value.length.should.be.above(0);
-      result.body.value.some(function (item) {
+      should.exist(result);
+      response.statusCode.should.equal(200);
+      result.value.length.should.be.above(0);
+      result.value.some(function (item) {
         return (_.isEqual(item.name, 'Microsoft.Sql/IndexAdvisor') && _.isEqual(item.type, 'Microsoft.Features/providers/features'));
       }).should.be.true;
       done();
@@ -70,22 +70,22 @@ describe('Feature Client', function () {
   });
   
   it('should list all the features of all the RPs in the subscription', function (done) {
-    client.features.listAll(function (err, result) {
+    client.features.listAll(function (err, result, request, response) {
       should.not.exist(err);
-      should.exist(result.body);
-      result.response.statusCode.should.equal(200);
-      result.body.value.length.should.be.above(0);
+      should.exist(result);
+      response.statusCode.should.equal(200);
+      result.value.length.should.be.above(0);
       done();
     });
   });
 
   it('should register an RP', function (done) {
-    client.features.register(resourceProvider, featureName, function (err, result) {
+    client.features.register(resourceProvider, featureName, function (err, result, request, response) {
       should.not.exist(err);
-      should.exist(result.body);
-      result.response.statusCode.should.equal(200);
-      result.body.name.should.equal('Microsoft.Sql/IndexAdvisor');
-      result.body.properties.state.should.not.equal('NotRegistered');
+      should.exist(result);
+      response.statusCode.should.equal(200);
+      result.name.should.equal('Microsoft.Sql/IndexAdvisor');
+      result.properties.state.should.not.equal('NotRegistered');
       done();
     });
   });

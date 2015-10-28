@@ -65,14 +65,14 @@
     "azure-arm-website": "0.10.0",
     "mime": "~1.2.4",
     "underscore": "1.4.x",
-    "request": "2.45.0",
+    "request": "2.52.0",
     "node-uuid": "~1.4",
     "azure-storage": "0.3.3",
-    "ms-rest-azure": "1.0.0",
-    "ms-rest": "1.1.0"
+    "ms-rest-azure": "1.1.0",
+    "ms-rest": "1.2.0"
   },
   "devDependencies": {
-    "adal-node": "0.1.13",
+    "adal-node": "0.1.17",
     "azure-storage-legacy": "0.9.14",
     "glob": "~5.0",
     "grunt": "~0.4",
