@@ -8,9 +8,10 @@
     "Georgiev, Yavor <yavorg@microsoft.com>",
     "Janczuk, Tomasz <tjanczuk@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Tavares, Chris <ctavares@microsoft.com>",
+    "Kulshrestha, Ankur <ankurkul@microsoft.com>"
   ],
-  "version": "0.9.13",
+  "version": "0.9.16",
   "description": "Microsoft Azure Common Client Library for node",
   "tags": [
     "azure",

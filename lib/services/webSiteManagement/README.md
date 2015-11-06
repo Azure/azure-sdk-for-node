@@ -32,7 +32,7 @@ This library support management certificate authentication. To authenticate the 
 var fs                = require('fs'),
     webSiteManagement = require('azure-asm-website');
 
-var webSiteManagementClient = webSiteManagement.createWebsiteManagementClient(webSiteManagement.createCertificateCloudCredentials({
+var webSiteManagementClient = webSiteManagement.createWebSiteManagementClient(webSiteManagement.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
   pem: fs.readFileSync('<your pem file>')
 }));
