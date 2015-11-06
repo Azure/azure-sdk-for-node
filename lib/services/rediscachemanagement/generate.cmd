@@ -14,4 +14,4 @@ set repoRoot=%~dp0..\..\..\
 set generateFolder=%~dp0lib
 
 if exist %generateFolder% rd /S /Q  %generateFolder%
-call "%repoRoot%\tools\autorest.gen.cmd" %specFile% Microsoft.Azure.Management.RedisCache %autoRestVersion% %generateFolder% 
+call "%repoRoot%\tools\autorest.gen.cmd" %specFile% Microsoft.Azure.Management.RedisCache %autoRestVersion% %generateFolder% "-FT 1"
