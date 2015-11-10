@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
 	"Guerra, Alberto <alguerra@microsoft.com>"
   ],
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Microsoft Azure Traffic Manager Management Client Library for node",
   "tags": [
     "azure",
