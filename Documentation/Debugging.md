@@ -30,7 +30,7 @@ The Visual Studio plugin for node.js can be downloaded from [here](https://githu
   * In the **Properties** pane select **"Mocha"** as the Test Framework. Save All the changes. 
   * The tests shall be seen in the "Test Explorer". Right Click on any Test and Select "Debug Selected Test".
 * **Note:** If the test file has any errors then you might not see the tests in the TestExplorer. In the Properties pane select **ExportRunner** as the test framework and save the solution. You will see the error in the output pane. Once the errors are resolved change the test framework back to **Mocha** in the Properties pane for that test file. When you save the solution, you should see your tests in the test explorer.
-  * You can also run npm -s run-script jshint in the cmd prompt from the root of the repo to find errors if any. 
+  * You can also run ```npm -s run-script jshint``` in the cmd prompt from the root of the repo to find errors if any. 
 
 ##  Using node inspector
 This will open a debugging session in a browser (chrome or opera). It is super easy to use.
