@@ -68,7 +68,7 @@
     "request": "2.52.0",
     "node-uuid": "~1.4",
     "azure-storage": "0.3.3",
-    "ms-rest-azure": "1.1.0",
+    "ms-rest-azure": "^1.1.0",
     "ms-rest": "1.2.0"
   },
   "devDependencies": {
