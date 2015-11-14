@@ -93,7 +93,7 @@ describe('Authorization Client', function () {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
-            var locks = result.value;
+            var locks = result;
             locks.length.should.be.above(0);
             locks.some(function (item) {
               return item.name.should.equal(lockName);
@@ -102,7 +102,7 @@ describe('Authorization Client', function () {
               should.not.exist(err);
               should.exist(result);
               response.statusCode.should.equal(200);
-              var locks = result.value;
+              var locks = result;
               locks.length.should.be.above(0);
               locks.some(function (item) {
                 return item.name.should.equal(lockName);

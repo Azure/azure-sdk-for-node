@@ -61,8 +61,8 @@ describe('Feature Client', function () {
       should.not.exist(err);
       should.exist(result);
       response.statusCode.should.equal(200);
-      result.value.length.should.be.above(0);
-      result.value.some(function (item) {
+      result.length.should.be.above(0);
+      result.some(function (item) {
         return (_.isEqual(item.name, 'Microsoft.Sql/IndexAdvisor') && _.isEqual(item.type, 'Microsoft.Features/providers/features'));
       }).should.be.true;
       done();
@@ -74,7 +74,7 @@ describe('Feature Client', function () {
       should.not.exist(err);
       should.exist(result);
       response.statusCode.should.equal(200);
-      result.value.length.should.be.above(0);
+      result.length.should.be.above(0);
       done();
     });
   });
