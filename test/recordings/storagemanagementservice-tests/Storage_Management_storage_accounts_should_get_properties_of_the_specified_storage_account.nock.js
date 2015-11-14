@@ -8,36 +8,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup9856/providers/Microsoft.Storage/storageAccounts/testacc79?api-version=2015-05-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodetestgroup9856/providers/Microsoft.Storage/storageAccounts/testacc79\",\"location\":\"West US\",\"name\":\"testacc79\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-10-27T00:24:12.8071550Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc79.blob.core.windows.net/\",\"file\":\"https://testacc79.file.core.windows.net/\",\"queue\":\"https://testacc79.queue.core.windows.net/\",\"table\":\"https://testacc79.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4796/providers/Microsoft.Storage/storageAccounts/testacc4512?api-version=2015-06-15')
+  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodetestgroup4796/providers/Microsoft.Storage/storageAccounts/testacc4512\",\"location\":\"westus\",\"name\":\"testacc4512\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-11-14T01:22:29.1099713Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc4512.blob.core.windows.net/\",\"file\":\"https://testacc4512.file.core.windows.net/\",\"queue\":\"https://testacc4512.queue.core.windows.net/\",\"table\":\"https://testacc4512.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '673',
+  'content-length': '683',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '6eebf00a-31fa-43ec-abbb-074d7d604e33',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '6eebf00a-31fa-43ec-abbb-074d7d604e33',
-  'x-ms-routing-request-id': 'WESTUS:20151027T002438Z:6eebf00a-31fa-43ec-abbb-074d7d604e33',
+  'x-ms-request-id': 'e94ef12a-baad-4009-bfab-37c4cc842853',
+  server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': 'e94ef12a-baad-4009-bfab-37c4cc842853',
+  'x-ms-routing-request-id': 'WESTUS:20151114T012259Z:e94ef12a-baad-4009-bfab-37c4cc842853',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 27 Oct 2015 00:24:38 GMT',
+  date: 'Sat, 14 Nov 2015 01:22:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup9856/providers/Microsoft.Storage/storageAccounts/testacc79?api-version=2015-05-01-preview')
-  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodetestgroup9856/providers/Microsoft.Storage/storageAccounts/testacc79\",\"location\":\"West US\",\"name\":\"testacc79\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-10-27T00:24:12.8071550Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc79.blob.core.windows.net/\",\"file\":\"https://testacc79.file.core.windows.net/\",\"queue\":\"https://testacc79.queue.core.windows.net/\",\"table\":\"https://testacc79.table.core.windows.net/\"},\"primaryLocation\":\"West US\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4796/providers/Microsoft.Storage/storageAccounts/testacc4512?api-version=2015-06-15')
+  .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodetestgroup4796/providers/Microsoft.Storage/storageAccounts/testacc4512\",\"location\":\"westus\",\"name\":\"testacc4512\",\"properties\":{\"accountType\":\"Standard_LRS\",\"creationTime\":\"2015-11-14T01:22:29.1099713Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc4512.blob.core.windows.net/\",\"file\":\"https://testacc4512.file.core.windows.net/\",\"queue\":\"https://testacc4512.queue.core.windows.net/\",\"table\":\"https://testacc4512.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '673',
+  'content-length': '683',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '6eebf00a-31fa-43ec-abbb-074d7d604e33',
-  server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '6eebf00a-31fa-43ec-abbb-074d7d604e33',
-  'x-ms-routing-request-id': 'WESTUS:20151027T002438Z:6eebf00a-31fa-43ec-abbb-074d7d604e33',
+  'x-ms-request-id': 'e94ef12a-baad-4009-bfab-37c4cc842853',
+  server: 'Microsoft-Azure-Storage-Resource-Provider/1.0, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': 'e94ef12a-baad-4009-bfab-37c4cc842853',
+  'x-ms-routing-request-id': 'WESTUS:20151114T012259Z:e94ef12a-baad-4009-bfab-37c4cc842853',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 27 Oct 2015 00:24:38 GMT',
+  date: 'Sat, 14 Nov 2015 01:22:59 GMT',
   connection: 'close' });
  return result; }]];

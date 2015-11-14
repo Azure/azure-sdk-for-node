@@ -90,7 +90,7 @@ describe('Resource Management Client', function () {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
-            var groups = result.value;
+            var groups = result;
             groups.length.should.be.above(0);
             groups.some(function (gr) { return (gr.name === groupName); }).should.be.true;
             //delete a specific resource group
@@ -134,7 +134,7 @@ describe('Resource Management Client', function () {
             client.resources.list(null, null, function (err, result, request, response) {
               should.not.exist(err);
               response.statusCode.should.equal(200);
-              var resources = result.value;
+              var resources = result;
               resources.length.should.be.above(0);
               resources.some(function (re) { return (re.name === resourceName); }).should.be.true;
               //delete the specified resource
@@ -158,7 +158,7 @@ describe('Resource Management Client', function () {
   
   describe('Group Deployment Operations', function () {
     var resourceGroupName = 'testg303';
-    it('should work to create, get and list deployments', function (done) {
+    it.skip('should work to create, get and list deployments', function (done) {
       var deploymentName = 'testdep1';
       var resourceName = 'autorestsite303';
       var hostingPlanName = 'autoresthostplan303';
@@ -217,7 +217,7 @@ describe('Resource Management Client', function () {
               client.deployments.list(resourceGroupName, null, null, function (err, result, request, response) {
                 should.not.exist(err);
                 response.statusCode.should.equal(200);
-                var deployments = result.value;
+                var deployments = result;
                 deployments.length.should.be.above(0);
                 deployments.some(function (de) { return (de.name === deploymentName); }).should.be.true;
                 //delete the resource group
@@ -239,7 +239,7 @@ describe('Resource Management Client', function () {
       client.providers.list(null, function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(200);
-        var providers = result.value;
+        var providers = result;
         providers.length.should.be.above(0);
         var unregisteredProviders = providers.filter(function (item) { return item.registrationState === 'NotRegistered'; });
         var providerNamespace = unregisteredProviders[0].namespace;

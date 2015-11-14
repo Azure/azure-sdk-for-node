@@ -70,8 +70,8 @@ describe('Subscription Management Client', function () {
       should.not.exist(err);
       should.exist(result);
       response.statusCode.should.equal(200);
-      result.value.length.should.be.above(0);
-      result.value.some(function (item) { return _.isEqual(item.subscriptionId, suite.subscriptionId); }).should.be.true;
+      result.length.should.be.above(0);
+      result.some(function (item) { return _.isEqual(item.subscriptionId, suite.subscriptionId); }).should.be.true;
       done();
     });
   });
@@ -81,7 +81,7 @@ describe('Subscription Management Client', function () {
       should.not.exist(err);
       should.exist(result);
       response.statusCode.should.equal(200);
-      result.value.length.should.be.above(0);
+      result.length.should.be.above(0);
       done();
     });
   });
