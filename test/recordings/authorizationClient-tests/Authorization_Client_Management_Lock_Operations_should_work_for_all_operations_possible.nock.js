@@ -9,35 +9,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup9283/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01', '*')
-  .reply(400, "{\"error\":{\"code\":\"InvalidLockPutRequest\",\"message\":\"The lock 'testlock1' request is invalid.\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup2909/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01', '*')
+  .reply(400, "{\"error\":{\"code\":\"InvalidRequestContent\",\"message\":\"The request content was invalid and could not be deserialized: 'Could not find member 'level' on object of type 'ManagementLockDefinition'. Path 'level', line 1, position 9.'.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '95',
+  'content-length': '230',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'westus:675012d1-08bf-4e88-88be-1bc7feacec74',
+  'x-ms-request-id': 'eastus:e514163a-cf51-4687-a347-c610ebeeb1c5',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '96ea6a67-67d4-46ed-97e1-1c4b7bf33483',
-  'x-ms-routing-request-id': 'WESTUS:20151114T003715Z:96ea6a67-67d4-46ed-97e1-1c4b7bf33483',
+  'x-ms-correlation-request-id': 'aa0cbfdb-5dac-4583-8b20-3961f187330a',
+  'x-ms-routing-request-id': 'EASTUS:20151114T082828Z:aa0cbfdb-5dac-4583-8b20-3961f187330a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 14 Nov 2015 00:37:14 GMT',
+  date: 'Sat, 14 Nov 2015 08:28:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup9283/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01', '*')
-  .reply(400, "{\"error\":{\"code\":\"InvalidLockPutRequest\",\"message\":\"The lock 'testlock1' request is invalid.\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup2909/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01', '*')
+  .reply(400, "{\"error\":{\"code\":\"InvalidRequestContent\",\"message\":\"The request content was invalid and could not be deserialized: 'Could not find member 'level' on object of type 'ManagementLockDefinition'. Path 'level', line 1, position 9.'.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '95',
+  'content-length': '230',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'westus:675012d1-08bf-4e88-88be-1bc7feacec74',
+  'x-ms-request-id': 'eastus:e514163a-cf51-4687-a347-c610ebeeb1c5',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '96ea6a67-67d4-46ed-97e1-1c4b7bf33483',
-  'x-ms-routing-request-id': 'WESTUS:20151114T003715Z:96ea6a67-67d4-46ed-97e1-1c4b7bf33483',
+  'x-ms-correlation-request-id': 'aa0cbfdb-5dac-4583-8b20-3961f187330a',
+  'x-ms-routing-request-id': 'EASTUS:20151114T082828Z:aa0cbfdb-5dac-4583-8b20-3961f187330a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 14 Nov 2015 00:37:14 GMT',
+  date: 'Sat, 14 Nov 2015 08:28:28 GMT',
   connection: 'close' });
  return result; }]];

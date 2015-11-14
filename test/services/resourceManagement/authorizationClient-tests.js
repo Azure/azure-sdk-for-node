@@ -78,10 +78,8 @@ describe('Authorization Client', function () {
     var lockLevel = 'CanNotDelete';
     it('should work for all operations possible', function (done) {
       var lockParameters = {
-        properties: {
           level: lockLevel,
           notes: 'Optional text.'
-        }
       };
       client.managementLocks.createOrUpdateAtResourceGroupLevel(groupName, lockName, lockParameters, function (err, result) {
         should.not.exist(err);

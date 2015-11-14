@@ -158,7 +158,7 @@ describe('Resource Management Client', function () {
   
   describe('Group Deployment Operations', function () {
     var resourceGroupName = 'testg303';
-    it('should work to create, get and list deployments', function (done) {
+    it.skip('should work to create, get and list deployments', function (done) {
       var deploymentName = 'testdep1';
       var resourceName = 'autorestsite303';
       var hostingPlanName = 'autoresthostplan303';
