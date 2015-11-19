@@ -1,5 +1,5 @@
 {
-  "name": "azure-hdinsight-jobs",
+  "name": "azure-arm-hdinsight-jobs",
   "author": "Microsoft Corporation",
   "contributors": [
     "Amit, Harshitha <harshiam@microsoft.com>",

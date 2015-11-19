@@ -9,7 +9,7 @@ This project provides a Node.js package for accessing the Azure HDInsight. Right
 ## How to Install
 
 ```bash
-npm install azure-hdinsight-jobs
+npm install azure-arm-hdinsight-jobs
 ```
 
 ## Related projects
