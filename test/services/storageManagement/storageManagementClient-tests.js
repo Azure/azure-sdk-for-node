@@ -103,7 +103,7 @@ describe('Storage Management', function () {
         response.statusCode.should.equal(200);
         var account = result;
         account.name.should.equal(accountName);
-        account.location.should.equal(acclocation);
+        account.location.should.equal("westus");
         account.type.should.equal('Microsoft.Storage/storageAccounts');
         done();
       });
@@ -114,7 +114,7 @@ describe('Storage Management', function () {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        var accounts = result.value;
+        var accounts = result;
         accounts.length.should.be.above(0);
         accounts.some(function (ac) { return ac.name === accountName }).should.be.true;
         done();
@@ -126,7 +126,7 @@ describe('Storage Management', function () {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        var accounts = result.value;
+        var accounts = result;
         accounts.length.should.be.above(0);
         accounts.some(function (ac) { return ac.name === accountName }).should.be.true;
         done();
@@ -151,7 +151,7 @@ describe('Storage Management', function () {
         should.exist(result);
         response.statusCode.should.equal(200);
         var keys = result;
-        client.storageAccounts.regenerateKey(groupName, accountName, { keyName: 'key1' }, function (err, result, request, response) {
+        client.storageAccounts.regenerateKey(groupName, accountName, 'key1', function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);

@@ -4,9 +4,9 @@
 ::
 
 @echo off
-set autoRestVersion=0.12.0-Nightly20151026
+set autoRestVersion=0.13.0-Nightly20151112
 if  "%1" == "" (
-    set specFile="https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-authorization/2015-01-01/swagger/authorization.json"
+    set specFile="https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/authorization/2015-01-01/swagger/authorization.json"
 ) else (
     set specFile="%1"
 )

@@ -78,10 +78,8 @@ describe('Authorization Client', function () {
     var lockLevel = 'CanNotDelete';
     it('should work for all operations possible', function (done) {
       var lockParameters = {
-        properties: {
           level: lockLevel,
           notes: 'Optional text.'
-        }
       };
       client.managementLocks.createOrUpdateAtResourceGroupLevel(groupName, lockName, lockParameters, function (err, result) {
         should.not.exist(err);
@@ -93,7 +91,7 @@ describe('Authorization Client', function () {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
-            var locks = result.value;
+            var locks = result;
             locks.length.should.be.above(0);
             locks.some(function (item) {
               return item.name.should.equal(lockName);
@@ -102,7 +100,7 @@ describe('Authorization Client', function () {
               should.not.exist(err);
               should.exist(result);
               response.statusCode.should.equal(200);
-              var locks = result.value;
+              var locks = result;
               locks.length.should.be.above(0);
               locks.some(function (item) {
                 return item.name.should.equal(lockName);
