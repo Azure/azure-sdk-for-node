@@ -20,10 +20,11 @@ var path = require('path');
 var sinon = require('sinon');
 var _ = require('underscore');
 var util = require('util');
+var uuid = require('node-uuid');
+var msRestAzure = require('ms-rest-azure');
 var FileTokenCache = require('../../lib/util/fileTokenCache');
 var MockTokenCache = require('./mock-token-cache');
 var nockHelper = require('./nock-helper');
-var msRestAzure = require('ms-rest-azure');
 var ResourceManagementClient = require('../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
 
 /**
@@ -502,6 +503,30 @@ _.extend(SuiteBase.prototype, {
   },
   
   /**
+   * Generates a Guid. It will save the Guid to the recording file if in 'Record' mode or 
+   * retrieve the guid from the recording file if in 'Playback' mode.
+   * @return {string} A new Guid.
+   */
+  generateGuid: function() {
+    var newGuid;
+    //record or live
+    if (!this.isPlayback) {
+      newGuid = uuid.v4();
+      //record
+      if (this.isMocked) {
+        this.uuidsGenerated[this.currentUuid++] = newGuid;
+      }
+    } else {
+      //playback
+      if (this.uuidsGenerated && this.uuidsGenerated.length > 0) {
+        newGuid = this.uuidsGenerated[this.currentUuid++];
+      }
+    }
+
+    return newGuid;
+  },
+
+  /**
    * A helper function to handle wrapping an existing method in sinon.
    *
    * @param {ojbect} sinonObj    either sinon or a sinon sandbox instance
@@ -534,7 +559,7 @@ _.extend(SuiteBase.prototype, {
     }
     return newNumber;
   },
-  
+
   /**
    * Stubs certain methods to make them work in playback mode.
    */
