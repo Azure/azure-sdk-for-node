@@ -20,10 +20,11 @@ var path = require('path');
 var sinon = require('sinon');
 var _ = require('underscore');
 var util = require('util');
+var uuid = require('node-uuid');
+var msRestAzure = require('ms-rest-azure');
 var FileTokenCache = require('../../lib/util/fileTokenCache');
 var MockTokenCache = require('./mock-token-cache');
 var nockHelper = require('./nock-helper');
-var msRestAzure = require('ms-rest-azure');
 var ResourceManagementClient = require('../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
 
 /**
@@ -77,6 +78,7 @@ function SuiteBase(mochaSuiteObject, testPrefix, env) {
   this.currentUuid = 0;
   this.randomTestIdsGenerated = [];
   this.numberOfRandomTestIdGenerated = 0;
+  this.mockVariables = {};
   //stub necessary methods if in playback mode
   this._stubMethods();
 }
@@ -271,6 +273,10 @@ _.extend(SuiteBase.prototype, {
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
       }
+
+      if (nocked.mockVariables) {
+        this.mockVariables = nocked.mockVariables();
+      }
       
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
@@ -290,6 +296,7 @@ _.extend(SuiteBase.prototype, {
       fs.appendFileSync(this.getSuiteRecordingsFile(), '];\n');
       this.writeGeneratedUuids(this.getSuiteRecordingsFile());
       this.writeGeneratedRandomTestIds(this.getSuiteRecordingsFile());
+      this.writeMockVariables(this.getSuiteRecordingsFile());
     }
   },
   
@@ -331,6 +338,10 @@ _.extend(SuiteBase.prototype, {
       
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
+      }
+
+      if (nocked.mockVariables) {
+        this.mockVariables = nocked.mockVariables();
       }
       
       if (nocked.setEnvironment) {
@@ -396,6 +407,7 @@ _.extend(SuiteBase.prototype, {
         fs.appendFileSync(this.getTestRecordingsFile(), scope);
         this.writeGeneratedUuids();
         this.writeGeneratedRandomTestIds();
+        this.writeMockVariables();
         nockHelper.nock.recorder.clear();
       } else {
         //playback mode
@@ -440,19 +452,21 @@ _.extend(SuiteBase.prototype, {
   },
 
   /**
-   * Writes the recording header to the specified file.
+   * Writes the mock variables to the specified file
    *
-   * @param {string} filename        (Optional) The file name to which the recording header needs to be added
+   * @param {string} filename        (Optional) The file name to which the mock variables need to be added
    *                                 If the filename is not provided then it will get the current test recording file.
    */
-  writeRecordingHeader: function (filename) {
-    var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
-    filename = filename || this.getTestRecordingsFile();
-    fs.writeFileSync(filename, _.template(template, {
-      requiredEnvironment: this.requiredEnvironment
-    }));
+  writeMockVariables: function(filename) {
+    if (Object.keys(this.mockVariables).length > 0) {
+      var mockVariablesObject = JSON.stringify(this.mockVariables);
+      var content = util.format('\n exports.mockVariables = function() { return JSON.parse(%s); };', mockVariablesObject);
+      filename = filename || this.getTestRecordingsFile();
+      fs.appendFileSync(filename, content);
+      this.mockVariables = {};
+    }
   },
-  
+
   /**
    * Writes the recording header to the specified file.
    *
@@ -502,6 +516,49 @@ _.extend(SuiteBase.prototype, {
   },
   
   /**
+   * Generates a Guid. It will save the Guid to the recording file if in 'Record' mode or 
+   * retrieve the guid from the recording file if in 'Playback' mode.
+   * @return {string} A new Guid.
+   */
+  generateGuid: function () {
+    var newGuid;
+    //record or live
+    if (!this.isPlayback) {
+      newGuid = uuid.v4();
+      //record
+      if (this.isMocked) {
+        this.uuidsGenerated[this.currentUuid++] = newGuid;
+      }
+    } else {
+      //playback
+      if (this.uuidsGenerated && this.uuidsGenerated.length > 0) {
+        newGuid = this.uuidsGenerated[this.currentUuid++];
+      }
+    }
+
+    return newGuid;
+  },
+  
+  /**
+   * Saves the mock variable with the specified name to the recording file when the test is run 
+   * in 'Record' mode or keeps it in memory when the test is run in 'Live' mode.
+   */
+  saveMockVariable: function (mockVariableName, mockVariable) {
+    //record or live
+    if (!this.isPlayback) {
+      this.mockVariables[mockVariableName] = mockVariable;
+    }
+  },
+
+  /**
+   * Gets the mock variable with the specified name. Returns undefined if the variable name is not present.
+   * @return {object} A mock variable.
+   */
+  getMockVariable: function (mockVariableName) {
+    return this.mockVariables[mockVariableName];
+  },
+
+  /**
    * A helper function to handle wrapping an existing method in sinon.
    *
    * @param {ojbect} sinonObj    either sinon or a sinon sandbox instance
@@ -534,7 +591,7 @@ _.extend(SuiteBase.prototype, {
     }
     return newNumber;
   },
-  
+
   /**
    * Stubs certain methods to make them work in playback mode.
    */
