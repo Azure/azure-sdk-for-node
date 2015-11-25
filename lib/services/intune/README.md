@@ -1,4 +1,4 @@
-# Microsoft Intune SDK for Node.js
+# Microsoft Azure SDK for Node.js - Intune
 
 This project provides a Node.js package that makes it easy to manage Microsoft Intune Resources. Right now it supports:
 - **Node.js version: 5.0.0 or higher**
