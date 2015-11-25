@@ -1,4 +1,4 @@
-# Microsoft Azure SDK for Node.js - Web Site Management
+# Microsoft Intune SDK for Node.js
 
 This project provides a Node.js package that makes it easy to manage Microsoft Intune Resources. Right now it supports:
 - **Node.js version: 5.0.0 or higher**
@@ -16,7 +16,7 @@ npm install azure-arm-intune
 
 ## How to Use
 
-### Create an IntuneResourceManagementClient
+### Create an Intune resource management client
 
 ```javascript
     var msRestAzure = require('ms-rest-azure');
