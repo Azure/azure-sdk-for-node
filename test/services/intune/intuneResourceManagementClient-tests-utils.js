@@ -31,7 +31,7 @@ IntuneTestUtils.getAADAuthToken = function(username, password, clientId, targetR
   if ((!username || typeof username !== 'string') ||
     (!password || typeof password !== 'string') ||
     (!clientId || typeof clientId !== 'string')) {
-    return null;
+    callback(null, 'dummyToken');
   }
 
   var authEndpoint = IntuneTestUtils.getAADAuthEndpoint(process.env['ENVIRONMENT']);
@@ -245,10 +245,11 @@ IntuneTestUtils.getAADUserGroups = function(username, password, clientId, callba
   var userGroups;
   var graphServicePrincipalId = '00000002-0000-0000-c000-000000000000';
   var graphEndpoint = IntuneTestUtils.getAADGraphEndpoint(process.env['ENVIRONMENT']);
+  var domain = username ? username.split('@')[1] : 'franktrtestdomain.onmicrosoft.com'; // username is null in playback
 
   IntuneTestUtils.getAADAuthToken(username, password, clientId, graphServicePrincipalId, function(error, token) {
     var requestOptions = {
-      url: graphEndpoint + username.split('@')[1] + '/groups?api-version=1.6',
+      url: graphEndpoint + domain + '/groups?api-version=1.6',
       headers: {
         "Authorization": 'Bearer ' + token
       }
