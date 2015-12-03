@@ -26,6 +26,7 @@ var FileTokenCache = require('../../lib/util/fileTokenCache');
 var MockTokenCache = require('./mock-token-cache');
 var nockHelper = require('./nock-helper');
 var ResourceManagementClient = require('../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
+var async = require('async');
 
 /**
  * @class
@@ -288,16 +289,33 @@ _.extend(SuiteBase.prototype, {
     } else {
       this.setEnvironmentDefaults();
     }
-    
-    callback();
-    //write the suite level testids and uuids to a suite recordings file
-    if (this.isMocked && this.isRecording) {
-      this.writeRecordingHeader(this.getSuiteRecordingsFile());
-      fs.appendFileSync(this.getSuiteRecordingsFile(), '];\n');
-      this.writeGeneratedUuids(this.getSuiteRecordingsFile());
-      this.writeGeneratedRandomTestIds(this.getSuiteRecordingsFile());
-      this.writeMockVariables(this.getSuiteRecordingsFile());
-    }
+    var self = this;
+    async.series([
+      function (firstCallback) {
+        callback();
+        firstCallback(null, 'executed the before section for the test suite: "' + self.testPrefix + '"');
+      },
+      function (secondCallback) {
+        //write the suite level testids and uuids to a suite recordings file
+        if (self.isMocked && self.isRecording) {
+          self.writeRecordingHeader(self.getSuiteRecordingsFile());
+          fs.appendFileSync(self.getSuiteRecordingsFile(), '];\n');
+          self.writeGeneratedUuids(self.getSuiteRecordingsFile());
+          self.writeGeneratedRandomTestIds(self.getSuiteRecordingsFile());
+          self.writeMockVariables(self.getSuiteRecordingsFile());
+        }
+        secondCallback(null, 'saved the random ids, guids and variables if any, to the recording file: "' + self.getSuiteRecordingsFile() + '"');
+      }
+    ],
+    function (err, results) {
+      if (err) {
+        throw err;
+      }
+      console.log('\n     . ' + results[0]);
+      if (suite.isMocked && suite.isRecording) {
+        console.log('     . ' + results[1]);
+      }
+    });
   },
   
   /**
@@ -458,9 +476,9 @@ _.extend(SuiteBase.prototype, {
    *                                 If the filename is not provided then it will get the current test recording file.
    */
   writeMockVariables: function(filename) {
-    if (Object.keys(this.mockVariables).length > 0) {
+    if (this.mockVariables && Object.keys(this.mockVariables).length > 0) {
       var mockVariablesObject = JSON.stringify(this.mockVariables);
-      var content = util.format('\n exports.mockVariables = function() { return JSON.parse(%s); };', mockVariablesObject);
+      var content = util.format('\n exports.mockVariables = function() { return %s; };', mockVariablesObject);
       filename = filename || this.getTestRecordingsFile();
       fs.appendFileSync(filename, content);
       this.mockVariables = {};
