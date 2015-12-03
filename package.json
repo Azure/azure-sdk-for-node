@@ -86,10 +86,11 @@
     "nock": "0.16",
     "node-forge": "0.6.30",
     "random-js": "1.0.4",
-    "should": "1.2.x",
+    "should": "^7.1.1",
     "sinon": "*",
     "xmlbuilder": "0.4.3",
-    "moment": "^2.10.6"
+    "moment": "^2.10.6",
+    "async": "^1.5.0"
   },
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {

@@ -630,6 +630,10 @@
     <Compile Include="lib\services\webSiteManagement2\lib\website.js" />
     <Compile Include="lib\services\webSiteManagement2\lib\webSiteManagementClient.js" />
     <Compile Include="test\common\connectionstringparser-tests.js" />
+    <Compile Include="test\common\framework-tests.js">
+      <SubType>Code</SubType>
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\common\hmacsha256sign-tests.js" />
     <Compile Include="test\common\servicebussettings-tests.js" />
     <Compile Include="test\common\serviceclient-tests.js" />
@@ -743,6 +747,9 @@
     <Compile Include="test\serviceruntime\roleenvironment-tests.js" />
     <Compile Include="test\serviceruntime\runtimeversionmanager-tests.js" />
     <Compile Include="test\serviceruntime\runtimeversionprotocolclient-tests.js" />
+    <Compile Include="test\services\computeManagement\computeManagementClient-tests.js" />
+    <Compile Include="test\services\intune\intuneResourceManagementClient-tests-utils.js" />
+    <Compile Include="test\services\intune\intuneResourceManagementClient-tests.js" />
     <Compile Include="test\services\resourceManagement\authorizationClient-tests.js">
       <SubType>Code</SubType>
       <TestFramework>Mocha</TestFramework>
@@ -1003,6 +1010,8 @@
     <Folder Include="test\recordings\resourceManagement-tests\" />
     <Folder Include="test\recordings\storagemanagementservice-tests\" />
     <Folder Include="test\recordings\subscriptionClient-tests\" />
+    <Folder Include="test\services\computeManagement\" />
+    <Folder Include="test\services\intune\" />
     <Folder Include="test\tmp\" />
     <Folder Include="test\recordings" />
     <Folder Include="test\serviceruntime" />
