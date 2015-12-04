@@ -27,6 +27,12 @@ IntuneTestUtils.PolicyType = Object.freeze({
   Android: 1
 });
 
+IntuneTestUtils.Constants = Object.freeze({
+  IntuneAndroidPolicy: 'IntuneAndroidPolicy',
+  IntuneiOSPolicy: 'IntuneiOSPolicy',
+  PlatformTypeQuery: 'platform eq \'{0}\''
+})
+
 IntuneTestUtils.getAADAuthToken = function(username, password, clientId, targetResource, callback) {
   if ((!username || typeof username !== 'string') ||
     (!password || typeof password !== 'string') ||
@@ -99,23 +105,10 @@ IntuneTestUtils.getPolicyPutPayload = function(policyType) {
     return null;
   }
 
-  // Dirty fix for moment.duration.toISOString method not existing
-  // in the moment version listed as dependency for ms-rest,
-  // while we wait for them to update dependency version(already spoke with them)
-  var PT1H1M = moment.duration('PT1H1M');
-  PT1H1M.toISOString = function() {
-    return 'PT1H1M';
-  }
-
-  var P1D = moment.duration('P1D');
-  P1D.toISOString = function() {
-    return 'P1D';
-  }
-
   // Common properties for all policies
   var properties = {
-    accessRecheckOfflineTimeout: PT1H1M,
-    accessRecheckOnlineTimeout: PT1H1M,
+    accessRecheckOfflineTimeout: moment.duration('PT1H1M'),
+    accessRecheckOnlineTimeout: moment.duration('PT1H1M'),
     appSharingFromLevel: 'allApps',
     appSharingToLevel: 'allApps',
     authentication: 'required',
@@ -124,7 +117,7 @@ IntuneTestUtils.getPolicyPutPayload = function(policyType) {
     pinNumRetry: 1,
     deviceCompliance: 'enable',
     fileSharingSaveAs: 'allow',
-    offlineWipeTimeout: P1D,
+    offlineWipeTimeout: moment.duration('P1D'),
     pin: 'required'
   };
 
@@ -197,7 +190,6 @@ IntuneTestUtils.deleteAllPolicies = function(client, location, policyType, callb
 
   client[pt].getMAMPolicies(location, null, null, null, null, function(error, result, request, response) {
     if (error) {
-      console.log(util.inspect(error));
       callback(false);
     }
 
@@ -241,28 +233,51 @@ IntuneTestUtils.done = function(numberOfPendingEvents, resolver) {
   }(numberOfPendingEvents, resolver);
 }
 
-IntuneTestUtils.getAADUserGroups = function(username, password, clientId, callback) {
-  var userGroups;
+IntuneTestUtils.getAADUsersAndGroups = function(username, password, clientId, callback) {
   var graphServicePrincipalId = '00000002-0000-0000-c000-000000000000';
   var graphEndpoint = IntuneTestUtils.getAADGraphEndpoint(process.env['ENVIRONMENT']);
-  var domain = username ? username.split('@')[1] : 'franktrtestdomain.onmicrosoft.com'; // username is null in playback
+  var domain = username.split('@')[1];
+  var results = {};
+
+  done = IntuneTestUtils.done(2, function() {
+    callback(results);
+  })
 
   IntuneTestUtils.getAADAuthToken(username, password, clientId, graphServicePrincipalId, function(error, token) {
-    var requestOptions = {
+    var requestOptionsForGroups = {
       url: graphEndpoint + domain + '/groups?api-version=1.6',
       headers: {
         "Authorization": 'Bearer ' + token
       }
     }
 
-    request(requestOptions, function(error, response, body) {
-      if (!error && response.statusCode === 200) {
-        callback(JSON.parse(body).value);
+    var requestOptionsForUsers = {
+      url: graphEndpoint + domain + '/users?api-version=1.6',
+      headers: {
+        "Authorization": 'Bearer ' + token
       }
+    }
+
+    request(requestOptionsForGroups, function(error, response, body) {
+      should.not.exist(error);
+      should.exist(body);
+      response.statusCode.should.equal(200);
+
+      results.groups = JSON.parse(body).value;
+
+      done();
+    });
+
+    request(requestOptionsForUsers, function(error, response, body) {
+      should.not.exist(error);
+      should.exist(body);
+      response.statusCode.should.equal(200);
+
+      results.users = JSON.parse(body).value;
+
+      done();
     });
   });
-
-  return userGroups;
 }
 
 IntuneTestUtils.getAADAuthEndpoint = function(environment) {
@@ -279,6 +294,20 @@ IntuneTestUtils.getAADGraphEndpoint = function(environment) {
   }
 
   return 'https://graph.windows.net/';
+}
+
+IntuneTestUtils.format = function(formatString) {
+  if (!formatString || !arguments || !arguments.length) {
+    return formatString;
+  }
+
+  var result = formatString;
+  for (var i = 1; i < arguments.length; i++) {
+    var val = arguments[i] ? arguments[i].toString() : '';
+    result = result.replace('{' + (i - 1) + '}', val);
+  }
+
+  return result;
 }
 
 module.exports = IntuneTestUtils;

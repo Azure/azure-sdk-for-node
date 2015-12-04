@@ -8,100 +8,100 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/c02b677a-5b84-4e53-b8ca-670519434f82?api-version=2015-01-14-privatepreview', '*')
-  .reply(200, "{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/c02b677a-5b84-4e53-b8ca-670519434f82\",\"name\":\"c02b677a-5b84-4e53-b8ca-670519434f82\",\"type\":\"Microsoft.Intune/locations/androidPolicies\",\"properties\":{\"screenCapture\":\"allow\",\"fileEncryption\":\"notRequired\",\"friendlyName\":\"androidOneCreated\",\"description\":\"androidOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"notTargeted\",\"lastModifiedTime\":\"2015-11-24T03:51:55.2603482Z\"}}", { 'cache-control': 'no-cache',
+.put('/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/e82af6a1-0914-474e-829b-ec8107ee1fbe?api-version=2015-01-14-privatepreview', '*')
+  .reply(200, "{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/e82af6a1-0914-474e-829b-ec8107ee1fbe\",\"name\":\"e82af6a1-0914-474e-829b-ec8107ee1fbe\",\"type\":\"Microsoft.Intune/locations/androidPolicies\",\"properties\":{\"screenCapture\":\"allow\",\"fileEncryption\":\"notRequired\",\"friendlyName\":\"androidOneCreated\",\"description\":\"androidOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"notTargeted\",\"lastModifiedTime\":\"2015-12-04T00:35:38.2895202Z\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '814',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'last-modified': 'Tue, 24 Nov 2015 03:51:55 GMT',
-  etag: '"b0525f15-46e1-4a64-a0e5-019d49f49804"',
-  'x-ms-ratelimit-remaining-tenant-writes': '1183',
+  'last-modified': 'Fri, 04 Dec 2015 00:35:38 GMT',
+  etag: '"2128974b-fb7b-498c-876b-d8d6397f0ea9"',
+  'x-ms-ratelimit-remaining-tenant-writes': '1192',
   'preference-applied': 'return-content',
-  'elapsed-time-milliseconds': '180',
+  'elapsed-time-milliseconds': '210',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '94c21c8b-dd39-4ddd-b4cb-fed04c7274f6',
-  'unique-request-id': '8610e949-bb59-43b1-baa0-79b2e8d3ccc4',
-  'x-ms-request-id': '8610e949-bb59-43b1-baa0-79b2e8d3ccc4',
-  'related-activity-id': '8610e949-bb59-43b1-baa0-79b2e8d3ccc4',
+  'client-request-id': '966a5abd-fc00-4632-8cf8-c7197e18306a',
+  'unique-request-id': '737ef02f-b7c6-466a-bfbd-5a6449f9feac',
+  'x-ms-request-id': '737ef02f-b7c6-466a-bfbd-5a6449f9feac',
+  'related-activity-id': '737ef02f-b7c6-466a-bfbd-5a6449f9feac',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '580cc34a-60f6-4199-8113-01785c27c79a',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035157Z:580cc34a-60f6-4199-8113-01785c27c79a',
-  date: 'Tue, 24 Nov 2015 03:51:56 GMT',
+  'x-ms-correlation-request-id': '01ebc6e6-826b-43c5-bd37-88a8d455c5de',
+  'x-ms-routing-request-id': 'WESTUS:20151204T003539Z:01ebc6e6-826b-43c5-bd37-88a8d455c5de',
+  date: 'Fri, 04 Dec 2015 00:35:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/c02b677a-5b84-4e53-b8ca-670519434f82?api-version=2015-01-14-privatepreview', '*')
-  .reply(200, "{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/c02b677a-5b84-4e53-b8ca-670519434f82\",\"name\":\"c02b677a-5b84-4e53-b8ca-670519434f82\",\"type\":\"Microsoft.Intune/locations/androidPolicies\",\"properties\":{\"screenCapture\":\"allow\",\"fileEncryption\":\"notRequired\",\"friendlyName\":\"androidOneCreated\",\"description\":\"androidOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"notTargeted\",\"lastModifiedTime\":\"2015-11-24T03:51:55.2603482Z\"}}", { 'cache-control': 'no-cache',
+.put('/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/e82af6a1-0914-474e-829b-ec8107ee1fbe?api-version=2015-01-14-privatepreview', '*')
+  .reply(200, "{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/e82af6a1-0914-474e-829b-ec8107ee1fbe\",\"name\":\"e82af6a1-0914-474e-829b-ec8107ee1fbe\",\"type\":\"Microsoft.Intune/locations/androidPolicies\",\"properties\":{\"screenCapture\":\"allow\",\"fileEncryption\":\"notRequired\",\"friendlyName\":\"androidOneCreated\",\"description\":\"androidOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"notTargeted\",\"lastModifiedTime\":\"2015-12-04T00:35:38.2895202Z\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '814',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'last-modified': 'Tue, 24 Nov 2015 03:51:55 GMT',
-  etag: '"b0525f15-46e1-4a64-a0e5-019d49f49804"',
-  'x-ms-ratelimit-remaining-tenant-writes': '1183',
+  'last-modified': 'Fri, 04 Dec 2015 00:35:38 GMT',
+  etag: '"2128974b-fb7b-498c-876b-d8d6397f0ea9"',
+  'x-ms-ratelimit-remaining-tenant-writes': '1192',
   'preference-applied': 'return-content',
-  'elapsed-time-milliseconds': '180',
+  'elapsed-time-milliseconds': '210',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '94c21c8b-dd39-4ddd-b4cb-fed04c7274f6',
-  'unique-request-id': '8610e949-bb59-43b1-baa0-79b2e8d3ccc4',
-  'x-ms-request-id': '8610e949-bb59-43b1-baa0-79b2e8d3ccc4',
-  'related-activity-id': '8610e949-bb59-43b1-baa0-79b2e8d3ccc4',
+  'client-request-id': '966a5abd-fc00-4632-8cf8-c7197e18306a',
+  'unique-request-id': '737ef02f-b7c6-466a-bfbd-5a6449f9feac',
+  'x-ms-request-id': '737ef02f-b7c6-466a-bfbd-5a6449f9feac',
+  'related-activity-id': '737ef02f-b7c6-466a-bfbd-5a6449f9feac',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '580cc34a-60f6-4199-8113-01785c27c79a',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035157Z:580cc34a-60f6-4199-8113-01785c27c79a',
-  date: 'Tue, 24 Nov 2015 03:51:56 GMT',
+  'x-ms-correlation-request-id': '01ebc6e6-826b-43c5-bd37-88a8d455c5de',
+  'x-ms-routing-request-id': 'WESTUS:20151204T003539Z:01ebc6e6-826b-43c5-bd37-88a8d455c5de',
+  date: 'Fri, 04 Dec 2015 00:35:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/c02b677a-5b84-4e53-b8ca-670519434f82?api-version=2015-01-14-privatepreview')
+  .delete('/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/e82af6a1-0914-474e-829b-ec8107ee1fbe?api-version=2015-01-14-privatepreview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-writes': '1184',
-  'elapsed-time-milliseconds': '250',
+  'x-ms-ratelimit-remaining-tenant-writes': '1194',
+  'elapsed-time-milliseconds': '262',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '54a7f17c-a6b1-4a68-b719-9757ff80854a',
-  'unique-request-id': 'fa304ef8-1593-416b-a627-0018eade1ec0',
-  'x-ms-request-id': 'fa304ef8-1593-416b-a627-0018eade1ec0',
-  'related-activity-id': 'fa304ef8-1593-416b-a627-0018eade1ec0',
+  'client-request-id': '2497b344-9d14-4668-a527-7fea38be4934',
+  'unique-request-id': '219ffc11-edec-4425-9e97-37cf75ad70d7',
+  'x-ms-request-id': '219ffc11-edec-4425-9e97-37cf75ad70d7',
+  'related-activity-id': '219ffc11-edec-4425-9e97-37cf75ad70d7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '670f945b-ca0c-4856-b5ea-5d5d97b752a3',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035157Z:670f945b-ca0c-4856-b5ea-5d5d97b752a3',
-  date: 'Tue, 24 Nov 2015 03:51:57 GMT',
+  'x-ms-correlation-request-id': '01aecdc6-8f5f-414a-b017-a93dde4ee476',
+  'x-ms-routing-request-id': 'WESTUS:20151204T003539Z:01aecdc6-8f5f-414a-b017-a93dde4ee476',
+  date: 'Fri, 04 Dec 2015 00:35:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/c02b677a-5b84-4e53-b8ca-670519434f82?api-version=2015-01-14-privatepreview')
+  .delete('/providers/Microsoft.Intune/locations/fef.bmsua01/androidPolicies/e82af6a1-0914-474e-829b-ec8107ee1fbe?api-version=2015-01-14-privatepreview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-writes': '1184',
-  'elapsed-time-milliseconds': '250',
+  'x-ms-ratelimit-remaining-tenant-writes': '1194',
+  'elapsed-time-milliseconds': '262',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '54a7f17c-a6b1-4a68-b719-9757ff80854a',
-  'unique-request-id': 'fa304ef8-1593-416b-a627-0018eade1ec0',
-  'x-ms-request-id': 'fa304ef8-1593-416b-a627-0018eade1ec0',
-  'related-activity-id': 'fa304ef8-1593-416b-a627-0018eade1ec0',
+  'client-request-id': '2497b344-9d14-4668-a527-7fea38be4934',
+  'unique-request-id': '219ffc11-edec-4425-9e97-37cf75ad70d7',
+  'x-ms-request-id': '219ffc11-edec-4425-9e97-37cf75ad70d7',
+  'related-activity-id': '219ffc11-edec-4425-9e97-37cf75ad70d7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '670f945b-ca0c-4856-b5ea-5d5d97b752a3',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035157Z:670f945b-ca0c-4856-b5ea-5d5d97b752a3',
-  date: 'Tue, 24 Nov 2015 03:51:57 GMT',
+  'x-ms-correlation-request-id': '01aecdc6-8f5f-414a-b017-a93dde4ee476',
+  'x-ms-routing-request-id': 'WESTUS:20151204T003539Z:01aecdc6-8f5f-414a-b017-a93dde4ee476',
+  date: 'Fri, 04 Dec 2015 00:35:39 GMT',
   connection: 'close' });
  return result; }]];
- exports.uuidsGenerated = function() { return ['c02b677a-5b84-4e53-b8ca-670519434f82'];};
+ exports.uuidsGenerated = function() { return ['e82af6a1-0914-474e-829b-ec8107ee1fbe'];};

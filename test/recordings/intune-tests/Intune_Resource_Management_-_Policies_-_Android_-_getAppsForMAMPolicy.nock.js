@@ -7,48 +7,48 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/AndroidPolicies/6cdfd0fe-d60d-4480-8421-6601df70b451/apps?api-version=2015-01-14-privatepreview')
+  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/AndroidPolicies/e08e07ff-4432-45d2-87bb-38b5d0300571/apps?api-version=2015-01-14-privatepreview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '12',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14982',
-  'elapsed-time-milliseconds': '135',
+  'x-ms-ratelimit-remaining-tenant-reads': '14991',
+  'elapsed-time-milliseconds': '83',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '319f1c0b-bd03-4c32-ab83-679eba1a1223',
-  'unique-request-id': '11d7d9a7-a740-4602-b370-a2e1a8bc066e',
-  'x-ms-request-id': '11d7d9a7-a740-4602-b370-a2e1a8bc066e',
-  'related-activity-id': '11d7d9a7-a740-4602-b370-a2e1a8bc066e',
+  'client-request-id': '0ee1195f-6c4b-4ed9-b728-b5e363df48c7',
+  'unique-request-id': '2d1c11b1-76df-48f1-a81b-644d7de99183',
+  'x-ms-request-id': '2d1c11b1-76df-48f1-a81b-644d7de99183',
+  'related-activity-id': '2d1c11b1-76df-48f1-a81b-644d7de99183',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'd4e43f96-7794-4e18-bc1a-565f3951a755',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035158Z:d4e43f96-7794-4e18-bc1a-565f3951a755',
-  date: 'Tue, 24 Nov 2015 03:51:57 GMT',
+  'x-ms-correlation-request-id': '6b06d4f5-37d0-498f-976a-c3dc2a47c0b2',
+  'x-ms-routing-request-id': 'WESTUS:20151204T003540Z:6b06d4f5-37d0-498f-976a-c3dc2a47c0b2',
+  date: 'Fri, 04 Dec 2015 00:35:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/AndroidPolicies/6cdfd0fe-d60d-4480-8421-6601df70b451/apps?api-version=2015-01-14-privatepreview')
+  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/AndroidPolicies/e08e07ff-4432-45d2-87bb-38b5d0300571/apps?api-version=2015-01-14-privatepreview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '12',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14982',
-  'elapsed-time-milliseconds': '135',
+  'x-ms-ratelimit-remaining-tenant-reads': '14991',
+  'elapsed-time-milliseconds': '83',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '319f1c0b-bd03-4c32-ab83-679eba1a1223',
-  'unique-request-id': '11d7d9a7-a740-4602-b370-a2e1a8bc066e',
-  'x-ms-request-id': '11d7d9a7-a740-4602-b370-a2e1a8bc066e',
-  'related-activity-id': '11d7d9a7-a740-4602-b370-a2e1a8bc066e',
+  'client-request-id': '0ee1195f-6c4b-4ed9-b728-b5e363df48c7',
+  'unique-request-id': '2d1c11b1-76df-48f1-a81b-644d7de99183',
+  'x-ms-request-id': '2d1c11b1-76df-48f1-a81b-644d7de99183',
+  'related-activity-id': '2d1c11b1-76df-48f1-a81b-644d7de99183',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'd4e43f96-7794-4e18-bc1a-565f3951a755',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035158Z:d4e43f96-7794-4e18-bc1a-565f3951a755',
-  date: 'Tue, 24 Nov 2015 03:51:57 GMT',
+  'x-ms-correlation-request-id': '6b06d4f5-37d0-498f-976a-c3dc2a47c0b2',
+  'x-ms-routing-request-id': 'WESTUS:20151204T003540Z:6b06d4f5-37d0-498f-976a-c3dc2a47c0b2',
+  date: 'Fri, 04 Dec 2015 00:35:39 GMT',
   connection: 'close' });
  return result; }]];

@@ -7,48 +7,48 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/3a88ecd3-9c49-493e-89ad-71fc805accac/apps?api-version=2015-01-14-privatepreview')
+  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3/apps?api-version=2015-01-14-privatepreview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '12',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14988',
-  'elapsed-time-milliseconds': '91',
+  'x-ms-ratelimit-remaining-tenant-reads': '14990',
+  'elapsed-time-milliseconds': '81',
   'service-name': 'AdminExperienceService',
-  'client-request-id': 'f15808d8-edb3-4cbf-9fcf-5ebbe46a5c47',
-  'unique-request-id': 'ff1c96f3-dff7-4b51-abeb-150cd511256b',
-  'x-ms-request-id': 'ff1c96f3-dff7-4b51-abeb-150cd511256b',
-  'related-activity-id': 'ff1c96f3-dff7-4b51-abeb-150cd511256b',
+  'client-request-id': 'f25f1d02-fe41-49eb-bd57-ce1724ba45ff',
+  'unique-request-id': '49dd1d7b-ec17-4d73-912a-4e68a9428915',
+  'x-ms-request-id': '49dd1d7b-ec17-4d73-912a-4e68a9428915',
+  'related-activity-id': '49dd1d7b-ec17-4d73-912a-4e68a9428915',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '85e0f464-60b7-441a-9728-1f4ce51ff353',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035149Z:85e0f464-60b7-441a-9728-1f4ce51ff353',
-  date: 'Tue, 24 Nov 2015 03:51:49 GMT',
+  'x-ms-correlation-request-id': 'a2a78789-e865-48aa-8992-afdc1c302704',
+  'x-ms-routing-request-id': 'WESTUS:20151204T003530Z:a2a78789-e865-48aa-8992-afdc1c302704',
+  date: 'Fri, 04 Dec 2015 00:35:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/3a88ecd3-9c49-493e-89ad-71fc805accac/apps?api-version=2015-01-14-privatepreview')
+  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3/apps?api-version=2015-01-14-privatepreview')
   .reply(200, "{\"value\":[]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '12',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14988',
-  'elapsed-time-milliseconds': '91',
+  'x-ms-ratelimit-remaining-tenant-reads': '14990',
+  'elapsed-time-milliseconds': '81',
   'service-name': 'AdminExperienceService',
-  'client-request-id': 'f15808d8-edb3-4cbf-9fcf-5ebbe46a5c47',
-  'unique-request-id': 'ff1c96f3-dff7-4b51-abeb-150cd511256b',
-  'x-ms-request-id': 'ff1c96f3-dff7-4b51-abeb-150cd511256b',
-  'related-activity-id': 'ff1c96f3-dff7-4b51-abeb-150cd511256b',
+  'client-request-id': 'f25f1d02-fe41-49eb-bd57-ce1724ba45ff',
+  'unique-request-id': '49dd1d7b-ec17-4d73-912a-4e68a9428915',
+  'x-ms-request-id': '49dd1d7b-ec17-4d73-912a-4e68a9428915',
+  'related-activity-id': '49dd1d7b-ec17-4d73-912a-4e68a9428915',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '85e0f464-60b7-441a-9728-1f4ce51ff353',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035149Z:85e0f464-60b7-441a-9728-1f4ce51ff353',
-  date: 'Tue, 24 Nov 2015 03:51:49 GMT',
+  'x-ms-correlation-request-id': 'a2a78789-e865-48aa-8992-afdc1c302704',
+  'x-ms-routing-request-id': 'WESTUS:20151204T003530Z:a2a78789-e865-48aa-8992-afdc1c302704',
+  date: 'Fri, 04 Dec 2015 00:35:30 GMT',
   connection: 'close' });
  return result; }]];
