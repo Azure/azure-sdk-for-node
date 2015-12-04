@@ -8,93 +8,93 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3/apps/com.microsoft.skydrive.IOS?api-version=2015-01-14-privatepreview', '*')
+.put('/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757/apps/com.microsoft.skydrive.IOS?api-version=2015-01-14-preview', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'elapsed-time-milliseconds': '371',
+  'elapsed-time-milliseconds': '328',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '85161dad-ab65-475f-a0b5-834e2e0d8e79',
-  'unique-request-id': 'b91ba76f-29d1-4176-8c3b-9940186f4d41',
-  'x-ms-request-id': 'b91ba76f-29d1-4176-8c3b-9940186f4d41',
-  'related-activity-id': 'b91ba76f-29d1-4176-8c3b-9940186f4d41',
+  'client-request-id': 'd4d6e8d3-a553-4dec-b44d-b095dcf5b44d',
+  'unique-request-id': 'eb165135-5e88-497c-913b-a813676e8d0b',
+  'x-ms-request-id': 'eb165135-5e88-497c-913b-a813676e8d0b',
+  'related-activity-id': 'eb165135-5e88-497c-913b-a813676e8d0b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-tenant-writes': '1195',
-  'x-ms-correlation-request-id': '2f2cc8bb-1d7d-4c4f-93ec-96c0083f1295',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003531Z:2f2cc8bb-1d7d-4c4f-93ec-96c0083f1295',
-  date: 'Fri, 04 Dec 2015 00:35:31 GMT',
+  'x-ms-ratelimit-remaining-tenant-writes': '1197',
+  'x-ms-correlation-request-id': 'fe450142-0508-422d-a5aa-d48dc057175d',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223635Z:fe450142-0508-422d-a5aa-d48dc057175d',
+  date: 'Fri, 04 Dec 2015 22:36:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3/apps/com.microsoft.skydrive.IOS?api-version=2015-01-14-privatepreview', '*')
+.put('/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757/apps/com.microsoft.skydrive.IOS?api-version=2015-01-14-preview', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'elapsed-time-milliseconds': '371',
+  'elapsed-time-milliseconds': '328',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '85161dad-ab65-475f-a0b5-834e2e0d8e79',
-  'unique-request-id': 'b91ba76f-29d1-4176-8c3b-9940186f4d41',
-  'x-ms-request-id': 'b91ba76f-29d1-4176-8c3b-9940186f4d41',
-  'related-activity-id': 'b91ba76f-29d1-4176-8c3b-9940186f4d41',
+  'client-request-id': 'd4d6e8d3-a553-4dec-b44d-b095dcf5b44d',
+  'unique-request-id': 'eb165135-5e88-497c-913b-a813676e8d0b',
+  'x-ms-request-id': 'eb165135-5e88-497c-913b-a813676e8d0b',
+  'related-activity-id': 'eb165135-5e88-497c-913b-a813676e8d0b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-tenant-writes': '1195',
-  'x-ms-correlation-request-id': '2f2cc8bb-1d7d-4c4f-93ec-96c0083f1295',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003531Z:2f2cc8bb-1d7d-4c4f-93ec-96c0083f1295',
-  date: 'Fri, 04 Dec 2015 00:35:31 GMT',
+  'x-ms-ratelimit-remaining-tenant-writes': '1197',
+  'x-ms-correlation-request-id': 'fe450142-0508-422d-a5aa-d48dc057175d',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223635Z:fe450142-0508-422d-a5aa-d48dc057175d',
+  date: 'Fri, 04 Dec 2015 22:36:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3/apps?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3/apps/com.microsoft.skydrive.IOS\",\"name\":\"com.microsoft.skydrive.IOS\",\"type\":\"Microsoft.Intune/locations/iosPolicies/apps\",\"properties\":{\"friendlyName\":\"OneDrive\",\"platform\":\"ios\",\"appId\":\"af124e86-4e96-495a-b70a-90f90ab96707\"}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757/apps?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757/apps/com.microsoft.skydrive.IOS\",\"name\":\"com.microsoft.skydrive.IOS\",\"type\":\"Microsoft.Intune/locations/iosPolicies/apps\",\"properties\":{\"friendlyName\":\"OneDrive\",\"platform\":\"ios\",\"appId\":\"af124e86-4e96-495a-b70a-90f90ab96707\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '345',
+  'content-length': '344',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14988',
-  'elapsed-time-milliseconds': '82',
+  'x-ms-ratelimit-remaining-tenant-reads': '14996',
+  'elapsed-time-milliseconds': '193',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '2a901f17-15d1-498a-9a59-3f422f3f6882',
-  'unique-request-id': '53ec2b42-494a-4c31-8926-29255c951ac4',
-  'x-ms-request-id': '53ec2b42-494a-4c31-8926-29255c951ac4',
-  'related-activity-id': '53ec2b42-494a-4c31-8926-29255c951ac4',
+  'client-request-id': 'a17daf0d-a1ec-4883-8804-0c8ef7339e87',
+  'unique-request-id': 'c124299b-7bb7-448b-95da-271ad5885aa0',
+  'x-ms-request-id': 'c124299b-7bb7-448b-95da-271ad5885aa0',
+  'related-activity-id': 'c124299b-7bb7-448b-95da-271ad5885aa0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '4f7ff725-76dc-412e-97cc-3e60be28146f',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003531Z:4f7ff725-76dc-412e-97cc-3e60be28146f',
-  date: 'Fri, 04 Dec 2015 00:35:31 GMT',
+  'x-ms-correlation-request-id': '55f29783-910b-4c9f-8b37-a00605eeec11',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223635Z:55f29783-910b-4c9f-8b37-a00605eeec11',
+  date: 'Fri, 04 Dec 2015 22:36:35 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3/apps?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3/apps/com.microsoft.skydrive.IOS\",\"name\":\"com.microsoft.skydrive.IOS\",\"type\":\"Microsoft.Intune/locations/iosPolicies/apps\",\"properties\":{\"friendlyName\":\"OneDrive\",\"platform\":\"ios\",\"appId\":\"af124e86-4e96-495a-b70a-90f90ab96707\"}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757/apps?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757/apps/com.microsoft.skydrive.IOS\",\"name\":\"com.microsoft.skydrive.IOS\",\"type\":\"Microsoft.Intune/locations/iosPolicies/apps\",\"properties\":{\"friendlyName\":\"OneDrive\",\"platform\":\"ios\",\"appId\":\"af124e86-4e96-495a-b70a-90f90ab96707\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '345',
+  'content-length': '344',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14988',
-  'elapsed-time-milliseconds': '82',
+  'x-ms-ratelimit-remaining-tenant-reads': '14996',
+  'elapsed-time-milliseconds': '193',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '2a901f17-15d1-498a-9a59-3f422f3f6882',
-  'unique-request-id': '53ec2b42-494a-4c31-8926-29255c951ac4',
-  'x-ms-request-id': '53ec2b42-494a-4c31-8926-29255c951ac4',
-  'related-activity-id': '53ec2b42-494a-4c31-8926-29255c951ac4',
+  'client-request-id': 'a17daf0d-a1ec-4883-8804-0c8ef7339e87',
+  'unique-request-id': 'c124299b-7bb7-448b-95da-271ad5885aa0',
+  'x-ms-request-id': 'c124299b-7bb7-448b-95da-271ad5885aa0',
+  'related-activity-id': 'c124299b-7bb7-448b-95da-271ad5885aa0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '4f7ff725-76dc-412e-97cc-3e60be28146f',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003531Z:4f7ff725-76dc-412e-97cc-3e60be28146f',
-  date: 'Fri, 04 Dec 2015 00:35:31 GMT',
+  'x-ms-correlation-request-id': '55f29783-910b-4c9f-8b37-a00605eeec11',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223635Z:55f29783-910b-4c9f-8b37-a00605eeec11',
+  date: 'Fri, 04 Dec 2015 22:36:35 GMT',
   connection: 'close' });
  return result; }]];

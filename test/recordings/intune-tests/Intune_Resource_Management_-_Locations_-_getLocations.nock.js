@@ -7,36 +7,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/hostName\",\"type\":\"Microsoft.Intune/locations\",\"name\":\"hostname\",\"properties\":{\"hostName\":\"fef.bmsua01\"}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/hostName\",\"type\":\"Microsoft.Intune/locations\",\"name\":\"hostname\",\"properties\":{\"hostName\":\"fef.msua06\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '161',
+  'content-length': '160',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14990',
-  'x-ms-request-id': '20c6bf47-9ed6-4da6-8645-1527c938ce3c',
+  'x-ms-ratelimit-remaining-tenant-reads': '14997',
+  'x-ms-request-id': '512a1bc8-8827-429f-b43f-b3c071e96516',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'e64414a3-fd9c-4fbf-a2d7-d85204f7d138',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003519Z:e64414a3-fd9c-4fbf-a2d7-d85204f7d138',
+  'x-ms-correlation-request-id': '4dbc20b5-8223-4693-b66c-84651ef82ab8',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223612Z:4dbc20b5-8223-4693-b66c-84651ef82ab8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 04 Dec 2015 00:35:19 GMT',
+  date: 'Fri, 04 Dec 2015 22:36:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/hostName\",\"type\":\"Microsoft.Intune/locations\",\"name\":\"hostname\",\"properties\":{\"hostName\":\"fef.bmsua01\"}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/hostName\",\"type\":\"Microsoft.Intune/locations\",\"name\":\"hostname\",\"properties\":{\"hostName\":\"fef.msua06\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '161',
+  'content-length': '160',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14990',
-  'x-ms-request-id': '20c6bf47-9ed6-4da6-8645-1527c938ce3c',
+  'x-ms-ratelimit-remaining-tenant-reads': '14997',
+  'x-ms-request-id': '512a1bc8-8827-429f-b43f-b3c071e96516',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': 'e64414a3-fd9c-4fbf-a2d7-d85204f7d138',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003519Z:e64414a3-fd9c-4fbf-a2d7-d85204f7d138',
+  'x-ms-correlation-request-id': '4dbc20b5-8223-4693-b66c-84651ef82ab8',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223612Z:4dbc20b5-8223-4693-b66c-84651ef82ab8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 04 Dec 2015 00:35:19 GMT',
+  date: 'Fri, 04 Dec 2015 22:36:11 GMT',
   connection: 'close' });
  return result; }]];

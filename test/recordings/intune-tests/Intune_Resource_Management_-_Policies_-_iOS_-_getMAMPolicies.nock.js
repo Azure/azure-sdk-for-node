@@ -7,48 +7,48 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3\",\"name\":\"7d504c8b-7a5a-4e75-b297-97fc3eff4cc3\",\"type\":\"Microsoft.Intune/locations/iosPolicies\",\"properties\":{\"touchId\":\"enable\",\"fileEncryptionLevel\":\"deviceLocked\",\"friendlyName\":\"iosOneCreated\",\"description\":\"iosOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"Targeted\",\"lastModifiedTime\":\"2015-12-04T00:35:16.9863428\"}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/6c74958a-1e9d-4cb2-8ec0-6cb63bfe7ea3\",\"name\":\"6c74958a-1e9d-4cb2-8ec0-6cb63bfe7ea3\",\"type\":\"Microsoft.Intune/locations/iosPolicies\",\"properties\":{\"touchId\":\"enable\",\"fileEncryptionLevel\":\"deviceLocked\",\"friendlyName\":\"Patched\",\"description\":\"iosOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"Targeted\",\"lastModifiedTime\":\"2015-12-04T22:22:36.2154368\"}},{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757\",\"name\":\"dcfd5561-141d-405b-9c16-bf4de6324757\",\"type\":\"Microsoft.Intune/locations/iosPolicies\",\"properties\":{\"touchId\":\"enable\",\"fileEncryptionLevel\":\"deviceLocked\",\"friendlyName\":\"iosOneCreated\",\"description\":\"iosOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"Targeted\",\"lastModifiedTime\":\"2015-12-04T22:36:08.996909\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '807',
+  'content-length': '1594',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14993',
-  'elapsed-time-milliseconds': '172',
+  'x-ms-ratelimit-remaining-tenant-reads': '14996',
+  'elapsed-time-milliseconds': '138',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '19972616-0531-4079-b438-c1eb43136df4',
-  'unique-request-id': 'c003a031-66f1-4cf4-ae9f-4e22b534b22c',
-  'x-ms-request-id': 'c003a031-66f1-4cf4-ae9f-4e22b534b22c',
-  'related-activity-id': 'c003a031-66f1-4cf4-ae9f-4e22b534b22c',
+  'client-request-id': '087a26ce-69ec-4745-bed4-c17878751aa3',
+  'unique-request-id': '22429dfa-67ba-49cc-8edd-1196665a6206',
+  'x-ms-request-id': '22429dfa-67ba-49cc-8edd-1196665a6206',
+  'related-activity-id': '22429dfa-67ba-49cc-8edd-1196665a6206',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '0c0bce23-13c3-4c2b-add2-8ecab661cf90',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003525Z:0c0bce23-13c3-4c2b-add2-8ecab661cf90',
-  date: 'Fri, 04 Dec 2015 00:35:25 GMT',
+  'x-ms-correlation-request-id': '25a87217-69c4-48f7-9169-66c7181e71dd',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223629Z:25a87217-69c4-48f7-9169-66c7181e71dd',
+  date: 'Fri, 04 Dec 2015 22:36:28 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/7d504c8b-7a5a-4e75-b297-97fc3eff4cc3\",\"name\":\"7d504c8b-7a5a-4e75-b297-97fc3eff4cc3\",\"type\":\"Microsoft.Intune/locations/iosPolicies\",\"properties\":{\"touchId\":\"enable\",\"fileEncryptionLevel\":\"deviceLocked\",\"friendlyName\":\"iosOneCreated\",\"description\":\"iosOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"Targeted\",\"lastModifiedTime\":\"2015-12-04T00:35:16.9863428\"}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/6c74958a-1e9d-4cb2-8ec0-6cb63bfe7ea3\",\"name\":\"6c74958a-1e9d-4cb2-8ec0-6cb63bfe7ea3\",\"type\":\"Microsoft.Intune/locations/iosPolicies\",\"properties\":{\"touchId\":\"enable\",\"fileEncryptionLevel\":\"deviceLocked\",\"friendlyName\":\"Patched\",\"description\":\"iosOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"Targeted\",\"lastModifiedTime\":\"2015-12-04T22:22:36.2154368\"}},{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757\",\"name\":\"dcfd5561-141d-405b-9c16-bf4de6324757\",\"type\":\"Microsoft.Intune/locations/iosPolicies\",\"properties\":{\"touchId\":\"enable\",\"fileEncryptionLevel\":\"deviceLocked\",\"friendlyName\":\"iosOneCreated\",\"description\":\"iosOneCreated\",\"accessRecheckOfflineTimeout\":\"P0DT01H01M\",\"accessRecheckOnlineTimeout\":\"P0DT01H01M\",\"appSharingFromLevel\":\"allApps\",\"appSharingToLevel\":\"allApps\",\"authentication\":\"required\",\"clipboardSharingLevel\":\"allApps\",\"dataBackup\":\"allow\",\"deviceCompliance\":\"enable\",\"managedBrowser\":\"required\",\"fileSharingSaveAs\":\"allow\",\"offlineWipeTimeout\":\"P1D\",\"pin\":\"required\",\"pinNumRetry\":1,\"numOfApps\":0,\"groupStatus\":\"Targeted\",\"lastModifiedTime\":\"2015-12-04T22:36:08.996909\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '807',
+  'content-length': '1594',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14993',
-  'elapsed-time-milliseconds': '172',
+  'x-ms-ratelimit-remaining-tenant-reads': '14996',
+  'elapsed-time-milliseconds': '138',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '19972616-0531-4079-b438-c1eb43136df4',
-  'unique-request-id': 'c003a031-66f1-4cf4-ae9f-4e22b534b22c',
-  'x-ms-request-id': 'c003a031-66f1-4cf4-ae9f-4e22b534b22c',
-  'related-activity-id': 'c003a031-66f1-4cf4-ae9f-4e22b534b22c',
+  'client-request-id': '087a26ce-69ec-4745-bed4-c17878751aa3',
+  'unique-request-id': '22429dfa-67ba-49cc-8edd-1196665a6206',
+  'x-ms-request-id': '22429dfa-67ba-49cc-8edd-1196665a6206',
+  'related-activity-id': '22429dfa-67ba-49cc-8edd-1196665a6206',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '0c0bce23-13c3-4c2b-add2-8ecab661cf90',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003525Z:0c0bce23-13c3-4c2b-add2-8ecab661cf90',
-  date: 'Fri, 04 Dec 2015 00:35:25 GMT',
+  'x-ms-correlation-request-id': '25a87217-69c4-48f7-9169-66c7181e71dd',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223629Z:25a87217-69c4-48f7-9169-66c7181e71dd',
+  date: 'Fri, 04 Dec 2015 22:36:28 GMT',
   connection: 'close' });
  return result; }]];

@@ -7,48 +7,48 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/operationResults?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/operationResults/f81479bf-9033-6617-baa6-2dca787bb179\",\"name\":\"f81479bf-9033-6617-baa6-2dca787bb179\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-12-04T00:35:21.7131694\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"OneDrive\"},{\"name\":\"userId\",\"value\":\"f4058390-f6d0-459b-9c36-3cf9d88e87f5\"},{\"name\":\"userName\",\"value\":\"(株)パソナ　パソナキャリアカンパニー 鹿島建設株式会社\"},{\"name\":\"deviceType\",\"value\":\"TestIpad\"}]}},{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/operationResults/f0873bca-a99f-ccf8-8315-568bd5b7c2bf\",\"name\":\"f0873bca-a99f-ccf8-8315-568bd5b7c2bf\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-12-04T00:35:21.8382104\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"Excel\"},{\"name\":\"userId\",\"value\":\"f4058390-f6d0-459b-9c36-3cf9d88e87f5\"},{\"name\":\"userName\",\"value\":\"(株)パソナ　パソナキャリアカンパニー 鹿島建設株式会社\"},{\"name\":\"deviceType\",\"value\":\"TestIpad\"}]}},{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/operationResults/7dea2a9f-2e06-5fb5-e960-1f594d87d891\",\"name\":\"7dea2a9f-2e06-5fb5-e960-1f594d87d891\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-11-19T23:35:31.18658\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"Word\"},{\"name\":\"userId\",\"value\":\"f4058390-f6d0-459b-9c36-3cf9d88e87f5\"},{\"name\":\"userName\",\"value\":\"(株)パソナ　パソナキャリアカンパニー 鹿島建設株式会社\"},{\"name\":\"deviceType\",\"value\":\"iPad\"}]}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations/fef.msua06/operationResults?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/operationResults/6f3bd37b-fc86-5544-d01f-dd1f0a4aa980\",\"name\":\"6f3bd37b-fc86-5544-d01f-dd1f0a4aa980\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-12-04T22:36:23.3384598\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"OneDrive\"},{\"name\":\"userId\",\"value\":\"d8aeb100-6e17-4cf7-bbda-169000d03c1e\"},{\"name\":\"userName\",\"value\":\"Joe Admin\"},{\"name\":\"deviceType\",\"value\":\"TestIpad\"}]}},{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/operationResults/b2a254ae-ca91-4086-b6cd-575e5dbc6698\",\"name\":\"b2a254ae-ca91-4086-b6cd-575e5dbc6698\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-12-04T22:36:24.2134565\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"Word\"},{\"name\":\"userId\",\"value\":\"d8aeb100-6e17-4cf7-bbda-169000d03c1e\"},{\"name\":\"userName\",\"value\":\"Joe Admin\"},{\"name\":\"deviceType\",\"value\":\"iPad\"}]}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1864',
+  'content-length': '1107',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14989',
-  'elapsed-time-milliseconds': '159',
+  'x-ms-ratelimit-remaining-tenant-reads': '14997',
+  'elapsed-time-milliseconds': '202',
   'service-name': 'AdminExperienceService',
-  'client-request-id': 'e7bcbbf2-224a-41db-aabe-fcd080afc5b2',
-  'unique-request-id': '5a2959fd-1348-46d8-bb85-34ee35928226',
-  'x-ms-request-id': '5a2959fd-1348-46d8-bb85-34ee35928226',
-  'related-activity-id': '5a2959fd-1348-46d8-bb85-34ee35928226',
+  'client-request-id': '80bdd21d-6a9e-4eba-9765-09e9b14ff04d',
+  'unique-request-id': '9e4be788-24dc-4590-86c9-fc401670f5d6',
+  'x-ms-request-id': '9e4be788-24dc-4590-86c9-fc401670f5d6',
+  'related-activity-id': '9e4be788-24dc-4590-86c9-fc401670f5d6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '313a2cce-8ba8-41cc-8095-de57625333fd',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003523Z:313a2cce-8ba8-41cc-8095-de57625333fd',
-  date: 'Fri, 04 Dec 2015 00:35:23 GMT',
+  'x-ms-correlation-request-id': 'af0accb5-9542-4bb6-ad13-490a74f6093d',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223625Z:af0accb5-9542-4bb6-ad13-490a74f6093d',
+  date: 'Fri, 04 Dec 2015 22:36:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/operationResults?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/operationResults/f81479bf-9033-6617-baa6-2dca787bb179\",\"name\":\"f81479bf-9033-6617-baa6-2dca787bb179\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-12-04T00:35:21.7131694\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"OneDrive\"},{\"name\":\"userId\",\"value\":\"f4058390-f6d0-459b-9c36-3cf9d88e87f5\"},{\"name\":\"userName\",\"value\":\"(株)パソナ　パソナキャリアカンパニー 鹿島建設株式会社\"},{\"name\":\"deviceType\",\"value\":\"TestIpad\"}]}},{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/operationResults/f0873bca-a99f-ccf8-8315-568bd5b7c2bf\",\"name\":\"f0873bca-a99f-ccf8-8315-568bd5b7c2bf\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-12-04T00:35:21.8382104\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"Excel\"},{\"name\":\"userId\",\"value\":\"f4058390-f6d0-459b-9c36-3cf9d88e87f5\"},{\"name\":\"userName\",\"value\":\"(株)パソナ　パソナキャリアカンパニー 鹿島建設株式会社\"},{\"name\":\"deviceType\",\"value\":\"TestIpad\"}]}},{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/operationResults/7dea2a9f-2e06-5fb5-e960-1f594d87d891\",\"name\":\"7dea2a9f-2e06-5fb5-e960-1f594d87d891\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-11-19T23:35:31.18658\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"Word\"},{\"name\":\"userId\",\"value\":\"f4058390-f6d0-459b-9c36-3cf9d88e87f5\"},{\"name\":\"userName\",\"value\":\"(株)パソナ　パソナキャリアカンパニー 鹿島建設株式会社\"},{\"name\":\"deviceType\",\"value\":\"iPad\"}]}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations/fef.msua06/operationResults?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/operationResults/6f3bd37b-fc86-5544-d01f-dd1f0a4aa980\",\"name\":\"6f3bd37b-fc86-5544-d01f-dd1f0a4aa980\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-12-04T22:36:23.3384598\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"OneDrive\"},{\"name\":\"userId\",\"value\":\"d8aeb100-6e17-4cf7-bbda-169000d03c1e\"},{\"name\":\"userName\",\"value\":\"Joe Admin\"},{\"name\":\"deviceType\",\"value\":\"TestIpad\"}]}},{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/operationResults/b2a254ae-ca91-4086-b6cd-575e5dbc6698\",\"name\":\"b2a254ae-ca91-4086-b6cd-575e5dbc6698\",\"type\":\"Microsoft.Intune/locations/operationResults\",\"properties\":{\"friendlyName\":\"Wipe\",\"category\":\"ApplicationManagement\",\"lastModifiedTime\":\"2015-12-04T22:36:24.2134565\",\"state\":\"pending\",\"operationMetadata\":[{\"name\":\"app\",\"value\":\"Word\"},{\"name\":\"userId\",\"value\":\"d8aeb100-6e17-4cf7-bbda-169000d03c1e\"},{\"name\":\"userName\",\"value\":\"Joe Admin\"},{\"name\":\"deviceType\",\"value\":\"iPad\"}]}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '1864',
+  'content-length': '1107',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14989',
-  'elapsed-time-milliseconds': '159',
+  'x-ms-ratelimit-remaining-tenant-reads': '14997',
+  'elapsed-time-milliseconds': '202',
   'service-name': 'AdminExperienceService',
-  'client-request-id': 'e7bcbbf2-224a-41db-aabe-fcd080afc5b2',
-  'unique-request-id': '5a2959fd-1348-46d8-bb85-34ee35928226',
-  'x-ms-request-id': '5a2959fd-1348-46d8-bb85-34ee35928226',
-  'related-activity-id': '5a2959fd-1348-46d8-bb85-34ee35928226',
+  'client-request-id': '80bdd21d-6a9e-4eba-9765-09e9b14ff04d',
+  'unique-request-id': '9e4be788-24dc-4590-86c9-fc401670f5d6',
+  'x-ms-request-id': '9e4be788-24dc-4590-86c9-fc401670f5d6',
+  'related-activity-id': '9e4be788-24dc-4590-86c9-fc401670f5d6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '313a2cce-8ba8-41cc-8095-de57625333fd',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003523Z:313a2cce-8ba8-41cc-8095-de57625333fd',
-  date: 'Fri, 04 Dec 2015 00:35:23 GMT',
+  'x-ms-correlation-request-id': 'af0accb5-9542-4bb6-ad13-490a74f6093d',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223625Z:af0accb5-9542-4bb6-ad13-490a74f6093d',
+  date: 'Fri, 04 Dec 2015 22:36:24 GMT',
   connection: 'close' });
  return result; }]];

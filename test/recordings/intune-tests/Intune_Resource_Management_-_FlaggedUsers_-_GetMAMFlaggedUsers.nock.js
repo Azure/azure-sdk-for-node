@@ -7,48 +7,48 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/flaggedUsers?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/flaggedUsers/f4058390-f6d0-459b-9c36-3cf9d88e87f5\",\"name\":\"f4058390-f6d0-459b-9c36-3cf9d88e87f5\",\"type\":\"Microsoft.Intune/locations/flaggedUsers\",\"properties\":{\"friendlyName\":\"(株)パソナ　パソナキャリアカンパニー 鹿島建設株式会社\",\"errorCount\":1}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations/fef.msua06/flaggedUsers?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/flaggedUsers/d8aeb100-6e17-4cf7-bbda-169000d03c1e\",\"name\":\"d8aeb100-6e17-4cf7-bbda-169000d03c1e\",\"type\":\"Microsoft.Intune/locations/flaggedUsers\",\"properties\":{\"friendlyName\":\"Joe Admin\",\"errorCount\":1}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '341',
+  'content-length': '271',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14992',
-  'elapsed-time-milliseconds': '187',
+  'x-ms-ratelimit-remaining-tenant-reads': '14997',
+  'elapsed-time-milliseconds': '525',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '477d59a8-2163-4ed1-bd69-9185bf75a48f',
-  'unique-request-id': 'b5a3503d-5857-450a-b2ee-4f3fb769be05',
-  'x-ms-request-id': 'b5a3503d-5857-450a-b2ee-4f3fb769be05',
-  'related-activity-id': 'b5a3503d-5857-450a-b2ee-4f3fb769be05',
+  'client-request-id': '73f53fcc-3ffc-4490-ba47-17437af7ae73',
+  'unique-request-id': '13c5f5fe-4211-4316-ae14-38ddd13060ef',
+  'x-ms-request-id': '13c5f5fe-4211-4316-ae14-38ddd13060ef',
+  'related-activity-id': '13c5f5fe-4211-4316-ae14-38ddd13060ef',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '01d39e1c-6da9-41b8-8029-c54ffbe275f4',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003524Z:01d39e1c-6da9-41b8-8029-c54ffbe275f4',
-  date: 'Fri, 04 Dec 2015 00:35:24 GMT',
+  'x-ms-correlation-request-id': 'be0b6772-1b84-4c11-95d1-c5d8a6aec295',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223626Z:be0b6772-1b84-4c11-95d1-c5d8a6aec295',
+  date: 'Fri, 04 Dec 2015 22:36:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/providers/Microsoft.Intune/locations/fef.bmsua01/flaggedUsers?api-version=2015-01-14-privatepreview')
-  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.bmsua01/flaggedUsers/f4058390-f6d0-459b-9c36-3cf9d88e87f5\",\"name\":\"f4058390-f6d0-459b-9c36-3cf9d88e87f5\",\"type\":\"Microsoft.Intune/locations/flaggedUsers\",\"properties\":{\"friendlyName\":\"(株)パソナ　パソナキャリアカンパニー 鹿島建設株式会社\",\"errorCount\":1}}]}", { 'cache-control': 'no-cache',
+  .get('/providers/Microsoft.Intune/locations/fef.msua06/flaggedUsers?api-version=2015-01-14-preview')
+  .reply(200, "{\"value\":[{\"id\":\"/providers/Microsoft.Intune/locations/fef.msua06/flaggedUsers/d8aeb100-6e17-4cf7-bbda-169000d03c1e\",\"name\":\"d8aeb100-6e17-4cf7-bbda-169000d03c1e\",\"type\":\"Microsoft.Intune/locations/flaggedUsers\",\"properties\":{\"friendlyName\":\"Joe Admin\",\"errorCount\":1}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '341',
+  'content-length': '271',
   'content-type': 'application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8',
   expires: '-1',
-  'x-ms-ratelimit-remaining-tenant-reads': '14992',
-  'elapsed-time-milliseconds': '187',
+  'x-ms-ratelimit-remaining-tenant-reads': '14997',
+  'elapsed-time-milliseconds': '525',
   'service-name': 'AdminExperienceService',
-  'client-request-id': '477d59a8-2163-4ed1-bd69-9185bf75a48f',
-  'unique-request-id': 'b5a3503d-5857-450a-b2ee-4f3fb769be05',
-  'x-ms-request-id': 'b5a3503d-5857-450a-b2ee-4f3fb769be05',
-  'related-activity-id': 'b5a3503d-5857-450a-b2ee-4f3fb769be05',
+  'client-request-id': '73f53fcc-3ffc-4490-ba47-17437af7ae73',
+  'unique-request-id': '13c5f5fe-4211-4316-ae14-38ddd13060ef',
+  'x-ms-request-id': '13c5f5fe-4211-4316-ae14-38ddd13060ef',
+  'related-activity-id': '13c5f5fe-4211-4316-ae14-38ddd13060ef',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0;',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-correlation-request-id': '01d39e1c-6da9-41b8-8029-c54ffbe275f4',
-  'x-ms-routing-request-id': 'WESTUS:20151204T003524Z:01d39e1c-6da9-41b8-8029-c54ffbe275f4',
-  date: 'Fri, 04 Dec 2015 00:35:24 GMT',
+  'x-ms-correlation-request-id': 'be0b6772-1b84-4c11-95d1-c5d8a6aec295',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223626Z:be0b6772-1b84-4c11-95d1-c5d8a6aec295',
+  date: 'Fri, 04 Dec 2015 22:36:26 GMT',
   connection: 'close' });
  return result; }]];
