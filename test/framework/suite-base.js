@@ -1,18 +1,18 @@
-// 
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 
 var fs = require('fs');
@@ -32,11 +32,11 @@ var async = require('async');
  * @class
  * Initializes a new instance of the SuiteBase class.
  * @constructor
- * 
+ *
  * @param {object} mochaSuiteObject - The mocha suite object
  *
  * @param {string} testPrefix - The prefix to use for the test suite
- * 
+ *
  * @param {Array} env - (Optional) Array of environment variables required by the test
  * Example:
  * [
@@ -69,7 +69,9 @@ function SuiteBase(mochaSuiteObject, testPrefix, env) {
   this.tokenCache = new FileTokenCache(path.resolve(path.join(__dirname, '../tmp/tokenstore.json')));
   this._setCredentials();
   //subscriptionId should be recorded for playback
-  if (!env) { env = []; }
+  if (!env) {
+    env = [];
+  }
   env.push('AZURE_SUBSCRIPTION_ID');
   // Normalize environment
   this.normalizeEnvironment(env);
@@ -86,14 +88,14 @@ function SuiteBase(mochaSuiteObject, testPrefix, env) {
 
 _.extend(SuiteBase.prototype, {
 
-  _setCredentials: function () {
+  _setCredentials: function() {
     if (!this.isPlayback) {
-      if ((process.env['PASSWORD'] && process.env['APPLICATION_SECRET']) || 
-          (!process.env['PASSWORD'] && !process.env['APPLICATION_SECRET'])) {
-        throw new Error('You must either set the envt. variables \'USERNAME\' ' + 
-                        'and \'PASSWORD\' for running tests as a user or set the ' + 
-                        'envt. variable \'APPLICATION_SECRET\' for running tests ' + 
-                        'as a service-principal, but not both.');
+      if ((process.env['PASSWORD'] && process.env['APPLICATION_SECRET']) ||
+        (!process.env['PASSWORD'] && !process.env['APPLICATION_SECRET'])) {
+        throw new Error('You must either set the envt. variables \'USERNAME\' ' +
+          'and \'PASSWORD\' for running tests as a user or set the ' +
+          'envt. variable \'APPLICATION_SECRET\' for running tests ' +
+          'as a service-principal, but not both.');
       }
 
       if (process.env['PASSWORD']) {
@@ -102,36 +104,39 @@ _.extend(SuiteBase.prototype, {
         this.credentials = this._createApplicationCredentials();
       }
     } else {
-      //The type of credential object does not matter in playback mode as authentication 
+      //The type of credential object does not matter in playback mode as authentication
       //header is not recorded. Hence we always default to UsertokenCredentials.
       this.credentials = this._createUserCredentials();
-    } 
+    }
   },
-  
+
   /**
    * Creates the UserTokenCredentials object.
-   * 
+   *
    * @returns {ms-rest-azure.UserTokenCredentials} The user token credentials object.
    */
-  _createUserCredentials: function () {
-    return new msRestAzure.UserTokenCredentials(this.clientId, this.domain, this.username, 
-                                                this.password, this.clientRedirectUri, 
-                                                { 'tokenCache': this.tokenCache });
+  _createUserCredentials: function() {
+    return new msRestAzure.UserTokenCredentials(this.clientId, this.domain, this.username,
+      this.password, this.clientRedirectUri, {
+        'tokenCache': this.tokenCache
+      });
   },
-  
+
   /**
    * Creates the ApplicationTokenCredentials object.
-   * 
+   *
    * @returns {ms-rest-azure.ApplicationTokenCredentials} The application token credentials object.
    */
-  _createApplicationCredentials: function () {
-    return new msRestAzure.ApplicationTokenCredentials(this.clientId, this.domain, this.secret, { 'tokenCache': this.tokenCache });
+  _createApplicationCredentials: function() {
+    return new msRestAzure.ApplicationTokenCredentials(this.clientId, this.domain, this.secret, {
+      'tokenCache': this.tokenCache
+    });
   },
 
   /**
    * Creates a ResourceManagementClient and sets it as a property of the suite.
    */
-  _setupResourceManagementClient: function () {
+  _setupResourceManagementClient: function() {
     if (!this.resourceManagement) {
       this.resourceManagement = new ResourceManagementClient(this.credentials, this.subscriptionId);
     }
@@ -139,138 +144,145 @@ _.extend(SuiteBase.prototype, {
       this.resourceManagement.longRunningOperationRetryTimeoutInSeconds = 0;
     }
   },
-  
+
   /**
    * Creates a new ResourceGroup with the specified name and location.
-   * 
+   *
    * @param {string} groupName - The resourcegroup name
    * @param {string} location - The location
-   * 
+   *
    * @returns {function} callback(err, result) - It contains error and result for the create request.
    */
-  createResourcegroup: function (groupName, location, callback) {
+  createResourcegroup: function(groupName, location, callback) {
     console.log('Creating Resource Group: \'' + groupName + '\' at location: \'' + location + '\'');
     this._setupResourceManagementClient();
-    return this.resourceManagement.resourceGroups.createOrUpdate(groupName, {'location': location}, callback);
+    return this.resourceManagement.resourceGroups.createOrUpdate(groupName, {
+      'location': location
+    }, callback);
   },
-  
+
   /**
    * Deletes the specified ResourceGroup.
-   * 
+   *
    * @param {string} groupName - The resourcegroup name
-   * 
+   *
    * @returns {function} callback(err, result) - It contains error and result for the delete request.
    */
-  deleteResourcegroup: function (groupName, callback) {
+  deleteResourcegroup: function(groupName, callback) {
     console.log('Deleting Resource Group: ' + groupName);
-    if (!this.resourceManagement) { this._setupResourceManagementClient(); }
+    if (!this.resourceManagement) {
+      this._setupResourceManagementClient();
+    }
     return this.resourceManagement.resourceGroups.deleteMethod(groupName, callback);
   },
-  
+
   /**
    * Provides the recordings directory for the test suite
    *
    * @returns {string} The test recordings directory
    */
-  getRecordingsDirectory: function () {
+  getRecordingsDirectory: function() {
     return this.recordingsDirectory;
   },
-  
+
   /**
    * Sets the recordings directory for the test suite
    *
    * @param {string} dir The test recordings directory
    */
-  setRecordingsDirectory: function (dir) {
+  setRecordingsDirectory: function(dir) {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
     this.recordingsDirectory = dir;
   },
-  
+
   /**
    * Provides the curent test recordings file
    *
    * @returns {string} The curent test recordings file
    */
-  getTestRecordingsFile: function () {
-    this.testRecordingsFile = this.getRecordingsDirectory() + 
-    this.normalizeTestName(this.currentTest) + ".nock.js";
+  getTestRecordingsFile: function() {
+    this.testRecordingsFile = this.getRecordingsDirectory() +
+      this.normalizeTestName(this.currentTest) + ".nock.js";
     return this.testRecordingsFile;
   },
-  
-  normalizeTestName: function (str) {
+
+  normalizeTestName: function(str) {
     return str.replace(/[{}\[\]'";\(\)#@~`!%&\^\$\+=,\/\\?<>\|\*:]/ig, '').replace(/(\s+)/ig, '_');
   },
-  
-  normalizeEnvironment: function (env) {
-    this.requiredEnvironment = env.map(function (env) {
-      if (typeof (env) === 'string') {
-        return { name: env, secure: false };
+
+  normalizeEnvironment: function(env) {
+    this.requiredEnvironment = env.map(function(env) {
+      if (typeof(env) === 'string') {
+        return {
+          name: env,
+          secure: false
+        };
       } else {
         return env;
       }
     });
   },
-  
-  validateEnvironment: function () {
+
+  validateEnvironment: function() {
     if (this.isPlayback) {
       return;
     }
-    
+
     var messages = [];
     var missing = [];
-    this.requiredEnvironment.forEach(function (e) {
+    this.requiredEnvironment.forEach(function(e) {
       if (!process.env[e.name] && !e.defaultValue) {
         missing.push(e.name);
       }
     });
-    
+
     if (missing.length > 0) {
       messages.push('This test requires the following environment variables which are not set: ' +
         missing.join(', '));
     }
-    
+
     if (messages.length > 0) {
       throw new Error(messages.join(os.EOL));
     }
   },
-  
-  setEnvironmentDefaults: function () {
-    this.requiredEnvironment.forEach(function (env) {
+
+  setEnvironmentDefaults: function() {
+    this.requiredEnvironment.forEach(function(env) {
       if (env.defaultValue && !process.env[env.name]) {
         process.env[env.name] = env.defaultValue;
       }
     });
   },
-  
+
   /**
    * Provides the curent suite recordings file
    *
    * @returns {string} The curent suite recordings file
    */
-  getSuiteRecordingsFile: function () {
+  getSuiteRecordingsFile: function() {
     return this.suiteRecordingsFile;
   },
-  
+
   /**
    * Performs the specified actions before executing the suite. Records the random test ids and uuids generated during the
    * suite setup and restores them in playback
    *
    * @param {function} callback  A hook to provide the steps to execute during setup suite
    */
-  setupSuite: function (callback) {
+  setupSuite: function(callback, isAsyncSetUp) {
     if (this.isMocked) {
       process.env.AZURE_ENABLE_STRICT_SSL = false;
     }
-    
+
     if (this.isPlayback) {
       // retrive suite level recorded testids and uuids if any
       var nocked = require(this.getSuiteRecordingsFile());
       if (nocked.randomTestIdsGenerated) {
         this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
       }
-      
+
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
       }
@@ -278,7 +290,7 @@ _.extend(SuiteBase.prototype, {
       if (nocked.mockVariables) {
         this.mockVariables = nocked.mockVariables();
       }
-      
+
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
@@ -291,33 +303,46 @@ _.extend(SuiteBase.prototype, {
     }
     var self = this;
     async.series([
-      function (firstCallback) {
-        callback();
-        firstCallback(null, 'executed the before section for the test suite: "' + self.testPrefix + '"');
-      },
-      function (secondCallback) {
-        //write the suite level testids and uuids to a suite recordings file
-        if (self.isMocked && self.isRecording) {
-          self.writeRecordingHeader(self.getSuiteRecordingsFile());
-          fs.appendFileSync(self.getSuiteRecordingsFile(), '];\n');
-          self.writeGeneratedUuids(self.getSuiteRecordingsFile());
-          self.writeGeneratedRandomTestIds(self.getSuiteRecordingsFile());
-          self.writeMockVariables(self.getSuiteRecordingsFile());
+        function(firstCallback) {
+          if (isAsyncSetUp) {
+            callback(function() {
+              firstCallback(null);
+            });
+          } else {
+            callback();
+            firstCallback(null);
+          }
+        },
+        function(secondCallback) {
+          //write the suite level testids and uuids to a suite recordings file
+          if (self.isMocked && self.isRecording) {
+            self.writeRecordingHeader(self.getSuiteRecordingsFile());
+            fs.appendFileSync(self.getSuiteRecordingsFile(), '];\n');
+            self.writeGeneratedUuids(self.getSuiteRecordingsFile());
+            self.writeGeneratedRandomTestIds(self.getSuiteRecordingsFile());
+            self.writeMockVariables(self.getSuiteRecordingsFile());
+          }
+
+          secondCallback(null);
         }
-        secondCallback(null, 'saved the random ids, guids and variables if any, to the recording file: "' + self.getSuiteRecordingsFile() + '"');
-      }
-    ],
-    function (err, results) {
-      if (err) {
-        throw err;
-      }
-      console.log('\n     . ' + results[0]);
-      if (suite.isMocked && suite.isRecording) {
-        console.log('     . ' + results[1]);
-      }
-    });
+      ],
+      function(err, results) {
+        if (err) {
+          throw err;
+        }
+      });
   },
-  
+
+  /**
+   * Performs the specified async actions before executing the suite. Records the random test ids and uuids generated during the
+   * suite setup and restores them in playback
+   *
+   * @param {function} callback  A hook to provide the steps to execute during setup suite
+   */
+  setupSuiteAsync: function(callback) {
+    this.setupSuite(callback, true);
+  },
+
   /**
    * Performs the specified actions after executing the suite.
    *
@@ -329,14 +354,14 @@ _.extend(SuiteBase.prototype, {
     }
     callback();
   },
-  
+
   /**
-   * Performs the specified actions before executing the test. Restores the random test ids and uuids in  
+   * Performs the specified actions before executing the test. Restores the random test ids and uuids in
    * playback mode. Creates a new recording file for every test.
    *
    * @param {function} callback  A hook to provide the steps to execute before the test starts execution
    */
-  setupTest: function (callback) {
+  setupTest: function(callback) {
     this.currentTest = this.mochaSuiteObject.currentTest.fullTitle();
     this.numberOfRandomTestIdGenerated = 0;
     this.currentUuid = 0;
@@ -346,14 +371,14 @@ _.extend(SuiteBase.prototype, {
       this.writeRecordingHeader();
       nockHelper.nock.recorder.rec(true);
     }
-    
+
     if (this.isPlayback) {
       // nock playback
       var nocked = require(this.getTestRecordingsFile());
       if (nocked.randomTestIdsGenerated) {
         this.randomTestIdsGenerated = nocked.randomTestIdsGenerated();
       }
-      
+
       if (nocked.uuidsGenerated) {
         this.uuidsGenerated = nocked.uuidsGenerated();
       }
@@ -361,16 +386,16 @@ _.extend(SuiteBase.prototype, {
       if (nocked.mockVariables) {
         this.mockVariables = nocked.mockVariables();
       }
-      
+
       if (nocked.setEnvironment) {
         nocked.setEnvironment();
       }
-      
+
       this.originalTokenCache = this.tokenCache;
       this.tokenCache = new MockTokenCache();
 
       if (nocked.scopes.length === 1) {
-        nocked.scopes[0].forEach(function (createScopeFunc) {
+        nocked.scopes[0].forEach(function(createScopeFunc) {
           createScopeFunc(nockHelper.nock);
         });
       } else {
@@ -378,12 +403,12 @@ _.extend(SuiteBase.prototype, {
           'You may need to re-generate it.');
       }
     }
-    
+
     callback();
   },
-  
+
   /**
-   * Performs the specified actions after executing the test. Writes the generated uuids and test ids during 
+   * Performs the specified actions after executing the test. Writes the generated uuids and test ids during
    * the test to the recorded file.
    *
    * @param {function} callback  A hook to provide the steps to execute after the test has completed execution
@@ -394,10 +419,10 @@ _.extend(SuiteBase.prototype, {
         // play nock recording
         var scope = '[';
         var lineWritten;
-        nockHelper.nock.recorder.play().forEach(function (line) {
+        nockHelper.nock.recorder.play().forEach(function(line) {
           if (line.indexOf('nock') >= 0) {
             // apply fixups of nock generated mocks
-            
+
             // do not filter on body as they usual have time related stamps
             line = line.replace(/(\.post\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
             line = line.replace(/(\.get\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
@@ -405,15 +430,15 @@ _.extend(SuiteBase.prototype, {
             line = line.replace(/(\.delete\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
             line = line.replace(/(\.merge\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
             line = line.replace(/(\.patch\('.*?')\s*,\s*"[^]+[^\\]"\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
-            
+
             // put deployment have a timestamp in the url
             line = line.replace(/(\.put\('\/deployment-templates\/\d{8}T\d{6}')/,
               '.filteringPath(/\\/deployment-templates\\/\\d{8}T\\d{6}/, \'/deployment-templates/timestamp\')\n.put(\'/deployment-templates/timestamp\'');
-            
+
             // Requests to logging service contain timestamps in url query params, filter them out too
             line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
               '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
-            if (line.match(/\/oauth2\/token\//ig) === null && 
+            if (line.match(/\/oauth2\/token\//ig) === null &&
               line.match(/login\.windows\.net/ig) === null && line.match(/login\.windows-ppe\.net/ig) === null) {
               scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
                 'var result = ' + line + ' return result; }';
@@ -436,7 +461,7 @@ _.extend(SuiteBase.prototype, {
     nockHelper.unNockHttp();
     callback();
   },
-  
+
   /**
    * Writes the generated uuids to the specified file.
    *
@@ -445,14 +470,16 @@ _.extend(SuiteBase.prototype, {
    */
   writeGeneratedUuids: function(filename) {
     if (this.uuidsGenerated.length > 0) {
-      var uuids = this.uuidsGenerated.map(function (uuid) { return '\'' + uuid + '\''; }).join(',');
+      var uuids = this.uuidsGenerated.map(function(uuid) {
+        return '\'' + uuid + '\'';
+      }).join(',');
       var content = util.format('\n exports.uuidsGenerated = function() { return [%s];};', uuids);
       filename = filename || this.getTestRecordingsFile();
       fs.appendFileSync(filename, content);
       this.uuidsGenerated.length = 0;
     }
   },
-  
+
   /**
    * Writes the generated random test ids to the specified file.
    *
@@ -461,7 +488,9 @@ _.extend(SuiteBase.prototype, {
    */
   writeGeneratedRandomTestIds: function(filename) {
     if (this.randomTestIdsGenerated.length > 0) {
-      var ids = this.randomTestIdsGenerated.map(function (id) { return '\'' + id + '\''; }).join(',');
+      var ids = this.randomTestIdsGenerated.map(function(id) {
+        return '\'' + id + '\'';
+      }).join(',');
       var content = util.format('\n exports.randomTestIdsGenerated = function() { return [%s];};', ids);
       filename = filename || this.getTestRecordingsFile();
       fs.appendFileSync(filename, content);
@@ -491,8 +520,10 @@ _.extend(SuiteBase.prototype, {
    * @param {string} filename        (Optional) The file name to which the recording header needs to be added
    *                                 If the filename is not provided then it will get the current test recording file.
    */
-  writeRecordingHeader: function (filename) {
-    var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), { encoding: 'utf8' });
+  writeRecordingHeader: function(filename) {
+    var template = fs.readFileSync(path.join(__dirname, 'preamble.template'), {
+      encoding: 'utf8'
+    });
     filename = filename || this.getTestRecordingsFile();
     fs.writeFileSync(filename, _.template(template, {
       requiredEnvironment: this.requiredEnvironment
@@ -506,11 +537,11 @@ _.extend(SuiteBase.prototype, {
    * @param {array}  currentList     The current list of identifiers.
    * @return {string} A new unique identifier.
    */
-  generateId: function (prefix, currentList) {
+  generateId: function(prefix, currentList) {
     if (!currentList) {
       currentList = [];
     }
-    
+
     var newNumber;
     //record or live
     if (!this.isPlayback) {
@@ -528,17 +559,17 @@ _.extend(SuiteBase.prototype, {
         newNumber = prefix + (currentList.length + 1);
       }
     }
-    
+
     currentList.push(newNumber);
     return newNumber;
   },
-  
+
   /**
-   * Generates a Guid. It will save the Guid to the recording file if in 'Record' mode or 
+   * Generates a Guid. It will save the Guid to the recording file if in 'Record' mode or
    * retrieve the guid from the recording file if in 'Playback' mode.
    * @return {string} A new Guid.
    */
-  generateGuid: function () {
+  generateGuid: function() {
     var newGuid;
     //record or live
     if (!this.isPlayback) {
@@ -556,12 +587,12 @@ _.extend(SuiteBase.prototype, {
 
     return newGuid;
   },
-  
+
   /**
-   * Saves the mock variable with the specified name to the recording file when the test is run 
+   * Saves the mock variable with the specified name to the recording file when the test is run
    * in 'Record' mode or keeps it in memory when the test is run in 'Live' mode.
    */
-  saveMockVariable: function (mockVariableName, mockVariable) {
+  saveMockVariable: function(mockVariableName, mockVariable) {
     //record or live
     if (!this.isPlayback) {
       this.mockVariables[mockVariableName] = mockVariable;
@@ -572,7 +603,7 @@ _.extend(SuiteBase.prototype, {
    * Gets the mock variable with the specified name. Returns undefined if the variable name is not present.
    * @return {object} A mock variable.
    */
-  getMockVariable: function (mockVariableName) {
+  getMockVariable: function(mockVariableName) {
     return this.mockVariables[mockVariableName];
   },
 
@@ -586,20 +617,20 @@ _.extend(SuiteBase.prototype, {
    *                              returns new function that runs when method is called.
    * @return {object}             The created stub.
    */
-  wrap: function (sinonObj, object, property, setup) {
+  wrap: function(sinonObj, object, property, setup) {
     var original = object[property];
     return sinonObj.stub(object, property, setup(original));
   },
-  
+
   /**
    * A helper function to generate a random id.
    *
    * @param {string} prefix       A prefix for the generated random id
-   * @param {array}  currentList  The list that contains the generated random ids 
+   * @param {array}  currentList  The list that contains the generated random ids
    *                              (This ensures that there are no duplicates in the list)
    * @return {string}             The generated random nmumber.
    */
-  generateRandomId: function (prefix, currentList) {
+  generateRandomId: function(prefix, currentList) {
     var newNumber;
     while (true) {
       newNumber = prefix + Math.floor(Math.random() * 10000);
@@ -613,33 +644,33 @@ _.extend(SuiteBase.prototype, {
   /**
    * Stubs certain methods to make them work in playback mode.
    */
-  _stubMethods: function () {
+  _stubMethods: function() {
     if (this.isPlayback) {
       if (msRestAzure.UserTokenCredentials.prototype.signRequest.restore) {
         msRestAzure.UserTokenCredentials.prototype.signRequest.restore();
       }
-      sinon.stub(msRestAzure.UserTokenCredentials.prototype, 'signRequest', function (webResource, callback) {
+      sinon.stub(msRestAzure.UserTokenCredentials.prototype, 'signRequest', function(webResource, callback) {
         return callback(null);
       });
-      
+
       if (msRestAzure.ApplicationTokenCredentials.prototype.signRequest.restore) {
         msRestAzure.ApplicationTokenCredentials.prototype.signRequest.restore();
       }
-      sinon.stub(msRestAzure.ApplicationTokenCredentials.prototype, 'signRequest', function (webResource, callback) {
+      sinon.stub(msRestAzure.ApplicationTokenCredentials.prototype, 'signRequest', function(webResource, callback) {
         return callback(null);
       });
-      
+
       if (this.createResourcegroup.restore) {
         this.createResourcegroup.restore();
       }
-      sinon.stub(this, 'createResourcegroup', function (groupName, location, callback) {
+      sinon.stub(this, 'createResourcegroup', function(groupName, location, callback) {
         return callback(null);
       });
-      
+
       if (this.deleteResourcegroup.restore) {
         this.deleteResourcegroup.restore();
       }
-      sinon.stub(this, 'deleteResourcegroup', function (groupName, callback) {
+      sinon.stub(this, 'deleteResourcegroup', function(groupName, callback) {
         return callback(null);
       });
     }

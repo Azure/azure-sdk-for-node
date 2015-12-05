@@ -21,6 +21,7 @@ var msRestAzure = require('ms-rest-azure')
 var IntuneResourceManagementClient = require('../../../lib/services/intune/lib/intuneResourceManagementClient');
 var IntuneTestUtils = require('./intuneResourceManagementClient-tests-utils');
 var SuiteBase = require('../../framework/suite-base');
+var Constants = IntuneTestUtils.Constants;
 
 var client;
 var location;
@@ -31,6 +32,9 @@ var androidApps;
 var policiesCreated = [];
 var policiesType;
 var userGroups;
+var userId;
+var flaggedUser;
+var deviceName;
 var suite;
 var baseUrl;
 var isSetupPending = true;
@@ -51,7 +55,7 @@ describe('Intune Resource Management', function() {
     suite = new SuiteBase(this, testPrefix);
     client = new IntuneResourceManagementClient(suite.credentials, baseUrl);
 
-    /*suite.setupSuite(function() {
+    suite.setupSuiteAsync(function(setUpDone) {
       if (!suite.isPlayback) {
         doSetUp(function() {
           if (suite.isRecording) {
@@ -59,23 +63,36 @@ describe('Intune Resource Management', function() {
             suite.saveMockVariable('iOSApps', iOSApps);
             suite.saveMockVariable('androidApps', androidApps);
             suite.saveMockVariable('userGroups', userGroups);
+            suite.saveMockVariable('userId', userId);
+            suite.saveMockVariable('flaggedUser', flaggedUser);
+            suite.saveMockVariable('iOSPolicyId', iOSPolicyId);
+            suite.saveMockVariable('androidPolicyId', androidPolicyId);
+            suite.saveMockVariable('deviceName', deviceName);
           }
-          done();
+
+          setUpDone(); // We tell the test framework we are done setting up
+          done(); // We tell mocha we are done with the 'before' part
         });
       } else {
         location = suite.getMockVariable('location');
         iOSApps = suite.getMockVariable('iOSApps');
         androidApps = suite.getMockVariable('androidApps');
         userGroups = suite.getMockVariable('userGroups');
-        done();
-      }
-    });*/
+        userId = suite.getMockVariable('userId');
+        flaggedUser = suite.getMockVariable('flaggedUser');
+        iOSPolicyId = suite.getMockVariable('iOSPolicyId');
+        androidPolicyId = suite.getMockVariable('androidPolicyId');
+        deviceName = suite.getMockVariable('deviceName');
 
-    suite.setupSuite(done);
+        setUpDone(); // We tell the test framework we are done setting up
+        done(); // We tell mocha we are done with the 'before' part
+      }
+    });
   });
 
   after(function(done) {
-    if (!suite.isPlayback) {
+    suite.teardownSuite(done);
+    /*if (!suite.isPlayback) {
       done = IntuneTestUtils.done(2, done);
 
       suite.teardownSuite(deletePolicies);
@@ -95,28 +112,22 @@ describe('Intune Resource Management', function() {
       }
     } else {
       suite.teardownSuite(done);
-    }
+    }*/
   });
 
   beforeEach(function(done) {
-    suite.setupTest(function() {
-      if (isSetupPending) {
-        doSetUp(function() {
-          isSetupPending = false;
-          done();
-        });
-      } else {
-        done();
-      }
-    });
+    suite.setupTest(done);
   });
 
   afterEach(function(done) {
-    IntuneTestUtils.deletePolicies(client, location, policiesType, policiesCreated, function(success) {
-      success.should.be.true;
-      policiesCreated = [];
-      policiesType = null;
-      suite.baseTeardownTest(done);
+    suite.baseTeardownTest(function() {
+      IntuneTestUtils.deletePolicies(client, location, policiesType, policiesCreated, function(success) {
+        success.should.be.true;
+        policiesCreated = [];
+        policiesType = null;
+
+        done();
+      });
     });
   });
 
@@ -125,8 +136,10 @@ describe('Intune Resource Management', function() {
       client.getLocations(null, function(error, result, request, response) {
         should.not.exist(error);
         should.exist(result);
-        result.length.should.be.greaterThan(0);
         response.statusCode.should.equal(200);
+
+        result.length.should.be.greaterThan(0);
+
         done();
       });
     });
@@ -135,20 +148,152 @@ describe('Intune Resource Management', function() {
       client.getLocationByHostName(null, function(error, result, request, response) {
         should.not.exist(error);
         should.exist(result);
-        should.exist(result.hostName);
         response.statusCode.should.equal(200);
+
+        should.exist(result.hostName);
+
         done();
       });
     });
   });
 
   describe('- Apps', function() {
-    it('- getApps', function(done) {
-      client.getApps(location, null, null, null, null, function(error, result, request, response) {
+    it('- getiOSApps', function(done) {
+      var filter = IntuneTestUtils.format(Constants.PlatformTypeQuery, 'ios');
+      client.getApps(location, { filter: filter }, function(error, result, request, response) {
         should.not.exist(error);
         should.exist(result);
-        result.length.should.be.greaterThan(0);
         response.statusCode.should.equal(200);
+
+        result.length.should.be.greaterThan(0);
+
+        done();
+      });
+    });
+
+    it('- getAndroidApps', function(done) {
+      var filter = IntuneTestUtils.format(Constants.PlatformTypeQuery, 'android');
+      client.getApps(location, { filter: filter }, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        result.length.should.be.greaterThan(0);
+
+        done();
+      });
+    });
+  });
+
+  describe('- Devices', function() {
+    it('- getMAMUserDevices', function(done) {
+      client.getMAMUserDevices(location, userId, null, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        result.length.should.be.greaterThan(0);
+
+        done();
+      });
+    });
+
+    it.skip('- getMAMUserDeviceByDeviceName', function(done) {
+      client.getMAMUserDeviceByDeviceName(location, userId, deviceName, null, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        result.type.should.equal('Microsoft.Intune/locations/users/devices');
+
+        done();
+      });
+    });
+
+    it('- wipeMAMUserDevice', function(done) {
+      client.wipeMAMUserDevice(location, userId, deviceName, null, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        done();
+      });
+    });
+
+    it('- getOperationResults', function(done) {
+      client.getOperationResults(location, null, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        result.length.should.be.greaterThan(0);
+
+        done();
+      });
+    });
+  });
+
+  describe('- FlaggedUsers', function() {
+    it('- GetMAMStatuses', function(done) {
+      client.getMAMStatuses(location, null, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        result.name.should.equal('default');
+        result.status.should.equal('complete');
+        result.type.should.equal('Microsoft.Intune/locations/statuses');
+
+        done();
+      });
+    });
+
+    it('- GetMAMFlaggedUsers', function(done) {
+      client.getMAMFlaggedUsers(location, null, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        result.length.should.be.greaterThan(0);
+        var flaggedUser = result[0];
+        flaggedUser.type.should.equal('Microsoft.Intune/locations/flaggedUsers');
+        flaggedUser.errorCount.should.be.greaterThan(0);
+        flaggedUser.friendlyName.should.exist;
+        flaggedUser.id.should.exist;
+        flaggedUser.name.should.exist;
+
+        done();
+      });
+    });
+
+    it('- GetMAMFlaggedUserByName', function(done) {
+      client.getMAMFlaggedUserByName(location, flaggedUser.name, null, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        result.errorCount.should.be.greaterThan(0);
+        result.friendlyName.should.exist;
+        result.id.should.exist;
+        result.name.should.exist;
+
+        done();
+      });
+    });
+
+    it('- GetMAMUserFlaggedEnrolledApps', function(done) {
+      client.getMAMUserFlaggedEnrolledApps(location, flaggedUser.name, null, function(error, result, request, response) {
+        should.not.exist(error);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+
+        var flaggedApp = result[0];
+        flaggedApp.type.should.be.equal('Microsoft.Intune/locations/flaggedUsers/flaggedEnrolledApps');
+        flaggedApp.name.should.exist;
+        flaggedApp.friendlyName.should.exist;
+        flaggedApp.platform.should.exist;
+        flaggedApp.id.should.exist;
+
         done();
       });
     });
@@ -157,7 +302,7 @@ describe('Intune Resource Management', function() {
   describe('- Policies', function() {
     describe('- iOS', function() {
       it('- getMAMPolicies', function(done) {
-        client.ios.getMAMPolicies(location, null, null, null, null, function(error, result, request, response) {
+        client.ios.getMAMPolicies(location, null, function(error, result, request, response) {
           should.not.exist(error);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -166,7 +311,7 @@ describe('Intune Resource Management', function() {
       });
 
       it('- getMAMPoliciyById', function(done) {
-        client.ios.getMAMPolicyById(location, iOSPolicyId, null, null, function(error, result, request, response) {
+        client.ios.getMAMPolicyByName(location, iOSPolicyId, null, function(error, result, request, response) {
           should.not.exist(error);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -186,7 +331,7 @@ describe('Intune Resource Management', function() {
           policiesType = IntuneTestUtils.PolicyType.iOS;
 
           // Make sure policy is there
-          client.ios.getMAMPolicyById(location, policyId, null, null, function(error, result) {
+          client.ios.getMAMPolicyByName(location, policyId, null, function(error, result) {
             should.not.exist(error);
             should.exist(result);
 
@@ -227,7 +372,7 @@ describe('Intune Resource Management', function() {
           response.statusCode.should.equal(200);
 
           // Make sure policy is there
-          client.ios.getMAMPolicyById(location, iOSPolicyId, null, null, function(error, result, request, response) {
+          client.ios.getMAMPolicyByName(location, iOSPolicyId, null, function(error, result, request, response) {
             should.not.exist(error);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -251,10 +396,7 @@ describe('Intune Resource Management', function() {
           // Make sure policy is there
           client.ios.deleteMAMPolicy(location, policyId, null, function(error, result, request, response) {
             should.not.exist(error);
-
-            if (response.statusCode !== 200 && response.statusCode !== 204) {
-              response.statusCode.should.be.equal('200 or 204');
-            }
+            response.statusCode.should.equalOneOf([200, 204]);
 
             done();
           });
@@ -262,7 +404,7 @@ describe('Intune Resource Management', function() {
       });
 
       it('- getAppsForMAMPolicy', function(done) {
-        client.ios.getAppForMAMPolicy(location, iOSPolicyId, null, null, null, null, function(error, result, request, response) {
+        client.ios.getAppForMAMPolicy(location, iOSPolicyId, null, function(error, result, request, response) {
           should.not.exist(error);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -279,12 +421,9 @@ describe('Intune Resource Management', function() {
         };
         client.ios.addAppForMAMPolicy(location, iOSPolicyId, appId, appProperties, null, function(error, result, request, response) {
           should.not.exist(error);
+          response.statusCode.should.equalOneOf([200, 204]);
 
-          if (response.statusCode !== 200 && response.statusCode !== 204) {
-            response.statusCode.should.be.equal('200 or 204');
-          }
-
-          client.ios.getAppForMAMPolicy(location, iOSPolicyId, null, null, null, null, function(error, result, request, response) {
+          client.ios.getAppForMAMPolicy(location, iOSPolicyId, null, function(error, result, request, response) {
             should.not.exist(error);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -305,12 +444,9 @@ describe('Intune Resource Management', function() {
         var appId = iOSApps[0].name;
         client.ios.deleteAppForMAMPolicy(location, iOSPolicyId, appId, null, function(error, result, request, response) {
           should.not.exist(error);
+          response.statusCode.should.equalOneOf([200, 204]);
 
-          if (response.statusCode !== 200 && response.statusCode !== 204) {
-            response.statusCode.should.be.equal('200 or 204');
-          }
-
-          client.ios.getAppForMAMPolicy(location, iOSPolicyId, null, null, null, null, function(error, result, request, response) {
+          client.ios.getAppForMAMPolicy(location, iOSPolicyId, null, function(error, result, request, response) {
             should.not.exist(error);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -349,10 +485,7 @@ describe('Intune Resource Management', function() {
 
         client.ios.addGroupForMAMPolicy(location, iOSPolicyId, userGroups[1].objectId, groupProperties, null, function(error, result, request, response) {
           should.not.exist(error);
-
-          if (response.statusCode !== 200 && response.statusCode !== 204) {
-            response.statusCode.should.be.equal('200 or 204');
-          }
+          response.statusCode.should.equalOneOf([200, 204]);
 
           done();
         });
@@ -361,10 +494,7 @@ describe('Intune Resource Management', function() {
       it('- deleteGroupsForMAMPolicy', function(done) {
         client.ios.deleteGroupForMAMPolicy(location, iOSPolicyId, userGroups[0].objectId, null, function(error, result, request, response) {
           should.not.exist(error);
-
-          if (response.statusCode !== 200 && response.statusCode !== 204) {
-            response.statusCode.should.be.equal('200 or 204');
-          }
+          response.statusCode.should.equalOneOf([200, 204]);
 
           done();
         });
@@ -373,7 +503,7 @@ describe('Intune Resource Management', function() {
 
     describe('- Android', function() {
       it('- getMAMPolicies', function(done) {
-        client.android.getMAMPolicies(location, null, null, null, null, function(error, result, request, response) {
+        client.android.getMAMPolicies(location, null, function(error, result, request, response) {
           should.not.exist(error);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -382,7 +512,7 @@ describe('Intune Resource Management', function() {
       });
 
       it('- getMAMPoliciyById', function(done) {
-        client.android.getMAMPolicyById(location, androidPolicyId, null, null, function(error, result, request, response) {
+        client.android.getMAMPolicyByName(location, androidPolicyId, null, function(error, result, request, response) {
           should.not.exist(error);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -402,7 +532,7 @@ describe('Intune Resource Management', function() {
           policiesType = IntuneTestUtils.PolicyType.Android;
 
           // Make sure policy is there
-          client.android.getMAMPolicyById(location, policyId, null, null, function(error, result) {
+          client.android.getMAMPolicyByName(location, policyId, null, function(error, result) {
             should.not.exist(error);
             should.exist(result);
 
@@ -436,14 +566,14 @@ describe('Intune Resource Management', function() {
       });
 
       it('- patchMAMPolicy', function(done) {
-        var policyPatchPayload = IntuneTestUtils.getPolicyPatchPayload(IntuneTestUtils.PolicyType.Android);
+        var policyPatchPayload = IntuneTestUtils.getPolicyPatchPayload();
         client.android.patchMAMPolicy(location, androidPolicyId, policyPatchPayload, null, function(error, result, request, response) {
           should.not.exist(error);
           should.exist(result);
           response.statusCode.should.equal(200);
 
           // Make sure policy is there
-          client.android.getMAMPolicyById(location, androidPolicyId, null, null, function(error, result, request, response) {
+          client.android.getMAMPolicyByName(location, androidPolicyId, null, function(error, result, request, response) {
             should.not.exist(error);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -467,10 +597,7 @@ describe('Intune Resource Management', function() {
           // Make sure policy is there
           client.android.deleteMAMPolicy(location, policyId, null, function(error, result, request, response) {
             should.not.exist(error);
-
-            if (response.statusCode !== 200 && response.statusCode !== 204) {
-              response.statusCode.should.be.equal('200 or 204');
-            }
+            response.statusCode.should.equalOneOf([200, 204]);
 
             done();
           });
@@ -478,7 +605,7 @@ describe('Intune Resource Management', function() {
       });
 
       it('- getAppsForMAMPolicy', function(done) {
-        client.android.getAppForMAMPolicy(location, androidPolicyId, null, null, null, null, function(error, result, request, response) {
+        client.android.getAppForMAMPolicy(location, androidPolicyId, null, function(error, result, request, response) {
           should.not.exist(error);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -493,14 +620,11 @@ describe('Intune Resource Management', function() {
             url: baseUrl + androidApps[0].id
           }
         };
-        client.android.addAppForPolicy(location, androidPolicyId, appId, appProperties, null, function(error, result, request, response) {
+        client.android.addAppForMAMPolicy(location, androidPolicyId, appId, appProperties, null, function(error, result, request, response) {
           should.not.exist(error);
+          response.statusCode.should.equalOneOf([200, 204]);
 
-          if (response.statusCode !== 200 && response.statusCode !== 204) {
-            response.statusCode.should.be.equal('200 or 204');
-          }
-
-          client.android.getAppForMAMPolicy(location, androidPolicyId, null, null, null, null, function(error, result, request, response) {
+          client.android.getAppForMAMPolicy(location, androidPolicyId, null, function(error, result, request, response) {
             should.not.exist(error);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -521,12 +645,9 @@ describe('Intune Resource Management', function() {
         var appId = androidApps[0].name;
         client.android.deleteAppForMAMPolicy(location, androidPolicyId, appId, null, function(error, result, request, response) {
           should.not.exist(error);
+          response.statusCode.should.equalOneOf([200, 204]);
 
-          if (response.statusCode !== 200 && response.statusCode !== 204) {
-            response.statusCode.should.be.equal('200 or 204');
-          }
-
-          client.android.getAppForMAMPolicy(location, androidPolicyId, null, null, null, null, function(error, result, request, response) {
+          client.android.getAppForMAMPolicy(location, androidPolicyId, null, function(error, result, request, response) {
             should.not.exist(error);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -565,10 +686,7 @@ describe('Intune Resource Management', function() {
 
         client.android.addGroupForMAMPolicy(location, androidPolicyId, userGroups[1].objectId, groupProperties, null, function(error, result, request, response) {
           should.not.exist(error);
-
-          if (response.statusCode !== 200 && response.statusCode !== 204) {
-            response.statusCode.should.be.equal('200 or 204');
-          }
+          response.statusCode.should.equalOneOf([200, 204]);
 
           done();
         });
@@ -577,10 +695,7 @@ describe('Intune Resource Management', function() {
       it('- deleteGroupsForMAMPolicy', function(done) {
         client.android.deleteGroupForMAMPolicy(location, androidPolicyId, userGroups[0].objectId, null, function(error, result, request, response) {
           should.not.exist(error);
-
-          if (response.statusCode !== 200 && response.statusCode !== 204) {
-            response.statusCode.should.be.equal('200 or 204');
-          }
+          response.statusCode.should.equalOneOf([200, 204]);
 
           done();
         });
@@ -591,44 +706,43 @@ describe('Intune Resource Management', function() {
 
 function doSetUp(done) {
   // Setup resolver
-  preSetupDone = IntuneTestUtils.done(4, function() {
-    createInitialPolicies(done);
+  preSetupDone = IntuneTestUtils.done(1, function() {
+    precacheData(done);
   });
 
-  IntuneTestUtils.getAADUserGroups(process.env['USERNAME'], process.env['PASSWORD'], process.env['CLIENT_ID'], function(groups) {
+  IntuneTestUtils.getAADUsersAndGroups(process.env['USERNAME'], process.env['PASSWORD'], process.env['CLIENT_ID'], function(result) {
     // We need at least 2 groups to do all the tests!
-    groups.length.should.be.greaterThan(2);
+    result.groups.length.should.be.greaterThan(2);
+    result.users.length.should.be.greaterThan(0);
 
-    userGroups = groups;
+    userGroups = result.groups;
+    userId = result.users.filter(function(user) {
+      return user.userPrincipalName === process.env['USERNAME'];
+    })[0].objectId;
 
     preSetupDone();
   });
+}
 
-  // We need the location for the account before performin any operations
+function precacheData(done) {
+  // Setup resolver
+  cachingDone = IntuneTestUtils.done(3, function() {
+    createInitialPolicies(done);
+  });
+
+  // We need the location for the account before performing any operations
   client.getLocationByHostName(null, function(error, result) {
     should.not.exist(error);
     should.exist(result);
     should.exist(result.hostName);
     location = result.hostName;
 
-
-    // Delete all iOS Policies
-    IntuneTestUtils.deleteAllPolicies(client, location, IntuneTestUtils.PolicyType.iOS, function(success) {
-      success.should.be.true;
-      preSetupDone();
-    });
-
-    // Delete all Android Policies
-    IntuneTestUtils.deleteAllPolicies(client, location, IntuneTestUtils.PolicyType.Android, function(success) {
-      success.should.be.true;
-      preSetupDone();
-    });
-
     // Precache the list of available apps before running tests
-    client.getApps(location, null, null, null, null, function(error, result, request, response) {
+    client.getApps(location, null, function(error, result, request, response) {
       should.not.exist(error);
       should.exist(result);
       response.statusCode.should.equal(200);
+
       result.length.should.be.greaterThan(0);
 
       iOSApps = result.filter(function(app) {
@@ -639,7 +753,33 @@ function doSetUp(done) {
         return app.platform === 'android';
       });
 
-      preSetupDone();
+      cachingDone();
+    });
+
+    // Precache a device name
+    client.getMAMUserDevices(location, userId, null, function(error, result, request, response) {
+      should.not.exist(error);
+      should.exist(result);
+      response.statusCode.should.equal(200);
+
+      result.length.should.be.greaterThan(0);
+
+      deviceName = result[0].name;
+
+      cachingDone();
+    });
+
+    // Precache a flagged user
+    client.getMAMFlaggedUsers(location, null, function(error, result, request, response) {
+      should.not.exist(error);
+      should.exist(result);
+      response.statusCode.should.equal(200);
+
+      result.length.should.be.greaterThan(0);
+
+      flaggedUser = result[0];
+
+      cachingDone();
     });
   });
 }
@@ -663,7 +803,7 @@ function createInitialPolicies(done) {
     response.statusCode.should.equal(200);
 
     // Make sure policy is there
-    client.ios.getMAMPolicyById(location, iOSPolicyId, null, null, function(error, result, request, response) {
+    client.ios.getMAMPolicyByName(location, iOSPolicyId, null, function(error, result, request, response) {
       should.not.exist(error);
       should.exist(result);
       response.statusCode.should.equal(200);
@@ -671,10 +811,7 @@ function createInitialPolicies(done) {
       // add a single group to policy
       client.ios.addGroupForMAMPolicy(location, iOSPolicyId, userGroups[0].objectId, groupProperties, null, function(error, result, request, response) {
         should.not.exist(error);
-
-        if (response.statusCode !== 200 && response.statusCode !== 204) {
-          response.statusCode.should.be.equal('200 or 204');
-        }
+        response.statusCode.should.equalOneOf([200, 204]);
 
         done();
       });
@@ -689,17 +826,14 @@ function createInitialPolicies(done) {
     response.statusCode.should.equal(200);
 
     // Make sure policy is there
-    client.android.getMAMPolicyById(location, androidPolicyId, null, null, function(error, result, request, response) {
+    client.android.getMAMPolicyByName(location, androidPolicyId, null, function(error, result, request, response) {
       should.not.exist(error);
       should.exist(result);
       response.statusCode.should.equal(200);
 
       client.android.addGroupForMAMPolicy(location, androidPolicyId, userGroups[0].objectId, groupProperties, null, function(error, result, request, response) {
         should.not.exist(error);
-
-        if (response.statusCode !== 200 && response.statusCode !== 204) {
-          response.statusCode.should.be.equal('200 or 204');
-        }
+        response.statusCode.should.equalOneOf([200, 204]);
 
         done();
       });

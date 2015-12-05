@@ -8,45 +8,45 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/3a88ecd3-9c49-493e-89ad-71fc805accac/groups/125bfe6d-67ac-486b-9bc3-c0427144ed9e?api-version=2015-01-14-privatepreview', '*')
+.put('/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757/groups/1434dc43-267a-4a05-8226-31593a0ba4ed?api-version=2015-01-14-preview', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'elapsed-time-milliseconds': '120',
+  'elapsed-time-milliseconds': '133',
   'service-name': 'AdminExperienceService',
-  'client-request-id': 'ab792362-5ac5-457f-970f-6827c4750841',
-  'unique-request-id': '7bb40959-d6b1-41dc-91df-65c1e6454f60',
-  'x-ms-request-id': '7bb40959-d6b1-41dc-91df-65c1e6454f60',
-  'related-activity-id': '7bb40959-d6b1-41dc-91df-65c1e6454f60',
+  'client-request-id': 'dd9eb9cd-7ad1-40cb-b74c-b000f33a3abe',
+  'unique-request-id': 'cf0685d5-31d3-42d2-9035-bcd82b3281d7',
+  'x-ms-request-id': 'cf0685d5-31d3-42d2-9035-bcd82b3281d7',
+  'related-activity-id': 'cf0685d5-31d3-42d2-9035-bcd82b3281d7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-tenant-writes': '1186',
-  'x-ms-correlation-request-id': '5bb2271c-a32a-4835-8dc6-edceacabed5c',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035152Z:5bb2271c-a32a-4835-8dc6-edceacabed5c',
-  date: 'Tue, 24 Nov 2015 03:51:51 GMT',
+  'x-ms-ratelimit-remaining-tenant-writes': '1197',
+  'x-ms-correlation-request-id': '77f48758-5c40-4410-b586-443b20178388',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223638Z:77f48758-5c40-4410-b586-443b20178388',
+  date: 'Fri, 04 Dec 2015 22:36:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/providers/Microsoft.Intune/locations/fef.bmsua01/iosPolicies/3a88ecd3-9c49-493e-89ad-71fc805accac/groups/125bfe6d-67ac-486b-9bc3-c0427144ed9e?api-version=2015-01-14-privatepreview', '*')
+.put('/providers/Microsoft.Intune/locations/fef.msua06/iosPolicies/dcfd5561-141d-405b-9c16-bf4de6324757/groups/1434dc43-267a-4a05-8226-31593a0ba4ed?api-version=2015-01-14-preview', '*')
   .reply(204, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'elapsed-time-milliseconds': '120',
+  'elapsed-time-milliseconds': '133',
   'service-name': 'AdminExperienceService',
-  'client-request-id': 'ab792362-5ac5-457f-970f-6827c4750841',
-  'unique-request-id': '7bb40959-d6b1-41dc-91df-65c1e6454f60',
-  'x-ms-request-id': '7bb40959-d6b1-41dc-91df-65c1e6454f60',
-  'related-activity-id': '7bb40959-d6b1-41dc-91df-65c1e6454f60',
+  'client-request-id': 'dd9eb9cd-7ad1-40cb-b74c-b000f33a3abe',
+  'unique-request-id': 'cf0685d5-31d3-42d2-9035-bcd82b3281d7',
+  'x-ms-request-id': 'cf0685d5-31d3-42d2-9035-bcd82b3281d7',
+  'related-activity-id': 'cf0685d5-31d3-42d2-9035-bcd82b3281d7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-tenant-writes': '1186',
-  'x-ms-correlation-request-id': '5bb2271c-a32a-4835-8dc6-edceacabed5c',
-  'x-ms-routing-request-id': 'WESTUS:20151124T035152Z:5bb2271c-a32a-4835-8dc6-edceacabed5c',
-  date: 'Tue, 24 Nov 2015 03:51:51 GMT',
+  'x-ms-ratelimit-remaining-tenant-writes': '1197',
+  'x-ms-correlation-request-id': '77f48758-5c40-4410-b586-443b20178388',
+  'x-ms-routing-request-id': 'WESTUS:20151204T223638Z:77f48758-5c40-4410-b586-443b20178388',
+  date: 'Fri, 04 Dec 2015 22:36:37 GMT',
   connection: 'close' });
  return result; }]];
