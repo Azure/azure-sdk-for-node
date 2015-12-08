@@ -47,15 +47,15 @@ export interface AvailabilitySets {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options: RequestOptions, callback: ServiceCallback<models.AvailabilitySet>): void;
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
     createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, callback: ServiceCallback<models.AvailabilitySet>): void;
 
     /**
@@ -65,15 +65,15 @@ export interface AvailabilitySets {
      * 
      * @param {string} availabilitySetName The name of the availability set.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, availabilitySetName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -83,15 +83,15 @@ export interface AvailabilitySets {
      * 
      * @param {string} availabilitySetName The name of the availability set.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, availabilitySetName: string, options: RequestOptions, callback: ServiceCallback<models.AvailabilitySet>): void;
+    get(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
     get(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.AvailabilitySet>): void;
 
     /**
@@ -99,15 +99,15 @@ export interface AvailabilitySets {
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, options: RequestOptions, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
     list(resourceGroupName: string, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
 
     /**
@@ -117,15 +117,15 @@ export interface AvailabilitySets {
      * 
      * @param {string} availabilitySetName The name of the availability set.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
     listAvailableSizes(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
 
     /**
@@ -134,15 +134,15 @@ export interface AvailabilitySets {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
 
     /**
@@ -151,15 +151,15 @@ export interface AvailabilitySets {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAvailableSizesNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
     listAvailableSizesNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
 }
 
@@ -182,15 +182,15 @@ export interface VirtualMachineExtensionImages {
      * 
      * @param {string} version
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(location: string, publisherName: string, type: string, version: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineExtensionImage>): void;
+    get(location: string, publisherName: string, type: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionImage>): void;
     get(location: string, publisherName: string, type: string, version: string, callback: ServiceCallback<models.VirtualMachineExtensionImage>): void;
 
     /**
@@ -200,15 +200,15 @@ export interface VirtualMachineExtensionImages {
      * 
      * @param {string} publisherName
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listTypes(location: string, publisherName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listTypes(location: string, publisherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
     listTypes(location: string, publisherName: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 
     /**
@@ -220,31 +220,32 @@ export interface VirtualMachineExtensionImages {
      * 
      * @param {string} type
      * 
-     * @param {object} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [filter.name] Gets or sets the name of the resource.
+     * @param {object} [options.filter] The filter to apply on the operation.
      * 
-     * @param {string} [filter.location] Gets or sets the location of the resource.
+     * @param {string} [options.filter.name] Gets or sets the name of the resource.
      * 
-     * @param {object} [filter.tags] Gets or sets the tags attached to the
+     * @param {string} [options.filter.location] Gets or sets the location of the
      * resource.
      * 
-     * @param {string} [filter.id] Resource Id
+     * @param {object} [options.filter.tags] Gets or sets the tags attached to the
+     * resource.
      * 
-     * @param {number} [top]
+     * @param {string} [options.filter.id] Resource Id
      * 
-     * @param {string} [orderBy]
+     * @param {number} [options.top]
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.orderBy]
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listVersions(location: string, publisherName: string, type: string, filter: models.VirtualMachineImageResource, top: number, orderBy: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
-    listVersions(location: string, publisherName: string, type: string, filter: models.VirtualMachineImageResource, top: number, orderBy: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listVersions(location: string, publisherName: string, type: string, options: { filter? : models.VirtualMachineImageResource, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listVersions(location: string, publisherName: string, type: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 }
 
 /**
@@ -312,15 +313,15 @@ export interface VirtualMachineExtensions {
      * 
      * @param {object} [extensionParameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
     createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, callback: ServiceCallback<models.VirtualMachineExtension>): void;
 
     /**
@@ -380,15 +381,15 @@ export interface VirtualMachineExtensions {
      * 
      * @param {object} [extensionParameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
     beginCreateOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, callback: ServiceCallback<models.VirtualMachineExtension>): void;
 
     /**
@@ -401,15 +402,15 @@ export interface VirtualMachineExtensions {
      * 
      * @param {string} vmExtensionName The name of the virtual machine extension.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -422,16 +423,16 @@ export interface VirtualMachineExtensions {
      * 
      * @param {string} vmExtensionName The name of the virtual machine extension.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDelete(resourceGroupName: string, vmName: string, vmExtensionName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginDelete(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to get the extension.
@@ -443,18 +444,19 @@ export interface VirtualMachineExtensions {
      * 
      * @param {string} vmExtensionName The name of the virtual machine extension.
      * 
-     * @param {string} [expand] The expand expression to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, vmName: string, vmExtensionName: string, expand: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineExtension>): void;
-    get(resourceGroupName: string, vmName: string, vmExtensionName: string, expand: string, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    get(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    get(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.VirtualMachineExtension>): void;
 }
 
 /**
@@ -478,15 +480,15 @@ export interface VirtualMachineImages {
      * 
      * @param {string} version
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(location: string, publisherName: string, offer: string, skus: string, version: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineImage>): void;
+    get(location: string, publisherName: string, offer: string, skus: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImage>): void;
     get(location: string, publisherName: string, offer: string, skus: string, version: string, callback: ServiceCallback<models.VirtualMachineImage>): void;
 
     /**
@@ -500,31 +502,32 @@ export interface VirtualMachineImages {
      * 
      * @param {string} skus
      * 
-     * @param {object} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [filter.name] Gets or sets the name of the resource.
+     * @param {object} [options.filter] The filter to apply on the operation.
      * 
-     * @param {string} [filter.location] Gets or sets the location of the resource.
+     * @param {string} [options.filter.name] Gets or sets the name of the resource.
      * 
-     * @param {object} [filter.tags] Gets or sets the tags attached to the
+     * @param {string} [options.filter.location] Gets or sets the location of the
      * resource.
      * 
-     * @param {string} [filter.id] Resource Id
+     * @param {object} [options.filter.tags] Gets or sets the tags attached to the
+     * resource.
      * 
-     * @param {number} [top]
+     * @param {string} [options.filter.id] Resource Id
      * 
-     * @param {string} [orderby]
+     * @param {number} [options.top]
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.orderby]
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(location: string, publisherName: string, offer: string, skus: string, filter: models.VirtualMachineImageResource, top: number, orderby: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
-    list(location: string, publisherName: string, offer: string, skus: string, filter: models.VirtualMachineImageResource, top: number, orderby: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    list(location: string, publisherName: string, offer: string, skus: string, options: { filter? : models.VirtualMachineImageResource, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    list(location: string, publisherName: string, offer: string, skus: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 
     /**
      * Gets a list of virtual machine image offers.
@@ -533,15 +536,15 @@ export interface VirtualMachineImages {
      * 
      * @param {string} publisherName
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listOffers(location: string, publisherName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listOffers(location: string, publisherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
     listOffers(location: string, publisherName: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 
     /**
@@ -549,15 +552,15 @@ export interface VirtualMachineImages {
      *
      * @param {string} location
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listPublishers(location: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listPublishers(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
     listPublishers(location: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 
     /**
@@ -569,15 +572,15 @@ export interface VirtualMachineImages {
      * 
      * @param {string} offer
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listSkus(location: string, publisherName: string, offer: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listSkus(location: string, publisherName: string, offer: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
     listSkus(location: string, publisherName: string, offer: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 }
 
@@ -594,15 +597,15 @@ export interface UsageOperations {
      *
      * @param {string} location The location upon which resource usage is queried.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(location: string, options: RequestOptions, callback: ServiceCallback<models.ListUsagesResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
     list(location: string, callback: ServiceCallback<models.ListUsagesResult>): void;
 
     /**
@@ -611,15 +614,15 @@ export interface UsageOperations {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.ListUsagesResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ListUsagesResult>): void;
 }
 
@@ -637,15 +640,15 @@ export interface VirtualMachineSizes {
      * @param {string} location The location upon which virtual-machine-sizes is
      * queried.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(location: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
     list(location: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
 
     /**
@@ -654,15 +657,15 @@ export interface VirtualMachineSizes {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
 }
 
@@ -694,15 +697,15 @@ export interface VirtualMachines {
      * @param {boolean} [parameters.overwriteVhds] Gets or sets whether it
      * overwrites destination VirtualHardDisk if true, in case of conflict.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
     capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
 
     /**
@@ -725,15 +728,15 @@ export interface VirtualMachines {
      * @param {boolean} [parameters.overwriteVhds] Gets or sets whether it
      * overwrites destination VirtualHardDisk if true, in case of conflict.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
     beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
 
     /**
@@ -947,15 +950,15 @@ export interface VirtualMachines {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: RequestOptions, callback: ServiceCallback<models.VirtualMachine>): void;
+    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
     createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
 
     /**
@@ -1169,15 +1172,15 @@ export interface VirtualMachines {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: RequestOptions, callback: ServiceCallback<models.VirtualMachine>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
     beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
 
     /**
@@ -1187,15 +1190,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1205,16 +1208,16 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDelete(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginDelete(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to get a virtual machine.
@@ -1223,18 +1226,19 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {string} [expand] The expand expression to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, vmName: string, expand: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachine>): void;
-    get(resourceGroupName: string, vmName: string, expand: string, callback: ServiceCallback<models.VirtualMachine>): void;
+    get(resourceGroupName: string, vmName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+    get(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachine>): void;
 
     /**
      * Shuts down the Virtual Machine and releases the compute resources. You are
@@ -1244,15 +1248,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deallocate(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1263,15 +1267,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDeallocate(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginDeallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1281,15 +1285,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    generalize(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    generalize(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     generalize(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1297,15 +1301,15 @@ export interface VirtualMachines {
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
     list(resourceGroupName: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
 
     /**
@@ -1313,15 +1317,15 @@ export interface VirtualMachines {
      * property in the response to get the next page of Virtual Machines. Do this
      * till nextLink is not null to fetch all the Virtual Machines.
      *
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAll(options: RequestOptions, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
     listAll(callback: ServiceCallback<models.VirtualMachineListResult>): void;
 
     /**
@@ -1331,15 +1335,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAvailableSizes(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizes(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
     listAvailableSizes(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
 
     /**
@@ -1349,15 +1353,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    powerOff(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     powerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1367,15 +1371,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginPowerOff(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginPowerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1385,15 +1389,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    restart(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     restart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1403,15 +1407,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginRestart(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginRestart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1421,15 +1425,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    start(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     start(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1439,15 +1443,15 @@ export interface VirtualMachines {
      * 
      * @param {string} vmName The name of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginStart(resourceGroupName: string, vmName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginStart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1456,15 +1460,15 @@ export interface VirtualMachines {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
 
     /**
@@ -1475,15 +1479,15 @@ export interface VirtualMachines {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAllNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
 
     /**
@@ -1492,15 +1496,15 @@ export interface VirtualMachines {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAvailableSizesNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
     listAvailableSizesNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
 }
 
@@ -1689,15 +1693,15 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
     createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
 
     /**
@@ -1877,15 +1881,15 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
     beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
 
     /**
@@ -1895,19 +1899,19 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} [instanceIds] Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+     * set instance ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to deallocate virtual machines in a virtual machine scale set.
@@ -1916,19 +1920,19 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} [instanceIds] Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+     * set instance ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to delete a virtual machine scale set.
@@ -1937,15 +1941,15 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -1955,16 +1959,16 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDelete(resourceGroupName: string, vmScaleSetName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginDelete(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to get a virtual machine scale set.
@@ -1973,15 +1977,15 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, vmScaleSetName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    get(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
     get(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
 
     /**
@@ -1994,15 +1998,15 @@ export interface VirtualMachineScaleSets {
      * @param {array} instanceIds Gets or sets the virtual machine scale set
      * instance ids.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
 
     /**
@@ -2015,15 +2019,15 @@ export interface VirtualMachineScaleSets {
      * @param {array} instanceIds Gets or sets the virtual machine scale set
      * instance ids.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
 
     /**
@@ -2033,15 +2037,15 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getInstanceView(resourceGroupName: string, vmScaleSetName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetInstanceView>): void;
+    getInstanceView(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetInstanceView>): void;
     getInstanceView(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetInstanceView>): void;
 
     /**
@@ -2049,15 +2053,15 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
     list(resourceGroupName: string, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
 
     /**
@@ -2066,15 +2070,15 @@ export interface VirtualMachineScaleSets {
      * Scale Sets. Do this till nextLink is not null to fetch all the Virtual
      * Machine Scale Sets.
      *
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAll(options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
     listAll(callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
 
     /**
@@ -2084,15 +2088,15 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listSkus(resourceGroupName: string, vmScaleSetName: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+    listSkus(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
     listSkus(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
 
     /**
@@ -2103,19 +2107,19 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} [instanceIds] Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+     * set instance ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to power off (stop) virtual machines in a virtual machine
@@ -2125,19 +2129,19 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} [instanceIds] Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+     * set instance ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to restart virtual machines in a virtual machine scale set.
@@ -2146,19 +2150,19 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} [instanceIds] Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+     * set instance ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to restart virtual machines in a virtual machine scale set.
@@ -2167,19 +2171,19 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} [instanceIds] Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+     * set instance ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to start virtual machines in a virtual machine scale set.
@@ -2188,19 +2192,19 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} [instanceIds] Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+     * set instance ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    start(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
-    start(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to start virtual machines in a virtual machine scale set.
@@ -2209,19 +2213,19 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} [instanceIds] Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+     * set instance ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to manually upgrade virtual machines in a virtual machine
@@ -2234,15 +2238,15 @@ export interface VirtualMachineScaleSets {
      * @param {array} instanceIds Gets or sets the virtual machine scale set
      * instance ids.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
 
     /**
@@ -2256,15 +2260,15 @@ export interface VirtualMachineScaleSets {
      * @param {array} instanceIds Gets or sets the virtual machine scale set
      * instance ids.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
 
     /**
@@ -2273,15 +2277,15 @@ export interface VirtualMachineScaleSets {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
 
     /**
@@ -2293,15 +2297,15 @@ export interface VirtualMachineScaleSets {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAllNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
 
     /**
@@ -2310,15 +2314,15 @@ export interface VirtualMachineScaleSets {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listSkusNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+    listSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
     listSkusNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
 }
 
@@ -2339,15 +2343,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2359,15 +2363,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2379,15 +2383,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2399,16 +2403,16 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDelete(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginDelete(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to get a virtual machine scale set virtual machine.
@@ -2419,15 +2423,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetVM>): void;
+    get(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVM>): void;
     get(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.VirtualMachineScaleSetVM>): void;
 
     /**
@@ -2439,15 +2443,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getInstanceView(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetVMInstanceView>): void;
+    getInstanceView(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMInstanceView>): void;
     getInstanceView(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.VirtualMachineScaleSetVMInstanceView>): void;
 
     /**
@@ -2458,215 +2462,229 @@ export interface VirtualMachineScaleSetVMs {
      * @param {string} virtualMachineScaleSetName The name of the virtual machine
      * scale set.
      * 
-     * @param {object} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [filter.plan] Gets or sets the purchase plan when deploying
-     * virtual machine from VM Marketplace images.
+     * @param {object} [options.filter] The filter to apply on the operation.
      * 
-     * @param {string} [filter.plan.name] Gets or sets the plan ID.
+     * @param {object} [options.filter.plan] Gets or sets the purchase plan when
+     * deploying virtual machine from VM Marketplace images.
      * 
-     * @param {string} [filter.plan.publisher] Gets or sets the publisher ID.
+     * @param {string} [options.filter.plan.name] Gets or sets the plan ID.
      * 
-     * @param {string} [filter.plan.product] Gets or sets the offer ID.
+     * @param {string} [options.filter.plan.publisher] Gets or sets the publisher
+     * ID.
      * 
-     * @param {string} [filter.plan.promotionCode] Gets or sets the promotion code.
+     * @param {string} [options.filter.plan.product] Gets or sets the offer ID.
      * 
-     * @param {object} [filter.hardwareProfile] Gets or sets the hardware profile.
+     * @param {string} [options.filter.plan.promotionCode] Gets or sets the
+     * promotion code.
      * 
-     * @param {string} [filter.hardwareProfile.vmSize] The virtual machine size
-     * name. Possible values for this property include: 'Basic_A0', 'Basic_A1',
-     * 'Basic_A2', 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1',
-     * 'Standard_A2', 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6',
-     * 'Standard_A7', 'Standard_A8', 'Standard_A9', 'Standard_A10',
-     * 'Standard_A11', 'Standard_D1', 'Standard_D2', 'Standard_D3',
-     * 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
-     * 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
-     * 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2',
-     * 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_G1', 'Standard_G2',
-     * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'.
+     * @param {object} [options.filter.hardwareProfile] Gets or sets the hardware
+     * profile.
      * 
-     * @param {object} [filter.storageProfile] Gets or sets the storage profile.
+     * @param {string} [options.filter.hardwareProfile.vmSize] The virtual machine
+     * size name. Possible values for this property include: 'Basic_A0',
+     * 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4', 'Standard_A0',
+     * 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4', 'Standard_A5',
+     * 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
+     * 'Standard_A10', 'Standard_A11', 'Standard_D1', 'Standard_D2',
+     * 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
+     * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
+     * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
+     * 'Standard_D12_v2', 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_DS1',
+     * 'Standard_DS2', 'Standard_DS3', 'Standard_DS4', 'Standard_DS11',
+     * 'Standard_DS12', 'Standard_DS13', 'Standard_DS14', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+     * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+     * 'Standard_GS5'.
      * 
-     * @param {object} [filter.storageProfile.imageReference] Gets or sets the
-     * image reference.
+     * @param {object} [options.filter.storageProfile] Gets or sets the storage
+     * profile.
      * 
-     * @param {string} [filter.storageProfile.imageReference.publisher] Gets or
-     * sets the image publisher.
+     * @param {object} [options.filter.storageProfile.imageReference] Gets or sets
+     * the image reference.
      * 
-     * @param {string} [filter.storageProfile.imageReference.offer] Gets or sets
-     * the image offer.
+     * @param {string} [options.filter.storageProfile.imageReference.publisher]
+     * Gets or sets the image publisher.
      * 
-     * @param {string} [filter.storageProfile.imageReference.sku] Gets or sets the
-     * image sku.
+     * @param {string} [options.filter.storageProfile.imageReference.offer] Gets
+     * or sets the image offer.
      * 
-     * @param {string} [filter.storageProfile.imageReference.version] Gets or sets
-     * the image version. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
-     * latest version of image.
+     * @param {string} [options.filter.storageProfile.imageReference.sku] Gets or
+     * sets the image sku.
      * 
-     * @param {object} [filter.storageProfile.osDisk] Gets or sets the OS disk.
+     * @param {string} [options.filter.storageProfile.imageReference.version] Gets
+     * or sets the image version. The allowed formats are Major.Minor.Build or
+     * 'latest'. Major, Minor and Build being decimal numbers. Specify 'latest'
+     * to use the latest version of image.
      * 
-     * @param {string} [filter.storageProfile.osDisk.osType] Gets or sets the
-     * Operating System type. Possible values for this property include:
+     * @param {object} [options.filter.storageProfile.osDisk] Gets or sets the OS
+     * disk.
+     * 
+     * @param {string} [options.filter.storageProfile.osDisk.osType] Gets or sets
+     * the Operating System type. Possible values for this property include:
      * 'Windows', 'Linux'.
      * 
-     * @param {object} [filter.storageProfile.osDisk.encryptionSettings] Gets or
-     * sets the disk encryption settings.
+     * @param {object} [options.filter.storageProfile.osDisk.encryptionSettings]
+     * Gets or sets the disk encryption settings.
      * 
      * @param {object}
-     * [filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey] Gets
-     * or sets the disk encryption key which is a KeyVault Secret.
+     * [options.filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * Gets or sets the disk encryption key which is a KeyVault Secret.
      * 
      * @param {string}
-     * [filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
+     * [options.filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
      * Gets or sets the URL referencing a secret in a Key Vault.
      * 
      * @param {object}
-     * [filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
+     * [options.filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
      * Gets or sets the Relative URL of the Key Vault containing the secret.
      * 
      * @param {object}
-     * [filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey] Gets or
-     * sets the key encryption key which is KeyVault Key.
+     * [options.filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
+     * Gets or sets the key encryption key which is KeyVault Key.
      * 
      * @param {string}
-     * [filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
+     * [options.filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
      * Gets or sets the URL referencing a key in a Key Vault.
      * 
      * @param {object}
-     * [filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
+     * [options.filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
      * Gets or sets the Relative URL of the Key Vault containing the key
      * 
-     * @param {string} [filter.storageProfile.osDisk.name] Gets or sets the disk
-     * name.
+     * @param {string} [options.filter.storageProfile.osDisk.name] Gets or sets
+     * the disk name.
      * 
-     * @param {object} [filter.storageProfile.osDisk.vhd] Gets or sets the Virtual
-     * Hard Disk.
+     * @param {object} [options.filter.storageProfile.osDisk.vhd] Gets or sets the
+     * Virtual Hard Disk.
      * 
-     * @param {object} [filter.storageProfile.osDisk.image] Gets or sets the
-     * Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
+     * @param {object} [options.filter.storageProfile.osDisk.image] Gets or sets
+     * the Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
      * before using it to attach to the Virtual Machine.If SourceImage is
      * provided, the destination VirtualHardDisk should not exist.
      * 
-     * @param {string} [filter.storageProfile.osDisk.image.uri] Gets or sets the
-     * virtual hard disk's uri. It should be a valid Uri to a virtual hard disk.
+     * @param {string} [options.filter.storageProfile.osDisk.image.uri] Gets or
+     * sets the virtual hard disk's uri. It should be a valid Uri to a virtual
+     * hard disk.
      * 
-     * @param {string} [filter.storageProfile.osDisk.caching] Gets or sets the
-     * caching type. Possible values for this property include: 'None',
+     * @param {string} [options.filter.storageProfile.osDisk.caching] Gets or sets
+     * the caching type. Possible values for this property include: 'None',
      * 'ReadOnly', 'ReadWrite'.
      * 
-     * @param {string} [filter.storageProfile.osDisk.createOption] Gets or sets
-     * the create option. Possible values for this property include: 'fromImage',
-     * 'empty', 'attach'.
+     * @param {string} [options.filter.storageProfile.osDisk.createOption] Gets or
+     * sets the create option. Possible values for this property include:
+     * 'fromImage', 'empty', 'attach'.
      * 
-     * @param {number} [filter.storageProfile.osDisk.diskSizeGB] Gets or sets the
-     * initial disk size in GB for blank data disks, and the new desired size for
-     * existing OS and Data disks.
+     * @param {number} [options.filter.storageProfile.osDisk.diskSizeGB] Gets or
+     * sets the initial disk size in GB for blank data disks, and the new desired
+     * size for existing OS and Data disks.
      * 
-     * @param {array} [filter.storageProfile.dataDisks] Gets or sets the data
-     * disks.
+     * @param {array} [options.filter.storageProfile.dataDisks] Gets or sets the
+     * data disks.
      * 
-     * @param {object} [filter.osProfile] Gets or sets the OS profile.
+     * @param {object} [options.filter.osProfile] Gets or sets the OS profile.
      * 
-     * @param {string} [filter.osProfile.computerName] Gets or sets the computer
-     * name.
+     * @param {string} [options.filter.osProfile.computerName] Gets or sets the
+     * computer name.
      * 
-     * @param {string} [filter.osProfile.adminUsername] Gets or sets the admin
-     * user name.
+     * @param {string} [options.filter.osProfile.adminUsername] Gets or sets the
+     * admin user name.
      * 
-     * @param {string} [filter.osProfile.adminPassword] Gets or sets the admin
-     * user password.
+     * @param {string} [options.filter.osProfile.adminPassword] Gets or sets the
+     * admin user password.
      * 
-     * @param {string} [filter.osProfile.customData] Gets or sets a base-64
-     * encoded string of custom data.
+     * @param {string} [options.filter.osProfile.customData] Gets or sets a
+     * base-64 encoded string of custom data.
      * 
-     * @param {object} [filter.osProfile.windowsConfiguration] Gets or sets the
-     * Windows Configuration of the OS profile.
-     * 
-     * @param {boolean} [filter.osProfile.windowsConfiguration.provisionVMAgent]
-     * Gets or sets whether VM Agent should be provisioned on the Virtual Machine.
+     * @param {object} [options.filter.osProfile.windowsConfiguration] Gets or
+     * sets the Windows Configuration of the OS profile.
      * 
      * @param {boolean}
-     * [filter.osProfile.windowsConfiguration.enableAutomaticUpdates] Gets or
-     * sets whether Windows updates are automatically installed on the VM
+     * [options.filter.osProfile.windowsConfiguration.provisionVMAgent] Gets or
+     * sets whether VM Agent should be provisioned on the Virtual Machine.
      * 
-     * @param {string} [filter.osProfile.windowsConfiguration.timeZone] Gets or
-     * sets the Time Zone of the VM
+     * @param {boolean}
+     * [options.filter.osProfile.windowsConfiguration.enableAutomaticUpdates]
+     * Gets or sets whether Windows updates are automatically installed on the VM
+     * 
+     * @param {string} [options.filter.osProfile.windowsConfiguration.timeZone]
+     * Gets or sets the Time Zone of the VM
      * 
      * @param {array}
-     * [filter.osProfile.windowsConfiguration.additionalUnattendContent] Gets or
-     * sets the additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file.
+     * [options.filter.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Gets or sets the additional base-64 encoded XML formatted information that
+     * can be included in the Unattend.xml file.
      * 
-     * @param {object} [filter.osProfile.windowsConfiguration.winRM] Gets or sets
-     * the Windows Remote Management configuration of the VM
+     * @param {object} [options.filter.osProfile.windowsConfiguration.winRM] Gets
+     * or sets the Windows Remote Management configuration of the VM
      * 
-     * @param {array} [filter.osProfile.windowsConfiguration.winRM.listeners] Gets
-     * or sets the list of Windows Remote Management listeners
+     * @param {array}
+     * [options.filter.osProfile.windowsConfiguration.winRM.listeners] Gets or
+     * sets the list of Windows Remote Management listeners
      * 
-     * @param {object} [filter.osProfile.linuxConfiguration] Gets or sets the
-     * Linux Configuration of the OS profile.
+     * @param {object} [options.filter.osProfile.linuxConfiguration] Gets or sets
+     * the Linux Configuration of the OS profile.
      * 
      * @param {boolean}
-     * [filter.osProfile.linuxConfiguration.disablePasswordAuthentication] Gets
-     * or sets whether Authentication using user name and password is allowed or
-     * not
+     * [options.filter.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Gets or sets whether Authentication using user name and password is
+     * allowed or not
      * 
-     * @param {object} [filter.osProfile.linuxConfiguration.ssh] Gets or sets the
-     * SSH configuration for linux VMs
+     * @param {object} [options.filter.osProfile.linuxConfiguration.ssh] Gets or
+     * sets the SSH configuration for linux VMs
      * 
-     * @param {array} [filter.osProfile.linuxConfiguration.ssh.publicKeys] Gets or
-     * sets the list of SSH public keys used to authenticate with linux based VMs
+     * @param {array} [options.filter.osProfile.linuxConfiguration.ssh.publicKeys]
+     * Gets or sets the list of SSH public keys used to authenticate with linux
+     * based VMs
      * 
-     * @param {array} [filter.osProfile.secrets] Gets or sets the List of
+     * @param {array} [options.filter.osProfile.secrets] Gets or sets the List of
      * certificates for addition to the VM.
      * 
-     * @param {object} [filter.networkProfile] Gets or sets the network profile.
-     * 
-     * @param {array} [filter.networkProfile.networkInterfaces] Gets or sets the
-     * network interfaces.
-     * 
-     * @param {object} [filter.diagnosticsProfile] Gets or sets the diagnostics
+     * @param {object} [options.filter.networkProfile] Gets or sets the network
      * profile.
      * 
-     * @param {object} [filter.diagnosticsProfile.bootDiagnostics] Gets or sets
-     * the boot diagnostics.
+     * @param {array} [options.filter.networkProfile.networkInterfaces] Gets or
+     * sets the network interfaces.
      * 
-     * @param {boolean} [filter.diagnosticsProfile.bootDiagnostics.enabled] Gets
-     * or sets whether VM Agent should be provisioned on the Virtual Machine.
+     * @param {object} [options.filter.diagnosticsProfile] Gets or sets the
+     * diagnostics profile.
      * 
-     * @param {string} [filter.diagnosticsProfile.bootDiagnostics.storageUri] Gets
-     * or sets the boot diagnostics storage Uri. It should be a valid Uri
+     * @param {object} [options.filter.diagnosticsProfile.bootDiagnostics] Gets or
+     * sets the boot diagnostics.
      * 
-     * @param {object} [filter.availabilitySet] Gets or sets the reference Id of
-     * the availailbity set to which this virtual machine belongs.
+     * @param {boolean}
+     * [options.filter.diagnosticsProfile.bootDiagnostics.enabled] Gets or sets
+     * whether VM Agent should be provisioned on the Virtual Machine.
      * 
-     * @param {string} [filter.availabilitySet.id] Resource Id
+     * @param {string}
+     * [options.filter.diagnosticsProfile.bootDiagnostics.storageUri] Gets or
+     * sets the boot diagnostics storage Uri. It should be a valid Uri
      * 
-     * @param {string} [filter.provisioningState] Gets or sets the provisioning
-     * state, which only appears in the response.
+     * @param {object} [options.filter.availabilitySet] Gets or sets the reference
+     * Id of the availailbity set to which this virtual machine belongs.
      * 
-     * @param {string} [filter.location] Resource location
+     * @param {string} [options.filter.availabilitySet.id] Resource Id
      * 
-     * @param {object} [filter.tags] Resource tags
+     * @param {string} [options.filter.provisioningState] Gets or sets the
+     * provisioning state, which only appears in the response.
      * 
-     * @param {string} [select] The list parameters.
+     * @param {string} [options.filter.location] Resource location
      * 
-     * @param {string} [expand] The expand expression to apply on the operation.
+     * @param {object} [options.filter.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.select] The list parameters.
+     * 
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, virtualMachineScaleSetName: string, filter: models.VirtualMachineScaleSetVM, select: string, expand: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
-    list(resourceGroupName: string, virtualMachineScaleSetName: string, filter: models.VirtualMachineScaleSetVM, select: string, expand: string, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+    list(resourceGroupName: string, virtualMachineScaleSetName: string, options: { filter? : models.VirtualMachineScaleSetVM, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+    list(resourceGroupName: string, virtualMachineScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
 
     /**
      * The operation to power off (stop) a virtual machine scale set.
@@ -2677,15 +2695,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2697,15 +2715,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2717,15 +2735,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2737,15 +2755,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2757,15 +2775,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2777,15 +2795,15 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {string} instanceId The instance id of the virtual machine.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -2794,14 +2812,14 @@ export interface VirtualMachineScaleSetVMs {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
 }
