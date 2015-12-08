@@ -86,7 +86,7 @@ describe('Resource Management Client', function () {
           group.location.should.equal('westus');
           group.properties.provisioningState.should.equal('Succeeded');
           //list all the resource groups in the subscription
-          client.resourceGroups.list(null, null, function (err, result, request, response) {
+          client.resourceGroups.list(function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -131,7 +131,7 @@ describe('Resource Management Client', function () {
             result.type.should.equal(resourceProviderNamespace + '/' + resourceType);
             result.location.should.equal(testLocation);
             //list all the resources
-            client.resources.list(null, null, function (err, result, request, response) {
+            client.resources.list(function (err, result, request, response) {
               should.not.exist(err);
               response.statusCode.should.equal(200);
               var resources = result;

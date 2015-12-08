@@ -57,9 +57,15 @@ export interface ResourceGroupFilter {
 
 /**
  * @class
- * Initializes a new instance of the ManagementLockProperties class.
+ * Initializes a new instance of the ManagementLockObject class.
  * @constructor
- * The management lock properties.
+ * Management lock information.
+ * @member {string} [id] Gets or sets the Id of the lock.
+ * 
+ * @member {string} [type] Gets or sets the type of the lock.
+ * 
+ * @member {string} [name] Gets or sets the name of the lock.
+ * 
  * @member {string} [level] Gets or sets the lock level of the management
  * lock. Possible values for this property include: 'NotSpecified',
  * 'CanNotDelete', 'ReadOnly'.
@@ -67,37 +73,12 @@ export interface ResourceGroupFilter {
  * @member {string} [notes] Gets or sets the notes of the management lock.
  * 
  */
-export interface ManagementLockProperties {
-    level?: string;
-    notes?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagementLockObject class.
- * @constructor
- * Management lock information.
- * @member {object} [properties] Gets or sets the properties of the lock.
- * 
- * @member {string} [properties.level] Gets or sets the lock level of the
- * management lock. Possible values for this property include:
- * 'NotSpecified', 'CanNotDelete', 'ReadOnly'.
- * 
- * @member {string} [properties.notes] Gets or sets the notes of the
- * management lock.
- * 
- * @member {string} [id] Gets or sets the Id of the lock.
- * 
- * @member {string} [type] Gets or sets the type of the lock.
- * 
- * @member {string} [name] Gets or sets the name of the lock.
- * 
- */
-export interface ManagementLockObject {
-    properties?: ManagementLockProperties;
+export interface ManagementLockObject extends BaseResource {
     id?: string;
     type?: string;
     name?: string;
+    level?: string;
+    notes?: string;
 }
 
 /**

@@ -24,15 +24,15 @@ export interface Features {
      * Gets a list of previewed features for all the providers in the current
      * subscription.
      *
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAll(options: RequestOptions, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
     listAll(callback: ServiceCallback<models.FeatureOperationsListResult>): void;
 
     /**
@@ -41,15 +41,15 @@ export interface Features {
      * @param {string} resourceProviderNamespace The namespace of the resource
      * provider.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceProviderNamespace: string, options: RequestOptions, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
+    list(resourceProviderNamespace: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
     list(resourceProviderNamespace: string, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
 
     /**
@@ -60,15 +60,15 @@ export interface Features {
      * 
      * @param {string} featureName Previewed feature name in the resource provider.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceProviderNamespace: string, featureName: string, options: RequestOptions, callback: ServiceCallback<models.FeatureResult>): void;
+    get(resourceProviderNamespace: string, featureName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeatureResult>): void;
     get(resourceProviderNamespace: string, featureName: string, callback: ServiceCallback<models.FeatureResult>): void;
 
     /**
@@ -79,15 +79,15 @@ export interface Features {
      * 
      * @param {string} featureName Previewed feature name in the resource provider.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    register(resourceProviderNamespace: string, featureName: string, options: RequestOptions, callback: ServiceCallback<models.FeatureResult>): void;
+    register(resourceProviderNamespace: string, featureName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeatureResult>): void;
     register(resourceProviderNamespace: string, featureName: string, callback: ServiceCallback<models.FeatureResult>): void;
 
     /**
@@ -97,15 +97,15 @@ export interface Features {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAllNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
 
     /**
@@ -114,14 +114,14 @@ export interface Features {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.FeatureOperationsListResult>): void;
 }

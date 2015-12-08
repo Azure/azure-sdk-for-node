@@ -25,15 +25,15 @@ export interface Subscriptions {
      *
      * @param {string} subscriptionId Id of the subscription
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listLocations(subscriptionId: string, options: RequestOptions, callback: ServiceCallback<models.LocationListResult>): void;
+    listLocations(subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocationListResult>): void;
     listLocations(subscriptionId: string, callback: ServiceCallback<models.LocationListResult>): void;
 
     /**
@@ -41,29 +41,29 @@ export interface Subscriptions {
      *
      * @param {string} subscriptionId Id of the subscription.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(subscriptionId: string, options: RequestOptions, callback: ServiceCallback<models.Subscription>): void;
+    get(subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Subscription>): void;
     get(subscriptionId: string, callback: ServiceCallback<models.Subscription>): void;
 
     /**
      * Gets a list of the subscriptionIds.
      *
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: RequestOptions, callback: ServiceCallback<models.SubscriptionListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionListResult>): void;
     list(callback: ServiceCallback<models.SubscriptionListResult>): void;
 
     /**
@@ -72,15 +72,15 @@ export interface Subscriptions {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listLocationsNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.LocationListResult>): void;
+    listLocationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocationListResult>): void;
     listLocationsNext(nextPageLink: string, callback: ServiceCallback<models.LocationListResult>): void;
 
     /**
@@ -89,15 +89,15 @@ export interface Subscriptions {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.SubscriptionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.SubscriptionListResult>): void;
 }
 
@@ -112,15 +112,15 @@ export interface Tenants {
     /**
      * Gets a list of the tenantIds.
      *
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: RequestOptions, callback: ServiceCallback<models.TenantListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TenantListResult>): void;
     list(callback: ServiceCallback<models.TenantListResult>): void;
 
     /**
@@ -129,14 +129,14 @@ export interface Tenants {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.TenantListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TenantListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.TenantListResult>): void;
 }

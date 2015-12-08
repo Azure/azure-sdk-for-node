@@ -147,6 +147,7 @@
     <Compile Include="lib\services\storageManagement2\lib\models\endpoints.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\index.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\index.js" />
+    <Compile Include="lib\services\storageManagement2\lib\models\resource.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccount.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccount.js" />
     <Compile Include="lib\services\storageManagement2\lib\models\storageAccountCheckNameAvailabilityParameters.js" />
@@ -681,6 +682,40 @@
     <Compile Include="test\recordings\filter-tests.nock.js" />
     <Compile Include="test\recordings\gcmservice-registrations-tests.nock.js" />
     <Compile Include="test\recordings\gcmservice-tests.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Apps_-_getAndroidApps.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Apps_-_getiOSApps.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Devices_-_getMAMUserDevices.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Devices_-_getOperationResults.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Devices_-_wipeMAMUserDevice.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_FlaggedUsers_-_GetMAMFlaggedUserByName.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_FlaggedUsers_-_GetMAMFlaggedUsers.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_FlaggedUsers_-_GetMAMStatuses.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_FlaggedUsers_-_GetMAMUserFlaggedEnrolledApps.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Locations_-_getLocationByHostName.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Locations_-_getLocations.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_addAppForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_addGroupsForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_createOrUpdateMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_deleteAppForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_deleteGroupsForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_deleteMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_getAppsForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_getGroupsForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_getMAMPolicies.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_getMAMPoliciyById.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_Android_-_patchMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_addAppForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_addGroupsForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_createOrUpdateMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_deleteAppForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_deleteGroupsForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_deleteMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_getAppsForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_getGroupsForMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_getMAMPolicies.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_getMAMPoliciyById.nock.js" />
+    <Compile Include="test\recordings\intune-tests\Intune_Resource_Management_-_Policies_-_iOS_-_patchMAMPolicy.nock.js" />
+    <Compile Include="test\recordings\intune-tests\suite.intune-tests.nock.js" />
     <Compile Include="test\recordings\keyVault-key-tests.nock.js" />
     <Compile Include="test\recordings\keyVault-secret-tests.nock.js" />
     <Compile Include="test\recordings\linearretrypolicyfilter-tests.nock.js" />
@@ -708,6 +743,9 @@
     <Compile Include="test\recordings\sqlManagement-tests.nock.js" />
     <Compile Include="test\recordings\sqlservice-tests.nock.js" />
     <Compile Include="test\recordings\storagemanagementservice-tests.nock.js" />
+    <Compile Include="test\recordings\storagemanagementservice-tests\Storage_Management_storage_accounts_should_check_the_name_availability_for_a_storage_account.nock.js" />
+    <Compile Include="test\recordings\storagemanagementservice-tests\Storage_Management_storage_accounts_should_check_the_name_availability_for_a_storage_account_that_already_exists.nock.js" />
+    <Compile Include="test\recordings\storagemanagementservice-tests\Storage_Management_storage_accounts_should_check_the_name_availability_for_a_storage_account_that_does_not_exist.nock.js" />
     <Compile Include="test\recordings\storagemanagementservice-tests\Storage_Management_storage_accounts_should_create_an_account_correctly.nock.js" />
     <Compile Include="test\recordings\storagemanagementservice-tests\Storage_Management_storage_accounts_should_create_an_account_correctly.nock.js" />
     <Compile Include="test\recordings\storagemanagementservice-tests\Storage_Management_storage_accounts_should_delete_the_specified_storage_account.nock.js" />
@@ -733,6 +771,8 @@
     <Compile Include="test\recordings\subscriptionClient-tests\Subscription_Management_Client_should_list_all_the_tenants.nock.js" />
     <Compile Include="test\recordings\subscriptionClient-tests\suite.subscriptionClient-tests.nock.js" />
     <Compile Include="test\recordings\subscriptionClient-tests\suite.subscriptionClient-tests.nock.js" />
+    <Compile Include="test\recordings\suite-base-tests\suite.suite-base-tests.nock.js" />
+    <Compile Include="test\recordings\suite-base-tests\Test_Suite_Base_should_properly_record_and_retrieve_mock_variables.nock.js" />
     <Compile Include="test\recordings\tabledatatype-tests.nock.js" />
     <Compile Include="test\recordings\tableservice-batch-tests.nock.js" />
     <Compile Include="test\recordings\tableservice-gb-tests.nock.js" />
@@ -749,7 +789,9 @@
     <Compile Include="test\serviceruntime\runtimeversionprotocolclient-tests.js" />
     <Compile Include="test\services\computeManagement\computeManagementClient-tests.js" />
     <Compile Include="test\services\intune\intuneResourceManagementClient-tests-utils.js" />
-    <Compile Include="test\services\intune\intuneResourceManagementClient-tests.js" />
+    <Compile Include="test\services\intune\intuneResourceManagementClient-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\services\resourceManagement\authorizationClient-tests.js">
       <SubType>Code</SubType>
       <TestFramework>Mocha</TestFramework>
@@ -1007,12 +1049,13 @@
     <Folder Include="test\framework" />
     <Folder Include="test\recordings\authorizationClient-tests\" />
     <Folder Include="test\recordings\featureClient-tests\" />
+    <Folder Include="test\recordings\intune-tests\" />
     <Folder Include="test\recordings\resourceManagement-tests\" />
     <Folder Include="test\recordings\storagemanagementservice-tests\" />
     <Folder Include="test\recordings\subscriptionClient-tests\" />
+    <Folder Include="test\recordings\suite-base-tests\" />
     <Folder Include="test\services\computeManagement\" />
     <Folder Include="test\services\intune\" />
-    <Folder Include="test\tmp\" />
     <Folder Include="test\recordings" />
     <Folder Include="test\serviceruntime" />
     <Folder Include="test\services" />
@@ -1032,6 +1075,11 @@
     <Folder Include="test\services\webSiteManagement" />
     <Folder Include="test\util" />
     <Folder Include="tools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="lib\services\storageManagement2\lib\models\index.d.ts" />
+    <TypeScriptCompile Include="lib\services\storageManagement2\lib\operations\index.d.ts" />
+    <TypeScriptCompile Include="lib\services\storageManagement2\lib\storageManagementClient.d.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
