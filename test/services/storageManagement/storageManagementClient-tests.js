@@ -96,6 +96,28 @@ describe('Storage Management', function () {
       });
     });
     
+    it('should check the name availability for a storage account that already exists', function (done) {
+      client.storageAccounts.checkNameAvailability(accountName, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.nameAvailable.should.equal(false);
+        result.reason.should.match(/.*AlreadyExists.*/ig);
+        result.message.should.match(/.*is already taken.*/ig);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+    
+    it('should check the name availability for a storage account that does not exist', function (done) {
+      client.storageAccounts.checkNameAvailability(accountName + '1012', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.nameAvailable.should.equal(true);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+
     it('should get properties of the specified storage account', function (done) {
       client.storageAccounts.getProperties(groupName, accountName, function (err, result, request, response) {
         should.not.exist(err);
