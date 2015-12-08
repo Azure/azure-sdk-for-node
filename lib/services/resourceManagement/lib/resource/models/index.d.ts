@@ -34,27 +34,6 @@ export interface PolicyAssignment extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the PolicyAssignmentCreateParameters class.
- * @constructor
- * Policy assignment create parameters.
- * @member {object} [properties] Gets or sets policy assignment properties.
- * 
- * @member {string} [properties.scope] Gets or sets the policy assignment
- * scope.
- * 
- * @member {string} [properties.displayName] Gets or sets the policy
- * assignment display name.
- * 
- * @member {string} [properties.policyDefinitionId] Gets or sets the policy
- * definition Id.
- * 
- */
-export interface PolicyAssignmentCreateParameters {
-    properties?: PolicyAssignmentProperties;
-}
-
-/**
- * @class
  * Initializes a new instance of the PolicyDefinition class.
  * @constructor
  * Policy definition.

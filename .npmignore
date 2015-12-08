@@ -46,3 +46,6 @@ gruntfile.js
 .nuget/
 packages/
 packages.config
+
+# VS #
+.ntvs_analysis.*

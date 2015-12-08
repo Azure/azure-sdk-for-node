@@ -29,15 +29,15 @@ export interface Deployments {
      * 
      * @param {string} deploymentName The name of the deployment to be deleted.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, deploymentName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -49,16 +49,16 @@ export interface Deployments {
      * 
      * @param {string} deploymentName The name of the deployment to be deleted.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDelete(resourceGroupName: string, deploymentName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginDelete(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Checks whether deployment exists.
@@ -68,15 +68,15 @@ export interface Deployments {
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkExistence(resourceGroupName: string, deploymentName: string, options: RequestOptions, callback: ServiceCallback<boolean>): void;
+    checkExistence(resourceGroupName: string, deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
     checkExistence(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<boolean>): void;
 
     /**
@@ -119,15 +119,15 @@ export interface Deployments {
      * @param {string} [parameters.properties.mode] Gets or sets the deployment
      * mode. Possible values for this property include: 'Incremental', 'Complete'.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: RequestOptions, callback: ServiceCallback<models.DeploymentExtended>): void;
+    createOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
     createOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
 
     /**
@@ -170,15 +170,15 @@ export interface Deployments {
      * @param {string} [parameters.properties.mode] Gets or sets the deployment
      * mode. Possible values for this property include: 'Incremental', 'Complete'.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: RequestOptions, callback: ServiceCallback<models.DeploymentExtended>): void;
+    beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
     beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
 
     /**
@@ -189,15 +189,15 @@ export interface Deployments {
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, deploymentName: string, options: RequestOptions, callback: ServiceCallback<models.DeploymentExtended>): void;
+    get(resourceGroupName: string, deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
     get(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentExtended>): void;
 
     /**
@@ -208,15 +208,15 @@ export interface Deployments {
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    cancel(resourceGroupName: string, deploymentName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, deploymentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     cancel(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -259,15 +259,15 @@ export interface Deployments {
      * @param {string} [parameters.properties.mode] Gets or sets the deployment
      * mode. Possible values for this property include: 'Incremental', 'Complete'.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    validate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: RequestOptions, callback: ServiceCallback<models.DeploymentValidateResult>): void;
+    validate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentValidateResult>): void;
     validate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentValidateResult>): void;
 
     /**
@@ -276,24 +276,24 @@ export interface Deployments {
      * @param {string} resourceGroupName The name of the resource group to filter
      * by. The name is case insensitive.
      * 
-     * @param {object} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [filter.provisioningState] Gets or sets the provisioning
-     * state.
+     * @param {object} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [top] Query parameters. If null is passed returns all
-     * deployments.
+     * @param {string} [options.filter.provisioningState] Gets or sets the
+     * provisioning state.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {number} [options.top] Query parameters. If null is passed returns
+     * all deployments.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, filter: models.DeploymentExtendedFilter, top: number, options: RequestOptions, callback: ServiceCallback<models.DeploymentListResult>): void;
-    list(resourceGroupName: string, filter: models.DeploymentExtendedFilter, top: number, callback: ServiceCallback<models.DeploymentListResult>): void;
+    list(resourceGroupName: string, options: { filter? : models.DeploymentExtendedFilter, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
+    list(resourceGroupName: string, callback: ServiceCallback<models.DeploymentListResult>): void;
 
     /**
      * Get a list of deployments.
@@ -301,15 +301,15 @@ export interface Deployments {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.DeploymentListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentListResult>): void;
 }
 
@@ -327,15 +327,15 @@ export interface Providers {
      * @param {string} resourceProviderNamespace Namespace of the resource
      * provider.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    unregister(resourceProviderNamespace: string, options: RequestOptions, callback: ServiceCallback<models.Provider>): void;
+    unregister(resourceProviderNamespace: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Provider>): void;
     unregister(resourceProviderNamespace: string, callback: ServiceCallback<models.Provider>): void;
 
     /**
@@ -344,33 +344,33 @@ export interface Providers {
      * @param {string} resourceProviderNamespace Namespace of the resource
      * provider.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    register(resourceProviderNamespace: string, options: RequestOptions, callback: ServiceCallback<models.Provider>): void;
+    register(resourceProviderNamespace: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Provider>): void;
     register(resourceProviderNamespace: string, callback: ServiceCallback<models.Provider>): void;
 
     /**
      * Gets a list of resource providers.
      *
-     * @param {number} [top] Query parameters. If null is passed returns all
-     * deployments.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {number} [options.top] Query parameters. If null is passed returns
+     * all deployments.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(top: number, options: RequestOptions, callback: ServiceCallback<models.ProviderListResult>): void;
-    list(top: number, callback: ServiceCallback<models.ProviderListResult>): void;
+    list(options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderListResult>): void;
+    list(callback: ServiceCallback<models.ProviderListResult>): void;
 
     /**
      * Gets a resource provider.
@@ -378,15 +378,15 @@ export interface Providers {
      * @param {string} resourceProviderNamespace Namespace of the resource
      * provider.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceProviderNamespace: string, options: RequestOptions, callback: ServiceCallback<models.Provider>): void;
+    get(resourceProviderNamespace: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Provider>): void;
     get(resourceProviderNamespace: string, callback: ServiceCallback<models.Provider>): void;
 
     /**
@@ -395,15 +395,15 @@ export interface Providers {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.ProviderListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ProviderListResult>): void;
 }
 
@@ -421,27 +421,28 @@ export interface ResourceGroups {
      * @param {string} resourceGroupName Query parameters. If null is passed
      * returns all resource groups.
      * 
-     * @param {object} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [filter.resourceType] Gets or sets the resource type.
+     * @param {object} [options.filter] The filter to apply on the operation.
      * 
-     * @param {string} [filter.tagname] Gets or sets the tag name.
+     * @param {string} [options.filter.resourceType] Gets or sets the resource
+     * type.
      * 
-     * @param {string} [filter.tagvalue] Gets or sets the tag value.
+     * @param {string} [options.filter.tagname] Gets or sets the tag name.
      * 
-     * @param {number} [top] Query parameters. If null is passed returns all
-     * resource groups.
+     * @param {string} [options.filter.tagvalue] Gets or sets the tag value.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {number} [options.top] Query parameters. If null is passed returns
+     * all resource groups.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listResources(resourceGroupName: string, filter: models.GenericResourceFilter, top: number, options: RequestOptions, callback: ServiceCallback<models.ResourceListResult>): void;
-    listResources(resourceGroupName: string, filter: models.GenericResourceFilter, top: number, callback: ServiceCallback<models.ResourceListResult>): void;
+    listResources(resourceGroupName: string, options: { filter? : models.GenericResourceFilter, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+    listResources(resourceGroupName: string, callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
      * Checks whether resource group exists.
@@ -449,15 +450,15 @@ export interface ResourceGroups {
      * @param {string} resourceGroupName The name of the resource group to check.
      * The name is case insensitive.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkExistence(resourceGroupName: string, options: RequestOptions, callback: ServiceCallback<boolean>): void;
+    checkExistence(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
     checkExistence(resourceGroupName: string, callback: ServiceCallback<boolean>): void;
 
     /**
@@ -482,15 +483,15 @@ export interface ResourceGroups {
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource group.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, options: RequestOptions, callback: ServiceCallback<models.ResourceGroup>): void;
+    createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
     createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, callback: ServiceCallback<models.ResourceGroup>): void;
 
     /**
@@ -500,15 +501,15 @@ export interface ResourceGroups {
      * @param {string} resourceGroupName The name of the resource group to be
      * deleted. The name is case insensitive.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -518,16 +519,16 @@ export interface ResourceGroups {
      * @param {string} resourceGroupName The name of the resource group to be
      * deleted. The name is case insensitive.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDelete(resourceGroupName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
-    beginDelete(resourceGroupName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Get a resource group.
@@ -535,15 +536,15 @@ export interface ResourceGroups {
      * @param {string} resourceGroupName The name of the resource group to get.
      * The name is case insensitive.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, options: RequestOptions, callback: ServiceCallback<models.ResourceGroup>): void;
+    get(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
     get(resourceGroupName: string, callback: ServiceCallback<models.ResourceGroup>): void;
 
     /**
@@ -571,39 +572,39 @@ export interface ResourceGroups {
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource group.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    patch(resourceGroupName: string, parameters: models.ResourceGroup, options: RequestOptions, callback: ServiceCallback<models.ResourceGroup>): void;
+    patch(resourceGroupName: string, parameters: models.ResourceGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroup>): void;
     patch(resourceGroupName: string, parameters: models.ResourceGroup, callback: ServiceCallback<models.ResourceGroup>): void;
 
     /**
      * Gets a collection of resource groups.
      *
-     * @param {object} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [filter.tagName] Gets or sets the tag name.
+     * @param {object} [options.filter] The filter to apply on the operation.
      * 
-     * @param {string} [filter.tagValue] Gets or sets the tag value.
+     * @param {string} [options.filter.tagName] Gets or sets the tag name.
      * 
-     * @param {number} [top] Query parameters. If null is passed returns all
-     * resource groups.
+     * @param {string} [options.filter.tagValue] Gets or sets the tag value.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {number} [options.top] Query parameters. If null is passed returns
+     * all resource groups.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(filter: models.ResourceGroupFilter, top: number, options: RequestOptions, callback: ServiceCallback<models.ResourceGroupListResult>): void;
-    list(filter: models.ResourceGroupFilter, top: number, callback: ServiceCallback<models.ResourceGroupListResult>): void;
+    list(options: { filter? : models.ResourceGroupFilter, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupListResult>): void;
+    list(callback: ServiceCallback<models.ResourceGroupListResult>): void;
 
     /**
      * Get all of the resources under a subscription.
@@ -611,15 +612,15 @@ export interface ResourceGroups {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listResourcesNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.ResourceListResult>): void;
+    listResourcesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
     listResourcesNext(nextPageLink: string, callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
@@ -628,15 +629,15 @@ export interface ResourceGroups {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.ResourceGroupListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceGroupListResult>): void;
 }
 
@@ -660,15 +661,15 @@ export interface Resources {
      * 
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    moveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options: RequestOptions, callback: ServiceCallback<void>): void;
+    moveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     moveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, callback: ServiceCallback<void>): void;
 
     /**
@@ -683,41 +684,42 @@ export interface Resources {
      * 
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options: RequestOptions, callback: ServiceCallback<void>): void;
+    beginMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, callback: ServiceCallback<void>): void;
 
     /**
      * Get all of the resources under a subscription.
      *
-     * @param {object} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [filter.resourceType] Gets or sets the resource type.
+     * @param {object} [options.filter] The filter to apply on the operation.
      * 
-     * @param {string} [filter.tagname] Gets or sets the tag name.
+     * @param {string} [options.filter.resourceType] Gets or sets the resource
+     * type.
      * 
-     * @param {string} [filter.tagvalue] Gets or sets the tag value.
+     * @param {string} [options.filter.tagname] Gets or sets the tag name.
      * 
-     * @param {number} [top] Query parameters. If null is passed returns all
-     * resource groups.
+     * @param {string} [options.filter.tagvalue] Gets or sets the tag value.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {number} [options.top] Query parameters. If null is passed returns
+     * all resource groups.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(filter: models.GenericResourceFilter, top: number, options: RequestOptions, callback: ServiceCallback<models.ResourceListResult>): void;
-    list(filter: models.GenericResourceFilter, top: number, callback: ServiceCallback<models.ResourceListResult>): void;
+    list(options: { filter? : models.GenericResourceFilter, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+    list(callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
      * Checks whether resource exists.
@@ -735,15 +737,15 @@ export interface Resources {
      * 
      * @param {string} apiVersion
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkExistence(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: RequestOptions, callback: ServiceCallback<boolean>): void;
+    checkExistence(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
     checkExistence(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<boolean>): void;
 
     /**
@@ -762,15 +764,15 @@ export interface Resources {
      * 
      * @param {string} apiVersion
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -809,15 +811,15 @@ export interface Resources {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options: RequestOptions, callback: ServiceCallback<models.GenericResource>): void;
+    createOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
     createOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
 
     /**
@@ -836,15 +838,15 @@ export interface Resources {
      * 
      * @param {string} apiVersion
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: RequestOptions, callback: ServiceCallback<models.GenericResource>): void;
+    get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
     get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<models.GenericResource>): void;
 
     /**
@@ -853,15 +855,15 @@ export interface Resources {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.ResourceListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceListResult>): void;
 }
 
@@ -880,15 +882,15 @@ export interface Tags {
      * 
      * @param {string} tagValue The value of the tag.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteValue(tagName: string, tagValue: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteValue(tagName: string, tagValue: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteValue(tagName: string, tagValue: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -898,15 +900,15 @@ export interface Tags {
      * 
      * @param {string} tagValue The value of the tag.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdateValue(tagName: string, tagValue: string, options: RequestOptions, callback: ServiceCallback<models.TagValue>): void;
+    createOrUpdateValue(tagName: string, tagValue: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagValue>): void;
     createOrUpdateValue(tagName: string, tagValue: string, callback: ServiceCallback<models.TagValue>): void;
 
     /**
@@ -914,15 +916,15 @@ export interface Tags {
      *
      * @param {string} tagName The name of the tag.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(tagName: string, options: RequestOptions, callback: ServiceCallback<models.TagDetails>): void;
+    createOrUpdate(tagName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagDetails>): void;
     createOrUpdate(tagName: string, callback: ServiceCallback<models.TagDetails>): void;
 
     /**
@@ -930,29 +932,29 @@ export interface Tags {
      *
      * @param {string} tagName The name of the tag.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(tagName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(tagName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(tagName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Get a list of subscription resource tags.
      *
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: RequestOptions, callback: ServiceCallback<models.TagsListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagsListResult>): void;
     list(callback: ServiceCallback<models.TagsListResult>): void;
 
     /**
@@ -961,15 +963,15 @@ export interface Tags {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.TagsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagsListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.TagsListResult>): void;
 }
 
@@ -991,15 +993,15 @@ export interface DeploymentOperations {
      * 
      * @param {string} operationId Operation Id.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, deploymentName: string, operationId: string, options: RequestOptions, callback: ServiceCallback<models.DeploymentOperation>): void;
+    get(resourceGroupName: string, deploymentName: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentOperation>): void;
     get(resourceGroupName: string, deploymentName: string, operationId: string, callback: ServiceCallback<models.DeploymentOperation>): void;
 
     /**
@@ -1010,18 +1012,18 @@ export interface DeploymentOperations {
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {number} [top] Query parameters.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {number} [options.top] Query parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, deploymentName: string, top: number, options: RequestOptions, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
-    list(resourceGroupName: string, deploymentName: string, top: number, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
+    list(resourceGroupName: string, deploymentName: string, options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
+    list(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
 
     /**
      * Gets a list of deployments operations.
@@ -1029,15 +1031,15 @@ export interface DeploymentOperations {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
 }
 
@@ -1056,15 +1058,15 @@ export interface ResourceProviderOperationDetails {
      * 
      * @param {string} apiVersion
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceProviderNamespace: string, apiVersion: string, options: RequestOptions, callback: ServiceCallback<models.ResourceProviderOperationDetailListResult>): void;
+    list(resourceProviderNamespace: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceProviderOperationDetailListResult>): void;
     list(resourceProviderNamespace: string, apiVersion: string, callback: ServiceCallback<models.ResourceProviderOperationDetailListResult>): void;
 
     /**
@@ -1073,15 +1075,15 @@ export interface ResourceProviderOperationDetails {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.ResourceProviderOperationDetailListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceProviderOperationDetailListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceProviderOperationDetailListResult>): void;
 }
 
@@ -1110,15 +1112,15 @@ export interface PolicyDefinitions {
      * 
      * @param {object} [parameters.policyRule] The policy rule json.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, options: RequestOptions, callback: ServiceCallback<models.PolicyDefinition>): void;
+    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
     createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, callback: ServiceCallback<models.PolicyDefinition>): void;
 
     /**
@@ -1126,15 +1128,15 @@ export interface PolicyDefinitions {
      *
      * @param {string} policyDefinitionName The policy definition name.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(policyDefinitionName: string, options: RequestOptions, callback: ServiceCallback<models.PolicyDefinition>): void;
+    get(policyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
     get(policyDefinitionName: string, callback: ServiceCallback<models.PolicyDefinition>): void;
 
     /**
@@ -1142,15 +1144,15 @@ export interface PolicyDefinitions {
      *
      * @param {string} policyDefinitionName The policy definition name.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(policyDefinitionName: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(policyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(policyDefinitionName: string, callback: ServiceCallback<void>): void;
 }
 
@@ -1175,36 +1177,36 @@ export interface PolicyAssignments {
      * 
      * @param {string} resourceName The resource name.
      * 
-     * @param {string} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.filter] The filter to apply on the operation.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, filter: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
-    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, filter: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
      * Gets policy assignments of the resource group.
      *
      * @param {string} resourceGroupName Resource group name.
      * 
-     * @param {string} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.filter] The filter to apply on the operation.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listForResourceGroup(resourceGroupName: string, filter: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
-    listForResourceGroup(resourceGroupName: string, filter: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceGroup(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
      * Delete policy assignment.
@@ -1213,15 +1215,15 @@ export interface PolicyAssignments {
      * 
      * @param {string} policyAssignmentName Policy assignment name.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(scope: string, policyAssignmentName: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignment>): void;
+    deleteMethod(scope: string, policyAssignmentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
     deleteMethod(scope: string, policyAssignmentName: string, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
@@ -1233,28 +1235,24 @@ export interface PolicyAssignments {
      * 
      * @param {object} parameters Policy assignment.
      * 
-     * @param {object} [parameters.properties] Gets or sets policy assignment
-     * properties.
+     * @param {string} [parameters.scope] Gets or sets the policy assignment scope.
      * 
-     * @param {string} [parameters.properties.scope] Gets or sets the policy
-     * assignment scope.
+     * @param {string} [parameters.displayName] Gets or sets the policy assignment
+     * display name.
      * 
-     * @param {string} [parameters.properties.displayName] Gets or sets the policy
-     * assignment display name.
+     * @param {string} [parameters.policyDefinitionId] Gets or sets the policy
+     * definition Id.
      * 
-     * @param {string} [parameters.properties.policyDefinitionId] Gets or sets the
-     * policy definition Id.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    create(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignmentCreateParameters, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignment>): void;
-    create(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignmentCreateParameters, callback: ServiceCallback<models.PolicyAssignment>): void;
+    create(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
+    create(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignment, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
      * Get single policy assignment.
@@ -1263,15 +1261,15 @@ export interface PolicyAssignments {
      * 
      * @param {string} policyAssignmentName Policy assignment name.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(scope: string, policyAssignmentName: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignment>): void;
+    get(scope: string, policyAssignmentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
     get(scope: string, policyAssignmentName: string, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
@@ -1279,15 +1277,15 @@ export interface PolicyAssignments {
      *
      * @param {string} policyAssignmentId Policy assignment Id
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteById(policyAssignmentId: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignment>): void;
+    deleteById(policyAssignmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
     deleteById(policyAssignmentId: string, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
@@ -1297,78 +1295,74 @@ export interface PolicyAssignments {
      * 
      * @param {object} parameters Policy assignment.
      * 
-     * @param {object} [parameters.properties] Gets or sets policy assignment
-     * properties.
+     * @param {string} [parameters.scope] Gets or sets the policy assignment scope.
      * 
-     * @param {string} [parameters.properties.scope] Gets or sets the policy
-     * assignment scope.
+     * @param {string} [parameters.displayName] Gets or sets the policy assignment
+     * display name.
      * 
-     * @param {string} [parameters.properties.displayName] Gets or sets the policy
-     * assignment display name.
+     * @param {string} [parameters.policyDefinitionId] Gets or sets the policy
+     * definition Id.
      * 
-     * @param {string} [parameters.properties.policyDefinitionId] Gets or sets the
-     * policy definition Id.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createById(policyAssignmentId: string, parameters: models.PolicyAssignmentCreateParameters, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignment>): void;
-    createById(policyAssignmentId: string, parameters: models.PolicyAssignmentCreateParameters, callback: ServiceCallback<models.PolicyAssignment>): void;
+    createById(policyAssignmentId: string, parameters: models.PolicyAssignment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
+    createById(policyAssignmentId: string, parameters: models.PolicyAssignment, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
      * Get single policy assignment.
      *
      * @param {string} policyAssignmentId Policy assignment Id
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getById(policyAssignmentId: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignment>): void;
+    getById(policyAssignmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
     getById(policyAssignmentId: string, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
      * Gets policy assignments of the subscription.
      *
-     * @param {string} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.filter] The filter to apply on the operation.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(filter: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
-    list(filter: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    list(callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
      * Gets policy assignments of the scope.
      *
      * @param {string} scope Scope.
      * 
-     * @param {string} [filter] The filter to apply on the operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {string} [options.filter] The filter to apply on the operation.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listForScope(scope: string, filter: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
-    listForScope(scope: string, filter: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForScope(scope: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForScope(scope: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
      * Gets policy assignments of the resource.
@@ -1376,15 +1370,15 @@ export interface PolicyAssignments {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listForResourceNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
     listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
@@ -1393,15 +1387,15 @@ export interface PolicyAssignments {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listForResourceGroupNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
     listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
@@ -1410,15 +1404,15 @@ export interface PolicyAssignments {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
@@ -1427,14 +1421,14 @@ export interface PolicyAssignments {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listForScopeNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForScopeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
     listForScopeNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 }
