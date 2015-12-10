@@ -33,15 +33,15 @@ npm install azure-arm-intune
         }
 
         location = result.hostName;
-    });
 
-    // Make a call for any resources, e.g. query policies
-    client.ios.getMAMPolicies(location, null, null, null, null, function(error, result, request, response) {
-          if(error){
-            // Handle
-          }
+        // Make a call for any resources, e.g. query policies
+        client.ios.getMAMPolicies(location, null, null, null, null, function(error, result, request, response) {
+              if(error){
+                // Handle
+              }
 
-          // Do something with results
+              // Do something with results
+        });
     });
 ```
 
