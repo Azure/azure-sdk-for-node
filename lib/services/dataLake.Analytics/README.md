@@ -28,7 +28,7 @@ npm install azure-arm-datalake-analytics
 
 ## How to Use
 
-The following example submits a job and gets the job list.
+The following example gets the job list.
 
 ```javascript
 var async = require('async');
