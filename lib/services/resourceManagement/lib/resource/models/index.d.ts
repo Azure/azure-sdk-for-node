@@ -233,19 +233,9 @@ export interface ResourceManagementError {
  * @constructor
  * @member {array} [details] Gets or sets validation error.
  * 
- * @member {string} code Gets or sets the error code returned from the server.
- * 
- * @member {string} message Gets or sets the error message returned from the
- * server.
- * 
- * @member {string} [target] Gets or sets the target of the error.
- * 
  */
-export interface ResourceManagementErrorWithDetails {
+export interface ResourceManagementErrorWithDetails extends ResourceManagementError {
     details?: ResourceManagementError[];
-    code: string;
-    message: string;
-    target?: string;
 }
 
 /**
@@ -402,14 +392,6 @@ export interface DeploymentPropertiesExtended {
  * @member {object} [error] Gets or sets validation error.
  * 
  * @member {array} [error.details] Gets or sets validation error.
- * 
- * @member {string} [error.code] Gets or sets the error code returned from the
- * server.
- * 
- * @member {string} [error.message] Gets or sets the error message returned
- * from the server.
- * 
- * @member {string} [error.target] Gets or sets the target of the error.
  * 
  * @member {object} [properties] Gets or sets the template deployment
  * properties.

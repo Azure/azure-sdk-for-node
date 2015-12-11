@@ -222,17 +222,7 @@ export interface VirtualMachineExtensionImages {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.name] Gets or sets the name of the resource.
-     * 
-     * @param {string} [options.filter.location] Gets or sets the location of the
-     * resource.
-     * 
-     * @param {object} [options.filter.tags] Gets or sets the tags attached to the
-     * resource.
-     * 
-     * @param {string} [options.filter.id] Resource Id
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {number} [options.top]
      * 
@@ -244,7 +234,7 @@ export interface VirtualMachineExtensionImages {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listVersions(location: string, publisherName: string, type: string, options: { filter? : models.VirtualMachineImageResource, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listVersions(location: string, publisherName: string, type: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
     listVersions(location: string, publisherName: string, type: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 }
 
@@ -504,17 +494,7 @@ export interface VirtualMachineImages {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.name] Gets or sets the name of the resource.
-     * 
-     * @param {string} [options.filter.location] Gets or sets the location of the
-     * resource.
-     * 
-     * @param {object} [options.filter.tags] Gets or sets the tags attached to the
-     * resource.
-     * 
-     * @param {string} [options.filter.id] Resource Id
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {number} [options.top]
      * 
@@ -526,7 +506,7 @@ export interface VirtualMachineImages {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(location: string, publisherName: string, offer: string, skus: string, options: { filter? : models.VirtualMachineImageResource, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    list(location: string, publisherName: string, offer: string, skus: string, options: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
     list(location: string, publisherName: string, offer: string, skus: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 
     /**
@@ -2464,213 +2444,7 @@ export interface VirtualMachineScaleSetVMs {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {object} [options.filter.plan] Gets or sets the purchase plan when
-     * deploying virtual machine from VM Marketplace images.
-     * 
-     * @param {string} [options.filter.plan.name] Gets or sets the plan ID.
-     * 
-     * @param {string} [options.filter.plan.publisher] Gets or sets the publisher
-     * ID.
-     * 
-     * @param {string} [options.filter.plan.product] Gets or sets the offer ID.
-     * 
-     * @param {string} [options.filter.plan.promotionCode] Gets or sets the
-     * promotion code.
-     * 
-     * @param {object} [options.filter.hardwareProfile] Gets or sets the hardware
-     * profile.
-     * 
-     * @param {string} [options.filter.hardwareProfile.vmSize] The virtual machine
-     * size name. Possible values for this property include: 'Basic_A0',
-     * 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4', 'Standard_A0',
-     * 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4', 'Standard_A5',
-     * 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
-     * 'Standard_A10', 'Standard_A11', 'Standard_D1', 'Standard_D2',
-     * 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
-     * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
-     * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
-     * 'Standard_D12_v2', 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_DS1',
-     * 'Standard_DS2', 'Standard_DS3', 'Standard_DS4', 'Standard_DS11',
-     * 'Standard_DS12', 'Standard_DS13', 'Standard_DS14', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
-     * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
-     * 'Standard_GS5'.
-     * 
-     * @param {object} [options.filter.storageProfile] Gets or sets the storage
-     * profile.
-     * 
-     * @param {object} [options.filter.storageProfile.imageReference] Gets or sets
-     * the image reference.
-     * 
-     * @param {string} [options.filter.storageProfile.imageReference.publisher]
-     * Gets or sets the image publisher.
-     * 
-     * @param {string} [options.filter.storageProfile.imageReference.offer] Gets
-     * or sets the image offer.
-     * 
-     * @param {string} [options.filter.storageProfile.imageReference.sku] Gets or
-     * sets the image sku.
-     * 
-     * @param {string} [options.filter.storageProfile.imageReference.version] Gets
-     * or sets the image version. The allowed formats are Major.Minor.Build or
-     * 'latest'. Major, Minor and Build being decimal numbers. Specify 'latest'
-     * to use the latest version of image.
-     * 
-     * @param {object} [options.filter.storageProfile.osDisk] Gets or sets the OS
-     * disk.
-     * 
-     * @param {string} [options.filter.storageProfile.osDisk.osType] Gets or sets
-     * the Operating System type. Possible values for this property include:
-     * 'Windows', 'Linux'.
-     * 
-     * @param {object} [options.filter.storageProfile.osDisk.encryptionSettings]
-     * Gets or sets the disk encryption settings.
-     * 
-     * @param {object}
-     * [options.filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Gets or sets the disk encryption key which is a KeyVault Secret.
-     * 
-     * @param {string}
-     * [options.filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
-     * Gets or sets the URL referencing a secret in a Key Vault.
-     * 
-     * @param {object}
-     * [options.filter.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
-     * Gets or sets the Relative URL of the Key Vault containing the secret.
-     * 
-     * @param {object}
-     * [options.filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Gets or sets the key encryption key which is KeyVault Key.
-     * 
-     * @param {string}
-     * [options.filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
-     * Gets or sets the URL referencing a key in a Key Vault.
-     * 
-     * @param {object}
-     * [options.filter.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
-     * Gets or sets the Relative URL of the Key Vault containing the key
-     * 
-     * @param {string} [options.filter.storageProfile.osDisk.name] Gets or sets
-     * the disk name.
-     * 
-     * @param {object} [options.filter.storageProfile.osDisk.vhd] Gets or sets the
-     * Virtual Hard Disk.
-     * 
-     * @param {object} [options.filter.storageProfile.osDisk.image] Gets or sets
-     * the Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
-     * before using it to attach to the Virtual Machine.If SourceImage is
-     * provided, the destination VirtualHardDisk should not exist.
-     * 
-     * @param {string} [options.filter.storageProfile.osDisk.image.uri] Gets or
-     * sets the virtual hard disk's uri. It should be a valid Uri to a virtual
-     * hard disk.
-     * 
-     * @param {string} [options.filter.storageProfile.osDisk.caching] Gets or sets
-     * the caching type. Possible values for this property include: 'None',
-     * 'ReadOnly', 'ReadWrite'.
-     * 
-     * @param {string} [options.filter.storageProfile.osDisk.createOption] Gets or
-     * sets the create option. Possible values for this property include:
-     * 'fromImage', 'empty', 'attach'.
-     * 
-     * @param {number} [options.filter.storageProfile.osDisk.diskSizeGB] Gets or
-     * sets the initial disk size in GB for blank data disks, and the new desired
-     * size for existing OS and Data disks.
-     * 
-     * @param {array} [options.filter.storageProfile.dataDisks] Gets or sets the
-     * data disks.
-     * 
-     * @param {object} [options.filter.osProfile] Gets or sets the OS profile.
-     * 
-     * @param {string} [options.filter.osProfile.computerName] Gets or sets the
-     * computer name.
-     * 
-     * @param {string} [options.filter.osProfile.adminUsername] Gets or sets the
-     * admin user name.
-     * 
-     * @param {string} [options.filter.osProfile.adminPassword] Gets or sets the
-     * admin user password.
-     * 
-     * @param {string} [options.filter.osProfile.customData] Gets or sets a
-     * base-64 encoded string of custom data.
-     * 
-     * @param {object} [options.filter.osProfile.windowsConfiguration] Gets or
-     * sets the Windows Configuration of the OS profile.
-     * 
-     * @param {boolean}
-     * [options.filter.osProfile.windowsConfiguration.provisionVMAgent] Gets or
-     * sets whether VM Agent should be provisioned on the Virtual Machine.
-     * 
-     * @param {boolean}
-     * [options.filter.osProfile.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether Windows updates are automatically installed on the VM
-     * 
-     * @param {string} [options.filter.osProfile.windowsConfiguration.timeZone]
-     * Gets or sets the Time Zone of the VM
-     * 
-     * @param {array}
-     * [options.filter.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Gets or sets the additional base-64 encoded XML formatted information that
-     * can be included in the Unattend.xml file.
-     * 
-     * @param {object} [options.filter.osProfile.windowsConfiguration.winRM] Gets
-     * or sets the Windows Remote Management configuration of the VM
-     * 
-     * @param {array}
-     * [options.filter.osProfile.windowsConfiguration.winRM.listeners] Gets or
-     * sets the list of Windows Remote Management listeners
-     * 
-     * @param {object} [options.filter.osProfile.linuxConfiguration] Gets or sets
-     * the Linux Configuration of the OS profile.
-     * 
-     * @param {boolean}
-     * [options.filter.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Gets or sets whether Authentication using user name and password is
-     * allowed or not
-     * 
-     * @param {object} [options.filter.osProfile.linuxConfiguration.ssh] Gets or
-     * sets the SSH configuration for linux VMs
-     * 
-     * @param {array} [options.filter.osProfile.linuxConfiguration.ssh.publicKeys]
-     * Gets or sets the list of SSH public keys used to authenticate with linux
-     * based VMs
-     * 
-     * @param {array} [options.filter.osProfile.secrets] Gets or sets the List of
-     * certificates for addition to the VM.
-     * 
-     * @param {object} [options.filter.networkProfile] Gets or sets the network
-     * profile.
-     * 
-     * @param {array} [options.filter.networkProfile.networkInterfaces] Gets or
-     * sets the network interfaces.
-     * 
-     * @param {object} [options.filter.diagnosticsProfile] Gets or sets the
-     * diagnostics profile.
-     * 
-     * @param {object} [options.filter.diagnosticsProfile.bootDiagnostics] Gets or
-     * sets the boot diagnostics.
-     * 
-     * @param {boolean}
-     * [options.filter.diagnosticsProfile.bootDiagnostics.enabled] Gets or sets
-     * whether VM Agent should be provisioned on the Virtual Machine.
-     * 
-     * @param {string}
-     * [options.filter.diagnosticsProfile.bootDiagnostics.storageUri] Gets or
-     * sets the boot diagnostics storage Uri. It should be a valid Uri
-     * 
-     * @param {object} [options.filter.availabilitySet] Gets or sets the reference
-     * Id of the availailbity set to which this virtual machine belongs.
-     * 
-     * @param {string} [options.filter.availabilitySet.id] Resource Id
-     * 
-     * @param {string} [options.filter.provisioningState] Gets or sets the
-     * provisioning state, which only appears in the response.
-     * 
-     * @param {string} [options.filter.location] Resource location
-     * 
-     * @param {object} [options.filter.tags] Resource tags
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {string} [options.select] The list parameters.
      * 
@@ -2683,7 +2457,7 @@ export interface VirtualMachineScaleSetVMs {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, virtualMachineScaleSetName: string, options: { filter? : models.VirtualMachineScaleSetVM, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+    list(resourceGroupName: string, virtualMachineScaleSetName: string, options: { filter? : string, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
     list(resourceGroupName: string, virtualMachineScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
 
     /**

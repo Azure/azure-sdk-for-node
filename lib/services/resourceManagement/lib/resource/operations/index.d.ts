@@ -278,10 +278,7 @@ export interface Deployments {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.provisioningState] Gets or sets the
-     * provisioning state.
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {number} [options.top] Query parameters. If null is passed returns
      * all deployments.
@@ -292,7 +289,7 @@ export interface Deployments {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, options: { filter? : models.DeploymentExtendedFilter, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
+    list(resourceGroupName: string, options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentListResult>): void;
     list(resourceGroupName: string, callback: ServiceCallback<models.DeploymentListResult>): void;
 
     /**
@@ -423,14 +420,7 @@ export interface ResourceGroups {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.resourceType] Gets or sets the resource
-     * type.
-     * 
-     * @param {string} [options.filter.tagname] Gets or sets the tag name.
-     * 
-     * @param {string} [options.filter.tagvalue] Gets or sets the tag value.
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {number} [options.top] Query parameters. If null is passed returns
      * all resource groups.
@@ -441,7 +431,7 @@ export interface ResourceGroups {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listResources(resourceGroupName: string, options: { filter? : models.GenericResourceFilter, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+    listResources(resourceGroupName: string, options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
     listResources(resourceGroupName: string, callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
@@ -588,11 +578,7 @@ export interface ResourceGroups {
      *
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.tagName] Gets or sets the tag name.
-     * 
-     * @param {string} [options.filter.tagValue] Gets or sets the tag value.
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {number} [options.top] Query parameters. If null is passed returns
      * all resource groups.
@@ -603,7 +589,7 @@ export interface ResourceGroups {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: { filter? : models.ResourceGroupFilter, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupListResult>): void;
+    list(options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupListResult>): void;
     list(callback: ServiceCallback<models.ResourceGroupListResult>): void;
 
     /**
@@ -700,14 +686,7 @@ export interface Resources {
      *
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.resourceType] Gets or sets the resource
-     * type.
-     * 
-     * @param {string} [options.filter.tagname] Gets or sets the tag name.
-     * 
-     * @param {string} [options.filter.tagvalue] Gets or sets the tag value.
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {number} [options.top] Query parameters. If null is passed returns
      * all resource groups.
@@ -718,7 +697,7 @@ export interface Resources {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: { filter? : models.GenericResourceFilter, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+    list(options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
     list(callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**

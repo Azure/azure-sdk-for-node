@@ -75,15 +75,15 @@ export interface Redis {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.RedisCreateOrUpdateParameters, options: RequestOptions, callback: ServiceCallback<models.RedisResourceWithAccessKey>): void;
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.RedisCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisResourceWithAccessKey>): void;
     createOrUpdate(resourceGroupName: string, name: string, parameters: models.RedisCreateOrUpdateParameters, callback: ServiceCallback<models.RedisResourceWithAccessKey>): void;
 
     /**
@@ -93,15 +93,15 @@ export interface Redis {
      * 
      * @param {string} name The name of the redis cache.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, name: string, options: RequestOptions, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -111,15 +111,15 @@ export interface Redis {
      * 
      * @param {string} name The name of the redis cache.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, name: string, options: RequestOptions, callback: ServiceCallback<models.RedisResource>): void;
+    get(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisResource>): void;
     get(resourceGroupName: string, name: string, callback: ServiceCallback<models.RedisResource>): void;
 
     /**
@@ -127,29 +127,29 @@ export interface Redis {
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listByResourceGroup(resourceGroupName: string, options: RequestOptions, callback: ServiceCallback<models.RedisListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisListResult>): void;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.RedisListResult>): void;
 
     /**
      * Gets all redis caches in the specified subscription.
      *
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: RequestOptions, callback: ServiceCallback<models.RedisListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisListResult>): void;
     list(callback: ServiceCallback<models.RedisListResult>): void;
 
     /**
@@ -160,15 +160,15 @@ export interface Redis {
      * 
      * @param {string} name The name of the redis cache.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listKeys(resourceGroupName: string, name: string, options: RequestOptions, callback: ServiceCallback<models.RedisListKeysResult>): void;
+    listKeys(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisListKeysResult>): void;
     listKeys(resourceGroupName: string, name: string, callback: ServiceCallback<models.RedisListKeysResult>): void;
 
     /**
@@ -182,15 +182,15 @@ export interface Redis {
      * @param {string} keyType Which redis access key to reset. Possible values
      * for this property include: 'Primary', 'Secondary'.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    regenerateKey(resourceGroupName: string, name: string, keyType: string, options: RequestOptions, callback: ServiceCallback<models.RedisListKeysResult>): void;
+    regenerateKey(resourceGroupName: string, name: string, keyType: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisListKeysResult>): void;
     regenerateKey(resourceGroupName: string, name: string, keyType: string, callback: ServiceCallback<models.RedisListKeysResult>): void;
 
     /**
@@ -199,15 +199,15 @@ export interface Redis {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listByResourceGroupNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.RedisListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisListResult>): void;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.RedisListResult>): void;
 
     /**
@@ -216,14 +216,14 @@ export interface Redis {
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
      * 
-     * @param {object} [options]
-     *
-     * @param {object} [options.customHeaders] headers that will be added to
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
      * request
-     *
+     * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listNext(nextPageLink: string, options: RequestOptions, callback: ServiceCallback<models.RedisListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisListResult>): void;
     listNext(nextPageLink: string, callback: ServiceCallback<models.RedisListResult>): void;
 }
