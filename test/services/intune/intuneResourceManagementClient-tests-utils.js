@@ -18,7 +18,6 @@ var request = require('request');
 var moment = require('moment');
 var should = require('should');
 var util = require('util');
-var TokenCloudCredentials = require('../../../lib/common/lib/services/credentials/tokenCloudCredentials');
 
 function IntuneTestUtils() {}
 
