@@ -209,20 +209,7 @@ export interface ManagementLocks {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.id] Gets or sets the Id of the lock.
-     * 
-     * @param {string} [options.filter.type] Gets or sets the type of the lock.
-     * 
-     * @param {string} [options.filter.name] Gets or sets the name of the lock.
-     * 
-     * @param {string} [options.filter.level] Gets or sets the lock level of the
-     * management lock. Possible values for this property include:
-     * 'NotSpecified', 'CanNotDelete', 'ReadOnly'.
-     * 
-     * @param {string} [options.filter.notes] Gets or sets the notes of the
-     * management lock.
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -230,7 +217,7 @@ export interface ManagementLocks {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAtResourceGroupLevel(resourceGroupName: string, options: { filter? : models.ManagementLockObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
+    listAtResourceGroupLevel(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
     listAtResourceGroupLevel(resourceGroupName: string, callback: ServiceCallback<models.ManagementLockListResult>): void;
 
     /**
@@ -249,20 +236,7 @@ export interface ManagementLocks {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.id] Gets or sets the Id of the lock.
-     * 
-     * @param {string} [options.filter.type] Gets or sets the type of the lock.
-     * 
-     * @param {string} [options.filter.name] Gets or sets the name of the lock.
-     * 
-     * @param {string} [options.filter.level] Gets or sets the lock level of the
-     * management lock. Possible values for this property include:
-     * 'NotSpecified', 'CanNotDelete', 'ReadOnly'.
-     * 
-     * @param {string} [options.filter.notes] Gets or sets the notes of the
-     * management lock.
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -270,7 +244,7 @@ export interface ManagementLocks {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAtResourceLevel(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { filter? : models.ManagementLockObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
+    listAtResourceLevel(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
     listAtResourceLevel(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.ManagementLockListResult>): void;
 
     /**
@@ -295,20 +269,7 @@ export interface ManagementLocks {
      *
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {string} [options.filter.id] Gets or sets the Id of the lock.
-     * 
-     * @param {string} [options.filter.type] Gets or sets the type of the lock.
-     * 
-     * @param {string} [options.filter.name] Gets or sets the name of the lock.
-     * 
-     * @param {string} [options.filter.level] Gets or sets the lock level of the
-     * management lock. Possible values for this property include:
-     * 'NotSpecified', 'CanNotDelete', 'ReadOnly'.
-     * 
-     * @param {string} [options.filter.notes] Gets or sets the notes of the
-     * management lock.
+     * @param {string} [options.filter] The filter to apply on the operation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -316,7 +277,7 @@ export interface ManagementLocks {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAtSubscriptionLevel(options: { filter? : models.ManagementLockObject, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
+    listAtSubscriptionLevel(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
     listAtSubscriptionLevel(callback: ServiceCallback<models.ManagementLockListResult>): void;
 
     /**
