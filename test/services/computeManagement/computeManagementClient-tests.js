@@ -87,7 +87,7 @@ describe('Compute Management', function () {
         done();
       });
     });
-
+    
     it('should list types successfully', function (done) {
       var type = 'VMAccessAgent';
       client.virtualMachineExtensionImages.listTypes('westus', 'Microsoft.Compute', function (err, result, request, response) {
@@ -99,7 +99,7 @@ describe('Compute Management', function () {
         done();
       });
     });
-
+    
     it('should get a specific extension image successfully', function (done) {
       client.virtualMachineExtensionImages.get('westus', 'Microsoft.Compute', 'VMAccessAgent', '2.0', function (err, result, request, response) {
         should.not.exist(err);
@@ -112,6 +112,138 @@ describe('Compute Management', function () {
         result.operatingSystem.should.equal('Windows');
         response.statusCode.should.equal(200);
         done();
+      });
+    });
+  });
+  
+  describe('Vm Images', function () {
+    it('should list successfully', function (done) {
+      client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.be.above(0);
+        result[0].location.should.equal('westus');
+        result[0].name.should.equal('2.0')
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+
+    it('should list publishers successfully', function (done) {
+      var type = 'VMAccessAgent';
+      client.virtualMachineImages.listPublishers('westus', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.be.above(0);
+        result.some(function (item) { return item.name === type; }).should.be.true;
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+    
+    it('should list offers successfully', function (done) {
+      var type = 'VMAccessAgent';
+      client.virtualMachineImages.listOffers('westus', 'MicrosoftWindowsServer', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.be.above(0);
+        result.some(function (item) { return item.name === type; }).should.be.true;
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+    
+    it('should list skus successfully', function (done) {
+      var type = 'VMAccessAgent';
+      client.virtualMachineImages.listSkus('westus', 'MicrosoftWindowsServer', 'WindowsServer', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.be.above(0);
+        result.some(function (item) { return item.name === type; }).should.be.true;
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+
+    it('should get a specific image successfully', function (done) {
+      client.virtualMachineImages.get('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', '4.0.201506', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.name.should.equal('2.0')
+        result.location.should.equal('westus');
+        result.computeRole.should.equal('IaaS');
+        result.supportsMultipleExtensions.should.be.false;
+        result.vmScaleSetEnabled.should.be.false;
+        result.operatingSystem.should.equal('Windows');
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+
+    describe('list with filter', function () {
+      it('top with negative value should work', function (done) {
+        var options = { top : 0 };
+        client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          result.length.should.be.above(0);
+          result[0].location.should.equal('westus');
+          result[0].name.should.equal('2.0')
+          response.statusCode.should.equal(200);
+          done();
+        });
+      });
+
+      it('top with positive value should work', function (done) {
+        var options = { top : 1 };
+        client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          result.length.should.be.above(0);
+          result[0].location.should.equal('westus');
+          result[0].name.should.equal('2.0')
+          response.statusCode.should.equal(200);
+          done();
+        });
+      });
+
+      it('orderby with descending value should work', function (done) {
+        var options = { oderBy : 'name desc' };
+        client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          result.length.should.be.above(0);
+          result[0].location.should.equal('westus');
+          result[0].name.should.equal('2.0')
+          response.statusCode.should.equal(200);
+          done();
+        });
+      });
+
+      it('orderby with ascending value should work', function (done) {
+        var options = { oderBy : 'name asc' };
+        client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          result.length.should.be.above(0);
+          result[0].location.should.equal('westus');
+          result[0].name.should.equal('2.0')
+          response.statusCode.should.equal(200);
+          done();
+        });
+      });
+
+      it('top positive and orderby with ascending value should work', function (done) {
+        var options = { top : 1, oderBy : 'name asc' };
+        client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          result.length.should.be.above(0);
+          result[0].location.should.equal('westus');
+          result[0].name.should.equal('2.0')
+          response.statusCode.should.equal(200);
+          done();
+        });
       });
     });
   });
