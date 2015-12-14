@@ -43,27 +43,16 @@ describe('Compute Management', function () {
   before(function (done) {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function () {
-      groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
       client = new ComputeManagementClient(suite.credentials, suite.subscriptionId);
-      accountName = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
-      location = process.env['AZURE_TEST_LOCATION'];
       if (suite.isPlayback) {
         client.longRunningOperationRetryTimeoutInSeconds = 0;
       }
-      suite.createResourcegroup(groupName, location, function (err, result) {
-        should.not.exist(err);
-        done();
-      });
+      done();
     });
   });
   
   after(function (done) {
-    suite.teardownSuite(function () {
-      suite.deleteResourcegroup(groupName, function (err, result) {
-        should.not.exist(err);
-        done();
-      });
-    });
+    suite.teardownSuite(done);
   });
   
   beforeEach(function (done) {
@@ -82,7 +71,7 @@ describe('Compute Management', function () {
         result.length.should.be.above(0);
         result[0].location.should.equal('westus');
         result[0].id.should.match(/\/Subscriptions\/.*\/Providers\/Microsoft.Compute\/Locations\/westus\/Publishers\/Microsoft.Compute\/ArtifactTypes\/VMExtension\/Types\/VMAccessAgent\/Versions\/.*/ig);
-        result[0].name.should.equal('2.0')
+        result[0].name.should.equal('2.0');
         response.statusCode.should.equal(200);
         done();
       });
@@ -104,7 +93,7 @@ describe('Compute Management', function () {
       client.virtualMachineExtensionImages.get('westus', 'Microsoft.Compute', 'VMAccessAgent', '2.0', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.name.should.equal('2.0')
+        result.name.should.equal('2.0');
         result.location.should.equal('westus');
         result.computeRole.should.equal('IaaS');
         result.supportsMultipleExtensions.should.be.false;
@@ -122,59 +111,48 @@ describe('Compute Management', function () {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result[0].location.should.equal('westus');
-        result[0].name.should.equal('2.0')
         response.statusCode.should.equal(200);
         done();
       });
     });
 
     it('should list publishers successfully', function (done) {
-      var type = 'VMAccessAgent';
       client.virtualMachineImages.listPublishers('westus', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result.some(function (item) { return item.name === type; }).should.be.true;
+        result.some(function (item) { return item.name === 'MicrosoftWindowsServer'; }).should.be.true;
         response.statusCode.should.equal(200);
         done();
       });
     });
     
     it('should list offers successfully', function (done) {
-      var type = 'VMAccessAgent';
       client.virtualMachineImages.listOffers('westus', 'MicrosoftWindowsServer', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result.some(function (item) { return item.name === type; }).should.be.true;
+        result.some(function (item) { return item.name === 'WindowsServer'; }).should.be.true;
         response.statusCode.should.equal(200);
         done();
       });
     });
     
     it('should list skus successfully', function (done) {
-      var type = 'VMAccessAgent';
       client.virtualMachineImages.listSkus('westus', 'MicrosoftWindowsServer', 'WindowsServer', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result.some(function (item) { return item.name === type; }).should.be.true;
+        result.some(function (item) { return item.name === '2012-R2-Datacenter'; }).should.be.true;
         response.statusCode.should.equal(200);
         done();
       });
     });
 
-    it('should get a specific image successfully', function (done) {
+    it.skip('should get a specific image successfully', function (done) {
       client.virtualMachineImages.get('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', '4.0.201506', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.name.should.equal('2.0')
-        result.location.should.equal('westus');
-        result.computeRole.should.equal('IaaS');
-        result.supportsMultipleExtensions.should.be.false;
-        result.vmScaleSetEnabled.should.be.false;
-        result.operatingSystem.should.equal('Windows');
         response.statusCode.should.equal(200);
         done();
       });
@@ -186,9 +164,7 @@ describe('Compute Management', function () {
         client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
-          result.length.should.be.above(0);
-          result[0].location.should.equal('westus');
-          result[0].name.should.equal('2.0')
+          result.length.should.equal(0);
           response.statusCode.should.equal(200);
           done();
         });
@@ -201,46 +177,48 @@ describe('Compute Management', function () {
           should.exist(result);
           result.length.should.be.above(0);
           result[0].location.should.equal('westus');
-          result[0].name.should.equal('2.0')
+          result[0].name.should.equal('4.0.20150825')
           response.statusCode.should.equal(200);
           done();
         });
       });
 
       it('orderby with descending value should work', function (done) {
-        var options = { oderBy : 'name desc' };
+        var options = { orderby : 'name desc' };
         client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           result.length.should.be.above(0);
-          result[0].location.should.equal('westus');
-          result[0].name.should.equal('2.0')
+          result[0].name.should.equal('4.0.20151022');
+          result[1].name.should.equal('4.0.20150916');
+          result[2].name.should.equal('4.0.20150825');
           response.statusCode.should.equal(200);
           done();
         });
       });
 
       it('orderby with ascending value should work', function (done) {
-        var options = { oderBy : 'name asc' };
+        var options = { orderby : 'name asc' };
         client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           result.length.should.be.above(0);
-          result[0].location.should.equal('westus');
-          result[0].name.should.equal('2.0')
+          result[0].name.should.equal('4.0.20150825');
+          result[1].name.should.equal('4.0.20150916');
+          result[2].name.should.equal('4.0.20151022');
           response.statusCode.should.equal(200);
           done();
         });
       });
 
       it('top positive and orderby with ascending value should work', function (done) {
-        var options = { top : 1, oderBy : 'name asc' };
+        var options = { top : 1, orderby : 'name asc' };
         client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           result.length.should.be.above(0);
           result[0].location.should.equal('westus');
-          result[0].name.should.equal('2.0')
+          result[0].name.should.equal('4.0.20150825')
           response.statusCode.should.equal(200);
           done();
         });
