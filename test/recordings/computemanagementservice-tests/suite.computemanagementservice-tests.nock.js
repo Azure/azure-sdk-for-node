@@ -6,5 +6,3 @@ exports.setEnvironment = function() {
 };
 
 exports.scopes = [];
-
- exports.randomTestIdsGenerated = function() { return ['nodeTestGroup1245','testacc5015'];};
