@@ -70,20 +70,20 @@ declare class NetworkManagementClient {
          *
          * @param {string} location The location of the domain name
          * 
-         * @param {string} [domainNameLabel] The domain name to be verified. It must
-         * conform to the following regular expression:
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {string} [options.domainNameLabel] The domain name to be verified.
+         * It must conform to the following regular expression:
          * ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
          * 
-         * @param {object} [options]
-         *
-         * @param {object} [options.customHeaders] headers that will be added to
+         * @param {object} [options.customHeaders] Headers that will be added to the
          * request
-         *
+         * 
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        checkDnsNameAvailability(location: string, domainNameLabel: string, options: RequestOptions, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
-        checkDnsNameAvailability(location: string, domainNameLabel: string, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
+        checkDnsNameAvailability(location: string, options: { domainNameLabel? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
+        checkDnsNameAvailability(location: string, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
 }
 
 export = NetworkManagementClient;
