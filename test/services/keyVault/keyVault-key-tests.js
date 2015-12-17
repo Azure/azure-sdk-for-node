@@ -37,6 +37,11 @@ if (!vaultUri) {
     vaultUri = 'https://nodesdktest.vault.azure.net';
 }
 
+var standardVaultOnly = process.env['AZURE_KV_STANDARD_VAULT_ONLY'];
+if (!standardVaultOnly || standardVaultOnly.toLowerCase() == 'false') {
+    standardVaultOnly = false;
+}
+
 var KEY_NAME = 'nodeKey';
 var LIST_TEST_SIZE = 5;
 
@@ -214,7 +219,11 @@ describe('Key Vault keys', function () {
       }
             
       function importToHardware(next) {
-        doImport(true, next);        
+        if(!standardVaultOnly) {
+          doImport(true, next);
+        } else {
+          doImport(false, next);
+        }
       }
 
       series([

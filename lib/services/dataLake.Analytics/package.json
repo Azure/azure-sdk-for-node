@@ -4,8 +4,8 @@
   "contributors": [
     "Goldsmith, Benjamin <begoldsm@microsoft.com>"
   ],
-  "version": "0.1.1",
-  "description": "Microsoft Azure Data Lake Analytics Compute Management Client Library for node",
+  "version": "0.1.6",
+  "description": "Microsoft Azure Data Lake Analytics Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
