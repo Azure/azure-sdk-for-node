@@ -4,7 +4,7 @@
 ::
 
 @echo off
-set autoRestVersion=0.14.0-Nightly20151216
+set autoRestVersion=0.14.0-Nightly20151218
 if  "%1" == "" (
     set specFile="https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-network/2015-06-15/swagger/network.json"
 ) else (
