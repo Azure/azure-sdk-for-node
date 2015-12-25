@@ -925,7 +925,7 @@ export interface ExpressRouteServiceProvider {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated
  * 
- * @member {string} addressPrefix Gets or sets Address prefix for the subnet.
+ * @member {string} [addressPrefix] Gets or sets Address prefix for the subnet.
  * 
  * @member {object} [networkSecurityGroup] Gets or sets the reference of the
  * NetworkSecurityGroup resource
@@ -975,7 +975,7 @@ export interface ExpressRouteServiceProvider {
 export interface Subnet extends SubResource {
     name?: string;
     etag?: string;
-    addressPrefix: string;
+    addressPrefix?: string;
     networkSecurityGroup?: NetworkSecurityGroup;
     routeTable?: RouteTable;
     ipConfigurations?: IPConfiguration[];
@@ -1751,9 +1751,9 @@ export interface InboundNatRule extends SubResource {
  * @member {string} [etag] Gets a unique read-only string that changes
  * whenever the resource is updated
  * 
- * @member {string} publicIPAllocationMethod Gets or sets PublicIP allocation
- * method (Static/Dynamic). Possible values for this property include:
- * 'Static', 'Dynamic'.
+ * @member {string} [publicIPAllocationMethod] Gets or sets PublicIP
+ * allocation method (Static/Dynamic). Possible values for this property
+ * include: 'Static', 'Dynamic'.
  * 
  * @member {object} [ipConfiguration]
  * 
@@ -1871,7 +1871,7 @@ export interface InboundNatRule extends SubResource {
  */
 export interface PublicIPAddress extends Resource {
     etag?: string;
-    publicIPAllocationMethod: string;
+    publicIPAllocationMethod?: string;
     ipConfiguration?: IPConfiguration;
     dnsSettings?: PublicIPAddressDnsSettings;
     ipAddress?: string;
@@ -2560,7 +2560,7 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated
  * 
- * @member {number} [allocatedOutboundPort] Gets or sets the number of
+ * @member {number} [allocatedOutboundPorts] Gets or sets the number of
  * outbound ports to be used for SNAT
  * 
  * @member {array} [frontendIPConfigurations] Gets or sets Frontend IP
@@ -2579,7 +2579,7 @@ export interface InboundNatPool extends SubResource {
 export interface OutboundNatRule extends SubResource {
     name?: string;
     etag?: string;
-    allocatedOutboundPort?: number;
+    allocatedOutboundPorts?: number;
     frontendIPConfigurations?: SubResource[];
     backendAddressPool: SubResource;
     provisioningState?: string;
