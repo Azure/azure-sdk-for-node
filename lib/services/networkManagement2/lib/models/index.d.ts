@@ -1697,11 +1697,11 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string} [backendIPConfiguration.provisioningState]
  * 
- * @member {string} protocol Gets or sets the transport potocol for the
+ * @member {string} [protocol] Gets or sets the transport potocol for the
  * external endpoint. Possible values are Udp or Tcp. Possible values for
  * this property include: 'Udp', 'Tcp'.
  * 
- * @member {number} frontendPort Gets or sets the port for the external
+ * @member {number} [frontendPort] Gets or sets the port for the external
  * endpoint. You can spcify any port number you choose, but the port numbers
  * specified for each role in the service must be unique. Possible values
  * range between 1 and 65535, inclusive
@@ -1720,11 +1720,11 @@ export interface BackendAddressPool extends SubResource {
  * default value is 4 minutes. This emlement is only used when the protocol
  * is set to Tcp
  * 
- * @member {boolean} enableFloatingIP Configures a virtual machine's endpoint
- * for the floating IP capability required to configure a SQL AlwaysOn
- * availability Group. This setting is required when using the SQL Always ON
- * availability Groups in SQL server. This setting can't be changed after you
- * create the endpoint
+ * @member {boolean} [enableFloatingIP] Configures a virtual machine's
+ * endpoint for the floating IP capability required to configure a SQL
+ * AlwaysOn availability Group. This setting is required when using the SQL
+ * Always ON availability Groups in SQL server. This setting can't be changed
+ * after you create the endpoint
  * 
  * @member {string} [provisioningState] Gets or sets Provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
@@ -1735,11 +1735,11 @@ export interface InboundNatRule extends SubResource {
     etag?: string;
     frontendIPConfiguration?: SubResource;
     backendIPConfiguration?: NetworkInterfaceIPConfiguration;
-    protocol: string;
-    frontendPort: number;
+    protocol?: string;
+    frontendPort?: number;
     backendPort?: number;
     idleTimeoutInMinutes?: number;
-    enableFloatingIP: boolean;
+    enableFloatingIP?: boolean;
     provisioningState?: string;
 }
 
