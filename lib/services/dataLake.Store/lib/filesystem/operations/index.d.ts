@@ -272,8 +272,8 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    directAppend(directFilePath: string, accountname: string, streamContents: stream.Readable, options: { buffersize? : number, op? : string, append? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    directAppend(directFilePath: string, accountname: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
+    append(directFilePath: string, accountname: string, streamContents: stream.Readable, options: { buffersize? : number, op? : string, append? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    append(directFilePath: string, accountname: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
      * Directly creates a file with the specified content, without requiring a
@@ -317,8 +317,8 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    directCreate(directFilePath: string, accountname: string, options: { streamContents? : stream.Readable, buffersize? : number, overwrite? : boolean, blocksize? : number, replication? : number, permission? : string, op? : string, write? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    directCreate(directFilePath: string, accountname: string, callback: ServiceCallback<void>): void;
+    create(directFilePath: string, accountname: string, options: { streamContents? : stream.Readable, buffersize? : number, overwrite? : boolean, blocksize? : number, replication? : number, permission? : string, op? : string, write? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(directFilePath: string, accountname: string, callback: ServiceCallback<void>): void;
 
     /**
      * Directly opens and reads from the specified file, without requiring a
@@ -352,8 +352,8 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    directOpen(directFilePath: string, accountname: string, options: { length? : number, offset? : number, buffersize? : number, op? : string, read? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
-    directOpen(directFilePath: string, accountname: string, callback: ServiceCallback<stream.Readable>): void;
+    open(directFilePath: string, accountname: string, options: { length? : number, offset? : number, buffersize? : number, op? : string, read? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    open(directFilePath: string, accountname: string, callback: ServiceCallback<stream.Readable>): void;
 
     /**
      * Sets ACL entries on a file or folder.
@@ -501,99 +501,6 @@ export interface FileSystem {
      */
     getAclStatus(aclFilePath: string, accountname: string, options: { op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AclStatusResult>): void;
     getAclStatus(aclFilePath: string, accountname: string, callback: ServiceCallback<models.AclStatusResult>): void;
-
-    /**
-     * Initiates a file append request, resulting in a return of the data node
-     * location that will service the request.
-     *
-     * @param {string} filePath The path to the file to append to.
-     * 
-     * @param {string} accountname The name of the Data Lake Store account to
-     * append to the file in
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {number} [options.buffersize] The optional buffer size to use when
-     * appending data
-     * 
-     * @param {string} [options.op] This is the REQUIRED value for this parameter
-     * and method combination. Changing the value will result in unexpected
-     * behavior, please do not do so.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginAppend(filePath: string, accountname: string, options: { buffersize? : number, op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginAppend(filePath: string, accountname: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Initiates a file creation request, resulting in a return of the data node
-     * location that will service the request.
-     *
-     * @param {string} filePath The path to the file to create.
-     * 
-     * @param {string} accountname The name of the Data Lake Store account to
-     * create the file in
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {number} [options.buffersize] The size of the buffer used in
-     * transferring data.
-     * 
-     * @param {boolean} [options.overwrite] The indication of if the file should
-     * be overwritten.
-     * 
-     * @param {number} [options.blocksize] The block size of a file, in bytes.
-     * 
-     * @param {number} [options.replication] The number of replications of a file.
-     * 
-     * @param {string} [options.permission] The permissions of a file or directory.
-     * 
-     * @param {string} [options.op] This is the REQUIRED value for this parameter
-     * and method combination. Changing the value will result in unexpected
-     * behavior, please do not do so.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreate(filePath: string, accountname: string, options: { buffersize? : number, overwrite? : boolean, blocksize? : number, replication? : number, permission? : string, op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginCreate(filePath: string, accountname: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Initiates a file open (read) request, resulting in a return of the data
-     * node location that will service the request.
-     *
-     * @param {string} filePath The path to the file to open.
-     * 
-     * @param {string} accountname The name of the data lake account that the file
-     * lives in.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {number} [options.length]
-     * 
-     * @param {number} [options.offset]
-     * 
-     * @param {number} [options.buffersize]
-     * 
-     * @param {string} [options.op] This is the REQUIRED value for this parameter
-     * and method combination. Changing the value will result in unexpected
-     * behavior, please do not do so.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginOpen(filePath: string, accountname: string, options: { length? : number, offset? : number, buffersize? : number, op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginOpen(filePath: string, accountname: string, callback: ServiceCallback<void>): void;
 
     /**
      * Deletes the requested file or folder, optionally recursively.
@@ -753,27 +660,6 @@ export interface FileSystem {
     setReplication(setReplicationFilePath: string, accountname: string, callback: ServiceCallback<models.FileOperationResult>): void;
 
     /**
-     * Appends to the file specified in the link that was returned from
-     * BeginAppend.
-     *
-     * @param {string} fileAppendRequestLink The link to the file to append to
-     * including all required parameters.
-     * 
-     * @param {object} streamContents The file contents to include when appending
-     * to the file.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    append(fileAppendRequestLink: string, streamContents: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    append(fileAppendRequestLink: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
-
-    /**
      * Sets the access or modification time on a file or folder.
      *
      * @param {string} sourcePath The path to the directory or file to set
@@ -821,42 +707,4 @@ export interface FileSystem {
      */
     getHomeDirectory(accountname: string, options: { op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HomeDirectoryResult>): void;
     getHomeDirectory(accountname: string, callback: ServiceCallback<models.HomeDirectoryResult>): void;
-
-    /**
-     * Creates the file specified in the link that was returned from BeginCreate.
-     *
-     * @param {string} fileCreateRequestLink The link to the file to create
-     * including all required parameters.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.streamContents] The file contents to include when
-     * creating the file. This parameter is not required, and if not passed
-     * results an empty file.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    create(fileCreateRequestLink: string, options: { streamContents? : stream.Readable, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    create(fileCreateRequestLink: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Gets the data associated with the file handle requested.
-     *
-     * @param {string} fileOpenRequestLink The link to the file to open including
-     * all required parameters.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    open(fileOpenRequestLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
-    open(fileOpenRequestLink: string, callback: ServiceCallback<stream.Readable>): void;
 }
