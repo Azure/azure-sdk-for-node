@@ -868,9 +868,9 @@ export interface ExpressRouteServiceProviderBandwidthsOffered {
 
 /**
  * @class
- * Initializes a new instance of the ExpressRouteServiceProviderPropertiesFormat class.
+ * Initializes a new instance of the ExpressRouteServiceProvider class.
  * @constructor
- * Properties of ExpressRouteServiceProvider
+ * ExpressRouteResourceProvider object
  * @member {array} [peeringLocations] Gets or list of peering locations
  * 
  * @member {array} [bandwidthsOffered] Gets or bandwidths offered
@@ -879,39 +879,10 @@ export interface ExpressRouteServiceProviderBandwidthsOffered {
  * resource
  * 
  */
-export interface ExpressRouteServiceProviderPropertiesFormat {
+export interface ExpressRouteServiceProvider extends Resource {
     peeringLocations?: string[];
     bandwidthsOffered?: ExpressRouteServiceProviderBandwidthsOffered[];
     provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressRouteServiceProvider class.
- * @constructor
- * ExpressRouteResourceProvider object
- * @member {string} [id] Gets or sets the ID of the resource.
- * 
- * @member {string} [name] Gets or sets the name of the resource.
- * 
- * @member {string} [type] Gets or sets the type of the resource.
- * 
- * @member {object} [properties]
- * 
- * @member {array} [properties.peeringLocations] Gets or list of peering
- * locations
- * 
- * @member {array} [properties.bandwidthsOffered] Gets or bandwidths offered
- * 
- * @member {string} [properties.provisioningState] Gets or sets Provisioning
- * state of the resource
- * 
- */
-export interface ExpressRouteServiceProvider {
-    id?: string;
-    name?: string;
-    type?: string;
-    properties?: ExpressRouteServiceProviderPropertiesFormat;
 }
 
 /**
@@ -1191,7 +1162,9 @@ export interface NetworkInterface extends Resource {
  * 
  * @member {string} [privateIPAddress]
  * 
- * @member {string} [privateIPAllocationMethod]
+ * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
+ * allocation method (Static/Dynamic). Possible values for this property
+ * include: 'Static', 'Dynamic'.
  * 
  * @member {object} [subnet]
  * 
@@ -1470,7 +1443,9 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string} [backendIPConfiguration.privateIPAddress]
  * 
- * @member {string} [backendIPConfiguration.privateIPAllocationMethod]
+ * @member {string} [backendIPConfiguration.privateIPAllocationMethod] Gets or
+ * sets PrivateIP allocation method (Static/Dynamic). Possible values for
+ * this property include: 'Static', 'Dynamic'.
  * 
  * @member {object} [backendIPConfiguration.subnet]
  * 

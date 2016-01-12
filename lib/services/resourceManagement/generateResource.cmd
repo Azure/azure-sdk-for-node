@@ -4,7 +4,7 @@
 ::
 
 @echo off
-set autoRestVersion=0.14.0-Nightly20151223
+set autoRestVersion=0.14.0-Nightly20160111
 if  "%1" == "" (
     set specFile="https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-resources/resources/2014-04-01-preview/swagger/resources.json"
 ) else (
@@ -14,4 +14,4 @@ set repoRoot=%~dp0..\..\..\
 set generateFolder=%~dp0lib\resource
 
 if exist %generateFolder% rd /S /Q  %generateFolder%
-call "%repoRoot%\tools\autorest.gen.cmd" %specFile% Microsoft.Azure.Management.Storage %autoRestVersion% %generateFolder% 
+call "%repoRoot%\tools\autorest.gen.cmd" %specFile% Microsoft.Azure.Management.Resources %autoRestVersion% %generateFolder% 
