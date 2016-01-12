@@ -1,14 +1,14 @@
 {
-  "name": "azure-arm-authorization",
+  "name": "azure-arm-hdinsight-jobs",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Cowlishaw, Mark <markcowl@microsoft.com>",
-    "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>",
-    "Mkrtchyan, Hovsep <hovsepm@microsoft.com>"
+    "Amit, Harshitha <harshiam@microsoft.com>",
+    "Iyer, Ganeshan <giyer@microsoft.com>",
+    "Hicks, Matthew <mahi@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "2.0.0",
-  "description": "Microsoft Azure Authorization Management Client Library for node",
+  "version": "0.1.0",
+  "description": "Microsoft Azure HDInsight Job Submission Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -17,7 +17,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/authorization.js",
+  "main": "./lib/hdinsightjob2.js",
   "engines": {
     "node": ">= 0.6.15"
   },
