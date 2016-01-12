@@ -23,7 +23,7 @@ var AzureMgmtRedisCache = require('azure-arm-rediscache');
   
 // Create an Azure Redis Cache Management client.
   var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
-  client = new AzureMgmtRedisCache.createRedisCacheManagementClient(credentials, 'your-subscription-id');
+  client = new AzureMgmtRedisCache(credentials, 'your-subscription-id');
 
   var resourceGroup = 'myResourceGroup';
   var cacheName = 'myNewCache';

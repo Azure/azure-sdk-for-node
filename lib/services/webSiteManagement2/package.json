@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "Microsoft Azure WebSite Management Client Library for node",
   "tags": [
     "azure",
@@ -22,7 +22,7 @@
   ],
   "main": "./lib/website.js",
   "engines": {
-    "node": ">= 0.6.15"
+    "node": ">= 0.10.0"
   },
   "licenses": [
     {
