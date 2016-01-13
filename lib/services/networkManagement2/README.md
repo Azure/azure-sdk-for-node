@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - Network Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Network Resources.
-- **Node.js version: 0.6.15 or higher**
+- **Node.js version: 0.10.0 or higher**
 - **API version: 2015-06-15**
 
 ## Features
