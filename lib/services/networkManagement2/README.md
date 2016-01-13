@@ -2,7 +2,7 @@
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Network Resources.
 - **Node.js version: 0.6.15 or higher**
-- **API version: 2015-05-01-preview**
+- **API version: 2015-06-15**
 
 ## Features
 
@@ -13,6 +13,10 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 - Manage load balancer
 - Manage network interface
 - Manage publicIPAddress
+- Manage application gateway
+- Manage connections
+- Manage express route
+- Manage local network gateway
 
 
 ## How to Install

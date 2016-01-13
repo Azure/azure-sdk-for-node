@@ -15,8 +15,8 @@ common/storageservicesettings-tests.js
 serviceruntime/roleenvironment-tests.js
 serviceruntime/runtimeversionmanager-tests.js
 serviceruntime/runtimeversionprotocolclient-tests.js
-services/keyVault/keyVault-key-tests.js
-services/keyVault/keyVault-secret-tests.js
+#services/keyVault/keyVault-key-tests.js
+#services/keyVault/keyVault-secret-tests.js
 services/blob/internal/sharedaccesssignature-tests.js
 services/blob/internal/sharedkey-tests.js
 services/blob/internal/sharedkeylite-tests.js
@@ -40,7 +40,6 @@ services/serviceBus/wnsservice-tests.js
 services/serviceBus/wnsservice-registrations-tests.js
 services/serviceBus/wrapservice-tests.js
 services/serviceBus/installation-management-tests.js
-services/resourceManagement/resourceManagement-tests.js
 services/sql/sqlmanagementservice-tests.js
 services/sql/sqlservice-tests.js
 services/table/internal/sharedkeytable-tests.js
@@ -53,7 +52,6 @@ services/table/tableservice-tablequery-tests.js
 services/table/tableservice-tests.js
 # TODO: find out why it's broken
 # services/table/tableservice-gb-tests.js
-services/storageManagement/storageManagementClient-tests.js
 services/webSiteManagement/websitemanagementservice-tests.js
 util/date-tests.js
 util/edmtype-tests.js
