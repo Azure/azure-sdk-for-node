@@ -11,7 +11,7 @@
     "Kulkarni, Jagadish <jagadisk@microsoft.com>",
     "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Microsoft Azure Insights Client Library for node",
   "tags": [
     "azure",
