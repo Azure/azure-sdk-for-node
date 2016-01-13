@@ -30,7 +30,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "mime": "~1.2.4",
     "underscore": "1.4.x",
+    "request": "2.52.0",
     "node-uuid": "~1.4",
     "ms-rest-azure": "^1.6.0",
     "ms-rest": "^1.6.0"
