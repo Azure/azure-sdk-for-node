@@ -7,10 +7,12 @@ var mappings = {
   'authorization': {
     'dir': 'authorizationManagement/lib',
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json',
+    'ft': 1
   },
   'compute': {
     'dir': 'computeManagement2/lib',
-    'source': 'arm-compute/2015-06-15/swagger/compute.json'
+    'source': 'arm-compute/2015-06-15/swagger/compute.json',
+    'ft': 1
   },
   'intune': {
     'dir': 'intune/lib',
@@ -18,11 +20,13 @@ var mappings = {
   },
   'network': {
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2015-06-15/swagger/network.json'
+    'source': 'arm-network/2015-06-15/swagger/network.json',
+    'ft': 1
   },
   'rediscache': {
     'dir': 'rediscachemanagement/lib',
     'source': 'arm-redis/2015-08-01/swagger/redis.json',
+    'ft': 1
   },
   'storage': {
     'dir': 'storageManagement2/lib',
@@ -47,7 +51,8 @@ var mappings = {
   },
   'website': {
     'dir': 'websiteManagement2/lib',
-    'source': 'arm-web/2015-08-01/swagger/service.json'
+    'source': 'arm-web/2015-08-01/swagger/service.json',
+    'ft': 1
   }
 };
 
@@ -89,7 +94,7 @@ var codegen = function(project, cb) {
   console.log('Generating "' + project + '" from spec file ' + specRoot + '/' + mappings[project].source);
   cmd = autoRestExe + ' -Modeler Swagger -CodeGenerator Azure.NodeJS' + ' -Input ' + specRoot + '/' + mappings[project].source + 
     ' -outputDirectory lib/services/' + mappings[project].dir + ' -Header MICROSOFT_MIT';
-  if (mappings[project].ft) cmd += ' -FT ' + mappings[project].ft;
+  if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
   }
