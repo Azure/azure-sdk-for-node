@@ -19,7 +19,6 @@ var should = require('should');
 var util = require('util');
 var msRestAzure = require('ms-rest-azure');
 var _ = require('underscore');
-var testutil = require('../../util/util');
 var SuiteBase = require('../../framework/suite-base');
 
 

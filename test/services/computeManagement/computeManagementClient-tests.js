@@ -18,8 +18,6 @@
 var should = require('should');
 var util = require('util');
 var msRestAzure = require('ms-rest-azure');
-
-var testutil = require('../../util/util');
 var SuiteBase = require('../../framework/suite-base');
 var FileTokenCache = require('../../../lib/util/fileTokenCache');
 var ComputeManagementClient = require('../../../lib/services/computeManagement2/lib/computeManagementClient');
