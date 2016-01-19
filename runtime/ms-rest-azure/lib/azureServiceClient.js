@@ -17,9 +17,16 @@ var WebResource = msrest.WebResource;
  * UserTokenCredentials object used for authentication.  
  * 
  * @param {object} options - The parameter options used by ServiceClient
+ *
+ * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response. 
+ * Default value is: 'en-US'.
+ *  
+ * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value 
+ * is generated and included in each request. Default is true.
  * 
- * @param {Array} [options.longRunningOperationRetryTimeoutInSeconds] - Retry timeout
- * 
+ * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for 
+ * Long Running Operations. Default value is 30.
+ *
  */
 function AzureServiceClient(credentials, options) {
   if (!credentials) {
@@ -27,9 +34,23 @@ function AzureServiceClient(credentials, options) {
   }
   
   AzureServiceClient['super_'].call(this, credentials, options);
-  if (options) {
-    this.longRunningOperationRetryTimeoutInSeconds = 
-      options.longRunningOperationRetryTimeoutInSeconds;
+  
+  this.acceptLanguage = 'en-US';
+  this.generateClientRequestId = true;
+  this.longRunningOperationRetryTimeout = 30;
+
+  if (!options) options = {};
+  
+  if (options.acceptLanguage !== null && options.acceptLanguage !== undefined) {
+    this.acceptLanguage = options.acceptLanguage;
+  }
+
+  if (options.generateClientRequestId !== null && options.generateClientRequestId !== undefined) {
+    this.generateClientRequestId = options.generateClientRequestId;
+  }
+
+  if (options.longRunningOperationRetryTimeout !== null && options.longRunningOperationRetryTimeout !== undefined) {
+    this.longRunningOperationRetryTimeout = options.longRunningOperationRetryTimeout;
   }
 }
 
@@ -64,7 +85,7 @@ AzureServiceClient.prototype.getPutOrPatchOperationResult = function (resultOfIn
   }
   var pollingState = null;
   try {
-    pollingState = new PollingState(resultOfInitialRequest, this.longRunningOperationRetryTimeoutInSeconds);
+    pollingState = new PollingState(resultOfInitialRequest, this.longRunningOperationRetryTimeout);
   } catch (error) {
     callback(error);
   }
@@ -149,7 +170,7 @@ AzureServiceClient.prototype.getPostOrDeleteOperationResult = function (resultOf
   
   var pollingState = null;
   try {
-    pollingState = new PollingState(resultOfInitialRequest, this.longRunningOperationRetryTimeoutInSeconds);
+    pollingState = new PollingState(resultOfInitialRequest, this.longRunningOperationRetryTimeout);
   } catch (error) {
     callback(error);
   }

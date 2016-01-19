@@ -46,7 +46,7 @@ describe('Authorization Client', function () {
       client = new AuthorizationClient(suite.credentials, suite.subscriptionId);
       testLocation = process.env['AZURE_TEST_LOCATION'];
       if (suite.isPlayback) {
-        client.longRunningOperationRetryTimeoutInSeconds = 0;
+        client.longRunningOperationRetryTimeout = 0;
       }
       suite.createResourcegroup(groupName, testLocation, function (err, result) {
         should.not.exist(err);

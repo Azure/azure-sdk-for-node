@@ -141,7 +141,7 @@ _.extend(SuiteBase.prototype, {
       this.resourceManagement = new ResourceManagementClient(this.credentials, this.subscriptionId);
     }
     if (this.isPlayback) {
-      this.resourceManagement.longRunningOperationRetryTimeoutInSeconds = 0;
+      this.resourceManagement.longRunningOperationRetryTimeout = 0;
     }
   },
 
