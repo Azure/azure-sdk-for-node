@@ -4,7 +4,7 @@
 ::
 
 @echo off
-set autoRestVersion=0.13.0-Nightly20151203
+set autoRestVersion=0.14.0-Nightly20160112
 if  "%1" == "" (
 	set specFile="https://raw.githubusercontent.com/vrmurthy01/azure-rest-api-specs/master/arm-intune/2015-01-14-preview/swagger/intune.json"
 ) else (
