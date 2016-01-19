@@ -402,8 +402,8 @@ export interface DataLakeStoreAccountOperations {
     get(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
 
     /**
-     * Lists the Data Lake Store account objects within the subscription or within
-     * a specific resource group.
+     * Lists the Data Lake Store account objects within a specific resource group.
+     * This includes a link to the next page, if any.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -449,8 +449,57 @@ export interface DataLakeStoreAccountOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
-    list(resourceGroupName: string, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
+
+    /**
+     * Lists the Data Lake Store account objects within the subscription. This
+     * includes a link to the next page, if any.
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.filter] Gets or sets OData filter. Optional.
+     * 
+     * @param {number} [options.top] Gets or sets the number of items to return.
+     * Optional.
+     * 
+     * @param {number} [options.skip] Gets or sets the number of items to skip
+     * over before returning elements. Optional.
+     * 
+     * @param {string} [options.expand] Gets or sets OData expansion. Expand
+     * related resources in line with the retrieved resources, e.g.
+     * Categories/$expand=Products would expand Product data in line with each
+     * Category entry. Optional.
+     * 
+     * @param {string} [options.select] Gets or sets OData Select statement.
+     * Limits the properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     * 
+     * @param {string} [options.orderby] Gets or sets the OrderBy clause. One or
+     * more comma-separated expressions with an optional â€œascâ€ (the default)
+     * or â€œdescâ€ depending on the order youâ€™d like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     * 
+     * @param {boolean} [options.count] Gets or sets a Boolean value of true or
+     * false to request a count of the matching resources included with the
+     * resources in the response, e.g. Categories?$count=true. Optional.
+     * 
+     * @param {string} [options.search] Gets or sets a free form search. A
+     * free-text search expression to match for whether a particular entry should
+     * be included in the feed, e.g. Categories?$search=blue OR green. Optional.
+     * 
+     * @param {string} [options.format] Gets or sets the return format. Return the
+     * response in particular formatxii without access to request headers for
+     * standard content-type negotiation (e.g Orders?$format=json). Optional.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    list(options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
+    list(callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
 
     /**
      * Lists the Data Lake firewall rules objects within the specified Data Lake
@@ -489,8 +538,26 @@ export interface DataLakeStoreAccountOperations {
     firewallRulesListNextNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
 
     /**
-     * Lists the Data Lake Store account objects within the subscription or within
-     * a specific resource group.
+     * Lists the Data Lake Store account objects within a specific resource group.
+     * This includes a link to the next page, if any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
+
+    /**
+     * Lists the Data Lake Store account objects within the subscription. This
+     * includes a link to the next page, if any.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
