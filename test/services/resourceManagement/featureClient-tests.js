@@ -37,7 +37,7 @@ describe('Feature Client', function () {
     suite.setupSuite(function () {
       client = new FeatureClient(suite.credentials, suite.subscriptionId);
       if (suite.isPlayback) {
-        client.longRunningOperationRetryTimeoutInSeconds = 0;
+        client.longRunningOperationRetryTimeout = 0;
       }
       done();
     });

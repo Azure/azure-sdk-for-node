@@ -68,7 +68,7 @@ gulp.task('default', function() {
 
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
-var autoRestVersion = '0.14.0-Nightly20160112';
+var autoRestVersion = '0.14.0-Nightly20160118';
 var autoRestExe = 'packages\\autorest.' + autoRestVersion + '\\tools\\AutoRest.exe';
 var nugetSource = 'https://www.myget.org/F/autorest/api/v2';
 

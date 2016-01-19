@@ -43,7 +43,7 @@ describe('Compute Management', function () {
     suite.setupSuite(function () {
       client = new ComputeManagementClient(suite.credentials, suite.subscriptionId);
       if (suite.isPlayback) {
-        client.longRunningOperationRetryTimeoutInSeconds = 0;
+        client.longRunningOperationRetryTimeout = 0;
       }
       done();
     });
