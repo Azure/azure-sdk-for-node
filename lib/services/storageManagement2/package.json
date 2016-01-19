@@ -11,7 +11,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.12.0",
+  "version": "0.12.0-alpha",
   "description": "Microsoft Azure Storage Resource Provider Management Client Library for Node",
   "tags": [
     "azure",
