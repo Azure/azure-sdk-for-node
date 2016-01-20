@@ -1421,8 +1421,6 @@
     <Folder Include="lib\services\webSiteManagement2" />
     <Folder Include="lib\services\webSiteManagement2\lib" />
     <Folder Include="lib\util" />
-    <Folder Include="node_modules\" />
-    <Folder Include="node_modules\mocha\" />
     <Folder Include="obj" />
     <Folder Include="obj\Debug" />
     <Folder Include="packages" />
