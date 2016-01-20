@@ -113,7 +113,7 @@ describe('Compute Management', function () {
         done();
       });
     });
-
+    
     it('should list publishers successfully', function (done) {
       client.virtualMachineImages.listPublishers('westus', function (err, result, request, response) {
         should.not.exist(err);
@@ -146,7 +146,7 @@ describe('Compute Management', function () {
         done();
       });
     });
-
+    
     it.skip('should get a specific image successfully', function (done) {
       client.virtualMachineImages.get('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', '4.0.201506', function (err, result, request, response) {
         should.not.exist(err);
@@ -155,7 +155,7 @@ describe('Compute Management', function () {
         done();
       });
     });
-
+    
     describe('list with filter', function () {
       it('top with negative value should work', function (done) {
         var options = { top : 0 };
@@ -167,7 +167,7 @@ describe('Compute Management', function () {
           done();
         });
       });
-
+      
       it('top with positive value should work', function (done) {
         var options = { top : 1 };
         client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
@@ -180,7 +180,7 @@ describe('Compute Management', function () {
           done();
         });
       });
-
+      
       it('orderby with descending value should work', function (done) {
         var options = { orderby : 'name desc' };
         client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
@@ -194,7 +194,7 @@ describe('Compute Management', function () {
           done();
         });
       });
-
+      
       it('orderby with ascending value should work', function (done) {
         var options = { orderby : 'name asc' };
         client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {
@@ -208,7 +208,7 @@ describe('Compute Management', function () {
           done();
         });
       });
-
+      
       it('top positive and orderby with ascending value should work', function (done) {
         var options = { top : 1, orderby : 'name asc' };
         client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', options, function (err, result, request, response) {

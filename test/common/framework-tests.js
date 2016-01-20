@@ -20,17 +20,17 @@ var util = require('util');
 var SuiteBase = require('../framework/suite-base');
 var testPrefix = 'suite-base-tests';
 var location, iosApps, androidApps;
- 
+
 describe('Test Suite', function () {
   
   before(function (done) {
     suite = new SuiteBase(this, testPrefix);
-    suite.setupSuite(function() {
+    suite.setupSuite(function () {
       if (suite.isRecording) {
         suite.saveMockVariable('location', 'West US');
         suite.saveMockVariable('iosApps', ['appone', 'apptwo']);
         suite.saveMockVariable('androidApps', { 1 : 'appOne', 22: 'appTwentyTwo' });
-      } else if (suite.isPlayback){
+      } else if (suite.isPlayback) {
         location = suite.getMockVariable('location');
         iosApps = suite.getMockVariable('iosApps');
         androidApps = suite.getMockVariable('androidApps');
@@ -51,8 +51,8 @@ describe('Test Suite', function () {
     suite.baseTeardownTest(done);
   });
   
-    describe('Base', function () {
-      it('should properly record and retrieve mock variables', function (done) {
+  describe('Base', function () {
+    it('should properly record and retrieve mock variables', function (done) {
       var expectedLocation = 'West US';
       var expectediosApps = ['appone', 'apptwo'];
       var expectedandroidApps = { 1 : 'appOne', 22: 'appTwentyTwo' };
@@ -63,7 +63,7 @@ describe('Test Suite', function () {
         assert.deepEqual(mockedVariables.iosApps, expectediosApps);
         assert.deepEqual(mockedVariables.androidApps, expectedandroidApps);
       }
-
+      
       if (suite.isPlayback) {
         location.should.equal(expectedLocation);
         assert.deepEqual(iosApps, expectediosApps);
