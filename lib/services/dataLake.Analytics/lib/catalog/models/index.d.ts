@@ -29,6 +29,22 @@ export interface DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the CatalogItem class.
+ * @constructor
+ * A Data Lake Analytics catalog item.
+ * @member {string} [computeAccountName] Gets or sets the name of the Data
+ * Lake Analytics account.
+ * 
+ * @member {string} [version] Gets or sets the version of the catalog item.
+ * 
+ */
+export interface CatalogItem {
+    computeAccountName?: string;
+    version?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlSecret class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL secret item.
@@ -46,20 +62,13 @@ export interface DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters {
  * @member {string} [password] Gets or sets the password for the secret to
  * pass in
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlSecret {
+export interface USqlSecret extends CatalogItem {
     databaseName?: string;
     secretName?: string;
     creationTime?: Date;
     uri?: string;
     password?: string;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -81,20 +90,13 @@ export interface USqlSecret {
  * @member {array} [pushdownTypes] Gets or sets the list of types to push down
  * from the external data source.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlExternalDataSource {
+export interface USqlExternalDataSource extends CatalogItem {
     databaseName?: string;
     externalDataSourceName?: string;
     provider?: string;
     providerString?: string;
     pushdownTypes?: string[];
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -113,19 +115,12 @@ export interface USqlExternalDataSource {
  * @member {string} [userName] Gets or sets the user name associated with the
  * credential.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlCredential {
+export interface USqlCredential extends CatalogItem {
     databaseName?: string;
     identity?: string;
     credentialName?: string;
     userName?: string;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -143,19 +138,12 @@ export interface USqlCredential {
  * @member {string} [definition] Gets or sets the defined query of the
  * procedure.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlProcedure {
+export interface USqlProcedure extends CatalogItem {
     databaseName?: string;
     schemaName?: string;
     procName?: string;
     definition?: string;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -408,13 +396,8 @@ export interface ExternalTable {
  * @member {string} [externalTable.dataSource.version] Gets or sets the
  * version of the external data source.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlTable {
+export interface USqlTable extends CatalogItem {
     databaseName?: string;
     schemaName?: string;
     tableName?: string;
@@ -422,8 +405,6 @@ export interface USqlTable {
     indexList?: USqlIndex[];
     partitionKeyList?: string[];
     externalTable?: ExternalTable;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -440,19 +421,12 @@ export interface USqlTable {
  * 
  * @member {string} [definition] Gets or sets the defined query of the view.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlView {
+export interface USqlView extends CatalogItem {
     databaseName?: string;
     schemaName?: string;
     viewName?: string;
     definition?: string;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -497,13 +471,8 @@ export interface USqlView {
  * @member {array} [colNames] Gets or sets the list of column names associated
  * with these statistics.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlTableStatistics {
+export interface USqlTableStatistics extends CatalogItem {
     databaseName?: string;
     schemaName?: string;
     tableName?: string;
@@ -517,8 +486,6 @@ export interface USqlTableStatistics {
     hasFilter?: boolean;
     filterDefinition?: string;
     colNames?: string[];
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -564,13 +531,8 @@ export interface USqlTableStatistics {
  * @member {boolean} [isComplexType] Gets or sets the the switch indicating if
  * this type is a complex type.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlType {
+export interface USqlType extends CatalogItem {
     databaseName?: string;
     schemaName?: string;
     typeName?: string;
@@ -586,8 +548,6 @@ export interface USqlType {
     isAssemblyType?: boolean;
     isTableType?: boolean;
     isComplexType?: boolean;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -606,19 +566,12 @@ export interface USqlType {
  * @member {string} [definition] Gets or sets the definition of the table
  * valued function.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlTableValuedFunction {
+export interface USqlTableValuedFunction extends CatalogItem {
     databaseName?: string;
     schemaName?: string;
     tvfName?: string;
     definition?: string;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -695,13 +648,8 @@ export interface USqlAssemblyDependencyInfo {
  * @member {array} [dependencies] Gets or sets the list of dependencies
  * associated with the assembly
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlAssembly {
+export interface USqlAssembly extends CatalogItem {
     databaseName?: string;
     assemblyName?: string;
     clrName?: string;
@@ -709,8 +657,6 @@ export interface USqlAssembly {
     isUserDefined?: boolean;
     files?: USqlAssemblyFileInfo[];
     dependencies?: USqlAssemblyDependencyInfo[];
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -724,18 +670,11 @@ export interface USqlAssembly {
  * 
  * @member {string} [clrName] Gets or sets the name of the CLR.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlAssemblyClr {
+export interface USqlAssemblyClr extends CatalogItem {
     databaseName?: string;
     assemblyClrName?: string;
     clrName?: string;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -747,17 +686,10 @@ export interface USqlAssemblyClr {
  * 
  * @member {string} [schemaName] Gets or sets the name of the schema.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
- * 
- * @member {string} [version] Gets or sets the version of the catalog item.
- * 
  */
-export interface USqlSchema {
+export interface USqlSchema extends CatalogItem {
     databaseName?: string;
     schemaName?: string;
-    computeAccountName?: string;
-    version?: string;
 }
 
 /**
@@ -767,16 +699,25 @@ export interface USqlSchema {
  * A Data Lake Analytics catalog U-SQL database item.
  * @member {string} [databaseName] Gets or sets the name of the database.
  * 
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
+ */
+export interface USqlDatabase extends CatalogItem {
+    databaseName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CatalogItemList class.
+ * @constructor
+ * A Data Lake Analytics catalog item list.
+ * @member {number} [count] Gets or sets the count of items in the list.
  * 
- * @member {string} [version] Gets or sets the version of the catalog item.
+ * @member {string} [nextLink] Gets or sets the link to the next page of
+ * results.
  * 
  */
-export interface USqlDatabase {
-    databaseName?: string;
-    computeAccountName?: string;
-    version?: string;
+export interface CatalogItemList {
+    count?: number;
+    nextLink?: string;
 }
 
 /**

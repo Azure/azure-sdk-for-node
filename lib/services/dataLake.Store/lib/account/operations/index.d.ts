@@ -427,8 +427,8 @@ export interface DataLakeStoreAccountOperations {
      * Categories?$select=CategoryName,Description. Optional.
      * 
      * @param {string} [options.orderby] Gets or sets the OrderBy clause. One or
-     * more comma-separated expressions with an optional â€œascâ€ (the default)
-     * or â€œdescâ€ depending on the order youâ€™d like the values sorted, e.g.
+     * more comma-separated expressions with an optional "asc" (the default) or
+     * "desc" depending on the order youâ€™d like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] Gets or sets a Boolean value of true or
@@ -476,8 +476,8 @@ export interface DataLakeStoreAccountOperations {
      * Categories?$select=CategoryName,Description. Optional.
      * 
      * @param {string} [options.orderby] Gets or sets the OrderBy clause. One or
-     * more comma-separated expressions with an optional â€œascâ€ (the default)
-     * or â€œdescâ€ depending on the order youâ€™d like the values sorted, e.g.
+     * more comma-separated expressions with an optional "asc" (the default) or
+     * "desc" depending on the order youâ€™d like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] Gets or sets a Boolean value of true or
