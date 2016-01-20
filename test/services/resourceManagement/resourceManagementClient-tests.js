@@ -49,7 +49,7 @@ describe('Resource Management Client', function () {
         }
       };
       if (suite.isPlayback) {
-        client.longRunningOperationRetryTimeoutInSeconds = 0;
+        client.longRunningOperationRetryTimeout = 0;
       }
       done();
     });

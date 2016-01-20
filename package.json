@@ -34,8 +34,8 @@
     "underscore": "1.4.x",
     "request": "2.52.0",
     "node-uuid": "~1.4",
-    "ms-rest-azure": "^1.6.0",
-    "ms-rest": "^1.6.0"
+    "ms-rest-azure": "^1.8.0",
+    "ms-rest": "^1.8.0"
   },
   "devDependencies": {
     "adal-node": "0.1.17",

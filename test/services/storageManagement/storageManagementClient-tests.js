@@ -59,7 +59,7 @@ describe('Storage Management', function () {
         }
       };
       if (suite.isPlayback) {
-        client.longRunningOperationRetryTimeoutInSeconds = 0;
+        client.longRunningOperationRetryTimeout = 0;
       }
       suite.createResourcegroup(groupName, acclocation, function (err, result) {
         should.not.exist(err);
