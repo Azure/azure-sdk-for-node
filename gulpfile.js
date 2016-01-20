@@ -56,6 +56,26 @@ var mappings = {
   }
 };
 
+var autoRestVersion = '0.14.0-Nightly20160119';
+var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
+var project = args['project'];
+var autoRestExe = 'packages\\autorest.' + autoRestVersion + '\\tools\\AutoRest.exe';
+var nugetSource = 'https://www.myget.org/F/autorest/api/v2';
+
+var codegen = function(project, cb) {
+  console.log('Generating "' + project + '" from spec file ' + specRoot + '/' + mappings[project].source);
+  cmd = autoRestExe + ' -Modeler Swagger -CodeGenerator Azure.NodeJS' + ' -Input ' + specRoot + '/' + mappings[project].source + 
+    ' -outputDirectory lib/services/' + mappings[project].dir + ' -Header MICROSOFT_MIT';
+  if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
+  if (mappings[project].args !== undefined) {
+    cmd = cmd + ' ' + args;
+  }
+  exec(cmd, function(err, stdout, stderr) {
+    console.log(stdout);
+    console.error(stderr);
+  });
+};
+
 gulp.task('default', function() {
   console.log("Usage: gulp codegen [--spec-root <swagger specs root>] [--project <project name>]\n");
   console.log("--spec-root");
@@ -65,12 +85,6 @@ gulp.task('default', function() {
       console.log('\t' + i.magenta);
   });
 });
-
-var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
-var project = args['project'];
-var autoRestVersion = '0.14.0-Nightly20160118';
-var autoRestExe = 'packages\\autorest.' + autoRestVersion + '\\tools\\AutoRest.exe';
-var nugetSource = 'https://www.myget.org/F/autorest/api/v2';
 
 gulp.task('codegen', function(cb) {
   exec('tools\\nuget.exe install autorest -Source ' + nugetSource + ' -Version ' + autoRestVersion + ' -o packages', function(err, stdout, stderr) {
@@ -89,17 +103,3 @@ gulp.task('codegen', function(cb) {
     }
   });
 });
-
-var codegen = function(project, cb) {
-  console.log('Generating "' + project + '" from spec file ' + specRoot + '/' + mappings[project].source);
-  cmd = autoRestExe + ' -Modeler Swagger -CodeGenerator Azure.NodeJS' + ' -Input ' + specRoot + '/' + mappings[project].source + 
-    ' -outputDirectory lib/services/' + mappings[project].dir + ' -Header MICROSOFT_MIT';
-  if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
-  if (mappings[project].args !== undefined) {
-    cmd = cmd + ' ' + args;
-  }
-  exec(cmd, function(err, stdout, stderr) {
-    console.log(stdout);
-    console.error(stderr);
-  });
-};
