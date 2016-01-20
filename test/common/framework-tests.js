@@ -30,13 +30,12 @@ describe('Test Suite', function () {
         suite.saveMockVariable('location', 'West US');
         suite.saveMockVariable('iosApps', ['appone', 'apptwo']);
         suite.saveMockVariable('androidApps', { 1 : 'appOne', 22: 'appTwentyTwo' });
-        done();
       } else if (suite.isPlayback){
         location = suite.getMockVariable('location');
         iosApps = suite.getMockVariable('iosApps');
         androidApps = suite.getMockVariable('androidApps');
-        done();
       }
+      done();
     });
   });
   
@@ -52,8 +51,8 @@ describe('Test Suite', function () {
     suite.baseTeardownTest(done);
   });
   
-  describe('Base', function () {
-    it('should properly record and retrieve mock variables', function (done) {
+    describe('Base', function () {
+      it('should properly record and retrieve mock variables', function (done) {
       var expectedLocation = 'West US';
       var expectediosApps = ['appone', 'apptwo'];
       var expectedandroidApps = { 1 : 'appOne', 22: 'appTwentyTwo' };

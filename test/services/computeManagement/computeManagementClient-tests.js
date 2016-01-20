@@ -187,9 +187,9 @@ describe('Compute Management', function () {
           should.not.exist(err);
           should.exist(result);
           result.length.should.be.above(0);
-          result[0].name.should.equal('4.0.20151022');
-          result[1].name.should.equal('4.0.20150916');
-          result[2].name.should.equal('4.0.20150825');
+          result[0].name.should.equal('4.0.20151214');
+          result[1].name.should.equal('4.0.20151120');
+          result[2].name.should.equal('4.0.20151022');
           response.statusCode.should.equal(200);
           done();
         });
