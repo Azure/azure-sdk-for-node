@@ -23,7 +23,7 @@
   ],
   "main": "./lib/computeManagementClient.js",
   "engines": {
-    "node": ">= 0.6.15"
+    "node": ">= 0.10.0"
   },
   "licenses": [
     {
@@ -32,8 +32,8 @@
     }
   ],
   "dependencies": {
-    "ms-rest": "^1.5.0",
-    "ms-rest-azure": "^1.5.0"
+    "ms-rest": "^1.8.0",
+    "ms-rest-azure": "^1.8.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
