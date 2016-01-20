@@ -6,7 +6,8 @@
     <ProjectGuid>{72210dc5-a996-48d4-bb68-ba82b3544c77}</ProjectGuid>
     <ProjectHome />
     <ProjectView>ShowAllFiles</ProjectView>
-    <StartupFile>gruntfile.js</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
@@ -19,13 +20,17 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include=".jshintignore" />
+    <Content Include=".jshintrc" />
+    <Content Include=".npmignore" />
+    <Content Include=".travis.yml" />
     <Content Include="ChangeLog.txt" />
     <Content Include="CONTRIBUTORS.txt" />
     <Content Include="LICENSE.txt" />
     <Content Include="package.json" />
     <Content Include="CONTRIBUTING.md" />
     <Content Include="README.md" />
-    <Compile Include="gruntfile.js" />
     <Content Include="Documentation\Debugging.md" />
     <Content Include="Documentation\EnvironmentVariables.md" />
     <Content Include="Documentation\README.md" />
@@ -41,18 +46,13 @@
     <Content Include="examples\service-bus.md" />
     <Content Include="examples\service-runtime.md" />
     <Content Include="jsdocs\jsdoc.conf.json" />
+    <Compile Include="gulpfile.js" />
     <Compile Include="lib\azure.js" />
-    <Compile Include="scripts\each-service.js" />
-    <Compile Include="scripts\executeCmds.js" />
-    <Compile Include="scripts\filter-testresults.js" />
-    <Compile Include="scripts\setup.js" />
-    <Compile Include="scripts\teardown.js" />
     <Compile Include="scripts\unit-arm.js" />
     <Compile Include="scripts\unit.js" />
     <Compile Include="tasks\version-tasks.js" />
-    <Content Include="test\testlist.txt" />
+    <Content Include="test\framework\preamble.template" />
     <Content Include="test\testlistarm.txt" />
-    <Compile Include="test\azure-tests.js" />
     <Content Include="examples\blobuploader\package.json" />
     <Compile Include="examples\blobuploader\helpers.js" />
     <Compile Include="examples\blobuploader\server.js" />
@@ -774,94 +774,15 @@
     <Compile Include="runtime\ms-rest-azure\test\unit.js" />
     <Compile Include="runtime\ms-rest-azure\lib\credentials\applicationTokenCredentials.js" />
     <Compile Include="runtime\ms-rest-azure\lib\credentials\userTokenCredentials.js" />
-    <Compile Include="test\common\connectionstringparser-tests.js" />
-    <Compile Include="test\common\framework-tests.js" />
-    <Compile Include="test\common\hmacsha256sign-tests.js" />
-    <Compile Include="test\common\servicebussettings-tests.js" />
-    <Compile Include="test\common\serviceclient-tests.js" />
-    <Compile Include="test\common\servicemanagementsettings-tests.js" />
-    <Compile Include="test\common\servicesettings-tests.js" />
-    <Compile Include="test\common\storageservicesettings-tests.js" />
-    <Compile Include="test\data\app.js" />
-    <Content Include="test\framework\creds.xml" />
+    <Compile Include="test\common\framework-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\framework\authentication.js" />
-    <Compile Include="test\framework\blob-test-utils.js" />
-    <Compile Include="test\framework\hdinsight-test-utils.js" />
     <Compile Include="test\framework\mock-token-cache.js" />
-    <Compile Include="test\framework\mocked-test-utils.js" />
     <Compile Include="test\framework\nock-helper.js" />
-    <Compile Include="test\framework\notificationhubs-test-utils.js" />
-    <Compile Include="test\framework\queue-test-utils.js" />
-    <Compile Include="test\framework\servicebus-test-utils.js" />
     <Compile Include="test\framework\subscriptionUtils.js" />
     <Compile Include="test\framework\suite-base.js" />
-    <Compile Include="test\framework\table-test-utils.js" />
-    <Compile Include="test\framework\wrapservice-test-utils.js" />
-    <Compile Include="test\recordings\affinityGroup-tests.nock.js" />
-    <Compile Include="test\recordings\apnsservice-registrations-tests.nock.js" />
-    <Compile Include="test\recordings\apnsservice-tests.nock.js" />
-    <Compile Include="test\recordings\authorizationClient-tests.nock.js" />
-    <Compile Include="test\recordings\batchserviceclient-tests.nock.js" />
-    <Compile Include="test\recordings\blobservice-gb-tests.nock.js" />
-    <Compile Include="test\recordings\blobservice-stream-tests.nock.js" />
-    <Compile Include="test\recordings\blobservice-tests.nock.js" />
-    <Compile Include="test\recordings\blobservice-uploaddownload-tests.nock.js" />
-    <Compile Include="test\recordings\exponentialretrypolicyfilter-tests.nock.js" />
-    <Compile Include="test\recordings\featureClient-tests.nock.js" />
-    <Compile Include="test\recordings\filter-tests.nock.js" />
-    <Compile Include="test\recordings\gcmservice-registrations-tests.nock.js" />
-    <Compile Include="test\recordings\gcmservice-tests.nock.js" />
-    <Compile Include="test\recordings\installation-management-tests.nock.js" />
-    <Compile Include="test\recordings\keyVault-key-tests.nock.js" />
-    <Compile Include="test\recordings\keyVault-secret-tests.nock.js" />
-    <Compile Include="test\recordings\linearretrypolicyfilter-tests.nock.js" />
-    <Compile Include="test\recordings\mpnsservice-registrations-tests.nock.js" />
-    <Compile Include="test\recordings\mpnsservice-tests.nock.js" />
-    <Compile Include="test\recordings\notificationhubservice-tests.nock.js" />
-    <Compile Include="test\recordings\queueservice-tests.nock.js" />
-    <Compile Include="test\recordings\resourceManagement-tests.nock.js" />
-    <Compile Include="test\recordings\scmservice-tests.nock.js" />
-    <Compile Include="test\recordings\serviceBusManagement-tests.nock.js" />
-    <Compile Include="test\recordings\servicebusservice-tests.nock.js" />
-    <Compile Include="test\recordings\serviceManagement-tests.nock.js" />
-    <Compile Include="test\recordings\sharedkeylite-tests.nock.js" />
-    <Compile Include="test\recordings\sharedkeytable-tests.nock.js" />
-    <Compile Include="test\recordings\sqlManagement-tests.nock.js" />
-    <Compile Include="test\recordings\sqlservice-tests.nock.js" />
-    <Compile Include="test\recordings\storagemanagementservice-tests.nock.js" />
-    <Compile Include="test\recordings\subscriptionClient-tests.nock.js" />
-    <Compile Include="test\recordings\tabledatatype-tests.nock.js" />
-    <Compile Include="test\recordings\tableservice-batch-tests.nock.js" />
-    <Compile Include="test\recordings\tableservice-gb-tests.nock.js" />
-    <Compile Include="test\recordings\tableservice-tablequery-tests.nock.js" />
-    <Compile Include="test\recordings\tableservice-tests.nock.js" />
-    <Compile Include="test\recordings\token-tests.nock.js" />
-    <Compile Include="test\recordings\websitemanagementservice-tests.nock.js" />
-    <Compile Include="test\recordings\wnsservice-registrations-tests.nock.js" />
-    <Compile Include="test\recordings\wnsservice-tests.nock.js" />
-    <Compile Include="test\recordings\wrapservice-tests.nock.js" />
-    <Compile Include="test\recordings\wraptokenmanager-tests.nock.js" />
-    <Compile Include="test\serviceruntime\roleenvironment-tests.js" />
-    <Compile Include="test\serviceruntime\runtimeversionmanager-tests.js" />
-    <Compile Include="test\serviceruntime\runtimeversionprotocolclient-tests.js" />
     <Content Include="test\tmp\tokenstore.json" />
-    <Compile Include="test\util\base64-tests.js" />
-    <Compile Include="test\util\date-tests.js" />
-    <Compile Include="test\util\edmtype-tests.js" />
-    <Compile Include="test\util\iso8061date-tests.js" />
-    <Compile Include="test\util\js2xml-tests.js" />
-    <Compile Include="test\util\odatahandler-tests.js" />
-    <Compile Include="test\util\sampledata.js" />
-    <Compile Include="test\util\util-tests.js" />
-    <Compile Include="test\util\util.js" />
-    <Compile Include="test\util\validate-tests.js" />
-    <Compile Include="test\common\credentials\cert-tests.js" />
-    <Compile Include="test\common\credentials\token-tests.js" />
-    <Compile Include="test\common\filters\exponentialretrypolicyfilter-tests.js" />
-    <Compile Include="test\common\filters\exponentialretrypolicyfilter-unittests.js" />
-    <Compile Include="test\common\filters\linearretrypolicyfilter-tests.js" />
-    <Compile Include="test\common\filters\linearretrypolicyfilter-unittests.js" />
-    <Compile Include="test\common\filters\proxyfilter-tests.js" />
     <Compile Include="test\recordings\authorizationClient-tests\Authorization_Client_Management_Lock_Operations_should_work_for_all_operations_possible.nock.js" />
     <Compile Include="test\recordings\authorizationClient-tests\suite.authorizationClient-tests.nock.js" />
     <Compile Include="test\recordings\computemanagementservice-tests\Compute_Management_Vm_Extension_Images_should_get_a_specific_extension_image_successfully.nock.js" />
@@ -928,22 +849,9 @@
     <Compile Include="test\recordings\subscriptionClient-tests\suite.subscriptionClient-tests.nock.js" />
     <Compile Include="test\recordings\suite-base-tests\suite.suite-base-tests.nock.js" />
     <Compile Include="test\recordings\suite-base-tests\Test_Suite_Base_should_properly_record_and_retrieve_mock_variables.nock.js" />
-    <Compile Include="test\services\blob\blobservice-gb-tests.js" />
-    <Compile Include="test\services\blob\blobservice-longrunning-tests.js" />
-    <Compile Include="test\services\blob\blobservice-stream-tests.js" />
-    <Compile Include="test\services\blob\blobservice-tests.js" />
-    <Compile Include="test\services\blob\blobservice-uploaddownload-scale-test.js" />
-    <Compile Include="test\services\blob\blobservice-uploaddownload-tests.js" />
-    <Compile Include="test\services\blob\filters-tests.js" />
     <Compile Include="test\services\computeManagement\computeManagementClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
-    <Compile Include="test\services\HDInsight\hdinsight-createCluster-unit-tests.js" />
-    <Compile Include="test\services\HDInsight\hdinsight-deleteCluster-unit-tests.js" />
-    <Compile Include="test\services\HDInsight\hdinsight-listClusters-unit-tests.js" />
-    <Compile Include="test\services\HDInsight\hdinsight-tests.js" />
-    <Compile Include="test\services\HDInsight\namespace-tests.js" />
-    <Compile Include="test\services\HDInsight\PerformRequestStubUtil.js" />
     <Compile Include="test\services\intune\intuneResourceManagementClient-tests-utils.js">
       <TestFramework>
       </TestFramework>
@@ -952,11 +860,6 @@
       <TestFramework>
       </TestFramework>
     </Compile>
-    <Compile Include="test\services\keyVault\keyVault-key-tests.js" />
-    <Compile Include="test\services\keyVault\keyVault-secret-tests.js" />
-    <Compile Include="test\services\keyVault\kv-test-utils.js" />
-    <Compile Include="test\services\queue\listqueuesresultcontinuation-tests.js" />
-    <Compile Include="test\services\queue\queueservice-tests.js" />
     <Compile Include="test\services\resourceManagement\authorizationClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
@@ -969,40 +872,9 @@
     <Compile Include="test\services\resourceManagement\subscriptionClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
-    <Compile Include="test\services\serviceBus\apnsservice-registrations-tests.js" />
-    <Compile Include="test\services\serviceBus\apnsservice-tests.js" />
-    <Compile Include="test\services\serviceBus\gcmservice-registrations-tests.js" />
-    <Compile Include="test\services\serviceBus\gcmservice-tests.js" />
-    <Compile Include="test\services\serviceBus\installation-management-tests.js" />
-    <Compile Include="test\services\serviceBus\mpnsservice-registrations-tests.js" />
-    <Compile Include="test\services\serviceBus\mpnsservice-tests.js" />
-    <Compile Include="test\services\serviceBus\notificationhubs-tests.js" />
-    <Compile Include="test\services\serviceBus\servicebusservice-tests.js" />
-    <Compile Include="test\services\serviceBus\wnsservice-registrations-tests.js" />
-    <Compile Include="test\services\serviceBus\wnsservice-tests.js" />
-    <Compile Include="test\services\serviceBus\wrapservice-tests.js" />
-    <Compile Include="test\services\sql\sqlmanagementservice-tests.js" />
-    <Compile Include="test\services\sql\sqlservice-tests.js" />
     <Compile Include="test\services\storageManagement\storageManagementClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
-    <Compile Include="test\services\table\batchserviceclient-tests.js" />
-    <Compile Include="test\services\table\queryentitiesresultcontinuation-tests.js" />
-    <Compile Include="test\services\table\querytablesresultcontinuation-tests.js" />
-    <Compile Include="test\services\table\tabledatatype-tests.js" />
-    <Compile Include="test\services\table\tablequery-tests.js" />
-    <Compile Include="test\services\table\tableservice-batch-tests.js" />
-    <Compile Include="test\services\table\tableservice-gb-tests.js" />
-    <Compile Include="test\services\table\tableservice-tablequery-tests.js" />
-    <Compile Include="test\services\table\tableservice-tests.js" />
-    <Compile Include="test\services\webSiteManagement\websitemanagementservice-tests.js" />
-    <Compile Include="test\services\blob\internal\sharedaccesssignature-tests.js" />
-    <Compile Include="test\services\blob\internal\sharedkey-tests.js" />
-    <Compile Include="test\services\blob\internal\sharedkeylite-tests.js" />
-    <Compile Include="test\services\blob\models\blobpagerangestream-test.js" />
-    <Compile Include="test\services\serviceBus\internal\wraptokenmanager-tests.js" />
-    <Compile Include="test\services\table\internal\sharedkeylitetable-tests.js" />
-    <Compile Include="test\services\table\internal\sharedkeytable-tests.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Documentation" />
@@ -1400,9 +1272,6 @@
     <Folder Include="tasks" />
     <Folder Include="test" />
     <Folder Include="test\common" />
-    <Folder Include="test\common\credentials" />
-    <Folder Include="test\common\filters" />
-    <Folder Include="test\data" />
     <Folder Include="test\framework" />
     <Folder Include="test\recordings" />
     <Folder Include="test\recordings\authorizationClient-tests" />
@@ -1413,26 +1282,12 @@
     <Folder Include="test\recordings\storagemanagementservice-tests" />
     <Folder Include="test\recordings\subscriptionClient-tests" />
     <Folder Include="test\recordings\suite-base-tests" />
-    <Folder Include="test\serviceruntime" />
     <Folder Include="test\services" />
-    <Folder Include="test\services\blob" />
-    <Folder Include="test\services\blob\internal" />
-    <Folder Include="test\services\blob\models" />
     <Folder Include="test\services\computeManagement" />
-    <Folder Include="test\services\HDInsight" />
     <Folder Include="test\services\intune" />
-    <Folder Include="test\services\keyVault" />
-    <Folder Include="test\services\queue" />
     <Folder Include="test\services\resourceManagement" />
-    <Folder Include="test\services\serviceBus" />
-    <Folder Include="test\services\serviceBus\internal" />
-    <Folder Include="test\services\sql" />
     <Folder Include="test\services\storageManagement" />
-    <Folder Include="test\services\table" />
-    <Folder Include="test\services\table\internal" />
-    <Folder Include="test\services\webSiteManagement" />
     <Folder Include="test\tmp" />
-    <Folder Include="test\util" />
     <Folder Include="Tools" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
