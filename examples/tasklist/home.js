@@ -15,21 +15,18 @@
 // 
 
 var fs = require('fs');
-if (!fs.existsSync) {
-  fs.existsSync = require('path').existsSync;
-}
 
 var azure;
-if (fs.existsSync('./../../lib/azure.js')) {
+try {
+  fs.statSync('./../../lib/azure.js');
   azure = require('./../../lib/azure');
-} else {
+} catch (error) {
   azure = require('azure');
 }
 
-var TableQuery = azure.TableQuery;
-
 module.exports = Home;
 var uuid = require('node-uuid');
+var entityGen = azure.TableUtilities.entityGenerator;
 
 function Home(client) {
   this.client = client;
@@ -38,21 +35,19 @@ function Home(client) {
 Home.prototype = {
   showResults: function (res, taskList) {
     res.render('home', {
-      locals: {
-        title: 'Task list',
-        layout: false,
-        taskList: taskList
-      }
+      title: 'Task list',
+      taskList: taskList.entries
     });
   },
 
   getItems: function (allItems, callback) {
-    var query = TableQuery.select().from('tasks');
+    var query = new azure.TableQuery()
+      .select();
     if (!allItems) {
-      query = query.where('completed eq ?', false);
+      query = query
+        .where('completed eq ?', false);
     }
-
-    this.client.queryEntities(query, callback);
+    this.client.queryEntities('tasks', query, null, callback);
   },
 
   showItems: function (req, res) {
@@ -61,7 +56,6 @@ Home.prototype = {
       if (!taskList) {
         self.taskList = [];
       }
-
       self.showResults(res, taskList);
     });
   },
@@ -72,14 +66,17 @@ Home.prototype = {
       if (!taskList) {
         self.taskList = [];
       }
+      var item = {
+        name: entityGen.String(req.body.item.name),
+        category: entityGen.String(req.body.item.category),
+        date: entityGen.String(req.body.item.date),
+        RowKey: entityGen.String(uuid()),
+        PartitionKey: entityGen.String('partition1'),
+        completed: entityGen.Boolean(false)
+      }
 
-      var item = req.body.item;
-      item.RowKey = uuid();
-      item.PartitionKey = 'partition1';
-      item.completed = false;
-
-      self.client.insertEntity('tasks', item, function () {
-        self.showItems(req, res);
+      self.client.insertEntity('tasks', item, function entityInserted(error) {
+        res.redirect('/home');
       });
     };
 
@@ -90,23 +87,26 @@ Home.prototype = {
     var self = this;
 
     var postedItems = req.body.completed;
-    if (!postedItems.forEach)
+    if (!postedItems) return res.redirect('/home');
+    if (!postedItems.forEach) {
       postedItems = [postedItems];
+    }
 
     var process = {
       processNextItem: function (err) {
-        var item = postedItems.pop();
-        if (item) process.getItemToUpdate(item);
-        else self.getItems(false, function (resp, taskitems) {
-          self.showResults(res, taskitems);
-        });
+        var itemRowKey = postedItems.pop();
+        if (itemRowKey) {
+          process.getItemToUpdate(itemRowKey);
+        } else {
+          res.redirect('/home');
+        }
       },
-      getItemToUpdate: function (item) {
-        self.client.queryEntity('tasks', 'partition1', item, process.updateItem);
+      getItemToUpdate: function (itemRowKey) {
+        self.client.retrieveEntity('tasks', 'partition1', itemRowKey, process.updateItem);
       },
       updateItem: function (resp, task) {
         if (task) {
-          task.completed = true;
+          task.completed._ = true;
           self.client.updateEntity('tasks', task, process.processNextItem);
         }
       }
