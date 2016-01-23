@@ -13,15 +13,11 @@
  * limitations under the License.
  */
 
-'use strict';
-
 var should = require('should');
 var util = require('util');
 var msRestAzure = require('ms-rest-azure');
 var SuiteBase = require('../../framework/suite-base');
 
-//var path = require('path');
-var fs = require('fs')
 var dump = util.inspect;
 
 var DataLakeAnalyticsAccountManagementClient = require('../../../lib/services/dataLake.Analytics/lib/account/dataLakeAnalyticsManagementClient');
@@ -64,9 +60,9 @@ var azureBlobAccountName;
 var azureBlobAccountKey;
 
 var script = 'DROP DATABASE IF EXISTS FOO; CREATE DATABASE FOO; DROP DATABASE IF EXISTS FOO;';
-var scriptDir = '.\\testscript.sip';
 var jobName = 'xplattestjob';
 var jobAndCatalogDnsSuffix = 'azuredatalakeanalytics.net'; // TODO: Make this configurable for dogfood environments
+var filesystemDnsSuffix = 'azuredatalakestore.net'; // TODO: Make this configurable for dogfood environments
 // catalog item names
 var dbName;
 var tableName;
@@ -134,7 +130,6 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         accountType: 'Standard_GRS'
       };
       
-      fs.writeFileSync(scriptDir, script);
       if(!suite.isPlayback) {
         resourceClient.resourceGroups.createOrUpdate(testResourceGroup, {location: testLocation}, function (err) {
           should.not.exist(err);
@@ -160,15 +155,13 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         });
       }
       else {
-        client.longRunningOperationRetryTimeoutInSeconds = 0;
+        accountClient.longRunningOperationRetryTimeoutInSeconds = 0;
         done();
       }
     });
   });
 
-
   after(function (done) {
-    fs.unlinkSync(scriptDir);
     // this is required as a work around to ensure that the datalake analytics account does not get left behind and stuck in the "deleting" state if its storage gets deleted out from under it.
     if(!suite.isPlayback) {
       setTimeout(function () {
@@ -197,8 +190,9 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
   });
 
   describe('Data Lake Analytics Account', function () {
-    // define the account to create
-    var accountToCreate = {
+    it('create command should work', function (done) {
+      // define the account to create
+      var accountToCreate = {
         tags: {
           testtag1: 'testvalue1',
           testtag2: 'testvalue2'
@@ -213,9 +207,8 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             }
           ]
         }
-    };
-    
-    it('create command should work', function (done) {
+      };
+
       accountClient.dataLakeAnalyticsAccountOperations.create(testResourceGroup, accountName, accountToCreate, function (err, result) {
         should.not.exist(err);
         should.exist(result);
@@ -226,20 +219,37 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     });
 
     it('create account with same name should fail', function (done) {
+      // define the account to create
+      var accountToCreate = {
+        tags: {
+          testtag1: 'testvalue1',
+          testtag2: 'testvalue2'
+        },
+        name: accountName,
+        location: testLocation,
+        properties: {
+          defaultDataLakeStoreAccount: storeAccountName,
+          dataLakeStoreAccounts: [
+            {
+              name: storeAccountName
+            }
+          ]
+        }
+      };
       accountClient.dataLakeAnalyticsAccountOperations.create(testResourceGroup, accountName, accountToCreate, function (err, result, request, response) {
         should.exist(err);
-        response.statusCode.should.equal(409);
+        should.not.exist(result);
+        err.statusCode.should.equalOneOf([400, 409]); //TODO: need to update to just 409 when fixed in the service.
         done();
       });
     });
 
     it('get command should work', function (done) {
-      accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, accountName, jobAndCatalogAccountName, function (err, result, request, response) {
+      accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        result.name.should.be.equal(accountName);
-        Object.keys(result.tags).length.should.be.equal(2);
+        result.name.should.be.equal(jobAndCatalogAccountName);
         done();
       });
     });
@@ -272,21 +282,29 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             testtag2: 'testvalue2',
             testtag3: 'testvalue3'
           },
-          name: accountName
+          name: jobAndCatalogAccountName
       };
       
-      accountClient.dataLakeAnalyticsAccountOperations.update(testResourceGroup, accountName, jobAndCatalogAccountName, function (err, result, request, response) {
+      accountClient.dataLakeAnalyticsAccountOperations.update(testResourceGroup, jobAndCatalogAccountName, accountToUpdate, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        result.name.should.be.equal(accountName);
+        result.name.should.be.equal(jobAndCatalogAccountName);
         Object.keys(result.tags).length.should.be.equal(3);
         done();
       });
     });
     
     it('adding and removing data lake storage accounts to the account should work', function (done) {
-      accountClient.dataLakeAnalyticsAccountOperations.addDataLakeStoreAccount(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, function (err, result, request, response) {
+      var options = {
+        parameters: {
+          properties: {
+            suffix: filesystemDnsSuffix
+          }
+        }
+      };
+
+      accountClient.dataLakeAnalyticsAccountOperations.addDataLakeStoreAccount(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, options, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
@@ -349,11 +367,11 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       accountClient.dataLakeAnalyticsAccountOperations.deleteMethod(testResourceGroup, accountName, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
-        response.statusCode.should.equal(200);
-        saccountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, accountName, function (err, result, request, response) {
+        response.statusCode.should.equalOneOf([200, 204]);
+        accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, accountName, function (err, result, request, response) {
           should.exist(err);
           should.not.exist(result);
-          response.statusCode.should.equal(404);
+          err.statusCode.should.equal(404);
           done();
         });
       });
@@ -362,12 +380,11 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
   describe('Data Lake Analytics Job', function () {
     it('create and show commands should work', function (done) {
       var job = {
-        jobId: utils.uuidGen(),
+        jobId: suite.generateGuid(),
         name: jobName,
         type: 'USql', // NOTE: We do not support hive jobs yet.
-        degreeOfParallelism: degreeOfParallelism,
-        priority: priority,
         properties: {
+          type: 'USql',
           script: script
         }
       };
@@ -385,7 +402,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             should.exist(result);
             response.statusCode.should.equal(200);
             result.result.should.be.equal('Succeeded');
-            // jobJson.properties.statistics.length.should.be.above(0); // Statistics are not currently included in catalog CRUD operations. Will uncomment this when that changes.
+            // result.properties.statistics.length.should.be.above(0); // Statistics are not currently included in catalog CRUD operations. Will uncomment this when that changes.
             done();
           });
         });
@@ -394,12 +411,11 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     
     it('create and cancel job should work', function (done) {
       var job = {
-        jobId: utils.uuidGen(),
+        jobId: suite.generateGuid(),
         name: jobName,
         type: 'USql', // NOTE: We do not support hive jobs yet.
-        degreeOfParallelism: degreeOfParallelism,
-        priority: priority,
         properties: {
+          type: 'USql',
           script: script
         }
       };
@@ -440,19 +456,18 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     it('list commands should work', function (done) {
       var scriptToRun = 'DROP DATABASE IF EXISTS ' + dbName + '; CREATE DATABASE ' + dbName + '; CREATE TABLE ' + dbName + '.dbo.' + tableName + '( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS ' + dbName + '.dbo.' + tvfName + '; CREATE FUNCTION ' + dbName + '.dbo.' + tvfName + '() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @"/Samples/Data/WebLog.log" USING Extractors.Text(delimiter:\' \'); RETURN; END; CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE ' + dbName + '.dbo.' + procName + '() AS BEGIN CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;';
       // Get the default database (master) and all databases.
-      catalogClient.catalog.getDatabase(jobAndCatalogAccountName, master, function (err, result, request, response) {
+      catalogClient.catalog.getDatabase(jobAndCatalogAccountName, 'master', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
         result.databaseName.should.be.equal('master');
         // add a database, table, tvf, view and procedure
         var job = {
-          jobId: utils.uuidGen(),
+          jobId: suite.generateGuid(),
           name: jobName,
           type: 'USql', // NOTE: We do not support hive jobs yet.
-          degreeOfParallelism: degreeOfParallelism,
-          priority: priority,
           properties: {
+            type: 'USql',
             script: scriptToRun
           }
         };
@@ -486,7 +501,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
-                    result.length.should.be.above(1);
+                    result.length.should.be.equal(1);
                     // now get the specific table we created
                     catalogClient.catalog.getTable(jobAndCatalogAccountName, dbName, 'dbo', tableName, function (err, result, request, response) {
                       should.not.exist(err);
@@ -498,7 +513,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                         should.not.exist(err);
                         should.exist(result);
                         response.statusCode.should.equal(200);
-                        result.length.should.be.above(1);
+                        result.length.should.be.equal(1);
                         // now get the specific tvf we created
                         catalogClient.catalog.getTableValuedFunction(jobAndCatalogAccountName, dbName, 'dbo', tvfName, function (err, result, request, response) {
                           should.not.exist(err);
@@ -510,7 +525,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                             should.not.exist(err);
                             should.exist(result);
                             response.statusCode.should.equal(200);
-                            result.length.should.be.above(1);
+                            result.length.should.be.equal(1);
                             // now get the specific view we created
                             catalogClient.catalog.getView(jobAndCatalogAccountName, dbName, 'dbo', viewName, function (err, result, request, response) {
                               should.not.exist(err);
@@ -522,7 +537,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                                 should.not.exist(err);
                                 should.exist(result);
                                 response.statusCode.should.equal(200);
-                                result.length.should.be.above(1);
+                                result.length.should.be.equal(1);
                                 // now get the specific procedure we created
                                 catalogClient.catalog.getProcedure(jobAndCatalogAccountName, dbName, 'dbo', procName, function (err, result, request, response) {
                                   should.not.exist(err);
@@ -551,31 +566,33 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         password: secretPwd,
         uri: 'https://psrreporthistory.database.windows.net:443'
       };
-      var hostUri = 'https://psrreporthistory.database.windows.net:443';
+      
       var setSecretPwd = 'clitestsetsecretpwd';
       var databaseName = 'master';
       var scriptToRun = 'USE ' + databaseName + '; CREATE CREDENTIAL ' + credName + ' WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "' + secretName + '";';
-      catalogClient.catalog.createSecret(jobAndCatalogAccountName, dbName, secretName, secretCreateParameters, function (err, result, request, response) {
+      // Get the default database (master) and all databases.
+      // add a database, table, tvf, view and procedure
+      var job = {
+        jobId: suite.generateGuid(),
+        name: jobName,
+        type: 'USql', // NOTE: We do not support hive jobs yet.
+        properties: {
+          type: 'USql',
+          script: scriptToRun
+        }
+      };
+      
+      catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function (err, result, request, response) {
         should.not.exist(err);
-        should.exist(result);
+        // should.exist(result);
         response.statusCode.should.equal(200);
         // update the secret's password
         secretCreateParameters.password = setSecretPwd;
-        catalogClient.catalog.updateSecret(jobAndCatalogAccountName, dbName, secretName, secretCreateParameters, function (err, result, request, response) {
+        catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function (err, result, request, response) {
           should.not.exist(err);
-          should.exist(result);
+          // should.exist(result);
           response.statusCode.should.equal(200);
           // Create a credential that uses the secret
-          var job = {
-            jobId: utils.uuidGen(),
-            name: jobName,
-            type: 'USql', // NOTE: We do not support hive jobs yet.
-            degreeOfParallelism: degreeOfParallelism,
-            priority: priority,
-            properties: {
-              script: scriptToRun
-            }
-          };
           jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
@@ -590,33 +607,33 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                 response.statusCode.should.equal(200);
                 result.result.should.be.equal('Succeeded');
                 // list all credentials in the db and confirm that there is one entry.
-                catalogClient.catalog.listCredentials(jobAndCatalogAccountName, dbName, function (err, result, request, response) {
+                catalogClient.catalog.listCredentials(jobAndCatalogAccountName, databaseName, function (err, result, request, response) {
                   should.not.exist(err);
                   should.exist(result);
                   response.statusCode.should.equal(200);
                   result.length.should.be.equal(1);
                   // now get the specific credential we created
-                  catalogClient.catalog.getCredential(jobAndCatalogAccountName, dbName, credName, function (err, result, request, response) {
+                  catalogClient.catalog.getCredential(jobAndCatalogAccountName, databaseName, credName, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
                     result.credentialName.should.be.equal(credName);
                     // get the secret
-                    catalogClient.catalog.getSecret(jobAndCatalogAccountName, dbName, secretName, function (err, result, request, response) {
+                    catalogClient.catalog.getSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
                       should.not.exist(err);
                       should.exist(result);
                       response.statusCode.should.equal(200);
                       result.creationTime.should.not.be.empty;
                       // delete the secret
-                      catalogClient.catalog.deleteSecret(jobAndCatalogAccountName, dbName, secretName, function (err, result, request, response) {
+                      catalogClient.catalog.deleteSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
                         should.not.exist(err);
                         should.not.exist(result);
                         response.statusCode.should.equal(200);
                         // try to set the secret again (should fail)
-                        catalogClient.catalog.updateSecret(jobAndCatalogAccountName, dbName, secretName, secretCreateParameters, function (err, result, request, response) {
+                        catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function(err, result, request, response) {
                           should.exist(err);
                           should.not.exist(result);
-                          response.statusCode.should.equal(404);
+                          err.statusCode.should.equal(404);
                           done();
                         });
                       });
@@ -639,13 +656,15 @@ function listPoll(suite, attemptsLeft, accountName, jobId, callback) {
   }
 
   var objectFound = false;
-  suite.execute('datalake analytics job show --accountName %s --jobId %s --json', accountName, jobId, function (showResult) {
-    var jobJson = JSON.parse(showResult.text);
-    if (jobJson) {
-      objectFound = jobJson.state === 'Ended';
+  jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
+    should.not.exist(err);
+    should.exist(result);
+    response.statusCode.should.equal(200);
+    if (response) {
+      objectFound = result.state === 'Ended';
     }
     if (objectFound === true) {
-      callback(showResult);
+      callback(response);
     }
     else {
       if(!suite.isPlayback) {

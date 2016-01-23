@@ -1003,6 +1003,9 @@
     <Compile Include="test\services\computeManagement\computeManagementClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
+    <Compile Include="test\services\dataLakeStoreManagement\dataLakeStoreManagementClient-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\services\intune\intuneResourceManagementClient-tests-utils.js">
       <TestFramework>
       </TestFramework>
@@ -1457,6 +1460,7 @@
     <Folder Include="test\services\dataLakeAnalyticsManagement\" />
     <Folder Include="test\services\HDInsight" />
     <Folder Include="test\services\intune" />
+    <Folder Include="test\services\dataLakeStoreManagement\" />
     <Folder Include="test\services\resourceManagement" />
     <Folder Include="test\services\storageManagement" />
     <Folder Include="test\tmp" />
