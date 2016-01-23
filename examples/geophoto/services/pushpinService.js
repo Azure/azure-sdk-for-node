@@ -15,21 +15,17 @@
 // 
 
 var fs = require('fs');
-if (!fs.existsSync) {
-  fs.existsSync = require('path').existsSync;
-}
-
 var azure;
-if (fs.existsSync('./../../../lib/azure.js')) {
+try {
+  fs.existsSync('./../../../lib/azure.js');
   azure = require('./../../../lib/azure');
-} else {
+} catch (error) {
   azure = require('azure');
 }
 
 var uuid = require('node-uuid');
-
-var ServiceClient = azure.ServiceClient;
-
+var _ = require('lodash');
+var entityGenerator = azure.TableUtilities.entityGenerator;
 // Table service 'constants'
 var TABLE_NAME = 'pushpins';
 var DEFAULT_PARTITION = 'pushpins';
@@ -46,27 +42,29 @@ function PushpinService(storageAccount, storageAccessKey) {
 }
 
 PushpinService.prototype.initialize = function (callback) {
+
   var self = this;
 
   var createContainer = function () {
-    // create blob container if it doesnt exist
-    self.blobClient.createContainerIfNotExists(CONTAINER_NAME, function (createContainerError, created) {
-      if (createContainerError) {
-        callback(createContainerError);
-      } else if (created) {
-        self.blobClient.setContainerAcl(CONTAINER_NAME,
-          azure.Constants.BlobConstants.BlobContainerPublicAccessType.BLOB,
-          callback);
+    // the pushpins blog urls should
+    // be accessible for anonymous access
+    var accessLevel = {
+      publicAccessLevel: azure.Constants.BlobConstants.BlobContainerPublicAccessType.BLOB
+    };
+    // create blob container if it doesn't exist
+    self.blobClient.createContainerIfNotExists(CONTAINER_NAME, accessLevel, function (error, result, response) {
+      if (error) {
+        callback(error);
       } else {
         callback();
       }
     });
   };
 
-  // create table if it doesnt exist
-  self.tableClient.createTableIfNotExists(TABLE_NAME, function (createTableError) {
-    if (createTableError) {
-      callback(createTableError);
+  // create table if it doesn't exist
+  self.tableClient.createTableIfNotExists(TABLE_NAME, function (error, result, response) {
+    if (error) {
+      callback(error);
     } else {
       createContainer();
     }
@@ -75,22 +73,36 @@ PushpinService.prototype.initialize = function (callback) {
 
 PushpinService.prototype.createPushpin = function (pushpinData, pushpinImage, callback) {
   var self = this;
-  var rowKey = 'row' + uuid();
-
+  var rowKey = uuid.v4();
   function insertEntity(error, blob) {
-    var entity = pushpinData;
-    entity.RowKey = rowKey;
-    entity.PartitionKey = DEFAULT_PARTITION;
+    var entity = {
+      PartitionKey: entityGenerator.String(DEFAULT_PARTITION),
+      RowKey: entityGenerator.String(rowKey),
+      title: entityGenerator.String(pushpinData.title),
+      description: entityGenerator.String(pushpinData.description),
+      latitude: entityGenerator.String(pushpinData.latitude),
+      longitude: entityGenerator.String(pushpinData.longitude)
+    };
+
 
     if (blob) {
-      entity.imageUrl = self.blobClient.getBlobUrl(blob.container, blob.blob);
+      entity.imageUrl = entityGenerator.String(self.blobClient.getUrl(blob.container, blob.blob));
     }
 
     self.tableClient.insertEntity(TABLE_NAME, entity, callback);
-  };
-
-  if (pushpinImage) {
-    self.blobClient.createBlockBlobFromFile(CONTAINER_NAME, rowKey, pushpinImage.path, insertEntity);
+  }
+  // support only 'image/*' type as
+  // hinted in upload file input
+  if (pushpinImage &&
+    pushpinImage.mimetype &&
+    pushpinImage.mimetype.indexOf('image/') === 0) {
+    var options = {
+      metadata: {
+        filename: pushpinImage.originalname
+      },
+      contentType: pushpinImage.mimetype
+    };
+    self.blobClient.createBlockBlobFromLocalFile(CONTAINER_NAME, rowKey, pushpinImage.path, options, insertEntity);
   } else {
     insertEntity();
   }
@@ -98,25 +110,27 @@ PushpinService.prototype.createPushpin = function (pushpinData, pushpinImage, ca
 
 PushpinService.prototype.listPushpins = function (callback) {
   var self = this;
-  var tableQuery = azure.TableQuery
-    .select()
-    .from(TABLE_NAME);
-
-  self.tableClient.queryEntities(tableQuery, callback);
+  var tableQuery = new azure.TableQuery()
+    .select();
+  self.tableClient.queryEntities(TABLE_NAME, tableQuery, null, callback);
 };
 
 PushpinService.prototype.removePushpin = function (pushpin, callback) {
   var self = this;
-  var tableQuery = azure.TableQuery
+  var tableQuery = new azure.TableQuery()
     .select()
-    .from(TABLE_NAME)
     .where('latitude == ? && longitude == ?', pushpin.latitude, pushpin.longitude);
 
-  self.tableClient.queryEntities(tableQuery, function (error, pushpins) {
+  self.tableClient.queryEntities(TABLE_NAME, tableQuery, null, function (error, pushpins) {
     if (error) {
       callback(error);
-    } else if (pushpins && pushpins.length > 0) {
-      self.tableClient.deleteEntity(TABLE_NAME, pushpins[0], callback);
+    } else if (pushpins && pushpins.entries.length > 0) {
+      var pushpin = pushpins.entries[0];
+      var entity = {
+        PartitionKey: { '_': pushpin.PartitionKey._ },
+        RowKey: { '_': pushpin.RowKey._ }
+      };
+      self.tableClient.deleteEntity(TABLE_NAME, entity, callback);
     } else {
       callback();
     }
@@ -126,13 +140,17 @@ PushpinService.prototype.removePushpin = function (pushpin, callback) {
 PushpinService.prototype.clearPushpins = function (callback) {
   var self = this;
   var deleteEntities = function (entities) {
-    if (entities && entities.length > 0) {
-      var currentEntity = entities.pop();
-      self.tableClient.deleteEntity(TABLE_NAME, currentEntity, function (deleteError) {
-        if (deleteError) {
+    if (entities && entities.entries.length > 0) {
+      var currentEntity = entities.entries.pop();
+      var entity = {
+        PartitionKey: { '_': currentEntity.PartitionKey._ },
+        RowKey: { '_': currentEntity.RowKey._ }
+      };
+      self.tableClient.deleteEntity(TABLE_NAME, entity, function (error) {
+        if (error) {
           callback(error);
         } else if (currentEntity.imageUrl) {
-          self.blobClient.deleteBlob(CONTAINER_NAME, currentEntity.RowKey, function (deleteBlobError) {
+          self.blobClient.deleteBlob(CONTAINER_NAME, currentEntity.RowKey._, function (deleteBlobError) {
             if (deleteBlobError) {
               callback(deleteBlobError);
             } else {
@@ -148,11 +166,27 @@ PushpinService.prototype.clearPushpins = function (callback) {
     }
   };
 
-  exports.listPushpins(function (error, entities) {
+  self.listPushpins(function (error, entities) {
     if (error) {
       callback(error);
     } else {
       deleteEntities(entities);
     }
   });
+};
+
+/**
+ * Convert TableStorage entity into 
+ * plain pushpin objects
+ */
+PushpinService.prototype.unwrapEntities = function (entities) {
+  var updated = [];
+  entities = entities || [];
+  _(entities).forEach(function (entity) {
+    updated.push(_.mapValues(entity, function (value, key, object) {
+      if (_.has(value, '_')) return value._;
+      return value;
+    }));
+  });
+  return updated;
 };
