@@ -2,9 +2,9 @@
     function deleteBlob(blobId) {
          $("#DeleteConfirmationDialog" + blobId).dialog(
             {
-                resizable: false, height: 250, width: 300, modal: true,
+                resizable: false, height: 250, width: 300,
                 buttons: {
-                     'OK': function() {
+                    'OK': function() {
                         document.forms['deleteBlobForm'+blobId].submit();
                     },
                     'Cancel': function() {
