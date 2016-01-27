@@ -1,38 +1,36 @@
-﻿// 
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 /**
 * Demonstrates how to define a customized retry policy.
-* 
+*
 * In this sample, we define a customized retry policy which retries on the "The specified container is being deleted"
 * exception besides the server exceptions.
-* 
+*
 * Note that only in the cloud(not the storage emulator), "The specified container is being deleted" exceptions will be
 * sent if users immediately recreate a container after delete it.
 */
 
 var fs = require('fs');
-if (!fs.existsSync) {
-  fs.existsSync = require('path').existsSync;
-}
-
+var path = require('path');
 var azure;
-if (fs.existsSync('./../../lib/azure.js')) {
-  azure = require('./../../lib/azure');
-} else {
+try {
+  var stat = fs.statSync(path.join(__dirname, './../../lib/azure.js'));
+  azure = require(path.join(__dirname, './../../lib/azure'));
+} catch (error) {
   azure = require('azure');
 }
 
@@ -57,7 +55,7 @@ function setRetryPolicy() {
   retryOnContainerBeingDeleted.retryCount = 3;
   retryOnContainerBeingDeleted.retryInterval = 30000;
 
-  retryOnContainerBeingDeleted.shouldRetry = function(statusCode, retryData) {
+  retryOnContainerBeingDeleted.shouldRetry = function (statusCode, retryData) {
     console.log('Made the request at ' + new Date().toUTCString() + ', received StatusCode: ' + statusCode);
 
     var currentCount = (retryData && retryData.retryCount) ? retryData.retryCount : 0;
@@ -71,7 +69,7 @@ function setRetryPolicy() {
 
 function createContainer() {
   // Step 2: Create a container with a random name.
-  blobService.createContainer(container, function(error) {
+  blobService.createContainer(container, function (error, result, response) {
     if (error) {
       console.log(error);
     } else {
@@ -83,7 +81,7 @@ function createContainer() {
 
 function deleteContainer() {
   // Step 3 : Delete a container.
-  blobService.deleteContainer(container, function (error) {
+  blobService.deleteContainer(container, function (error, result, response) {
     if (error) {
       console.log(error);
     } else {
@@ -95,7 +93,7 @@ function deleteContainer() {
 
 function createContainerAgain() {
   // Step 4 : Attempt to create the container immediately while it was still beeing deleted.
-  blobService.createContainer(container, function (error) {
+  blobService.createContainer(container, function (error, result, response) {
     if (error) {
       console.log(error);
     } else {
@@ -111,7 +109,7 @@ if (arguments.length > 3) {
 }
 else if (arguments.length == 3) {
   // Adding a third argument on the command line, whatever it is, will delete the container before running the sample.
-  blobServiceNoRetry.deleteContainer(container, function (error) {
+  blobServiceNoRetry.deleteContainerIfExists(container, function (error, response) {
     if (error) {
       console.log(error);
     } else {
