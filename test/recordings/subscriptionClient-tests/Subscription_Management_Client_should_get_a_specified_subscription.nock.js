@@ -7,34 +7,34 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115?api-version=2014-04-01-preview')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115?api-version=2015-11-01')
   .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115\",\"subscriptionId\":\"3ca49042-782a-4cc9-89b5-ee1b487fe115\",\"displayName\":\"AzSdkCore1\",\"state\":\"Enabled\",\"subscriptionPolicies\":{\"locationPlacementId\":\"Public_2014-09-01\",\"quotaId\":\"PayAsYouGo_2014-09-01\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-request-id': '642a9eb3-6af1-439a-9b5d-ea7aca8eafea',
-  'x-ms-correlation-request-id': '642a9eb3-6af1-439a-9b5d-ea7aca8eafea',
-  'x-ms-routing-request-id': 'EASTUS:20151114T081158Z:642a9eb3-6af1-439a-9b5d-ea7aca8eafea',
+  'x-ms-request-id': '2a2a1501-3d24-4fd1-8456-85e29037a0da',
+  'x-ms-correlation-request-id': '2a2a1501-3d24-4fd1-8456-85e29037a0da',
+  'x-ms-routing-request-id': 'WESTUS:20160127T030134Z:2a2a1501-3d24-4fd1-8456-85e29037a0da',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 14 Nov 2015 08:11:58 GMT',
+  date: 'Wed, 27 Jan 2016 03:01:33 GMT',
   connection: 'close',
   'content-length': '262' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115?api-version=2014-04-01-preview')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115?api-version=2015-11-01')
   .reply(200, "{\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115\",\"subscriptionId\":\"3ca49042-782a-4cc9-89b5-ee1b487fe115\",\"displayName\":\"AzSdkCore1\",\"state\":\"Enabled\",\"subscriptionPolicies\":{\"locationPlacementId\":\"Public_2014-09-01\",\"quotaId\":\"PayAsYouGo_2014-09-01\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-request-id': '642a9eb3-6af1-439a-9b5d-ea7aca8eafea',
-  'x-ms-correlation-request-id': '642a9eb3-6af1-439a-9b5d-ea7aca8eafea',
-  'x-ms-routing-request-id': 'EASTUS:20151114T081158Z:642a9eb3-6af1-439a-9b5d-ea7aca8eafea',
+  'x-ms-request-id': '2a2a1501-3d24-4fd1-8456-85e29037a0da',
+  'x-ms-correlation-request-id': '2a2a1501-3d24-4fd1-8456-85e29037a0da',
+  'x-ms-routing-request-id': 'WESTUS:20160127T030134Z:2a2a1501-3d24-4fd1-8456-85e29037a0da',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 14 Nov 2015 08:11:58 GMT',
+  date: 'Wed, 27 Jan 2016 03:01:33 GMT',
   connection: 'close',
   'content-length': '262' });
  return result; }]];
