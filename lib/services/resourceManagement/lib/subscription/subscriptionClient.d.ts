@@ -19,8 +19,6 @@ declare class SubscriptionClient {
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
      *
-     * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-     *
      * @param {string} [baseUri] - The base URI of the service.
      *
      * @param {object} [options] - The parameter options
@@ -41,11 +39,9 @@ declare class SubscriptionClient {
      * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
      *
      */
-    constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri: string, options: ServiceClientOptions);
+    constructor(credentials: ServiceClientCredentials, baseUri: string, options: ServiceClientOptions);
 
     credentials: ServiceClientCredentials;
-
-    subscriptionId: string;
 
     apiVersion: string;
 

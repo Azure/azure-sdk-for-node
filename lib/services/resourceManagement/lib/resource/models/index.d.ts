@@ -12,11 +12,9 @@
 
 /**
  * @class
- * Initializes a new instance of the PolicyAssignment class.
+ * Initializes a new instance of the PolicyAssignmentProperties class.
  * @constructor
- * Policy assignment.
- * @member {string} [name] Gets or sets the policy assignment name.
- * 
+ * Policy Assignment properties.
  * @member {string} [scope] Gets or sets the policy assignment scope.
  * 
  * @member {string} [displayName] Gets or sets the policy assignment display
@@ -25,8 +23,7 @@
  * @member {string} [policyDefinitionId] Gets or sets the policy definition Id.
  * 
  */
-export interface PolicyAssignment extends BaseResource {
-    name?: string;
+export interface PolicyAssignmentProperties {
     scope?: string;
     displayName?: string;
     policyDefinitionId?: string;
@@ -34,11 +31,33 @@ export interface PolicyAssignment extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the PolicyDefinition class.
+ * Initializes a new instance of the PolicyAssignment class.
  * @constructor
- * Policy definition.
- * @member {string} [name] Gets or sets the policy definition name.
+ * Policy assignment.
+ * @member {object} [properties] Gets or sets the policy assignment properties.
  * 
+ * @member {string} [properties.scope] Gets or sets the policy assignment
+ * scope.
+ * 
+ * @member {string} [properties.displayName] Gets or sets the policy
+ * assignment display name.
+ * 
+ * @member {string} [properties.policyDefinitionId] Gets or sets the policy
+ * definition Id.
+ * 
+ * @member {string} [name] Gets or sets the policy assignment name.
+ * 
+ */
+export interface PolicyAssignment {
+    properties?: PolicyAssignmentProperties;
+    name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyDefinitionProperties class.
+ * @constructor
+ * Policy definition properties.
  * @member {string} [description] Gets or sets the policy definition
  * description.
  * 
@@ -48,11 +67,33 @@ export interface PolicyAssignment extends BaseResource {
  * @member {object} [policyRule] The policy rule json.
  * 
  */
-export interface PolicyDefinition extends BaseResource {
-    name?: string;
+export interface PolicyDefinitionProperties {
     description?: string;
     displayName?: string;
     policyRule?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyDefinition class.
+ * @constructor
+ * Policy definition.
+ * @member {object} [properties] Gets or sets the policy definition properties.
+ * 
+ * @member {string} [properties.description] Gets or sets the policy
+ * definition description.
+ * 
+ * @member {string} [properties.displayName] Gets or sets the policy
+ * definition display name.
+ * 
+ * @member {object} [properties.policyRule] The policy rule json.
+ * 
+ * @member {string} [name] Gets or sets the policy definition name.
+ * 
+ */
+export interface PolicyDefinition {
+    properties?: PolicyDefinitionProperties;
+    name?: string;
 }
 
 /**

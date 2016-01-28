@@ -1081,15 +1081,18 @@ export interface PolicyDefinitions {
      * 
      * @param {object} parameters The policy definition properties
      * 
+     * @param {object} [parameters.properties] Gets or sets the policy definition
+     * properties.
+     * 
+     * @param {string} [parameters.properties.description] Gets or sets the policy
+     * definition description.
+     * 
+     * @param {string} [parameters.properties.displayName] Gets or sets the policy
+     * definition display name.
+     * 
+     * @param {object} [parameters.properties.policyRule] The policy rule json.
+     * 
      * @param {string} [parameters.name] Gets or sets the policy definition name.
-     * 
-     * @param {string} [parameters.description] Gets or sets the policy definition
-     * description.
-     * 
-     * @param {string} [parameters.displayName] Gets or sets the policy definition
-     * display name.
-     * 
-     * @param {object} [parameters.policyRule] The policy rule json.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1214,13 +1217,17 @@ export interface PolicyAssignments {
      * 
      * @param {object} parameters Policy assignment.
      * 
-     * @param {string} [parameters.scope] Gets or sets the policy assignment scope.
+     * @param {object} [parameters.properties] Gets or sets the policy assignment
+     * properties.
      * 
-     * @param {string} [parameters.displayName] Gets or sets the policy assignment
-     * display name.
+     * @param {string} [parameters.properties.scope] Gets or sets the policy
+     * assignment scope.
      * 
-     * @param {string} [parameters.policyDefinitionId] Gets or sets the policy
-     * definition Id.
+     * @param {string} [parameters.properties.displayName] Gets or sets the policy
+     * assignment display name.
+     * 
+     * @param {string} [parameters.properties.policyDefinitionId] Gets or sets the
+     * policy definition Id.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1274,13 +1281,17 @@ export interface PolicyAssignments {
      * 
      * @param {object} parameters Policy assignment.
      * 
-     * @param {string} [parameters.scope] Gets or sets the policy assignment scope.
+     * @param {object} [parameters.properties] Gets or sets the policy assignment
+     * properties.
      * 
-     * @param {string} [parameters.displayName] Gets or sets the policy assignment
-     * display name.
+     * @param {string} [parameters.properties.scope] Gets or sets the policy
+     * assignment scope.
      * 
-     * @param {string} [parameters.policyDefinitionId] Gets or sets the policy
-     * definition Id.
+     * @param {string} [parameters.properties.displayName] Gets or sets the policy
+     * assignment display name.
+     * 
+     * @param {string} [parameters.properties.policyDefinitionId] Gets or sets the
+     * policy definition Id.
      * 
      * @param {object} [options] Optional Parameters.
      * 

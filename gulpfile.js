@@ -35,11 +35,11 @@ var mappings = {
   },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
-    'source': 'arm-resources/resources/2014-04-01-preview/swagger/resources.json'
+    'source': 'arm-resources/resources/2015-11-01/swagger/resources.json'
   },
   'resource.subscription': {
     'dir': 'resourceManagement/lib/subscription',
-    'source': 'arm-resources/subscriptions/2014-04-01-preview/swagger/subscriptions.json'
+    'source': 'arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json'
   },
   'resource.authorization': {
     'dir': 'resourceManagement/lib/authorization',
@@ -47,7 +47,7 @@ var mappings = {
   },
   'resource.feature': {
     'dir': 'resourceManagement/lib/feature',
-    'source': 'arm-resources/features/2014-08-01-preview/swagger/features.json'
+    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
   },
   'website': {
     'dir': 'websiteManagement2/lib',
@@ -56,7 +56,7 @@ var mappings = {
   }
 };
 
-var autoRestVersion = '0.14.0-Nightly20160119';
+var autoRestVersion = '0.14.0-Nightly20160124';
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
 var autoRestExe = 'packages\\autorest.' + autoRestVersion + '\\tools\\AutoRest.exe';
