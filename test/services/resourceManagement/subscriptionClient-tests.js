@@ -33,7 +33,7 @@ describe('Subscription Management Client', function () {
   before(function (done) {
     suite = new SuiteBase(this, testPrefix);
     suite.setupSuite(function () {
-      client = new SubscriptionClient(suite.credentials, suite.subscriptionId);
+      client = new SubscriptionClient(suite.credentials);
       if (suite.isPlayback) {
         client.longRunningOperationRetryTimeout = 0;
       }

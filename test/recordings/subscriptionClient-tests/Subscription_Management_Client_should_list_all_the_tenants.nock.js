@@ -7,34 +7,34 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/tenants?api-version=2014-04-01-preview')
+  .get('/tenants?api-version=2015-11-01')
   .reply(200, "{\"value\":[{\"id\":\"/tenants/1449d5b7-8a83-47db-ae4c-9b03e888bad0\",\"tenantId\":\"1449d5b7-8a83-47db-ae4c-9b03e888bad0\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '116',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-tenant-reads': '14999',
-  'x-ms-request-id': '4d9274f4-39d9-45f9-b6db-1e27d339fd65',
-  'x-ms-correlation-request-id': '4d9274f4-39d9-45f9-b6db-1e27d339fd65',
-  'x-ms-routing-request-id': 'EASTUS:20151114T081200Z:4d9274f4-39d9-45f9-b6db-1e27d339fd65',
+  'x-ms-request-id': '227537e7-cef3-4230-8cf5-2a292e60f581',
+  'x-ms-correlation-request-id': '227537e7-cef3-4230-8cf5-2a292e60f581',
+  'x-ms-routing-request-id': 'WESTUS:20160127T030134Z:227537e7-cef3-4230-8cf5-2a292e60f581',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 14 Nov 2015 08:11:59 GMT',
+  date: 'Wed, 27 Jan 2016 03:01:34 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/tenants?api-version=2014-04-01-preview')
+  .get('/tenants?api-version=2015-11-01')
   .reply(200, "{\"value\":[{\"id\":\"/tenants/1449d5b7-8a83-47db-ae4c-9b03e888bad0\",\"tenantId\":\"1449d5b7-8a83-47db-ae4c-9b03e888bad0\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '116',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-ratelimit-remaining-tenant-reads': '14999',
-  'x-ms-request-id': '4d9274f4-39d9-45f9-b6db-1e27d339fd65',
-  'x-ms-correlation-request-id': '4d9274f4-39d9-45f9-b6db-1e27d339fd65',
-  'x-ms-routing-request-id': 'EASTUS:20151114T081200Z:4d9274f4-39d9-45f9-b6db-1e27d339fd65',
+  'x-ms-request-id': '227537e7-cef3-4230-8cf5-2a292e60f581',
+  'x-ms-correlation-request-id': '227537e7-cef3-4230-8cf5-2a292e60f581',
+  'x-ms-routing-request-id': 'WESTUS:20160127T030134Z:227537e7-cef3-4230-8cf5-2a292e60f581',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 14 Nov 2015 08:11:59 GMT',
+  date: 'Wed, 27 Jan 2016 03:01:34 GMT',
   connection: 'close' });
  return result; }]];

@@ -2,9 +2,9 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '53d9063d-87ae-4ea8-be90-3686c3b8669f';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '3ca49042-782a-4cc9-89b5-ee1b487fe115';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['nodeTestGroup8547'];};
+ exports.randomTestIdsGenerated = function() { return ['nodeTestGroup4712'];};
