@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.7",
+  "version": "0.10.8",
   "description": "Microsoft Azure Resource Management Client Library for node",
   "tags": [
     "azure",
@@ -32,7 +32,8 @@
   ],
   "dependencies": {
     "azure-common": "^0.9.13",
-    "underscore": "1.4.x"
+    "underscore": "1.4.x",
+	"moment": "2.11.x"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
