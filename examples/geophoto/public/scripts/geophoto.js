@@ -51,7 +51,7 @@ function initializeSockets() {
     addPushpin(pushpin);
   });
 
-  socket.on('removePushpin', function(entity) {
+  socket.on('removePushpin', function (entity) {
     removePushpin(entity);
   });
 
@@ -109,19 +109,18 @@ function openPushpinDialog(event) {
       var point = new Microsoft.Maps.Point(event.getX(), event.getY());
       var location = event.target.tryPixelToLocation(point);
 
-      $("#title").val('');
-      $("#description").val('');
-      $("#latitude").val(location.latitude);
-      $("#longitude").val(location.longitude);
+      $('#title').val('');
+      $('#description').val('');
+      $('#latitude').val(location.latitude);
+      $('#longitude').val(location.longitude);
 
       // Add pushpin
       newPushpin = new Microsoft.Maps.Pushpin(location, null);
       map.entities.push(newPushpin);
 
       // Open dialog to add the pushpin
-      $("#map-dialog").dialog({
+      $('#map-dialog').dialog({
         autoOpen: true,
-        modal: true,
         width: 500,
         height: 350,
         resizable: true,
@@ -136,12 +135,20 @@ function openPushpinDialog(event) {
 }
 
 function savePushpin() {
-  $('#addPushpinForm').submit();
+  var $form = $('#addPushpinForm');
+  // make html5 based validation
+  // before sending data to server
+  var isValid = $form[0].checkValidity();
+  if (isValid === true) {
+    $form.submit();
+  } else {
+    $form.find('input:invalid, textarea:invalid').first().focus();
+  }
 }
 
 function cancelPushpin() {
   map.entities.remove(newPushpin);
-  $(this).dialog("close");
+  $(this).dialog('close');
 }
 
 function closePushpin() {
@@ -186,7 +193,7 @@ function attachInfobox(pushpin) {
 }
 
 function showPushpinInfo(event) {
-  if (event.targetType == "pushpin") {
+  if (event.targetType == 'pushpin') {
     var pushpin = event.target;
     currentPushpin = findPushpinData(pushpin.getLocation().latitude, pushpin.getLocation().longitude);
     if (currentPushpin) {
@@ -220,8 +227,8 @@ function showPushpinInfo(event) {
 
 function findPushpinData(latitude, longitude) {
   for (var i = 0; i < pushpins.length; i++) {
-    if (latitude  == pushpins[i].latitude &&
-        longitude == pushpins[i].longitude) {
+    if (latitude == pushpins[i].latitude &&
+      longitude == pushpins[i].longitude) {
       return pushpins[i];
     }
   }
@@ -231,8 +238,8 @@ function findPushpinData(latitude, longitude) {
 
 function findPushpin(latitude, longitude) {
   for (var i = 0; i < map.entities.getLength(); i++) {
-    if (latitude  == map.entities.get(i).getLocation().latitude &&
-        longitude == map.entities.get(i).getLocation().longitude) {
+    if (latitude == map.entities.get(i).getLocation().latitude &&
+      longitude == map.entities.get(i).getLocation().longitude) {
       return map.entities.get(i);
     }
   }

@@ -1,14 +1,17 @@
-﻿<form name="setupForm" id="setupForm" action="setupPOST" method="post" enctype="multipart/form-data">
+﻿<form name="setupForm" id="setupForm" action="setupPOST" method="post">
   <fieldset>
-    <label for="account">Storage Account</label><br />
-    <input type="text" name="account" id="account" /><br />
-
-    <label for="accessKey">Storage Access Key</label><br />
-    <input type="text" name="accessKey" id="accessKey" /><br />
-
-    <label for="bingMapsCredentials">Bing Maps Credentials</label><br />
-    <input type="text" name="bingMapsCredentials" id="bingMapsCredentials" /><br />
-
-      <input type="submit" value="Save" />
+    <label for="account">Storage Account</label>
+    <br />
+    <input type="text" name="account" id="account" required />
+    <br />
+    <label for="accessKey">Storage Access Key</label>
+    <br />
+    <input type="text" name="accessKey" id="accessKey" required />
+    <br />
+    <label for="bingMapsCredentials">Bing Maps Credentials</label>
+    <br />
+    <input type="text" name="bingMapsCredentials" id="bingMapsCredentials" required />
+    <br />
+    <button type="submit">Save</button>
   </fieldset>
 </form>

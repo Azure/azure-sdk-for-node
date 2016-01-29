@@ -28,3 +28,8 @@
 #buttonDiv input {
   width: 100%;
 }
+
+.MicrosoftMap .Infobox .infobox-info img {
+  object-fit: cover;
+  max-height: 150px;
+}

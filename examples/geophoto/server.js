@@ -18,43 +18,50 @@
 * Module dependencies.
 */
 
-var express = require('express')
-  , pushpinController = require('./controllers/pushpinController')
-  , socketio = require('socket.io');
+var express = require('express'),
+  bodyParser = require('body-parser'),
+  errorHandler = require('errorhandler'),
+  expressEjsLayouts = require('express-ejs-layouts'),
+  io = require('socket.io'),
+  methodOverride = require('method-override'),
+  multer = require('multer')({ dest: './uploads' }),
+  pushpinController = require('./controllers/pushpinController'),
+  socketio = require('socket.io'),
+  http = require('http'),
+  path = require('path');
 
-var app = module.exports = express.createServer();
-var io;
+var app = module.exports = express();
 
 // Configuration
 
-app.configure(function () {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
+app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(expressEjsLayouts);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride());
+app.use(express.static(path.join(__dirname, '/public')));
 
-app.configure('development', function () {
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+if ('development' === app.get('env')) {
+  app.use(errorHandler());
+}
 
-app.configure('production', function () {
-  app.use(express.errorHandler());
-});
+if ('production' === app.get('env')) {
+  app.use(errorHandler());
+}
 
 // Routes
 app.get('/', pushpinController.showPushpins);
 app.get('/setup', pushpinController.setup);
 app.post('/setupPOST', pushpinController.setupPOST);
-app.post('/createPushpin', pushpinController.createPushpin);
+app.post('/createPushpin', multer.array('image'), pushpinController.createPushpin);
 
-app.listen(process.env.PORT || 1337);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-
+var server = app.listen(app.get('port'), function () {
+  console.log("Express server listening on port %d in %s mode",
+    app.get('port'),
+    app.get('env'));
+});
 // Setup socket.io
-io = socketio.listen(app);
-pushpinController.io = io;
-io.set('transports', [ 'xhr-polling' ]);
-io.sockets.on('connection', pushpinController.socketConnection);
+pushpinController.io = io(server);
+pushpinController.io.on('connection', pushpinController.socketConnection);
