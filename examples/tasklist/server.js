@@ -16,38 +16,41 @@
 
 // Module dependencies.
 var fs = require('fs');
-if (!fs.existsSync) {
-  fs.existsSync = require('path').existsSync;
-}
+var path = require('path');
 
 var azure;
-if (fs.existsSync('./../../lib/azure.js')) {
+try {
+  fs.statSync('./../../lib/azure.js');
   azure = require('./../../lib/azure');
-} else {
+} catch (error) {
   azure = require('azure');
 }
 
 var express = require('express');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var errorHandler = require('errorhandler');
 var uuid = require('node-uuid');
 var Home = require('./home');
-var ServiceClient = azure.ServiceClient;
+var entityGen = azure.TableUtilities.entityGenerator;
 
-var app = module.exports = express.createServer();
+var app = module.exports = express();
+
 var client = azure.createTableService('UseDevelopmentStorage=true');
 
 // table creation
-client.createTableIfNotExists("tasks", function (res, created) {
+client.createTableIfNotExists('tasks', function (res, created) {
   if (created) {
     var item = {
-      name: 'Add readonly todo list',
-      category: 'Site work',
-      date: '12/01/2011',
-      RowKey: uuid(),
-      PartitionKey: 'partition1',
-      completed: false
+      name: entityGen.String('Add readonly todo list'),
+      category: entityGen.String('Site work'),
+      date: entityGen.String('12/01/2011'),
+      RowKey: entityGen.String(uuid()),
+      PartitionKey: entityGen.String('partition1'),
+      completed: entityGen.Boolean(false)
     };
 
-    client.insertEntity("tasks", item, null, function () {
+    client.insertEntity('tasks', item, null, function entityInserted(error) {
       setupApplication();
     });
   } else {
@@ -57,27 +60,23 @@ client.createTableIfNotExists("tasks", function (res, created) {
 
 function setupApplication() {
   // Configuration
-  app.configure(function () {
-    app.set('views', __dirname + '/views');
+  app.set('port', process.env.PORT || 3000);
+  app.set('views', __dirname + '/views');
+  // NOTE: Change configuration to use ejs instead of jade
+  // app.set('view engine', 'ejs');
+  app.set('view engine', 'jade');
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(methodOverride());
 
-    // NOTE: Uncomment this line and comment next one to use ejs instead of jade
-    // app.set('view engine', 'ejs');
+  app.use(express.static(path.join(__dirname, '/public')));
 
-    app.set('view engine', 'jade');
-
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-    app.use(app.router);
-    app.use(express.static(__dirname + '/public'));
-  });
-
-  app.configure('development', function() {
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-  });
-
-  app.configure('production', function() {
+  if ('development' === app.get('env')) {
+    app.use(errorHandler());
+  }
+  if ('production' === app.get('env')) {
     app.use(express.errorHandler());
-  });
+  }
 
   var home = new Home(client);
 
@@ -87,7 +86,10 @@ function setupApplication() {
   app.get('/home', home.showItems.bind(home));
   app.post('/home/newitem', home.newItem.bind(home));
   app.post('/home/completed', home.markCompleted.bind(home));
+  app.listen(app.get('port'), function () {
+    console.log('Express server listening on port %d in %s mode',
+      app.get('port'),
+      app.get('env'));
+  });
 
-  app.listen(process.env.PORT || 1337);
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 }
