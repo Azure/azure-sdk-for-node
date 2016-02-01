@@ -1,36 +1,34 @@
-﻿// 
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 /**
 * 1. Demonstrates how to upload all files from a given directory in parallel
-* 
+*
 * 2. Demonstrates how to download all files from a given blob container to a given destination directory.
-* 
+*
 * 3. Demonstrate making requests using AccessConditions.
 */
 
 var fs = require('fs');
-if (!fs.existsSync) {
-  fs.existsSync = require('path').existsSync;
-}
-
+var path = require('path');
 var azure;
-if (fs.existsSync('./../../lib/azure.js')) {
+try {
+  fs.statSync(path.join(__dirname, './../../lib/azure.js'));
   azure = require('./../../lib/azure');
-} else {
+} catch (error) {
   azure = require('azure');
 }
 
@@ -38,24 +36,21 @@ var BlobConstants = azure.Constants.BlobConstants;
 var ServiceClient = azure.ServiceClient;
 var CloudBlobClient = azure.CloudBlobClient;
 
-var util = require('util');
-var fs = require('fs');
-
 var container = 'updownsample';
 var blob = 'updownsample';
 var blobAccess = 'updownaccesssample';
 
 var blobService = azure.createBlobService();
 
-var processArguments = process.argv;
+var args = process.argv;
 
 function createContainer() {
   // Step 0: Create the container.
-  blobService.createContainerIfNotExists(container, function (error) {
+  blobService.createContainerIfNotExists(container, function (error, result, reponse) {
     if (error) {
       console.log(error);
     } else {
-      console.log('Created the container ' + container);
+      console.log('Created the container %s', container);
       uploadSample();
     }
   });
@@ -63,11 +58,11 @@ function createContainer() {
 
 function uploadSample() {
   // Sample 1 : Demonstrates how to upload all files from a given directoy
-  uploadBlobs(processArguments[2], container, function () {
+  uploadBlobs(args[2], container, function () {
 
     // Sample 2 : Demonstrates how to download all files from a given
     // blob container to a given destination directory.
-    downloadBlobs(container, processArguments[3], function () {
+    downloadBlobs(container, args[3], function () {
 
       // Sample 3 : Demonstrate making requests using AccessConditions.
       requestAccessConditionSample(container);
@@ -77,11 +72,16 @@ function uploadSample() {
 
 function uploadBlobs(sourceDirectoryPath, containerName, callback) {
   // Step 0 : validate directory is valid.
-  if (!fs.existsSync(sourceDirectoryPath)) {
-    console.log(sourceDirectoryPath + ' is an invalid directory path.');
-  } else {
-    listFilesUpload(sourceDirectoryPath, containerName, callback);
+  try {
+    var stats = fs.statSync(sourceDirectoryPath);
+    if (stats.isDirectory() === true) {
+      listFilesUpload(sourceDirectoryPath, containerName, callback);
+      return;
+    }
+  } catch (error) {
+    console.log(error);
   }
+  console.log('%s is an invalid directory path.', sourceDirectoryPath);
 }
 
 function listFilesUpload(sourceDirectoryPath, containerName, callback) {
@@ -102,13 +102,12 @@ function uploadFilesParallel(files, containerName, callback) {
   files.forEach(function (file) {
     var blobName = file.replace(/^.*[\\\/]/, '');
 
-    blobService.createBlockBlobFromFile(containerName, blobName, file, function (error) {
+    blobService.createBlockBlobFromLocalFile(containerName, blobName, file, function (error, result, response) {
       finished++;
-
       if (error) {
         console.log(error);
       } else {
-        console.log('Blob ' + blobName + ' upload finished.');
+        console.log('Blob %s upload finished.', blobName);
 
         if (finished === files.length) {
           // Step 4 : Wait until all workers complete and the blobs are uploaded
@@ -123,30 +122,33 @@ function uploadFilesParallel(files, containerName, callback) {
 
 function downloadBlobs(containerName, destinationDirectoryPath, callback) {
   // Step 0. Validate directory
-  if (!fs.existsSync(destinationDirectoryPath)) {
-    console.log(destinationDirectoryPath + ' is an invalid directory path.');
-  } else {
-    downloadFilesParallel(containerName, destinationDirectoryPath, callback);
+  try {
+    var stats = fs.statSync(destinationDirectoryPath);
+    if (stats.isDirectory() === true) {
+      downloadFilesParallel(containerName, destinationDirectoryPath, callback);
+      return;
+    }
+  } catch (error) {
+    console.log(error);
   }
+  console.log('%s is an invalid directory path.', destinationDirectoryPath);
 }
 
 function downloadFilesParallel(containerName, destinationDirectoryPath, callback) {
   // NOTE: does not handle pagination.
-  blobService.listBlobs(containerName, function (error, blobs) {
+  blobService.listBlobsSegmented(containerName, null, function (error, result, reponse) {
     if (error) {
       console.log(error);
     } else {
       var blobsDownloaded = 0;
-
+      var blobs = result.entries;
       blobs.forEach(function (blob) {
-        blobService.getBlobToFile(containerName, blob.name, destinationDirectoryPath + '/' + blob.name, function (error2) {
+        blobService.getBlobToLocalFile(containerName, blob.name, path.join(destinationDirectoryPath, blob.name), function (error, result, response) {
           blobsDownloaded++;
-
-          if (error2) {
-            console.log(error2);
+          if (error) {
+            console.log(error);
           } else {
-            console.log('Blob ' + blob.name + ' download finished.');
-
+            console.log('Blob %s download finished.', blob.name);
             if (blobsDownloaded === blobs.length) {
               // Step 4 : Wait until all workers complete and the blobs are downloaded
               console.log('All files downloaded');
@@ -161,11 +163,11 @@ function downloadFilesParallel(containerName, destinationDirectoryPath, callback
 
 function requestAccessConditionSample(containerName) {
   // Step 1: Create a blob.
-  blobService.createBlockBlobFromText(containerName, blobAccess, 'hello', function (error) {
+  blobService.createBlockBlobFromText(containerName, blobAccess, 'hello', function (error, result, response) {
     if (error) {
       console.log(error);
     } else {
-      console.log('Created the blob ' + blobAccess);
+      console.log('Created the blob %s', blobAccess);
       downloadBlobProperties(containerName, blobAccess);
     }
   });
@@ -173,11 +175,11 @@ function requestAccessConditionSample(containerName) {
 
 function downloadBlobProperties(containerName, blobName) {
   // Step 2 : Download the blob attributes to get the ETag.
-  blobService.getBlobProperties(containerName, blobName, function (error, blob) {
+  blobService.getBlobProperties(containerName, blobName, function (error, blob, response) {
     if (error) {
       console.log(error);
     } else {
-      console.log('Blob Etag is: ' + blob.etag);
+      console.log('Blob Etag is: %s ', blob.etag);
       testAccess(containerName, blobName, blob.etag);
     }
   });
@@ -190,8 +192,12 @@ function testAccess(containerName, blobName, etag) {
   // sample no other client is accessing the blob, so this will fail as
   // expected.
 
-  var options = { accessConditions: { 'If-None-Match': etag} };
-  blobService.createBlockBlobFromText(containerName, blobName, 'new hello', options, function (error) {
+  var options = {
+    accessConditions: {
+      'If-None-Match': etag
+    }
+  };
+  blobService.createBlockBlobFromText(containerName, blobName, 'new hello', options, function (error, result, response) {
     if (error) {
       console.log('Got an expected exception. Details:');
       console.log(error);
@@ -201,11 +207,11 @@ function testAccess(containerName, blobName, etag) {
   });
 }
 
-if (processArguments.length > 5 || processArguments.length < 4) {
+if (args.length > 5 || args.length < 4) {
   console.log('Incorrect number of arguments');
-} else if (processArguments.length == 5) {
+} else if (args.length === 5) {
   // Adding a third argument on the command line, whatever it is, will delete the container before running the sample.
-  blobService.deleteContainer(container, function (error) {
+  blobService.deleteContainerIfExists(container, function (error, result, response) {
     if (error) {
       console.log(error);
     } else {
@@ -220,16 +226,16 @@ if (processArguments.length > 5 || processArguments.length < 4) {
 
 var walk = function (dir, done) {
   var results = [];
-  fs.readdir(dir, function (err, list) {
+  fs.readdir(dir, function (err, files) {
     if (err) return done(err);
     var i = 0;
     (function next() {
-      var file = list[i++];
+      var file = files[i++];
       if (!file) return done(null, results);
-      file = dir + '/' + file;
-      fs.stat(file, function (err2, stat) {
-        if (stat && stat.isDirectory()) {
-          walk(file, function (err3, res) {
+      file = path.join(dir, file);
+      fs.stat(file, function (error, stats) {
+        if (stats && stats.isDirectory()) {
+          walk(file, function (error, res) {
             results = results.concat(res);
             next();
           });
