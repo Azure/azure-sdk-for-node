@@ -146,7 +146,8 @@ export interface ContentSummaryResult {
  * Initializes a new instance of the FileStatusProperties class.
  * @constructor
  * Data Lake file status properties information
- * @member {number} [accessTime] Gets or sets the last access time.
+ * @member {number} [accessTime] Gets or sets the last access time as ticks
+ * since the epoch.
  * 
  * @member {number} [blockSize] Gets or sets the block size for the file.
  * 
@@ -159,7 +160,8 @@ export interface ContentSummaryResult {
  * 
  * @member {number} [length] Gets or sets the number of bytes in a file.
  * 
- * @member {number} [modificationTime] Gets or sets the modification time.
+ * @member {number} [modificationTime] Gets or sets the modification time as
+ * ticks since the epoch.
  * 
  * @member {string} [owner] Gets or sets the user who is the owner.
  * 
@@ -188,6 +190,37 @@ export interface FileStatusProperties {
     permission?: string;
     replication?: number;
     type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileInfoProperties class.
+ * @constructor
+ * Data Lake file information properties
+ * @member {string} [id] Gets or sets the file unique identifier (as a GUID).
+ * 
+ * @member {string} [name] Gets or sets the file name.
+ * 
+ * @member {number} [length] Gets or sets the number of bytes in a file.
+ * 
+ * @member {number} [modificationTime] Gets or sets the modification time as
+ * ticks since the epoch.
+ * 
+ * @member {number} [creationTime] Gets or sets the creation time as ticks
+ * since the epoch.
+ * 
+ * @member {number} [expirationTime] Gets or sets the expiration time, if any,
+ * as ticks since the epoch. If this is set to 0 or DateTime.MaxValue there
+ * is no expiration.
+ * 
+ */
+export interface FileInfoProperties {
+    id?: string;
+    name?: string;
+    length?: number;
+    modificationTime?: number;
+    creationTime?: number;
+    expirationTime?: number;
 }
 
 /**
@@ -227,7 +260,8 @@ export interface FileStatusesResult {
  * @member {object} [fileStatus] Gets or sets the file status object
  * associated with the specified file path
  * 
- * @member {number} [fileStatus.accessTime] Gets or sets the last access time.
+ * @member {number} [fileStatus.accessTime] Gets or sets the last access time
+ * as ticks since the epoch.
  * 
  * @member {number} [fileStatus.blockSize] Gets or sets the block size for the
  * file.
@@ -243,7 +277,7 @@ export interface FileStatusesResult {
  * file.
  * 
  * @member {number} [fileStatus.modificationTime] Gets or sets the
- * modification time.
+ * modification time as ticks since the epoch.
  * 
  * @member {string} [fileStatus.owner] Gets or sets the user who is the owner.
  * 
@@ -261,6 +295,38 @@ export interface FileStatusesResult {
  */
 export interface FileStatusResult {
     fileStatus?: FileStatusProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileInfoResult class.
+ * @constructor
+ * Data Lake Store filesystem file information response used with file
+ * expiration.
+ * @member {object} [fileInfo] Gets or sets the file information object
+ * associated with the specified file path
+ * 
+ * @member {string} [fileInfo.id] Gets or sets the file unique identifier (as
+ * a GUID).
+ * 
+ * @member {string} [fileInfo.name] Gets or sets the file name.
+ * 
+ * @member {number} [fileInfo.length] Gets or sets the number of bytes in a
+ * file.
+ * 
+ * @member {number} [fileInfo.modificationTime] Gets or sets the modification
+ * time as ticks since the epoch.
+ * 
+ * @member {number} [fileInfo.creationTime] Gets or sets the creation time as
+ * ticks since the epoch.
+ * 
+ * @member {number} [fileInfo.expirationTime] Gets or sets the expiration
+ * time, if any, as ticks since the epoch. If this is set to 0 or
+ * DateTime.MaxValue there is no expiration.
+ * 
+ */
+export interface FileInfoResult {
+    fileInfo?: FileInfoProperties;
 }
 
 /**

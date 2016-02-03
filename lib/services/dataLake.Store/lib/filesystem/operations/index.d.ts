@@ -22,6 +22,30 @@ import * as models from '../models';
 export interface FileSystem {
 
     /**
+     * Get the file information object used to check file expiration time for the
+     * specified by the file path.
+     *
+     * @param {string} filePath The path to the file to retrieve expiration
+     * information for.
+     * 
+     * @param {string} accountname The name of the account to use
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.op] This is the REQUIRED value for this parameter
+     * and method combination. Changing the value will result in unexpected
+     * behavior, please do not do so.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getFileInfo(filePath: string, accountname: string, options: { op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileInfoResult>): void;
+    getFileInfo(filePath: string, accountname: string, callback: ServiceCallback<models.FileInfoResult>): void;
+
+    /**
      * Appends to the file specified. This method supports multiple concurrent
      * appends to the file. NOTE: that concurrent append and serial append CANNOT
      * be used interchangeably. Once a file has been appended to using either
@@ -38,6 +62,10 @@ export interface FileSystem {
      * 
      * @param {object} [options] Optional Parameters.
      * 
+     * @param {string} [options.appendMode] Indicates the concurrent append call
+     * should create the file if it doesn't exist or just open the existing file
+     * for append. Possible values for this parameter include: 'autocreate'
+     * 
      * @param {string} [options.op] This is the REQUIRED value for this parameter
      * and method combination. Changing the value will result in unexpected
      * behavior, please do not do so.
@@ -48,8 +76,44 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    concurrentAppend(filePath: string, accountname: string, streamContents: stream.Readable, options: { op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    concurrentAppend(filePath: string, accountname: string, streamContents: stream.Readable, options: { appendMode? : string, op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     concurrentAppend(filePath: string, accountname: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
+
+    /**
+     * Sets or removes the expiration time on the specified file. This operation
+     * can only be executed against files. Folders are not supported.
+     *
+     * @param {string} filePath The path to the file to set or removes the
+     * expiration time on.
+     * 
+     * @param {string} accountname The name of the data lake account that the file
+     * lives in.
+     * 
+     * @param {string} expiryOption Indicates the type of expiration to use for
+     * the file: 1. NeverExpire: ExpireTime is ignored. 2. RelativeToNow:
+     * ExpireTime is an integer in milliseconds. 3. RelativeToCreationDate:
+     * ExpireTime is an integer in milliseconds. 4. Absolute: ExpireTime is an
+     * integer in milliseconds, as a unix timestamp relative to 1/1/1970
+     * 00:00:00. Possible values for this parameter include: 'NeverExpire',
+     * 'RelativeToNow', 'RelativeToCreationDate', 'Absolute'
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {number} [options.expireTime] The time, in seconds, that the file
+     * will expire relative to the expiry option that was set.
+     * 
+     * @param {string} [options.op] This is the REQUIRED value for this parameter
+     * and method combination. Changing the value will result in unexpected
+     * behavior, please do not do so.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    setFileExpiry(filePath: string, accountname: string, expiryOption: string, options: { expireTime? : number, op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setFileExpiry(filePath: string, accountname: string, expiryOption: string, callback: ServiceCallback<void>): void;
 
     /**
      * Checks if the specified access is available at the given path.
@@ -109,10 +173,10 @@ export interface FileSystem {
      * 
      * @param {string} accountname The name of the account to use
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {array} sources A list of comma seperated absolute FileSystem paths
+     * without scheme and authority
      * 
-     * @param {string} [options.sources] A list of comma seperated absolute
-     * FileSystem paths without scheme and authority
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {string} [options.op] This is the REQUIRED value for this parameter
      * and method combination. Changing the value will result in unexpected
@@ -124,8 +188,8 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    concat(destinationPath: string, accountname: string, options: { sources? : string, op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    concat(destinationPath: string, accountname: string, callback: ServiceCallback<void>): void;
+    concat(destinationPath: string, accountname: string, sources: string[], options: { op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    concat(destinationPath: string, accountname: string, sources: string[], callback: ServiceCallback<void>): void;
 
     /**
      * Concatenates the list of files into the target file. This API is NOT
@@ -168,7 +232,8 @@ export interface FileSystem {
     msConcat(msConcatDestinationPath: string, accountname: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
-     * Get the list of file status objects specified by the file path.
+     * Get the list of file status objects specified by the file path, with
+     * optional pagination parameters
      *
      * @param {string} listFilePath The path to the file to retrieve status for.
      * 
@@ -176,11 +241,18 @@ export interface FileSystem {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {number} [options.top] Gets or sets the number of items to return.
-     * Optional.
+     * @param {number} [options.listSize] Gets or sets the number of items to
+     * return. Optional.
      * 
-     * @param {number} [options.skip] Gets or sets the number of items to skip
-     * over before returning elements. Optional.
+     * @param {string} [options.listAfter] Gets or sets the item or lexographical
+     * index to begin returning results after. For example, with a file list of
+     * 'a','b','d' a listAfter='b' will return 'd' and a listAfter='c' will also
+     * return 'd'. Optional.
+     * 
+     * @param {string} [options.listBefore] Gets or sets the item or lexographical
+     * index to begin returning results before. For example, with a file list of
+     * 'a','b','d' a listBefore='d' will return 'a','b' and a listBefore='c' will
+     * also return 'a','b'. Optional.
      * 
      * @param {string} [options.op] This is the REQUIRED value for this parameter
      * and method combination. Changing the value will result in unexpected
@@ -192,7 +264,7 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listFileStatus(listFilePath: string, accountname: string, options: { top? : number, skip? : number, op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
+    listFileStatus(listFilePath: string, accountname: string, options: { listSize? : number, listAfter? : string, listBefore? : string, op? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
     listFileStatus(listFilePath: string, accountname: string, callback: ServiceCallback<models.FileStatusesResult>): void;
 
     /**
