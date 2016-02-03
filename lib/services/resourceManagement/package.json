@@ -2,7 +2,7 @@
   "name": "azure-arm-resource",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Wang, Yugang <yugangw@microsoft.com>"
+    "Wang, Yugang <yugangw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>",
     "Srinivasan, Vivek <visriniv@microsoft.com>"
   ],
