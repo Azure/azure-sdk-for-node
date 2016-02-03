@@ -23,7 +23,6 @@ npm install azure-arm-storage
 ### Create the StorageManagementClient
 
 ```javascript
-var fs = require('fs');
 var storageManagementClient = require('azure-arm-storage');
 var client = new storageManagementClient(credentials, 'your-subscription-id');
 ```
