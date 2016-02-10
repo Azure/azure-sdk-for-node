@@ -923,6 +923,9 @@ export interface VirtualMachines {
      * @param {string} [parameters.provisioningState] Gets or sets the
      * provisioning state, which only appears in the response.
      * 
+     * @param {string} [parameters.licenseType] Gets or sets the license type,
+     * which is for bring your own license scenario.
+     * 
      * @param {string} [parameters.location] Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
@@ -1141,6 +1144,9 @@ export interface VirtualMachines {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets the
      * provisioning state, which only appears in the response.
+     * 
+     * @param {string} [parameters.licenseType] Gets or sets the license type,
+     * which is for bring your own license scenario.
      * 
      * @param {string} [parameters.location] Resource location
      * 

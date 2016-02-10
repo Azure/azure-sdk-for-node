@@ -279,7 +279,7 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * 
  * @member {string} [sslCertificate.id] Resource Id
  * 
- * @member {string} [requireServerNameIndication] Gets or sets the
+ * @member {boolean} [requireServerNameIndication] Gets or sets the
  * requireServerNameIndication of http listener
  * 
  * @member {string} [provisioningState] Gets or sets Provisioning state of the
@@ -294,7 +294,7 @@ export interface ApplicationGatewayHttpListener extends SubResource {
     protocol?: string;
     hostName?: string;
     sslCertificate?: SubResource;
-    requireServerNameIndication?: string;
+    requireServerNameIndication?: boolean;
     provisioningState?: string;
 }
 

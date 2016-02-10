@@ -1456,6 +1456,9 @@ export interface VirtualMachineInstanceView {
  * @member {array} [instanceView.statuses] Gets or sets the resource status
  * information.
  * 
+ * @member {string} [licenseType] Gets or sets the license type, which is for
+ * bring your own license scenario.
+ * 
  */
 export interface VirtualMachine extends Resource {
     plan?: Plan;
@@ -1468,6 +1471,7 @@ export interface VirtualMachine extends Resource {
     availabilitySet?: SubResource;
     provisioningState?: string;
     instanceView?: VirtualMachineInstanceView;
+    licenseType?: string;
 }
 
 /**
@@ -2455,6 +2459,9 @@ export interface VirtualMachineScaleSetSku {
  * @member {string} [provisioningState] Gets or sets the provisioning state,
  * which only appears in the response.
  * 
+ * @member {string} [licenseType] Gets or sets the license type, which is for
+ * bring your own license scenario.
+ * 
  */
 export interface VirtualMachineScaleSetVM extends Resource {
     instanceId?: string;
@@ -2470,6 +2477,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
     diagnosticsProfile?: DiagnosticsProfile;
     availabilitySet?: SubResource;
     provisioningState?: string;
+    licenseType?: string;
 }
 
 /**
