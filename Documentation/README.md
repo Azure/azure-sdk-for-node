@@ -1,7 +1,7 @@
 # Azure-SDK-For-Node Documentation
 
 1. [Setting up the repo](./SetupRepo.md)
-2. [Authentication setup for Azure](./Authentication.md)
+2. [Login using ServicePrincipal](./Authentication.md)
 3. Testing the SDK
     - [Setting up the Environment Variables](./EnvironmentVariables.md)
     - [Test Modes & Recording Infrastructure](./TestModes.md)
