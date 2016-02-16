@@ -13,7 +13,7 @@ npm install azure-sb
 ### The basics of producers and consumers
 
 ```node
-var azure = require('azure');
+var azure = require('azure-sb');
 
 function checkForMessages(sbService, queueName, callback) {
   sbService.receiveQueueMessage(queueName, { isPeekLock: true }, function (err, lockedMessage) {
@@ -27,6 +27,19 @@ function checkForMessages(sbService, queueName, callback) {
       callback(null, lockedMessage);
     }
   });
+}
+
+function checkMessageCount(queueName){
+    sbService.getQueue(queueName, function(err, queue){
+        if (err) {
+            console.log('Error on get queue length: ', err);
+        } else {
+            // length of queue (active messages ready to read)
+            var length = queue.CountDetails['d2p1:ActiveMessageCount'];
+            console.log(length + ' messages currently in the queue');
+            return length;
+        }
+    });
 }
 
 function processMessage(sbService, err, lockedMsg) {
@@ -68,6 +81,84 @@ sbService.createQueueIfNotExists(queueName, function (err) {
   } else {
    setInterval(checkForMessages.bind(null, sbService, queueName, processMessage.bind(null, sbService)), 5000);
    setInterval(sendMessages.bind(null, sbService, queueName), 15000);
+   setInterval(checkMessageCount.bind(null, queueName), 1000);
   }
 });
+```
+
+### The Get Queue Details
+
+```node
+    //Get details on a queue from the queue object
+    function getQueue(queueName){
+        sbService.getQueue(queueName, function(err, queue){
+        if (err) {
+            console.log('Error on get queue: ', err);
+        } else {
+            console.log(queue);
+            return queue;
+        })
+    }
+```
+
+The queue object contains a number of useful bits of information on the queue:
+```json
+{
+    "LockDuration": "PT30S",
+    "MaxSizeInMegabytes": "5120",
+    "RequiresDuplicateDetection": "false",
+    "RequiresSession": "false",
+    "DefaultMessageTimeToLive": "P9999D",
+    "DeadLetteringOnMessageExpiration": "true",
+    "DuplicateDetectionHistoryTimeWindow": "PT10M",
+    "MaxDeliveryCount": "10",
+    "EnableBatchedOperations": "true",
+    "SizeInBytes": "0",
+    "MessageCount": "0",
+    "IsAnonymousAccessible": "false",
+    "AuthorizationRules": {
+        "AuthorizationRule": {
+            "ClaimType": "SharedAccessKey",
+            "ClaimValue": "None",
+            "Rights": {
+                "AccessRights": [
+                    "Manage",
+                    "Send",
+                    "Listen"
+                ]
+            },
+            "CreatedTime": "2016-02-16T02:19:28.8148647Z",
+            "ModifiedTime": "2016-02-16T02:19:28.8148647Z",
+            "KeyName": "yourSASrole",
+            "PrimaryKey": "***",
+            "SecondaryKey": "***"
+        }
+    },
+    "Status": "Active",
+    "CreatedAt": "2016-02-15T00:11:12.9543904Z",
+    "UpdatedAt": "2016-02-16T02:19:27.9576641Z",
+    "AccessedAt": "2016-02-16T20:40:30.3668995Z",
+    "SupportOrdering": "true",
+    "CountDetails": {
+        "d2p1:ActiveMessageCount": "0",
+        "d2p1:DeadLetterMessageCount": "0",
+        "d2p1:ScheduledMessageCount": "0",
+        "d2p1:TransferMessageCount": "0",
+        "d2p1:TransferDeadLetterMessageCount": "0"
+    },
+    "AutoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+    "EntityAvailabilityStatus": "Available",
+    "_": {
+        "ContentRootElement": "QueueDescription",
+        "id": "https://yourSBNamespace.servicebus.windows.net/yourqueue?api-version=2013-07",
+        "title": "yourqueue",
+        "published": "2016-02-15T00:11:14Z",
+        "updated": "2016-02-16T02:19:28Z",
+        "author": {
+            "name": "yourSBNamespace"
+        },
+        "link": ""
+    },
+    "QueueName": "yourqueue"
+}
 ```
