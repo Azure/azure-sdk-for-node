@@ -1,5 +1,6 @@
 
 # Creating a ServicePrincipal for scripting scenarios
+One does not want to login interactively all the time. Azure provides service principal authentication as a secure way for silent login.
 
 ## Via Portal
 [This article](https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/) provides detailed steps on creating a service principal via portal.
