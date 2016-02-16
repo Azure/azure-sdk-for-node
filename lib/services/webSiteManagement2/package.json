@@ -2,13 +2,8 @@
   "name": "azure-arm-website",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Block, Glenn <gblock@microsoft.com>",
-    "Cowlishaw, Mark <markcowl@microsoft.com>",
-    "Dejardin, Louis <loudej@microsoft.com>",
-    "Georgiev, Yavor <yavorg@microsoft.com>",
-    "Janczuk, Tomasz <tjanczuk@microsoft.com>",
-    "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Wang, Yugang <yugangw@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>"
   ],
   "version": "0.11.0",
   "description": "Microsoft Azure WebSite Management Client Library for node",
@@ -20,7 +15,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/website.js",
+  "main": "./lib/webSiteManagementClient.js",
   "engines": {
     "node": ">= 0.10.0"
   },
