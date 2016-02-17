@@ -112,10 +112,8 @@ info:    login command OK
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
  ```
 
-## User user authentitcation in your node.js script
-
+## Using user authentitcation in your node.js script
 Currently, the node sdk only supports users with org-id (organizational account) and have 2FA disabled.
-
  ```javascript
  var msrestAzure = require('ms-rest-azure');
  //user authentication
