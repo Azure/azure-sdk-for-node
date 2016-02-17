@@ -53,7 +53,7 @@ info:    ad app create command OK
 
 Let us create a serviceprincipal using the applicationId from the previous step.
 ```
-D:\sdk>node bin/azure ad sp create --aplicationId 56894bd4-0fde-41d8-a0d7-5bsslccety2
+D:\sdk>azure ad sp create --aplicationId 56894bd4-0fde-41d8-a0d7-5bsslccety2
 info:    Executing command ad sp create
 + Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
 data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
@@ -77,7 +77,7 @@ data:    IsCustom         : false
 ```
 This will associate the serviceprincipal to your current subscription
 ```
-D:\sdk>node bin/azure role assignment create --spn 56894bd4-0fde-41d8-a0d7-5bsslccety2 -o Contributor
+D:\sdk>azure role assignment create --spn 56894bd4-0fde-41d8-a0d7-5bsslccety2 -o Contributor
 info:    Executing command role assignment create
 + Finding role with specified name
 /data:    RoleAssignmentId     : /subscriptions/abcdefgh-1234-4cc9-89b5-12345678/providers/Microsoft.Authorization/roleAssignments/987654-ea85-40a5-80c2-abcdferghtt
@@ -95,7 +95,7 @@ info:    role assignment create command OK
 
 #### Step 4. Login as a serviceprincipal
 ```
-D:\sdk>node bin/azure login -u 56894bd4-0fde-41d8-a0d7-5bsslccety2 -p P@ssw0rd --tenant <a guid OR your domain(contosocorp.com) --service-principal
+D:\sdk>azure login -u 56894bd4-0fde-41d8-a0d7-5bsslccety2 -p P@ssw0rd --tenant <a guid OR your domain(contosocorp.com) --service-principal
 info:    Executing command login
 \info:    Added subscription TestSubscription
 +
