@@ -121,5 +121,6 @@ Currently, the node sdk only supports users with org-id (organizational account)
  'your-domain' - is the tenant id (a guid) or the part **after @** in your username (user1@**contosocorp.com**) ('contosocorp.com')
  'your-username' - is your username ('user1@contosocorp.com')
  'your-password' - password associated with the username
- var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 
+ 'your-redirect-uri' - is the redirect uri for your application. Providing 'http://localhost:8080' should also be fine.
+ var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
  ```
