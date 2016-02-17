@@ -5,9 +5,9 @@ One does not want to login interactively all the time. Azure provides service pr
 ## Via Portal
 [This article](https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/) provides detailed steps on creating a service principal via portal.
 
-## Via [Xplat-CLI](https://github.com/Azure/azure-xplat-cli)
+## Via XplatCLI
 Pre-requisite:
-- Install the latest version of cli from npm.
+- Install the latest version of cli from the [latest github release](https://github.com/Azure/azure-xplat-cli/releases) or from [npm](https://npmjs.com/package/azure-cli).
 
 ```bash
 npm uninstall azure-cli -g
@@ -110,4 +110,18 @@ info:    login command OK
  'your-domain' - is the tenant id (a guid) or the part **after @** in your username (user1@**contosocorp.com**) ('contosocorp.com')
  'your-secret' - is the password you created for the serviceprincipal ('P@ssw0rd')
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
+ ```
+
+## User user authentitcation in your node.js script
+
+Currently, the node sdk only supports users with org-id (organizational account) and have 2FA disabled.
+
+ ```javascript
+ var msrestAzure = require('ms-rest-azure');
+ //user authentication
+ 'your-client-id' - is the id provided by Azure Active Directory for your application
+ 'your-domain' - is the tenant id (a guid) or the part **after @** in your username (user1@**contosocorp.com**) ('contosocorp.com')
+ 'your-username' - is your username ('user1@contosocorp.com')
+ 'your-password' - password associated with the username
+ var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 
  ```
