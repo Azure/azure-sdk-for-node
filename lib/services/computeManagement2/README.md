@@ -40,3 +40,6 @@ client.virtualMachineImages.list('westus', 'MicrosoftWindowsServer', 'WindowsSer
   }); 
 }); 
 ```
+
+## Detailed Sample
+A detailed sample for creating. getting, listing, powering off, restarting, deleting a vm can be found  [here](https://github.com/Azure/azure-sdk-for-node/blob/autorest/examples/compute/vm-sample.js).
