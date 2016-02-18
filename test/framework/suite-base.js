@@ -94,7 +94,7 @@ _.extend(SuiteBase.prototype, {
         (!process.env['AZURE_PASSWORD'] && !process.env['APPLICATION_SECRET'])) {
         throw new Error('You must either set the envt. variables \'AZURE_USERNAME\' ' +
           'and \'AZURE_PASSWORD\' for running tests as a user or set the ' +
-          'envt. variable 'CLIENT_ID' and \'APPLICATION_SECRET\' ' +
+          'envt. variable \'CLIENT_ID\' and \'APPLICATION_SECRET\' ' +
           'for running tests as a service-principal, but not both.');
       }
 
