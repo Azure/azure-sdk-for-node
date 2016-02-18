@@ -62,8 +62,8 @@ function SuiteBase(mochaSuiteObject, testPrefix, env) {
   this.subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'] || 'subscription-id';
   this.clientId = process.env['CLIENT_ID'] || 'client-id';
   this.domain = process.env['DOMAIN'] || 'domain';
-  this.username = process.env['USERNAME'] || 'username@example.com';
-  this.password = process.env['PASSWORD'] || 'dummypassword';
+  this.username = process.env['AZURE_USERNAME'] || 'username@example.com';
+  this.password = process.env['AZURE_PASSWORD'] || 'dummypassword';
   this.secret = process.env['APPLICATION_SECRET'] || 'dummysecret';
   this.clientRedirectUri = process.env['CLIENT_REDIRECT_URI'] || 'clientRedirectUri';
   this.tokenCache = new FileTokenCache(path.resolve(path.join(__dirname, '../tmp/tokenstore.json')));
@@ -90,12 +90,12 @@ _.extend(SuiteBase.prototype, {
 
   _setCredentials: function() {
     if (!this.isPlayback) {
-      if ((process.env['PASSWORD'] && process.env['APPLICATION_SECRET']) ||
-        (!process.env['PASSWORD'] && !process.env['APPLICATION_SECRET'])) {
-        throw new Error('You must either set the envt. variables \'USERNAME\' ' +
-          'and \'PASSWORD\' for running tests as a user or set the ' +
-          'envt. variable \'APPLICATION_SECRET\' for running tests ' +
-          'as a service-principal, but not both.');
+      if ((process.env['AZURE_PASSWORD'] && process.env['APPLICATION_SECRET']) ||
+        (!process.env['AZURE_PASSWORD'] && !process.env['APPLICATION_SECRET'])) {
+        throw new Error('You must either set the envt. variables \'AZURE_USERNAME\' ' +
+          'and \'AZURE_PASSWORD\' for running tests as a user or set the ' +
+          'envt. variable 'CLIENT_ID' and \'APPLICATION_SECRET\' ' +
+          'for running tests as a service-principal, but not both.');
       }
 
       if (process.env['PASSWORD']) {
