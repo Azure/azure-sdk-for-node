@@ -12,3 +12,4 @@
   - If you want to regenerate all the services then execute `gulp codegen`
   - If you want to generate for your project then execute `gulp codegen --project <your project name a.k.a the key of the mappings object>`
   - If you want to use a local file then save the file locally say "D:\sdk" and make sure to have the same path as defined in the source of your porject in the mappings object. Execute `gulp codegen --spec-root "D:\sdk" --project <your-project-name>`.
+- If generation is successful then you will see the generated code in the lib folder under lib/services/<YourServiceName>
