@@ -6,7 +6,12 @@ var exec = require('child_process').exec;
 var mappings = {
   'authorization': {
     'dir': 'authorizationManagement/lib',
-    'source': 'arm-authorization/2015-07-01/swagger/authorization.json',
+    'source': 'arm-authorization/2015-07-01/swagger/authorization.json', 
+    'ft': 1
+  },
+  'graph': {
+    'dir': 'graphManagement/lib',
+    'source': 'arm-graphrbac/1.6-internal/swagger/graphrbac.json',
     'ft': 1
   },
   'compute': {
