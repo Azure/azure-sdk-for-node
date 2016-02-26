@@ -25,7 +25,7 @@ npm install azure-graph
 
 ```javascript
 var graphRbacManagementClient = require('azure-graph');
-var graphClient = new graphRbacManagementClient(credentials, 'your-subscription-id');
+var graphClient = new graphRbacManagementClient(credentials, 'your-tenant-id');
 ```
 
 - [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
