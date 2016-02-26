@@ -21,7 +21,8 @@ import * as models from '../models';
 export interface ApplicationOperations {
 
     /**
-     * Create a new application.
+     * Create a new application. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
      *
      * @param {object} parameters Parameters to create an application.
      * 
@@ -54,7 +55,8 @@ export interface ApplicationOperations {
     create(parameters: models.ApplicationCreateParameters, callback: ServiceCallback<models.Application>): void;
 
     /**
-     * Lists applications by filter parameters.
+     * Lists applications by filter parameters. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -70,7 +72,8 @@ export interface ApplicationOperations {
     list(callback: ServiceCallback<models.ApplicationListResult>): void;
 
     /**
-     * Delete an application.
+     * Delete an application. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
      *
      * @param {string} applicationObjectId Application object id
      * 
@@ -86,7 +89,8 @@ export interface ApplicationOperations {
     deleteMethod(applicationObjectId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Get an application by object Id.
+     * Get an application by object Id. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
      *
      * @param {string} applicationObjectId Application object id
      * 
@@ -102,7 +106,8 @@ export interface ApplicationOperations {
     get(applicationObjectId: string, callback: ServiceCallback<models.Application>): void;
 
     /**
-     * Update existing application.
+     * Update existing application. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx
      *
      * @param {string} applicationObjectId Application object id
      * 
@@ -133,8 +138,8 @@ export interface ApplicationOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    update(applicationObjectId: string, parameters: models.ApplicationCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    update(applicationObjectId: string, parameters: models.ApplicationCreateParameters, callback: ServiceCallback<void>): void;
+    patch(applicationObjectId: string, parameters: models.ApplicationCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    patch(applicationObjectId: string, parameters: models.ApplicationCreateParameters, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -208,7 +213,8 @@ export interface Objects {
 export interface Group {
 
     /**
-     * Remove a memeber from a group
+     * Remove a memeber from a group. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/dn151607.aspx
      *
      * @param {string} groupObjectId Group object id
      * 
@@ -226,7 +232,8 @@ export interface Group {
     removeMember(groupObjectId: string, memberObjectId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Add a memeber to a group.
+     * Add a memeber to a group. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
      *
      * @param {string} groupObjectId Group object id
      * 
@@ -244,7 +251,8 @@ export interface Group {
     addMember(groupObjectId: string, url: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Delete a group in the directory.
+     * Delete a group in the directory. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
      *
      * @param {string} groupObjectId Object id
      * 
@@ -260,7 +268,8 @@ export interface Group {
     deleteMethod(groupObjectId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Create a group in the directory.
+     * Create a group in the directory. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
      *
      * @param {object} parameters Parameters to create a group
      * 
@@ -488,7 +497,8 @@ export interface ServicePrincipalOperations {
 export interface UserOperations {
 
     /**
-     * Delete a user.
+     * Delete a user. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
      *
      * @param {string} user user object id or user principal name
      * 
@@ -504,7 +514,8 @@ export interface UserOperations {
     deleteMethod(user: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Create a new user.
+     * Create a new user. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
      *
      * @param {object} parameters Parameters to create a user.
      * 
@@ -551,7 +562,8 @@ export interface UserOperations {
     list(callback: ServiceCallback<models.UserListResult>): void;
 
     /**
-     * Gets user information from the directory.
+     * Gets user information from the directory. Reference:
+     * http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx
      *
      * @param {string} upnOrObjectId User object Id or user principal name to get
      * user information.
