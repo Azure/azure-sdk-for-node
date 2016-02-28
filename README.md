@@ -4,7 +4,7 @@
 
 This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Services.
 ## Non-Interactive Authentication
-If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](https://github.com/Azure/azure-sdk-for-node/blob/autorest/Documentation/Authentication.md).
+If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](./Documentation/Authentication.md).
 
 ## Install from npm
 

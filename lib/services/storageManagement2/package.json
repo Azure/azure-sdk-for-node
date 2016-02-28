@@ -11,7 +11,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.11.0",
+  "version": "0.12.2-preview",
   "description": "Microsoft Azure Storage Resource Provider Management Client Library for Node",
   "tags": [
     "azure",
@@ -21,9 +21,9 @@
     "node",
     "azure"
   ],
-  "main": "./lib/storage.js",
+  "main": "./lib/storageManagementClient.js",
   "engines": {
-    "node": ">= 0.6.15"
+    "node": ">= 0.10.0"
   },
   "licenses": [
     {
@@ -32,7 +32,8 @@
     }
   ],
   "dependencies": {
-    "azure-common": "^0.9.13"
+    "ms-rest": "^1.8.0",
+    "ms-rest-azure": "^1.8.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
