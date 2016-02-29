@@ -228,6 +228,10 @@ export interface VirtualMachineExtensionInstanceView {
  * @member {boolean} [autoUpgradeMinorVersion] Gets or sets whether the
  * extension handler should be automatically upgraded across minor versions.
  * 
+ * @member {string} [forceUpdateTag] Gets or sets whether the extension
+ * handler should be forced to re-run even if the extension configuration has
+ * not changed.
+ * 
  * @member {object} [settings] Gets or sets Json formatted public settings for
  * the extension.
  * 
@@ -261,6 +265,7 @@ export interface VirtualMachineExtension extends Resource {
     virtualMachineExtensionType?: string;
     typeHandlerVersion?: string;
     autoUpgradeMinorVersion?: boolean;
+    forceUpdateTag?: string;
     settings?: any;
     protectedSettings?: any;
     provisioningState?: string;
@@ -370,9 +375,6 @@ export interface UsageName {
  * Initializes a new instance of the Usage class.
  * @constructor
  * Describes Compute Resource Usage.
- * @member {string} unit Gets or sets an enum describing the unit of
- * measurement.
- * 
  * @member {number} currentValue Gets or sets the current value of the usage.
  * 
  * @member {number} limit Gets or sets the limit of usage.
@@ -387,7 +389,6 @@ export interface UsageName {
  * 
  */
 export interface Usage {
-    unit: string;
     currentValue: number;
     limit: number;
     name: UsageName;
@@ -1684,11 +1685,15 @@ export interface ApiEntityReference {
  * @member {array} [loadBalancerBackendAddressPools] Gets or sets the load
  * balancer backend address pools.
  * 
+ * @member {array} [loadBalancerInboundNatPools] Gets or sets the load
+ * balancer inbound nat pools.
+ * 
  */
 export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
     name: string;
     subnet: ApiEntityReference;
     loadBalancerBackendAddressPools?: SubResource[];
+    loadBalancerInboundNatPools?: SubResource[];
 }
 
 /**
