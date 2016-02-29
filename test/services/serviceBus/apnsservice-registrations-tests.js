@@ -18,7 +18,6 @@ var _ = require('underscore');
 
 var should = require('should');
 var sinon = require('sinon');
-
 // Test includes
 var testutil = require('../../util/util');
 var notificationhubstestutil = require('../../framework/notificationhubs-test-utils');
@@ -183,8 +182,7 @@ describe('APNS notifications registrations', function () {
             function (error, registration) {
               should.not.exist(error);
               registrationId = registration.RegistrationId;
-
-              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"}}]]></BodyTemplate>');
+              executeSpy.args[0][1].should.match(/\<BodyTemplate\>\<\!\[CDATA\[{"aps":{"alert":"\$\(alertMessage1\)"}}\]\]\>\<\/BodyTemplate\>/);
 
               done();
             });
@@ -204,7 +202,7 @@ describe('APNS notifications registrations', function () {
               should.not.exist(error);
               registrationId = registration.RegistrationId;
 
-              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"}}]]></BodyTemplate>');
+              executeSpy.args[0][1].should.match(/\<BodyTemplate\>\<\!\[CDATA\[{"aps":{"alert":"\$\(alertMessage1\)"}}\]\]\>\<\/BodyTemplate\>/);
 
               done();
             });
@@ -225,7 +223,7 @@ describe('APNS notifications registrations', function () {
               should.not.exist(error);
               registrationId = registration.RegistrationId;
 
-              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"},"extraData":"$(data)"}]]></BodyTemplate>');
+              executeSpy.args[0][1].should.match(/\<BodyTemplate\>\<\!\[CDATA\[{"aps":{"alert":"\$\(alertMessage1\)"},"extraData":"\$\(data\)"}\]\]\>\<\/BodyTemplate\>/);
 
               done();
             });
@@ -248,7 +246,7 @@ describe('APNS notifications registrations', function () {
               should.not.exist(error);
               registrationId = registration.RegistrationId;
 
-              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(alertMessage1)"}}]]></BodyTemplate>');
+              executeSpy.args[0][1].should.match(/\<BodyTemplate\>\<\!\[CDATA\[{"aps":{"alert":"\$\(alertMessage1\)"}}\]\]\>\<\/BodyTemplate\>/);
 
               // Current version of sinon does not appear to support multiple calls on same spy.
               sandbox.restore();
@@ -273,7 +271,7 @@ describe('APNS notifications registrations', function () {
             function (error) {
               should.not.exist(error);
 
-              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(newAlertMessage1)"}}]]></BodyTemplate>');
+              executeSpy.args[0][1].should.match(/\<BodyTemplate\>\<\!\[CDATA\[{"aps":{"alert":"\$\(newAlertMessage1\)"}}\]\]\>\<\/BodyTemplate\>/);
 
               done();
             });
@@ -295,7 +293,7 @@ describe('APNS notifications registrations', function () {
             function (error) {
               should.not.exist(error);
 
-              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(newAlertMessage1)"},"data1":"$(data1)","data2":"$(data2)"}]]></BodyTemplate>');
+              executeSpy.args[0][1].should.match(/\<BodyTemplate\>\<\!\[CDATA\[{"aps":{"alert":"\$\(newAlertMessage1\)"},"data1":"\$\(data1\)","data2":"\$\(data2\)"}\]\]\>\<\/BodyTemplate\>/);
 
               done();
             });
@@ -317,7 +315,7 @@ describe('APNS notifications registrations', function () {
             function (error) {
               should.not.exist(error);
 
-              executeSpy.args[0][1].should.include('<BodyTemplate><![CDATA[{"aps":{"alert":"$(newAlertMessage1)"},"payload":{"data1":"$(data1)","data2":"$(data2)"}}]]></BodyTemplate>');
+              executeSpy.args[0][1].should.match(/\<BodyTemplate\>\<\!\[CDATA\[{"aps":{"alert":"\$\(newAlertMessage1\)"},"payload":{"data1":"\$\(data1\)","data2":"\$\(data2\)"}}\]\]\>\<\/BodyTemplate\>/);
 
               done();
             });

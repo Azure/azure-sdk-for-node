@@ -126,11 +126,7 @@ describe('Notification hubs', function () {
       };
 
       sandbox.stub(service, '_executeRequest', function (webResource, payload, resultHandler, validators, callback) {
-        payload.should.include('<WnsCredential><Properties><Property><Name>PackageSid</Name><Value>secret1</Value></Property>' +
-          '<Property><Name>SecretKey</Name><Value>secret2</Value></Property></Properties></WnsCredential>' +
-          '<ApnsCredential><Properties><Property><Name>ApnsCertificate</Name><Value>secret1</Value></Property>' +
-          '<Property><Name>CertificateKey</Name><Value>secret2</Value></Property></Properties></ApnsCredential>');
-
+        payload.should.match(/\<WnsCredential\>\<Properties\>\<Property\>\<Name\>PackageSid\<\/Name\>\<Value\>secret1\<\/Value\>\<\/Property\>\<Property\>\<Name\>SecretKey\<\/Name\>\<Value\>secret2\<\/Value\>\<\/Property\>\<\/Properties\>\<\/WnsCredential\>\<ApnsCredential\>\<Properties\>\<Property\>\<Name\>ApnsCertificate\<\/Name\>\<Value\>secret1\<\/Value\>\<\/Property\>\<Property\>\<Name\>CertificateKey\<\/Name\>\<Value\>secret2\<\/Value\>\<\/Property\>\<\/Properties\>\<\/ApnsCredential\>/);
         callback(undefined, { NotificationHubName: hubName });
       });
 
