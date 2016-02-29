@@ -3,6 +3,8 @@
 [![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node)
 
 This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Services.
+## Non-Interactive Authentication
+If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](https://github.com/Azure/azure-sdk-for-node/blob/autorest/Documentation/Authentication.md).
 
 ## Install from npm
 
@@ -70,7 +72,7 @@ npm install azure
 
 ## Contribute
 
-* If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
+* If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
 
 ### Getting Started Developing
 Want to get started hacking on the code, super! Follow the following instructions to get up and running. These
