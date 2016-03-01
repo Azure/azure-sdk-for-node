@@ -61,6 +61,11 @@ var mappings = {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
+  },
+  'cdn': {
+	'dir': 'cdnManagement/lib',
+	'source': 'arm-cdn/2015-06-01/swagger/cdn.json',
+	'ft': 2
   }
 };
 
