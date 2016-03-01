@@ -65,21 +65,33 @@ var autoRestVersion = '0.15.0-Nightly20160225';
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
 var autoRestExe = 'packages\\autorest.' + autoRestVersion + '\\tools\\AutoRest.exe';
+var nugetExe = 'tools/nuget.exe';
 var nugetSource = 'https://www.myget.org/F/autorest/api/v2';
+var language = 'Azure.NodeJS';
+var isWindows = (process.platform.lastIndexOf('win') === 0);
+var clrCmd = function(cmd){
+  return isWindows ? cmd : ('mono ' + cmd);
+};
 
-var codegen = function(project, cb) {
-  console.log('Generating "' + project + '" from spec file ' + specRoot + '/' + mappings[project].source);
+function codegen(project, cb) {
+  //servicefabric wants to generate using generic NodeJS.
+  if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
+    language = mappings[project].language;
+  }
+
+  console.log(util.format('Generating "%s" from spec file "%s" with language "%s" and AutoRest version "%s".', 
+    project,  specRoot + '/' + mappings[project].source, language, autoRestVersion));
   cmd = autoRestExe + ' -Modeler Swagger -CodeGenerator Azure.NodeJS' + ' -Input ' + specRoot + '/' + mappings[project].source + 
     ' -outputDirectory lib/services/' + mappings[project].dir + ' -Header MICROSOFT_MIT';
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
   }
-  exec(cmd, function(err, stdout, stderr) {
+  exec(clrCmd(cmd), function(err, stdout, stderr) {
     console.log(stdout);
     console.error(stderr);
   });
-};
+}
 
 gulp.task('default', function() {
   console.log("Usage: gulp codegen [--spec-root <swagger specs root>] [--project <project name>]\n");
@@ -92,7 +104,7 @@ gulp.task('default', function() {
 });
 
 gulp.task('codegen', function(cb) {
-  exec('tools\\nuget.exe install autorest -Source ' + nugetSource + ' -Version ' + autoRestVersion + ' -o packages', function(err, stdout, stderr) {
+  exec('tools/nuget.exe install autorest -Source ' + nugetSource + ' -Version ' + autoRestVersion + ' -o packages', function(err, stdout, stderr) {
     console.log(stdout);
     console.error(stderr);
     if (project === undefined) {
