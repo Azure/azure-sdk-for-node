@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
 var colors = require('colors');
+var fs = require('fs');
+var util = require('util');
 var exec = require('child_process').exec;
 
 var mappings = {
@@ -61,28 +63,63 @@ var mappings = {
   }
 };
 
-var autoRestVersion = '0.15.0-Nightly20160225';
+var defaultAutoRestVersion = '0.15.0-Nightly20160225';
+var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
-var autoRestExe = 'packages\\autorest.' + autoRestVersion + '\\tools\\AutoRest.exe';
 var nugetExe = 'tools/nuget.exe';
+var autoRestExe = 'packages/autorest.' + defaultAutoRestVersion + '/tools/AutoRest.exe';
 var nugetSource = 'https://www.myget.org/F/autorest/api/v2';
 var language = 'Azure.NodeJS';
+var modeler = 'Swagger';
 var isWindows = (process.platform.lastIndexOf('win') === 0);
 var clrCmd = function(cmd){
   return isWindows ? cmd : ('mono ' + cmd);
 };
 
 function codegen(project, cb) {
+  var found = false;
+  if (mappings[project].autorestversion) {
+    usingAutoRestVersion = mappings[project].autoRestVersion;
+  } else {
+    usingAutoRestVersion = defaultAutoRestVersion;
+  }
+  autoRestExe = 'packages/autorest.' + usingAutoRestVersion + '/tools/AutoRest.exe';
+  try {
+    fs.statSync(autoRestExe);
+    found = true;
+  } catch (err) {
+    if (!err.message.match(/^ENONET.*/ig)) {
+      cb(err);
+    }
+  }
+  if (found) {
+    generateProject(project, specRoot, usingAutoRestVersion);
+  } else {
+    exec(clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + usingAutoRestVersion + ' -o packages', function(err, stdout, stderr) {
+      console.log(stdout);
+      console.error(stderr);
+      generateProject(project, specRoot, usingAutoRestVersion);
+    });
+  }
+}
+
+function generateProject(project, specRoot, autoRestVersion) {
+  var specPath = specRoot + '/' + mappings[project].source;
   //servicefabric wants to generate using generic NodeJS.
   if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
     language = mappings[project].language;
   }
+  //default Modeler is Swagger. However, some services may want to use CompositeSwaggerModeler
+  if (mappings[project].modeler && mappings[project].modeler.match(/^CompositeSwagger$/ig) !== null) {
+    modeler = mappings[project].modeler;
+  }
 
   console.log(util.format('Generating "%s" from spec file "%s" with language "%s" and AutoRest version "%s".', 
     project,  specRoot + '/' + mappings[project].source, language, autoRestVersion));
-  cmd = autoRestExe + ' -Modeler Swagger -CodeGenerator Azure.NodeJS' + ' -Input ' + specRoot + '/' + mappings[project].source + 
-    ' -outputDirectory lib/services/' + mappings[project].dir + ' -Header MICROSOFT_MIT';
+  autoRestExe = 'packages/autorest.' + autoRestVersion + '/tools/AutoRest.exe';
+  var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT',
+    autoRestExe, modeler, language, specPath, mappings[project].dir);
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
@@ -104,7 +141,7 @@ gulp.task('default', function() {
 });
 
 gulp.task('codegen', function(cb) {
-  exec('tools/nuget.exe install autorest -Source ' + nugetSource + ' -Version ' + autoRestVersion + ' -o packages', function(err, stdout, stderr) {
+  exec(clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + defaultAutoRestVersion + ' -o packages', function(err, stdout, stderr) {
     console.log(stdout);
     console.error(stderr);
     if (project === undefined) {
