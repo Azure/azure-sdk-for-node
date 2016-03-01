@@ -7,6 +7,11 @@ packages/*
 *.user
 .ntvs_analysis.dat
 obj/*
+examples/obj
+examples/.ntvs_analysis.dat
+examples/.vs
+examples/bin
+.vs
 
 # Node #
 node_modules/
