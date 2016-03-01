@@ -20,8 +20,8 @@ var SuiteBase = require('../../framework/suite-base');
 
 var dump = util.inspect;
 
-var DataLakeAnalyticsAccountManagementClient = require('../../../lib/services/dataLake.Analytics/lib/account/dataLakeAnalyticsManagementClient');
-var DataLakeStoreAccountManagementClient = require('../../../lib/services/dataLake.Store/lib/account/dataLakeStoreManagementClient');
+var DataLakeAnalyticsAccountManagementClient = require('../../../lib/services/dataLake.Analytics/lib/account/dataLakeAnalyticsAccountManagementClient');
+var DataLakeStoreAccountManagementClient = require('../../../lib/services/dataLake.Store/lib/account/dataLakeStoreAccountManagementClient');
 var DataLakeAnalyticsJobManagementClient = require('../../../lib/services/dataLake.Analytics/lib/job/dataLakeAnalyticsJobManagementClient');
 var DataLakeAnalyticsCatalogManagementClient = require('../../../lib/services/dataLake.Analytics/lib/catalog/dataLakeAnalyticsCatalogManagementClient');
 var ResourceManagementClient = require('../../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
@@ -135,14 +135,14 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           should.not.exist(err);
           resourceClient.resourceGroups.createOrUpdate(secondResourceGroup, {location: testLocation}, function (err) {
             should.not.exist(err);
-            adlsClient.dataLakeStoreAccountOperations.create(testResourceGroup, storeAccountName, adlsAccount, function(err) {
+            adlsClient.account.create(testResourceGroup, storeAccountName, adlsAccount, function(err) {
               should.not.exist(err);
-              adlsClient.dataLakeStoreAccountOperations.create(testResourceGroup, additionalStoreAccountName, secondAdlsAccount, function(err) {
+              adlsClient.account.create(testResourceGroup, additionalStoreAccountName, secondAdlsAccount, function(err) {
                 should.not.exist(err);
                 storageClient.storageAccounts.create(testResourceGroup, azureBlobAccountName, storageAccount, function (err) {
                   should.not.exist(err);
                   // create an account for job and catalog operations
-                  accountClient.dataLakeAnalyticsAccountOperations.create(testResourceGroup, jobAndCatalogAccountName, adlaAccount, function (err) {
+                  accountClient.account.create(testResourceGroup, jobAndCatalogAccountName, adlaAccount, function (err) {
                     should.not.exist(err);
                     setTimeout(function () {
                       done();
@@ -165,8 +165,8 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     // this is required as a work around to ensure that the datalake analytics account does not get left behind and stuck in the "deleting" state if its storage gets deleted out from under it.
     if(!suite.isPlayback) {
       setTimeout(function () {
-        accountClient.dataLakeAnalyticsAccountOperations.deleteMethod(testResourceGroup, jobAndCatalogAccountName, function () {
-          accountClient.dataLakeAnalyticsAccountOperations.deleteMethod(testResourceGroup, accountName, function () {
+        accountClient.account.deleteMethod(testResourceGroup, jobAndCatalogAccountName, function () {
+          accountClient.account.deleteMethod(testResourceGroup, accountName, function () {
             resourceClient.resourceGroups.deleteMethod(secondResourceGroup, function () {
               resourceClient.resourceGroups.deleteMethod(testResourceGroup, function () {
                 suite.teardownSuite(done);
@@ -209,7 +209,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         }
       };
 
-      accountClient.dataLakeAnalyticsAccountOperations.create(testResourceGroup, accountName, accountToCreate, function (err, result) {
+      accountClient.account.create(testResourceGroup, accountName, accountToCreate, function (err, result) {
         should.not.exist(err);
         should.exist(result);
         result.name.should.be.equal(accountName);
@@ -236,7 +236,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           ]
         }
       };
-      accountClient.dataLakeAnalyticsAccountOperations.create(testResourceGroup, accountName, accountToCreate, function (err, result, request, response) {
+      accountClient.account.create(testResourceGroup, accountName, accountToCreate, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         err.statusCode.should.equalOneOf([400, 409]); //TODO: need to update to just 409 when fixed in the service.
@@ -245,7 +245,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     });
 
     it('get command should work', function (done) {
-      accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
+      accountClient.account.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -255,7 +255,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     });
 
     it('list commands should work', function (done) {
-      accountClient.dataLakeAnalyticsAccountOperations.list(function (err, result, request, response) {
+      accountClient.account.list(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -263,7 +263,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         accountList.length.should.be.above(0);
         
         // list within resource group as well.
-        accountClient.dataLakeAnalyticsAccountOperations.listByResourceGroup(testResourceGroup, function (err, result, request, response) {
+        accountClient.account.listByResourceGroup(testResourceGroup, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -285,7 +285,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           name: jobAndCatalogAccountName
       };
       
-      accountClient.dataLakeAnalyticsAccountOperations.update(testResourceGroup, jobAndCatalogAccountName, accountToUpdate, function (err, result, request, response) {
+      accountClient.account.update(testResourceGroup, jobAndCatalogAccountName, accountToUpdate, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -297,27 +297,25 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     
     it('adding and removing data lake storage accounts to the account should work', function (done) {
       var options = {
-        parameters: {
-          properties: {
-            suffix: filesystemDnsSuffix
-          }
+        properties: {
+          suffix: filesystemDnsSuffix
         }
       };
 
-      accountClient.dataLakeAnalyticsAccountOperations.addDataLakeStoreAccount(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, options, function (err, result, request, response) {
+      accountClient.account.addDataLakeStoreAccount(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, options, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
-        accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
+        accountClient.account.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
           result.properties.dataLakeStoreAccounts.length.should.be.equal(2);
-          accountClient.dataLakeAnalyticsAccountOperations.deleteDataLakeStoreAccount(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, function (err, result, request, response) {
+          accountClient.account.deleteDataLakeStoreAccount(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, function (err, result, request, response) {
             should.not.exist(err);
             should.not.exist(result);
             response.statusCode.should.equal(200);
-            accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
+            accountClient.account.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
               should.not.exist(err);
               should.exist(result);
               response.statusCode.should.equal(200);
@@ -337,20 +335,20 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             accessKey: azureBlobAccountKey
           }
         };
-        accountClient.dataLakeAnalyticsAccountOperations.addStorageAccount(testResourceGroup, jobAndCatalogAccountName, azureBlobAccountName, storageParams, function (err, result, request, response) {
+        accountClient.account.addStorageAccount(testResourceGroup, jobAndCatalogAccountName, azureBlobAccountName, storageParams, function (err, result, request, response) {
           should.not.exist(err);
           should.not.exist(result);
           response.statusCode.should.equal(200);
-          accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
+          accountClient.account.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
             result.properties.storageAccounts.length.should.be.equal(1);
-            accountClient.dataLakeAnalyticsAccountOperations.deleteStorageAccount(testResourceGroup, jobAndCatalogAccountName, azureBlobAccountName, function (err, result, request, response) {
+            accountClient.account.deleteStorageAccount(testResourceGroup, jobAndCatalogAccountName, azureBlobAccountName, function (err, result, request, response) {
               should.not.exist(err);
               should.not.exist(result);
               response.statusCode.should.equal(200);
-              accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
+              accountClient.account.get(testResourceGroup, jobAndCatalogAccountName, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
@@ -364,11 +362,11 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     });
     
     it('Delete command should work', function (done) {
-      accountClient.dataLakeAnalyticsAccountOperations.deleteMethod(testResourceGroup, accountName, function (err, result, request, response) {
+      accountClient.account.deleteMethod(testResourceGroup, accountName, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equalOneOf([200, 204]);
-        accountClient.dataLakeAnalyticsAccountOperations.get(testResourceGroup, accountName, function (err, result, request, response) {
+        accountClient.account.get(testResourceGroup, accountName, function (err, result, request, response) {
           should.exist(err);
           should.not.exist(result);
           err.statusCode.should.equal(404);
@@ -389,7 +387,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         }
       };
       
-      jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
+      jobClient.job.create(job.jobId, job, jobAndCatalogAccountName, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -397,7 +395,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         var jobId = result.jobId;
         result.name.should.be.equal(jobName);
         listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
-          jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
+          jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -420,18 +418,18 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         }
       };
       
-      jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
+      jobClient.job.create(job.jobId, job, jobAndCatalogAccountName, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
         result.jobId.should.not.be.empty;
         var jobId = result.jobId;
         result.name.should.be.equal(jobName);
-        jobClient.job.cancel(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
+        jobClient.job.cancel(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
           should.not.exist(err);
           should.not.exist(result);
           response.statusCode.should.equal(200);
-          jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
+          jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -456,7 +454,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     it('list commands should work', function (done) {
       var scriptToRun = 'DROP DATABASE IF EXISTS ' + dbName + '; CREATE DATABASE ' + dbName + '; CREATE TABLE ' + dbName + '.dbo.' + tableName + '( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS ' + dbName + '.dbo.' + tvfName + '; CREATE FUNCTION ' + dbName + '.dbo.' + tvfName + '() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @"/Samples/Data/WebLog.log" USING Extractors.Text(delimiter:\' \'); RETURN; END; CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE ' + dbName + '.dbo.' + procName + '() AS BEGIN CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;';
       // Get the default database (master) and all databases.
-      catalogClient.catalog.getDatabase(jobAndCatalogAccountName, 'master', function (err, result, request, response) {
+      catalogClient.catalog.getDatabase('master', jobAndCatalogAccountName, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -471,7 +469,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             script: scriptToRun
           }
         };
-        jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
+        jobClient.job.create(job.jobId, job, jobAndCatalogAccountName, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -479,7 +477,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           var jobId = result.jobId;
           result.name.should.be.equal(jobName);
           listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
-            jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
+            jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
               should.not.exist(err);
               should.exist(result);
               response.statusCode.should.equal(200);
@@ -491,55 +489,55 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                 response.statusCode.should.equal(200);
                 result.length.should.be.above(1);
                 // now get the specific database we created
-                catalogClient.catalog.getDatabase(jobAndCatalogAccountName, dbName, function (err, result, request, response) {
+                catalogClient.catalog.getDatabase(dbName, jobAndCatalogAccountName, function (err, result, request, response) {
                   should.not.exist(err);
                   should.exist(result);
                   response.statusCode.should.equal(200);
                   result.databaseName.should.be.equal(dbName);
                   // list all tables in the db and confirm that there is one entry.
-                  catalogClient.catalog.listTables(jobAndCatalogAccountName, dbName, 'dbo', function (err, result, request, response) {
+                  catalogClient.catalog.listTables(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
                     result.length.should.be.equal(1);
                     // now get the specific table we created
-                    catalogClient.catalog.getTable(jobAndCatalogAccountName, dbName, 'dbo', tableName, function (err, result, request, response) {
+                    catalogClient.catalog.getTable(dbName, 'dbo', tableName, jobAndCatalogAccountName, function (err, result, request, response) {
                       should.not.exist(err);
                       should.exist(result);
                       response.statusCode.should.equal(200);
                       result.tableName.should.be.equal(tableName);
                       // list all tvfs in the db and confirm that there is one entry.
-                      catalogClient.catalog.listTableValuedFunctions(jobAndCatalogAccountName, dbName, 'dbo', function (err, result, request, response) {
+                      catalogClient.catalog.listTableValuedFunctions(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
                         should.not.exist(err);
                         should.exist(result);
                         response.statusCode.should.equal(200);
                         result.length.should.be.equal(1);
                         // now get the specific tvf we created
-                        catalogClient.catalog.getTableValuedFunction(jobAndCatalogAccountName, dbName, 'dbo', tvfName, function (err, result, request, response) {
+                        catalogClient.catalog.getTableValuedFunction(dbName, 'dbo', tvfName, jobAndCatalogAccountName, function (err, result, request, response) {
                           should.not.exist(err);
                           should.exist(result);
                           response.statusCode.should.equal(200);
                           result.tvfName.should.be.equal(tvfName);
                           // list all views in the db and confirm that there is one entry.
-                          catalogClient.catalog.listViews(jobAndCatalogAccountName, dbName, 'dbo', function (err, result, request, response) {
+                          catalogClient.catalog.listViews(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
                             should.not.exist(err);
                             should.exist(result);
                             response.statusCode.should.equal(200);
                             result.length.should.be.equal(1);
                             // now get the specific view we created
-                            catalogClient.catalog.getView(jobAndCatalogAccountName, dbName, 'dbo', viewName, function (err, result, request, response) {
+                            catalogClient.catalog.getView(dbName, 'dbo', viewName, jobAndCatalogAccountName, function (err, result, request, response) {
                               should.not.exist(err);
                               should.exist(result);
                               response.statusCode.should.equal(200);
                               result.viewName.should.be.equal(viewName);
                               // list all procedures in the db and confirm that there is one entry.
-                              catalogClient.catalog.listProcedures(jobAndCatalogAccountName, dbName, 'dbo', function (err, result, request, response) {
+                              catalogClient.catalog.listProcedures(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
                                 should.not.exist(err);
                                 should.exist(result);
                                 response.statusCode.should.equal(200);
                                 result.length.should.be.equal(1);
                                 // now get the specific procedure we created
-                                catalogClient.catalog.getProcedure(jobAndCatalogAccountName, dbName, 'dbo', procName, function (err, result, request, response) {
+                                catalogClient.catalog.getProcedure(dbName, 'dbo', procName, jobAndCatalogAccountName, function (err, result, request, response) {
                                   should.not.exist(err);
                                   should.exist(result);
                                   response.statusCode.should.equal(200);
@@ -582,18 +580,18 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         }
       };
       
-      catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function (err, result, request, response) {
+      catalogClient.catalog.createSecret(databaseName, secretName, secretCreateParameters, jobAndCatalogAccountName, function (err, result, request, response) {
         should.not.exist(err);
         // should.exist(result);
         response.statusCode.should.equal(200);
         // update the secret's password
         secretCreateParameters.password = setSecretPwd;
-        catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function (err, result, request, response) {
+        catalogClient.catalog.updateSecret(databaseName, secretName, secretCreateParameters, jobAndCatalogAccountName, function (err, result, request, response) {
           should.not.exist(err);
           // should.exist(result);
           response.statusCode.should.equal(200);
           // Create a credential that uses the secret
-          jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
+          jobClient.job.create(job.jobId, job, jobAndCatalogAccountName, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -601,36 +599,36 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             var jobId = result.jobId;
             result.name.should.be.equal(jobName);
             listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
-              jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
+              jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
                 result.result.should.be.equal('Succeeded');
                 // list all credentials in the db and confirm that there is one entry.
-                catalogClient.catalog.listCredentials(jobAndCatalogAccountName, databaseName, function (err, result, request, response) {
+                catalogClient.catalog.listCredentials(databaseName, jobAndCatalogAccountName, function (err, result, request, response) {
                   should.not.exist(err);
                   should.exist(result);
                   response.statusCode.should.equal(200);
                   result.length.should.be.equal(1);
                   // now get the specific credential we created
-                  catalogClient.catalog.getCredential(jobAndCatalogAccountName, databaseName, credName, function (err, result, request, response) {
+                  catalogClient.catalog.getCredential(databaseName, credName, jobAndCatalogAccountName, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
                     result.credentialName.should.be.equal(credName);
                     // get the secret
-                    catalogClient.catalog.getSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                    catalogClient.catalog.getSecret(databaseName, secretName, jobAndCatalogAccountName, function(err, result, request, response) {
                       should.not.exist(err);
                       should.exist(result);
                       response.statusCode.should.equal(200);
                       result.creationTime.should.not.be.empty;
                       // delete the secret
-                      catalogClient.catalog.deleteSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                      catalogClient.catalog.deleteSecret(databaseName, secretName, jobAndCatalogAccountName, function(err, result, request, response) {
                         should.not.exist(err);
                         should.not.exist(result);
                         response.statusCode.should.equal(200);
                         // try to set the secret again (should fail)
-                        catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function(err, result, request, response) {
+                        catalogClient.catalog.updateSecret(databaseName, secretName, secretCreateParameters, jobAndCatalogAccountName, function(err, result, request, response) {
                           should.exist(err);
                           should.not.exist(result);
                           err.statusCode.should.equal(404);
@@ -656,7 +654,7 @@ function listPoll(suite, attemptsLeft, accountName, jobId, callback) {
   }
 
   var objectFound = false;
-  jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
+  jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
     should.not.exist(err);
     should.exist(result);
     response.statusCode.should.equal(200);

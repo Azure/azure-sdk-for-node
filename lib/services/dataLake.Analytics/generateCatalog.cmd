@@ -4,10 +4,9 @@
 ::
 
 @echo off
-set autoRestVersion=0.15.0-Nightly20160127
+set autoRestVersion=0.15.0-Nightly20160222
 if  "%1" == "" (
-    ::set specFile="https://raw.githubusercontent.com/begoldsm/azure-rest-api-specs/master/arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json"
-    set specFile="C:\src\AzureSDK\azure-rest-api-specs\arm-datalake-analytics\catalog\2015-10-01-preview\swagger\catalog.json"
+    set specFile="https://raw.githubusercontent.com/begoldsm/azure-rest-api-specs/master/arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json"
 ) else (
     set specFile="%1"
 )

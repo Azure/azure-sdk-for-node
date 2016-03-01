@@ -15,63 +15,60 @@
  * Initializes a new instance of the JobStatisticsVertexStage class.
  * @constructor
  * The Data Lake Analytics U-SQL job statistics vertex stage information.
- * @member {number} [dataRead] Gets or sets the amount of data read, in bytes.
+ * @member {number} [dataRead] Gets the amount of data read, in bytes.
  * 
- * @member {number} [dataReadCrossPod] Gets or sets the amount of data read
- * across multiple pods, in bytes.
+ * @member {number} [dataReadCrossPod] Gets the amount of data read across
+ * multiple pods, in bytes.
  * 
- * @member {number} [dataReadIntraPod] Gets or sets the amount of data read in
- * one pod, in bytes.
+ * @member {number} [dataReadIntraPod] Gets the amount of data read in one
+ * pod, in bytes.
  * 
- * @member {number} [dataToRead] Gets or sets the amount of data remaining to
- * be read, in bytes.
+ * @member {number} [dataToRead] Gets the amount of data remaining to be read,
+ * in bytes.
  * 
- * @member {number} [dataWritten] Gets or sets the amount of data written, in
- * bytes.
+ * @member {number} [dataWritten] Gets the amount of data written, in bytes.
  * 
- * @member {number} [duplicateDiscardCount] Gets or sets the number of
- * duplicates that were discarded.
+ * @member {number} [duplicateDiscardCount] Gets the number of duplicates that
+ * were discarded.
  * 
- * @member {number} [failedCount] Gets or sets the number of failures that
- * occured in this stage.
+ * @member {number} [failedCount] Gets the number of failures that occured in
+ * this stage.
  * 
- * @member {number} [maxVertexDataRead] Gets or sets the maximum amount of
- * data read in a single vertex, in bytes.
+ * @member {number} [maxVertexDataRead] Gets the maximum amount of data read
+ * in a single vertex, in bytes.
  * 
- * @member {number} [minVertexDataRead] Gets or sets the minimum amount of
- * data read in a single vertex, in bytes.
+ * @member {number} [minVertexDataRead] Gets the minimum amount of data read
+ * in a single vertex, in bytes.
  * 
- * @member {number} [readFailureCount] Gets or sets the number of read
- * failures in this stage.
+ * @member {number} [readFailureCount] Gets the number of read failures in
+ * this stage.
  * 
- * @member {number} [revocationCount] Gets or sets the number of vertices that
- * were revoked during this stage.
+ * @member {number} [revocationCount] Gets the number of vertices that were
+ * revoked during this stage.
  * 
- * @member {number} [runningCount] Gets or sets the number of currently
- * running vertices in this stage.
+ * @member {number} [runningCount] Gets the number of currently running
+ * vertices in this stage.
  * 
- * @member {number} [scheduledCount] Gets or sets the number of currently
- * scheduled vertices in this stage
+ * @member {number} [scheduledCount] Gets the number of currently scheduled
+ * vertices in this stage
  * 
- * @member {string} [stageName] Gets or sets the name of this stage in job
- * execution.
+ * @member {string} [stageName] Gets the name of this stage in job execution.
  * 
- * @member {number} [succeededCount] Gets or sets the number of vertices that
+ * @member {number} [succeededCount] Gets the number of vertices that
  * succeeded in this stage.
  * 
- * @member {number} [tempDataWritten] Gets or sets the amount of temporary
- * data written, in bytes.
+ * @member {number} [tempDataWritten] Gets the amount of temporary data
+ * written, in bytes.
  * 
- * @member {number} [totalCount] Gets or sets the total vertex count for this
- * stage.
+ * @member {number} [totalCount] Gets the total vertex count for this stage.
  * 
- * @member {number} [totalFailedTime] Gets or sets the amount of time that
- * failed vertices took up in this stage.
+ * @member {number} [totalFailedTime] Gets the amount of time that failed
+ * vertices took up in this stage.
  * 
- * @member {number} [totalProgress] Gets or sets the current progress of this
- * stage, as a percentage.
+ * @member {number} [totalProgress] Gets the current progress of this stage,
+ * as a percentage.
  * 
- * @member {number} [totalSucceededTime] Gets or sets the amount of time all
+ * @member {number} [totalSucceededTime] Gets the amount of time all
  * successful vertices took in this stage.
  * 
  */
@@ -103,10 +100,10 @@ export interface JobStatisticsVertexStage {
  * Initializes a new instance of the JobStatistics class.
  * @constructor
  * The Data Lake Analytics U-SQL job execution statistics.
- * @member {date} [lastUpdateTimeUtc] Gets or sets the last update time for
- * the statistics.
+ * @member {date} [lastUpdateTimeUtc] Gets the last update time for the
+ * statistics.
  * 
- * @member {array} [stages] Gets or sets the list of stages for the job.
+ * @member {array} [stages] Gets the list of stages for the job.
  * 
  */
 export interface JobStatistics {
@@ -119,13 +116,11 @@ export interface JobStatistics {
  * Initializes a new instance of the JobDataPath class.
  * @constructor
  * A Data Lake Analytics U-SQL job data path item.
- * @member {string} [jobId] Gets or sets the id of the job this data is for.
+ * @member {string} [jobId] Gets the id of the job this data is for.
  * 
- * @member {string} [command] Gets or sets the command that this job data
- * relates to.
+ * @member {string} [command] Gets the command that this job data relates to.
  * 
- * @member {array} [paths] Gets or sets the list of paths to all of the job
- * data.
+ * @member {array} [paths] Gets the list of paths to all of the job data.
  * 
  */
 export interface JobDataPath {
@@ -140,15 +135,14 @@ export interface JobDataPath {
  * @constructor
  * The Data Lake Analytics U-SQL job state audit records for tracking the
  * lifecycle of a job.
- * @member {string} [newState] Gets or sets the new state the job is in.
+ * @member {string} [newState] Gets the new state the job is in.
  * 
- * @member {date} [timeStamp] Gets or sets the time stamp that the state
- * change took place.
+ * @member {date} [timeStamp] Gets the time stamp that the state change took
+ * place.
  * 
- * @member {string} [requestedByUser] Gets or sets the user who requests the
- * change.
+ * @member {string} [requestedByUser] Gets the user who requests the change.
  * 
- * @member {string} [details] Gets or sets  the details of the audit log.
+ * @member {string} [details] Gets  the details of the audit log.
  * 
  */
 export interface JobStateAuditRecord {
@@ -163,12 +157,12 @@ export interface JobStateAuditRecord {
  * Initializes a new instance of the JobResource class.
  * @constructor
  * The Data Lake Analytics U-SQL job resources.
- * @member {string} [name] Gets or sets the name of the resource.
+ * @member {string} [name] Gets or set the name of the resource.
  * 
  * @member {string} [resourcePath] Gets or sets the path to the resource.
  * 
  * @member {string} [type] Gets or sets the job resource type. Possible values
- * for this property include: 'VertexResource', 'StatisticsResource'.
+ * include: 'VertexResource', 'StatisticsResource'
  * 
  */
 export interface JobResource {
@@ -198,67 +192,65 @@ export interface JobProperties {
 
 /**
  * @class
- * Initializes a new instance of the USqlProperties class.
+ * Initializes a new instance of the USqlJobProperties class.
  * @constructor
  * @member {array} [resources] Gets or sets the list of resources that are
  * required by the job
  * 
  * @member {object} [statistics] Gets or sets the job specific statistics.
  * 
- * @member {date} [statistics.lastUpdateTimeUtc] Gets or sets the last update
- * time for the statistics.
+ * @member {date} [statistics.lastUpdateTimeUtc] Gets the last update time for
+ * the statistics.
  * 
- * @member {array} [statistics.stages] Gets or sets the list of stages for the
- * job.
+ * @member {array} [statistics.stages] Gets the list of stages for the job.
  * 
  * @member {object} [debugData] Gets or sets the job specific debug data
  * locations.
  * 
- * @member {string} [debugData.jobId] Gets or sets the id of the job this data
- * is for.
+ * @member {string} [debugData.jobId] Gets the id of the job this data is for.
  * 
- * @member {string} [debugData.command] Gets or sets the command that this job
- * data relates to.
+ * @member {string} [debugData.command] Gets the command that this job data
+ * relates to.
  * 
- * @member {array} [debugData.paths] Gets or sets the list of paths to all of
- * the job data.
+ * @member {array} [debugData.paths] Gets the list of paths to all of the job
+ * data.
  * 
- * @member {string} [algebraFilePath] Gets or sets the U-SQL algebra file path
- * after the job has completed
+ * @member {string} [algebraFilePath] Gets the U-SQL algebra file path after
+ * the job has completed
  * 
- * @member {string} [totalCompilationTime] Gets or sets the total time this
- * job spent compiling. This value should not be set by the user and will be
- * ignored if it is.
+ * @member {string} [totalCompilationTime] Gets the total time this job spent
+ * compiling. This value should not be set by the user and will be ignored if
+ * it is.
  * 
- * @member {string} [totalPauseTime] Gets or sets the total time this job
- * spent paused. This value should not be set by the user and will be ignored
- * if it is.
+ * @member {string} [totalPauseTime] Gets the total time this job spent
+ * paused. This value should not be set by the user and will be ignored if it
+ * is.
  * 
- * @member {string} [totalQueuedTime] Gets or sets the total time this job
- * spent queued. This value should not be set by the user and will be ignored
- * if it is.
+ * @member {string} [totalQueuedTime] Gets the total time this job spent
+ * queued. This value should not be set by the user and will be ignored if it
+ * is.
  * 
- * @member {string} [totalRunningTime] Gets or sets the total time this job
- * spent executing. This value should not be set by the user and will be
- * ignored if it is.
+ * @member {string} [totalRunningTime] Gets the total time this job spent
+ * executing. This value should not be set by the user and will be ignored if
+ * it is.
  * 
- * @member {string} [rootProcessNodeId] Gets or sets the ID used to identify
- * the job manager coordinating job execution. This value should not be set
+ * @member {string} [rootProcessNodeId] Gets the ID used to identify the job
+ * manager coordinating job execution. This value should not be set by the
+ * user and will be ignored if it is.
+ * 
+ * @member {string} [yarnApplicationId] Gets the ID used to identify the yarn
+ * application executing the job. This value should not be set by the user
+ * and will be ignored if it is.
+ * 
+ * @member {number} [yarnApplicationTimeStamp] Gets the timestamp (in ticks)
+ * for the yarn application executing the job. This value should not be set
  * by the user and will be ignored if it is.
  * 
- * @member {string} [yarnApplicationId] Gets or sets the ID used to identify
- * the yarn application executing the job. This value should not be set by
- * the user and will be ignored if it is.
- * 
- * @member {number} [yarnApplicationTimeStamp] Gets or sets the timestamp (in
- * ticks) for the yarn application executing the job. This value should not
- * be set by the user and will be ignored if it is.
- * 
  * @member {string} [compileMode] Gets or sets the compile mode for the job.
- * Possible values for this property include: 'Semantic', 'Full', 'SingleBox'.
+ * Possible values include: 'Semantic', 'Full', 'SingleBox'
  * 
  */
-export interface USqlProperties extends JobProperties {
+export interface USqlJobProperties extends JobProperties {
     resources?: JobResource[];
     statistics?: JobStatistics;
     debugData?: JobDataPath;
@@ -299,7 +291,7 @@ export interface HiveJobStatementInfo {
 
 /**
  * @class
- * Initializes a new instance of the HiveProperties class.
+ * Initializes a new instance of the HiveJobProperties class.
  * @constructor
  * @member {array} [statementInfo] Gets or sets the statement information for
  * each statement in the script
@@ -316,7 +308,7 @@ export interface HiveJobStatementInfo {
  * statements that have been run based on the script
  * 
  */
-export interface HiveProperties extends JobProperties {
+export interface HiveJobProperties extends JobProperties {
     statementInfo?: HiveJobStatementInfo[];
     logsLocation?: string;
     warehouseLocation?: string;
@@ -329,80 +321,76 @@ export interface HiveProperties extends JobProperties {
  * Initializes a new instance of the JobErrorDetails class.
  * @constructor
  * The Data Lake Analytics job error details.
- * @member {string} [description] Gets or sets the error message description
+ * @member {string} [description] Gets the error message description
  * 
- * @member {string} [details] Gets or sets the details of the error message.
+ * @member {string} [details] Gets the details of the error message.
  * 
- * @member {number} [endOffset] Gets or sets the end offset in the job where
- * the error was found.
+ * @member {number} [endOffset] Gets the end offset in the job where the error
+ * was found.
  * 
- * @member {string} [errorId] Gets or sets the specific identifier for the
- * type of error encountered in the job.
+ * @member {string} [errorId] Gets the specific identifier for the type of
+ * error encountered in the job.
  * 
- * @member {string} [filePath] Gets or sets the path to any supplemental error
- * files, if any.
+ * @member {string} [filePath] Gets the path to any supplemental error files,
+ * if any.
  * 
- * @member {string} [helpLink] Gets or sets the link to MSDN or Azure help for
- * this type of error, if any.
+ * @member {string} [helpLink] Gets the link to MSDN or Azure help for this
+ * type of error, if any.
  * 
- * @member {string} [internalDiagnostics] Gets or sets the internal diagnostic
- * stack trace if the user requesting the job error details has sufficient
+ * @member {string} [internalDiagnostics] Gets the internal diagnostic stack
+ * trace if the user requesting the job error details has sufficient
  * permissions it will be retrieved, otherwise it will be empty.
  * 
- * @member {number} [lineNumber] Gets or sets the specific line number in the
- * job where the error occured.
+ * @member {number} [lineNumber] Gets the specific line number in the job
+ * where the error occured.
  * 
- * @member {string} [message] Gets or sets the user friendly error message for
- * the failure.
+ * @member {string} [message] Gets the user friendly error message for the
+ * failure.
  * 
- * @member {string} [resolution] Gets or sets the recommended resolution for
- * the failure, if any.
+ * @member {string} [resolution] Gets the recommended resolution for the
+ * failure, if any.
  * 
- * @member {object} [innerError] Gets or sets the inner error of this specific
- * job error message, if any.
+ * @member {object} [innerError] Gets the inner error of this specific job
+ * error message, if any.
  * 
- * @member {number} [innerError.diagnosticCode] Gets or sets the diagnostic
- * error code.
+ * @member {number} [innerError.diagnosticCode] Gets the diagnostic error code.
  * 
- * @member {string} [innerError.severity] Gets or sets the severity level of
- * the failure. Possible values for this property include: 'Warning', 'Error'.
+ * @member {string} [innerError.severity] Gets the severity level of the
+ * failure. Possible values include: 'Warning', 'Error'
  * 
- * @member {string} [innerError.details] Gets or sets the details of the error
- * message.
+ * @member {string} [innerError.details] Gets the details of the error message.
  * 
- * @member {string} [innerError.component] Gets or sets the component that
- * failed.
+ * @member {string} [innerError.component] Gets the component that failed.
  * 
- * @member {string} [innerError.errorId] Gets or sets the specific identifier
- * for the type of error encountered in the job.
+ * @member {string} [innerError.errorId] Gets the specific identifier for the
+ * type of error encountered in the job.
  * 
- * @member {string} [innerError.helpLink] Gets or sets the link to MSDN or
- * Azure help for this type of error, if any.
+ * @member {string} [innerError.helpLink] Gets the link to MSDN or Azure help
+ * for this type of error, if any.
  * 
- * @member {string} [innerError.internalDiagnostics] Gets or sets the internal
+ * @member {string} [innerError.internalDiagnostics] Gets the internal
  * diagnostic stack trace if the user requesting the job error details has
  * sufficient permissions it will be retrieved, otherwise it will be empty.
  * 
- * @member {string} [innerError.message] Gets or sets the user friendly error
- * message for the failure.
+ * @member {string} [innerError.message] Gets the user friendly error message
+ * for the failure.
  * 
- * @member {string} [innerError.resolution] Gets or sets the recommended
- * resolution for the failure, if any.
+ * @member {string} [innerError.resolution] Gets the recommended resolution
+ * for the failure, if any.
  * 
- * @member {string} [innerError.source] Gets or sets the ultimate source of
- * the failure (usually either SYSTEM or USER).
+ * @member {string} [innerError.source] Gets the ultimate source of the
+ * failure (usually either SYSTEM or USER).
  * 
- * @member {string} [innerError.description] Gets or sets the error message
- * description
+ * @member {string} [innerError.description] Gets the error message description
  * 
- * @member {string} [severity] Gets or sets the severity level of the failure.
- * Possible values for this property include: 'Warning', 'Error'.
+ * @member {string} [severity] Gets the severity level of the failure.
+ * Possible values include: 'Warning', 'Error'
  * 
- * @member {string} [source] Gets or sets the ultimate source of the failure
- * (usually either SYSTEM or USER).
+ * @member {string} [source] Gets the ultimate source of the failure (usually
+ * either SYSTEM or USER).
  * 
- * @member {string} [startOffset] Gets or sets the end offset in the job where
- * the error was found
+ * @member {string} [startOffset] Gets the end offset in the job where the
+ * error was found
  * 
  */
 export interface JobErrorDetails {
@@ -427,35 +415,35 @@ export interface JobErrorDetails {
  * Initializes a new instance of the JobInnerError class.
  * @constructor
  * The Data Lake Analytics job error details.
- * @member {number} [diagnosticCode] Gets or sets the diagnostic error code.
+ * @member {number} [diagnosticCode] Gets the diagnostic error code.
  * 
- * @member {string} [severity] Gets or sets the severity level of the failure.
- * Possible values for this property include: 'Warning', 'Error'.
+ * @member {string} [severity] Gets the severity level of the failure.
+ * Possible values include: 'Warning', 'Error'
  * 
- * @member {string} [details] Gets or sets the details of the error message.
+ * @member {string} [details] Gets the details of the error message.
  * 
- * @member {string} [component] Gets or sets the component that failed.
+ * @member {string} [component] Gets the component that failed.
  * 
- * @member {string} [errorId] Gets or sets the specific identifier for the
- * type of error encountered in the job.
+ * @member {string} [errorId] Gets the specific identifier for the type of
+ * error encountered in the job.
  * 
- * @member {string} [helpLink] Gets or sets the link to MSDN or Azure help for
- * this type of error, if any.
+ * @member {string} [helpLink] Gets the link to MSDN or Azure help for this
+ * type of error, if any.
  * 
- * @member {string} [internalDiagnostics] Gets or sets the internal diagnostic
- * stack trace if the user requesting the job error details has sufficient
+ * @member {string} [internalDiagnostics] Gets the internal diagnostic stack
+ * trace if the user requesting the job error details has sufficient
  * permissions it will be retrieved, otherwise it will be empty.
  * 
- * @member {string} [message] Gets or sets the user friendly error message for
- * the failure.
+ * @member {string} [message] Gets the user friendly error message for the
+ * failure.
  * 
- * @member {string} [resolution] Gets or sets the recommended resolution for
- * the failure, if any.
+ * @member {string} [resolution] Gets the recommended resolution for the
+ * failure, if any.
  * 
- * @member {string} [source] Gets or sets the ultimate source of the failure
- * (usually either SYSTEM or USER).
+ * @member {string} [source] Gets the ultimate source of the failure (usually
+ * either SYSTEM or USER).
  * 
- * @member {string} [description] Gets or sets the error message description
+ * @member {string} [description] Gets the error message description
  * 
  */
 export interface JobInnerError {
@@ -477,45 +465,44 @@ export interface JobInnerError {
  * Initializes a new instance of the JobInformation class.
  * @constructor
  * The common Data Lake Analytics job information properties.
- * @member {string} jobId Gets or sets the job's unique identifier.
+ * @member {string} [jobId] Gets or sets the job's unique identifier (a GUID).
  * 
  * @member {string} name Gets or sets the friendly name of the job.
  * 
- * @member {string} type Gets or sets the job type of the current job (i.e.
- * Hive or U-SQL). Possible values for this property include: 'USql', 'Hive'.
+ * @member {string} type Gets or sets the job type of the current job (Hive or
+ * USql). Possible values include: 'USql', 'Hive'
  * 
  * @member {string} [submitter] Gets or sets the user or account that
  * submitted the job.
  * 
- * @member {array} [errorMessage] Gets or sets the error message details for
- * the job, if it failed.
+ * @member {array} [errorMessage] Gets the error message details for the job,
+ * if the job failed.
  * 
  * @member {number} [degreeOfParallelism] Gets or sets the degree of
- * parallelism used for this job. This must have a minimum value of 2
+ * parallelism used for this job. This must be greater than 0.
  * 
  * @member {number} [priority] Gets or sets the priority value for the current
- * job which must be greater than 1.
+ * job. Lower numbers have a higher priority. By default, a job has a
+ * priority of 1000. This must be greater than 0.
  * 
- * @member {date} [submitTime] Gets or sets the time the job was submitted to
- * the service.
+ * @member {date} [submitTime] Gets the time the job was submitted to the
+ * service.
  * 
- * @member {date} [startTime] Gets or sets the start time of the job.
+ * @member {date} [startTime] Gets the start time of the job.
  * 
- * @member {date} [endTime] Gets or sets the completion time of the job
+ * @member {date} [endTime] Gets the completion time of the job.
  * 
- * @member {string} [state] Gets or sets a more detailed state of the job than
- * the result. Especially used for intermediate states and errors. Possible
- * values for this property include: 'Accepted', 'Compiling', 'Ended', 'New',
- * 'Queued', 'Running', 'Scheduling', 'Starting', 'Paused',
- * 'WaitingForCapacity'.
+ * @member {string} [state] Gets the job state. When the job is in the Ended
+ * state, refer to Result and ErrorMessage for details. Possible values
+ * include: 'Accepted', 'Compiling', 'Ended', 'New', 'Queued', 'Running',
+ * 'Scheduling', 'Starting', 'Paused', 'WaitingForCapacity'
  * 
- * @member {string} [result] Gets or sets the result of job execution or the
- * current result of the running job. Possible values for this property
- * include: 'None', 'Succeeded', 'Cancelled', 'Failed'.
+ * @member {string} [result] Gets the result of job execution or the current
+ * result of the running job. Possible values include: 'None', 'Succeeded',
+ * 'Cancelled', 'Failed'
  * 
- * @member {array} [stateAuditRecords] Gets or sets the job state audit
- * records, indicating when various operations have been performed on this
- * job.
+ * @member {array} [stateAuditRecords] Gets the job state audit records,
+ * indicating when various operations have been performed on this job.
  * 
  * @member {object} properties Gets or sets the job specific properties.
  * 
@@ -528,7 +515,7 @@ export interface JobInnerError {
  * 
  */
 export interface JobInformation {
-    jobId: string;
+    jobId?: string;
     name: string;
     type: string;
     submitter?: string;

@@ -11,10 +11,10 @@
 import { ServiceClientOptions, RequestOptions, ServiceCallback, ServiceClientCredentials } from 'ms-rest';
 import * as operations from "./operations";
 
-declare class DataLakeAnalyticsManagementClient {
+declare class DataLakeAnalyticsAccountManagementClient {
     /**
      * @class
-     * Initializes a new instance of the DataLakeAnalyticsManagementClient class.
+     * Initializes a new instance of the DataLakeAnalyticsAccountManagementClient class.
      * @constructor
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
@@ -56,7 +56,7 @@ declare class DataLakeAnalyticsManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
-    dataLakeAnalyticsAccountOperations: operations.DataLakeAnalyticsAccountOperations;
+    account: operations.Account;
     }
 
-export = DataLakeAnalyticsManagementClient;
+export = DataLakeAnalyticsAccountManagementClient;

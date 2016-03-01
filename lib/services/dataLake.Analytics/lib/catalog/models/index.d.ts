@@ -580,7 +580,7 @@ export interface USqlTableValuedFunction extends CatalogItem {
  * @constructor
  * A Data Lake Analytics catalog U-SQL assembly file information item.
  * @member {string} [type] Gets or sets the assembly file type. Possible
- * values for this property include: 'Assembly', 'Resource'.
+ * values include: 'Assembly', 'Resource'
  * 
  * @member {string} [originalPath] Gets or sets the the original path to the
  * assembly file.

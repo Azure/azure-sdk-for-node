@@ -21,9 +21,7 @@ declare class DataLakeAnalyticsJobManagementClient {
      *
      * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
      *
-     * @param {string} jobserviceuri - Gets the URI used as the base for all cloud service requests.
-     *
-     * @param {string} [baseUri] - The base URI of the service.
+     * @param {string} adlaJobDnsSuffix - Gets the DNS suffix used as the base for all Azure Data Lake Analytics Job service requests.
      *
      * @param {object} [options] - The parameter options
      *
@@ -43,7 +41,7 @@ declare class DataLakeAnalyticsJobManagementClient {
      * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
      *
      */
-    constructor(credentials: ServiceClientCredentials, subscriptionId: string, jobserviceuri: string, baseUri: string, options: ServiceClientOptions);
+    constructor(credentials: ServiceClientCredentials, subscriptionId: string, adlaJobDnsSuffix: string, options: ServiceClientOptions);
 
     credentials: ServiceClientCredentials;
 
@@ -51,7 +49,7 @@ declare class DataLakeAnalyticsJobManagementClient {
 
     apiVersion: string;
 
-    jobserviceuri: string;
+    adlaJobDnsSuffix: string;
 
     acceptLanguage: string;
 

@@ -14,22 +14,24 @@ import * as models from '../models';
 
 /**
  * @class
- * DataLakeAnalyticsAccountOperations
+ * Account
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the DataLakeAnalyticsManagementClient.
+ * instance of the DataLakeAnalyticsAccountManagementClient.
  */
-export interface DataLakeAnalyticsAccountOperations {
+export interface Account {
 
     /**
-     * Gets the specified Azure storage account details in the specified Data Lake
+     * Gets the specified Azure Storage account linked to the given Data Lake
      * Analytics account.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the account to retrieve the Azure
-     * storage account details from
+     * @param {string} accountName The name of the Data Lake Analytics account
+     * from which to retrieve Azure storage account details.
      * 
-     * @param {string} storageAccountName The name of the account to retrieve
+     * @param {string} storageAccountName The name of the Azure Storage account
+     * for which to retrieve the details.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -43,13 +45,14 @@ export interface DataLakeAnalyticsAccountOperations {
     getStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.StorageAccountInfo>): void;
 
     /**
-     * Updates the Data Lake Analytics account specified to remove the specified
-     * Azure Storage account.
+     * Updates the specified Data Lake Analytics account to remove an Azure
+     * Storage account.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The Data Lake Analytics account name to remove
-     * the Azure Storage account from
+     * @param {string} accountName The name of the Data Lake Analytics account
+     * from which to remove the Azure Storage account.
      * 
      * @param {string} storageAccountName The name of the Azure Storage account to
      * remove
@@ -66,13 +69,14 @@ export interface DataLakeAnalyticsAccountOperations {
     deleteStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Updates the specified storage account. This is currently only supported for
-     * Azure blob accounts to update their access keys and suffix.
+     * Updates the Data Lake Analytics account to replace Azure Storage blob
+     * account details, such as the access key and/or suffix.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The Data Lake Analytics account name to modify
-     * storage accounts in
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * modify storage accounts in
      * 
      * @param {string} storageAccountName The Azure Storage account to modify
      * 
@@ -101,13 +105,14 @@ export interface DataLakeAnalyticsAccountOperations {
     updateStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, callback: ServiceCallback<void>): void;
 
     /**
-     * Updates the Data Lake Analytics account specified to include the additional
-     * Azure Storage account.
+     * Updates the specified Data Lake Analytics account to add an Azure Storage
+     * account.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The Data Lake Analytics account name to add the
-     * Azure Storage account to
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to add the Azure Storage account.
      * 
      * @param {string} storageAccountName The name of the Azure Storage account to
      * add
@@ -137,16 +142,17 @@ export interface DataLakeAnalyticsAccountOperations {
     addStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, callback: ServiceCallback<void>): void;
 
     /**
-     * Gets the specified Azure Storage container object associated with the
-     * specified Data Lake Analytics and Azure Storage accounts.
+     * Gets the specified Azure Storage container associated with the given Data
+     * Lake Analytics and Azure Storage accounts.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account to
-     * retrieve blob container for
+     * @param {string} accountName The name of the Data Lake Analytics account for
+     * which to retrieve blob container.
      * 
-     * @param {string} storageAccountName The name of the Azure storage account to
-     * retrieve the blob container from
+     * @param {string} storageAccountName The name of the Azure storage account
+     * from which to retrieve the blob container.
      * 
      * @param {string} containerName The name of the Azure storage container to
      * retrieve
@@ -163,16 +169,18 @@ export interface DataLakeAnalyticsAccountOperations {
     getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, callback: ServiceCallback<models.BlobContainer>): void;
 
     /**
-     * Gets the Azure Storage containers object associated with the specified Data
-     * Lake Analytics and Azure Storage accounts.
+     * Lists the Azure Storage containers, if any, associated with the specified
+     * Data Lake Analytics and Azure Storage account combination. The response
+     * includes a link to the next page of results, if any.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account to
-     * retrieve blob containers for
+     * @param {string} accountName The name of the Data Lake Analytics account for
+     * which to list Azure Storage blob containers.
      * 
-     * @param {string} storageAccountName The name of the Azure storage account to
-     * retrieve blob containers from
+     * @param {string} storageAccountName The name of the Azure storage account
+     * from which to list blob containers.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -186,10 +194,11 @@ export interface DataLakeAnalyticsAccountOperations {
     listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.ListBlobContainersResult>): void;
 
     /**
-     * Gets the next page of the Azure Storage Container objects within the
-     * specified Azure Storage account, if any.
+     * Gets the next page of Azure Storage containers, if any, within the
+     * specified Azure Storage account. The response includes a link to the next
+     * page of results, if any.
      *
-     * @param {string} nextLink The url to the next Azure Storage Container page.
+     * @param {string} nextLink The URL to the next Azure Storage Container page.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -206,7 +215,7 @@ export interface DataLakeAnalyticsAccountOperations {
      * Gets the next page of the SAS token objects within the specified Azure
      * Storage account and container, if any.
      *
-     * @param {string} nextLink The url to the next Azure Storage Container SAS
+     * @param {string} nextLink The URL to the next Azure Storage Container SAS
      * token page.
      * 
      * @param {object} [options] Optional Parameters.
@@ -222,18 +231,19 @@ export interface DataLakeAnalyticsAccountOperations {
 
     /**
      * Gets the SAS token associated with the specified Data Lake Analytics and
-     * WASB storage account and container combination.
+     * Azure Storage account and container combination.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account to
-     * get the SAS token for
+     * @param {string} accountName The name of the Data Lake Analytics account
+     * from which an Azure Storage account's SAS token is being requested.
      * 
-     * @param {string} storageAccountName The name of the Azure storage account to
-     * retrieve the blob container from
+     * @param {string} storageAccountName The name of the Azure storage account
+     * for which the SAS token is being requested.
      * 
-     * @param {string} containerName The name of the Azure storage container to
-     * retrieve
+     * @param {string} containerName The name of the Azure storage container for
+     * which the SAS token is being requested.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -250,12 +260,14 @@ export interface DataLakeAnalyticsAccountOperations {
      * Gets the specified Data Lake Store account details in the specified Data
      * Lake Analytics account.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the account to retrieve the Data
-     * Lake Store account details from
+     * @param {string} accountName The name of the Data Lake Analytics account
+     * from which to retrieve the Data Lake Store account details.
      * 
-     * @param {string} dataLakeStoreAccountName The name of the account to retrieve
+     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
+     * account to retrieve
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -272,10 +284,11 @@ export interface DataLakeAnalyticsAccountOperations {
      * Updates the Data Lake Analytics account specified to remove the specified
      * Data Lake Store account.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The Data Lake Analytics account name to remove
-     * the Data Lake Store account from
+     * @param {string} accountName The name of the Data Lake Analytics account
+     * from which to remove the Data Lake Store account.
      * 
      * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
      * account to remove
@@ -292,19 +305,19 @@ export interface DataLakeAnalyticsAccountOperations {
     deleteDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Updates the Data Lake Analytics account specified to include the additional
+     * Updates the specified Data Lake Analytics account to include the additional
      * Data Lake Store account.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The Data Lake Analytics account name to add the
-     * Data Lake Store account to
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to add the Data Lake Store account.
      * 
      * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
-     * account to add
+     * account to add.
      * 
-     * @param {object} parameters The parameters containing the optional
-     * properties associated with the named Data Lake account.
+     * @param {object} parameters The details of the Data Lake Store account.
      * 
      * @param {object} [parameters.properties] Gets or sets the properties for the
      * Data Lake Store account being added.
@@ -324,48 +337,47 @@ export interface DataLakeAnalyticsAccountOperations {
     addDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, parameters: models.AddDataLakeStoreParameters, callback: ServiceCallback<void>): void;
 
     /**
-     * Gets the first page of the Data Lake Analytics account objects within the
-     * subscription or within a specific resource group. This includes a link to
-     * the next page, if any.
+     * Gets the first page of Azure Storage accounts, if any, linked to the
+     * specified Data Lake Analytics account. The response includes a link to the
+     * next page, if any.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account to
-     * list Storage accounts for.
+     * @param {string} accountName The name of the Data Lake Analytics account for
+     * which to list Azure Storage accounts.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] Gets or sets OData filter. Optional.
+     * @param {string} [options.filter] The OData filter. Optional.
      * 
-     * @param {number} [options.top] Gets or sets the number of items to return.
-     * Optional.
+     * @param {number} [options.top] The number of items to return. Optional.
      * 
-     * @param {number} [options.skip] Gets or sets the number of items to skip
-     * over before returning elements. Optional.
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
      * 
-     * @param {string} [options.expand] Gets or sets OData expansion. Expand
-     * related resources in line with the retrieved resources, e.g.
-     * Categories/$expand=Products would expand Product data in line with each
-     * Category entry. Optional.
+     * @param {string} [options.expand] OData expansion. Expand related resources
+     * in line with the retrieved resources, e.g. Categories/$expand=Products
+     * would expand Product data in line with each Category entry. Optional.
      * 
-     * @param {string} [options.select] Gets or sets OData Select statement.
-     * Limits the properties on each entry to just those requested, e.g.
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
      * 
-     * @param {string} [options.orderby] Gets or sets the OrderBy clause. One or
-     * more comma-separated expressions with an optional "asc" (the default) or
-     * "desc" depending on the order youâ€™d like the values sorted, e.g.
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order youâ€™d like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
-     * @param {boolean} [options.count] Gets or sets a Boolean value of true or
-     * false to request a count of the matching resources included with the
-     * resources in the response, e.g. Categories?$count=true. Optional.
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in
+     * the response, e.g. Categories?$count=true. Optional.
      * 
-     * @param {string} [options.search] Gets or sets a free form search. A
-     * free-text search expression to match for whether a particular entry should
-     * be included in the feed, e.g. Categories?$search=blue OR green. Optional.
+     * @param {string} [options.search] A free form search. A free-text search
+     * expression to match for whether a particular entry should be included in
+     * the feed, e.g. Categories?$search=blue OR green. Optional.
      * 
-     * @param {string} [options.format] Gets or sets the return format. Return the
+     * @param {string} [options.format] The desired return format. Return the
      * response in particular formatxii without access to request headers for
      * standard content-type negotiation (e.g Orders?$format=json). Optional.
      * 
@@ -379,48 +391,47 @@ export interface DataLakeAnalyticsAccountOperations {
     listStorageAccounts(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
 
     /**
-     * Gets the first page of the Data Lake Store account objects within the
-     * specified Data Lake Analytics account. This includes a link to the next
+     * Gets the first page of Data Lake Store accounts linked to the specified
+     * Data Lake Analytics account. The response includes a link to the next
      * page, if any.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account to
-     * list Data Lake Store accounts for.
+     * @param {string} accountName The name of the Data Lake Analytics account for
+     * which to list Data Lake Store accounts.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] Gets or sets OData filter. Optional.
+     * @param {string} [options.filter] OData filter. Optional.
      * 
-     * @param {number} [options.top] Gets or sets the number of items to return.
-     * Optional.
+     * @param {number} [options.top] The number of items to return. Optional.
      * 
-     * @param {number} [options.skip] Gets or sets the number of items to skip
-     * over before returning elements. Optional.
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
      * 
-     * @param {string} [options.expand] Gets or sets OData expansion. Expand
-     * related resources in line with the retrieved resources, e.g.
-     * Categories/$expand=Products would expand Product data in line with each
-     * Category entry. Optional.
+     * @param {string} [options.expand] OData expansion. Expand related resources
+     * in line with the retrieved resources, e.g. Categories/$expand=Products
+     * would expand Product data in line with each Category entry. Optional.
      * 
-     * @param {string} [options.select] Gets or sets OData Select statement.
-     * Limits the properties on each entry to just those requested, e.g.
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
      * 
-     * @param {string} [options.orderby] Gets or sets the OrderBy clause. One or
-     * more comma-separated expressions with an optional "asc" (the default) or
-     * "desc" depending on the order youâ€™d like the values sorted, e.g.
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order youâ€™d like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
-     * @param {boolean} [options.count] Gets or sets a Boolean value of true or
-     * false to request a count of the matching resources included with the
-     * resources in the response, e.g. Categories?$count=true. Optional.
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in
+     * the response, e.g. Categories?$count=true. Optional.
      * 
-     * @param {string} [options.search] Gets or sets a free form search. A
-     * free-text search expression to match for whether a particular entry should
-     * be included in the feed, e.g. Categories?$search=blue OR green. Optional.
+     * @param {string} [options.search] A free form search. A free-text search
+     * expression to match for whether a particular entry should be included in
+     * the feed, e.g. Categories?$search=blue OR green. Optional.
      * 
-     * @param {string} [options.format] Gets or sets the return format. Return the
+     * @param {string} [options.format] The desired return format. Return the
      * response in particular formatxii without access to request headers for
      * standard content-type negotiation (e.g Orders?$format=json). Optional.
      * 
@@ -434,46 +445,45 @@ export interface DataLakeAnalyticsAccountOperations {
     listDataLakeStoreAccounts(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
 
     /**
-     * Gets the first page of the Data Lake Analytics account objects within a
+     * Gets the first page of Data Lake Analytics accounts, if any, within a
      * specific resource group. This includes a link to the next page, if any.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] Gets or sets OData filter. Optional.
+     * @param {string} [options.filter] OData filter. Optional.
      * 
-     * @param {number} [options.top] Gets or sets the number of items to return.
-     * Optional.
+     * @param {number} [options.top] The number of items to return. Optional.
      * 
-     * @param {number} [options.skip] Gets or sets the number of items to skip
-     * over before returning elements. Optional.
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
      * 
-     * @param {string} [options.expand] Gets or sets OData expansion. Expand
-     * related resources in line with the retrieved resources, e.g.
-     * Categories/$expand=Products would expand Product data in line with each
-     * Category entry. Optional.
+     * @param {string} [options.expand] OData expansion. Expand related resources
+     * in line with the retrieved resources, e.g. Categories/$expand=Products
+     * would expand Product data in line with each Category entry. Optional.
      * 
-     * @param {string} [options.select] Gets or sets OData Select statement.
-     * Limits the properties on each entry to just those requested, e.g.
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
      * 
-     * @param {string} [options.orderby] Gets or sets the OrderBy clause. One or
-     * more comma-separated expressions with an optional "asc" (the default) or
-     * "desc" depending on the order youâ€™d like the values sorted, e.g.
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order youâ€™d like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
-     * @param {boolean} [options.count] Gets or sets a Boolean value of true or
-     * false to request a count of the matching resources included with the
-     * resources in the response, e.g. Categories?$count=true. Optional.
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in
+     * the response, e.g. Categories?$count=true. Optional.
      * 
-     * @param {string} [options.search] Gets or sets a free form search. A
-     * free-text search expression to match for whether a particular entry should
-     * be included in the feed, e.g. Categories?$search=blue OR green. Optional.
+     * @param {string} [options.search] A free form search. A free-text search
+     * expression to match for whether a particular entry should be included in
+     * the feed, e.g. Categories?$search=blue OR green. Optional.
      * 
-     * @param {string} [options.format] Gets or sets the return format. Return the
-     * response in particular formatxii without access to request headers for
-     * standard content-type negotiation (e.g Orders?$format=json). Optional.
+     * @param {string} [options.format] The return format. Return the response in
+     * particular formatxii without access to request headers for standard
+     * content-type negotiation (e.g Orders?$format=json). Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -485,42 +495,40 @@ export interface DataLakeAnalyticsAccountOperations {
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
 
     /**
-     * Gets the first page of the Data Lake Analytics account objects within the
+     * Gets the first page of Data Lake Analytics accounts, if any, within the
      * current subscription. This includes a link to the next page, if any.
      *
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] Gets or sets OData filter. Optional.
+     * @param {string} [options.filter] OData filter. Optional.
      * 
-     * @param {number} [options.top] Gets or sets the number of items to return.
-     * Optional.
+     * @param {number} [options.top] The number of items to return. Optional.
      * 
-     * @param {number} [options.skip] Gets or sets the number of items to skip
-     * over before returning elements. Optional.
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
      * 
-     * @param {string} [options.expand] Gets or sets OData expansion. Expand
-     * related resources in line with the retrieved resources, e.g.
-     * Categories/$expand=Products would expand Product data in line with each
-     * Category entry. Optional.
+     * @param {string} [options.expand] OData expansion. Expand related resources
+     * in line with the retrieved resources, e.g. Categories/$expand=Products
+     * would expand Product data in line with each Category entry. Optional.
      * 
-     * @param {string} [options.select] Gets or sets OData Select statement.
-     * Limits the properties on each entry to just those requested, e.g.
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
      * 
-     * @param {string} [options.orderby] Gets or sets the OrderBy clause. One or
-     * more comma-separated expressions with an optional "asc" (the default) or
-     * "desc" depending on the order youâ€™d like the values sorted, e.g.
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order youâ€™d like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
-     * @param {boolean} [options.count] Gets or sets a Boolean value of true or
-     * false to request a count of the matching resources included with the
-     * resources in the response, e.g. Categories?$count=true. Optional.
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in
+     * the response, e.g. Categories?$count=true. Optional.
      * 
-     * @param {string} [options.search] Gets or sets a free form search. A
-     * free-text search expression to match for whether a particular entry should
-     * be included in the feed, e.g. Categories?$search=blue OR green. Optional.
+     * @param {string} [options.search] A free form search. A free-text search
+     * expression to match for whether a particular entry should be included in
+     * the feed, e.g. Categories?$search=blue OR green. Optional.
      * 
-     * @param {string} [options.format] Gets or sets the return format. Return the
+     * @param {string} [options.format] The desired return format. Return the
      * response in particular formatxii without access to request headers for
      * standard content-type negotiation (e.g Orders?$format=json). Optional.
      * 
@@ -534,11 +542,13 @@ export interface DataLakeAnalyticsAccountOperations {
     list(callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
 
     /**
-     * Gets the Data Lake Analytics account object specified by the account name.
+     * Gets details of the specified Data Lake Analytics account.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the account to retrieve
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * retrieve.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -555,9 +565,11 @@ export interface DataLakeAnalyticsAccountOperations {
      * Begins the delete delete process for the Data Lake Analytics account object
      * specified by the account name.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the account to delete
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * delete
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -574,9 +586,11 @@ export interface DataLakeAnalyticsAccountOperations {
      * Begins the delete delete process for the Data Lake Analytics account object
      * specified by the account name.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the account to delete
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * delete
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -594,8 +608,9 @@ export interface DataLakeAnalyticsAccountOperations {
      * account.This supplies the user with computation services for Data Lake
      * Analytics workloads
      *
-     * @param {string} resourceGroupName The name of the resource group the
-     * account will be associated with.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.the account will be associated
+     * with.
      * 
      * @param {string} name The name of the Data Lake Analytics account to create.
      * 
@@ -606,11 +621,6 @@ export interface DataLakeAnalyticsAccountOperations {
      * location.
      * 
      * @param {string} [parameters.name] Gets or sets the account name.
-     * 
-     * @param {string} [parameters.type] Gets or sets the namespace and type of
-     * the account.
-     * 
-     * @param {string} [parameters.id] Gets or sets the account subscription ID.
      * 
      * @param {object} [parameters.tags] Gets or sets the value of custom
      * properties.
@@ -634,15 +644,6 @@ export interface DataLakeAnalyticsAccountOperations {
      * 
      * @param {array} [parameters.properties.storageAccounts] Gets or sets the
      * list of Azure Blob storage accounts associated with this account.
-     * 
-     * @param {date} [parameters.properties.creationTime] Gets or sets the account
-     * creation time.
-     * 
-     * @param {date} [parameters.properties.lastModifiedTime] Gets or sets the
-     * account last modified time.
-     * 
-     * @param {string} [parameters.properties.endpoint] Gets or sets the full
-     * CName endpoint for this account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -660,8 +661,9 @@ export interface DataLakeAnalyticsAccountOperations {
      * account.This supplies the user with computation services for Data Lake
      * Analytics workloads
      *
-     * @param {string} resourceGroupName The name of the resource group the
-     * account will be associated with.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.the account will be associated
+     * with.
      * 
      * @param {string} name The name of the Data Lake Analytics account to create.
      * 
@@ -672,11 +674,6 @@ export interface DataLakeAnalyticsAccountOperations {
      * location.
      * 
      * @param {string} [parameters.name] Gets or sets the account name.
-     * 
-     * @param {string} [parameters.type] Gets or sets the namespace and type of
-     * the account.
-     * 
-     * @param {string} [parameters.id] Gets or sets the account subscription ID.
      * 
      * @param {object} [parameters.tags] Gets or sets the value of custom
      * properties.
@@ -700,15 +697,6 @@ export interface DataLakeAnalyticsAccountOperations {
      * 
      * @param {array} [parameters.properties.storageAccounts] Gets or sets the
      * list of Azure Blob storage accounts associated with this account.
-     * 
-     * @param {date} [parameters.properties.creationTime] Gets or sets the account
-     * creation time.
-     * 
-     * @param {date} [parameters.properties.lastModifiedTime] Gets or sets the
-     * account last modified time.
-     * 
-     * @param {string} [parameters.properties.endpoint] Gets or sets the full
-     * CName endpoint for this account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -725,7 +713,8 @@ export interface DataLakeAnalyticsAccountOperations {
      * Updates the Data Lake Analytics account object specified by the accountName
      * with the contents of the account object.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
      * @param {string} name The name of the Data Lake Analytics account to update.
      * 
@@ -736,11 +725,6 @@ export interface DataLakeAnalyticsAccountOperations {
      * location.
      * 
      * @param {string} [parameters.name] Gets or sets the account name.
-     * 
-     * @param {string} [parameters.type] Gets or sets the namespace and type of
-     * the account.
-     * 
-     * @param {string} [parameters.id] Gets or sets the account subscription ID.
      * 
      * @param {object} [parameters.tags] Gets or sets the value of custom
      * properties.
@@ -764,15 +748,6 @@ export interface DataLakeAnalyticsAccountOperations {
      * 
      * @param {array} [parameters.properties.storageAccounts] Gets or sets the
      * list of Azure Blob storage accounts associated with this account.
-     * 
-     * @param {date} [parameters.properties.creationTime] Gets or sets the account
-     * creation time.
-     * 
-     * @param {date} [parameters.properties.lastModifiedTime] Gets or sets the
-     * account last modified time.
-     * 
-     * @param {string} [parameters.properties.endpoint] Gets or sets the full
-     * CName endpoint for this account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -789,7 +764,8 @@ export interface DataLakeAnalyticsAccountOperations {
      * Updates the Data Lake Analytics account object specified by the accountName
      * with the contents of the account object.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
      * 
      * @param {string} name The name of the Data Lake Analytics account to update.
      * 
@@ -800,11 +776,6 @@ export interface DataLakeAnalyticsAccountOperations {
      * location.
      * 
      * @param {string} [parameters.name] Gets or sets the account name.
-     * 
-     * @param {string} [parameters.type] Gets or sets the namespace and type of
-     * the account.
-     * 
-     * @param {string} [parameters.id] Gets or sets the account subscription ID.
      * 
      * @param {object} [parameters.tags] Gets or sets the value of custom
      * properties.
@@ -829,15 +800,6 @@ export interface DataLakeAnalyticsAccountOperations {
      * @param {array} [parameters.properties.storageAccounts] Gets or sets the
      * list of Azure Blob storage accounts associated with this account.
      * 
-     * @param {date} [parameters.properties.creationTime] Gets or sets the account
-     * creation time.
-     * 
-     * @param {date} [parameters.properties.lastModifiedTime] Gets or sets the
-     * account last modified time.
-     * 
-     * @param {string} [parameters.properties.endpoint] Gets or sets the full
-     * CName endpoint for this account.
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -850,8 +812,9 @@ export interface DataLakeAnalyticsAccountOperations {
     beginUpdate(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
 
     /**
-     * Gets the Azure Storage containers object associated with the specified Data
-     * Lake Analytics and Azure Storage accounts.
+     * Lists the Azure Storage containers, if any, associated with the specified
+     * Data Lake Analytics and Azure Storage account combination. The response
+     * includes a link to the next page of results, if any.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -868,8 +831,9 @@ export interface DataLakeAnalyticsAccountOperations {
     listStorageContainersNext(nextPageLink: string, callback: ServiceCallback<models.ListBlobContainersResult>): void;
 
     /**
-     * Gets the next page of the Azure Storage Container objects within the
-     * specified Azure Storage account, if any.
+     * Gets the next page of Azure Storage containers, if any, within the
+     * specified Azure Storage account. The response includes a link to the next
+     * page of results, if any.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -905,7 +869,7 @@ export interface DataLakeAnalyticsAccountOperations {
 
     /**
      * Gets the SAS token associated with the specified Data Lake Analytics and
-     * WASB storage account and container combination.
+     * Azure Storage account and container combination.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -922,9 +886,9 @@ export interface DataLakeAnalyticsAccountOperations {
     listSasTokensNext(nextPageLink: string, callback: ServiceCallback<models.ListSasTokensResult>): void;
 
     /**
-     * Gets the first page of the Data Lake Analytics account objects within the
-     * subscription or within a specific resource group. This includes a link to
-     * the next page, if any.
+     * Gets the first page of Azure Storage accounts, if any, linked to the
+     * specified Data Lake Analytics account. The response includes a link to the
+     * next page, if any.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -941,8 +905,8 @@ export interface DataLakeAnalyticsAccountOperations {
     listStorageAccountsNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
 
     /**
-     * Gets the first page of the Data Lake Store account objects within the
-     * specified Data Lake Analytics account. This includes a link to the next
+     * Gets the first page of Data Lake Store accounts linked to the specified
+     * Data Lake Analytics account. The response includes a link to the next
      * page, if any.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -960,7 +924,7 @@ export interface DataLakeAnalyticsAccountOperations {
     listDataLakeStoreAccountsNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
 
     /**
-     * Gets the first page of the Data Lake Analytics account objects within a
+     * Gets the first page of Data Lake Analytics accounts, if any, within a
      * specific resource group. This includes a link to the next page, if any.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -978,7 +942,7 @@ export interface DataLakeAnalyticsAccountOperations {
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
 
     /**
-     * Gets the first page of the Data Lake Analytics account objects within the
+     * Gets the first page of Data Lake Analytics accounts, if any, within the
      * current subscription. This includes a link to the next page, if any.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
