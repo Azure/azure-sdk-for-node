@@ -3,6 +3,7 @@ var args = require('yargs').argv;
 var colors = require('colors');
 var fs = require('fs');
 var util = require('util');
+var path = require('path');
 var exec = require('child_process').exec;
 
 var mappings = {
@@ -63,20 +64,23 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.15.0-Nightly20160225';
+var defaultAutoRestVersion = '0.15.0-Nightly20160229';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
-var nugetExe = 'tools/nuget.exe';
-var autoRestExe = 'packages/autorest.' + defaultAutoRestVersion + '/tools/AutoRest.exe';
+var nugetExe = path.join('tools', 'nuget.exe');
+var autoRestExe = constructAutorestExePath(defaultAutoRestVersion);
 var nugetSource = 'https://www.myget.org/F/autorest/api/v2';
 var language = 'Azure.NodeJS';
 var modeler = 'Swagger';
 var isWindows = (process.platform.lastIndexOf('win') === 0);
-var clrCmd = function(cmd){
+function clrCmd(cmd){
   return isWindows ? cmd : ('mono ' + cmd);
 };
 
+function constructAutorestExePath(version) {
+  return path.join('packages', 'autorest.' + version, 'tools', 'AutoRest.exe');
+}
 function codegen(project, cb) {
   var found = false;
   if (mappings[project].autorestversion) {
@@ -84,7 +88,7 @@ function codegen(project, cb) {
   } else {
     usingAutoRestVersion = defaultAutoRestVersion;
   }
-  autoRestExe = 'packages/autorest.' + usingAutoRestVersion + '/tools/AutoRest.exe';
+  autoRestExe = constructAutorestExePath(usingAutoRestVersion);
   try {
     fs.statSync(autoRestExe);
     found = true;
@@ -96,7 +100,9 @@ function codegen(project, cb) {
   if (found) {
     generateProject(project, specRoot, usingAutoRestVersion);
   } else {
-    exec(clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + usingAutoRestVersion + ' -o packages', function(err, stdout, stderr) {
+    var nugetCmd2 = clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + usingAutoRestVersion + ' -o packages';
+    console.log('Downloading Autorest version: ' + nugetCmd2);
+    exec(nugetCmd2, function(err, stdout, stderr) {
       console.log(stdout);
       console.error(stderr);
       generateProject(project, specRoot, usingAutoRestVersion);
@@ -117,7 +123,7 @@ function generateProject(project, specRoot, autoRestVersion) {
 
   console.log(util.format('Generating "%s" from spec file "%s" with language "%s" and AutoRest version "%s".', 
     project,  specRoot + '/' + mappings[project].source, language, autoRestVersion));
-  autoRestExe = 'packages/autorest.' + autoRestVersion + '/tools/AutoRest.exe';
+  autoRestExe = constructAutorestExePath(autoRestVersion);
   var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT',
     autoRestExe, modeler, language, specPath, mappings[project].dir);
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
@@ -141,7 +147,9 @@ gulp.task('default', function() {
 });
 
 gulp.task('codegen', function(cb) {
-  exec(clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + defaultAutoRestVersion + ' -o packages', function(err, stdout, stderr) {
+  var nugetCmd = clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + defaultAutoRestVersion + ' -o packages';
+  console.log('Downloading default AutoRest version: ' + nugetCmd);
+  exec(nugetCmd, function(err, stdout, stderr) {
     console.log(stdout);
     console.error(stderr);
     if (project === undefined) {
