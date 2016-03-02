@@ -53,7 +53,7 @@ info:    ad app create command OK
 
 Let us create a serviceprincipal using the applicationId from the previous step.
 ```
-D:\sdk>azure ad sp create --aplicationId 56894bd4-0fde-41d8-a0d7-5bsslccety2
+D:\sdk>azure ad sp create --applicationId 56894bd4-0fde-41d8-a0d7-5bsslccety2
 info:    Executing command ad sp create
 + Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
 data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
