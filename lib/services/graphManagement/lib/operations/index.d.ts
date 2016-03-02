@@ -144,11 +144,11 @@ export interface ApplicationOperations {
 
 /**
  * @class
- * Objects
+ * ObjectOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the GraphRbacManagementClient.
  */
-export interface Objects {
+export interface ObjectOperations {
 
     /**
      * Gets the details for current logged in user
@@ -206,11 +206,11 @@ export interface Objects {
 
 /**
  * @class
- * Group
+ * GroupOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the GraphRbacManagementClient.
  */
-export interface Group {
+export interface GroupOperations {
 
     /**
      * Remove a memeber from a group. Reference:

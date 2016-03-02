@@ -147,18 +147,6 @@ export interface Application {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationListResult class.
- * @constructor
- * Role assignment list operation result.
- * @member {array} [value] Application list.
- * 
- */
-export interface ApplicationListResult {
-    value?: Application[];
-}
-
-/**
- * @class
  * Initializes a new instance of the GetObjectsParameters class.
  * @constructor
  * Request parameters for GetObjectsByObjectIds API call
