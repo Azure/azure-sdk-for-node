@@ -33,6 +33,10 @@ var mappings = {
     'source': 'arm-storage/2015-06-15/swagger/storage.json',
     'ft': 2
   },
+  'serviceFabric': {
+    'dir': 'serviceFabric/lib',
+    'source': 'arm-servicefabric/2016-01-28/swagger/servicefabric.json',
+  },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
     'source': 'arm-resources/resources/2015-11-01/swagger/resources.json'
@@ -56,7 +60,7 @@ var mappings = {
   }
 };
 
-var autoRestVersion = '0.15.0-Nightly20160203';
+var autoRestVersion = '0.15.0-Nightly20160219';
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
 var autoRestExe = 'packages\\autorest.' + autoRestVersion + '\\tools\\AutoRest.exe';
