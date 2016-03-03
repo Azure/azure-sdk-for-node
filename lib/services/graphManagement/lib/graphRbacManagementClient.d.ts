@@ -57,8 +57,8 @@ declare class GraphRbacManagementClient {
 
     // Operation groups
     applicationOperations: operations.ApplicationOperations;
-    objects: operations.Objects;
-    group: operations.Group;
+    objectOperations: operations.ObjectOperations;
+    groupOperations: operations.GroupOperations;
     servicePrincipalOperations: operations.ServicePrincipalOperations;
     userOperations: operations.UserOperations;
     }
