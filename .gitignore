@@ -42,3 +42,4 @@ child.conf.json
 
 # temporary test artifacts
 test/tmp/*
+pingme.txt
