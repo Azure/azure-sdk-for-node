@@ -155,7 +155,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         });
       }
       else {
-        accountClient.longRunningOperationRetryTimeoutInSeconds = 0;
+        accountClient.longRunningOperationRetryTimeout = 0;
         done();
       }
     });
