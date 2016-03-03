@@ -1000,18 +1000,6 @@
     <Compile Include="test\recordings\subscriptionClient-tests\suite.subscriptionClient-tests.nock.js" />
     <Compile Include="test\recordings\suite-base-tests\suite.suite-base-tests.nock.js" />
     <Compile Include="test\recordings\suite-base-tests\Test_Suite_Base_should_properly_record_and_retrieve_mock_variables.nock.js" />
-    <Compile Include="test\services\cdnManagement\cdnEndpoint-tests.js">
-      <TestFramework>Mocha</TestFramework>
-    </Compile>
-    <Compile Include="test\services\cdnManagement\cdnProfile-tests.js">
-      <TestFramework>Mocha</TestFramework>
-    </Compile>
-    <Compile Include="test\services\cdnManagement\cdnCustomDomain-tests.js">
-      <TestFramework>Mocha</TestFramework>
-    </Compile>
-    <Compile Include="test\services\cdnManagement\cdnOrigin-tests.js">
-      <TestFramework>Mocha</TestFramework>
-    </Compile>
     <Compile Include="test\services\computeManagement\computeManagementClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
@@ -1468,7 +1456,6 @@
     <Folder Include="test\recordings\subscriptionClient-tests" />
     <Folder Include="test\recordings\suite-base-tests" />
     <Folder Include="test\services" />
-    <Folder Include="test\services\cdnManagement\" />
     <Folder Include="test\services\computeManagement" />
     <Folder Include="test\services\dataLakeAnalyticsManagement\" />
     <Folder Include="test\services\HDInsight" />

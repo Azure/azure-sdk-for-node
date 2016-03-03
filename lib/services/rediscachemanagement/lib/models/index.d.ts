@@ -77,8 +77,8 @@ export interface Resource extends BaseResource {
  * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
  * 
  * @member {object} [redisConfiguration] All Redis Settings. Few possible
- * keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
- * etc.
+ * keys: <para>rdb-backup-enabled</para><para>rdb-storage-connection-string</para><para>rdb-backup-frequency</para><para>maxmemory-delta</para><para>maxmemory-policy</para><para>notify-keyspace-events</para><para>maxmemory-samples</para><para>slowlog-log-slower-than</para><para>slowlog-max-len</para><para>list-max-ziplist-entries</para><para>list-max-ziplist-value</para><para>hash-max-ziplist-entries</para><para>hash-max-ziplist-value</para><para>set-max-intset-entries</para><para>zset-max-ziplist-entries</para><para>zset-max-ziplist-value
+ * etc.</para>
  * 
  * @member {boolean} [enableNonSslPort] If the value is true, then the non-ssl
  * redis server port (6379) will be enabled.
@@ -166,8 +166,8 @@ export interface RedisAccessKeys {
  * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
  * 
  * @member {object} [redisConfiguration] All Redis Settings. Few possible
- * keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
- * etc.
+ * keys: <para>rdb-backup-enabled</para><para>rdb-storage-connection-string</para><para>rdb-backup-frequency</para><para>maxmemory-delta</para><para>maxmemory-policy</para><para>notify-keyspace-events</para><para>maxmemory-samples</para><para>slowlog-log-slower-than</para><para>slowlog-max-len</para><para>list-max-ziplist-entries</para><para>list-max-ziplist-value</para><para>hash-max-ziplist-entries</para><para>hash-max-ziplist-value</para><para>set-max-intset-entries</para><para>zset-max-ziplist-entries</para><para>zset-max-ziplist-value
+ * etc.</para>
  * 
  * @member {boolean} [enableNonSslPort] If the value is true, then the non-ssl
  * redis server port (6379) will be enabled.
@@ -235,8 +235,8 @@ export interface RedisResourceWithAccessKey extends Resource {
  * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
  * 
  * @member {object} [redisConfiguration] All Redis Settings. Few possible
- * keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
- * etc.
+ * keys: <para>rdb-backup-enabled</para><para>rdb-storage-connection-string</para><para>rdb-backup-frequency</para><para>maxmemory-delta</para><para>maxmemory-policy</para><para>notify-keyspace-events</para><para>maxmemory-samples</para><para>slowlog-log-slower-than</para><para>slowlog-max-len</para><para>list-max-ziplist-entries</para><para>list-max-ziplist-value</para><para>hash-max-ziplist-entries</para><para>hash-max-ziplist-value</para><para>set-max-intset-entries</para><para>zset-max-ziplist-entries</para><para>zset-max-ziplist-value
+ * etc.</para>
  * 
  * @member {boolean} [enableNonSslPort] If the value is true, then the non-ssl
  * redis server port (6379) will be enabled.

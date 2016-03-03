@@ -52,38 +52,12 @@ export interface Location {
  * 
  * @member {string} [state] Gets or sets the subscription state
  * 
- * @member {object} [subscriptionPolicies] Gets or sets the subscription
- * policies.
- * 
- * @member {string} [subscriptionPolicies.locationPlacementId] Gets or sets
- * the subscription location placement Id.
- * 
- * @member {string} [subscriptionPolicies.quotaId] Gets or sets the
- * subscription quota Id.
- * 
  */
 export interface Subscription {
     id?: string;
     subscriptionId?: string;
     displayName?: string;
     state?: string;
-    subscriptionPolicies?: SubscriptionPolicies;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubscriptionPolicies class.
- * @constructor
- * Subscription policies.
- * @member {string} [locationPlacementId] Gets or sets the subscription
- * location placement Id.
- * 
- * @member {string} [quotaId] Gets or sets the subscription quota Id.
- * 
- */
-export interface SubscriptionPolicies {
-    locationPlacementId?: string;
-    quotaId?: string;
 }
 
 /**

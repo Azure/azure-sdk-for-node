@@ -65,7 +65,6 @@ declare class WebSiteManagementClient {
     hostingEnvironments: operations.HostingEnvironments;
     managedHostingEnvironments: operations.ManagedHostingEnvironments;
     provider: operations.Provider;
-    recommendations: operations.Recommendations;
     serverFarms: operations.ServerFarms;
     sites: operations.Sites;
     topLevelDomains: operations.TopLevelDomains;
