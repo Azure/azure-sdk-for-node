@@ -1,15 +1,10 @@
-# Microsoft Azure SDK for Node.js - Cdn
+# Azure SDK for Node.js
 
-This project provides a Node.js package for accessing the Azure Cdn Client. Right now it supports:
-- **Node.js version: 0.10.0 or higher**
-- **API version: **
+[![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node)
 
-## Features
-- Manage Cdn Profile: create, update, delete, list, get.
-- Manage Cdn Endpoint: create, update, delete, list, get, start, stop validate custom domain.
-- Manage Cdn Origin: update, list, get.
-- Manage Cdn CustomDomain: creat, list, get, update.
-
+This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Services.
+## Non-Interactive Authentication
+If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](https://github.com/Azure/azure-sdk-for-node/blob/autorest/Documentation/Authentication.md).
 
 ## Install from npm
 
@@ -24,316 +19,46 @@ npm install azure
 ```
 &nbsp;
 
-## How to Use
+### Install individual modules
 
-### Initialise the client
-```javascript
-var msrestAzure = require('ms-rest-azure');
-var ManagementClient = require('../../../lib/services/cdnManagement/lib/cdnManagementClient');
-
-//user authentication
-var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
-//service principal authentication
-var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
-
-var client = new ManagementClient(credentials, 'your-subscription-id');
-```
-
-### Profile operations
-```javascript
-//List profiles under a subscription-id
-client.profiles.listBySubscriptionId(function(err, result, request, response) {
-    if (err) {
-        console.log(err);
-    } else {
-		var profiles = result
-		console.log(profiles.length);
-	}
-});
-
-//List profiles by resource group
-client.profiles.listByResourceGroup("your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    } else {
-		var profiles = result
-		console.log(profiles.length);
-	}
-});
-
-//Create profile under certain resource group
-var standardCreateParameters = {
-	location: 'West US',
-	tags: {
-	    tag1: 'val1',
-	    tag2: 'val2'
-	},
-	sku: {
-	    name: 'Standard'
-	}
-};
-
-client.profiles.create("your-profile-name", standardCreateParameters, "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    } else {
-		var profile = result;
-		console.log(profile.name);
-		console.log(profile.sku.name);
-	}
-});
-
-//Delete profile
-client.profiles.deleteIfExists("your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    }
-});
-
-//update tags
-var tags = {
-	tag1: 'val1',
-	tag2: 'val2',
-	tag3: 'val3'
-};
-
-client.profiles.update("your-profile-name", "your-resource-group-name", tags, function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    } else {
-		var profile = result;
-		console.log(profile.tags.tag1);
-		console.log(profile.tags.tag2);
-		console.log(profile.tags.tag3);
-	}
-});
-
-//Generate sso uri
-client.profiles.generateSsoUri("your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    } else {
-		console.log(result);
-	}
-});
-```
-
-### Endpoint operations
-```javascript
-//List endpoint by profile
-client.endpoints.listByProfile("your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    } else {
-		var endpoints = result;
-		console.log(endpoints.length);
-	}
-});
-
-//Create endpoint (Automatic start this endpoint)
-var endpointProperties = {
-	location: 'West US',
-		tags: {
-		tag1: 'val1'
-	},
-	origins: [{
-		name: 'newname',
-		hostName: 'newname.azure.com'
-	}]
-}
-
-client.endpoints.create("your-endpoint-name", validEndpointProperties, "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-    if (err) {
-        console.log(err);
-    } else {
-		var endpoint = result;
-		console.log(endpoint);
-	}
-});
-
-//Update endpoint
-var newEndpointProperties = {
-	location: 'West US',
-	tags: {
-		tag1: 'val2',
-		tag2: 'val1'
-	}
-  }
-
-client.endpoints.update("your-endpoint-name", newEndpointProperties, "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    } else {
-		var endpoint = result;
-		console.log(endpoint);
-	}
-});
-
-//Get Endpoint
-client.endpoints.get("your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    } else {
-		var endpoint = result;
-		console.log(endpoint);
-	}
-});
-
-//Purge Content
-var purgeContentPaths = [
-	'/movies/*',
-	'/pictures/pic1.jpg'
-]
-
-client.endpoints.purgeContent("your-endpoint-name", "your-profile-name", "your-resource-group-name", purgeContentPaths, function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    }
-});
-
-//Load Content
-var loadContentPaths = [
-	'/movies/amazing.mp4',
-	'/pictures/pic1.jpg'
-]
-
-client.endpoints.loadContent("your-endpoint-name", "your-profile-name", "your-resource-group-name", loadContentPaths, function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    }
-});
-
-//Stop
-client.endpoints.stop("your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    }
-});
-
-//Start
-client.endpoints.start("your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    }
-});
-
-//Validate custom domain
-client.endpoints.validateCustomDomain("your-endpoint-name", "your-profile-name", "your-resource-group-name", "your-hostName.whatever.com", function (err, result, request, response) {
-	if (err) {
-        console.log(err);
-    } else {
-		console.log(result.customDomainValidated);
-	}
-});
-
-//Delete endpoint
-client.endpoints.deleteIfExists("your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-	if (err) {
-        console.log(err);
-    }
-});
-```
-
-### Origin operations
-```javascript
-//List Origins
-client.origins.listByEndpoint("your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
-	if (err) {
-		console.log(err);
-	} else {
-		var origins = result;
-		//...
-	}
-});
-
-//Get origin
-client.origins.get("your-origin-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
-	if (err) {
-		console.log(err);
-	} else {
-		var origin = result;
-		//...
-	}
-});
-
-//Update origin
-var updateParameters = {
-	hostName: "somename.helloworld.com",
-	httpPort: 9874,
-	httpsPort: 9090
-}
-client.origins.update("your-origin-name", updateParameters, "your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
-    if (err) {
-		console.log(err);
-	}
-}
-
-//Delete origin
-client.origins.deleteIfExists("your-origin-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
-	if (err) {
-		console.log(err);
-	}
-});
-```
-
-### Custom domain operations
-```javascript
-//List custom domain by endpoint
-client.customDomains.listByEndpoint("your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
-		if (err) {
-		console.log(err);
-	} else {
-		var customDomains = result;
-		//...
-	}
-});
-
-//Create custom domain
-client.customDomains.create("your-custom-domain-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", "customdomainhostname.hello.com", function (err, result, request, response) {
-	if (err) {
-		console.log(err);
-	}
-});
-
-//Get custom domain
-client.customDomains.get("your-custom-domain-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
-	if (err) {
-		console.log(err);
-	} else {
-		var customDomain = result;
-		//...
-	}
-});
-
-//Delete custom domain
-client.customDomains.deleteIfExists("your-custom-domain-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
-	if (err) {
-		console.log(err);
-	}
-});
-```
-
-### Check Name Availability (only works for endpoint now)
-```javascript
-client.nameAvailability.checkNameAvailability("your-endpoint-name", "Microsoft.Cdn/Profiles/Endpoints", function(err, result, request, response) {
-	if (err) {
-		console.log(err);
-	} else {
-		console.log(result.nameAvailable);
-	}
-});
-```
-
-### Get Operations
-```javascript
-client.operations.list(function(err, result, request, response) {
-	if (err) {
-		console.log(err);
-	} else {
-		console.log(result);
-	}
-});
-```
+| **Azure Services**                                                                |
+| :-----------------------------------------------------------------------------    | :---------------------------      |
+| [Gallery](http://azure.microsoft.com/en-us/marketplace/)                          | `npm install azure-gallery`       |
+| [Key Vault](http://azure.microsoft.com/en-us/services/key-vault/)                 | `npm install azure-keyvault`      |
+| [Monitoring](https://msdn.microsoft.com/library/azure/dn306639.aspx)              | `npm install azure-monitoring`    |
+| [Scheduler](http://azure.microsoft.com/en-us/services/scheduler/)                 | `npm install azure-scheduler`     |
+| [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-sb`            |
+| [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-storage`       |
+| &nbsp;                                                                            |                                   |
+| **Azure Resource Management**                                                                                         |
+| [API Apps](http://azure.microsoft.com/en-us/services/app-service/api/)            | `npm install azure-arm-apiapp`    |
+| [Authorization](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-configure/) | `npm install azure-arm-authorization`    |
+| [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            | `npm install azure-arm-compute`|
+| [Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-resource`  |
+| [DNS](http://azure.microsoft.com/en-us/services/dns/)                             | `npm install azure-arm-dns`       |
+| [Insights](https://msdn.microsoft.com/en-us/library/azure/dn931943.aspx)          | `npm install azure-arm-insights`  |
+| [Key Vault](http://azure.microsoft.com/en-us/services/key-vault/)                 | `npm install azure-arm-keyvault`  |
+| [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-arm-network`   |
+| [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-arm-storage`   |
+| [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-arm-trafficManager`|
+| [WebApps (WebSites)](http://azure.microsoft.com/en-us/services/app-service/web/)  | `npm install azure-arm-website`   |
+| &nbsp;                                                                            |                                   |
+| **Azure Service Management**                                                                                          |
+| [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            |  `npm install azure-asm-compute`  |
+| [HDInsight](http://azure.microsoft.com/en-us/services/hdinsight/)                 | `npm install azure-asm-hdinsight` |
+| [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-asm-sb`        |
+| [Service Manager](https://msdn.microsoft.com/en-us/library/azure/ee460799.aspx)   | `npm install azure-asm-mgmt`      |
+| [Store](http://azure.microsoft.com/en-us/marketplace/)                            | `npm install azure-asm-store`     |
+| [Scheduler](http://azure.microsoft.com/en-us/services/scheduler/)                 | `npm install azure-asm-scheduler` |
+| [SQL Database](http://azure.microsoft.com/en-us/services/sql-database/)           | `npm install azure-asm-sql`       |
+| [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-asm-storage`   |
+| [Subscriptions](https://msdn.microsoft.com/en-us/library/azure/gg715315.aspx)     | `npm install azure-asm-subscription`|
+| [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-asm-trafficManager`|
+| [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-asm-network`   |
+| [WebSites](http://azure.microsoft.com/en-us/services/app-service/web/)            | `npm install azure-asm-website`   |
+| &nbsp;                                                                            |                                   |
+| **Base Libraries**                                                                |                                   |
+| Common SDK Functionality                                                          | `npm install azure-common`        |
 
 ## Need Help?
 
@@ -343,12 +68,11 @@ client.operations.list(function(err, result, request, response) {
 
 ## Related Projects
 
-- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
-- [AutoRest](https://github.com/Azure/autorest)
+* [Azure CLI](http://github.com/azure/azure-xplat-cli)
 
 ## Contribute
 
-* If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.com/guidelines.html).
+* If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
 
 ### Getting Started Developing
 Want to get started hacking on the code, super! Follow the following instructions to get up and running. These
@@ -367,3 +91,4 @@ get your code included into the project.
 1. Commit your changes (`git commit -am 'Add some feature'`)
 2. Push to the branch (`git push origin my-new-feature`)
 3. Create new Pull Request
+
