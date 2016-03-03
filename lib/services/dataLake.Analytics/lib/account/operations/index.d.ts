@@ -317,15 +317,16 @@ export interface Account {
      * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
      * account to add.
      * 
-     * @param {object} parameters The details of the Data Lake Store account.
-     * 
-     * @param {object} [parameters.properties] Gets or sets the properties for the
-     * Data Lake Store account being added.
-     * 
-     * @param {string} [parameters.properties.suffix] Gets or sets the optional
-     * suffix for the Data Lake Store account.
-     * 
      * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.parameters] The details of the Data Lake Store
+     * account.
+     * 
+     * @param {object} [options.parameters.properties] Gets or sets the properties
+     * for the Data Lake Store account being added.
+     * 
+     * @param {string} [options.parameters.properties.suffix] Gets or sets the
+     * optional suffix for the Data Lake Store account.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -333,8 +334,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    addDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, parameters: models.AddDataLakeStoreParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    addDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, parameters: models.AddDataLakeStoreParameters, callback: ServiceCallback<void>): void;
+    addDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { parameters? : models.AddDataLakeStoreParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets the first page of Azure Storage accounts, if any, linked to the

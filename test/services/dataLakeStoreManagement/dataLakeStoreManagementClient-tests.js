@@ -108,7 +108,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         });
       }
       else {
-        adlsClient.longRunningOperationRetryTimeoutInSeconds = 0;
+        adlsClient.longRunningOperationRetryTimeout = 0;
         done();
       }
     });
