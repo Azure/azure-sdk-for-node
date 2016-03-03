@@ -924,7 +924,7 @@ export interface VirtualMachines {
      * Gets or sets the boot diagnostics storage Uri. It should be a valid Uri
      * 
      * @param {object} [parameters.availabilitySet] Gets or sets the reference Id
-     * of the availailbity set to which this virtual machine belongs.
+     * of the availability set to which this virtual machine belongs.
      * 
      * @param {string} [parameters.availabilitySet.id] Resource Id
      * 
@@ -1146,7 +1146,7 @@ export interface VirtualMachines {
      * Gets or sets the boot diagnostics storage Uri. It should be a valid Uri
      * 
      * @param {object} [parameters.availabilitySet] Gets or sets the reference Id
-     * of the availailbity set to which this virtual machine belongs.
+     * of the availability set to which this virtual machine belongs.
      * 
      * @param {string} [parameters.availabilitySet.id] Resource Id
      * 

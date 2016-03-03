@@ -309,13 +309,13 @@ export interface OSDiskImage {
  * Initializes a new instance of the DataDiskImage class.
  * @constructor
  * Contains the data disk images information.
- * @member {number} lun Gets the LUN number for a data disk.This value is used
- * to identify data disk image inside the VMImage therefore it must be unique
- * for each data disk.The allowed character for the value is digit.
+ * @member {number} [lun] Gets the LUN number for a data disk.This value is
+ * used to identify data disk image inside the VMImage therefore it must be
+ * unique for each data disk.The allowed character for the value is digit.
  * 
  */
 export interface DataDiskImage {
-    lun: number;
+    lun?: number;
 }
 
 /**
@@ -1194,7 +1194,7 @@ export interface BootDiagnosticsInstanceView {
  * @member {array} [vmAgent.statuses] Gets or sets the resource status
  * information.
  * 
- * @member {array} [disks] Gets or sets the the disks information.
+ * @member {array} [disks] Gets or sets the disks information.
  * 
  * @member {array} [extensions] Gets or sets the extensions information.
  * 
@@ -1410,7 +1410,7 @@ export interface VirtualMachineInstanceView {
  * sets the boot diagnostics storage Uri. It should be a valid Uri
  * 
  * @member {object} [availabilitySet] Gets or sets the reference Id of the
- * availailbity set to which this virtual machine belongs.
+ * availability set to which this virtual machine belongs.
  * 
  * @member {string} [availabilitySet.id] Resource Id
  * 
@@ -1440,7 +1440,7 @@ export interface VirtualMachineInstanceView {
  * @member {array} [instanceView.vmAgent.statuses] Gets or sets the resource
  * status information.
  * 
- * @member {array} [instanceView.disks] Gets or sets the the disks information.
+ * @member {array} [instanceView.disks] Gets or sets the disks information.
  * 
  * @member {array} [instanceView.extensions] Gets or sets the extensions
  * information.
@@ -2269,7 +2269,7 @@ export interface VirtualMachineScaleSetSku {
  * @member {array} [instanceView.vmAgent.statuses] Gets or sets the resource
  * status information.
  * 
- * @member {array} [instanceView.disks] Gets or sets the the disks information.
+ * @member {array} [instanceView.disks] Gets or sets the disks information.
  * 
  * @member {array} [instanceView.extensions] Gets or sets the extensions
  * information.
@@ -2457,7 +2457,7 @@ export interface VirtualMachineScaleSetSku {
  * sets the boot diagnostics storage Uri. It should be a valid Uri
  * 
  * @member {object} [availabilitySet] Gets or sets the reference Id of the
- * availailbity set to which this virtual machine belongs.
+ * availability set to which this virtual machine belongs.
  * 
  * @member {string} [availabilitySet.id] Resource Id
  * 
@@ -2510,7 +2510,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
  * @member {array} [vmAgent.statuses] Gets or sets the resource status
  * information.
  * 
- * @member {array} [disks] Gets or sets the the disks information.
+ * @member {array} [disks] Gets or sets the disks information.
  * 
  * @member {array} [extensions] Gets or sets the extensions information.
  * 
