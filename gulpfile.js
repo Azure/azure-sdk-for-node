@@ -41,6 +41,10 @@ var mappings = {
     'source': 'arm-storage/2015-06-15/swagger/storage.json',
     'ft': 2
   },
+  'serviceFabric': {
+    'dir': 'serviceFabric/lib',
+    'source': 'arm-servicefabric/2016-01-28/swagger/servicefabric.json',
+  },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
     'source': 'arm-resources/resources/2015-11-01/swagger/resources.json'
