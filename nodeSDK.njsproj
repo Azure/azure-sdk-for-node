@@ -27,6 +27,10 @@
     <Content Include=".travis.yml" />
     <Content Include="ChangeLog.txt" />
     <Content Include="CONTRIBUTORS.txt" />
+    <Content Include="lib\services\cdnManagement\generate.cmd" />
+    <Content Include="lib\services\cdnManagement\LICENSE.txt" />
+    <Content Include="lib\services\cdnManagement\package.json" />
+    <Content Include="lib\services\cdnManagement\README.md" />
     <Content Include="lib\services\dataLake.Analytics\generate.cmd" />
     <Content Include="lib\services\dataLake.Analytics\generateAccount.cmd" />
     <Content Include="lib\services\dataLake.Analytics\generateCatalog.cmd" />
@@ -61,6 +65,44 @@
     <Content Include="jsdocs\jsdoc.conf.json" />
     <Compile Include="gulpfile.js" />
     <Compile Include="lib\azure.js" />
+    <Compile Include="lib\services\cdnManagement\lib\cdnManagementClient.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\checkNameAvailabilityInput.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\checkNameAvailabilityOutput.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\customDomain.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\customDomainListResult.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\customDomainParameters.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\deepCreatedOrigin.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\endpoint.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\endpointCreateParameters.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\endpointListResult.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\endpointUpdateParameters.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\errorResponse.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\index.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\loadParameters.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\operation.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\operationDisplay.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\operationListResult.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\origin.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\originListResult.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\originParameters.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\profile.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\profileCreateParameters.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\profileListResult.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\profileUpdateParameters.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\purgeParameters.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\resource.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\sku.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\ssoUri.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\trackedResource.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\validateCustomDomainInput.js" />
+    <Compile Include="lib\services\cdnManagement\lib\models\validateCustomDomainOutput.js" />
+    <Compile Include="lib\services\cdnManagement\lib\operations\customDomains.js" />
+    <Compile Include="lib\services\cdnManagement\lib\operations\endpoints.js" />
+    <Compile Include="lib\services\cdnManagement\lib\operations\index.js" />
+    <Compile Include="lib\services\cdnManagement\lib\operations\nameAvailability.js" />
+    <Compile Include="lib\services\cdnManagement\lib\operations\operations.js" />
+    <Compile Include="lib\services\cdnManagement\lib\operations\origins.js" />
+    <Compile Include="lib\services\cdnManagement\lib\operations\profiles.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\dataLakeAnalyticsManagementClient.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\addDataLakeStoreParameters.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\addStorageAccountParameters.js" />
@@ -436,6 +478,9 @@
     <Compile Include="lib\services\commerce\lib\usageAggregationManagementClient.js" />
     <Compile Include="lib\services\computeManagement\lib\compute.js" />
     <Compile Include="lib\services\computeManagement\lib\computeManagementClient.js" />
+    <TypeScriptCompile Include="lib\services\cdnManagement\lib\cdnManagementClient.d.ts" />
+    <TypeScriptCompile Include="lib\services\cdnManagement\lib\models\index.d.ts" />
+    <TypeScriptCompile Include="lib\services\cdnManagement\lib\operations\index.d.ts" />
     <TypeScriptCompile Include="lib\services\computeManagement2\lib\computeManagementClient.d.ts" />
     <Compile Include="lib\services\computeManagement2\lib\computeManagementClient.js" />
     <TypeScriptCompile Include="lib\services\computeManagement2\lib\models\index.d.ts" />
@@ -931,6 +976,9 @@
     <Compile Include="test\framework\subscriptionUtils.js" />
     <Compile Include="test\framework\suite-base.js" />
     <Content Include="test\tmp\tokenstore.json" />
+    <Compile Include="test\services\cdnManagement\cdnCheckNameAvailability-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\services\dataLakeAnalyticsManagement\dataLakeAnalyticsManagementClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
@@ -1000,6 +1048,18 @@
     <Compile Include="test\recordings\subscriptionClient-tests\suite.subscriptionClient-tests.nock.js" />
     <Compile Include="test\recordings\suite-base-tests\suite.suite-base-tests.nock.js" />
     <Compile Include="test\recordings\suite-base-tests\Test_Suite_Base_should_properly_record_and_retrieve_mock_variables.nock.js" />
+    <Compile Include="test\services\cdnManagement\cdnEndpoint-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\services\cdnManagement\cdnProfile-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\services\cdnManagement\cdnCustomDomain-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\services\cdnManagement\cdnOrigin-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\services\computeManagement\computeManagementClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
@@ -1084,6 +1144,10 @@
     <Folder Include="lib\services\apiAppManagement\lib" />
     <Folder Include="lib\services\authorizationManagement" />
     <Folder Include="lib\services\authorizationManagement\lib" />
+    <Folder Include="lib\services\cdnManagement\" />
+    <Folder Include="lib\services\cdnManagement\lib\" />
+    <Folder Include="lib\services\cdnManagement\lib\models\" />
+    <Folder Include="lib\services\cdnManagement\lib\operations\" />
     <Folder Include="lib\services\commerce" />
     <Folder Include="lib\services\commerce\lib" />
     <Folder Include="lib\services\computeManagement" />
@@ -1456,6 +1520,7 @@
     <Folder Include="test\recordings\subscriptionClient-tests" />
     <Folder Include="test\recordings\suite-base-tests" />
     <Folder Include="test\services" />
+    <Folder Include="test\services\cdnManagement\" />
     <Folder Include="test\services\computeManagement" />
     <Folder Include="test\services\dataLakeAnalyticsManagement\" />
     <Folder Include="test\services\HDInsight" />
