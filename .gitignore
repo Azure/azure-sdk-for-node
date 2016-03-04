@@ -6,9 +6,11 @@ packages/*
 *.suo
 *.user
 .ntvs_analysis.dat
+.ntvs_analysis.dat.tmp
 obj/*
 examples/obj
 examples/.ntvs_analysis.dat
+examples/.ntvs_analysis.dat.tmp
 examples/.vs
 examples/bin
 .vs

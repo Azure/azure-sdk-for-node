@@ -66,6 +66,11 @@ var mappings = {
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
   },
+  'cdn': {
+	'dir': 'cdnManagement/lib',
+	'source': 'arm-cdn/2015-06-01/swagger/cdn.json',
+	'ft': 2
+  },
   'datalake.analytics.account': {
     'dir': 'dataLake.Analytics/lib/account',
     'source': 'arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json'
