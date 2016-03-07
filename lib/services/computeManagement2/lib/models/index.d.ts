@@ -131,12 +131,6 @@ export interface VirtualMachineSize {
  * Initializes a new instance of the VirtualMachineExtensionImage class.
  * @constructor
  * Describes a Virtual Machine Extension Image.
- * @member {string} name Gets or sets the name of the resource.
- * 
- * @member {string} location Gets or sets the location of the resource.
- * 
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- * 
  * @member {string} operatingSystem Gets or sets the operating system this
  * extension supports.
  * 
@@ -155,16 +149,22 @@ export interface VirtualMachineSize {
  * @member {boolean} [supportsMultipleExtensions] Gets or sets whether the
  * handler can support multiple extensions.
  * 
+ * @member {string} name Gets or sets the name of the resource.
+ * 
+ * @member {string} location Gets or sets the location of the resource.
+ * 
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ * 
  */
 export interface VirtualMachineExtensionImage extends SubResource {
-    name: string;
-    location: string;
-    tags?: { [propertyName: string]: string };
     operatingSystem: string;
     computeRole: string;
     handlerSchema: string;
     vmScaleSetEnabled?: boolean;
     supportsMultipleExtensions?: boolean;
+    name: string;
+    location: string;
+    tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -309,13 +309,13 @@ export interface OSDiskImage {
  * Initializes a new instance of the DataDiskImage class.
  * @constructor
  * Contains the data disk images information.
- * @member {number} lun Gets the LUN number for a data disk.This value is used
- * to identify data disk image inside the VMImage therefore it must be unique
- * for each data disk.The allowed character for the value is digit.
+ * @member {number} [lun] Gets the LUN number for a data disk.This value is
+ * used to identify data disk image inside the VMImage therefore it must be
+ * unique for each data disk.The allowed character for the value is digit.
  * 
  */
 export interface DataDiskImage {
-    lun: number;
+    lun?: number;
 }
 
 /**
@@ -323,12 +323,6 @@ export interface DataDiskImage {
  * Initializes a new instance of the VirtualMachineImage class.
  * @constructor
  * Describes a Virtual Machine Image.
- * @member {string} name Gets or sets the name of the resource.
- * 
- * @member {string} location Gets or sets the location of the resource.
- * 
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- * 
  * @member {object} [plan]
  * 
  * @member {string} [plan.publisher] Gets or sets the publisher ID.
@@ -344,14 +338,20 @@ export interface DataDiskImage {
  * 
  * @member {array} [dataDiskImages]
  * 
+ * @member {string} name Gets or sets the name of the resource.
+ * 
+ * @member {string} location Gets or sets the location of the resource.
+ * 
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ * 
  */
 export interface VirtualMachineImage extends SubResource {
-    name: string;
-    location: string;
-    tags?: { [propertyName: string]: string };
     plan?: PurchasePlan;
     osDiskImage?: OSDiskImage;
     dataDiskImages?: DataDiskImage[];
+    name: string;
+    location: string;
+    tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1194,7 +1194,7 @@ export interface BootDiagnosticsInstanceView {
  * @member {array} [vmAgent.statuses] Gets or sets the resource status
  * information.
  * 
- * @member {array} [disks] Gets or sets the the disks information.
+ * @member {array} [disks] Gets or sets the disks information.
  * 
  * @member {array} [extensions] Gets or sets the extensions information.
  * 
@@ -1235,9 +1235,6 @@ export interface VirtualMachineInstanceView {
  * @member {string} [plan.product] Gets or sets the offer ID.
  * 
  * @member {string} [plan.promotionCode] Gets or sets the promotion code.
- * 
- * @member {array} [resources] Gets the virtual machine child extension
- * resources.
  * 
  * @member {object} [hardwareProfile] Gets or sets the hardware profile.
  * 
@@ -1410,7 +1407,7 @@ export interface VirtualMachineInstanceView {
  * sets the boot diagnostics storage Uri. It should be a valid Uri
  * 
  * @member {object} [availabilitySet] Gets or sets the reference Id of the
- * availailbity set to which this virtual machine belongs.
+ * availability set to which this virtual machine belongs.
  * 
  * @member {string} [availabilitySet.id] Resource Id
  * 
@@ -1440,7 +1437,7 @@ export interface VirtualMachineInstanceView {
  * @member {array} [instanceView.vmAgent.statuses] Gets or sets the resource
  * status information.
  * 
- * @member {array} [instanceView.disks] Gets or sets the the disks information.
+ * @member {array} [instanceView.disks] Gets or sets the disks information.
  * 
  * @member {array} [instanceView.extensions] Gets or sets the extensions
  * information.
@@ -1460,10 +1457,12 @@ export interface VirtualMachineInstanceView {
  * @member {string} [licenseType] Gets or sets the license type, which is for
  * bring your own license scenario.
  * 
+ * @member {array} [resources] Gets the virtual machine child extension
+ * resources.
+ * 
  */
 export interface VirtualMachine extends Resource {
     plan?: Plan;
-    resources?: VirtualMachineExtension[];
     hardwareProfile?: HardwareProfile;
     storageProfile?: StorageProfile;
     osProfile?: OSProfile;
@@ -1473,6 +1472,7 @@ export interface VirtualMachine extends Resource {
     provisioningState?: string;
     instanceView?: VirtualMachineInstanceView;
     licenseType?: string;
+    resources?: VirtualMachineExtension[];
 }
 
 /**
@@ -1740,8 +1740,7 @@ export interface VirtualMachineScaleSetNetworkProfile {
  * @member {string} [publisher] Gets or sets the name of the extension handler
  * publisher.
  * 
- * @member {string} [virtualMachineScaleSetExtensionType] Gets or sets the
- * type of the extension handler.
+ * @member {string} [type] Gets or sets the type of the extension handler.
  * 
  * @member {string} [typeHandlerVersion] Gets or sets the type version of the
  * extension handler.
@@ -1762,7 +1761,7 @@ export interface VirtualMachineScaleSetNetworkProfile {
 export interface VirtualMachineScaleSetExtension extends SubResource {
     name?: string;
     publisher?: string;
-    virtualMachineScaleSetExtensionType?: string;
+    type?: string;
     typeHandlerVersion?: string;
     autoUpgradeMinorVersion?: boolean;
     settings?: any;
@@ -2229,20 +2228,6 @@ export interface VirtualMachineScaleSetSku {
  * 
  * @member {number} [sku.capacity] Gets or sets the sku capacity.
  * 
- * @member {object} [plan] Gets or sets the purchase plan when deploying
- * virtual machine from VM Marketplace images.
- * 
- * @member {string} [plan.name] Gets or sets the plan ID.
- * 
- * @member {string} [plan.publisher] Gets or sets the publisher ID.
- * 
- * @member {string} [plan.product] Gets or sets the offer ID.
- * 
- * @member {string} [plan.promotionCode] Gets or sets the promotion code.
- * 
- * @member {array} [resources] Gets the virtual machine child extension
- * resources.
- * 
  * @member {boolean} [latestModelApplied] Specifies whether the latest model
  * has been applied to the virtual machine.
  * 
@@ -2269,7 +2254,7 @@ export interface VirtualMachineScaleSetSku {
  * @member {array} [instanceView.vmAgent.statuses] Gets or sets the resource
  * status information.
  * 
- * @member {array} [instanceView.disks] Gets or sets the the disks information.
+ * @member {array} [instanceView.disks] Gets or sets the disks information.
  * 
  * @member {array} [instanceView.extensions] Gets or sets the extensions
  * information.
@@ -2457,7 +2442,7 @@ export interface VirtualMachineScaleSetSku {
  * sets the boot diagnostics storage Uri. It should be a valid Uri
  * 
  * @member {object} [availabilitySet] Gets or sets the reference Id of the
- * availailbity set to which this virtual machine belongs.
+ * availability set to which this virtual machine belongs.
  * 
  * @member {string} [availabilitySet.id] Resource Id
  * 
@@ -2467,12 +2452,24 @@ export interface VirtualMachineScaleSetSku {
  * @member {string} [licenseType] Gets or sets the license type, which is for
  * bring your own license scenario.
  * 
+ * @member {object} [plan] Gets or sets the purchase plan when deploying
+ * virtual machine from VM Marketplace images.
+ * 
+ * @member {string} [plan.name] Gets or sets the plan ID.
+ * 
+ * @member {string} [plan.publisher] Gets or sets the publisher ID.
+ * 
+ * @member {string} [plan.product] Gets or sets the offer ID.
+ * 
+ * @member {string} [plan.promotionCode] Gets or sets the promotion code.
+ * 
+ * @member {array} [resources] Gets the virtual machine child extension
+ * resources.
+ * 
  */
 export interface VirtualMachineScaleSetVM extends Resource {
     instanceId?: string;
     sku?: Sku;
-    plan?: Plan;
-    resources?: VirtualMachineExtension[];
     latestModelApplied?: boolean;
     instanceView?: VirtualMachineInstanceView;
     hardwareProfile?: HardwareProfile;
@@ -2483,6 +2480,8 @@ export interface VirtualMachineScaleSetVM extends Resource {
     availabilitySet?: SubResource;
     provisioningState?: string;
     licenseType?: string;
+    plan?: Plan;
+    resources?: VirtualMachineExtension[];
 }
 
 /**
@@ -2510,7 +2509,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
  * @member {array} [vmAgent.statuses] Gets or sets the resource status
  * information.
  * 
- * @member {array} [disks] Gets or sets the the disks information.
+ * @member {array} [disks] Gets or sets the disks information.
  * 
  * @member {array} [extensions] Gets or sets the extensions information.
  * 

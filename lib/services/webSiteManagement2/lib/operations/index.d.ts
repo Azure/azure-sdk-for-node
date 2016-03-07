@@ -536,7 +536,8 @@ export interface Domains {
      * 'Unlocked', 'Unparked', 'Updated', 'JsonConverterFailed'
      * 
      * @param {string} [domain.provisioningState] Domain provisioning state.
-     * Possible values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress'
+     * Possible values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress',
+     * 'Deleting'
      * 
      * @param {array} [domain.nameServers] Name servers
      * 
@@ -668,7 +669,8 @@ export interface Domains {
      * 'Unlocked', 'Unparked', 'Updated', 'JsonConverterFailed'
      * 
      * @param {string} [domain.provisioningState] Domain provisioning state.
-     * Possible values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress'
+     * Possible values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress',
+     * 'Deleting'
      * 
      * @param {array} [domain.nameServers] Name servers
      * 
@@ -1078,7 +1080,7 @@ export interface GlobalDomainRegistration {
      * 
      * @param {string} [domainRegistrationInput.provisioningState] Domain
      * provisioning state. Possible values include: 'Succeeded', 'Failed',
-     * 'Canceled', 'InProgress'
+     * 'Canceled', 'InProgress', 'Deleting'
      * 
      * @param {array} [domainRegistrationInput.nameServers] Name servers
      * 
@@ -1379,153 +1381,6 @@ export interface HostingEnvironments {
     createOrUpdateHostingEnvironment(resourceGroupName: string, name: string, hostingEnvironmentEnvelope: models.HostingEnvironment, callback: ServiceCallback<models.HostingEnvironment>): void;
 
     /**
-     * @summary Create or update a hostingEnvironment (App Service Environment).
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of hostingEnvironment (App Service Environment)
-     * 
-     * @param {object} hostingEnvironmentEnvelope Properties of hostingEnvironment
-     * (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.hostingEnvironmentName] Name of
-     * the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.hostingEnvironmentLocation]
-     * Location of the hostingEnvironment (App Service Environment), e.g. "West
-     * US"
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.status] Current status of the
-     * hostingEnvironment (App Service Environment). Possible values include:
-     * 'Preparing', 'Ready', 'Scaling', 'Deleting'
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.vnetName] Name of the
-     * hostingEnvironment's (App Service Environment) virtual network
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.vnetResourceGroupName] Resource
-     * group of the hostingEnvironment's (App Service Environment) virtual network
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.vnetSubnetName] Subnet of the
-     * hostingEnvironment's (App Service Environment) virtual network
-     * 
-     * @param {object} [hostingEnvironmentEnvelope.virtualNetwork] Description of
-     * the hostingEnvironment's (App Service Environment) virtual network
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.virtualNetwork.id] Resource id
-     * of the virtual network
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.virtualNetwork.name] Name of
-     * the virtual network (read-only)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.virtualNetwork.type] Resource
-     * type of the virtual network (read-only)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.virtualNetwork.subnet] Subnet
-     * within the virtual network
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.internalLoadBalancingMode]
-     * Specifies which endpoints to serve internally in the hostingEnvironment's
-     * (App Service Environment) VNET. Possible values include: 'None', 'Web',
-     * 'Publishing'
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.multiSize] Front-end VM size,
-     * e.g. "Medium", "Large"
-     * 
-     * @param {number} [hostingEnvironmentEnvelope.multiRoleCount] Number of
-     * front-end instances
-     * 
-     * @param {array} [hostingEnvironmentEnvelope.workerPools] Description of
-     * worker pools with worker size ids, VM sizes, and number of workers in each
-     * pool
-     * 
-     * @param {number} [hostingEnvironmentEnvelope.ipsslAddressCount] Number of IP
-     * SSL addresses reserved for this hostingEnvironment (App Service
-     * Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.databaseEdition] Edition of the
-     * metadata database for the hostingEnvironment (App Service Environment)
-     * e.g. "Standard"
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.databaseServiceObjective]
-     * Service objective of the metadata database for the hostingEnvironment (App
-     * Service Environment) e.g. "S0"
-     * 
-     * @param {number} [hostingEnvironmentEnvelope.upgradeDomains] Number of
-     * upgrade domains of this hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.subscriptionId] Subscription of
-     * the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.dnsSuffix] DNS suffix of the
-     * hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.lastAction] Last deployment
-     * action on this hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.lastActionResult] Result of the
-     * last deployment action on this hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.allowedMultiSizes] List of
-     * comma separated strings describing which VM sizes are allowed for
-     * front-ends
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.allowedWorkerSizes] List of
-     * comma separated strings describing which VM sizes are allowed for workers
-     * 
-     * @param {number} [hostingEnvironmentEnvelope.maximumNumberOfMachines]
-     * Maximum number of VMs in this hostingEnvironment (App Service Environment)
-     * 
-     * @param {array} [hostingEnvironmentEnvelope.vipMappings] Description of IP
-     * SSL mapping for this hostingEnvironment (App Service Environment)
-     * 
-     * @param {array} [hostingEnvironmentEnvelope.environmentCapacities] Current
-     * total, used, and available worker capacities
-     * 
-     * @param {array} [hostingEnvironmentEnvelope.networkAccessControlList] Access
-     * control list for controlling traffic to the hostingEnvironment (App
-     * Service Environment)
-     * 
-     * @param {boolean} [hostingEnvironmentEnvelope.environmentIsHealthy]
-     * True/false indicating whether the hostingEnvironment (App Service
-     * Environment) is healthy
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.environmentStatus] Detailed
-     * message about with results of the last check of the hostingEnvironment
-     * (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.resourceGroup] Resource group
-     * of the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.apiManagementAccountId] Api
-     * Management Account associated with this Hosting Environment
-     * 
-     * @param {boolean} [hostingEnvironmentEnvelope.suspended] True/false
-     * indicating whether the hostingEnvironment is suspended. The environment
-     * can be suspended e.g. when the management endpoint is no longer available
-     * (most likely because NSG blocked the incoming traffic)
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.id] Resource Id
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.name] Resource Name
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.location] Resource Location
-     * 
-     * @param {string} [hostingEnvironmentEnvelope.type] Resource type
-     * 
-     * @param {object} [hostingEnvironmentEnvelope.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateHostingEnvironment(resourceGroupName: string, name: string, hostingEnvironmentEnvelope: models.HostingEnvironment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HostingEnvironment>): void;
-    beginCreateOrUpdateHostingEnvironment(resourceGroupName: string, name: string, hostingEnvironmentEnvelope: models.HostingEnvironment, callback: ServiceCallback<models.HostingEnvironment>): void;
-
-    /**
      * @summary Delete a hostingEnvironment (App Service Environment).
      *
      * @param {string} resourceGroupName Name of resource group
@@ -1545,27 +1400,6 @@ export interface HostingEnvironments {
      */
     deleteHostingEnvironment(resourceGroupName: string, name: string, options: { forceDelete? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     deleteHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @summary Delete a hostingEnvironment (App Service Environment).
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of hostingEnvironment (App Service Environment)
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {boolean} [options.forceDelete] Delete even if the
-     * hostingEnvironment (App Service Environment) contains resources
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteHostingEnvironment(resourceGroupName: string, name: string, options: { forceDelete? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    beginDeleteHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Get diagnostic information for hostingEnvironment (App Service
@@ -2036,6 +1870,21 @@ export interface HostingEnvironments {
      * 
      * @param {object} multiRolePoolEnvelope Properties of multiRole pool
      * 
+     * @param {number} [multiRolePoolEnvelope.workerSizeId] Worker size id for
+     * referencing this worker pool
+     * 
+     * @param {string} [multiRolePoolEnvelope.computeMode] Shared or dedicated web
+     * app hosting. Possible values include: 'Shared', 'Dedicated'
+     * 
+     * @param {string} [multiRolePoolEnvelope.workerSize] VM size of the worker
+     * pool instances
+     * 
+     * @param {number} [multiRolePoolEnvelope.workerCount] Number of instances in
+     * the worker pool
+     * 
+     * @param {array} [multiRolePoolEnvelope.instanceNames] Names of all instances
+     * in the worker pool (read only)
+     * 
      * @param {object} [multiRolePoolEnvelope.sku]
      * 
      * @param {string} [multiRolePoolEnvelope.sku.name] Name of the resource sku
@@ -2051,21 +1900,6 @@ export interface HostingEnvironments {
      * 
      * @param {number} [multiRolePoolEnvelope.sku.capacity] Current number of
      * instances assigned to the resource
-     * 
-     * @param {number} [multiRolePoolEnvelope.workerSizeId] Worker size id for
-     * referencing this worker pool
-     * 
-     * @param {string} [multiRolePoolEnvelope.computeMode] Shared or dedicated web
-     * app hosting. Possible values include: 'Shared', 'Dedicated'
-     * 
-     * @param {string} [multiRolePoolEnvelope.workerSize] VM size of the worker
-     * pool instances
-     * 
-     * @param {number} [multiRolePoolEnvelope.workerCount] Number of instances in
-     * the worker pool
-     * 
-     * @param {array} [multiRolePoolEnvelope.instanceNames] Names of all instances
-     * in the worker pool (read only)
      * 
      * @param {string} [multiRolePoolEnvelope.id] Resource Id
      * 
@@ -2087,67 +1921,6 @@ export interface HostingEnvironments {
      */
     createOrUpdateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPool, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPool>): void;
     createOrUpdateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPool, callback: ServiceCallback<models.WorkerPool>): void;
-
-    /**
-     * @summary Create or update a multiRole pool.
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of hostingEnvironment (App Service Environment)
-     * 
-     * @param {object} multiRolePoolEnvelope Properties of multiRole pool
-     * 
-     * @param {object} [multiRolePoolEnvelope.sku]
-     * 
-     * @param {string} [multiRolePoolEnvelope.sku.name] Name of the resource sku
-     * 
-     * @param {string} [multiRolePoolEnvelope.sku.tier] Service Tier of the
-     * resource sku
-     * 
-     * @param {string} [multiRolePoolEnvelope.sku.size] Size specifier of the
-     * resource sku
-     * 
-     * @param {string} [multiRolePoolEnvelope.sku.family] Family code of the
-     * resource sku
-     * 
-     * @param {number} [multiRolePoolEnvelope.sku.capacity] Current number of
-     * instances assigned to the resource
-     * 
-     * @param {number} [multiRolePoolEnvelope.workerSizeId] Worker size id for
-     * referencing this worker pool
-     * 
-     * @param {string} [multiRolePoolEnvelope.computeMode] Shared or dedicated web
-     * app hosting. Possible values include: 'Shared', 'Dedicated'
-     * 
-     * @param {string} [multiRolePoolEnvelope.workerSize] VM size of the worker
-     * pool instances
-     * 
-     * @param {number} [multiRolePoolEnvelope.workerCount] Number of instances in
-     * the worker pool
-     * 
-     * @param {array} [multiRolePoolEnvelope.instanceNames] Names of all instances
-     * in the worker pool (read only)
-     * 
-     * @param {string} [multiRolePoolEnvelope.id] Resource Id
-     * 
-     * @param {string} [multiRolePoolEnvelope.name] Resource Name
-     * 
-     * @param {string} [multiRolePoolEnvelope.location] Resource Location
-     * 
-     * @param {string} [multiRolePoolEnvelope.type] Resource type
-     * 
-     * @param {object} [multiRolePoolEnvelope.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPool, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPool>): void;
-    beginCreateOrUpdateMultiRolePool(resourceGroupName: string, name: string, multiRolePoolEnvelope: models.WorkerPool, callback: ServiceCallback<models.WorkerPool>): void;
 
     /**
      * @summary Get available skus for scaling a multiRole pool.
@@ -2216,6 +1989,21 @@ export interface HostingEnvironments {
      * 
      * @param {object} workerPoolEnvelope Properties of worker pool
      * 
+     * @param {number} [workerPoolEnvelope.workerSizeId] Worker size id for
+     * referencing this worker pool
+     * 
+     * @param {string} [workerPoolEnvelope.computeMode] Shared or dedicated web
+     * app hosting. Possible values include: 'Shared', 'Dedicated'
+     * 
+     * @param {string} [workerPoolEnvelope.workerSize] VM size of the worker pool
+     * instances
+     * 
+     * @param {number} [workerPoolEnvelope.workerCount] Number of instances in the
+     * worker pool
+     * 
+     * @param {array} [workerPoolEnvelope.instanceNames] Names of all instances in
+     * the worker pool (read only)
+     * 
      * @param {object} [workerPoolEnvelope.sku]
      * 
      * @param {string} [workerPoolEnvelope.sku.name] Name of the resource sku
@@ -2231,21 +2019,6 @@ export interface HostingEnvironments {
      * 
      * @param {number} [workerPoolEnvelope.sku.capacity] Current number of
      * instances assigned to the resource
-     * 
-     * @param {number} [workerPoolEnvelope.workerSizeId] Worker size id for
-     * referencing this worker pool
-     * 
-     * @param {string} [workerPoolEnvelope.computeMode] Shared or dedicated web
-     * app hosting. Possible values include: 'Shared', 'Dedicated'
-     * 
-     * @param {string} [workerPoolEnvelope.workerSize] VM size of the worker pool
-     * instances
-     * 
-     * @param {number} [workerPoolEnvelope.workerCount] Number of instances in the
-     * worker pool
-     * 
-     * @param {array} [workerPoolEnvelope.instanceNames] Names of all instances in
-     * the worker pool (read only)
      * 
      * @param {string} [workerPoolEnvelope.id] Resource Id
      * 
@@ -2267,69 +2040,6 @@ export interface HostingEnvironments {
      */
     createOrUpdateWorkerPool(resourceGroupName: string, name: string, workerPoolName: string, workerPoolEnvelope: models.WorkerPool, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPool>): void;
     createOrUpdateWorkerPool(resourceGroupName: string, name: string, workerPoolName: string, workerPoolEnvelope: models.WorkerPool, callback: ServiceCallback<models.WorkerPool>): void;
-
-    /**
-     * @summary Create or update a worker pool.
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} workerPoolName Name of worker pool
-     * 
-     * @param {object} workerPoolEnvelope Properties of worker pool
-     * 
-     * @param {object} [workerPoolEnvelope.sku]
-     * 
-     * @param {string} [workerPoolEnvelope.sku.name] Name of the resource sku
-     * 
-     * @param {string} [workerPoolEnvelope.sku.tier] Service Tier of the resource
-     * sku
-     * 
-     * @param {string} [workerPoolEnvelope.sku.size] Size specifier of the
-     * resource sku
-     * 
-     * @param {string} [workerPoolEnvelope.sku.family] Family code of the resource
-     * sku
-     * 
-     * @param {number} [workerPoolEnvelope.sku.capacity] Current number of
-     * instances assigned to the resource
-     * 
-     * @param {number} [workerPoolEnvelope.workerSizeId] Worker size id for
-     * referencing this worker pool
-     * 
-     * @param {string} [workerPoolEnvelope.computeMode] Shared or dedicated web
-     * app hosting. Possible values include: 'Shared', 'Dedicated'
-     * 
-     * @param {string} [workerPoolEnvelope.workerSize] VM size of the worker pool
-     * instances
-     * 
-     * @param {number} [workerPoolEnvelope.workerCount] Number of instances in the
-     * worker pool
-     * 
-     * @param {array} [workerPoolEnvelope.instanceNames] Names of all instances in
-     * the worker pool (read only)
-     * 
-     * @param {string} [workerPoolEnvelope.id] Resource Id
-     * 
-     * @param {string} [workerPoolEnvelope.name] Resource Name
-     * 
-     * @param {string} [workerPoolEnvelope.location] Resource Location
-     * 
-     * @param {string} [workerPoolEnvelope.type] Resource type
-     * 
-     * @param {object} [workerPoolEnvelope.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateWorkerPool(resourceGroupName: string, name: string, workerPoolName: string, workerPoolEnvelope: models.WorkerPool, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPool>): void;
-    beginCreateOrUpdateWorkerPool(resourceGroupName: string, name: string, workerPoolName: string, workerPoolEnvelope: models.WorkerPool, callback: ServiceCallback<models.WorkerPool>): void;
 
     /**
      * @summary Get available skus for scaling a worker pool.
@@ -2468,24 +2178,6 @@ export interface HostingEnvironments {
     suspendHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteCollection>): void;
 
     /**
-     * @summary Suspends the hostingEnvironment.
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of hostingEnvironment (App Service Environment)
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginSuspendHostingEnvironment(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
-    beginSuspendHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteCollection>): void;
-
-    /**
      * @summary Resumes the hostingEnvironment.
      *
      * @param {string} resourceGroupName Name of resource group
@@ -2502,24 +2194,6 @@ export interface HostingEnvironments {
      */
     resumeHostingEnvironment(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
     resumeHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteCollection>): void;
-
-    /**
-     * @summary Resumes the hostingEnvironment.
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of hostingEnvironment (App Service Environment)
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginResumeHostingEnvironment(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
-    beginResumeHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteCollection>): void;
 }
 
 /**
@@ -2703,160 +2377,6 @@ export interface ManagedHostingEnvironments {
     createOrUpdateManagedHostingEnvironment(resourceGroupName: string, name: string, managedHostingEnvironmentEnvelope: models.HostingEnvironment, callback: ServiceCallback<models.HostingEnvironment>): void;
 
     /**
-     * @summary Create or update a managed hosting environment.
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of managed hosting environment
-     * 
-     * @param {object} managedHostingEnvironmentEnvelope Properties of managed
-     * hosting environment
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.hostingEnvironmentName]
-     * Name of the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string}
-     * [managedHostingEnvironmentEnvelope.hostingEnvironmentLocation] Location of
-     * the hostingEnvironment (App Service Environment), e.g. "West US"
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.status] Current status
-     * of the hostingEnvironment (App Service Environment). Possible values
-     * include: 'Preparing', 'Ready', 'Scaling', 'Deleting'
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.vnetName] Name of the
-     * hostingEnvironment's (App Service Environment) virtual network
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.vnetResourceGroupName]
-     * Resource group of the hostingEnvironment's (App Service Environment)
-     * virtual network
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.vnetSubnetName] Subnet
-     * of the hostingEnvironment's (App Service Environment) virtual network
-     * 
-     * @param {object} [managedHostingEnvironmentEnvelope.virtualNetwork]
-     * Description of the hostingEnvironment's (App Service Environment) virtual
-     * network
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.virtualNetwork.id]
-     * Resource id of the virtual network
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.virtualNetwork.name]
-     * Name of the virtual network (read-only)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.virtualNetwork.type]
-     * Resource type of the virtual network (read-only)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.virtualNetwork.subnet]
-     * Subnet within the virtual network
-     * 
-     * @param {string}
-     * [managedHostingEnvironmentEnvelope.internalLoadBalancingMode] Specifies
-     * which endpoints to serve internally in the hostingEnvironment's (App
-     * Service Environment) VNET. Possible values include: 'None', 'Web',
-     * 'Publishing'
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.multiSize] Front-end VM
-     * size, e.g. "Medium", "Large"
-     * 
-     * @param {number} [managedHostingEnvironmentEnvelope.multiRoleCount] Number
-     * of front-end instances
-     * 
-     * @param {array} [managedHostingEnvironmentEnvelope.workerPools] Description
-     * of worker pools with worker size ids, VM sizes, and number of workers in
-     * each pool
-     * 
-     * @param {number} [managedHostingEnvironmentEnvelope.ipsslAddressCount]
-     * Number of IP SSL addresses reserved for this hostingEnvironment (App
-     * Service Environment)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.databaseEdition] Edition
-     * of the metadata database for the hostingEnvironment (App Service
-     * Environment) e.g. "Standard"
-     * 
-     * @param {string}
-     * [managedHostingEnvironmentEnvelope.databaseServiceObjective] Service
-     * objective of the metadata database for the hostingEnvironment (App Service
-     * Environment) e.g. "S0"
-     * 
-     * @param {number} [managedHostingEnvironmentEnvelope.upgradeDomains] Number
-     * of upgrade domains of this hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.subscriptionId]
-     * Subscription of the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.dnsSuffix] DNS suffix of
-     * the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.lastAction] Last
-     * deployment action on this hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.lastActionResult] Result
-     * of the last deployment action on this hostingEnvironment (App Service
-     * Environment)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.allowedMultiSizes] List
-     * of comma separated strings describing which VM sizes are allowed for
-     * front-ends
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.allowedWorkerSizes] List
-     * of comma separated strings describing which VM sizes are allowed for
-     * workers
-     * 
-     * @param {number} [managedHostingEnvironmentEnvelope.maximumNumberOfMachines]
-     * Maximum number of VMs in this hostingEnvironment (App Service Environment)
-     * 
-     * @param {array} [managedHostingEnvironmentEnvelope.vipMappings] Description
-     * of IP SSL mapping for this hostingEnvironment (App Service Environment)
-     * 
-     * @param {array} [managedHostingEnvironmentEnvelope.environmentCapacities]
-     * Current total, used, and available worker capacities
-     * 
-     * @param {array} [managedHostingEnvironmentEnvelope.networkAccessControlList]
-     * Access control list for controlling traffic to the hostingEnvironment (App
-     * Service Environment)
-     * 
-     * @param {boolean} [managedHostingEnvironmentEnvelope.environmentIsHealthy]
-     * True/false indicating whether the hostingEnvironment (App Service
-     * Environment) is healthy
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.environmentStatus]
-     * Detailed message about with results of the last check of the
-     * hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.resourceGroup] Resource
-     * group of the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.apiManagementAccountId]
-     * Api Management Account associated with this Hosting Environment
-     * 
-     * @param {boolean} [managedHostingEnvironmentEnvelope.suspended] True/false
-     * indicating whether the hostingEnvironment is suspended. The environment
-     * can be suspended e.g. when the management endpoint is no longer available
-     * (most likely because NSG blocked the incoming traffic)
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.id] Resource Id
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.name] Resource Name
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.location] Resource
-     * Location
-     * 
-     * @param {string} [managedHostingEnvironmentEnvelope.type] Resource type
-     * 
-     * @param {object} [managedHostingEnvironmentEnvelope.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateManagedHostingEnvironment(resourceGroupName: string, name: string, managedHostingEnvironmentEnvelope: models.HostingEnvironment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HostingEnvironment>): void;
-    beginCreateOrUpdateManagedHostingEnvironment(resourceGroupName: string, name: string, managedHostingEnvironmentEnvelope: models.HostingEnvironment, callback: ServiceCallback<models.HostingEnvironment>): void;
-
-    /**
      * @summary Delete a managed hosting environment.
      *
      * @param {string} resourceGroupName Name of resource group
@@ -2876,27 +2396,6 @@ export interface ManagedHostingEnvironments {
      */
     deleteManagedHostingEnvironment(resourceGroupName: string, name: string, options: { forceDelete? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     deleteManagedHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @summary Delete a managed hosting environment.
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of managed hosting environment
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {boolean} [options.forceDelete] Delete even if the managed hosting
-     * environment contains resources
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteManagedHostingEnvironment(resourceGroupName: string, name: string, options: { forceDelete? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    beginDeleteManagedHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Get all managed hosting environments in a resource group.
@@ -2989,8 +2488,8 @@ export interface ManagedHostingEnvironments {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getManagedHostingEnvironmentWebHostingPlans(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
-    getManagedHostingEnvironmentWebHostingPlans(resourceGroupName: string, name: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getManagedHostingEnvironmentServerFarms(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getManagedHostingEnvironmentServerFarms(resourceGroupName: string, name: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
 
     /**
      * @summary Get all serverfarms (App Service Plans) on the managed hosting
@@ -3008,8 +2507,8 @@ export interface ManagedHostingEnvironments {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getManagedHostingEnvironmentServerFarms(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
-    getManagedHostingEnvironmentServerFarms(resourceGroupName: string, name: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getManagedHostingEnvironmentWebHostingPlans(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getManagedHostingEnvironmentWebHostingPlans(resourceGroupName: string, name: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
 }
 
 /**
@@ -3140,6 +2639,109 @@ export interface Provider {
 
 /**
  * @class
+ * Recommendations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface Recommendations {
+
+    /**
+     * @summary Gets a list of recommendations associated with the specified
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {boolean} [options.featured] If set, this API returns only the most
+     * critical recommendation among the others. Otherwise this API returns all
+     * recommendations available
+     * 
+     * @param {string} [options.filter] Return only channels specified in the
+     * filter. Filter is specified by using OData syntax. Example:
+     * $filter=channels eq 'Api' or channel eq 'Notification'
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getRecommendationBySubscription(options: { featured? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Recommendation[]>): void;
+    getRecommendationBySubscription(callback: ServiceCallback<models.Recommendation[]>): void;
+
+    /**
+     * @summary Gets the detailed properties of the recommendation object for the
+     * specified web site.
+     *
+     * @param {string} resourceGroupName Resource group name
+     * 
+     * @param {string} siteName Site name
+     * 
+     * @param {string} name Recommendation rule name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getRuleDetailsBySiteName(resourceGroupName: string, siteName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendationRule>): void;
+    getRuleDetailsBySiteName(resourceGroupName: string, siteName: string, name: string, callback: ServiceCallback<models.RecommendationRule>): void;
+
+    /**
+     * @summary Gets a list of recommendations associated with the specified web
+     * site.
+     *
+     * @param {string} resourceGroupName Resource group name
+     * 
+     * @param {string} siteName Site name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {boolean} [options.featured] If set, this API returns only the most
+     * critical recommendation among the others. Otherwise this API returns all
+     * recommendations available
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getRecommendedRulesForSite(resourceGroupName: string, siteName: string, options: { featured? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Recommendation[]>): void;
+    getRecommendedRulesForSite(resourceGroupName: string, siteName: string, callback: ServiceCallback<models.Recommendation[]>): void;
+
+    /**
+     * @summary Gets the list of past recommendations optionally specified by the
+     * time range.
+     *
+     * @param {string} resourceGroupName Resource group name
+     * 
+     * @param {string} siteName Site name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.startTime] The start time of a time range to
+     * query, e.g. $filter=startTime eq '2015-01-01T00:00:00Z' and endTime eq
+     * '2015-01-02T00:00:00Z'
+     * 
+     * @param {string} [options.endTime] The end time of a time range to query,
+     * e.g. $filter=startTime eq '2015-01-01T00:00:00Z' and endTime eq
+     * '2015-01-02T00:00:00Z'
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getRecommendationHistoryForSite(resourceGroupName: string, siteName: string, options: { startTime? : string, endTime? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Recommendation[]>): void;
+    getRecommendationHistoryForSite(resourceGroupName: string, siteName: string, callback: ServiceCallback<models.Recommendation[]>): void;
+}
+
+/**
+ * @class
  * ServerFarms
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the WebSiteManagementClient.
@@ -3190,24 +2792,11 @@ export interface ServerFarms {
      * 
      * @param {object} serverFarmEnvelope Details of App Service Plan
      * 
-     * @param {object} [serverFarmEnvelope.sku]
-     * 
-     * @param {string} [serverFarmEnvelope.sku.name] Name of the resource sku
-     * 
-     * @param {string} [serverFarmEnvelope.sku.tier] Service Tier of the resource
-     * sku
-     * 
-     * @param {string} [serverFarmEnvelope.sku.size] Size specifier of the
-     * resource sku
-     * 
-     * @param {string} [serverFarmEnvelope.sku.family] Family code of the resource
-     * sku
-     * 
-     * @param {number} [serverFarmEnvelope.sku.capacity] Current number of
-     * instances assigned to the resource
-     * 
      * @param {string} [serverFarmEnvelope.serverFarmWithRichSkuName] Name for the
      * App Service Plan
+     * 
+     * @param {string} [serverFarmEnvelope.workerTierName] Target worker tier
+     * assigned to the App Service Plan
      * 
      * @param {string} [serverFarmEnvelope.adminSiteName] App Service Plan
      * administration site
@@ -3233,6 +2822,22 @@ export interface ServerFarms {
      * to this App Service Plan can be scaled independently
      * If False apps assigned to this App Service Plan will scale to
      * all instances of the plan
+     * 
+     * @param {object} [serverFarmEnvelope.sku]
+     * 
+     * @param {string} [serverFarmEnvelope.sku.name] Name of the resource sku
+     * 
+     * @param {string} [serverFarmEnvelope.sku.tier] Service Tier of the resource
+     * sku
+     * 
+     * @param {string} [serverFarmEnvelope.sku.size] Size specifier of the
+     * resource sku
+     * 
+     * @param {string} [serverFarmEnvelope.sku.family] Family code of the resource
+     * sku
+     * 
+     * @param {number} [serverFarmEnvelope.sku.capacity] Current number of
+     * instances assigned to the resource
      * 
      * @param {string} [serverFarmEnvelope.id] Resource Id
      * 
@@ -3257,83 +2862,6 @@ export interface ServerFarms {
      */
     createOrUpdateServerFarm(resourceGroupName: string, name: string, serverFarmEnvelope: models.ServerFarmWithRichSku, options: { allowPendingState? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmWithRichSku>): void;
     createOrUpdateServerFarm(resourceGroupName: string, name: string, serverFarmEnvelope: models.ServerFarmWithRichSku, callback: ServiceCallback<models.ServerFarmWithRichSku>): void;
-
-    /**
-     * @summary Creates or updates an App Service Plan
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of App Service Plan
-     * 
-     * @param {object} serverFarmEnvelope Details of App Service Plan
-     * 
-     * @param {object} [serverFarmEnvelope.sku]
-     * 
-     * @param {string} [serverFarmEnvelope.sku.name] Name of the resource sku
-     * 
-     * @param {string} [serverFarmEnvelope.sku.tier] Service Tier of the resource
-     * sku
-     * 
-     * @param {string} [serverFarmEnvelope.sku.size] Size specifier of the
-     * resource sku
-     * 
-     * @param {string} [serverFarmEnvelope.sku.family] Family code of the resource
-     * sku
-     * 
-     * @param {number} [serverFarmEnvelope.sku.capacity] Current number of
-     * instances assigned to the resource
-     * 
-     * @param {string} [serverFarmEnvelope.serverFarmWithRichSkuName] Name for the
-     * App Service Plan
-     * 
-     * @param {string} [serverFarmEnvelope.adminSiteName] App Service Plan
-     * administration site
-     * 
-     * @param {object} [serverFarmEnvelope.hostingEnvironmentProfile]
-     * Specification for the hosting environment (App Service Environment) to use
-     * for the App Service Plan
-     * 
-     * @param {string} [serverFarmEnvelope.hostingEnvironmentProfile.id] Resource
-     * id of the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [serverFarmEnvelope.hostingEnvironmentProfile.name] Name of
-     * the hostingEnvironment (App Service Environment) (read only)
-     * 
-     * @param {string} [serverFarmEnvelope.hostingEnvironmentProfile.type]
-     * Resource type of the hostingEnvironment (App Service Environment) (read
-     * only)
-     * 
-     * @param {number} [serverFarmEnvelope.maximumNumberOfWorkers] Maximum number
-     * of instances that can be assigned to this App Service Plan
-     * 
-     * @param {boolean} [serverFarmEnvelope.perSiteScaling] If True apps assigned
-     * to this App Service Plan can be scaled independently
-     * If False apps assigned to this App Service Plan will scale to
-     * all instances of the plan
-     * 
-     * @param {string} [serverFarmEnvelope.id] Resource Id
-     * 
-     * @param {string} [serverFarmEnvelope.name] Resource Name
-     * 
-     * @param {string} [serverFarmEnvelope.location] Resource Location
-     * 
-     * @param {string} [serverFarmEnvelope.type] Resource type
-     * 
-     * @param {object} [serverFarmEnvelope.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {boolean} [options.allowPendingState] OBSOLETE: If true, allow
-     * pending state for App Service Plan
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateServerFarm(resourceGroupName: string, name: string, serverFarmEnvelope: models.ServerFarmWithRichSku, options: { allowPendingState? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmWithRichSku>): void;
-    beginCreateOrUpdateServerFarm(resourceGroupName: string, name: string, serverFarmEnvelope: models.ServerFarmWithRichSku, callback: ServiceCallback<models.ServerFarmWithRichSku>): void;
 
     /**
      * @summary Deletes a App Service Plan
@@ -3770,23 +3298,6 @@ export interface ServerFarms {
      */
     getServerFarmOperation(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmWithRichSku>): void;
     getServerFarmOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<models.ServerFarmWithRichSku>): void;
-
-    /**
-     * @summary Gets list of Apps associated with an App Service Plan
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getServerFarmSitesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
-    getServerFarmSitesNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
 }
 
 /**
@@ -3796,6 +3307,138 @@ export interface ServerFarms {
  * instance of the WebSiteManagementClient.
  */
 export interface Sites {
+
+    /**
+     * @summary Retrieves a specific Virtual Network Connection associated with
+     * this web app.
+     *
+     * @param {string} resourceGroupName The resource group name
+     * 
+     * @param {string} name The name of the web app
+     * 
+     * @param {string} vnetName The name of the Virtual Network
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VnetInfo>): void;
+    getSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, callback: ServiceCallback<models.VnetInfo>): void;
+
+    /**
+     * @summary Adds a Virtual Network Connection or updates it's properties.
+     *
+     * @param {string} resourceGroupName The resource group name
+     * 
+     * @param {string} name The name of the web app
+     * 
+     * @param {string} vnetName The name of the Virtual Network
+     * 
+     * @param {object} connectionEnvelope The properties of this Virtual Network
+     * Connection
+     * 
+     * @param {string} [connectionEnvelope.vnetResourceId] The vnet resource id
+     * 
+     * @param {string} [connectionEnvelope.certThumbprint] The client certificate
+     * thumbprint
+     * 
+     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer)
+     * blob containing the public key of the private key used to authenticate a
+     * Point-To-Site VPN connection.
+     * 
+     * @param {array} [connectionEnvelope.routes] The routes that this virtual
+     * network connection uses.
+     * 
+     * @param {string} [connectionEnvelope.id] Resource Id
+     * 
+     * @param {string} [connectionEnvelope.name] Resource Name
+     * 
+     * @param {string} [connectionEnvelope.location] Resource Location
+     * 
+     * @param {string} [connectionEnvelope.type] Resource type
+     * 
+     * @param {object} [connectionEnvelope.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdateSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VnetInfo>): void;
+    createOrUpdateSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, callback: ServiceCallback<models.VnetInfo>): void;
+
+    /**
+     * @summary Removes the specified Virtual Network Connection association from
+     * this web app.
+     *
+     * @param {string} resourceGroupName The resource group name
+     * 
+     * @param {string} name The name of the web app
+     * 
+     * @param {string} vnetName The name of the Virtual Network
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Adds a Virtual Network Connection or updates it's properties.
+     *
+     * @param {string} resourceGroupName The resource group name
+     * 
+     * @param {string} name The name of the web app
+     * 
+     * @param {string} vnetName The name of the Virtual Network
+     * 
+     * @param {object} connectionEnvelope The properties of this Virtual Network
+     * Connection
+     * 
+     * @param {string} [connectionEnvelope.vnetResourceId] The vnet resource id
+     * 
+     * @param {string} [connectionEnvelope.certThumbprint] The client certificate
+     * thumbprint
+     * 
+     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer)
+     * blob containing the public key of the private key used to authenticate a
+     * Point-To-Site VPN connection.
+     * 
+     * @param {array} [connectionEnvelope.routes] The routes that this virtual
+     * network connection uses.
+     * 
+     * @param {string} [connectionEnvelope.id] Resource Id
+     * 
+     * @param {string} [connectionEnvelope.name] Resource Name
+     * 
+     * @param {string} [connectionEnvelope.location] Resource Location
+     * 
+     * @param {string} [connectionEnvelope.type] Resource type
+     * 
+     * @param {object} [connectionEnvelope.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updateSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VnetInfo>): void;
+    updateSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, callback: ServiceCallback<models.VnetInfo>): void;
 
     /**
      * @summary Retrieves a specific Virtual Network Connection associated with
@@ -3938,138 +3581,6 @@ export interface Sites {
     updateSiteVNETConnectionSlot(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, slot: string, callback: ServiceCallback<models.VnetInfo>): void;
 
     /**
-     * @summary Retrieves a specific Virtual Network Connection associated with
-     * this web app.
-     *
-     * @param {string} resourceGroupName The resource group name
-     * 
-     * @param {string} name The name of the web app
-     * 
-     * @param {string} vnetName The name of the Virtual Network
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VnetInfo>): void;
-    getSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, callback: ServiceCallback<models.VnetInfo>): void;
-
-    /**
-     * @summary Adds a Virtual Network Connection or updates it's properties.
-     *
-     * @param {string} resourceGroupName The resource group name
-     * 
-     * @param {string} name The name of the web app
-     * 
-     * @param {string} vnetName The name of the Virtual Network
-     * 
-     * @param {object} connectionEnvelope The properties of this Virtual Network
-     * Connection
-     * 
-     * @param {string} [connectionEnvelope.vnetResourceId] The vnet resource id
-     * 
-     * @param {string} [connectionEnvelope.certThumbprint] The client certificate
-     * thumbprint
-     * 
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer)
-     * blob containing the public key of the private key used to authenticate a
-     * Point-To-Site VPN connection.
-     * 
-     * @param {array} [connectionEnvelope.routes] The routes that this virtual
-     * network connection uses.
-     * 
-     * @param {string} [connectionEnvelope.id] Resource Id
-     * 
-     * @param {string} [connectionEnvelope.name] Resource Name
-     * 
-     * @param {string} [connectionEnvelope.location] Resource Location
-     * 
-     * @param {string} [connectionEnvelope.type] Resource type
-     * 
-     * @param {object} [connectionEnvelope.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    createOrUpdateSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VnetInfo>): void;
-    createOrUpdateSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, callback: ServiceCallback<models.VnetInfo>): void;
-
-    /**
-     * @summary Removes the specified Virtual Network Connection association from
-     * this web app.
-     *
-     * @param {string} resourceGroupName The resource group name
-     * 
-     * @param {string} name The name of the web app
-     * 
-     * @param {string} vnetName The name of the Virtual Network
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    deleteSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @summary Adds a Virtual Network Connection or updates it's properties.
-     *
-     * @param {string} resourceGroupName The resource group name
-     * 
-     * @param {string} name The name of the web app
-     * 
-     * @param {string} vnetName The name of the Virtual Network
-     * 
-     * @param {object} connectionEnvelope The properties of this Virtual Network
-     * Connection
-     * 
-     * @param {string} [connectionEnvelope.vnetResourceId] The vnet resource id
-     * 
-     * @param {string} [connectionEnvelope.certThumbprint] The client certificate
-     * thumbprint
-     * 
-     * @param {string} [connectionEnvelope.certBlob] A certificate file (.cer)
-     * blob containing the public key of the private key used to authenticate a
-     * Point-To-Site VPN connection.
-     * 
-     * @param {array} [connectionEnvelope.routes] The routes that this virtual
-     * network connection uses.
-     * 
-     * @param {string} [connectionEnvelope.id] Resource Id
-     * 
-     * @param {string} [connectionEnvelope.name] Resource Name
-     * 
-     * @param {string} [connectionEnvelope.location] Resource Location
-     * 
-     * @param {string} [connectionEnvelope.type] Resource type
-     * 
-     * @param {object} [connectionEnvelope.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    updateSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VnetInfo>): void;
-    updateSiteVNETConnection(resourceGroupName: string, name: string, vnetName: string, connectionEnvelope: models.VnetInfo, callback: ServiceCallback<models.VnetInfo>): void;
-
-    /**
      * @summary Retrieves a view of all network features in use on this web app.
      *
      * @param {string} resourceGroupName The resource group name
@@ -4122,26 +3633,6 @@ export interface Sites {
      * 
      * @param {string} operationId Id of an operation
      * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getSiteOperation(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    getSiteOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @summary Gets the operation for a web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {string} operationId Id of an operation
-     * 
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
      * 
@@ -4155,6 +3646,26 @@ export interface Sites {
      */
     getSiteOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     getSiteOperationSlot(resourceGroupName: string, name: string, operationId: string, slot: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Gets the operation for a web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {string} operationId Id of an operation
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteOperation(resourceGroupName: string, name: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getSiteOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Swaps web app slots
@@ -4287,6 +3798,9 @@ export interface Sites {
      * @param {boolean} [slotSwapEntity.preserveVnet] Get or set the flag
      * indicating it should preserve VNet to the slot during swap
      * 
+     * @param {string} slot Name of the source slot. Settings from the target slot
+     * will be applied onto this slot
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4295,8 +3809,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    applySlotConfigToProduction(resourceGroupName: string, name: string, slotSwapEntity: models.CsmSlotEntity, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    applySlotConfigToProduction(resourceGroupName: string, name: string, slotSwapEntity: models.CsmSlotEntity, callback: ServiceCallback<any>): void;
+    applySlotConfigSlot(resourceGroupName: string, name: string, slotSwapEntity: models.CsmSlotEntity, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    applySlotConfigSlot(resourceGroupName: string, name: string, slotSwapEntity: models.CsmSlotEntity, slot: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Applies the configuration settings from the target slot onto the
@@ -4315,9 +3829,6 @@ export interface Sites {
      * @param {boolean} [slotSwapEntity.preserveVnet] Get or set the flag
      * indicating it should preserve VNet to the slot during swap
      * 
-     * @param {string} slot Name of the source slot. Settings from the target slot
-     * will be applied onto this slot
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4326,8 +3837,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    applySlotConfigSlot(resourceGroupName: string, name: string, slotSwapEntity: models.CsmSlotEntity, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    applySlotConfigSlot(resourceGroupName: string, name: string, slotSwapEntity: models.CsmSlotEntity, slot: string, callback: ServiceCallback<any>): void;
+    applySlotConfigToProduction(resourceGroupName: string, name: string, slotSwapEntity: models.CsmSlotEntity, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    applySlotConfigToProduction(resourceGroupName: string, name: string, slotSwapEntity: models.CsmSlotEntity, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Resets the configuration settings of the current slot if they were
@@ -4694,6 +4205,9 @@ export interface Sites {
      * @param {string} [siteEnvelope.siteConfig.autoSwapSlotName] Auto swap slot
      * name
      * 
+     * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled] Local mysql
+     * enabled
+     * 
      * @param {string} [siteEnvelope.siteConfig.id] Resource Id
      * 
      * @param {string} [siteEnvelope.siteConfig.name] Resource Name
@@ -4814,326 +4328,6 @@ export interface Sites {
      */
     createOrUpdateSite(resourceGroupName: string, name: string, siteEnvelope: models.Site, options: { skipDnsRegistration? : string, skipCustomDomainVerification? : string, forceDnsRegistration? : string, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
     createOrUpdateSite(resourceGroupName: string, name: string, siteEnvelope: models.Site, callback: ServiceCallback<models.Site>): void;
-
-    /**
-     * @summary Creates a new web app or modifies an existing web app.
-     *
-     * @param {string} resourceGroupName Name of the resource group
-     * 
-     * @param {string} name Name of the web app
-     * 
-     * @param {object} siteEnvelope Details of web app if it exists already
-     * 
-     * @param {string} [siteEnvelope.siteName] Name of web app
-     * 
-     * @param {boolean} [siteEnvelope.enabled] True if the site is enabled;
-     * otherwise, false. Setting this  value to false disables the site (takes
-     * the site off line).
-     * 
-     * @param {array} [siteEnvelope.hostNameSslStates] Hostname SSL states are
-     * used to manage the SSL bindings for site's hostnames.
-     * 
-     * @param {string} [siteEnvelope.serverFarmId]
-     * 
-     * @param {object} [siteEnvelope.siteConfig] Configuration of web app
-     * 
-     * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers
-     * 
-     * @param {array} [siteEnvelope.siteConfig.defaultDocuments] Default documents
-     * 
-     * @param {string} [siteEnvelope.siteConfig.netFrameworkVersion] Net Framework
-     * Version
-     * 
-     * @param {string} [siteEnvelope.siteConfig.phpVersion] Version of PHP
-     * 
-     * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled] Enable
-     * request tracing
-     * 
-     * @param {date} [siteEnvelope.siteConfig.requestTracingExpirationTime]
-     * Request tracing expiration time
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.remoteDebuggingEnabled] Remote
-     * Debugging Enabled
-     * 
-     * @param {string} [siteEnvelope.siteConfig.remoteDebuggingVersion] Remote
-     * Debugging Version
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.httpLoggingEnabled] HTTP logging
-     * Enabled
-     * 
-     * @param {number} [siteEnvelope.siteConfig.logsDirectorySizeLimit] HTTP Logs
-     * Directory size limit
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.detailedErrorLoggingEnabled]
-     * Detailed error logging enabled
-     * 
-     * @param {string} [siteEnvelope.siteConfig.publishingUsername] Publishing
-     * user name
-     * 
-     * @param {string} [siteEnvelope.siteConfig.publishingPassword] Publishing
-     * password
-     * 
-     * @param {array} [siteEnvelope.siteConfig.appSettings] Application Settings
-     * 
-     * @param {array} [siteEnvelope.siteConfig.metadata] Site Metadata
-     * 
-     * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
-     * strings
-     * 
-     * @param {array} [siteEnvelope.siteConfig.handlerMappings] Handler mappings
-     * 
-     * @param {string} [siteEnvelope.siteConfig.documentRoot] Document root
-     * 
-     * @param {string} [siteEnvelope.siteConfig.scmType] SCM type
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.use32BitWorkerProcess] Use 32 bit
-     * worker process
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.webSocketsEnabled] Web socket
-     * enabled.
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.alwaysOn] Always On
-     * 
-     * @param {string} [siteEnvelope.siteConfig.javaVersion] Java version
-     * 
-     * @param {string} [siteEnvelope.siteConfig.javaContainer] Java container
-     * 
-     * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
-     * container version
-     * 
-     * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
-     * pipeline mode. Possible values include: 'Integrated', 'Classic'
-     * 
-     * @param {array} [siteEnvelope.siteConfig.virtualApplications] Virtual
-     * applications
-     * 
-     * @param {string} [siteEnvelope.siteConfig.loadBalancing] Site load
-     * balancing. Possible values include: 'WeightedRoundRobin', 'LeastRequests',
-     * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
-     * 
-     * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types
-     * 
-     * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
-     * {Microsoft.Web.Hosting.Administration.RampUpRule} objects.
-     * 
-     * @param {object} [siteEnvelope.siteConfig.limits] Site limits
-     * 
-     * @param {number} [siteEnvelope.siteConfig.limits.maxPercentageCpu] Maximum
-     * allowed CPU usage percentage
-     * 
-     * @param {number} [siteEnvelope.siteConfig.limits.maxMemoryInMb] Maximum
-     * allowed memory usage in MB
-     * 
-     * @param {number} [siteEnvelope.siteConfig.limits.maxDiskSizeInMb] Maximum
-     * allowed disk size usage in MB
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.autoHealEnabled] Auto heal enabled
-     * 
-     * @param {object} [siteEnvelope.siteConfig.autoHealRules] Auto heal rules
-     * 
-     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers] Triggers -
-     * Conditions that describe when to execute the auto-heal actions
-     * 
-     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers.requests]
-     * Requests - Defines a rule based on total requests
-     * 
-     * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval]
-     * TimeInterval
-     * 
-     * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.privateBytesInKB]
-     * PrivateBytesInKB - Defines a rule based on private bytes
-     * 
-     * @param {array} [siteEnvelope.siteConfig.autoHealRules.triggers.statusCodes]
-     * StatusCodes - Defines a rule based on status codes
-     * 
-     * @param {object}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests] SlowRequests
-     * - Defines a rule based on request execution time
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeTaken]
-     * TimeTaken
-     * 
-     * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
-     * TimeInterval
-     * 
-     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
-     * Actions to be executed when a rule is triggered
-     * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
-     * ActionType - predefined action to be taken. Possible values include:
-     * 'Recycle', 'LogEvent', 'CustomAction'
-     * 
-     * @param {object}
-     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction] CustomAction
-     * - custom action to be taken
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.exe]
-     * Executable to be run
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.parameters]
-     * Parameters for the executable
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.actions.minProcessExecutionTime]
-     * MinProcessExecutionTime - minimum time the process must execute
-     * before taking the action
-     * 
-     * @param {string} [siteEnvelope.siteConfig.tracingOptions] Tracing options
-     * 
-     * @param {string} [siteEnvelope.siteConfig.vnetName] Vnet name
-     * 
-     * @param {object} [siteEnvelope.siteConfig.cors] Cross-Origin Resource
-     * Sharing (CORS) settings.
-     * 
-     * @param {array} [siteEnvelope.siteConfig.cors.allowedOrigins] Gets or sets
-     * the list of origins that should be allowed to make cross-origin
-     * calls (for example: http://example.com:12345). Use "*" to allow
-     * all.
-     * 
-     * @param {object} [siteEnvelope.siteConfig.apiDefinition] Information about
-     * the formal API definition for the web app.
-     * 
-     * @param {string} [siteEnvelope.siteConfig.apiDefinition.url] The URL of the
-     * API definition.
-     * 
-     * @param {string} [siteEnvelope.siteConfig.autoSwapSlotName] Auto swap slot
-     * name
-     * 
-     * @param {string} [siteEnvelope.siteConfig.id] Resource Id
-     * 
-     * @param {string} [siteEnvelope.siteConfig.name] Resource Name
-     * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
-     * 
-     * @param {string} [siteEnvelope.siteConfig.type] Resource type
-     * 
-     * @param {object} [siteEnvelope.siteConfig.tags] Resource tags
-     * 
-     * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] If set indicates whether
-     * to stop SCM (KUDU) site when the web app is stopped. Default is false.
-     * 
-     * @param {object} [siteEnvelope.hostingEnvironmentProfile] Specification for
-     * the hosting environment (App Service Environment) to use for the web app
-     * 
-     * @param {string} [siteEnvelope.hostingEnvironmentProfile.id] Resource id of
-     * the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [siteEnvelope.hostingEnvironmentProfile.name] Name of the
-     * hostingEnvironment (App Service Environment) (read only)
-     * 
-     * @param {string} [siteEnvelope.hostingEnvironmentProfile.type] Resource type
-     * of the hostingEnvironment (App Service Environment) (read only)
-     * 
-     * @param {string} [siteEnvelope.microService]
-     * 
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with web app
-     * 
-     * @param {boolean} [siteEnvelope.clientAffinityEnabled] Specifies if the
-     * client affinity is enabled when load balancing http request for multiple
-     * instances of the web app
-     * 
-     * @param {boolean} [siteEnvelope.clientCertEnabled] Specifies if the client
-     * certificate is enabled for the web app
-     * 
-     * @param {boolean} [siteEnvelope.hostNamesDisabled] Specifies if the public
-     * hostnames are disabled the web app.
-     * If set to true the app is only accessible via API Management
-     * process
-     * 
-     * @param {object} [siteEnvelope.cloningInfo] This is only valid for web app
-     * creation. If specified, web app is cloned from
-     * a source web app
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation Id of
-     * cloning operation. This id ties multiple cloning operations
-     * together to use the same snapshot
-     * 
-     * @param {boolean} [siteEnvelope.cloningInfo.overwrite] Overwrite destination
-     * web app
-     * 
-     * @param {boolean} [siteEnvelope.cloningInfo.cloneCustomHostNames] If true,
-     * clone custom hostnames from source web app
-     * 
-     * @param {boolean} [siteEnvelope.cloningInfo.cloneSourceControl] Clone source
-     * control from source web app
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.sourceWebAppId] ARM resource id
-     * of the source web app. Web app resource id is of the form
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.hostingEnvironment] Hosting
-     * environment
-     * 
-     * @param {object} [siteEnvelope.cloningInfo.appSettingsOverrides] Application
-     * settings overrides for cloned web app. If specified these settings will
-     * override the settings cloned
-     * from source web app. If not specified, application settings
-     * from source web app are retained.
-     * 
-     * @param {boolean} [siteEnvelope.cloningInfo.configureLoadBalancing] If
-     * specified configure load balancing for source and clone site
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileId] ARM
-     * resource id of the traffic manager profile to use if it exists. Traffic
-     * manager resource id is of the form
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name
-     * of traffic manager profile to create. This is only needed if traffic
-     * manager profile does not already exist
-     * 
-     * @param {string} [siteEnvelope.id] Resource Id
-     * 
-     * @param {string} [siteEnvelope.name] Resource Name
-     * 
-     * @param {string} [siteEnvelope.location] Resource Location
-     * 
-     * @param {string} [siteEnvelope.type] Resource type
-     * 
-     * @param {object} [siteEnvelope.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation
-     * 
-     * @param {string} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     * 
-     * @param {string} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS
-     * 
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web
-     * app's default domain name
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateSite(resourceGroupName: string, name: string, siteEnvelope: models.Site, options: { skipDnsRegistration? : string, skipCustomDomainVerification? : string, forceDnsRegistration? : string, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
-    beginCreateOrUpdateSite(resourceGroupName: string, name: string, siteEnvelope: models.Site, callback: ServiceCallback<models.Site>): void;
 
     /**
      * @summary Deletes a web app
@@ -5388,6 +4582,9 @@ export interface Sites {
      * @param {string} [siteEnvelope.siteConfig.autoSwapSlotName] Auto swap slot
      * name
      * 
+     * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled] Local mysql
+     * enabled
+     * 
      * @param {string} [siteEnvelope.siteConfig.id] Resource Id
      * 
      * @param {string} [siteEnvelope.siteConfig.name] Resource Name
@@ -5513,329 +4710,6 @@ export interface Sites {
     createOrUpdateSiteSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, callback: ServiceCallback<models.Site>): void;
 
     /**
-     * @summary Creates a new web app or modifies an existing web app.
-     *
-     * @param {string} resourceGroupName Name of the resource group
-     * 
-     * @param {string} name Name of the web app
-     * 
-     * @param {object} siteEnvelope Details of web app if it exists already
-     * 
-     * @param {string} [siteEnvelope.siteName] Name of web app
-     * 
-     * @param {boolean} [siteEnvelope.enabled] True if the site is enabled;
-     * otherwise, false. Setting this  value to false disables the site (takes
-     * the site off line).
-     * 
-     * @param {array} [siteEnvelope.hostNameSslStates] Hostname SSL states are
-     * used to manage the SSL bindings for site's hostnames.
-     * 
-     * @param {string} [siteEnvelope.serverFarmId]
-     * 
-     * @param {object} [siteEnvelope.siteConfig] Configuration of web app
-     * 
-     * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers
-     * 
-     * @param {array} [siteEnvelope.siteConfig.defaultDocuments] Default documents
-     * 
-     * @param {string} [siteEnvelope.siteConfig.netFrameworkVersion] Net Framework
-     * Version
-     * 
-     * @param {string} [siteEnvelope.siteConfig.phpVersion] Version of PHP
-     * 
-     * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled] Enable
-     * request tracing
-     * 
-     * @param {date} [siteEnvelope.siteConfig.requestTracingExpirationTime]
-     * Request tracing expiration time
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.remoteDebuggingEnabled] Remote
-     * Debugging Enabled
-     * 
-     * @param {string} [siteEnvelope.siteConfig.remoteDebuggingVersion] Remote
-     * Debugging Version
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.httpLoggingEnabled] HTTP logging
-     * Enabled
-     * 
-     * @param {number} [siteEnvelope.siteConfig.logsDirectorySizeLimit] HTTP Logs
-     * Directory size limit
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.detailedErrorLoggingEnabled]
-     * Detailed error logging enabled
-     * 
-     * @param {string} [siteEnvelope.siteConfig.publishingUsername] Publishing
-     * user name
-     * 
-     * @param {string} [siteEnvelope.siteConfig.publishingPassword] Publishing
-     * password
-     * 
-     * @param {array} [siteEnvelope.siteConfig.appSettings] Application Settings
-     * 
-     * @param {array} [siteEnvelope.siteConfig.metadata] Site Metadata
-     * 
-     * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
-     * strings
-     * 
-     * @param {array} [siteEnvelope.siteConfig.handlerMappings] Handler mappings
-     * 
-     * @param {string} [siteEnvelope.siteConfig.documentRoot] Document root
-     * 
-     * @param {string} [siteEnvelope.siteConfig.scmType] SCM type
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.use32BitWorkerProcess] Use 32 bit
-     * worker process
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.webSocketsEnabled] Web socket
-     * enabled.
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.alwaysOn] Always On
-     * 
-     * @param {string} [siteEnvelope.siteConfig.javaVersion] Java version
-     * 
-     * @param {string} [siteEnvelope.siteConfig.javaContainer] Java container
-     * 
-     * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
-     * container version
-     * 
-     * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
-     * pipeline mode. Possible values include: 'Integrated', 'Classic'
-     * 
-     * @param {array} [siteEnvelope.siteConfig.virtualApplications] Virtual
-     * applications
-     * 
-     * @param {string} [siteEnvelope.siteConfig.loadBalancing] Site load
-     * balancing. Possible values include: 'WeightedRoundRobin', 'LeastRequests',
-     * 'LeastResponseTime', 'WeightedTotalTraffic', 'RequestHash'
-     * 
-     * @param {object} [siteEnvelope.siteConfig.experiments] This is work around
-     * for polymophic types
-     * 
-     * @param {array} [siteEnvelope.siteConfig.experiments.rampUpRules] List of
-     * {Microsoft.Web.Hosting.Administration.RampUpRule} objects.
-     * 
-     * @param {object} [siteEnvelope.siteConfig.limits] Site limits
-     * 
-     * @param {number} [siteEnvelope.siteConfig.limits.maxPercentageCpu] Maximum
-     * allowed CPU usage percentage
-     * 
-     * @param {number} [siteEnvelope.siteConfig.limits.maxMemoryInMb] Maximum
-     * allowed memory usage in MB
-     * 
-     * @param {number} [siteEnvelope.siteConfig.limits.maxDiskSizeInMb] Maximum
-     * allowed disk size usage in MB
-     * 
-     * @param {boolean} [siteEnvelope.siteConfig.autoHealEnabled] Auto heal enabled
-     * 
-     * @param {object} [siteEnvelope.siteConfig.autoHealRules] Auto heal rules
-     * 
-     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers] Triggers -
-     * Conditions that describe when to execute the auto-heal actions
-     * 
-     * @param {object} [siteEnvelope.siteConfig.autoHealRules.triggers.requests]
-     * Requests - Defines a rule based on total requests
-     * 
-     * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.count] Count
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.requests.timeInterval]
-     * TimeInterval
-     * 
-     * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.privateBytesInKB]
-     * PrivateBytesInKB - Defines a rule based on private bytes
-     * 
-     * @param {array} [siteEnvelope.siteConfig.autoHealRules.triggers.statusCodes]
-     * StatusCodes - Defines a rule based on status codes
-     * 
-     * @param {object}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests] SlowRequests
-     * - Defines a rule based on request execution time
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeTaken]
-     * TimeTaken
-     * 
-     * @param {number}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.count] Count
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.triggers.slowRequests.timeInterval]
-     * TimeInterval
-     * 
-     * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
-     * Actions to be executed when a rule is triggered
-     * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
-     * ActionType - predefined action to be taken. Possible values include:
-     * 'Recycle', 'LogEvent', 'CustomAction'
-     * 
-     * @param {object}
-     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction] CustomAction
-     * - custom action to be taken
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.exe]
-     * Executable to be run
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.actions.customAction.parameters]
-     * Parameters for the executable
-     * 
-     * @param {string}
-     * [siteEnvelope.siteConfig.autoHealRules.actions.minProcessExecutionTime]
-     * MinProcessExecutionTime - minimum time the process must execute
-     * before taking the action
-     * 
-     * @param {string} [siteEnvelope.siteConfig.tracingOptions] Tracing options
-     * 
-     * @param {string} [siteEnvelope.siteConfig.vnetName] Vnet name
-     * 
-     * @param {object} [siteEnvelope.siteConfig.cors] Cross-Origin Resource
-     * Sharing (CORS) settings.
-     * 
-     * @param {array} [siteEnvelope.siteConfig.cors.allowedOrigins] Gets or sets
-     * the list of origins that should be allowed to make cross-origin
-     * calls (for example: http://example.com:12345). Use "*" to allow
-     * all.
-     * 
-     * @param {object} [siteEnvelope.siteConfig.apiDefinition] Information about
-     * the formal API definition for the web app.
-     * 
-     * @param {string} [siteEnvelope.siteConfig.apiDefinition.url] The URL of the
-     * API definition.
-     * 
-     * @param {string} [siteEnvelope.siteConfig.autoSwapSlotName] Auto swap slot
-     * name
-     * 
-     * @param {string} [siteEnvelope.siteConfig.id] Resource Id
-     * 
-     * @param {string} [siteEnvelope.siteConfig.name] Resource Name
-     * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
-     * 
-     * @param {string} [siteEnvelope.siteConfig.type] Resource type
-     * 
-     * @param {object} [siteEnvelope.siteConfig.tags] Resource tags
-     * 
-     * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] If set indicates whether
-     * to stop SCM (KUDU) site when the web app is stopped. Default is false.
-     * 
-     * @param {object} [siteEnvelope.hostingEnvironmentProfile] Specification for
-     * the hosting environment (App Service Environment) to use for the web app
-     * 
-     * @param {string} [siteEnvelope.hostingEnvironmentProfile.id] Resource id of
-     * the hostingEnvironment (App Service Environment)
-     * 
-     * @param {string} [siteEnvelope.hostingEnvironmentProfile.name] Name of the
-     * hostingEnvironment (App Service Environment) (read only)
-     * 
-     * @param {string} [siteEnvelope.hostingEnvironmentProfile.type] Resource type
-     * of the hostingEnvironment (App Service Environment) (read only)
-     * 
-     * @param {string} [siteEnvelope.microService]
-     * 
-     * @param {string} [siteEnvelope.gatewaySiteName] Name of gateway app
-     * associated with web app
-     * 
-     * @param {boolean} [siteEnvelope.clientAffinityEnabled] Specifies if the
-     * client affinity is enabled when load balancing http request for multiple
-     * instances of the web app
-     * 
-     * @param {boolean} [siteEnvelope.clientCertEnabled] Specifies if the client
-     * certificate is enabled for the web app
-     * 
-     * @param {boolean} [siteEnvelope.hostNamesDisabled] Specifies if the public
-     * hostnames are disabled the web app.
-     * If set to true the app is only accessible via API Management
-     * process
-     * 
-     * @param {object} [siteEnvelope.cloningInfo] This is only valid for web app
-     * creation. If specified, web app is cloned from
-     * a source web app
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.correlationId] Correlation Id of
-     * cloning operation. This id ties multiple cloning operations
-     * together to use the same snapshot
-     * 
-     * @param {boolean} [siteEnvelope.cloningInfo.overwrite] Overwrite destination
-     * web app
-     * 
-     * @param {boolean} [siteEnvelope.cloningInfo.cloneCustomHostNames] If true,
-     * clone custom hostnames from source web app
-     * 
-     * @param {boolean} [siteEnvelope.cloningInfo.cloneSourceControl] Clone source
-     * control from source web app
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.sourceWebAppId] ARM resource id
-     * of the source web app. Web app resource id is of the form
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.hostingEnvironment] Hosting
-     * environment
-     * 
-     * @param {object} [siteEnvelope.cloningInfo.appSettingsOverrides] Application
-     * settings overrides for cloned web app. If specified these settings will
-     * override the settings cloned
-     * from source web app. If not specified, application settings
-     * from source web app are retained.
-     * 
-     * @param {boolean} [siteEnvelope.cloningInfo.configureLoadBalancing] If
-     * specified configure load balancing for source and clone site
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileId] ARM
-     * resource id of the traffic manager profile to use if it exists. Traffic
-     * manager resource id is of the form
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}
-     * 
-     * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name
-     * of traffic manager profile to create. This is only needed if traffic
-     * manager profile does not already exist
-     * 
-     * @param {string} [siteEnvelope.id] Resource Id
-     * 
-     * @param {string} [siteEnvelope.name] Resource Name
-     * 
-     * @param {string} [siteEnvelope.location] Resource Location
-     * 
-     * @param {string} [siteEnvelope.type] Resource type
-     * 
-     * @param {object} [siteEnvelope.tags] Resource tags
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation
-     * 
-     * @param {string} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     * 
-     * @param {string} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS
-     * 
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web
-     * app's default domain name
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateSiteSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options: { skipDnsRegistration? : string, skipCustomDomainVerification? : string, forceDnsRegistration? : string, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
-    beginCreateOrUpdateSiteSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, callback: ServiceCallback<models.Site>): void;
-
-    /**
      * @summary Deletes a web app
      *
      * @param {string} resourceGroupName Name of resource group
@@ -5867,6 +4741,45 @@ export interface Sites {
      */
     deleteSiteSlot(resourceGroupName: string, name: string, slot: string, options: { deleteMetrics? : string, deleteEmptyServerFarm? : string, skipDnsRegistration? : string, deleteAllSlots? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     deleteSiteSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Creates a new web app or modifies an existing web app.
+     *
+     * @param {string} resourceGroupName Name of the resource group
+     * 
+     * @param {string} name Name of the web app
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    isSiteCloneable(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCloneability>): void;
+    isSiteCloneable(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteCloneability>): void;
+
+    /**
+     * @summary Creates a new web app or modifies an existing web app.
+     *
+     * @param {string} resourceGroupName Name of the resource group
+     * 
+     * @param {string} name Name of the web app
+     * 
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    isSiteCloneableSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCloneability>): void;
+    isSiteCloneableSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SiteCloneability>): void;
 
     /**
      * @summary Recovers a deleted web app
@@ -5944,8 +4857,6 @@ export interface Sites {
      * 
      * @param {string} resourceGroupName
      * 
-     * @param {string} slot
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5954,8 +4865,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getSiteSnapshotsOnSkuSlot(subscriptionName: string, webspaceName: string, name: string, resourceGroupName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    getSiteSnapshotsOnSkuSlot(subscriptionName: string, webspaceName: string, name: string, resourceGroupName: string, slot: string, callback: ServiceCallback<any>): void;
+    getSiteSnapshotsOnSku(subscriptionName: string, webspaceName: string, name: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getSiteSnapshotsOnSku(subscriptionName: string, webspaceName: string, name: string, resourceGroupName: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Returns Snapshots to the user based on their SKU.
@@ -5968,6 +4879,8 @@ export interface Sites {
      * 
      * @param {string} resourceGroupName
      * 
+     * @param {string} slot
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5976,8 +4889,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getSiteSnapshotsOnSku(subscriptionName: string, webspaceName: string, name: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    getSiteSnapshotsOnSku(subscriptionName: string, webspaceName: string, name: string, resourceGroupName: string, callback: ServiceCallback<any>): void;
+    getSiteSnapshotsOnSkuSlot(subscriptionName: string, webspaceName: string, name: string, resourceGroupName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getSiteSnapshotsOnSkuSlot(subscriptionName: string, webspaceName: string, name: string, resourceGroupName: string, slot: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Returns all Snapshots to the user.
@@ -6141,8 +5054,6 @@ export interface Sites {
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
      * 
-     * @param {string} instanceId Id of web app instance
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -6151,8 +5062,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
-    getInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, callback: ServiceCallback<models.Deployment>): void;
+    getDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
+    getDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, callback: ServiceCallback<models.Deployment>): void;
 
     /**
      * @summary Create a deployment
@@ -6165,8 +5076,6 @@ export interface Sites {
      * 
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
-     * 
-     * @param {string} instanceId Id of web app instance
      * 
      * @param {object} deployment Details of deployment
      * 
@@ -6208,8 +5117,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, deployment: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
-    createInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, deployment: models.Deployment, callback: ServiceCallback<models.Deployment>): void;
+    createDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, deployment: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
+    createDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, deployment: models.Deployment, callback: ServiceCallback<models.Deployment>): void;
 
     /**
      * @summary Delete the deployment
@@ -6223,8 +5132,6 @@ export interface Sites {
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
      * 
-     * @param {string} instanceId Id of web app instance
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -6233,8 +5140,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    deleteInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, callback: ServiceCallback<any>): void;
+    deleteDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Get the deployment
@@ -6337,107 +5244,6 @@ export interface Sites {
      * 
      * @param {string} id Id of the deployment
      * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
-    getDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, callback: ServiceCallback<models.Deployment>): void;
-
-    /**
-     * @summary Create a deployment
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {string} id Id of the deployment
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} deployment Details of deployment
-     * 
-     * @param {string} [deployment.deploymentId] Id
-     * 
-     * @param {number} [deployment.status] Status
-     * 
-     * @param {string} [deployment.message] Message
-     * 
-     * @param {string} [deployment.author] Author
-     * 
-     * @param {string} [deployment.deployer] Deployer
-     * 
-     * @param {string} [deployment.authorEmail] AuthorEmail
-     * 
-     * @param {date} [deployment.startTime] StartTime
-     * 
-     * @param {date} [deployment.endTime] EndTime
-     * 
-     * @param {boolean} [deployment.active] Active
-     * 
-     * @param {string} [deployment.details] Detail
-     * 
-     * @param {string} [deployment.id] Resource Id
-     * 
-     * @param {string} [deployment.name] Resource Name
-     * 
-     * @param {string} [deployment.location] Resource Location
-     * 
-     * @param {string} [deployment.type] Resource type
-     * 
-     * @param {object} [deployment.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    createDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, deployment: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
-    createDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, deployment: models.Deployment, callback: ServiceCallback<models.Deployment>): void;
-
-    /**
-     * @summary Delete the deployment
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {string} id Id of the deployment
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    deleteDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @summary Get the deployment
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {string} id Id of the deployment
-     * 
      * @param {string} instanceId Id of web app instance
      * 
      * @param {object} [options] Optional Parameters.
@@ -6526,6 +5332,113 @@ export interface Sites {
      */
     deleteInstanceDeployment(resourceGroupName: string, name: string, id: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     deleteInstanceDeployment(resourceGroupName: string, name: string, id: string, instanceId: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Get the deployment
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {string} id Id of the deployment
+     * 
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     * 
+     * @param {string} instanceId Id of web app instance
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
+    getInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, callback: ServiceCallback<models.Deployment>): void;
+
+    /**
+     * @summary Create a deployment
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {string} id Id of the deployment
+     * 
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     * 
+     * @param {string} instanceId Id of web app instance
+     * 
+     * @param {object} deployment Details of deployment
+     * 
+     * @param {string} [deployment.deploymentId] Id
+     * 
+     * @param {number} [deployment.status] Status
+     * 
+     * @param {string} [deployment.message] Message
+     * 
+     * @param {string} [deployment.author] Author
+     * 
+     * @param {string} [deployment.deployer] Deployer
+     * 
+     * @param {string} [deployment.authorEmail] AuthorEmail
+     * 
+     * @param {date} [deployment.startTime] StartTime
+     * 
+     * @param {date} [deployment.endTime] EndTime
+     * 
+     * @param {boolean} [deployment.active] Active
+     * 
+     * @param {string} [deployment.details] Detail
+     * 
+     * @param {string} [deployment.id] Resource Id
+     * 
+     * @param {string} [deployment.name] Resource Name
+     * 
+     * @param {string} [deployment.location] Resource Location
+     * 
+     * @param {string} [deployment.type] Resource type
+     * 
+     * @param {object} [deployment.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, deployment: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
+    createInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, deployment: models.Deployment, callback: ServiceCallback<models.Deployment>): void;
+
+    /**
+     * @summary Delete the deployment
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {string} id Id of the deployment
+     * 
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     * 
+     * @param {string} instanceId Id of web app instance
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteInstanceDeploymentSlot(resourceGroupName: string, name: string, id: string, slot: string, instanceId: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Gets all instance of a web app
@@ -6977,6 +5890,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.autoSwapSlotName] Auto swap slot name
      * 
+     * @param {boolean} [siteConfig.localMySqlEnabled] Local mysql enabled
+     * 
      * @param {string} [siteConfig.id] Resource Id
      * 
      * @param {string} [siteConfig.name] Resource Name
@@ -7162,6 +6077,8 @@ export interface Sites {
      * definition.
      * 
      * @param {string} [siteConfig.autoSwapSlotName] Auto swap slot name
+     * 
+     * @param {boolean} [siteConfig.localMySqlEnabled] Local mysql enabled
      * 
      * @param {string} [siteConfig.id] Resource Id
      * 
@@ -7370,6 +6287,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.autoSwapSlotName] Auto swap slot name
      * 
+     * @param {boolean} [siteConfig.localMySqlEnabled] Local mysql enabled
+     * 
      * @param {string} [siteConfig.id] Resource Id
      * 
      * @param {string} [siteConfig.name] Resource Name
@@ -7559,6 +6478,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.autoSwapSlotName] Auto swap slot name
      * 
+     * @param {boolean} [siteConfig.localMySqlEnabled] Local mysql enabled
+     * 
      * @param {string} [siteConfig.id] Resource Id
      * 
      * @param {string} [siteConfig.name] Resource Name
@@ -7582,6 +6503,132 @@ export interface Sites {
      */
     updateSiteConfigSlot(resourceGroupName: string, name: string, siteConfig: models.SiteConfig, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfig>): void;
     updateSiteConfigSlot(resourceGroupName: string, name: string, siteConfig: models.SiteConfig, slot: string, callback: ServiceCallback<models.SiteConfig>): void;
+
+    /**
+     * @summary Get the source control configuration of web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteSourceControl(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
+    getSiteSourceControl(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteSourceControl>): void;
+
+    /**
+     * @summary Update the source control configuration of web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {object} siteSourceControl Request body that contains the source
+     * control parameters
+     * 
+     * @param {string} [siteSourceControl.repoUrl] Repository or source control url
+     * 
+     * @param {string} [siteSourceControl.branch] Name of branch to use for
+     * deployment
+     * 
+     * @param {boolean} [siteSourceControl.isManualIntegration] Whether to manual
+     * or continuous integration
+     * 
+     * @param {boolean} [siteSourceControl.deploymentRollbackEnabled] Whether to
+     * manual or continuous integration
+     * 
+     * @param {boolean} [siteSourceControl.isMercurial] Mercurial or Git
+     * repository type
+     * 
+     * @param {string} [siteSourceControl.id] Resource Id
+     * 
+     * @param {string} [siteSourceControl.name] Resource Name
+     * 
+     * @param {string} [siteSourceControl.location] Resource Location
+     * 
+     * @param {string} [siteSourceControl.type] Resource type
+     * 
+     * @param {object} [siteSourceControl.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdateSiteSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
+    createOrUpdateSiteSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, callback: ServiceCallback<models.SiteSourceControl>): void;
+
+    /**
+     * @summary Delete source control configuration of web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteSiteSourceControl(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteSiteSourceControl(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Update the source control configuration of web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {object} siteSourceControl Request body that contains the source
+     * control parameters
+     * 
+     * @param {string} [siteSourceControl.repoUrl] Repository or source control url
+     * 
+     * @param {string} [siteSourceControl.branch] Name of branch to use for
+     * deployment
+     * 
+     * @param {boolean} [siteSourceControl.isManualIntegration] Whether to manual
+     * or continuous integration
+     * 
+     * @param {boolean} [siteSourceControl.deploymentRollbackEnabled] Whether to
+     * manual or continuous integration
+     * 
+     * @param {boolean} [siteSourceControl.isMercurial] Mercurial or Git
+     * repository type
+     * 
+     * @param {string} [siteSourceControl.id] Resource Id
+     * 
+     * @param {string} [siteSourceControl.name] Resource Name
+     * 
+     * @param {string} [siteSourceControl.location] Resource Location
+     * 
+     * @param {string} [siteSourceControl.type] Resource type
+     * 
+     * @param {object} [siteSourceControl.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updateSiteSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
+    updateSiteSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, callback: ServiceCallback<models.SiteSourceControl>): void;
 
     /**
      * @summary Get the source control configuration of web app
@@ -7720,132 +6767,6 @@ export interface Sites {
      */
     updateSiteSourceControlSlot(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
     updateSiteSourceControlSlot(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, slot: string, callback: ServiceCallback<models.SiteSourceControl>): void;
-
-    /**
-     * @summary Get the source control configuration of web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getSiteSourceControl(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
-    getSiteSourceControl(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteSourceControl>): void;
-
-    /**
-     * @summary Update the source control configuration of web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} siteSourceControl Request body that contains the source
-     * control parameters
-     * 
-     * @param {string} [siteSourceControl.repoUrl] Repository or source control url
-     * 
-     * @param {string} [siteSourceControl.branch] Name of branch to use for
-     * deployment
-     * 
-     * @param {boolean} [siteSourceControl.isManualIntegration] Whether to manual
-     * or continuous integration
-     * 
-     * @param {boolean} [siteSourceControl.deploymentRollbackEnabled] Whether to
-     * manual or continuous integration
-     * 
-     * @param {boolean} [siteSourceControl.isMercurial] Mercurial or Git
-     * repository type
-     * 
-     * @param {string} [siteSourceControl.id] Resource Id
-     * 
-     * @param {string} [siteSourceControl.name] Resource Name
-     * 
-     * @param {string} [siteSourceControl.location] Resource Location
-     * 
-     * @param {string} [siteSourceControl.type] Resource type
-     * 
-     * @param {object} [siteSourceControl.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    createOrUpdateSiteSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
-    createOrUpdateSiteSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, callback: ServiceCallback<models.SiteSourceControl>): void;
-
-    /**
-     * @summary Delete source control configuration of web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteSiteSourceControl(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    deleteSiteSourceControl(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @summary Update the source control configuration of web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} siteSourceControl Request body that contains the source
-     * control parameters
-     * 
-     * @param {string} [siteSourceControl.repoUrl] Repository or source control url
-     * 
-     * @param {string} [siteSourceControl.branch] Name of branch to use for
-     * deployment
-     * 
-     * @param {boolean} [siteSourceControl.isManualIntegration] Whether to manual
-     * or continuous integration
-     * 
-     * @param {boolean} [siteSourceControl.deploymentRollbackEnabled] Whether to
-     * manual or continuous integration
-     * 
-     * @param {boolean} [siteSourceControl.isMercurial] Mercurial or Git
-     * repository type
-     * 
-     * @param {string} [siteSourceControl.id] Resource Id
-     * 
-     * @param {string} [siteSourceControl.name] Resource Name
-     * 
-     * @param {string} [siteSourceControl.location] Resource Location
-     * 
-     * @param {string} [siteSourceControl.type] Resource type
-     * 
-     * @param {object} [siteSourceControl.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    updateSiteSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteSourceControl>): void;
-    updateSiteSourceControl(resourceGroupName: string, name: string, siteSourceControl: models.SiteSourceControl, callback: ServiceCallback<models.SiteSourceControl>): void;
 
     /**
      * @summary Gets the application settings of web app
@@ -8180,6 +7101,11 @@ export interface Sites {
      * always considered an
      * allowed audience, regardless of this setting.
      * 
+     * @param {array} [siteAuthSettings.additionalLoginParams] Gets or sets a list
+     * of login parameters to send to the OpenID Connect authorization endpoint
+     * when
+     * a user logs in. Each parameter must be in the form "key=value".
+     * 
      * @param {string} [siteAuthSettings.aadClientId]
      * 
      * @param {string} [siteAuthSettings.openIdIssuer]
@@ -8350,6 +7276,11 @@ export interface Sites {
      * always considered an
      * allowed audience, regardless of this setting.
      * 
+     * @param {array} [siteAuthSettings.additionalLoginParams] Gets or sets a list
+     * of login parameters to send to the OpenID Connect authorization endpoint
+     * when
+     * a user logs in. Each parameter must be in the form "key=value".
+     * 
      * @param {string} [siteAuthSettings.aadClientId]
      * 
      * @param {string} [siteAuthSettings.openIdIssuer]
@@ -8468,24 +7399,6 @@ export interface Sites {
      * 
      * @param {string} name Name of web app
      * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginListSitePublishingCredentials(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.User>): void;
-    beginListSitePublishingCredentials(resourceGroupName: string, name: string, callback: ServiceCallback<models.User>): void;
-
-    /**
-     * @summary Gets the web app publishing credentials
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
      * 
@@ -8499,27 +7412,6 @@ export interface Sites {
      */
     listSitePublishingCredentialsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.User>): void;
     listSitePublishingCredentialsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.User>): void;
-
-    /**
-     * @summary Gets the web app publishing credentials
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginListSitePublishingCredentialsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.User>): void;
-    beginListSitePublishingCredentialsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.User>): void;
 
     /**
      * @summary Gets the web app meta data.
@@ -8920,94 +7812,6 @@ export interface Sites {
      * 
      * @param {string} premierAddOnName
      * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    getSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @param {string} resourceGroupName
-     * 
-     * @param {string} name
-     * 
-     * @param {string} premierAddOnName
-     * 
-     * @param {object} premierAddOn
-     * 
-     * @param {string} [premierAddOn.location] Geo region resource belongs to e.g.
-     * SouthCentralUS, SouthEastAsia
-     * 
-     * @param {object} [premierAddOn.tags] Tags associated with resource
-     * 
-     * @param {object} [premierAddOn.plan] Azure resource manager plan
-     * 
-     * @param {string} [premierAddOn.plan.name] The name
-     * 
-     * @param {string} [premierAddOn.plan.publisher] The publisher
-     * 
-     * @param {string} [premierAddOn.plan.product] The product
-     * 
-     * @param {string} [premierAddOn.plan.promotionCode] The promotion code
-     * 
-     * @param {string} [premierAddOn.plan.version] Version of product
-     * 
-     * @param {object} [premierAddOn.properties] Resource specific properties
-     * 
-     * @param {object} [premierAddOn.sku] Sku description of the resource
-     * 
-     * @param {string} [premierAddOn.sku.name] Name of the resource sku
-     * 
-     * @param {string} [premierAddOn.sku.tier] Service Tier of the resource sku
-     * 
-     * @param {string} [premierAddOn.sku.size] Size specifier of the resource sku
-     * 
-     * @param {string} [premierAddOn.sku.family] Family code of the resource sku
-     * 
-     * @param {number} [premierAddOn.sku.capacity] Current number of instances
-     * assigned to the resource
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    addSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    addSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnRequest, callback: ServiceCallback<any>): void;
-
-    /**
-     * @param {string} resourceGroupName
-     * 
-     * @param {string} name
-     * 
-     * @param {string} premierAddOnName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    deleteSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @param {string} resourceGroupName
-     * 
-     * @param {string} name
-     * 
-     * @param {string} premierAddOnName
-     * 
      * @param {string} slot
      * 
      * @param {object} [options] Optional Parameters.
@@ -9094,6 +7898,94 @@ export interface Sites {
      */
     deleteSitePremierAddOnSlot(resourceGroupName: string, name: string, premierAddOnName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     deleteSitePremierAddOnSlot(resourceGroupName: string, name: string, premierAddOnName: string, slot: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @param {string} resourceGroupName
+     * 
+     * @param {string} name
+     * 
+     * @param {string} premierAddOnName
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    getSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @param {string} resourceGroupName
+     * 
+     * @param {string} name
+     * 
+     * @param {string} premierAddOnName
+     * 
+     * @param {object} premierAddOn
+     * 
+     * @param {string} [premierAddOn.location] Geo region resource belongs to e.g.
+     * SouthCentralUS, SouthEastAsia
+     * 
+     * @param {object} [premierAddOn.tags] Tags associated with resource
+     * 
+     * @param {object} [premierAddOn.plan] Azure resource manager plan
+     * 
+     * @param {string} [premierAddOn.plan.name] The name
+     * 
+     * @param {string} [premierAddOn.plan.publisher] The publisher
+     * 
+     * @param {string} [premierAddOn.plan.product] The product
+     * 
+     * @param {string} [premierAddOn.plan.promotionCode] The promotion code
+     * 
+     * @param {string} [premierAddOn.plan.version] Version of product
+     * 
+     * @param {object} [premierAddOn.properties] Resource specific properties
+     * 
+     * @param {object} [premierAddOn.sku] Sku description of the resource
+     * 
+     * @param {string} [premierAddOn.sku.name] Name of the resource sku
+     * 
+     * @param {string} [premierAddOn.sku.tier] Service Tier of the resource sku
+     * 
+     * @param {string} [premierAddOn.sku.size] Size specifier of the resource sku
+     * 
+     * @param {string} [premierAddOn.sku.family] Family code of the resource sku
+     * 
+     * @param {number} [premierAddOn.sku.capacity] Current number of instances
+     * assigned to the resource
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    addSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    addSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnRequest, callback: ServiceCallback<any>): void;
+
+    /**
+     * @param {string} resourceGroupName
+     * 
+     * @param {string} name
+     * 
+     * @param {string} premierAddOnName
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteSitePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Gets the backup configuration for a web app
@@ -9191,9 +8083,6 @@ export interface Sites {
      * 
      * @param {object} [request.tags] Resource tags
      * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -9202,8 +8091,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updateSiteBackupConfigurationSlot(resourceGroupName: string, name: string, request: models.BackupRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
-    updateSiteBackupConfigurationSlot(resourceGroupName: string, name: string, request: models.BackupRequest, slot: string, callback: ServiceCallback<models.BackupRequest>): void;
+    updateSiteBackupConfiguration(resourceGroupName: string, name: string, request: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
+    updateSiteBackupConfiguration(resourceGroupName: string, name: string, request: models.BackupRequest, callback: ServiceCallback<models.BackupRequest>): void;
 
     /**
      * @summary Updates backup configuration of web app
@@ -9262,73 +8151,8 @@ export interface Sites {
      * 
      * @param {object} [request.tags] Resource tags
      * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    updateSiteBackupConfiguration(resourceGroupName: string, name: string, request: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
-    updateSiteBackupConfiguration(resourceGroupName: string, name: string, request: models.BackupRequest, callback: ServiceCallback<models.BackupRequest>): void;
-
-    /**
-     * @summary Creates web app backup
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} request Information on backup request
-     * 
-     * @param {string} [request.backupRequestName] Name of the backup
-     * 
-     * @param {boolean} [request.enabled] True if the backup schedule is enabled
-     * (must be included in that case), false if the backup schedule should be
-     * disabled
-     * 
-     * @param {string} [request.storageAccountUrl] SAS URL to the container
-     * 
-     * @param {object} [request.backupSchedule] Schedule for the backup if it is
-     * executed periodically
-     * 
-     * @param {number} [request.backupSchedule.frequencyInterval] How often should
-     * be the backup executed (e.g. for weekly backup, this should be set to 7
-     * and FrequencyUnit should be set to Day)
-     * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to Day and
-     * FrequencyInterval should be set to 7). Possible values include: 'Day',
-     * 'Hour'
-     * 
-     * @param {boolean} [request.backupSchedule.keepAtLeastOneBackup] True if the
-     * retention policy should always keep at least one backup in the storage
-     * account, regardless how old it is; false otherwise.
-     * 
-     * @param {number} [request.backupSchedule.retentionPeriodInDays] After how
-     * many days backups should be deleted
-     * 
-     * @param {date} [request.backupSchedule.startTime] When the schedule should
-     * start working
-     * 
-     * @param {date} [request.backupSchedule.lastExecutionTime] The last time when
-     * this schedule was triggered
-     * 
-     * @param {array} [request.databases] Databases included in the backup
-     * 
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation'
-     * 
-     * @param {string} [request.id] Resource Id
-     * 
-     * @param {string} [request.name] Resource Name
-     * 
-     * @param {string} [request.location] Resource Location
-     * 
-     * @param {string} [request.type] Resource type
-     * 
-     * @param {object} [request.tags] Resource tags
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -9338,8 +8162,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    backupSiteDeprecated(resourceGroupName: string, name: string, request: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItem>): void;
-    backupSiteDeprecated(resourceGroupName: string, name: string, request: models.BackupRequest, callback: ServiceCallback<models.BackupItem>): void;
+    updateSiteBackupConfigurationSlot(resourceGroupName: string, name: string, request: models.BackupRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
+    updateSiteBackupConfigurationSlot(resourceGroupName: string, name: string, request: models.BackupRequest, slot: string, callback: ServiceCallback<models.BackupRequest>): void;
 
     /**
      * @summary Creates web app backup
@@ -9408,77 +8232,6 @@ export interface Sites {
      */
     backupSite(resourceGroupName: string, name: string, request: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItem>): void;
     backupSite(resourceGroupName: string, name: string, request: models.BackupRequest, callback: ServiceCallback<models.BackupItem>): void;
-
-    /**
-     * @summary Creates web app backup
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} request Information on backup request
-     * 
-     * @param {string} [request.backupRequestName] Name of the backup
-     * 
-     * @param {boolean} [request.enabled] True if the backup schedule is enabled
-     * (must be included in that case), false if the backup schedule should be
-     * disabled
-     * 
-     * @param {string} [request.storageAccountUrl] SAS URL to the container
-     * 
-     * @param {object} [request.backupSchedule] Schedule for the backup if it is
-     * executed periodically
-     * 
-     * @param {number} [request.backupSchedule.frequencyInterval] How often should
-     * be the backup executed (e.g. for weekly backup, this should be set to 7
-     * and FrequencyUnit should be set to Day)
-     * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to Day and
-     * FrequencyInterval should be set to 7). Possible values include: 'Day',
-     * 'Hour'
-     * 
-     * @param {boolean} [request.backupSchedule.keepAtLeastOneBackup] True if the
-     * retention policy should always keep at least one backup in the storage
-     * account, regardless how old it is; false otherwise.
-     * 
-     * @param {number} [request.backupSchedule.retentionPeriodInDays] After how
-     * many days backups should be deleted
-     * 
-     * @param {date} [request.backupSchedule.startTime] When the schedule should
-     * start working
-     * 
-     * @param {date} [request.backupSchedule.lastExecutionTime] The last time when
-     * this schedule was triggered
-     * 
-     * @param {array} [request.databases] Databases included in the backup
-     * 
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation'
-     * 
-     * @param {string} [request.id] Resource Id
-     * 
-     * @param {string} [request.name] Resource Name
-     * 
-     * @param {string} [request.location] Resource Location
-     * 
-     * @param {string} [request.type] Resource type
-     * 
-     * @param {object} [request.tags] Resource tags
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    backupSiteDeprecatedSlot(resourceGroupName: string, name: string, request: models.BackupRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItem>): void;
-    backupSiteDeprecatedSlot(resourceGroupName: string, name: string, request: models.BackupRequest, slot: string, callback: ServiceCallback<models.BackupItem>): void;
 
     /**
      * @summary Creates web app backup
@@ -9679,24 +8432,6 @@ export interface Sites {
      * 
      * @param {string} name Name of web app
      * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listSiteBackups(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
-    listSiteBackups(resourceGroupName: string, name: string, callback: ServiceCallback<models.BackupItemCollection>): void;
-
-    /**
-     * @summary Lists all available backups for web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
      * 
@@ -9710,6 +8445,24 @@ export interface Sites {
      */
     listSiteBackupsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
     listSiteBackupsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.BackupItemCollection>): void;
+
+    /**
+     * @summary Lists all available backups for web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listSiteBackups(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
+    listSiteBackups(resourceGroupName: string, name: string, callback: ServiceCallback<models.BackupItemCollection>): void;
 
     /**
      * @summary Gets status of a web app backup that may be in progress.
@@ -10072,407 +8825,6 @@ export interface Sites {
     restoreSiteSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<models.RestoreResponse>): void;
 
     /**
-     * @summary Gets the backup configuration for a web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getSiteBackupConfigurationDeprecated(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
-    getSiteBackupConfigurationDeprecated(resourceGroupName: string, name: string, callback: ServiceCallback<models.BackupRequest>): void;
-
-    /**
-     * @summary Updates backup configuration of web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} request Information on backup request
-     * 
-     * @param {string} [request.backupRequestName] Name of the backup
-     * 
-     * @param {boolean} [request.enabled] True if the backup schedule is enabled
-     * (must be included in that case), false if the backup schedule should be
-     * disabled
-     * 
-     * @param {string} [request.storageAccountUrl] SAS URL to the container
-     * 
-     * @param {object} [request.backupSchedule] Schedule for the backup if it is
-     * executed periodically
-     * 
-     * @param {number} [request.backupSchedule.frequencyInterval] How often should
-     * be the backup executed (e.g. for weekly backup, this should be set to 7
-     * and FrequencyUnit should be set to Day)
-     * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to Day and
-     * FrequencyInterval should be set to 7). Possible values include: 'Day',
-     * 'Hour'
-     * 
-     * @param {boolean} [request.backupSchedule.keepAtLeastOneBackup] True if the
-     * retention policy should always keep at least one backup in the storage
-     * account, regardless how old it is; false otherwise.
-     * 
-     * @param {number} [request.backupSchedule.retentionPeriodInDays] After how
-     * many days backups should be deleted
-     * 
-     * @param {date} [request.backupSchedule.startTime] When the schedule should
-     * start working
-     * 
-     * @param {date} [request.backupSchedule.lastExecutionTime] The last time when
-     * this schedule was triggered
-     * 
-     * @param {array} [request.databases] Databases included in the backup
-     * 
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation'
-     * 
-     * @param {string} [request.id] Resource Id
-     * 
-     * @param {string} [request.name] Resource Name
-     * 
-     * @param {string} [request.location] Resource Location
-     * 
-     * @param {string} [request.type] Resource type
-     * 
-     * @param {object} [request.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    updateSiteBackupConfigurationDeprecated(resourceGroupName: string, name: string, request: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
-    updateSiteBackupConfigurationDeprecated(resourceGroupName: string, name: string, request: models.BackupRequest, callback: ServiceCallback<models.BackupRequest>): void;
-
-    /**
-     * @summary Lists all backup configurations for a web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listSiteBackupConfigurationDeprecated(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
-    listSiteBackupConfigurationDeprecated(resourceGroupName: string, name: string, callback: ServiceCallback<models.BackupRequest>): void;
-
-    /**
-     * @summary Gets the backup configuration for a web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getSiteBackupConfigurationDeprecatedSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
-    getSiteBackupConfigurationDeprecatedSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.BackupRequest>): void;
-
-    /**
-     * @summary Updates backup configuration of web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} request Information on backup request
-     * 
-     * @param {string} [request.backupRequestName] Name of the backup
-     * 
-     * @param {boolean} [request.enabled] True if the backup schedule is enabled
-     * (must be included in that case), false if the backup schedule should be
-     * disabled
-     * 
-     * @param {string} [request.storageAccountUrl] SAS URL to the container
-     * 
-     * @param {object} [request.backupSchedule] Schedule for the backup if it is
-     * executed periodically
-     * 
-     * @param {number} [request.backupSchedule.frequencyInterval] How often should
-     * be the backup executed (e.g. for weekly backup, this should be set to 7
-     * and FrequencyUnit should be set to Day)
-     * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to Day and
-     * FrequencyInterval should be set to 7). Possible values include: 'Day',
-     * 'Hour'
-     * 
-     * @param {boolean} [request.backupSchedule.keepAtLeastOneBackup] True if the
-     * retention policy should always keep at least one backup in the storage
-     * account, regardless how old it is; false otherwise.
-     * 
-     * @param {number} [request.backupSchedule.retentionPeriodInDays] After how
-     * many days backups should be deleted
-     * 
-     * @param {date} [request.backupSchedule.startTime] When the schedule should
-     * start working
-     * 
-     * @param {date} [request.backupSchedule.lastExecutionTime] The last time when
-     * this schedule was triggered
-     * 
-     * @param {array} [request.databases] Databases included in the backup
-     * 
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation'
-     * 
-     * @param {string} [request.id] Resource Id
-     * 
-     * @param {string} [request.name] Resource Name
-     * 
-     * @param {string} [request.location] Resource Location
-     * 
-     * @param {string} [request.type] Resource type
-     * 
-     * @param {object} [request.tags] Resource tags
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    updateSiteBackupConfigurationDeprecatedSlot(resourceGroupName: string, name: string, request: models.BackupRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
-    updateSiteBackupConfigurationDeprecatedSlot(resourceGroupName: string, name: string, request: models.BackupRequest, slot: string, callback: ServiceCallback<models.BackupRequest>): void;
-
-    /**
-     * @summary Lists all backup configurations for a web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listSiteBackupConfigurationDeprecatedSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupRequest>): void;
-    listSiteBackupConfigurationDeprecatedSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.BackupRequest>): void;
-
-    /**
-     * @summary Lists all available backups for web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listSiteBackupsDeprecatedSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
-    listSiteBackupsDeprecatedSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.BackupItemCollection>): void;
-
-    /**
-     * @summary Lists all available backups for web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listSiteBackupsDeprecated(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
-    listSiteBackupsDeprecated(resourceGroupName: string, name: string, callback: ServiceCallback<models.BackupItemCollection>): void;
-
-    /**
-     * @summary Discovers existing web app backups that can be restored
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} request Information on restore request
-     * 
-     * @param {string} [request.storageAccountUrl] SAS URL to the container
-     * 
-     * @param {string} [request.blobName] Name of a blob which contains the backup
-     * 
-     * @param {boolean} [request.overwrite] True if the restore operation can
-     * overwrite target site. "True" needed if trying to restore over an existing
-     * site.
-     * 
-     * @param {string} [request.siteName] Name of a site (Web App)
-     * 
-     * @param {array} [request.databases] Collection of databses which should be
-     * restored. This list has to match the list of databases included in the
-     * backup.
-     * 
-     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
-     * restoring a site with custom domains. If "true", custom domains are
-     * removed automatically. If "false", custom domains are added to
-     * the site object when it is being restored, but that might fail
-     * due to conflicts during the operation.
-     * 
-     * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation'
-     * 
-     * @param {boolean} [request.adjustConnectionStrings] Gets or sets a flag
-     * showing if SiteConfig.ConnectionStrings should be set in new site
-     * 
-     * @param {string} [request.hostingEnvironment] App Service Environment name,
-     * if needed (only when restoring a site to an App Service Environment)
-     * 
-     * @param {string} [request.id] Resource Id
-     * 
-     * @param {string} [request.name] Resource Name
-     * 
-     * @param {string} [request.location] Resource Location
-     * 
-     * @param {string} [request.type] Resource type
-     * 
-     * @param {object} [request.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    discoverSiteRestoreDeprecated(resourceGroupName: string, name: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreRequest>): void;
-    discoverSiteRestoreDeprecated(resourceGroupName: string, name: string, request: models.RestoreRequest, callback: ServiceCallback<models.RestoreRequest>): void;
-
-    /**
-     * @summary Discovers existing web app backups that can be restored
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} request Information on restore request
-     * 
-     * @param {string} [request.storageAccountUrl] SAS URL to the container
-     * 
-     * @param {string} [request.blobName] Name of a blob which contains the backup
-     * 
-     * @param {boolean} [request.overwrite] True if the restore operation can
-     * overwrite target site. "True" needed if trying to restore over an existing
-     * site.
-     * 
-     * @param {string} [request.siteName] Name of a site (Web App)
-     * 
-     * @param {array} [request.databases] Collection of databses which should be
-     * restored. This list has to match the list of databases included in the
-     * backup.
-     * 
-     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
-     * restoring a site with custom domains. If "true", custom domains are
-     * removed automatically. If "false", custom domains are added to
-     * the site object when it is being restored, but that might fail
-     * due to conflicts during the operation.
-     * 
-     * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation'
-     * 
-     * @param {boolean} [request.adjustConnectionStrings] Gets or sets a flag
-     * showing if SiteConfig.ConnectionStrings should be set in new site
-     * 
-     * @param {string} [request.hostingEnvironment] App Service Environment name,
-     * if needed (only when restoring a site to an App Service Environment)
-     * 
-     * @param {string} [request.id] Resource Id
-     * 
-     * @param {string} [request.name] Resource Name
-     * 
-     * @param {string} [request.location] Resource Location
-     * 
-     * @param {string} [request.type] Resource type
-     * 
-     * @param {object} [request.tags] Resource tags
-     * 
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    discoverSiteRestoreDeprecatedSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreRequest>): void;
-    discoverSiteRestoreDeprecatedSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<models.RestoreRequest>): void;
-
-    /**
-     * @summary Gets the quota usage numbers for web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.filter] Return only usages specified in the
-     * filter. Filter is specified by using OData syntax. Example:
-     * $filter=(name.value eq 'Metric1' or name.value eq 'Metric2') and startTime
-     * eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and
-     * timeGrain eq duration'[Hour|Minute|Day]'.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getSiteUsages(resourceGroupName: string, name: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
-    getSiteUsages(resourceGroupName: string, name: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
-
-    /**
      * @summary Gets the quota usage numbers for web app
      *
      * @param {string} resourceGroupName Name of resource group
@@ -10500,7 +8852,7 @@ export interface Sites {
     getSiteUsagesSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
 
     /**
-     * @summary Gets metrics for web app
+     * @summary Gets the quota usage numbers for web app
      *
      * @param {string} resourceGroupName Name of resource group
      * 
@@ -10508,14 +8860,11 @@ export interface Sites {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {boolean} [options.details] If true, metric details are included in
-     * response
-     * 
-     * @param {string} [options.filter] Return only usages/metrics specified in
-     * the filter. Filter conforms to odata syntax. Example: $filter=(name.value
-     * eq 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * @param {string} [options.filter] Return only usages specified in the
+     * filter. Filter is specified by using OData syntax. Example:
+     * $filter=(name.value eq 'Metric1' or name.value eq 'Metric2') and startTime
+     * eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and
+     * timeGrain eq duration'[Hour|Minute|Day]'.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10523,8 +8872,8 @@ export interface Sites {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getSiteMetrics(resourceGroupName: string, name: string, options: { details? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceMetricCollection>): void;
-    getSiteMetrics(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+    getSiteUsages(resourceGroupName: string, name: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+    getSiteUsages(resourceGroupName: string, name: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
 
     /**
      * @summary Gets metrics for web app
@@ -10557,6 +8906,51 @@ export interface Sites {
     getSiteMetricsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
 
     /**
+     * @summary Gets metrics for web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {boolean} [options.details] If true, metric details are included in
+     * response
+     * 
+     * @param {string} [options.filter] Return only usages/metrics specified in
+     * the filter. Filter conforms to odata syntax. Example: $filter=(name.value
+     * eq 'Metric1' or name.value eq 'Metric2') and startTime eq
+     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
+     * eq duration'[Hour|Minute|Day]'.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteMetrics(resourceGroupName: string, name: string, options: { details? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+    getSiteMetrics(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+
+    /**
+     * @summary Gets metric definitions for web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteMetricDefinitions(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+    getSiteMetricDefinitions(resourceGroupName: string, name: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+
+    /**
      * @summary Gets metric definitions for web app
      *
      * @param {string} resourceGroupName Name of resource group
@@ -10576,24 +8970,6 @@ export interface Sites {
      */
     getSiteMetricDefinitionsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
     getSiteMetricDefinitionsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
-
-    /**
-     * @summary Gets metric definitions for web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getSiteMetricDefinitions(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
-    getSiteMetricDefinitions(resourceGroupName: string, name: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
 
     /**
      * @summary Gets the publishing profile for web app
@@ -10651,6 +9027,31 @@ export interface Sites {
      * 
      * @param {string} name Name of web app
      * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {boolean} [options.softRestart] Soft restart applies the
+     * configuration settings and restarts the app if necessary. Hard restart
+     * always restarts and reprovisions the app
+     * 
+     * @param {boolean} [options.synchronous] If true then the API will block
+     * until the app has been restarted
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    restartSite(resourceGroupName: string, name: string, options: { softRestart? : boolean, synchronous? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    restartSite(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Restarts web app
+     *
+     * @param {string} resourceGroupName Name of resource group
+     * 
+     * @param {string} name Name of web app
+     * 
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
      * 
@@ -10671,31 +9072,6 @@ export interface Sites {
      */
     restartSiteSlot(resourceGroupName: string, name: string, slot: string, options: { softRestart? : boolean, synchronous? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     restartSiteSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @summary Restarts web app
-     *
-     * @param {string} resourceGroupName Name of resource group
-     * 
-     * @param {string} name Name of web app
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {boolean} [options.softRestart] Soft restart applies the
-     * configuration settings and restarts the app if necessary. Hard restart
-     * always restarts and reprovisions the app
-     * 
-     * @param {boolean} [options.synchronous] If true then the API will block
-     * until the app has been restarted
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    restartSite(resourceGroupName: string, name: string, options: { softRestart? : boolean, synchronous? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    restartSite(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
 
     /**
      * @summary Starts web app

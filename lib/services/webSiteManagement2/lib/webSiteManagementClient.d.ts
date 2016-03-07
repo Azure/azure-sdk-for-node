@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
 import * as operations from "./operations";
 
 declare class WebSiteManagementClient {
@@ -17,9 +17,9 @@ declare class WebSiteManagementClient {
      * Initializes a new instance of the WebSiteManagementClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Gets Azure subscription credentials.
-     *
      * @param {string} subscriptionId - Subscription Id
+     *
+     * @param {string} apiVersion - API Version
      *
      * @param {string} [baseUri] - The base URI of the service.
      *
@@ -32,28 +32,12 @@ declare class WebSiteManagementClient {
      *
      * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
      *
-     * @param {string} [options.apiVersion] - API Version
-     *
-     * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
-     *
-     * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
-     *
-     * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
-     *
      */
-    constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri: string, options: ServiceClientOptions);
-
-    credentials: ServiceClientCredentials;
+    constructor(subscriptionId: string, apiVersion: string, baseUri: string, options: ServiceClientOptions);
 
     subscriptionId: string;
 
     apiVersion: string;
-
-    acceptLanguage: string;
-
-    longRunningOperationRetryTimeout: number;
-
-    generateClientRequestId: boolean;
 
     // Operation groups
     certificates: operations.Certificates;
@@ -65,6 +49,7 @@ declare class WebSiteManagementClient {
     hostingEnvironments: operations.HostingEnvironments;
     managedHostingEnvironments: operations.ManagedHostingEnvironments;
     provider: operations.Provider;
+    recommendations: operations.Recommendations;
     serverFarms: operations.ServerFarms;
     sites: operations.Sites;
     topLevelDomains: operations.TopLevelDomains;

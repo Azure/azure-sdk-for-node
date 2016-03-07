@@ -87,9 +87,6 @@ export interface ApplicationGateways {
      * @param {object} parameters Parameters supplied to the create/delete
      * ApplicationGateway operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {object} [parameters.sku] Gets or sets sku of application gateway
      * resource
      * 
@@ -138,6 +135,9 @@ export interface ApplicationGateways {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the ApplicationGateway resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -166,9 +166,6 @@ export interface ApplicationGateways {
      * @param {object} parameters Parameters supplied to the create/delete
      * ApplicationGateway operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {object} [parameters.sku] Gets or sets sku of application gateway
      * resource
      * 
@@ -217,6 +214,9 @@ export interface ApplicationGateways {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the ApplicationGateway resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -464,13 +464,6 @@ export interface ExpressRouteCircuitAuthorizations {
      * @param {object} authorizationParameters Parameters supplied to the
      * create/update ExpressRouteCircuitAuthorization operation
      * 
-     * @param {string} [authorizationParameters.name] Gets name of the resource
-     * that is unique within a resource group. This name can be used to access
-     * the resource
-     * 
-     * @param {string} [authorizationParameters.etag] A unique read-only string
-     * that changes whenever the resource is updated
-     * 
      * @param {string} [authorizationParameters.authorizationKey] Gets or sets the
      * authorization key
      * 
@@ -479,6 +472,13 @@ export interface ExpressRouteCircuitAuthorizations {
      * 
      * @param {string} [authorizationParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [authorizationParameters.name] Gets name of the resource
+     * that is unique within a resource group. This name can be used to access
+     * the resource
+     * 
+     * @param {string} [authorizationParameters.etag] A unique read-only string
+     * that changes whenever the resource is updated
      * 
      * @param {string} [authorizationParameters.id] Resource Id
      * 
@@ -506,13 +506,6 @@ export interface ExpressRouteCircuitAuthorizations {
      * @param {object} authorizationParameters Parameters supplied to the
      * create/update ExpressRouteCircuitAuthorization operation
      * 
-     * @param {string} [authorizationParameters.name] Gets name of the resource
-     * that is unique within a resource group. This name can be used to access
-     * the resource
-     * 
-     * @param {string} [authorizationParameters.etag] A unique read-only string
-     * that changes whenever the resource is updated
-     * 
      * @param {string} [authorizationParameters.authorizationKey] Gets or sets the
      * authorization key
      * 
@@ -521,6 +514,13 @@ export interface ExpressRouteCircuitAuthorizations {
      * 
      * @param {string} [authorizationParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [authorizationParameters.name] Gets name of the resource
+     * that is unique within a resource group. This name can be used to access
+     * the resource
+     * 
+     * @param {string} [authorizationParameters.etag] A unique read-only string
+     * that changes whenever the resource is updated
      * 
      * @param {string} [authorizationParameters.id] Resource Id
      * 
@@ -657,13 +657,6 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} peeringParameters Parameters supplied to the create/update
      * ExpressRouteCircuit Peering operation
      * 
-     * @param {string} [peeringParameters.name] Gets name of the resource that is
-     * unique within a resource group. This name can be used to access the
-     * resource
-     * 
-     * @param {string} [peeringParameters.etag] A unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [peeringParameters.peeringType] Gets or sets PeeringType.
      * Possible values include: 'AzurePublicPeering', 'AzurePrivatePeering',
      * 'MicrosoftPeering'
@@ -721,6 +714,13 @@ export interface ExpressRouteCircuitPeerings {
      * 
      * @param {string} [peeringParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [peeringParameters.name] Gets name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource
+     * 
+     * @param {string} [peeringParameters.etag] A unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [peeringParameters.id] Resource Id
      * 
@@ -748,13 +748,6 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} peeringParameters Parameters supplied to the create/update
      * ExpressRouteCircuit Peering operation
      * 
-     * @param {string} [peeringParameters.name] Gets name of the resource that is
-     * unique within a resource group. This name can be used to access the
-     * resource
-     * 
-     * @param {string} [peeringParameters.etag] A unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [peeringParameters.peeringType] Gets or sets PeeringType.
      * Possible values include: 'AzurePublicPeering', 'AzurePrivatePeering',
      * 'MicrosoftPeering'
@@ -812,6 +805,13 @@ export interface ExpressRouteCircuitPeerings {
      * 
      * @param {string} [peeringParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [peeringParameters.name] Gets name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource
+     * 
+     * @param {string} [peeringParameters.etag] A unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [peeringParameters.id] Resource Id
      * 
@@ -949,9 +949,6 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.family] Gets or sets family of the sku.
      * Possible values include: 'UnlimitedData', 'MeteredData'
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [parameters.circuitProvisioningState] Gets or sets
      * CircuitProvisioningState state of the resource
      * 
@@ -983,6 +980,9 @@ export interface ExpressRouteCircuits {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -1021,9 +1021,6 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.family] Gets or sets family of the sku.
      * Possible values include: 'UnlimitedData', 'MeteredData'
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [parameters.circuitProvisioningState] Gets or sets
      * CircuitProvisioningState state of the resource
      * 
@@ -1055,6 +1052,9 @@ export interface ExpressRouteCircuits {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -1374,9 +1374,6 @@ export interface LoadBalancers {
      * @param {object} parameters Parameters supplied to the create/delete
      * LoadBalancer operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.frontendIPConfigurations] Gets or sets frontend
      * IP addresses of the load balancer
      * 
@@ -1400,6 +1397,9 @@ export interface LoadBalancers {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -1428,9 +1428,6 @@ export interface LoadBalancers {
      * @param {object} parameters Parameters supplied to the create/delete
      * LoadBalancer operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.frontendIPConfigurations] Gets or sets frontend
      * IP addresses of the load balancer
      * 
@@ -1454,6 +1451,9 @@ export interface LoadBalancers {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -1561,9 +1561,6 @@ export interface LocalNetworkGateways {
      * @param {object} parameters Parameters supplied to the Begin Create or
      * update Local Network Gateway operation through Network resource provider.
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {object} [parameters.localNetworkAddressSpace] Local network site
      * Address space
      * 
@@ -1579,6 +1576,9 @@ export interface LocalNetworkGateways {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the LocalNetworkGateway resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -1609,9 +1609,6 @@ export interface LocalNetworkGateways {
      * @param {object} parameters Parameters supplied to the Begin Create or
      * update Local Network Gateway operation through Network resource provider.
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {object} [parameters.localNetworkAddressSpace] Local network site
      * Address space
      * 
@@ -1627,6 +1624,9 @@ export interface LocalNetworkGateways {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the LocalNetworkGateway resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -1816,43 +1816,10 @@ export interface NetworkInterfaces {
      * @param {object} parameters Parameters supplied to the create/update
      * NetworkInterface operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {object} [parameters.virtualMachine] Gets or sets the reference of a
      * VirtualMachine
      * 
      * @param {string} [parameters.virtualMachine.id] Resource Id
-     * 
-     * @param {object} [parameters.networkSecurityGroup] Gets or sets the
-     * reference of the NetworkSecurityGroup resource
-     * 
-     * @param {string} [parameters.networkSecurityGroup.etag] Gets a unique
-     * read-only string that changes whenever the resource is updated
-     * 
-     * @param {array} [parameters.networkSecurityGroup.securityRules] Gets or sets
-     * Security rules of network security group
-     * 
-     * @param {array} [parameters.networkSecurityGroup.defaultSecurityRules] Gets
-     * or sets Default security rules of network security group
-     * 
-     * @param {array} [parameters.networkSecurityGroup.networkInterfaces] Gets
-     * collection of references to Network Interfaces
-     * 
-     * @param {array} [parameters.networkSecurityGroup.subnets] Gets collection of
-     * references to subnets
-     * 
-     * @param {string} [parameters.networkSecurityGroup.resourceGuid] Gets or sets
-     * resource guid property of the network security group resource
-     * 
-     * @param {string} [parameters.networkSecurityGroup.provisioningState] Gets or
-     * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
-     * 
-     * @param {string} [parameters.networkSecurityGroup.id] Resource Id
-     * 
-     * @param {string} [parameters.networkSecurityGroup.location] Resource location
-     * 
-     * @param {object} [parameters.networkSecurityGroup.tags] Resource tags
      * 
      * @param {array} [parameters.ipConfigurations] Gets or sets list of
      * IPConfigurations of the NetworkInterface
@@ -1887,6 +1854,9 @@ export interface NetworkInterfaces {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -1915,43 +1885,10 @@ export interface NetworkInterfaces {
      * @param {object} parameters Parameters supplied to the create/update
      * NetworkInterface operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {object} [parameters.virtualMachine] Gets or sets the reference of a
      * VirtualMachine
      * 
      * @param {string} [parameters.virtualMachine.id] Resource Id
-     * 
-     * @param {object} [parameters.networkSecurityGroup] Gets or sets the
-     * reference of the NetworkSecurityGroup resource
-     * 
-     * @param {string} [parameters.networkSecurityGroup.etag] Gets a unique
-     * read-only string that changes whenever the resource is updated
-     * 
-     * @param {array} [parameters.networkSecurityGroup.securityRules] Gets or sets
-     * Security rules of network security group
-     * 
-     * @param {array} [parameters.networkSecurityGroup.defaultSecurityRules] Gets
-     * or sets Default security rules of network security group
-     * 
-     * @param {array} [parameters.networkSecurityGroup.networkInterfaces] Gets
-     * collection of references to Network Interfaces
-     * 
-     * @param {array} [parameters.networkSecurityGroup.subnets] Gets collection of
-     * references to subnets
-     * 
-     * @param {string} [parameters.networkSecurityGroup.resourceGuid] Gets or sets
-     * resource guid property of the network security group resource
-     * 
-     * @param {string} [parameters.networkSecurityGroup.provisioningState] Gets or
-     * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
-     * 
-     * @param {string} [parameters.networkSecurityGroup.id] Resource Id
-     * 
-     * @param {string} [parameters.networkSecurityGroup.location] Resource location
-     * 
-     * @param {object} [parameters.networkSecurityGroup.tags] Resource tags
      * 
      * @param {array} [parameters.ipConfigurations] Gets or sets list of
      * IPConfigurations of the NetworkInterface
@@ -1986,6 +1923,9 @@ export interface NetworkInterfaces {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -2259,9 +2199,6 @@ export interface NetworkSecurityGroups {
      * @param {object} parameters Parameters supplied to the create/update Network
      * Security Group operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.securityRules] Gets or sets Security rules of
      * network security group
      * 
@@ -2278,6 +2215,9 @@ export interface NetworkSecurityGroups {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -2308,9 +2248,6 @@ export interface NetworkSecurityGroups {
      * @param {object} parameters Parameters supplied to the create/update Network
      * Security Group operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.securityRules] Gets or sets Security rules of
      * network security group
      * 
@@ -2327,6 +2264,9 @@ export interface NetworkSecurityGroups {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -2490,21 +2430,11 @@ export interface PublicIPAddresses {
      * @param {object} parameters Parameters supplied to the create/update
      * PublicIPAddress operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [parameters.publicIPAllocationMethod] Gets or sets PublicIP
      * allocation method (Static/Dynamic). Possible values include: 'Static',
      * 'Dynamic'
      * 
      * @param {object} [parameters.ipConfiguration]
-     * 
-     * @param {string} [parameters.ipConfiguration.name] Gets name of the resource
-     * that is unique within a resource group. This name can be used to access
-     * the resource
-     * 
-     * @param {string} [parameters.ipConfiguration.etag] A unique read-only string
-     * that changes whenever the resource is updated
      * 
      * @param {string} [parameters.ipConfiguration.privateIPAddress] Gets or sets
      * the privateIPAddress of the IP Configuration
@@ -2513,100 +2443,15 @@ export interface PublicIPAddresses {
      * or sets PrivateIP allocation method (Static/Dynamic). Possible values
      * include: 'Static', 'Dynamic'
      * 
-     * @param {object} [parameters.ipConfiguration.subnet] Gets or sets the
-     * reference of the subnet resource
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.name] Gets name of the
-     * resource that is unique within a resource group. This name can be used to
-     * access the resource
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.etag] A unique read-only
-     * string that changes whenever the resource is updated
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.addressPrefix] Gets or
-     * sets Address prefix for the subnet.
-     * 
-     * @param {object} [parameters.ipConfiguration.subnet.networkSecurityGroup]
-     * Gets or sets the reference of the NetworkSecurityGroup resource
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
-     * unique read-only string that changes whenever the resource is updated
-     * 
-     * @param {array}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.securityRules]
-     * Gets or sets Security rules of network security group
-     * 
-     * @param {array}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
-     * Gets or sets Default security rules of network security group
-     * 
-     * @param {array}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
-     * Gets collection of references to Network Interfaces
-     * 
-     * @param {array}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.subnets] Gets
-     * collection of references to subnets
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.resourceGuid] Gets
-     * or sets resource guid property of the network security group resource
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
-     * Gets or sets Provisioning state of the PublicIP resource
-     * Updating/Deleting/Failed
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.networkSecurityGroup.id]
-     * Resource Id
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.location] Resource
-     * location
-     * 
-     * @param {object}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.tags] Resource tags
-     * 
-     * @param {object} [parameters.ipConfiguration.subnet.routeTable] Gets or sets
-     * the reference of the RouteTable resource
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.routeTable.etag] Gets a
-     * unique read-only string that changes whenever the resource is updated
-     * 
-     * @param {array} [parameters.ipConfiguration.subnet.routeTable.routes] Gets
-     * or sets Routes in a Route Table
-     * 
-     * @param {array} [parameters.ipConfiguration.subnet.routeTable.subnets] Gets
-     * collection of references to subnets
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.routeTable.provisioningState] Gets or
-     * sets Provisioning state of the resource Updating/Deleting/Failed
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.routeTable.id] Resource
-     * Id
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.routeTable.location]
-     * Resource location
-     * 
-     * @param {object} [parameters.ipConfiguration.subnet.routeTable.tags]
-     * Resource tags
-     * 
-     * @param {array} [parameters.ipConfiguration.subnet.ipConfigurations] Gets
-     * array of references to the network interface IP configurations using subnet
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.provisioningState] Gets
-     * or sets Provisioning state of the PublicIP resource
-     * Updating/Deleting/Failed
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.id] Resource Id
-     * 
-     * @param {object} [parameters.ipConfiguration.publicIPAddress] Gets or sets
-     * the reference of the PublicIP resource
-     * 
      * @param {string} [parameters.ipConfiguration.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.ipConfiguration.name] Gets name of the resource
+     * that is unique within a resource group. This name can be used to access
+     * the resource
+     * 
+     * @param {string} [parameters.ipConfiguration.etag] A unique read-only string
+     * that changes whenever the resource is updated
      * 
      * @param {string} [parameters.ipConfiguration.id] Resource Id
      * 
@@ -2640,6 +2485,9 @@ export interface PublicIPAddresses {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -2669,21 +2517,11 @@ export interface PublicIPAddresses {
      * @param {object} parameters Parameters supplied to the create/update
      * PublicIPAddress operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [parameters.publicIPAllocationMethod] Gets or sets PublicIP
      * allocation method (Static/Dynamic). Possible values include: 'Static',
      * 'Dynamic'
      * 
      * @param {object} [parameters.ipConfiguration]
-     * 
-     * @param {string} [parameters.ipConfiguration.name] Gets name of the resource
-     * that is unique within a resource group. This name can be used to access
-     * the resource
-     * 
-     * @param {string} [parameters.ipConfiguration.etag] A unique read-only string
-     * that changes whenever the resource is updated
      * 
      * @param {string} [parameters.ipConfiguration.privateIPAddress] Gets or sets
      * the privateIPAddress of the IP Configuration
@@ -2692,100 +2530,15 @@ export interface PublicIPAddresses {
      * or sets PrivateIP allocation method (Static/Dynamic). Possible values
      * include: 'Static', 'Dynamic'
      * 
-     * @param {object} [parameters.ipConfiguration.subnet] Gets or sets the
-     * reference of the subnet resource
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.name] Gets name of the
-     * resource that is unique within a resource group. This name can be used to
-     * access the resource
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.etag] A unique read-only
-     * string that changes whenever the resource is updated
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.addressPrefix] Gets or
-     * sets Address prefix for the subnet.
-     * 
-     * @param {object} [parameters.ipConfiguration.subnet.networkSecurityGroup]
-     * Gets or sets the reference of the NetworkSecurityGroup resource
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
-     * unique read-only string that changes whenever the resource is updated
-     * 
-     * @param {array}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.securityRules]
-     * Gets or sets Security rules of network security group
-     * 
-     * @param {array}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
-     * Gets or sets Default security rules of network security group
-     * 
-     * @param {array}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
-     * Gets collection of references to Network Interfaces
-     * 
-     * @param {array}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.subnets] Gets
-     * collection of references to subnets
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.resourceGuid] Gets
-     * or sets resource guid property of the network security group resource
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
-     * Gets or sets Provisioning state of the PublicIP resource
-     * Updating/Deleting/Failed
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.networkSecurityGroup.id]
-     * Resource Id
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.location] Resource
-     * location
-     * 
-     * @param {object}
-     * [parameters.ipConfiguration.subnet.networkSecurityGroup.tags] Resource tags
-     * 
-     * @param {object} [parameters.ipConfiguration.subnet.routeTable] Gets or sets
-     * the reference of the RouteTable resource
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.routeTable.etag] Gets a
-     * unique read-only string that changes whenever the resource is updated
-     * 
-     * @param {array} [parameters.ipConfiguration.subnet.routeTable.routes] Gets
-     * or sets Routes in a Route Table
-     * 
-     * @param {array} [parameters.ipConfiguration.subnet.routeTable.subnets] Gets
-     * collection of references to subnets
-     * 
-     * @param {string}
-     * [parameters.ipConfiguration.subnet.routeTable.provisioningState] Gets or
-     * sets Provisioning state of the resource Updating/Deleting/Failed
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.routeTable.id] Resource
-     * Id
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.routeTable.location]
-     * Resource location
-     * 
-     * @param {object} [parameters.ipConfiguration.subnet.routeTable.tags]
-     * Resource tags
-     * 
-     * @param {array} [parameters.ipConfiguration.subnet.ipConfigurations] Gets
-     * array of references to the network interface IP configurations using subnet
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.provisioningState] Gets
-     * or sets Provisioning state of the PublicIP resource
-     * Updating/Deleting/Failed
-     * 
-     * @param {string} [parameters.ipConfiguration.subnet.id] Resource Id
-     * 
-     * @param {object} [parameters.ipConfiguration.publicIPAddress] Gets or sets
-     * the reference of the PublicIP resource
-     * 
      * @param {string} [parameters.ipConfiguration.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.ipConfiguration.name] Gets name of the resource
+     * that is unique within a resource group. This name can be used to access
+     * the resource
+     * 
+     * @param {string} [parameters.ipConfiguration.etag] A unique read-only string
+     * that changes whenever the resource is updated
      * 
      * @param {string} [parameters.ipConfiguration.id] Resource Id
      * 
@@ -2819,6 +2572,9 @@ export interface PublicIPAddresses {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -2982,15 +2738,15 @@ export interface RouteTables {
      * @param {object} parameters Parameters supplied to the create/update Route
      * Table operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.routes] Gets or sets Routes in a Route Table
      * 
      * @param {array} [parameters.subnets] Gets collection of references to subnets
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -3020,15 +2776,15 @@ export interface RouteTables {
      * @param {object} parameters Parameters supplied to the create/update Route
      * Table operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.routes] Gets or sets Routes in a Route Table
      * 
      * @param {array} [parameters.subnets] Gets collection of references to subnets
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -3193,13 +2949,6 @@ export interface Routes {
      * @param {object} routeParameters Parameters supplied to the create/update
      * routeoperation
      * 
-     * @param {string} [routeParameters.name] Gets name of the resource that is
-     * unique within a resource group. This name can be used to access the
-     * resource
-     * 
-     * @param {string} [routeParameters.etag] A unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [routeParameters.addressPrefix] Gets or sets the
      * destination CIDR to which the route applies.
      * 
@@ -3214,6 +2963,13 @@ export interface Routes {
      * 
      * @param {string} [routeParameters.provisioningState] Gets or sets
      * Provisioning state of the resource Updating/Deleting/Failed
+     * 
+     * @param {string} [routeParameters.name] Gets name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource
+     * 
+     * @param {string} [routeParameters.etag] A unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [routeParameters.id] Resource Id
      * 
@@ -3240,13 +2996,6 @@ export interface Routes {
      * @param {object} routeParameters Parameters supplied to the create/update
      * routeoperation
      * 
-     * @param {string} [routeParameters.name] Gets name of the resource that is
-     * unique within a resource group. This name can be used to access the
-     * resource
-     * 
-     * @param {string} [routeParameters.etag] A unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [routeParameters.addressPrefix] Gets or sets the
      * destination CIDR to which the route applies.
      * 
@@ -3261,6 +3010,13 @@ export interface Routes {
      * 
      * @param {string} [routeParameters.provisioningState] Gets or sets
      * Provisioning state of the resource Updating/Deleting/Failed
+     * 
+     * @param {string} [routeParameters.name] Gets name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource
+     * 
+     * @param {string} [routeParameters.etag] A unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [routeParameters.id] Resource Id
      * 
@@ -3401,13 +3157,6 @@ export interface SecurityRules {
      * @param {object} securityRuleParameters Parameters supplied to the
      * create/update network security rule operation
      * 
-     * @param {string} [securityRuleParameters.name] Gets name of the resource
-     * that is unique within a resource group. This name can be used to access
-     * the resource
-     * 
-     * @param {string} [securityRuleParameters.etag] A unique read-only string
-     * that changes whenever the resource is updated
-     * 
      * @param {string} [securityRuleParameters.description] Gets or sets a
      * description for this rule. Restricted to 140 chars.
      * 
@@ -3450,6 +3199,13 @@ export interface SecurityRules {
      * 
      * @param {string} [securityRuleParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [securityRuleParameters.name] Gets name of the resource
+     * that is unique within a resource group. This name can be used to access
+     * the resource
+     * 
+     * @param {string} [securityRuleParameters.etag] A unique read-only string
+     * that changes whenever the resource is updated
      * 
      * @param {string} [securityRuleParameters.id] Resource Id
      * 
@@ -3478,13 +3234,6 @@ export interface SecurityRules {
      * @param {object} securityRuleParameters Parameters supplied to the
      * create/update network security rule operation
      * 
-     * @param {string} [securityRuleParameters.name] Gets name of the resource
-     * that is unique within a resource group. This name can be used to access
-     * the resource
-     * 
-     * @param {string} [securityRuleParameters.etag] A unique read-only string
-     * that changes whenever the resource is updated
-     * 
      * @param {string} [securityRuleParameters.description] Gets or sets a
      * description for this rule. Restricted to 140 chars.
      * 
@@ -3527,6 +3276,13 @@ export interface SecurityRules {
      * 
      * @param {string} [securityRuleParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [securityRuleParameters.name] Gets name of the resource
+     * that is unique within a resource group. This name can be used to access
+     * the resource
+     * 
+     * @param {string} [securityRuleParameters.etag] A unique read-only string
+     * that changes whenever the resource is updated
      * 
      * @param {string} [securityRuleParameters.id] Resource Id
      * 
@@ -3663,21 +3419,11 @@ export interface Subnets {
      * @param {object} subnetParameters Parameters supplied to the create/update
      * Subnet operation
      * 
-     * @param {string} [subnetParameters.name] Gets name of the resource that is
-     * unique within a resource group. This name can be used to access the
-     * resource
-     * 
-     * @param {string} [subnetParameters.etag] A unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [subnetParameters.addressPrefix] Gets or sets Address
      * prefix for the subnet.
      * 
      * @param {object} [subnetParameters.networkSecurityGroup] Gets or sets the
      * reference of the NetworkSecurityGroup resource
-     * 
-     * @param {string} [subnetParameters.networkSecurityGroup.etag] Gets a unique
-     * read-only string that changes whenever the resource is updated
      * 
      * @param {array} [subnetParameters.networkSecurityGroup.securityRules] Gets
      * or sets Security rules of network security group
@@ -3698,6 +3444,9 @@ export interface Subnets {
      * Gets or sets Provisioning state of the PublicIP resource
      * Updating/Deleting/Failed
      * 
+     * @param {string} [subnetParameters.networkSecurityGroup.etag] Gets a unique
+     * read-only string that changes whenever the resource is updated
+     * 
      * @param {string} [subnetParameters.networkSecurityGroup.id] Resource Id
      * 
      * @param {string} [subnetParameters.networkSecurityGroup.location] Resource
@@ -3708,9 +3457,6 @@ export interface Subnets {
      * @param {object} [subnetParameters.routeTable] Gets or sets the reference of
      * the RouteTable resource
      * 
-     * @param {string} [subnetParameters.routeTable.etag] Gets a unique read-only
-     * string that changes whenever the resource is updated
-     * 
      * @param {array} [subnetParameters.routeTable.routes] Gets or sets Routes in
      * a Route Table
      * 
@@ -3719,6 +3465,9 @@ export interface Subnets {
      * 
      * @param {string} [subnetParameters.routeTable.provisioningState] Gets or
      * sets Provisioning state of the resource Updating/Deleting/Failed
+     * 
+     * @param {string} [subnetParameters.routeTable.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated
      * 
      * @param {string} [subnetParameters.routeTable.id] Resource Id
      * 
@@ -3731,6 +3480,13 @@ export interface Subnets {
      * 
      * @param {string} [subnetParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [subnetParameters.name] Gets name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource
+     * 
+     * @param {string} [subnetParameters.etag] A unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [subnetParameters.id] Resource Id
      * 
@@ -3758,21 +3514,11 @@ export interface Subnets {
      * @param {object} subnetParameters Parameters supplied to the create/update
      * Subnet operation
      * 
-     * @param {string} [subnetParameters.name] Gets name of the resource that is
-     * unique within a resource group. This name can be used to access the
-     * resource
-     * 
-     * @param {string} [subnetParameters.etag] A unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [subnetParameters.addressPrefix] Gets or sets Address
      * prefix for the subnet.
      * 
      * @param {object} [subnetParameters.networkSecurityGroup] Gets or sets the
      * reference of the NetworkSecurityGroup resource
-     * 
-     * @param {string} [subnetParameters.networkSecurityGroup.etag] Gets a unique
-     * read-only string that changes whenever the resource is updated
      * 
      * @param {array} [subnetParameters.networkSecurityGroup.securityRules] Gets
      * or sets Security rules of network security group
@@ -3793,6 +3539,9 @@ export interface Subnets {
      * Gets or sets Provisioning state of the PublicIP resource
      * Updating/Deleting/Failed
      * 
+     * @param {string} [subnetParameters.networkSecurityGroup.etag] Gets a unique
+     * read-only string that changes whenever the resource is updated
+     * 
      * @param {string} [subnetParameters.networkSecurityGroup.id] Resource Id
      * 
      * @param {string} [subnetParameters.networkSecurityGroup.location] Resource
@@ -3803,9 +3552,6 @@ export interface Subnets {
      * @param {object} [subnetParameters.routeTable] Gets or sets the reference of
      * the RouteTable resource
      * 
-     * @param {string} [subnetParameters.routeTable.etag] Gets a unique read-only
-     * string that changes whenever the resource is updated
-     * 
      * @param {array} [subnetParameters.routeTable.routes] Gets or sets Routes in
      * a Route Table
      * 
@@ -3814,6 +3560,9 @@ export interface Subnets {
      * 
      * @param {string} [subnetParameters.routeTable.provisioningState] Gets or
      * sets Provisioning state of the resource Updating/Deleting/Failed
+     * 
+     * @param {string} [subnetParameters.routeTable.etag] Gets a unique read-only
+     * string that changes whenever the resource is updated
      * 
      * @param {string} [subnetParameters.routeTable.id] Resource Id
      * 
@@ -3826,6 +3575,13 @@ export interface Subnets {
      * 
      * @param {string} [subnetParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [subnetParameters.name] Gets name of the resource that is
+     * unique within a resource group. This name can be used to access the
+     * resource
+     * 
+     * @param {string} [subnetParameters.etag] A unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [subnetParameters.id] Resource Id
      * 
@@ -3940,17 +3696,11 @@ export interface VirtualNetworkGatewayConnections {
      * update Virtual Network Gateway connection operation through Network
      * resource provider.
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [parameters.authorizationKey] The authorizationKey.
      * 
      * @param {object} [parameters.virtualNetworkGateway1]
      * 
      * @param {object} [parameters.virtualNetworkGateway2]
-     * 
-     * @param {string} [parameters.virtualNetworkGateway2.etag] Gets a unique
-     * read-only string that changes whenever the resource is updated
      * 
      * @param {array} [parameters.virtualNetworkGateway2.ipConfigurations]
      * IpConfigurations for Virtual network gateway.
@@ -4010,6 +3760,9 @@ export interface VirtualNetworkGatewayConnections {
      * or sets Provisioning state of the VirtualNetworkGateway resource
      * Updating/Deleting/Failed
      * 
+     * @param {string} [parameters.virtualNetworkGateway2.etag] Gets a unique
+     * read-only string that changes whenever the resource is updated
+     * 
      * @param {string} [parameters.virtualNetworkGateway2.id] Resource Id
      * 
      * @param {string} [parameters.virtualNetworkGateway2.location] Resource
@@ -4018,9 +3771,6 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.virtualNetworkGateway2.tags] Resource tags
      * 
      * @param {object} [parameters.localNetworkGateway2]
-     * 
-     * @param {string} [parameters.localNetworkGateway2.etag] Gets a unique
-     * read-only string that changes whenever the resource is updated
      * 
      * @param {object} [parameters.localNetworkGateway2.localNetworkAddressSpace]
      * Local network site Address space
@@ -4039,6 +3789,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} [parameters.localNetworkGateway2.provisioningState] Gets or
      * sets Provisioning state of the LocalNetworkGateway resource
      * Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.localNetworkGateway2.etag] Gets a unique
+     * read-only string that changes whenever the resource is updated
      * 
      * @param {string} [parameters.localNetworkGateway2.id] Resource Id
      * 
@@ -4074,6 +3827,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the VirtualNetworkGatewayConnection resource
      * Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -4106,17 +3862,11 @@ export interface VirtualNetworkGatewayConnections {
      * update Virtual Network Gateway connection operation through Network
      * resource provider.
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {string} [parameters.authorizationKey] The authorizationKey.
      * 
      * @param {object} [parameters.virtualNetworkGateway1]
      * 
      * @param {object} [parameters.virtualNetworkGateway2]
-     * 
-     * @param {string} [parameters.virtualNetworkGateway2.etag] Gets a unique
-     * read-only string that changes whenever the resource is updated
      * 
      * @param {array} [parameters.virtualNetworkGateway2.ipConfigurations]
      * IpConfigurations for Virtual network gateway.
@@ -4176,6 +3926,9 @@ export interface VirtualNetworkGatewayConnections {
      * or sets Provisioning state of the VirtualNetworkGateway resource
      * Updating/Deleting/Failed
      * 
+     * @param {string} [parameters.virtualNetworkGateway2.etag] Gets a unique
+     * read-only string that changes whenever the resource is updated
+     * 
      * @param {string} [parameters.virtualNetworkGateway2.id] Resource Id
      * 
      * @param {string} [parameters.virtualNetworkGateway2.location] Resource
@@ -4184,9 +3937,6 @@ export interface VirtualNetworkGatewayConnections {
      * @param {object} [parameters.virtualNetworkGateway2.tags] Resource tags
      * 
      * @param {object} [parameters.localNetworkGateway2]
-     * 
-     * @param {string} [parameters.localNetworkGateway2.etag] Gets a unique
-     * read-only string that changes whenever the resource is updated
      * 
      * @param {object} [parameters.localNetworkGateway2.localNetworkAddressSpace]
      * Local network site Address space
@@ -4205,6 +3955,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} [parameters.localNetworkGateway2.provisioningState] Gets or
      * sets Provisioning state of the LocalNetworkGateway resource
      * Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.localNetworkGateway2.etag] Gets a unique
+     * read-only string that changes whenever the resource is updated
      * 
      * @param {string} [parameters.localNetworkGateway2.id] Resource Id
      * 
@@ -4240,6 +3993,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the VirtualNetworkGatewayConnection resource
      * Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -4496,9 +4252,6 @@ export interface VirtualNetworkGateways {
      * @param {object} parameters Parameters supplied to the Begin Create or
      * update Virtual Network Gateway operation through Network resource provider.
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.ipConfigurations] IpConfigurations for Virtual
      * network gateway.
      * 
@@ -4557,6 +4310,9 @@ export interface VirtualNetworkGateways {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the VirtualNetworkGateway resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -4587,9 +4343,6 @@ export interface VirtualNetworkGateways {
      * @param {object} parameters Parameters supplied to the Begin Create or
      * update Virtual Network Gateway operation through Network resource provider.
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.ipConfigurations] IpConfigurations for Virtual
      * network gateway.
      * 
@@ -4648,6 +4401,9 @@ export interface VirtualNetworkGateways {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the VirtualNetworkGateway resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -4756,9 +4512,6 @@ export interface VirtualNetworkGateways {
      * @param {object} parameters Parameters supplied to the Begin Reset Virtual
      * Network Gateway operation through Network resource provider.
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.ipConfigurations] IpConfigurations for Virtual
      * network gateway.
      * 
@@ -4817,6 +4570,9 @@ export interface VirtualNetworkGateways {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the VirtualNetworkGateway resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -4848,9 +4604,6 @@ export interface VirtualNetworkGateways {
      * @param {object} parameters Parameters supplied to the Begin Reset Virtual
      * Network Gateway operation through Network resource provider.
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {array} [parameters.ipConfigurations] IpConfigurations for Virtual
      * network gateway.
      * 
@@ -4909,6 +4662,9 @@ export interface VirtualNetworkGateways {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the VirtualNetworkGateway resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -5046,9 +4802,6 @@ export interface VirtualNetworks {
      * @param {object} parameters Parameters supplied to the create/update Virtual
      * Network operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {object} [parameters.addressSpace] Gets or sets AddressSpace that
      * contains an array of IP address ranges that can be used by subnets
      * 
@@ -5070,6 +4823,9 @@ export interface VirtualNetworks {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 
@@ -5099,9 +4855,6 @@ export interface VirtualNetworks {
      * @param {object} parameters Parameters supplied to the create/update Virtual
      * Network operation
      * 
-     * @param {string} [parameters.etag] Gets a unique read-only string that
-     * changes whenever the resource is updated
-     * 
      * @param {object} [parameters.addressSpace] Gets or sets AddressSpace that
      * contains an array of IP address ranges that can be used by subnets
      * 
@@ -5123,6 +4876,9 @@ export interface VirtualNetworks {
      * 
      * @param {string} [parameters.provisioningState] Gets or sets Provisioning
      * state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.etag] Gets a unique read-only string that
+     * changes whenever the resource is updated
      * 
      * @param {string} [parameters.id] Resource Id
      * 

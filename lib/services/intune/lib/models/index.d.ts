@@ -101,72 +101,10 @@ export interface Application extends Resource {
  * 
  * @member {string} [touchId] Possible values include: 'enable', 'disable'
  * 
- * @member {string} friendlyName
- * 
- * @member {string} [description]
- * 
- * @member {string} [appSharingFromLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
- * 
- * @member {string} [appSharingToLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
- * 
- * @member {string} [authentication] Possible values include: 'required',
- * 'notRequired'
- * 
- * @member {string} [clipboardSharingLevel] Possible values include:
- * 'blocked', 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'
- * 
- * @member {string} [dataBackup] Possible values include: 'allow', 'block'
- * 
- * @member {string} [fileSharingSaveAs] Possible values include: 'allow',
- * 'block'
- * 
- * @member {string} [pin] Possible values include: 'required', 'notRequired'
- * 
- * @member {number} [pinNumRetry]
- * 
- * @member {string} [deviceCompliance] Possible values include: 'enable',
- * 'disable'
- * 
- * @member {string} [managedBrowser] Possible values include: 'required',
- * 'notRequired'
- * 
- * @member {moment.duration} [accessRecheckOfflineTimeout]
- * 
- * @member {moment.duration} [accessRecheckOnlineTimeout]
- * 
- * @member {moment.duration} [offlineWipeTimeout]
- * 
- * @member {number} [numOfApps]
- * 
- * @member {string} [groupStatus] Possible values include: 'notTargeted',
- * 'targeted'
- * 
- * @member {date} [lastModifiedTime]
- * 
  */
 export interface IOSMAMPolicy extends Resource {
     fileEncryptionLevel?: string;
     touchId?: string;
-    friendlyName: string;
-    description?: string;
-    appSharingFromLevel?: string;
-    appSharingToLevel?: string;
-    authentication?: string;
-    clipboardSharingLevel?: string;
-    dataBackup?: string;
-    fileSharingSaveAs?: string;
-    pin?: string;
-    pinNumRetry?: number;
-    deviceCompliance?: string;
-    managedBrowser?: string;
-    accessRecheckOfflineTimeout?: moment.Duration;
-    accessRecheckOnlineTimeout?: moment.Duration;
-    offlineWipeTimeout?: moment.Duration;
-    numOfApps?: number;
-    groupStatus?: string;
-    lastModifiedTime?: Date;
 }
 
 /**
@@ -179,72 +117,10 @@ export interface IOSMAMPolicy extends Resource {
  * @member {string} [fileEncryption] Possible values include: 'required',
  * 'notRequired'
  * 
- * @member {string} friendlyName
- * 
- * @member {string} [description]
- * 
- * @member {string} [appSharingFromLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
- * 
- * @member {string} [appSharingToLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
- * 
- * @member {string} [authentication] Possible values include: 'required',
- * 'notRequired'
- * 
- * @member {string} [clipboardSharingLevel] Possible values include:
- * 'blocked', 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'
- * 
- * @member {string} [dataBackup] Possible values include: 'allow', 'block'
- * 
- * @member {string} [fileSharingSaveAs] Possible values include: 'allow',
- * 'block'
- * 
- * @member {string} [pin] Possible values include: 'required', 'notRequired'
- * 
- * @member {number} [pinNumRetry]
- * 
- * @member {string} [deviceCompliance] Possible values include: 'enable',
- * 'disable'
- * 
- * @member {string} [managedBrowser] Possible values include: 'required',
- * 'notRequired'
- * 
- * @member {moment.duration} [accessRecheckOfflineTimeout]
- * 
- * @member {moment.duration} [accessRecheckOnlineTimeout]
- * 
- * @member {moment.duration} [offlineWipeTimeout]
- * 
- * @member {number} [numOfApps]
- * 
- * @member {string} [groupStatus] Possible values include: 'notTargeted',
- * 'targeted'
- * 
- * @member {date} [lastModifiedTime]
- * 
  */
 export interface AndroidMAMPolicy extends Resource {
     screenCapture?: string;
     fileEncryption?: string;
-    friendlyName: string;
-    description?: string;
-    appSharingFromLevel?: string;
-    appSharingToLevel?: string;
-    authentication?: string;
-    clipboardSharingLevel?: string;
-    dataBackup?: string;
-    fileSharingSaveAs?: string;
-    pin?: string;
-    pinNumRetry?: number;
-    deviceCompliance?: string;
-    managedBrowser?: string;
-    accessRecheckOfflineTimeout?: moment.Duration;
-    accessRecheckOnlineTimeout?: moment.Duration;
-    offlineWipeTimeout?: moment.Duration;
-    numOfApps?: number;
-    groupStatus?: string;
-    lastModifiedTime?: Date;
 }
 
 /**

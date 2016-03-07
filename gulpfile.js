@@ -12,64 +12,15 @@ var mappings = {
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json', 
     'ft': 1
   },
-  'graph': {
-    'dir': 'graphManagement/lib',
-    'source': 'arm-graphrbac/1.6-internal/swagger/graphrbac.json',
-    'ft': 1
+  'cdn': {
+    'dir': 'cdnManagement/lib',
+    'source': 'arm-cdn/2015-06-01/swagger/cdn.json',
+    'ft': 2
   },
   'compute': {
     'dir': 'computeManagement2/lib',
     'source': 'arm-compute/2015-06-15/swagger/compute.json',
     'ft': 1
-  },
-  'intune': {
-    'dir': 'intune/lib',
-    'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
-  },
-  'network': {
-    'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2015-06-15/swagger/network.json',
-    'ft': 1
-  },
-  'rediscache': {
-    'dir': 'rediscachemanagement/lib',
-    'source': 'arm-redis/2015-08-01/swagger/redis.json',
-    'ft': 1
-  },
-  'storage': {
-    'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2015-06-15/swagger/storage.json',
-    'ft': 2
-  },
-  'serviceFabric': {
-    'dir': 'serviceFabric/lib',
-    'source': 'arm-servicefabric/2016-01-28/swagger/servicefabric.json',
-  },
-  'resource': {
-    'dir': 'resourceManagement/lib/resource',
-    'source': 'arm-resources/resources/2015-11-01/swagger/resources.json'
-  },
-  'resource.subscription': {
-    'dir': 'resourceManagement/lib/subscription',
-    'source': 'arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json'
-  },
-  'resource.authorization': {
-    'dir': 'resourceManagement/lib/authorization',
-    'source': 'arm-resources/authorization/2015-01-01/swagger/authorization.json'
-  },
-  'resource.feature': {
-    'dir': 'resourceManagement/lib/feature',
-    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
-  },
-  'website': {
-    'dir': 'websiteManagement2/lib',
-    'source': 'arm-web/2015-08-01/swagger/service.json',
-    'ft': 1
-  },
-  'cdn': {
-  'dir': 'cdnManagement/lib',
-  'source': 'arm-cdn/2015-06-01/swagger/cdn.json',
-  'ft': 2
   },
   'datalake.analytics.account': {
     'dir': 'dataLake.Analytics/lib/account',
@@ -90,6 +41,56 @@ var mappings = {
   'datalake.store.filesystem': {
     'dir': 'dataLake.Store/lib/filesystem',
     'source': 'arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json'
+  },
+  'graph': {
+    'dir': 'graphManagement/lib',
+    'source': 'arm-graphrbac/1.6-internal/swagger/graphrbac.json',
+    'ft': 1
+  },
+  'intune': {
+    'dir': 'intune/lib',
+    'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
+  },
+  'network': {
+    'dir': 'networkManagement2/lib',
+    'source': 'arm-network/2015-06-15/swagger/network.json',
+    'ft': 1
+  },
+  'rediscache': {
+    'dir': 'rediscachemanagement/lib',
+    'source': 'arm-redis/2015-08-01/swagger/redis.json',
+    'ft': 1
+  },
+  'resource': {
+    'dir': 'resourceManagement/lib/resource',
+    'source': 'arm-resources/resources/2015-11-01/swagger/resources.json'
+  },
+  'resource.subscription': {
+    'dir': 'resourceManagement/lib/subscription',
+    'source': 'arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json'
+  },
+  'resource.lock': {
+    'dir': 'resourceManagement/lib/lock',
+    'source': 'arm-resources/locks/2015-01-01/swagger/locks.json'
+  },
+  'resource.feature': {
+    'dir': 'resourceManagement/lib/feature',
+    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
+  },
+  'storage': {
+    'dir': 'storageManagement2/lib',
+    'source': 'arm-storage/2015-06-15/swagger/storage.json',
+    'ft': 2
+  },
+  'serviceFabric': {
+    'dir': 'serviceFabric/lib',
+    'source': 'arm-servicefabric/2016-01-28/swagger/servicefabric.json',
+    'language': 'NodeJS'
+  },
+  'website': {
+    'dir': 'websiteManagement2/lib',
+    'source': 'arm-web/2015-08-01/swagger/service.json',
+    'ft': 1
   }
 };
 
@@ -159,6 +160,7 @@ function generateProject(project, specRoot, autoRestVersion) {
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
   }
+  console.log('Executing: ' + clrCmd(cmd));
   exec(clrCmd(cmd), function(err, stdout, stderr) {
     console.log(stdout);
     console.error(stderr);
