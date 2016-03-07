@@ -32,8 +32,8 @@
     }
   ],
   "dependencies": {
-    "ms-rest": "^1.8.0",
-    "ms-rest-azure": "^1.8.0"
+    "ms-rest": "^1.10.0",
+    "ms-rest-azure": "^1.10.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

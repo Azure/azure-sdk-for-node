@@ -226,7 +226,7 @@ export interface VirtualMachineExtensionImages {
      * 
      * @param {number} [options.top]
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderby]
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -234,7 +234,7 @@ export interface VirtualMachineExtensionImages {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listVersions(location: string, publisherName: string, type: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listVersions(location: string, publisherName: string, type: string, options: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
     listVersions(location: string, publisherName: string, type: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 }
 
@@ -271,6 +271,10 @@ export interface VirtualMachineExtensions {
      * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Gets or sets
      * whether the extension handler should be automatically upgraded across
      * minor versions.
+     * 
+     * @param {string} [extensionParameters.forceUpdateTag] Gets or sets whether
+     * the extension handler should be forced to re-run even if the extension
+     * configuration has not changed.
      * 
      * @param {object} [extensionParameters.settings] Gets or sets Json formatted
      * public settings for the extension.
@@ -339,6 +343,10 @@ export interface VirtualMachineExtensions {
      * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Gets or sets
      * whether the extension handler should be automatically upgraded across
      * minor versions.
+     * 
+     * @param {string} [extensionParameters.forceUpdateTag] Gets or sets whether
+     * the extension handler should be forced to re-run even if the extension
+     * configuration has not changed.
      * 
      * @param {object} [extensionParameters.settings] Gets or sets Json formatted
      * public settings for the extension.
@@ -1435,6 +1443,42 @@ export interface VirtualMachines {
     beginStart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    redeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginRedeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRedeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+
+    /**
      * The operation to list virtual machines under a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -2250,6 +2294,42 @@ export interface VirtualMachineScaleSets {
     beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
 
     /**
+     * The operation to re-image virtual machines in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    reimage(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * The operation to re-image virtual machines in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+
+    /**
      * The operation to list virtual machine scale sets under a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -2311,6 +2391,46 @@ export interface VirtualMachineScaleSets {
  * instance of the ComputeManagementClient.
  */
 export interface VirtualMachineScaleSetVMs {
+
+    /**
+     * The operation to re-image a virtual machine scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {string} instanceId The instance id of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * The operation to re-image a virtual machine scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {string} instanceId The instance id of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to deallocate a virtual machine scale set.

@@ -1,13 +1,11 @@
 {
-  "name": "azure-graph",
+  "name": "azure-arm-datalake-store",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Wang, Yugang <yugangw@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>",
-    "Agarwal, Shubham <shuagarw@microsoft.com>"
+    "Goldsmith, Benjamin <begoldsm@microsoft.com>"
   ],
-  "version": "0.1.0",
-  "description": "Microsoft Azure Client Library in node for graph api",
+  "version": "0.2.0",
+  "description": "Microsoft Azure Data Lake Store Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -16,9 +14,9 @@
     "node",
     "azure"
   ],
-  "main": "./lib/graphRbacManagementClient.js",
+  "main": "./lib/dataLakeStore.js",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.6.15"
   },
   "licenses": [
     {
@@ -27,8 +25,8 @@
     }
   ],
   "dependencies": {
-    "ms-rest-azure": "^1.8.0",
-    "ms-rest": "^1.8.0"
+    "ms-rest": "^1.10.0",
+    "ms-rest-azure": "^1.10.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

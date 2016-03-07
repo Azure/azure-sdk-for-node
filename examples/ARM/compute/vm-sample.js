@@ -82,7 +82,6 @@ function vmOperations(operationCallback) {
           callback(null, result);
         }
       });
-      callback(null, result);
     },
     function (callback) {
         /////////////////////////////////////////////////////////

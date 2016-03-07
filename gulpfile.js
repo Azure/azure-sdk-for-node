@@ -41,6 +41,10 @@ var mappings = {
     'source': 'arm-storage/2015-06-15/swagger/storage.json',
     'ft': 2
   },
+  'serviceFabric': {
+    'dir': 'serviceFabric/lib',
+    'source': 'arm-servicefabric/2016-01-28/swagger/servicefabric.json',
+  },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
     'source': 'arm-resources/resources/2015-11-01/swagger/resources.json'
@@ -61,10 +65,35 @@ var mappings = {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
+  },
+  'cdn': {
+  'dir': 'cdnManagement/lib',
+  'source': 'arm-cdn/2015-06-01/swagger/cdn.json',
+  'ft': 2
+  },
+  'datalake.analytics.account': {
+    'dir': 'dataLake.Analytics/lib/account',
+    'source': 'arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json'
+  },
+  'datalake.analytics.job': {
+    'dir': 'dataLake.Analytics/lib/job',
+    'source': 'arm-datalake-analytics/job/2015-11-01-preview/swagger/job.json'
+  },
+  'datalake.analytics.catalog': {
+    'dir': 'dataLake.Analytics/lib/catalog',
+    'source': 'arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json'
+  },
+  'datalake.store.account': {
+    'dir': 'dataLake.Store/lib/account',
+    'source': 'arm-datalake-store/account/2015-10-01-preview/swagger/account.json'
+  },
+  'datalake.store.filesystem': {
+    'dir': 'dataLake.Store/lib/filesystem',
+    'source': 'arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json'
   }
 };
 
-var defaultAutoRestVersion = '0.15.0-Nightly20160229';
+var defaultAutoRestVersion = '0.15.0-Nightly20160304';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

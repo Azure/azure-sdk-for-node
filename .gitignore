@@ -12,6 +12,7 @@ examples/.ntvs_analysis.dat
 examples/.vs
 examples/bin
 .vs
+TestResults/*
 
 # Node #
 node_modules/
