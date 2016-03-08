@@ -1,0 +1,13 @@
+{
+  "name": "vm-sample",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "async": "^1.5.2",
+    "azure-arm-compute": "^0.14.2",
+    "azure-arm-network": "^0.12.1",
+    "azure-arm-resource": "^1.0.0-preview",
+    "azure-arm-storage": "^0.12.2-preview",
+    "ms-rest-azure": "^1.9.0"
+  }
+}
