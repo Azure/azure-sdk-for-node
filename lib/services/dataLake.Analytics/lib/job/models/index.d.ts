@@ -389,7 +389,7 @@ export interface HiveJobProperties extends JobProperties {
  * @member {string} [source] Gets the ultimate source of the failure (usually
  * either SYSTEM or USER).
  * 
- * @member {string} [startOffset] Gets the end offset in the job where the
+ * @member {number} [startOffset] Gets the start offset in the job where the
  * error was found
  * 
  */
@@ -407,7 +407,7 @@ export interface JobErrorDetails {
     innerError?: JobInnerError;
     severity?: string;
     source?: string;
-    startOffset?: string;
+    startOffset?: number;
 }
 
 /**
@@ -529,38 +529,4 @@ export interface JobInformation {
     result?: string;
     stateAuditRecords?: JobStateAuditRecord[];
     properties: JobProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * @member {string} [id] Resource Id
- * 
- * @member {string} [name] Resource name
- * 
- * @member {string} [type] Resource type
- * 
- * @member {string} location Resource location
- * 
- * @member {object} [tags] Resource tags
- * 
- */
-export interface Resource extends BaseResource {
-    id?: string;
-    name?: string;
-    type?: string;
-    location: string;
-    tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the SubResource class.
- * @constructor
- * @member {string} [id] Resource Id
- * 
- */
-export interface SubResource extends BaseResource {
-    id?: string;
 }
