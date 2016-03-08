@@ -389,7 +389,7 @@ export interface HiveJobProperties extends JobProperties {
  * @member {string} [source] Gets the ultimate source of the failure (usually
  * either SYSTEM or USER).
  * 
- * @member {string} [startOffset] Gets the end offset in the job where the
+ * @member {number} [startOffset] Gets the start offset in the job where the
  * error was found
  * 
  */
@@ -407,7 +407,7 @@ export interface JobErrorDetails {
     innerError?: JobInnerError;
     severity?: string;
     source?: string;
-    startOffset?: string;
+    startOffset?: number;
 }
 
 /**
