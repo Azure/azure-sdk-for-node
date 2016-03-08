@@ -42,6 +42,7 @@ npm install azure
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-arm-storage`   |
 | [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-arm-trafficManager`|
 | [WebApps (WebSites)](http://azure.microsoft.com/en-us/services/app-service/web/)  | `npm install azure-arm-website`   |
+| [CDN (WebSites)](https://azure.microsoft.com/en-us/services/cdn/)                 | `npm install azure-arm-cdn`   |
 | &nbsp;                                                                            |                                   |
 | **Azure Service Management**                                                                                          |
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            |  `npm install azure-asm-compute`  |
