@@ -2,7 +2,7 @@
   "name": "azure-arm-servicefabric",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Chen, Jeffrey <jefchen@microsoft.com>",
+    "Chen, Jeffrey <jefchen@microsoft.com>"
   ],
   "version": "0.0.1",
   "description": "Microsoft Azure Service Fabric for node",
