@@ -92,6 +92,11 @@ var mappings = {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
+  },
+  'batch.Management': {
+    'dir': 'batchManagement/lib',
+    'source': 'arm-batch/2015-12-01/BatchManagement.json',
+    'ft': 1
   }
 };
 
