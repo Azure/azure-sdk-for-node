@@ -298,8 +298,8 @@ suite('tableservice-tests', function () {
 
             var entries = includedTables.length;
             tables.forEach(function (currentTable) {
-              excludedTables.should.not.include(currentTable.TableName);
-              includedTables.should.include(currentTable.TableName);
+              excludedTables.should.not.match(currentTable.TableName);
+              includedTables.should.matchAny(currentTable.TableName);
               --entries;
             });
 

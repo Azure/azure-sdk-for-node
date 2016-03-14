@@ -48,7 +48,7 @@ describe('SQL Server Management', function () {
       hostOptions.host = process.env.AZURE_MANAGEMENT_HOST;
     }
 
-    service = azure.createSqlManagementService(
+    service = azure.createASMSqlManagementService(
       subscriptionId, auth, hostOptions);
 
     suiteUtil = new MockedTestUtils(service, testPrefix);

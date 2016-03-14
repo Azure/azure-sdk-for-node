@@ -31,19 +31,19 @@ The recordings will get saved in azure-xplat-cli/test/recordings/{test-suite} di
 #### Recording tests related to a specific service/feature
 If you plan on adding some tests / features and do not need to regenerate the full set of test recordings, you can open the file: 
 ```
-tests/testlist.txt (if you are writing tests for commands in asm mode)
-tests/testlistarm.txt (if you are writing tests for commands in arm mode)
+tests/testlist.txt (if you are writing tests for clients in asm mode)
+tests/testlistarm.txt (if you are writing tests for clients in arm mode)
 ```
 and comment out the tests you do not wish to run during the recording process.
 
 To do so, use a leading \# character. i.e.:
 
-\# commands/cli.cloudservice-tests.js <br />
-\# commands/cli.deployment-tests.js <br />
-commands/cli.site-tests.js <br />
-\# commands/cli.site.appsetting-tests <br />
+\# services/resourceManagement/resourceManagementClient-tests.js <br />
+\# services/resourceManagement/authorizationClient-tests.js <br />
+services/storageManagement/storageManagementClient-tests.js <br />
+\# services/resourceManagement/featureClient-tests.js <br />
 
-In the above example only the cli.site-tests.js tests would be run.
+In the above example only the storageManagementClient-tests.js tests would be run.
 
 #### Recording a particular test in a suite
 

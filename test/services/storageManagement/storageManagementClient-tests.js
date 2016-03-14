@@ -14,55 +14,180 @@
 // limitations under the License.
 //
 
-var fs = require('fs');
 
 var should = require('should');
+var util = require('util');
+var msRestAzure = require('ms-rest-azure');
 
-var testutil = require('../../util/util');
-
-var azure = testutil.libRequire('azure');
-var CertificateCloudCredentials = azure.CertificateCloudCredentials;
-var MockedTestUtils = require('../../framework/mocked-test-utils');
-
+var SuiteBase = require('../../framework/suite-base');
+var FileTokenCache = require('../../../lib/util/fileTokenCache');
+var StorageManagementClient = require('../../../lib/services/storageManagement2/lib/storageManagementClient');
 var testPrefix = 'storagemanagementservice-tests';
+var groupPrefix = 'nodeTestGroup';
+var accountPrefix = 'testacc';
+var createdGroups = [];
+var createdAccounts = [];
 
-var siteNamePrefix = 'storagesdk';
-var siteNames = [];
+var requiredEnvironment = [
+  { name: 'AZURE_TEST_LOCATION', defaultValue: 'West US' }
+];
+
+var suite;
+var client;
+var accountName;
+var groupName;
+var acclocation;
+var accType;
+var createParameters;
 
 describe('Storage Management', function () {
-  var service;
-  var suiteUtil;
-
+  
   before(function (done) {
-    var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
-    service = azure.createStorageManagementClient(new CertificateCloudCredentials({
-        subscriptionId: subscriptionId,
-        pem: fs.readFileSync(process.env['AZURE_CERTIFICATE_PEM_FILE']).toString()
-      }));
-
-    service.strictSSL = false;
-    suiteUtil = new MockedTestUtils(service, testPrefix);
-    suiteUtil.setupSuite(done);
+    suite = new SuiteBase(this, testPrefix, requiredEnvironment);
+    suite.setupSuite(function () {
+      groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
+      client = new StorageManagementClient(suite.credentials, suite.subscriptionId);
+      accountName = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
+      acclocation = process.env['AZURE_TEST_LOCATION'];
+      accType = 'Standard_LRS';
+      createParameters = {
+        location: acclocation,
+        accountType: accType,
+        tags: {
+          tag1: 'val1',
+          tag2: 'val2'
+        }
+      };
+      if (suite.isPlayback) {
+        client.longRunningOperationRetryTimeout = 0;
+      }
+      suite.createResourcegroup(groupName, acclocation, function (err, result) {
+        should.not.exist(err);
+        done();
+      });
+    });
   });
-
+  
   after(function (done) {
-    suiteUtil.teardownSuite(done);
+    suite.teardownSuite(function () {
+      suite.deleteResourcegroup(groupName, function (err, result) {
+        should.not.exist(err);
+        done();
+      });
+    });
   });
-
+  
   beforeEach(function (done) {
-    suiteUtil.setupTest(done);
+    suite.setupTest(done);
   });
-
+  
   afterEach(function (done) {
-    suiteUtil.baseTeardownTest(done);
+    suite.baseTeardownTest(done);
   });
-
-  describe('storage accounts list', function () {
-    it('should work', function (done) {
-      service.storageAccounts.list(function (err, result) {
+  
+  describe('storage accounts', function () {
+    it('should create an account correctly', function (done) {
+      client.storageAccounts.create(groupName, accountName, createParameters, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+    
+    it('should check the name availability for a storage account that already exists', function (done) {
+      client.storageAccounts.checkNameAvailability(accountName, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.nameAvailable.should.equal(false);
+        result.reason.should.match(/.*AlreadyExists.*/ig);
+        result.message.should.match(/.*is already taken.*/ig);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+    
+    it('should check the name availability for a storage account that does not exist', function (done) {
+      client.storageAccounts.checkNameAvailability(accountName + '1012', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.nameAvailable.should.equal(true);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
 
+    it('should get properties of the specified storage account', function (done) {
+      client.storageAccounts.getProperties(groupName, accountName, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var account = result;
+        account.name.should.equal(accountName);
+        account.location.should.equal("westus");
+        account.type.should.equal('Microsoft.Storage/storageAccounts');
+        done();
+      });
+    });
+    
+    it('should list all the storage accounts in the subscription', function (done) {
+      client.storageAccounts.list(function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var accounts = result;
+        accounts.length.should.be.above(0);
+        accounts.some(function (ac) { return ac.name === accountName }).should.be.true;
+        done();
+      });
+    });
+    
+    it('should list all the storage accounts in the resourcegroup', function (done) {
+      client.storageAccounts.listByResourceGroup(groupName, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var accounts = result;
+        accounts.length.should.be.above(0);
+        accounts.some(function (ac) { return ac.name === accountName }).should.be.true;
+        done();
+      });
+    });
+    
+    it('should list all the storage account keys', function (done) {
+      client.storageAccounts.listKeys(groupName, accountName, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var keys = result;
+        should.exist(keys.key1);
+        should.exist(keys.key2);
+        done();
+      });
+    });
+    
+    it('should regenerate storage account keys', function (done) {
+      client.storageAccounts.listKeys(groupName, accountName, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        var keys = result;
+        client.storageAccounts.regenerateKey(groupName, accountName, 'key1', function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          response.statusCode.should.equal(200);
+          var regeneratedkeys = result;
+          keys.key2.should.equal(regeneratedkeys.key2);
+          keys.key1.should.not.equal(regeneratedkeys.key1);
+          done();
+        });
+      });
+    });
+    
+    it('should delete the specified storage account', function (done) {
+      client.storageAccounts.deleteMethod(groupName, accountName, function (err, result, request, response) {
+        should.not.exist(err);
+        response.statusCode.should.equal(200);
         done();
       });
     });

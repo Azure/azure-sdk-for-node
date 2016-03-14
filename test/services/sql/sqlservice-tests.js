@@ -49,7 +49,7 @@ describe('SQL Azure Database', function () {
       hostOptions.host = process.env['AZURE_MANAGEMENT_HOST'];
     }
 
-    serviceManagement = azure.createSqlManagementService(
+    serviceManagement = azure.createASMSqlManagementService(
       subscriptionId, auth, hostOptions)
       .withFilter(new azure.ExponentialRetryPolicyFilter());
 

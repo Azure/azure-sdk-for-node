@@ -18,9 +18,6 @@ not polluted with your current changes.
 git checkout -b mybranch 
 git push origin mybranch
 ```
-* Setup the environment
-  * On a Windows machine, open a cmd prompt as an Administrator and run the following command: ```npm run-script setup```
-  * On a Mac or Linux machine, at the terminal run the following command: ```sudo npm run-script setup```
 
 * Installing the required npm modules from the root directory```npm install```
 
