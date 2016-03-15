@@ -9,35 +9,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions?$top=1&api-version=2016-03-30')
-  .reply(200, "[\r\n  {\r\n    \"location\": \"westus\",\r\n    \"name\": \"4.0.20150825\",\r\n    \"id\": \"/Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.20150825\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
+  .reply(200, "[\r\n  {\r\n    \"location\": \"westus\",\r\n    \"name\": \"4.0.20151120\",\r\n    \"id\": \"/Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.20151120\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '303',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8cfc2b79-ceef-46a3-8026-2c3855209d4a',
+  'x-ms-request-id': 'c3969f26-0558-41c8-8f97-8d26a76534b9',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '6cb8717a-43ea-488b-92b7-3db8aaa78cdd',
-  'x-ms-routing-request-id': 'WESTUS:20160120T201654Z:6cb8717a-43ea-488b-92b7-3db8aaa78cdd',
-  date: 'Wed, 20 Jan 2016 20:16:53 GMT',
+  'x-ms-correlation-request-id': 'ca7fdfd9-2f41-4dd0-a597-e1b269da76cc',
+  'x-ms-routing-request-id': 'WESTUS:20160315T015818Z:ca7fdfd9-2f41-4dd0-a597-e1b269da76cc',
+  date: 'Tue, 15 Mar 2016 01:58:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions?$top=1&api-version=2016-03-30')
-  .reply(200, "[\r\n  {\r\n    \"location\": \"westus\",\r\n    \"name\": \"4.0.20150825\",\r\n    \"id\": \"/Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.20150825\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
+  .reply(200, "[\r\n  {\r\n    \"location\": \"westus\",\r\n    \"name\": \"4.0.20151120\",\r\n    \"id\": \"/Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.20151120\"\r\n  }\r\n]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '303',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '8cfc2b79-ceef-46a3-8026-2c3855209d4a',
+  'x-ms-request-id': 'c3969f26-0558-41c8-8f97-8d26a76534b9',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '6cb8717a-43ea-488b-92b7-3db8aaa78cdd',
-  'x-ms-routing-request-id': 'WESTUS:20160120T201654Z:6cb8717a-43ea-488b-92b7-3db8aaa78cdd',
-  date: 'Wed, 20 Jan 2016 20:16:53 GMT',
+  'x-ms-correlation-request-id': 'ca7fdfd9-2f41-4dd0-a597-e1b269da76cc',
+  'x-ms-routing-request-id': 'WESTUS:20160315T015818Z:ca7fdfd9-2f41-4dd0-a597-e1b269da76cc',
+  date: 'Tue, 15 Mar 2016 01:58:18 GMT',
   connection: 'close' });
  return result; }]];
