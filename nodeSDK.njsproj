@@ -412,6 +412,7 @@
     <Compile Include="scripts\unit.js" />
     <Compile Include="tasks\version-tasks.js" />
     <Content Include="test\framework\preamble.template" />
+    <Content Include="test\services\batchManagement\readme.txt" />
     <Content Include="test\testlistarm.txt" />
     <Content Include="examples\blobuploader\package.json" />
     <Compile Include="examples\blobuploader\helpers.js" />
@@ -1174,6 +1175,33 @@
     <Content Include="test\tmp\tokenstore.json" />
     <Compile Include="test\recordings\authorizationClient-tests\Authorization_Client_Management_Lock_Operations_should_work_for_all_operations_possible.nock.js" />
     <Compile Include="test\recordings\authorizationClient-tests\suite.authorizationClient-tests.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_activate_application_package_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_add_application_package_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_add_application_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_add_second_application_package_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_create_a_batch_account_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_delete_application_package_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_delete_application_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_delete_a_batch_account_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_delete_second_application_package_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_fail_to_activate_application_package.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_fail_to_create_a_batch_account_due_to_dupilcate_location.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_fail_to_create_a_batch_account_due_to_invalid_resource_group.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_fail_to_delete_application.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_fail_to_update_application.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_get_account_keys_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_get_application_package_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_get_application_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_get_a_list_of_applications_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_get_a_specific_account_info_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_get_subscription_quota_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_list_accounts_by_resource_group_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_list_accounts_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_regenerate_keys_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_sync_auto_storage_keys_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_update_account_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\Batch_Management_operations_should_update_application_successfully.nock.js" />
+    <Compile Include="test\recordings\batchmanagementservice-tests\suite.batchmanagementservice-tests.nock.js" />
     <Compile Include="test\recordings\computemanagementservice-tests\Compute_Management_Vm_Extension_Images_should_get_a_specific_extension_image_successfully.nock.js" />
     <Compile Include="test\recordings\computemanagementservice-tests\Compute_Management_Vm_Extension_Images_should_list_types_successfully.nock.js" />
     <Compile Include="test\recordings\computemanagementservice-tests\Compute_Management_Vm_Extension_Images_should_list_versions_successfully.nock.js" />
@@ -1238,6 +1266,7 @@
     <Compile Include="test\recordings\subscriptionClient-tests\suite.subscriptionClient-tests.nock.js" />
     <Compile Include="test\recordings\suite-base-tests\suite.suite-base-tests.nock.js" />
     <Compile Include="test\recordings\suite-base-tests\Test_Suite_Base_should_properly_record_and_retrieve_mock_variables.nock.js" />
+    <Compile Include="test\services\batchManagement\batchManagementClient-tests.js" />
     <Compile Include="test\services\cdnManagement\cdnCheckNameAvailability-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
@@ -1728,6 +1757,7 @@
     <Folder Include="test\framework" />
     <Folder Include="test\recordings" />
     <Folder Include="test\recordings\authorizationClient-tests" />
+    <Folder Include="test\recordings\batchmanagementservice-tests\" />
     <Folder Include="test\recordings\computemanagementservice-tests" />
     <Folder Include="test\recordings\featureClient-tests" />
     <Folder Include="test\recordings\intune-tests" />
@@ -1736,6 +1766,7 @@
     <Folder Include="test\recordings\subscriptionClient-tests" />
     <Folder Include="test\recordings\suite-base-tests" />
     <Folder Include="test\services" />
+    <Folder Include="test\services\batchManagement\" />
     <Folder Include="test\services\cdnManagement\" />
     <Folder Include="test\services\computeManagement" />
     <Folder Include="test\services\dataLakeAnalyticsManagement\" />
