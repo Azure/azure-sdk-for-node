@@ -1,7 +1,7 @@
 ## Environment Variables Setup
 
 
-### For clients targeting the ARM (V2) Azure API following environment variables need to be setup
+### For clients targeting the ARM (V2) Azure API that are generated using [AutoRest](https://github.com/Azure/autorest) should setup following environment variables:
 From an admin cmd console/terminal, at the root directory of your cloned repo, run the following for environment setup:
 * **Windows**
 ```

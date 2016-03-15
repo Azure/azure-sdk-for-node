@@ -9,3 +9,5 @@
 
 * Running selective tests:
   Comment out the unrequired tests in azure-sdk-for-node/test/testlist.txt file by putting "# " at the beginning of line and run the tests by executing: ```npm test```
+
+* For running arm tests, execute `npm run unit-arm`
