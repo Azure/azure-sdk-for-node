@@ -147,8 +147,8 @@ describe('Compute Management', function () {
       });
     });
     
-    it.skip('should get a specific image successfully', function (done) {
-      client.virtualMachineImages.get('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', '4.0.201506', function (err, result, request, response) {
+    it('should get a specific image successfully', function (done) {
+      client.virtualMachineImages.get('westus', 'MicrosoftWindowsServer', 'WindowsServer', '2012-R2-Datacenter', '4.0.20151120', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -175,7 +175,7 @@ describe('Compute Management', function () {
           should.exist(result);
           result.length.should.be.above(0);
           result[0].location.should.equal('westus');
-          result[0].name.should.equal('4.0.20150825')
+          result[0].name.should.equal('4.0.20151120')
           response.statusCode.should.equal(200);
           done();
         });
@@ -187,9 +187,9 @@ describe('Compute Management', function () {
           should.not.exist(err);
           should.exist(result);
           result.length.should.be.above(0);
-          result[0].name.should.equal('4.0.20151214');
-          result[1].name.should.equal('4.0.20151120');
-          result[2].name.should.equal('4.0.20151022');
+          result[0].name.should.equal('4.0.20160229');
+          result[1].name.should.equal('4.0.20160126');
+          result[2].name.should.equal('4.0.20151214');
           response.statusCode.should.equal(200);
           done();
         });
@@ -201,9 +201,9 @@ describe('Compute Management', function () {
           should.not.exist(err);
           should.exist(result);
           result.length.should.be.above(0);
-          result[0].name.should.equal('4.0.20150825');
-          result[1].name.should.equal('4.0.20150916');
-          result[2].name.should.equal('4.0.20151022');
+          result[0].name.should.equal('4.0.20151120');
+          result[1].name.should.equal('4.0.20151214');
+          result[2].name.should.equal('4.0.20160126');
           response.statusCode.should.equal(200);
           done();
         });
@@ -216,7 +216,7 @@ describe('Compute Management', function () {
           should.exist(result);
           result.length.should.be.above(0);
           result[0].location.should.equal('westus');
-          result[0].name.should.equal('4.0.20150825')
+          result[0].name.should.equal('4.0.20151120')
           response.statusCode.should.equal(200);
           done();
         });
