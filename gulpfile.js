@@ -19,8 +19,9 @@ var mappings = {
   },
   'compute': {
     'dir': 'computeManagement2/lib',
-    'source': 'arm-compute/2015-06-15/swagger/compute.json',
-    'ft': 1
+    'source': 'arm-compute/compositeComputeClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
   },
   'datalake.analytics.account': {
     'dir': 'dataLake.Analytics/lib/account',
@@ -94,7 +95,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.15.0-Nightly20160304';
+var defaultAutoRestVersion = '0.16.0-Nightly20160313';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
