@@ -521,7 +521,7 @@ export interface KeyVaultKeyReference {
  * Initializes a new instance of the DiskEncryptionSettings class.
  * @constructor
  * Describes a Encryption Settings for a Disk
- * @member {object} diskEncryptionKey Gets or sets the disk encryption key
+ * @member {object} [diskEncryptionKey] Gets or sets the disk encryption key
  * which is a KeyVault Secret.
  * 
  * @member {string} [diskEncryptionKey.secretUrl] Gets or sets the URL
@@ -548,7 +548,7 @@ export interface KeyVaultKeyReference {
  * 
  */
 export interface DiskEncryptionSettings {
-    diskEncryptionKey: KeyVaultSecretReference;
+    diskEncryptionKey?: KeyVaultSecretReference;
     keyEncryptionKey?: KeyVaultKeyReference;
     enabled?: boolean;
 }
