@@ -8,4 +8,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplattestadla8526','xplattestadla2611','xplattestadla8443','xplattestadls6138','xplattestadls1476','xplattestadls9158','adlacatalogitem511','adlacatalogitem7158','adlacatalogitem9791','adlacatalogitem9387','adlacatalogitem6787','adlacatalogitem5169','adlacatalogitem2903','adlacatalogitem488'];};
+ exports.randomTestIdsGenerated = function() { return ['xplattestadla9337','xplattestadla2146','xplattestadla8634','xplattestadls7711','xplattestadls482','xplattestadls4039','adlacatalogitem4333','adlacatalogitem9548','adlacatalogitem5008','adlacatalogitem3940','adlacatalogitem76','adlacatalogitem6664','adlacatalogitem1417','adlacatalogitem1853'];};

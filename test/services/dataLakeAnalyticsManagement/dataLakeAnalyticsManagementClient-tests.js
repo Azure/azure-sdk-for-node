@@ -458,7 +458,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        result.databaseName.should.be.equal('master');
+        result.name.should.be.equal('master');
         // add a database, table, tvf, view and procedure
         var job = {
           jobId: suite.generateGuid(),
@@ -493,7 +493,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                   should.not.exist(err);
                   should.exist(result);
                   response.statusCode.should.equal(200);
-                  result.databaseName.should.be.equal(dbName);
+                  result.name.should.be.equal(dbName);
                   // list all tables in the db and confirm that there is one entry.
                   catalogClient.catalog.listTables(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
                     should.not.exist(err);
@@ -505,7 +505,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                       should.not.exist(err);
                       should.exist(result);
                       response.statusCode.should.equal(200);
-                      result.tableName.should.be.equal(tableName);
+                      result.name.should.be.equal(tableName);
                       // list all tvfs in the db and confirm that there is one entry.
                       catalogClient.catalog.listTableValuedFunctions(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
                         should.not.exist(err);
@@ -517,7 +517,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                           should.not.exist(err);
                           should.exist(result);
                           response.statusCode.should.equal(200);
-                          result.tvfName.should.be.equal(tvfName);
+                          result.name.should.be.equal(tvfName);
                           // list all views in the db and confirm that there is one entry.
                           catalogClient.catalog.listViews(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
                             should.not.exist(err);
@@ -529,7 +529,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                               should.not.exist(err);
                               should.exist(result);
                               response.statusCode.should.equal(200);
-                              result.viewName.should.be.equal(viewName);
+                              result.name.should.be.equal(viewName);
                               // list all procedures in the db and confirm that there is one entry.
                               catalogClient.catalog.listProcedures(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
                                 should.not.exist(err);
@@ -541,7 +541,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                                   should.not.exist(err);
                                   should.exist(result);
                                   response.statusCode.should.equal(200);
-                                  result.procName.should.be.equal(procName);
+                                  result.name.should.be.equal(procName);
                                   done();
                                 });
                               });
@@ -615,7 +615,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
-                    result.credentialName.should.be.equal(credName);
+                    result.name.should.be.equal(credName);
                     // get the secret
                     catalogClient.catalog.getSecret(databaseName, secretName, jobAndCatalogAccountName, function(err, result, request, response) {
                       should.not.exist(err);
