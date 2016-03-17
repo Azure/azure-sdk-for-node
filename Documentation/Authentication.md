@@ -24,7 +24,7 @@ After successful login, please follow the steps mentioned below to create a serv
 
 Let us create an application with a password. The default start-date witll be the day of application creation and the default end-date will be 1 year from the day of creation.
 ```
-D:\sdk>azure ad app create -n testap908 home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
+D:\sdk>azure ad app create -n testap908 --home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
 info:    Executing command ad app create
 + Creating application testap674
 data:    AppId:                   56894bd4-0fde-41d8-a0d7-5bsslccety2
@@ -53,7 +53,7 @@ info:    ad app create command OK
 
 Let us create a serviceprincipal using the applicationId from the previous step.
 ```
-D:\sdk>azure ad sp create --aplicationId 56894bd4-0fde-41d8-a0d7-5bsslccety2
+D:\sdk>azure ad sp create --applicationId 56894bd4-0fde-41d8-a0d7-5bsslccety2
 info:    Executing command ad sp create
 + Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
 data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
