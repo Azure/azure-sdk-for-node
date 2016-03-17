@@ -56,7 +56,7 @@
     "azure-arm-dns": "0.10.1",
     "azure-arm-hdinsight": "0.1.0",
     "azure-arm-hdinsight-jobs": "0.1.0",
-    "azure-arm-insights": "0.10.2",
+    "azure-arm-insights": "0.11.0",
     "azure-arm-intune": "0.2.0",
     "azure-arm-keyvault": "0.10.1",
     "azure-arm-network": "0.12.1",
