@@ -8,36 +8,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions?$top=0&api-version=2015-06-15')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions?$top=0&api-version=2016-03-30')
   .reply(200, "[]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '2',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '53f85cf0-3b6b-4ee5-abfe-79553250a442',
+  'x-ms-request-id': '0c58f509-aadc-458d-9a75-cd3a604b91c8',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '12e58491-17e9-4942-a74f-068f0d564a51',
-  'x-ms-routing-request-id': 'WESTUS:20160120T201654Z:12e58491-17e9-4942-a74f-068f0d564a51',
-  date: 'Wed, 20 Jan 2016 20:16:53 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': '0bf234cc-ebb3-4930-8797-6ba647187a7f',
+  'x-ms-routing-request-id': 'WESTUS:20160315T015817Z:0bf234cc-ebb3-4930-8797-6ba647187a7f',
+  date: 'Tue, 15 Mar 2016 01:58:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions?$top=0&api-version=2015-06-15')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions?$top=0&api-version=2016-03-30')
   .reply(200, "[]", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '2',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '53f85cf0-3b6b-4ee5-abfe-79553250a442',
+  'x-ms-request-id': '0c58f509-aadc-458d-9a75-cd3a604b91c8',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14997',
-  'x-ms-correlation-request-id': '12e58491-17e9-4942-a74f-068f0d564a51',
-  'x-ms-routing-request-id': 'WESTUS:20160120T201654Z:12e58491-17e9-4942-a74f-068f0d564a51',
-  date: 'Wed, 20 Jan 2016 20:16:53 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': '0bf234cc-ebb3-4930-8797-6ba647187a7f',
+  'x-ms-routing-request-id': 'WESTUS:20160315T015817Z:0bf234cc-ebb3-4930-8797-6ba647187a7f',
+  date: 'Tue, 15 Mar 2016 01:58:17 GMT',
   connection: 'close' });
  return result; }]];

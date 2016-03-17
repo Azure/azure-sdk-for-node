@@ -99,7 +99,7 @@ _.extend(SuiteBase.prototype, {
           'for running tests as a service-principal, but not both.');
       }
 
-      if (process.env['PASSWORD']) {
+      if (process.env['AZURE_PASSWORD']) {
         this.credentials = this._createUserCredentials();
       } else if (process.env['APPLICATION_SECRET']) {
         this.credentials = this._createApplicationCredentials();

@@ -19,8 +19,9 @@ var mappings = {
   },
   'compute': {
     'dir': 'computeManagement2/lib',
-    'source': 'arm-compute/2015-06-15/swagger/compute.json',
-    'ft': 1
+    'source': 'arm-compute/compositeComputeClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
   },
   'datalake.analytics.account': {
     'dir': 'dataLake.Analytics/lib/account',
@@ -53,7 +54,7 @@ var mappings = {
   },
   'network': {
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2015-06-15/swagger/network.json',
+    'source': 'arm-network/2016-03-30/swagger/network.json',
     'ft': 1
   },
   'rediscache': {
@@ -91,10 +92,15 @@ var mappings = {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
+  },
+  'batch.Management': {
+    'dir': 'batchManagement/lib',
+    'source': 'arm-batch/2015-12-01/BatchManagement.json',
+    'ft': 1
   }
 };
 
-var defaultAutoRestVersion = '0.15.0-Nightly20160304';
+var defaultAutoRestVersion = '0.16.0-Nightly20160316';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

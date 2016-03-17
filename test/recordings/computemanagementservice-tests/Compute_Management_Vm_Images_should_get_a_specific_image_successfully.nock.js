@@ -8,114 +8,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions/4.0.201506?api-version=2015-06-15')
-  .reply(502, "{\r\n  \"error\": {\r\n    \"code\": \"SubscriptionNotAuthorized\",\r\n    \"message\": \"Subscription is not authorized to access VMImage: /Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.201506.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions/4.0.20151120?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Windows\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"westus\",\r\n  \"name\": \"4.0.20151120\",\r\n  \"id\": \"/Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.20151120\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '352',
+  'content-length': '404',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '228192d8-c068-4d39-8f01-2f0839e9517e',
+  'x-ms-request-id': '5bd58874-0dd5-41d2-902e-79a63191d218',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-failure-cause': 'service',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'd5827dab-7a9c-496c-a551-00bf91cc8700',
-  'x-ms-routing-request-id': 'EASTUS:20151214T011554Z:d5827dab-7a9c-496c-a551-00bf91cc8700',
-  date: 'Mon, 14 Dec 2015 01:15:54 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14997',
+  'x-ms-correlation-request-id': '62b70b94-76c1-4aee-a547-e8088e0728fd',
+  'x-ms-routing-request-id': 'WESTUS:20160315T015816Z:62b70b94-76c1-4aee-a547-e8088e0728fd',
+  date: 'Tue, 15 Mar 2016 01:58:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions/4.0.201506?api-version=2015-06-15')
-  .reply(502, "{\r\n  \"error\": {\r\n    \"code\": \"SubscriptionNotAuthorized\",\r\n    \"message\": \"Subscription is not authorized to access VMImage: /Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.201506.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions/4.0.20151120?api-version=2016-03-30')
+  .reply(200, "{\r\n  \"properties\": {\r\n    \"osDiskImage\": {\r\n      \"operatingSystem\": \"Windows\"\r\n    },\r\n    \"dataDiskImages\": []\r\n  },\r\n  \"location\": \"westus\",\r\n  \"name\": \"4.0.20151120\",\r\n  \"id\": \"/Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.20151120\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '352',
+  'content-length': '404',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '228192d8-c068-4d39-8f01-2f0839e9517e',
+  'x-ms-request-id': '5bd58874-0dd5-41d2-902e-79a63191d218',
   server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-failure-cause': 'service',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'd5827dab-7a9c-496c-a551-00bf91cc8700',
-  'x-ms-routing-request-id': 'EASTUS:20151214T011554Z:d5827dab-7a9c-496c-a551-00bf91cc8700',
-  date: 'Mon, 14 Dec 2015 01:15:54 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions/4.0.201506?api-version=2015-06-15')
-  .reply(502, "{\r\n  \"error\": {\r\n    \"code\": \"SubscriptionNotAuthorized\",\r\n    \"message\": \"Subscription is not authorized to access VMImage: /Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.201506.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '352',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '5c3bf6c1-39fa-4202-af76-310e1b8a5af9',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-failure-cause': 'service',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '14966c0f-7e8c-416d-b1eb-f59beada2bab',
-  'x-ms-routing-request-id': 'EASTUS:20151214T011626Z:14966c0f-7e8c-416d-b1eb-f59beada2bab',
-  date: 'Mon, 14 Dec 2015 01:16:26 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions/4.0.201506?api-version=2015-06-15')
-  .reply(502, "{\r\n  \"error\": {\r\n    \"code\": \"SubscriptionNotAuthorized\",\r\n    \"message\": \"Subscription is not authorized to access VMImage: /Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.201506.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '352',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '5c3bf6c1-39fa-4202-af76-310e1b8a5af9',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-failure-cause': 'service',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '14966c0f-7e8c-416d-b1eb-f59beada2bab',
-  'x-ms-routing-request-id': 'EASTUS:20151214T011626Z:14966c0f-7e8c-416d-b1eb-f59beada2bab',
-  date: 'Mon, 14 Dec 2015 01:16:26 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions/4.0.201506?api-version=2015-06-15')
-  .reply(502, "{\r\n  \"error\": {\r\n    \"code\": \"SubscriptionNotAuthorized\",\r\n    \"message\": \"Subscription is not authorized to access VMImage: /Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.201506.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '352',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '25cf45ec-84fe-4071-8d18-694abcb35875',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-failure-cause': 'service',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'ef56288a-9be1-40ee-8b02-cb5fc8163c1b',
-  'x-ms-routing-request-id': 'WESTUS:20151214T011753Z:ef56288a-9be1-40ee-8b02-cb5fc8163c1b',
-  date: 'Mon, 14 Dec 2015 01:17:52 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Compute/locations/westus/publishers/MicrosoftWindowsServer/artifacttypes/vmimage/offers/WindowsServer/skus/2012-R2-Datacenter/versions/4.0.201506?api-version=2015-06-15')
-  .reply(502, "{\r\n  \"error\": {\r\n    \"code\": \"SubscriptionNotAuthorized\",\r\n    \"message\": \"Subscription is not authorized to access VMImage: /Subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/Providers/Microsoft.Compute/Locations/westus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/4.0.201506.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '352',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  'x-ms-request-id': '25cf45ec-84fe-4071-8d18-694abcb35875',
-  server: 'Microsoft-HTTPAPI/2.0, Microsoft-HTTPAPI/2.0',
-  'x-ms-failure-cause': 'service',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'ef56288a-9be1-40ee-8b02-cb5fc8163c1b',
-  'x-ms-routing-request-id': 'WESTUS:20151214T011753Z:ef56288a-9be1-40ee-8b02-cb5fc8163c1b',
-  date: 'Mon, 14 Dec 2015 01:17:52 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14997',
+  'x-ms-correlation-request-id': '62b70b94-76c1-4aee-a547-e8088e0728fd',
+  'x-ms-routing-request-id': 'WESTUS:20160315T015816Z:62b70b94-76c1-4aee-a547-e8088e0728fd',
+  date: 'Tue, 15 Mar 2016 01:58:15 GMT',
   connection: 'close' });
  return result; }]];
