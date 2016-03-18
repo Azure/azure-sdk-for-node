@@ -3,6 +3,7 @@
   "author": "Microsoft Corporation",
   "contributors": [
     "Kamath, Prarthana <pkamath@microsoft.com>",
+    "Medhekar, Shibani <shimedh@microsoft.com>",
     "Vannelli, Leo <leovann@microsoft.com>",
     "Shen, Andy <andyshen@microsoft.com>",
     "Ruela, Vinicius <viruela@microsoft.com>",
@@ -11,7 +12,7 @@
     "Kulkarni, Jagadish <jagadisk@microsoft.com>",
     "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.11.0",
   "description": "Microsoft Azure Insights Client Library for node",
   "tags": [
     "azure",
