@@ -4,6 +4,10 @@ Test Configuration Instructions
 In Live Mode
 ------------
 
+WARNING: When running this test in live mode, it takes a long time, as waiting is built in to accommodate the length of time
+it takes to start up the machines and perform operations on them. This waiting is not done in replay mode.
+Expect this suite to take around 10 minutes when run in live mode (and when run exclusive of the other test suites).
+
 Note, if you wish to run this test suite exclusive of the other client tests, the environment variables AZURE_SUBSCRIPTION_ID, CLIENT_ID and APPLICATION_SECRET will need to
 be set regardless. However they can be set to any random values, as they will not actually be tested.
 

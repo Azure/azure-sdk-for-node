@@ -271,8 +271,7 @@ describe('Batch Service', function () {
     });
     
     it('should disable scheduling on a compute node successfully', function (done) {
-      var options = { nodeDisableSchedulingOption: 'requeue' }; //TODO: Needed until empty body bug in generator fixed
-      client.computeNodeOperations.disableScheduling('nodesdktestpool1', compute_nodes[1], options, function (err, result, request, response) {
+      client.computeNodeOperations.disableScheduling('nodesdktestpool1', compute_nodes[1], function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
@@ -290,8 +289,7 @@ describe('Batch Service', function () {
     });
     
     it('should reboot a compute node successfully', function (done) {
-      var options = { nodeRebootOption: 'requeue' }; //TODO: Needed until empty body bug in generator fixed
-      client.computeNodeOperations.reboot('nodesdktestpool1', compute_nodes[0], options, function (err, result, request, response) {
+      client.computeNodeOperations.reboot('nodesdktestpool1', compute_nodes[0], function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(202);
@@ -300,8 +298,7 @@ describe('Batch Service', function () {
     });
     
     it('should reimage a compute node successfully', function (done) {
-      var options = { nodeReimageOption: 'requeue' }; //TODO: Needed until empty body bug in generator fixed
-      client.computeNodeOperations.reimage('nodesdktestpool1', compute_nodes[1], options, function (err, result, request, response) {
+      client.computeNodeOperations.reimage('nodesdktestpool1', compute_nodes[1], function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(202);
@@ -369,7 +366,7 @@ describe('Batch Service', function () {
     });
     
     it('should list a maximum number of pools', function (done) { 
-      var options = { poolListOptions: { maxresults: 1 } };
+      var options = { poolListOptions: { maxResults: 1 } };
       client.pool.list(options, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
@@ -386,7 +383,7 @@ describe('Batch Service', function () {
     });
 
     it('should fail to list pools with invalid max', function (done) {
-      var options = { poolListOptions: { maxresults: -5 } };
+      var options = { poolListOptions: { maxResults: -5 } };
       client.pool.list(options, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
@@ -451,7 +448,7 @@ describe('Batch Service', function () {
     });
     
     it('should list pools usage metrics', function (done) {
-      var options = { poolListPoolUsageMetricsOptions: { maxresults: 1 } };
+      var options = { poolListPoolUsageMetricsOptions: { maxResults: 1 } };
       client.pool.listPoolUsageMetrics(options, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
@@ -765,8 +762,7 @@ describe('Batch Service', function () {
     });
     
     it('should terminate a job successfully', function (done) {
-      var options = {terminateReason: 'NodeSDKTerminate'}; //We require this for now due to generator bug.
-      client.job.terminate('HelloWorldJobNodeSDKTest', options, function (err, result, request, response) {
+      client.job.terminate('HelloWorldJobNodeSDKTest', function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(202);
