@@ -32,18 +32,19 @@ var ServiceClient = msRest.ServiceClient;
 var testPrefix = 'batchservice-tests';
 var groupPrefix = 'nodeTestGroup';
 var accountPrefix = 'testacc';
+var certThumb = 'cff2ab63c8c955aaf71989efa641b906558d9fb7';
 var createdGroups = [];
 var createdAccounts = [];
 
 var requiredEnvironment = [
   { name: 'AZURE_BATCH_ACCOUNT', defaultValue: 'batchtestnodesdk' },
-  { name: 'AZURE_BATCH_ACCOUNT_KEY', defaultValue: 'AUn+pY/wAMwDrDp5dls7q5hxhMdYH3ReM6mnzeW280tJ7NtEptgsPTpAm+0OJvGoVhddjYHShLRH9SM3VGfoBQ==' },
   { name: 'AZURE_BATCH_ENDPOINT', defaultValue: 'https://batchtestnodesdk.japaneast.batch.azure.com/'}
 ];
 
 var suite;
 var client;
 var compute_nodes;
+
 
 var readStreamToBuffer = function (strm, callback)  {
   var bufs = [];
@@ -61,6 +62,9 @@ describe('Batch Service', function () {
       var account = process.env.AZURE_BATCH_ACCOUNT;
       var uri = process.env['AZURE_BATCH_ENDPOINT'];
       var key = process.env['AZURE_BATCH_ACCOUNT_KEY'];
+      if (key === null || key === undefined) {
+        key = 'non null default value';
+      }
       var creds = new BatchCredentials(account, key);
       client = new BatchServiceClient(creds, uri);
       if (suite.isPlayback) {
@@ -85,7 +89,7 @@ describe('Batch Service', function () {
     
     it('should add new certificate successfully', function (done) {
       var options = {
-        thumbprint: 'cff2ab63c8c955aaf71989efa641b906558d9fb7', thumbprintAlgorithm: 'sha1', password: 'nodesdk', certificateFormat: 'pfx',
+        thumbprint: certThumb, thumbprintAlgorithm: 'sha1', password: 'nodesdk', certificateFormat: 'pfx',
         data: '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'
       };
       client.certificateOperations.add(options, function (err, result, request, response) {
@@ -101,7 +105,7 @@ describe('Batch Service', function () {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result[0].thumbprint.should.equal('cff2ab63c8c955aaf71989efa641b906558d9fb7');
+        result[0].thumbprint.should.equal(certThumb);
         result[0].thumbprintAlgorithm.should.equal('sha1');
         response.statusCode.should.equal(200);
         done();
@@ -109,10 +113,10 @@ describe('Batch Service', function () {
     });
     
     it('should get certificate reference successfully', function (done) {
-      client.certificateOperations.get('sha1', 'cff2ab63c8c955aaf71989efa641b906558d9fb7', function (err, result, request, response) {
+      client.certificateOperations.get('sha1', certThumb, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.thumbprint.should.equal('cff2ab63c8c955aaf71989efa641b906558d9fb7');
+        result.thumbprint.should.equal(certThumb);
         result.thumbprintAlgorithm.should.equal('sha1');
         response.statusCode.should.equal(200);
         done();
@@ -122,7 +126,7 @@ describe('Batch Service', function () {
     it('should create a new pool successfully', function (done) {
       var pool = {
         id: 'nodesdktestpool1', vmSize: 'small', osFamily: '4', targetDedicated: 3,
-        certificateReferences: [{ thumbprint: 'cff2ab63c8c955aaf71989efa641b906558d9fb7', thumbprintAlgorithm: 'sha1' }]
+        certificateReferences: [{ thumbprint: certThumb, thumbprintAlgorithm: 'sha1' }]
       };
       client.pool.add(pool, function (err, result, request, response) {
         should.not.exist(err);
@@ -513,7 +517,7 @@ describe('Batch Service', function () {
     it('should create a second task successfully', function (done) {
       var options = {
         id: 'HelloWorldNodeSDKTestTask2',
-        commandLine: 'bad command'
+        commandLine: 'cmd /c echo hello world'
       };
       client.task.add('HelloWorldJobNodeSDKTest', options, function (err, result, request, response) {
         should.not.exist(err);
@@ -574,9 +578,7 @@ describe('Batch Service', function () {
       client.file.listFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(3);
-        result[0].name.should.equal('stderr.txt');
-        result[1].name.should.equal('stdout.txt');
+        result.length.should.be.above(0);
         response.statusCode.should.equal(200);
         done();
       });
@@ -592,17 +594,15 @@ describe('Batch Service', function () {
     });
     
     it('should get file from task successfully', function (done) {
-      client.file.getFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', 'stderr.txt', function (err, result, request, response) {
+      client.file.getFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', 'stdout.txt', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        done();
-        //TODO: Need to figure out why this file is empty...
-        //readStreamToBuffer(result, function (err, buff) {
-        //  should.not.exist(err);
-        //  buff.length.should.be.above(0);
-        //  done();
-        //});
+        readStreamToBuffer(result, function (err, buff) {
+          should.not.exist(err);
+          buff.length.should.be.above(0);
+          done();
+        });
       });
     });
     
@@ -941,7 +941,7 @@ describe('Batch Service', function () {
     });
 
     it('should delete a certificate successfully', function (done) {
-      client.certificateOperations.deleteMethod('sha1', 'cff2ab63c8c955aaf71989efa641b906558d9fb7', function (err, result, request, response) {
+      client.certificateOperations.deleteMethod('sha1', certThumb, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(202);
@@ -950,7 +950,7 @@ describe('Batch Service', function () {
     });
     
     it('should fail to cancel deleting a certificate', function (done) {
-      client.certificateOperations.cancelDeletion('sha1', 'cff2ab63c8c955aaf71989efa641b906558d9fb7', function (err, result, request, response) {
+      client.certificateOperations.cancelDeletion('sha1', certThumb, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         err.code.should.equal('CertificateBeingDeleted');
