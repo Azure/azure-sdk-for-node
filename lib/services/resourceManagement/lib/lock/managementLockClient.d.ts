@@ -11,10 +11,10 @@
 import { ServiceClientOptions, RequestOptions, ServiceCallback, ServiceClientCredentials } from 'ms-rest';
 import * as operations from "./operations";
 
-declare class LockManagementClient {
+declare class ManagementLockClient {
     /**
      * @class
-     * Initializes a new instance of the LockManagementClient class.
+     * Initializes a new instance of the ManagementLockClient class.
      * @constructor
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
@@ -59,4 +59,4 @@ declare class LockManagementClient {
     managementLocks: operations.ManagementLocks;
     }
 
-export = LockManagementClient;
+export = ManagementLockClient;

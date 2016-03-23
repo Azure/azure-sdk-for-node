@@ -730,6 +730,25 @@ export interface ResourcesMoveInfo {
 
 /**
  * @class
+ * Initializes a new instance of the ExportTemplateRequest class.
+ * @constructor
+ * Export resource group template request parameters.
+ * @member {array} [resources] Gets or sets the ids of the resources. The only
+ * supported string currently is '*' (all resources). Future api updates will
+ * support exporting specific resources.
+ * 
+ * @member {string} [options] The export template options. Supported values
+ * include 'IncludeParameterDefaultValue', 'IncludeComments' or
+ * 'IncludeParameterDefaultValue, IncludeComments
+ * 
+ */
+export interface ExportTemplateRequest {
+    resources?: string[];
+    options?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TagCount class.
  * @constructor
  * Tag count.
@@ -980,4 +999,20 @@ export interface ResourceProviderOperationDefinition {
  */
 export interface SubResource extends BaseResource {
     id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceGroupExportResult class.
+ * @constructor
+ * @member {object} [template] Gets or sets the template content.
+ * 
+ * @member {object} [error] Gets or sets the error.
+ * 
+ * @member {array} [error.details] Gets or sets validation error.
+ * 
+ */
+export interface ResourceGroupExportResult {
+    template?: any;
+    error?: ResourceManagementErrorWithDetails;
 }

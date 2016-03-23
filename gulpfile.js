@@ -64,7 +64,7 @@ var mappings = {
   },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
-    'source': 'arm-resources/resources/2015-11-01/swagger/resources.json'
+    'source': 'arm-resources/resources/2016-02-01/swagger/resources.json'
   },
   'resource.subscription': {
     'dir': 'resourceManagement/lib/subscription',
@@ -105,7 +105,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.16.0-Nightly20160316';
+var defaultAutoRestVersion = '0.16.0-Nightly20160323';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
