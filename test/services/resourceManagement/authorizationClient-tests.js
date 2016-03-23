@@ -23,7 +23,7 @@ var SuiteBase = require('../../framework/suite-base');
 
 
 var dump = util.inspect;
-var AuthorizationClient = require('../../../lib/services/resourceManagement/lib/lock/lockManagementClient');
+var AuthorizationClient = require('../../../lib/services/resourceManagement/lib/lock/managementLockClient');
 var ResourceManagementClient = require('../../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
 var testPrefix = 'authorizationClient-tests';
 var groupPrefix = 'nodeTestGroup';
