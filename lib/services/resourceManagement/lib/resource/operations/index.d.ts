@@ -607,6 +607,34 @@ export interface ResourceGroups {
     patch(resourceGroupName: string, parameters: models.ResourceGroup, callback: ServiceCallback<models.ResourceGroup>): void;
 
     /**
+     * Captures the specified resource group as a template.
+     *
+     * @param {string} resourceGroupName The name of the resource group to be
+     * created or updated.
+     * 
+     * @param {object} parameters Parameters supplied to the export template
+     * resource group operation.
+     * 
+     * @param {array} [parameters.resources] Gets or sets the ids of the
+     * resources. The only supported string currently is '*' (all resources).
+     * Future api updates will support exporting specific resources.
+     * 
+     * @param {string} [parameters.options] The export template options. Supported
+     * values include 'IncludeParameterDefaultValue', 'IncludeComments' or
+     * 'IncludeParameterDefaultValue, IncludeComments
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceGroupExportResult>): void;
+    exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, callback: ServiceCallback<models.ResourceGroupExportResult>): void;
+
+    /**
      * Gets a collection of resource groups.
      *
      * @param {object} [options] Optional Parameters.
