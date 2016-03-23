@@ -34,6 +34,26 @@ var servicesRoot = path.join(sdkRoot, 'lib/services');
 // Implementation of async versions of fundamental higher-order functions
 // over arrays.
 //
+
+var autorestgenServices = {
+  'authorizationManagement': 'authorizationManagement',
+  'batch': 'batch',
+  'batchManagement': 'batchManagement',
+  'cdnManagement': 'cdnManagement',
+  'computeManagement2': 'computeManagement2',
+  'dataLake.Analytics': 'dataLake.Analytics',
+  'dataLake.Store': 'dataLake.Store',
+  'graphManagement': 'graphManagement',
+  'intune': 'intune',
+  'networkManagement2': 'networkManagement2',
+  'rediscachemanagement': 'rediscachemanagement',
+  'resourceManagement': 'resourceManagement',
+  'serviceFabric': 'serviceFabric',
+  'storageManagement2': 'storageManagement2',
+  'storeManagement': 'storeManagement',
+  'webSiteManagement2': 'webSiteManagement2', 
+};
+
 function reduceAsync(items, asyncIterator, done, initialValue) {
   if (!initialValue) { initialValue = []; }
   function doReduce(accumulator, remainingItems, index) {
@@ -96,8 +116,14 @@ function forEachAsync(items, asyncIterator, done) {
 function readServiceDirs(done) {
   fs.readdir(servicesRoot, function (err, files) {
     if (err) { return done(err); }
+    function isNotAutorestgenService(item) {
+      if (!autorestgenServices[item]) {
+        return item;
+      }
+    }
+    var filteredFiles = files.filter(isNotAutorestgenService);
     done(null, [path.join(sdkRoot, 'lib/common')].concat(
-      files.map(function (f) {
+      filteredFiles.map(function (f) {
         return path.join(servicesRoot, f);
       })));
   });
