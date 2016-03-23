@@ -97,6 +97,11 @@ var mappings = {
     'dir': 'batchManagement/lib',
     'source': 'arm-batch/2015-12-01/swagger/BatchManagement.json',
     'ft': 1
+  },
+  'batch.Service': {
+    'dir': 'batch/lib',
+    'source': 'batch/2015-12-01.2.2/swagger/BatchService.json',
+    'ft': 1
   }
 };
 

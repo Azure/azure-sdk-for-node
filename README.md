@@ -31,6 +31,7 @@ npm install azure
 | [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)      | `npm install azure-servicefabric` |
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-sb`            |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-storage`       |
+| [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-batch`         |
 | &nbsp;                                                                            |                                   |
 | **Azure Resource Management (ARM)**                                                                                         |
 | [API Apps](http://azure.microsoft.com/en-us/services/app-service/api/)            | `npm install azure-arm-apiapp`    |
