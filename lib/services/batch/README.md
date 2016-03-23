@@ -26,27 +26,25 @@ var batchServiceClient = require('azure-batch');
 var client = new batchServiceClient(credentials, 'your-batch-endpoint');
 ```
 
-## List Node Agent SKUs
+## List all Jobs under account
 
 ```javascript
-options.accountListNodeAgentSkusOptions = { maxresults : 1 };
+options = {}
+options.jobListOptions = { maxResults : 10 };
 
-client.account.listNodeAgentSkus(options, function (error, result) {
+client.job.list(options, function (error, result) {
     
     var loop = function (nextLink) {
         if (nextLink !== null && nextLink !== undefined) {
-            testClient.account.listNodeAgentSkusNext(nextLink, function (err, res) {
+            testClient.job.listNext(nextLink, function (err, res) {
                 console.log(res);
-                loop(res['odata.nextLink']);
+                loop(res.odatanextLink);
             });
         }
     };
 
     should.not.exist(error);
     console.log(result);
-    loop(result['odata.nextLink'])
+    loop(result.odatanextLink);
 });
 ```
-
-## Detailed Sample
-A detailed sample for something, something can be found  [here](https://github.com/Azure/azure-sdk-for-node/blob/autorest/examples/batch/some-sample.js).
