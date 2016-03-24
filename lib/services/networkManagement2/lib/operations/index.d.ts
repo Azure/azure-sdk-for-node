@@ -706,11 +706,17 @@ export interface ExpressRouteCircuitPeerings {
      * 
      * @param {object} [peeringParameters.stats] Gets or peering stats
      * 
-     * @param {number} [peeringParameters.stats.bytesIn] Gets BytesIn of the
-     * peering.
+     * @param {number} [peeringParameters.stats.primarybytesIn] Gets BytesIn of
+     * the peering.
      * 
-     * @param {number} [peeringParameters.stats.bytesOut] Gets BytesOut of the
-     * peering.
+     * @param {number} [peeringParameters.stats.primarybytesOut] Gets BytesOut of
+     * the peering.
+     * 
+     * @param {number} [peeringParameters.stats.secondarybytesIn] Gets BytesIn of
+     * the peering.
+     * 
+     * @param {number} [peeringParameters.stats.secondarybytesOut] Gets BytesOut
+     * of the peering.
      * 
      * @param {string} [peeringParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
@@ -797,11 +803,17 @@ export interface ExpressRouteCircuitPeerings {
      * 
      * @param {object} [peeringParameters.stats] Gets or peering stats
      * 
-     * @param {number} [peeringParameters.stats.bytesIn] Gets BytesIn of the
-     * peering.
+     * @param {number} [peeringParameters.stats.primarybytesIn] Gets BytesIn of
+     * the peering.
      * 
-     * @param {number} [peeringParameters.stats.bytesOut] Gets BytesOut of the
-     * peering.
+     * @param {number} [peeringParameters.stats.primarybytesOut] Gets BytesOut of
+     * the peering.
+     * 
+     * @param {number} [peeringParameters.stats.secondarybytesIn] Gets BytesIn of
+     * the peering.
+     * 
+     * @param {number} [peeringParameters.stats.secondarybytesOut] Gets BytesOut
+     * of the peering.
      * 
      * @param {string} [peeringParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
@@ -949,6 +961,9 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.family] Gets or sets family of the sku.
      * Possible values include: 'UnlimitedData', 'MeteredData'
      * 
+     * @param {boolean} [parameters.allowClassicOperations] allow classic
+     * operations
+     * 
      * @param {string} [parameters.circuitProvisioningState] Gets or sets
      * CircuitProvisioningState state of the resource
      * 
@@ -1021,6 +1036,9 @@ export interface ExpressRouteCircuits {
      * @param {string} [parameters.sku.family] Gets or sets family of the sku.
      * Possible values include: 'UnlimitedData', 'MeteredData'
      * 
+     * @param {boolean} [parameters.allowClassicOperations] allow classic
+     * operations
+     * 
      * @param {string} [parameters.circuitProvisioningState] Gets or sets
      * CircuitProvisioningState state of the resource
      * 
@@ -1082,6 +1100,10 @@ export interface ExpressRouteCircuits {
      * 
      * @param {string} circuitName The name of the circuit.
      * 
+     * @param {string} peeringName The name of the peering.
+     * 
+     * @param {string} devicePath The path of the device.
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1090,13 +1112,132 @@ export interface ExpressRouteCircuits {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listArpTable(resourceGroupName: string, circuitName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
-    listArpTable(resourceGroupName: string, circuitName: string, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
+    listArpTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
+    listArpTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
+
+    /**
+     * The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+     * advertised arp table associated with the ExpressRouteCircuits in a
+     * resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} circuitName The name of the circuit.
+     * 
+     * @param {string} peeringName The name of the peering.
+     * 
+     * @param {string} devicePath The path of the device.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginListArpTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
+    beginListArpTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
 
     /**
      * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
      * currently advertised routes table associated with the ExpressRouteCircuits
      * in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} circuitName The name of the circuit.
+     * 
+     * @param {string} peeringName The name of the peering.
+     * 
+     * @param {string} devicePath The path of the device.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listRoutesTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
+    listRoutesTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
+
+    /**
+     * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
+     * currently advertised routes table associated with the ExpressRouteCircuits
+     * in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} circuitName The name of the circuit.
+     * 
+     * @param {string} peeringName The name of the peering.
+     * 
+     * @param {string} devicePath The path of the device.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginListRoutesTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
+    beginListRoutesTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
+
+    /**
+     * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
+     * currently advertised routes table associated with the ExpressRouteCircuits
+     * in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} circuitName The name of the circuit.
+     * 
+     * @param {string} peeringName The name of the peering.
+     * 
+     * @param {string} devicePath The path of the device.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listRoutesTableSummary(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableSummaryListResult>): void;
+    listRoutesTableSummary(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableSummaryListResult>): void;
+
+    /**
+     * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
+     * currently advertised routes table associated with the ExpressRouteCircuits
+     * in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} circuitName The name of the circuit.
+     * 
+     * @param {string} peeringName The name of the peering.
+     * 
+     * @param {string} devicePath The path of the device.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginListRoutesTableSummary(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableSummaryListResult>): void;
+    beginListRoutesTableSummary(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableSummaryListResult>): void;
+
+    /**
+     * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+     * ExpressRouteCircuits in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1110,8 +1251,8 @@ export interface ExpressRouteCircuits {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listRoutesTable(resourceGroupName: string, circuitName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
-    listRoutesTable(resourceGroupName: string, circuitName: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
+    listStats(resourceGroupName: string, circuitName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
+    listStats(resourceGroupName: string, circuitName: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
      * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
@@ -1119,7 +1260,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} circuitName The name of the loadBalancer.
+     * @param {string} circuitName The name of the circuit.
+     * 
+     * @param {string} peeringName The name of the peering.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1129,8 +1272,8 @@ export interface ExpressRouteCircuits {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listStats(resourceGroupName: string, circuitName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsStatsListResult>): void;
-    listStats(resourceGroupName: string, circuitName: string, callback: ServiceCallback<models.ExpressRouteCircuitsStatsListResult>): void;
+    listPeeringStats(resourceGroupName: string, circuitName: string, peeringName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
+    listPeeringStats(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
      * The List ExpressRouteCircuit opertion retrieves all the
@@ -1165,9 +1308,8 @@ export interface ExpressRouteCircuits {
     listAll(callback: ServiceCallback<models.ExpressRouteCircuitListResult>): void;
 
     /**
-     * The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
-     * advertised arp table associated with the ExpressRouteCircuits in a
-     * resource group.
+     * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+     * ExpressRouteCircuits in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1180,27 +1322,8 @@ export interface ExpressRouteCircuits {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listArpTableNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
-    listArpTableNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
-
-    /**
-     * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
-     * currently advertised routes table associated with the ExpressRouteCircuits
-     * in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listRoutesTableNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
-    listRoutesTableNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
+    listStatsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
+    listStatsNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
      * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
@@ -1217,8 +1340,8 @@ export interface ExpressRouteCircuits {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listStatsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitsStatsListResult>): void;
-    listStatsNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitsStatsListResult>): void;
+    listPeeringStatsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
+    listPeeringStatsNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
      * The List ExpressRouteCircuit opertion retrieves all the
@@ -1845,6 +1968,36 @@ export interface NetworkInterfaces {
      * 
      * @param {string} [parameters.virtualMachine.id] Resource Id
      * 
+     * @param {object} [parameters.networkSecurityGroup] Gets or sets the
+     * reference of the NetworkSecurityGroup resource
+     * 
+     * @param {array} [parameters.networkSecurityGroup.securityRules] Gets or sets
+     * Security rules of network security group
+     * 
+     * @param {array} [parameters.networkSecurityGroup.defaultSecurityRules] Gets
+     * or sets Default security rules of network security group
+     * 
+     * @param {array} [parameters.networkSecurityGroup.networkInterfaces] Gets
+     * collection of references to Network Interfaces
+     * 
+     * @param {array} [parameters.networkSecurityGroup.subnets] Gets collection of
+     * references to subnets
+     * 
+     * @param {string} [parameters.networkSecurityGroup.resourceGuid] Gets or sets
+     * resource guid property of the network security group resource
+     * 
+     * @param {string} [parameters.networkSecurityGroup.provisioningState] Gets or
+     * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.networkSecurityGroup.etag] Gets a unique
+     * read-only string that changes whenever the resource is updated
+     * 
+     * @param {string} [parameters.networkSecurityGroup.id] Resource Id
+     * 
+     * @param {string} [parameters.networkSecurityGroup.location] Resource location
+     * 
+     * @param {object} [parameters.networkSecurityGroup.tags] Resource tags
+     * 
      * @param {array} [parameters.ipConfigurations] Gets or sets list of
      * IPConfigurations of the NetworkInterface
      * 
@@ -1913,6 +2066,36 @@ export interface NetworkInterfaces {
      * VirtualMachine
      * 
      * @param {string} [parameters.virtualMachine.id] Resource Id
+     * 
+     * @param {object} [parameters.networkSecurityGroup] Gets or sets the
+     * reference of the NetworkSecurityGroup resource
+     * 
+     * @param {array} [parameters.networkSecurityGroup.securityRules] Gets or sets
+     * Security rules of network security group
+     * 
+     * @param {array} [parameters.networkSecurityGroup.defaultSecurityRules] Gets
+     * or sets Default security rules of network security group
+     * 
+     * @param {array} [parameters.networkSecurityGroup.networkInterfaces] Gets
+     * collection of references to Network Interfaces
+     * 
+     * @param {array} [parameters.networkSecurityGroup.subnets] Gets collection of
+     * references to subnets
+     * 
+     * @param {string} [parameters.networkSecurityGroup.resourceGuid] Gets or sets
+     * resource guid property of the network security group resource
+     * 
+     * @param {string} [parameters.networkSecurityGroup.provisioningState] Gets or
+     * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.networkSecurityGroup.etag] Gets a unique
+     * read-only string that changes whenever the resource is updated
+     * 
+     * @param {string} [parameters.networkSecurityGroup.id] Resource Id
+     * 
+     * @param {string} [parameters.networkSecurityGroup.location] Resource location
+     * 
+     * @param {object} [parameters.networkSecurityGroup.tags] Resource tags
      * 
      * @param {array} [parameters.ipConfigurations] Gets or sets list of
      * IPConfigurations of the NetworkInterface
@@ -2467,6 +2650,98 @@ export interface PublicIPAddresses {
      * or sets PrivateIP allocation method (Static/Dynamic). Possible values
      * include: 'Static', 'Dynamic'
      * 
+     * @param {object} [parameters.ipConfiguration.subnet] Gets or sets the
+     * reference of the subnet resource
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.addressPrefix] Gets or
+     * sets Address prefix for the subnet.
+     * 
+     * @param {object} [parameters.ipConfiguration.subnet.networkSecurityGroup]
+     * Gets or sets the reference of the NetworkSecurityGroup resource
+     * 
+     * @param {array}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.securityRules]
+     * Gets or sets Security rules of network security group
+     * 
+     * @param {array}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+     * Gets or sets Default security rules of network security group
+     * 
+     * @param {array}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+     * Gets collection of references to Network Interfaces
+     * 
+     * @param {array}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.subnets] Gets
+     * collection of references to subnets
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.resourceGuid] Gets
+     * or sets resource guid property of the network security group resource
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
+     * Gets or sets Provisioning state of the PublicIP resource
+     * Updating/Deleting/Failed
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
+     * unique read-only string that changes whenever the resource is updated
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.networkSecurityGroup.id]
+     * Resource Id
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.location] Resource
+     * location
+     * 
+     * @param {object}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.tags] Resource tags
+     * 
+     * @param {object} [parameters.ipConfiguration.subnet.routeTable] Gets or sets
+     * the reference of the RouteTable resource
+     * 
+     * @param {array} [parameters.ipConfiguration.subnet.routeTable.routes] Gets
+     * or sets Routes in a Route Table
+     * 
+     * @param {array} [parameters.ipConfiguration.subnet.routeTable.subnets] Gets
+     * collection of references to subnets
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.routeTable.provisioningState] Gets or
+     * sets Provisioning state of the resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.routeTable.etag] Gets a
+     * unique read-only string that changes whenever the resource is updated
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.routeTable.id] Resource
+     * Id
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.routeTable.location]
+     * Resource location
+     * 
+     * @param {object} [parameters.ipConfiguration.subnet.routeTable.tags]
+     * Resource tags
+     * 
+     * @param {array} [parameters.ipConfiguration.subnet.ipConfigurations] Gets
+     * array of references to the network interface IP configurations using subnet
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.provisioningState] Gets
+     * or sets Provisioning state of the PublicIP resource
+     * Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.name] Gets name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.etag] A unique read-only
+     * string that changes whenever the resource is updated
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.id] Resource Id
+     * 
+     * @param {object} [parameters.ipConfiguration.publicIPAddress] Gets or sets
+     * the reference of the PublicIP resource
+     * 
      * @param {string} [parameters.ipConfiguration.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
      * 
@@ -2553,6 +2828,98 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipConfiguration.privateIPAllocationMethod] Gets
      * or sets PrivateIP allocation method (Static/Dynamic). Possible values
      * include: 'Static', 'Dynamic'
+     * 
+     * @param {object} [parameters.ipConfiguration.subnet] Gets or sets the
+     * reference of the subnet resource
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.addressPrefix] Gets or
+     * sets Address prefix for the subnet.
+     * 
+     * @param {object} [parameters.ipConfiguration.subnet.networkSecurityGroup]
+     * Gets or sets the reference of the NetworkSecurityGroup resource
+     * 
+     * @param {array}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.securityRules]
+     * Gets or sets Security rules of network security group
+     * 
+     * @param {array}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+     * Gets or sets Default security rules of network security group
+     * 
+     * @param {array}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+     * Gets collection of references to Network Interfaces
+     * 
+     * @param {array}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.subnets] Gets
+     * collection of references to subnets
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.resourceGuid] Gets
+     * or sets resource guid property of the network security group resource
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
+     * Gets or sets Provisioning state of the PublicIP resource
+     * Updating/Deleting/Failed
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
+     * unique read-only string that changes whenever the resource is updated
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.networkSecurityGroup.id]
+     * Resource Id
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.location] Resource
+     * location
+     * 
+     * @param {object}
+     * [parameters.ipConfiguration.subnet.networkSecurityGroup.tags] Resource tags
+     * 
+     * @param {object} [parameters.ipConfiguration.subnet.routeTable] Gets or sets
+     * the reference of the RouteTable resource
+     * 
+     * @param {array} [parameters.ipConfiguration.subnet.routeTable.routes] Gets
+     * or sets Routes in a Route Table
+     * 
+     * @param {array} [parameters.ipConfiguration.subnet.routeTable.subnets] Gets
+     * collection of references to subnets
+     * 
+     * @param {string}
+     * [parameters.ipConfiguration.subnet.routeTable.provisioningState] Gets or
+     * sets Provisioning state of the resource Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.routeTable.etag] Gets a
+     * unique read-only string that changes whenever the resource is updated
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.routeTable.id] Resource
+     * Id
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.routeTable.location]
+     * Resource location
+     * 
+     * @param {object} [parameters.ipConfiguration.subnet.routeTable.tags]
+     * Resource tags
+     * 
+     * @param {array} [parameters.ipConfiguration.subnet.ipConfigurations] Gets
+     * array of references to the network interface IP configurations using subnet
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.provisioningState] Gets
+     * or sets Provisioning state of the PublicIP resource
+     * Updating/Deleting/Failed
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.name] Gets name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.etag] A unique read-only
+     * string that changes whenever the resource is updated
+     * 
+     * @param {string} [parameters.ipConfiguration.subnet.id] Resource Id
+     * 
+     * @param {object} [parameters.ipConfiguration.publicIPAddress] Gets or sets
+     * the reference of the PublicIP resource
      * 
      * @param {string} [parameters.ipConfiguration.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
