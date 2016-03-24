@@ -1251,8 +1251,8 @@ export interface ExpressRouteCircuits {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listStats(resourceGroupName: string, circuitName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
-    listStats(resourceGroupName: string, circuitName: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
+    getStats(resourceGroupName: string, circuitName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
+    getStats(resourceGroupName: string, circuitName: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
      * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
@@ -1272,8 +1272,8 @@ export interface ExpressRouteCircuits {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listPeeringStats(resourceGroupName: string, circuitName: string, peeringName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
-    listPeeringStats(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
+    getPeeringStats(resourceGroupName: string, circuitName: string, peeringName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
+    getPeeringStats(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
      * The List ExpressRouteCircuit opertion retrieves all the
@@ -1306,42 +1306,6 @@ export interface ExpressRouteCircuits {
      */
     listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitListResult>): void;
     listAll(callback: ServiceCallback<models.ExpressRouteCircuitListResult>): void;
-
-    /**
-     * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
-     * ExpressRouteCircuits in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listStatsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
-    listStatsNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
-
-    /**
-     * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
-     * ExpressRouteCircuits in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listPeeringStatsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
-    listPeeringStatsNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
      * The List ExpressRouteCircuit opertion retrieves all the

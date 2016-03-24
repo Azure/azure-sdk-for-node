@@ -904,13 +904,16 @@ export interface ExpressRouteCircuitsRoutesTableListResult {
  * The routes table associated with the ExpressRouteCircuit
  * @member {string} [neighbor] Neighbor.
  * 
- * @member {number} [v] V.
+ * @member {number} [v] BGP version number spoken to the neighbor.
  * 
- * @member {number} [as] AS.
+ * @member {number} [as] Autonomous system number.
  * 
- * @member {string} [upDown] upDown.
+ * @member {string} [upDown] The length of time that the BGP session has been
+ * in the Established state, or the current status if not in the Established
+ * state.
  * 
- * @member {string} [statePfxRcd] statePfxRcd .
+ * @member {string} [statePfxRcd] Current state of the BGP session, and the
+ * number of prefixes that have been received from a neighbor or peer group.
  * 
  */
 export interface ExpressRouteCircuitRoutesTableSummary {
@@ -933,21 +936,6 @@ export interface ExpressRouteCircuitRoutesTableSummary {
  */
 export interface ExpressRouteCircuitsRoutesTableSummaryListResult {
     value?: ExpressRouteCircuitRoutesTableSummary[];
-    nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressRouteCircuitsStatsListResult class.
- * @constructor
- * Response for ListStats from Express Route Circuits Api service call
- * @member {array} [value] Gets List of Stats
- * 
- * @member {string} [nextLink] Gets the URL to get the next set of results.
- * 
- */
-export interface ExpressRouteCircuitsStatsListResult {
-    value?: ExpressRouteCircuitStats[];
     nextLink?: string;
 }
 
