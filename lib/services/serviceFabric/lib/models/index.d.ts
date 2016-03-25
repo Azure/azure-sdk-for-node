@@ -1421,6 +1421,24 @@ export interface ServiceGroupMemberDescription {
  * 
  * @member {string} [placementConstraints]
  * 
+ * @member {object} [correlationScheme]
+ * 
+ * @member {string} [correlationScheme.serviceName]
+ * 
+ * @member {number} [correlationScheme.serviceCorrelationScheme]
+ * 
+ * @member {object} [serviceLoadMetrics]
+ * 
+ * @member {string} [serviceLoadMetrics.serviceName]
+ * 
+ * @member {number} [serviceLoadMetrics.serviceCorrelationScheme]
+ * 
+ * @member {object} [servicePlacementPolicies]
+ * 
+ * @member {string} [servicePlacementPolicies.serviceName]
+ * 
+ * @member {number} [servicePlacementPolicies.serviceCorrelationScheme]
+ * 
  * @member {number} [flags]
  * 
  * @member {array} [serviceGroupMemberDescription]
@@ -1434,9 +1452,26 @@ export interface ServiceGroupDescription {
     serviceTypeName?: string;
     partitionDescription?: PartitionDescription;
     placementConstraints?: string;
+    correlationScheme?: ServiceCorrelationDescription;
+    serviceLoadMetrics?: ServiceCorrelationDescription;
+    servicePlacementPolicies?: ServiceCorrelationDescription;
     flags?: number;
     serviceGroupMemberDescription?: ServiceGroupMemberDescription[];
     ServiceKind: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceCorrelationDescription class.
+ * @constructor
+ * @member {string} [serviceName]
+ * 
+ * @member {number} [serviceCorrelationScheme]
+ * 
+ */
+export interface ServiceCorrelationDescription {
+    serviceName?: string;
+    serviceCorrelationScheme?: number;
 }
 
 /**
@@ -1472,6 +1507,49 @@ export interface StatelessServiceGroupDescription extends ServiceGroupDescriptio
  * 
  */
 export interface StatefulServiceGroupDescription extends ServiceGroupDescription {
+    targetReplicaSetSize?: number;
+    minReplicaSetSize?: number;
+    hasPersistedState?: boolean;
+    replicaRestartWaitDurationSeconds?: number;
+    quorumLossWaitDurationSeconds?: number;
+    standByReplicaKeepDurationSeconds?: number;
+    defaultMoveCost?: number;
+    isDefaultMoveCostSpecified?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatelessCreateServiceGroupDescription class.
+ * @constructor
+ * @member {number} [instanceCount]
+ * 
+ */
+export interface StatelessCreateServiceGroupDescription extends ServiceGroupDescription {
+    instanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatefulCreateServiceGroupDescription class.
+ * @constructor
+ * @member {number} [targetReplicaSetSize]
+ * 
+ * @member {number} [minReplicaSetSize]
+ * 
+ * @member {boolean} [hasPersistedState]
+ * 
+ * @member {number} [replicaRestartWaitDurationSeconds]
+ * 
+ * @member {number} [quorumLossWaitDurationSeconds]
+ * 
+ * @member {number} [standByReplicaKeepDurationSeconds]
+ * 
+ * @member {number} [defaultMoveCost]
+ * 
+ * @member {boolean} [isDefaultMoveCostSpecified]
+ * 
+ */
+export interface StatefulCreateServiceGroupDescription extends ServiceGroupDescription {
     targetReplicaSetSize?: number;
     minReplicaSetSize?: number;
     hasPersistedState?: boolean;
@@ -1644,6 +1722,37 @@ export interface ApplicationUpgradeDeployedApplicationHealthStates {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceLoadMetricDescription class.
+ * @constructor
+ * @member {string} [name]
+ * 
+ * @member {number} [serviceLoadMetricWeight]
+ * 
+ * @member {number} [primaryDefaultLoad]
+ * 
+ * @member {number} [secondaryDefaultLoad]
+ * 
+ */
+export interface ServiceLoadMetricDescription {
+    name?: string;
+    serviceLoadMetricWeight?: number;
+    primaryDefaultLoad?: number;
+    secondaryDefaultLoad?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServicePlacementPolicyDescription class.
+ * @constructor
+ * @member {number} [type]
+ * 
+ */
+export interface ServicePlacementPolicyDescription {
+    type?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServiceDescription class.
  * @constructor
  * @member {string} [applicationName]
@@ -1666,6 +1775,24 @@ export interface ApplicationUpgradeDeployedApplicationHealthStates {
  * 
  * @member {string} [placementConstraints]
  * 
+ * @member {object} [correlationScheme]
+ * 
+ * @member {string} [correlationScheme.serviceName]
+ * 
+ * @member {number} [correlationScheme.serviceCorrelationScheme]
+ * 
+ * @member {object} [serviceLoadMetrics]
+ * 
+ * @member {string} [serviceLoadMetrics.serviceName]
+ * 
+ * @member {number} [serviceLoadMetrics.serviceCorrelationScheme]
+ * 
+ * @member {object} [servicePlacementPolicies]
+ * 
+ * @member {string} [servicePlacementPolicies.serviceName]
+ * 
+ * @member {number} [servicePlacementPolicies.serviceCorrelationScheme]
+ * 
  * @member {number} [flags]
  * 
  * @member {string} ServiceKind Polymorhpic Discriminator
@@ -1677,6 +1804,9 @@ export interface ServiceDescription {
     serviceTypeName?: string;
     partitionDescription?: PartitionDescription;
     placementConstraints?: string;
+    correlationScheme?: ServiceCorrelationDescription;
+    serviceLoadMetrics?: ServiceCorrelationDescription;
+    servicePlacementPolicies?: ServiceCorrelationDescription;
     flags?: number;
     ServiceKind: string;
 }
@@ -1714,6 +1844,49 @@ export interface StatelessServiceDescription extends ServiceDescription {
  * 
  */
 export interface StatefulServiceDescription extends ServiceDescription {
+    targetReplicaSetSize?: number;
+    minReplicaSetSize?: number;
+    hasPersistedState?: boolean;
+    replicaRestartWaitDurationSeconds?: number;
+    quorumLossWaitDurationSeconds?: number;
+    standByReplicaKeepDurationSeconds?: number;
+    defaultMoveCost?: number;
+    isDefaultMoveCostSpecified?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatelessCreateServiceDescription class.
+ * @constructor
+ * @member {number} [instanceCount]
+ * 
+ */
+export interface StatelessCreateServiceDescription extends ServiceDescription {
+    instanceCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StatefulCreateServiceDescription class.
+ * @constructor
+ * @member {number} [targetReplicaSetSize]
+ * 
+ * @member {number} [minReplicaSetSize]
+ * 
+ * @member {boolean} [hasPersistedState]
+ * 
+ * @member {number} [replicaRestartWaitDurationSeconds]
+ * 
+ * @member {number} [quorumLossWaitDurationSeconds]
+ * 
+ * @member {number} [standByReplicaKeepDurationSeconds]
+ * 
+ * @member {number} [defaultMoveCost]
+ * 
+ * @member {boolean} [isDefaultMoveCostSpecified]
+ * 
+ */
+export interface StatefulCreateServiceDescription extends ServiceDescription {
     targetReplicaSetSize?: number;
     minReplicaSetSize?: number;
     hasPersistedState?: boolean;
@@ -2609,7 +2782,7 @@ export interface ClusterUpgradeProgressUpgradeDomainProgressAtFailure {
  * 
  * @member {string} [sequenceNumber]
  * 
- * @member {string} [removeWhenExpired]
+ * @member {boolean} [removeWhenExpired]
  * 
  */
 export interface ClusterHealthReport {
@@ -2619,7 +2792,7 @@ export interface ClusterHealthReport {
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
-    removeWhenExpired?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2649,7 +2822,7 @@ export interface DisableNode {
  * 
  * @member {string} [sequenceNumber]
  * 
- * @member {string} [removeWhenExpired]
+ * @member {boolean} [removeWhenExpired]
  * 
  */
 export interface NodeHealthReport {
@@ -2659,7 +2832,7 @@ export interface NodeHealthReport {
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
-    removeWhenExpired?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2678,7 +2851,7 @@ export interface NodeHealthReport {
  * 
  * @member {string} [sequenceNumber]
  * 
- * @member {string} [removeWhenExpired]
+ * @member {boolean} [removeWhenExpired]
  * 
  */
 export interface DeployedApplicationHealthReport {
@@ -2688,7 +2861,7 @@ export interface DeployedApplicationHealthReport {
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
-    removeWhenExpired?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2707,7 +2880,7 @@ export interface DeployedApplicationHealthReport {
  * 
  * @member {string} [sequenceNumber]
  * 
- * @member {string} [removeWhenExpired]
+ * @member {boolean} [removeWhenExpired]
  * 
  */
 export interface DeployedServicePackageHealthReport {
@@ -2717,7 +2890,7 @@ export interface DeployedServicePackageHealthReport {
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
-    removeWhenExpired?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2758,7 +2931,7 @@ export interface UnregisterApplicationType {
  * 
  * @member {string} [sequenceNumber]
  * 
- * @member {string} [removeWhenExpired]
+ * @member {boolean} [removeWhenExpired]
  * 
  */
 export interface ApplicationHealthReport {
@@ -2768,7 +2941,7 @@ export interface ApplicationHealthReport {
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
-    removeWhenExpired?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2812,7 +2985,7 @@ export interface ResumeApplicationUpgrade {
  * 
  * @member {string} [sequenceNumber]
  * 
- * @member {string} [removeWhenExpired]
+ * @member {boolean} [removeWhenExpired]
  * 
  */
 export interface ServiceHealthReport {
@@ -2822,7 +2995,7 @@ export interface ServiceHealthReport {
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
-    removeWhenExpired?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2841,7 +3014,7 @@ export interface ServiceHealthReport {
  * 
  * @member {string} [sequenceNumber]
  * 
- * @member {string} [removeWhenExpired]
+ * @member {boolean} [removeWhenExpired]
  * 
  */
 export interface PartitionHealthReport {
@@ -2851,7 +3024,7 @@ export interface PartitionHealthReport {
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
-    removeWhenExpired?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2870,7 +3043,7 @@ export interface PartitionHealthReport {
  * 
  * @member {string} [sequenceNumber]
  * 
- * @member {string} [removeWhenExpired]
+ * @member {boolean} [removeWhenExpired]
  * 
  */
 export interface ReplicaHealthReport {
@@ -2880,5 +3053,5 @@ export interface ReplicaHealthReport {
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
-    removeWhenExpired?: string;
+    removeWhenExpired?: boolean;
 }
