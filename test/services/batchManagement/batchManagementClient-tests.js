@@ -97,7 +97,8 @@ describe('Batch Management', function () {
     
     it('should add application successfully', function (done) {
       var params = { allowUpdates: true, displayName: 'my_application_name' };
-      client.applicationOperations.addApplication(groupName, 'batchtestnodesdk', 'my_application_id', params, function (err, result, request, response) {
+      var options = { parameters : params };
+      client.applicationOperations.addApplication(groupName, 'batchtestnodesdk', 'my_application_id', options, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(201);

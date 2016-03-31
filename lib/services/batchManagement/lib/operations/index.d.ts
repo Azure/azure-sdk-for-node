@@ -366,16 +366,16 @@ export interface ApplicationOperations {
      * 
      * @param {string} applicationId The id of the application.
      * 
-     * @param {object} parameters The parameters for the request.
-     * 
-     * @param {boolean} [parameters.allowUpdates] A value indicating whether
-     * packages within the application may be overwritten using the same version
-     * string.
-     * 
-     * @param {string} [parameters.displayName] The display name for the
-     * application.
-     * 
      * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.parameters] The parameters for the request.
+     * 
+     * @param {boolean} [options.parameters.allowUpdates] A value indicating
+     * whether packages within the application may be overwritten using the same
+     * version string.
+     * 
+     * @param {string} [options.parameters.displayName] The display name for the
+     * application.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -383,8 +383,8 @@ export interface ApplicationOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    addApplication(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.AddApplicationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    addApplication(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.AddApplicationParameters, callback: ServiceCallback<void>): void;
+    addApplication(resourceGroupName: string, accountName: string, applicationId: string, options: { parameters? : models.AddApplicationParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addApplication(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<void>): void;
 
     /**
      * Deletes an application.

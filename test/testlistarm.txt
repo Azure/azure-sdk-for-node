@@ -15,3 +15,4 @@ services/cdnManagement/cdnCustomDomain-tests.js
 services/cdnManagement/cdnCheckNameAvailability-tests.js
 services/cdnManagement/cdnOperation-tests.js
 services/batchManagement/batchManagementClient-tests.js
+services/batch/batchClient-tests.js

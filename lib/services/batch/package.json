@@ -1,0 +1,42 @@
+{
+  "name": "azure-batch",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Wu, Xing <xingwu@microsoft.com>"
+  ],
+  "version": "0.1.0",
+  "description": "Microsoft Azure Batch Service Client Library for node",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/batchServiceClient.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "ms-rest": "^1.10.0",
+    "ms-rest-azure": "^1.10.0"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}

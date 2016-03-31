@@ -1,5 +1,5 @@
 {
-  "name": "azure-servicefabric",
+  "name": "azure-arm-servicefabric",
   "author": "Microsoft Corporation",
   "contributors": [
     "Chen, Jeffrey <jefchen@microsoft.com>"
