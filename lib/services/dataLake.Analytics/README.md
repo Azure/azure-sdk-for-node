@@ -20,13 +20,19 @@ Right now it supports:
 - Enter the following:
  
 ```bash
-npm install async
 npm install adal-node
 npm install azure-common
 npm install azure-arm-datalake-analytics
 ```
 
 ## How to Use
+
+- Open a Command Prompt, Terminal, or Bash window.
+- Enter the following to install the async package, which is required for the sample:
+ 
+```bash
+npm install async
+```
 
 The following example gets the job list.
 
@@ -73,7 +79,7 @@ async.series([
         next();
     },
     function (next) {
-        client.jobs.list(resourceGroup, accountName, function(err, result){
+        client.jobs.listByResourceGroup(resourceGroup, accountName, function(err, result){
             if (err) throw err;
             console.log(result);
         });

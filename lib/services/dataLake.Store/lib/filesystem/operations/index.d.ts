@@ -95,7 +95,8 @@ export interface FileSystem {
     mkdirs(path: string, accountName: string, callback: ServiceCallback<models.FileOperationResult>): void;
 
     /**
-     * Concatenates the list of source files into the destination file.
+     * Concatenates the list of source files into the destination file, removing
+     * all source files upon success.
      *
      * @param {string} destinationPath The Data Lake Store path (starting with
      * '/') of the destination file resulting from the concatenation.
@@ -119,10 +120,10 @@ export interface FileSystem {
     concat(destinationPath: string, sources: string[], accountName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Concatenates the list of source files into the destination file. This
-     * method accepts more source file paths than the Concat method. This method
-     * and the parameters it accepts are subject to change for usability in an
-     * upcoming version.
+     * Concatenates the list of source files into the destination file, deleting
+     * all source files upon success. This method accepts more source file paths
+     * than the Concat method. This method and the parameters it accepts are
+     * subject to change for usability in an upcoming version.
      *
      * @param {string} msConcatDestinationPath The Data Lake Store path (starting
      * with '/') of the destination file resulting from the concatenation.
@@ -136,9 +137,13 @@ export interface FileSystem {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {boolean} [options.deletesourcedirectory] Caution: Setting this
-     * parameter to true will delete the parent directory of all source files
-     * provided to the MsConcat method.
+     * @param {boolean} [options.deleteSourceDirectory] Indicates that as an
+     * optimization instead of deleting each individual source stream, delete the
+     * source stream folder if all streams are in the same folder instead. This
+     * results in a substantial performance improvement when the only streams in
+     * the folder are part of the concatenation operation. WARNING: This includes
+     * the deletion of any other files that are not source files. Only set this
+     * to true when source files are the only files in the source directory.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -146,7 +151,7 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    msConcat(msConcatDestinationPath: string, streamContents: stream.Readable, accountName: string, options: { deletesourcedirectory? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    msConcat(msConcatDestinationPath: string, streamContents: stream.Readable, accountName: string, options: { deleteSourceDirectory? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     msConcat(msConcatDestinationPath: string, streamContents: stream.Readable, accountName: string, callback: ServiceCallback<void>): void;
 
     /**

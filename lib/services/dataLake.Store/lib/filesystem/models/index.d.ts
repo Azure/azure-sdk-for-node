@@ -143,7 +143,7 @@ export interface ContentSummaryResult {
  * @member {string} [permission] Gets the permission represented as an string.
  * 
  * @member {string} [type] Gets the type of the path object. Possible values
- * include: 'File', 'Directory'
+ * include: 'FILE', 'DIRECTORY'
  * 
  */
 export interface FileStatusProperties {
@@ -219,7 +219,7 @@ export interface FileStatusesResult {
  * an string.
  * 
  * @member {string} [fileStatus.type] Gets the type of the path object.
- * Possible values include: 'File', 'Directory'
+ * Possible values include: 'FILE', 'DIRECTORY'
  * 
  */
 export interface FileStatusResult {

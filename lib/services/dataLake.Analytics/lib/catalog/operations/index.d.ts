@@ -177,7 +177,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -241,7 +241,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -311,7 +311,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -379,7 +379,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -447,7 +447,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -521,7 +521,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -567,7 +567,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -641,7 +641,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -707,7 +707,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -771,7 +771,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
@@ -831,7 +831,7 @@ export interface Catalog {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to

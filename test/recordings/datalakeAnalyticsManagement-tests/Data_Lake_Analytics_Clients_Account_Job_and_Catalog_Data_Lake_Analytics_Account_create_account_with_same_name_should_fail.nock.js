@@ -10,41 +10,41 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla3233?api-version=2015-10-01-preview', '*')
+.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla1130?api-version=2015-10-01-preview', '*')
   .reply(400, "{\"error\":{\"code\":\"InvalidInput\",\"message\":\"The deep update for property 'DataLakeStoreAccounts' is not supported.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '116',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'a0ee640d-9f69-4a8c-810b-d27ca664aae4',
+  'x-ms-request-id': 'cc78b8bc-7a0c-474e-8b32-f046b070c229',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '0f3b855d-56a0-48ae-a83d-f650959edb72',
-  'x-ms-routing-request-id': 'WESTUS:20160316T213013Z:0f3b855d-56a0-48ae-a83d-f650959edb72',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': '68d0d23f-6b00-48ae-80a2-b21124993409',
+  'x-ms-routing-request-id': 'WESTUS:20160324T232240Z:68d0d23f-6b00-48ae-80a2-b21124993409',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 16 Mar 2016 21:30:12 GMT',
+  date: 'Thu, 24 Mar 2016 23:22:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla3233?api-version=2015-10-01-preview', '*')
+.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla1130?api-version=2015-10-01-preview', '*')
   .reply(400, "{\"error\":{\"code\":\"InvalidInput\",\"message\":\"The deep update for property 'DataLakeStoreAccounts' is not supported.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '116',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'a0ee640d-9f69-4a8c-810b-d27ca664aae4',
+  'x-ms-request-id': 'cc78b8bc-7a0c-474e-8b32-f046b070c229',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '0f3b855d-56a0-48ae-a83d-f650959edb72',
-  'x-ms-routing-request-id': 'WESTUS:20160316T213013Z:0f3b855d-56a0-48ae-a83d-f650959edb72',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': '68d0d23f-6b00-48ae-80a2-b21124993409',
+  'x-ms-routing-request-id': 'WESTUS:20160324T232240Z:68d0d23f-6b00-48ae-80a2-b21124993409',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 16 Mar 2016 21:30:12 GMT',
+  date: 'Thu, 24 Mar 2016 23:22:39 GMT',
   connection: 'close' });
  return result; }]];

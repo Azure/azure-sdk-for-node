@@ -19,8 +19,6 @@ declare class DataLakeStoreFileSystemManagementClient {
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
      *
-     * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-     *
      * @param {string} adlsFileSystemDnsSuffix - Gets the URI used as the base for all cloud service requests.
      *
      * @param {object} [options] - The parameter options
@@ -41,11 +39,9 @@ declare class DataLakeStoreFileSystemManagementClient {
      * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
      *
      */
-    constructor(credentials: ServiceClientCredentials, subscriptionId: string, adlsFileSystemDnsSuffix: string, options: ServiceClientOptions);
+    constructor(credentials: ServiceClientCredentials, adlsFileSystemDnsSuffix: string, options: ServiceClientOptions);
 
     credentials: ServiceClientCredentials;
-
-    subscriptionId: string;
 
     apiVersion: string;
 

@@ -19,8 +19,6 @@ declare class DataLakeAnalyticsCatalogManagementClient {
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
      *
-     * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-     *
      * @param {string} adlaCatalogDnsSuffix - Gets the DNS suffix used as the base for all Azure Data Lake Analytics Catalog service requests.
      *
      * @param {object} [options] - The parameter options
@@ -41,11 +39,9 @@ declare class DataLakeAnalyticsCatalogManagementClient {
      * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
      *
      */
-    constructor(credentials: ServiceClientCredentials, subscriptionId: string, adlaCatalogDnsSuffix: string, options: ServiceClientOptions);
+    constructor(credentials: ServiceClientCredentials, adlaCatalogDnsSuffix: string, options: ServiceClientOptions);
 
     credentials: ServiceClientCredentials;
-
-    subscriptionId: string;
 
     apiVersion: string;
 

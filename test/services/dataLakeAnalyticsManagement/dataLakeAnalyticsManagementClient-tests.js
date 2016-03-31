@@ -81,8 +81,8 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       storageClient = new StorageManagementClient(suite.credentials, suite.subscriptionId);
       accountClient = new DataLakeAnalyticsAccountManagementClient(suite.credentials, suite.subscriptionId);
       adlsClient = new DataLakeStoreAccountManagementClient(suite.credentials, suite.subscriptionId);
-      jobClient = new DataLakeAnalyticsJobManagementClient(suite.credentials, suite.subscriptionId, jobAndCatalogDnsSuffix);
-      catalogClient = new DataLakeAnalyticsCatalogManagementClient(suite.credentials, suite.subscriptionId, jobAndCatalogDnsSuffix);
+      jobClient = new DataLakeAnalyticsJobManagementClient(suite.credentials, jobAndCatalogDnsSuffix);
+      catalogClient = new DataLakeAnalyticsCatalogManagementClient(suite.credentials, jobAndCatalogDnsSuffix);
       testLocation = process.env['AZURE_TEST_LOCATION'];
       testLocation = testLocation.toLowerCase().replace(/ /g, '');
       testResourceGroup = process.env['AZURE_TEST_RESOURCE_GROUP'];
