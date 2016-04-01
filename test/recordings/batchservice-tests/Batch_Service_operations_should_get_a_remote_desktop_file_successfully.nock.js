@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/rdp?api-version=2015-12-01.2.2')
-  .reply(200, "full address:s:13.71.155.101\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/rdp?api-version=2016-02-01.3.0')
+  .reply(200, "full address:s:13.71.144.164\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '456d56c4-f601-43ef-82ca-34d699aadc15',
+  'request-id': 'd7cee31a-27a4-4be6-a08a-c2b9fdf8155b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:29 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/rdp?api-version=2015-12-01.2.2')
-  .reply(200, "full address:s:13.71.155.101\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/rdp?api-version=2016-02-01.3.0')
+  .reply(200, "full address:s:13.71.144.164\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0", { 'transfer-encoding': 'chunked',
   'content-type': 'application/octet-stream',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '456d56c4-f601-43ef-82ca-34d699aadc15',
+  'request-id': 'd7cee31a-27a4-4be6-a08a-c2b9fdf8155b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:29 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:05 GMT',
   connection: 'close' });
  return result; }]];

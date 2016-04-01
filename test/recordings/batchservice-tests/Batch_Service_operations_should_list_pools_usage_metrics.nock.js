@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2015-12-01.2.2&maxresults=1')
+  .get('/poolusagemetrics?api-version=2016-02-01.3.0&maxresults=1')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2016-03-18T18:30:00Z\",\"endTime\":\"2016-03-18T19:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.0041169883055555551,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'aa9f728e-0945-4b35-9526-0b2c72a12b61',
+  'request-id': '4248c999-d5e6-4697-970e-3910ebb46287',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:44 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2015-12-01.2.2&maxresults=1')
+  .get('/poolusagemetrics?api-version=2016-02-01.3.0&maxresults=1')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2016-03-18T18:30:00Z\",\"endTime\":\"2016-03-18T19:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.0041169883055555551,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'aa9f728e-0945-4b35-9526-0b2c72a12b61',
+  'request-id': '4248c999-d5e6-4697-970e-3910ebb46287',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:44 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:22 GMT',
   connection: 'close' });
  return result; }]];

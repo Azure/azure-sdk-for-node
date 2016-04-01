@@ -9,24 +9,24 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser?api-version=2015-12-01.2.2')
+  .delete('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser?api-version=2016-02-01.3.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd17a7674-cba8-4a15-8d7a-767e29458864',
+  'request-id': '915b1c5c-186b-4cab-9643-9072ec760254',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:30 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser?api-version=2015-12-01.2.2')
+  .delete('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser?api-version=2016-02-01.3.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'd17a7674-cba8-4a15-8d7a-767e29458864',
+  'request-id': '915b1c5c-186b-4cab-9643-9072ec760254',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:30 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:06 GMT',
   connection: 'close' });
  return result; }]];

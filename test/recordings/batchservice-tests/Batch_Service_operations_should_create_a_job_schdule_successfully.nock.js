@@ -10,33 +10,33 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobschedules?api-version=2015-12-01.2.2', '*')
+.post('/jobschedules?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:05:28 GMT',
-  etag: '0x8D3510BBF0DD6BF',
+  'last-modified': 'Fri, 01 Apr 2016 05:56:02 GMT',
+  etag: '0x8D359F24E932970',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'ace287c8-7309-4af2-9e13-fe5eea7e1702',
+  'request-id': '7438884f-18b5-4ba0-83b0-34de19c98dfe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule',
-  date: 'Sun, 20 Mar 2016 22:05:27 GMT',
+  date: 'Fri, 01 Apr 2016 05:56:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobschedules?api-version=2015-12-01.2.2', '*')
+.post('/jobschedules?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:05:28 GMT',
-  etag: '0x8D3510BBF0DD6BF',
+  'last-modified': 'Fri, 01 Apr 2016 05:56:02 GMT',
+  etag: '0x8D359F24E932970',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'ace287c8-7309-4af2-9e13-fe5eea7e1702',
+  'request-id': '7438884f-18b5-4ba0-83b0-34de19c98dfe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule',
-  date: 'Sun, 20 Mar 2016 22:05:27 GMT',
+  date: 'Fri, 01 Apr 2016 05:56:02 GMT',
   connection: 'close' });
  return result; }]];

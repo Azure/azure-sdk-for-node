@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/applications?api-version=2015-12-01.2.2')
+  .get('/applications?api-version=2016-02-01.3.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"my_application_id\",\"versions\":[\r\n        \"v1.0\"\r\n      ],\"displayName\":\"my_application_name\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '918c0860-176a-4924-a563-4f7243b68d9a',
+  'request-id': '00dcc6f1-b8d5-4d20-81cc-56df6ba8d227',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:05:17 GMT',
+  date: 'Fri, 01 Apr 2016 05:55:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/applications?api-version=2015-12-01.2.2')
+  .get('/applications?api-version=2016-02-01.3.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"my_application_id\",\"versions\":[\r\n        \"v1.0\"\r\n      ],\"displayName\":\"my_application_name\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '918c0860-176a-4924-a563-4f7243b68d9a',
+  'request-id': '00dcc6f1-b8d5-4d20-81cc-56df6ba8d227',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:05:17 GMT',
+  date: 'Fri, 01 Apr 2016 05:55:53 GMT',
   connection: 'close' });
  return result; }]];

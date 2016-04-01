@@ -10,29 +10,29 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users?api-version=2015-12-01.2.2', '*')
+.post('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser',
+  location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7d5ad7d2-cf9d-4733-bb18-83a0f2a2b565',
+  'request-id': '9e51c342-aa56-4dce-b9b8-0faaf510c31f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser',
-  date: 'Sun, 20 Mar 2016 22:01:28 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser',
+  date: 'Fri, 01 Apr 2016 05:52:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users?api-version=2015-12-01.2.2', '*')
+.post('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser',
+  location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7d5ad7d2-cf9d-4733-bb18-83a0f2a2b565',
+  'request-id': '9e51c342-aa56-4dce-b9b8-0faaf510c31f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser',
-  date: 'Sun, 20 Mar 2016 22:01:28 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser',
+  date: 'Fri, 01 Apr 2016 05:52:04 GMT',
   connection: 'close' });
  return result; }]];

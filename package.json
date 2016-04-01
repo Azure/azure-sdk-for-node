@@ -66,6 +66,8 @@
     "azure-arm-website": "0.11.0",
     "azure-arm-datalake-analytics": "0.1.6",
     "azure-arm-datalake-store": "0.1.4",
+    "azure-arm-batch": "0.1.0",
+    "azure-batch": "0.1.0",
     "mime": "~1.2.4",
     "underscore": "1.4.x",
     "request": "2.52.0",

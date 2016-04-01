@@ -9,34 +9,34 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2015-12-01.2.2')
+  .head('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2016-02-01.3.0')
   .reply(200, "", { 'content-length': '0',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:49 GMT',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:28 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a551b3dc-a36c-4f70-82d8-f68f76b1a694',
+  'request-id': 'd767c72b-4d1b-436a-a8ed-5cde10cb39b3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Sun, 20 Mar 2016 22:01:49 GMT',
+  'ocp-creation-time': 'Fri, 01 Apr 2016 05:52:28 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstderr.txt',
-  date: 'Sun, 20 Mar 2016 22:03:31 GMT',
+  date: 'Fri, 01 Apr 2016 05:54:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .head('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2015-12-01.2.2')
+  .head('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2016-02-01.3.0')
   .reply(200, "", { 'content-length': '0',
   'content-type': 'application/octet-stream',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:49 GMT',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:28 GMT',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a551b3dc-a36c-4f70-82d8-f68f76b1a694',
+  'request-id': 'd767c72b-4d1b-436a-a8ed-5cde10cb39b3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  'ocp-creation-time': 'Sun, 20 Mar 2016 22:01:49 GMT',
+  'ocp-creation-time': 'Fri, 01 Apr 2016 05:52:28 GMT',
   'ocp-batch-file-isdirectory': 'False',
   'ocp-batch-file-url': 'https%3A%2F%2Fbatchtestnodesdk.japaneast.batch.azure.com%2Fjobs%2FHelloWorldJobNodeSDKTest%2Ftasks%2FHelloWorldNodeSDKTestTask2%2Ffiles%2Fstderr.txt',
-  date: 'Sun, 20 Mar 2016 22:03:31 GMT',
+  date: 'Fri, 01 Apr 2016 05:54:09 GMT',
   connection: 'close' });
  return result; }]];
