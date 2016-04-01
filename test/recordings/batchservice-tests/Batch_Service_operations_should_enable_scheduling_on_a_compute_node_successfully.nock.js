@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160320t215552z/enablescheduling?api-version=2015-12-01.2.2')
+  .post('/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160401t054638z/enablescheduling?api-version=2016-02-01.3.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '4bde30c7-c93d-4989-b142-65230e860b92',
+  'request-id': 'f8f61082-b9e4-464a-9449-8f2d71cd4864',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160320t215552z/enablescheduling',
-  date: 'Sun, 20 Mar 2016 22:01:33 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160401t054638z/enablescheduling',
+  date: 'Fri, 01 Apr 2016 05:52:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160320t215552z/enablescheduling?api-version=2015-12-01.2.2')
+  .post('/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160401t054638z/enablescheduling?api-version=2016-02-01.3.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '4bde30c7-c93d-4989-b142-65230e860b92',
+  'request-id': 'f8f61082-b9e4-464a-9449-8f2d71cd4864',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160320t215552z/enablescheduling',
-  date: 'Sun, 20 Mar 2016 22:01:33 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160401t054638z/enablescheduling',
+  date: 'Fri, 01 Apr 2016 05:52:09 GMT',
   connection: 'close' });
  return result; }]];

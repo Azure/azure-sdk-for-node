@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2015-12-01.2.2&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
+  .get('/pools?api-version=2016-02-01.3.0&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools\",\"value\":[\r\n    {\r\n      \"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7045009b-48ac-48d9-86c4-f6f851c2b0f6',
+  'request-id': '07ec2da6-622a-4970-9bed-d83ac1463f42',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:40 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2015-12-01.2.2&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
+  .get('/pools?api-version=2016-02-01.3.0&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools\",\"value\":[\r\n    {\r\n      \"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7045009b-48ac-48d9-86c4-f6f851c2b0f6',
+  'request-id': '07ec2da6-622a-4970-9bed-d83ac1463f42',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:40 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:19 GMT',
   connection: 'close' });
  return result; }]];

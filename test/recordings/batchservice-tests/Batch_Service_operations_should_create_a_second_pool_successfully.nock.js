@@ -10,33 +10,33 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2015-12-01.2.2', '*')
+.post('/pools?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:39 GMT',
-  etag: '0x8D3510B3683DF80',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:16 GMT',
+  etag: '0x8D359F1C825D1A8',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3cc6e6f4-a850-49bd-95b5-833048064437',
+  'request-id': 'b1a741ad-9c90-421a-8e22-7755097f8012',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2',
-  date: 'Sun, 20 Mar 2016 22:01:39 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2015-12-01.2.2', '*')
+.post('/pools?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:39 GMT',
-  etag: '0x8D3510B3683DF80',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:16 GMT',
+  etag: '0x8D359F1C825D1A8',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3cc6e6f4-a850-49bd-95b5-833048064437',
+  'request-id': 'b1a741ad-9c90-421a-8e22-7755097f8012',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2',
-  date: 'Sun, 20 Mar 2016 22:01:39 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:16 GMT',
   connection: 'close' });
  return result; }]];

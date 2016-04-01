@@ -10,29 +10,29 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2015-12-01.2.2', '*')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2016-03-20T22:01:37.572484Z\",\"results\":\"$TargetDedicated=3;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
+.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2016-02-01.3.0', '*')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2016-04-01T05:52:15.1599976Z\",\"results\":\"$TargetDedicated=3;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'bf83cd5c-8c6c-4832-925b-8b2b4fd8f9d5',
+  'request-id': '10875b6f-194c-4302-ae45-d9750623bb2e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/evaluateautoscale',
-  date: 'Sun, 20 Mar 2016 22:01:37 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2015-12-01.2.2', '*')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2016-03-20T22:01:37.572484Z\",\"results\":\"$TargetDedicated=3;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
+.post('/pools/nodesdktestpool1/evaluateautoscale?api-version=2016-02-01.3.0', '*')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.AutoScaleRun\",\"timestamp\":\"2016-04-01T05:52:15.1599976Z\",\"results\":\"$TargetDedicated=3;$NodeDeallocationOption=requeue\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'bf83cd5c-8c6c-4832-925b-8b2b4fd8f9d5',
+  'request-id': '10875b6f-194c-4302-ae45-d9750623bb2e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/evaluateautoscale',
-  date: 'Sun, 20 Mar 2016 22:01:37 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:14 GMT',
   connection: 'close' });
  return result; }]];

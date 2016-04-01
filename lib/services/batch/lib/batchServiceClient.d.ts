@@ -54,6 +54,7 @@ declare class BatchServiceClient {
     // Operation groups
     application: operations.Application;
     pool: operations.Pool;
+    account: operations.Account;
     job: operations.Job;
     certificateOperations: operations.CertificateOperations;
     file: operations.File;

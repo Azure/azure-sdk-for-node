@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/applications/my_application_id?api-version=2015-12-01.2.2')
+  .get('/applications/my_application_id?api-version=2016-02-01.3.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#getapplicationsummaryresponse/@Element\",\"id\":\"my_application_id\",\"versions\":[\r\n    \"v1.0\"\r\n  ],\"displayName\":\"my_application_name\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '88a14ff7-e1c2-4db3-980c-0e4cf09de079',
+  'request-id': '82266200-6ba0-468a-a2b3-8a098f2e7c46',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:05:17 GMT',
+  date: 'Fri, 01 Apr 2016 05:55:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/applications/my_application_id?api-version=2015-12-01.2.2')
+  .get('/applications/my_application_id?api-version=2016-02-01.3.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#getapplicationsummaryresponse/@Element\",\"id\":\"my_application_id\",\"versions\":[\r\n    \"v1.0\"\r\n  ],\"displayName\":\"my_application_name\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '88a14ff7-e1c2-4db3-980c-0e4cf09de079',
+  'request-id': '82266200-6ba0-468a-a2b3-8a098f2e7c46',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:05:17 GMT',
+  date: 'Fri, 01 Apr 2016 05:55:54 GMT',
   connection: 'close' });
  return result; }]];
