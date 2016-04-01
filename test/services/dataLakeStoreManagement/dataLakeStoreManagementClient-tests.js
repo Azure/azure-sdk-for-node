@@ -254,7 +254,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
           validLength.should.be.equal(true);
           
           // create a file with no contents inside of the folder
-          adlsFileSystemClient.fileSystem.create(noContentFile, new Buffer(), filesystemAccountName, function (err, result, request, response) {
+          adlsFileSystemClient.fileSystem.create(noContentFile, filesystemAccountName, function (err, result, request, response) {
             should.not.exist(err);
             should.not.exist(result);
             response.statusCode.should.equal(201);
@@ -268,7 +268,11 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
               validLength.should.be.equal(true);
               
               // create a file with contents
-              adlsFileSystemClient.fileSystem.create(contentFile, new Buffer(content), filesystemAccountName, function (err, result, request, response) {
+              var options = {
+                streamContents: new Buffer(content)
+              };
+              
+              adlsFileSystemClient.fileSystem.create(contentFile, filesystemAccountName, options, function (err, result, request, response) {
                 should.not.exist(err);
                 should.not.exist(result);
                 response.statusCode.should.equal(201);
@@ -344,7 +348,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         overwrite: true
       };
 
-      adlsFileSystemClient.fileSystem.create(concatFile, new Buffer(content + content), filesystemAccountName, function(err, result, request, response) {
+      adlsFileSystemClient.fileSystem.create(concatFile, filesystemAccountName, options, function(err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(201);
