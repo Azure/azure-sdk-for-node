@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/jobschedules/NodeSDKTestSchedule?api-version=2015-12-01.2.2', '*')
+.patch('/jobschedules/NodeSDKTestSchedule?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:05:31 GMT',
-  etag: '0x8D3510BC0DF8009',
+  'last-modified': 'Fri, 01 Apr 2016 05:56:05 GMT',
+  etag: '0x8D359F2507F8447',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5681d3be-7530-479f-83b2-1df1ae6ef4ad',
+  'request-id': '3bdc028d-9db4-47d7-8430-d0c07bb68b94',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule',
-  date: 'Sun, 20 Mar 2016 22:05:31 GMT',
+  date: 'Fri, 01 Apr 2016 05:56:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/jobschedules/NodeSDKTestSchedule?api-version=2015-12-01.2.2', '*')
+.patch('/jobschedules/NodeSDKTestSchedule?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:05:31 GMT',
-  etag: '0x8D3510BC0DF8009',
+  'last-modified': 'Fri, 01 Apr 2016 05:56:05 GMT',
+  etag: '0x8D359F2507F8447',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5681d3be-7530-479f-83b2-1df1ae6ef4ad',
+  'request-id': '3bdc028d-9db4-47d7-8430-d0c07bb68b94',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule',
-  date: 'Sun, 20 Mar 2016 22:05:31 GMT',
+  date: 'Fri, 01 Apr 2016 05:56:05 GMT',
   connection: 'close' });
  return result; }]];

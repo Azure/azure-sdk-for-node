@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1?api-version=2015-12-01.2.2')
-  .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool has been marked for deletion and is being reclaimed.\\nRequestId:b77b4fd4-0eec-4701-93f0-5f048ffa015a\\nTime:2016-03-20T22:05:36.6404866Z\"\r\n  }\r\n}", { 'content-length': '381',
+  .delete('/pools/nodesdktestpool1?api-version=2016-02-01.3.0')
+  .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool has been marked for deletion and is being reclaimed.\\nRequestId:f97b128b-b3f1-4c23-9e4f-0a33cee788e5\\nTime:2016-04-01T05:56:10.2684114Z\"\r\n  }\r\n}", { 'content-length': '381',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b77b4fd4-0eec-4701-93f0-5f048ffa015a',
+  'request-id': 'f97b128b-b3f1-4c23-9e4f-0a33cee788e5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:05:36 GMT',
+  date: 'Fri, 01 Apr 2016 05:56:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1?api-version=2015-12-01.2.2')
-  .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool has been marked for deletion and is being reclaimed.\\nRequestId:b77b4fd4-0eec-4701-93f0-5f048ffa015a\\nTime:2016-03-20T22:05:36.6404866Z\"\r\n  }\r\n}", { 'content-length': '381',
+  .delete('/pools/nodesdktestpool1?api-version=2016-02-01.3.0')
+  .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"PoolBeingDeleted\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified pool has been marked for deletion and is being reclaimed.\\nRequestId:f97b128b-b3f1-4c23-9e4f-0a33cee788e5\\nTime:2016-04-01T05:56:10.2684114Z\"\r\n  }\r\n}", { 'content-length': '381',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b77b4fd4-0eec-4701-93f0-5f048ffa015a',
+  'request-id': 'f97b128b-b3f1-4c23-9e4f-0a33cee788e5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:05:36 GMT',
+  date: 'Fri, 01 Apr 2016 05:56:10 GMT',
   connection: 'close' });
  return result; }]];

@@ -10,33 +10,33 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs?api-version=2015-12-01.2.2', '*')
+.post('/jobs?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:44 GMT',
-  etag: '0x8D3510B39F34242',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:23 GMT',
+  etag: '0x8D359F1CC1C1B72',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/job-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f7eb41ba-74c8-43b3-9439-4e1c03d49f6d',
+  'request-id': '649a6235-fefa-482e-b2d8-44c786c51351',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/job-1',
-  date: 'Sun, 20 Mar 2016 22:01:44 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs?api-version=2015-12-01.2.2', '*')
+.post('/jobs?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:44 GMT',
-  etag: '0x8D3510B39F34242',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:23 GMT',
+  etag: '0x8D359F1CC1C1B72',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/job-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'f7eb41ba-74c8-43b3-9439-4e1c03d49f6d',
+  'request-id': '649a6235-fefa-482e-b2d8-44c786c51351',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/job-1',
-  date: 'Sun, 20 Mar 2016 22:01:44 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:23 GMT',
   connection: 'close' });
  return result; }]];

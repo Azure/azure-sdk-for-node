@@ -9,28 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160320t215552z/reimage?api-version=2015-12-01.2.2', '*')
+  .post('/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160401t054638z/reimage?api-version=2016-02-01.3.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '199e5cad-4bff-4063-a0d8-49a72f058add',
+  'request-id': '00151300-60e7-49dc-9808-583a202d91d6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160320t215552z/reimage',
-  date: 'Sun, 20 Mar 2016 22:01:35 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160401t054638z/reimage',
+  date: 'Fri, 01 Apr 2016 05:52:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160320t215552z/reimage?api-version=2015-12-01.2.2', '*')
+  .post('/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160401t054638z/reimage?api-version=2016-02-01.3.0')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '199e5cad-4bff-4063-a0d8-49a72f058add',
+  'request-id': '00151300-60e7-49dc-9808-583a202d91d6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160320t215552z/reimage',
-  date: 'Sun, 20 Mar 2016 22:01:35 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_2-20160401t054638z/reimage',
+  date: 'Fri, 01 Apr 2016 05:52:13 GMT',
   connection: 'close' });
  return result; }]];

@@ -9,30 +9,30 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2015-12-01.2.2')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D3510A7B8A2662\",\"lastModified\":\"2016-03-20T21:56:25.3546082Z\",\"creationTime\":\"2016-03-20T21:54:43.3925787Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-03-20T21:54:43.3925787Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2016-03-20T21:55:53.4893625Z\",\"osFamily\":\"4\",\"targetOSVersion\":\"WA-GUEST-OS-4.27_201512-01\",\"currentOSVersion\":\"WA-GUEST-OS-4.27_201512-01\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicated\":3,\"targetDedicated\":3,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1?api-version=2016-02-01.3.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D359F10BF5ACC5\",\"lastModified\":\"2016-04-01T05:47:01.2012229Z\",\"creationTime\":\"2016-04-01T05:45:19.1175212Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-04-01T05:45:19.1175212Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2016-04-01T05:46:39.6109806Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicated\":3,\"targetDedicated\":3,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"WA-GUEST-OS-4.27_201512-01\",\"currentOSVersion\":\"WA-GUEST-OS-4.27_201512-01\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Sun, 20 Mar 2016 21:56:25 GMT',
-  etag: '0x8D3510A7B8A2662',
+  'last-modified': 'Fri, 01 Apr 2016 05:47:01 GMT',
+  etag: '0x8D359F10BF5ACC5',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '489f0477-9c8a-4045-a823-eb1678a8752d',
+  'request-id': '3b358f5d-a872-489f-9754-ed53b84695be',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:25 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools/nodesdktestpool1?api-version=2015-12-01.2.2')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D3510A7B8A2662\",\"lastModified\":\"2016-03-20T21:56:25.3546082Z\",\"creationTime\":\"2016-03-20T21:54:43.3925787Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-03-20T21:54:43.3925787Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2016-03-20T21:55:53.4893625Z\",\"osFamily\":\"4\",\"targetOSVersion\":\"WA-GUEST-OS-4.27_201512-01\",\"currentOSVersion\":\"WA-GUEST-OS-4.27_201512-01\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicated\":3,\"targetDedicated\":3,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/pools/nodesdktestpool1?api-version=2016-02-01.3.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools/@Element\",\"id\":\"nodesdktestpool1\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1\",\"eTag\":\"0x8D359F10BF5ACC5\",\"lastModified\":\"2016-04-01T05:47:01.2012229Z\",\"creationTime\":\"2016-04-01T05:45:19.1175212Z\",\"state\":\"active\",\"stateTransitionTime\":\"2016-04-01T05:45:19.1175212Z\",\"allocationState\":\"steady\",\"allocationStateTransitionTime\":\"2016-04-01T05:46:39.6109806Z\",\"vmSize\":\"small\",\"resizeTimeout\":\"PT15M\",\"currentDedicated\":3,\"targetDedicated\":3,\"enableAutoScale\":false,\"enableInterNodeCommunication\":false,\"metadata\":[\r\n    {\r\n      \"name\":\"foo2\",\"value\":\"bar2\"\r\n    }\r\n  ],\"maxTasksPerNode\":1,\"taskSchedulingPolicy\":{\r\n    \"nodeFillType\":\"Spread\"\r\n  },\"cloudServiceConfiguration\":{\r\n    \"osFamily\":\"4\",\"targetOSVersion\":\"WA-GUEST-OS-4.27_201512-01\",\"currentOSVersion\":\"WA-GUEST-OS-4.27_201512-01\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Sun, 20 Mar 2016 21:56:25 GMT',
-  etag: '0x8D3510A7B8A2662',
+  'last-modified': 'Fri, 01 Apr 2016 05:47:01 GMT',
+  etag: '0x8D359F10BF5ACC5',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '489f0477-9c8a-4045-a823-eb1678a8752d',
+  'request-id': '3b358f5d-a872-489f-9754-ed53b84695be',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:25 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:01 GMT',
   connection: 'close' });
  return result; }]];

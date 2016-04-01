@@ -237,13 +237,58 @@ export interface Pool {
      * @param {string} [pool.vmSize] Gets or sets the size of virtual machines in
      * the pool.  All VMs in a pool are the same size.
      * 
-     * @param {string} [pool.osFamily] Gets or sets the Azure Guest OS family to
-     * be installed on the virtual machines in the pool.
+     * @param {object} [pool.cloudServiceConfiguration] Gets or sets the cloud
+     * service configuration for the pool. This property and
+     * VirtualMachineConfiguration are mutually exclusive and one of the
+     * properties must be specified.
      * 
-     * @param {string} [pool.targetOSVersion] Gets or sets the Azure Guest OS
-     * version to be installed on the virtual machines in the pool. The default
-     * value is * which specifies the latest operating system version for the
-     * specified family.
+     * @param {string} [pool.cloudServiceConfiguration.osFamily] Gets or sets the
+     * Azure Guest OS family to be installed on the virtual machines in the pool.
+     * 
+     * @param {string} [pool.cloudServiceConfiguration.targetOSVersion] Gets or
+     * sets the Azure Guest OS version to be installed on the virtual machines in
+     * the pool. The default value is * which specifies the latest operating
+     * system version for the specified OS family.
+     * 
+     * @param {string} [pool.cloudServiceConfiguration.currentOSVersion] Gets or
+     * sets the Azure Guest OS Version currently installed on the virtual
+     * machines in the pool. This may differ from TargetOSVersion if the pool
+     * state is Upgrading.
+     * 
+     * @param {object} [pool.virtualMachineConfiguration] Gets or sets the virtual
+     * machine configuration for the pool. This property and
+     * CloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
+     * 
+     * @param {object} [pool.virtualMachineConfiguration.imageReference] Gets or
+     * sets information about the platform or marketplace image to use.
+     * 
+     * @param {string} [pool.virtualMachineConfiguration.imageReference.publisher]
+     * Gets or sets the publisher of the image.
+     * 
+     * @param {string} [pool.virtualMachineConfiguration.imageReference.offer]
+     * Gets or sets the offer of the image.
+     * 
+     * @param {string} [pool.virtualMachineConfiguration.imageReference.sku] Gets
+     * or sets the SKU of the image.
+     * 
+     * @param {string} [pool.virtualMachineConfiguration.imageReference.version]
+     * Gets or sets the version of the image. A value of 'latest' can be
+     * specified to select the latest version of an image.
+     * 
+     * @param {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] Gets or
+     * sets the SKU of Batch Node Agent that needs to be provisioned on the
+     * compute node. This property must match the ImageReference property.
+     * 
+     * @param {object} [pool.virtualMachineConfiguration.windowsConfiguration]
+     * Gets or sets Windows operating system settings on the virtual machine.
+     * This property must not be specified if the ImageReference property
+     * referencs a Linux OS image.
+     * 
+     * @param {boolean}
+     * [pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Gets or sets whether virtual machine is enabled for automatic updates. If
+     * omitted, the default value is true.
      * 
      * @param {moment.duration} [pool.resizeTimeout] Gets or sets the timeout for
      * allocation of compute nodes to the pool. In a Get Pool operation, this is
@@ -1160,6 +1205,89 @@ export interface Pool {
 
 /**
  * @class
+ * Account
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchServiceClient.
+ */
+export interface Account {
+
+    /**
+     * Lists all the node agent SKUs supported by Azure Batch Service.
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.accountListNodeAgentSkusOptions] Additional
+     * parameters for the operation
+     * 
+     * @param {string} [options.accountListNodeAgentSkusOptions.filter] Sets an
+     * OData $filter clause.
+     * 
+     * @param {number} [options.accountListNodeAgentSkusOptions.maxResults] Sets
+     * the maximum number of items to return in the response.
+     * 
+     * @param {number} [options.accountListNodeAgentSkusOptions.timeout] Sets the
+     * maximum time that the server can spend processing the request, in seconds.
+     * The default is 30 seconds.
+     * 
+     * @param {string} [options.accountListNodeAgentSkusOptions.clientRequestId]
+     * Caller generated request identity, in the form of a GUID with no
+     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * 
+     * @param {boolean}
+     * [options.accountListNodeAgentSkusOptions.returnClientRequestId] Specifies
+     * if the server should return the client-request-id identifier in the
+     * response.
+     * 
+     * @param {date} [options.accountListNodeAgentSkusOptions.ocpDate] The time
+     * the request was issued. If not specified, this header will be
+     * automatically populated with the current system clock time.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listNodeAgentSkus(options: { accountListNodeAgentSkusOptions? : models.AccountListNodeAgentSkusOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
+    listNodeAgentSkus(callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
+
+    /**
+     * Lists all the node agent SKUs supported by Azure Batch Service.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.accountListNodeAgentSkusNextOptions] Additional
+     * parameters for the operation
+     * 
+     * @param {string}
+     * [options.accountListNodeAgentSkusNextOptions.clientRequestId] Caller
+     * generated request identity, in the form of a GUID with no decoration such
+     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * 
+     * @param {boolean}
+     * [options.accountListNodeAgentSkusNextOptions.returnClientRequestId]
+     * Specifies if the server should return the client-request-id identifier in
+     * the response.
+     * 
+     * @param {date} [options.accountListNodeAgentSkusNextOptions.ocpDate] The
+     * time the request was issued. If not specified, this header will be
+     * automatically populated with the current system clock time.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listNodeAgentSkusNext(nextPageLink: string, options: { accountListNodeAgentSkusNextOptions? : models.AccountListNodeAgentSkusNextOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
+    listNodeAgentSkusNext(nextPageLink: string, callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
+}
+
+/**
+ * @class
  * Job
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BatchServiceClient.
@@ -1328,8 +1456,8 @@ export interface Job {
      * You must specify either PoolId or AutoPoolSpecification, but not both.
      * 
      * @param {object} [jobPatchParameter.poolInfo.autoPoolSpecification] Gets or
-     * sets characteristics for a temporary 'auto pool.' The Batch service will
-     * create this auto pool and run all the tasks of the job on it, and will
+     * sets characteristics for a temporary 'auto pool'. The Batch service will
+     * create this auto pool and run all of the tasks of the job on it, and will
      * delete the pool once the job has completed. You must specify either PoolId
      * or AutoPoolSpecification, but not both.
      * 
@@ -1360,15 +1488,71 @@ export interface Job {
      * sets the size of the virtual machines in the pool. All VMs in a pool are
      * the same size.
      * 
-     * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.osFamily] Gets or
-     * sets the Azure Guest OS family to be installed on the virtual machines in
-     * the pool.
+     * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
+     * Gets or sets the cloud service configuration for the pool. This property
+     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * properties must be specified.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * Gets or sets the Azure Guest OS family to be installed on the virtual
      * machines in the pool.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+     * Gets or sets the Azure Guest OS version to be installed on the virtual
+     * machines in the pool. The default value is * which specifies the latest
+     * operating system version for the specified OS family.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+     * Gets or sets the Azure Guest OS Version currently installed on the virtual
+     * machines in the pool. This may differ from TargetOSVersion if the pool
+     * state is Upgrading.
+     * 
+     * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
+     * Gets or sets the virtual machine configuration for the pool. This property
+     * and CloudServiceConfiguration are mutually exclusive and one of the
+     * properties must be specified.
+     * 
+     * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * Gets or sets information about the platform or marketplace image to use.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * Gets or sets the publisher of the image.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * Gets or sets the offer of the image.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * Gets or sets the SKU of the image.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
+     * Gets or sets the version of the image. A value of 'latest' can be
+     * specified to select the latest version of an image.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
+     * the compute node. This property must match the ImageReference property.
+     * 
+     * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
+     * Gets or sets Windows operating system settings on the virtual machine.
+     * This property must not be specified if the ImageReference property
+     * referencs a Linux OS image.
+     * 
+     * @param {boolean}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Gets or sets whether virtual machine is enabled for automatic updates. If
+     * omitted, the default value is true.
      * 
      * @param {number}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -1542,8 +1726,8 @@ export interface Job {
      * You must specify either PoolId or AutoPoolSpecification, but not both.
      * 
      * @param {object} [jobUpdateParameter.poolInfo.autoPoolSpecification] Gets or
-     * sets characteristics for a temporary 'auto pool.' The Batch service will
-     * create this auto pool and run all the tasks of the job on it, and will
+     * sets characteristics for a temporary 'auto pool'. The Batch service will
+     * create this auto pool and run all of the tasks of the job on it, and will
      * delete the pool once the job has completed. You must specify either PoolId
      * or AutoPoolSpecification, but not both.
      * 
@@ -1574,15 +1758,71 @@ export interface Job {
      * sets the size of the virtual machines in the pool. All VMs in a pool are
      * the same size.
      * 
-     * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.osFamily] Gets or
-     * sets the Azure Guest OS family to be installed on the virtual machines in
-     * the pool.
+     * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
+     * Gets or sets the cloud service configuration for the pool. This property
+     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * properties must be specified.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * Gets or sets the Azure Guest OS family to be installed on the virtual
      * machines in the pool.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+     * Gets or sets the Azure Guest OS version to be installed on the virtual
+     * machines in the pool. The default value is * which specifies the latest
+     * operating system version for the specified OS family.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+     * Gets or sets the Azure Guest OS Version currently installed on the virtual
+     * machines in the pool. This may differ from TargetOSVersion if the pool
+     * state is Upgrading.
+     * 
+     * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
+     * Gets or sets the virtual machine configuration for the pool. This property
+     * and CloudServiceConfiguration are mutually exclusive and one of the
+     * properties must be specified.
+     * 
+     * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * Gets or sets information about the platform or marketplace image to use.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * Gets or sets the publisher of the image.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * Gets or sets the offer of the image.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * Gets or sets the SKU of the image.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
+     * Gets or sets the version of the image. A value of 'latest' can be
+     * specified to select the latest version of an image.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
+     * the compute node. This property must match the ImageReference property.
+     * 
+     * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
+     * Gets or sets Windows operating system settings on the virtual machine.
+     * This property must not be specified if the ImageReference property
+     * referencs a Linux OS image.
+     * 
+     * @param {boolean}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Gets or sets whether virtual machine is enabled for automatic updates. If
+     * omitted, the default value is true.
      * 
      * @param {number}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -2033,9 +2273,9 @@ export interface Job {
      * specify either PoolId or AutoPoolSpecification, but not both.
      * 
      * @param {object} [job.poolInfo.autoPoolSpecification] Gets or sets
-     * characteristics for a temporary 'auto pool.' The Batch service will create
-     * this auto pool and run all the tasks of the job on it, and will delete the
-     * pool once the job has completed. You must specify either PoolId or
+     * characteristics for a temporary 'auto pool'. The Batch service will create
+     * this auto pool and run all of the tasks of the job on it, and will delete
+     * the pool once the job has completed. You must specify either PoolId or
      * AutoPoolSpecification, but not both.
      * 
      * @param {string} [job.poolInfo.autoPoolSpecification.autoPoolIdPrefix] Gets
@@ -2060,13 +2300,71 @@ export interface Job {
      * sets the size of the virtual machines in the pool. All VMs in a pool are
      * the same size.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.pool.osFamily] Gets or
-     * sets the Azure Guest OS family to be installed on the virtual machines in
-     * the pool.
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] Gets
+     * or sets the cloud service configuration for the pool. This property and
+     * VirtualMachineConfiguration are mutually exclusive and one of the
+     * properties must be specified.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.pool.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * Gets or sets the Azure Guest OS family to be installed on the virtual
      * machines in the pool.
+     * 
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
+     * Gets or sets the Azure Guest OS version to be installed on the virtual
+     * machines in the pool. The default value is * which specifies the latest
+     * operating system version for the specified OS family.
+     * 
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+     * Gets or sets the Azure Guest OS Version currently installed on the virtual
+     * machines in the pool. This may differ from TargetOSVersion if the pool
+     * state is Upgrading.
+     * 
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] Gets
+     * or sets the virtual machine configuration for the pool. This property and
+     * CloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
+     * 
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * Gets or sets information about the platform or marketplace image to use.
+     * 
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * Gets or sets the publisher of the image.
+     * 
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * Gets or sets the offer of the image.
+     * 
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * Gets or sets the SKU of the image.
+     * 
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
+     * Gets or sets the version of the image. A value of 'latest' can be
+     * specified to select the latest version of an image.
+     * 
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
+     * the compute node. This property must match the ImageReference property.
+     * 
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
+     * Gets or sets Windows operating system settings on the virtual machine.
+     * This property must not be specified if the ImageReference property
+     * referencs a Linux OS image.
+     * 
+     * @param {boolean}
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Gets or sets whether virtual machine is enabled for automatic updates. If
+     * omitted, the default value is true.
      * 
      * @param {number} [job.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
      * Gets or sets the maximum number of tasks that can run concurrently on a
@@ -2452,12 +2750,11 @@ export interface CertificateOperations {
      * algorithm used to derive the thumbprint. This must be sha1.
      * 
      * @param {string} [certificate.data] Gets or sets the base64-encoded contents
-     * of the .pfx file containing the certificate. The maximum size is 10KB.
-     * This property is not populated by the Get Certificate operation.
+     * of the certificate. The maximum size is 10KB. This property is not
+     * populated by the Get Certificate operation.
      * 
      * @param {string} [certificate.certificateFormat] Gets or sets the format of
-     * the certificate data. This must be pfx. Possible values include: 'pfx',
-     * 'cer', 'unmapped'
+     * the certificate data. Possible values include: 'pfx', 'cer', 'unmapped'
      * 
      * @param {string} [certificate.password] Gets or sets the password to access
      * the certificate's private key. This property is not populated by the Get
@@ -2741,7 +3038,7 @@ export interface File {
     deleteFromTask(jobId: string, taskId: string, fileName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Gets the content of the specified task file.
+     * Returns the content of the specified task file.
      *
      * @param {string} jobId The id of the job that contains the task.
      * 
@@ -2893,7 +3190,7 @@ export interface File {
     deleteFromComputeNode(poolId: string, nodeId: string, fileName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Gets the content of the specified task file.
+     * Returns the content of the specified task file.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -3567,9 +3864,9 @@ export interface JobSchedule {
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification]
-     * Gets or sets characteristics for a temporary 'auto pool.' The Batch
-     * service will create this auto pool and run all the tasks of the job on it,
-     * and will delete the pool once the job has completed. You must specify
+     * Gets or sets characteristics for a temporary 'auto pool'. The Batch
+     * service will create this auto pool and run all of the tasks of the job on
+     * it, and will delete the pool once the job has completed. You must specify
      * either PoolId or AutoPoolSpecification, but not both.
      * 
      * @param {string}
@@ -3600,15 +3897,71 @@ export interface JobSchedule {
      * Gets or sets the size of the virtual machines in the pool. All VMs in a
      * pool are the same size.
      * 
+     * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
+     * Gets or sets the cloud service configuration for the pool. This property
+     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * properties must be specified.
+     * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.osFamily]
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
      * Gets or sets the Azure Guest OS family to be installed on the virtual
      * machines in the pool.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.targetOSVersion]
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
      * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool.
+     * machines in the pool. The default value is * which specifies the latest
+     * operating system version for the specified OS family.
+     * 
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+     * Gets or sets the Azure Guest OS Version currently installed on the virtual
+     * machines in the pool. This may differ from TargetOSVersion if the pool
+     * state is Upgrading.
+     * 
+     * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
+     * Gets or sets the virtual machine configuration for the pool. This property
+     * and CloudServiceConfiguration are mutually exclusive and one of the
+     * properties must be specified.
+     * 
+     * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * Gets or sets information about the platform or marketplace image to use.
+     * 
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * Gets or sets the publisher of the image.
+     * 
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * Gets or sets the offer of the image.
+     * 
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * Gets or sets the SKU of the image.
+     * 
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
+     * Gets or sets the version of the image. A value of 'latest' can be
+     * specified to select the latest version of an image.
+     * 
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
+     * the compute node. This property must match the ImageReference property.
+     * 
+     * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
+     * Gets or sets Windows operating system settings on the virtual machine.
+     * This property must not be specified if the ImageReference property
+     * referencs a Linux OS image.
+     * 
+     * @param {boolean}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Gets or sets whether virtual machine is enabled for automatic updates. If
+     * omitted, the default value is true.
      * 
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -3990,9 +4343,9 @@ export interface JobSchedule {
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification]
-     * Gets or sets characteristics for a temporary 'auto pool.' The Batch
-     * service will create this auto pool and run all the tasks of the job on it,
-     * and will delete the pool once the job has completed. You must specify
+     * Gets or sets characteristics for a temporary 'auto pool'. The Batch
+     * service will create this auto pool and run all of the tasks of the job on
+     * it, and will delete the pool once the job has completed. You must specify
      * either PoolId or AutoPoolSpecification, but not both.
      * 
      * @param {string}
@@ -4023,15 +4376,71 @@ export interface JobSchedule {
      * Gets or sets the size of the virtual machines in the pool. All VMs in a
      * pool are the same size.
      * 
+     * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
+     * Gets or sets the cloud service configuration for the pool. This property
+     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * properties must be specified.
+     * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.osFamily]
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
      * Gets or sets the Azure Guest OS family to be installed on the virtual
      * machines in the pool.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.targetOSVersion]
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
      * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool.
+     * machines in the pool. The default value is * which specifies the latest
+     * operating system version for the specified OS family.
+     * 
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+     * Gets or sets the Azure Guest OS Version currently installed on the virtual
+     * machines in the pool. This may differ from TargetOSVersion if the pool
+     * state is Upgrading.
+     * 
+     * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
+     * Gets or sets the virtual machine configuration for the pool. This property
+     * and CloudServiceConfiguration are mutually exclusive and one of the
+     * properties must be specified.
+     * 
+     * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * Gets or sets information about the platform or marketplace image to use.
+     * 
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * Gets or sets the publisher of the image.
+     * 
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * Gets or sets the offer of the image.
+     * 
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * Gets or sets the SKU of the image.
+     * 
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
+     * Gets or sets the version of the image. A value of 'latest' can be
+     * specified to select the latest version of an image.
+     * 
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
+     * the compute node. This property must match the ImageReference property.
+     * 
+     * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
+     * Gets or sets Windows operating system settings on the virtual machine.
+     * This property must not be specified if the ImageReference property
+     * referencs a Linux OS image.
+     * 
+     * @param {boolean}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Gets or sets whether virtual machine is enabled for automatic updates. If
+     * omitted, the default value is true.
      * 
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -4559,8 +4968,8 @@ export interface JobSchedule {
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification] Gets or
-     * sets characteristics for a temporary 'auto pool.' The Batch service will
-     * create this auto pool and run all the tasks of the job on it, and will
+     * sets characteristics for a temporary 'auto pool'. The Batch service will
+     * create this auto pool and run all of the tasks of the job on it, and will
      * delete the pool once the job has completed. You must specify either PoolId
      * or AutoPoolSpecification, but not both.
      * 
@@ -4592,15 +5001,71 @@ export interface JobSchedule {
      * Gets or sets the size of the virtual machines in the pool. All VMs in a
      * pool are the same size.
      * 
+     * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
+     * Gets or sets the cloud service configuration for the pool. This property
+     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * properties must be specified.
+     * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.osFamily]
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
      * Gets or sets the Azure Guest OS family to be installed on the virtual
      * machines in the pool.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.targetOSVersion]
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
      * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool.
+     * machines in the pool. The default value is * which specifies the latest
+     * operating system version for the specified OS family.
+     * 
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+     * Gets or sets the Azure Guest OS Version currently installed on the virtual
+     * machines in the pool. This may differ from TargetOSVersion if the pool
+     * state is Upgrading.
+     * 
+     * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
+     * Gets or sets the virtual machine configuration for the pool. This property
+     * and CloudServiceConfiguration are mutually exclusive and one of the
+     * properties must be specified.
+     * 
+     * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * Gets or sets information about the platform or marketplace image to use.
+     * 
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * Gets or sets the publisher of the image.
+     * 
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * Gets or sets the offer of the image.
+     * 
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * Gets or sets the SKU of the image.
+     * 
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
+     * Gets or sets the version of the image. A value of 'latest' can be
+     * specified to select the latest version of an image.
+     * 
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
+     * the compute node. This property must match the ImageReference property.
+     * 
+     * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
+     * Gets or sets Windows operating system settings on the virtual machine.
+     * This property must not be specified if the ImageReference property
+     * referencs a Linux OS image.
+     * 
+     * @param {boolean}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
+     * Gets or sets whether virtual machine is enabled for automatic updates. If
+     * omitted, the default value is true.
      * 
      * @param {number}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
@@ -4969,6 +5434,44 @@ export interface Task {
     list(jobId: string, callback: ServiceCallback<models.CloudTaskListResult>): void;
 
     /**
+     * Adds a collection of tasks to the specified job.
+     *
+     * @param {string} jobId The id of the job to which the task collection is to
+     * be added.
+     * 
+     * @param {array} value The collection of tasks to add.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.taskAddCollectionOptions] Additional parameters
+     * for the operation
+     * 
+     * @param {number} [options.taskAddCollectionOptions.timeout] Sets the maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
+     * 
+     * @param {string} [options.taskAddCollectionOptions.clientRequestId] Caller
+     * generated request identity, in the form of a GUID with no decoration such
+     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * 
+     * @param {boolean} [options.taskAddCollectionOptions.returnClientRequestId]
+     * Specifies if the server should return the client-request-id identifier in
+     * the response.
+     * 
+     * @param {date} [options.taskAddCollectionOptions.ocpDate] The time the
+     * request was issued. If not specified, this header will be automatically
+     * populated with the current system clock time.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    addCollection(jobId: string, value: models.TaskAddParameter[], options: { taskAddCollectionOptions? : models.TaskAddCollectionOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TaskAddCollectionResult>): void;
+    addCollection(jobId: string, value: models.TaskAddParameter[], callback: ServiceCallback<models.TaskAddCollectionResult>): void;
+
+    /**
      * Deletes a task from the specified job.
      *
      * @param {string} jobId The id of the job from which to delete the task.
@@ -5305,6 +5808,9 @@ export interface ComputeNodeOperations {
      * 
      * @param {string} [user.password] Gets or sets the password of the account.
      * 
+     * @param {string} [user.sshPublicKey] Gets or sets the SSH public key that
+     * can be used for remote login to the compute node.
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.computeNodeAddUserOptions] Additional parameters
@@ -5394,6 +5900,9 @@ export interface ComputeNodeOperations {
      * @param {date} [nodeUpdateUserParameter.expiryTime] Sets the time at which
      * the account should expire. If omitted, the default is 1 day from the
      * current time.
+     * 
+     * @param {string} [nodeUpdateUserParameter.sshPublicKey] Gets or sets the SSH
+     * public key that can be used for remote login to the compute node.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -5634,6 +6143,46 @@ export interface ComputeNodeOperations {
      */
     enableScheduling(poolId: string, nodeId: string, options: { computeNodeEnableSchedulingOptions? : models.ComputeNodeEnableSchedulingOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     enableScheduling(poolId: string, nodeId: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets the settings required for remote login to a compute node.
+     *
+     * @param {string} poolId The id of the pool that contains the compute node.
+     * 
+     * @param {string} nodeId The id of the compute node for which to obtain the
+     * remote login settings.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.computeNodeGetRemoteLoginSettingsOptions]
+     * Additional parameters for the operation
+     * 
+     * @param {number} [options.computeNodeGetRemoteLoginSettingsOptions.timeout]
+     * Sets the maximum time that the server can spend processing the request, in
+     * seconds. The default is 30 seconds.
+     * 
+     * @param {string}
+     * [options.computeNodeGetRemoteLoginSettingsOptions.clientRequestId] Caller
+     * generated request identity, in the form of a GUID with no decoration such
+     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * 
+     * @param {boolean}
+     * [options.computeNodeGetRemoteLoginSettingsOptions.returnClientRequestId]
+     * Specifies if the server should return the client-request-id identifier in
+     * the response.
+     * 
+     * @param {date} [options.computeNodeGetRemoteLoginSettingsOptions.ocpDate]
+     * The time the request was issued. If not specified, this header will be
+     * automatically populated with the current system clock time.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getRemoteLoginSettings(poolId: string, nodeId: string, options: { computeNodeGetRemoteLoginSettingsOptions? : models.ComputeNodeGetRemoteLoginSettingsOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputeNodeGetRemoteLoginSettingsResult>): void;
+    getRemoteLoginSettings(poolId: string, nodeId: string, callback: ServiceCallback<models.ComputeNodeGetRemoteLoginSettingsResult>): void;
 
     /**
      * Gets the Remote Desktop Protocol file for the specified compute node.

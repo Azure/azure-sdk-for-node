@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2015-12-01.2.2', '*')
+.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:45 GMT',
-  etag: '0x8D3510B3A860845',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:24 GMT',
+  etag: '0x8D359F1CC64C854',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3262b947-2b85-479f-9b9b-13edc99454d9',
+  'request-id': 'cc261e14-6d1d-4422-9436-59be2881e599',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest',
-  date: 'Sun, 20 Mar 2016 22:01:45 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2015-12-01.2.2', '*')
+.put('/jobs/HelloWorldJobNodeSDKTest?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:45 GMT',
-  etag: '0x8D3510B3A860845',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:24 GMT',
+  etag: '0x8D359F1CC64C854',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3262b947-2b85-479f-9b9b-13edc99454d9',
+  'request-id': 'cc261e14-6d1d-4422-9436-59be2881e599',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest',
-  date: 'Sun, 20 Mar 2016 22:01:45 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:23 GMT',
   connection: 'close' });
  return result; }]];

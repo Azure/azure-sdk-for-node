@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/updateproperties?api-version=2015-12-01.2.2', '*')
+.post('/pools/nodesdktestpool1/updateproperties?api-version=2016-02-01.3.0', '*')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Sun, 20 Mar 2016 21:56:24 GMT',
-  etag: '0x8D3510A7B31FF11',
+  'last-modified': 'Fri, 01 Apr 2016 05:47:00 GMT',
+  etag: '0x8D359F10B9DAC15',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e3f51943-694b-4182-bf6a-d6b91cd1828a',
+  'request-id': '74ce856d-a824-4c33-a535-76fd59a0fce4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/updateproperties',
-  date: 'Sun, 20 Mar 2016 21:56:24 GMT',
+  date: 'Fri, 01 Apr 2016 05:47:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/updateproperties?api-version=2015-12-01.2.2', '*')
+.post('/pools/nodesdktestpool1/updateproperties?api-version=2016-02-01.3.0', '*')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Sun, 20 Mar 2016 21:56:24 GMT',
-  etag: '0x8D3510A7B31FF11',
+  'last-modified': 'Fri, 01 Apr 2016 05:47:00 GMT',
+  etag: '0x8D359F10B9DAC15',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'e3f51943-694b-4182-bf6a-d6b91cd1828a',
+  'request-id': '74ce856d-a824-4c33-a535-76fd59a0fce4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/updateproperties',
-  date: 'Sun, 20 Mar 2016 21:56:24 GMT',
+  date: 'Fri, 01 Apr 2016 05:47:00 GMT',
   connection: 'close' });
  return result; }]];

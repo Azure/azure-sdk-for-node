@@ -100,7 +100,7 @@ var mappings = {
   },
   'batch.Service': {
     'dir': 'batch/lib',
-    'source': 'batch/2015-12-01.2.2/swagger/BatchService.json',
+    'source': 'batch/2016-02-01.3.0/swagger/BatchService.json',
     'ft': 1
   }
 };

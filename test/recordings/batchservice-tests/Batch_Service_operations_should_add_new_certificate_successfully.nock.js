@@ -10,29 +10,29 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/certificates?api-version=2015-12-01.2.2', '*')
+.post('/certificates?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'bd422b48-1f63-48f3-a438-d7746079cc09',
+  'request-id': 'bde2f60b-a54e-4ee6-94e6-f6601d4a0814',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
-  date: 'Sun, 20 Mar 2016 21:54:40 GMT',
+  date: 'Fri, 01 Apr 2016 05:45:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/certificates?api-version=2015-12-01.2.2', '*')
+.post('/certificates?api-version=2016-02-01.3.0', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'bd422b48-1f63-48f3-a438-d7746079cc09',
+  'request-id': 'bde2f60b-a54e-4ee6-94e6-f6601d4a0814',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/certificates(ThumbprintAlgorithm=sha1,Thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)',
-  date: 'Sun, 20 Mar 2016 21:54:40 GMT',
+  date: 'Fri, 01 Apr 2016 05:45:17 GMT',
   connection: 'close' });
  return result; }]];

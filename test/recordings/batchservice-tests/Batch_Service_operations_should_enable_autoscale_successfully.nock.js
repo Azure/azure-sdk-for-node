@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/enableautoscale?api-version=2015-12-01.2.2', '*')
+.post('/pools/nodesdktestpool1/enableautoscale?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:36 GMT',
-  etag: '0x8D3510B351BB024',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:14 GMT',
+  etag: '0x8D359F1C6B23E47',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a69acbb4-60e8-4066-8dba-2d3d83cb5171',
+  'request-id': '1e754bc2-6899-4b4d-ac17-98edb8a8dd76',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/enableautoscale',
-  date: 'Sun, 20 Mar 2016 22:01:35 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool1/enableautoscale?api-version=2015-12-01.2.2', '*')
+.post('/pools/nodesdktestpool1/enableautoscale?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:36 GMT',
-  etag: '0x8D3510B351BB024',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:14 GMT',
+  etag: '0x8D359F1C6B23E47',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a69acbb4-60e8-4066-8dba-2d3d83cb5171',
+  'request-id': '1e754bc2-6899-4b4d-ac17-98edb8a8dd76',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/enableautoscale',
-  date: 'Sun, 20 Mar 2016 22:01:35 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:14 GMT',
   connection: 'close' });
  return result; }]];
