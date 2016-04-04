@@ -7,139 +7,289 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
+nock('http://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459810155\",\"not_before\":\"1459806255\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA2MjU1LCJuYmYiOjE0NTk4MDYyNTUsImV4cCI6MTQ1OTgxMDE1NSwiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.P-I44caSbnBbhJaho8b2j7R-OZOTboUMKXyyAF-rt_s8cFRbklkT3qTXpaJ9Dek7J1RaH5eFhHrFxb6SF8bVJ7QOJoM9JRy-vbVfOzz7b8baStmNYTQYqtoD711A_u6TrVYKB1oOcYbOCVhmTMFCUT8_2x0mF5tqhqJRMUSmLtSRkVP5QwA3M9UpBR-3y9mDoan2IsmppJ8juVi_uo38PvAnNCHQp2yFa7oCdDNIBVTjFK2n7jXstP0eEup33_443SehM2C7Dr-Qd8phQXypKrX9qqL_Suj7y9zQxTXdhG0MWjVBvOHXT-wymz61qGo7zgiOPD70FWRqF9UpVedCOw\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': 'fc976832-bd9d-43ab-8af0-defd0eef42cf',
+  'client-request-id': 'a38f7a70-af8a-4430-9e5c-1ee60c630127',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_345',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 21:49:15 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459810155\",\"not_before\":\"1459806255\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA2MjU1LCJuYmYiOjE0NTk4MDYyNTUsImV4cCI6MTQ1OTgxMDE1NSwiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.P-I44caSbnBbhJaho8b2j7R-OZOTboUMKXyyAF-rt_s8cFRbklkT3qTXpaJ9Dek7J1RaH5eFhHrFxb6SF8bVJ7QOJoM9JRy-vbVfOzz7b8baStmNYTQYqtoD711A_u6TrVYKB1oOcYbOCVhmTMFCUT8_2x0mF5tqhqJRMUSmLtSRkVP5QwA3M9UpBR-3y9mDoan2IsmppJ8juVi_uo38PvAnNCHQp2yFa7oCdDNIBVTjFK2n7jXstP0eEup33_443SehM2C7Dr-Qd8phQXypKrX9qqL_Suj7y9zQxTXdhG0MWjVBvOHXT-wymz61qGo7zgiOPD70FWRqF9UpVedCOw\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': 'fc976832-bd9d-43ab-8af0-defd0eef42cf',
+  'client-request-id': 'a38f7a70-af8a-4430-9e5c-1ee60c630127',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_345',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 21:49:15 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818?api-version=2015-06-01', '*')
-  .reply(201, "{\r\n  \"name\":\"cdnTestEndpoint1818\",\"id\":\"/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n    \"tag1\":\"val1\"\r\n  },\"location\":\"WestUs\",\"properties\":{\r\n    \"hostName\":\"cdnTestEndpoint1818.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Creating\",\"resourceState\":\"Creating\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n      {\r\n        \"name\":\"newname\",\"properties\":{\r\n          \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n        }\r\n      }\r\n    ],\"contentTypesToCompress\":[\r\n      \r\n    ],\"isCompressionEnabled\":false\r\n  }\r\n}", { 'cache-control': 'no-cache',
+.put('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061?api-version=2015-06-01', '*')
+  .reply(201, "{\r\n  \"name\":\"cdnTestEndpoint3061\",\"id\":\"/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n    \"tag1\":\"val1\"\r\n  },\"location\":\"WestUs\",\"properties\":{\r\n    \"hostName\":\"cdnTestEndpoint3061.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Creating\",\"resourceState\":\"Creating\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n      {\r\n        \"name\":\"newname\",\"properties\":{\r\n          \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n        }\r\n      }\r\n    ],\"contentTypesToCompress\":[\r\n      \r\n    ],\"isCompressionEnabled\":false\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '800',
+  'content-length': '803',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
   'retry-after': '10',
-  'x-ms-request-id': '439b2b2b-ca88-4311-b615-dd10b438c1b4',
-  'x-ms-client-request-id': '76ba9e5d-8f35-4b39-b0e3-e5e9112a55a7',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup821/providers/Microsoft.Cdn/operationresults/578f43d2-9cb3-4132-8e86-171ea22c0f12?api-version=2015-06-01',
+  'x-ms-request-id': 'c9e6114b-7e7e-4531-9de0-b8997aff3681',
+  'x-ms-client-request-id': '2e69d2a3-6f7d-4f1b-aecd-d50acd1fb8c5',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup6523/providers/Microsoft.Cdn/operationresults/cc5f0697-672a-4c52-88b0-fa32b25db8a4?api-version=2015-06-01',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '1fc0d940-fb44-43be-83bf-efcbc86d3dd4',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221016Z:1fc0d940-fb44-43be-83bf-efcbc86d3dd4',
-  date: 'Tue, 01 Mar 2016 22:10:15 GMT',
+  'x-ms-correlation-request-id': 'ae6062ff-c97b-4873-a98a-b412d7a7dce7',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160404T214919Z:ae6062ff-c97b-4873-a98a-b412d7a7dce7',
+  date: 'Mon, 04 Apr 2016 21:49:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818?api-version=2015-06-01', '*')
-  .reply(201, "{\r\n  \"name\":\"cdnTestEndpoint1818\",\"id\":\"/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n    \"tag1\":\"val1\"\r\n  },\"location\":\"WestUs\",\"properties\":{\r\n    \"hostName\":\"cdnTestEndpoint1818.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Creating\",\"resourceState\":\"Creating\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n      {\r\n        \"name\":\"newname\",\"properties\":{\r\n          \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n        }\r\n      }\r\n    ],\"contentTypesToCompress\":[\r\n      \r\n    ],\"isCompressionEnabled\":false\r\n  }\r\n}", { 'cache-control': 'no-cache',
+.put('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061?api-version=2015-06-01', '*')
+  .reply(201, "{\r\n  \"name\":\"cdnTestEndpoint3061\",\"id\":\"/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n    \"tag1\":\"val1\"\r\n  },\"location\":\"WestUs\",\"properties\":{\r\n    \"hostName\":\"cdnTestEndpoint3061.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Creating\",\"resourceState\":\"Creating\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n      {\r\n        \"name\":\"newname\",\"properties\":{\r\n          \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n        }\r\n      }\r\n    ],\"contentTypesToCompress\":[\r\n      \r\n    ],\"isCompressionEnabled\":false\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '800',
+  'content-length': '803',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
   'retry-after': '10',
-  'x-ms-request-id': '439b2b2b-ca88-4311-b615-dd10b438c1b4',
-  'x-ms-client-request-id': '76ba9e5d-8f35-4b39-b0e3-e5e9112a55a7',
-  'azure-asyncoperation': 'https://management.azure.com/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup821/providers/Microsoft.Cdn/operationresults/578f43d2-9cb3-4132-8e86-171ea22c0f12?api-version=2015-06-01',
+  'x-ms-request-id': 'c9e6114b-7e7e-4531-9de0-b8997aff3681',
+  'x-ms-client-request-id': '2e69d2a3-6f7d-4f1b-aecd-d50acd1fb8c5',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup6523/providers/Microsoft.Cdn/operationresults/cc5f0697-672a-4c52-88b0-fa32b25db8a4?api-version=2015-06-01',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '1fc0d940-fb44-43be-83bf-efcbc86d3dd4',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221016Z:1fc0d940-fb44-43be-83bf-efcbc86d3dd4',
-  date: 'Tue, 01 Mar 2016 22:10:15 GMT',
+  'x-ms-correlation-request-id': 'ae6062ff-c97b-4873-a98a-b412d7a7dce7',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160404T214919Z:ae6062ff-c97b-4873-a98a-b412d7a7dce7',
+  date: 'Mon, 04 Apr 2016 21:49:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
+nock('http://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459810189\",\"not_before\":\"1459806289\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA2Mjg5LCJuYmYiOjE0NTk4MDYyODksImV4cCI6MTQ1OTgxMDE4OSwiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.GazzDSNApwqOCs6vzcFpRHHBb_kKUPivGOCtn6NpHypMccFFi1-fhe4ehCa71Y553gH6dpksF2YJG1vaf64zehm5jxd_ReaiaghqJraNlyPEUX0inAsawk-y1YKwFJrdsrkTZ1l-iOqwMFi6x-nBdtVyHzhTE6TlOWPGqmnKcScQkHUlc7271K4ogRcPJgvD7UtrxmKQzTZHFhOm82f1wH-2tWPTGoMwz5-puni_PSpZHN6jVUeQtuwyDiH5TGkiewFhI-r5l2-RKAVnGejjLOrtuohBXEclkefc4jjgtQPG2ykgGsBFvw0-sbCTQfGkJuHgQiwQv4yvmv7elK5hXw\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': 'ff079903-f961-4a36-afb4-2332305f104a',
+  'client-request-id': '4fd3e31c-5ca1-44f1-a994-729eb46b9f02',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_465',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 21:49:49 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459810189\",\"not_before\":\"1459806289\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA2Mjg5LCJuYmYiOjE0NTk4MDYyODksImV4cCI6MTQ1OTgxMDE4OSwiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.GazzDSNApwqOCs6vzcFpRHHBb_kKUPivGOCtn6NpHypMccFFi1-fhe4ehCa71Y553gH6dpksF2YJG1vaf64zehm5jxd_ReaiaghqJraNlyPEUX0inAsawk-y1YKwFJrdsrkTZ1l-iOqwMFi6x-nBdtVyHzhTE6TlOWPGqmnKcScQkHUlc7271K4ogRcPJgvD7UtrxmKQzTZHFhOm82f1wH-2tWPTGoMwz5-puni_PSpZHN6jVUeQtuwyDiH5TGkiewFhI-r5l2-RKAVnGejjLOrtuohBXEclkefc4jjgtQPG2ykgGsBFvw0-sbCTQfGkJuHgQiwQv4yvmv7elK5hXw\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': 'ff079903-f961-4a36-afb4-2332305f104a',
+  'client-request-id': '4fd3e31c-5ca1-44f1-a994-729eb46b9f02',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_465',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 21:49:49 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup821/providers/Microsoft.Cdn/operationresults/578f43d2-9cb3-4132-8e86-171ea22c0f12?api-version=2015-06-01')
+  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup6523/providers/Microsoft.Cdn/operationresults/cc5f0697-672a-4c52-88b0-fa32b25db8a4?api-version=2015-06-01')
   .reply(200, "{\r\n  \"status\":\"Succeeded\",\"error\":{\r\n    \"code\":\"None\",\"message\":null\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '77',
   'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': '1c481f74-4104-44b1-80cf-a02709017b18',
-  'x-ms-client-request-id': '6d9a7af0-3051-406f-b91f-b97c5f51b0e2',
+  'x-ms-request-id': 'fe9b4180-ba62-44f7-8b29-3b6d707e12c3',
+  'x-ms-client-request-id': 'a998b56e-290f-4718-87c5-5b471a798e22',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'b14d8b62-c770-4b45-992f-fddb660f1f08',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221057Z:b14d8b62-c770-4b45-992f-fddb660f1f08',
-  date: 'Tue, 01 Mar 2016 22:10:56 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14989',
+  'x-ms-correlation-request-id': 'c248153b-ef3c-4598-9388-fe4f9d9ea2a8',
+  'x-ms-routing-request-id': 'WESTUS:20160404T214950Z:c248153b-ef3c-4598-9388-fe4f9d9ea2a8',
+  date: 'Mon, 04 Apr 2016 21:49:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup821/providers/Microsoft.Cdn/operationresults/578f43d2-9cb3-4132-8e86-171ea22c0f12?api-version=2015-06-01')
+  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup6523/providers/Microsoft.Cdn/operationresults/cc5f0697-672a-4c52-88b0-fa32b25db8a4?api-version=2015-06-01')
   .reply(200, "{\r\n  \"status\":\"Succeeded\",\"error\":{\r\n    \"code\":\"None\",\"message\":null\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '77',
   'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': '1c481f74-4104-44b1-80cf-a02709017b18',
-  'x-ms-client-request-id': '6d9a7af0-3051-406f-b91f-b97c5f51b0e2',
+  'x-ms-request-id': 'fe9b4180-ba62-44f7-8b29-3b6d707e12c3',
+  'x-ms-client-request-id': 'a998b56e-290f-4718-87c5-5b471a798e22',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'b14d8b62-c770-4b45-992f-fddb660f1f08',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221057Z:b14d8b62-c770-4b45-992f-fddb660f1f08',
-  date: 'Tue, 01 Mar 2016 22:10:56 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14989',
+  'x-ms-correlation-request-id': 'c248153b-ef3c-4598-9388-fe4f9d9ea2a8',
+  'x-ms-routing-request-id': 'WESTUS:20160404T214950Z:c248153b-ef3c-4598-9388-fe4f9d9ea2a8',
+  date: 'Mon, 04 Apr 2016 21:49:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818?api-version=2015-06-01')
-  .reply(200, "{\r\n  \"name\":\"cdnTestEndpoint1818\",\"id\":\"/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n    \"tag1\":\"val1\"\r\n  },\"location\":\"WestUs\",\"properties\":{\r\n    \"hostName\":\"cdnTestEndpoint1818.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n      {\r\n        \"name\":\"newname\",\"properties\":{\r\n          \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n        }\r\n      }\r\n    ],\"contentTypesToCompress\":[\r\n      \r\n    ],\"isCompressionEnabled\":false\r\n  }\r\n}", { 'cache-control': 'no-cache',
+nock('http://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459810190\",\"not_before\":\"1459806290\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA2MjkwLCJuYmYiOjE0NTk4MDYyOTAsImV4cCI6MTQ1OTgxMDE5MCwiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.lqY61HNNslJDG_PG379qQWMTrpW4Fi5VAs66tpIx2frVWC7jTnRpjb1PcMQBdvk2x2iW_45o6-IR2GeRtCghQXNFBQQ7V9BB1bMx6D_g9uvRvYqU8g1eaj_QCDfuWcyE-YGYYaxXO5XzXyedPCB95gfUTy6zwxAAoKjxAtOrvKTOKfu2_FOaFKIho01DXWPksLuf9r8qKR90ccUqfOuH_FxMsTh9DJtadbq6oVS39r7gOgPFTXe1fhcPYLzZCbG1dnBbFYzDppYoDNKJDtiYG6DaI9EblVz-7RZrbYvYhaAJtAePGEgDsJJfjaGTuinJm23on20vROV4qf8CM2e_QQ\"}", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
-  'content-length': '800',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': '140b554c-c51a-4fcd-b6e6-e71c992f3858',
+  'client-request-id': 'eff393e3-358e-439c-b16b-c90c9cb963a2',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_361',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 21:49:50 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459810190\",\"not_before\":\"1459806290\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA2MjkwLCJuYmYiOjE0NTk4MDYyOTAsImV4cCI6MTQ1OTgxMDE5MCwiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.lqY61HNNslJDG_PG379qQWMTrpW4Fi5VAs66tpIx2frVWC7jTnRpjb1PcMQBdvk2x2iW_45o6-IR2GeRtCghQXNFBQQ7V9BB1bMx6D_g9uvRvYqU8g1eaj_QCDfuWcyE-YGYYaxXO5XzXyedPCB95gfUTy6zwxAAoKjxAtOrvKTOKfu2_FOaFKIho01DXWPksLuf9r8qKR90ccUqfOuH_FxMsTh9DJtadbq6oVS39r7gOgPFTXe1fhcPYLzZCbG1dnBbFYzDppYoDNKJDtiYG6DaI9EblVz-7RZrbYvYhaAJtAePGEgDsJJfjaGTuinJm23on20vROV4qf8CM2e_QQ\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': '140b554c-c51a-4fcd-b6e6-e71c992f3858',
+  'client-request-id': 'eff393e3-358e-439c-b16b-c90c9cb963a2',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_361',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 21:49:50 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061?api-version=2015-06-01')
+  .reply(200, "{\r\n  \"name\":\"cdnTestEndpoint3061\",\"id\":\"/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n    \"tag1\":\"val1\"\r\n  },\"location\":\"WestUs\",\"properties\":{\r\n    \"hostName\":\"cdnTestEndpoint3061.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n      {\r\n        \"name\":\"newname\",\"properties\":{\r\n          \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n        }\r\n      }\r\n    ],\"contentTypesToCompress\":[\r\n      \r\n    ],\"isCompressionEnabled\":false\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '803',
   'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': 'f7435f9f-f1f6-4c74-9d49-dfb0036e7a5b',
-  'x-ms-client-request-id': '506ce40d-00ac-466d-8970-fb57cce52063',
+  'x-ms-request-id': '47ea0829-caa1-4eb2-8d4f-d07fc43a8cd2',
+  'x-ms-client-request-id': 'e2223452-1b78-4dc6-b6fd-8e1e67984618',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '56780174-4180-40de-b0e1-78c34cba8070',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221110Z:56780174-4180-40de-b0e1-78c34cba8070',
-  date: 'Tue, 01 Mar 2016 22:11:09 GMT',
+  'x-ms-correlation-request-id': '12f8a472-c87b-47cd-ab3d-6430b7145f45',
+  'x-ms-routing-request-id': 'WESTUS:20160404T214952Z:12f8a472-c87b-47cd-ab3d-6430b7145f45',
+  date: 'Mon, 04 Apr 2016 21:49:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818?api-version=2015-06-01')
-  .reply(200, "{\r\n  \"name\":\"cdnTestEndpoint1818\",\"id\":\"/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n    \"tag1\":\"val1\"\r\n  },\"location\":\"WestUs\",\"properties\":{\r\n    \"hostName\":\"cdnTestEndpoint1818.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n      {\r\n        \"name\":\"newname\",\"properties\":{\r\n          \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n        }\r\n      }\r\n    ],\"contentTypesToCompress\":[\r\n      \r\n    ],\"isCompressionEnabled\":false\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061?api-version=2015-06-01')
+  .reply(200, "{\r\n  \"name\":\"cdnTestEndpoint3061\",\"id\":\"/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourcegroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061\",\"type\":\"Microsoft.Cdn/profiles/endpoints\",\"tags\":{\r\n    \"tag1\":\"val1\"\r\n  },\"location\":\"WestUs\",\"properties\":{\r\n    \"hostName\":\"cdnTestEndpoint3061.azureedge.net\",\"originHostHeader\":null,\"provisioningState\":\"Succeeded\",\"resourceState\":\"Running\",\"isHttpAllowed\":true,\"isHttpsAllowed\":true,\"queryStringCachingBehavior\":\"IgnoreQueryString\",\"originPath\":null,\"origins\":[\r\n      {\r\n        \"name\":\"newname\",\"properties\":{\r\n          \"hostName\":\"newname.azure.com\",\"httpPort\":null,\"httpsPort\":null\r\n        }\r\n      }\r\n    ],\"contentTypesToCompress\":[\r\n      \r\n    ],\"isCompressionEnabled\":false\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '800',
+  'content-length': '803',
   'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': 'f7435f9f-f1f6-4c74-9d49-dfb0036e7a5b',
-  'x-ms-client-request-id': '506ce40d-00ac-466d-8970-fb57cce52063',
+  'x-ms-request-id': '47ea0829-caa1-4eb2-8d4f-d07fc43a8cd2',
+  'x-ms-client-request-id': 'e2223452-1b78-4dc6-b6fd-8e1e67984618',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': '56780174-4180-40de-b0e1-78c34cba8070',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221110Z:56780174-4180-40de-b0e1-78c34cba8070',
-  date: 'Tue, 01 Mar 2016 22:11:09 GMT',
+  'x-ms-correlation-request-id': '12f8a472-c87b-47cd-ab3d-6430b7145f45',
+  'x-ms-routing-request-id': 'WESTUS:20160404T214952Z:12f8a472-c87b-47cd-ab3d-6430b7145f45',
+  date: 'Mon, 04 Apr 2016 21:49:52 GMT',
   connection: 'close' });
  return result; }]];

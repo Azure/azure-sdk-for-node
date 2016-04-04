@@ -7,47 +7,97 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
+nock('http://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459810587\",\"not_before\":\"1459806687\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA2Njg3LCJuYmYiOjE0NTk4MDY2ODcsImV4cCI6MTQ1OTgxMDU4NywiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.bwi10uZcRRWQr_W5Pu_UxTeSkPy7yw0_jxwbyVDYbQFSW9-BXlBfPHzoKkbVLcEzEf34YTm0AMTKAISTfbIz6hc5vFPh45C4YO3-JoXpdgoin9qtBVskLoB3wpxirFuh4CU_qJE5RQvv6xGjmNC9t4LKmWSzrDKl04xzG5d6EqNQd1Iy4UP56eAP7JnDXIJ8sTZk4pkPJP3Xjr893Sh_3Irl25vdA9tvCyTNgJKNgJk0LJcJvFYe9rHU0yqJlsFDMTfY4HhxJR485bVbzXXzcarIumdkkbgJfn_IARU3-1jWR1lz4nnKCXO42HS9i7KGb-J03ybDizsDwu6Ga0cZwA\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': '6824d45c-1b80-4f52-b940-cbff403ce576',
+  'client-request-id': '3deb4757-7e51-4e03-95ec-67f50152cfd4',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_412',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 21:56:27 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459810587\",\"not_before\":\"1459806687\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA2Njg3LCJuYmYiOjE0NTk4MDY2ODcsImV4cCI6MTQ1OTgxMDU4NywiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.bwi10uZcRRWQr_W5Pu_UxTeSkPy7yw0_jxwbyVDYbQFSW9-BXlBfPHzoKkbVLcEzEf34YTm0AMTKAISTfbIz6hc5vFPh45C4YO3-JoXpdgoin9qtBVskLoB3wpxirFuh4CU_qJE5RQvv6xGjmNC9t4LKmWSzrDKl04xzG5d6EqNQd1Iy4UP56eAP7JnDXIJ8sTZk4pkPJP3Xjr893Sh_3Irl25vdA9tvCyTNgJKNgJk0LJcJvFYe9rHU0yqJlsFDMTfY4HhxJR485bVbzXXzcarIumdkkbgJfn_IARU3-1jWR1lz4nnKCXO42HS9i7KGb-J03ybDizsDwu6Ga0cZwA\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': '6824d45c-1b80-4f52-b940-cbff403ce576',
+  'client-request-id': '3deb4757-7e51-4e03-95ec-67f50152cfd4',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_412',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 21:56:27 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/purge?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061/purge?api-version=2015-06-01', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The requested operation cannot be executed on the entity in the current state.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '147',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'b56929d8-5e1e-40ba-8919-4602a1c8a76c',
-  'x-ms-client-request-id': '4a8b256a-04fa-4fef-bf88-22c3c1a0d31e',
+  'x-ms-request-id': '48613228-be8a-4582-859d-349c478e5afe',
+  'x-ms-client-request-id': '557b8c45-75af-4488-8ad0-29d4e7341749',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'f197035d-90ff-4a79-b378-4b2de2078a48',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221513Z:f197035d-90ff-4a79-b378-4b2de2078a48',
-  date: 'Tue, 01 Mar 2016 22:15:13 GMT',
+  'x-ms-correlation-request-id': 'b6fdb1ab-a9a0-40a4-a31c-a878fa4f3c18',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160404T215627Z:b6fdb1ab-a9a0-40a4-a31c-a878fa4f3c18',
+  date: 'Mon, 04 Apr 2016 21:56:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/purge?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup6523/providers/Microsoft.Cdn/profiles/cdnTestProfile9804/endpoints/cdnTestEndpoint3061/purge?api-version=2015-06-01', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The requested operation cannot be executed on the entity in the current state.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '147',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'b56929d8-5e1e-40ba-8919-4602a1c8a76c',
-  'x-ms-client-request-id': '4a8b256a-04fa-4fef-bf88-22c3c1a0d31e',
+  'x-ms-request-id': '48613228-be8a-4582-859d-349c478e5afe',
+  'x-ms-client-request-id': '557b8c45-75af-4488-8ad0-29d4e7341749',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'f197035d-90ff-4a79-b378-4b2de2078a48',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221513Z:f197035d-90ff-4a79-b378-4b2de2078a48',
-  date: 'Tue, 01 Mar 2016 22:15:13 GMT',
+  'x-ms-correlation-request-id': 'b6fdb1ab-a9a0-40a4-a31c-a878fa4f3c18',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160404T215627Z:b6fdb1ab-a9a0-40a4-a31c-a878fa4f3c18',
+  date: 'Mon, 04 Apr 2016 21:56:27 GMT',
   connection: 'close' });
  return result; }]];

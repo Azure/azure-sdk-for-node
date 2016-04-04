@@ -7,47 +7,97 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
+nock('http://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459811143\",\"not_before\":\"1459807243\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA3MjQzLCJuYmYiOjE0NTk4MDcyNDMsImV4cCI6MTQ1OTgxMTE0MywiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.V7-niRgaeg5I9N7sDrvLCZCW5rRNyLOfoYlmyq0kzVfzWfoUEzRO4kHMRlZDAyDmiRDVD5fx0_GP73-XenTqdO-Cy0PmrpEvW276uY11rquUxG_CAYhlU3GovoX6SIu7qEAdhOj3YFjhWaETgY-G5wL-caFizl_hCl1ERr4aKRu6pls6ybay30em0-w4s3FXr398hcZFEteBOaBQn7K1G2amIVJBGefaBOD3mcT9HS0BW2321YlvcL93L7RYU62uyKa7UuXbNCDH1grvfaTlOxEsB18i7wHxJOLOOm1zE6WpUuwsT9ffIBwv-KILGFJAx_nJzavAg5YB05WMM0rD4Q\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': '19ddae32-6ea9-47e6-a4ac-c6c215a738d0',
+  'client-request-id': 'ee655553-bfca-4cfc-8f98-83094f137d33',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_228',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 22:05:42 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://login.microsoftonline.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.post('/879d1a2d-f429-40f7-9fa0-e3b898083d57/oauth2/token?api-version=1.0', '*')
+  .reply(200, "{\"token_type\":\"Bearer\",\"expires_in\":\"3600\",\"expires_on\":\"1459811143\",\"not_before\":\"1459807243\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwiaWF0IjoxNDU5ODA3MjQzLCJuYmYiOjE0NTk4MDcyNDMsImV4cCI6MTQ1OTgxMTE0MywiYXBwaWQiOiJhYzk1OTFmOS1kM2M5LTQ2YzEtYTA0My1mNjdkODc2OGEwMDMiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC84NzlkMWEyZC1mNDI5LTQwZjctOWZhMC1lM2I4OTgwODNkNTcvIiwib2lkIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwic3ViIjoiNjI2NGU3ZDYtMjJiZi00NTdkLTljNWMtYzBiZGMxZjYwYzlmIiwidGlkIjoiODc5ZDFhMmQtZjQyOS00MGY3LTlmYTAtZTNiODk4MDgzZDU3IiwidmVyIjoiMS4wIn0.V7-niRgaeg5I9N7sDrvLCZCW5rRNyLOfoYlmyq0kzVfzWfoUEzRO4kHMRlZDAyDmiRDVD5fx0_GP73-XenTqdO-Cy0PmrpEvW276uY11rquUxG_CAYhlU3GovoX6SIu7qEAdhOj3YFjhWaETgY-G5wL-caFizl_hCl1ERr4aKRu6pls6ybay30em0-w4s3FXr398hcZFEteBOaBQn7K1G2amIVJBGefaBOD3mcT9HS0BW2321YlvcL93L7RYU62uyKa7UuXbNCDH1grvfaTlOxEsB18i7wHxJOLOOm1zE6WpUuwsT9ffIBwv-KILGFJAx_nJzavAg5YB05WMM0rD4Q\"}", { 'cache-control': 'no-cache, no-store',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-request-id': '19ddae32-6ea9-47e6-a4ac-c6c215a738d0',
+  'client-request-id': 'ee655553-bfca-4cfc-8f98-83094f137d33',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_228',
+  'x-content-type-options': 'nosniff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
+  'set-cookie': 
+   [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
+     'stsservicecookie=ests; path=/; secure; HttpOnly' ],
+  'x-powered-by': 'ASP.NET',
+  date: 'Mon, 04 Apr 2016 22:05:42 GMT',
+  connection: 'close',
+  'content-length': '1234' });
+ return result; },
+function (nock) { 
+var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/validateCustomDomain?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup5028/providers/Microsoft.Cdn/profiles/cdnTestProfile2317/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/validateCustomDomain?api-version=2015-06-01', '*')
   .reply(200, "{\r\n  \"customDomainValidated\":false,\"message\":\"We couldn't find a DNS record for custom domain that points to endpoint. To map a domain to this endpoint, create a CNAME record with your DNS provider for custom domain that points to endpoint.\",\"reason\":\"IncorrectMapping\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '272',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': '2559331b-3fb6-41ab-9e6e-22145c6f7f11',
-  'x-ms-client-request-id': '0b73ecdc-dbbe-4c92-8674-c6c9795124ee',
+  'x-ms-request-id': '19bbcafc-49ca-41ca-a0a2-dc96b25d23bd',
+  'x-ms-client-request-id': '15442989-c339-4e21-b21d-e7feb4ce05d8',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '10918065-217e-4ea4-9bef-fb7129156b4c',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224747Z:10918065-217e-4ea4-9bef-fb7129156b4c',
-  date: 'Wed, 02 Mar 2016 22:47:46 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': '4e7bdea7-5536-4ec9-a231-88359dd88f2a',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160404T220543Z:4e7bdea7-5536-4ec9-a231-88359dd88f2a',
+  date: 'Mon, 04 Apr 2016 22:05:43 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/validateCustomDomain?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup5028/providers/Microsoft.Cdn/profiles/cdnTestProfile2317/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/validateCustomDomain?api-version=2015-06-01', '*')
   .reply(200, "{\r\n  \"customDomainValidated\":false,\"message\":\"We couldn't find a DNS record for custom domain that points to endpoint. To map a domain to this endpoint, create a CNAME record with your DNS provider for custom domain that points to endpoint.\",\"reason\":\"IncorrectMapping\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '272',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': '2559331b-3fb6-41ab-9e6e-22145c6f7f11',
-  'x-ms-client-request-id': '0b73ecdc-dbbe-4c92-8674-c6c9795124ee',
+  'x-ms-request-id': '19bbcafc-49ca-41ca-a0a2-dc96b25d23bd',
+  'x-ms-client-request-id': '15442989-c339-4e21-b21d-e7feb4ce05d8',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '10918065-217e-4ea4-9bef-fb7129156b4c',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224747Z:10918065-217e-4ea4-9bef-fb7129156b4c',
-  date: 'Wed, 02 Mar 2016 22:47:46 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': '4e7bdea7-5536-4ec9-a231-88359dd88f2a',
+  'x-ms-routing-request-id': 'NORTHCENTRALUS:20160404T220543Z:4e7bdea7-5536-4ec9-a231-88359dd88f2a',
+  date: 'Mon, 04 Apr 2016 22:05:43 GMT',
   connection: 'close' });
  return result; }]];
