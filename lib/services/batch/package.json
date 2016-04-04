@@ -4,7 +4,7 @@
   "contributors": [
     "Wu, Xing <xingwu@microsoft.com>"
   ],
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Microsoft Azure Batch Service Client Library for node",
   "tags": [
     "azure",
@@ -14,7 +14,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/batchServiceClient.js",
+  "main": "./lib/batch.js",
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -26,7 +26,9 @@
   ],
   "dependencies": {
     "ms-rest": "^1.10.0",
-    "ms-rest-azure": "^1.10.0"
+    "ms-rest-azure": "^1.10.0",
+    "underscore": "^1.4.0",
+    "moment": "^2.12.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
