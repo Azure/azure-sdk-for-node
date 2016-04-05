@@ -78,6 +78,10 @@ var mappings = {
     'dir': 'resourceManagement/lib/feature',
     'source': 'arm-resources/features/2015-12-01/swagger/features.json'
   },
+  'resource.policy': {
+    'dir': 'resourceManagement/lib/policy',
+    'source': 'arm-resources/policy/2015-10-01-preview/swagger/policy.json'
+  },
   'storage': {
     'dir': 'storageManagement2/lib',
     'source': 'arm-storage/2015-06-15/swagger/storage.json',
