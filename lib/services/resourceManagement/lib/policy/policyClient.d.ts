@@ -11,10 +11,10 @@
 import { ServiceClientOptions, RequestOptions, ServiceCallback, ServiceClientCredentials } from 'ms-rest';
 import * as operations from "./operations";
 
-declare class ResourceManagementClient {
+declare class PolicyClient {
     /**
      * @class
-     * Initializes a new instance of the ResourceManagementClient class.
+     * Initializes a new instance of the PolicyClient class.
      * @constructor
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
@@ -56,13 +56,8 @@ declare class ResourceManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
-    deployments: operations.Deployments;
-    providers: operations.Providers;
-    resourceGroups: operations.ResourceGroups;
-    resources: operations.Resources;
-    tags: operations.Tags;
-    deploymentOperations: operations.DeploymentOperations;
-    resourceProviderOperationDetails: operations.ResourceProviderOperationDetails;
+    policyAssignments: operations.PolicyAssignments;
+    policyDefinitions: operations.PolicyDefinitions;
     }
 
-export = ResourceManagementClient;
+export = PolicyClient;
