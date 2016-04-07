@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "version":"0.1.0",
+    "language": "Node",
+    "autorest": "latest"
+  },
+  "data": {
+    "arm-web/2015-08-01/swagger/service.json": {
+      "autorest_options": "-header MICROSOFT_MIT_NO_VERSION",
+      "output_dir": "lib/services/webSiteManagement2/lib"
+    }
+  }
+}
