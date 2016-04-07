@@ -156,6 +156,7 @@ function codegen(project, cb) {
 }
 
 function generateProject(project, specRoot, autoRestVersion) {
+  var currentModeler = modeler;
   var specPath = specRoot + '/' + mappings[project].source;
   //servicefabric wants to generate using generic NodeJS.
   if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
@@ -163,14 +164,14 @@ function generateProject(project, specRoot, autoRestVersion) {
   }
   //default Modeler is Swagger. However, some services may want to use CompositeSwaggerModeler
   if (mappings[project].modeler && mappings[project].modeler.match(/^CompositeSwagger$/ig) !== null) {
-    modeler = mappings[project].modeler;
+    currentModeler = mappings[project].modeler;
   }
 
   console.log(util.format('Generating "%s" from spec file "%s" with language "%s" and AutoRest version "%s".', 
     project,  specRoot + '/' + mappings[project].source, language, autoRestVersion));
   autoRestExe = constructAutorestExePath(autoRestVersion);
   var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT',
-    autoRestExe, modeler, language, specPath, mappings[project].dir);
+    autoRestExe, currentModeler, language, specPath, mappings[project].dir);
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
