@@ -14,16 +14,17 @@ npm install azure-batch
 ### Authentication
 
  ```javascript
- var batchCredentials = require('batchSharedKeyCredentials');
+ var batch = require('azure-batch');
+
  //user authentication
- var credentials = new batchCredentials('your-account-name', 'your-account-key');
+ var credentials = new batch.SharedKeyCredentials('your-account-name', 'your-account-key');
  ```
 
 ### Create the BatchServiceClient
 
 ```javascript
-var batchServiceClient = require('azure-batch');
-var client = new batchServiceClient(credentials, 'your-batch-endpoint');
+
+var client = new batch.ServiceClient(credentials, 'your-batch-endpoint');
 ```
 
 ## List all Jobs under account
@@ -36,14 +37,13 @@ client.job.list(options, function (error, result) {
     
     var loop = function (nextLink) {
         if (nextLink !== null && nextLink !== undefined) {
-            testClient.job.listNext(nextLink, function (err, res) {
+            client.job.listNext(nextLink, function (err, res) {
                 console.log(res);
                 loop(res.odatanextLink);
             });
         }
     };
 
-    should.not.exist(error);
     console.log(result);
     loop(result.odatanextLink);
 });

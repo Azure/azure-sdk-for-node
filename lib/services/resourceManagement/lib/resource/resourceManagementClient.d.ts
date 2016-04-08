@@ -63,8 +63,6 @@ declare class ResourceManagementClient {
     tags: operations.Tags;
     deploymentOperations: operations.DeploymentOperations;
     resourceProviderOperationDetails: operations.ResourceProviderOperationDetails;
-    policyDefinitions: operations.PolicyDefinitions;
-    policyAssignments: operations.PolicyAssignments;
     }
 
 export = ResourceManagementClient;
