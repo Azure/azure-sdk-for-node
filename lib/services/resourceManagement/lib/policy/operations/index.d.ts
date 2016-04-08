@@ -301,6 +301,9 @@ export interface PolicyDefinitions {
      * 
      * @param {object} [parameters.policyRule] Gets or sets the policy rule.
      * 
+     * @param {string} [parameters.id] Gets or sets the Id of the policy
+     * definition.
+     * 
      * @param {string} [parameters.name] Gets or sets the name of the policy
      * definition.
      * 
