@@ -209,7 +209,7 @@ export interface VirtualMachineExtensionInstanceView {
  * Describes a Virtual Machine Extension.
  * @member {string} [forceUpdateTag] Gets or sets how the extension handler
  * should be forced to update even if the extension configuration has not
- * changed. Possible values include: 'RerunExtension'
+ * changed.
  * 
  * @member {string} [publisher] Gets or sets the name of the extension handler
  * publisher.
@@ -1675,6 +1675,9 @@ export interface ApiEntityReference {
  * @member {string} [subnet.id] Gets or sets ARM resource id in the form of
  * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
  * 
+ * @member {array} [applicationGatewayBackendAddressPools] Gets or sets the
+ * application gateway backend address pools.
+ * 
  * @member {array} [loadBalancerBackendAddressPools] Gets or sets the load
  * balancer backend address pools.
  * 
@@ -1685,6 +1688,7 @@ export interface ApiEntityReference {
 export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
     name: string;
     subnet: ApiEntityReference;
+    applicationGatewayBackendAddressPools?: SubResource[];
     loadBalancerBackendAddressPools?: SubResource[];
     loadBalancerInboundNatPools?: SubResource[];
 }
@@ -2617,7 +2621,7 @@ export interface ComputeLongRunningOperationProperties {
  * Profile for Orchestrator
  * @member {string} [orchestratorType] Specifies what orchestrator will be
  * used to manage container cluster resources. Possible values include:
- * 'Mesos', 'SwarmPreview', 'DCOS'
+ * 'SwarmPreview', 'DCOS'
  * 
  */
 export interface ContainerServiceOrchestratorProfile {
@@ -2685,12 +2689,12 @@ export interface ContainerServiceAgentPoolProfile {
  * @class
  * Initializes a new instance of the ContainerServiceWindowsProfile class.
  * @constructor
- * Profile for Windows jumpbox
+ * Profile for Windows VMs
  * @member {string} adminUsername The administrator username to use for
- * Windows jumpbox
+ * Windows VMs
  * 
  * @member {string} adminPassword The administrator password to use for
- * Windows jumpbox
+ * Windows VMs
  * 
  */
 export interface ContainerServiceWindowsProfile {
@@ -2702,7 +2706,7 @@ export interface ContainerServiceWindowsProfile {
  * @class
  * Initializes a new instance of the ContainerServiceLinuxProfile class.
  * @constructor
- * Profile for Linux VM
+ * Profile for Linux VMs
  * @member {string} adminUsername The administrator username to use for all
  * Linux VMs
  * 
@@ -2791,7 +2795,7 @@ export interface ContainerServiceVMDiagnostics {
  * 
  * @member {string} [orchestratorProfile.orchestratorType] Specifies what
  * orchestrator will be used to manage container cluster resources. Possible
- * values include: 'Mesos', 'SwarmPreview', 'DCOS'
+ * values include: 'SwarmPreview', 'DCOS'
  * 
  * @member {object} masterProfile Properties of master agents
  * 
@@ -2808,10 +2812,10 @@ export interface ContainerServiceVMDiagnostics {
  * @member {object} [windowsProfile] Properties of Windows VMs
  * 
  * @member {string} [windowsProfile.adminUsername] The administrator username
- * to use for Windows jumpbox
+ * to use for Windows VMs
  * 
  * @member {string} [windowsProfile.adminPassword] The administrator password
- * to use for Windows jumpbox
+ * to use for Windows VMs
  * 
  * @member {object} linuxProfile Properties for Linux VMs
  * 
