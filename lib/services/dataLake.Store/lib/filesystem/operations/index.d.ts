@@ -166,13 +166,26 @@ export interface FileSystem {
      * 
      * @param {object} [options] Optional Parameters.
      * 
+     * @param {number} [options.listSize] Gets or sets the number of items to
+     * return. Optional.
+     * 
+     * @param {string} [options.listAfter] Gets or sets the item or lexographical
+     * index after which to begin returning results. For example, a file list of
+     * 'a','b','d' and listAfter='b' will return 'd', and a listAfter='c' will
+     * also return 'd'. Optional.
+     * 
+     * @param {string} [options.listBefore] Gets or sets the item or lexographical
+     * index before which to begin returning results. For example, a file list of
+     * 'a','b','d' and listBefore='d' will return 'a','b', and a listBefore='c'
+     * will also return 'a','b'. Optional.
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listFileStatus(listFilePath: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
+    listFileStatus(listFilePath: string, accountName: string, options: { listSize? : number, listAfter? : string, listBefore? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
     listFileStatus(listFilePath: string, accountName: string, callback: ServiceCallback<models.FileStatusesResult>): void;
 
     /**
