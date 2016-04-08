@@ -228,7 +228,7 @@ export interface VirtualMachineExtensions {
      * 
      * @param {string} [extensionParameters.forceUpdateTag] Gets or sets how the
      * extension handler should be forced to update even if the extension
-     * configuration has not changed. Possible values include: 'RerunExtension'
+     * configuration has not changed.
      * 
      * @param {string} [extensionParameters.publisher] Gets or sets the name of
      * the extension handler publisher.
@@ -300,7 +300,7 @@ export interface VirtualMachineExtensions {
      * 
      * @param {string} [extensionParameters.forceUpdateTag] Gets or sets how the
      * extension handler should be forced to update even if the extension
-     * configuration has not changed. Possible values include: 'RerunExtension'
+     * configuration has not changed.
      * 
      * @param {string} [extensionParameters.publisher] Gets or sets the name of
      * the extension handler publisher.
@@ -2672,7 +2672,7 @@ export interface ContainerServiceOperations {
      * 
      * @param {string} [parameters.orchestratorProfile.orchestratorType] Specifies
      * what orchestrator will be used to manage container cluster resources.
-     * Possible values include: 'Mesos', 'SwarmPreview', 'DCOS'
+     * Possible values include: 'SwarmPreview', 'DCOS'
      * 
      * @param {object} [parameters.masterProfile] Properties of master agents
      * 
@@ -2687,10 +2687,10 @@ export interface ContainerServiceOperations {
      * @param {object} [parameters.windowsProfile] Properties of Windows VMs
      * 
      * @param {string} [parameters.windowsProfile.adminUsername] The administrator
-     * username to use for Windows jumpbox
+     * username to use for Windows VMs
      * 
      * @param {string} [parameters.windowsProfile.adminPassword] The administrator
-     * password to use for Windows jumpbox
+     * password to use for Windows VMs
      * 
      * @param {object} [parameters.linuxProfile] Properties for Linux VMs
      * 
@@ -2743,7 +2743,7 @@ export interface ContainerServiceOperations {
      * 
      * @param {string} [parameters.orchestratorProfile.orchestratorType] Specifies
      * what orchestrator will be used to manage container cluster resources.
-     * Possible values include: 'Mesos', 'SwarmPreview', 'DCOS'
+     * Possible values include: 'SwarmPreview', 'DCOS'
      * 
      * @param {object} [parameters.masterProfile] Properties of master agents
      * 
@@ -2758,10 +2758,10 @@ export interface ContainerServiceOperations {
      * @param {object} [parameters.windowsProfile] Properties of Windows VMs
      * 
      * @param {string} [parameters.windowsProfile.adminUsername] The administrator
-     * username to use for Windows jumpbox
+     * username to use for Windows VMs
      * 
      * @param {string} [parameters.windowsProfile.adminPassword] The administrator
-     * password to use for Windows jumpbox
+     * password to use for Windows VMs
      * 
      * @param {object} [parameters.linuxProfile] Properties for Linux VMs
      * 
@@ -2869,6 +2869,6 @@ export interface ContainerServiceOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    list(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
 }
