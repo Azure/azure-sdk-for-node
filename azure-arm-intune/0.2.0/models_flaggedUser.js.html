@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/flaggedUser.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Android.html">Android</a><ul class='methods'><li data-type='method'><a href="Android.html#addAppForMAMPolicy">addAppForMAMPolicy</a></li><li data-type='method'><a href="Android.html#addGroupForMAMPolicy">addGroupForMAMPolicy</a></li><li data-type='method'><a href="Android.html#createOrUpdateMAMPolicy">createOrUpdateMAMPolicy</a></li><li data-type='method'><a href="Android.html#deleteAppForMAMPolicy">deleteAppForMAMPolicy</a></li><li data-type='method'><a href="Android.html#deleteGroupForMAMPolicy">deleteGroupForMAMPolicy</a></li><li data-type='method'><a href="Android.html#deleteMAMPolicy">deleteMAMPolicy</a></li><li data-type='method'><a href="Android.html#getAppForMAMPolicy">getAppForMAMPolicy</a></li><li data-type='method'><a href="Android.html#getAppForMAMPolicyNext">getAppForMAMPolicyNext</a></li><li data-type='method'><a href="Android.html#getGroupsForMAMPolicy">getGroupsForMAMPolicy</a></li><li data-type='method'><a href="Android.html#getGroupsForMAMPolicyNext">getGroupsForMAMPolicyNext</a></li><li data-type='method'><a href="Android.html#getMAMPolicies">getMAMPolicies</a></li><li data-type='method'><a href="Android.html#getMAMPoliciesNext">getMAMPoliciesNext</a></li><li data-type='method'><a href="Android.html#getMAMPolicyByName">getMAMPolicyByName</a></li><li data-type='method'><a href="Android.html#patchMAMPolicy">patchMAMPolicy</a></li></ul></li><li><a href="IntuneResourceManagementClient.html">IntuneResourceManagementClient</a><ul class='methods'><li data-type='method'><a href="IntuneResourceManagementClient.html#getApps">getApps</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getAppsNext">getAppsNext</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getLocationByHostName">getLocationByHostName</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getLocations">getLocations</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getLocationsNext">getLocationsNext</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMFlaggedUserByName">getMAMFlaggedUserByName</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMFlaggedUsers">getMAMFlaggedUsers</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMFlaggedUsersNext">getMAMFlaggedUsersNext</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMStatuses">getMAMStatuses</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMStatusesNext">getMAMStatusesNext</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMUserDeviceByDeviceName">getMAMUserDeviceByDeviceName</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMUserDevices">getMAMUserDevices</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMUserDevicesNext">getMAMUserDevicesNext</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMUserFlaggedEnrolledApps">getMAMUserFlaggedEnrolledApps</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getMAMUserFlaggedEnrolledAppsNext">getMAMUserFlaggedEnrolledAppsNext</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getOperationResults">getOperationResults</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#getOperationResultsNext">getOperationResultsNext</a></li><li data-type='method'><a href="IntuneResourceManagementClient.html#wipeMAMUserDevice">wipeMAMUserDevice</a></li></ul></li><li><a href="Ios.html">Ios</a><ul class='methods'><li data-type='method'><a href="Ios.html#addAppForMAMPolicy">addAppForMAMPolicy</a></li><li data-type='method'><a href="Ios.html#addGroupForMAMPolicy">addGroupForMAMPolicy</a></li><li data-type='method'><a href="Ios.html#createOrUpdateMAMPolicy">createOrUpdateMAMPolicy</a></li><li data-type='method'><a href="Ios.html#deleteAppForMAMPolicy">deleteAppForMAMPolicy</a></li><li data-type='method'><a href="Ios.html#deleteGroupForMAMPolicy">deleteGroupForMAMPolicy</a></li><li data-type='method'><a href="Ios.html#deleteMAMPolicy">deleteMAMPolicy</a></li><li data-type='method'><a href="Ios.html#getAppForMAMPolicy">getAppForMAMPolicy</a></li><li data-type='method'><a href="Ios.html#getAppForMAMPolicyNext">getAppForMAMPolicyNext</a></li><li data-type='method'><a href="Ios.html#getGroupsForMAMPolicy">getGroupsForMAMPolicy</a></li><li data-type='method'><a href="Ios.html#getGroupsForMAMPolicyNext">getGroupsForMAMPolicyNext</a></li><li data-type='method'><a href="Ios.html#getMAMPolicies">getMAMPolicies</a></li><li data-type='method'><a href="Ios.html#getMAMPoliciesNext">getMAMPoliciesNext</a></li><li data-type='method'><a href="Ios.html#getMAMPolicyByName">getMAMPolicyByName</a></li><li data-type='method'><a href="Ios.html#patchMAMPolicy">patchMAMPolicy</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#appId">appId</a></li><li><a href="global.html#deviceType">deviceType</a></li><li><a href="global.html#errors">errors</a></li><li><a href="global.html#fileEncryption">fileEncryption</a></li><li><a href="global.html#friendlyName">friendlyName</a></li><li><a href="global.html#hostName">hostName</a></li><li><a href="global.html#lastModifiedTime">lastModifiedTime</a></li><li><a href="global.html#location">location</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#nextlink">nextlink</a></li><li><a href="global.html#operationMetadata">operationMetadata</a></li><li><a href="global.html#severity">severity</a></li><li><a href="global.html#touchId">touchId</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#wipeSucceededApps">wipeSucceededApps</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/flaggedUser.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator 0.15.0.0
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var models = require('./index');
+
+var util = require('util');
+
+/**
+ * @class
+ * Initializes a new instance of the FlaggedUser class.
+ * @constructor
+ * Flagged user for the given tenant.
+ * @member {number} [errorCount]
+ * 
+ * @member {string} [friendlyName]
+ * 
+ */
+function FlaggedUser() {
+  FlaggedUser['super_'].call(this);
+}
+
+util.inherits(FlaggedUser, models['Resource']);
+
+/**
+ * Defines the metadata of FlaggedUser
+ *
+ * @returns {object} metadata of FlaggedUser
+ *
+ */
+FlaggedUser.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'FlaggedUser',
+    type: {
+      name: 'Composite',
+      className: 'FlaggedUser',
+      modelProperties: {
+        id: {
+          required: false,
+          readOnly: true,
+          serializedName: 'id',
+          type: {
+            name: 'String'
+          }
+        },
+        name: {
+          required: false,
+          readOnly: true,
+          serializedName: 'name',
+          type: {
+            name: 'String'
+          }
+        },
+        type: {
+          required: false,
+          readOnly: true,
+          serializedName: 'type',
+          type: {
+            name: 'String'
+          }
+        },
+        tags: {
+          required: false,
+          serializedName: 'tags',
+          type: {
+            name: 'Dictionary',
+            value: {
+                required: false,
+                serializedName: 'StringElementType',
+                type: {
+                  name: 'String'
+                }
+            }
+          }
+        },
+        location: {
+          required: false,
+          serializedName: 'location',
+          type: {
+            name: 'String'
+          }
+        },
+        errorCount: {
+          required: false,
+          readOnly: true,
+          serializedName: 'properties.errorCount',
+          type: {
+            name: 'Number'
+          }
+        },
+        friendlyName: {
+          required: false,
+          readOnly: true,
+          serializedName: 'properties.friendlyName',
+          type: {
+            name: 'String'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = FlaggedUser;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:04 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,5036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Global - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="DeploymentOperations.html">DeploymentOperations</a><ul class='methods'><li data-type='method'><a href="DeploymentOperations.html#get">get</a></li><li data-type='method'><a href="DeploymentOperations.html#list">list</a></li><li data-type='method'><a href="DeploymentOperations.html#listNext">listNext</a></li></ul></li><li><a href="Deployments.html">Deployments</a><ul class='methods'><li data-type='method'><a href="Deployments.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Deployments.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Deployments.html#cancel">cancel</a></li><li data-type='method'><a href="Deployments.html#checkExistence">checkExistence</a></li><li data-type='method'><a href="Deployments.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Deployments.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Deployments.html#exportTemplate">exportTemplate</a></li><li data-type='method'><a href="Deployments.html#get">get</a></li><li data-type='method'><a href="Deployments.html#list">list</a></li><li data-type='method'><a href="Deployments.html#listNext">listNext</a></li><li data-type='method'><a href="Deployments.html#validate">validate</a></li></ul></li><li><a href="FeatureClient.html">FeatureClient</a></li><li><a href="Features.html">Features</a><ul class='methods'><li data-type='method'><a href="Features.html#get">get</a></li><li data-type='method'><a href="Features.html#list">list</a></li><li data-type='method'><a href="Features.html#listAll">listAll</a></li><li data-type='method'><a href="Features.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="Features.html#listNext">listNext</a></li><li data-type='method'><a href="Features.html#register">register</a></li></ul></li><li><a href="ManagementLockClient.html">ManagementLockClient</a></li><li><a href="ManagementLocks.html">ManagementLocks</a><ul class='methods'><li data-type='method'><a href="ManagementLocks.html#createOrUpdateAtResourceGroupLevel">createOrUpdateAtResourceGroupLevel</a></li><li data-type='method'><a href="ManagementLocks.html#createOrUpdateAtResourceLevel">createOrUpdateAtResourceLevel</a></li><li data-type='method'><a href="ManagementLocks.html#createOrUpdateAtSubscriptionLevel">createOrUpdateAtSubscriptionLevel</a></li><li data-type='method'><a href="ManagementLocks.html#deleteAtResourceGroupLevel">deleteAtResourceGroupLevel</a></li><li data-type='method'><a href="ManagementLocks.html#deleteAtResourceLevel">deleteAtResourceLevel</a></li><li data-type='method'><a href="ManagementLocks.html#deleteAtSubscriptionLevel">deleteAtSubscriptionLevel</a></li><li data-type='method'><a href="ManagementLocks.html#get">get</a></li><li data-type='method'><a href="ManagementLocks.html#listAtResourceGroupLevel">listAtResourceGroupLevel</a></li><li data-type='method'><a href="ManagementLocks.html#listAtResourceGroupLevelNext">listAtResourceGroupLevelNext</a></li><li data-type='method'><a href="ManagementLocks.html#listAtResourceLevel">listAtResourceLevel</a></li><li data-type='method'><a href="ManagementLocks.html#listAtResourceLevelNext">listAtResourceLevelNext</a></li><li data-type='method'><a href="ManagementLocks.html#listAtSubscriptionLevel">listAtSubscriptionLevel</a></li><li data-type='method'><a href="ManagementLocks.html#listAtSubscriptionLevelNext">listAtSubscriptionLevelNext</a></li><li data-type='method'><a href="ManagementLocks.html#listNext">listNext</a></li><li data-type='method'><a href="ManagementLocks.html#listNextNext">listNextNext</a></li></ul></li><li><a href="PolicyAssignments.html">PolicyAssignments</a><ul class='methods'><li data-type='method'><a href="PolicyAssignments.html#create">create</a></li><li data-type='method'><a href="PolicyAssignments.html#create">create</a></li><li data-type='method'><a href="PolicyAssignments.html#createById">createById</a></li><li data-type='method'><a href="PolicyAssignments.html#createById">createById</a></li><li data-type='method'><a href="PolicyAssignments.html#deleteById">deleteById</a></li><li data-type='method'><a href="PolicyAssignments.html#deleteById">deleteById</a></li><li data-type='method'><a href="PolicyAssignments.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PolicyAssignments.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PolicyAssignments.html#get">get</a></li><li data-type='method'><a href="PolicyAssignments.html#get">get</a></li><li data-type='method'><a href="PolicyAssignments.html#getById">getById</a></li><li data-type='method'><a href="PolicyAssignments.html#getById">getById</a></li><li data-type='method'><a href="PolicyAssignments.html#list">list</a></li><li data-type='method'><a href="PolicyAssignments.html#list">list</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResource">listForResource</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResource">listForResource</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceGroup">listForResourceGroup</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceGroup">listForResourceGroup</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceGroupNext">listForResourceGroupNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceGroupNext">listForResourceGroupNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceNext">listForResourceNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceNext">listForResourceNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listForScope">listForScope</a></li><li data-type='method'><a href="PolicyAssignments.html#listForScopeNext">listForScopeNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listNext">listNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listNext">listNext</a></li></ul></li><li><a href="PolicyClient.html">PolicyClient</a></li><li><a href="PolicyDefinitions.html">PolicyDefinitions</a><ul class='methods'><li data-type='method'><a href="PolicyDefinitions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="PolicyDefinitions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="PolicyDefinitions.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PolicyDefinitions.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PolicyDefinitions.html#get">get</a></li><li data-type='method'><a href="PolicyDefinitions.html#get">get</a></li><li data-type='method'><a href="PolicyDefinitions.html#list">list</a></li><li data-type='method'><a href="PolicyDefinitions.html#listNext">listNext</a></li></ul></li><li><a href="Providers.html">Providers</a><ul class='methods'><li data-type='method'><a href="Providers.html#get">get</a></li><li data-type='method'><a href="Providers.html#list">list</a></li><li data-type='method'><a href="Providers.html#listNext">listNext</a></li><li data-type='method'><a href="Providers.html#register">register</a></li><li data-type='method'><a href="Providers.html#unregister">unregister</a></li></ul></li><li><a href="ResourceGroups.html">ResourceGroups</a><ul class='methods'><li data-type='method'><a href="ResourceGroups.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="ResourceGroups.html#checkExistence">checkExistence</a></li><li data-type='method'><a href="ResourceGroups.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ResourceGroups.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ResourceGroups.html#exportTemplate">exportTemplate</a></li><li data-type='method'><a href="ResourceGroups.html#get">get</a></li><li data-type='method'><a href="ResourceGroups.html#list">list</a></li><li data-type='method'><a href="ResourceGroups.html#listNext">listNext</a></li><li data-type='method'><a href="ResourceGroups.html#listResources">listResources</a></li><li data-type='method'><a href="ResourceGroups.html#listResourcesNext">listResourcesNext</a></li><li data-type='method'><a href="ResourceGroups.html#patch">patch</a></li></ul></li><li><a href="ResourceManagementClient.html">ResourceManagementClient</a></li><li><a href="ResourceProviderOperationDetails.html">ResourceProviderOperationDetails</a><ul class='methods'><li data-type='method'><a href="ResourceProviderOperationDetails.html#list">list</a></li><li data-type='method'><a href="ResourceProviderOperationDetails.html#listNext">listNext</a></li></ul></li><li><a href="Resources.html">Resources</a><ul class='methods'><li data-type='method'><a href="Resources.html#beginMoveResources">beginMoveResources</a></li><li data-type='method'><a href="Resources.html#checkExistence">checkExistence</a></li><li data-type='method'><a href="Resources.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Resources.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Resources.html#get">get</a></li><li data-type='method'><a href="Resources.html#list">list</a></li><li data-type='method'><a href="Resources.html#listNext">listNext</a></li><li data-type='method'><a href="Resources.html#moveResources">moveResources</a></li></ul></li><li><a href="SubscriptionClient.html">SubscriptionClient</a></li><li><a href="Subscriptions.html">Subscriptions</a><ul class='methods'><li data-type='method'><a href="Subscriptions.html#get">get</a></li><li data-type='method'><a href="Subscriptions.html#list">list</a></li><li data-type='method'><a href="Subscriptions.html#listLocations">listLocations</a></li><li data-type='method'><a href="Subscriptions.html#listLocationsNext">listLocationsNext</a></li><li data-type='method'><a href="Subscriptions.html#listNext">listNext</a></li></ul></li><li><a href="Tags.html">Tags</a><ul class='methods'><li data-type='method'><a href="Tags.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Tags.html#createOrUpdateValue">createOrUpdateValue</a></li><li data-type='method'><a href="Tags.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Tags.html#deleteValue">deleteValue</a></li><li data-type='method'><a href="Tags.html#list">list</a></li><li data-type='method'><a href="Tags.html#listNext">listNext</a></li></ul></li><li><a href="Tenants.html">Tenants</a><ul class='methods'><li data-type='method'><a href="Tenants.html#list">list</a></li><li data-type='method'><a href="Tenants.html#listNext">listNext</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#content">content</a></li><li><a href="global.html#contentVersion">contentVersion</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#detailLevel">detailLevel</a></li><li><a href="global.html#details">details</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#longitude">longitude</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#options">options</a></li><li><a href="global.html#policyDefinitionId">policyDefinitionId</a></li><li><a href="global.html#policyRule">policyRule</a></li><li><a href="global.html#promotionCode">promotionCode</a></li><li><a href="global.html#properties">properties</a></li><li><a href="global.html#provisioningState">provisioningState</a></li><li><a href="global.html#quotaId">quotaId</a></li><li><a href="global.html#resourceName">resourceName</a></li><li><a href="global.html#resourceType">resourceType</a></li><li><a href="global.html#resourceTypes">resourceTypes</a></li><li><a href="global.html#state">state</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#tagValue">tagValue</a></li><li><a href="global.html#tagvalue">tagvalue</a></li><li><a href="global.html#target">target</a></li><li><a href="global.html#targetResourceGroup">targetResourceGroup</a></li><li><a href="global.html#template">template</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#values">values</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">Global</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="content"><span class="type-signature"></span>content<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets HTTP message content.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_httpMessage.js.html">resource/models/httpMessage.js</a>, <a href="resource_models_httpMessage.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="contentVersion"><span class="type-signature"></span>contentVersion<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>URI referencing the template.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_parametersLink.js.html">resource/models/parametersLink.js</a>, <a href="resource_models_parametersLink.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="contentVersion"><span class="type-signature"></span>contentVersion<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>URI referencing the template.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_templateLink.js.html">resource/models/templateLink.js</a>, <a href="resource_models_templateLink.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="description"><span class="type-signature"></span>description<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets operation description.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceProviderOperationDisplayProperties.js.html">resource/models/resourceProviderOperationDisplayProperties.js</a>, <a href="resource_models_resourceProviderOperationDisplayProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="detailLevel"><span class="type-signature"></span>detailLevel<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the debug detail level.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_debugSetting.js.html">resource/models/debugSetting.js</a>, <a href="resource_models_debugSetting.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="details"><span class="type-signature"></span>details<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets validation error.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceManagementErrorWithDetails.js.html">resource/models/resourceManagementErrorWithDetails.js</a>, <a href="resource_models_resourceManagementErrorWithDetails.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Resource Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_subResource.js.html">subscription/models/subResource.js</a>, <a href="subscription_models_subResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Resource Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="feature_models_subResource.js.html">feature/models/subResource.js</a>, <a href="feature_models_subResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Resource Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lock_models_subResource.js.html">lock/models/subResource.js</a>, <a href="lock_models_subResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Resource Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_subResource.js.html">resource/models/subResource.js</a>, <a href="resource_models_subResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="longitude"><span class="type-signature"></span>longitude<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the ID of the resource<br>(/subscriptions/SubscriptionId).</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_location.js.html">subscription/models/location.js</a>, <a href="subscription_models_location.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the lock level of the management<br>lock. Possible values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lock_models_managementLockObject.js.html">lock/models/managementLockObject.js</a>, <a href="lock_models_managementLockObject.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the policy assignment display<br>name.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="policy_models_policyAssignment.js.html">policy/models/policyAssignment.js</a>, <a href="policy_models_policyAssignment.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the policy definition properties.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_policyDefinition.js.html">resource/models/policyDefinition.js</a>, <a href="resource_models_policyDefinition.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the policy assignment properties.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_policyAssignment.js.html">resource/models/policyAssignment.js</a>, <a href="resource_models_policyAssignment.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets policy definition policy type.<br>Possible values include: 'NotSpecified', 'BuiltIn', 'Custom'</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="policy_models_policyDefinition.js.html">policy/models/policyDefinition.js</a>, <a href="policy_models_policyDefinition.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of policy definitions.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="policy_models_policyDefinitionListResult.js.html">policy/models/policyDefinitionListResult.js</a>, <a href="policy_models_policyDefinitionListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets tenant Ids.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_tenantListResult.js.html">subscription/models/tenantListResult.js</a>, <a href="subscription_models_tenantListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets subscriptions.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_subscriptionListResult.js.html">subscription/models/subscriptionListResult.js</a>, <a href="subscription_models_subscriptionListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of deployments.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_deploymentListResult.js.html">resource/models/deploymentListResult.js</a>, <a href="resource_models_deploymentListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of resource providers.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_providerListResult.js.html">resource/models/providerListResult.js</a>, <a href="resource_models_providerListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of resource groups.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceGroupListResult.js.html">resource/models/resourceGroupListResult.js</a>, <a href="resource_models_resourceGroupListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of resource groups.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceListResult.js.html">resource/models/resourceListResult.js</a>, <a href="resource_models_resourceListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of policy assignments.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="policy_models_policyAssignmentListResult.js.html">policy/models/policyAssignmentListResult.js</a>, <a href="policy_models_policyAssignmentListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of tags.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_tagsListResult.js.html">resource/models/tagsListResult.js</a>, <a href="resource_models_tagsListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of deployments.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_deploymentOperationsListResult.js.html">resource/models/deploymentOperationsListResult.js</a>, <a href="resource_models_deploymentOperationsListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of locks.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lock_models_managementLockListResult.js.html">lock/models/managementLockListResult.js</a>, <a href="lock_models_managementLockListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of Features.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="feature_models_featureOperationsListResult.js.html">feature/models/featureOperationsListResult.js</a>, <a href="feature_models_featureOperationsListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Policy assignment list.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_policyAssignmentListResult.js.html">resource/models/policyAssignmentListResult.js</a>, <a href="resource_models_policyAssignmentListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="options"><span class="type-signature"></span>options<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the ids of the resources. The only<br>supported string currently is '*' (all resources). Future api updates will<br>support exporting specific resources.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_exportTemplateRequest.js.html">resource/models/exportTemplateRequest.js</a>, <a href="resource_models_exportTemplateRequest.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="policyDefinitionId"><span class="type-signature"></span>policyDefinitionId<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the policy assignment scope.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_policyAssignmentProperties.js.html">resource/models/policyAssignmentProperties.js</a>, <a href="resource_models_policyAssignmentProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="policyRule"><span class="type-signature"></span>policyRule<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the policy definition<br>description.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_policyDefinitionProperties.js.html">resource/models/policyDefinitionProperties.js</a>, <a href="resource_models_policyDefinitionProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="promotionCode"><span class="type-signature"></span>promotionCode<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the plan ID.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_plan.js.html">resource/models/plan.js</a>, <a href="resource_models_plan.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="properties"><span class="type-signature"></span>properties<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the resource type.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_providerResourceType.js.html">resource/models/providerResourceType.js</a>, <a href="resource_models_providerResourceType.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="properties"><span class="type-signature"></span>properties<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the plan of the resource.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_genericResource.js.html">resource/models/genericResource.js</a>, <a href="resource_models_genericResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="provisioningState"><span class="type-signature"></span>provisioningState<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the provisioning state.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_deploymentExtendedFilter.js.html">resource/models/deploymentExtendedFilter.js</a>, <a href="resource_models_deploymentExtendedFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="provisioningState"><span class="type-signature"></span>provisioningState<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets resource group provisioning state.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceGroupProperties.js.html">resource/models/resourceGroupProperties.js</a>, <a href="resource_models_resourceGroupProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="provisioningState"><span class="type-signature"></span>provisioningState<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the provisioning state.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lock_models_deploymentExtendedFilter.js.html">lock/models/deploymentExtendedFilter.js</a>, <a href="lock_models_deploymentExtendedFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="provisioningState"><span class="type-signature"></span>provisioningState<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the provisioning state.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_deploymentExtendedFilter.js.html">subscription/models/deploymentExtendedFilter.js</a>, <a href="subscription_models_deploymentExtendedFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="provisioningState"><span class="type-signature"></span>provisioningState<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the provisioning state.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="feature_models_deploymentExtendedFilter.js.html">feature/models/deploymentExtendedFilter.js</a>, <a href="feature_models_deploymentExtendedFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="quotaId"><span class="type-signature"></span>quotaId<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the subscription<br>location placement Id.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_subscriptionPolicies.js.html">subscription/models/subscriptionPolicies.js</a>, <a href="subscription_models_subscriptionPolicies.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="resourceName"><span class="type-signature"></span>resourceName<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the list of dependencies.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_dependency.js.html">resource/models/dependency.js</a>, <a href="resource_models_dependency.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="resourceName"><span class="type-signature"></span>resourceName<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the ID of the dependency.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_basicDependency.js.html">resource/models/basicDependency.js</a>, <a href="resource_models_basicDependency.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="resourceType"><span class="type-signature"></span>resourceType<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the ID of the resource.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_targetResource.js.html">resource/models/targetResource.js</a>, <a href="resource_models_targetResource.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="resourceTypes"><span class="type-signature"></span>resourceTypes<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the provider id.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_provider.js.html">resource/models/provider.js</a>, <a href="resource_models_provider.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="state"><span class="type-signature"></span>state<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the state of the previewed feature.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="feature_models_featureProperties.js.html">feature/models/featureProperties.js</a>, <a href="feature_models_featureProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tags"><span class="type-signature"></span>tags<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Resource Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="feature_models_resource.js.html">feature/models/resource.js</a>, <a href="feature_models_resource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tags"><span class="type-signature"></span>tags<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Resource Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lock_models_resource.js.html">lock/models/resource.js</a>, <a href="lock_models_resource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tags"><span class="type-signature"></span>tags<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Resource Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resource.js.html">resource/models/resource.js</a>, <a href="resource_models_resource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tags"><span class="type-signature"></span>tags<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the ID of the resource group.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceGroup.js.html">resource/models/resourceGroup.js</a>, <a href="resource_models_resourceGroup.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tags"><span class="type-signature"></span>tags<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Resource Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_resource.js.html">subscription/models/resource.js</a>, <a href="subscription_models_resource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tagValue"><span class="type-signature"></span>tagValue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the tag name.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_resourceGroupFilter.js.html">subscription/models/resourceGroupFilter.js</a>, <a href="subscription_models_resourceGroupFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tagvalue"><span class="type-signature"></span>tagvalue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the resource type.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_genericResourceFilter.js.html">subscription/models/genericResourceFilter.js</a>, <a href="subscription_models_genericResourceFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tagValue"><span class="type-signature"></span>tagValue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the tag name.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lock_models_resourceGroupFilter.js.html">lock/models/resourceGroupFilter.js</a>, <a href="lock_models_resourceGroupFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tagvalue"><span class="type-signature"></span>tagvalue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the resource type.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_genericResourceFilter.js.html">resource/models/genericResourceFilter.js</a>, <a href="resource_models_genericResourceFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tagValue"><span class="type-signature"></span>tagValue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the tag name.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceGroupFilter.js.html">resource/models/resourceGroupFilter.js</a>, <a href="resource_models_resourceGroupFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tagValue"><span class="type-signature"></span>tagValue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the tag name.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="feature_models_resourceGroupFilter.js.html">feature/models/resourceGroupFilter.js</a>, <a href="feature_models_resourceGroupFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tagvalue"><span class="type-signature"></span>tagvalue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the resource type.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lock_models_genericResourceFilter.js.html">lock/models/genericResourceFilter.js</a>, <a href="lock_models_genericResourceFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tagvalue"><span class="type-signature"></span>tagvalue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the resource type.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="feature_models_genericResourceFilter.js.html">feature/models/genericResourceFilter.js</a>, <a href="feature_models_genericResourceFilter.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="target"><span class="type-signature"></span>target<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the error code returned from the server.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceManagementError.js.html">resource/models/resourceManagementError.js</a>, <a href="resource_models_resourceManagementError.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="targetResourceGroup"><span class="type-signature"></span>targetResourceGroup<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the ids of the resources.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourcesMoveInfo.js.html">resource/models/resourcesMoveInfo.js</a>, <a href="resource_models_resourcesMoveInfo.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="template"><span class="type-signature"></span>template<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the template content.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_deploymentExportResult.js.html">resource/models/deploymentExportResult.js</a>, <a href="resource_models_deploymentExportResult.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tenantId"><span class="type-signature"></span>tenantId<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets Id</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_tenantIdDescription.js.html">subscription/models/tenantIdDescription.js</a>, <a href="subscription_models_tenantIdDescription.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="type"><span class="type-signature"></span>type<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the name of the feature.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="feature_models_featureResult.js.html">feature/models/featureResult.js</a>, <a href="feature_models_featureResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="value"><span class="type-signature"></span>value<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the list of resource provider<br>operations.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_resourceProviderOperationDetailListResult.js.html">resource/models/resourceProviderOperationDetailListResult.js</a>, <a href="resource_models_resourceProviderOperationDetailListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="value"><span class="type-signature"></span>value<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the locations.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="subscription_models_locationListResult.js.html">subscription/models/locationListResult.js</a>, <a href="subscription_models_locationListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="value"><span class="type-signature"></span>value<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Type of count.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_tagCount.js.html">resource/models/tagCount.js</a>, <a href="resource_models_tagCount.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="values"><span class="type-signature"></span>values<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets or sets the tag ID.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resource_models_tagDetails.js.html">resource/models/tagDetails.js</a>, <a href="resource_models_tagDetails.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:15 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

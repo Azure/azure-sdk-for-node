@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/autoStorageProperties.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Account.html">Account</a><ul class='methods'><li data-type='method'><a href="Account.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Account.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Account.html#create">create</a></li><li data-type='method'><a href="Account.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Account.html#get">get</a></li><li data-type='method'><a href="Account.html#list">list</a></li><li data-type='method'><a href="Account.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Account.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Account.html#listKeys">listKeys</a></li><li data-type='method'><a href="Account.html#listNext">listNext</a></li><li data-type='method'><a href="Account.html#regenerateKey">regenerateKey</a></li><li data-type='method'><a href="Account.html#syncAutoStorageKeys">syncAutoStorageKeys</a></li><li data-type='method'><a href="Account.html#update">update</a></li></ul></li><li><a href="ApplicationOperations.html">ApplicationOperations</a><ul class='methods'><li data-type='method'><a href="ApplicationOperations.html#activateApplicationPackage">activateApplicationPackage</a></li><li data-type='method'><a href="ApplicationOperations.html#addApplication">addApplication</a></li><li data-type='method'><a href="ApplicationOperations.html#addApplicationPackage">addApplicationPackage</a></li><li data-type='method'><a href="ApplicationOperations.html#deleteApplication">deleteApplication</a></li><li data-type='method'><a href="ApplicationOperations.html#deleteApplicationPackage">deleteApplicationPackage</a></li><li data-type='method'><a href="ApplicationOperations.html#getApplication">getApplication</a></li><li data-type='method'><a href="ApplicationOperations.html#getApplicationPackage">getApplicationPackage</a></li><li data-type='method'><a href="ApplicationOperations.html#list">list</a></li><li data-type='method'><a href="ApplicationOperations.html#listNext">listNext</a></li><li data-type='method'><a href="ApplicationOperations.html#updateApplication">updateApplication</a></li></ul></li><li><a href="BatchManagementClient.html">BatchManagementClient</a></li><li><a href="Subscription.html">Subscription</a><ul class='methods'><li data-type='method'><a href="Subscription.html#getSubscriptionQuotas">getSubscriptionQuotas</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#accountQuota">accountQuota</a></li><li><a href="global.html#activeJobAndJobScheduleQuota">activeJobAndJobScheduleQuota</a></li><li><a href="global.html#defaultVersion">defaultVersion</a></li><li><a href="global.html#displayName">displayName</a></li><li><a href="global.html#format">format</a></li><li><a href="global.html#keyName">keyName</a></li><li><a href="global.html#lastActivationTime">lastActivationTime</a></li><li><a href="global.html#lastKeySync">lastKeySync</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#secondary">secondary</a></li><li><a href="global.html#storageAccountId">storageAccountId</a></li><li><a href="global.html#storageUrlExpiry">storageUrlExpiry</a></li><li><a href="global.html#tags">tags</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/autoStorageProperties.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the AutoStorageProperties class.
+ * @constructor
+ * Contains information about the auto storage associated with a Batch account.
+ * @member {string} storageAccountId The resource id of the storage account to
+ * be used for auto storage.
+ * 
+ * @member {date} lastKeySync The UTC time at which storage keys were last
+ * synced to the Batch account.
+ * 
+ */
+function AutoStorageProperties() {
+}
+
+/**
+ * Defines the metadata of AutoStorageProperties
+ *
+ * @returns {object} metadata of AutoStorageProperties
+ *
+ */
+AutoStorageProperties.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'AutoStorageProperties',
+    type: {
+      name: 'Composite',
+      className: 'AutoStorageProperties',
+      modelProperties: {
+        storageAccountId: {
+          required: true,
+          serializedName: 'storageAccountId',
+          type: {
+            name: 'String'
+          }
+        },
+        lastKeySync: {
+          required: true,
+          serializedName: 'lastKeySync',
+          type: {
+            name: 'DateTime'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = AutoStorageProperties;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:03:47 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

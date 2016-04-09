@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>eventsClient.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AlertsClient-AlertsClient.html">AlertsClient</a></li><li><a href="AutoscaleClient-AutoscaleClient.html">AutoscaleClient</a></li><li><a href="EventDataOperations-EventDataOperations.html">EventDataOperations</a><ul class='methods'><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEvents">listEvents</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForCorrelationId">listEventsForCorrelationId</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForEventSource">listEventsForEventSource</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResource">listEventsForResource</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResourceGroup">listEventsForResourceGroup</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResourceProvider">listEventsForResourceProvider</a></li></ul></li><li><a href="EventsClient-EventsClient.html">EventsClient</a></li><li><a href="IncidentOperations-IncidentOperations.html">IncidentOperations</a><ul class='methods'><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#get">get</a></li><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#listActiveForSubscription">listActiveForSubscription</a></li><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#listForRule">listForRule</a></li></ul></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations</a><ul class='methods'><li data-type='method'><a href="MetricDefinitionOperations-MetricDefinitionOperations.html#list">list</a></li></ul></li><li><a href="MetricsClient-MetricsClient.html">MetricsClient</a></li><li><a href="MetricSettingOperations-MetricSettingOperations.html">MetricSettingOperations</a><ul class='methods'><li data-type='method'><a href="MetricSettingOperations-MetricSettingOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="MetricSettingOperations-MetricSettingOperations.html#list">list</a></li></ul></li><li><a href="MetricValueOperations-MetricValueOperations.html">MetricValueOperations</a><ul class='methods'><li data-type='method'><a href="MetricValueOperations-MetricValueOperations.html#list">list</a></li></ul></li><li><a href="RuleOperations-RuleOperations.html">RuleOperations</a><ul class='methods'><li data-type='method'><a href="RuleOperations-RuleOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#get">get</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#list">list</a></li></ul></li><li><a href="SettingOperations-SettingOperations.html">SettingOperations</a><ul class='methods'><li data-type='method'><a href="SettingOperations-SettingOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="SettingOperations-SettingOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="SettingOperations-SettingOperations.html#get">get</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">eventsClient.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* jshint latedef:false */
+/* jshint forin:false */
+/* jshint noempty:false */
+
+// 
+// Copyright (c) Microsoft and contributors.  All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// 
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+
+// Warning: This code was generated by a tool.
+// 
+// Changes to this file may cause incorrect behavior and will be lost if the
+// code is regenerated.
+
+'use strict';
+
+var util = require('util');
+var azureCommon = require('azure-common');
+var Service = azureCommon.Service;
+var WebResource = azureCommon.WebResource;
+
+var EventsClient = ( /** @lends EventsClient */ function() {
+  /**
+   * @class
+   * Initializes a new instance of the EventsClient class.
+   * @constructor
+   * 
+   * @param {SubscriptionCloudCredentials} credentials Gets subscription
+   * credentials which uniquely identify Microsoft Azure subscription. The
+   * subscription ID forms part of the URI for every service call.
+   * 
+   * @param {string} [credentials.subscriptionId]
+   * 
+   * @param {string} [baseUri] Gets the URI used as the base for all cloud
+   * service requests.
+   * 
+   * @param {Array} filters
+   */
+  function EventsClient(credentials, baseUri, filters) {
+    if (credentials === null || credentials === undefined) {
+      throw new Error('credentials cannot be null.');
+    }
+    
+    EventsClient['super_'].call(this, credentials, filters);
+    
+    this.credentials = credentials;
+    this.baseUri = baseUri;
+    if (this.baseUri === null || this.baseUri === undefined) {
+      this.baseUri = 'https://management.core.windows.net';
+    }
+    if (this.apiVersion === null || this.apiVersion === undefined) {
+      this.apiVersion = '2014-04-01';
+    }
+    if (this.longRunningOperationInitialTimeout === null || this.longRunningOperationInitialTimeout === undefined) {
+      this.longRunningOperationInitialTimeout = -1;
+    }
+    if (this.longRunningOperationRetryTimeout === null || this.longRunningOperationRetryTimeout === undefined) {
+      this.longRunningOperationRetryTimeout = -1;
+    }
+    /**
+     * Provides an instance of the
+     * [EventDataOperations](-EventDataOperations.html) object.
+     * @type {object}
+     */
+    this.eventData = new EventDataOperations(this);
+  }
+  
+  util.inherits(EventsClient, Service);
+  
+  
+  return EventsClient;
+})();
+exports.EventsClient = EventsClient;
+
+var EventDataOperations = ( /** @lends EventDataOperations */ function() {
+  /**
+   * @class
+   * Operations for event data.
+   * __NOTE__: An instance of this class is automatically created for an
+   * instance of the [EventsClient] {@link EventsClient~EventsClient}.
+   * See [eventData] {@link EventsClient~EventsClient#eventData}.
+   * Initializes a new instance of the EventDataOperations class.
+   * @constructor
+   * 
+   * @param {EventsClient} client Reference to the service client.
+   */
+  function EventDataOperations(client) {
+    this.client = client;
+  }
+  
+  /**
+   * The List Event Values operation lists the events.
+   * 
+   * @param {ListEventsParameters} parameters
+   * 
+   * @param {date} parameters.startTime The start time of the events.
+   * 
+   * @param {date} [parameters.endTime] The end time of the events.
+   * 
+   * @param {EventChannels} [parameters.eventChannels] The event channels.
+   * 
+   * @param {string} [parameters.nextLink] The next link token.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  EventDataOperations.prototype.listEvents = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.startTime === null || parameters.startTime === undefined) {
+      return callback(new Error('parameters.startTime cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '/subscriptions/' + (this.client.credentials.subscriptionId ? this.client.credentials.subscriptionId.trim() : '') + '/providers/microsoft.insights/eventtypes/management/values?';
+    url2 = url2 + 'api-version=2014-04-01';
+    url2 = url2 + '&amp;$filter=eventTimestamp ge \'' + encodeURIComponent(parameters.startTime.toISOString()) + '\' and ';
+    if (parameters.endTime) {
+      url2 = url2 + '&amp;eventTimestamp le \'' + encodeURIComponent(parameters.endTime.toISOString()) + '\' and ';
+    }
+    if (parameters.eventChannels) {
+      url2 = url2 + '&amp;eventChannels eq \'' + encodeURIComponent(parameters.eventChannels ? parameters.eventChannels.toString() : 'Admin') + '\'';
+    }
+    if (parameters.nextLink) {
+      url2 = url2 + '&amp;$skipToken=' + encodeURIComponent(parameters.nextLink ? parameters.nextLink.trim() : '');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Accept'] = 'application/json';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc) {
+        var eventDataCollectionInstance = { value: [] };
+        result.eventDataCollection = eventDataCollectionInstance;
+        
+        var valueArray = responseDoc['value'];
+        if (valueArray) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var eventDataInstance = { claims: {}, properties: {} };
+            eventDataCollectionInstance.value.push(eventDataInstance);
+            
+            var authorizationValue = valueValue['authorization'];
+            if (authorizationValue) {
+              var authorizationInstance = {};
+              eventDataInstance.authorization = authorizationInstance;
+              
+              var actionValue = authorizationValue['action'];
+              if (actionValue) {
+                var actionInstance = actionValue;
+                authorizationInstance.action = actionInstance;
+              }
+              
+              var conditionValue = authorizationValue['condition'];
+              if (conditionValue) {
+                var conditionInstance = conditionValue;
+                authorizationInstance.condition = conditionInstance;
+              }
+              
+              var roleValue = authorizationValue['role'];
+              if (roleValue) {
+                var roleInstance = roleValue;
+                authorizationInstance.role = roleInstance;
+              }
+              
+              var scopeValue = authorizationValue['scope'];
+              if (scopeValue) {
+                var scopeInstance = scopeValue;
+                authorizationInstance.scope = scopeInstance;
+              }
+            }
+            
+            var channelsValue = valueValue['channels'];
+            if (channelsValue) {
+              var channelsInstance = channelsValue;
+              eventDataInstance.eventChannels = channelsInstance;
+            }
+
+            var callerValue = valueValue['caller'];
+            if (callerValue) {
+              var callerInstance = callerValue;
+              eventDataInstance.caller = callerInstance;
+            }
+
+            var claimsSequenceElement = valueValue['claims'];
+            if (claimsSequenceElement) {
+              for (var property in claimsSequenceElement) {
+                var claimsKey = property;
+                var claimsValue = claimsSequenceElement[property];
+                eventDataInstance.claims[claimsKey] = claimsValue;
+              }
+            }
+            
+            var descriptionValue = valueValue['description'];
+            if (descriptionValue) {
+              var descriptionInstance = descriptionValue;
+              eventDataInstance.description = descriptionInstance;
+            }
+            
+            var eventDataIdValue = valueValue['eventDataId'];
+            if (eventDataIdValue) {
+              var eventDataIdInstance = eventDataIdValue;
+              eventDataInstance.eventDataId = eventDataIdInstance;
+            }
+            
+            var correlationIdValue = valueValue['correlationId'];
+            if (correlationIdValue) {
+              var correlationIdInstance = correlationIdValue;
+              eventDataInstance.correlationId = correlationIdInstance;
+            }
+            
+            var eventNameValue = valueValue['eventName'];
+            if (eventNameValue) {
+              var eventNameInstance = {};
+              eventDataInstance.eventName = eventNameInstance;
+              
+              var valueValue2 = eventNameValue['value'];
+              if (valueValue2) {
+                var valueInstance = valueValue2;
+                eventNameInstance.value = valueInstance;
+              }
+              
+              var localizedValueValue = eventNameValue['localizedValue'];
+              if (localizedValueValue) {
+                var localizedValueInstance = localizedValueValue;
+                eventNameInstance.localizedValue = localizedValueInstance;
+              }
+            }
+            
+            var eventSourceValue = valueValue['eventSource'];
+            if (eventSourceValue) {
+              var eventSourceInstance = {};
+              eventDataInstance.eventSource = eventSourceInstance;
+              
+              var valueValue3 = eventSourceValue['value'];
+              if (valueValue3) {
+                var valueInstance2 = valueValue3;
+                eventSourceInstance.value = valueInstance2;
+              }
+              
+              var localizedValueValue2 = eventSourceValue['localizedValue'];
+              if (localizedValueValue2) {
+                var localizedValueInstance2 = localizedValueValue2;
+                eventSourceInstance.localizedValue = localizedValueInstance2;
+              }
+            }
+            
+            var httpRequestValue = valueValue['httpRequest'];
+            if (httpRequestValue) {
+              var httpRequestInstance = {};
+              eventDataInstance.httpRequest = httpRequestInstance;
+              
+              var clientRequestIdValue = httpRequestValue['clientRequestId'];
+              if (clientRequestIdValue) {
+                var clientRequestIdInstance = clientRequestIdValue;
+                httpRequestInstance.clientRequestId = clientRequestIdInstance;
+              }
+              
+              var clientIpAddressValue = httpRequestValue['clientIpAddress'];
+              if (clientIpAddressValue) {
+                var clientIpAddressInstance = clientIpAddressValue;
+                httpRequestInstance.clientIpAddress = clientIpAddressInstance;
+              }
+              
+              var methodValue = httpRequestValue['method'];
+              if (methodValue) {
+                var methodInstance = methodValue;
+                httpRequestInstance.method = methodInstance;
+              }
+              
+              var uriValue = httpRequestValue['uri'];
+              if (uriValue) {
+                var uriInstance = uriValue;
+                httpRequestInstance.uri = uriInstance;
+              }
+            }
+            
+            var levelValue = valueValue['level'];
+            if (levelValue) {
+              var levelInstance = levelValue;
+              eventDataInstance.level = levelInstance;
+            }
+            
+            var resourceGroupNameValue = valueValue['resourceGroupName'];
+            if (resourceGroupNameValue) {
+              var resourceGroupNameInstance = resourceGroupNameValue;
+              eventDataInstance.resourceGroupName = resourceGroupNameInstance;
+            }
+            
+            var resourceProviderNameValue = valueValue['resourceProviderName'];
+            if (resourceProviderNameValue) {
+              var resourceProviderNameInstance = {};
+              eventDataInstance.resourceProviderName = resourceProviderNameInstance;
+              
+              var valueValue4 = resourceProviderNameValue['value'];
+              if (valueValue4) {
+                var valueInstance3 = valueValue4;
+                resourceProviderNameInstance.value = valueInstance3;
+              }
+              
+              var localizedValueValue3 = resourceProviderNameValue['localizedValue'];
+              if (localizedValueValue3) {
+                var localizedValueInstance3 = localizedValueValue3;
+                resourceProviderNameInstance.localizedValue = localizedValueInstance3;
+              }
+            }
+            
+            var resourceUriValue = valueValue['resourceUri'];
+            if (resourceUriValue) {
+              var resourceUriInstance = resourceUriValue;
+              eventDataInstance.resourceUri = resourceUriInstance;
+            }
+            
+            var operationIdValue = valueValue['operationId'];
+            if (operationIdValue) {
+              var operationIdInstance = operationIdValue;
+              eventDataInstance.operationId = operationIdInstance;
+            }
+            
+            var operationNameValue = valueValue['operationName'];
+            if (operationNameValue) {
+              var operationNameInstance = {};
+              eventDataInstance.operationName = operationNameInstance;
+              
+              var valueValue5 = operationNameValue['value'];
+              if (valueValue5) {
+                var valueInstance4 = valueValue5;
+                operationNameInstance.value = valueInstance4;
+              }
+              
+              var localizedValueValue4 = operationNameValue['localizedValue'];
+              if (localizedValueValue4) {
+                var localizedValueInstance4 = localizedValueValue4;
+                operationNameInstance.localizedValue = localizedValueInstance4;
+              }
+            }
+            
+            var propertiesSequenceElement = valueValue['properties'];
+            if (propertiesSequenceElement) {
+              for (var property2 in propertiesSequenceElement) {
+                var propertiesKey = property2;
+                var propertiesValue = propertiesSequenceElement[property2];
+                eventDataInstance.properties[propertiesKey] = propertiesValue;
+              }
+            }
+            
+            var statusValue = valueValue['status'];
+            if (statusValue) {
+              var statusInstance = {};
+              eventDataInstance.status = statusInstance;
+              
+              var valueValue6 = statusValue['value'];
+              if (valueValue6) {
+                var valueInstance5 = valueValue6;
+                statusInstance.value = valueInstance5;
+              }
+              
+              var localizedValueValue5 = statusValue['localizedValue'];
+              if (localizedValueValue5) {
+                var localizedValueInstance5 = localizedValueValue5;
+                statusInstance.localizedValue = localizedValueInstance5;
+              }
+            }
+            
+            var subStatusValue = valueValue['subStatus'];
+            if (subStatusValue) {
+              var subStatusInstance = {};
+              eventDataInstance.subStatus = subStatusInstance;
+              
+              var valueValue7 = subStatusValue['value'];
+              if (valueValue7) {
+                var valueInstance6 = valueValue7;
+                subStatusInstance.value = valueInstance6;
+              }
+              
+              var localizedValueValue6 = subStatusValue['localizedValue'];
+              if (localizedValueValue6) {
+                var localizedValueInstance6 = localizedValueValue6;
+                subStatusInstance.localizedValue = localizedValueInstance6;
+              }
+            }
+            
+            var eventTimestampValue = valueValue['eventTimestamp'];
+            if (eventTimestampValue) {
+              var eventTimestampInstance = eventTimestampValue;
+              eventDataInstance.eventTimestamp = eventTimestampInstance;
+            }
+            
+            var submissionTimestampValue = valueValue['submissionTimestamp'];
+            if (submissionTimestampValue) {
+              var submissionTimestampInstance = submissionTimestampValue;
+              eventDataInstance.submissionTimestamp = submissionTimestampInstance;
+            }
+            
+            var subscriptionIdValue = valueValue['subscriptionId'];
+            if (subscriptionIdValue) {
+              var subscriptionIdInstance = subscriptionIdValue;
+              eventDataInstance.subscriptionId = subscriptionIdInstance;
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue) {
+          var nextLinkInstance = nextLinkValue;
+          eventDataCollectionInstance.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The List Event Values operation lists the events.
+   * 
+   * @param {ListEventsForCorrelationIdParameters} parameters
+   * 
+   * @param {string} parameters.correlationId The event correlation id.
+   * 
+   * @param {date} parameters.startTime The start time of the events.
+   * 
+   * @param {date} [parameters.endTime] The end time of the events.
+   * 
+   * @param {EventChannels} [parameters.eventChannels] The event channels.
+   * 
+   * @param {string} [parameters.nextLink] The next link token.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  EventDataOperations.prototype.listEventsForCorrelationId = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.correlationId === null || parameters.correlationId === undefined) {
+      return callback(new Error('parameters.correlationId cannot be null.'));
+    }
+    if (parameters.startTime === null || parameters.startTime === undefined) {
+      return callback(new Error('parameters.startTime cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '/subscriptions/' + (this.client.credentials.subscriptionId ? this.client.credentials.subscriptionId.trim() : '') + '/providers/microsoft.insights/eventtypes/management/values?';
+    url2 = url2 + 'api-version=2014-04-01';
+    url2 = url2 + '&amp;$filter=correlationId eq \'' + encodeURIComponent(parameters.correlationId.trim()) + '\' and ';
+    url2 = url2 + '&amp;eventTimestamp ge \'' + encodeURIComponent(parameters.startTime.toISOString()) + '\' and ';
+    if (parameters.endTime) {
+      url2 = url2 + '&amp;eventTimestamp le \'' + encodeURIComponent(parameters.endTime.toISOString()) + '\' and ';
+    }
+    if (parameters.eventChannels) {
+      url2 = url2 + '&amp;eventChannels eq \'' + encodeURIComponent(parameters.eventChannels ? parameters.eventChannels.toString() : 'Admin') + '\'';
+    }
+    if (parameters.nextLink) {
+      url2 = url2 + '&amp;$skipToken=' + encodeURIComponent(parameters.nextLink ? parameters.nextLink.trim() : '');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Accept'] = 'application/json';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc) {
+        var eventDataCollectionInstance = { value: [] };
+        result.eventDataCollection = eventDataCollectionInstance;
+        
+        var valueArray = responseDoc['value'];
+        if (valueArray) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var eventDataInstance = { claims: {}, properties: {} };
+            eventDataCollectionInstance.value.push(eventDataInstance);
+            
+            var authorizationValue = valueValue['authorization'];
+            if (authorizationValue) {
+              var authorizationInstance = {};
+              eventDataInstance.authorization = authorizationInstance;
+              
+              var actionValue = authorizationValue['action'];
+              if (actionValue) {
+                var actionInstance = actionValue;
+                authorizationInstance.action = actionInstance;
+              }
+              
+              var conditionValue = authorizationValue['condition'];
+              if (conditionValue) {
+                var conditionInstance = conditionValue;
+                authorizationInstance.condition = conditionInstance;
+              }
+              
+              var roleValue = authorizationValue['role'];
+              if (roleValue) {
+                var roleInstance = roleValue;
+                authorizationInstance.role = roleInstance;
+              }
+              
+              var scopeValue = authorizationValue['scope'];
+              if (scopeValue) {
+                var scopeInstance = scopeValue;
+                authorizationInstance.scope = scopeInstance;
+              }
+            }
+            
+            var channelsValue = valueValue['channels'];
+            if (channelsValue) {
+              var channelsInstance = channelsValue;
+              eventDataInstance.eventChannels = channelsInstance;
+            }
+
+            var callerValue = valueValue['caller'];
+            if (callerValue) {
+              var callerInstance = callerValue;
+              eventDataInstance.caller = callerInstance;
+            }
+
+            var claimsSequenceElement = valueValue['claims'];
+            if (claimsSequenceElement) {
+              for (var property in claimsSequenceElement) {
+                var claimsKey = property;
+                var claimsValue = claimsSequenceElement[property];
+                eventDataInstance.claims[claimsKey] = claimsValue;
+              }
+            }
+            
+            var descriptionValue = valueValue['description'];
+            if (descriptionValue) {
+              var descriptionInstance = descriptionValue;
+              eventDataInstance.description = descriptionInstance;
+            }
+            
+            var eventDataIdValue = valueValue['eventDataId'];
+            if (eventDataIdValue) {
+              var eventDataIdInstance = eventDataIdValue;
+              eventDataInstance.eventDataId = eventDataIdInstance;
+            }
+            
+            var correlationIdValue = valueValue['correlationId'];
+            if (correlationIdValue) {
+              var correlationIdInstance = correlationIdValue;
+              eventDataInstance.correlationId = correlationIdInstance;
+            }
+            
+            var eventNameValue = valueValue['eventName'];
+            if (eventNameValue) {
+              var eventNameInstance = {};
+              eventDataInstance.eventName = eventNameInstance;
+              
+              var valueValue2 = eventNameValue['value'];
+              if (valueValue2) {
+                var valueInstance = valueValue2;
+                eventNameInstance.value = valueInstance;
+              }
+              
+              var localizedValueValue = eventNameValue['localizedValue'];
+              if (localizedValueValue) {
+                var localizedValueInstance = localizedValueValue;
+                eventNameInstance.localizedValue = localizedValueInstance;
+              }
+            }
+            
+            var eventSourceValue = valueValue['eventSource'];
+            if (eventSourceValue) {
+              var eventSourceInstance = {};
+              eventDataInstance.eventSource = eventSourceInstance;
+              
+              var valueValue3 = eventSourceValue['value'];
+              if (valueValue3) {
+                var valueInstance2 = valueValue3;
+                eventSourceInstance.value = valueInstance2;
+              }
+              
+              var localizedValueValue2 = eventSourceValue['localizedValue'];
+              if (localizedValueValue2) {
+                var localizedValueInstance2 = localizedValueValue2;
+                eventSourceInstance.localizedValue = localizedValueInstance2;
+              }
+            }
+            
+            var httpRequestValue = valueValue['httpRequest'];
+            if (httpRequestValue) {
+              var httpRequestInstance = {};
+              eventDataInstance.httpRequest = httpRequestInstance;
+              
+              var clientRequestIdValue = httpRequestValue['clientRequestId'];
+              if (clientRequestIdValue) {
+                var clientRequestIdInstance = clientRequestIdValue;
+                httpRequestInstance.clientRequestId = clientRequestIdInstance;
+              }
+              
+              var clientIpAddressValue = httpRequestValue['clientIpAddress'];
+              if (clientIpAddressValue) {
+                var clientIpAddressInstance = clientIpAddressValue;
+                httpRequestInstance.clientIpAddress = clientIpAddressInstance;
+              }
+              
+              var methodValue = httpRequestValue['method'];
+              if (methodValue) {
+                var methodInstance = methodValue;
+                httpRequestInstance.method = methodInstance;
+              }
+              
+              var uriValue = httpRequestValue['uri'];
+              if (uriValue) {
+                var uriInstance = uriValue;
+                httpRequestInstance.uri = uriInstance;
+              }
+            }
+            
+            var levelValue = valueValue['level'];
+            if (levelValue) {
+              var levelInstance = levelValue;
+              eventDataInstance.level = levelInstance;
+            }
+            
+            var resourceGroupNameValue = valueValue['resourceGroupName'];
+            if (resourceGroupNameValue) {
+              var resourceGroupNameInstance = resourceGroupNameValue;
+              eventDataInstance.resourceGroupName = resourceGroupNameInstance;
+            }
+            
+            var resourceProviderNameValue = valueValue['resourceProviderName'];
+            if (resourceProviderNameValue) {
+              var resourceProviderNameInstance = {};
+              eventDataInstance.resourceProviderName = resourceProviderNameInstance;
+              
+              var valueValue4 = resourceProviderNameValue['value'];
+              if (valueValue4) {
+                var valueInstance3 = valueValue4;
+                resourceProviderNameInstance.value = valueInstance3;
+              }
+              
+              var localizedValueValue3 = resourceProviderNameValue['localizedValue'];
+              if (localizedValueValue3) {
+                var localizedValueInstance3 = localizedValueValue3;
+                resourceProviderNameInstance.localizedValue = localizedValueInstance3;
+              }
+            }
+            
+            var resourceUriValue = valueValue['resourceUri'];
+            if (resourceUriValue) {
+              var resourceUriInstance = resourceUriValue;
+              eventDataInstance.resourceUri = resourceUriInstance;
+            }
+            
+            var operationIdValue = valueValue['operationId'];
+            if (operationIdValue) {
+              var operationIdInstance = operationIdValue;
+              eventDataInstance.operationId = operationIdInstance;
+            }
+            
+            var operationNameValue = valueValue['operationName'];
+            if (operationNameValue) {
+              var operationNameInstance = {};
+              eventDataInstance.operationName = operationNameInstance;
+              
+              var valueValue5 = operationNameValue['value'];
+              if (valueValue5) {
+                var valueInstance4 = valueValue5;
+                operationNameInstance.value = valueInstance4;
+              }
+              
+              var localizedValueValue4 = operationNameValue['localizedValue'];
+              if (localizedValueValue4) {
+                var localizedValueInstance4 = localizedValueValue4;
+                operationNameInstance.localizedValue = localizedValueInstance4;
+              }
+            }
+            
+            var propertiesSequenceElement = valueValue['properties'];
+            if (propertiesSequenceElement) {
+              for (var property2 in propertiesSequenceElement) {
+                var propertiesKey = property2;
+                var propertiesValue = propertiesSequenceElement[property2];
+                eventDataInstance.properties[propertiesKey] = propertiesValue;
+              }
+            }
+            
+            var statusValue = valueValue['status'];
+            if (statusValue) {
+              var statusInstance = {};
+              eventDataInstance.status = statusInstance;
+              
+              var valueValue6 = statusValue['value'];
+              if (valueValue6) {
+                var valueInstance5 = valueValue6;
+                statusInstance.value = valueInstance5;
+              }
+              
+              var localizedValueValue5 = statusValue['localizedValue'];
+              if (localizedValueValue5) {
+                var localizedValueInstance5 = localizedValueValue5;
+                statusInstance.localizedValue = localizedValueInstance5;
+              }
+            }
+            
+            var subStatusValue = valueValue['subStatus'];
+            if (subStatusValue) {
+              var subStatusInstance = {};
+              eventDataInstance.subStatus = subStatusInstance;
+              
+              var valueValue7 = subStatusValue['value'];
+              if (valueValue7) {
+                var valueInstance6 = valueValue7;
+                subStatusInstance.value = valueInstance6;
+              }
+              
+              var localizedValueValue6 = subStatusValue['localizedValue'];
+              if (localizedValueValue6) {
+                var localizedValueInstance6 = localizedValueValue6;
+                subStatusInstance.localizedValue = localizedValueInstance6;
+              }
+            }
+            
+            var eventTimestampValue = valueValue['eventTimestamp'];
+            if (eventTimestampValue) {
+              var eventTimestampInstance = eventTimestampValue;
+              eventDataInstance.eventTimestamp = eventTimestampInstance;
+            }
+            
+            var submissionTimestampValue = valueValue['submissionTimestamp'];
+            if (submissionTimestampValue) {
+              var submissionTimestampInstance = submissionTimestampValue;
+              eventDataInstance.submissionTimestamp = submissionTimestampInstance;
+            }
+            
+            var subscriptionIdValue = valueValue['subscriptionId'];
+            if (subscriptionIdValue) {
+              var subscriptionIdInstance = subscriptionIdValue;
+              eventDataInstance.subscriptionId = subscriptionIdInstance;
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue) {
+          var nextLinkInstance = nextLinkValue;
+          eventDataCollectionInstance.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The List Event Values operation lists the events.
+   * 
+   * @param {ListEventsForEventSourceParameters} parameters
+   * 
+   * @param {string} parameters.eventSource The event source.
+   * 
+   * @param {date} parameters.startTime The start time of the events.
+   * 
+   * @param {date} [parameters.endTime] The end time of the events.
+   * 
+   * @param {EventChannels} [parameters.eventChannels] The event channels.
+   * 
+   * @param {string} [parameters.nextLink] The next link token.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  EventDataOperations.prototype.listEventsForEventSource = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.eventSource === null || parameters.eventSource === undefined) {
+      return callback(new Error('parameters.eventSource cannot be null.'));
+    }
+    if (parameters.startTime === null || parameters.startTime === undefined) {
+      return callback(new Error('parameters.startTime cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '/subscriptions/' + (this.client.credentials.subscriptionId ? this.client.credentials.subscriptionId.trim() : '') + '/providers/microsoft.insights/eventtypes/management/values?';
+    url2 = url2 + 'api-version=2014-04-01';
+    url2 = url2 + '&amp;$filter=eventSource eq \'' + encodeURIComponent(parameters.eventSource.trim()) + '\' and ';
+    url2 = url2 + '&amp;eventTimestamp ge \'' + encodeURIComponent(parameters.startTime.toISOString()) + '\' and ';
+    if (parameters.endTime) {
+      url2 = url2 + '&amp;eventTimestamp le \'' + encodeURIComponent(parameters.endTime.toISOString()) + '\' and ';
+    }
+    if (parameters.eventChannels) {
+      url2 = url2 + '&amp;eventChannels eq \'' + encodeURIComponent(parameters.eventChannels ? parameters.eventChannels.toString() : 'Admin') + '\'';
+    }
+    if (parameters.nextLink) {
+      url2 = url2 + '&amp;$skipToken=' + encodeURIComponent(parameters.nextLink ? parameters.nextLink.trim() : '');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Accept'] = 'application/json';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc) {
+        var eventDataCollectionInstance = { value: [] };
+        result.eventDataCollection = eventDataCollectionInstance;
+        
+        var valueArray = responseDoc['value'];
+        if (valueArray) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var eventDataInstance = { claims: {}, properties: {} };
+            eventDataCollectionInstance.value.push(eventDataInstance);
+            
+            var authorizationValue = valueValue['authorization'];
+            if (authorizationValue) {
+              var authorizationInstance = {};
+              eventDataInstance.authorization = authorizationInstance;
+              
+              var actionValue = authorizationValue['action'];
+              if (actionValue) {
+                var actionInstance = actionValue;
+                authorizationInstance.action = actionInstance;
+              }
+              
+              var conditionValue = authorizationValue['condition'];
+              if (conditionValue) {
+                var conditionInstance = conditionValue;
+                authorizationInstance.condition = conditionInstance;
+              }
+              
+              var roleValue = authorizationValue['role'];
+              if (roleValue) {
+                var roleInstance = roleValue;
+                authorizationInstance.role = roleInstance;
+              }
+              
+              var scopeValue = authorizationValue['scope'];
+              if (scopeValue) {
+                var scopeInstance = scopeValue;
+                authorizationInstance.scope = scopeInstance;
+              }
+            }
+            
+            var channelsValue = valueValue['channels'];
+            if (channelsValue) {
+              var channelsInstance = channelsValue;
+              eventDataInstance.eventChannels = channelsInstance;
+            }
+
+            var callerValue = valueValue['caller'];
+            if (callerValue) {
+              var callerInstance = callerValue;
+              eventDataInstance.caller = callerInstance;
+            }
+
+            var claimsSequenceElement = valueValue['claims'];
+            if (claimsSequenceElement) {
+              for (var property in claimsSequenceElement) {
+                var claimsKey = property;
+                var claimsValue = claimsSequenceElement[property];
+                eventDataInstance.claims[claimsKey] = claimsValue;
+              }
+            }
+            
+            var descriptionValue = valueValue['description'];
+            if (descriptionValue) {
+              var descriptionInstance = descriptionValue;
+              eventDataInstance.description = descriptionInstance;
+            }
+            
+            var eventDataIdValue = valueValue['eventDataId'];
+            if (eventDataIdValue) {
+              var eventDataIdInstance = eventDataIdValue;
+              eventDataInstance.eventDataId = eventDataIdInstance;
+            }
+            
+            var correlationIdValue = valueValue['correlationId'];
+            if (correlationIdValue) {
+              var correlationIdInstance = correlationIdValue;
+              eventDataInstance.correlationId = correlationIdInstance;
+            }
+            
+            var eventNameValue = valueValue['eventName'];
+            if (eventNameValue) {
+              var eventNameInstance = {};
+              eventDataInstance.eventName = eventNameInstance;
+              
+              var valueValue2 = eventNameValue['value'];
+              if (valueValue2) {
+                var valueInstance = valueValue2;
+                eventNameInstance.value = valueInstance;
+              }
+              
+              var localizedValueValue = eventNameValue['localizedValue'];
+              if (localizedValueValue) {
+                var localizedValueInstance = localizedValueValue;
+                eventNameInstance.localizedValue = localizedValueInstance;
+              }
+            }
+            
+            var eventSourceValue = valueValue['eventSource'];
+            if (eventSourceValue) {
+              var eventSourceInstance = {};
+              eventDataInstance.eventSource = eventSourceInstance;
+              
+              var valueValue3 = eventSourceValue['value'];
+              if (valueValue3) {
+                var valueInstance2 = valueValue3;
+                eventSourceInstance.value = valueInstance2;
+              }
+              
+              var localizedValueValue2 = eventSourceValue['localizedValue'];
+              if (localizedValueValue2) {
+                var localizedValueInstance2 = localizedValueValue2;
+                eventSourceInstance.localizedValue = localizedValueInstance2;
+              }
+            }
+            
+            var httpRequestValue = valueValue['httpRequest'];
+            if (httpRequestValue) {
+              var httpRequestInstance = {};
+              eventDataInstance.httpRequest = httpRequestInstance;
+              
+              var clientRequestIdValue = httpRequestValue['clientRequestId'];
+              if (clientRequestIdValue) {
+                var clientRequestIdInstance = clientRequestIdValue;
+                httpRequestInstance.clientRequestId = clientRequestIdInstance;
+              }
+              
+              var clientIpAddressValue = httpRequestValue['clientIpAddress'];
+              if (clientIpAddressValue) {
+                var clientIpAddressInstance = clientIpAddressValue;
+                httpRequestInstance.clientIpAddress = clientIpAddressInstance;
+              }
+              
+              var methodValue = httpRequestValue['method'];
+              if (methodValue) {
+                var methodInstance = methodValue;
+                httpRequestInstance.method = methodInstance;
+              }
+              
+              var uriValue = httpRequestValue['uri'];
+              if (uriValue) {
+                var uriInstance = uriValue;
+                httpRequestInstance.uri = uriInstance;
+              }
+            }
+            
+            var levelValue = valueValue['level'];
+            if (levelValue) {
+              var levelInstance = levelValue;
+              eventDataInstance.level = levelInstance;
+            }
+            
+            var resourceGroupNameValue = valueValue['resourceGroupName'];
+            if (resourceGroupNameValue) {
+              var resourceGroupNameInstance = resourceGroupNameValue;
+              eventDataInstance.resourceGroupName = resourceGroupNameInstance;
+            }
+            
+            var resourceProviderNameValue = valueValue['resourceProviderName'];
+            if (resourceProviderNameValue) {
+              var resourceProviderNameInstance = {};
+              eventDataInstance.resourceProviderName = resourceProviderNameInstance;
+              
+              var valueValue4 = resourceProviderNameValue['value'];
+              if (valueValue4) {
+                var valueInstance3 = valueValue4;
+                resourceProviderNameInstance.value = valueInstance3;
+              }
+              
+              var localizedValueValue3 = resourceProviderNameValue['localizedValue'];
+              if (localizedValueValue3) {
+                var localizedValueInstance3 = localizedValueValue3;
+                resourceProviderNameInstance.localizedValue = localizedValueInstance3;
+              }
+            }
+            
+            var resourceUriValue = valueValue['resourceUri'];
+            if (resourceUriValue) {
+              var resourceUriInstance = resourceUriValue;
+              eventDataInstance.resourceUri = resourceUriInstance;
+            }
+            
+            var operationIdValue = valueValue['operationId'];
+            if (operationIdValue) {
+              var operationIdInstance = operationIdValue;
+              eventDataInstance.operationId = operationIdInstance;
+            }
+            
+            var operationNameValue = valueValue['operationName'];
+            if (operationNameValue) {
+              var operationNameInstance = {};
+              eventDataInstance.operationName = operationNameInstance;
+              
+              var valueValue5 = operationNameValue['value'];
+              if (valueValue5) {
+                var valueInstance4 = valueValue5;
+                operationNameInstance.value = valueInstance4;
+              }
+              
+              var localizedValueValue4 = operationNameValue['localizedValue'];
+              if (localizedValueValue4) {
+                var localizedValueInstance4 = localizedValueValue4;
+                operationNameInstance.localizedValue = localizedValueInstance4;
+              }
+            }
+            
+            var propertiesSequenceElement = valueValue['properties'];
+            if (propertiesSequenceElement) {
+              for (var property2 in propertiesSequenceElement) {
+                var propertiesKey = property2;
+                var propertiesValue = propertiesSequenceElement[property2];
+                eventDataInstance.properties[propertiesKey] = propertiesValue;
+              }
+            }
+            
+            var statusValue = valueValue['status'];
+            if (statusValue) {
+              var statusInstance = {};
+              eventDataInstance.status = statusInstance;
+              
+              var valueValue6 = statusValue['value'];
+              if (valueValue6) {
+                var valueInstance5 = valueValue6;
+                statusInstance.value = valueInstance5;
+              }
+              
+              var localizedValueValue5 = statusValue['localizedValue'];
+              if (localizedValueValue5) {
+                var localizedValueInstance5 = localizedValueValue5;
+                statusInstance.localizedValue = localizedValueInstance5;
+              }
+            }
+            
+            var subStatusValue = valueValue['subStatus'];
+            if (subStatusValue) {
+              var subStatusInstance = {};
+              eventDataInstance.subStatus = subStatusInstance;
+              
+              var valueValue7 = subStatusValue['value'];
+              if (valueValue7) {
+                var valueInstance6 = valueValue7;
+                subStatusInstance.value = valueInstance6;
+              }
+              
+              var localizedValueValue6 = subStatusValue['localizedValue'];
+              if (localizedValueValue6) {
+                var localizedValueInstance6 = localizedValueValue6;
+                subStatusInstance.localizedValue = localizedValueInstance6;
+              }
+            }
+            
+            var eventTimestampValue = valueValue['eventTimestamp'];
+            if (eventTimestampValue) {
+              var eventTimestampInstance = eventTimestampValue;
+              eventDataInstance.eventTimestamp = eventTimestampInstance;
+            }
+            
+            var submissionTimestampValue = valueValue['submissionTimestamp'];
+            if (submissionTimestampValue) {
+              var submissionTimestampInstance = submissionTimestampValue;
+              eventDataInstance.submissionTimestamp = submissionTimestampInstance;
+            }
+            
+            var subscriptionIdValue = valueValue['subscriptionId'];
+            if (subscriptionIdValue) {
+              var subscriptionIdInstance = subscriptionIdValue;
+              eventDataInstance.subscriptionId = subscriptionIdInstance;
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue) {
+          var nextLinkInstance = nextLinkValue;
+          eventDataCollectionInstance.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The List Event Values operation lists the events.
+   * 
+   * @param {ListEventsForResourceParameters} parameters
+   * 
+   * @param {string} parameters.resourceUri The id of the resource.
+   * 
+   * @param {date} parameters.startTime The start time of the events.
+   * 
+   * @param {date} [parameters.endTime] The end time of the events.
+   * 
+   * @param {EventChannels} [parameters.eventChannels] The event channels.
+   * 
+   * @param {string} [parameters.nextLink] The next link token.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  EventDataOperations.prototype.listEventsForResource = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.resourceUri === null || parameters.resourceUri === undefined) {
+      return callback(new Error('parameters.resourceUri cannot be null.'));
+    }
+    if (parameters.startTime === null || parameters.startTime === undefined) {
+      return callback(new Error('parameters.startTime cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '/subscriptions/' + (this.client.credentials.subscriptionId ? this.client.credentials.subscriptionId.trim() : '') + '/providers/microsoft.insights/eventtypes/management/values?';
+    url2 = url2 + 'api-version=2014-04-01';
+    url2 = url2 + '&amp;$filter=resourceUri eq \'' + encodeURIComponent(parameters.resourceUri.trim()) + '\' and ';
+    url2 = url2 + '&amp;eventTimestamp ge \'' + encodeURIComponent(parameters.startTime.toISOString()) + '\' and ';
+    if (parameters.endTime) {
+      url2 = url2 + '&amp;eventTimestamp le \'' + encodeURIComponent(parameters.endTime.toISOString()) + '\' and ';
+    }
+    if (parameters.eventChannels) {
+      url2 = url2 + '&amp;eventChannels eq \'' + encodeURIComponent(parameters.eventChannels ? parameters.eventChannels.toString() : 'Admin') + '\'';
+    }
+    if (parameters.nextLink) {
+      url2 = url2 + '&amp;$skipToken=' + encodeURIComponent(parameters.nextLink ? parameters.nextLink.trim() : '');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Accept'] = 'application/json';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc) {
+        var eventDataCollectionInstance = { value: [] };
+        result.eventDataCollection = eventDataCollectionInstance;
+        
+        var valueArray = responseDoc['value'];
+        if (valueArray) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var eventDataInstance = { claims: {}, properties: {} };
+            eventDataCollectionInstance.value.push(eventDataInstance);
+            
+            var authorizationValue = valueValue['authorization'];
+            if (authorizationValue) {
+              var authorizationInstance = {};
+              eventDataInstance.authorization = authorizationInstance;
+              
+              var actionValue = authorizationValue['action'];
+              if (actionValue) {
+                var actionInstance = actionValue;
+                authorizationInstance.action = actionInstance;
+              }
+              
+              var conditionValue = authorizationValue['condition'];
+              if (conditionValue) {
+                var conditionInstance = conditionValue;
+                authorizationInstance.condition = conditionInstance;
+              }
+              
+              var roleValue = authorizationValue['role'];
+              if (roleValue) {
+                var roleInstance = roleValue;
+                authorizationInstance.role = roleInstance;
+              }
+              
+              var scopeValue = authorizationValue['scope'];
+              if (scopeValue) {
+                var scopeInstance = scopeValue;
+                authorizationInstance.scope = scopeInstance;
+              }
+            }
+            
+            var channelsValue = valueValue['channels'];
+            if (channelsValue) {
+              var channelsInstance = channelsValue;
+              eventDataInstance.eventChannels = channelsInstance;
+            }
+
+            var callerValue = valueValue['caller'];
+            if (callerValue) {
+              var callerInstance = callerValue;
+              eventDataInstance.caller = callerInstance;
+            }
+
+            var claimsSequenceElement = valueValue['claims'];
+            if (claimsSequenceElement) {
+              for (var property in claimsSequenceElement) {
+                var claimsKey = property;
+                var claimsValue = claimsSequenceElement[property];
+                eventDataInstance.claims[claimsKey] = claimsValue;
+              }
+            }
+            
+            var descriptionValue = valueValue['description'];
+            if (descriptionValue) {
+              var descriptionInstance = descriptionValue;
+              eventDataInstance.description = descriptionInstance;
+            }
+            
+            var eventDataIdValue = valueValue['eventDataId'];
+            if (eventDataIdValue) {
+              var eventDataIdInstance = eventDataIdValue;
+              eventDataInstance.eventDataId = eventDataIdInstance;
+            }
+            
+            var correlationIdValue = valueValue['correlationId'];
+            if (correlationIdValue) {
+              var correlationIdInstance = correlationIdValue;
+              eventDataInstance.correlationId = correlationIdInstance;
+            }
+            
+            var eventNameValue = valueValue['eventName'];
+            if (eventNameValue) {
+              var eventNameInstance = {};
+              eventDataInstance.eventName = eventNameInstance;
+              
+              var valueValue2 = eventNameValue['value'];
+              if (valueValue2) {
+                var valueInstance = valueValue2;
+                eventNameInstance.value = valueInstance;
+              }
+              
+              var localizedValueValue = eventNameValue['localizedValue'];
+              if (localizedValueValue) {
+                var localizedValueInstance = localizedValueValue;
+                eventNameInstance.localizedValue = localizedValueInstance;
+              }
+            }
+            
+            var eventSourceValue = valueValue['eventSource'];
+            if (eventSourceValue) {
+              var eventSourceInstance = {};
+              eventDataInstance.eventSource = eventSourceInstance;
+              
+              var valueValue3 = eventSourceValue['value'];
+              if (valueValue3) {
+                var valueInstance2 = valueValue3;
+                eventSourceInstance.value = valueInstance2;
+              }
+              
+              var localizedValueValue2 = eventSourceValue['localizedValue'];
+              if (localizedValueValue2) {
+                var localizedValueInstance2 = localizedValueValue2;
+                eventSourceInstance.localizedValue = localizedValueInstance2;
+              }
+            }
+            
+            var httpRequestValue = valueValue['httpRequest'];
+            if (httpRequestValue) {
+              var httpRequestInstance = {};
+              eventDataInstance.httpRequest = httpRequestInstance;
+              
+              var clientRequestIdValue = httpRequestValue['clientRequestId'];
+              if (clientRequestIdValue) {
+                var clientRequestIdInstance = clientRequestIdValue;
+                httpRequestInstance.clientRequestId = clientRequestIdInstance;
+              }
+              
+              var clientIpAddressValue = httpRequestValue['clientIpAddress'];
+              if (clientIpAddressValue) {
+                var clientIpAddressInstance = clientIpAddressValue;
+                httpRequestInstance.clientIpAddress = clientIpAddressInstance;
+              }
+              
+              var methodValue = httpRequestValue['method'];
+              if (methodValue) {
+                var methodInstance = methodValue;
+                httpRequestInstance.method = methodInstance;
+              }
+              
+              var uriValue = httpRequestValue['uri'];
+              if (uriValue) {
+                var uriInstance = uriValue;
+                httpRequestInstance.uri = uriInstance;
+              }
+            }
+            
+            var levelValue = valueValue['level'];
+            if (levelValue) {
+              var levelInstance = levelValue;
+              eventDataInstance.level = levelInstance;
+            }
+            
+            var resourceGroupNameValue = valueValue['resourceGroupName'];
+            if (resourceGroupNameValue) {
+              var resourceGroupNameInstance = resourceGroupNameValue;
+              eventDataInstance.resourceGroupName = resourceGroupNameInstance;
+            }
+            
+            var resourceProviderNameValue = valueValue['resourceProviderName'];
+            if (resourceProviderNameValue) {
+              var resourceProviderNameInstance = {};
+              eventDataInstance.resourceProviderName = resourceProviderNameInstance;
+              
+              var valueValue4 = resourceProviderNameValue['value'];
+              if (valueValue4) {
+                var valueInstance3 = valueValue4;
+                resourceProviderNameInstance.value = valueInstance3;
+              }
+              
+              var localizedValueValue3 = resourceProviderNameValue['localizedValue'];
+              if (localizedValueValue3) {
+                var localizedValueInstance3 = localizedValueValue3;
+                resourceProviderNameInstance.localizedValue = localizedValueInstance3;
+              }
+            }
+            
+            var resourceUriValue = valueValue['resourceUri'];
+            if (resourceUriValue) {
+              var resourceUriInstance = resourceUriValue;
+              eventDataInstance.resourceUri = resourceUriInstance;
+            }
+            
+            var operationIdValue = valueValue['operationId'];
+            if (operationIdValue) {
+              var operationIdInstance = operationIdValue;
+              eventDataInstance.operationId = operationIdInstance;
+            }
+            
+            var operationNameValue = valueValue['operationName'];
+            if (operationNameValue) {
+              var operationNameInstance = {};
+              eventDataInstance.operationName = operationNameInstance;
+              
+              var valueValue5 = operationNameValue['value'];
+              if (valueValue5) {
+                var valueInstance4 = valueValue5;
+                operationNameInstance.value = valueInstance4;
+              }
+              
+              var localizedValueValue4 = operationNameValue['localizedValue'];
+              if (localizedValueValue4) {
+                var localizedValueInstance4 = localizedValueValue4;
+                operationNameInstance.localizedValue = localizedValueInstance4;
+              }
+            }
+            
+            var propertiesSequenceElement = valueValue['properties'];
+            if (propertiesSequenceElement) {
+              for (var property2 in propertiesSequenceElement) {
+                var propertiesKey = property2;
+                var propertiesValue = propertiesSequenceElement[property2];
+                eventDataInstance.properties[propertiesKey] = propertiesValue;
+              }
+            }
+            
+            var statusValue = valueValue['status'];
+            if (statusValue) {
+              var statusInstance = {};
+              eventDataInstance.status = statusInstance;
+              
+              var valueValue6 = statusValue['value'];
+              if (valueValue6) {
+                var valueInstance5 = valueValue6;
+                statusInstance.value = valueInstance5;
+              }
+              
+              var localizedValueValue5 = statusValue['localizedValue'];
+              if (localizedValueValue5) {
+                var localizedValueInstance5 = localizedValueValue5;
+                statusInstance.localizedValue = localizedValueInstance5;
+              }
+            }
+            
+            var subStatusValue = valueValue['subStatus'];
+            if (subStatusValue) {
+              var subStatusInstance = {};
+              eventDataInstance.subStatus = subStatusInstance;
+              
+              var valueValue7 = subStatusValue['value'];
+              if (valueValue7) {
+                var valueInstance6 = valueValue7;
+                subStatusInstance.value = valueInstance6;
+              }
+              
+              var localizedValueValue6 = subStatusValue['localizedValue'];
+              if (localizedValueValue6) {
+                var localizedValueInstance6 = localizedValueValue6;
+                subStatusInstance.localizedValue = localizedValueInstance6;
+              }
+            }
+            
+            var eventTimestampValue = valueValue['eventTimestamp'];
+            if (eventTimestampValue) {
+              var eventTimestampInstance = eventTimestampValue;
+              eventDataInstance.eventTimestamp = eventTimestampInstance;
+            }
+            
+            var submissionTimestampValue = valueValue['submissionTimestamp'];
+            if (submissionTimestampValue) {
+              var submissionTimestampInstance = submissionTimestampValue;
+              eventDataInstance.submissionTimestamp = submissionTimestampInstance;
+            }
+            
+            var subscriptionIdValue = valueValue['subscriptionId'];
+            if (subscriptionIdValue) {
+              var subscriptionIdInstance = subscriptionIdValue;
+              eventDataInstance.subscriptionId = subscriptionIdInstance;
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue) {
+          var nextLinkInstance = nextLinkValue;
+          eventDataCollectionInstance.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The List Event Values operation lists the events.
+   * 
+   * @param {ListEventsForResourceGroupParameters} parameters
+   * 
+   * @param {string} parameters.resourceGroupName The resource group name.
+   * 
+   * @param {date} parameters.startTime The start time of the events.
+   * 
+   * @param {date} [parameters.endTime] The end time of the events.
+   * 
+   * @param {EventChannels} [parameters.eventChannels] The event channels.
+   * 
+   * @param {string} [parameters.nextLink] The next link token.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  EventDataOperations.prototype.listEventsForResourceGroup = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.resourceGroupName === null || parameters.resourceGroupName === undefined) {
+      return callback(new Error('parameters.resourceGroupName cannot be null.'));
+    }
+    if (parameters.startTime === null || parameters.startTime === undefined) {
+      return callback(new Error('parameters.startTime cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '/subscriptions/' + (this.client.credentials.subscriptionId ? this.client.credentials.subscriptionId.trim() : '') + '/providers/microsoft.insights/eventtypes/management/values?';
+    url2 = url2 + 'api-version=2014-04-01';
+    url2 = url2 + '&amp;$filter=resourceGroupName eq \'' + encodeURIComponent(parameters.resourceGroupName.trim()) + '\' and ';
+    url2 = url2 + '&amp;eventTimestamp ge \'' + encodeURIComponent(parameters.startTime.toISOString()) + '\' and ';
+    if (parameters.endTime) {
+      url2 = url2 + '&amp;eventTimestamp le \'' + encodeURIComponent(parameters.endTime.toISOString()) + '\' and ';
+    }
+    if (parameters.eventChannels) {
+      url2 = url2 + '&amp;eventChannels eq \'' + encodeURIComponent(parameters.eventChannels ? parameters.eventChannels.toString() : 'Admin') + '\'';
+    }
+    if (parameters.nextLink) {
+      url2 = url2 + '&amp;$skipToken=' + encodeURIComponent(parameters.nextLink ? parameters.nextLink.trim() : '');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Accept'] = 'application/json';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc) {
+        var eventDataCollectionInstance = { value: [] };
+        result.eventDataCollection = eventDataCollectionInstance;
+        
+        var valueArray = responseDoc['value'];
+        if (valueArray) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var eventDataInstance = { claims: {}, properties: {} };
+            eventDataCollectionInstance.value.push(eventDataInstance);
+            
+            var authorizationValue = valueValue['authorization'];
+            if (authorizationValue) {
+              var authorizationInstance = {};
+              eventDataInstance.authorization = authorizationInstance;
+              
+              var actionValue = authorizationValue['action'];
+              if (actionValue) {
+                var actionInstance = actionValue;
+                authorizationInstance.action = actionInstance;
+              }
+              
+              var conditionValue = authorizationValue['condition'];
+              if (conditionValue) {
+                var conditionInstance = conditionValue;
+                authorizationInstance.condition = conditionInstance;
+              }
+              
+              var roleValue = authorizationValue['role'];
+              if (roleValue) {
+                var roleInstance = roleValue;
+                authorizationInstance.role = roleInstance;
+              }
+              
+              var scopeValue = authorizationValue['scope'];
+              if (scopeValue) {
+                var scopeInstance = scopeValue;
+                authorizationInstance.scope = scopeInstance;
+              }
+            }
+            
+            var channelsValue = valueValue['channels'];
+            if (channelsValue) {
+              var channelsInstance = channelsValue;
+              eventDataInstance.eventChannels = channelsInstance;
+            }
+
+            var callerValue = valueValue['caller'];
+            if (callerValue) {
+              var callerInstance = callerValue;
+              eventDataInstance.caller = callerInstance;
+            }
+
+            var claimsSequenceElement = valueValue['claims'];
+            if (claimsSequenceElement) {
+              for (var property in claimsSequenceElement) {
+                var claimsKey = property;
+                var claimsValue = claimsSequenceElement[property];
+                eventDataInstance.claims[claimsKey] = claimsValue;
+              }
+            }
+            
+            var descriptionValue = valueValue['description'];
+            if (descriptionValue) {
+              var descriptionInstance = descriptionValue;
+              eventDataInstance.description = descriptionInstance;
+            }
+            
+            var eventDataIdValue = valueValue['eventDataId'];
+            if (eventDataIdValue) {
+              var eventDataIdInstance = eventDataIdValue;
+              eventDataInstance.eventDataId = eventDataIdInstance;
+            }
+            
+            var correlationIdValue = valueValue['correlationId'];
+            if (correlationIdValue) {
+              var correlationIdInstance = correlationIdValue;
+              eventDataInstance.correlationId = correlationIdInstance;
+            }
+            
+            var eventNameValue = valueValue['eventName'];
+            if (eventNameValue) {
+              var eventNameInstance = {};
+              eventDataInstance.eventName = eventNameInstance;
+              
+              var valueValue2 = eventNameValue['value'];
+              if (valueValue2) {
+                var valueInstance = valueValue2;
+                eventNameInstance.value = valueInstance;
+              }
+              
+              var localizedValueValue = eventNameValue['localizedValue'];
+              if (localizedValueValue) {
+                var localizedValueInstance = localizedValueValue;
+                eventNameInstance.localizedValue = localizedValueInstance;
+              }
+            }
+            
+            var eventSourceValue = valueValue['eventSource'];
+            if (eventSourceValue) {
+              var eventSourceInstance = {};
+              eventDataInstance.eventSource = eventSourceInstance;
+              
+              var valueValue3 = eventSourceValue['value'];
+              if (valueValue3) {
+                var valueInstance2 = valueValue3;
+                eventSourceInstance.value = valueInstance2;
+              }
+              
+              var localizedValueValue2 = eventSourceValue['localizedValue'];
+              if (localizedValueValue2) {
+                var localizedValueInstance2 = localizedValueValue2;
+                eventSourceInstance.localizedValue = localizedValueInstance2;
+              }
+            }
+            
+            var httpRequestValue = valueValue['httpRequest'];
+            if (httpRequestValue) {
+              var httpRequestInstance = {};
+              eventDataInstance.httpRequest = httpRequestInstance;
+              
+              var clientRequestIdValue = httpRequestValue['clientRequestId'];
+              if (clientRequestIdValue) {
+                var clientRequestIdInstance = clientRequestIdValue;
+                httpRequestInstance.clientRequestId = clientRequestIdInstance;
+              }
+              
+              var clientIpAddressValue = httpRequestValue['clientIpAddress'];
+              if (clientIpAddressValue) {
+                var clientIpAddressInstance = clientIpAddressValue;
+                httpRequestInstance.clientIpAddress = clientIpAddressInstance;
+              }
+              
+              var methodValue = httpRequestValue['method'];
+              if (methodValue) {
+                var methodInstance = methodValue;
+                httpRequestInstance.method = methodInstance;
+              }
+              
+              var uriValue = httpRequestValue['uri'];
+              if (uriValue) {
+                var uriInstance = uriValue;
+                httpRequestInstance.uri = uriInstance;
+              }
+            }
+            
+            var levelValue = valueValue['level'];
+            if (levelValue) {
+              var levelInstance = levelValue;
+              eventDataInstance.level = levelInstance;
+            }
+            
+            var resourceGroupNameValue = valueValue['resourceGroupName'];
+            if (resourceGroupNameValue) {
+              var resourceGroupNameInstance = resourceGroupNameValue;
+              eventDataInstance.resourceGroupName = resourceGroupNameInstance;
+            }
+            
+            var resourceProviderNameValue = valueValue['resourceProviderName'];
+            if (resourceProviderNameValue) {
+              var resourceProviderNameInstance = {};
+              eventDataInstance.resourceProviderName = resourceProviderNameInstance;
+              
+              var valueValue4 = resourceProviderNameValue['value'];
+              if (valueValue4) {
+                var valueInstance3 = valueValue4;
+                resourceProviderNameInstance.value = valueInstance3;
+              }
+              
+              var localizedValueValue3 = resourceProviderNameValue['localizedValue'];
+              if (localizedValueValue3) {
+                var localizedValueInstance3 = localizedValueValue3;
+                resourceProviderNameInstance.localizedValue = localizedValueInstance3;
+              }
+            }
+            
+            var resourceUriValue = valueValue['resourceUri'];
+            if (resourceUriValue) {
+              var resourceUriInstance = resourceUriValue;
+              eventDataInstance.resourceUri = resourceUriInstance;
+            }
+            
+            var operationIdValue = valueValue['operationId'];
+            if (operationIdValue) {
+              var operationIdInstance = operationIdValue;
+              eventDataInstance.operationId = operationIdInstance;
+            }
+            
+            var operationNameValue = valueValue['operationName'];
+            if (operationNameValue) {
+              var operationNameInstance = {};
+              eventDataInstance.operationName = operationNameInstance;
+              
+              var valueValue5 = operationNameValue['value'];
+              if (valueValue5) {
+                var valueInstance4 = valueValue5;
+                operationNameInstance.value = valueInstance4;
+              }
+              
+              var localizedValueValue4 = operationNameValue['localizedValue'];
+              if (localizedValueValue4) {
+                var localizedValueInstance4 = localizedValueValue4;
+                operationNameInstance.localizedValue = localizedValueInstance4;
+              }
+            }
+            
+            var propertiesSequenceElement = valueValue['properties'];
+            if (propertiesSequenceElement) {
+              for (var property2 in propertiesSequenceElement) {
+                var propertiesKey = property2;
+                var propertiesValue = propertiesSequenceElement[property2];
+                eventDataInstance.properties[propertiesKey] = propertiesValue;
+              }
+            }
+            
+            var statusValue = valueValue['status'];
+            if (statusValue) {
+              var statusInstance = {};
+              eventDataInstance.status = statusInstance;
+              
+              var valueValue6 = statusValue['value'];
+              if (valueValue6) {
+                var valueInstance5 = valueValue6;
+                statusInstance.value = valueInstance5;
+              }
+              
+              var localizedValueValue5 = statusValue['localizedValue'];
+              if (localizedValueValue5) {
+                var localizedValueInstance5 = localizedValueValue5;
+                statusInstance.localizedValue = localizedValueInstance5;
+              }
+            }
+            
+            var subStatusValue = valueValue['subStatus'];
+            if (subStatusValue) {
+              var subStatusInstance = {};
+              eventDataInstance.subStatus = subStatusInstance;
+              
+              var valueValue7 = subStatusValue['value'];
+              if (valueValue7) {
+                var valueInstance6 = valueValue7;
+                subStatusInstance.value = valueInstance6;
+              }
+              
+              var localizedValueValue6 = subStatusValue['localizedValue'];
+              if (localizedValueValue6) {
+                var localizedValueInstance6 = localizedValueValue6;
+                subStatusInstance.localizedValue = localizedValueInstance6;
+              }
+            }
+            
+            var eventTimestampValue = valueValue['eventTimestamp'];
+            if (eventTimestampValue) {
+              var eventTimestampInstance = eventTimestampValue;
+              eventDataInstance.eventTimestamp = eventTimestampInstance;
+            }
+            
+            var submissionTimestampValue = valueValue['submissionTimestamp'];
+            if (submissionTimestampValue) {
+              var submissionTimestampInstance = submissionTimestampValue;
+              eventDataInstance.submissionTimestamp = submissionTimestampInstance;
+            }
+            
+            var subscriptionIdValue = valueValue['subscriptionId'];
+            if (subscriptionIdValue) {
+              var subscriptionIdInstance = subscriptionIdValue;
+              eventDataInstance.subscriptionId = subscriptionIdInstance;
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue) {
+          var nextLinkInstance = nextLinkValue;
+          eventDataCollectionInstance.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  /**
+   * The List Event Values operation lists the events.
+   * 
+   * @param {ListEventsForResourceProviderParameters} parameters
+   * 
+   * @param {string} parameters.resourceProvider The resource provider.
+   * 
+   * @param {date} parameters.startTime The start time of the events.
+   * 
+   * @param {date} [parameters.endTime] The end time of the events.
+   * 
+   * @param {EventChannels} [parameters.eventChannels] The event channels.
+   * 
+   * @param {string} [parameters.nextLink] The next link token.
+   * 
+   * @param {function} callback
+   * 
+   * @returns {Stream} The response stream.
+   */
+  EventDataOperations.prototype.listEventsForResourceProvider = function(parameters, callback) {
+    if (callback === null || callback === undefined) {
+      throw new Error('callback cannot be null.');
+    }
+    // Validate
+    if (parameters === null || parameters === undefined) {
+      return callback(new Error('parameters cannot be null.'));
+    }
+    if (parameters.resourceProvider === null || parameters.resourceProvider === undefined) {
+      return callback(new Error('parameters.resourceProvider cannot be null.'));
+    }
+    if (parameters.startTime === null || parameters.startTime === undefined) {
+      return callback(new Error('parameters.startTime cannot be null.'));
+    }
+    
+    // Tracing
+    
+    // Construct URL
+    var url2 = '/subscriptions/' + (this.client.credentials.subscriptionId ? this.client.credentials.subscriptionId.trim() : '') + '/providers/microsoft.insights/eventtypes/management/values?';
+    url2 = url2 + 'api-version=2014-04-01';
+    url2 = url2 + '&amp;$filter=resourceProvider eq \'' + encodeURIComponent(parameters.resourceProvider.trim()) + '\' and ';
+    url2 = url2 + '&amp;eventTimestamp ge \'' + encodeURIComponent(parameters.startTime.toISOString()) + '\' and ';
+    if (parameters.endTime) {
+      url2 = url2 + '&amp;eventTimestamp le \'' + encodeURIComponent(parameters.endTime.toISOString()) + '\' and ';
+    }
+    if (parameters.eventChannels) {
+      url2 = url2 + '&amp;eventChannels eq \'' + encodeURIComponent(parameters.eventChannels ? parameters.eventChannels.toString() : 'Admin') + '\'';
+    }
+    if (parameters.nextLink) {
+      url2 = url2 + '&amp;$skipToken=' + encodeURIComponent(parameters.nextLink ? parameters.nextLink.trim() : '');
+    }
+    var baseUrl = this.client.baseUri;
+    // Trim '/' character from the end of baseUrl and beginning of url.
+    if (baseUrl[baseUrl.length - 1] === '/') {
+      baseUrl = baseUrl.substring(0, (baseUrl.length - 1) + 0);
+    }
+    if (url2[0] === '/') {
+      url2 = url2.substring(1);
+    }
+    url2 = baseUrl + '/' + url2;
+    url2 = url2.replace(' ', '%20');
+    
+    // Create HTTP transport objects
+    var httpRequest = new WebResource();
+    httpRequest.method = 'GET';
+    httpRequest.headers = {};
+    httpRequest.url = url2;
+    
+    // Set Headers
+    httpRequest.headers['Accept'] = 'application/json';
+    
+    // Send Request
+    return this.client.pipeline(httpRequest, function (err, response, body) {
+      if (err) {
+        return callback(err);
+      }
+      var statusCode = response.statusCode;
+      if (statusCode !== 200) {
+        var error = new Error(body);
+        error.statusCode = response.statusCode;
+        return callback(error);
+      }
+      
+      // Create Result
+      var result = null;
+      // Deserialize Response
+      var responseContent = body;
+      result = {};
+      var responseDoc = null;
+      if (responseContent) {
+        responseDoc = JSON.parse(responseContent);
+      }
+      
+      if (responseDoc) {
+        var eventDataCollectionInstance = { value: [] };
+        result.eventDataCollection = eventDataCollectionInstance;
+        
+        var valueArray = responseDoc['value'];
+        if (valueArray) {
+          for (var loweredIndex1 = 0; loweredIndex1 &lt; valueArray.length; loweredIndex1 = loweredIndex1 + 1) {
+            var valueValue = valueArray[loweredIndex1];
+            var eventDataInstance = { claims: {}, properties: {} };
+            eventDataCollectionInstance.value.push(eventDataInstance);
+            
+            var authorizationValue = valueValue['authorization'];
+            if (authorizationValue) {
+              var authorizationInstance = {};
+              eventDataInstance.authorization = authorizationInstance;
+              
+              var actionValue = authorizationValue['action'];
+              if (actionValue) {
+                var actionInstance = actionValue;
+                authorizationInstance.action = actionInstance;
+              }
+              
+              var conditionValue = authorizationValue['condition'];
+              if (conditionValue) {
+                var conditionInstance = conditionValue;
+                authorizationInstance.condition = conditionInstance;
+              }
+              
+              var roleValue = authorizationValue['role'];
+              if (roleValue) {
+                var roleInstance = roleValue;
+                authorizationInstance.role = roleInstance;
+              }
+              
+              var scopeValue = authorizationValue['scope'];
+              if (scopeValue) {
+                var scopeInstance = scopeValue;
+                authorizationInstance.scope = scopeInstance;
+              }
+            }
+            
+            var channelsValue = valueValue['channels'];
+            if (channelsValue) {
+              var channelsInstance = channelsValue;
+              eventDataInstance.eventChannels = channelsInstance;
+            }
+
+            var callerValue = valueValue['caller'];
+            if (callerValue) {
+              var callerInstance = callerValue;
+              eventDataInstance.caller = callerInstance;
+            }
+
+            var claimsSequenceElement = valueValue['claims'];
+            if (claimsSequenceElement) {
+              for (var property in claimsSequenceElement) {
+                var claimsKey = property;
+                var claimsValue = claimsSequenceElement[property];
+                eventDataInstance.claims[claimsKey] = claimsValue;
+              }
+            }
+            
+            var descriptionValue = valueValue['description'];
+            if (descriptionValue) {
+              var descriptionInstance = descriptionValue;
+              eventDataInstance.description = descriptionInstance;
+            }
+            
+            var eventDataIdValue = valueValue['eventDataId'];
+            if (eventDataIdValue) {
+              var eventDataIdInstance = eventDataIdValue;
+              eventDataInstance.eventDataId = eventDataIdInstance;
+            }
+            
+            var correlationIdValue = valueValue['correlationId'];
+            if (correlationIdValue) {
+              var correlationIdInstance = correlationIdValue;
+              eventDataInstance.correlationId = correlationIdInstance;
+            }
+            
+            var eventNameValue = valueValue['eventName'];
+            if (eventNameValue) {
+              var eventNameInstance = {};
+              eventDataInstance.eventName = eventNameInstance;
+              
+              var valueValue2 = eventNameValue['value'];
+              if (valueValue2) {
+                var valueInstance = valueValue2;
+                eventNameInstance.value = valueInstance;
+              }
+              
+              var localizedValueValue = eventNameValue['localizedValue'];
+              if (localizedValueValue) {
+                var localizedValueInstance = localizedValueValue;
+                eventNameInstance.localizedValue = localizedValueInstance;
+              }
+            }
+            
+            var eventSourceValue = valueValue['eventSource'];
+            if (eventSourceValue) {
+              var eventSourceInstance = {};
+              eventDataInstance.eventSource = eventSourceInstance;
+              
+              var valueValue3 = eventSourceValue['value'];
+              if (valueValue3) {
+                var valueInstance2 = valueValue3;
+                eventSourceInstance.value = valueInstance2;
+              }
+              
+              var localizedValueValue2 = eventSourceValue['localizedValue'];
+              if (localizedValueValue2) {
+                var localizedValueInstance2 = localizedValueValue2;
+                eventSourceInstance.localizedValue = localizedValueInstance2;
+              }
+            }
+            
+            var httpRequestValue = valueValue['httpRequest'];
+            if (httpRequestValue) {
+              var httpRequestInstance = {};
+              eventDataInstance.httpRequest = httpRequestInstance;
+              
+              var clientRequestIdValue = httpRequestValue['clientRequestId'];
+              if (clientRequestIdValue) {
+                var clientRequestIdInstance = clientRequestIdValue;
+                httpRequestInstance.clientRequestId = clientRequestIdInstance;
+              }
+              
+              var clientIpAddressValue = httpRequestValue['clientIpAddress'];
+              if (clientIpAddressValue) {
+                var clientIpAddressInstance = clientIpAddressValue;
+                httpRequestInstance.clientIpAddress = clientIpAddressInstance;
+              }
+              
+              var methodValue = httpRequestValue['method'];
+              if (methodValue) {
+                var methodInstance = methodValue;
+                httpRequestInstance.method = methodInstance;
+              }
+              
+              var uriValue = httpRequestValue['uri'];
+              if (uriValue) {
+                var uriInstance = uriValue;
+                httpRequestInstance.uri = uriInstance;
+              }
+            }
+            
+            var levelValue = valueValue['level'];
+            if (levelValue) {
+              var levelInstance = levelValue;
+              eventDataInstance.level = levelInstance;
+            }
+            
+            var resourceGroupNameValue = valueValue['resourceGroupName'];
+            if (resourceGroupNameValue) {
+              var resourceGroupNameInstance = resourceGroupNameValue;
+              eventDataInstance.resourceGroupName = resourceGroupNameInstance;
+            }
+            
+            var resourceProviderNameValue = valueValue['resourceProviderName'];
+            if (resourceProviderNameValue) {
+              var resourceProviderNameInstance = {};
+              eventDataInstance.resourceProviderName = resourceProviderNameInstance;
+              
+              var valueValue4 = resourceProviderNameValue['value'];
+              if (valueValue4) {
+                var valueInstance3 = valueValue4;
+                resourceProviderNameInstance.value = valueInstance3;
+              }
+              
+              var localizedValueValue3 = resourceProviderNameValue['localizedValue'];
+              if (localizedValueValue3) {
+                var localizedValueInstance3 = localizedValueValue3;
+                resourceProviderNameInstance.localizedValue = localizedValueInstance3;
+              }
+            }
+            
+            var resourceUriValue = valueValue['resourceUri'];
+            if (resourceUriValue) {
+              var resourceUriInstance = resourceUriValue;
+              eventDataInstance.resourceUri = resourceUriInstance;
+            }
+            
+            var operationIdValue = valueValue['operationId'];
+            if (operationIdValue) {
+              var operationIdInstance = operationIdValue;
+              eventDataInstance.operationId = operationIdInstance;
+            }
+            
+            var operationNameValue = valueValue['operationName'];
+            if (operationNameValue) {
+              var operationNameInstance = {};
+              eventDataInstance.operationName = operationNameInstance;
+              
+              var valueValue5 = operationNameValue['value'];
+              if (valueValue5) {
+                var valueInstance4 = valueValue5;
+                operationNameInstance.value = valueInstance4;
+              }
+              
+              var localizedValueValue4 = operationNameValue['localizedValue'];
+              if (localizedValueValue4) {
+                var localizedValueInstance4 = localizedValueValue4;
+                operationNameInstance.localizedValue = localizedValueInstance4;
+              }
+            }
+            
+            var propertiesSequenceElement = valueValue['properties'];
+            if (propertiesSequenceElement) {
+              for (var property2 in propertiesSequenceElement) {
+                var propertiesKey = property2;
+                var propertiesValue = propertiesSequenceElement[property2];
+                eventDataInstance.properties[propertiesKey] = propertiesValue;
+              }
+            }
+            
+            var statusValue = valueValue['status'];
+            if (statusValue) {
+              var statusInstance = {};
+              eventDataInstance.status = statusInstance;
+              
+              var valueValue6 = statusValue['value'];
+              if (valueValue6) {
+                var valueInstance5 = valueValue6;
+                statusInstance.value = valueInstance5;
+              }
+              
+              var localizedValueValue5 = statusValue['localizedValue'];
+              if (localizedValueValue5) {
+                var localizedValueInstance5 = localizedValueValue5;
+                statusInstance.localizedValue = localizedValueInstance5;
+              }
+            }
+            
+            var subStatusValue = valueValue['subStatus'];
+            if (subStatusValue) {
+              var subStatusInstance = {};
+              eventDataInstance.subStatus = subStatusInstance;
+              
+              var valueValue7 = subStatusValue['value'];
+              if (valueValue7) {
+                var valueInstance6 = valueValue7;
+                subStatusInstance.value = valueInstance6;
+              }
+              
+              var localizedValueValue6 = subStatusValue['localizedValue'];
+              if (localizedValueValue6) {
+                var localizedValueInstance6 = localizedValueValue6;
+                subStatusInstance.localizedValue = localizedValueInstance6;
+              }
+            }
+            
+            var eventTimestampValue = valueValue['eventTimestamp'];
+            if (eventTimestampValue) {
+              var eventTimestampInstance = eventTimestampValue;
+              eventDataInstance.eventTimestamp = eventTimestampInstance;
+            }
+            
+            var submissionTimestampValue = valueValue['submissionTimestamp'];
+            if (submissionTimestampValue) {
+              var submissionTimestampInstance = submissionTimestampValue;
+              eventDataInstance.submissionTimestamp = submissionTimestampInstance;
+            }
+            
+            var subscriptionIdValue = valueValue['subscriptionId'];
+            if (subscriptionIdValue) {
+              var subscriptionIdInstance = subscriptionIdValue;
+              eventDataInstance.subscriptionId = subscriptionIdInstance;
+            }
+          }
+        }
+        
+        var nextLinkValue = responseDoc['nextLink'];
+        if (nextLinkValue) {
+          var nextLinkInstance = nextLinkValue;
+          eventDataCollectionInstance.nextLink = nextLinkInstance;
+        }
+      }
+      
+      result.statusCode = statusCode;
+      result.requestId = response.headers['x-ms-request-id'];
+      
+      return callback(null, result);
+    });
+  };
+  
+  return EventDataOperations;
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:08 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

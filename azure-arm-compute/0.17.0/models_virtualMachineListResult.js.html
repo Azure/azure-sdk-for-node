@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/virtualMachineListResult.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AvailabilitySets.html">AvailabilitySets</a><ul class='methods'><li data-type='method'><a href="AvailabilitySets.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="AvailabilitySets.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="AvailabilitySets.html#get">get</a></li><li data-type='method'><a href="AvailabilitySets.html#list">list</a></li><li data-type='method'><a href="AvailabilitySets.html#listAvailableSizes">listAvailableSizes</a></li></ul></li><li><a href="ComputeManagementClient.html">ComputeManagementClient</a></li><li><a href="ContainerServiceOperations.html">ContainerServiceOperations</a><ul class='methods'><li data-type='method'><a href="ContainerServiceOperations.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="ContainerServiceOperations.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="ContainerServiceOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ContainerServiceOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ContainerServiceOperations.html#get">get</a></li><li data-type='method'><a href="ContainerServiceOperations.html#list">list</a></li></ul></li><li><a href="UsageOperations.html">UsageOperations</a><ul class='methods'><li data-type='method'><a href="UsageOperations.html#list">list</a></li><li data-type='method'><a href="UsageOperations.html#listNext">listNext</a></li></ul></li><li><a href="VirtualMachineExtensionImages.html">VirtualMachineExtensionImages</a><ul class='methods'><li data-type='method'><a href="VirtualMachineExtensionImages.html#get">get</a></li><li data-type='method'><a href="VirtualMachineExtensionImages.html#listTypes">listTypes</a></li><li data-type='method'><a href="VirtualMachineExtensionImages.html#listVersions">listVersions</a></li></ul></li><li><a href="VirtualMachineExtensions.html">VirtualMachineExtensions</a><ul class='methods'><li data-type='method'><a href="VirtualMachineExtensions.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualMachineExtensions.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualMachineExtensions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualMachineExtensions.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineExtensions.html#get">get</a></li></ul></li><li><a href="VirtualMachineImages.html">VirtualMachineImages</a><ul class='methods'><li data-type='method'><a href="VirtualMachineImages.html#get">get</a></li><li data-type='method'><a href="VirtualMachineImages.html#list">list</a></li><li data-type='method'><a href="VirtualMachineImages.html#listOffers">listOffers</a></li><li data-type='method'><a href="VirtualMachineImages.html#listPublishers">listPublishers</a></li><li data-type='method'><a href="VirtualMachineImages.html#listSkus">listSkus</a></li></ul></li><li><a href="VirtualMachines.html">VirtualMachines</a><ul class='methods'><li data-type='method'><a href="VirtualMachines.html#beginCapture">beginCapture</a></li><li data-type='method'><a href="VirtualMachines.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualMachines.html#beginDeallocate">beginDeallocate</a></li><li data-type='method'><a href="VirtualMachines.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualMachines.html#beginPowerOff">beginPowerOff</a></li><li data-type='method'><a href="VirtualMachines.html#beginRedeploy">beginRedeploy</a></li><li data-type='method'><a href="VirtualMachines.html#beginRestart">beginRestart</a></li><li data-type='method'><a href="VirtualMachines.html#beginStart">beginStart</a></li><li data-type='method'><a href="VirtualMachines.html#capture">capture</a></li><li data-type='method'><a href="VirtualMachines.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualMachines.html#deallocate">deallocate</a></li><li data-type='method'><a href="VirtualMachines.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachines.html#generalize">generalize</a></li><li data-type='method'><a href="VirtualMachines.html#get">get</a></li><li data-type='method'><a href="VirtualMachines.html#list">list</a></li><li data-type='method'><a href="VirtualMachines.html#listAll">listAll</a></li><li data-type='method'><a href="VirtualMachines.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="VirtualMachines.html#listAvailableSizes">listAvailableSizes</a></li><li data-type='method'><a href="VirtualMachines.html#powerOff">powerOff</a></li><li data-type='method'><a href="VirtualMachines.html#redeploy">redeploy</a></li><li data-type='method'><a href="VirtualMachines.html#restart">restart</a></li><li data-type='method'><a href="VirtualMachines.html#start">start</a></li></ul></li><li><a href="VirtualMachineScaleSets.html">VirtualMachineScaleSets</a><ul class='methods'><li data-type='method'><a href="VirtualMachineScaleSets.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginDeallocate">beginDeallocate</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginDeleteInstances">beginDeleteInstances</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginPowerOff">beginPowerOff</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginReimage">beginReimage</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginRestart">beginRestart</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginStart">beginStart</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginUpdateInstances">beginUpdateInstances</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#deallocate">deallocate</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#deleteInstances">deleteInstances</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#get">get</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#getInstanceView">getInstanceView</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#list">list</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listAll">listAll</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listNext">listNext</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listSkus">listSkus</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listSkusNext">listSkusNext</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#powerOff">powerOff</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#reimage">reimage</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#restart">restart</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#start">start</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#updateInstances">updateInstances</a></li></ul></li><li><a href="VirtualMachineScaleSetVMs.html">VirtualMachineScaleSetVMs</a><ul class='methods'><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginDeallocate">beginDeallocate</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginPowerOff">beginPowerOff</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginReimage">beginReimage</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginRestart">beginRestart</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginStart">beginStart</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#deallocate">deallocate</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#get">get</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#getInstanceView">getInstanceView</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#list">list</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#listNext">listNext</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#powerOff">powerOff</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#reimage">reimage</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#restart">restart</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#start">start</a></li></ul></li><li><a href="VirtualMachineSizes.html">VirtualMachineSizes</a><ul class='methods'><li data-type='method'><a href="VirtualMachineSizes.html#list">list</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#adminPassword">adminPassword</a></li><li><a href="global.html#capacity">capacity</a></li><li><a href="global.html#certificateStore">certificateStore</a></li><li><a href="global.html#certificateUrl">certificateUrl</a></li><li><a href="global.html#content">content</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#dataDiskImages">dataDiskImages</a></li><li><a href="global.html#dataDisks">dataDisks</a></li><li><a href="global.html#diskSizeGB">diskSizeGB</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#errordetail">errordetail</a></li><li><a href="global.html#extensions">extensions</a></li><li><a href="global.html#fqdn">fqdn</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#instanceIds">instanceIds</a></li><li><a href="global.html#ipConfigurations">ipConfigurations</a></li><li><a href="global.html#keyData">keyData</a></li><li><a href="global.html#listeners">listeners</a></li><li><a href="global.html#loadBalancerInboundNatPools">loadBalancerInboundNatPools</a></li><li><a href="global.html#localizedValue">localizedValue</a></li><li><a href="global.html#lun">lun</a></li><li><a href="global.html#maxDataDiskCount">maxDataDiskCount</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#mode">mode</a></li><li><a href="global.html#networkInterfaceConfigurations">networkInterfaceConfigurations</a></li><li><a href="global.html#networkInterfaces">networkInterfaces</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#operatingSystem">operatingSystem</a></li><li><a href="global.html#orchestratorType">orchestratorType</a></li><li><a href="global.html#output">output</a></li><li><a href="global.html#overProvision">overProvision</a></li><li><a href="global.html#overwriteVhds">overwriteVhds</a></li><li><a href="global.html#primary">primary</a></li><li><a href="global.html#product">product</a></li><li><a href="global.html#promotionCode">promotionCode</a></li><li><a href="global.html#provisioningState">provisioningState</a></li><li><a href="global.html#publicKeys">publicKeys</a></li><li><a href="global.html#resources">resources</a></li><li><a href="global.html#scaleType">scaleType</a></li><li><a href="global.html#secrets">secrets</a></li><li><a href="global.html#serialConsoleLogBlobUri">serialConsoleLogBlobUri</a></li><li><a href="global.html#statuses">statuses</a></li><li><a href="global.html#statusesSummary">statusesSummary</a></li><li><a href="global.html#storageUri">storageUri</a></li><li><a href="global.html#supportsMultipleExtensions">supportsMultipleExtensions</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#time">time</a></li><li><a href="global.html#uri">uri</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#vaultCertificates">vaultCertificates</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#vhdContainers">vhdContainers</a></li><li><a href="global.html#vmSize">vmSize</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/virtualMachineListResult.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var util = require('util');
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineListResult class.
+ * @constructor
+ * The List Virtual Machine operation response.
+ * @member {array} [value] Gets or sets the list of virtual machines.
+ * 
+ * @member {string} [nextLink] Gets or sets the uri to fetch the next page of
+ * VMs. Call ListNext() with this to fetch the next page of Virtual Machines.
+ * 
+ */
+function VirtualMachineListResult() {
+}
+
+util.inherits(VirtualMachineListResult, Array);
+
+/**
+ * Defines the metadata of VirtualMachineListResult
+ *
+ * @returns {object} metadata of VirtualMachineListResult
+ *
+ */
+VirtualMachineListResult.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'VirtualMachineListResult',
+    type: {
+      name: 'Composite',
+      className: 'VirtualMachineListResult',
+      modelProperties: {
+        value: {
+          required: false,
+          serializedName: '',
+          type: {
+            name: 'Sequence',
+            element: {
+                required: false,
+                serializedName: 'VirtualMachineElementType',
+                type: {
+                  name: 'Composite',
+                  className: 'VirtualMachine'
+                }
+            }
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = VirtualMachineListResult;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:03:54 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

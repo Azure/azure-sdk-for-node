@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>createARMWebsiteManagementClient - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Azure SDK Packages</h3><ul><h3>Azure Services</h3><ul><li><a href="azure-batch/latest">azure-batch</a></li><li><a href="azure-extra/latest">azure-extra</a></li><li><a href="azure-gallery/latest">azure-gallery</a></li><li><a href="azure-graph/latest">azure-graph</a></li><li><a href="azure-keyvault/latest">azure-keyvault</a></li><li><a href="azure-monitoring/latest">azure-monitoring</a></li><li><a href="azure-sb/latest">azure-sb</a></li><li><a href="azure-scheduler/latest">azure-scheduler</a></li><li><a href="azure-storage-legacy/latest">azure-storage-legacy</a></li></ul><h3>Resource Management</h3><ul><li><a href="azure-arm-apiapp/latest">azure-arm-apiapp</a></li><li><a href="azure-arm-authorization/latest">azure-arm-authorization</a></li><li><a href="azure-arm-batch/latest">azure-arm-batch</a></li><li><a href="azure-arm-cdn/latest">azure-arm-cdn</a></li><li><a href="azure-arm-commerce/latest">azure-arm-commerce</a></li><li><a href="azure-arm-compute/latest">azure-arm-compute</a></li><li><a href="azure-arm-datalake-analytics/latest">azure-arm-datalake-analytics</a></li><li><a href="azure-arm-datalake-store/latest">azure-arm-datalake-store</a></li><li><a href="azure-arm-dns/latest">azure-arm-dns</a></li><li><a href="azure-arm-hdinsight/latest">azure-arm-hdinsight</a></li><li><a href="azure-arm-hdinsight-jobs/latest">azure-arm-hdinsight-jobs</a></li><li><a href="azure-arm-insights/latest">azure-arm-insights</a></li><li><a href="azure-arm-intune/latest">azure-arm-intune</a></li><li><a href="azure-arm-keyvault/latest">azure-arm-keyvault</a></li><li><a href="azure-arm-network/latest">azure-arm-network</a></li><li><a href="azure-arm-rediscache/latest">azure-arm-rediscache</a></li><li><a href="azure-arm-resource/latest">azure-arm-resource</a></li><li><a href="azure-arm-servicefabric/latest">azure-arm-servicefabric</a></li><li><a href="azure-arm-storage/latest">azure-arm-storage</a></li><li><a href="azure-arm-trafficmanager/latest">azure-arm-trafficmanager</a></li><li><a href="azure-arm-website/latest">azure-arm-website</a></li></ul><h3>Service Management</h3><ul><li><a href="azure-asm-compute/latest">azure-asm-compute</a></li><li><a href="azure-asm-hdinsight/latest">azure-asm-hdinsight</a></li><li><a href="azure-asm-mgmt/latest">azure-asm-mgmt</a></li><li><a href="azure-asm-network/latest">azure-asm-network</a></li><li><a href="azure-asm-sb/latest">azure-asm-sb</a></li><li><a href="azure-asm-scheduler/latest">azure-asm-scheduler</a></li><li><a href="azure-asm-sql/latest">azure-asm-sql</a></li><li><a href="azure-asm-storage/latest">azure-asm-storage</a></li><li><a href="azure-asm-store/latest">azure-asm-store</a></li><li><a href="azure-asm-subscription/latest">azure-asm-subscription</a></li><li><a href="azure-asm-trafficmanager/latest">azure-asm-trafficmanager</a></li><li><a href="azure-asm-website/latest">azure-asm-website</a></li></ul><h3>Common Libs</h3><ul><li><a href="azure-common/latest">azure-common</a></li></ul></ul><h3>Classes</h3><ul><li><a href="azureARMDns.html">azureARMDns</a></li><li><a href="azureBatch.html">azureBatch</a></li><li><a href="createARMCdnManagementClient.html">createARMCdnManagementClient</a></li><li><a href="createARMComputeManagementClient.html">createARMComputeManagementClient</a></li><li><a href="createARMHDInsightJobManagementClient.html">createARMHDInsightJobManagementClient</a></li><li><a href="createARMHDInsightManagementClient.html">createARMHDInsightManagementClient</a></li><li><a href="createARMNetworkManagementClient.html">createARMNetworkManagementClient</a></li><li><a href="createARMRedisCacheManagementClient.html">createARMRedisCacheManagementClient</a></li><li><a href="createARMWebsiteManagementClient.html">createARMWebsiteManagementClient</a></li><li><a href="createBatchManagementClient.html">createBatchManagementClient</a></li><li><a href="createBatchServiceClient.html">createBatchServiceClient</a></li><li><a href="createGraphManagementClient.html">createGraphManagementClient</a></li></ul><h3>Global</h3><ul><li><a href="global.html#createARMCommerceManagementClient">createARMCommerceManagementClient</a></li><li><a href="global.html#createARMDnsManagementClient">createARMDnsManagementClient</a></li><li><a href="global.html#createARMFeatureManagementClient">createARMFeatureManagementClient</a></li><li><a href="global.html#createARMGalleryClient">createARMGalleryClient</a></li><li><a href="global.html#createARMInsightsManagementClient">createARMInsightsManagementClient</a></li><li><a href="global.html#createARMStorageManagementClient">createARMStorageManagementClient</a></li><li><a href="global.html#createARMSubscriptionManagementClient">createARMSubscriptionManagementClient</a></li><li><a href="global.html#createASMComputeManagementClient">createASMComputeManagementClient</a></li><li><a href="global.html#createASMNetworkManagementClient">createASMNetworkManagementClient</a></li><li><a href="global.html#createASMSchedulerManagementClient">createASMSchedulerManagementClient</a></li><li><a href="global.html#createASMScmService">createASMScmService</a></li><li><a href="global.html#createASMSqlManagementClient">createASMSqlManagementClient</a></li><li><a href="global.html#createASMSqlManagementService">createASMSqlManagementService</a></li><li><a href="global.html#createASMStorageManagementClient">createASMStorageManagementClient</a></li><li><a href="global.html#createASMStoreManagementClient">createASMStoreManagementClient</a></li><li><a href="global.html#createASMSubscriptionClient">createASMSubscriptionClient</a></li><li><a href="global.html#createASMTrafficManagerManagementClient">createASMTrafficManagerManagementClient</a></li><li><a href="global.html#createASMWebSiteExtensionsClient">createASMWebSiteExtensionsClient</a></li><li><a href="global.html#createASMWebSiteManagementClient">createASMWebSiteManagementClient</a></li><li><a href="global.html#createASMWebsiteManagementService">createASMWebsiteManagementService</a></li><li><a href="global.html#createAutoScaleClient">createAutoScaleClient</a></li><li><a href="global.html#createBasicAuthenticationCloudCredentials">createBasicAuthenticationCloudCredentials</a></li><li><a href="global.html#createBlobService">createBlobService</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li><li><a href="global.html#createHDInsightService">createHDInsightService</a></li><li><a href="global.html#createInsightsClient">createInsightsClient</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createManagementClient">createManagementClient</a></li><li><a href="global.html#createMetricsClient">createMetricsClient</a></li><li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createQueueService">createQueueService</a></li><li><a href="global.html#createResourceManagementClient">createResourceManagementClient</a></li><li><a href="global.html#createResourceManagementLockClient">createResourceManagementLockClient</a></li><li><a href="global.html#createSchedulerClient">createSchedulerClient</a></li><li><a href="global.html#createServiceBusManagementClient">createServiceBusManagementClient</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createSqlService">createSqlService</a></li><li><a href="global.html#createTableService">createTableService</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#isEmulated">isEmulated</a></li><li><a href="global.html#KEYVAULT_RESOURCE_ID">KEYVAULT_RESOURCE_ID</a></li><li><a href="global.html#KeyVaultClient">KeyVaultClient</a></li><li><a href="global.html#KeyVaultManagementClient">KeyVaultManagementClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">createARMWebsiteManagementClient</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        createARMWebsiteManagementClient
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    <h4 class="name" id="createARMWebsiteManagementClient"><span class="type-signature"></span>new createARMWebsiteManagementClient<span class="signature">(credentials, subscriptionId, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates a new instance of the ARM WebsiteManagementClient.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>credentials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">credentials</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets Azure subscription credentials.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subscriptionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The parameter options</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Filters to be added to the request pipeline</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>requestOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Options for the underlying request object<br><a href="https://github.com/request/request#requestoptions-callback">Options doc</a></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>noRetryPolicy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If set to true, turn off default retry policy</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>apiVersion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Client Api Version.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>acceptLanguage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the preferred language for the response.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>longRunningOperationRetryTimeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>generateClientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="azure.js.html">azure.js</a>, <a href="azure.js.html#line1026">line 1026</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:32 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SkuOperations - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AgentDiagnosticSettingsOperations-AgentDiagnosticSettingsOperations.html">AgentDiagnosticSettingsOperations</a><ul class='methods'><li data-type='method'><a href="AgentDiagnosticSettingsOperations-AgentDiagnosticSettingsOperations.html#get">get</a></li><li data-type='method'><a href="AgentDiagnosticSettingsOperations-AgentDiagnosticSettingsOperations.html#put">put</a></li></ul></li><li><a href="AlertOperations-AlertOperations.html">AlertOperations</a><ul class='methods'><li data-type='method'><a href="AlertOperations-AlertOperations.html#createOrUpdateRule">createOrUpdateRule</a></li><li data-type='method'><a href="AlertOperations-AlertOperations.html#deleteRule">deleteRule</a></li><li data-type='method'><a href="AlertOperations-AlertOperations.html#getIncident">getIncident</a></li><li data-type='method'><a href="AlertOperations-AlertOperations.html#getRule">getRule</a></li><li data-type='method'><a href="AlertOperations-AlertOperations.html#listIncidentsForRule">listIncidentsForRule</a></li><li data-type='method'><a href="AlertOperations-AlertOperations.html#listRules">listRules</a></li><li data-type='method'><a href="AlertOperations-AlertOperations.html#updateRule">updateRule</a></li></ul></li><li><a href="AutomatedExportOperations-AutomatedExportOperations.html">AutomatedExportOperations</a><ul class='methods'><li data-type='method'><a href="AutomatedExportOperations-AutomatedExportOperations.html#createOrUpdateSetting">createOrUpdateSetting</a></li><li data-type='method'><a href="AutomatedExportOperations-AutomatedExportOperations.html#deleteSetting">deleteSetting</a></li><li data-type='method'><a href="AutomatedExportOperations-AutomatedExportOperations.html#getSetting">getSetting</a></li><li data-type='method'><a href="AutomatedExportOperations-AutomatedExportOperations.html#updateSetting">updateSetting</a></li></ul></li><li><a href="AutoscaleOperations-AutoscaleOperations.html">AutoscaleOperations</a><ul class='methods'><li data-type='method'><a href="AutoscaleOperations-AutoscaleOperations.html#createOrUpdateSetting">createOrUpdateSetting</a></li><li data-type='method'><a href="AutoscaleOperations-AutoscaleOperations.html#deleteSetting">deleteSetting</a></li><li data-type='method'><a href="AutoscaleOperations-AutoscaleOperations.html#getSetting">getSetting</a></li><li data-type='method'><a href="AutoscaleOperations-AutoscaleOperations.html#listSettings">listSettings</a></li><li data-type='method'><a href="AutoscaleOperations-AutoscaleOperations.html#updateSetting">updateSetting</a></li></ul></li><li><a href="EventOperations-EventOperations.html">EventOperations</a><ul class='methods'><li data-type='method'><a href="EventOperations-EventOperations.html#listDigestEvents">listDigestEvents</a></li><li data-type='method'><a href="EventOperations-EventOperations.html#listDigestEventsNext">listDigestEventsNext</a></li><li data-type='method'><a href="EventOperations-EventOperations.html#listEventCategories">listEventCategories</a></li><li data-type='method'><a href="EventOperations-EventOperations.html#listEvents">listEvents</a></li><li data-type='method'><a href="EventOperations-EventOperations.html#listEventsNext">listEventsNext</a></li><li data-type='method'><a href="EventOperations-EventOperations.html#listTenantDigestEvents">listTenantDigestEvents</a></li><li data-type='method'><a href="EventOperations-EventOperations.html#listTenantDigestEventsNext">listTenantDigestEventsNext</a></li><li data-type='method'><a href="EventOperations-EventOperations.html#listTenantEvents">listTenantEvents</a></li><li data-type='method'><a href="EventOperations-EventOperations.html#listTenantEventsNext">listTenantEventsNext</a></li></ul></li><li><a href="InsightsClient-InsightsClient.html">InsightsClient</a></li><li><a href="InsightsManagementClient-InsightsManagementClient.html">InsightsManagementClient</a></li><li><a href="LogDefinitionOperations-LogDefinitionOperations.html">LogDefinitionOperations</a><ul class='methods'><li data-type='method'><a href="LogDefinitionOperations-LogDefinitionOperations.html#getLogDefinitions">getLogDefinitions</a></li></ul></li><li><a href="LogOperations-LogOperations.html">LogOperations</a><ul class='methods'><li data-type='method'><a href="LogOperations-LogOperations.html#getLogs">getLogs</a></li></ul></li><li><a href="LogProfilesOperations-LogProfilesOperations.html">LogProfilesOperations</a><ul class='methods'><li data-type='method'><a href="LogProfilesOperations-LogProfilesOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="LogProfilesOperations-LogProfilesOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="LogProfilesOperations-LogProfilesOperations.html#get">get</a></li><li data-type='method'><a href="LogProfilesOperations-LogProfilesOperations.html#list">list</a></li></ul></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations</a><ul class='methods'><li data-type='method'><a href="MetricDefinitionOperations-MetricDefinitionOperations.html#getMetricDefinitions">getMetricDefinitions</a></li></ul></li><li><a href="MetricOperations-MetricOperations.html">MetricOperations</a><ul class='methods'><li data-type='method'><a href="MetricOperations-MetricOperations.html#getMetrics">getMetrics</a></li></ul></li><li><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html">MonitoringConfigurationOperations</a><ul class='methods'><li data-type='method'><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html#createOrUpdateConfiguration">createOrUpdateConfiguration</a></li><li data-type='method'><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html#createOrUpdateStorageConfiguration">createOrUpdateStorageConfiguration</a></li><li data-type='method'><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html#getConfiguration">getConfiguration</a></li><li data-type='method'><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html#getStorageConfiguration">getStorageConfiguration</a></li><li data-type='method'><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html#updateConfiguration">updateConfiguration</a></li><li data-type='method'><a href="MonitoringConfigurationOperations-MonitoringConfigurationOperations.html#updateStorageConfiguration">updateStorageConfiguration</a></li></ul></li><li><a href="ServiceDiagnosticSettingsOperations-ServiceDiagnosticSettingsOperations.html">ServiceDiagnosticSettingsOperations</a><ul class='methods'><li data-type='method'><a href="ServiceDiagnosticSettingsOperations-ServiceDiagnosticSettingsOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ServiceDiagnosticSettingsOperations-ServiceDiagnosticSettingsOperations.html#get">get</a></li><li data-type='method'><a href="ServiceDiagnosticSettingsOperations-ServiceDiagnosticSettingsOperations.html#put">put</a></li></ul></li><li><a href="SkuOperations-SkuOperations.html">SkuOperations</a><ul class='methods'><li data-type='method'><a href="SkuOperations-SkuOperations.html#getCurrentSku">getCurrentSku</a></li><li data-type='method'><a href="SkuOperations-SkuOperations.html#listSkuDefinitions">listSkuDefinitions</a></li><li data-type='method'><a href="SkuOperations-SkuOperations.html#updateCurrentSku">updateCurrentSku</a></li></ul></li><li><a href="StorageDiagnosticSettingsOperations-StorageDiagnosticSettingsOperations.html">StorageDiagnosticSettingsOperations</a><ul class='methods'><li data-type='method'><a href="StorageDiagnosticSettingsOperations-StorageDiagnosticSettingsOperations.html#get">get</a></li><li data-type='method'><a href="StorageDiagnosticSettingsOperations-StorageDiagnosticSettingsOperations.html#put">put</a></li></ul></li><li><a href="UsageMetricsOperations-UsageMetricsOperations.html">UsageMetricsOperations</a><ul class='methods'><li data-type='method'><a href="UsageMetricsOperations-UsageMetricsOperations.html#list">list</a></li><li data-type='method'><a href="UsageMetricsOperations-UsageMetricsOperations.html#listDeprecated">listDeprecated</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createInsightsClient">createInsightsClient</a></li><li><a href="global.html#createInsightsManagementClient">createInsightsManagementClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">SkuOperations</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        SkuOperations
+        </h2>
+        
+            <div class="class-description"><p>Operations for managing resources sku.<br><strong>NOTE</strong>: An instance of this class is automatically created for an<br>instance of the [InsightsManagementClient] {@link<br>InsightsManagementClient~InsightsManagementClient}.<br>See [skuOperations] {@link<br>InsightsManagementClient~InsightsManagementClient#skuOperations}.<br>Initializes a new instance of the SkuOperations class.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="SkuOperations"><span class="type-signature"></span>new SkuOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">InsightsManagementClient</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Reference to the service client.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="insightsManagementClient.js.html">insightsManagementClient.js</a>, <a href="insightsManagementClient.js.html#line8665">line 8665</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="getCurrentSku"><span class="type-signature"></span>getCurrentSku<span class="signature">(resourceId, apiVersion, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The resource id.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>apiVersion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The resource provider api version.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="insightsManagementClient.js.html">insightsManagementClient.js</a>, <a href="insightsManagementClient.js.html#line8679">line 8679</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="listSkuDefinitions"><span class="type-signature"></span>listSkuDefinitions<span class="signature">(resourceId, apiVersion, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The resource id.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>apiVersion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The resource provider api version.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="insightsManagementClient.js.html">insightsManagementClient.js</a>, <a href="insightsManagementClient.js.html#line8802">line 8802</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateCurrentSku"><span class="type-signature"></span>updateCurrentSku<span class="signature">(resourceId, parameters, apiVersion, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SkuUpdateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sku</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CurrentSku</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the current sku.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the unique name of the<br>sku e.g. 'Free_A0'.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tier</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the tier of the sku<br>e.g. 'free'.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>size</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the size of the sku<br>e.g. 'A0'.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>family</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the family of the sku<br>e.g. 'A'.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>capacity</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the current<br>capacity.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>apiVersion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The resource provider api version.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="insightsManagementClient.js.html">insightsManagementClient.js</a>, <a href="insightsManagementClient.js.html#line8984">line 8984</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:03 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
