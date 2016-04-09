@@ -47,13 +47,7 @@
         SubscriptionOperations
         </h2>
         
-            <div class="class-description"><p>Operations for listing subscription details.  (see
-http://msdn.microsoft.com/en-us/library/windowsazure/gg715315.aspx for
-more information)
-<strong>NOTE</strong>: An instance of this class is automatically created for an
-instance of the [ManagementClient] <a href="ManagementClient-ManagementClient.html"><code>ManagementClient~ManagementClient</code></a>.
-See [subscriptions] <a href="ManagementClient-ManagementClient.html#subscriptions"><code>ManagementClient~ManagementClient#subscriptions</code></a>.
-Initializes a new instance of the SubscriptionOperations class.</p></div>
+            <div class="class-description"><p>Operations for listing subscription details.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/gg715315.aspx for<br>more information)<br><strong>NOTE</strong>: An instance of this class is automatically created for an<br>instance of the [ManagementClient] {@link<br>ManagementClient~ManagementClient}.<br>See [subscriptions] {@link<br>ManagementClient~ManagementClient#subscriptions}.<br>Initializes a new instance of the SubscriptionOperations class.</p></div>
         
     
 </header>
@@ -219,10 +213,7 @@ Initializes a new instance of the SubscriptionOperations class.</p></div>
 
 
 <div class="description">
-    <p>The Get Subscription operation returns account and resource allocation
-information for the specified subscription.  (see
-http://msdn.microsoft.com/en-us/library/windowsazure/hh403995.aspx for
-more information)</p>
+    <p>The Get Subscription operation returns account and resource allocation<br>information for the specified subscription.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/hh403995.aspx for<br>more information)</p>
 </div>
 
 
@@ -375,11 +366,7 @@ more information)</p>
 
 
 <div class="description">
-    <p>The List Subscription Operations operation returns a list of create,
-update, and delete operations that were performed on a subscription
-during the specified timeframe.  (see
-http://msdn.microsoft.com/en-us/library/windowsazure/gg715318.aspx for
-more information)</p>
+    <p>The List Subscription Operations operation returns a list of create,<br>update, and delete operations that were performed on a subscription<br>during the specified timeframe.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/gg715318.aspx for<br>more information)</p>
 </div>
 
 
@@ -431,8 +418,7 @@ more information)</p>
 
             
 
-            <td class="description last"><p>Parameters
-supplied to the List Subscription Operations operation.</p>
+            <td class="description last"><p>Parameters<br>supplied to the List Subscription Operations operation.</p>
                 <h6>Properties</h6>
                 
 
@@ -484,11 +470,7 @@ supplied to the List Subscription Operations operation.</p>
 
             
 
-            <td class="description last"><p>The start of the timeframe to begin
-listing subscription operations in UTC format. This parameter and the
-EndTime parameter indicate the timeframe to retrieve subscription
-operations. This parameter cannot indicate a start date of more than 90
-days in the past.</p></td>
+            <td class="description last"><p>The start of the timeframe to begin<br>listing subscription operations in UTC format. This parameter and the<br>EndTime parameter indicate the timeframe to retrieve subscription<br>operations. This parameter cannot indicate a start date of more than 90<br>days in the past.</p></td>
         </tr>
 
     
@@ -519,9 +501,7 @@ days in the past.</p></td>
 
             
 
-            <td class="description last"><p>The end of the timeframe to begin listing
-subscription operations in UTC format. This parameter and the StartTime
-parameter indicate the timeframe to retrieve subscription operations.</p></td>
+            <td class="description last"><p>The end of the timeframe to begin listing<br>subscription operations in UTC format. This parameter and the StartTime<br>parameter indicate the timeframe to retrieve subscription operations.</p></td>
         </tr>
 
     
@@ -554,10 +534,7 @@ parameter indicate the timeframe to retrieve subscription operations.</p></td>
 
             
 
-            <td class="description last"><p>Returns subscription
-operations only for the specified object type and object ID. This
-parameter must be set equal to the URL value for performing an HTTP GET
-on the object. If no object is specified, a filter is not applied.</p></td>
+            <td class="description last"><p>Returns subscription<br>operations only for the specified object type and object ID. This<br>parameter must be set equal to the URL value for performing an HTTP GET<br>on the object. If no object is specified, a filter is not applied.</p></td>
         </tr>
 
     
@@ -590,12 +567,7 @@ on the object. If no object is specified, a filter is not applied.</p></td>
 
             
 
-            <td class="description last"><p>Returns subscription
-operations only for the specified result status, either Succeeded,
-Failed, or InProgress. This filter can be combined with the
-ObjectIdFilter to select subscription operations for an object with a
-specific result status. If no result status is specified, a filter is not
-applied.</p></td>
+            <td class="description last"><p>Returns subscription<br>operations only for the specified result status, either Succeeded,<br>Failed, or InProgress. This filter can be combined with the<br>ObjectIdFilter to select subscription operations for an object with a<br>specific result status. If no result status is specified, a filter is not<br>applied.</p></td>
         </tr>
 
     
@@ -628,13 +600,7 @@ applied.</p></td>
 
             
 
-            <td class="description last"><p>When there are too many
-operations to list, such as when the requested timeframe is very large,
-the response includes an incomplete list and a token that can be used to
-return the rest of the list. Subsequent requests must include this
-parameter to continue listing operations from where the last response
-left off. If no token is specified, a filter is not applied and the
-response will begin at the specified StartTime.</p></td>
+            <td class="description last"><p>When there are too many<br>operations to list, such as when the requested timeframe is very large,<br>the response includes an incomplete list and a token that can be used to<br>return the rest of the list. Subsequent requests must include this<br>parameter to continue listing operations from where the last response<br>left off. If no token is specified, a filter is not applied and the<br>response will begin at the specified StartTime.</p></td>
         </tr>
 
     
@@ -1123,7 +1089,7 @@ response will begin at the specified StartTime.</p></td>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 01:57:52 GMT-0700 (PDT) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:07 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/applicationFilter.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ApplicationOperations.html">ApplicationOperations</a><ul class='methods'><li data-type='method'><a href="ApplicationOperations.html#create">create</a></li><li data-type='method'><a href="ApplicationOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ApplicationOperations.html#get">get</a></li><li data-type='method'><a href="ApplicationOperations.html#list">list</a></li><li data-type='method'><a href="ApplicationOperations.html#patch">patch</a></li></ul></li><li><a href="GraphRbacManagementClient.html">GraphRbacManagementClient</a></li><li><a href="GroupOperations.html">GroupOperations</a><ul class='methods'><li data-type='method'><a href="GroupOperations.html#addMember">addMember</a></li><li data-type='method'><a href="GroupOperations.html#create">create</a></li><li data-type='method'><a href="GroupOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="GroupOperations.html#get">get</a></li><li data-type='method'><a href="GroupOperations.html#getGroupMembers">getGroupMembers</a></li><li data-type='method'><a href="GroupOperations.html#getGroupMembersNext">getGroupMembersNext</a></li><li data-type='method'><a href="GroupOperations.html#getMemberGroups">getMemberGroups</a></li><li data-type='method'><a href="GroupOperations.html#list">list</a></li><li data-type='method'><a href="GroupOperations.html#listNext">listNext</a></li><li data-type='method'><a href="GroupOperations.html#removeMember">removeMember</a></li></ul></li><li><a href="ObjectOperations.html">ObjectOperations</a><ul class='methods'><li data-type='method'><a href="ObjectOperations.html#getCurrentUser">getCurrentUser</a></li><li data-type='method'><a href="ObjectOperations.html#getObjectsByObjectIds">getObjectsByObjectIds</a></li><li data-type='method'><a href="ObjectOperations.html#getObjectsByObjectIdsNext">getObjectsByObjectIdsNext</a></li></ul></li><li><a href="ServicePrincipalOperations.html">ServicePrincipalOperations</a><ul class='methods'><li data-type='method'><a href="ServicePrincipalOperations.html#create">create</a></li><li data-type='method'><a href="ServicePrincipalOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ServicePrincipalOperations.html#get">get</a></li><li data-type='method'><a href="ServicePrincipalOperations.html#list">list</a></li><li data-type='method'><a href="ServicePrincipalOperations.html#listNext">listNext</a></li></ul></li><li><a href="UserOperations.html">UserOperations</a><ul class='methods'><li data-type='method'><a href="UserOperations.html#create">create</a></li><li data-type='method'><a href="UserOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="UserOperations.html#get">get</a></li><li data-type='method'><a href="UserOperations.html#getMemberGroups">getMemberGroups</a></li><li data-type='method'><a href="UserOperations.html#list">list</a></li><li data-type='method'><a href="UserOperations.html#listNext">listNext</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#accountEnabled">accountEnabled</a></li><li><a href="global.html#forceChangePasswordNextLogin">forceChangePasswordNextLogin</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#identifierUri">identifierUri</a></li><li><a href="global.html#includeDirectoryObjectReferences">includeDirectoryObjectReferences</a></li><li><a href="global.html#mail">mail</a></li><li><a href="global.html#odatanextLink">odatanextLink</a></li><li><a href="global.html#passwordCredentials">passwordCredentials</a></li><li><a href="global.html#replyUrls">replyUrls</a></li><li><a href="global.html#securityEnabled">securityEnabled</a></li><li><a href="global.html#securityEnabledOnly">securityEnabledOnly</a></li><li><a href="global.html#servicePrincipalNames">servicePrincipalNames</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#url">url</a></li><li><a href="global.html#userType">userType</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/applicationFilter.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator 0.15.0.0
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationFilter class.
+ * @constructor
+ * Filter parameters for listing applications
+ * @member {string} [displayNameStartsWith] Application display name starts
+ * with
+ * 
+ * @member {string} [appId] ApplicationId
+ * 
+ * @member {string} [identifierUri] Identifier Uri
+ * 
+ */
+function ApplicationFilter() {
+}
+
+/**
+ * Defines the metadata of ApplicationFilter
+ *
+ * @returns {object} metadata of ApplicationFilter
+ *
+ */
+ApplicationFilter.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'ApplicationFilter',
+    type: {
+      name: 'Composite',
+      className: 'ApplicationFilter',
+      modelProperties: {
+        displayNameStartsWith: {
+          required: false,
+          serializedName: 'displayNameStartsWith',
+          type: {
+            name: 'String'
+          }
+        },
+        appId: {
+          required: false,
+          serializedName: 'appId',
+          type: {
+            name: 'String'
+          }
+        },
+        identifierUri: {
+          required: false,
+          serializedName: 'identifierUri',
+          type: {
+            name: 'String'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = ApplicationFilter;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:03:59 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

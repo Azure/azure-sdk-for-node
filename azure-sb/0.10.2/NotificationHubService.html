@@ -1,0 +1,3753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>NotificationHubService - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ApnsService.html">ApnsService</a><ul class='methods'><li data-type='method'><a href="ApnsService.html#createNativeRegistration">createNativeRegistration</a></li><li data-type='method'><a href="ApnsService.html#createOrUpdateNativeRegistration">createOrUpdateNativeRegistration</a></li><li data-type='method'><a href="ApnsService.html#createOrUpdateTemplateRegistration">createOrUpdateTemplateRegistration</a></li><li data-type='method'><a href="ApnsService.html#createTemplateRegistration">createTemplateRegistration</a></li><li data-type='method'><a href="ApnsService.html#listRegistrationsByToken">listRegistrationsByToken</a></li><li data-type='method'><a href="ApnsService.html#send">send</a></li><li data-type='method'><a href="ApnsService.html#updateTemplateRegistration">updateTemplateRegistration</a></li></ul></li><li><a href="GcmService.html">GcmService</a><ul class='methods'><li data-type='method'><a href="GcmService.html#createNativeRegistration">createNativeRegistration</a></li><li data-type='method'><a href="GcmService.html#createOrUpdateNativeRegistration">createOrUpdateNativeRegistration</a></li><li data-type='method'><a href="GcmService.html#createOrUpdateTemplateRegistration">createOrUpdateTemplateRegistration</a></li><li data-type='method'><a href="GcmService.html#createTemplateRegistration">createTemplateRegistration</a></li><li data-type='method'><a href="GcmService.html#listRegistrationsByGcmRegistrationId">listRegistrationsByGcmRegistrationId</a></li><li data-type='method'><a href="GcmService.html#send">send</a></li><li data-type='method'><a href="GcmService.html#updateTemplateRegistration">updateTemplateRegistration</a></li></ul></li><li><a href="MpnsService.html">MpnsService</a><ul class='methods'><li data-type='method'><a href="MpnsService.html#createFlipTileRegistration">createFlipTileRegistration</a></li><li data-type='method'><a href="MpnsService.html#createNativeRegistration">createNativeRegistration</a></li><li data-type='method'><a href="MpnsService.html#createOrUpdateNativeRegistration">createOrUpdateNativeRegistration</a></li><li data-type='method'><a href="MpnsService.html#createOrUpdateRawTemplateRegistration">createOrUpdateRawTemplateRegistration</a></li><li data-type='method'><a href="MpnsService.html#createRawTemplateRegistration">createRawTemplateRegistration</a></li><li data-type='method'><a href="MpnsService.html#createTileRegistration">createTileRegistration</a></li><li data-type='method'><a href="MpnsService.html#createToastRegistration">createToastRegistration</a></li><li data-type='method'><a href="MpnsService.html#listRegistrationsByChannel">listRegistrationsByChannel</a></li><li data-type='method'><a href="MpnsService.html#send">send</a></li><li data-type='method'><a href="MpnsService.html#sendFlipTile">sendFlipTile</a></li><li data-type='method'><a href="MpnsService.html#sendTile">sendTile</a></li><li data-type='method'><a href="MpnsService.html#sendToast">sendToast</a></li><li data-type='method'><a href="MpnsService.html#updateFlipTileRegistration">updateFlipTileRegistration</a></li><li data-type='method'><a href="MpnsService.html#updatesRawTemplateRegistration">updatesRawTemplateRegistration</a></li><li data-type='method'><a href="MpnsService.html#updatesToastRegistration">updatesToastRegistration</a></li><li data-type='method'><a href="MpnsService.html#updateTileRegistration">updateTileRegistration</a></li></ul></li><li><a href="NotificationHubService.html">NotificationHubService</a><ul class='methods'><li data-type='method'><a href="NotificationHubService.html#createOrUpdateInstallation">createOrUpdateInstallation</a></li><li data-type='method'><a href="NotificationHubService.html#createOrUpdateRegistration">createOrUpdateRegistration</a></li><li data-type='method'><a href="NotificationHubService.html#createRegistrationId">createRegistrationId</a></li><li data-type='method'><a href="NotificationHubService.html#deleteInstallation">deleteInstallation</a></li><li data-type='method'><a href="NotificationHubService.html#deleteRegistration">deleteRegistration</a></li><li data-type='method'><a href="NotificationHubService.html#getInstallation">getInstallation</a></li><li data-type='method'><a href="NotificationHubService.html#getRegistration">getRegistration</a></li><li data-type='method'><a href="NotificationHubService.html#listRegistrations">listRegistrations</a></li><li data-type='method'><a href="NotificationHubService.html#listRegistrationsByTag">listRegistrationsByTag</a></li><li data-type='method'><a href="NotificationHubService.html#patchInstallation">patchInstallation</a></li><li data-type='method'><a href="NotificationHubService.html#send">send</a></li><li data-type='method'><a href="NotificationHubService.html#updateRegistration">updateRegistration</a></li></ul></li><li><a href="ServiceBusService.html">ServiceBusService</a><ul class='methods'><li data-type='method'><a href="ServiceBusService.html#createNotificationHub">createNotificationHub</a></li><li data-type='method'><a href="ServiceBusService.html#createQueue">createQueue</a></li><li data-type='method'><a href="ServiceBusService.html#createQueueIfNotExists">createQueueIfNotExists</a></li><li data-type='method'><a href="ServiceBusService.html#createRule">createRule</a></li><li data-type='method'><a href="ServiceBusService.html#createSubscription">createSubscription</a></li><li data-type='method'><a href="ServiceBusService.html#createTopic">createTopic</a></li><li data-type='method'><a href="ServiceBusService.html#createTopicIfNotExists">createTopicIfNotExists</a></li><li data-type='method'><a href="ServiceBusService.html#deleteMessage">deleteMessage</a></li><li data-type='method'><a href="ServiceBusService.html#deleteNotificationHub">deleteNotificationHub</a></li><li data-type='method'><a href="ServiceBusService.html#deleteQueue">deleteQueue</a></li><li data-type='method'><a href="ServiceBusService.html#deleteRule">deleteRule</a></li><li data-type='method'><a href="ServiceBusService.html#deleteSubscription">deleteSubscription</a></li><li data-type='method'><a href="ServiceBusService.html#deleteTopic">deleteTopic</a></li><li data-type='method'><a href="ServiceBusService.html#getNotificationHub">getNotificationHub</a></li><li data-type='method'><a href="ServiceBusService.html#getQueue">getQueue</a></li><li data-type='method'><a href="ServiceBusService.html#getRule">getRule</a></li><li data-type='method'><a href="ServiceBusService.html#getSubscription">getSubscription</a></li><li data-type='method'><a href="ServiceBusService.html#getTopic">getTopic</a></li><li data-type='method'><a href="ServiceBusService.html#listNotificationHubs">listNotificationHubs</a></li><li data-type='method'><a href="ServiceBusService.html#listQueues">listQueues</a></li><li data-type='method'><a href="ServiceBusService.html#listRules">listRules</a></li><li data-type='method'><a href="ServiceBusService.html#listSubscriptions">listSubscriptions</a></li><li data-type='method'><a href="ServiceBusService.html#listTopics">listTopics</a></li><li data-type='method'><a href="ServiceBusService.html#receiveQueueMessage">receiveQueueMessage</a></li><li data-type='method'><a href="ServiceBusService.html#receiveSubscriptionMessage">receiveSubscriptionMessage</a></li><li data-type='method'><a href="ServiceBusService.html#renewLockForMessage">renewLockForMessage</a></li><li data-type='method'><a href="ServiceBusService.html#sendQueueMessage">sendQueueMessage</a></li><li data-type='method'><a href="ServiceBusService.html#sendTopicMessage">sendTopicMessage</a></li><li data-type='method'><a href="ServiceBusService.html#unlockMessage">unlockMessage</a></li></ul></li><li><a href="ServiceBusServiceBase.html">ServiceBusServiceBase</a><ul class='methods'><li data-type='method'><a href="ServiceBusServiceBase.html#_createResource">_createResource</a></li><li data-type='method'><a href="ServiceBusServiceBase.html#_deleteResource">_deleteResource</a></li><li data-type='method'><a href="ServiceBusServiceBase.html#_executeRequest">_executeRequest</a></li><li data-type='method'><a href="ServiceBusServiceBase.html#_getResource">_getResource</a></li><li data-type='method'><a href="ServiceBusServiceBase.html#_listResources">_listResources</a></li></ul></li><li><a href="ServiceBusServiceClient.html">ServiceBusServiceClient</a><ul class='methods'><li data-type='method'><a href="ServiceBusServiceClient.html#_buildRequestOptions">_buildRequestOptions</a></li></ul></li><li><a href="SharedAccessSignature.html">SharedAccessSignature</a><ul class='methods'><li data-type='method'><a href="SharedAccessSignature.html#signRequest">signRequest</a></li></ul></li><li><a href="WnsService.html">WnsService</a><ul class='methods'><li data-type='method'><a href="WnsService.html#createNativeRegistration">createNativeRegistration</a></li><li data-type='method'><a href="WnsService.html#createOrUpdateNativeRegistration">createOrUpdateNativeRegistration</a></li><li data-type='method'><a href="WnsService.html#createOrUpdateRawTemplateRegistration">createOrUpdateRawTemplateRegistration</a></li><li data-type='method'><a href="WnsService.html#createRawTemplateRegistration">createRawTemplateRegistration</a></li><li data-type='method'><a href="WnsService.html#createTile*Registration">createTile*Registration</a></li><li data-type='method'><a href="WnsService.html#createToast*Registration">createToast*Registration</a></li><li data-type='method'><a href="WnsService.html#listRegistrationsByChannel">listRegistrationsByChannel</a></li><li data-type='method'><a href="WnsService.html#send">send</a></li><li data-type='method'><a href="WnsService.html#sendBadge">sendBadge</a></li><li data-type='method'><a href="WnsService.html#sendRaw">sendRaw</a></li><li data-type='method'><a href="WnsService.html#sendTile*">sendTile*</a></li><li data-type='method'><a href="WnsService.html#sendToast*">sendToast*</a></li><li data-type='method'><a href="WnsService.html#updatesRawTemplateRegistration">updatesRawTemplateRegistration</a></li><li data-type='method'><a href="WnsService.html#updateTile*Registration">updateTile*Registration</a></li><li data-type='method'><a href="WnsService.html#updateToast*Registration">updateToast*Registration</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createNotificationHubService">createNotificationHubService</a></li><li><a href="global.html#createServiceBusService">createServiceBusService</a></li><li><a href="global.html#createWrapService">createWrapService</a></li><li><a href="global.html#validateCallback">validateCallback</a></li><li><a href="global.html#Wrap">Wrap</a></li><li><a href="global.html#WrapService">WrapService</a></li><li><a href="global.html#WrapTokenManager">WrapTokenManager</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">NotificationHubService</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        NotificationHubService
+        </h2>
+        
+            <div class="class-description"><p>The NotificationHubService allows you to send push notifications to iOS, Android, and Windows Store devices.</p>
+<p>For more information on Notification Hubs, as well as task focused information on using them from Node.js applications, see<br><a href="https://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/service-bus-notification-hubs/">How to Use Service Bus Notification Hubs</a>.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="NotificationHubService"><span class="type-signature"></span>new NotificationHubService<span class="signature">(hubName, endpointOrConnectionString<span class="signature-attributes">opt</span>, sharedAccessKeyName<span class="signature-attributes">opt</span>, sharedAccessKeyValue<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates a new NotificationHubService object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>hubName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The notification hub name.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>endpointOrConnectionString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The service bus endpoint or connection string.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sharedAccessKeyName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The notification hub shared access key name.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sharedAccessKeyValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The notification hub shared access key value.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="apns"><span class="type-signature"></span>apns<span class="type-signature"> :<a href="ApnsService.html">ApnsService</a></span></h4>
+
+
+
+
+<div class="description">
+    <p>Provides access to methods to send notifications to APNs (for iOS apps) and create/update registrations for iOS apps.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="ApnsService.html">ApnsService</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line77">line 77</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="gcm"><span class="type-signature"></span>gcm<span class="type-signature"> :<a href="GcmService.html">GcmService</a></span></h4>
+
+
+
+
+<div class="description">
+    <p>Provides access to methods to send notifications to GCM (for Android apps) and create/update registrations for Android apps.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="GcmService.html">GcmService</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="mpns"><span class="type-signature"></span>mpns<span class="type-signature"> :<a href="MpnsService.html">MpnsService</a></span></h4>
+
+
+
+
+<div class="description">
+    <p>Provides access to methods to send notifications to MPNS (for Windows Phone apps) and create/update registrations for Windows Phone apps.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="MpnsService.html">MpnsService</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line89">line 89</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="wns"><span class="type-signature"></span>wns<span class="type-signature"> :<a href="WnsService.html">WnsService</a></span></h4>
+
+
+
+
+<div class="description">
+    <p>Provides access to methods to send notifications to WNS (for Windows Store apps) and create/update registrations for Windows Store apps.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="WnsService.html">WnsService</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="createOrUpdateInstallation"><span class="type-signature"></span>createOrUpdateInstallation<span class="signature">(installation, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates or updates a installation.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>installation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The installation to create/update.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                      if an error occurs; otherwise, <code>response</code><br>                                                      will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line446">line 446</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createOrUpdateRegistration"><span class="type-signature"></span>createOrUpdateRegistration<span class="signature">(registration, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates or updates a registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>registration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The registration to update.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>etag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The etag.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                      if an error occurs; otherwise, <code>response</code><br>                                                      will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line314">line 314</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createRegistrationId"><span class="type-signature"></span>createRegistrationId<span class="signature">(callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates a registration identifier.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                 if an error occurs; otherwise, <code>response</code><br>                                                 will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line181">line 181</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="deleteInstallation"><span class="type-signature"></span>deleteInstallation<span class="signature">(installationId, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Deletes an existing installation.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>installationId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Installation Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                      if an error occurs; otherwise, <code>response</code><br>                                                      will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line513">line 513</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="deleteRegistration"><span class="type-signature"></span>deleteRegistration<span class="signature">(registrationId, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Deletes a registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>registrationId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The registration identifier.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>etag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The etag.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                      if an error occurs; otherwise, <code>response</code><br>                                                      will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line232">line 232</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getInstallation"><span class="type-signature"></span>getInstallation<span class="signature">(installationId, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets an installation by its Id</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>installationId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Installation Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                      if an error occurs; otherwise, <code>response</code><br>                                                      will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line543">line 543</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getRegistration"><span class="type-signature"></span>getRegistration<span class="signature">(registrationId, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Retrieves a registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>registrationId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The registration identifier.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                 if an error occurs; otherwise, <code>response</code><br>                                                 will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line211">line 211</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="listRegistrations"><span class="type-signature"></span>listRegistrations<span class="signature">(options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>List registrations.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>top</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the maximum number of registration to obtain from the call.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>skip</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the number of registrations to skip in the call.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                        if an error occurs; otherwise, <code>response</code><br>                                                        will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line352">line 352</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="listRegistrationsByTag"><span class="type-signature"></span>listRegistrationsByTag<span class="signature">(tag, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Retrieves a registration by tag.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The registration tag.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>top</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the maximum number of registration to obtain from the call.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>skip</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Specifies the number of registrations to skip in the call.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                      if an error occurs; otherwise, <code>response</code><br>                                                      will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line384">line 384</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="patchInstallation"><span class="type-signature"></span>patchInstallation<span class="signature">(installationId, partialUpdateOperations, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Patches an existing installation.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>installationId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Installation Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>partialUpdateOperations</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>List of partial operations to patch an existing installation</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                      if an error occurs; otherwise, <code>response</code><br>                                                      will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line478">line 478</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(tags, payload, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sends a template message.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A single tag or tag expression.<br>                                                         If null it will broadcast to all registrations in this hub</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>payload</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The message's payload.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>headers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Additional headers.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                        if an error occurs; otherwise, <code>response</code><br>                                                        will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line136">line 136</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var azure = require('azure');
+var notificationHubService = azure.createNotificationHubService('hubName', '{connection string}');
+notificationHubService.send( null, { message: 'This is my toast message for iOS!' }, function (error) {
+  if (!error) {
+    // message sent successfully
+  }
+});</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="updateRegistration"><span class="type-signature"></span>updateRegistration<span class="signature">(registration, options<span class="signature-attributes">opt</span>, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Updates a registration.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>registration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The registration to update.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RegistrationId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Registration id to update</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>_.ContentRootElement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Type of the registration. Types allowed: WindowsRegistrationDescription, WindowsTemplateRegistrationDescription,<br>                                                      AppleRegistrationDescription, AppleTemplateRegistrationDescription,<br>                                                      GcmRegistrationDescription, GcmTemplateRegistrationDescription,<br>                                                      MpnsRegistrationDescription, MpnsTemplateRegistrationDescription.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ChannelUri</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Only if Windows or Mpns registration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>DeviceToken</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Only if Apple registration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>GcmRegistrationId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Only if Gcm registration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Comma-separated list of tags (no spaces)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>BodyTemplate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Only if template registration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>WnsHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Only if Windows template registration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MpnsHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Only if Mpns template registration</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Expiry</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Only if Apple template registration</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request options or callback function. Additional properties will be passed as headers.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>etag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The etag.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><code>error</code> will contain information<br>                                                      if an error occurs; otherwise, <code>response</code><br>                                                      will contain information related to this operation.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="notificationhubservice.js.html">notificationhubservice.js</a>, <a href="notificationhubservice.js.html#line272">line 272</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:18 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

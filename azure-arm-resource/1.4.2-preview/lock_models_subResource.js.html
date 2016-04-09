@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lock/models/subResource.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="DeploymentOperations.html">DeploymentOperations</a><ul class='methods'><li data-type='method'><a href="DeploymentOperations.html#get">get</a></li><li data-type='method'><a href="DeploymentOperations.html#list">list</a></li><li data-type='method'><a href="DeploymentOperations.html#listNext">listNext</a></li></ul></li><li><a href="Deployments.html">Deployments</a><ul class='methods'><li data-type='method'><a href="Deployments.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Deployments.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Deployments.html#cancel">cancel</a></li><li data-type='method'><a href="Deployments.html#checkExistence">checkExistence</a></li><li data-type='method'><a href="Deployments.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Deployments.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Deployments.html#exportTemplate">exportTemplate</a></li><li data-type='method'><a href="Deployments.html#get">get</a></li><li data-type='method'><a href="Deployments.html#list">list</a></li><li data-type='method'><a href="Deployments.html#listNext">listNext</a></li><li data-type='method'><a href="Deployments.html#validate">validate</a></li></ul></li><li><a href="FeatureClient.html">FeatureClient</a></li><li><a href="Features.html">Features</a><ul class='methods'><li data-type='method'><a href="Features.html#get">get</a></li><li data-type='method'><a href="Features.html#list">list</a></li><li data-type='method'><a href="Features.html#listAll">listAll</a></li><li data-type='method'><a href="Features.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="Features.html#listNext">listNext</a></li><li data-type='method'><a href="Features.html#register">register</a></li></ul></li><li><a href="ManagementLockClient.html">ManagementLockClient</a></li><li><a href="ManagementLocks.html">ManagementLocks</a><ul class='methods'><li data-type='method'><a href="ManagementLocks.html#createOrUpdateAtResourceGroupLevel">createOrUpdateAtResourceGroupLevel</a></li><li data-type='method'><a href="ManagementLocks.html#createOrUpdateAtResourceLevel">createOrUpdateAtResourceLevel</a></li><li data-type='method'><a href="ManagementLocks.html#createOrUpdateAtSubscriptionLevel">createOrUpdateAtSubscriptionLevel</a></li><li data-type='method'><a href="ManagementLocks.html#deleteAtResourceGroupLevel">deleteAtResourceGroupLevel</a></li><li data-type='method'><a href="ManagementLocks.html#deleteAtResourceLevel">deleteAtResourceLevel</a></li><li data-type='method'><a href="ManagementLocks.html#deleteAtSubscriptionLevel">deleteAtSubscriptionLevel</a></li><li data-type='method'><a href="ManagementLocks.html#get">get</a></li><li data-type='method'><a href="ManagementLocks.html#listAtResourceGroupLevel">listAtResourceGroupLevel</a></li><li data-type='method'><a href="ManagementLocks.html#listAtResourceGroupLevelNext">listAtResourceGroupLevelNext</a></li><li data-type='method'><a href="ManagementLocks.html#listAtResourceLevel">listAtResourceLevel</a></li><li data-type='method'><a href="ManagementLocks.html#listAtResourceLevelNext">listAtResourceLevelNext</a></li><li data-type='method'><a href="ManagementLocks.html#listAtSubscriptionLevel">listAtSubscriptionLevel</a></li><li data-type='method'><a href="ManagementLocks.html#listAtSubscriptionLevelNext">listAtSubscriptionLevelNext</a></li><li data-type='method'><a href="ManagementLocks.html#listNext">listNext</a></li><li data-type='method'><a href="ManagementLocks.html#listNextNext">listNextNext</a></li></ul></li><li><a href="PolicyAssignments.html">PolicyAssignments</a><ul class='methods'><li data-type='method'><a href="PolicyAssignments.html#create">create</a></li><li data-type='method'><a href="PolicyAssignments.html#create">create</a></li><li data-type='method'><a href="PolicyAssignments.html#createById">createById</a></li><li data-type='method'><a href="PolicyAssignments.html#createById">createById</a></li><li data-type='method'><a href="PolicyAssignments.html#deleteById">deleteById</a></li><li data-type='method'><a href="PolicyAssignments.html#deleteById">deleteById</a></li><li data-type='method'><a href="PolicyAssignments.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PolicyAssignments.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PolicyAssignments.html#get">get</a></li><li data-type='method'><a href="PolicyAssignments.html#get">get</a></li><li data-type='method'><a href="PolicyAssignments.html#getById">getById</a></li><li data-type='method'><a href="PolicyAssignments.html#getById">getById</a></li><li data-type='method'><a href="PolicyAssignments.html#list">list</a></li><li data-type='method'><a href="PolicyAssignments.html#list">list</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResource">listForResource</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResource">listForResource</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceGroup">listForResourceGroup</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceGroup">listForResourceGroup</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceGroupNext">listForResourceGroupNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceGroupNext">listForResourceGroupNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceNext">listForResourceNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listForResourceNext">listForResourceNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listForScope">listForScope</a></li><li data-type='method'><a href="PolicyAssignments.html#listForScopeNext">listForScopeNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listNext">listNext</a></li><li data-type='method'><a href="PolicyAssignments.html#listNext">listNext</a></li></ul></li><li><a href="PolicyClient.html">PolicyClient</a></li><li><a href="PolicyDefinitions.html">PolicyDefinitions</a><ul class='methods'><li data-type='method'><a href="PolicyDefinitions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="PolicyDefinitions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="PolicyDefinitions.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PolicyDefinitions.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PolicyDefinitions.html#get">get</a></li><li data-type='method'><a href="PolicyDefinitions.html#get">get</a></li><li data-type='method'><a href="PolicyDefinitions.html#list">list</a></li><li data-type='method'><a href="PolicyDefinitions.html#listNext">listNext</a></li></ul></li><li><a href="Providers.html">Providers</a><ul class='methods'><li data-type='method'><a href="Providers.html#get">get</a></li><li data-type='method'><a href="Providers.html#list">list</a></li><li data-type='method'><a href="Providers.html#listNext">listNext</a></li><li data-type='method'><a href="Providers.html#register">register</a></li><li data-type='method'><a href="Providers.html#unregister">unregister</a></li></ul></li><li><a href="ResourceGroups.html">ResourceGroups</a><ul class='methods'><li data-type='method'><a href="ResourceGroups.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="ResourceGroups.html#checkExistence">checkExistence</a></li><li data-type='method'><a href="ResourceGroups.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ResourceGroups.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ResourceGroups.html#exportTemplate">exportTemplate</a></li><li data-type='method'><a href="ResourceGroups.html#get">get</a></li><li data-type='method'><a href="ResourceGroups.html#list">list</a></li><li data-type='method'><a href="ResourceGroups.html#listNext">listNext</a></li><li data-type='method'><a href="ResourceGroups.html#listResources">listResources</a></li><li data-type='method'><a href="ResourceGroups.html#listResourcesNext">listResourcesNext</a></li><li data-type='method'><a href="ResourceGroups.html#patch">patch</a></li></ul></li><li><a href="ResourceManagementClient.html">ResourceManagementClient</a></li><li><a href="ResourceProviderOperationDetails.html">ResourceProviderOperationDetails</a><ul class='methods'><li data-type='method'><a href="ResourceProviderOperationDetails.html#list">list</a></li><li data-type='method'><a href="ResourceProviderOperationDetails.html#listNext">listNext</a></li></ul></li><li><a href="Resources.html">Resources</a><ul class='methods'><li data-type='method'><a href="Resources.html#beginMoveResources">beginMoveResources</a></li><li data-type='method'><a href="Resources.html#checkExistence">checkExistence</a></li><li data-type='method'><a href="Resources.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Resources.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Resources.html#get">get</a></li><li data-type='method'><a href="Resources.html#list">list</a></li><li data-type='method'><a href="Resources.html#listNext">listNext</a></li><li data-type='method'><a href="Resources.html#moveResources">moveResources</a></li></ul></li><li><a href="SubscriptionClient.html">SubscriptionClient</a></li><li><a href="Subscriptions.html">Subscriptions</a><ul class='methods'><li data-type='method'><a href="Subscriptions.html#get">get</a></li><li data-type='method'><a href="Subscriptions.html#list">list</a></li><li data-type='method'><a href="Subscriptions.html#listLocations">listLocations</a></li><li data-type='method'><a href="Subscriptions.html#listLocationsNext">listLocationsNext</a></li><li data-type='method'><a href="Subscriptions.html#listNext">listNext</a></li></ul></li><li><a href="Tags.html">Tags</a><ul class='methods'><li data-type='method'><a href="Tags.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Tags.html#createOrUpdateValue">createOrUpdateValue</a></li><li data-type='method'><a href="Tags.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Tags.html#deleteValue">deleteValue</a></li><li data-type='method'><a href="Tags.html#list">list</a></li><li data-type='method'><a href="Tags.html#listNext">listNext</a></li></ul></li><li><a href="Tenants.html">Tenants</a><ul class='methods'><li data-type='method'><a href="Tenants.html#list">list</a></li><li data-type='method'><a href="Tenants.html#listNext">listNext</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#content">content</a></li><li><a href="global.html#contentVersion">contentVersion</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#detailLevel">detailLevel</a></li><li><a href="global.html#details">details</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#longitude">longitude</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#options">options</a></li><li><a href="global.html#policyDefinitionId">policyDefinitionId</a></li><li><a href="global.html#policyRule">policyRule</a></li><li><a href="global.html#promotionCode">promotionCode</a></li><li><a href="global.html#properties">properties</a></li><li><a href="global.html#provisioningState">provisioningState</a></li><li><a href="global.html#quotaId">quotaId</a></li><li><a href="global.html#resourceName">resourceName</a></li><li><a href="global.html#resourceType">resourceType</a></li><li><a href="global.html#resourceTypes">resourceTypes</a></li><li><a href="global.html#state">state</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#tagValue">tagValue</a></li><li><a href="global.html#tagvalue">tagvalue</a></li><li><a href="global.html#target">target</a></li><li><a href="global.html#targetResourceGroup">targetResourceGroup</a></li><li><a href="global.html#template">template</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#values">values</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">lock/models/subResource.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var models = require('./index');
+
+var util = require('util');
+
+/**
+ * @class
+ * Initializes a new instance of the SubResource class.
+ * @constructor
+ * @member {string} [id] Resource Id
+ * 
+ */
+function SubResource() {
+  SubResource['super_'].call(this);
+}
+
+util.inherits(SubResource, models['BaseResource']);
+
+/**
+ * Defines the metadata of SubResource
+ *
+ * @returns {object} metadata of SubResource
+ *
+ */
+SubResource.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'SubResource',
+    type: {
+      name: 'Composite',
+      className: 'SubResource',
+      modelProperties: {
+        id: {
+          required: false,
+          serializedName: 'id',
+          type: {
+            name: 'String'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = SubResource;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:15 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

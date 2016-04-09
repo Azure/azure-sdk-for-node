@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AlertsClient - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AlertsClient-AlertsClient.html">AlertsClient</a></li><li><a href="AutoscaleClient-AutoscaleClient.html">AutoscaleClient</a></li><li><a href="EventDataOperations-EventDataOperations.html">EventDataOperations</a><ul class='methods'><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEvents">listEvents</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForCorrelationId">listEventsForCorrelationId</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForEventSource">listEventsForEventSource</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResource">listEventsForResource</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResourceGroup">listEventsForResourceGroup</a></li><li data-type='method'><a href="EventDataOperations-EventDataOperations.html#listEventsForResourceProvider">listEventsForResourceProvider</a></li></ul></li><li><a href="EventsClient-EventsClient.html">EventsClient</a></li><li><a href="IncidentOperations-IncidentOperations.html">IncidentOperations</a><ul class='methods'><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#get">get</a></li><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#listActiveForSubscription">listActiveForSubscription</a></li><li data-type='method'><a href="IncidentOperations-IncidentOperations.html#listForRule">listForRule</a></li></ul></li><li><a href="MetricDefinitionOperations-MetricDefinitionOperations.html">MetricDefinitionOperations</a><ul class='methods'><li data-type='method'><a href="MetricDefinitionOperations-MetricDefinitionOperations.html#list">list</a></li></ul></li><li><a href="MetricsClient-MetricsClient.html">MetricsClient</a></li><li><a href="MetricSettingOperations-MetricSettingOperations.html">MetricSettingOperations</a><ul class='methods'><li data-type='method'><a href="MetricSettingOperations-MetricSettingOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="MetricSettingOperations-MetricSettingOperations.html#list">list</a></li></ul></li><li><a href="MetricValueOperations-MetricValueOperations.html">MetricValueOperations</a><ul class='methods'><li data-type='method'><a href="MetricValueOperations-MetricValueOperations.html#list">list</a></li></ul></li><li><a href="RuleOperations-RuleOperations.html">RuleOperations</a><ul class='methods'><li data-type='method'><a href="RuleOperations-RuleOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#get">get</a></li><li data-type='method'><a href="RuleOperations-RuleOperations.html#list">list</a></li></ul></li><li><a href="SettingOperations-SettingOperations.html">SettingOperations</a><ul class='methods'><li data-type='method'><a href="SettingOperations-SettingOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="SettingOperations-SettingOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="SettingOperations-SettingOperations.html#get">get</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createEventsClient">createEventsClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">AlertsClient</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        AlertsClient
+        </h2>
+        
+            <div class="class-description"><p>Initializes a new instance of the AlertsClient class.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="AlertsClient"><span class="type-signature"></span>new AlertsClient<span class="signature">(credentials, baseUri<span class="signature-attributes">opt</span>, filters)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>credentials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SubscriptionCloudCredentials</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets subscription<br>credentials which uniquely identify Microsoft Azure subscription. The<br>subscription ID forms part of the URI for every service call.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>subscriptionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>baseUri</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets the URI used as the base for all cloud<br>service requests.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="alertsClient.js.html">alertsClient.js</a>, <a href="alertsClient.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="incidents"><span class="type-signature"></span>incidents<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>Provides an instance of the<br><a href="-IncidentOperations.html">IncidentOperations</a> object.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="alertsClient.js.html">alertsClient.js</a>, <a href="alertsClient.js.html#line77">line 77</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="rules"><span class="type-signature"></span>rules<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>Provides an instance of the <a href="-RuleOperations.html">RuleOperations</a><br>object.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="alertsClient.js.html">alertsClient.js</a>, <a href="alertsClient.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:08 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

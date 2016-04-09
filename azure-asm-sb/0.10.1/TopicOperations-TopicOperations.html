@@ -47,12 +47,7 @@
         TopicOperations
         </h2>
         
-            <div class="class-description"><p>The Service Bus Management API includes operations for managing Service
-Bus topics for a namespace.
-<strong>NOTE</strong>: An instance of this class is automatically created for an
-instance of the [ServiceBusManagementClient] <a href="ServiceBusManagementClient-ServiceBusManagementClient.html"><code>ServiceBusManagementClient~ServiceBusManagementClient</code></a>.
-See [topics] <a href="ServiceBusManagementClient-ServiceBusManagementClient.html#topics"><code>ServiceBusManagementClient~ServiceBusManagementClient#topics</code></a>.
-Initializes a new instance of the TopicOperations class.</p></div>
+            <div class="class-description"><p>The Service Bus Management API includes operations for managing Service<br>Bus topics for a namespace.<br><strong>NOTE</strong>: An instance of this class is automatically created for an<br>instance of the [ServiceBusManagementClient] {@link<br>ServiceBusManagementClient~ServiceBusManagementClient}.<br>See [topics] {@link<br>ServiceBusManagementClient~ServiceBusManagementClient#topics}.<br>Initializes a new instance of the TopicOperations class.</p></div>
         
     
 </header>
@@ -218,12 +213,7 @@ Initializes a new instance of the TopicOperations class.</p></div>
 
 
 <div class="description">
-    <p>Creates a new topic. Once created, this topic resource manifest is
-immutable. This operation is not idempotent. Repeating the create call,
-after a topic with same name has been created successfully, will result
-in a 409 Conflict error message.  (see
-http://msdn.microsoft.com/en-us/library/windowsazure/hh780728.aspx for
-more information)</p>
+    <p>Creates a new topic. Once created, this topic resource manifest is<br>immutable. This operation is not idempotent. Repeating the create call,<br>after a topic with same name has been created successfully, will result<br>in a 409 Conflict error message.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/hh780728.aspx for<br>more information)</p>
 </div>
 
 
@@ -385,14 +375,7 @@ more information)</p>
 
             
 
-            <td class="description last"><p>Determines how long a
-message lives in the associated subscriptions. Subscriptions inherit the
-TTL from the topic unless they are created explicitly with a smaller TTL.
-Based on whether dead-lettering is enabled, a message whose TTL has
-expired will either be moved to the subscription's associated
-DeadLtterQueue or will be permanently deleted. The following values are
-settable at topic creation time:<em> Range: 1 second - TimeSpan.MaxValue</em>
-Default: TimeSpan.MaxValue</p></td>
+            <td class="description last"><p>Determines how long a<br>message lives in the associated subscriptions. Subscriptions inherit the<br>TTL from the topic unless they are created explicitly with a smaller TTL.<br>Based on whether dead-lettering is enabled, a message whose TTL has<br>expired will either be moved to the subscription's associated<br>DeadLtterQueue or will be permanently deleted. The following values are<br>settable at topic creation time:<em> Range: 1 second - TimeSpan.MaxValue</em><br>Default: TimeSpan.MaxValue</p></td>
         </tr>
 
     
@@ -425,15 +408,7 @@ Default: TimeSpan.MaxValue</p></td>
 
             
 
-            <td class="description last"><p>Specifies the maximum topic
-size in megabytes. Any attempt to enqueue a message that will cause the
-topic to exceed this value will fail. All messages that are stored in the
-topic or any of its subscriptions count towards this value. Multiple
-copies of a message that reside in one or multiple subscriptions count as
-a single messages. For example, if message m exists once in subscription
-s1 and twice in subscription s2, m is counted as a single message. You
-can only set this parameter at topic creation time using the following
-values:<em> Range: 1 - 5</em>1024 MB<em> Default: 1</em>1024</p></td>
+            <td class="description last"><p>Specifies the maximum topic<br>size in megabytes. Any attempt to enqueue a message that will cause the<br>topic to exceed this value will fail. All messages that are stored in the<br>topic or any of its subscriptions count towards this value. Multiple<br>copies of a message that reside in one or multiple subscriptions count as<br>a single messages. For example, if message m exists once in subscription<br>s1 and twice in subscription s2, m is counted as a single message. You<br>can only set this parameter at topic creation time using the following<br>values:<em> Range: 1 - 5</em>1024 MB<em> Default: 1</em>1024</p></td>
         </tr>
 
     
@@ -466,10 +441,7 @@ values:<em> Range: 1 - 5</em>1024 MB<em> Default: 1</em>1024</p></td>
 
             
 
-            <td class="description last"><p>If enabled, the topic
-will detect duplicate messages within the time span specified by the
-DuplicateDetectionHistoryTimeWindow property. Settable only at topic
-creation time.* Default: false</p></td>
+            <td class="description last"><p>If enabled, the topic<br>will detect duplicate messages within the time span specified by the<br>DuplicateDetectionHistoryTimeWindow property. Settable only at topic<br>creation time.* Default: false</p></td>
         </tr>
 
     
@@ -502,9 +474,7 @@ creation time.* Default: false</p></td>
 
             
 
-            <td class="description last"><p>Specifies the
-time span during which the Service Bus will detect message duplication.<em>
-Range: 1 second - 7 days</em> Default: 10 minutes</p></td>
+            <td class="description last"><p>Specifies the<br>time span during which the Service Bus will detect message duplication.<em><br>Range: 1 second - 7 days</em> Default: 10 minutes</p></td>
         </tr>
 
     
@@ -537,11 +507,7 @@ Range: 1 second - 7 days</em> Default: 10 minutes</p></td>
 
             
 
-            <td class="description last"><p>Enables or disables
-service side batching behavior when performing operations for the
-specific queue. When enabled, service bus will collect/batch multiple
-operations to the backend to be more connection efficient. If user wants
-lower operation latency then they can disable this feature.</p></td>
+            <td class="description last"><p>Enables or disables<br>service side batching behavior when performing operations for the<br>specific queue. When enabled, service bus will collect/batch multiple<br>operations to the backend to be more connection efficient. If user wants<br>lower operation latency then they can disable this feature.</p></td>
         </tr>
 
     
@@ -574,9 +540,7 @@ lower operation latency then they can disable this feature.</p></td>
 
             
 
-            <td class="description last"><p>Reflects the actual bytes toward the
-topic quota that messages in the topic currently occupy. (read-only)*
-Range: 0 -MaxTopicSizeinMegaBytes</p></td>
+            <td class="description last"><p>Reflects the actual bytes toward the<br>topic quota that messages in the topic currently occupy. (read-only)*<br>Range: 0 -MaxTopicSizeinMegaBytes</p></td>
         </tr>
 
     
@@ -609,8 +573,7 @@ Range: 0 -MaxTopicSizeinMegaBytes</p></td>
 
             
 
-            <td class="description last"><p>Gets or sets
-whether messages should be filtered before publishing.</p></td>
+            <td class="description last"><p>Gets or sets<br>whether messages should be filtered before publishing.</p></td>
         </tr>
 
     
@@ -643,8 +606,7 @@ whether messages should be filtered before publishing.</p></td>
 
             
 
-            <td class="description last"><p>Gets whether anonymous
-access is allowed.</p></td>
+            <td class="description last"><p>Gets whether anonymous<br>access is allowed.</p></td>
         </tr>
 
     
@@ -677,8 +639,7 @@ access is allowed.</p></td>
 
             
 
-            <td class="description last"><p>Gets the authorization rules for
-the description.</p></td>
+            <td class="description last"><p>Gets the authorization rules for<br>the description.</p></td>
         </tr>
 
     
@@ -711,9 +672,7 @@ the description.</p></td>
 
             
 
-            <td class="description last"><p>Gets or sets the current status of the
-topic (enabled or disabled). When a topic is disabled, that topic cannot
-send or receive messages.</p></td>
+            <td class="description last"><p>Gets or sets the current status of the<br>topic (enabled or disabled). When a topic is disabled, that topic cannot<br>send or receive messages.</p></td>
         </tr>
 
     
@@ -845,8 +804,7 @@ send or receive messages.</p></td>
 
             
 
-            <td class="description last"><p>Gets or sets whether the topics
-can be ordered.</p></td>
+            <td class="description last"><p>Gets or sets whether the topics<br>can be ordered.</p></td>
         </tr>
 
     
@@ -933,8 +891,7 @@ can be ordered.</p></td>
 
             
 
-            <td class="description last"><p>The current number
-of active messages.</p></td>
+            <td class="description last"><p>The current number<br>of active messages.</p></td>
         </tr>
 
     
@@ -967,8 +924,7 @@ of active messages.</p></td>
 
             
 
-            <td class="description last"><p>The current
-number of dead letters.</p></td>
+            <td class="description last"><p>The current<br>number of dead letters.</p></td>
         </tr>
 
     
@@ -1001,8 +957,7 @@ number of dead letters.</p></td>
 
             
 
-            <td class="description last"><p>The current
-number of scheduled messages.</p></td>
+            <td class="description last"><p>The current<br>number of scheduled messages.</p></td>
         </tr>
 
     
@@ -1035,8 +990,7 @@ number of scheduled messages.</p></td>
 
             
 
-            <td class="description last"><p>The
-current number of transfer dead letters.</p></td>
+            <td class="description last"><p>The<br>current number of transfer dead letters.</p></td>
         </tr>
 
     
@@ -1069,8 +1023,7 @@ current number of transfer dead letters.</p></td>
 
             
 
-            <td class="description last"><p>The current
-number of transfer messages.</p></td>
+            <td class="description last"><p>The current<br>number of transfer messages.</p></td>
         </tr>
 
     
@@ -1110,8 +1063,7 @@ number of transfer messages.</p></td>
 
             
 
-            <td class="description last"><p>The current number of
-subscriptions to the topic.</p></td>
+            <td class="description last"><p>The current number of<br>subscriptions to the topic.</p></td>
         </tr>
 
     
@@ -1177,8 +1129,7 @@ subscriptions to the topic.</p></td>
 
             
 
-            <td class="description last"><p>The current availability
-status of the topic.</p></td>
+            <td class="description last"><p>The current availability<br>status of the topic.</p></td>
         </tr>
 
     
@@ -1309,10 +1260,7 @@ status of the topic.</p></td>
 
 
 <div class="description">
-    <p>Deletes an existing topic. This operation will also remove all associated
-state including associated subscriptions.  (see
-http://msdn.microsoft.com/en-us/library/hh780721.aspx for more
-information)</p>
+    <p>Deletes an existing topic. This operation will also remove all associated<br>state including associated subscriptions.  (see<br>http://msdn.microsoft.com/en-us/library/hh780721.aspx for more<br>information)</p>
 </div>
 
 
@@ -1511,12 +1459,7 @@ information)</p>
 
 
 <div class="description">
-    <p>The topic description is an XML AtomPub document that defines the desired
-semantics for a topic. The topic description contains the following
-properties. For more information, see the TopicDescription Properties
-topic.  (see
-http://msdn.microsoft.com/en-us/library/windowsazure/hh780749.aspx for
-more information)</p>
+    <p>The topic description is an XML AtomPub document that defines the desired<br>semantics for a topic. The topic description contains the following<br>properties. For more information, see the TopicDescription Properties<br>topic.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/hh780749.aspx for<br>more information)</p>
 </div>
 
 
@@ -1914,10 +1857,7 @@ more information)</p>
 
 
 <div class="description">
-    <p>Enumerates the topics in the service namespace. An empty feed is returned
-if no topic exists in the service namespace.  (see
-http://msdn.microsoft.com/en-us/library/windowsazure/hh780744.aspx for
-more information)</p>
+    <p>Enumerates the topics in the service namespace. An empty feed is returned<br>if no topic exists in the service namespace.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/hh780744.aspx for<br>more information)</p>
 </div>
 
 
@@ -2093,9 +2033,7 @@ more information)</p>
 
 
 <div class="description">
-    <p>Updates a topic.  (see
-http://msdn.microsoft.com/en-us/library/windowsazure/jj839740.aspx for
-more information)</p>
+    <p>Updates a topic.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/jj839740.aspx for<br>more information)</p>
 </div>
 
 
@@ -2257,14 +2195,7 @@ more information)</p>
 
             
 
-            <td class="description last"><p>Determines how long a
-message lives in the associated subscriptions. Subscriptions inherit the
-TTL from the topic unless they are created explicitly with a smaller TTL.
-Based on whether dead-lettering is enabled, a message whose TTL has
-expired will either be moved to the subscription's associated
-DeadLtterQueue or will be permanently deleted. The following values are
-settable at topic creation time:<em> Range: 1 second - TimeSpan.MaxValue</em>
-Default: TimeSpan.MaxValue</p></td>
+            <td class="description last"><p>Determines how long a<br>message lives in the associated subscriptions. Subscriptions inherit the<br>TTL from the topic unless they are created explicitly with a smaller TTL.<br>Based on whether dead-lettering is enabled, a message whose TTL has<br>expired will either be moved to the subscription's associated<br>DeadLtterQueue or will be permanently deleted. The following values are<br>settable at topic creation time:<em> Range: 1 second - TimeSpan.MaxValue</em><br>Default: TimeSpan.MaxValue</p></td>
         </tr>
 
     
@@ -2297,15 +2228,7 @@ Default: TimeSpan.MaxValue</p></td>
 
             
 
-            <td class="description last"><p>Specifies the maximum topic
-size in megabytes. Any attempt to enqueue a message that will cause the
-topic to exceed this value will fail. All messages that are stored in the
-topic or any of its subscriptions count towards this value. Multiple
-copies of a message that reside in one or multiple subscriptions count as
-a single messages. For example, if message m exists once in subscription
-s1 and twice in subscription s2, m is counted as a single message. You
-can only set this parameter at topic creation time using the following
-values:<em> Range: 1 - 5</em>1024 MB<em> Default: 1</em>1024</p></td>
+            <td class="description last"><p>Specifies the maximum topic<br>size in megabytes. Any attempt to enqueue a message that will cause the<br>topic to exceed this value will fail. All messages that are stored in the<br>topic or any of its subscriptions count towards this value. Multiple<br>copies of a message that reside in one or multiple subscriptions count as<br>a single messages. For example, if message m exists once in subscription<br>s1 and twice in subscription s2, m is counted as a single message. You<br>can only set this parameter at topic creation time using the following<br>values:<em> Range: 1 - 5</em>1024 MB<em> Default: 1</em>1024</p></td>
         </tr>
 
     
@@ -2338,10 +2261,7 @@ values:<em> Range: 1 - 5</em>1024 MB<em> Default: 1</em>1024</p></td>
 
             
 
-            <td class="description last"><p>If enabled, the topic
-will detect duplicate messages within the time span specified by the
-DuplicateDetectionHistoryTimeWindow property. Settable only at topic
-creation time.* Default: false</p></td>
+            <td class="description last"><p>If enabled, the topic<br>will detect duplicate messages within the time span specified by the<br>DuplicateDetectionHistoryTimeWindow property. Settable only at topic<br>creation time.* Default: false</p></td>
         </tr>
 
     
@@ -2374,9 +2294,7 @@ creation time.* Default: false</p></td>
 
             
 
-            <td class="description last"><p>Specifies the
-time span during which the Service Bus will detect message duplication.<em>
-Range: 1 second - 7 days</em> Default: 10 minutes</p></td>
+            <td class="description last"><p>Specifies the<br>time span during which the Service Bus will detect message duplication.<em><br>Range: 1 second - 7 days</em> Default: 10 minutes</p></td>
         </tr>
 
     
@@ -2409,11 +2327,7 @@ Range: 1 second - 7 days</em> Default: 10 minutes</p></td>
 
             
 
-            <td class="description last"><p>Enables or disables
-service side batching behavior when performing operations for the
-specific queue. When enabled, service bus will collect/batch multiple
-operations to the backend to be more connection efficient. If user wants
-lower operation latency then they can disable this feature.</p></td>
+            <td class="description last"><p>Enables or disables<br>service side batching behavior when performing operations for the<br>specific queue. When enabled, service bus will collect/batch multiple<br>operations to the backend to be more connection efficient. If user wants<br>lower operation latency then they can disable this feature.</p></td>
         </tr>
 
     
@@ -2446,9 +2360,7 @@ lower operation latency then they can disable this feature.</p></td>
 
             
 
-            <td class="description last"><p>Reflects the actual bytes toward the
-topic quota that messages in the topic currently occupy. (read-only)*
-Range: 0 -MaxTopicSizeinMegaBytes</p></td>
+            <td class="description last"><p>Reflects the actual bytes toward the<br>topic quota that messages in the topic currently occupy. (read-only)*<br>Range: 0 -MaxTopicSizeinMegaBytes</p></td>
         </tr>
 
     
@@ -2481,8 +2393,7 @@ Range: 0 -MaxTopicSizeinMegaBytes</p></td>
 
             
 
-            <td class="description last"><p>Gets or sets
-whether messages should be filtered before publishing.</p></td>
+            <td class="description last"><p>Gets or sets<br>whether messages should be filtered before publishing.</p></td>
         </tr>
 
     
@@ -2515,8 +2426,7 @@ whether messages should be filtered before publishing.</p></td>
 
             
 
-            <td class="description last"><p>Gets whether anonymous
-access is allowed.</p></td>
+            <td class="description last"><p>Gets whether anonymous<br>access is allowed.</p></td>
         </tr>
 
     
@@ -2549,8 +2459,7 @@ access is allowed.</p></td>
 
             
 
-            <td class="description last"><p>Gets the authorization rules for
-the description.</p></td>
+            <td class="description last"><p>Gets the authorization rules for<br>the description.</p></td>
         </tr>
 
     
@@ -2583,9 +2492,7 @@ the description.</p></td>
 
             
 
-            <td class="description last"><p>Gets or sets the current status of the
-topic (enabled or disabled). When a topic is disabled, that topic cannot
-send or receive messages.</p></td>
+            <td class="description last"><p>Gets or sets the current status of the<br>topic (enabled or disabled). When a topic is disabled, that topic cannot<br>send or receive messages.</p></td>
         </tr>
 
     
@@ -2717,8 +2624,7 @@ send or receive messages.</p></td>
 
             
 
-            <td class="description last"><p>Gets or sets whether the topics
-can be ordered.</p></td>
+            <td class="description last"><p>Gets or sets whether the topics<br>can be ordered.</p></td>
         </tr>
 
     
@@ -2805,8 +2711,7 @@ can be ordered.</p></td>
 
             
 
-            <td class="description last"><p>The current number
-of active messages.</p></td>
+            <td class="description last"><p>The current number<br>of active messages.</p></td>
         </tr>
 
     
@@ -2839,8 +2744,7 @@ of active messages.</p></td>
 
             
 
-            <td class="description last"><p>The current
-number of dead letters.</p></td>
+            <td class="description last"><p>The current<br>number of dead letters.</p></td>
         </tr>
 
     
@@ -2873,8 +2777,7 @@ number of dead letters.</p></td>
 
             
 
-            <td class="description last"><p>The current
-number of scheduled messages.</p></td>
+            <td class="description last"><p>The current<br>number of scheduled messages.</p></td>
         </tr>
 
     
@@ -2907,8 +2810,7 @@ number of scheduled messages.</p></td>
 
             
 
-            <td class="description last"><p>The
-current number of transfer dead letters.</p></td>
+            <td class="description last"><p>The<br>current number of transfer dead letters.</p></td>
         </tr>
 
     
@@ -2941,8 +2843,7 @@ current number of transfer dead letters.</p></td>
 
             
 
-            <td class="description last"><p>The current
-number of transfer messages.</p></td>
+            <td class="description last"><p>The current<br>number of transfer messages.</p></td>
         </tr>
 
     
@@ -2982,8 +2883,7 @@ number of transfer messages.</p></td>
 
             
 
-            <td class="description last"><p>The current number of
-subscriptions to the topic.</p></td>
+            <td class="description last"><p>The current number of<br>subscriptions to the topic.</p></td>
         </tr>
 
     
@@ -3049,8 +2949,7 @@ subscriptions to the topic.</p></td>
 
             
 
-            <td class="description last"><p>The current availability
-status of the topic.</p></td>
+            <td class="description last"><p>The current availability<br>status of the topic.</p></td>
         </tr>
 
     
@@ -3187,7 +3086,7 @@ status of the topic.</p></td>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.2</a> on Fri Jul 03 2015 01:58:03 GMT-0700 (PDT) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:19 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

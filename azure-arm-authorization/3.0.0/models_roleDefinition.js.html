@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/roleDefinition.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AuthorizationManagementClient.html">AuthorizationManagementClient</a></li><li><a href="ClassicAdministrators.html">ClassicAdministrators</a><ul class='methods'><li data-type='method'><a href="ClassicAdministrators.html#list">list</a></li><li data-type='method'><a href="ClassicAdministrators.html#listNext">listNext</a></li></ul></li><li><a href="Permissions.html">Permissions</a><ul class='methods'><li data-type='method'><a href="Permissions.html#listForResource">listForResource</a></li><li data-type='method'><a href="Permissions.html#listForResourceGroup">listForResourceGroup</a></li><li data-type='method'><a href="Permissions.html#listForResourceGroupNext">listForResourceGroupNext</a></li><li data-type='method'><a href="Permissions.html#listForResourceNext">listForResourceNext</a></li></ul></li><li><a href="ProviderOperationsMetadataOperations.html">ProviderOperationsMetadataOperations</a><ul class='methods'><li data-type='method'><a href="ProviderOperationsMetadataOperations.html#get">get</a></li><li data-type='method'><a href="ProviderOperationsMetadataOperations.html#list">list</a></li><li data-type='method'><a href="ProviderOperationsMetadataOperations.html#listNext">listNext</a></li></ul></li><li><a href="RoleAssignments.html">RoleAssignments</a><ul class='methods'><li data-type='method'><a href="RoleAssignments.html#create">create</a></li><li data-type='method'><a href="RoleAssignments.html#createById">createById</a></li><li data-type='method'><a href="RoleAssignments.html#deleteById">deleteById</a></li><li data-type='method'><a href="RoleAssignments.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RoleAssignments.html#get">get</a></li><li data-type='method'><a href="RoleAssignments.html#getById">getById</a></li><li data-type='method'><a href="RoleAssignments.html#list">list</a></li><li data-type='method'><a href="RoleAssignments.html#listForResource">listForResource</a></li><li data-type='method'><a href="RoleAssignments.html#listForResourceGroup">listForResourceGroup</a></li><li data-type='method'><a href="RoleAssignments.html#listForResourceGroupNext">listForResourceGroupNext</a></li><li data-type='method'><a href="RoleAssignments.html#listForResourceNext">listForResourceNext</a></li><li data-type='method'><a href="RoleAssignments.html#listForScope">listForScope</a></li><li data-type='method'><a href="RoleAssignments.html#listForScopeNext">listForScopeNext</a></li><li data-type='method'><a href="RoleAssignments.html#listNext">listNext</a></li></ul></li><li><a href="RoleDefinitions.html">RoleDefinitions</a><ul class='methods'><li data-type='method'><a href="RoleDefinitions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="RoleDefinitions.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RoleDefinitions.html#get">get</a></li><li data-type='method'><a href="RoleDefinitions.html#getById">getById</a></li><li data-type='method'><a href="RoleDefinitions.html#list">list</a></li><li data-type='method'><a href="RoleDefinitions.html#listNext">listNext</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#assignableScopes">assignableScopes</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#notActions">notActions</a></li><li><a href="global.html#operations">operations</a></li><li><a href="global.html#principalId">principalId</a></li><li><a href="global.html#properties">properties</a></li><li><a href="global.html#role">role</a></li><li><a href="global.html#roleName">roleName</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/roleDefinition.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator 0.15.0.0
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the RoleDefinition class.
+ * @constructor
+ * Role definition.
+ * @member {string} [id] Gets or sets role definition id.
+ * 
+ * @member {string} [name] Gets or sets role definition name.
+ * 
+ * @member {string} [type] Gets or sets role definition type.
+ * 
+ * @member {object} [properties] Gets or sets role definition properties.
+ * 
+ * @member {string} [properties.roleName] Gets or sets role name.
+ * 
+ * @member {string} [properties.description] Gets or sets role definition
+ * description.
+ * 
+ * @member {string} [properties.type] Gets or sets role type.
+ * 
+ * @member {array} [properties.permissions] Gets or sets role definition
+ * permissions.
+ * 
+ * @member {array} [properties.assignableScopes] Gets or sets role definition
+ * assignable scopes.
+ * 
+ */
+function RoleDefinition() {
+}
+
+/**
+ * Defines the metadata of RoleDefinition
+ *
+ * @returns {object} metadata of RoleDefinition
+ *
+ */
+RoleDefinition.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'RoleDefinition',
+    type: {
+      name: 'Composite',
+      className: 'RoleDefinition',
+      modelProperties: {
+        id: {
+          required: false,
+          serializedName: 'id',
+          type: {
+            name: 'String'
+          }
+        },
+        name: {
+          required: false,
+          serializedName: 'name',
+          type: {
+            name: 'String'
+          }
+        },
+        type: {
+          required: false,
+          serializedName: 'type',
+          type: {
+            name: 'String'
+          }
+        },
+        properties: {
+          required: false,
+          serializedName: 'properties',
+          type: {
+            name: 'Composite',
+            className: 'RoleDefinitionProperties'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = RoleDefinition;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:03:44 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
