@@ -32,7 +32,9 @@ var client = new storageManagementClient(credentials, 'your-subscription-id');
 ```javascript
 var createParameters = {
   location: 'West US',
-  accountType: 'Standard_LRS',
+  sku: {
+    name: 'Standard_LRS'
+  },
   tags: {
     tag1: 'val1',
     tag2: 'val2'
@@ -60,7 +62,7 @@ client.storageAccounts.getProperties(groupName, accountName, function (err, resu
 ## List all the storage accounts in a specific resource group
 
 ```javascript
-client.storageAccounts.list(groupName, function (err, result, request, response) {
+client.storageAccounts.listByResourceGroup(groupName, function (err, result, request, response) {
   if (err) {
     console.log(err);
   }
