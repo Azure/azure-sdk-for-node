@@ -80,7 +80,7 @@ var mappings = {
   },
   'resource.policy': {
     'dir': 'resourceManagement/lib/policy',
-    'source': 'arm-resources/policy/2015-10-01-preview/swagger/policy.json'
+    'source': 'arm-resources/policy/2016-04-01/swagger/policy.json'
   },
   'storage': {
     'dir': 'storageManagement2/lib',
