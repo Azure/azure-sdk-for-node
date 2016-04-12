@@ -29,7 +29,7 @@ var createdGroups = [];
 var createdAccounts = [];
 
 var requiredEnvironment = [
-  { name: 'AZURE_TEST_LOCATION', defaultValue: 'West US' }
+  { name: 'AZURE_TEST_LOCATION', defaultValue: 'westus' }
 ];
 
 var suite;
@@ -52,7 +52,10 @@ describe('Storage Management', function () {
       accType = 'Standard_LRS';
       createParameters = {
         location: acclocation,
-        accountType: accType,
+        sku: {
+          name: accType,
+        },
+        kind: 'Storage',
         tags: {
           tag1: 'val1',
           tag2: 'val2'
@@ -94,6 +97,42 @@ describe('Storage Management', function () {
         done();
       });
     });
+
+    it('should create an account correctly with encryption', function (done) {
+      accountNameEncryption = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
+      createParametersEncryption = {
+        location: 'eastasia',
+        sku: {
+          name: accType,
+        },
+        kind: 'Storage',
+        encryption: {services: {blob: {enabled: true}}}
+      };
+      client.storageAccounts.create(groupName, accountNameEncryption, createParametersEncryption, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+
+    it('should create an account correctly with cool', function (done) {
+      accountNameCool = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
+      createParametersCool = {
+        location: 'eastasia',
+        sku: {
+          name: accType,
+        },
+        kind: 'BlobStorage',
+        accessTier: 'Cool'
+      };
+      client.storageAccounts.create(groupName, accountNameCool, createParametersCool, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    }); 
     
     it('should check the name availability for a storage account that already exists', function (done) {
       client.storageAccounts.checkNameAvailability(accountName, function (err, result, request, response) {
@@ -159,9 +198,8 @@ describe('Storage Management', function () {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        var keys = result;
-        should.exist(keys.key1);
-        should.exist(keys.key2);
+        should.exist(result.keys[0]);
+        should.exist(result.keys[1]);
         done();
       });
     });
@@ -171,14 +209,13 @@ describe('Storage Management', function () {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
-        var keys = result;
+        var keys = result.keys;
         client.storageAccounts.regenerateKey(groupName, accountName, 'key1', function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
-          var regeneratedkeys = result;
-          keys.key2.should.equal(regeneratedkeys.key2);
-          keys.key1.should.not.equal(regeneratedkeys.key1);
+          keys[1].value.should.equal(result.keys[1].value);
+          keys[0].value.should.not.equal(result.keys[0].value);
           done();
         });
       });
