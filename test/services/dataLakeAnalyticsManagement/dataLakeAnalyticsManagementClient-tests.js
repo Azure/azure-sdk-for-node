@@ -127,7 +127,10 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       
       var storageAccount = {
         location: testLocation,
-        accountType: 'Standard_GRS'
+        sku: {
+          name: 'Standard_GRS',
+        },
+        kind: 'Storage',
       };
       
       if(!suite.isPlayback) {
@@ -329,7 +332,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     
     it('adding and removing blob storage accounts to the account should work', function (done) {
       storageClient.storageAccounts.listKeys(testResourceGroup, azureBlobAccountName, function (err, result) {
-        azureBlobAccountKey = result.key1;
+        azureBlobAccountKey = result.keys[0].value;
         var storageParams = {
           properties: {
             accessKey: azureBlobAccountKey
