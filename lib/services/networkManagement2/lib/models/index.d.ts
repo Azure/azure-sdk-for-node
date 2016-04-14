@@ -182,11 +182,252 @@ export interface ApplicationGatewayBackendAddress {
 
 /**
  * @class
+ * Initializes a new instance of the NetworkInterfaceIPConfiguration class.
+ * @constructor
+ * IPConfiguration in a NetworkInterface
+ * @member {array} [applicationGatewayBackendAddressPools] Gets or sets the
+ * reference of ApplicationGatewayBackendAddressPool resource
+ * 
+ * @member {array} [loadBalancerBackendAddressPools] Gets or sets the
+ * reference of LoadBalancerBackendAddressPool resource
+ * 
+ * @member {array} [loadBalancerInboundNatRules] Gets or sets list of
+ * references of LoadBalancerInboundNatRules
+ * 
+ * @member {string} [privateIPAddress]
+ * 
+ * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
+ * allocation method (Static/Dynamic). Possible values include: 'Static',
+ * 'Dynamic'
+ * 
+ * @member {string} [privateIPAddressVersion] Gets or sets PrivateIP address
+ * version (IPv4/IPv6). Possible values include: 'IPv4', 'IPv6'
+ * 
+ * @member {object} [subnet]
+ * 
+ * @member {string} [subnet.addressPrefix] Gets or sets Address prefix for the
+ * subnet.
+ * 
+ * @member {object} [subnet.networkSecurityGroup] Gets or sets the reference
+ * of the NetworkSecurityGroup resource
+ * 
+ * @member {array} [subnet.networkSecurityGroup.securityRules] Gets or sets
+ * Security rules of network security group
+ * 
+ * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] Gets or
+ * sets Default security rules of network security group
+ * 
+ * @member {array} [subnet.networkSecurityGroup.networkInterfaces] Gets
+ * collection of references to Network Interfaces
+ * 
+ * @member {array} [subnet.networkSecurityGroup.subnets] Gets collection of
+ * references to subnets
+ * 
+ * @member {string} [subnet.networkSecurityGroup.resourceGuid] Gets or sets
+ * resource guid property of the network security group resource
+ * 
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets or
+ * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [subnet.networkSecurityGroup.etag] Gets a unique read-only
+ * string that changes whenever the resource is updated
+ * 
+ * @member {object} [subnet.routeTable] Gets or sets the reference of the
+ * RouteTable resource
+ * 
+ * @member {array} [subnet.routeTable.routes] Gets or sets Routes in a Route
+ * Table
+ * 
+ * @member {array} [subnet.routeTable.subnets] Gets collection of references
+ * to subnets
+ * 
+ * @member {string} [subnet.routeTable.provisioningState] Gets or sets
+ * Provisioning state of the resource Updating/Deleting/Failed
+ * 
+ * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated
+ * 
+ * @member {array} [subnet.ipConfigurations] Gets array of references to the
+ * network interface IP configurations using subnet
+ * 
+ * @member {string} [subnet.provisioningState] Gets or sets Provisioning state
+ * of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [subnet.name] Gets name of the resource that is unique
+ * within a resource group. This name can be used to access the resource
+ * 
+ * @member {string} [subnet.etag] A unique read-only string that changes
+ * whenever the resource is updated
+ * 
+ * @member {object} [publicIPAddress]
+ * 
+ * @member {string} [publicIPAddress.publicIPAllocationMethod] Gets or sets
+ * PublicIP allocation method (Static/Dynamic). Possible values include:
+ * 'Static', 'Dynamic'
+ * 
+ * @member {string} [publicIPAddress.publicIPAddressVersion] Gets or sets
+ * PublicIP address version (IPv4/IPv6). Possible values include: 'IPv4',
+ * 'IPv6'
+ * 
+ * @member {object} [publicIPAddress.ipConfiguration]
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.privateIPAddress] Gets or
+ * sets the privateIPAddress of the IP Configuration
+ * 
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.privateIPAllocationMethod] Gets or sets
+ * PrivateIP allocation method (Static/Dynamic). Possible values include:
+ * 'Static', 'Dynamic'
+ * 
+ * @member {object} [publicIPAddress.ipConfiguration.subnet] Gets or sets the
+ * reference of the subnet resource
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.addressPrefix]
+ * Gets or sets Address prefix for the subnet.
+ * 
+ * @member {object}
+ * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup] Gets or sets
+ * the reference of the NetworkSecurityGroup resource
+ * 
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
+ * Gets or sets Security rules of network security group
+ * 
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * Gets or sets Default security rules of network security group
+ * 
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * Gets collection of references to Network Interfaces
+ * 
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets] Gets
+ * collection of references to subnets
+ * 
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * Gets or sets resource guid property of the network security group resource
+ * 
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * Gets or sets Provisioning state of the PublicIP resource
+ * Updating/Deleting/Failed
+ * 
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
+ * unique read-only string that changes whenever the resource is updated
+ * 
+ * @member {object} [publicIPAddress.ipConfiguration.subnet.routeTable] Gets
+ * or sets the reference of the RouteTable resource
+ * 
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.routes]
+ * Gets or sets Routes in a Route Table
+ * 
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
+ * Gets collection of references to subnets
+ * 
+ * @member {string}
+ * [publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState] Gets
+ * or sets Provisioning state of the resource Updating/Deleting/Failed
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated
+ * 
+ * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
+ * Gets array of references to the network interface IP configurations using
+ * subnet
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
+ * Gets or sets Provisioning state of the PublicIP resource
+ * Updating/Deleting/Failed
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.name] Gets name of
+ * the resource that is unique within a resource group. This name can be used
+ * to access the resource
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.etag] A unique
+ * read-only string that changes whenever the resource is updated
+ * 
+ * @member {object} [publicIPAddress.ipConfiguration.publicIPAddress] Gets or
+ * sets the reference of the PublicIP resource
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.provisioningState] Gets
+ * or sets Provisioning state of the PublicIP resource
+ * Updating/Deleting/Failed
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.name] Gets name of the
+ * resource that is unique within a resource group. This name can be used to
+ * access the resource
+ * 
+ * @member {string} [publicIPAddress.ipConfiguration.etag] A unique read-only
+ * string that changes whenever the resource is updated
+ * 
+ * @member {object} [publicIPAddress.dnsSettings] Gets or sets FQDN of the DNS
+ * record associated with the public IP address
+ * 
+ * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
+ * the Domain name label.The concatenation of the domain name label and the
+ * regionalized DNS zone make up the fully qualified domain name associated
+ * with the public IP address. If a domain name label is specified, an A DNS
+ * record is created for the public IP in the Microsoft Azure DNS system.
+ * 
+ * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
+ * qualified domain name of the A DNS record associated with the public IP.
+ * This is the concatenation of the domainNameLabel and the regionalized DNS
+ * zone.
+ * 
+ * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sests
+ * the Reverse FQDN. A user-visible, fully qualified domain name that
+ * resolves to this public IP address. If the reverseFqdn is specified, then
+ * a PTR DNS record is created pointing from the IP address in the
+ * in-addr.arpa domain to the reverse FQDN.
+ * 
+ * @member {string} [publicIPAddress.ipAddress]
+ * 
+ * @member {number} [publicIPAddress.idleTimeoutInMinutes] Gets or sets the
+ * Idletimeout of the public IP address
+ * 
+ * @member {string} [publicIPAddress.resourceGuid] Gets or sets resource guid
+ * property of the PublicIP resource
+ * 
+ * @member {string} [publicIPAddress.provisioningState] Gets or sets
+ * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [publicIPAddress.etag] Gets a unique read-only string that
+ * changes whenever the resource is updated
+ * 
+ * @member {string} [provisioningState]
+ * 
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface NetworkInterfaceIPConfiguration extends SubResource {
+    applicationGatewayBackendAddressPools?: ApplicationGatewayBackendAddressPool[];
+    loadBalancerBackendAddressPools?: BackendAddressPool[];
+    loadBalancerInboundNatRules?: InboundNatRule[];
+    privateIPAddress?: string;
+    privateIPAllocationMethod?: string;
+    privateIPAddressVersion?: string;
+    subnet?: Subnet;
+    publicIPAddress?: PublicIPAddress;
+    provisioningState?: string;
+    name?: string;
+    etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGatewayBackendAddressPool class.
  * @constructor
  * Backend Address Pool of application gateway
- * @member {array} [backendIPConfigurations] Gets or sets
- * backendIPConfiguration of application gateway
+ * @member {array} [backendIPConfigurations] Gets collection of references to
+ * IPs defined in NICs
  * 
  * @member {array} [backendAddresses] Gets or sets the backend addresses
  * 
@@ -201,11 +442,1038 @@ export interface ApplicationGatewayBackendAddress {
  * 
  */
 export interface ApplicationGatewayBackendAddressPool extends SubResource {
-    backendIPConfigurations?: SubResource[];
+    backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
     backendAddresses?: ApplicationGatewayBackendAddress[];
     provisioningState?: string;
     name?: string;
     etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackendAddressPool class.
+ * @constructor
+ * Pool of backend IP addresseses
+ * @member {array} [backendIPConfigurations] Gets collection of references to
+ * IPs defined in NICs
+ * 
+ * @member {array} [loadBalancingRules] Gets Load Balancing rules that use
+ * this Backend Address Pool
+ * 
+ * @member {object} [outboundNatRule] Gets outbound rules that use this
+ * Backend Address Pool
+ * 
+ * @member {string} [outboundNatRule.id] Resource Id
+ * 
+ * @member {string} [provisioningState] Provisioning state of the PublicIP
+ * resource Updating/Deleting/Failed
+ * 
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface BackendAddressPool extends SubResource {
+    backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
+    loadBalancingRules?: SubResource[];
+    outboundNatRule?: SubResource;
+    provisioningState?: string;
+    name?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InboundNatRule class.
+ * @constructor
+ * Inbound NAT rule of the loadbalancer
+ * @member {object} [frontendIPConfiguration] Gets or sets a reference to
+ * frontend IP Addresses
+ * 
+ * @member {string} [frontendIPConfiguration.id] Resource Id
+ * 
+ * @member {object} [backendIPConfiguration] Gets or sets a reference to a
+ * private ip address defined on a NetworkInterface of a VM. Traffic sent to
+ * frontendPort of each of the frontendIPConfigurations is forwarded to the
+ * backed IP
+ * 
+ * @member {array}
+ * [backendIPConfiguration.applicationGatewayBackendAddressPools] Gets or
+ * sets the reference of ApplicationGatewayBackendAddressPool resource
+ * 
+ * @member {array} [backendIPConfiguration.loadBalancerBackendAddressPools]
+ * Gets or sets the reference of LoadBalancerBackendAddressPool resource
+ * 
+ * @member {array} [backendIPConfiguration.loadBalancerInboundNatRules] Gets
+ * or sets list of references of LoadBalancerInboundNatRules
+ * 
+ * @member {string} [backendIPConfiguration.privateIPAddress]
+ * 
+ * @member {string} [backendIPConfiguration.privateIPAllocationMethod] Gets or
+ * sets PrivateIP allocation method (Static/Dynamic). Possible values
+ * include: 'Static', 'Dynamic'
+ * 
+ * @member {string} [backendIPConfiguration.privateIPAddressVersion] Gets or
+ * sets PrivateIP address version (IPv4/IPv6). Possible values include:
+ * 'IPv4', 'IPv6'
+ * 
+ * @member {object} [backendIPConfiguration.subnet]
+ * 
+ * @member {string} [backendIPConfiguration.subnet.addressPrefix] Gets or sets
+ * Address prefix for the subnet.
+ * 
+ * @member {object} [backendIPConfiguration.subnet.networkSecurityGroup] Gets
+ * or sets the reference of the NetworkSecurityGroup resource
+ * 
+ * @member {array}
+ * [backendIPConfiguration.subnet.networkSecurityGroup.securityRules] Gets or
+ * sets Security rules of network security group
+ * 
+ * @member {array}
+ * [backendIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * Gets or sets Default security rules of network security group
+ * 
+ * @member {array}
+ * [backendIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * Gets collection of references to Network Interfaces
+ * 
+ * @member {array}
+ * [backendIPConfiguration.subnet.networkSecurityGroup.subnets] Gets
+ * collection of references to subnets
+ * 
+ * @member {string}
+ * [backendIPConfiguration.subnet.networkSecurityGroup.resourceGuid] Gets or
+ * sets resource guid property of the network security group resource
+ * 
+ * @member {string}
+ * [backendIPConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * Gets or sets Provisioning state of the PublicIP resource
+ * Updating/Deleting/Failed
+ * 
+ * @member {string} [backendIPConfiguration.subnet.networkSecurityGroup.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated
+ * 
+ * @member {object} [backendIPConfiguration.subnet.routeTable] Gets or sets
+ * the reference of the RouteTable resource
+ * 
+ * @member {array} [backendIPConfiguration.subnet.routeTable.routes] Gets or
+ * sets Routes in a Route Table
+ * 
+ * @member {array} [backendIPConfiguration.subnet.routeTable.subnets] Gets
+ * collection of references to subnets
+ * 
+ * @member {string}
+ * [backendIPConfiguration.subnet.routeTable.provisioningState] Gets or sets
+ * Provisioning state of the resource Updating/Deleting/Failed
+ * 
+ * @member {string} [backendIPConfiguration.subnet.routeTable.etag] Gets a
+ * unique read-only string that changes whenever the resource is updated
+ * 
+ * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets array
+ * of references to the network interface IP configurations using subnet
+ * 
+ * @member {string} [backendIPConfiguration.subnet.provisioningState] Gets or
+ * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [backendIPConfiguration.subnet.name] Gets name of the
+ * resource that is unique within a resource group. This name can be used to
+ * access the resource
+ * 
+ * @member {string} [backendIPConfiguration.subnet.etag] A unique read-only
+ * string that changes whenever the resource is updated
+ * 
+ * @member {object} [backendIPConfiguration.publicIPAddress]
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPAllocationMethod] Gets or
+ * sets PublicIP allocation method (Static/Dynamic). Possible values include:
+ * 'Static', 'Dynamic'
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPAddressVersion] Gets or
+ * sets PublicIP address version (IPv4/IPv6). Possible values include:
+ * 'IPv4', 'IPv6'
+ * 
+ * @member {object} [backendIPConfiguration.publicIPAddress.ipConfiguration]
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
+ * Gets or sets the privateIPAddress of the IP Configuration
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
+ * Gets or sets PrivateIP allocation method (Static/Dynamic). Possible values
+ * include: 'Static', 'Dynamic'
+ * 
+ * @member {object}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet] Gets or
+ * sets the reference of the subnet resource
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
+ * Gets or sets Address prefix for the subnet.
+ * 
+ * @member {object}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
+ * Gets or sets the reference of the NetworkSecurityGroup resource
+ * 
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
+ * Gets or sets Security rules of network security group
+ * 
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * Gets or sets Default security rules of network security group
+ * 
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * Gets collection of references to Network Interfaces
+ * 
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
+ * Gets collection of references to subnets
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * Gets or sets resource guid property of the network security group resource
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * Gets or sets Provisioning state of the PublicIP resource
+ * Updating/Deleting/Failed
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated
+ * 
+ * @member {object}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
+ * Gets or sets the reference of the RouteTable resource
+ * 
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
+ * Gets or sets Routes in a Route Table
+ * 
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
+ * Gets collection of references to subnets
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
+ * Gets or sets Provisioning state of the resource Updating/Deleting/Failed
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated
+ * 
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
+ * Gets array of references to the network interface IP configurations using
+ * subnet
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
+ * Gets or sets Provisioning state of the PublicIP resource
+ * Updating/Deleting/Failed
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.name] Gets
+ * name of the resource that is unique within a resource group. This name can
+ * be used to access the resource
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag] A
+ * unique read-only string that changes whenever the resource is updated
+ * 
+ * @member {object}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress]
+ * Gets or sets the reference of the PublicIP resource
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
+ * Gets or sets Provisioning state of the PublicIP resource
+ * Updating/Deleting/Failed
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.name] Gets name of
+ * the resource that is unique within a resource group. This name can be used
+ * to access the resource
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.etag] A unique
+ * read-only string that changes whenever the resource is updated
+ * 
+ * @member {object} [backendIPConfiguration.publicIPAddress.dnsSettings] Gets
+ * or sets FQDN of the DNS record associated with the public IP address
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel] Gets
+ * or sets the Domain name label.The concatenation of the domain name label
+ * and the regionalized DNS zone make up the fully qualified domain name
+ * associated with the public IP address. If a domain name label is
+ * specified, an A DNS record is created for the public IP in the Microsoft
+ * Azure DNS system.
+ * 
+ * @member {string} [backendIPConfiguration.publicIPAddress.dnsSettings.fqdn]
+ * Gets the FQDN, Fully qualified domain name of the A DNS record associated
+ * with the public IP. This is the concatenation of the domainNameLabel and
+ * the regionalized DNS zone.
+ * 
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn] Gets or
+ * Sests the Reverse FQDN. A user-visible, fully qualified domain name that
+ * resolves to this public IP address. If the reverseFqdn is specified, then
+ * a PTR DNS record is created pointing from the IP address in the
+ * in-addr.arpa domain to the reverse FQDN.
+ * 
+ * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress]
+ * 
+ * @member {number}
+ * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] Gets or sets
+ * the Idletimeout of the public IP address
+ * 
+ * @member {string} [backendIPConfiguration.publicIPAddress.resourceGuid] Gets
+ * or sets resource guid property of the PublicIP resource
+ * 
+ * @member {string} [backendIPConfiguration.publicIPAddress.provisioningState]
+ * Gets or sets Provisioning state of the PublicIP resource
+ * Updating/Deleting/Failed
+ * 
+ * @member {string} [backendIPConfiguration.publicIPAddress.etag] Gets a
+ * unique read-only string that changes whenever the resource is updated
+ * 
+ * @member {string} [backendIPConfiguration.provisioningState]
+ * 
+ * @member {string} [backendIPConfiguration.name] Gets name of the resource
+ * that is unique within a resource group. This name can be used to access
+ * the resource
+ * 
+ * @member {string} [backendIPConfiguration.etag] A unique read-only string
+ * that changes whenever the resource is updated
+ * 
+ * @member {string} [protocol] Gets or sets the transport potocol for the
+ * external endpoint. Possible values are Udp or Tcp. Possible values
+ * include: 'Udp', 'Tcp'
+ * 
+ * @member {number} [frontendPort] Gets or sets the port for the external
+ * endpoint. You can spcify any port number you choose, but the port numbers
+ * specified for each role in the service must be unique. Possible values
+ * range between 1 and 65535, inclusive
+ * 
+ * @member {number} [backendPort] Gets or sets a port used for internal
+ * connections on the endpoint. The localPort attribute maps the eternal port
+ * of the endpoint to an internal port on a role. This is useful in scenarios
+ * where a role must communicate to an internal compotnent on a port that is
+ * different from the one that is exposed externally. If not specified, the
+ * value of localPort is the same as the port attribute. Set the value of
+ * localPort to '*' to automatically assign an unallocated port that is
+ * discoverable using the runtime API
+ * 
+ * @member {number} [idleTimeoutInMinutes] Gets or sets the timeout for the
+ * Tcp idle connection. The value can be set between 4 and 30 minutes. The
+ * default value is 4 minutes. This emlement is only used when the protocol
+ * is set to Tcp
+ * 
+ * @member {boolean} [enableFloatingIP] Configures a virtual machine's
+ * endpoint for the floating IP capability required to configure a SQL
+ * AlwaysOn availability Group. This setting is required when using the SQL
+ * Always ON availability Groups in SQL server. This setting can't be changed
+ * after you create the endpoint
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface InboundNatRule extends SubResource {
+    frontendIPConfiguration?: SubResource;
+    backendIPConfiguration?: NetworkInterfaceIPConfiguration;
+    protocol?: string;
+    frontendPort?: number;
+    backendPort?: number;
+    idleTimeoutInMinutes?: number;
+    enableFloatingIP?: boolean;
+    provisioningState?: string;
+    name?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Subnet class.
+ * @constructor
+ * Subnet in a VirtualNework resource
+ * @member {string} [addressPrefix] Gets or sets Address prefix for the subnet.
+ * 
+ * @member {object} [networkSecurityGroup] Gets or sets the reference of the
+ * NetworkSecurityGroup resource
+ * 
+ * @member {array} [networkSecurityGroup.securityRules] Gets or sets Security
+ * rules of network security group
+ * 
+ * @member {array} [networkSecurityGroup.defaultSecurityRules] Gets or sets
+ * Default security rules of network security group
+ * 
+ * @member {array} [networkSecurityGroup.networkInterfaces] Gets collection of
+ * references to Network Interfaces
+ * 
+ * @member {array} [networkSecurityGroup.subnets] Gets collection of
+ * references to subnets
+ * 
+ * @member {string} [networkSecurityGroup.resourceGuid] Gets or sets resource
+ * guid property of the network security group resource
+ * 
+ * @member {string} [networkSecurityGroup.provisioningState] Gets or sets
+ * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [networkSecurityGroup.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated
+ * 
+ * @member {object} [routeTable] Gets or sets the reference of the RouteTable
+ * resource
+ * 
+ * @member {array} [routeTable.routes] Gets or sets Routes in a Route Table
+ * 
+ * @member {array} [routeTable.subnets] Gets collection of references to
+ * subnets
+ * 
+ * @member {string} [routeTable.provisioningState] Gets or sets Provisioning
+ * state of the resource Updating/Deleting/Failed
+ * 
+ * @member {string} [routeTable.etag] Gets a unique read-only string that
+ * changes whenever the resource is updated
+ * 
+ * @member {array} [ipConfigurations] Gets array of references to the network
+ * interface IP configurations using subnet
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface Subnet extends SubResource {
+    addressPrefix?: string;
+    networkSecurityGroup?: NetworkSecurityGroup;
+    routeTable?: RouteTable;
+    ipConfigurations?: IPConfiguration[];
+    provisioningState?: string;
+    name?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * @member {string} [id] Resource Id
+ * 
+ * @member {string} [name] Resource name
+ * 
+ * @member {string} [type] Resource type
+ * 
+ * @member {string} [location] Resource location
+ * 
+ * @member {object} [tags] Resource tags
+ * 
+ */
+export interface Resource extends BaseResource {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkSecurityGroup class.
+ * @constructor
+ * NetworkSecurityGroup resource
+ * @member {array} [securityRules] Gets or sets Security rules of network
+ * security group
+ * 
+ * @member {array} [defaultSecurityRules] Gets or sets Default security rules
+ * of network security group
+ * 
+ * @member {array} [networkInterfaces] Gets collection of references to
+ * Network Interfaces
+ * 
+ * @member {array} [subnets] Gets collection of references to subnets
+ * 
+ * @member {string} [resourceGuid] Gets or sets resource guid property of the
+ * network security group resource
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated
+ * 
+ */
+export interface NetworkSecurityGroup extends Resource {
+    securityRules?: SecurityRule[];
+    defaultSecurityRules?: SecurityRule[];
+    networkInterfaces?: NetworkInterface[];
+    subnets?: Subnet[];
+    resourceGuid?: string;
+    provisioningState?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SecurityRule class.
+ * @constructor
+ * Network security rule
+ * @member {string} [description] Gets or sets a description for this rule.
+ * Restricted to 140 chars.
+ * 
+ * @member {string} protocol Gets or sets Network protocol this rule applies
+ * to. Can be Tcp, Udp or All(*). Possible values include: 'Tcp', 'Udp', '*'
+ * 
+ * @member {string} [sourcePortRange] Gets or sets Source Port or Range.
+ * Integer or range between 0 and 65535. Asterix '*' can also be used to
+ * match all ports.
+ * 
+ * @member {string} [destinationPortRange] Gets or sets Destination Port or
+ * Range. Integer or range between 0 and 65535. Asterix '*' can also be used
+ * to match all ports.
+ * 
+ * @member {string} sourceAddressPrefix Gets or sets source address prefix.
+ * CIDR or source IP range. Asterix '*' can also be used to match all source
+ * IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
+ * 'Internet' can also be used. If this is an ingress rule, specifies where
+ * network traffic originates from.
+ * 
+ * @member {string} destinationAddressPrefix Gets or sets destination address
+ * prefix. CIDR or source IP range. Asterix '*' can also be used to match all
+ * source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
+ * 'Internet' can also be used.
+ * 
+ * @member {string} access Gets or sets network traffic is allowed or denied.
+ * Possible values are 'Allow' and 'Deny'. Possible values include: 'Allow',
+ * 'Deny'
+ * 
+ * @member {number} [priority] Gets or sets the priority of the rule. The
+ * value can be between 100 and 4096. The priority number must be unique for
+ * each rule in the collection. The lower the priority number, the higher the
+ * priority of the rule.
+ * 
+ * @member {string} direction Gets or sets the direction of the rule.InBound
+ * or Outbound. The direction specifies if rule will be evaluated on incoming
+ * or outcoming traffic. Possible values include: 'Inbound', 'Outbound'
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface SecurityRule extends SubResource {
+    description?: string;
+    protocol: string;
+    sourcePortRange?: string;
+    destinationPortRange?: string;
+    sourceAddressPrefix: string;
+    destinationAddressPrefix: string;
+    access: string;
+    priority?: number;
+    direction: string;
+    provisioningState?: string;
+    name?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkInterface class.
+ * @constructor
+ * A NetworkInterface in a resource group
+ * @member {object} [virtualMachine] Gets or sets the reference of a
+ * VirtualMachine
+ * 
+ * @member {string} [virtualMachine.id] Resource Id
+ * 
+ * @member {object} [networkSecurityGroup] Gets or sets the reference of the
+ * NetworkSecurityGroup resource
+ * 
+ * @member {array} [networkSecurityGroup.securityRules] Gets or sets Security
+ * rules of network security group
+ * 
+ * @member {array} [networkSecurityGroup.defaultSecurityRules] Gets or sets
+ * Default security rules of network security group
+ * 
+ * @member {array} [networkSecurityGroup.networkInterfaces] Gets collection of
+ * references to Network Interfaces
+ * 
+ * @member {array} [networkSecurityGroup.subnets] Gets collection of
+ * references to subnets
+ * 
+ * @member {string} [networkSecurityGroup.resourceGuid] Gets or sets resource
+ * guid property of the network security group resource
+ * 
+ * @member {string} [networkSecurityGroup.provisioningState] Gets or sets
+ * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [networkSecurityGroup.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated
+ * 
+ * @member {array} [ipConfigurations] Gets or sets list of IPConfigurations of
+ * the NetworkInterface
+ * 
+ * @member {object} [dnsSettings] Gets or sets DNS Settings in
+ * NetworkInterface
+ * 
+ * @member {array} [dnsSettings.dnsServers] Gets or sets list of DNS servers
+ * IP addresses
+ * 
+ * @member {array} [dnsSettings.appliedDnsServers] Gets or sets list of
+ * Applied DNS servers IP addresses
+ * 
+ * @member {string} [dnsSettings.internalDnsNameLabel] Gets or sets the
+ * Internal DNS name
+ * 
+ * @member {string} [dnsSettings.internalFqdn] Gets or sets the internal fqdn.
+ * 
+ * @member {string} [dnsSettings.internalDomainNameSuffix] Gets or sets
+ * internal domain name suffix of the NIC.
+ * 
+ * @member {string} [macAddress] Gets the MAC Address of the network interface
+ * 
+ * @member {boolean} [primary] Gets whether this is a primary NIC on a virtual
+ * machine
+ * 
+ * @member {boolean} [enableIPForwarding] Gets or sets whether IPForwarding is
+ * enabled on the NIC
+ * 
+ * @member {string} [resourceGuid] Gets or sets resource guid property of the
+ * network interface resource
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated
+ * 
+ */
+export interface NetworkInterface extends Resource {
+    virtualMachine?: SubResource;
+    networkSecurityGroup?: NetworkSecurityGroup;
+    ipConfigurations?: NetworkInterfaceIPConfiguration[];
+    dnsSettings?: NetworkInterfaceDnsSettings;
+    macAddress?: string;
+    primary?: boolean;
+    enableIPForwarding?: boolean;
+    resourceGuid?: string;
+    provisioningState?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkInterfaceDnsSettings class.
+ * @constructor
+ * Dns Settings of a network interface
+ * @member {array} [dnsServers] Gets or sets list of DNS servers IP addresses
+ * 
+ * @member {array} [appliedDnsServers] Gets or sets list of Applied DNS
+ * servers IP addresses
+ * 
+ * @member {string} [internalDnsNameLabel] Gets or sets the Internal DNS name
+ * 
+ * @member {string} [internalFqdn] Gets or sets the internal fqdn.
+ * 
+ * @member {string} [internalDomainNameSuffix] Gets or sets internal domain
+ * name suffix of the NIC.
+ * 
+ */
+export interface NetworkInterfaceDnsSettings {
+    dnsServers?: string[];
+    appliedDnsServers?: string[];
+    internalDnsNameLabel?: string;
+    internalFqdn?: string;
+    internalDomainNameSuffix?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RouteTable class.
+ * @constructor
+ * RouteTable resource
+ * @member {array} [routes] Gets or sets Routes in a Route Table
+ * 
+ * @member {array} [subnets] Gets collection of references to subnets
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * resource Updating/Deleting/Failed
+ * 
+ * @member {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated
+ * 
+ */
+export interface RouteTable extends Resource {
+    routes?: Route[];
+    subnets?: Subnet[];
+    provisioningState?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Route class.
+ * @constructor
+ * Route resource
+ * @member {string} [addressPrefix] Gets or sets the destination CIDR to which
+ * the route applies.
+ * 
+ * @member {string} nextHopType Gets or sets the type of Azure hop the packet
+ * should be sent to. Possible values include: 'VirtualNetworkGateway',
+ * 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
+ * 
+ * @member {string} [nextHopIpAddress] Gets or sets the IP address packets
+ * should be forwarded to. Next hop values are only allowed in routes where
+ * the next hop type is VirtualAppliance.
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * resource Updating/Deleting/Failed
+ * 
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface Route extends SubResource {
+    addressPrefix?: string;
+    nextHopType: string;
+    nextHopIpAddress?: string;
+    provisioningState?: string;
+    name?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IPConfiguration class.
+ * @constructor
+ * IPConfiguration
+ * @member {string} [privateIPAddress] Gets or sets the privateIPAddress of
+ * the IP Configuration
+ * 
+ * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
+ * allocation method (Static/Dynamic). Possible values include: 'Static',
+ * 'Dynamic'
+ * 
+ * @member {object} [subnet] Gets or sets the reference of the subnet resource
+ * 
+ * @member {string} [subnet.addressPrefix] Gets or sets Address prefix for the
+ * subnet.
+ * 
+ * @member {object} [subnet.networkSecurityGroup] Gets or sets the reference
+ * of the NetworkSecurityGroup resource
+ * 
+ * @member {array} [subnet.networkSecurityGroup.securityRules] Gets or sets
+ * Security rules of network security group
+ * 
+ * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] Gets or
+ * sets Default security rules of network security group
+ * 
+ * @member {array} [subnet.networkSecurityGroup.networkInterfaces] Gets
+ * collection of references to Network Interfaces
+ * 
+ * @member {array} [subnet.networkSecurityGroup.subnets] Gets collection of
+ * references to subnets
+ * 
+ * @member {string} [subnet.networkSecurityGroup.resourceGuid] Gets or sets
+ * resource guid property of the network security group resource
+ * 
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets or
+ * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [subnet.networkSecurityGroup.etag] Gets a unique read-only
+ * string that changes whenever the resource is updated
+ * 
+ * @member {object} [subnet.routeTable] Gets or sets the reference of the
+ * RouteTable resource
+ * 
+ * @member {array} [subnet.routeTable.routes] Gets or sets Routes in a Route
+ * Table
+ * 
+ * @member {array} [subnet.routeTable.subnets] Gets collection of references
+ * to subnets
+ * 
+ * @member {string} [subnet.routeTable.provisioningState] Gets or sets
+ * Provisioning state of the resource Updating/Deleting/Failed
+ * 
+ * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
+ * that changes whenever the resource is updated
+ * 
+ * @member {array} [subnet.ipConfigurations] Gets array of references to the
+ * network interface IP configurations using subnet
+ * 
+ * @member {string} [subnet.provisioningState] Gets or sets Provisioning state
+ * of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [subnet.name] Gets name of the resource that is unique
+ * within a resource group. This name can be used to access the resource
+ * 
+ * @member {string} [subnet.etag] A unique read-only string that changes
+ * whenever the resource is updated
+ * 
+ * @member {object} [publicIPAddress] Gets or sets the reference of the
+ * PublicIP resource
+ * 
+ * @member {string} [publicIPAddress.publicIPAllocationMethod] Gets or sets
+ * PublicIP allocation method (Static/Dynamic). Possible values include:
+ * 'Static', 'Dynamic'
+ * 
+ * @member {string} [publicIPAddress.publicIPAddressVersion] Gets or sets
+ * PublicIP address version (IPv4/IPv6). Possible values include: 'IPv4',
+ * 'IPv6'
+ * 
+ * @member {object} [publicIPAddress.ipConfiguration]
+ * 
+ * @member {object} [publicIPAddress.dnsSettings] Gets or sets FQDN of the DNS
+ * record associated with the public IP address
+ * 
+ * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
+ * the Domain name label.The concatenation of the domain name label and the
+ * regionalized DNS zone make up the fully qualified domain name associated
+ * with the public IP address. If a domain name label is specified, an A DNS
+ * record is created for the public IP in the Microsoft Azure DNS system.
+ * 
+ * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
+ * qualified domain name of the A DNS record associated with the public IP.
+ * This is the concatenation of the domainNameLabel and the regionalized DNS
+ * zone.
+ * 
+ * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sests
+ * the Reverse FQDN. A user-visible, fully qualified domain name that
+ * resolves to this public IP address. If the reverseFqdn is specified, then
+ * a PTR DNS record is created pointing from the IP address in the
+ * in-addr.arpa domain to the reverse FQDN.
+ * 
+ * @member {string} [publicIPAddress.ipAddress]
+ * 
+ * @member {number} [publicIPAddress.idleTimeoutInMinutes] Gets or sets the
+ * Idletimeout of the public IP address
+ * 
+ * @member {string} [publicIPAddress.resourceGuid] Gets or sets resource guid
+ * property of the PublicIP resource
+ * 
+ * @member {string} [publicIPAddress.provisioningState] Gets or sets
+ * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [publicIPAddress.etag] Gets a unique read-only string that
+ * changes whenever the resource is updated
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface IPConfiguration extends SubResource {
+    privateIPAddress?: string;
+    privateIPAllocationMethod?: string;
+    subnet?: Subnet;
+    publicIPAddress?: PublicIPAddress;
+    provisioningState?: string;
+    name?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPAddress class.
+ * @constructor
+ * PublicIPAddress resource
+ * @member {string} [publicIPAllocationMethod] Gets or sets PublicIP
+ * allocation method (Static/Dynamic). Possible values include: 'Static',
+ * 'Dynamic'
+ * 
+ * @member {string} [publicIPAddressVersion] Gets or sets PublicIP address
+ * version (IPv4/IPv6). Possible values include: 'IPv4', 'IPv6'
+ * 
+ * @member {object} [ipConfiguration]
+ * 
+ * @member {string} [ipConfiguration.privateIPAddress] Gets or sets the
+ * privateIPAddress of the IP Configuration
+ * 
+ * @member {string} [ipConfiguration.privateIPAllocationMethod] Gets or sets
+ * PrivateIP allocation method (Static/Dynamic). Possible values include:
+ * 'Static', 'Dynamic'
+ * 
+ * @member {object} [ipConfiguration.subnet] Gets or sets the reference of the
+ * subnet resource
+ * 
+ * @member {string} [ipConfiguration.subnet.addressPrefix] Gets or sets
+ * Address prefix for the subnet.
+ * 
+ * @member {object} [ipConfiguration.subnet.networkSecurityGroup] Gets or sets
+ * the reference of the NetworkSecurityGroup resource
+ * 
+ * @member {array} [ipConfiguration.subnet.networkSecurityGroup.securityRules]
+ * Gets or sets Security rules of network security group
+ * 
+ * @member {array}
+ * [ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules] Gets or
+ * sets Default security rules of network security group
+ * 
+ * @member {array}
+ * [ipConfiguration.subnet.networkSecurityGroup.networkInterfaces] Gets
+ * collection of references to Network Interfaces
+ * 
+ * @member {array} [ipConfiguration.subnet.networkSecurityGroup.subnets] Gets
+ * collection of references to subnets
+ * 
+ * @member {string} [ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * Gets or sets resource guid property of the network security group resource
+ * 
+ * @member {string}
+ * [ipConfiguration.subnet.networkSecurityGroup.provisioningState] Gets or
+ * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
+ * unique read-only string that changes whenever the resource is updated
+ * 
+ * @member {object} [ipConfiguration.subnet.routeTable] Gets or sets the
+ * reference of the RouteTable resource
+ * 
+ * @member {array} [ipConfiguration.subnet.routeTable.routes] Gets or sets
+ * Routes in a Route Table
+ * 
+ * @member {array} [ipConfiguration.subnet.routeTable.subnets] Gets collection
+ * of references to subnets
+ * 
+ * @member {string} [ipConfiguration.subnet.routeTable.provisioningState] Gets
+ * or sets Provisioning state of the resource Updating/Deleting/Failed
+ * 
+ * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
+ * read-only string that changes whenever the resource is updated
+ * 
+ * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets array of
+ * references to the network interface IP configurations using subnet
+ * 
+ * @member {string} [ipConfiguration.subnet.provisioningState] Gets or sets
+ * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [ipConfiguration.subnet.name] Gets name of the resource
+ * that is unique within a resource group. This name can be used to access
+ * the resource
+ * 
+ * @member {string} [ipConfiguration.subnet.etag] A unique read-only string
+ * that changes whenever the resource is updated
+ * 
+ * @member {object} [ipConfiguration.publicIPAddress] Gets or sets the
+ * reference of the PublicIP resource
+ * 
+ * @member {string} [ipConfiguration.provisioningState] Gets or sets
+ * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [ipConfiguration.name] Gets name of the resource that is
+ * unique within a resource group. This name can be used to access the
+ * resource
+ * 
+ * @member {string} [ipConfiguration.etag] A unique read-only string that
+ * changes whenever the resource is updated
+ * 
+ * @member {object} [dnsSettings] Gets or sets FQDN of the DNS record
+ * associated with the public IP address
+ * 
+ * @member {string} [dnsSettings.domainNameLabel] Gets or sets the Domain name
+ * label.The concatenation of the domain name label and the regionalized DNS
+ * zone make up the fully qualified domain name associated with the public IP
+ * address. If a domain name label is specified, an A DNS record is created
+ * for the public IP in the Microsoft Azure DNS system.
+ * 
+ * @member {string} [dnsSettings.fqdn] Gets the FQDN, Fully qualified domain
+ * name of the A DNS record associated with the public IP. This is the
+ * concatenation of the domainNameLabel and the regionalized DNS zone.
+ * 
+ * @member {string} [dnsSettings.reverseFqdn] Gets or Sests the Reverse FQDN.
+ * A user-visible, fully qualified domain name that resolves to this public
+ * IP address. If the reverseFqdn is specified, then a PTR DNS record is
+ * created pointing from the IP address in the in-addr.arpa domain to the
+ * reverse FQDN.
+ * 
+ * @member {string} [ipAddress]
+ * 
+ * @member {number} [idleTimeoutInMinutes] Gets or sets the Idletimeout of the
+ * public IP address
+ * 
+ * @member {string} [resourceGuid] Gets or sets resource guid property of the
+ * PublicIP resource
+ * 
+ * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [etag] Gets a unique read-only string that changes
+ * whenever the resource is updated
+ * 
+ */
+export interface PublicIPAddress extends Resource {
+    publicIPAllocationMethod?: string;
+    publicIPAddressVersion?: string;
+    ipConfiguration?: IPConfiguration;
+    dnsSettings?: PublicIPAddressDnsSettings;
+    ipAddress?: string;
+    idleTimeoutInMinutes?: number;
+    resourceGuid?: string;
+    provisioningState?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPAddressDnsSettings class.
+ * @constructor
+ * Contains FQDN of the DNS record associated with the public IP address
+ * @member {string} [domainNameLabel] Gets or sets the Domain name label.The
+ * concatenation of the domain name label and the regionalized DNS zone make
+ * up the fully qualified domain name associated with the public IP address.
+ * If a domain name label is specified, an A DNS record is created for the
+ * public IP in the Microsoft Azure DNS system.
+ * 
+ * @member {string} [fqdn] Gets the FQDN, Fully qualified domain name of the A
+ * DNS record associated with the public IP. This is the concatenation of the
+ * domainNameLabel and the regionalized DNS zone.
+ * 
+ * @member {string} [reverseFqdn] Gets or Sests the Reverse FQDN. A
+ * user-visible, fully qualified domain name that resolves to this public IP
+ * address. If the reverseFqdn is specified, then a PTR DNS record is created
+ * pointing from the IP address in the in-addr.arpa domain to the reverse
+ * FQDN.
+ * 
+ */
+export interface PublicIPAddressDnsSettings {
+    domainNameLabel?: string;
+    fqdn?: string;
+    reverseFqdn?: string;
 }
 
 /**
@@ -458,29 +1726,6 @@ export interface ApplicationGatewayUrlPathMap extends SubResource {
     provisioningState?: string;
     name?: string;
     etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * @member {string} [id] Resource Id
- * 
- * @member {string} [name] Resource name
- * 
- * @member {string} [type] Resource type
- * 
- * @member {string} [location] Resource location
- * 
- * @member {object} [tags] Resource tags
- * 
- */
-export interface Resource extends BaseResource {
-    id?: string;
-    name?: string;
-    type?: string;
-    location?: string;
-    tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -975,1215 +2220,6 @@ export interface ExpressRouteServiceProvider extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the Subnet class.
- * @constructor
- * Subnet in a VirtualNework resource
- * @member {string} [addressPrefix] Gets or sets Address prefix for the subnet.
- * 
- * @member {object} [networkSecurityGroup] Gets or sets the reference of the
- * NetworkSecurityGroup resource
- * 
- * @member {array} [networkSecurityGroup.securityRules] Gets or sets Security
- * rules of network security group
- * 
- * @member {array} [networkSecurityGroup.defaultSecurityRules] Gets or sets
- * Default security rules of network security group
- * 
- * @member {array} [networkSecurityGroup.networkInterfaces] Gets collection of
- * references to Network Interfaces
- * 
- * @member {array} [networkSecurityGroup.subnets] Gets collection of
- * references to subnets
- * 
- * @member {string} [networkSecurityGroup.resourceGuid] Gets or sets resource
- * guid property of the network security group resource
- * 
- * @member {string} [networkSecurityGroup.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [networkSecurityGroup.etag] Gets a unique read-only string
- * that changes whenever the resource is updated
- * 
- * @member {object} [routeTable] Gets or sets the reference of the RouteTable
- * resource
- * 
- * @member {array} [routeTable.routes] Gets or sets Routes in a Route Table
- * 
- * @member {array} [routeTable.subnets] Gets collection of references to
- * subnets
- * 
- * @member {string} [routeTable.provisioningState] Gets or sets Provisioning
- * state of the resource Updating/Deleting/Failed
- * 
- * @member {string} [routeTable.etag] Gets a unique read-only string that
- * changes whenever the resource is updated
- * 
- * @member {array} [ipConfigurations] Gets array of references to the network
- * interface IP configurations using subnet
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
- * 
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated
- * 
- */
-export interface Subnet extends SubResource {
-    addressPrefix?: string;
-    networkSecurityGroup?: NetworkSecurityGroup;
-    routeTable?: RouteTable;
-    ipConfigurations?: IPConfiguration[];
-    provisioningState?: string;
-    name?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkSecurityGroup class.
- * @constructor
- * NetworkSecurityGroup resource
- * @member {array} [securityRules] Gets or sets Security rules of network
- * security group
- * 
- * @member {array} [defaultSecurityRules] Gets or sets Default security rules
- * of network security group
- * 
- * @member {array} [networkInterfaces] Gets collection of references to
- * Network Interfaces
- * 
- * @member {array} [subnets] Gets collection of references to subnets
- * 
- * @member {string} [resourceGuid] Gets or sets resource guid property of the
- * network security group resource
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [etag] Gets a unique read-only string that changes
- * whenever the resource is updated
- * 
- */
-export interface NetworkSecurityGroup extends Resource {
-    securityRules?: SecurityRule[];
-    defaultSecurityRules?: SecurityRule[];
-    networkInterfaces?: NetworkInterface[];
-    subnets?: Subnet[];
-    resourceGuid?: string;
-    provisioningState?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SecurityRule class.
- * @constructor
- * Network security rule
- * @member {string} [description] Gets or sets a description for this rule.
- * Restricted to 140 chars.
- * 
- * @member {string} protocol Gets or sets Network protocol this rule applies
- * to. Can be Tcp, Udp or All(*). Possible values include: 'Tcp', 'Udp', '*'
- * 
- * @member {string} [sourcePortRange] Gets or sets Source Port or Range.
- * Integer or range between 0 and 65535. Asterix '*' can also be used to
- * match all ports.
- * 
- * @member {string} [destinationPortRange] Gets or sets Destination Port or
- * Range. Integer or range between 0 and 65535. Asterix '*' can also be used
- * to match all ports.
- * 
- * @member {string} sourceAddressPrefix Gets or sets source address prefix.
- * CIDR or source IP range. Asterix '*' can also be used to match all source
- * IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
- * 'Internet' can also be used. If this is an ingress rule, specifies where
- * network traffic originates from.
- * 
- * @member {string} destinationAddressPrefix Gets or sets destination address
- * prefix. CIDR or source IP range. Asterix '*' can also be used to match all
- * source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and
- * 'Internet' can also be used.
- * 
- * @member {string} access Gets or sets network traffic is allowed or denied.
- * Possible values are 'Allow' and 'Deny'. Possible values include: 'Allow',
- * 'Deny'
- * 
- * @member {number} [priority] Gets or sets the priority of the rule. The
- * value can be between 100 and 4096. The priority number must be unique for
- * each rule in the collection. The lower the priority number, the higher the
- * priority of the rule.
- * 
- * @member {string} direction Gets or sets the direction of the rule.InBound
- * or Outbound. The direction specifies if rule will be evaluated on incoming
- * or outcoming traffic. Possible values include: 'Inbound', 'Outbound'
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
- * 
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated
- * 
- */
-export interface SecurityRule extends SubResource {
-    description?: string;
-    protocol: string;
-    sourcePortRange?: string;
-    destinationPortRange?: string;
-    sourceAddressPrefix: string;
-    destinationAddressPrefix: string;
-    access: string;
-    priority?: number;
-    direction: string;
-    provisioningState?: string;
-    name?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkInterface class.
- * @constructor
- * A NetworkInterface in a resource group
- * @member {object} [virtualMachine] Gets or sets the reference of a
- * VirtualMachine
- * 
- * @member {string} [virtualMachine.id] Resource Id
- * 
- * @member {object} [networkSecurityGroup] Gets or sets the reference of the
- * NetworkSecurityGroup resource
- * 
- * @member {array} [networkSecurityGroup.securityRules] Gets or sets Security
- * rules of network security group
- * 
- * @member {array} [networkSecurityGroup.defaultSecurityRules] Gets or sets
- * Default security rules of network security group
- * 
- * @member {array} [networkSecurityGroup.networkInterfaces] Gets collection of
- * references to Network Interfaces
- * 
- * @member {array} [networkSecurityGroup.subnets] Gets collection of
- * references to subnets
- * 
- * @member {string} [networkSecurityGroup.resourceGuid] Gets or sets resource
- * guid property of the network security group resource
- * 
- * @member {string} [networkSecurityGroup.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [networkSecurityGroup.etag] Gets a unique read-only string
- * that changes whenever the resource is updated
- * 
- * @member {array} [ipConfigurations] Gets or sets list of IPConfigurations of
- * the NetworkInterface
- * 
- * @member {object} [dnsSettings] Gets or sets DNS Settings in
- * NetworkInterface
- * 
- * @member {array} [dnsSettings.dnsServers] Gets or sets list of DNS servers
- * IP addresses
- * 
- * @member {array} [dnsSettings.appliedDnsServers] Gets or sets list of
- * Applied DNS servers IP addresses
- * 
- * @member {string} [dnsSettings.internalDnsNameLabel] Gets or sets the
- * Internal DNS name
- * 
- * @member {string} [dnsSettings.internalFqdn] Gets or sets full IDNS name in
- * the form, DnsName.VnetId.ZoneId.TopleveSuffix. This is set when the NIC is
- * associated to a VM
- * 
- * @member {string} [macAddress] Gets the MAC Address of the network interface
- * 
- * @member {boolean} [primary] Gets whether this is a primary NIC on a virtual
- * machine
- * 
- * @member {boolean} [enableIPForwarding] Gets or sets whether IPForwarding is
- * enabled on the NIC
- * 
- * @member {string} [resourceGuid] Gets or sets resource guid property of the
- * network interface resource
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [etag] Gets a unique read-only string that changes
- * whenever the resource is updated
- * 
- */
-export interface NetworkInterface extends Resource {
-    virtualMachine?: SubResource;
-    networkSecurityGroup?: NetworkSecurityGroup;
-    ipConfigurations?: NetworkInterfaceIPConfiguration[];
-    dnsSettings?: NetworkInterfaceDnsSettings;
-    macAddress?: string;
-    primary?: boolean;
-    enableIPForwarding?: boolean;
-    resourceGuid?: string;
-    provisioningState?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkInterfaceIPConfiguration class.
- * @constructor
- * IPConfiguration in a NetworkInterface
- * @member {array} [loadBalancerBackendAddressPools] Gets or sets the
- * reference of LoadBalancerBackendAddressPool resource
- * 
- * @member {array} [loadBalancerInboundNatRules] Gets or sets list of
- * references of LoadBalancerInboundNatRules
- * 
- * @member {string} [privateIPAddress]
- * 
- * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
- * allocation method (Static/Dynamic). Possible values include: 'Static',
- * 'Dynamic'
- * 
- * @member {object} [subnet]
- * 
- * @member {string} [subnet.addressPrefix] Gets or sets Address prefix for the
- * subnet.
- * 
- * @member {object} [subnet.networkSecurityGroup] Gets or sets the reference
- * of the NetworkSecurityGroup resource
- * 
- * @member {array} [subnet.networkSecurityGroup.securityRules] Gets or sets
- * Security rules of network security group
- * 
- * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] Gets or
- * sets Default security rules of network security group
- * 
- * @member {array} [subnet.networkSecurityGroup.networkInterfaces] Gets
- * collection of references to Network Interfaces
- * 
- * @member {array} [subnet.networkSecurityGroup.subnets] Gets collection of
- * references to subnets
- * 
- * @member {string} [subnet.networkSecurityGroup.resourceGuid] Gets or sets
- * resource guid property of the network security group resource
- * 
- * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [subnet.networkSecurityGroup.etag] Gets a unique read-only
- * string that changes whenever the resource is updated
- * 
- * @member {object} [subnet.routeTable] Gets or sets the reference of the
- * RouteTable resource
- * 
- * @member {array} [subnet.routeTable.routes] Gets or sets Routes in a Route
- * Table
- * 
- * @member {array} [subnet.routeTable.subnets] Gets collection of references
- * to subnets
- * 
- * @member {string} [subnet.routeTable.provisioningState] Gets or sets
- * Provisioning state of the resource Updating/Deleting/Failed
- * 
- * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
- * that changes whenever the resource is updated
- * 
- * @member {array} [subnet.ipConfigurations] Gets array of references to the
- * network interface IP configurations using subnet
- * 
- * @member {string} [subnet.provisioningState] Gets or sets Provisioning state
- * of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [subnet.name] Gets name of the resource that is unique
- * within a resource group. This name can be used to access the resource
- * 
- * @member {string} [subnet.etag] A unique read-only string that changes
- * whenever the resource is updated
- * 
- * @member {object} [publicIPAddress]
- * 
- * @member {string} [publicIPAddress.publicIPAllocationMethod] Gets or sets
- * PublicIP allocation method (Static/Dynamic). Possible values include:
- * 'Static', 'Dynamic'
- * 
- * @member {object} [publicIPAddress.ipConfiguration]
- * 
- * @member {string} [publicIPAddress.ipConfiguration.privateIPAddress] Gets or
- * sets the privateIPAddress of the IP Configuration
- * 
- * @member {string}
- * [publicIPAddress.ipConfiguration.privateIPAllocationMethod] Gets or sets
- * PrivateIP allocation method (Static/Dynamic). Possible values include:
- * 'Static', 'Dynamic'
- * 
- * @member {object} [publicIPAddress.ipConfiguration.subnet] Gets or sets the
- * reference of the subnet resource
- * 
- * @member {string} [publicIPAddress.ipConfiguration.subnet.addressPrefix]
- * Gets or sets Address prefix for the subnet.
- * 
- * @member {object}
- * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup] Gets or sets
- * the reference of the NetworkSecurityGroup resource
- * 
- * @member {array}
- * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * Gets or sets Security rules of network security group
- * 
- * @member {array}
- * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
- * Gets or sets Default security rules of network security group
- * 
- * @member {array}
- * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
- * Gets collection of references to Network Interfaces
- * 
- * @member {array}
- * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets] Gets
- * collection of references to subnets
- * 
- * @member {string}
- * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
- * Gets or sets resource guid property of the network security group resource
- * 
- * @member {string}
- * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
- * 
- * @member {string}
- * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
- * unique read-only string that changes whenever the resource is updated
- * 
- * @member {object} [publicIPAddress.ipConfiguration.subnet.routeTable] Gets
- * or sets the reference of the RouteTable resource
- * 
- * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.routes]
- * Gets or sets Routes in a Route Table
- * 
- * @member {array} [publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
- * Gets collection of references to subnets
- * 
- * @member {string}
- * [publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState] Gets
- * or sets Provisioning state of the resource Updating/Deleting/Failed
- * 
- * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
- * Gets a unique read-only string that changes whenever the resource is
- * updated
- * 
- * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
- * Gets array of references to the network interface IP configurations using
- * subnet
- * 
- * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
- * 
- * @member {string} [publicIPAddress.ipConfiguration.subnet.name] Gets name of
- * the resource that is unique within a resource group. This name can be used
- * to access the resource
- * 
- * @member {string} [publicIPAddress.ipConfiguration.subnet.etag] A unique
- * read-only string that changes whenever the resource is updated
- * 
- * @member {object} [publicIPAddress.ipConfiguration.publicIPAddress] Gets or
- * sets the reference of the PublicIP resource
- * 
- * @member {string} [publicIPAddress.ipConfiguration.provisioningState] Gets
- * or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
- * 
- * @member {string} [publicIPAddress.ipConfiguration.name] Gets name of the
- * resource that is unique within a resource group. This name can be used to
- * access the resource
- * 
- * @member {string} [publicIPAddress.ipConfiguration.etag] A unique read-only
- * string that changes whenever the resource is updated
- * 
- * @member {object} [publicIPAddress.dnsSettings] Gets or sets FQDN of the DNS
- * record associated with the public IP address
- * 
- * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
- * with the public IP address. If a domain name label is specified, an A DNS
- * record is created for the public IP in the Microsoft Azure DNS system.
- * 
- * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
- * qualified domain name of the A DNS record associated with the public IP.
- * This is the concatenation of the domainNameLabel and the regionalized DNS
- * zone.
- * 
- * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sests
- * the Reverse FQDN. A user-visible, fully qualified domain name that
- * resolves to this public IP address. If the reverseFqdn is specified, then
- * a PTR DNS record is created pointing from the IP address in the
- * in-addr.arpa domain to the reverse FQDN.
- * 
- * @member {string} [publicIPAddress.ipAddress]
- * 
- * @member {number} [publicIPAddress.idleTimeoutInMinutes] Gets or sets the
- * Idletimeout of the public IP address
- * 
- * @member {string} [publicIPAddress.resourceGuid] Gets or sets resource guid
- * property of the PublicIP resource
- * 
- * @member {string} [publicIPAddress.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [publicIPAddress.etag] Gets a unique read-only string that
- * changes whenever the resource is updated
- * 
- * @member {string} [provisioningState]
- * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
- * 
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated
- * 
- */
-export interface NetworkInterfaceIPConfiguration extends SubResource {
-    loadBalancerBackendAddressPools?: BackendAddressPool[];
-    loadBalancerInboundNatRules?: InboundNatRule[];
-    privateIPAddress?: string;
-    privateIPAllocationMethod?: string;
-    subnet?: Subnet;
-    publicIPAddress?: PublicIPAddress;
-    provisioningState?: string;
-    name?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BackendAddressPool class.
- * @constructor
- * Pool of backend IP addresseses
- * @member {array} [backendIPConfigurations] Gets collection of references to
- * IPs defined in NICs
- * 
- * @member {array} [loadBalancingRules] Gets Load Balancing rules that use
- * this Backend Address Pool
- * 
- * @member {object} [outboundNatRule] Gets outbound rules that use this
- * Backend Address Pool
- * 
- * @member {string} [outboundNatRule.id] Resource Id
- * 
- * @member {string} [provisioningState] Provisioning state of the PublicIP
- * resource Updating/Deleting/Failed
- * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
- * 
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated
- * 
- */
-export interface BackendAddressPool extends SubResource {
-    backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
-    loadBalancingRules?: SubResource[];
-    outboundNatRule?: SubResource;
-    provisioningState?: string;
-    name?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InboundNatRule class.
- * @constructor
- * Inbound NAT rule of the loadbalancer
- * @member {object} [frontendIPConfiguration] Gets or sets a reference to
- * frontend IP Addresses
- * 
- * @member {string} [frontendIPConfiguration.id] Resource Id
- * 
- * @member {object} [backendIPConfiguration] Gets or sets a reference to a
- * private ip address defined on a NetworkInterface of a VM. Traffic sent to
- * frontendPort of each of the frontendIPConfigurations is forwarded to the
- * backed IP
- * 
- * @member {array} [backendIPConfiguration.loadBalancerBackendAddressPools]
- * Gets or sets the reference of LoadBalancerBackendAddressPool resource
- * 
- * @member {array} [backendIPConfiguration.loadBalancerInboundNatRules] Gets
- * or sets list of references of LoadBalancerInboundNatRules
- * 
- * @member {string} [backendIPConfiguration.privateIPAddress]
- * 
- * @member {string} [backendIPConfiguration.privateIPAllocationMethod] Gets or
- * sets PrivateIP allocation method (Static/Dynamic). Possible values
- * include: 'Static', 'Dynamic'
- * 
- * @member {object} [backendIPConfiguration.subnet]
- * 
- * @member {string} [backendIPConfiguration.subnet.addressPrefix] Gets or sets
- * Address prefix for the subnet.
- * 
- * @member {object} [backendIPConfiguration.subnet.networkSecurityGroup] Gets
- * or sets the reference of the NetworkSecurityGroup resource
- * 
- * @member {array}
- * [backendIPConfiguration.subnet.networkSecurityGroup.securityRules] Gets or
- * sets Security rules of network security group
- * 
- * @member {array}
- * [backendIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
- * Gets or sets Default security rules of network security group
- * 
- * @member {array}
- * [backendIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
- * Gets collection of references to Network Interfaces
- * 
- * @member {array}
- * [backendIPConfiguration.subnet.networkSecurityGroup.subnets] Gets
- * collection of references to subnets
- * 
- * @member {string}
- * [backendIPConfiguration.subnet.networkSecurityGroup.resourceGuid] Gets or
- * sets resource guid property of the network security group resource
- * 
- * @member {string}
- * [backendIPConfiguration.subnet.networkSecurityGroup.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
- * 
- * @member {string} [backendIPConfiguration.subnet.networkSecurityGroup.etag]
- * Gets a unique read-only string that changes whenever the resource is
- * updated
- * 
- * @member {object} [backendIPConfiguration.subnet.routeTable] Gets or sets
- * the reference of the RouteTable resource
- * 
- * @member {array} [backendIPConfiguration.subnet.routeTable.routes] Gets or
- * sets Routes in a Route Table
- * 
- * @member {array} [backendIPConfiguration.subnet.routeTable.subnets] Gets
- * collection of references to subnets
- * 
- * @member {string}
- * [backendIPConfiguration.subnet.routeTable.provisioningState] Gets or sets
- * Provisioning state of the resource Updating/Deleting/Failed
- * 
- * @member {string} [backendIPConfiguration.subnet.routeTable.etag] Gets a
- * unique read-only string that changes whenever the resource is updated
- * 
- * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets array
- * of references to the network interface IP configurations using subnet
- * 
- * @member {string} [backendIPConfiguration.subnet.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [backendIPConfiguration.subnet.name] Gets name of the
- * resource that is unique within a resource group. This name can be used to
- * access the resource
- * 
- * @member {string} [backendIPConfiguration.subnet.etag] A unique read-only
- * string that changes whenever the resource is updated
- * 
- * @member {object} [backendIPConfiguration.publicIPAddress]
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.publicIPAllocationMethod] Gets or
- * sets PublicIP allocation method (Static/Dynamic). Possible values include:
- * 'Static', 'Dynamic'
- * 
- * @member {object} [backendIPConfiguration.publicIPAddress.ipConfiguration]
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.privateIPAddress]
- * Gets or sets the privateIPAddress of the IP Configuration
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
- * Gets or sets PrivateIP allocation method (Static/Dynamic). Possible values
- * include: 'Static', 'Dynamic'
- * 
- * @member {object}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet] Gets or
- * sets the reference of the subnet resource
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix]
- * Gets or sets Address prefix for the subnet.
- * 
- * @member {object}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
- * Gets or sets the reference of the NetworkSecurityGroup resource
- * 
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * Gets or sets Security rules of network security group
- * 
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
- * Gets or sets Default security rules of network security group
- * 
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
- * Gets collection of references to Network Interfaces
- * 
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
- * Gets collection of references to subnets
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
- * Gets or sets resource guid property of the network security group resource
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
- * Gets a unique read-only string that changes whenever the resource is
- * updated
- * 
- * @member {object}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable]
- * Gets or sets the reference of the RouteTable resource
- * 
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
- * Gets or sets Routes in a Route Table
- * 
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
- * Gets collection of references to subnets
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
- * Gets or sets Provisioning state of the resource Updating/Deleting/Failed
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
- * Gets a unique read-only string that changes whenever the resource is
- * updated
- * 
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
- * Gets array of references to the network interface IP configurations using
- * subnet
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.name] Gets
- * name of the resource that is unique within a resource group. This name can
- * be used to access the resource
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag] A
- * unique read-only string that changes whenever the resource is updated
- * 
- * @member {object}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.publicIPAddress]
- * Gets or sets the reference of the PublicIP resource
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.name] Gets name of
- * the resource that is unique within a resource group. This name can be used
- * to access the resource
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.ipConfiguration.etag] A unique
- * read-only string that changes whenever the resource is updated
- * 
- * @member {object} [backendIPConfiguration.publicIPAddress.dnsSettings] Gets
- * or sets FQDN of the DNS record associated with the public IP address
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.dnsSettings.domainNameLabel] Gets
- * or sets the Domain name label.The concatenation of the domain name label
- * and the regionalized DNS zone make up the fully qualified domain name
- * associated with the public IP address. If a domain name label is
- * specified, an A DNS record is created for the public IP in the Microsoft
- * Azure DNS system.
- * 
- * @member {string} [backendIPConfiguration.publicIPAddress.dnsSettings.fqdn]
- * Gets the FQDN, Fully qualified domain name of the A DNS record associated
- * with the public IP. This is the concatenation of the domainNameLabel and
- * the regionalized DNS zone.
- * 
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.dnsSettings.reverseFqdn] Gets or
- * Sests the Reverse FQDN. A user-visible, fully qualified domain name that
- * resolves to this public IP address. If the reverseFqdn is specified, then
- * a PTR DNS record is created pointing from the IP address in the
- * in-addr.arpa domain to the reverse FQDN.
- * 
- * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress]
- * 
- * @member {number}
- * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] Gets or sets
- * the Idletimeout of the public IP address
- * 
- * @member {string} [backendIPConfiguration.publicIPAddress.resourceGuid] Gets
- * or sets resource guid property of the PublicIP resource
- * 
- * @member {string} [backendIPConfiguration.publicIPAddress.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
- * 
- * @member {string} [backendIPConfiguration.publicIPAddress.etag] Gets a
- * unique read-only string that changes whenever the resource is updated
- * 
- * @member {string} [backendIPConfiguration.provisioningState]
- * 
- * @member {string} [backendIPConfiguration.name] Gets name of the resource
- * that is unique within a resource group. This name can be used to access
- * the resource
- * 
- * @member {string} [backendIPConfiguration.etag] A unique read-only string
- * that changes whenever the resource is updated
- * 
- * @member {string} [protocol] Gets or sets the transport potocol for the
- * external endpoint. Possible values are Udp or Tcp. Possible values
- * include: 'Udp', 'Tcp'
- * 
- * @member {number} [frontendPort] Gets or sets the port for the external
- * endpoint. You can spcify any port number you choose, but the port numbers
- * specified for each role in the service must be unique. Possible values
- * range between 1 and 65535, inclusive
- * 
- * @member {number} [backendPort] Gets or sets a port used for internal
- * connections on the endpoint. The localPort attribute maps the eternal port
- * of the endpoint to an internal port on a role. This is useful in scenarios
- * where a role must communicate to an internal compotnent on a port that is
- * different from the one that is exposed externally. If not specified, the
- * value of localPort is the same as the port attribute. Set the value of
- * localPort to '*' to automatically assign an unallocated port that is
- * discoverable using the runtime API
- * 
- * @member {number} [idleTimeoutInMinutes] Gets or sets the timeout for the
- * Tcp idle connection. The value can be set between 4 and 30 minutes. The
- * default value is 4 minutes. This emlement is only used when the protocol
- * is set to Tcp
- * 
- * @member {boolean} [enableFloatingIP] Configures a virtual machine's
- * endpoint for the floating IP capability required to configure a SQL
- * AlwaysOn availability Group. This setting is required when using the SQL
- * Always ON availability Groups in SQL server. This setting can't be changed
- * after you create the endpoint
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
- * 
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated
- * 
- */
-export interface InboundNatRule extends SubResource {
-    frontendIPConfiguration?: SubResource;
-    backendIPConfiguration?: NetworkInterfaceIPConfiguration;
-    protocol?: string;
-    frontendPort?: number;
-    backendPort?: number;
-    idleTimeoutInMinutes?: number;
-    enableFloatingIP?: boolean;
-    provisioningState?: string;
-    name?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PublicIPAddress class.
- * @constructor
- * PublicIPAddress resource
- * @member {string} [publicIPAllocationMethod] Gets or sets PublicIP
- * allocation method (Static/Dynamic). Possible values include: 'Static',
- * 'Dynamic'
- * 
- * @member {object} [ipConfiguration]
- * 
- * @member {string} [ipConfiguration.privateIPAddress] Gets or sets the
- * privateIPAddress of the IP Configuration
- * 
- * @member {string} [ipConfiguration.privateIPAllocationMethod] Gets or sets
- * PrivateIP allocation method (Static/Dynamic). Possible values include:
- * 'Static', 'Dynamic'
- * 
- * @member {object} [ipConfiguration.subnet] Gets or sets the reference of the
- * subnet resource
- * 
- * @member {string} [ipConfiguration.subnet.addressPrefix] Gets or sets
- * Address prefix for the subnet.
- * 
- * @member {object} [ipConfiguration.subnet.networkSecurityGroup] Gets or sets
- * the reference of the NetworkSecurityGroup resource
- * 
- * @member {array} [ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * Gets or sets Security rules of network security group
- * 
- * @member {array}
- * [ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules] Gets or
- * sets Default security rules of network security group
- * 
- * @member {array}
- * [ipConfiguration.subnet.networkSecurityGroup.networkInterfaces] Gets
- * collection of references to Network Interfaces
- * 
- * @member {array} [ipConfiguration.subnet.networkSecurityGroup.subnets] Gets
- * collection of references to subnets
- * 
- * @member {string} [ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
- * Gets or sets resource guid property of the network security group resource
- * 
- * @member {string}
- * [ipConfiguration.subnet.networkSecurityGroup.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
- * unique read-only string that changes whenever the resource is updated
- * 
- * @member {object} [ipConfiguration.subnet.routeTable] Gets or sets the
- * reference of the RouteTable resource
- * 
- * @member {array} [ipConfiguration.subnet.routeTable.routes] Gets or sets
- * Routes in a Route Table
- * 
- * @member {array} [ipConfiguration.subnet.routeTable.subnets] Gets collection
- * of references to subnets
- * 
- * @member {string} [ipConfiguration.subnet.routeTable.provisioningState] Gets
- * or sets Provisioning state of the resource Updating/Deleting/Failed
- * 
- * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
- * read-only string that changes whenever the resource is updated
- * 
- * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets array of
- * references to the network interface IP configurations using subnet
- * 
- * @member {string} [ipConfiguration.subnet.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [ipConfiguration.subnet.name] Gets name of the resource
- * that is unique within a resource group. This name can be used to access
- * the resource
- * 
- * @member {string} [ipConfiguration.subnet.etag] A unique read-only string
- * that changes whenever the resource is updated
- * 
- * @member {object} [ipConfiguration.publicIPAddress] Gets or sets the
- * reference of the PublicIP resource
- * 
- * @member {string} [ipConfiguration.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [ipConfiguration.name] Gets name of the resource that is
- * unique within a resource group. This name can be used to access the
- * resource
- * 
- * @member {string} [ipConfiguration.etag] A unique read-only string that
- * changes whenever the resource is updated
- * 
- * @member {object} [dnsSettings] Gets or sets FQDN of the DNS record
- * associated with the public IP address
- * 
- * @member {string} [dnsSettings.domainNameLabel] Gets or sets the Domain name
- * label.The concatenation of the domain name label and the regionalized DNS
- * zone make up the fully qualified domain name associated with the public IP
- * address. If a domain name label is specified, an A DNS record is created
- * for the public IP in the Microsoft Azure DNS system.
- * 
- * @member {string} [dnsSettings.fqdn] Gets the FQDN, Fully qualified domain
- * name of the A DNS record associated with the public IP. This is the
- * concatenation of the domainNameLabel and the regionalized DNS zone.
- * 
- * @member {string} [dnsSettings.reverseFqdn] Gets or Sests the Reverse FQDN.
- * A user-visible, fully qualified domain name that resolves to this public
- * IP address. If the reverseFqdn is specified, then a PTR DNS record is
- * created pointing from the IP address in the in-addr.arpa domain to the
- * reverse FQDN.
- * 
- * @member {string} [ipAddress]
- * 
- * @member {number} [idleTimeoutInMinutes] Gets or sets the Idletimeout of the
- * public IP address
- * 
- * @member {string} [resourceGuid] Gets or sets resource guid property of the
- * PublicIP resource
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [etag] Gets a unique read-only string that changes
- * whenever the resource is updated
- * 
- */
-export interface PublicIPAddress extends Resource {
-    publicIPAllocationMethod?: string;
-    ipConfiguration?: IPConfiguration;
-    dnsSettings?: PublicIPAddressDnsSettings;
-    ipAddress?: string;
-    idleTimeoutInMinutes?: number;
-    resourceGuid?: string;
-    provisioningState?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IPConfiguration class.
- * @constructor
- * IPConfiguration
- * @member {string} [privateIPAddress] Gets or sets the privateIPAddress of
- * the IP Configuration
- * 
- * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
- * allocation method (Static/Dynamic). Possible values include: 'Static',
- * 'Dynamic'
- * 
- * @member {object} [subnet] Gets or sets the reference of the subnet resource
- * 
- * @member {string} [subnet.addressPrefix] Gets or sets Address prefix for the
- * subnet.
- * 
- * @member {object} [subnet.networkSecurityGroup] Gets or sets the reference
- * of the NetworkSecurityGroup resource
- * 
- * @member {array} [subnet.networkSecurityGroup.securityRules] Gets or sets
- * Security rules of network security group
- * 
- * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] Gets or
- * sets Default security rules of network security group
- * 
- * @member {array} [subnet.networkSecurityGroup.networkInterfaces] Gets
- * collection of references to Network Interfaces
- * 
- * @member {array} [subnet.networkSecurityGroup.subnets] Gets collection of
- * references to subnets
- * 
- * @member {string} [subnet.networkSecurityGroup.resourceGuid] Gets or sets
- * resource guid property of the network security group resource
- * 
- * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [subnet.networkSecurityGroup.etag] Gets a unique read-only
- * string that changes whenever the resource is updated
- * 
- * @member {object} [subnet.routeTable] Gets or sets the reference of the
- * RouteTable resource
- * 
- * @member {array} [subnet.routeTable.routes] Gets or sets Routes in a Route
- * Table
- * 
- * @member {array} [subnet.routeTable.subnets] Gets collection of references
- * to subnets
- * 
- * @member {string} [subnet.routeTable.provisioningState] Gets or sets
- * Provisioning state of the resource Updating/Deleting/Failed
- * 
- * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
- * that changes whenever the resource is updated
- * 
- * @member {array} [subnet.ipConfigurations] Gets array of references to the
- * network interface IP configurations using subnet
- * 
- * @member {string} [subnet.provisioningState] Gets or sets Provisioning state
- * of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [subnet.name] Gets name of the resource that is unique
- * within a resource group. This name can be used to access the resource
- * 
- * @member {string} [subnet.etag] A unique read-only string that changes
- * whenever the resource is updated
- * 
- * @member {object} [publicIPAddress] Gets or sets the reference of the
- * PublicIP resource
- * 
- * @member {string} [publicIPAddress.publicIPAllocationMethod] Gets or sets
- * PublicIP allocation method (Static/Dynamic). Possible values include:
- * 'Static', 'Dynamic'
- * 
- * @member {object} [publicIPAddress.ipConfiguration]
- * 
- * @member {object} [publicIPAddress.dnsSettings] Gets or sets FQDN of the DNS
- * record associated with the public IP address
- * 
- * @member {string} [publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
- * the Domain name label.The concatenation of the domain name label and the
- * regionalized DNS zone make up the fully qualified domain name associated
- * with the public IP address. If a domain name label is specified, an A DNS
- * record is created for the public IP in the Microsoft Azure DNS system.
- * 
- * @member {string} [publicIPAddress.dnsSettings.fqdn] Gets the FQDN, Fully
- * qualified domain name of the A DNS record associated with the public IP.
- * This is the concatenation of the domainNameLabel and the regionalized DNS
- * zone.
- * 
- * @member {string} [publicIPAddress.dnsSettings.reverseFqdn] Gets or Sests
- * the Reverse FQDN. A user-visible, fully qualified domain name that
- * resolves to this public IP address. If the reverseFqdn is specified, then
- * a PTR DNS record is created pointing from the IP address in the
- * in-addr.arpa domain to the reverse FQDN.
- * 
- * @member {string} [publicIPAddress.ipAddress]
- * 
- * @member {number} [publicIPAddress.idleTimeoutInMinutes] Gets or sets the
- * Idletimeout of the public IP address
- * 
- * @member {string} [publicIPAddress.resourceGuid] Gets or sets resource guid
- * property of the PublicIP resource
- * 
- * @member {string} [publicIPAddress.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [publicIPAddress.etag] Gets a unique read-only string that
- * changes whenever the resource is updated
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
- * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
- * 
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated
- * 
- */
-export interface IPConfiguration extends SubResource {
-    privateIPAddress?: string;
-    privateIPAllocationMethod?: string;
-    subnet?: Subnet;
-    publicIPAddress?: PublicIPAddress;
-    provisioningState?: string;
-    name?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PublicIPAddressDnsSettings class.
- * @constructor
- * Contains FQDN of the DNS record associated with the public IP address
- * @member {string} [domainNameLabel] Gets or sets the Domain name label.The
- * concatenation of the domain name label and the regionalized DNS zone make
- * up the fully qualified domain name associated with the public IP address.
- * If a domain name label is specified, an A DNS record is created for the
- * public IP in the Microsoft Azure DNS system.
- * 
- * @member {string} [fqdn] Gets the FQDN, Fully qualified domain name of the A
- * DNS record associated with the public IP. This is the concatenation of the
- * domainNameLabel and the regionalized DNS zone.
- * 
- * @member {string} [reverseFqdn] Gets or Sests the Reverse FQDN. A
- * user-visible, fully qualified domain name that resolves to this public IP
- * address. If the reverseFqdn is specified, then a PTR DNS record is created
- * pointing from the IP address in the in-addr.arpa domain to the reverse
- * FQDN.
- * 
- */
-export interface PublicIPAddressDnsSettings {
-    domainNameLabel?: string;
-    fqdn?: string;
-    reverseFqdn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkInterfaceDnsSettings class.
- * @constructor
- * Dns Settings of a network interface
- * @member {array} [dnsServers] Gets or sets list of DNS servers IP addresses
- * 
- * @member {array} [appliedDnsServers] Gets or sets list of Applied DNS
- * servers IP addresses
- * 
- * @member {string} [internalDnsNameLabel] Gets or sets the Internal DNS name
- * 
- * @member {string} [internalFqdn] Gets or sets full IDNS name in the form,
- * DnsName.VnetId.ZoneId.TopleveSuffix. This is set when the NIC is
- * associated to a VM
- * 
- */
-export interface NetworkInterfaceDnsSettings {
-    dnsServers?: string[];
-    appliedDnsServers?: string[];
-    internalDnsNameLabel?: string;
-    internalFqdn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RouteTable class.
- * @constructor
- * RouteTable resource
- * @member {array} [routes] Gets or sets Routes in a Route Table
- * 
- * @member {array} [subnets] Gets collection of references to subnets
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * resource Updating/Deleting/Failed
- * 
- * @member {string} [etag] Gets a unique read-only string that changes
- * whenever the resource is updated
- * 
- */
-export interface RouteTable extends Resource {
-    routes?: Route[];
-    subnets?: Subnet[];
-    provisioningState?: string;
-    etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Route class.
- * @constructor
- * Route resource
- * @member {string} [addressPrefix] Gets or sets the destination CIDR to which
- * the route applies.
- * 
- * @member {string} nextHopType Gets or sets the type of Azure hop the packet
- * should be sent to. Possible values include: 'VirtualNetworkGateway',
- * 'VnetLocal', 'Internet', 'VirtualAppliance', 'None'
- * 
- * @member {string} [nextHopIpAddress] Gets or sets the IP address packets
- * should be forwarded to. Next hop values are only allowed in routes where
- * the next hop type is VirtualAppliance.
- * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * resource Updating/Deleting/Failed
- * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
- * 
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated
- * 
- */
-export interface Route extends SubResource {
-    addressPrefix?: string;
-    nextHopType: string;
-    nextHopIpAddress?: string;
-    provisioningState?: string;
-    name?: string;
-    etag?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the FrontendIPConfiguration class.
  * @constructor
  * Frontend IP address of the load balancer
@@ -2268,6 +2304,10 @@ export interface Route extends SubResource {
  * @member {string} [publicIPAddress.publicIPAllocationMethod] Gets or sets
  * PublicIP allocation method (Static/Dynamic). Possible values include:
  * 'Static', 'Dynamic'
+ * 
+ * @member {string} [publicIPAddress.publicIPAddressVersion] Gets or sets
+ * PublicIP address version (IPv4/IPv6). Possible values include: 'IPv4',
+ * 'IPv6'
  * 
  * @member {object} [publicIPAddress.ipConfiguration]
  * 

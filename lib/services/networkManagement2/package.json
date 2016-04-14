@@ -3,9 +3,10 @@
   "author": "Microsoft Corporation",
   "contributors": [
     "Siegemund, Frank <franksie@microsoft.com>",
-    "Rajendran, Deepak <derajen@microsoft.com>"
+    "Rajendran, Deepak <derajen@microsoft.com>",
+    "Choubey, Ankur <anchoube@microsoft.com>"
   ],
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Microsoft Azure Network Resource Provider Management Client Library for node",
   "tags": [
     "azure",
