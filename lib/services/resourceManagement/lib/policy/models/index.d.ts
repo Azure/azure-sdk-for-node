@@ -26,6 +26,8 @@
  * 
  * @member {object} [policyRule] Gets or sets the policy rule.
  * 
+ * @member {string} [id] Gets or sets the Id of the policy definition.
+ * 
  * @member {string} [name] Gets or sets the name of the policy definition.
  * 
  */
@@ -34,6 +36,7 @@ export interface PolicyDefinition extends BaseResource {
     displayName?: string;
     description?: string;
     policyRule?: any;
+    id?: string;
     name?: string;
 }
 

@@ -80,11 +80,11 @@ var mappings = {
   },
   'resource.policy': {
     'dir': 'resourceManagement/lib/policy',
-    'source': 'arm-resources/policy/2015-10-01-preview/swagger/policy.json'
+    'source': 'arm-resources/policy/2016-04-01/swagger/policy.json'
   },
   'storage': {
     'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2015-06-15/swagger/storage.json',
+    'source': 'arm-storage/2016-01-01/swagger/storage.json',
     'ft': 2
   },
   'serviceFabric': {
@@ -109,7 +109,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.16.0-Nightly20160330';
+var defaultAutoRestVersion = '0.16.0-Nightly20160411';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
