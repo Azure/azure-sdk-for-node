@@ -1452,6 +1452,8 @@ export interface VirtualMachineInstanceView {
  * @member {string} [licenseType] Gets or sets the license type, which is for
  * bring your own license scenario.
  * 
+ * @member {string} [vmId] Gets the virtual machine unique id.
+ * 
  * @member {array} [resources] Gets the virtual machine child extension
  * resources.
  * 
@@ -1467,6 +1469,7 @@ export interface VirtualMachine extends Resource {
     provisioningState?: string;
     instanceView?: VirtualMachineInstanceView;
     licenseType?: string;
+    vmId?: string;
     resources?: VirtualMachineExtension[];
 }
 
@@ -2621,7 +2624,7 @@ export interface ComputeLongRunningOperationProperties {
  * Profile for Orchestrator
  * @member {string} [orchestratorType] Specifies what orchestrator will be
  * used to manage container cluster resources. Possible values include:
- * 'SwarmPreview', 'DCOS'
+ * 'Swarm', 'DCOS'
  * 
  */
 export interface ContainerServiceOrchestratorProfile {
@@ -2795,7 +2798,7 @@ export interface ContainerServiceVMDiagnostics {
  * 
  * @member {string} [orchestratorProfile.orchestratorType] Specifies what
  * orchestrator will be used to manage container cluster resources. Possible
- * values include: 'SwarmPreview', 'DCOS'
+ * values include: 'Swarm', 'DCOS'
  * 
  * @member {object} masterProfile Properties of master agents
  * 
