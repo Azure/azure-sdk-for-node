@@ -889,6 +889,8 @@ export interface VirtualMachines {
      * @param {string} [parameters.licenseType] Gets or sets the license type,
      * which is for bring your own license scenario.
      * 
+     * @param {string} [parameters.vmId] Gets the virtual machine unique id.
+     * 
      * @param {string} [parameters.location] Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
@@ -1115,6 +1117,8 @@ export interface VirtualMachines {
      * 
      * @param {string} [parameters.licenseType] Gets or sets the license type,
      * which is for bring your own license scenario.
+     * 
+     * @param {string} [parameters.vmId] Gets the virtual machine unique id.
      * 
      * @param {string} [parameters.location] Resource location
      * 
@@ -2672,7 +2676,7 @@ export interface ContainerServiceOperations {
      * 
      * @param {string} [parameters.orchestratorProfile.orchestratorType] Specifies
      * what orchestrator will be used to manage container cluster resources.
-     * Possible values include: 'SwarmPreview', 'DCOS'
+     * Possible values include: 'Swarm', 'DCOS'
      * 
      * @param {object} [parameters.masterProfile] Properties of master agents
      * 
@@ -2743,7 +2747,7 @@ export interface ContainerServiceOperations {
      * 
      * @param {string} [parameters.orchestratorProfile.orchestratorType] Specifies
      * what orchestrator will be used to manage container cluster resources.
-     * Possible values include: 'SwarmPreview', 'DCOS'
+     * Possible values include: 'Swarm', 'DCOS'
      * 
      * @param {object} [parameters.masterProfile] Properties of master agents
      * 
