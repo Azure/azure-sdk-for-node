@@ -33,6 +33,8 @@ export interface CertificateCollection {
  * 
  * @member {string} [name] Resource Name
  * 
+ * @member {string} [kind] Kind of resource
+ * 
  * @member {string} location Resource Location
  * 
  * @member {string} [type] Resource type
@@ -43,6 +45,7 @@ export interface CertificateCollection {
 export interface Resource extends BaseResource {
     id?: string;
     name?: string;
+    kind?: string;
     location: string;
     type?: string;
     tags?: { [propertyName: string]: string };
@@ -1985,6 +1988,10 @@ export interface HostingEnvironmentCollection {
  * @member {string} [hostingEnvironmentLocation] Location of the
  * hostingEnvironment (App Service Environment), e.g. "West US"
  * 
+ * @member {string} [provisioningState] Provisioning state of the
+ * hostingEnvironment (App Service Environment). Possible values include:
+ * 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
+ * 
  * @member {string} [status] Current status of the hostingEnvironment (App
  * Service Environment). Possible values include: 'Preparing', 'Ready',
  * 'Scaling', 'Deleting'
@@ -2089,6 +2096,7 @@ export interface HostingEnvironmentCollection {
 export interface HostingEnvironment extends Resource {
     hostingEnvironmentName?: string;
     hostingEnvironmentLocation?: string;
+    provisioningState?: string;
     status?: string;
     vnetName?: string;
     vnetResourceGroupName?: string;
@@ -2150,7 +2158,7 @@ export interface VirtualNetworkProfile {
  * pool
  * 
  * @member {string} [computeMode] Shared or dedicated web app hosting.
- * Possible values include: 'Shared', 'Dedicated'
+ * Possible values include: 'Shared', 'Dedicated', 'Dynamic'
  * 
  * @member {string} [workerSize] VM size of the worker pool instances
  * 
@@ -2219,7 +2227,7 @@ export interface VirtualIPMapping {
  * @member {string} [unit] Name of the unit
  * 
  * @member {string} [computeMode] Shared/Dedicated workers. Possible values
- * include: 'Shared', 'Dedicated'
+ * include: 'Shared', 'Dedicated', 'Dynamic'
  * 
  * @member {string} [workerSize] Size of the machines. Possible values
  * include: 'Default', 'Small', 'Medium', 'Large'
@@ -3002,7 +3010,7 @@ export interface UsageCollection {
  * @member {date} [nextResetTime] Next reset time for the resource counter
  * 
  * @member {string} [computeMode] ComputeMode used for this usage. Possible
- * values include: 'Shared', 'Dedicated'
+ * values include: 'Shared', 'Dedicated', 'Dynamic'
  * 
  * @member {string} [siteMode] SiteMode used for this usage
  * 
@@ -3184,9 +3192,8 @@ export interface SourceControl extends Resource {
  * @member {string} channels List of channels that this recommendation can
  * apply. Possible values include: 'Notification', 'Api', 'Email', 'All'
  * 
- * @member {string} category The category that this recommendation belongs to.
- * Possible values include: 'Uncategorized', 'Test', 'UpSell', 'CrossSell',
- * 'LiveSite'
+ * @member {array} [tags] The list of category tags that this recommendation
+ * belongs to.
  * 
  * @member {string} [actionName] Name of action recommended by this object.
  * 
@@ -3221,7 +3228,7 @@ export interface Recommendation {
     message?: string;
     level: string;
     channels: string;
-    category: string;
+    tags?: string[];
     actionName?: string;
     enabled?: number;
     startTime?: Date;
@@ -3262,8 +3269,7 @@ export interface Recommendation {
  * @member {string} channels List of available channels that this rule
  * applies. Possible values include: 'Notification', 'Api', 'Email', 'All'
  * 
- * @member {string} category The category that the rule belongs to. Possible
- * values include: 'Uncategorized', 'Test', 'UpSell', 'CrossSell', 'LiveSite'
+ * @member {array} [tags] An array of category tags that the rule contains.
  * 
  */
 export interface RecommendationRule {
@@ -3276,7 +3282,7 @@ export interface RecommendationRule {
     enabled?: number;
     level: string;
     channels: string;
-    category: string;
+    tags?: string[];
 }
 
 /**
@@ -3298,6 +3304,9 @@ export interface RecommendationRule {
  * 
  * @member {boolean} [resyncRequired] Flag to determine if a resync is required
  * 
+ * @member {string} [dnsServers] Dns servers to be used by this VNET. This
+ * should be a comma-separated list of IP addresses.
+ * 
  */
 export interface VnetInfo extends Resource {
     vnetResourceId?: string;
@@ -3305,6 +3314,7 @@ export interface VnetInfo extends Resource {
     certBlob?: string;
     routes?: VnetRoute[];
     resyncRequired?: boolean;
+    dnsServers?: string;
 }
 
 /**
@@ -3386,6 +3396,9 @@ export interface VnetGateway extends Resource {
  * 
  * @member {boolean} [virtualNetworkConnection.resyncRequired] Flag to
  * determine if a resync is required
+ * 
+ * @member {string} [virtualNetworkConnection.dnsServers] Dns servers to be
+ * used by this VNET. This should be a comma-separated list of IP addresses.
  * 
  * @member {array} [hybridConnections] The Hybrid Connections Summary view
  * 
@@ -3578,6 +3591,9 @@ export interface SiteCloneabilityCriterion {
  * @member {date} [snapshotTime] Point in time in which the site recover
  * should be attempted.
  * 
+ * @member {boolean} [recoverConfig] If true, then the website's configuration
+ * will be reverted to its state at SnapshotTime
+ * 
  * @member {string} [siteName] [Optional] Destination web app name into which
  * web app should be recovered. This is case when new web app should be
  * created instead.
@@ -3588,6 +3604,7 @@ export interface SiteCloneabilityCriterion {
  */
 export interface CsmSiteRecoveryEntity {
     snapshotTime?: Date;
+    recoverConfig?: boolean;
     siteName?: string;
     slotName?: string;
 }
