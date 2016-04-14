@@ -1,7 +1,7 @@
 {
   "meta": {
     "version":"0.1.0",
-    "language": "Node",
+    "language": "NodeJS",
     "autorest": "latest"
   },
   "data": {
