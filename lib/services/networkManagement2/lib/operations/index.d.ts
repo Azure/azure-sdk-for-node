@@ -1977,9 +1977,11 @@ export interface NetworkInterfaces {
      * @param {string} [parameters.dnsSettings.internalDnsNameLabel] Gets or sets
      * the Internal DNS name
      * 
-     * @param {string} [parameters.dnsSettings.internalFqdn] Gets or sets full
-     * IDNS name in the form, DnsName.VnetId.ZoneId.TopleveSuffix. This is set
-     * when the NIC is associated to a VM
+     * @param {string} [parameters.dnsSettings.internalFqdn] Gets or sets the
+     * internal fqdn.
+     * 
+     * @param {string} [parameters.dnsSettings.internalDomainNameSuffix] Gets or
+     * sets internal domain name suffix of the NIC.
      * 
      * @param {string} [parameters.macAddress] Gets the MAC Address of the network
      * interface
@@ -2076,9 +2078,11 @@ export interface NetworkInterfaces {
      * @param {string} [parameters.dnsSettings.internalDnsNameLabel] Gets or sets
      * the Internal DNS name
      * 
-     * @param {string} [parameters.dnsSettings.internalFqdn] Gets or sets full
-     * IDNS name in the form, DnsName.VnetId.ZoneId.TopleveSuffix. This is set
-     * when the NIC is associated to a VM
+     * @param {string} [parameters.dnsSettings.internalFqdn] Gets or sets the
+     * internal fqdn.
+     * 
+     * @param {string} [parameters.dnsSettings.internalDomainNameSuffix] Gets or
+     * sets internal domain name suffix of the NIC.
      * 
      * @param {string} [parameters.macAddress] Gets the MAC Address of the network
      * interface
@@ -2605,6 +2609,9 @@ export interface PublicIPAddresses {
      * allocation method (Static/Dynamic). Possible values include: 'Static',
      * 'Dynamic'
      * 
+     * @param {string} [parameters.publicIPAddressVersion] Gets or sets PublicIP
+     * address version (IPv4/IPv6). Possible values include: 'IPv4', 'IPv6'
+     * 
      * @param {object} [parameters.ipConfiguration]
      * 
      * @param {string} [parameters.ipConfiguration.privateIPAddress] Gets or sets
@@ -2783,6 +2790,9 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.publicIPAllocationMethod] Gets or sets PublicIP
      * allocation method (Static/Dynamic). Possible values include: 'Static',
      * 'Dynamic'
+     * 
+     * @param {string} [parameters.publicIPAddressVersion] Gets or sets PublicIP
+     * address version (IPv4/IPv6). Possible values include: 'IPv4', 'IPv6'
      * 
      * @param {object} [parameters.ipConfiguration]
      * 
