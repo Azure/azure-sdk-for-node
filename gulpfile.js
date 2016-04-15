@@ -12,6 +12,16 @@ var mappings = {
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json', 
     'ft': 1
   },
+  'batch.Management': {
+    'dir': 'batchManagement/lib',
+    'source': 'arm-batch/2015-12-01/swagger/BatchManagement.json',
+    'ft': 1
+  },
+  'batch.Service': {
+    'dir': 'batch/lib',
+    'source': 'batch/2016-02-01.3.0/swagger/BatchService.json',
+    'ft': 1
+  },
   'cdn': {
     'dir': 'cdnManagement/lib',
     'source': 'arm-cdn/2015-06-01/swagger/cdn.json',
@@ -89,27 +99,22 @@ var mappings = {
   },
   'serviceFabric': {
     'dir': 'serviceFabric/lib',
-    'source': 'arm-servicefabric/2016-01-28/swagger/servicefabric.json',
+    'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
     'language': 'NodeJS'
+  },
+  'traffic':{
+    'dir': 'trafficManagement2/lib',
+    'source': 'arm-trafficmanager/2015-11-01/trafficmanager.json',
+    'ft': 1
   },
   'website': {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
-  },
-  'batch.Management': {
-    'dir': 'batchManagement/lib',
-    'source': 'arm-batch/2015-12-01/swagger/BatchManagement.json',
-    'ft': 1
-  },
-  'batch.Service': {
-    'dir': 'batch/lib',
-    'source': 'batch/2016-02-01.3.0/swagger/BatchService.json',
-    'ft': 1
   }
 };
 
-var defaultAutoRestVersion = '0.16.0-Nightly20160411';
+var defaultAutoRestVersion = '0.16.0-Nightly20160413';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
@@ -170,7 +175,7 @@ function generateProject(project, specRoot, autoRestVersion) {
   console.log(util.format('Generating "%s" from spec file "%s" with language "%s" and AutoRest version "%s".', 
     project,  specRoot + '/' + mappings[project].source, language, autoRestVersion));
   autoRestExe = constructAutorestExePath(autoRestVersion);
-  var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT',
+  var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT_NO_VERSION',
     autoRestExe, currentModeler, language, specPath, mappings[project].dir);
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].args !== undefined) {
