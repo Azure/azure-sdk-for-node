@@ -19,8 +19,6 @@ declare class DataLakeAnalyticsCatalogManagementClient {
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
      *
-     * @param {string} adlaCatalogDnsSuffix - Gets the DNS suffix used as the base for all Azure Data Lake Analytics Catalog service requests.
-     *
      * @param {object} [options] - The parameter options
      *
      * @param {Array} [options.filters] - Filters to be added to the request pipeline
@@ -32,6 +30,8 @@ declare class DataLakeAnalyticsCatalogManagementClient {
      *
      * @param {string} [options.apiVersion] - Client Api Version.
      *
+     * @param {string} [options.adlaCatalogDnsSuffix] - Gets the DNS suffix used as the base for all Azure Data Lake Analytics Catalog service requests.
+     *
      * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
      *
      * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
@@ -39,7 +39,7 @@ declare class DataLakeAnalyticsCatalogManagementClient {
      * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
      *
      */
-    constructor(credentials: ServiceClientCredentials, adlaCatalogDnsSuffix: string, options: ServiceClientOptions);
+    constructor(credentials: ServiceClientCredentials, options: ServiceClientOptions);
 
     credentials: ServiceClientCredentials;
 

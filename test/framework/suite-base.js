@@ -117,6 +117,18 @@ _.extend(SuiteBase.prototype, {
    * @returns {ms-rest-azure.UserTokenCredentials} The user token credentials object.
    */
   _createUserCredentials: function() {
+    if(process.env['AZURE_ENVIRONMENT'] && process.env['AZURE_ENVIRONMENT'].toUpperCase() === 'DOGFOOD') {
+      var env = new msRestAzure.AzureEnvironment.AzureEnvironment(
+                          'https://login.windows-ppe.net/',
+                          'https://management.core.windows.net/',
+                          true);
+      return new msRestAzure.UserTokenCredentials(this.clientId, this.domain, this.username,
+        this.password, this.clientRedirectUri, {
+          'tokenCache': this.tokenCache,
+          'environment': env
+      });
+    }
+    
     return new msRestAzure.UserTokenCredentials(this.clientId, this.domain, this.username,
       this.password, this.clientRedirectUri, {
         'tokenCache': this.tokenCache
@@ -129,6 +141,18 @@ _.extend(SuiteBase.prototype, {
    * @returns {ms-rest-azure.ApplicationTokenCredentials} The application token credentials object.
    */
   _createApplicationCredentials: function() {
+    if(process.env['AZURE_ENVIRONMENT'] && process.env['AZURE_ENVIRONMENT'].toUpperCase() === 'DOGFOOD') {
+      var env = new msRestAzure.AzureEnvironment.AzureEnvironment(
+                          'https://login.windows-ppe.net/',
+                          'https://management.core.windows.net/',
+                          true);
+                          
+      return new msRestAzure.ApplicationTokenCredentials(this.clientId, this.domain, this.secret, {
+        'tokenCache': this.tokenCache,
+        'environment': env
+      });
+    }
+    
     return new msRestAzure.ApplicationTokenCredentials(this.clientId, this.domain, this.secret, {
       'tokenCache': this.tokenCache
     });

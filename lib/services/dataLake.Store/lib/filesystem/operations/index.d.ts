@@ -27,14 +27,14 @@ export interface FileSystem {
      * CANNOT be used interchangeably. Once a file has been appended to using
      * either append option, it can only be appended to using that append option.
      *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
      * @param {string} filePath The Data Lake Store path (starting with '/') of
      * the file to which to append using concurrent append.
      * 
      * @param {object} streamContents The file contents to include when appending
      * to the file.
-     * 
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -48,17 +48,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    concurrentAppend(filePath: string, streamContents: stream.Readable, accountName: string, options: { appendMode? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    concurrentAppend(filePath: string, streamContents: stream.Readable, accountName: string, callback: ServiceCallback<void>): void;
+    concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, options: { appendMode? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
      * Checks if the specified access is available at the given path.
      *
-     * @param {string} path The Data Lake Store path (starting with '/') of the
-     * file or directory for which to check access.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} path The Data Lake Store path (starting with '/') of the
+     * file or directory for which to check access.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -71,17 +71,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkAccess(path: string, accountName: string, options: { fsaction? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    checkAccess(path: string, accountName: string, callback: ServiceCallback<void>): void;
+    checkAccess(accountName: string, path: string, options: { fsaction? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    checkAccess(accountName: string, path: string, callback: ServiceCallback<void>): void;
 
     /**
      * Creates a directory.
      *
-     * @param {string} path The Data Lake Store path (starting with '/') of the
-     * directory to create.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} path The Data Lake Store path (starting with '/') of the
+     * directory to create.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -91,13 +91,16 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    mkdirs(path: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
-    mkdirs(path: string, accountName: string, callback: ServiceCallback<models.FileOperationResult>): void;
+    mkdirs(accountName: string, path: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+    mkdirs(accountName: string, path: string, callback: ServiceCallback<models.FileOperationResult>): void;
 
     /**
      * Concatenates the list of source files into the destination file, removing
      * all source files upon success.
      *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
      * @param {string} destinationPath The Data Lake Store path (starting with
      * '/') of the destination file resulting from the concatenation.
      * 
@@ -105,9 +108,6 @@ export interface FileSystem {
      * (starting with '/') of the files to concatenate, in the order in which
      * they should be concatenated.
      * 
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -116,8 +116,8 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    concat(destinationPath: string, sources: string[], accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    concat(destinationPath: string, sources: string[], accountName: string, callback: ServiceCallback<void>): void;
+    concat(accountName: string, destinationPath: string, sources: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    concat(accountName: string, destinationPath: string, sources: string[], callback: ServiceCallback<void>): void;
 
     /**
      * Concatenates the list of source files into the destination file, deleting
@@ -125,15 +125,15 @@ export interface FileSystem {
      * than the Concat method. This method and the parameters it accepts are
      * subject to change for usability in an upcoming version.
      *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
      * @param {string} msConcatDestinationPath The Data Lake Store path (starting
      * with '/') of the destination file resulting from the concatenation.
      * 
      * @param {object} streamContents A list of Data Lake Store paths (starting
      * with '/') of the source files. Must be in the format: sources=<comma
      * separated list>
-     * 
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -151,18 +151,18 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    msConcat(msConcatDestinationPath: string, streamContents: stream.Readable, accountName: string, options: { deleteSourceDirectory? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    msConcat(msConcatDestinationPath: string, streamContents: stream.Readable, accountName: string, callback: ServiceCallback<void>): void;
+    msConcat(accountName: string, msConcatDestinationPath: string, streamContents: stream.Readable, options: { deleteSourceDirectory? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    msConcat(accountName: string, msConcatDestinationPath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
      * Get the list of file status objects specified by the file path, with
      * optional pagination parameters
      *
-     * @param {string} listFilePath The Data Lake Store path (starting with '/')
-     * of the directory to list.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} listFilePath The Data Lake Store path (starting with '/')
+     * of the directory to list.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -185,17 +185,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listFileStatus(listFilePath: string, accountName: string, options: { listSize? : number, listAfter? : string, listBefore? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
-    listFileStatus(listFilePath: string, accountName: string, callback: ServiceCallback<models.FileStatusesResult>): void;
+    listFileStatus(accountName: string, listFilePath: string, options: { listSize? : number, listAfter? : string, listBefore? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
+    listFileStatus(accountName: string, listFilePath: string, callback: ServiceCallback<models.FileStatusesResult>): void;
 
     /**
      * Gets the file content summary object specified by the file path.
      *
-     * @param {string} getContentSummaryFilePath The Data Lake Store path
-     * (starting with '/') of the file for which to retrieve the summary.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} getContentSummaryFilePath The Data Lake Store path
+     * (starting with '/') of the file for which to retrieve the summary.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -205,17 +205,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getContentSummary(getContentSummaryFilePath: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContentSummaryResult>): void;
-    getContentSummary(getContentSummaryFilePath: string, accountName: string, callback: ServiceCallback<models.ContentSummaryResult>): void;
+    getContentSummary(accountName: string, getContentSummaryFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContentSummaryResult>): void;
+    getContentSummary(accountName: string, getContentSummaryFilePath: string, callback: ServiceCallback<models.ContentSummaryResult>): void;
 
     /**
      * Get the file status object specified by the file path.
      *
-     * @param {string} getFilePath The Data Lake Store path (starting with '/') of
-     * the file or directory for which to retrieve the status.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} getFilePath The Data Lake Store path (starting with '/') of
+     * the file or directory for which to retrieve the status.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -225,8 +225,8 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getFileStatus(getFilePath: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusResult>): void;
-    getFileStatus(getFilePath: string, accountName: string, callback: ServiceCallback<models.FileStatusResult>): void;
+    getFileStatus(accountName: string, getFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusResult>): void;
+    getFileStatus(accountName: string, getFilePath: string, callback: ServiceCallback<models.FileStatusResult>): void;
 
     /**
      * Appends to the specified file. This method does not support multiple
@@ -236,14 +236,14 @@ export interface FileSystem {
      * that append option. Use the ConcurrentAppend option if you would like
      * support for concurrent appends.
      *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
      * @param {string} directFilePath The Data Lake Store path (starting with '/')
      * of the file to which to append.
      * 
      * @param {object} streamContents The file contents to include when appending
      * to the file.
-     * 
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -253,17 +253,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    append(directFilePath: string, streamContents: stream.Readable, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    append(directFilePath: string, streamContents: stream.Readable, accountName: string, callback: ServiceCallback<void>): void;
+    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    append(accountName: string, directFilePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
      * Creates a file with optionally specified content.
      *
-     * @param {string} directFilePath The Data Lake Store path (starting with '/')
-     * of the file to create.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} directFilePath The Data Lake Store path (starting with '/')
+     * of the file to create.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -280,17 +280,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    create(directFilePath: string, accountName: string, options: { streamContents? : stream.Readable, overwrite? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    create(directFilePath: string, accountName: string, callback: ServiceCallback<void>): void;
+    create(accountName: string, directFilePath: string, options: { streamContents? : stream.Readable, overwrite? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(accountName: string, directFilePath: string, callback: ServiceCallback<void>): void;
 
     /**
      * Opens and reads from the specified file.
      *
-     * @param {string} directFilePath The Data Lake Store path (starting with '/')
-     * of the file to open.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} directFilePath The Data Lake Store path (starting with '/')
+     * of the file to open.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -304,21 +304,21 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    open(directFilePath: string, accountName: string, options: { length? : number, offset? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
-    open(directFilePath: string, accountName: string, callback: ServiceCallback<stream.Readable>): void;
+    open(accountName: string, directFilePath: string, options: { length? : number, offset? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    open(accountName: string, directFilePath: string, callback: ServiceCallback<stream.Readable>): void;
 
     /**
      * Sets the Access Control List (ACL) for a file or folder.
      *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
      * @param {string} setAclFilePath The Data Lake Store path (starting with '/')
      * of the file or directory on which to set the ACL.
      * 
      * @param {string} aclspec The ACL spec included in ACL creation operations in
      * the format '[default:]user|group|other::r|-w|-x|-'
      * 
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -327,21 +327,21 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    setAcl(setAclFilePath: string, aclspec: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    setAcl(setAclFilePath: string, aclspec: string, accountName: string, callback: ServiceCallback<void>): void;
+    setAcl(accountName: string, setAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setAcl(accountName: string, setAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
 
     /**
      * Modifies existing Access Control List (ACL) entries on a file or folder.
      *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
      * @param {string} modifyAclFilePath The Data Lake Store path (starting with
      * '/') of the file or directory with the ACL being modified.
      * 
      * @param {string} aclspec The ACL specification included in ACL modification
      * operations in the format '[default:]user|group|other::r|-w|-x|-'
      * 
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -350,21 +350,21 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    modifyAclEntries(modifyAclFilePath: string, aclspec: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    modifyAclEntries(modifyAclFilePath: string, aclspec: string, accountName: string, callback: ServiceCallback<void>): void;
+    modifyAclEntries(accountName: string, modifyAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    modifyAclEntries(accountName: string, modifyAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
 
     /**
      * Removes existing Access Control List (ACL) entries for a file or folder.
      *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
      * @param {string} removeAclFilePath The Data Lake Store path (starting with
      * '/') of the file or directory with the ACL being removed.
      * 
      * @param {string} aclspec The ACL spec included in ACL removal operations in
      * the format '[default:]user|group|other'
      * 
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -373,18 +373,18 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    removeAclEntries(removeAclFilePath: string, aclspec: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    removeAclEntries(removeAclFilePath: string, aclspec: string, accountName: string, callback: ServiceCallback<void>): void;
+    removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
 
     /**
      * Removes the existing Access Control List (ACL) of the specified file or
      * directory.
      *
-     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
-     * the file or directory with the ACL being removed.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
+     * the file or directory with the ACL being removed.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -394,17 +394,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    removeAcl(aclFilePath: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    removeAcl(aclFilePath: string, accountName: string, callback: ServiceCallback<void>): void;
+    removeAcl(accountName: string, aclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeAcl(accountName: string, aclFilePath: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets Access Control List (ACL) entries for the specified file or directory.
      *
-     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
-     * the file or directory for which to get the ACL.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
+     * the file or directory for which to get the ACL.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -414,17 +414,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getAclStatus(aclFilePath: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AclStatusResult>): void;
-    getAclStatus(aclFilePath: string, accountName: string, callback: ServiceCallback<models.AclStatusResult>): void;
+    getAclStatus(accountName: string, aclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AclStatusResult>): void;
+    getAclStatus(accountName: string, aclFilePath: string, callback: ServiceCallback<models.AclStatusResult>): void;
 
     /**
      * Deletes the requested file or directory, optionally recursively.
      *
-     * @param {string} filePath The Data Lake Store path (starting with '/') of
-     * the file or directory to delete.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} filePath The Data Lake Store path (starting with '/') of
+     * the file or directory to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -437,19 +437,19 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(filePath: string, accountName: string, options: { recursive? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
-    deleteMethod(filePath: string, accountName: string, callback: ServiceCallback<models.FileOperationResult>): void;
+    deleteMethod(accountName: string, filePath: string, options: { recursive? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+    deleteMethod(accountName: string, filePath: string, callback: ServiceCallback<models.FileOperationResult>): void;
 
     /**
      * Rename a file or directory.
      *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
      * @param {string} renameFilePath The Data Lake Store path (starting with '/')
      * of the file or directory to move/rename.
      * 
      * @param {string} destination The path to move/rename the file or folder to
-     * 
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -459,17 +459,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    rename(renameFilePath: string, destination: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
-    rename(renameFilePath: string, destination: string, accountName: string, callback: ServiceCallback<models.FileOperationResult>): void;
+    rename(accountName: string, renameFilePath: string, destination: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+    rename(accountName: string, renameFilePath: string, destination: string, callback: ServiceCallback<models.FileOperationResult>): void;
 
     /**
      * Sets the owner of a file or directory.
      *
-     * @param {string} setOwnerFilePath The Data Lake Store path (starting with
-     * '/') of the file or directory for which to set the owner.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} setOwnerFilePath The Data Lake Store path (starting with
+     * '/') of the file or directory for which to set the owner.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -485,17 +485,17 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    setOwner(setOwnerFilePath: string, accountName: string, options: { owner? : string, group? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    setOwner(setOwnerFilePath: string, accountName: string, callback: ServiceCallback<void>): void;
+    setOwner(accountName: string, setOwnerFilePath: string, options: { owner? : string, group? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setOwner(accountName: string, setOwnerFilePath: string, callback: ServiceCallback<void>): void;
 
     /**
      * Sets the permission of the file or folder.
      *
-     * @param {string} setPermissionFilePath The Data Lake Store path (starting
-     * with '/') of the file or directory for which to set the permission.
-     * 
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
+     * 
+     * @param {string} setPermissionFilePath The Data Lake Store path (starting
+     * with '/') of the file or directory for which to set the permission.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -508,6 +508,6 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    setPermission(setPermissionFilePath: string, accountName: string, options: { permission? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    setPermission(setPermissionFilePath: string, accountName: string, callback: ServiceCallback<void>): void;
+    setPermission(accountName: string, setPermissionFilePath: string, options: { permission? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setPermission(accountName: string, setPermissionFilePath: string, callback: ServiceCallback<void>): void;
 }

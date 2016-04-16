@@ -13,18 +13,18 @@ nock('http://login.microsoftonline.com:443')
   .reply(200, "{\"ver\":\"1.0\",\"account_type\":\"Managed\",\"domain_name\":\"benwgoldoutlook.onmicrosoft.com\",\"cloudinstancename\":\"login.microsoftonline.com\"}", { 'cache-control': 'private',
   'content-type': 'application/json; charset=utf-8',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '877d2dd0-c585-421e-b74f-d9b6c8d015f9',
-  'client-request-id': '38b1d741-d4d2-4704-9daa-1db90ff5b6f6',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_424',
+  'x-ms-request-id': '27ef3805-0b66-41a7-bff2-693ae76e410e',
+  'client-request-id': 'b756ec2a-15c7-49ca-b5b2-bda296fd6d5d',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_334',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:51 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:44 GMT',
   connection: 'close',
   'content-length': '134' });
  return result; },
@@ -35,18 +35,18 @@ nock('https://login.microsoftonline.com:443')
   .reply(200, "{\"ver\":\"1.0\",\"account_type\":\"Managed\",\"domain_name\":\"benwgoldoutlook.onmicrosoft.com\",\"cloudinstancename\":\"login.microsoftonline.com\"}", { 'cache-control': 'private',
   'content-type': 'application/json; charset=utf-8',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '877d2dd0-c585-421e-b74f-d9b6c8d015f9',
-  'client-request-id': '38b1d741-d4d2-4704-9daa-1db90ff5b6f6',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_424',
+  'x-ms-request-id': '27ef3805-0b66-41a7-bff2-693ae76e410e',
+  'client-request-id': 'b756ec2a-15c7-49ca-b5b2-bda296fd6d5d',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_334',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:51 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:44 GMT',
   connection: 'close',
   'content-length': '134' });
  return result; },
@@ -55,84 +55,84 @@ var result =
 nock('http://login.microsoftonline.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/benwgoldoutlook.onmicrosoft.com/oauth2/token?api-version=1.0', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3600\",\"expires_on\":\"1460148051\",\"not_before\":\"1460144151\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTUxLCJuYmYiOjE0NjAxNDQxNTEsImV4cCI6MTQ2MDE0ODA1MSwiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.cM69MnVHUDlgHjrKNKFnuAWiTFMB7G73SLweL8gP-tX0ApZjbN4G6udBp1yB0vdrHkTopcKkrVz3IW7s58LTpMEv-zr4ulhFAhdc5knK_UOZ7D2YKu9083Ouy5a84loBM1LN9n1Js2EHueblk_cTkv_Ao6vtIyxrkGKJEx46PyRxYE5xWF9aOpubZH02V6ntaEQKUlfwcKzhdVDhelQGDkeDCJAely-xwErE5btV6mFV5N36vGYpOSZ73TXwIQPzTgyfLTR2xjsro97XJb7jsKe3bEweb0BLHeVDQYYVzNCUV-XZZAJsb8Fa1OYNLTJruxxvlPHsS_p5jhoT-5bVmg\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLTX_t9SMiJaUPbOoCZcC7s1zfYB_U1YL5bXQmve1jyr8Rna-WaV4446atxdCUTZKAocJMGkzpnLdI8Aid7EmT8fBvntO-dlsuTHz9FeFXTUM58VnRrxVCV5OXMHNoD9D5Op9n0qAV0cs4AbDFKRKyENw8VjvatYe81k-ARVnseavloLKXzKpFp-mJOxrwXnaLxWFuwxpWiemFogl_EpgUkuf0epHcUvGFqV92FVsq5PHBPrPlNAy65BvmHG6yicew7VQ0wa_zyTEdDoJ_EDpW4hpEKRV_8rnan6Au33TLie-pZKRWWbzg3mK_k193kvLU7QFcLIE4b5g_YMKoHIiURfim3qcYJk-n0mQijdu0BfzD8ENCdUZi_LMjZloFKxJ36T7s3SJUJjs4T-zPDwp57HgMasUcIHxeD7pecDXKeKube8qjRc8JlstBjV-yL1c5-2rpuXFD-Yc6Nk098ar5ly_WcZnaT_cgyITwcxIdhcJiPOmxii6YupopZHpyiVvL1sylx4u2k0npQncJaW7TaKc8g3npe811fL4DM_QlaPVbVuRBdsVdLvF5AqCyhuQjQAdwjstutkOcKmUs8FdlOUgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTUxLCJuYmYiOjE0NjAxNDQxNTEsImV4cCI6MTQ2MDE0ODA1MSwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3599\",\"expires_on\":\"1460667463\",\"not_before\":\"1460663563\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTYzLCJuYmYiOjE0NjA2NjM1NjMsImV4cCI6MTQ2MDY2NzQ2MywiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.J8uQj5Iy7COV83s4aRA3Cww6dbuZVLpBlvXYzhd1T4vyMs83wYWsy17TbQp1RrNPav8plK5ONgkb06eQIYbmKBQfF2itSJVjxBECY19lBN_FD4wCp2l97MVingowjqcaoDNZr3S7n395ftMXRjoVfdYe9cL6Ye3jfDMFdfxFPOe3mqNfogDUwe-uGCwXVE9n4j5iYw7tGaI-m-iVq-4kSYgIJr4OHJFFTzlhzXe6n8KERFc3GxmMwi-dDKyTR4tXxDlhw7XCMP2GvOnmx0ao0XpjBmraWQdPU4DzmICQLT-SV6LPJTpQzi73tYiJ8uKYWTKtpYRh_0AzW8Ij7plt2A\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLQeYVdVxuUa_e3RjHymY3P_QpqEuQP4Dqg138q3-BsALHydOLnrElNc8WM0iF83Igc3jZuTF1X7Ew9SJJRCQXP_djjEaSxadLnczLacUX9i3h5kSWnK-1Myc3Jdky6O0LI3JtlB4Az0qa1k_WXoJhu3iMmL1et5CfyXtk9rt_-c_l3A60ykB2JERvjJebePEpdJ5YYk8IIEORV-OMwhnoSLNSUxPfj7nuPWVNWf5KFzln9odsLfAMLGdcdhS2rJXOfVzqNsl6iyiuOSVt3hiv90bGUpfYApycmAX3M4songbvAzhykPSmYrlCLFA6ta0O_EcqRruDCG3wHWM5BYjA05c5C9WdD9GEIk4b5SwfDm7y4lZSKG4b6EDdOLVAAZhUjcCw1LStVbteqEcCUDsx-9-GrrHcPLsMd0zFs5xW0ZRNDBoB_DDD3i4Z_S0yn0AZjmhMzyCgzZ5Z2VHmTCiFf8eyO5cH8vJ_SYBmNgQRHbzVfOCIFB7RrXNBrCOGkoPqxmCxVfOuoNYj5aYeUUle9TmhtUk43DT2FavG1yZlQEuezM8AyveVuUfZ_Qh12iwqhaPPOhr0tczBhLGAyN0iUEwIS82sYZZwe11pjeL43oHMsR_DyefSAuLNWfUUh60znp6zaOaXZt5obx2D6Z6mu5EGsdJFFVdXaxWIORqAXLVs1F2u56p2u7fkRj8DTEfqvTLyeK6zdeuplbzaasY0rcgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTYzLCJuYmYiOjE0NjA2NjM1NjMsImV4cCI6MTQ2MDY2NzQ2MywiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '46dcb86e-aa7f-4968-b631-fe3009fd43a3',
-  'client-request-id': '38b1d741-d4d2-4704-9daa-1db90ff5b6f6',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_299',
+  'x-ms-request-id': '31383a33-ef0a-4887-a448-a835f50156c6',
+  'client-request-id': 'b756ec2a-15c7-49ca-b5b2-bda296fd6d5d',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_166',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:50 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:44 GMT',
   connection: 'close',
-  'content-length': '3013' });
+  'content-length': '3141' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://login.microsoftonline.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/benwgoldoutlook.onmicrosoft.com/oauth2/token?api-version=1.0', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3600\",\"expires_on\":\"1460148051\",\"not_before\":\"1460144151\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTUxLCJuYmYiOjE0NjAxNDQxNTEsImV4cCI6MTQ2MDE0ODA1MSwiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.cM69MnVHUDlgHjrKNKFnuAWiTFMB7G73SLweL8gP-tX0ApZjbN4G6udBp1yB0vdrHkTopcKkrVz3IW7s58LTpMEv-zr4ulhFAhdc5knK_UOZ7D2YKu9083Ouy5a84loBM1LN9n1Js2EHueblk_cTkv_Ao6vtIyxrkGKJEx46PyRxYE5xWF9aOpubZH02V6ntaEQKUlfwcKzhdVDhelQGDkeDCJAely-xwErE5btV6mFV5N36vGYpOSZ73TXwIQPzTgyfLTR2xjsro97XJb7jsKe3bEweb0BLHeVDQYYVzNCUV-XZZAJsb8Fa1OYNLTJruxxvlPHsS_p5jhoT-5bVmg\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLTX_t9SMiJaUPbOoCZcC7s1zfYB_U1YL5bXQmve1jyr8Rna-WaV4446atxdCUTZKAocJMGkzpnLdI8Aid7EmT8fBvntO-dlsuTHz9FeFXTUM58VnRrxVCV5OXMHNoD9D5Op9n0qAV0cs4AbDFKRKyENw8VjvatYe81k-ARVnseavloLKXzKpFp-mJOxrwXnaLxWFuwxpWiemFogl_EpgUkuf0epHcUvGFqV92FVsq5PHBPrPlNAy65BvmHG6yicew7VQ0wa_zyTEdDoJ_EDpW4hpEKRV_8rnan6Au33TLie-pZKRWWbzg3mK_k193kvLU7QFcLIE4b5g_YMKoHIiURfim3qcYJk-n0mQijdu0BfzD8ENCdUZi_LMjZloFKxJ36T7s3SJUJjs4T-zPDwp57HgMasUcIHxeD7pecDXKeKube8qjRc8JlstBjV-yL1c5-2rpuXFD-Yc6Nk098ar5ly_WcZnaT_cgyITwcxIdhcJiPOmxii6YupopZHpyiVvL1sylx4u2k0npQncJaW7TaKc8g3npe811fL4DM_QlaPVbVuRBdsVdLvF5AqCyhuQjQAdwjstutkOcKmUs8FdlOUgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTUxLCJuYmYiOjE0NjAxNDQxNTEsImV4cCI6MTQ2MDE0ODA1MSwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3599\",\"expires_on\":\"1460667463\",\"not_before\":\"1460663563\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTYzLCJuYmYiOjE0NjA2NjM1NjMsImV4cCI6MTQ2MDY2NzQ2MywiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.J8uQj5Iy7COV83s4aRA3Cww6dbuZVLpBlvXYzhd1T4vyMs83wYWsy17TbQp1RrNPav8plK5ONgkb06eQIYbmKBQfF2itSJVjxBECY19lBN_FD4wCp2l97MVingowjqcaoDNZr3S7n395ftMXRjoVfdYe9cL6Ye3jfDMFdfxFPOe3mqNfogDUwe-uGCwXVE9n4j5iYw7tGaI-m-iVq-4kSYgIJr4OHJFFTzlhzXe6n8KERFc3GxmMwi-dDKyTR4tXxDlhw7XCMP2GvOnmx0ao0XpjBmraWQdPU4DzmICQLT-SV6LPJTpQzi73tYiJ8uKYWTKtpYRh_0AzW8Ij7plt2A\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLQeYVdVxuUa_e3RjHymY3P_QpqEuQP4Dqg138q3-BsALHydOLnrElNc8WM0iF83Igc3jZuTF1X7Ew9SJJRCQXP_djjEaSxadLnczLacUX9i3h5kSWnK-1Myc3Jdky6O0LI3JtlB4Az0qa1k_WXoJhu3iMmL1et5CfyXtk9rt_-c_l3A60ykB2JERvjJebePEpdJ5YYk8IIEORV-OMwhnoSLNSUxPfj7nuPWVNWf5KFzln9odsLfAMLGdcdhS2rJXOfVzqNsl6iyiuOSVt3hiv90bGUpfYApycmAX3M4songbvAzhykPSmYrlCLFA6ta0O_EcqRruDCG3wHWM5BYjA05c5C9WdD9GEIk4b5SwfDm7y4lZSKG4b6EDdOLVAAZhUjcCw1LStVbteqEcCUDsx-9-GrrHcPLsMd0zFs5xW0ZRNDBoB_DDD3i4Z_S0yn0AZjmhMzyCgzZ5Z2VHmTCiFf8eyO5cH8vJ_SYBmNgQRHbzVfOCIFB7RrXNBrCOGkoPqxmCxVfOuoNYj5aYeUUle9TmhtUk43DT2FavG1yZlQEuezM8AyveVuUfZ_Qh12iwqhaPPOhr0tczBhLGAyN0iUEwIS82sYZZwe11pjeL43oHMsR_DyefSAuLNWfUUh60znp6zaOaXZt5obx2D6Z6mu5EGsdJFFVdXaxWIORqAXLVs1F2u56p2u7fkRj8DTEfqvTLyeK6zdeuplbzaasY0rcgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTYzLCJuYmYiOjE0NjA2NjM1NjMsImV4cCI6MTQ2MDY2NzQ2MywiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '46dcb86e-aa7f-4968-b631-fe3009fd43a3',
-  'client-request-id': '38b1d741-d4d2-4704-9daa-1db90ff5b6f6',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_299',
+  'x-ms-request-id': '31383a33-ef0a-4887-a448-a835f50156c6',
+  'client-request-id': 'b756ec2a-15c7-49ca-b5b2-bda296fd6d5d',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_166',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:50 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:44 GMT',
   connection: 'close',
-  'content-length': '3013' });
+  'content-length': '3141' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadls6491.azuredatalakestore.net:443')
+nock('http://xplattestadls3680.azuredatalakestore.net:443')
   .get('/webhdfs/v1/%2F?op=GETACLSTATUS&api-version=2015-10-01-preview')
   .reply(200, "{\"AclStatus\":{\"entries\":[\"user::rwx\",\"group::rwx\",\"other::---\",\"mask::rwx\",\"default:user::rwx\",\"default:group::rwx\",\"default:other::---\",\"default:mask::rwx\"],\"owner\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"group\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"stickyBit\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '01f9a755-c0cc-4303-8e52-c2178a648e61',
-  'set-cookie': [ 'UserPrincipalSession=46587c31-05a3-4e79-97fb-24aac9edf661; path=/; secure; HttpOnly' ],
-  'server-perf': '[01f9a755c0cc43038e52c2178a648e61][ AuthTime::1544.40715893237::PostAuthTime::32808.4943676827 ][HdfsGetAclStatus :: 00:00:019 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:057 ms]%0a',
+  'x-ms-request-id': '08bd9a17-7a8c-4c36-8989-7e9e20f0522b',
+  'set-cookie': [ 'UserPrincipalSession=3535bf1c-748a-43cd-ad2c-ac65be9151de; path=/; secure; HttpOnly' ],
+  'server-perf': '[08bd9a177a8c4c3689897e9e20f0522b][ AuthTime::1382.30833516529::PostAuthTime::30974.9123012611 ][HdfsGetAclStatus :: 00:00:080 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:080 ms]%0a',
   status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Fri, 08 Apr 2016 19:40:52 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:45 GMT',
   connection: 'close',
   'content-length': '271' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadls6491.azuredatalakestore.net:443')
+nock('https://xplattestadls3680.azuredatalakestore.net:443')
   .get('/webhdfs/v1/%2F?op=GETACLSTATUS&api-version=2015-10-01-preview')
   .reply(200, "{\"AclStatus\":{\"entries\":[\"user::rwx\",\"group::rwx\",\"other::---\",\"mask::rwx\",\"default:user::rwx\",\"default:group::rwx\",\"default:other::---\",\"default:mask::rwx\"],\"owner\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"group\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"stickyBit\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '01f9a755-c0cc-4303-8e52-c2178a648e61',
-  'set-cookie': [ 'UserPrincipalSession=46587c31-05a3-4e79-97fb-24aac9edf661; path=/; secure; HttpOnly' ],
-  'server-perf': '[01f9a755c0cc43038e52c2178a648e61][ AuthTime::1544.40715893237::PostAuthTime::32808.4943676827 ][HdfsGetAclStatus :: 00:00:019 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:057 ms]%0a',
+  'x-ms-request-id': '08bd9a17-7a8c-4c36-8989-7e9e20f0522b',
+  'set-cookie': [ 'UserPrincipalSession=3535bf1c-748a-43cd-ad2c-ac65be9151de; path=/; secure; HttpOnly' ],
+  'server-perf': '[08bd9a177a8c4c3689897e9e20f0522b][ AuthTime::1382.30833516529::PostAuthTime::30974.9123012611 ][HdfsGetAclStatus :: 00:00:080 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:080 ms]%0a',
   status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Fri, 08 Apr 2016 19:40:52 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:45 GMT',
   connection: 'close',
   'content-length': '271' });
  return result; },
@@ -143,18 +143,18 @@ nock('http://login.microsoftonline.com:443')
   .reply(200, "{\"ver\":\"1.0\",\"account_type\":\"Managed\",\"domain_name\":\"benwgoldoutlook.onmicrosoft.com\",\"cloudinstancename\":\"login.microsoftonline.com\"}", { 'cache-control': 'private',
   'content-type': 'application/json; charset=utf-8',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '095d2fb9-cc98-4b7c-b76e-ac04a2a9a340',
-  'client-request-id': 'f3a88592-a944-453c-bbc4-f518c82120a4',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_114',
+  'x-ms-request-id': 'c473e23e-11a7-4c06-a359-e2675283c979',
+  'client-request-id': '893267b1-227c-4437-8622-7ec3eb30755e',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_197',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:53 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:46 GMT',
   connection: 'close',
   'content-length': '134' });
  return result; },
@@ -165,18 +165,18 @@ nock('https://login.microsoftonline.com:443')
   .reply(200, "{\"ver\":\"1.0\",\"account_type\":\"Managed\",\"domain_name\":\"benwgoldoutlook.onmicrosoft.com\",\"cloudinstancename\":\"login.microsoftonline.com\"}", { 'cache-control': 'private',
   'content-type': 'application/json; charset=utf-8',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '095d2fb9-cc98-4b7c-b76e-ac04a2a9a340',
-  'client-request-id': 'f3a88592-a944-453c-bbc4-f518c82120a4',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_114',
+  'x-ms-request-id': 'c473e23e-11a7-4c06-a359-e2675283c979',
+  'client-request-id': '893267b1-227c-4437-8622-7ec3eb30755e',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_197',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:53 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:46 GMT',
   connection: 'close',
   'content-length': '134' });
  return result; },
@@ -185,84 +185,84 @@ var result =
 nock('http://login.microsoftonline.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/benwgoldoutlook.onmicrosoft.com/oauth2/token?api-version=1.0', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3600\",\"expires_on\":\"1460148053\",\"not_before\":\"1460144153\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTUzLCJuYmYiOjE0NjAxNDQxNTMsImV4cCI6MTQ2MDE0ODA1MywiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.sumx_XxJiwxO-lQ4-3aciarXxt6TaSSoO0CKLE5KwywNueiqth-68y5-GVrQJs8npyp0EdDOZYmyjlhBcH8o_5HMLIKVqs9shnRw_-VSnmXK8zcKEeCOMmaGQhyMQLjjUEovCKw8yyNRrCuM7ThyX8OHzN0-lUClLfCtmpI_S6FLInTaStuVPv_b-Jfk4OGy_4XmTf0z7iiBG_N3VAoRT2pdwT3gKQgXnPGz1rkDljQKZ3vNAUBpPFZlN4Okp3gZSHcXxZt3aDjc44rofjwJDBv098dB46S0kGe_dLjCaxFFg9pEfosScR4WwP06ZHhlIjC__pwmiTcqHe691Z5cOA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLWixxkSOBZQtZqbWBOW6o78Ncort4ss6VMj4RHx6z7c0qCG-JgPhRNLbE18920Q-4nGM9Q_Je3tAT5irZpBBRHC2D3vQX7VEX8FMZFr5IPtsZZZux3DvjasRZ4yN5fZrYieLepwQt7ZsR6g3aezPd1DKqMPKXqfjn8j9IKy7cl_IDvtVsMHzP6vxtHE8aZ3pQS9fsfZ-QyKNmxmHBtUCDPe9cw9Ymb4XK91-Ili-ut6MZyLknWxCUn7Njze9_CfqQCnD7VHAUAxeQuxZwQtVpvVXgnmrK43oPr8t38vcFX7xmeZ4uVH83XrNluvMxzrISYJ5_SkqM4dMsHaVlKNNDBPZGzqIkiAllbvCRcwHDrjfqz__b6yeCOXbpeOA9vDb5XCIc6X6aj7WC1RRh9Fazac-qcuhxkASIGBVrY8cE7w-kGuOo2S77DSxg4BhTsXBWPAw8WIMY245wlmyh1bhjxmvejsrJ1MOl5n-FxGhAjxVAq5cdjNsa2cONavXxi0Miequ5tph1ah_PnAysrXKBY1pNRL0RgXA7n1O9g21-jn-lDUwdx3V18fRsQJzv0x66MDTeZmwCE1hPHvtsUdDOsogAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTUzLCJuYmYiOjE0NjAxNDQxNTMsImV4cCI6MTQ2MDE0ODA1MywiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3599\",\"expires_on\":\"1460667466\",\"not_before\":\"1460663566\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTY2LCJuYmYiOjE0NjA2NjM1NjYsImV4cCI6MTQ2MDY2NzQ2NiwiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.bqW55MfKmpzNXDvsxWfsAirCzt7YjykGcCHpjFKS6n7897wVxRJiXEh08jwqswoAVzxgpaqI73fXZKQfOQgXE1pSepsIx8EuyDDIkDdtxgfUsCEbd969eGo9TpJaw0qC31FggcoMSz1G1apx2fecOIUNM3X2xFrjzWcL_nPr9XAt1vA25upu8VDpbRg-x8TNMoIWYcOHh_ifZJW7H6Ep6H1v16rAO2rtE7BZk5n4andFKcMLuYgn0UxgCbOEIGDGgltUx6wvorC_tR1iV04gxBkW8sHkZkQ0YZbG0QfeY37cLaj4W99csqgy1qrjzERvkaRSP5nSOjqX_ReEROyaJA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLfz0bsWXkWc-tEQM4eNTGhF_MnYSiw8CWixThsEmIZnhnhrubLOfdsOLZGDtedgEBOoxflzX8ZXTHrMToBI161ri0obuLQhB_QwKKwSzxYpLpfveBl4RxEjwPsXpxqfTAqnPchveC-eBWrnO0-EdNbfzs7OTT3qn_hd_272w9zfb2V8EBYLbD2l3j93CbR53_3fY7xqoSwxV_WIUkGP7xayu8tjh7XG1Pggj_nQmlsBV9-TfZy6sxDFVnHmsrVkS3Qd_PjPWZ0EzYlbNI1ofJwIEEBLlkJnrjCO9bH81lEugo_v5L96z3AegNNXcgDAeGlbu7XJEd0fTzTEeCRUZ5eJ_n7ENK9SicknTe_m-Js0o66Fma9Smgr9MyuyqgQ67e9QZHoiPnIVuuWr-JX-bDXlaqm2p6hPw8Z3Kt4ZgwXvdOTDiEYsKeQfSZBjCZeR8i27zqFHiXUm8opDB5zEOSQIDvz7TLqcZgK6085PjONQ4-OFJkILqxAsjvD_5bo7DLKqz8sPAicZgr-FWcfAusE3iQCam7t0_nvcwoE98-Ui-u7jkQ6c28wRawe-1-hGLBCt0pJMhDGuikykHy1jH9MFBtNCZroRqFLTuiWXRyxCl2giCov7n7zYhXQIzwwVsVvV5ZBm3stX2yBO_1xGznt26LcIXpM0sc3W_VQ14XRAerWZAbrgcO76esrmu_wMz8hLRqpg6sh0SBO8KVCM0XYYgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTY2LCJuYmYiOjE0NjA2NjM1NjYsImV4cCI6MTQ2MDY2NzQ2NiwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '3f24a0f1-b192-45af-bce9-da77c635782d',
-  'client-request-id': 'f3a88592-a944-453c-bbc4-f518c82120a4',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_1',
+  'x-ms-request-id': '24e883d7-867b-42b5-b4b9-1c17dc8b6704',
+  'client-request-id': '893267b1-227c-4437-8622-7ec3eb30755e',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_432',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:53 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:47 GMT',
   connection: 'close',
-  'content-length': '3013' });
+  'content-length': '3141' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://login.microsoftonline.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/benwgoldoutlook.onmicrosoft.com/oauth2/token?api-version=1.0', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3600\",\"expires_on\":\"1460148053\",\"not_before\":\"1460144153\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTUzLCJuYmYiOjE0NjAxNDQxNTMsImV4cCI6MTQ2MDE0ODA1MywiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.sumx_XxJiwxO-lQ4-3aciarXxt6TaSSoO0CKLE5KwywNueiqth-68y5-GVrQJs8npyp0EdDOZYmyjlhBcH8o_5HMLIKVqs9shnRw_-VSnmXK8zcKEeCOMmaGQhyMQLjjUEovCKw8yyNRrCuM7ThyX8OHzN0-lUClLfCtmpI_S6FLInTaStuVPv_b-Jfk4OGy_4XmTf0z7iiBG_N3VAoRT2pdwT3gKQgXnPGz1rkDljQKZ3vNAUBpPFZlN4Okp3gZSHcXxZt3aDjc44rofjwJDBv098dB46S0kGe_dLjCaxFFg9pEfosScR4WwP06ZHhlIjC__pwmiTcqHe691Z5cOA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLWixxkSOBZQtZqbWBOW6o78Ncort4ss6VMj4RHx6z7c0qCG-JgPhRNLbE18920Q-4nGM9Q_Je3tAT5irZpBBRHC2D3vQX7VEX8FMZFr5IPtsZZZux3DvjasRZ4yN5fZrYieLepwQt7ZsR6g3aezPd1DKqMPKXqfjn8j9IKy7cl_IDvtVsMHzP6vxtHE8aZ3pQS9fsfZ-QyKNmxmHBtUCDPe9cw9Ymb4XK91-Ili-ut6MZyLknWxCUn7Njze9_CfqQCnD7VHAUAxeQuxZwQtVpvVXgnmrK43oPr8t38vcFX7xmeZ4uVH83XrNluvMxzrISYJ5_SkqM4dMsHaVlKNNDBPZGzqIkiAllbvCRcwHDrjfqz__b6yeCOXbpeOA9vDb5XCIc6X6aj7WC1RRh9Fazac-qcuhxkASIGBVrY8cE7w-kGuOo2S77DSxg4BhTsXBWPAw8WIMY245wlmyh1bhjxmvejsrJ1MOl5n-FxGhAjxVAq5cdjNsa2cONavXxi0Miequ5tph1ah_PnAysrXKBY1pNRL0RgXA7n1O9g21-jn-lDUwdx3V18fRsQJzv0x66MDTeZmwCE1hPHvtsUdDOsogAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTUzLCJuYmYiOjE0NjAxNDQxNTMsImV4cCI6MTQ2MDE0ODA1MywiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3599\",\"expires_on\":\"1460667466\",\"not_before\":\"1460663566\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTY2LCJuYmYiOjE0NjA2NjM1NjYsImV4cCI6MTQ2MDY2NzQ2NiwiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.bqW55MfKmpzNXDvsxWfsAirCzt7YjykGcCHpjFKS6n7897wVxRJiXEh08jwqswoAVzxgpaqI73fXZKQfOQgXE1pSepsIx8EuyDDIkDdtxgfUsCEbd969eGo9TpJaw0qC31FggcoMSz1G1apx2fecOIUNM3X2xFrjzWcL_nPr9XAt1vA25upu8VDpbRg-x8TNMoIWYcOHh_ifZJW7H6Ep6H1v16rAO2rtE7BZk5n4andFKcMLuYgn0UxgCbOEIGDGgltUx6wvorC_tR1iV04gxBkW8sHkZkQ0YZbG0QfeY37cLaj4W99csqgy1qrjzERvkaRSP5nSOjqX_ReEROyaJA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLfz0bsWXkWc-tEQM4eNTGhF_MnYSiw8CWixThsEmIZnhnhrubLOfdsOLZGDtedgEBOoxflzX8ZXTHrMToBI161ri0obuLQhB_QwKKwSzxYpLpfveBl4RxEjwPsXpxqfTAqnPchveC-eBWrnO0-EdNbfzs7OTT3qn_hd_272w9zfb2V8EBYLbD2l3j93CbR53_3fY7xqoSwxV_WIUkGP7xayu8tjh7XG1Pggj_nQmlsBV9-TfZy6sxDFVnHmsrVkS3Qd_PjPWZ0EzYlbNI1ofJwIEEBLlkJnrjCO9bH81lEugo_v5L96z3AegNNXcgDAeGlbu7XJEd0fTzTEeCRUZ5eJ_n7ENK9SicknTe_m-Js0o66Fma9Smgr9MyuyqgQ67e9QZHoiPnIVuuWr-JX-bDXlaqm2p6hPw8Z3Kt4ZgwXvdOTDiEYsKeQfSZBjCZeR8i27zqFHiXUm8opDB5zEOSQIDvz7TLqcZgK6085PjONQ4-OFJkILqxAsjvD_5bo7DLKqz8sPAicZgr-FWcfAusE3iQCam7t0_nvcwoE98-Ui-u7jkQ6c28wRawe-1-hGLBCt0pJMhDGuikykHy1jH9MFBtNCZroRqFLTuiWXRyxCl2giCov7n7zYhXQIzwwVsVvV5ZBm3stX2yBO_1xGznt26LcIXpM0sc3W_VQ14XRAerWZAbrgcO76esrmu_wMz8hLRqpg6sh0SBO8KVCM0XYYgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTY2LCJuYmYiOjE0NjA2NjM1NjYsImV4cCI6MTQ2MDY2NzQ2NiwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '3f24a0f1-b192-45af-bce9-da77c635782d',
-  'client-request-id': 'f3a88592-a944-453c-bbc4-f518c82120a4',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_1',
+  'x-ms-request-id': '24e883d7-867b-42b5-b4b9-1c17dc8b6704',
+  'client-request-id': '893267b1-227c-4437-8622-7ec3eb30755e',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_432',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:53 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:47 GMT',
   connection: 'close',
-  'content-length': '3013' });
+  'content-length': '3141' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadls6491.azuredatalakestore.net:443')
+nock('http://xplattestadls3680.azuredatalakestore.net:443')
   .put('/webhdfs/v1/%2F?aclspec=user%3A%3Arwx%2Cgroup%3A%3Arwx%2Cother%3A%3A---%2Cmask%3A%3Arwx%2Cdefault%3Auser%3A%3Arwx%2Cdefault%3Agroup%3A%3Arwx%2Cdefault%3Aother%3A%3A---%2Cdefault%3Amask%3A%3Arwx%2Cdefault%3Auser%3A027c28d5-c91d-49f0-98c5-d10134b169b3%3Arwx&op=SETACL&api-version=2015-10-01-preview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-request-id': 'ed2e7aab-ab6b-4d86-b266-df79c42a2fa4',
-  'set-cookie': [ 'UserPrincipalSession=a05880c6-efd5-4def-a912-2ae22983c71b; path=/; secure; HttpOnly' ],
+  'x-ms-request-id': 'ff8636f2-fee0-4acd-ad48-ec2c770fa202',
+  'set-cookie': [ 'UserPrincipalSession=9ddd961f-5079-4633-9a2a-5060d797c297; path=/; secure; HttpOnly' ],
   contentlength: '0',
-  'server-perf': '[ed2e7aabab6b4d86b266df79c42a2fa4][ AuthTime::1371.18945338897::PostAuthTime::31304.2637747657 ][SETACL :: 00:00:886 ms]%0a',
+  'server-perf': '[ff8636f2fee04acdad48ec2c770fa202][ AuthTime::1436.62491087922::PostAuthTime::30735.8179801798 ][SETACL :: 00:01:153 ms]%0a',
   status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Fri, 08 Apr 2016 19:40:53 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:47 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadls6491.azuredatalakestore.net:443')
+nock('https://xplattestadls3680.azuredatalakestore.net:443')
   .put('/webhdfs/v1/%2F?aclspec=user%3A%3Arwx%2Cgroup%3A%3Arwx%2Cother%3A%3A---%2Cmask%3A%3Arwx%2Cdefault%3Auser%3A%3Arwx%2Cdefault%3Agroup%3A%3Arwx%2Cdefault%3Aother%3A%3A---%2Cdefault%3Amask%3A%3Arwx%2Cdefault%3Auser%3A027c28d5-c91d-49f0-98c5-d10134b169b3%3Arwx&op=SETACL&api-version=2015-10-01-preview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   expires: '-1',
-  'x-ms-request-id': 'ed2e7aab-ab6b-4d86-b266-df79c42a2fa4',
-  'set-cookie': [ 'UserPrincipalSession=a05880c6-efd5-4def-a912-2ae22983c71b; path=/; secure; HttpOnly' ],
+  'x-ms-request-id': 'ff8636f2-fee0-4acd-ad48-ec2c770fa202',
+  'set-cookie': [ 'UserPrincipalSession=9ddd961f-5079-4633-9a2a-5060d797c297; path=/; secure; HttpOnly' ],
   contentlength: '0',
-  'server-perf': '[ed2e7aabab6b4d86b266df79c42a2fa4][ AuthTime::1371.18945338897::PostAuthTime::31304.2637747657 ][SETACL :: 00:00:886 ms]%0a',
+  'server-perf': '[ff8636f2fee04acdad48ec2c770fa202][ AuthTime::1436.62491087922::PostAuthTime::30735.8179801798 ][SETACL :: 00:01:153 ms]%0a',
   status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Fri, 08 Apr 2016 19:40:53 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:47 GMT',
   connection: 'close',
   'content-length': '0' });
  return result; },
@@ -273,18 +273,18 @@ nock('http://login.microsoftonline.com:443')
   .reply(200, "{\"ver\":\"1.0\",\"account_type\":\"Managed\",\"domain_name\":\"benwgoldoutlook.onmicrosoft.com\",\"cloudinstancename\":\"login.microsoftonline.com\"}", { 'cache-control': 'private',
   'content-type': 'application/json; charset=utf-8',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '0b96a03d-d03a-4474-b2d9-dd33f8543b90',
-  'client-request-id': '726d3cb5-cff2-4837-b932-7856d9e179fd',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_386',
+  'x-ms-request-id': 'cd68d434-fba5-40e8-8e61-c1de1cce02cc',
+  'client-request-id': '5be9294a-504f-4e00-b599-15051c19367f',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_284',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:55 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:48 GMT',
   connection: 'close',
   'content-length': '134' });
  return result; },
@@ -295,18 +295,18 @@ nock('https://login.microsoftonline.com:443')
   .reply(200, "{\"ver\":\"1.0\",\"account_type\":\"Managed\",\"domain_name\":\"benwgoldoutlook.onmicrosoft.com\",\"cloudinstancename\":\"login.microsoftonline.com\"}", { 'cache-control': 'private',
   'content-type': 'application/json; charset=utf-8',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': '0b96a03d-d03a-4474-b2d9-dd33f8543b90',
-  'client-request-id': '726d3cb5-cff2-4837-b932-7856d9e179fd',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_386',
+  'x-ms-request-id': 'cd68d434-fba5-40e8-8e61-c1de1cce02cc',
+  'client-request-id': '5be9294a-504f-4e00-b599-15051c19367f',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_284',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:55 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:48 GMT',
   connection: 'close',
   'content-length': '134' });
  return result; },
@@ -315,84 +315,84 @@ var result =
 nock('http://login.microsoftonline.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/benwgoldoutlook.onmicrosoft.com/oauth2/token?api-version=1.0', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3599\",\"expires_on\":\"1460148054\",\"not_before\":\"1460144154\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTU0LCJuYmYiOjE0NjAxNDQxNTQsImV4cCI6MTQ2MDE0ODA1NCwiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.nlzDEbhiQ8LOCYZUySxySMhAPCDoO274rb_ZsUfdzerYN2951mdo7yEBhl7ufbMzORVhGcfdKQrfCF_xAs2zVXTj6ocMYOWls0gimVCAzPMKfGHYNFLivfi-G6eIjgknVA48OH3aHYpf0-gG9FulzOBhr174pPvR6wvcRx349pSJqAavKUErPKdg2hlgU4P_k1nJgw5xDIOgT2vhpP_yhgCkSJ45U-1ar35T2RGy7RHLH2AimwJS_L11PoG2JSdhmLbjoX1eu609qGfpAEu-EW6KEvCAJEHrF25coCKBi0pTK9EKcFS9Lc7eoh6ByYyl36j6rhZ7KEPCZIVNXeMQnA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLUpJOj9m3_yZtjpItS_IQFJDCR7GiaIvl9TeHs-p0dIVICMWvzYTZNdQCeyCUmfyKfSiqduvNCefO9ZdsVn7CJmj0OnOkSlWvY-U1jzkg_f7ORquhH0dOPstB5ofz_1BRUEVpdqETbIJTqeF0PxOf86LQQte5lSIv9ivXJ2SE5dlwCCsyflP3vfzq4lsPzHQ6VGc5g-t3Z9V5s25DFBPdlPby5om6nos8Ya58bRE0u4qebVZw8uZyCsAvoH1f0olZ5KtnCCCK5QoXeBoJF4gHdvOoAtXM8Ezo2pphU-q5JXrj1xlDXgiMzLYSvKaD137ijoGTgbEhEfl_ZoSQVyQLEQIeZg61Ti8UxWPmOqMQUMVZnHqsITQcMMG8CHBOPBbJFnjKKs_yVUGZNbK7-guID4OJESgKm2CiXPH_ITRnYfq79OjlRIOe4MB9U6EjrvDcMXpJYhNHpAaqgEpiwrUHtOUU6PLroKmGq_OWwF4v5y-BwmQ1nIQPeNnoM6G0ZTZBqnckGkeyEzCr8iDg4Gybn2nk7h0qYRUA_p8540zzAvXScDfMzgG-syw3M_ohEqaiOBhgwPUMa7iCyBp5vrlK3kgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTU0LCJuYmYiOjE0NjAxNDQxNTQsImV4cCI6MTQ2MDE0ODA1NCwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3600\",\"expires_on\":\"1460667468\",\"not_before\":\"1460663568\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTY4LCJuYmYiOjE0NjA2NjM1NjgsImV4cCI6MTQ2MDY2NzQ2OCwiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.RG5VavY4ysx8ZOtoHXsw5fq9wXyZXkUHPGfDkp3lVbHns-ZXzl3vr_doCJjhz-wMfRLVbg5eq2998ODnK1gur3nDk2rSuHi4Bne_oXS4-58SDnMdqrBOa5E4EtCsbuXjTbFlEXQx-CffQScobSdMqXLKjgxs0iimyHRh72hQfFf4VAvhMF9PAaSXC0-V_7AzQhsLgAKGAjjUY6hD3-w3yVPfhPYtunQ-BK1HSLOelbb0628YidisqFWwzlJS8KfQxd4AMY49T4268196yIU6mux5B8WlfXELSir8NYQHUF_XkeI2eBrzzzBlE8_e3docAL6chr-fUHtrU-rn0dA7wg\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLZtsBzGiSPIDP-Eu7uqS40GAUr6Sue_g7915IABPfpcO7KkXa4y_iPB6e9k6NHw8XoAI8LMGxV0mjSItt4QhkQ45jpmX3F398goUDhim6E1elAz_aT5lVsem91IeMJqcbFJkuysqDOEbFL-43JI_PSoXGSqI36fAJN9tZ4x5r1YMiBmyVQ4MrFfFgvHg7IHfHTfGgbIyicnaVWmOVHsSWHPHh13qx8zq7bgfuwFB0DDXHTezeZplCEAeoEdjXvHohsM3BCGdVNV7J4s5Yywu2YQhitL_WbK93Q2ma5vMGH5ZZj6Q7AIyavfo_nYigd6JKI4Zl8QVoCJOsLCgQ0ZWNxU33qdODxIPUWXGGVC2JpwNbRiO1WXG5ZySMmmkE9XPOqTiC95_Gtk13WIhy-WODNkD9Xrcy8YtuAllQLALJZrIQ3BCDQOrmvwLkNbfVsYochfq3ULF55e61xhPNzybfE7v6JeXl9oLmgcEGTpyTrPbYy_WUnilte8gcXOlQbmg0ZQmTF-1pzPBsKZtelv3y3kwz-_g2RKxaczR3OwNPCZnPq0eqCklH3aPKJRsw3g73ls3UlfPkAcNDNovB__N9pOQgo3uziqXrHfbkPVIDr4UJCVxusJ-JtMNjkFg8BUVykJd_QvdUwah2rDsGKcg_g2aNOaaXed6KXA7tnbatPolk9or17sd35h0rdj2GAZeD5HI2F2T_6DP6wfEvNxsvAIgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTY4LCJuYmYiOjE0NjA2NjM1NjgsImV4cCI6MTQ2MDY2NzQ2OCwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': 'cfba7493-28e7-447b-8f01-b64ba87c7700',
-  'client-request-id': '726d3cb5-cff2-4837-b932-7856d9e179fd',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_405',
+  'x-ms-request-id': '5f3c7e3d-4454-4dbf-b2f1-8fda081d3764',
+  'client-request-id': '5be9294a-504f-4e00-b599-15051c19367f',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_328',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:55 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:49 GMT',
   connection: 'close',
-  'content-length': '3013' });
+  'content-length': '3141' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://login.microsoftonline.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/benwgoldoutlook.onmicrosoft.com/oauth2/token?api-version=1.0', '*')
-  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3599\",\"expires_on\":\"1460148054\",\"not_before\":\"1460144154\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTU0LCJuYmYiOjE0NjAxNDQxNTQsImV4cCI6MTQ2MDE0ODA1NCwiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.nlzDEbhiQ8LOCYZUySxySMhAPCDoO274rb_ZsUfdzerYN2951mdo7yEBhl7ufbMzORVhGcfdKQrfCF_xAs2zVXTj6ocMYOWls0gimVCAzPMKfGHYNFLivfi-G6eIjgknVA48OH3aHYpf0-gG9FulzOBhr174pPvR6wvcRx349pSJqAavKUErPKdg2hlgU4P_k1nJgw5xDIOgT2vhpP_yhgCkSJ45U-1ar35T2RGy7RHLH2AimwJS_L11PoG2JSdhmLbjoX1eu609qGfpAEu-EW6KEvCAJEHrF25coCKBi0pTK9EKcFS9Lc7eoh6ByYyl36j6rhZ7KEPCZIVNXeMQnA\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLUpJOj9m3_yZtjpItS_IQFJDCR7GiaIvl9TeHs-p0dIVICMWvzYTZNdQCeyCUmfyKfSiqduvNCefO9ZdsVn7CJmj0OnOkSlWvY-U1jzkg_f7ORquhH0dOPstB5ofz_1BRUEVpdqETbIJTqeF0PxOf86LQQte5lSIv9ivXJ2SE5dlwCCsyflP3vfzq4lsPzHQ6VGc5g-t3Z9V5s25DFBPdlPby5om6nos8Ya58bRE0u4qebVZw8uZyCsAvoH1f0olZ5KtnCCCK5QoXeBoJF4gHdvOoAtXM8Ezo2pphU-q5JXrj1xlDXgiMzLYSvKaD137ijoGTgbEhEfl_ZoSQVyQLEQIeZg61Ti8UxWPmOqMQUMVZnHqsITQcMMG8CHBOPBbJFnjKKs_yVUGZNbK7-guID4OJESgKm2CiXPH_ITRnYfq79OjlRIOe4MB9U6EjrvDcMXpJYhNHpAaqgEpiwrUHtOUU6PLroKmGq_OWwF4v5y-BwmQ1nIQPeNnoM6G0ZTZBqnckGkeyEzCr8iDg4Gybn2nk7h0qYRUA_p8540zzAvXScDfMzgG-syw3M_ohEqaiOBhgwPUMa7iCyBp5vrlK3kgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwMTQ0MTU0LCJuYmYiOjE0NjAxNDQxNTQsImV4cCI6MTQ2MDE0ODA1NCwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
+  .reply(200, "{\"token_type\":\"Bearer\",\"scope\":\"user_impersonation\",\"expires_in\":\"3600\",\"expires_on\":\"1460667468\",\"not_before\":\"1460663568\",\"resource\":\"https://management.core.windows.net/\",\"access_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTY4LCJuYmYiOjE0NjA2NjM1NjgsImV4cCI6MTQ2MDY2NzQ2OCwiYWNyIjoiMSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJhcHBpZGFjciI6IjAiLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInB1aWQiOiIxMDAzQkZGRDk1NTExMDRDIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiQ0ZzTU1PdHdkd3VUN0FuQUkwUnlXUVZ0azA4anBjTEhWV00wLXA2emFYMCIsInRpZCI6IjZlNjA2ZWNlLTNhNWEtNDY3NC1hNjU0LWQ2YjAyYmM1YTUxYiIsInVuaXF1ZV9uYW1lIjoiYWRsc3ZjMDFAYmVud2dvbGRvdXRsb29rLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.RG5VavY4ysx8ZOtoHXsw5fq9wXyZXkUHPGfDkp3lVbHns-ZXzl3vr_doCJjhz-wMfRLVbg5eq2998ODnK1gur3nDk2rSuHi4Bne_oXS4-58SDnMdqrBOa5E4EtCsbuXjTbFlEXQx-CffQScobSdMqXLKjgxs0iimyHRh72hQfFf4VAvhMF9PAaSXC0-V_7AzQhsLgAKGAjjUY6hD3-w3yVPfhPYtunQ-BK1HSLOelbb0628YidisqFWwzlJS8KfQxd4AMY49T4268196yIU6mux5B8WlfXELSir8NYQHUF_XkeI2eBrzzzBlE8_e3docAL6chr-fUHtrU-rn0dA7wg\",\"refresh_token\":\"AAABAAAAiL9Kn2Z27UubvWFPbm0gLZtsBzGiSPIDP-Eu7uqS40GAUr6Sue_g7915IABPfpcO7KkXa4y_iPB6e9k6NHw8XoAI8LMGxV0mjSItt4QhkQ45jpmX3F398goUDhim6E1elAz_aT5lVsem91IeMJqcbFJkuysqDOEbFL-43JI_PSoXGSqI36fAJN9tZ4x5r1YMiBmyVQ4MrFfFgvHg7IHfHTfGgbIyicnaVWmOVHsSWHPHh13qx8zq7bgfuwFB0DDXHTezeZplCEAeoEdjXvHohsM3BCGdVNV7J4s5Yywu2YQhitL_WbK93Q2ma5vMGH5ZZj6Q7AIyavfo_nYigd6JKI4Zl8QVoCJOsLCgQ0ZWNxU33qdODxIPUWXGGVC2JpwNbRiO1WXG5ZySMmmkE9XPOqTiC95_Gtk13WIhy-WODNkD9Xrcy8YtuAllQLALJZrIQ3BCDQOrmvwLkNbfVsYochfq3ULF55e61xhPNzybfE7v6JeXl9oLmgcEGTpyTrPbYy_WUnilte8gcXOlQbmg0ZQmTF-1pzPBsKZtelv3y3kwz-_g2RKxaczR3OwNPCZnPq0eqCklH3aPKJRsw3g73ls3UlfPkAcNDNovB__N9pOQgo3uziqXrHfbkPVIDr4UJCVxusJ-JtMNjkFg8BUVykJd_QvdUwah2rDsGKcg_g2aNOaaXed6KXA7tnbatPolk9or17sd35h0rdj2GAZeD5HI2F2T_6DP6wfEvNxsvAIgAA\",\"id_token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIwNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDYiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC82ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIvIiwiaWF0IjoxNDYwNjYzNTY4LCJuYmYiOjE0NjA2NjM1NjgsImV4cCI6MTQ2MDY2NzQ2OCwiYW1yIjpbInB3ZCJdLCJmYW1pbHlfbmFtZSI6IlRlc3QwMSIsImdpdmVuX25hbWUiOiJEYXRhTGFrZSIsImlwYWRkciI6IjE2Ny4yMjAuMS4xMzUiLCJuYW1lIjoiQXp1cmUgRGF0YSBMYWtlIFRlc3QgQWNjb3VudCAwMSIsIm9pZCI6IjJlNmMwMmQyLWEzNjQtNDUzMC05MTM3LWQxNzQwMzk5NmNiZiIsInN1YiI6ImY2bHBuNXppekwwRExEOHYxLVdjeFE4d08zcGZTT01Qd0YxSUN5ZFBLNkkiLCJ0aWQiOiI2ZTYwNmVjZS0zYTVhLTQ2NzQtYTY1NC1kNmIwMmJjNWE1MWIiLCJ1bmlxdWVfbmFtZSI6ImFkbHN2YzAxQGJlbndnb2xkb3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1cG4iOiJhZGxzdmMwMUBiZW53Z29sZG91dGxvb2sub25taWNyb3NvZnQuY29tIiwidmVyIjoiMS4wIn0.\"}", { 'cache-control': 'no-cache, no-store',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-request-id': 'cfba7493-28e7-447b-8f01-b64ba87c7700',
-  'client-request-id': '726d3cb5-cff2-4837-b932-7856d9e179fd',
-  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_405',
+  'x-ms-request-id': '5f3c7e3d-4454-4dbf-b2f1-8fda081d3764',
+  'client-request-id': '5be9294a-504f-4e00-b599-15051c19367f',
+  'x-ms-gateway-service-instanceid': 'ESTSFE_IN_328',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   p3p: 'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'set-cookie': 
    [ 'flight-uxoptin=true; path=/; secure; HttpOnly',
-     'x-ms-gateway-slice=productionb; path=/; secure; HttpOnly',
+     'x-ms-gateway-slice=productiona; path=/; secure; HttpOnly',
      'stsservicecookie=ests; path=/; secure; HttpOnly' ],
   'x-powered-by': 'ASP.NET',
-  date: 'Fri, 08 Apr 2016 19:40:55 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:49 GMT',
   connection: 'close',
-  'content-length': '3013' });
+  'content-length': '3141' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadls6491.azuredatalakestore.net:443')
+nock('http://xplattestadls3680.azuredatalakestore.net:443')
   .get('/webhdfs/v1/%2F?op=GETACLSTATUS&api-version=2015-10-01-preview')
   .reply(200, "{\"AclStatus\":{\"entries\":[\"user::rwx\",\"group::rwx\",\"other::---\",\"mask::rwx\",\"default:user::rwx\",\"default:group::rwx\",\"default:other::---\",\"default:mask::rwx\",\"default:user:027c28d5-c91d-49f0-98c5-d10134b169b3:rwx\"],\"owner\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"group\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"stickyBit\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e0494f63-5573-4cc7-8b4d-00b6170e5166',
-  'set-cookie': [ 'UserPrincipalSession=812284d1-6b01-4b88-830f-104e939b1695; path=/; secure; HttpOnly' ],
-  'server-perf': '[e0494f6355734cc78b4d00b6170e5166][ AuthTime::1482.39199730723::PostAuthTime::31284.6299558661 ][HdfsGetAclStatus :: 00:02:017 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:02:056 ms]%0a',
+  'x-ms-request-id': '7fdf1b16-f327-423e-a9bf-1ed4c85fda36',
+  'set-cookie': [ 'UserPrincipalSession=eaa9a3a5-de5a-4e73-921d-05d708dfa181; path=/; secure; HttpOnly' ],
+  'server-perf': '[7fdf1b16f327423ea9bf1ed4c85fda36][ AuthTime::1501.23113784339::PostAuthTime::31366.7490561704 ][HdfsGetAclStatus :: 00:00:019 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:019 ms]%0a',
   status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Fri, 08 Apr 2016 19:40:58 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:49 GMT',
   connection: 'close',
   'content-length': '327' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadls6491.azuredatalakestore.net:443')
+nock('https://xplattestadls3680.azuredatalakestore.net:443')
   .get('/webhdfs/v1/%2F?op=GETACLSTATUS&api-version=2015-10-01-preview')
   .reply(200, "{\"AclStatus\":{\"entries\":[\"user::rwx\",\"group::rwx\",\"other::---\",\"mask::rwx\",\"default:user::rwx\",\"default:group::rwx\",\"default:other::---\",\"default:mask::rwx\",\"default:user:027c28d5-c91d-49f0-98c5-d10134b169b3:rwx\"],\"owner\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"group\":\"2e6c02d2-a364-4530-9137-d17403996cbf\",\"stickyBit\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e0494f63-5573-4cc7-8b4d-00b6170e5166',
-  'set-cookie': [ 'UserPrincipalSession=812284d1-6b01-4b88-830f-104e939b1695; path=/; secure; HttpOnly' ],
-  'server-perf': '[e0494f6355734cc78b4d00b6170e5166][ AuthTime::1482.39199730723::PostAuthTime::31284.6299558661 ][HdfsGetAclStatus :: 00:02:017 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:02:056 ms]%0a',
+  'x-ms-request-id': '7fdf1b16-f327-423e-a9bf-1ed4c85fda36',
+  'set-cookie': [ 'UserPrincipalSession=eaa9a3a5-de5a-4e73-921d-05d708dfa181; path=/; secure; HttpOnly' ],
+  'server-perf': '[7fdf1b16f327423ea9bf1ed4c85fda36][ AuthTime::1501.23113784339::PostAuthTime::31366.7490561704 ][HdfsGetAclStatus :: 00:00:019 ms]%0a[SS Response Process :: 00:00:000 ms]%0a[GETACLSTATUS :: 00:00:019 ms]%0a',
   status: '0x0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Fri, 08 Apr 2016 19:40:58 GMT',
+  date: 'Thu, 14 Apr 2016 19:57:49 GMT',
   connection: 'close',
   'content-length': '327' });
  return result; }]];

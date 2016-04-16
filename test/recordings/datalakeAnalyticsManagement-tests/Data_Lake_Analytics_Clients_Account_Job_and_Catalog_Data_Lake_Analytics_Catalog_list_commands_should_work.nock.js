@@ -3,511 +3,131 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'East US 2';
   process.env['AZURE_TEST_RESOURCE_GROUP'] = 'xplattestadlarg05';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '53d9063d-87ae-4ea8-be90-3686c3b8669f';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '0353d26d-e338-469a-a87a-bd3507471155';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla1162.konaaccountdogfood.net:443')
   .get('/catalog/usql/databases/master?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#databases/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"master\",\"version\":\"b6909d8e-adc7-4a36-8405-fd7d4c27ae65\"\r\n}", { 'cache-control': 'private',
+  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla1162.konaaccountdogfood.net/sqlip/$metadata#databases/$entity\",\"computeAccountName\":\"xplattestadla1162\",\"databaseName\":\"master\",\"version\":\"6b798cad-5259-41cf-8154-a3920cf953aa\"\r\n}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': 'eae50d5d-bd95-48cc-ac2a-794591d1dc4c',
+  'x-ms-request-id': '0e186ded-03f5-4291-a241-ae1d934c0cc1',
   'odata-version': '4.0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:24:06 GMT',
+  date: 'Fri, 15 Apr 2016 23:34:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla1162.konaaccountdogfood.net:443')
   .get('/catalog/usql/databases/master?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#databases/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"master\",\"version\":\"b6909d8e-adc7-4a36-8405-fd7d4c27ae65\"\r\n}", { 'cache-control': 'private',
+  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla1162.konaaccountdogfood.net/sqlip/$metadata#databases/$entity\",\"computeAccountName\":\"xplattestadla1162\",\"databaseName\":\"master\",\"version\":\"6b798cad-5259-41cf-8154-a3920cf953aa\"\r\n}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': 'eae50d5d-bd95-48cc-ac2a-794591d1dc4c',
+  'x-ms-request-id': '0e186ded-03f5-4291-a241-ae1d934c0cc1',
   'odata-version': '4.0',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:24:06 GMT',
+  date: 'Fri, 15 Apr 2016 23:34:22 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla1162.konaaccountdogfood.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview', '*')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":null,\"endTime\":null,\"state\":\"Compiling\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:00\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00\",\"totalRunningTime\":\"00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private',
+.put('/Jobs/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9?api-version=2016-03-20-preview', '*')
+  .reply(200, "{\"jobId\":\"c9c5c2d8-d8ab-4850-8c08-0afaff6601e9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"admin@aad264.ccsctp.net\",\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"2016-04-15T23:34:23.2195406+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-04-15T23:34:23.2195406+00:00\",\"details\":\"userName:admin@aad264.ccsctp.net;submitMachine:N/A\"}],\"properties\":{\"owner\":\"admin@aad264.ccsctp.net\",\"resources\":[],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"algebraFilePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT0S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"type\":\"USql\"}}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '5d79b2f2-6126-4da3-a819-827ea9b15d9f',
+  'x-ms-request-id': 'b12a049a-b055-49c0-ab63-de080e90627c',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:24:08 GMT',
+  date: 'Fri, 15 Apr 2016 23:34:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla1162.konaaccountdogfood.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview', '*')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":null,\"endTime\":null,\"state\":\"Compiling\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:00\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00\",\"totalRunningTime\":\"00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private',
+.put('/Jobs/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9?api-version=2016-03-20-preview', '*')
+  .reply(200, "{\"jobId\":\"c9c5c2d8-d8ab-4850-8c08-0afaff6601e9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"admin@aad264.ccsctp.net\",\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"2016-04-15T23:34:23.2195406+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-04-15T23:34:23.2195406+00:00\",\"details\":\"userName:admin@aad264.ccsctp.net;submitMachine:N/A\"}],\"properties\":{\"owner\":\"admin@aad264.ccsctp.net\",\"resources\":[],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"algebraFilePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT0S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"type\":\"USql\"}}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '5d79b2f2-6126-4da3-a819-827ea9b15d9f',
+  'x-ms-request-id': 'b12a049a-b055-49c0-ab63-de080e90627c',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:24:08 GMT',
+  date: 'Fri, 15 Apr 2016 23:34:23 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":null,\"endTime\":null,\"state\":\"Compiling\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:08 GMT\",\"requestedByUser\":null,\"details\":\"CcsAttempts:1;Status:Dispatched\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem8653; CREATE DATABASE adlacatalogitem8653; CREATE TABLE adlacatalogitem8653.dbo.adlacatalogitem5014( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem8653.dbo.adlacatalogitem3740; CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:00.6705486\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00\",\"totalRunningTime\":\"00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private',
+nock('http://xplattestadla1162.konaaccountdogfood.net:443')
+  .get('/Jobs/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9?api-version=2016-03-20-preview')
+  .reply(200, "{\"jobId\":\"c9c5c2d8-d8ab-4850-8c08-0afaff6601e9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"admin@aad264.ccsctp.net\",\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"2016-04-15T23:34:23.2195406+00:00\",\"endTime\":\"2016-04-15T23:34:24.3133063+00:00\",\"state\":\"Ended\",\"result\":\"Failed\",\"errorMessage\":[{\"errorId\":\"E_USER_CCS_RUNTIMENOTFOUND\",\"name\":\"RUNTIME_NOT_FOUND\",\"severity\":\"Error\",\"source\":\"User\",\"component\":\"CCS\",\"message\":\"Runtime not found.\",\"details\":\"runtime 'default' is not found.\\r\\nParameter name: runtime\",\"description\":\"Runtime not found.\",\"resolution\":\"\",\"helpLink\":\"\",\"innerError\":null}],\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-04-15T23:34:23.2195406+00:00\",\"details\":\"userName:admin@aad264.ccsctp.net;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-04-15T23:34:24.2039288+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Ended\",\"timeStamp\":\"2016-04-15T23:34:24.3133063+00:00\",\"details\":\"result:CompilationFailed\"}],\"properties\":{\"owner\":\"admin@aad264.ccsctp.net\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem7400; CREATE DATABASE adlacatalogitem7400; CREATE TABLE adlacatalogitem7400.dbo.adlacatalogitem6635( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem7400.dbo.adlacatalogitem7218; CREATE FUNCTION adlacatalogitem7400.dbo.adlacatalogitem7218() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem7400.dbo.adlacatalogitem6438 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem7400.dbo.adlacatalogitem4417() AS BEGIN CREATE VIEW adlacatalogitem7400.dbo.adlacatalogitem6438 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"UserError\",\"totalCompilationTime\":\"PT0.1093775S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"type\":\"USql\"}}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'bd9eecbf-e417-4bd9-84e2-57dd2baad2cc',
+  'x-ms-request-id': '3040146d-80d2-4fe7-bf0e-3bf78d816183',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:24:09 GMT',
+  date: 'Fri, 15 Apr 2016 23:34:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":null,\"endTime\":null,\"state\":\"Compiling\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:08 GMT\",\"requestedByUser\":null,\"details\":\"CcsAttempts:1;Status:Dispatched\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem8653; CREATE DATABASE adlacatalogitem8653; CREATE TABLE adlacatalogitem8653.dbo.adlacatalogitem5014( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem8653.dbo.adlacatalogitem3740; CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:00.6705486\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00\",\"totalRunningTime\":\"00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private',
+nock('https://xplattestadla1162.konaaccountdogfood.net:443')
+  .get('/Jobs/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9?api-version=2016-03-20-preview')
+  .reply(200, "{\"jobId\":\"c9c5c2d8-d8ab-4850-8c08-0afaff6601e9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"admin@aad264.ccsctp.net\",\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"2016-04-15T23:34:23.2195406+00:00\",\"endTime\":\"2016-04-15T23:34:24.3133063+00:00\",\"state\":\"Ended\",\"result\":\"Failed\",\"errorMessage\":[{\"errorId\":\"E_USER_CCS_RUNTIMENOTFOUND\",\"name\":\"RUNTIME_NOT_FOUND\",\"severity\":\"Error\",\"source\":\"User\",\"component\":\"CCS\",\"message\":\"Runtime not found.\",\"details\":\"runtime 'default' is not found.\\r\\nParameter name: runtime\",\"description\":\"Runtime not found.\",\"resolution\":\"\",\"helpLink\":\"\",\"innerError\":null}],\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-04-15T23:34:23.2195406+00:00\",\"details\":\"userName:admin@aad264.ccsctp.net;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-04-15T23:34:24.2039288+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Ended\",\"timeStamp\":\"2016-04-15T23:34:24.3133063+00:00\",\"details\":\"result:CompilationFailed\"}],\"properties\":{\"owner\":\"admin@aad264.ccsctp.net\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem7400; CREATE DATABASE adlacatalogitem7400; CREATE TABLE adlacatalogitem7400.dbo.adlacatalogitem6635( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem7400.dbo.adlacatalogitem7218; CREATE FUNCTION adlacatalogitem7400.dbo.adlacatalogitem7218() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem7400.dbo.adlacatalogitem6438 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem7400.dbo.adlacatalogitem4417() AS BEGIN CREATE VIEW adlacatalogitem7400.dbo.adlacatalogitem6438 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"UserError\",\"totalCompilationTime\":\"PT0.1093775S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"type\":\"USql\"}}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'bd9eecbf-e417-4bd9-84e2-57dd2baad2cc',
+  'x-ms-request-id': '3040146d-80d2-4fe7-bf0e-3bf78d816183',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:24:09 GMT',
+  date: 'Fri, 15 Apr 2016 23:34:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":null,\"endTime\":null,\"state\":\"Starting\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:08 GMT\",\"requestedByUser\":null,\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":null},{\"newState\":\"Scheduling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:83a30ead-1a89-4026-abf6-e28713615a2f\"},{\"newState\":\"Starting\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"runtimeVersion:kobo_live_4748440\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__Ast__.bin\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__Ast__.bin\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_4748440\",\"rootProcessNodeId\":\"83a30ead-1a89-4026-abf6-e28713615a2f\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem8653; CREATE DATABASE adlacatalogitem8653; CREATE TABLE adlacatalogitem8653.dbo.adlacatalogitem5014( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem8653.dbo.adlacatalogitem3740; CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"yarnApplicationId\":689,\"yarnApplicationTimeStamp\":1458838126129,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:14.4690372\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00.0155825\",\"totalRunningTime\":\"00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private',
+nock('http://xplattestadla1162.konaaccountdogfood.net:443')
+  .get('/Jobs/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9?api-version=2016-03-20-preview')
+  .reply(200, "{\"jobId\":\"c9c5c2d8-d8ab-4850-8c08-0afaff6601e9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"admin@aad264.ccsctp.net\",\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"2016-04-15T23:34:23.2195406+00:00\",\"endTime\":\"2016-04-15T23:34:24.3133063+00:00\",\"state\":\"Ended\",\"result\":\"Failed\",\"errorMessage\":[{\"errorId\":\"E_USER_CCS_RUNTIMENOTFOUND\",\"name\":\"RUNTIME_NOT_FOUND\",\"severity\":\"Error\",\"source\":\"User\",\"component\":\"CCS\",\"message\":\"Runtime not found.\",\"details\":\"runtime 'default' is not found.\\r\\nParameter name: runtime\",\"description\":\"Runtime not found.\",\"resolution\":\"\",\"helpLink\":\"\",\"innerError\":null}],\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-04-15T23:34:23.2195406+00:00\",\"details\":\"userName:admin@aad264.ccsctp.net;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-04-15T23:34:24.2039288+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Ended\",\"timeStamp\":\"2016-04-15T23:34:24.3133063+00:00\",\"details\":\"result:CompilationFailed\"}],\"properties\":{\"owner\":\"admin@aad264.ccsctp.net\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem7400; CREATE DATABASE adlacatalogitem7400; CREATE TABLE adlacatalogitem7400.dbo.adlacatalogitem6635( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem7400.dbo.adlacatalogitem7218; CREATE FUNCTION adlacatalogitem7400.dbo.adlacatalogitem7218() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem7400.dbo.adlacatalogitem6438 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem7400.dbo.adlacatalogitem4417() AS BEGIN CREATE VIEW adlacatalogitem7400.dbo.adlacatalogitem6438 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"UserError\",\"totalCompilationTime\":\"PT0.1093775S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"type\":\"USql\"}}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7926fddc-841c-4e0e-b6e0-d3948809a785',
+  'x-ms-request-id': '7b35fa3a-2994-41f4-8d23-42c5dd2c014b',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:24:39 GMT',
+  date: 'Fri, 15 Apr 2016 23:34:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":null,\"endTime\":null,\"state\":\"Starting\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:08 GMT\",\"requestedByUser\":null,\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":null},{\"newState\":\"Scheduling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:83a30ead-1a89-4026-abf6-e28713615a2f\"},{\"newState\":\"Starting\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"runtimeVersion:kobo_live_4748440\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__Ast__.bin\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__Ast__.bin\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_4748440\",\"rootProcessNodeId\":\"83a30ead-1a89-4026-abf6-e28713615a2f\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem8653; CREATE DATABASE adlacatalogitem8653; CREATE TABLE adlacatalogitem8653.dbo.adlacatalogitem5014( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem8653.dbo.adlacatalogitem3740; CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"yarnApplicationId\":689,\"yarnApplicationTimeStamp\":1458838126129,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:14.4690372\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00.0155825\",\"totalRunningTime\":\"00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private',
+nock('https://xplattestadla1162.konaaccountdogfood.net:443')
+  .get('/Jobs/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9?api-version=2016-03-20-preview')
+  .reply(200, "{\"jobId\":\"c9c5c2d8-d8ab-4850-8c08-0afaff6601e9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"admin@aad264.ccsctp.net\",\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"2016-04-15T23:34:23.2195406+00:00\",\"endTime\":\"2016-04-15T23:34:24.3133063+00:00\",\"state\":\"Ended\",\"result\":\"Failed\",\"errorMessage\":[{\"errorId\":\"E_USER_CCS_RUNTIMENOTFOUND\",\"name\":\"RUNTIME_NOT_FOUND\",\"severity\":\"Error\",\"source\":\"User\",\"component\":\"CCS\",\"message\":\"Runtime not found.\",\"details\":\"runtime 'default' is not found.\\r\\nParameter name: runtime\",\"description\":\"Runtime not found.\",\"resolution\":\"\",\"helpLink\":\"\",\"innerError\":null}],\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-04-15T23:34:23.2195406+00:00\",\"details\":\"userName:admin@aad264.ccsctp.net;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-04-15T23:34:24.2039288+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Ended\",\"timeStamp\":\"2016-04-15T23:34:24.3133063+00:00\",\"details\":\"result:CompilationFailed\"}],\"properties\":{\"owner\":\"admin@aad264.ccsctp.net\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem7400; CREATE DATABASE adlacatalogitem7400; CREATE TABLE adlacatalogitem7400.dbo.adlacatalogitem6635( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem7400.dbo.adlacatalogitem7218; CREATE FUNCTION adlacatalogitem7400.dbo.adlacatalogitem7218() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem7400.dbo.adlacatalogitem6438 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem7400.dbo.adlacatalogitem4417() AS BEGIN CREATE VIEW adlacatalogitem7400.dbo.adlacatalogitem6438 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls4868.caboaccountdogfood.net/system/jobservice/jobs/Usql/2016/04/15/23/34/c9c5c2d8-d8ab-4850-8c08-0afaff6601e9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"UserError\",\"totalCompilationTime\":\"PT0.1093775S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"type\":\"USql\"}}", { 'cache-control': 'private',
   pragma: 'no-cache',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7926fddc-841c-4e0e-b6e0-d3948809a785',
+  'x-ms-request-id': '7b35fa3a-2994-41f4-8d23-42c5dd2c014b',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:24:39 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":\"Thu, 24 Mar 2016 23:24:43 GMT\",\"endTime\":\"Thu, 24 Mar 2016 23:24:47 GMT\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:08 GMT\",\"requestedByUser\":null,\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":null},{\"newState\":\"Scheduling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:83a30ead-1a89-4026-abf6-e28713615a2f\"},{\"newState\":\"Starting\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"runtimeVersion:kobo_live_4748440\"},{\"newState\":\"Running\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:43 GMT\",\"requestedByUser\":null,\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:47 GMT\",\"requestedByUser\":null,\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__Ast__.bin\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__Ast__.bin\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_4748440\",\"rootProcessNodeId\":\"83a30ead-1a89-4026-abf6-e28713615a2f\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem8653; CREATE DATABASE adlacatalogitem8653; CREATE TABLE adlacatalogitem8653.dbo.adlacatalogitem5014( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem8653.dbo.adlacatalogitem3740; CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"yarnApplicationId\":689,\"yarnApplicationTimeStamp\":1458838126129,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:14.4690372\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00.0155825\",\"totalRunningTime\":\"00:00:03.1875510\",\"type\":\"USql\"}}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '85b297a8-3393-45f4-8a01-b403dd821fcc',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":\"Thu, 24 Mar 2016 23:24:43 GMT\",\"endTime\":\"Thu, 24 Mar 2016 23:24:47 GMT\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:08 GMT\",\"requestedByUser\":null,\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":null},{\"newState\":\"Scheduling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:83a30ead-1a89-4026-abf6-e28713615a2f\"},{\"newState\":\"Starting\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"runtimeVersion:kobo_live_4748440\"},{\"newState\":\"Running\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:43 GMT\",\"requestedByUser\":null,\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:47 GMT\",\"requestedByUser\":null,\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__Ast__.bin\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__Ast__.bin\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_4748440\",\"rootProcessNodeId\":\"83a30ead-1a89-4026-abf6-e28713615a2f\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem8653; CREATE DATABASE adlacatalogitem8653; CREATE TABLE adlacatalogitem8653.dbo.adlacatalogitem5014( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem8653.dbo.adlacatalogitem3740; CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"yarnApplicationId\":689,\"yarnApplicationTimeStamp\":1458838126129,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:14.4690372\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00.0155825\",\"totalRunningTime\":\"00:00:03.1875510\",\"type\":\"USql\"}}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '85b297a8-3393-45f4-8a01-b403dd821fcc',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":\"Thu, 24 Mar 2016 23:24:43 GMT\",\"endTime\":\"Thu, 24 Mar 2016 23:24:47 GMT\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:08 GMT\",\"requestedByUser\":null,\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":null},{\"newState\":\"Scheduling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:83a30ead-1a89-4026-abf6-e28713615a2f\"},{\"newState\":\"Starting\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"runtimeVersion:kobo_live_4748440\"},{\"newState\":\"Running\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:43 GMT\",\"requestedByUser\":null,\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:47 GMT\",\"requestedByUser\":null,\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__Ast__.bin\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__Ast__.bin\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_4748440\",\"rootProcessNodeId\":\"83a30ead-1a89-4026-abf6-e28713615a2f\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem8653; CREATE DATABASE adlacatalogitem8653; CREATE TABLE adlacatalogitem8653.dbo.adlacatalogitem5014( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem8653.dbo.adlacatalogitem3740; CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"yarnApplicationId\":689,\"yarnApplicationTimeStamp\":1458838126129,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:14.4690372\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00.0155825\",\"totalRunningTime\":\"00:00:03.1875510\",\"type\":\"USql\"}}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '24790538-58b3-4a23-b89d-234527a9f467',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/Jobs/d55269c3-286d-46ed-ac58-dc69a412cf92?api-version=2015-11-01-preview')
-  .reply(200, "{\"jobId\":\"d55269c3-286d-46ed-ac58-dc69a412cf92\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"account\":null,\"degreeOfParallelism\":1,\"priority\":0,\"submitTime\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"startTime\":\"Thu, 24 Mar 2016 23:24:43 GMT\",\"endTime\":\"Thu, 24 Mar 2016 23:24:47 GMT\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"errorMessage\":null,\"storageAccounts\":null,\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:06 GMT\",\"requestedByUser\":null,\"details\":\"userName:adlsvc01@benwgoldoutlook.onmicrosoft.com;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:08 GMT\",\"requestedByUser\":null,\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":null},{\"newState\":\"Scheduling\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:83a30ead-1a89-4026-abf6-e28713615a2f\"},{\"newState\":\"Starting\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:22 GMT\",\"requestedByUser\":null,\"details\":\"runtimeVersion:kobo_live_4748440\"},{\"newState\":\"Running\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:43 GMT\",\"requestedByUser\":null,\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"Thu, 24 Mar 2016 23:24:47 GMT\",\"requestedByUser\":null,\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"adlsvc01@benwgoldoutlook.onmicrosoft.com\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__Ast__.bin\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__Ast__.bin\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_4748440\",\"rootProcessNodeId\":\"83a30ead-1a89-4026-abf6-e28713615a2f\",\"script\":\"DROP DATABASE IF EXISTS adlacatalogitem8653; CREATE DATABASE adlacatalogitem8653; CREATE TABLE adlacatalogitem8653.dbo.adlacatalogitem5014( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS adlacatalogitem8653.dbo.adlacatalogitem3740; CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END; CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"algebraFilePath\":\"adl://xplattestadls2113.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/24/23/24/d55269c3-286d-46ed-ac58-dc69a412cf92/algebra.xml\",\"yarnApplicationId\":689,\"yarnApplicationTimeStamp\":1458838126129,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"00:00:14.4690372\",\"totalPausedTime\":\"00:00:00\",\"totalQueuedTime\":\"00:00:00.0155825\",\"totalRunningTime\":\"00:00:03.1875510\",\"type\":\"USql\"}}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '24790538-58b3-4a23-b89d-234527a9f467',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:10 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#databases\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"version\":\"18eed88b-79c8-42c4-ad53-5d5b11c6a410\"\r\n    },{\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"master\",\"version\":\"b6909d8e-adc7-4a36-8405-fd7d4c27ae65\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '7801d3c6-a883-41f7-a62a-6ccb39d339fb',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:11 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#databases\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"version\":\"18eed88b-79c8-42c4-ad53-5d5b11c6a410\"\r\n    },{\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"master\",\"version\":\"b6909d8e-adc7-4a36-8405-fd7d4c27ae65\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '7801d3c6-a883-41f7-a62a-6ccb39d339fb',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:11 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#databases/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"version\":\"18eed88b-79c8-42c4-ad53-5d5b11c6a410\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '718d42a8-0587-4c52-9cc5-b17950c02182',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:12 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#databases/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"version\":\"18eed88b-79c8-42c4-ad53-5d5b11c6a410\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '718d42a8-0587-4c52-9cc5-b17950c02182',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:12 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/tables?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#tables\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"tableName\":\"adlacatalogitem5014\",\"columnList\":[\r\n        {\r\n          \"name\":\"UserId\",\"type\":\"System.Int32\"\r\n        },{\r\n          \"name\":\"Start\",\"type\":\"System.DateTime\"\r\n        },{\r\n          \"name\":\"Region\",\"type\":\"System.String\"\r\n        },{\r\n          \"name\":\"Query\",\"type\":\"System.String\"\r\n        },{\r\n          \"name\":\"Duration\",\"type\":\"System.Int32\"\r\n        },{\r\n          \"name\":\"Urls\",\"type\":\"System.String\"\r\n        },{\r\n          \"name\":\"ClickedUrls\",\"type\":\"System.String\"\r\n        }\r\n      ],\"indexList\":[\r\n        {\r\n          \"name\":\"idx1\",\"indexKeys\":[\r\n            {\r\n              \"name\":\"Region\",\"descending\":false\r\n            }\r\n          ],\"columns\":[\r\n            \"Region\"\r\n          ],\"distributionInfo\":{\r\n            \"type\":2,\"keys\":[\r\n              {\r\n                \"name\":\"Region\",\"descending\":false\r\n              }\r\n            ],\"count\":0,\"dynamicCount\":0\r\n          },\"partitionFunction\":\"656c6a02-c997-461e-89a3-9851895e197b\",\"partitionKeyList\":[\r\n            \r\n          ],\"isColumnstore\":false,\"indexId\":1,\"isUnique\":false\r\n        }\r\n      ],\"partitionKeyList\":[\r\n        \r\n      ],\"externalTable\":null,\"version\":\"9ce96db9-0d6a-42ad-ac85-cc847015db41\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': 'c0540960-7ccc-43aa-86f7-569afd3ba13b',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:13 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/tables?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#tables\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"tableName\":\"adlacatalogitem5014\",\"columnList\":[\r\n        {\r\n          \"name\":\"UserId\",\"type\":\"System.Int32\"\r\n        },{\r\n          \"name\":\"Start\",\"type\":\"System.DateTime\"\r\n        },{\r\n          \"name\":\"Region\",\"type\":\"System.String\"\r\n        },{\r\n          \"name\":\"Query\",\"type\":\"System.String\"\r\n        },{\r\n          \"name\":\"Duration\",\"type\":\"System.Int32\"\r\n        },{\r\n          \"name\":\"Urls\",\"type\":\"System.String\"\r\n        },{\r\n          \"name\":\"ClickedUrls\",\"type\":\"System.String\"\r\n        }\r\n      ],\"indexList\":[\r\n        {\r\n          \"name\":\"idx1\",\"indexKeys\":[\r\n            {\r\n              \"name\":\"Region\",\"descending\":false\r\n            }\r\n          ],\"columns\":[\r\n            \"Region\"\r\n          ],\"distributionInfo\":{\r\n            \"type\":2,\"keys\":[\r\n              {\r\n                \"name\":\"Region\",\"descending\":false\r\n              }\r\n            ],\"count\":0,\"dynamicCount\":0\r\n          },\"partitionFunction\":\"656c6a02-c997-461e-89a3-9851895e197b\",\"partitionKeyList\":[\r\n            \r\n          ],\"isColumnstore\":false,\"indexId\":1,\"isUnique\":false\r\n        }\r\n      ],\"partitionKeyList\":[\r\n        \r\n      ],\"externalTable\":null,\"version\":\"9ce96db9-0d6a-42ad-ac85-cc847015db41\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': 'c0540960-7ccc-43aa-86f7-569afd3ba13b',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:13 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/tables/adlacatalogitem5014?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#tables/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"tableName\":\"adlacatalogitem5014\",\"columnList\":[\r\n    {\r\n      \"name\":\"UserId\",\"type\":\"System.Int32\"\r\n    },{\r\n      \"name\":\"Start\",\"type\":\"System.DateTime\"\r\n    },{\r\n      \"name\":\"Region\",\"type\":\"System.String\"\r\n    },{\r\n      \"name\":\"Query\",\"type\":\"System.String\"\r\n    },{\r\n      \"name\":\"Duration\",\"type\":\"System.Int32\"\r\n    },{\r\n      \"name\":\"Urls\",\"type\":\"System.String\"\r\n    },{\r\n      \"name\":\"ClickedUrls\",\"type\":\"System.String\"\r\n    }\r\n  ],\"indexList\":[\r\n    {\r\n      \"name\":\"idx1\",\"indexKeys\":[\r\n        {\r\n          \"name\":\"Region\",\"descending\":false\r\n        }\r\n      ],\"columns\":[\r\n        \"Region\"\r\n      ],\"distributionInfo\":{\r\n        \"type\":2,\"keys\":[\r\n          {\r\n            \"name\":\"Region\",\"descending\":false\r\n          }\r\n        ],\"count\":0,\"dynamicCount\":0\r\n      },\"partitionFunction\":\"656c6a02-c997-461e-89a3-9851895e197b\",\"partitionKeyList\":[\r\n        \r\n      ],\"isColumnstore\":false,\"indexId\":1,\"isUnique\":false\r\n    }\r\n  ],\"partitionKeyList\":[\r\n    \r\n  ],\"externalTable\":null,\"version\":\"9ce96db9-0d6a-42ad-ac85-cc847015db41\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '6bafb225-9b6d-45a8-bbd6-43f65494d073',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:14 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/tables/adlacatalogitem5014?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#tables/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"tableName\":\"adlacatalogitem5014\",\"columnList\":[\r\n    {\r\n      \"name\":\"UserId\",\"type\":\"System.Int32\"\r\n    },{\r\n      \"name\":\"Start\",\"type\":\"System.DateTime\"\r\n    },{\r\n      \"name\":\"Region\",\"type\":\"System.String\"\r\n    },{\r\n      \"name\":\"Query\",\"type\":\"System.String\"\r\n    },{\r\n      \"name\":\"Duration\",\"type\":\"System.Int32\"\r\n    },{\r\n      \"name\":\"Urls\",\"type\":\"System.String\"\r\n    },{\r\n      \"name\":\"ClickedUrls\",\"type\":\"System.String\"\r\n    }\r\n  ],\"indexList\":[\r\n    {\r\n      \"name\":\"idx1\",\"indexKeys\":[\r\n        {\r\n          \"name\":\"Region\",\"descending\":false\r\n        }\r\n      ],\"columns\":[\r\n        \"Region\"\r\n      ],\"distributionInfo\":{\r\n        \"type\":2,\"keys\":[\r\n          {\r\n            \"name\":\"Region\",\"descending\":false\r\n          }\r\n        ],\"count\":0,\"dynamicCount\":0\r\n      },\"partitionFunction\":\"656c6a02-c997-461e-89a3-9851895e197b\",\"partitionKeyList\":[\r\n        \r\n      ],\"isColumnstore\":false,\"indexId\":1,\"isUnique\":false\r\n    }\r\n  ],\"partitionKeyList\":[\r\n    \r\n  ],\"externalTable\":null,\"version\":\"9ce96db9-0d6a-42ad-ac85-cc847015db41\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '6bafb225-9b6d-45a8-bbd6-43f65494d073',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:14 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/tablevaluedfunctions?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#tablevaluedfunctions\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"tvfName\":\"adlacatalogitem3740\",\"definition\":\"CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END;\",\"version\":\"334703df-9c0d-44aa-8ad9-6163b9f8bb12\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': 'ef0f4348-4a1a-4b99-b5b3-743a190c0fd7',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:14 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/tablevaluedfunctions?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#tablevaluedfunctions\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"tvfName\":\"adlacatalogitem3740\",\"definition\":\"CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END;\",\"version\":\"334703df-9c0d-44aa-8ad9-6163b9f8bb12\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': 'ef0f4348-4a1a-4b99-b5b3-743a190c0fd7',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:14 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/tablevaluedfunctions/adlacatalogitem3740?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#tablevaluedfunctions/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"tvfName\":\"adlacatalogitem3740\",\"definition\":\"CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END;\",\"version\":\"334703df-9c0d-44aa-8ad9-6163b9f8bb12\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '70f3b086-b1f0-4e12-9756-f9e6f6f30dc8',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:14 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/tablevaluedfunctions/adlacatalogitem3740?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#tablevaluedfunctions/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"tvfName\":\"adlacatalogitem3740\",\"definition\":\"CREATE FUNCTION adlacatalogitem8653.dbo.adlacatalogitem3740() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @\\\"/Samples/Data/WebLog.log\\\" USING Extractors.Text(delimiter:' '); RETURN; END;\",\"version\":\"334703df-9c0d-44aa-8ad9-6163b9f8bb12\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '70f3b086-b1f0-4e12-9756-f9e6f6f30dc8',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:14 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/views?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#views\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"viewName\":\"adlacatalogitem8810\",\"definition\":\"CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b);\",\"version\":\"e239b56d-1ee0-40a0-95b8-21cfcada54b9\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '725d8c62-f0e8-4d91-9d35-d7ff18e4a9b5',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:15 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/views?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#views\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"viewName\":\"adlacatalogitem8810\",\"definition\":\"CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b);\",\"version\":\"e239b56d-1ee0-40a0-95b8-21cfcada54b9\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '725d8c62-f0e8-4d91-9d35-d7ff18e4a9b5',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:15 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/views/adlacatalogitem8810?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#views/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"viewName\":\"adlacatalogitem8810\",\"definition\":\"CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b);\",\"version\":\"e239b56d-1ee0-40a0-95b8-21cfcada54b9\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': 'c43b416b-df3b-48d9-9187-e71a5414eacb',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:16 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/views/adlacatalogitem8810?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#views/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"viewName\":\"adlacatalogitem8810\",\"definition\":\"CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b);\",\"version\":\"e239b56d-1ee0-40a0-95b8-21cfcada54b9\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': 'c43b416b-df3b-48d9-9187-e71a5414eacb',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:16 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/procedures?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#procedures\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"procName\":\"adlacatalogitem4734\",\"definition\":\"CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"version\":\"1953dbd3-bbe2-4211-91f4-035963cebaa8\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': 'd8416d34-3dc2-4ca7-9a31-a7bafc1bc083',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:17 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/procedures?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#procedures\",\"value\":[\r\n    {\r\n      \"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"procName\":\"adlacatalogitem4734\",\"definition\":\"CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"version\":\"1953dbd3-bbe2-4211-91f4-035963cebaa8\"\r\n    }\r\n  ]\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': 'd8416d34-3dc2-4ca7-9a31-a7bafc1bc083',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:17 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/procedures/adlacatalogitem4734?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#procedures/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"procName\":\"adlacatalogitem4734\",\"definition\":\"CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"version\":\"1953dbd3-bbe2-4211-91f4-035963cebaa8\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '3859893c-9cb8-402a-aabd-3c7e3a0838db',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:18 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://xplattestadla2967.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/adlacatalogitem8653/schemas/dbo/procedures/adlacatalogitem4734?api-version=2015-10-01-preview')
-  .reply(200, "{\r\n  \"@odata.context\":\"https://xplattestadla2967.azuredatalakeanalytics.net/sqlip/$metadata#procedures/$entity\",\"computeAccountName\":\"xplattestadla2967\",\"databaseName\":\"adlacatalogitem8653\",\"schemaName\":\"dbo\",\"procName\":\"adlacatalogitem4734\",\"definition\":\"CREATE PROCEDURE adlacatalogitem8653.dbo.adlacatalogitem4734() AS BEGIN CREATE VIEW adlacatalogitem8653.dbo.adlacatalogitem8810 AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;\",\"version\":\"1953dbd3-bbe2-4211-91f4-035963cebaa8\"\r\n}", { 'cache-control': 'private',
-  pragma: 'no-cache',
-  'transfer-encoding': 'chunked',
-  'content-type': 'application/json; odata.metadata=minimal',
-  expires: '-1',
-  'x-ms-request-id': '3859893c-9cb8-402a-aabd-3c7e3a0838db',
-  'odata-version': '4.0',
-  'x-content-type-options': 'nosniff',
-  'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Thu, 24 Mar 2016 23:25:18 GMT',
+  date: 'Fri, 15 Apr 2016 23:34:24 GMT',
   connection: 'close' });
  return result; }]];
- exports.uuidsGenerated = function() { return ['d55269c3-286d-46ed-ac58-dc69a412cf92'];};
+ exports.uuidsGenerated = function() { return ['c9c5c2d8-d8ab-4850-8c08-0afaff6601e9'];};

@@ -356,7 +356,7 @@ export interface HiveJobProperties extends JobProperties {
  * @member {number} [innerError.diagnosticCode] Gets the diagnostic error code.
  * 
  * @member {string} [innerError.severity] Gets the severity level of the
- * failure. Possible values include: 'Warning', 'Error'
+ * failure. Possible values include: 'Warning', 'Error', 'Info'
  * 
  * @member {string} [innerError.details] Gets the details of the error message.
  * 
@@ -384,7 +384,7 @@ export interface HiveJobProperties extends JobProperties {
  * @member {string} [innerError.description] Gets the error message description
  * 
  * @member {string} [severity] Gets the severity level of the failure.
- * Possible values include: 'Warning', 'Error'
+ * Possible values include: 'Warning', 'Error', 'Info'
  * 
  * @member {string} [source] Gets the ultimate source of the failure (usually
  * either SYSTEM or USER).
@@ -418,7 +418,7 @@ export interface JobErrorDetails {
  * @member {number} [diagnosticCode] Gets the diagnostic error code.
  * 
  * @member {string} [severity] Gets the severity level of the failure.
- * Possible values include: 'Warning', 'Error'
+ * Possible values include: 'Warning', 'Error', 'Info'
  * 
  * @member {string} [details] Gets the details of the error message.
  * 
