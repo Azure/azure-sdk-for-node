@@ -159,15 +159,15 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
               should.not.exist(err);
               adlsClient.account.create(testResourceGroup, additionalStoreAccountName, secondAdlsAccount, function(err) {
                 should.not.exist(err);
-                //storageClient.storageAccounts.create(testResourceGroup, azureBlobAccountName, storageAccount, function (err) {
-                  //should.not.exist(err);
+                storageClient.storageAccounts.create(testResourceGroup, azureBlobAccountName, storageAccount, function (err) {
+                  should.not.exist(err);
                   // create an account for job and catalog operations
                   accountClient.account.create(testResourceGroup, jobAndCatalogAccountName, adlaAccount, function (err) {
                     should.not.exist(err);
                     setTimeout(function () {
                       done();
                     }, 120000); // sleep for two minutes to guarantee that the queue has been created to run jobs against
-                  //});
+                  });
                 });
               });
             });
@@ -209,7 +209,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     suite.baseTeardownTest(done);
   });
 
-  describe.skip('Data Lake Analytics Account', function () {
+  describe('Data Lake Analytics Account', function () {
     it('create command should work', function (done) {
       // define the account to create
       var accountToCreate = {
