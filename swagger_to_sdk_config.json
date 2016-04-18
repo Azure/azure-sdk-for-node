@@ -6,7 +6,9 @@
   },
   "data": {
     "arm-web/2015-08-01/swagger/service.json": {
-      "autorest_options": "-header MICROSOFT_MIT_NO_VERSION",
+      "autorest_options": [
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      ],
       "output_dir": "lib/services/webSiteManagement2/lib"
     }
   }
