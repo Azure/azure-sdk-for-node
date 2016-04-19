@@ -23,10 +23,10 @@ export interface Job {
     /**
      * Gets statistics of the specified job.
      *
-     * @param {uuid} jobIdentity JobInfo ID.
-     * 
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute job operations on.
+     * 
+     * @param {uuid} jobIdentity JobInfo ID.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -36,16 +36,16 @@ export interface Job {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getStatistics(jobIdentity: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStatistics>): void;
-    getStatistics(jobIdentity: string, accountName: string, callback: ServiceCallback<models.JobStatistics>): void;
+    getStatistics(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStatistics>): void;
+    getStatistics(accountName: string, jobIdentity: string, callback: ServiceCallback<models.JobStatistics>): void;
 
     /**
      * Gets the U-SQL job debug data information specified by the job ID.
      *
-     * @param {uuid} jobIdentity JobInfo ID.
-     * 
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute job operations on.
+     * 
+     * @param {uuid} jobIdentity JobInfo ID.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -55,13 +55,16 @@ export interface Job {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getDebugDataPath(jobIdentity: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobDataPath>): void;
-    getDebugDataPath(jobIdentity: string, accountName: string, callback: ServiceCallback<models.JobDataPath>): void;
+    getDebugDataPath(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobDataPath>): void;
+    getDebugDataPath(accountName: string, jobIdentity: string, callback: ServiceCallback<models.JobDataPath>): void;
 
     /**
      * Builds (compiles) the specified job in the specified Data Lake Analytics
      * account for job correctness and validation.
      *
+     * @param {string} accountName The Azure Data Lake Analytics account to
+     * execute job operations on.
+     * 
      * @param {object} parameters The parameters to build a job.
      * 
      * @param {uuid} [parameters.jobId] Gets or sets the job's unique identifier
@@ -93,9 +96,6 @@ export interface Job {
      * 
      * @param {string} [parameters.properties.type] Polymorhpic Discriminator
      * 
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute job operations on.
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -104,16 +104,16 @@ export interface Job {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    build(parameters: models.JobInformation, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
-    build(parameters: models.JobInformation, accountName: string, callback: ServiceCallback<models.JobInformation>): void;
+    build(accountName: string, parameters: models.JobInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+    build(accountName: string, parameters: models.JobInformation, callback: ServiceCallback<models.JobInformation>): void;
 
     /**
      * Cancels the running job specified by the job ID.
      *
-     * @param {uuid} jobIdentity JobInfo ID to cancel.
-     * 
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute job operations on.
+     * 
+     * @param {uuid} jobIdentity JobInfo ID to cancel.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -123,16 +123,16 @@ export interface Job {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    cancel(jobIdentity: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    cancel(jobIdentity: string, accountName: string, callback: ServiceCallback<void>): void;
+    cancel(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    cancel(accountName: string, jobIdentity: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets the job information for the specified job ID.
      *
-     * @param {uuid} jobIdentity JobInfo ID.
-     * 
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute job operations on.
+     * 
+     * @param {uuid} jobIdentity JobInfo ID.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -142,12 +142,15 @@ export interface Job {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(jobIdentity: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
-    get(jobIdentity: string, accountName: string, callback: ServiceCallback<models.JobInformation>): void;
+    get(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+    get(accountName: string, jobIdentity: string, callback: ServiceCallback<models.JobInformation>): void;
 
     /**
      * Submits a job to the specified Data Lake Analytics account.
      *
+     * @param {string} accountName The Azure Data Lake Analytics account to
+     * execute job operations on.
+     * 
      * @param {uuid} jobIdentity The job ID (a GUID) for the job being submitted.
      * 
      * @param {object} parameters The parameters to submit a job.
@@ -181,9 +184,6 @@ export interface Job {
      * 
      * @param {string} [parameters.properties.type] Polymorhpic Discriminator
      * 
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute job operations on.
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -192,8 +192,8 @@ export interface Job {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    create(jobIdentity: string, parameters: models.JobInformation, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
-    create(jobIdentity: string, parameters: models.JobInformation, accountName: string, callback: ServiceCallback<models.JobInformation>): void;
+    create(accountName: string, jobIdentity: string, parameters: models.JobInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+    create(accountName: string, jobIdentity: string, parameters: models.JobInformation, callback: ServiceCallback<models.JobInformation>): void;
 
     /**
      * Lists the jobs, if any, associated with the specified Data Lake Analytics
@@ -221,7 +221,7 @@ export interface Job {
      * 
      * @param {string} [options.orderby] OrderBy clause. One or more
      * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order youâ€™d like the values sorted, e.g.
+     * depending on the order you'd like the values sorted, e.g.
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
