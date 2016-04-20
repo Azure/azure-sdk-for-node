@@ -1,0 +1,161 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "language": "NodeJS",
+    "autorest": "latest"
+  },
+  "data": {
+    "arm-authorization/2015-07-01/swagger/authorization.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION",
+        "FT": 1
+      },
+      "output_dir": "lib/services/authorizationManagement/lib"
+    },
+    "arm-batch/2015-12-01/swagger/BatchManagement.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION",
+        "FT": 1
+      },
+      "output_dir": "lib/services/batchManagement/lib"
+    },
+    "batch/2016-02-01.3.0/swagger/BatchService.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION",
+        "FT": 1
+      },
+      "output_dir": "lib/services/batch/lib"
+    },
+    "arm-cdn/2015-06-01/swagger/cdn.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION",
+        "FT": 1
+      },
+      "output_dir": "lib/services/cdnManagement/lib"
+    },
+    "arm-compute/compositeComputeClient.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION",
+        "FT": 1,
+        "Modeler": "CompositeSwagger"
+      },
+      "output_dir": "lib/services/computeManagement2/lib"
+    },
+    "arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/dataLake.Analytics/lib/account"
+    },
+    "arm-datalake-analytics/job/2015-11-01-preview/swagger/job.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/dataLake.Analytics/lib/job"
+    },
+    "arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/dataLake.Analytics/lib/catalog"
+    },
+    "arm-datalake-store/account/2015-10-01-preview/swagger/account.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/dataLake.Store/lib/account"
+    },
+    "arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/dataLake.Store/lib/filesystem"
+    },
+    "arm-graphrbac/1.6-internal/swagger/graphrbac.json": {
+      "autorest_options": {
+        "FT": 1,
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/graphManagement/lib"
+    },
+    "arm-intune/2015-01-14-preview/swagger/intune.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/intune/lib"
+    },
+    "arm-network/2016-03-30/swagger/network.json": {
+      "autorest_options": {
+        "FT": 1,
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/networkManagement2/lib"
+    },
+    "arm-redis/2015-08-01/swagger/redis.json": {
+      "autorest_options": {
+        "FT": 1,
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/rediscachemanagement/lib"
+    },
+    "arm-resources/resources/2016-02-01/swagger/resources.json": {
+      "autorest_options": {
+        "FT": 1,
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/resourceManagement/lib/resource"
+    },
+    "arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/resourceManagement/lib/subscription"
+    },
+    "arm-resources/locks/2015-01-01/swagger/locks.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/resourceManagement/lib/lock"
+    },
+    "arm-resources/features/2015-12-01/swagger/features.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/resourceManagement/lib/feature"
+    },
+    "arm-resources/policy/2016-04-01/swagger/policy.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/resourceManagement/lib/policy"
+    },
+    "arm-storage/2016-01-01/swagger/storage.json": {
+      "autorest_options": {
+        "FT": 2,
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/storageManagement2/lib"
+    },
+    "servicefabric/2016-01-28/swagger/servicefabric.json": {
+      "autorest_options": {
+        "header": "MICROSOFT_MIT_NO_VERSION",
+        "CodeGenerator": "NodeJS"
+      },
+      "output_dir": "lib/services/serviceFabric/lib"
+    },
+    "arm-trafficmanager/2015-11-01/trafficmanager.json": {
+      "autorest_options": {
+        "FT": 1,
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/trafficManagement2/lib"
+    },
+    "arm-web/2015-08-01/swagger/service.json": {
+      "autorest_options": {
+        "FT": 1,
+        "header": "MICROSOFT_MIT_NO_VERSION"
+      },
+      "output_dir": "lib/services/websiteManagement2/lib"
+    }
+  }
+}
