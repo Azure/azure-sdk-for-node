@@ -84,7 +84,7 @@ var options = {
   streamContents: new Buffer('some string content')
 }
 
-filesystemClient.filesystem.listFileStatus(fileToCreate, accountName, options, function (err, result, request, response) {
+filesystemClient.filesystem.listFileStatus(accountName, fileToCreate, options, function (err, result, request, response) {
   if (err) {
     console.log(err);
   } else {
@@ -100,7 +100,7 @@ filesystemClient.filesystem.listFileStatus(fileToCreate, accountName, options, f
 var util = require('util');
 var accountName = 'testadlsacct';
 var pathToEnumerate = '/myfolder';
-filesystemClient.filesystem.listFileStatus(pathToEnumerate, accountName, function (err, result, request, response) {
+filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, function (err, result, request, response) {
   if (err) {
     console.log(err);
   } else {
