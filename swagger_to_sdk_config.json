@@ -155,7 +155,7 @@
         "FT": 1,
         "header": "MICROSOFT_MIT_NO_VERSION"
       },
-      "output_dir": "lib/services/websiteManagement2/lib"
+      "output_dir": "lib/services/webSiteManagement2/lib"
     }
   }
 }
