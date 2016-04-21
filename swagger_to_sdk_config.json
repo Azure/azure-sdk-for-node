@@ -148,14 +148,14 @@
         "FT": 1,
         "header": "MICROSOFT_MIT_NO_VERSION"
       },
-      "output_dir": "lib/services/trafficManagement2/lib"
+      "output_dir": "lib/services/trafficManagerManagement2/lib"
     },
     "arm-web/2015-08-01/swagger/service.json": {
       "autorest_options": {
         "FT": 1,
         "header": "MICROSOFT_MIT_NO_VERSION"
       },
-      "output_dir": "lib/services/websiteManagement2/lib"
+      "output_dir": "lib/services/webSiteManagement2/lib"
     }
   }
 }
