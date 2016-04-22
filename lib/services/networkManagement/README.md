@@ -2,7 +2,7 @@
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Virtual Network. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
-- **API version: 2013-11-01**
+- **API version: 2016-03-01**
 
 ## Features
 
