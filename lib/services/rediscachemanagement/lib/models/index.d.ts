@@ -358,3 +358,21 @@ export interface RedisListKeysResult {
 export interface RedisRegenerateKeyParameters {
     keyType: string;
 }
+
+/**
+ * @class
+ * Initializes a new instance of the RedisRebootParameters class.
+ * @constructor
+ * Specifies which redis node(s) to reboot.
+ * @member {string} rebootType Which redis node(s) to reboot. Depending on
+ * this value data loss is possible. Possible values include: 'PrimaryNode',
+ * 'SecondaryNode', 'AllNodes'
+ * 
+ * @member {number} [shardId] In case of cluster cache, this specifies shard
+ * id which should be rebooted.
+ * 
+ */
+export interface RedisRebootParameters {
+    rebootType: string;
+    shardId?: number;
+}

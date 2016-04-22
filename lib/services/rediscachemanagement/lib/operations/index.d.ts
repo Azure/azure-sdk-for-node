@@ -194,6 +194,34 @@ export interface Redis {
     regenerateKey(resourceGroupName: string, name: string, keyType: string, callback: ServiceCallback<models.RedisListKeysResult>): void;
 
     /**
+     * Reboot specified redis node(s). This operation requires write permission to
+     * the cache resource. There can be potential data loss.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name The name of the redis cache.
+     * 
+     * @param {object} parameters Specifies which redis node(s) to reboot.
+     * 
+     * @param {string} [parameters.rebootType] Which redis node(s) to reboot.
+     * Depending on this value data loss is possible. Possible values include:
+     * 'PrimaryNode', 'SecondaryNode', 'AllNodes'
+     * 
+     * @param {number} [parameters.shardId] In case of cluster cache, this
+     * specifies shard id which should be rebooted.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    forceReboot(resourceGroupName: string, name: string, parameters: models.RedisRebootParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    forceReboot(resourceGroupName: string, name: string, parameters: models.RedisRebootParameters, callback: ServiceCallback<void>): void;
+
+    /**
      * Gets all redis caches in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
