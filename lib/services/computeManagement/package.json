@@ -13,7 +13,7 @@
     "Onalan, Alp <alpon@microsoft.com>",
     "Lee, Hyonho <Hyonho.Lee@microsoft.com>"
   ],
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Microsoft Azure Compute Management Client Library for node",
   "tags": [
     "azure",
