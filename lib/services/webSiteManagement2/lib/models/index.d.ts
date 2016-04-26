@@ -12,17 +12,26 @@
 
 /**
  * @class
- * Initializes a new instance of the CertificateCollection class.
+ * Initializes a new instance of the ArmPlan class.
  * @constructor
- * Collection of certificates
- * @member {array} [value] Collection of resources
+ * The plan object in an ARM, represents a marketplace plan
+ * @member {string} [name] The name
  * 
- * @member {string} [nextLink] Link to next page of resources
+ * @member {string} [publisher] The publisher
+ * 
+ * @member {string} [product] The product
+ * 
+ * @member {string} [promotionCode] The promotion code
+ * 
+ * @member {string} [version] Version of product
  * 
  */
-export interface CertificateCollection {
-    value?: Certificate[];
-    nextLink?: string;
+export interface ArmPlan {
+    name?: string;
+    publisher?: string;
+    product?: string;
+    promotionCode?: string;
+    version?: string;
 }
 
 /**
@@ -49,6 +58,314 @@ export interface Resource extends BaseResource {
     location: string;
     type?: string;
     tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateOrderCertificate class.
+ * @constructor
+ * Class representing the Key Vault container for certificate purchased
+ * through Azure
+ * @member {string} [keyVaultId] Key Vault Csm resource Id
+ * 
+ * @member {string} [keyVaultSecretName] Key Vault secret name
+ * 
+ * @member {string} [provisioningState] Status of the Key Vault secret.
+ * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
+ * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
+ * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
+ * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'Unknown'
+ * 
+ */
+export interface CertificateOrderCertificate extends Resource {
+    keyVaultId?: string;
+    keyVaultSecretName?: string;
+    provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SkuDescription class.
+ * @constructor
+ * Describes a sku for a scalable resource
+ * @member {string} [name] Name of the resource sku
+ * 
+ * @member {string} [tier] Service Tier of the resource sku
+ * 
+ * @member {string} [size] Size specifier of the resource sku
+ * 
+ * @member {string} [family] Family code of the resource sku
+ * 
+ * @member {number} [capacity] Current number of instances assigned to the
+ * resource
+ * 
+ */
+export interface SkuDescription {
+    name?: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    capacity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateOrder class.
+ * @constructor
+ * Certificate purchase order
+ * @member {object} [certificates] State of the Key Vault secret
+ * 
+ * @member {string} [distinguishedName] Certificate distinguished name
+ * 
+ * @member {string} [domainVerificationToken] Domain Verification Token
+ * 
+ * @member {number} [validityInYears] Duration in years (must be between 1 and
+ * 3)
+ * 
+ * @member {number} [keySize] Certificate Key Size
+ * 
+ * @member {string} [productType] Certificate product type. Possible values
+ * include: 'StandardDomainValidatedSsl', 'StandardDomainValidatedWildCardSsl'
+ * 
+ * @member {boolean} [autoRenew] Auto renew
+ * 
+ * @member {string} [provisioningState] Status of certificate order. Possible
+ * values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
+ * 
+ * @member {string} [status] Current order status. Possible values include:
+ * 'Pendingissuance', 'Issued', 'Revoked', 'Canceled', 'Denied',
+ * 'Pendingrevocation', 'PendingRekey', 'Unused', 'Expired', 'NotSubmitted'
+ * 
+ * @member {object} [signedCertificate] Signed certificate
+ * 
+ * @member {number} [signedCertificate.version] Version
+ * 
+ * @member {string} [signedCertificate.serialNumber] Serial Number
+ * 
+ * @member {string} [signedCertificate.thumbprint] Thumbprint
+ * 
+ * @member {string} [signedCertificate.subject] Subject
+ * 
+ * @member {date} [signedCertificate.notBefore] Valid from
+ * 
+ * @member {date} [signedCertificate.notAfter] Valid to
+ * 
+ * @member {string} [signedCertificate.signatureAlgorithm] Signature Algorithm
+ * 
+ * @member {string} [signedCertificate.issuer] Issuer
+ * 
+ * @member {string} [signedCertificate.rawData] Raw certificate data
+ * 
+ * @member {string} [csr] Last CSR that was created for this order
+ * 
+ * @member {object} [intermediate] Intermediate certificate
+ * 
+ * @member {number} [intermediate.version] Version
+ * 
+ * @member {string} [intermediate.serialNumber] Serial Number
+ * 
+ * @member {string} [intermediate.thumbprint] Thumbprint
+ * 
+ * @member {string} [intermediate.subject] Subject
+ * 
+ * @member {date} [intermediate.notBefore] Valid from
+ * 
+ * @member {date} [intermediate.notAfter] Valid to
+ * 
+ * @member {string} [intermediate.signatureAlgorithm] Signature Algorithm
+ * 
+ * @member {string} [intermediate.issuer] Issuer
+ * 
+ * @member {string} [intermediate.rawData] Raw certificate data
+ * 
+ * @member {object} [root] Root certificate
+ * 
+ * @member {number} [root.version] Version
+ * 
+ * @member {string} [root.serialNumber] Serial Number
+ * 
+ * @member {string} [root.thumbprint] Thumbprint
+ * 
+ * @member {string} [root.subject] Subject
+ * 
+ * @member {date} [root.notBefore] Valid from
+ * 
+ * @member {date} [root.notAfter] Valid to
+ * 
+ * @member {string} [root.signatureAlgorithm] Signature Algorithm
+ * 
+ * @member {string} [root.issuer] Issuer
+ * 
+ * @member {string} [root.rawData] Raw certificate data
+ * 
+ * @member {string} [serialNumber] Current serial number of the certificate
+ * 
+ * @member {date} [lastCertificateIssuanceTime] Certificate last issuance time
+ * 
+ * @member {date} [expirationTime] Certificate expiration time
+ * 
+ */
+export interface CertificateOrder extends Resource {
+    certificates?: { [propertyName: string]: CertificateOrderCertificate };
+    distinguishedName?: string;
+    domainVerificationToken?: string;
+    validityInYears?: number;
+    keySize?: number;
+    productType?: string;
+    autoRenew?: boolean;
+    provisioningState?: string;
+    status?: string;
+    signedCertificate?: CertificateDetails;
+    csr?: string;
+    intermediate?: CertificateDetails;
+    root?: CertificateDetails;
+    serialNumber?: string;
+    lastCertificateIssuanceTime?: Date;
+    expirationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateDetails class.
+ * @constructor
+ * Certificate Details
+ * @member {number} [version] Version
+ * 
+ * @member {string} [serialNumber] Serial Number
+ * 
+ * @member {string} [thumbprint] Thumbprint
+ * 
+ * @member {string} [subject] Subject
+ * 
+ * @member {date} [notBefore] Valid from
+ * 
+ * @member {date} [notAfter] Valid to
+ * 
+ * @member {string} [signatureAlgorithm] Signature Algorithm
+ * 
+ * @member {string} [issuer] Issuer
+ * 
+ * @member {string} [rawData] Raw certificate data
+ * 
+ */
+export interface CertificateDetails extends Resource {
+    version?: number;
+    serialNumber?: string;
+    thumbprint?: string;
+    subject?: string;
+    notBefore?: Date;
+    notAfter?: Date;
+    signatureAlgorithm?: string;
+    issuer?: string;
+    rawData?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateOrderCollection class.
+ * @constructor
+ * Collection of ceritificate orders
+ * @member {array} [value] Collection of resources
+ * 
+ * @member {string} [nextLink] Link to next page of resources
+ * 
+ */
+export interface CertificateOrderCollection {
+    value?: CertificateOrder[];
+    nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateOrderCertificateCollection class.
+ * @constructor
+ * Collection of ceritificateorder certificates
+ * @member {array} [value] Collection of resources
+ * 
+ * @member {string} [nextLink] Link to next page of resources
+ * 
+ */
+export interface CertificateOrderCertificateCollection {
+    value?: CertificateOrderCertificate[];
+    nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReissueCertificateOrderRequest class.
+ * @constructor
+ * Class representing certificate reissue request
+ * @member {number} [keySize] Certificate Key Size
+ * 
+ * @member {number} [delayExistingRevokeInHours] Delay in hours to revoke
+ * existing certificate after the new certificate is issued
+ * 
+ */
+export interface ReissueCertificateOrderRequest extends Resource {
+    keySize?: number;
+    delayExistingRevokeInHours?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RenewCertificateOrderRequest class.
+ * @constructor
+ * Class representing certificate renew request
+ * @member {number} [keySize] Certificate Key Size
+ * 
+ */
+export interface RenewCertificateOrderRequest extends Resource {
+    keySize?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateOrderAction class.
+ * @constructor
+ * Represents a certificate action
+ * @member {string} [certificateOrderActionType] Type. Possible values
+ * include: 'CertificateIssued', 'CertificateOrderCanceled',
+ * 'CertificateOrderCreated', 'CertificateRevoked',
+ * 'DomainValidationComplete', 'FraudDetected', 'OrgNameChange',
+ * 'OrgValidationComplete', 'SanDrop'
+ * 
+ * @member {date} [createdAt] Time at which the certificate action was
+ * performed
+ * 
+ */
+export interface CertificateOrderAction extends Resource {
+    certificateOrderActionType?: string;
+    createdAt?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateEmail class.
+ * @constructor
+ * Certificate Email
+ * @member {string} [emailId] Email id
+ * 
+ * @member {date} [timeStamp] Time stamp
+ * 
+ */
+export interface CertificateEmail extends Resource {
+    emailId?: string;
+    timeStamp?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateCollection class.
+ * @constructor
+ * Collection of certificates
+ * @member {array} [value] Collection of resources
+ * 
+ * @member {string} [nextLink] Link to next page of resources
+ * 
+ */
+export interface CertificateCollection {
+    value?: Certificate[];
+    nextLink?: string;
 }
 
 /**
@@ -135,55 +452,6 @@ export interface HostingEnvironmentProfile {
     id?: string;
     name?: string;
     type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ArmPlan class.
- * @constructor
- * The plan object in an ARM, represents a marketplace plan
- * @member {string} [name] The name
- * 
- * @member {string} [publisher] The publisher
- * 
- * @member {string} [product] The product
- * 
- * @member {string} [promotionCode] The promotion code
- * 
- * @member {string} [version] Version of product
- * 
- */
-export interface ArmPlan {
-    name?: string;
-    publisher?: string;
-    product?: string;
-    promotionCode?: string;
-    version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SkuDescription class.
- * @constructor
- * Describes a sku for a scalable resource
- * @member {string} [name] Name of the resource sku
- * 
- * @member {string} [tier] Service Tier of the resource sku
- * 
- * @member {string} [size] Size specifier of the resource sku
- * 
- * @member {string} [family] Family code of the resource sku
- * 
- * @member {number} [capacity] Current number of instances assigned to the
- * resource
- * 
- */
-export interface SkuDescription {
-    name?: string;
-    tier?: string;
-    size?: string;
-    family?: string;
-    capacity?: number;
 }
 
 /**
@@ -434,6 +702,9 @@ export interface DomainCollection {
  * @member {date} [consent.agreedAt] Timestamp when the agreements were
  * accepted
  * 
+ * @member {array} [domainNotRenewableReasons] Reasons why domain is not
+ * renewable
+ * 
  */
 export interface Domain extends Resource {
     contactAdmin?: Contact;
@@ -451,6 +722,7 @@ export interface Domain extends Resource {
     readyForDnsRecordManagement?: boolean;
     managedHostNames?: HostName[];
     consent?: DomainPurchaseConsent;
+    domainNotRenewableReasons?: string[];
 }
 
 /**
@@ -1823,6 +2095,10 @@ export interface RoutingRule {
  * include: 'AzureActiveDirectory', 'Facebook', 'Google', 'MicrosoftAccount',
  * 'Twitter'
  * 
+ * @member {number} [tokenRefreshExtensionHours] Gets or sets the number of
+ * hours after session token expiration that a session token can be used to
+ * call the token refresh API. The default is 72 hours.
+ * 
  * @member {string} [clientId] Gets or sets the Client ID of this relying
  * party application, known as the client_id.
  * This setting is required for enabling OpenID Connection
@@ -1942,6 +2218,7 @@ export interface SiteAuthSettings {
     tokenStoreEnabled?: boolean;
     allowedExternalRedirectUrls?: string[];
     defaultProvider?: string;
+    tokenRefreshExtensionHours?: number;
     clientId?: string;
     clientSecret?: string;
     issuer?: string;
@@ -2599,6 +2876,9 @@ export interface DomainControlCenterSsoRequest {
  * @member {date} [consent.agreedAt] Timestamp when the agreements were
  * accepted
  * 
+ * @member {array} [domainNotRenewableReasons] Reasons why domain is not
+ * renewable
+ * 
  */
 export interface DomainRegistrationInput extends Resource {
     domainRegistrationInputName?: string;
@@ -2617,6 +2897,7 @@ export interface DomainRegistrationInput extends Resource {
     readyForDnsRecordManagement?: boolean;
     managedHostNames?: HostName[];
     consent?: DomainPurchaseConsent;
+    domainNotRenewableReasons?: string[];
 }
 
 /**

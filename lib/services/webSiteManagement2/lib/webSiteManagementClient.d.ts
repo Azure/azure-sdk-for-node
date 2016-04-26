@@ -56,10 +56,12 @@ declare class WebSiteManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
+    certificateOrders: operations.CertificateOrders;
     certificates: operations.Certificates;
     classicMobileServices: operations.ClassicMobileServices;
     domains: operations.Domains;
     global: operations.Global;
+    globalCertificateOrder: operations.GlobalCertificateOrder;
     globalDomainRegistration: operations.GlobalDomainRegistration;
     globalResourceGroups: operations.GlobalResourceGroups;
     hostingEnvironments: operations.HostingEnvironments;

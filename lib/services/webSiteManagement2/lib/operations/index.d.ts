@@ -15,6 +15,597 @@ import * as models from '../models';
 
 /**
  * @class
+ * CertificateOrders
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface CertificateOrders {
+
+    /**
+     * @summary Get certificate associated with the certificate order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} certificateOrderName Certificate name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCertificate(resourceGroupName: string, certificateOrderName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCertificate>): void;
+    getCertificate(resourceGroupName: string, certificateOrderName: string, name: string, callback: ServiceCallback<models.CertificateOrderCertificate>): void;
+
+    /**
+     * @summary Associates a Key Vault secret to a certificate store that will be
+     * used for storing the certificate once it's ready
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} certificateOrderName Certificate name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} keyVaultCertificate Key Vault secret csm Id
+     * 
+     * @param {string} [keyVaultCertificate.keyVaultId] Key Vault Csm resource Id
+     * 
+     * @param {string} [keyVaultCertificate.keyVaultSecretName] Key Vault secret
+     * name
+     * 
+     * @param {string} [keyVaultCertificate.provisioningState] Status of the Key
+     * Vault secret. Possible values include: 'Initialized',
+     * 'WaitingOnCertificateOrder', 'Succeeded', 'CertificateOrderFailed',
+     * 'OperationNotPermittedOnKeyVault',
+     * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
+     * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'Unknown'
+     * 
+     * @param {string} [keyVaultCertificate.id] Resource Id
+     * 
+     * @param {string} [keyVaultCertificate.name] Resource Name
+     * 
+     * @param {string} [keyVaultCertificate.kind] Kind of resource
+     * 
+     * @param {string} [keyVaultCertificate.location] Resource Location
+     * 
+     * @param {string} [keyVaultCertificate.type] Resource type
+     * 
+     * @param {object} [keyVaultCertificate.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdateCertificate(resourceGroupName: string, certificateOrderName: string, name: string, keyVaultCertificate: models.CertificateOrderCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCertificate>): void;
+    createOrUpdateCertificate(resourceGroupName: string, certificateOrderName: string, name: string, keyVaultCertificate: models.CertificateOrderCertificate, callback: ServiceCallback<models.CertificateOrderCertificate>): void;
+
+    /**
+     * @summary Deletes the certificate associated with the certificate order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} certificateOrderName Certificate name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteCertificate(resourceGroupName: string, certificateOrderName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteCertificate(resourceGroupName: string, certificateOrderName: string, name: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Associates a Key Vault secret to a certificate store that will be
+     * used for storing the certificate once it's ready
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} certificateOrderName Certificate name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} keyVaultCertificate Key Vault secret csm Id
+     * 
+     * @param {string} [keyVaultCertificate.keyVaultId] Key Vault Csm resource Id
+     * 
+     * @param {string} [keyVaultCertificate.keyVaultSecretName] Key Vault secret
+     * name
+     * 
+     * @param {string} [keyVaultCertificate.provisioningState] Status of the Key
+     * Vault secret. Possible values include: 'Initialized',
+     * 'WaitingOnCertificateOrder', 'Succeeded', 'CertificateOrderFailed',
+     * 'OperationNotPermittedOnKeyVault',
+     * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
+     * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'Unknown'
+     * 
+     * @param {string} [keyVaultCertificate.id] Resource Id
+     * 
+     * @param {string} [keyVaultCertificate.name] Resource Name
+     * 
+     * @param {string} [keyVaultCertificate.kind] Kind of resource
+     * 
+     * @param {string} [keyVaultCertificate.location] Resource Location
+     * 
+     * @param {string} [keyVaultCertificate.type] Resource type
+     * 
+     * @param {object} [keyVaultCertificate.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updateCertificate(resourceGroupName: string, certificateOrderName: string, name: string, keyVaultCertificate: models.CertificateOrderCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCertificate>): void;
+    updateCertificate(resourceGroupName: string, certificateOrderName: string, name: string, keyVaultCertificate: models.CertificateOrderCertificate, callback: ServiceCallback<models.CertificateOrderCertificate>): void;
+
+    /**
+     * @summary Get a certificate order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCertificateOrder(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrder>): void;
+    getCertificateOrder(resourceGroupName: string, name: string, callback: ServiceCallback<models.CertificateOrder>): void;
+
+    /**
+     * @summary Create or update a certificate purchase order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} certificateDistinguishedName Distinguished name to be used
+     * for purchasing certificate
+     * 
+     * @param {object} [certificateDistinguishedName.certificates] State of the
+     * Key Vault secret
+     * 
+     * @param {string} [certificateDistinguishedName.distinguishedName]
+     * Certificate distinguished name
+     * 
+     * @param {string} [certificateDistinguishedName.domainVerificationToken]
+     * Domain Verification Token
+     * 
+     * @param {number} [certificateDistinguishedName.validityInYears] Duration in
+     * years (must be between 1 and 3)
+     * 
+     * @param {number} [certificateDistinguishedName.keySize] Certificate Key Size
+     * 
+     * @param {string} [certificateDistinguishedName.productType] Certificate
+     * product type. Possible values include: 'StandardDomainValidatedSsl',
+     * 'StandardDomainValidatedWildCardSsl'
+     * 
+     * @param {boolean} [certificateDistinguishedName.autoRenew] Auto renew
+     * 
+     * @param {string} [certificateDistinguishedName.provisioningState] Status of
+     * certificate order. Possible values include: 'Succeeded', 'Failed',
+     * 'Canceled', 'InProgress', 'Deleting'
+     * 
+     * @param {string} [certificateDistinguishedName.status] Current order status.
+     * Possible values include: 'Pendingissuance', 'Issued', 'Revoked',
+     * 'Canceled', 'Denied', 'Pendingrevocation', 'PendingRekey', 'Unused',
+     * 'Expired', 'NotSubmitted'
+     * 
+     * @param {object} [certificateDistinguishedName.signedCertificate] Signed
+     * certificate
+     * 
+     * @param {string} [certificateDistinguishedName.csr] Last CSR that was
+     * created for this order
+     * 
+     * @param {object} [certificateDistinguishedName.intermediate] Intermediate
+     * certificate
+     * 
+     * @param {object} [certificateDistinguishedName.root] Root certificate
+     * 
+     * @param {number} [certificateDistinguishedName.root.version] Version
+     * 
+     * @param {string} [certificateDistinguishedName.root.serialNumber] Serial
+     * Number
+     * 
+     * @param {string} [certificateDistinguishedName.root.thumbprint] Thumbprint
+     * 
+     * @param {string} [certificateDistinguishedName.root.subject] Subject
+     * 
+     * @param {date} [certificateDistinguishedName.root.notBefore] Valid from
+     * 
+     * @param {date} [certificateDistinguishedName.root.notAfter] Valid to
+     * 
+     * @param {string} [certificateDistinguishedName.root.signatureAlgorithm]
+     * Signature Algorithm
+     * 
+     * @param {string} [certificateDistinguishedName.root.issuer] Issuer
+     * 
+     * @param {string} [certificateDistinguishedName.root.rawData] Raw certificate
+     * data
+     * 
+     * @param {string} [certificateDistinguishedName.root.id] Resource Id
+     * 
+     * @param {string} [certificateDistinguishedName.root.name] Resource Name
+     * 
+     * @param {string} [certificateDistinguishedName.root.kind] Kind of resource
+     * 
+     * @param {string} [certificateDistinguishedName.root.location] Resource
+     * Location
+     * 
+     * @param {string} [certificateDistinguishedName.root.type] Resource type
+     * 
+     * @param {object} [certificateDistinguishedName.root.tags] Resource tags
+     * 
+     * @param {string} [certificateDistinguishedName.serialNumber] Current serial
+     * number of the certificate
+     * 
+     * @param {date} [certificateDistinguishedName.lastCertificateIssuanceTime]
+     * Certificate last issuance time
+     * 
+     * @param {date} [certificateDistinguishedName.expirationTime] Certificate
+     * expiration time
+     * 
+     * @param {string} [certificateDistinguishedName.id] Resource Id
+     * 
+     * @param {string} [certificateDistinguishedName.name] Resource Name
+     * 
+     * @param {string} [certificateDistinguishedName.kind] Kind of resource
+     * 
+     * @param {string} [certificateDistinguishedName.location] Resource Location
+     * 
+     * @param {string} [certificateDistinguishedName.type] Resource type
+     * 
+     * @param {object} [certificateDistinguishedName.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdateCertificateOrder(resourceGroupName: string, name: string, certificateDistinguishedName: models.CertificateOrder, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrder>): void;
+    createOrUpdateCertificateOrder(resourceGroupName: string, name: string, certificateDistinguishedName: models.CertificateOrder, callback: ServiceCallback<models.CertificateOrder>): void;
+
+    /**
+     * @summary Delete an existing certificate order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteCertificateOrder(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    deleteCertificateOrder(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Create or update a certificate purchase order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} certificateDistinguishedName Distinguished name to be used
+     * for purchasing certificate
+     * 
+     * @param {object} [certificateDistinguishedName.certificates] State of the
+     * Key Vault secret
+     * 
+     * @param {string} [certificateDistinguishedName.distinguishedName]
+     * Certificate distinguished name
+     * 
+     * @param {string} [certificateDistinguishedName.domainVerificationToken]
+     * Domain Verification Token
+     * 
+     * @param {number} [certificateDistinguishedName.validityInYears] Duration in
+     * years (must be between 1 and 3)
+     * 
+     * @param {number} [certificateDistinguishedName.keySize] Certificate Key Size
+     * 
+     * @param {string} [certificateDistinguishedName.productType] Certificate
+     * product type. Possible values include: 'StandardDomainValidatedSsl',
+     * 'StandardDomainValidatedWildCardSsl'
+     * 
+     * @param {boolean} [certificateDistinguishedName.autoRenew] Auto renew
+     * 
+     * @param {string} [certificateDistinguishedName.provisioningState] Status of
+     * certificate order. Possible values include: 'Succeeded', 'Failed',
+     * 'Canceled', 'InProgress', 'Deleting'
+     * 
+     * @param {string} [certificateDistinguishedName.status] Current order status.
+     * Possible values include: 'Pendingissuance', 'Issued', 'Revoked',
+     * 'Canceled', 'Denied', 'Pendingrevocation', 'PendingRekey', 'Unused',
+     * 'Expired', 'NotSubmitted'
+     * 
+     * @param {object} [certificateDistinguishedName.signedCertificate] Signed
+     * certificate
+     * 
+     * @param {string} [certificateDistinguishedName.csr] Last CSR that was
+     * created for this order
+     * 
+     * @param {object} [certificateDistinguishedName.intermediate] Intermediate
+     * certificate
+     * 
+     * @param {object} [certificateDistinguishedName.root] Root certificate
+     * 
+     * @param {number} [certificateDistinguishedName.root.version] Version
+     * 
+     * @param {string} [certificateDistinguishedName.root.serialNumber] Serial
+     * Number
+     * 
+     * @param {string} [certificateDistinguishedName.root.thumbprint] Thumbprint
+     * 
+     * @param {string} [certificateDistinguishedName.root.subject] Subject
+     * 
+     * @param {date} [certificateDistinguishedName.root.notBefore] Valid from
+     * 
+     * @param {date} [certificateDistinguishedName.root.notAfter] Valid to
+     * 
+     * @param {string} [certificateDistinguishedName.root.signatureAlgorithm]
+     * Signature Algorithm
+     * 
+     * @param {string} [certificateDistinguishedName.root.issuer] Issuer
+     * 
+     * @param {string} [certificateDistinguishedName.root.rawData] Raw certificate
+     * data
+     * 
+     * @param {string} [certificateDistinguishedName.root.id] Resource Id
+     * 
+     * @param {string} [certificateDistinguishedName.root.name] Resource Name
+     * 
+     * @param {string} [certificateDistinguishedName.root.kind] Kind of resource
+     * 
+     * @param {string} [certificateDistinguishedName.root.location] Resource
+     * Location
+     * 
+     * @param {string} [certificateDistinguishedName.root.type] Resource type
+     * 
+     * @param {object} [certificateDistinguishedName.root.tags] Resource tags
+     * 
+     * @param {string} [certificateDistinguishedName.serialNumber] Current serial
+     * number of the certificate
+     * 
+     * @param {date} [certificateDistinguishedName.lastCertificateIssuanceTime]
+     * Certificate last issuance time
+     * 
+     * @param {date} [certificateDistinguishedName.expirationTime] Certificate
+     * expiration time
+     * 
+     * @param {string} [certificateDistinguishedName.id] Resource Id
+     * 
+     * @param {string} [certificateDistinguishedName.name] Resource Name
+     * 
+     * @param {string} [certificateDistinguishedName.kind] Kind of resource
+     * 
+     * @param {string} [certificateDistinguishedName.location] Resource Location
+     * 
+     * @param {string} [certificateDistinguishedName.type] Resource type
+     * 
+     * @param {object} [certificateDistinguishedName.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updateCertificateOrder(resourceGroupName: string, name: string, certificateDistinguishedName: models.CertificateOrder, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrder>): void;
+    updateCertificateOrder(resourceGroupName: string, name: string, certificateDistinguishedName: models.CertificateOrder, callback: ServiceCallback<models.CertificateOrder>): void;
+
+    /**
+     * @summary Get certificate orders in a resource group
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCertificateOrders(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCollection>): void;
+    getCertificateOrders(resourceGroupName: string, callback: ServiceCallback<models.CertificateOrderCollection>): void;
+
+    /**
+     * @summary List all certificates associated with a certificate order (only
+     * one certificate can be associated with an order at a time)
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} certificateOrderName Certificate name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCertificates(resourceGroupName: string, certificateOrderName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCertificateCollection>): void;
+    getCertificates(resourceGroupName: string, certificateOrderName: string, callback: ServiceCallback<models.CertificateOrderCertificateCollection>): void;
+
+    /**
+     * @summary Reissue an existing certificate order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} reissueCertificateOrderRequest Reissue parameters
+     * 
+     * @param {number} [reissueCertificateOrderRequest.keySize] Certificate Key
+     * Size
+     * 
+     * @param {number} [reissueCertificateOrderRequest.delayExistingRevokeInHours]
+     * Delay in hours to revoke existing certificate after the new certificate is
+     * issued
+     * 
+     * @param {string} [reissueCertificateOrderRequest.id] Resource Id
+     * 
+     * @param {string} [reissueCertificateOrderRequest.name] Resource Name
+     * 
+     * @param {string} [reissueCertificateOrderRequest.kind] Kind of resource
+     * 
+     * @param {string} [reissueCertificateOrderRequest.location] Resource Location
+     * 
+     * @param {string} [reissueCertificateOrderRequest.type] Resource type
+     * 
+     * @param {object} [reissueCertificateOrderRequest.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    reissueCertificateOrder(resourceGroupName: string, name: string, reissueCertificateOrderRequest: models.ReissueCertificateOrderRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    reissueCertificateOrder(resourceGroupName: string, name: string, reissueCertificateOrderRequest: models.ReissueCertificateOrderRequest, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Renew an existing certificate order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate name
+     * 
+     * @param {object} renewCertificateOrderRequest Renew parameters
+     * 
+     * @param {number} [renewCertificateOrderRequest.keySize] Certificate Key Size
+     * 
+     * @param {string} [renewCertificateOrderRequest.id] Resource Id
+     * 
+     * @param {string} [renewCertificateOrderRequest.name] Resource Name
+     * 
+     * @param {string} [renewCertificateOrderRequest.kind] Kind of resource
+     * 
+     * @param {string} [renewCertificateOrderRequest.location] Resource Location
+     * 
+     * @param {string} [renewCertificateOrderRequest.type] Resource type
+     * 
+     * @param {object} [renewCertificateOrderRequest.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    renewCertificateOrder(resourceGroupName: string, name: string, renewCertificateOrderRequest: models.RenewCertificateOrderRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    renewCertificateOrder(resourceGroupName: string, name: string, renewCertificateOrderRequest: models.RenewCertificateOrderRequest, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Retrieve the list of certificate actions
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate order name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    retrieveCertificateActions(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderAction[]>): void;
+    retrieveCertificateActions(resourceGroupName: string, name: string, callback: ServiceCallback<models.CertificateOrderAction[]>): void;
+
+    /**
+     * @summary Retrive email history
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate order name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    retrieveCertificateEmailHistory(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateEmail[]>): void;
+    retrieveCertificateEmailHistory(resourceGroupName: string, name: string, callback: ServiceCallback<models.CertificateEmail[]>): void;
+
+    /**
+     * @summary Resend certificate email
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate order name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    resendCertificateEmail(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    resendCertificateEmail(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Verify domain ownership for this certificate order
+     *
+     * @param {string} resourceGroupName Azure resource group name
+     * 
+     * @param {string} name Certificate order name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    verifyDomainOwnership(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    verifyDomainOwnership(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+}
+
+/**
+ * @class
  * Certificates
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the WebSiteManagementClient.
@@ -581,6 +1172,9 @@ export interface Domains {
      * @param {date} [domain.consent.agreedAt] Timestamp when the agreements were
      * accepted
      * 
+     * @param {array} [domain.domainNotRenewableReasons] Reasons why domain is not
+     * renewable
+     * 
      * @param {string} [domain.id] Resource Id
      * 
      * @param {string} [domain.name] Resource Name
@@ -715,6 +1309,9 @@ export interface Domains {
      * 
      * @param {date} [domain.consent.agreedAt] Timestamp when the agreements were
      * accepted
+     * 
+     * @param {array} [domain.domainNotRenewableReasons] Reasons why domain is not
+     * renewable
      * 
      * @param {string} [domain.id] Resource Id
      * 
@@ -995,6 +1592,134 @@ export interface Global {
 
 /**
  * @class
+ * GlobalCertificateOrder
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface GlobalCertificateOrder {
+
+    /**
+     * @summary Lists all domains in a subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllCertificateOrders(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCollection>): void;
+    getAllCertificateOrders(callback: ServiceCallback<models.CertificateOrderCollection>): void;
+
+    /**
+     * @summary Validate certificate purchase information
+     *
+     * @param {object} certificateOrder Certificate order
+     * 
+     * @param {object} [certificateOrder.certificates] State of the Key Vault
+     * secret
+     * 
+     * @param {string} [certificateOrder.distinguishedName] Certificate
+     * distinguished name
+     * 
+     * @param {string} [certificateOrder.domainVerificationToken] Domain
+     * Verification Token
+     * 
+     * @param {number} [certificateOrder.validityInYears] Duration in years (must
+     * be between 1 and 3)
+     * 
+     * @param {number} [certificateOrder.keySize] Certificate Key Size
+     * 
+     * @param {string} [certificateOrder.productType] Certificate product type.
+     * Possible values include: 'StandardDomainValidatedSsl',
+     * 'StandardDomainValidatedWildCardSsl'
+     * 
+     * @param {boolean} [certificateOrder.autoRenew] Auto renew
+     * 
+     * @param {string} [certificateOrder.provisioningState] Status of certificate
+     * order. Possible values include: 'Succeeded', 'Failed', 'Canceled',
+     * 'InProgress', 'Deleting'
+     * 
+     * @param {string} [certificateOrder.status] Current order status. Possible
+     * values include: 'Pendingissuance', 'Issued', 'Revoked', 'Canceled',
+     * 'Denied', 'Pendingrevocation', 'PendingRekey', 'Unused', 'Expired',
+     * 'NotSubmitted'
+     * 
+     * @param {object} [certificateOrder.signedCertificate] Signed certificate
+     * 
+     * @param {string} [certificateOrder.csr] Last CSR that was created for this
+     * order
+     * 
+     * @param {object} [certificateOrder.intermediate] Intermediate certificate
+     * 
+     * @param {object} [certificateOrder.root] Root certificate
+     * 
+     * @param {number} [certificateOrder.root.version] Version
+     * 
+     * @param {string} [certificateOrder.root.serialNumber] Serial Number
+     * 
+     * @param {string} [certificateOrder.root.thumbprint] Thumbprint
+     * 
+     * @param {string} [certificateOrder.root.subject] Subject
+     * 
+     * @param {date} [certificateOrder.root.notBefore] Valid from
+     * 
+     * @param {date} [certificateOrder.root.notAfter] Valid to
+     * 
+     * @param {string} [certificateOrder.root.signatureAlgorithm] Signature
+     * Algorithm
+     * 
+     * @param {string} [certificateOrder.root.issuer] Issuer
+     * 
+     * @param {string} [certificateOrder.root.rawData] Raw certificate data
+     * 
+     * @param {string} [certificateOrder.root.id] Resource Id
+     * 
+     * @param {string} [certificateOrder.root.name] Resource Name
+     * 
+     * @param {string} [certificateOrder.root.kind] Kind of resource
+     * 
+     * @param {string} [certificateOrder.root.location] Resource Location
+     * 
+     * @param {string} [certificateOrder.root.type] Resource type
+     * 
+     * @param {object} [certificateOrder.root.tags] Resource tags
+     * 
+     * @param {string} [certificateOrder.serialNumber] Current serial number of
+     * the certificate
+     * 
+     * @param {date} [certificateOrder.lastCertificateIssuanceTime] Certificate
+     * last issuance time
+     * 
+     * @param {date} [certificateOrder.expirationTime] Certificate expiration time
+     * 
+     * @param {string} [certificateOrder.id] Resource Id
+     * 
+     * @param {string} [certificateOrder.name] Resource Name
+     * 
+     * @param {string} [certificateOrder.kind] Kind of resource
+     * 
+     * @param {string} [certificateOrder.location] Resource Location
+     * 
+     * @param {string} [certificateOrder.type] Resource type
+     * 
+     * @param {object} [certificateOrder.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    validateCertificatePurchaseInformation(certificateOrder: models.CertificateOrder, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+    validateCertificatePurchaseInformation(certificateOrder: models.CertificateOrder, callback: ServiceCallback<any>): void;
+}
+
+/**
+ * @class
  * GlobalDomainRegistration
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the WebSiteManagementClient.
@@ -1133,6 +1858,9 @@ export interface GlobalDomainRegistration {
      * 
      * @param {date} [domainRegistrationInput.consent.agreedAt] Timestamp when the
      * agreements were accepted
+     * 
+     * @param {array} [domainRegistrationInput.domainNotRenewableReasons] Reasons
+     * why domain is not renewable
      * 
      * @param {string} [domainRegistrationInput.id] Resource Id
      * 
@@ -8608,6 +9336,11 @@ export interface Sites {
      * include: 'AzureActiveDirectory', 'Facebook', 'Google', 'MicrosoftAccount',
      * 'Twitter'
      * 
+     * @param {number} [siteAuthSettings.tokenRefreshExtensionHours] Gets or sets
+     * the number of hours after session token expiration that a session token
+     * can be used to
+     * call the token refresh API. The default is 72 hours.
+     * 
      * @param {string} [siteAuthSettings.clientId] Gets or sets the Client ID of
      * this relying party application, known as the client_id.
      * This setting is required for enabling OpenID Connection
@@ -8782,6 +9515,11 @@ export interface Sites {
      * action is set to "RedirectToLoginPage". Possible values
      * include: 'AzureActiveDirectory', 'Facebook', 'Google', 'MicrosoftAccount',
      * 'Twitter'
+     * 
+     * @param {number} [siteAuthSettings.tokenRefreshExtensionHours] Gets or sets
+     * the number of hours after session token expiration that a session token
+     * can be used to
+     * call the token refresh API. The default is 72 hours.
      * 
      * @param {string} [siteAuthSettings.clientId] Gets or sets the Client ID of
      * this relying party application, known as the client_id.
