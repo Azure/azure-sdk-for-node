@@ -2,50 +2,50 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .delete('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup3647/providers/Microsoft.Cdn/profiles/cdnTestProfile2665/endpoints/cdnTestEndpoint6514/origins/newname?api-version=2015-06-01')
+nock('http://api-dogfood.resources.windows-int.net:443')
+  .delete('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup3866/providers/Microsoft.Cdn/profiles/cdnTestProfile4205/endpoints/cdnTestEndpoint4770/origins/newname?api-version=2016-04-02')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The parent endpoint needs at least one active origin, so we couldn't delete this one.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '154',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '45822811-9317-4efe-907c-2faef2866a70',
-  'x-ms-client-request-id': '7f7a244c-c6ed-4c89-8208-64aa5513013d',
+  'x-ms-request-id': '5e25de31-ff2d-45e0-bcff-96fef5f733a3',
+  'x-ms-client-request-id': '14eb03f8-5012-47d8-9646-6dcbc7aa43d8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '34c90ac2-b7cb-43b3-8b7a-1c9af1724e00',
-  'x-ms-routing-request-id': 'WESTUS:20160301T223014Z:34c90ac2-b7cb-43b3-8b7a-1c9af1724e00',
-  date: 'Tue, 01 Mar 2016 22:30:13 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1162',
+  'x-ms-correlation-request-id': 'ba6c531e-9133-4249-b441-4ca392bae3b9',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T231004Z:ba6c531e-9133-4249-b441-4ca392bae3b9',
+  date: 'Mon, 25 Apr 2016 23:10:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
-  .delete('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup3647/providers/Microsoft.Cdn/profiles/cdnTestProfile2665/endpoints/cdnTestEndpoint6514/origins/newname?api-version=2015-06-01')
+nock('https://api-dogfood.resources.windows-int.net:443')
+  .delete('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup3866/providers/Microsoft.Cdn/profiles/cdnTestProfile4205/endpoints/cdnTestEndpoint4770/origins/newname?api-version=2016-04-02')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The parent endpoint needs at least one active origin, so we couldn't delete this one.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '154',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '45822811-9317-4efe-907c-2faef2866a70',
-  'x-ms-client-request-id': '7f7a244c-c6ed-4c89-8208-64aa5513013d',
+  'x-ms-request-id': '5e25de31-ff2d-45e0-bcff-96fef5f733a3',
+  'x-ms-client-request-id': '14eb03f8-5012-47d8-9646-6dcbc7aa43d8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '34c90ac2-b7cb-43b3-8b7a-1c9af1724e00',
-  'x-ms-routing-request-id': 'WESTUS:20160301T223014Z:34c90ac2-b7cb-43b3-8b7a-1c9af1724e00',
-  date: 'Tue, 01 Mar 2016 22:30:13 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1162',
+  'x-ms-correlation-request-id': 'ba6c531e-9133-4249-b441-4ca392bae3b9',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T231004Z:ba6c531e-9133-4249-b441-4ca392bae3b9',
+  date: 'Mon, 25 Apr 2016 23:10:04 GMT',
   connection: 'close' });
  return result; }]];

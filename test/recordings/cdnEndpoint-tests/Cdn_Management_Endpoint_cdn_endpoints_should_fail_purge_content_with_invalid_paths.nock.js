@@ -2,52 +2,52 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
+nock('http://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/purge?api-version=2015-06-01', '*')
+.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup152/providers/Microsoft.Cdn/profiles/cdnTestProfile3218/endpoints/cdnTestEndpoint1999/purge?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"invalidPath!\\\". ContentPath for purge action must be a relative path: either for a single resource \\\"/path/pic.jpg\\\" or a wild card \\\"/path/*\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '235',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '1d3a4c2a-d739-44a7-a589-97e883f3bce4',
-  'x-ms-client-request-id': 'b7dcf65e-d76a-456d-80da-e358c2e23ebe',
+  'x-ms-request-id': '317ccdd1-323e-4365-a3e3-175701af6dd5',
+  'x-ms-client-request-id': 'f5cf006f-5f48-49b3-a983-100daf4b0f89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': 'f9b1bd30-de41-4e7c-8fd7-e36bb6894ebf',
-  'x-ms-routing-request-id': 'WESTUS:20160301T221250Z:f9b1bd30-de41-4e7c-8fd7-e36bb6894ebf',
-  date: 'Tue, 01 Mar 2016 22:12:50 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1174',
+  'x-ms-correlation-request-id': '1a5a80a6-fd87-4fd8-9422-01615cf0fc3c',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T230332Z:1a5a80a6-fd87-4fd8-9422-01615cf0fc3c',
+  date: 'Mon, 25 Apr 2016 23:03:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
+nock('https://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/purge?api-version=2015-06-01', '*')
+.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup152/providers/Microsoft.Cdn/profiles/cdnTestProfile3218/endpoints/cdnTestEndpoint1999/purge?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"invalidPath!\\\". ContentPath for purge action must be a relative path: either for a single resource \\\"/path/pic.jpg\\\" or a wild card \\\"/path/*\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '235',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '1d3a4c2a-d739-44a7-a589-97e883f3bce4',
-  'x-ms-client-request-id': 'b7dcf65e-d76a-456d-80da-e358c2e23ebe',
+  'x-ms-request-id': '317ccdd1-323e-4365-a3e3-175701af6dd5',
+  'x-ms-client-request-id': 'f5cf006f-5f48-49b3-a983-100daf4b0f89',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': 'f9b1bd30-de41-4e7c-8fd7-e36bb6894ebf',
-  'x-ms-routing-request-id': 'WESTUS:20160301T221250Z:f9b1bd30-de41-4e7c-8fd7-e36bb6894ebf',
-  date: 'Tue, 01 Mar 2016 22:12:50 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1174',
+  'x-ms-correlation-request-id': '1a5a80a6-fd87-4fd8-9422-01615cf0fc3c',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T230332Z:1a5a80a6-fd87-4fd8-9422-01615cf0fc3c',
+  date: 'Mon, 25 Apr 2016 23:03:31 GMT',
   connection: 'close' });
  return result; }]];

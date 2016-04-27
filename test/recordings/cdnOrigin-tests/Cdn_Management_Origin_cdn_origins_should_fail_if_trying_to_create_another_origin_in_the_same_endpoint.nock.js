@@ -2,52 +2,52 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
+nock('http://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup3647/providers/Microsoft.Cdn/profiles/cdnTestProfile2665/endpoints/cdnTestEndpoint6514/origins/anotherName?api-version=2015-06-01', '*')
+.put('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup3866/providers/Microsoft.Cdn/profiles/cdnTestProfile4205/endpoints/cdnTestEndpoint4770/origins/anotherName?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The number of profiles or endpoints created exceeds quota. Please contact support to increase quota.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '169',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'a63e87dd-483f-4436-80e9-11049a8fd583',
-  'x-ms-client-request-id': 'fccc976e-4be7-4a51-a335-83ba2d6e5df3',
+  'x-ms-request-id': '55413c59-d4e6-4c94-8764-65b695b62548',
+  'x-ms-client-request-id': 'edf5e74a-edc9-4ad5-8b78-e753d547f50a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': 'd9f6efa4-1f90-4e45-b7ba-19ad150c066f',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T222731Z:d9f6efa4-1f90-4e45-b7ba-19ad150c066f',
-  date: 'Tue, 01 Mar 2016 22:27:30 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1162',
+  'x-ms-correlation-request-id': '51413bfd-6710-434a-884a-fc5fc5702bbc',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T230854Z:51413bfd-6710-434a-884a-fc5fc5702bbc',
+  date: 'Mon, 25 Apr 2016 23:08:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
+nock('https://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup3647/providers/Microsoft.Cdn/profiles/cdnTestProfile2665/endpoints/cdnTestEndpoint6514/origins/anotherName?api-version=2015-06-01', '*')
+.put('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup3866/providers/Microsoft.Cdn/profiles/cdnTestProfile4205/endpoints/cdnTestEndpoint4770/origins/anotherName?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The number of profiles or endpoints created exceeds quota. Please contact support to increase quota.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '169',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'a63e87dd-483f-4436-80e9-11049a8fd583',
-  'x-ms-client-request-id': 'fccc976e-4be7-4a51-a335-83ba2d6e5df3',
+  'x-ms-request-id': '55413c59-d4e6-4c94-8764-65b695b62548',
+  'x-ms-client-request-id': 'edf5e74a-edc9-4ad5-8b78-e753d547f50a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': 'd9f6efa4-1f90-4e45-b7ba-19ad150c066f',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T222731Z:d9f6efa4-1f90-4e45-b7ba-19ad150c066f',
-  date: 'Tue, 01 Mar 2016 22:27:30 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1162',
+  'x-ms-correlation-request-id': '51413bfd-6710-434a-884a-fc5fc5702bbc',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T230854Z:51413bfd-6710-434a-884a-fc5fc5702bbc',
+  date: 'Mon, 25 Apr 2016 23:08:54 GMT',
   connection: 'close' });
  return result; }]];

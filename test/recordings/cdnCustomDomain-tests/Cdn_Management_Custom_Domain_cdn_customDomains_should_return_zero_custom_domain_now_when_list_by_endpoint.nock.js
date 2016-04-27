@@ -2,50 +2,50 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/customDomains?api-version=2015-06-01')
+nock('http://api-dogfood.resources.windows-int.net:443')
+  .get('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup7583/providers/Microsoft.Cdn/profiles/cdnTestProfile7066/endpoints/testEndpoint-4436d201-109c-4944-a0ad-0322de415c38/customDomains?api-version=2016-04-02')
   .reply(200, "{\r\n  \"value\":[\r\n    \r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '28',
   'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': 'b1239f3f-ee14-455a-86fc-694e3280dde6',
-  'x-ms-client-request-id': '2b820993-4f32-46da-94c9-347f297980a9',
+  'x-ms-request-id': 'cc399382-4c48-4aba-a6a0-3656af6d305b',
+  'x-ms-client-request-id': '1668b6ff-8a6e-4365-9352-fb4b0617bc4b',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-correlation-request-id': '5fbec894-905c-4439-ba09-4dffce175735',
-  'x-ms-routing-request-id': 'CENTRALUS:20160302T225012Z:5fbec894-905c-4439-ba09-4dffce175735',
-  date: 'Wed, 02 Mar 2016 22:50:12 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': 'c8d355e7-0066-47c8-887a-7f43eeff19b0',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T233038Z:c8d355e7-0066-47c8-887a-7f43eeff19b0',
+  date: 'Mon, 25 Apr 2016 23:30:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/customDomains?api-version=2015-06-01')
+nock('https://api-dogfood.resources.windows-int.net:443')
+  .get('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup7583/providers/Microsoft.Cdn/profiles/cdnTestProfile7066/endpoints/testEndpoint-4436d201-109c-4944-a0ad-0322de415c38/customDomains?api-version=2016-04-02')
   .reply(200, "{\r\n  \"value\":[\r\n    \r\n  ]\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '28',
   'content-type': 'application/json; odata.metadata=minimal; odata.streaming=true',
   expires: '-1',
-  'x-ms-request-id': 'b1239f3f-ee14-455a-86fc-694e3280dde6',
-  'x-ms-client-request-id': '2b820993-4f32-46da-94c9-347f297980a9',
+  'x-ms-request-id': 'cc399382-4c48-4aba-a6a0-3656af6d305b',
+  'x-ms-client-request-id': '1668b6ff-8a6e-4365-9352-fb4b0617bc4b',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14998',
-  'x-ms-correlation-request-id': '5fbec894-905c-4439-ba09-4dffce175735',
-  'x-ms-routing-request-id': 'CENTRALUS:20160302T225012Z:5fbec894-905c-4439-ba09-4dffce175735',
-  date: 'Wed, 02 Mar 2016 22:50:12 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': 'c8d355e7-0066-47c8-887a-7f43eeff19b0',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T233038Z:c8d355e7-0066-47c8-887a-7f43eeff19b0',
+  date: 'Mon, 25 Apr 2016 23:30:37 GMT',
   connection: 'close' });
  return result; }]];

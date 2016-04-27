@@ -46,7 +46,7 @@ describe('Cdn Management Operation', function() {
   before(function(done) {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function() {
-      client = new StorageManagementClient(suite.credentials, suite.subscriptionId);
+      client = new StorageManagementClient(suite.credentials, suite.subscriptionId, 'https://api-dogfood.resources.windows-int.net');
       if (suite.isPlayback) {
         client.longRunningOperationRetryTimeout = 0;
       }

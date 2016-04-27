@@ -53,14 +53,14 @@ describe('Cdn Management Custom Domain', function() {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function() {
       groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-      client = new StorageManagementClient(suite.credentials, suite.subscriptionId);
+      client = new StorageManagementClient(suite.credentials, suite.subscriptionId, 'https://api-dogfood.resources.windows-int.net');
       defaultLocation = process.env['AZURE_TEST_LOCATION'];
       profileName = suite.generateId(profilePrefix, createdProfiles, suite.isMocked);
-      endpointName = 'testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b';
+      endpointName = 'testEndpoint-4436d201-109c-4944-a0ad-0322de415c38';
       customDomainName1 = suite.generateId(customDomainPrefix, createdCustomDomains, suite.isMocked);
       customDomainName2 = suite.generateId(customDomainPrefix, createdCustomDomains, suite.isMocked);
-      customDomainHostName1 = 'sdk-1-1a5f6171-364f-49c5-9e09-27d07dac882b.azureedge-test.net';
-      customDomainHostName2 = 'sdk-2-1a5f6171-364f-49c5-9e09-27d07dac882b.azureedge-test.net';
+      customDomainHostName1 = 'sdk-1-4436d201-109c-4944-a0ad-0322de415c38.azureedge-test.net';
+      customDomainHostName2 = 'sdk-2-4436d201-109c-4944-a0ad-0322de415c38.azureedge-test.net';
       standardCreateParameters = {
         location: 'West US',
         tags: {
@@ -68,7 +68,7 @@ describe('Cdn Management Custom Domain', function() {
           tag2: 'val2'
         },
         sku: {
-          name: 'Standard'
+          name: 'Standard_Verizon'
         }
       };
       validEndpointProperties = {

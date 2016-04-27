@@ -2,52 +2,52 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
+nock('http://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/customDomains/cdnTestCustomDomain7792?api-version=2015-06-01', '*')
+.patch('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup7583/providers/Microsoft.Cdn/profiles/cdnTestProfile7066/endpoints/testEndpoint-4436d201-109c-4944-a0ad-0322de415c38/customDomains/cdnTestCustomDomain5539?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Update is not allowed for custom domain.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '109',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '777b41aa-0218-47e8-b37a-2600b5b695dd',
-  'x-ms-client-request-id': '484a5e4f-6fdf-42d9-9495-dc3ef5e8ddb3',
+  'x-ms-request-id': '46b9a24c-997e-4278-bcbd-e2dd8771bfa0',
+  'x-ms-client-request-id': '4fed0c62-74ac-4de4-b74f-dd47151d8538',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '240357c0-08fd-49ba-bca3-a7a02002e26a',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224825Z:240357c0-08fd-49ba-bca3-a7a02002e26a',
-  date: 'Wed, 02 Mar 2016 22:48:25 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': '9c05006d-2756-4ab2-8605-390b1d3b387b',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T232853Z:9c05006d-2756-4ab2-8605-390b1d3b387b',
+  date: 'Mon, 25 Apr 2016 23:28:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
+nock('https://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/customDomains/cdnTestCustomDomain7792?api-version=2015-06-01', '*')
+.patch('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup7583/providers/Microsoft.Cdn/profiles/cdnTestProfile7066/endpoints/testEndpoint-4436d201-109c-4944-a0ad-0322de415c38/customDomains/cdnTestCustomDomain5539?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Update is not allowed for custom domain.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '109',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '777b41aa-0218-47e8-b37a-2600b5b695dd',
-  'x-ms-client-request-id': '484a5e4f-6fdf-42d9-9495-dc3ef5e8ddb3',
+  'x-ms-request-id': '46b9a24c-997e-4278-bcbd-e2dd8771bfa0',
+  'x-ms-client-request-id': '4fed0c62-74ac-4de4-b74f-dd47151d8538',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '240357c0-08fd-49ba-bca3-a7a02002e26a',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224825Z:240357c0-08fd-49ba-bca3-a7a02002e26a',
-  date: 'Wed, 02 Mar 2016 22:48:25 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': '9c05006d-2756-4ab2-8605-390b1d3b387b',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T232853Z:9c05006d-2756-4ab2-8605-390b1d3b387b',
+  date: 'Mon, 25 Apr 2016 23:28:53 GMT',
   connection: 'close' });
  return result; }]];
