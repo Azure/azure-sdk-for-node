@@ -162,7 +162,9 @@ export interface JobStateAuditRecord {
  * @member {string} [resourcePath] Gets or sets the path to the resource.
  * 
  * @member {string} [type] Gets or sets the job resource type. Possible values
- * include: 'VertexResource', 'StatisticsResource'
+ * include: 'VertexResource', 'JobManagerResource', 'StatisticsResource',
+ * 'VertexResourceInUserFolder', 'JobManagerResourceInUserFolder',
+ * 'StatisticsResourceInUserFolder'
  * 
  */
 export interface JobResource {
