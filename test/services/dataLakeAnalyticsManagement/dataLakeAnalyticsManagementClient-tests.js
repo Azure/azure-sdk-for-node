@@ -182,7 +182,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
   });
 
   after(function (done) {
-    // this is required as a work around to ensure that the datalake analytics account does not get left behind and stuck in the "deleting" state if its storage gets deleted out from under it.
+    // this is required as a work around to ensure that the datalake analytics account does not get left behind and stuck in the "deleting" state if its storage gets deleted out from under it
     if(!suite.isPlayback) {
       setTimeout(function () {
         accountClient.account.deleteMethod(testResourceGroup, jobAndCatalogAccountName, function () {
@@ -421,7 +421,21 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             response.statusCode.should.equal(200);
             result.result.should.be.equal('Succeeded');
             // result.properties.statistics.length.should.be.above(0); // Statistics are not currently included in catalog CRUD operations. Will uncomment this when that changes.
-            done();
+            // now build a job and verify the diagnostics
+            job.properties.script = 'DROP DATABASE IF EXIST FOO; CREATE DATABASE FOO;';
+            jobClient.job.build(jobAndCatalogAccountName, job, function (err, result, request, response) {
+              should.not.exist(err);
+              should.exist(result);
+              response.statusCode.should.equal(200);
+              result.properties.diagnostics.length.should.be.equal(1);
+              result.properties.diagnostics[0].severity.should.be.equal('Error');
+              result.properties.diagnostics[0].columnNumber.should.be.equal(18);
+              result.properties.diagnostics[0].end.should.be.equal(22);
+              result.properties.diagnostics[0].start.should.be.equal(17);
+              result.properties.diagnostics[0].lineNumber.should.be.equal(1);
+              result.properties.diagnostics[0].message.indexOf('E_CSC_USER_SYNTAXERROR').should.not.be.equal(-1);
+              done();
+            });
           });
         });
       });
@@ -587,6 +601,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       
       var setSecretPwd = 'clitestsetsecretpwd';
       var databaseName = 'master';
+      var secondSecretName = secretName + 'dup';
       var scriptToRun = 'USE ' + databaseName + '; CREATE CREDENTIAL ' + credName + ' WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "' + secretName + '";';
       // Get the default database (master) and all databases.
       // add a database, table, tvf, view and procedure
@@ -610,49 +625,71 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           should.not.exist(err);
           // should.exist(result);
           response.statusCode.should.equal(200);
-          // Create a credential that uses the secret
-          jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
+          // Create another secret
+          catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function (err, result, request, response) {
             should.not.exist(err);
-            should.exist(result);
             response.statusCode.should.equal(200);
-            result.jobId.should.not.be.empty;
-            var jobId = result.jobId;
-            result.name.should.be.equal(jobName);
-            listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
-              jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
+            // attempt to create the secret again (should throw)
+            catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function (err, result, request, response) {
+              should.exist(err);
+              err.statusCode.should.equal(409);
+              // Create a credential that uses the secret
+              jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
-                result.result.should.be.equal('Succeeded');
-                // list all credentials in the db and confirm that there is one entry.
-                catalogClient.catalog.listCredentials(jobAndCatalogAccountName, databaseName, function (err, result, request, response) {
-                  should.not.exist(err);
-                  should.exist(result);
-                  response.statusCode.should.equal(200);
-                  result.length.should.be.equal(1);
-                  // now get the specific credential we created
-                  catalogClient.catalog.getCredential(jobAndCatalogAccountName, databaseName, credName, function (err, result, request, response) {
+                result.jobId.should.not.be.empty;
+                var jobId = result.jobId;
+                result.name.should.be.equal(jobName);
+                listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
+                  jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
-                    result.name.should.be.equal(credName);
-                    // get the secret
-                    catalogClient.catalog.getSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                    result.result.should.be.equal('Succeeded');
+                    // list all credentials in the db and confirm that there is one entry.
+                    catalogClient.catalog.listCredentials(jobAndCatalogAccountName, databaseName, function (err, result, request, response) {
                       should.not.exist(err);
                       should.exist(result);
                       response.statusCode.should.equal(200);
-                      result.creationTime.should.not.be.empty;
-                      // delete the secret
-                      catalogClient.catalog.deleteSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                      result.length.should.be.equal(1);
+                      // now get the specific credential we created
+                      catalogClient.catalog.getCredential(jobAndCatalogAccountName, databaseName, credName, function (err, result, request, response) {
                         should.not.exist(err);
-                        should.not.exist(result);
+                        should.exist(result);
                         response.statusCode.should.equal(200);
-                        // try to set the secret again (should fail)
-                        catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function(err, result, request, response) {
-                          should.exist(err);
-                          should.not.exist(result);
-                          err.statusCode.should.equal(404);
-                          done();
+                        result.name.should.be.equal(credName);
+                        // get the secret
+                        catalogClient.catalog.getSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                          should.not.exist(err);
+                          should.exist(result);
+                          response.statusCode.should.equal(200);
+                          result.creationTime.should.not.be.empty;
+                          // delete the secret
+                          catalogClient.catalog.deleteSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                            should.not.exist(err);
+                            should.not.exist(result);
+                            response.statusCode.should.equal(200);
+                            // try to set the secret again (should fail)
+                            catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function(err, result, request, response) {
+                              should.exist(err);
+                              should.not.exist(result);
+                              err.statusCode.should.equal(404);
+                              // delete all secrets
+                              catalogClient.catalog.deleteAllSecrets(jobAndCatalogAccountName, databaseName, function(err, result, request, response) {
+                                should.not.exist(err);
+                                should.not.exist(result);
+                                response.statusCode.should.equal(200);
+                                // try to set the second secret again (should fail)
+                                catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function(err, result, request, response) {
+                                  should.exist(err);
+                                  should.not.exist(result);
+                                  err.statusCode.should.equal(404);
+                                  done();
+                                });
+                              });
+                            });
+                          });
                         });
                       });
                     });
