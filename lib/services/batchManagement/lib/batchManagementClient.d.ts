@@ -19,7 +19,7 @@ declare class BatchManagementClient {
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
      *
-     * @param {string} subscriptionId - Gets subscription credentials which uniquely identify a Microsoft Azure subscription. The subscription id forms part of the URI for every service call.
+     * @param {string} subscriptionId - A unique identifier of a Microsoft Azure subscription. The subscription id forms part of the URI for every service call.
      *
      * @param {string} [baseUri] - The base URI of the service.
      *

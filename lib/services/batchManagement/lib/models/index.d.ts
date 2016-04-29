@@ -25,21 +25,6 @@ export interface AutoStorageBaseProperties {
 
 /**
  * @class
- * Initializes a new instance of the AccountBaseProperties class.
- * @constructor
- * The properties of a Batch account.
- * @member {object} [autoStorage] The properties related to auto storage.
- * 
- * @member {string} [autoStorage.storageAccountId] The resource id of the
- * storage account to be used for auto storage.
- * 
- */
-export interface AccountBaseProperties {
-    autoStorage?: AutoStorageBaseProperties;
-}
-
-/**
- * @class
  * Initializes a new instance of the BatchAccountCreateParameters class.
  * @constructor
  * Parameters supplied to the Create operation.
@@ -68,7 +53,7 @@ export interface BatchAccountCreateParameters {
  * be used for auto storage.
  * 
  * @member {date} lastKeySync The UTC time at which storage keys were last
- * synced to the Batch account.
+ * synchronized with the Batch account.
  * 
  */
 export interface AutoStorageProperties {
@@ -80,15 +65,15 @@ export interface AutoStorageProperties {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * @member {string} [id] Resource Id
+ * @member {string} [id] The id of the resource
  * 
- * @member {string} [name] Resource name
+ * @member {string} [name] The name of the resource
  * 
- * @member {string} [type] Resource type
+ * @member {string} [type] The type of the resource
  * 
- * @member {string} [location] Resource location
+ * @member {string} [location] The location of the resource
  * 
- * @member {object} [tags] Resource tags
+ * @member {object} [tags] The tags of the resource
  * 
  */
 export interface Resource extends BaseResource {
@@ -103,9 +88,9 @@ export interface Resource extends BaseResource {
  * @class
  * Initializes a new instance of the AccountResource class.
  * @constructor
- * The Batch account information.
+ * Contains information about an Azure Batch account.
  * @member {string} [accountEndpoint] The endpoint used by this account to
- * obtain Batch services.
+ * interact with the Batch services.
  * 
  * @member {string} [provisioningState] The provisioned state of the resource.
  * Possible values include: 'Invalid', 'Creating', 'Deleting', 'Succeeded',
@@ -118,13 +103,13 @@ export interface Resource extends BaseResource {
  * storage account to be used for auto storage.
  * 
  * @member {date} [autoStorage.lastKeySync] The UTC time at which storage keys
- * were last synced to the Batch account.
+ * were last synchronized with the Batch account.
  * 
- * @member {number} [coreQuota] The core quota for this Batch account.
+ * @member {number} coreQuota The core quota for this Batch account.
  * 
- * @member {number} [poolQuota] The pool quota for this Batch account.
+ * @member {number} poolQuota The pool quota for this Batch account.
  * 
- * @member {number} [activeJobAndJobScheduleQuota] The active job and job
+ * @member {number} activeJobAndJobScheduleQuota The active job and job
  * schedule quota for this Batch account.
  * 
  */
@@ -132,9 +117,9 @@ export interface AccountResource extends Resource {
     accountEndpoint?: string;
     provisioningState?: string;
     autoStorage?: AutoStorageProperties;
-    coreQuota?: number;
-    poolQuota?: number;
-    activeJobAndJobScheduleQuota?: number;
+    coreQuota: number;
+    poolQuota: number;
+    activeJobAndJobScheduleQuota: number;
 }
 
 /**
@@ -144,18 +129,15 @@ export interface AccountResource extends Resource {
  * Parameters supplied to the Update operation.
  * @member {object} [tags] The user specified tags associated with the account.
  * 
- * @member {object} [properties] The properties of the account.
+ * @member {object} [autoStorage] The properties related to auto storage.
  * 
- * @member {object} [properties.autoStorage] The properties related to auto
- * storage.
- * 
- * @member {string} [properties.autoStorage.storageAccountId] The resource id
- * of the storage account to be used for auto storage.
+ * @member {string} [autoStorage.storageAccountId] The resource id of the
+ * storage account to be used for auto storage.
  * 
  */
 export interface BatchAccountUpdateParameters {
     tags?: { [propertyName: string]: string };
-    properties?: AccountBaseProperties;
+    autoStorage?: AutoStorageBaseProperties;
 }
 
 /**
@@ -262,7 +244,8 @@ export interface AddApplicationPackageResult {
  * @member {string} [state] The current state of the application package.
  * Possible values include: 'pending', 'active', 'unmapped'
  * 
- * @member {string} [format] The format of the application package, if known.
+ * @member {string} [format] The format of the application package, if the
+ * package has been activated.
  * 
  * @member {date} [lastActivationTime] The time at which the package was last
  * activated, if the package is active.
@@ -290,8 +273,8 @@ export interface ApplicationPackage {
  * @member {boolean} [allowUpdates] A value indicating whether packages within
  * the application may be overwritten using the same version string.
  * 
- * @member {string} [defaultVersion] Gets or sets which package to use if a
- * client requests the application but does not specify a version.
+ * @member {string} [defaultVersion] The package to use if a client requests
+ * the application but does not specify a version.
  * 
  */
 export interface Application {
@@ -314,7 +297,8 @@ export interface Application {
  * @member {string} [state] The current state of the application package.
  * Possible values include: 'pending', 'active', 'unmapped'
  * 
- * @member {string} [format] The format of the application package, if known.
+ * @member {string} [format] The format of the application package, if the
+ * package is active.
  * 
  * @member {string} [storageUrl] The storage URL at which the application
  * package is stored.
@@ -344,8 +328,8 @@ export interface GetApplicationPackageResult {
  * @member {boolean} [allowUpdates] A value indicating whether packages within
  * the application may be overwritten using the same version string.
  * 
- * @member {string} [defaultVersion] Gets or sets which package to use if a
- * client requests the application but does not specify a version.
+ * @member {string} [defaultVersion] The package to use if a client requests
+ * the application but does not specify a version.
  * 
  * @member {string} [displayName] The display name for the application.
  * 
@@ -361,8 +345,8 @@ export interface UpdateApplicationParameters {
  * Initializes a new instance of the SubscriptionQuotasGetResult class.
  * @constructor
  * Values returned by the Get Subscription Quotas operation.
- * @member {number} [accountQuota] The number of accounts the subscription is
- * allowed to create in the Batch Service at the specified region.
+ * @member {number} [accountQuota] The number of Batch accounts that may be
+ * created under the subscription in the specified region.
  * 
  */
 export interface SubscriptionQuotasGetResult {
