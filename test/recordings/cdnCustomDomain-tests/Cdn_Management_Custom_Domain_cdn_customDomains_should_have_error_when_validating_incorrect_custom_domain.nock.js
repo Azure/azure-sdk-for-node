@@ -2,52 +2,52 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
+nock('http://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/validateCustomDomain?api-version=2015-06-01', '*')
+.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup7583/providers/Microsoft.Cdn/profiles/cdnTestProfile7066/endpoints/testEndpoint-4436d201-109c-4944-a0ad-0322de415c38/validateCustomDomain?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"HostName \\\"??sdk-3-6029da3a-835e-4506-b4ea-bd5375165cdf??\\\" is invalid. It must be a valid domain name, IP version 4, or IP version 6.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '203',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '823ffa8d-79fc-4cd1-90c9-0f52d29dfeab',
-  'x-ms-client-request-id': '6a1199d1-6bf9-4649-9250-3b90039ef795',
+  'x-ms-request-id': '32520c07-b7a6-4509-bdc9-4f73aeba47a6',
+  'x-ms-client-request-id': '3c30ff3f-cae3-431d-a96f-f5d159815cc8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '726678b5-0c27-40a9-9071-bcfe95dbbe5f',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224747Z:726678b5-0c27-40a9-9071-bcfe95dbbe5f',
-  date: 'Wed, 02 Mar 2016 22:47:47 GMT',
+  'x-ms-correlation-request-id': '87fe5457-1de1-4a44-8a40-7a5ae98602fa',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T232817Z:87fe5457-1de1-4a44-8a40-7a5ae98602fa',
+  date: 'Mon, 25 Apr 2016 23:28:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
+nock('https://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/validateCustomDomain?api-version=2015-06-01', '*')
+.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup7583/providers/Microsoft.Cdn/profiles/cdnTestProfile7066/endpoints/testEndpoint-4436d201-109c-4944-a0ad-0322de415c38/validateCustomDomain?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"HostName \\\"??sdk-3-6029da3a-835e-4506-b4ea-bd5375165cdf??\\\" is invalid. It must be a valid domain name, IP version 4, or IP version 6.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '203',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '823ffa8d-79fc-4cd1-90c9-0f52d29dfeab',
-  'x-ms-client-request-id': '6a1199d1-6bf9-4649-9250-3b90039ef795',
+  'x-ms-request-id': '32520c07-b7a6-4509-bdc9-4f73aeba47a6',
+  'x-ms-client-request-id': '3c30ff3f-cae3-431d-a96f-f5d159815cc8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '726678b5-0c27-40a9-9071-bcfe95dbbe5f',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224747Z:726678b5-0c27-40a9-9071-bcfe95dbbe5f',
-  date: 'Wed, 02 Mar 2016 22:47:47 GMT',
+  'x-ms-correlation-request-id': '87fe5457-1de1-4a44-8a40-7a5ae98602fa',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T232817Z:87fe5457-1de1-4a44-8a40-7a5ae98602fa',
+  date: 'Mon, 25 Apr 2016 23:28:17 GMT',
   connection: 'close' });
  return result; }]];

@@ -2,42 +2,42 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
+nock('http://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/someFakeEndpoint/load?api-version=2015-06-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup821' was not found.\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup152/providers/Microsoft.Cdn/profiles/cdnTestProfile3218/endpoints/someFakeEndpoint/load?api-version=2016-04-02', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile3218/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup152' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '61c42aad-5e58-4bae-a514-c9291fc17212',
-  'x-ms-correlation-request-id': '61c42aad-5e58-4bae-a514-c9291fc17212',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221346Z:61c42aad-5e58-4bae-a514-c9291fc17212',
+  'x-ms-request-id': '6c105b6b-c497-445e-b79c-4695f9a3d607',
+  'x-ms-correlation-request-id': '6c105b6b-c497-445e-b79c-4695f9a3d607',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T230404Z:6c105b6b-c497-445e-b79c-4695f9a3d607',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 01 Mar 2016 22:13:45 GMT',
+  date: 'Mon, 25 Apr 2016 23:04:04 GMT',
   connection: 'close',
-  'content-length': '185' });
+  'content-length': '187' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
+nock('https://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/someFakeEndpoint/load?api-version=2015-06-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup821' was not found.\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup152/providers/Microsoft.Cdn/profiles/cdnTestProfile3218/endpoints/someFakeEndpoint/load?api-version=2016-04-02', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile3218/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup152' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '61c42aad-5e58-4bae-a514-c9291fc17212',
-  'x-ms-correlation-request-id': '61c42aad-5e58-4bae-a514-c9291fc17212',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221346Z:61c42aad-5e58-4bae-a514-c9291fc17212',
+  'x-ms-request-id': '6c105b6b-c497-445e-b79c-4695f9a3d607',
+  'x-ms-correlation-request-id': '6c105b6b-c497-445e-b79c-4695f9a3d607',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T230404Z:6c105b6b-c497-445e-b79c-4695f9a3d607',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 01 Mar 2016 22:13:45 GMT',
+  date: 'Mon, 25 Apr 2016 23:04:04 GMT',
   connection: 'close',
-  'content-length': '185' });
+  'content-length': '187' });
  return result; }]];
