@@ -14,9 +14,9 @@
  * @class
  * Initializes a new instance of the AutoStorageBaseProperties class.
  * @constructor
- * The properties related to auto storage.
+ * The properties related to auto storage account.
  * @member {string} storageAccountId The resource id of the storage account to
- * be used for auto storage.
+ * be used for auto storage account.
  * 
  */
 export interface AutoStorageBaseProperties {
@@ -32,10 +32,11 @@ export interface AutoStorageBaseProperties {
  * 
  * @member {object} [tags] The user specified tags associated with the account.
  * 
- * @member {object} [autoStorage] The properties related to auto storage.
+ * @member {object} [autoStorage] The properties related to auto storage
+ * account.
  * 
  * @member {string} [autoStorage.storageAccountId] The resource id of the
- * storage account to be used for auto storage.
+ * storage account to be used for auto storage account.
  * 
  */
 export interface BatchAccountCreateParameters {
@@ -48,9 +49,10 @@ export interface BatchAccountCreateParameters {
  * @class
  * Initializes a new instance of the AutoStorageProperties class.
  * @constructor
- * Contains information about the auto storage associated with a Batch account.
+ * Contains information about the auto storage account associated with a Batch
+ * account.
  * @member {string} storageAccountId The resource id of the storage account to
- * be used for auto storage.
+ * be used for auto storage account.
  * 
  * @member {date} lastKeySync The UTC time at which storage keys were last
  * synchronized with the Batch account.
@@ -97,10 +99,10 @@ export interface Resource extends BaseResource {
  * 'Failed', 'Cancelled'
  * 
  * @member {object} [autoStorage] The properties and status of any auto
- * storage associated with the account.
+ * storage account associated with the account.
  * 
  * @member {string} [autoStorage.storageAccountId] The resource id of the
- * storage account to be used for auto storage.
+ * storage account to be used for auto storage account.
  * 
  * @member {date} [autoStorage.lastKeySync] The UTC time at which storage keys
  * were last synchronized with the Batch account.
@@ -129,10 +131,11 @@ export interface AccountResource extends Resource {
  * Parameters supplied to the Update operation.
  * @member {object} [tags] The user specified tags associated with the account.
  * 
- * @member {object} [autoStorage] The properties related to auto storage.
+ * @member {object} [autoStorage] The properties related to auto storage
+ * account.
  * 
  * @member {string} [autoStorage.storageAccountId] The resource id of the
- * storage account to be used for auto storage.
+ * storage account to be used for auto storage account.
  * 
  */
 export interface BatchAccountUpdateParameters {
