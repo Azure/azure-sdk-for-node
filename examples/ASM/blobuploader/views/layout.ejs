@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title><%-title%></title>
+        <link href="/css/reset.css" rel="stylesheet"/>
+        <link href="/css/default.css" rel="stylesheet"/>
+        <link href="http://fonts.googleapis.com/css?family=Actor" rel="stylesheet"/>
+        <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.16/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="mainWrapper">
+            <header>
+                <ul class="nav" role="navigation">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Display">List</a></li>
+                    <li><a href="/Upload">Upload</a></li>
+                </ul>
+            </header>
+            <div class="mainLayout">
+                <%-body%>
+            </div>
+            <footer>
+                Powered by Node in Azure
+            </footer>
+        </div>
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
+    </body>
+</html>

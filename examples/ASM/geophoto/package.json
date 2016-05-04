@@ -1,0 +1,19 @@
+{
+  "name": "geophoto",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "azure": "^0.10.6",
+    "body-parser": "^1.14.2",
+    "ejs": "^2.3.4",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.3",
+    "express-ejs-layouts": "^2.0.0",
+    "lodash": "^4.0.0",
+    "method-override": "^2.3.5",
+    "multer": "^1.1.0",
+    "nconf": "^0.8.2",
+    "node-uuid": "^1.4.7",
+    "socket.io": "^1.4.4"
+  }
+}

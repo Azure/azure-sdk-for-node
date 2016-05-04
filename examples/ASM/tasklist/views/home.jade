@@ -1,0 +1,45 @@
+doctype html
+html(lang="")
+    head
+        meta(charset="utf-8")
+        meta(name="x-ua-compatible", content="ie-edge")
+        title Index
+        meta(name="viewport", content="with=device-width; initial-scale=1")
+    body
+        h1 My Task List
+
+        form(action="/home/completed", method="post")
+            table(border="1")
+                tr
+                    td Name
+                    td Category
+                    td Date
+                    td Complete
+
+                    each item in taskList
+                        tr
+                            td #{item.name._}
+                            td #{item.category._} 
+                            td #{item.date._} 
+                            td 
+                                input(type="checkbox", name="completed", value="#{item.RowKey._}") 
+            p   
+                button(type="submit") Complete
+        hr
+        form(action="/home/newitem", method="post")
+            table(border="1")    
+                tr
+                    td Item Name: 
+                    td 
+                        input(name="item[name]", type="textbox", required)
+                tr
+                    td Item Category: 
+                    td 
+                        input(name="item[category]", type="textbox", required)
+                tr
+                    td Item Date: 
+                    td 
+                        input(name="item[date]", type="textbox", required)
+            p
+                button(type="submit") Add item
+    

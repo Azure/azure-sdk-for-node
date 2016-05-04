@@ -1,0 +1,19 @@
+<h1>
+  <%-title%>
+</h1>
+<form method="post">
+  <div class="post">
+    <div>
+      <label for="editPostTitle">Title</label>
+      <input type="text" name="title" id="editPostTitle" required="required" />
+    </div>
+    <div id="editPostBodyDiv">
+      <label for="editPostBody">Body</label>
+      <textarea name="body" rows="20" id="editPostBody" required="required"></textarea>
+    </div>
+  </div>
+
+  <div id="editPostSubmitDiv">
+    <button type="submit">Save</button>
+  </div>
+</form>

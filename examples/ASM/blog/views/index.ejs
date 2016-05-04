@@ -1,0 +1,31 @@
+<h1>
+  <%-title%>
+</h1>
+
+<div id="posts">
+  <% posts.forEach(function(post){ %>
+  <div class="post">
+    <div class="title">
+      <a href="/blog/<%-post.RowKey._ %>">
+        <%-post.title._ %>
+      </a>
+    </div>
+
+    <% if (post.created_at._) {%>
+    <div class="created_at">
+      Posted on: <%-post.created_at._ %>
+    </div>
+    <% }%>
+
+    <div class="body">
+      <p>
+        <%-post.body._ %>
+      </p>
+    </div>
+
+    <a id="deletePost" href="/blog/delete/<%-post.RowKey._ %>">Delete</a>
+  </div>
+  <% }) %>
+  <br />
+  <a id="newPost" href="/blog/new">New blog post</a>
+</div>

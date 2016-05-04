@@ -1,0 +1,16 @@
+{
+  "name": "blobuploader",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "azure": "^0.10.6",
+    "body-parser": "^1.14.2",
+    "ejs": "^2.4.1",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
+    "express-ejs-layouts": "^2.0.0",
+    "formidable": "^1.0.17",
+    "method-override": "^2.3.5",
+    "multer": "^1.1.0"
+  }
+}

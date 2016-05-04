@@ -1,0 +1,25 @@
+﻿<div id="map-dialog" title="Add pushpin">
+  <form name="addPushpinForm" id="addPushpinForm" action="createPushpin" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <label for="title">Title</label>
+      <br />
+      <input type="text" name="title" id="title" required />
+      <br />
+      <label for="description">Description</label>
+      <br />
+      <textarea name="description" id="description" required></textarea>
+      <br />
+      <label for="image">Image</label>
+      <br />
+      <input type="file" name="image" id="image" accept="image/*"/>
+      <input type="hidden" id="latitude" name="latitude" />
+      <input type="hidden" id="longitude" name="longitude" />
+    </fieldset>
+  </form>
+</div>
+
+<div id="buttonDiv">
+  <button type="reset" id="clearButton">Clear</button>
+</div>
+
+<div id="map" />

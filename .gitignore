@@ -1,12 +1,20 @@
 projects/*
 targets/*
+packages/*
 
 # Visual Studio #
 *.suo
 *.user
+.ntvs_analysis.dat
+obj/*
+examples/obj
+examples/.ntvs_analysis.dat
+examples/.vs
+examples/bin
+.vs
+TestResults/*
 
 # Node #
-test/recordings/
 node_modules/
 npm-debug.log
 azure_error
@@ -32,6 +40,9 @@ Thumbs.db
 docs/
 main.conf.json
 child.conf.json
+
+# temporary test artifacts
+test/tmp/*
 
 # Nuget packages and corresponding codegen sources
 .nuget

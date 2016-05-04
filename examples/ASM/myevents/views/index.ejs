@@ -1,0 +1,54 @@
+<h1><%= title %></h1>
+
+<p>My upcoming events:</p>
+
+<% if (eventList.length == 0) {%>
+<p>No Events found.</p>
+<% } else { %>
+<ul>
+  <% for(var i=0; i<eventList.length; i++) {%>
+  <li>
+    <a href="/events/<%= eventList[i].RowKey._ %>"><%= eventList[i].name._ %><a/>: <%= eventList[i].date._ %>
+  </li>
+  <% } %>
+</ul>
+<% } %>
+
+<p>Create a new Event:</p>
+<form action="/events/create" enctype="multipart/form-data" method="post">
+	<table>
+		<tr>
+			<td>
+        <label for="item-name">Event Name:</label>
+      </td>
+			<td>
+        <input id="item-name" type="textbox" name="item[name]" required >
+      </td>
+		<tr>
+		<tr>
+			<td>
+        <label for="item-date">Event Date:</label>
+      </td>
+			<td>
+        <input id="item-date" type="date" name="item[date]" required >
+      </td>
+		<tr>
+		<tr>
+			<td>
+        <label for="item-description">Event Description:</label>
+      </td>
+			<td>
+        <textarea id="item-description" name="item[description]" required></textarea>
+      </td>
+		<tr>
+		<tr>
+			<td>
+        <label for="item-file">Event Image:</label>
+      </td>
+			<td>
+        <input id="item-file" type="file" name="item[file]" accept="image/*" required >
+      </td>
+		<tr>
+	</table>
+	<button type="submit">Create Event</button>
+</form>

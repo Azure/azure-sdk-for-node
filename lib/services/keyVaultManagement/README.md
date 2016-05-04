@@ -41,6 +41,8 @@ context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientI
   });
   
   // Creates an Azure Key Vault Management client.
+  // The Azure Resource Manager URI must also be passed to this constructor for the
+  // China, Germany, and US Government Azure environments
   client = new AzureMgmtKeyVault.KeyVaultManagementClient(credentials);
   
   var resourceGroup = 'myResourceGroup';
@@ -53,7 +55,8 @@ context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientI
         name : 'standard'
       },
       accessPolicies : [],
-      enabledForDeployment : false
+      enabledForDeployment : false,
+      tenantId : '<tenant GUID>'
     },
     tags : {}
   }; 

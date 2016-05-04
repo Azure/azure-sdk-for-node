@@ -122,4 +122,4 @@ function authenticator(challenge, callback) {
 ## Related projects
 
 - [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
-- [Microsoft Azure SDK for Node.js - Key Vault Management](https://github.com/Azure/azure-sdk-for-node/tree/dev/lib/services/keyVault)
+- [Microsoft Azure SDK for Node.js - Key Vault Management](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/keyVault)

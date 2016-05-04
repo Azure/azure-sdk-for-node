@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - Authorization
 
 This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
-- **Node.js version: 0.6.15 or higher**
+- **Node.js version: 0.10.0 or higher**
 - **API version: **
 
 ## Features

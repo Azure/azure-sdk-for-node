@@ -1,0 +1,44 @@
+{
+  "name": "azure-graph",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Wang, Yugang <yugangw@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Agarwal, Shubham <shuagarw@microsoft.com>"
+  ],
+  "version": "0.1.1",
+  "description": "Microsoft Azure Client Library in node for graph api",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/graphRbacManagementClient.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "ms-rest-azure": "^1.8.0",
+    "ms-rest": "^1.8.0"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}

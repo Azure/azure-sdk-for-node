@@ -12,6 +12,26 @@ console.log(">>>>>>>>>>>>>> Some Identifier   " + util.inspect(some_object, {dep
 ```
 Providing **{depth: null}** is optional. By default, it will dump object upto 3 levels deep. Setting depth  to null will dump the complete object.
 
+## Using Visual Studio
+The Visual Studio plugin for node.js can be downloaded from [here](https://github.com/Microsoft/nodejstools/releases).
+
+### Setting up the project
+* Open the **nodeSDK.sln** file present at the root of the cloned repo.
+* Set the Tab size and Indentation to 2 spaces by going to 
+  * Tools --> Options --> TextEditor --> Node.js --> Tabs --> [Tab size: 2, Indent size: 2]
+  * Tools --> Options --> TextEditor --> Javascript --> Tabs --> [Tab size: 2, Indent size: 2]
+
+### For debugging the tests:
+  * From the menu bar go to Project --> Properties and set the environment variables required for running tests.
+    * The list of environment variables can be found over [here](./EnvironmentVariables.md)
+    * If the need arises to add a new environment variable for tests please update the [Documentation](EnvironmentVariables.md) to keep the list current
+    * Visual Studio can also be opened from **"Visual Studio Debugger Cmd Prompt"** usually located at "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\Shortcuts\Developer Command Prompt for VS2013.lnk" to set the environment variables. Then open the .sln file from the prompt.
+  * In the Solution Explorer, click on a test that needs to be debugged. For example: "azure-sdk-for-node\test\services\storageManagement\storageManagementClient-tests.js"
+  * In the **Properties** pane select **"Mocha"** as the Test Framework. Save All the changes. 
+  * The tests shall be seen in the "Test Explorer". Right Click on any Test and Select "Debug Selected Test".
+* **Note:** If the test file has any errors then you might not see the tests in the TestExplorer. In the Properties pane select **ExportRunner** as the test framework and save the solution. You will see the error in the output pane. Once the errors are resolved change the test framework back to **Mocha** in the Properties pane for that test file. When you save the solution, you should see your tests in the test explorer.
+  * You can also run ```npm -s run-script jshint``` in the cmd prompt from the root of the repo to find errors if any. 
+
 ##  Using node inspector
 This will open a debugging session in a browser (chrome or opera). It is super easy to use.
 Steps to get it working:
@@ -52,38 +72,3 @@ Runner.prototype.runTest = function(fn){
 };
 ```
 * Set a breakpoint in your test which should be located under "azure-sdk-for-node/test/commands" directory
-
-
-## Using Visual Studio
-The Visual Studio plugin for node.js can be downloaded from [here](http://nodejstools.codeplex.com/).
-
-### Setting up the project
-* File --> New --> Project
-* On the left pane Installed --> Templates --> Javascript --> Node.js
-* From the available options Select "From Existing Node.js Code"
-  * Provide a name to your project "xplat" and a name to the solution "xplat"
-  * The location of the project would be the location of your cloned repo. Example - "D:\sdk\xplat\azure-sdk-tools-xplat"
-* Next --> Enter the filter to include files: In the end append the following string "; *._js"
-* Next --> Including node_modules in the project is optional. (It can always be include later, if the need arises).
-* Next --> Location for the project file - "D:\sdk\xplat\azure-sdk-tools-xplat\xplat.njsproj" --> Finish
-* In some time the solution explorer shows the source code files.
-* For better performance, it is advisable to **disable** intellisense in VisualStudio for Node.js projects by going to
-  * Tools --> Options --> TextEditor --> Node.js --> Intellisense -->No Intellisense.
-* Set the Tab size and Indentation to 2 spaces by going to 
-  * Tools --> Options --> TextEditor --> Node.js --> Tabs --> [Tab size: 2, Indent size: 2]
-  * Tools --> Options --> TextEditor --> Javascript --> Tabs --> [Tab size: 2, Indent size: 2]
-
-### For debugging the service:
-  * Create a sample.js file that instantiates the service client you intend to debug.
-  * Right Click the "azure-sdk-for-node\sample.js" file and set it as Node.js startup file.
-  * Set breakpoints at desired locations and Press F5 for happy debugging
-  * At times, files with extension "._js" do not hit the breakpoint. It is flaky and nothing can be done about it. At such times, console.log() is your best buddy :+1:
-
-### For debugging the tests:
-  * From the menu bar go to Project --> Properties and set the environment variables required for running tests.
-    * The list of environment variables can be found over [here](./EnvironmentVariables.md)
-    * If the need arises to add a new environment variable for tests please update the [Documentation](EnvironmentVariables.md) to keep the list current
-    * Visual Studio can also be opened from **"Visual Studio Debugger Cmd Prompt"** usually located at "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\Shortcuts\Developer Command Prompt for VS2013.lnk" to set the environment variables. Then open the .sln file from the prompt.
-  * In the Solution Explorer, click on a test that needs to be debugged. For example: "azure-sdk-for-node\test\services\sql\sqlmanagementservice-tests.js"
-  * In the **Properties** pane select **"Mocha"** as the Test Framework. Save All the changes. 
-  * The tests shall be seen in the "Test Explorer". Right Click on any Test and Select "Debug Selected Test".

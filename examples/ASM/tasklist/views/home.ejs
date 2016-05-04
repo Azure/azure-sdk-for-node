@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="x-ua-compatible" content="ie-ege">
+        <title>Index</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>My Task List</h1>
+
+        <form action="/home/completed" method="post">
+            <table border="1">
+                <tr>
+                    <td>Name</td>
+                    <td>Category</td>
+                    <td>Date</td>
+                    <td>Complete</td>
+                </tr>
+
+                <% taskList.forEach(function(item){ %>
+                <tr>
+                    <td><%-item.name._%></td>
+                    <td><%-item.category._%></td>
+                    <td><%-item.date._%></td>
+                    <td>
+                        <input type="checkbox" name="completed" value="<%-item.RowKey._%>" />
+                    </td>
+                </tr>
+                <% }) %>
+            </table>
+
+            <p>
+                <button type="submit">Complete"</button>
+            </p>
+        </form>
+
+        <form action="/home/newitem" method="post">
+            <table border="1">
+                <tr>
+                    <td>Item Name:</td>
+                    <td>
+                        <input name="item[name]" type="textbox" required="required" />
+                    </td>
+                </tr>
+                    <td>Item Category:</td>
+                    <td>
+                        <input name="item[category]" type="textbox" required="required" />
+                    </td>
+                <tr>
+                </tr>
+                <tr>
+                    <td>Item Date:</td>
+                    <td>
+                        <input name="item[date]" type="textbox" required="required" />
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <button type="submit">Add item</button>
+            </p>
+        </form>
+    </body>
+</html>

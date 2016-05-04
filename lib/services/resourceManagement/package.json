@@ -2,15 +2,11 @@
   "name": "azure-arm-resource",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Block, Glenn <gblock@microsoft.com>",
-    "Cowlishaw, Mark <markcowl@microsoft.com>",
-    "Dejardin, Louis <loudej@microsoft.com>",
-    "Georgiev, Yavor <yavorg@microsoft.com>",
-    "Janczuk, Tomasz <tjanczuk@microsoft.com>",
-    "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Wang, Yugang <yugangw@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Srinivasan, Vivek <visriniv@microsoft.com>"
   ],
-  "version": "0.10.5",
+  "version": "1.4.4-preview",
   "description": "Microsoft Azure Resource Management Client Library for node",
   "tags": [
     "azure",
@@ -22,7 +18,7 @@
   ],
   "main": "./lib/resource.js",
   "engines": {
-    "node": ">= 0.6.15"
+    "node": ">= 0.10.0"
   },
   "licenses": [
     {
@@ -31,8 +27,8 @@
     }
   ],
   "dependencies": {
-    "azure-common": "^0.9.13",
-    "underscore": "1.4.x"
+    "ms-rest": "^1.11.0",
+    "ms-rest-azure": "^1.11.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

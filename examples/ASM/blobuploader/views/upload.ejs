@@ -1,0 +1,16 @@
+<section class="mainSection">
+    <h1 class="pageTitle">Upload file</h1>
+    <form id="upload" action="/uploadhandler" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Upload</legend>
+            <ol>
+                <li>
+                    <label for="itemName">Name/ID</label>
+                    <input type="text" id="itemName" name="itemName" minlength="1" maxlength="1024" required />
+                </li>
+                <input type="file" name="uploadedFile" accept="*" required />
+            </ol>
+            <button type="submit" class="submit">Upload</button>
+        </fieldset>
+    </form>
+</section>

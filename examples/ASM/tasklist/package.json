@@ -1,0 +1,15 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "azure": "^0.10.6",
+    "body-parser": "^1.14.2",
+    "ejs": "^2.3.4",
+    "errorhandler": "^1.4.2",
+    "express": "^4.13.3",
+    "jade": "^1.11.0",
+    "method-override": "^2.3.5",
+    "node-uuid": "^1.4.7"
+  }
+}

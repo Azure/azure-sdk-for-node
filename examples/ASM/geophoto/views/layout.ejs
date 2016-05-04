@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html>
+  <head lang="en">
+    <meta charset="utf-8" />
+    <meta name="x-ua-compatible" content="ie-edge">
+    <title><%-title%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="stylesheets/style.css" rel="stylesheet" />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.4/socket.io.min.js"></script>
+    <script type="text/javascript">
+      var bingMapsCredentials = '<% if (bingMapsCredentials) { %><%= bingMapsCredentials %><% } %>';
+      var initialPushpins = [
+        <% if (pushpins) { pushpins.forEach(function(pushpin) { %>
+         { title: '<%= pushpin.title %>', description: '<%= pushpin.description %>', latitude: '<%= pushpin.latitude %>', longitude: '<%= pushpin.longitude %>', RowKey: '<%= pushpin.RowKey %>', PartitionKey: '<%= pushpin.PartitionKey %>', imageUrl: '<%= pushpin.imageUrl %>' },
+        <% }) } %>
+      ];
+    </script>
+
+    <script type="text/javascript" src="scripts/geophoto.js"></script>
+  </head>
+
+  <body onload="initialize()">
+    <%- body %>
+  </body>
+</html>
