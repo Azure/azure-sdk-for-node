@@ -28,7 +28,7 @@ npm install azure
 
 ### Initialise the client
 ```javascript
-var msrestAzure = require('ms-rest-azure');
+var msRestAzure = require('ms-rest-azure');
 var ManagementClient = require('../../../lib/services/cdnManagement/lib/cdnManagementClient');
 
 //user authentication
@@ -62,18 +62,18 @@ client.profiles.listByResourceGroup("your-resource-group-name", function(err, re
 });
 
 //Create profile under certain resource group
-var standardCreateParameters = {
+var standardVerizonCreateParameters = {
 	location: 'West US',
 	tags: {
 	    tag1: 'val1',
 	    tag2: 'val2'
 	},
 	sku: {
-	    name: 'Standard'
+	    name: 'Standard_Verizon'
 	}
 };
 
-client.profiles.create("your-profile-name", standardCreateParameters, "your-resource-group-name", function(err, result, request, response) {
+client.profiles.create("your-profile-name", standardVerizonCreateParameters, "your-resource-group-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -82,6 +82,17 @@ client.profiles.create("your-profile-name", standardCreateParameters, "your-reso
 		console.log(profile.sku.name);
 	}
 });
+
+var standardAkamaiCreateParameters = {
+	location: 'West US',
+	tags: {
+	    tag1: 'val1',
+	    tag2: 'val2'
+	},
+	sku: {
+	    name: 'Standard_Akamai'
+	}
+};
 
 //Delete profile
 client.profiles.deleteIfExists("your-profile-name", "your-resource-group-name", function(err, result, request, response) {
@@ -142,7 +153,7 @@ var endpointProperties = {
 	}]
 }
 
-client.endpoints.create("your-endpoint-name", validEndpointProperties, "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.create("your-endpoint-name", endpointProperties, "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
     if (err) {
         console.log(err);
     } else {

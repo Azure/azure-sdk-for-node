@@ -150,14 +150,6 @@ describe('Cdn Management Profile', function() {
       });
     });
 
-    it('should try to create a profile with same name and fail', function(done) {
-      client.profiles.create(profileName1, standardCreateParameters, groupName1, function(err, result, request, response) {
-        should.exist(err);
-        should.not.exist(result);
-        done();
-      });
-    });
-
     it('should list profiles by SubscriptionId and return one profile', function(done) {
       client.profiles.listBySubscriptionId(function(err, result, request, response) {
         should.not.exist(err);
