@@ -30,12 +30,12 @@ export interface Application {
      * @param {object} [options.applicationListOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.applicationListOptions.maxResults] Sets the
-     * maximum number of items to return in the response.
+     * @param {number} [options.applicationListOptions.maxResults] The maximum
+     * number of items to return in the response.
      * 
-     * @param {number} [options.applicationListOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.applicationListOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.applicationListOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -68,9 +68,9 @@ export interface Application {
      * @param {object} [options.applicationGetOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.applicationGetOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.applicationGetOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.applicationGetOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -151,13 +151,13 @@ export interface Pool {
      * time from which to include metrics. This must be at least two hours before
      * the current time.
      * 
-     * @param {string} [options.poolListPoolUsageMetricsOptions.filter] Sets an
-     * OData $filter clause.
+     * @param {string} [options.poolListPoolUsageMetricsOptions.filter] An OData
+     * $filter clause.
      * 
-     * @param {number} [options.poolListPoolUsageMetricsOptions.maxResults] Sets
-     * the maximum number of items to return in the response.
+     * @param {number} [options.poolListPoolUsageMetricsOptions.maxResults] The
+     * maximum number of items to return in the response.
      * 
-     * @param {number} [options.poolListPoolUsageMetricsOptions.timeout] Sets the
+     * @param {number} [options.poolListPoolUsageMetricsOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -195,7 +195,7 @@ export interface Pool {
      * Additional parameters for the operation
      * 
      * @param {number} [options.poolGetAllPoolsLifetimeStatisticsOptions.timeout]
-     * Sets the maximum time that the server can spend processing the request, in
+     * The maximum time that the server can spend processing the request, in
      * seconds. The default is 30 seconds.
      * 
      * @param {string}
@@ -226,142 +226,143 @@ export interface Pool {
      *
      * @param {object} pool Specifies the pool to be added.
      * 
-     * @param {string} [pool.id] Gets or sets a string that uniquely identifies
-     * the pool within the account. The id can contain any combination of
-     * alphanumeric characters including hyphens and underscores, and cannot
-     * contain more than 64 characters.
+     * @param {string} [pool.id] A string that uniquely identifies the pool within
+     * the account. The id can contain any combination of alphanumeric characters
+     * including hyphens and underscores, and cannot contain more than 64
+     * characters.
      * 
-     * @param {string} [pool.displayName] Gets or sets the display name for the
-     * pool.
+     * @param {string} [pool.displayName] The display name for the pool.
      * 
-     * @param {string} [pool.vmSize] Gets or sets the size of virtual machines in
-     * the pool.  All VMs in a pool are the same size.
+     * @param {string} [pool.vmSize] The size of virtual machines in the pool.
+     * All virtual machines in a pool are the same size.
      * 
-     * @param {object} [pool.cloudServiceConfiguration] Gets or sets the cloud
-     * service configuration for the pool. This property and
-     * VirtualMachineConfiguration are mutually exclusive and one of the
-     * properties must be specified.
+     * @param {object} [pool.cloudServiceConfiguration] The cloud service
+     * configuration for the pool. This property and VirtualMachineConfiguration
+     * are mutually exclusive and one of the properties must be specified.
      * 
-     * @param {string} [pool.cloudServiceConfiguration.osFamily] Gets or sets the
-     * Azure Guest OS family to be installed on the virtual machines in the pool.
+     * @param {string} [pool.cloudServiceConfiguration.osFamily] The Azure Guest
+     * OS family to be installed on the virtual machines in the pool.
      * 
-     * @param {string} [pool.cloudServiceConfiguration.targetOSVersion] Gets or
-     * sets the Azure Guest OS version to be installed on the virtual machines in
-     * the pool. The default value is * which specifies the latest operating
-     * system version for the specified OS family.
+     * @param {string} [pool.cloudServiceConfiguration.targetOSVersion] The Azure
+     * Guest OS version to be installed on the virtual machines in the pool. The
+     * default value is * which specifies the latest operating system version for
+     * the specified OS family.
      * 
-     * @param {string} [pool.cloudServiceConfiguration.currentOSVersion] Gets or
-     * sets the Azure Guest OS Version currently installed on the virtual
-     * machines in the pool. This may differ from TargetOSVersion if the pool
-     * state is Upgrading.
+     * @param {string} [pool.cloudServiceConfiguration.currentOSVersion] The Azure
+     * Guest OS Version currently installed on the virtual machines in the pool.
+     * This may differ from TargetOSVersion if the pool state is Upgrading.
      * 
-     * @param {object} [pool.virtualMachineConfiguration] Gets or sets the virtual
-     * machine configuration for the pool. This property and
-     * CloudServiceConfiguration are mutually exclusive and one of the properties
-     * must be specified.
+     * @param {object} [pool.virtualMachineConfiguration] The virtual machine
+     * configuration for the pool. This property and CloudServiceConfiguration
+     * are mutually exclusive and one of the properties must be specified.
      * 
-     * @param {object} [pool.virtualMachineConfiguration.imageReference] Gets or
-     * sets information about the platform or marketplace image to use.
+     * @param {object} [pool.virtualMachineConfiguration.imageReference] A
+     * reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string} [pool.virtualMachineConfiguration.imageReference.publisher]
-     * Gets or sets the publisher of the image.
+     * The publisher of the Azure Virtual Machines Marketplace image. For
+     * example, Canonical or MicrosoftWindowsServer.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.imageReference.offer]
-     * Gets or sets the offer of the image.
+     * @param {string} [pool.virtualMachineConfiguration.imageReference.offer] The
+     * offer type of the Azure Virtual Machines Marketplace image. For example,
+     * UbuntuServer or WindowsServer.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.imageReference.sku] Gets
-     * or sets the SKU of the image.
+     * @param {string} [pool.virtualMachineConfiguration.imageReference.sku] The
+     * SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
      * @param {string} [pool.virtualMachineConfiguration.imageReference.version]
-     * Gets or sets the version of the image. A value of 'latest' can be
-     * specified to select the latest version of an image.
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] Gets or
-     * sets the SKU of Batch Node Agent that needs to be provisioned on the
-     * compute node. This property must match the ImageReference property.
+     * @param {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] The SKU
+     * of Batch Node Agent to be provisioned on the compute node. The Batch node
+     * agent is a program that runs on each node in the pool, and provides the
+     * command-and-control interface between the node and the Batch service.
+     * There are different implementations of the node agent, known as SKUs, for
+     * different operating systems.
      * 
      * @param {object} [pool.virtualMachineConfiguration.windowsConfiguration]
-     * Gets or sets Windows operating system settings on the virtual machine.
-     * This property must not be specified if the ImageReference property
-     * referencs a Linux OS image.
+     * Windows operating system settings on the virtual machine. This property
+     * must not be specified if the ImageReference property specifies a Linux OS
+     * image.
      * 
      * @param {boolean}
      * [pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether virtual machine is enabled for automatic updates. If
-     * omitted, the default value is true.
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
      * 
-     * @param {moment.duration} [pool.resizeTimeout] Gets or sets the timeout for
-     * allocation of compute nodes to the pool. In a Get Pool operation, this is
-     * the timeout for the most recent resize operation. The default value is 10
-     * minutes.
+     * @param {moment.duration} [pool.resizeTimeout] The timeout for allocation of
+     * compute nodes to the pool. In a Get Pool operation, this is the timeout
+     * for the most recent resize operation. The default value is 10 minutes.
      * 
-     * @param {number} [pool.targetDedicated] Gets or sets the desired number of
-     * compute nodes in the pool. This property must have the default value if
-     * EnableAutoScale is true. It is required if EnableAutoScale is false.
+     * @param {number} [pool.targetDedicated] The desired number of compute nodes
+     * in the pool. This property must have the default value if EnableAutoScale
+     * is true. It is required if EnableAutoScale is false.
      * 
-     * @param {boolean} [pool.enableAutoScale] Gets or sets whether the pool size
-     * should automatically adjust over time. If true, the AutoScaleFormula
-     * property must be set. If false, the TargetDedicated property must be set.
+     * @param {boolean} [pool.enableAutoScale] Whether the pool size should
+     * automatically adjust over time. If true, the AutoScaleFormula property
+     * must be set. If false, the TargetDedicated property must be set.
      * 
-     * @param {string} [pool.autoScaleFormula] Gets or sets a formula for the
-     * desired number of compute nodes in the pool.
+     * @param {string} [pool.autoScaleFormula] A formula for the desired number of
+     * compute nodes in the pool.
      * 
-     * @param {moment.duration} [pool.autoScaleEvaluationInterval] Gets or sets a
-     * time interval for the desired autoscale evaluation period in the pool.
+     * @param {moment.duration} [pool.autoScaleEvaluationInterval] A time interval
+     * for the desired autoscale evaluation period in the pool.
      * 
-     * @param {boolean} [pool.enableInterNodeCommunication] Gets or sets whether
-     * the pool permits direct communication between nodes.
+     * @param {boolean} [pool.enableInterNodeCommunication] Whether the pool
+     * permits direct communication between nodes.
      * 
-     * @param {object} [pool.startTask] Gets or sets a task specified to run on
-     * each compute node as it joins the pool.
+     * @param {object} [pool.startTask] A task specified to run on each compute
+     * node as it joins the pool.
      * 
-     * @param {string} [pool.startTask.commandLine] Gets or sets the command line
-     * of the start task.
+     * @param {string} [pool.startTask.commandLine] The command line of the start
+     * task.
      * 
-     * @param {array} [pool.startTask.resourceFiles] Gets or sets a list of files
-     * that Batch will download to the compute node before running the command
+     * @param {array} [pool.startTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
      * line.
      * 
-     * @param {array} [pool.startTask.environmentSettings] Gets or sets a list of
-     * environment variable settings for the start task.
+     * @param {array} [pool.startTask.environmentSettings] A list of environment
+     * variable settings for the start task.
      * 
-     * @param {boolean} [pool.startTask.runElevated] Gets or sets whether to run
-     * the start task in elevated mode. The default value is false.
+     * @param {boolean} [pool.startTask.runElevated] Whether to run the start task
+     * in elevated mode. The default value is false.
      * 
-     * @param {number} [pool.startTask.maxTaskRetryCount] Gets or sets the maximum
-     * number of times the task may be retried.
+     * @param {number} [pool.startTask.maxTaskRetryCount] The maximum number of
+     * times the task may be retried.
      * 
-     * @param {boolean} [pool.startTask.waitForSuccess] Gets or sets whether the
-     * Batch Service should wait for the start task to complete successfully
-     * (that is, to exit with exit code 0) before scheduling any tasks on the
-     * compute node.
+     * @param {boolean} [pool.startTask.waitForSuccess] Whether the Batch service
+     * should wait for the start task to complete successfully (that is, to exit
+     * with exit code 0) before scheduling any tasks on the compute node.
      * 
-     * @param {array} [pool.certificateReferences] Gets or sets the list of
-     * certificates to be installed on each compute node in the pool.
+     * @param {array} [pool.certificateReferences] The list of certificates to be
+     * installed on each compute node in the pool.
      * 
-     * @param {array} [pool.applicationPackageReferences] Gets or sets the list of
-     * application packages to be installed on each compute node in the pool.
+     * @param {array} [pool.applicationPackageReferences] The list of application
+     * packages to be installed on each compute node in the pool.
      * 
-     * @param {number} [pool.maxTasksPerNode] Gets or sets the maximum number of
-     * tasks that can run concurrently on a single compute node in the pool.
+     * @param {number} [pool.maxTasksPerNode] The maximum number of tasks that can
+     * run concurrently on a single compute node in the pool.
      * 
-     * @param {object} [pool.taskSchedulingPolicy] Gets or sets how the Batch
-     * service distributes tasks between compute nodes in the pool.
+     * @param {object} [pool.taskSchedulingPolicy] How the Batch service
+     * distributes tasks between compute nodes in the pool.
      * 
-     * @param {string} [pool.taskSchedulingPolicy.nodeFillType] Gets or sets how
-     * tasks should be distributed across compute nodes. Possible values include:
-     * 'spread', 'pack', 'unmapped'
+     * @param {string} [pool.taskSchedulingPolicy.nodeFillType] How tasks should
+     * be distributed across compute nodes. Possible values include: 'spread',
+     * 'pack', 'unmapped'
      * 
-     * @param {array} [pool.metadata] Gets or sets a list of name-value pairs
-     * associated with the pool as metadata.
+     * @param {array} [pool.metadata] A list of name-value pairs associated with
+     * the pool as metadata.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.poolAddOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.poolAddOptions.timeout] Sets the maximum time that
-     * the server can spend processing the request, in seconds. The default is 30
+     * @param {number} [options.poolAddOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
      * @param {string} [options.poolAddOptions.clientRequestId] Caller generated
@@ -393,21 +394,18 @@ export interface Pool {
      * @param {object} [options.poolListOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.poolListOptions.filter] Sets an OData $filter
-     * clause.
+     * @param {string} [options.poolListOptions.filter] An OData $filter clause.
      * 
-     * @param {string} [options.poolListOptions.select] Sets an OData $select
-     * clause.
+     * @param {string} [options.poolListOptions.select] An OData $select clause.
      * 
-     * @param {string} [options.poolListOptions.expand] Sets an OData $expand
-     * clause.
+     * @param {string} [options.poolListOptions.expand] An OData $expand clause.
      * 
-     * @param {number} [options.poolListOptions.maxResults] Sets the maximum
-     * number of items to return in the response.
+     * @param {number} [options.poolListOptions.maxResults] The maximum number of
+     * items to return in the response.
      * 
-     * @param {number} [options.poolListOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.poolListOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.poolListOptions.clientRequestId] Caller generated
      * request identity, in the form of a GUID with no decoration such as curly
@@ -440,9 +438,9 @@ export interface Pool {
      * @param {object} [options.poolDeleteMethodOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.poolDeleteMethodOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.poolDeleteMethodOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.poolDeleteMethodOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -491,12 +489,9 @@ export interface Pool {
      * @param {object} [options.poolExistsOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.poolExistsOptions.select] Sets an OData $select
-     * clause.
-     * 
-     * @param {number} [options.poolExistsOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.poolExistsOptions.timeout] The maximum time that
+     * the server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.poolExistsOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -545,14 +540,12 @@ export interface Pool {
      * @param {object} [options.poolGetOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.poolGetOptions.select] Sets an OData $select
-     * clause.
+     * @param {string} [options.poolGetOptions.select] An OData $select clause.
      * 
-     * @param {string} [options.poolGetOptions.expand] Sets an OData $expand
-     * clause.
+     * @param {string} [options.poolGetOptions.expand] An OData $expand clause.
      * 
-     * @param {number} [options.poolGetOptions.timeout] Sets the maximum time that
-     * the server can spend processing the request, in seconds. The default is 30
+     * @param {number} [options.poolGetOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
      * @param {string} [options.poolGetOptions.clientRequestId] Caller generated
@@ -599,52 +592,51 @@ export interface Pool {
      * 
      * @param {object} poolPatchParameter The parameters for the request.
      * 
-     * @param {object} [poolPatchParameter.startTask] Sets a task to run on each
+     * @param {object} [poolPatchParameter.startTask] A task to run on each
      * compute node as it joins the pool. If omitted, any existing start task is
      * left unchanged.
      * 
-     * @param {string} [poolPatchParameter.startTask.commandLine] Gets or sets the
-     * command line of the start task.
+     * @param {string} [poolPatchParameter.startTask.commandLine] The command line
+     * of the start task.
      * 
-     * @param {array} [poolPatchParameter.startTask.resourceFiles] Gets or sets a
-     * list of files that Batch will download to the compute node before running
+     * @param {array} [poolPatchParameter.startTask.resourceFiles] A list of files
+     * that the Batch service will download to the compute node before running
      * the command line.
      * 
-     * @param {array} [poolPatchParameter.startTask.environmentSettings] Gets or
-     * sets a list of environment variable settings for the start task.
+     * @param {array} [poolPatchParameter.startTask.environmentSettings] A list of
+     * environment variable settings for the start task.
      * 
-     * @param {boolean} [poolPatchParameter.startTask.runElevated] Gets or sets
-     * whether to run the start task in elevated mode. The default value is false.
+     * @param {boolean} [poolPatchParameter.startTask.runElevated] Whether to run
+     * the start task in elevated mode. The default value is false.
      * 
-     * @param {number} [poolPatchParameter.startTask.maxTaskRetryCount] Gets or
-     * sets the maximum number of times the task may be retried.
+     * @param {number} [poolPatchParameter.startTask.maxTaskRetryCount] The
+     * maximum number of times the task may be retried.
      * 
-     * @param {boolean} [poolPatchParameter.startTask.waitForSuccess] Gets or sets
-     * whether the Batch Service should wait for the start task to complete
-     * successfully (that is, to exit with exit code 0) before scheduling any
-     * tasks on the compute node.
+     * @param {boolean} [poolPatchParameter.startTask.waitForSuccess] Whether the
+     * Batch service should wait for the start task to complete successfully
+     * (that is, to exit with exit code 0) before scheduling any tasks on the
+     * compute node.
      * 
-     * @param {array} [poolPatchParameter.certificateReferences] Sets a list of
+     * @param {array} [poolPatchParameter.certificateReferences] A list of
      * certificates to be installed on each compute node in the pool. If omitted,
      * any existing certificate references are left unchanged.
      * 
-     * @param {array} [poolPatchParameter.applicationPackageReferences] Sets a
-     * list of application packages to be installed on each compute node in the
-     * pool. If omitted, any existing application package references are left
-     * unchanged.
+     * @param {array} [poolPatchParameter.applicationPackageReferences] A list of
+     * application packages to be installed on each compute node in the pool. If
+     * omitted, any existing application package references are left unchanged.
      * 
-     * @param {array} [poolPatchParameter.metadata] Sets a list of name-value
-     * pairs associated with the pool as metadata. If omitted, any existing
-     * metadata is left unchanged.
+     * @param {array} [poolPatchParameter.metadata] A list of name-value pairs
+     * associated with the pool as metadata. If omitted, any existing metadata is
+     * left unchanged.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.poolPatchOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.poolPatchOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.poolPatchOptions.timeout] The maximum time that
+     * the server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.poolPatchOptions.clientRequestId] Caller generated
      * request identity, in the form of a GUID with no decoration such as curly
@@ -694,9 +686,9 @@ export interface Pool {
      * @param {object} [options.poolDisableAutoScaleOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.poolDisableAutoScaleOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.poolDisableAutoScaleOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.poolDisableAutoScaleOptions.clientRequestId]
      * Caller generated request identity, in the form of a GUID with no
@@ -727,21 +719,21 @@ export interface Pool {
      * 
      * @param {object} poolEnableAutoScaleParameter The parameters for the request.
      * 
-     * @param {string} [poolEnableAutoScaleParameter.autoScaleFormula] Sets the
-     * formula for the desired number of compute nodes in the pool.
+     * @param {string} [poolEnableAutoScaleParameter.autoScaleFormula] The formula
+     * for the desired number of compute nodes in the pool.
      * 
      * @param {moment.duration}
-     * [poolEnableAutoScaleParameter.autoScaleEvaluationInterval] Gets or sets a
-     * time interval for the desired autoscale evaluation period in the pool.
+     * [poolEnableAutoScaleParameter.autoScaleEvaluationInterval] A time interval
+     * for the desired autoscale evaluation period in the pool.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.poolEnableAutoScaleOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.poolEnableAutoScaleOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.poolEnableAutoScaleOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.poolEnableAutoScaleOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -786,7 +778,7 @@ export interface Pool {
      * @param {string} poolId The id of the pool on which to evaluate the
      * automatic scaling formula.
      * 
-     * @param {string} autoScaleFormula Sets a formula for the desired number of
+     * @param {string} autoScaleFormula A formula for the desired number of
      * compute nodes in the pool.
      * 
      * @param {object} [options] Optional Parameters.
@@ -794,9 +786,9 @@ export interface Pool {
      * @param {object} [options.poolEvaluateAutoScaleOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.poolEvaluateAutoScaleOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.poolEvaluateAutoScaleOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.poolEvaluateAutoScaleOptions.clientRequestId]
      * Caller generated request identity, in the form of a GUID with no
@@ -826,26 +818,25 @@ export interface Pool {
      * 
      * @param {object} poolResizeParameter The parameters for the request.
      * 
-     * @param {number} [poolResizeParameter.targetDedicated] Sets the desired
-     * number of compute nodes in the pool.
+     * @param {number} [poolResizeParameter.targetDedicated] The desired number of
+     * compute nodes in the pool.
      * 
-     * @param {moment.duration} [poolResizeParameter.resizeTimeout] Sets the
-     * timeout for allocation of compute nodes to the pool or removal of compute
-     * nodes from the pool. The default value is 10 minutes.
+     * @param {moment.duration} [poolResizeParameter.resizeTimeout] The timeout
+     * for allocation of compute nodes to the pool or removal of compute nodes
+     * from the pool. The default value is 10 minutes.
      * 
-     * @param {string} [poolResizeParameter.nodeDeallocationOption] Sets when
-     * nodes may be removed from the pool, if the pool size is decreasing.
-     * Possible values include: 'requeue', 'terminate', 'taskcompletion',
-     * 'retaineddata'
+     * @param {string} [poolResizeParameter.nodeDeallocationOption] When nodes may
+     * be removed from the pool, if the pool size is decreasing. Possible values
+     * include: 'requeue', 'terminate', 'taskcompletion', 'retaineddata'
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.poolResizeOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.poolResizeOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.poolResizeOptions.timeout] The maximum time that
+     * the server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.poolResizeOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -896,9 +887,9 @@ export interface Pool {
      * @param {object} [options.poolStopResizeOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.poolStopResizeOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.poolStopResizeOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.poolStopResizeOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -945,44 +936,43 @@ export interface Pool {
      * @param {object} poolUpdatePropertiesParameter The parameters for the
      * request.
      * 
-     * @param {object} [poolUpdatePropertiesParameter.startTask] Sets a task to
-     * run on each compute node as it joins the pool. If omitted, any existing
-     * start task is removed from the pool.
+     * @param {object} [poolUpdatePropertiesParameter.startTask] A task to run on
+     * each compute node as it joins the pool. If omitted, any existing start
+     * task is removed from the pool.
      * 
-     * @param {string} [poolUpdatePropertiesParameter.startTask.commandLine] Gets
-     * or sets the command line of the start task.
+     * @param {string} [poolUpdatePropertiesParameter.startTask.commandLine] The
+     * command line of the start task.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.startTask.resourceFiles] Gets
-     * or sets a list of files that Batch will download to the compute node
+     * @param {array} [poolUpdatePropertiesParameter.startTask.resourceFiles] A
+     * list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
-     * [poolUpdatePropertiesParameter.startTask.environmentSettings] Gets or sets
-     * a list of environment variable settings for the start task.
+     * [poolUpdatePropertiesParameter.startTask.environmentSettings] A list of
+     * environment variable settings for the start task.
      * 
-     * @param {boolean} [poolUpdatePropertiesParameter.startTask.runElevated] Gets
-     * or sets whether to run the start task in elevated mode. The default value
-     * is false.
+     * @param {boolean} [poolUpdatePropertiesParameter.startTask.runElevated]
+     * Whether to run the start task in elevated mode. The default value is false.
      * 
      * @param {number} [poolUpdatePropertiesParameter.startTask.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried.
+     * The maximum number of times the task may be retried.
      * 
      * @param {boolean} [poolUpdatePropertiesParameter.startTask.waitForSuccess]
-     * Gets or sets whether the Batch Service should wait for the start task to
-     * complete successfully (that is, to exit with exit code 0) before
-     * scheduling any tasks on the compute node.
+     * Whether the Batch service should wait for the start task to complete
+     * successfully (that is, to exit with exit code 0) before scheduling any
+     * tasks on the compute node.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.certificateReferences] Sets a
-     * list of certificates to be installed on each compute node in the pool. If
-     * you specify an empty collection, any existing certificate references are
+     * @param {array} [poolUpdatePropertiesParameter.certificateReferences] A list
+     * of certificates to be installed on each compute node in the pool. If you
+     * specify an empty collection, any existing certificate references are
      * removed from the pool.
      * 
      * @param {array} [poolUpdatePropertiesParameter.applicationPackageReferences]
-     * Sets a list of application packages to be installed on each compute node
-     * in the pool. If you specify an empty collection, any existing application
+     * A list of application packages to be installed on each compute node in the
+     * pool. If you specify an empty collection, any existing application
      * packages references are removed from the pool.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.metadata] Sets a list of
+     * @param {array} [poolUpdatePropertiesParameter.metadata] A list of
      * name-value pairs associated with the pool as metadata. If you specify an
      * empty collection, any existing metadata is removed from the pool.
      * 
@@ -991,9 +981,9 @@ export interface Pool {
      * @param {object} [options.poolUpdatePropertiesOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.poolUpdatePropertiesOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.poolUpdatePropertiesOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.poolUpdatePropertiesOptions.clientRequestId]
      * Caller generated request identity, in the form of a GUID with no
@@ -1021,17 +1011,17 @@ export interface Pool {
      *
      * @param {string} poolId The id of the pool to upgrade.
      * 
-     * @param {string} targetOSVersion Sets the Azure Guest OS version to be
-     * installed on the virtual machines in the pool.
+     * @param {string} targetOSVersion The Azure Guest OS version to be installed
+     * on the virtual machines in the pool.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.poolUpgradeOSOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.poolUpgradeOSOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.poolUpgradeOSOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.poolUpgradeOSOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -1078,25 +1068,24 @@ export interface Pool {
      * 
      * @param {object} nodeRemoveParameter The parameters for the request.
      * 
-     * @param {array} [nodeRemoveParameter.nodeList] Sets a list containing the id
-     * of the compute nodes to be removed from the specified pool.
+     * @param {array} [nodeRemoveParameter.nodeList] A list containing the id of
+     * the compute nodes to be removed from the specified pool.
      * 
-     * @param {moment.duration} [nodeRemoveParameter.resizeTimeout] Sets the
-     * timeout for removal of compute nodes to the pool. The default value is 10
-     * minutes.
+     * @param {moment.duration} [nodeRemoveParameter.resizeTimeout] The timeout
+     * for removal of compute nodes to the pool. The default value is 10 minutes.
      * 
-     * @param {string} [nodeRemoveParameter.nodeDeallocationOption] Sets when
-     * compute nodes may be removed from the pool. Possible values include:
-     * 'requeue', 'terminate', 'taskcompletion', 'retaineddata'
+     * @param {string} [nodeRemoveParameter.nodeDeallocationOption] When compute
+     * nodes may be removed from the pool. Possible values include: 'requeue',
+     * 'terminate', 'taskcompletion', 'retaineddata'
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.poolRemoveNodesOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.poolRemoveNodesOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.poolRemoveNodesOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.poolRemoveNodesOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -1212,20 +1201,20 @@ export interface Pool {
 export interface Account {
 
     /**
-     * Lists all the node agent SKUs supported by Azure Batch Service.
+     * Lists all the node agent SKUs supported by Azure Batch service.
      *
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.accountListNodeAgentSkusOptions] Additional
      * parameters for the operation
      * 
-     * @param {string} [options.accountListNodeAgentSkusOptions.filter] Sets an
-     * OData $filter clause.
+     * @param {string} [options.accountListNodeAgentSkusOptions.filter] An OData
+     * $filter clause.
      * 
-     * @param {number} [options.accountListNodeAgentSkusOptions.maxResults] Sets
-     * the maximum number of items to return in the response.
+     * @param {number} [options.accountListNodeAgentSkusOptions.maxResults] The
+     * maximum number of items to return in the response.
      * 
-     * @param {number} [options.accountListNodeAgentSkusOptions.timeout] Sets the
+     * @param {number} [options.accountListNodeAgentSkusOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -1252,7 +1241,7 @@ export interface Account {
     listNodeAgentSkus(callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
 
     /**
-     * Lists all the node agent SKUs supported by Azure Batch Service.
+     * Lists all the node agent SKUs supported by Azure Batch service.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1306,7 +1295,7 @@ export interface Job {
      * parameters for the operation
      * 
      * @param {number} [options.jobGetAllJobsLifetimeStatisticsOptions.timeout]
-     * Sets the maximum time that the server can spend processing the request, in
+     * The maximum time that the server can spend processing the request, in
      * seconds. The default is 30 seconds.
      * 
      * @param {string}
@@ -1342,9 +1331,9 @@ export interface Job {
      * @param {object} [options.jobDeleteMethodOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.jobDeleteMethodOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.jobDeleteMethodOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.jobDeleteMethodOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -1393,12 +1382,12 @@ export interface Job {
      * @param {object} [options.jobGetOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.jobGetOptions.select] Sets an OData $select clause.
+     * @param {string} [options.jobGetOptions.select] An OData $select clause.
      * 
-     * @param {string} [options.jobGetOptions.expand] Sets an OData $expand clause.
+     * @param {string} [options.jobGetOptions.expand] An OData $expand clause.
      * 
-     * @param {number} [options.jobGetOptions.timeout] Sets the maximum time that
-     * the server can spend processing the request, in seconds. The default is 30
+     * @param {number} [options.jobGetOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
      * @param {string} [options.jobGetOptions.clientRequestId] Caller generated
@@ -1428,220 +1417,222 @@ export interface Job {
      * 
      * @param {object} jobPatchParameter The parameters for the request.
      * 
-     * @param {number} [jobPatchParameter.priority] Sets the priority of the job.
+     * @param {number} [jobPatchParameter.priority] The priority of the job.
      * Priority values can range from -1000 to 1000, with -1000 being the lowest
      * priority and 1000 being the highest priority. If omitted, the priority of
      * the job is left unchanged.
      * 
-     * @param {object} [jobPatchParameter.constraints] Sets the execution
-     * constraints for the job. If omitted, the existing execution constraints
-     * are left unchanged.
+     * @param {object} [jobPatchParameter.constraints] The execution constraints
+     * for the job. If omitted, the existing execution constraints are left
+     * unchanged.
      * 
      * @param {moment.duration} [jobPatchParameter.constraints.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the job may run, measured from
-     * the time the job starts. If the job does not complete within the time
-     * limit, the Batch service terminates it and any tasks that are still
-     * running.
+     * The maximum elapsed time that the job may run, measured from the time the
+     * job starts. If the job does not complete within the time limit, the Batch
+     * service terminates it and any tasks that are still running.
      * 
-     * @param {number} [jobPatchParameter.constraints.maxTaskRetryCount] Gets or
-     * sets the maximum number of times each task may be retried. The Batch
-     * service retries a task if its exit code is nonzero.
+     * @param {number} [jobPatchParameter.constraints.maxTaskRetryCount] The
+     * maximum number of times each task may be retried. The Batch service
+     * retries a task if its exit code is nonzero.
      * 
-     * @param {object} [jobPatchParameter.poolInfo] Sets the pool on which the
-     * Batch service runs the job's tasks. If omitted, the job continues to run
-     * on its current pool.
+     * @param {object} [jobPatchParameter.poolInfo] The pool on which the Batch
+     * service runs the job's tasks. If omitted, the job continues to run on its
+     * current pool.
      * 
-     * @param {string} [jobPatchParameter.poolInfo.poolId] Gets or sets the id of
-     * an existing pool. All the tasks of the job will run on the specified pool.
-     * You must specify either PoolId or AutoPoolSpecification, but not both.
+     * @param {string} [jobPatchParameter.poolInfo.poolId] The id of an existing
+     * pool. All the tasks of the job will run on the specified pool. You must
+     * specify either PoolId or AutoPoolSpecification, but not both.
      * 
-     * @param {object} [jobPatchParameter.poolInfo.autoPoolSpecification] Gets or
-     * sets characteristics for a temporary 'auto pool'. The Batch service will
-     * create this auto pool and run all of the tasks of the job on it, and will
-     * delete the pool once the job has completed. You must specify either PoolId
-     * or AutoPoolSpecification, but not both.
-     * 
-     * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.autoPoolIdPrefix] Gets
-     * or sets a prefix to be added to the unique identifier when a pool is
-     * automatically created. The prefix can be up to 20 characters long.
+     * @param {object} [jobPatchParameter.poolInfo.autoPoolSpecification]
+     * Characteristics for a temporary 'auto pool'. The Batch service will create
+     * this auto pool and run all of the tasks of the job on it, and will delete
+     * the pool once the job has completed. You must specify either PoolId or
+     * AutoPoolSpecification, but not both.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.poolLifetimeOption] Gets
-     * or sets the minimum lifetime of created auto pools, and how multiple jobs
-     * on a schedule are assigned to pools. Possible values include:
-     * 'jobschedule', 'job', 'unmapped'
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.autoPoolIdPrefix] A
+     * prefix to be added to the unique identifier when a pool is automatically
+     * created. The prefix can be up to 20 characters long.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * minimum lifetime of created auto pools, and how multiple jobs on a
+     * schedule are assigned to pools. Possible values include: 'jobschedule',
+     * 'job', 'unmapped'
      * 
      * @param {boolean}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.keepAlive] Gets or sets
-     * whether to keep an auto pool alive after its lifetime expires.
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.keepAlive] Whether to
+     * keep an auto pool alive after its lifetime expires.
      * 
-     * @param {object} [jobPatchParameter.poolInfo.autoPoolSpecification.pool]
-     * Gets or sets the pool specification for the auto pool.
-     * 
-     * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.displayName] Gets
-     * or sets the display name for the pool.
+     * @param {object} [jobPatchParameter.poolInfo.autoPoolSpecification.pool] The
+     * pool specification for the auto pool.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.vmSize] Gets or
-     * sets the size of the virtual machines in the pool. All VMs in a pool are
-     * the same size.
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.displayName] The
+     * display name for the pool.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.vmSize] The size of
+     * the virtual machines in the pool. All virtual machines in a pool are the
+     * same size.
      * 
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
-     * Gets or sets the cloud service configuration for the pool. This property
-     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * The cloud service configuration for the pool. This property and
+     * VirtualMachineConfiguration are mutually exclusive and one of the
      * properties must be specified.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
-     * Gets or sets the Azure Guest OS family to be installed on the virtual
-     * machines in the pool.
+     * The Azure Guest OS family to be installed on the virtual machines in the
+     * pool.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool. The default value is * which specifies the latest
-     * operating system version for the specified OS family.
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
-     * Gets or sets the Azure Guest OS Version currently installed on the virtual
-     * machines in the pool. This may differ from TargetOSVersion if the pool
-     * state is Upgrading.
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from TargetOSVersion if the pool state is
+     * Upgrading.
      * 
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
-     * Gets or sets the virtual machine configuration for the pool. This property
-     * and CloudServiceConfiguration are mutually exclusive and one of the
-     * properties must be specified.
+     * The virtual machine configuration for the pool. This property and
+     * CloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
      * 
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
-     * Gets or sets information about the platform or marketplace image to use.
+     * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
-     * Gets or sets the publisher of the image.
+     * The publisher of the Azure Virtual Machines Marketplace image. For
+     * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
-     * Gets or sets the offer of the image.
+     * The offer type of the Azure Virtual Machines Marketplace image. For
+     * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
-     * Gets or sets the SKU of the image.
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
-     * Gets or sets the version of the image. A value of 'latest' can be
-     * specified to select the latest version of an image.
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
-     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
-     * the compute node. This property must match the ImageReference property.
+     * The SKU of Batch Node Agent to be provisioned on the compute node. The
+     * Batch node agent is a program that runs on each node in the pool, and
+     * provides the command-and-control interface between the node and the Batch
+     * service. There are different implementations of the node agent, known as
+     * SKUs, for different operating systems.
      * 
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
-     * Gets or sets Windows operating system settings on the virtual machine.
-     * This property must not be specified if the ImageReference property
-     * referencs a Linux OS image.
+     * Windows operating system settings on the virtual machine. This property
+     * must not be specified if the ImageReference property specifies a Linux OS
+     * image.
      * 
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether virtual machine is enabled for automatic updates. If
-     * omitted, the default value is true.
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
      * 
      * @param {number}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * Gets or sets the maximum number of tasks that can run concurrently on a
-     * single compute node in the pool.
+     * The maximum number of tasks that can run concurrently on a single compute
+     * node in the pool.
      * 
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * Gets or sets how tasks are distributed among compute nodes in the pool.
+     * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * Gets or sets how tasks should be distributed across compute nodes.
-     * Possible values include: 'spread', 'pack', 'unmapped'
+     * How tasks should be distributed across compute nodes. Possible values
+     * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] Gets
-     * or sets the timeout for allocation of compute nodes to the pool.
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
+     * timeout for allocation of compute nodes to the pool.
      * 
      * @param {number}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.targetDedicated]
-     * Gets or sets the desired number of compute nodes in the pool.
+     * The desired number of compute nodes in the pool.
      * 
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.enableAutoScale]
-     * Gets or sets whether the pool size should automatically adjust over time.
+     * Whether the pool size should automatically adjust over time.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
-     * Gets or sets the formula for the desired number of compute nodes in the
-     * pool.
+     * The formula for the desired number of compute nodes in the pool.
      * 
      * @param {moment.duration}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
-     * Gets or sets a time interval for the desired AutoScale evaluation period
-     * in the pool.
+     * A time interval for the desired AutoScale evaluation period in the pool.
      * 
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
-     * Gets or sets whether the pool permits direct communication between nodes.
+     * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask] Gets or
-     * sets a task to run on each compute node as it joins the pool. The task
-     * runs when the node is added to the pool or when the node is restarted.
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask] A task
+     * to run on each compute node as it joins the pool. The task runs when the
+     * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * Gets or sets the command line of the start task.
+     * The command line of the start task.
      * 
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the start task.
+     * A list of environment variable settings for the start task.
      * 
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.runElevated]
-     * Gets or sets whether to run the start task in elevated mode. The default
-     * value is false.
+     * Whether to run the start task in elevated mode. The default value is false.
      * 
      * @param {number}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried.
+     * The maximum number of times the task may be retried.
      * 
      * @param {boolean}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Gets or sets whether the Batch Service should wait for the start task to
-     * complete successfully (that is, to exit with exit code 0) before
-     * scheduling any tasks on the compute node.
+     * Whether the Batch service should wait for the start task to complete
+     * successfully (that is, to exit with exit code 0) before scheduling any
+     * tasks on the compute node.
      * 
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.certificateReferences]
-     * Gets or sets a list of certificates to be installed on each compute node
-     * in the pool.
+     * A list of certificates to be installed on each compute node in the pool.
      * 
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
-     * Gets or sets the list of application packages to be installed on each
-     * compute node in the pool.
+     * The list of application packages to be installed on each compute node in
+     * the pool.
      * 
      * @param {array}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.metadata] Gets or
-     * sets a list of name-value pairs associated with the pool as metadata.
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.metadata] A list of
+     * name-value pairs associated with the pool as metadata.
      * 
-     * @param {array} [jobPatchParameter.metadata] Sets a list of name-value pairs
+     * @param {array} [jobPatchParameter.metadata] A list of name-value pairs
      * associated with the job as metadata. If omitted, the existing job metadata
      * is left unchanged.
      * 
@@ -1650,9 +1641,9 @@ export interface Job {
      * @param {object} [options.jobPatchOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.jobPatchOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.jobPatchOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.jobPatchOptions.clientRequestId] Caller generated
      * request identity, in the form of a GUID with no decoration such as curly
@@ -1698,231 +1689,233 @@ export interface Job {
      * 
      * @param {object} jobUpdateParameter The parameters for the request.
      * 
-     * @param {number} [jobUpdateParameter.priority] Sets the priority of the job.
+     * @param {number} [jobUpdateParameter.priority] The priority of the job.
      * Priority values can range from -1000 to 1000, with -1000 being the lowest
      * priority and 1000 being the highest priority. If omitted, the priority of
      * the job is left unchanged.
      * 
-     * @param {object} [jobUpdateParameter.constraints] Sets the execution
-     * constraints for the job. If omitted, the existing execution constraints
-     * are left unchanged.
+     * @param {object} [jobUpdateParameter.constraints] The execution constraints
+     * for the job. If omitted, the existing execution constraints are left
+     * unchanged.
      * 
      * @param {moment.duration} [jobUpdateParameter.constraints.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the job may run, measured from
-     * the time the job starts. If the job does not complete within the time
-     * limit, the Batch service terminates it and any tasks that are still
-     * running.
+     * The maximum elapsed time that the job may run, measured from the time the
+     * job starts. If the job does not complete within the time limit, the Batch
+     * service terminates it and any tasks that are still running.
      * 
-     * @param {number} [jobUpdateParameter.constraints.maxTaskRetryCount] Gets or
-     * sets the maximum number of times each task may be retried. The Batch
-     * service retries a task if its exit code is nonzero.
+     * @param {number} [jobUpdateParameter.constraints.maxTaskRetryCount] The
+     * maximum number of times each task may be retried. The Batch service
+     * retries a task if its exit code is nonzero.
      * 
-     * @param {object} [jobUpdateParameter.poolInfo] Sets the pool on which the
-     * Batch service runs the job's tasks. If omitted, the job continues to run
-     * on its current pool.
+     * @param {object} [jobUpdateParameter.poolInfo] The pool on which the Batch
+     * service runs the job's tasks. If omitted, the job continues to run on its
+     * current pool.
      * 
-     * @param {string} [jobUpdateParameter.poolInfo.poolId] Gets or sets the id of
-     * an existing pool. All the tasks of the job will run on the specified pool.
-     * You must specify either PoolId or AutoPoolSpecification, but not both.
+     * @param {string} [jobUpdateParameter.poolInfo.poolId] The id of an existing
+     * pool. All the tasks of the job will run on the specified pool. You must
+     * specify either PoolId or AutoPoolSpecification, but not both.
      * 
-     * @param {object} [jobUpdateParameter.poolInfo.autoPoolSpecification] Gets or
-     * sets characteristics for a temporary 'auto pool'. The Batch service will
-     * create this auto pool and run all of the tasks of the job on it, and will
-     * delete the pool once the job has completed. You must specify either PoolId
-     * or AutoPoolSpecification, but not both.
-     * 
-     * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.autoPoolIdPrefix] Gets
-     * or sets a prefix to be added to the unique identifier when a pool is
-     * automatically created. The prefix can be up to 20 characters long.
+     * @param {object} [jobUpdateParameter.poolInfo.autoPoolSpecification]
+     * Characteristics for a temporary 'auto pool'. The Batch service will create
+     * this auto pool and run all of the tasks of the job on it, and will delete
+     * the pool once the job has completed. You must specify either PoolId or
+     * AutoPoolSpecification, but not both.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.poolLifetimeOption]
-     * Gets or sets the minimum lifetime of created auto pools, and how multiple
-     * jobs on a schedule are assigned to pools. Possible values include:
-     * 'jobschedule', 'job', 'unmapped'
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.autoPoolIdPrefix] A
+     * prefix to be added to the unique identifier when a pool is automatically
+     * created. The prefix can be up to 20 characters long.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * minimum lifetime of created auto pools, and how multiple jobs on a
+     * schedule are assigned to pools. Possible values include: 'jobschedule',
+     * 'job', 'unmapped'
      * 
      * @param {boolean}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.keepAlive] Gets or sets
-     * whether to keep an auto pool alive after its lifetime expires.
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.keepAlive] Whether to
+     * keep an auto pool alive after its lifetime expires.
      * 
      * @param {object} [jobUpdateParameter.poolInfo.autoPoolSpecification.pool]
-     * Gets or sets the pool specification for the auto pool.
+     * The pool specification for the auto pool.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.displayName] Gets
-     * or sets the display name for the pool.
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.displayName] The
+     * display name for the pool.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.vmSize] Gets or
-     * sets the size of the virtual machines in the pool. All VMs in a pool are
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.vmSize] The size
+     * of the virtual machines in the pool. All virtual machines in a pool are
      * the same size.
      * 
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
-     * Gets or sets the cloud service configuration for the pool. This property
-     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * The cloud service configuration for the pool. This property and
+     * VirtualMachineConfiguration are mutually exclusive and one of the
      * properties must be specified.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
-     * Gets or sets the Azure Guest OS family to be installed on the virtual
-     * machines in the pool.
+     * The Azure Guest OS family to be installed on the virtual machines in the
+     * pool.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool. The default value is * which specifies the latest
-     * operating system version for the specified OS family.
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
-     * Gets or sets the Azure Guest OS Version currently installed on the virtual
-     * machines in the pool. This may differ from TargetOSVersion if the pool
-     * state is Upgrading.
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from TargetOSVersion if the pool state is
+     * Upgrading.
      * 
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
-     * Gets or sets the virtual machine configuration for the pool. This property
-     * and CloudServiceConfiguration are mutually exclusive and one of the
-     * properties must be specified.
+     * The virtual machine configuration for the pool. This property and
+     * CloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
      * 
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
-     * Gets or sets information about the platform or marketplace image to use.
+     * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
-     * Gets or sets the publisher of the image.
+     * The publisher of the Azure Virtual Machines Marketplace image. For
+     * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
-     * Gets or sets the offer of the image.
+     * The offer type of the Azure Virtual Machines Marketplace image. For
+     * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
-     * Gets or sets the SKU of the image.
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
-     * Gets or sets the version of the image. A value of 'latest' can be
-     * specified to select the latest version of an image.
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
-     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
-     * the compute node. This property must match the ImageReference property.
+     * The SKU of Batch Node Agent to be provisioned on the compute node. The
+     * Batch node agent is a program that runs on each node in the pool, and
+     * provides the command-and-control interface between the node and the Batch
+     * service. There are different implementations of the node agent, known as
+     * SKUs, for different operating systems.
      * 
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
-     * Gets or sets Windows operating system settings on the virtual machine.
-     * This property must not be specified if the ImageReference property
-     * referencs a Linux OS image.
+     * Windows operating system settings on the virtual machine. This property
+     * must not be specified if the ImageReference property specifies a Linux OS
+     * image.
      * 
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether virtual machine is enabled for automatic updates. If
-     * omitted, the default value is true.
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
      * 
      * @param {number}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * Gets or sets the maximum number of tasks that can run concurrently on a
-     * single compute node in the pool.
+     * The maximum number of tasks that can run concurrently on a single compute
+     * node in the pool.
      * 
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * Gets or sets how tasks are distributed among compute nodes in the pool.
+     * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * Gets or sets how tasks should be distributed across compute nodes.
-     * Possible values include: 'spread', 'pack', 'unmapped'
+     * How tasks should be distributed across compute nodes. Possible values
+     * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout]
-     * Gets or sets the timeout for allocation of compute nodes to the pool.
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.resizeTimeout] The
+     * timeout for allocation of compute nodes to the pool.
      * 
      * @param {number}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.targetDedicated]
-     * Gets or sets the desired number of compute nodes in the pool.
+     * The desired number of compute nodes in the pool.
      * 
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.enableAutoScale]
-     * Gets or sets whether the pool size should automatically adjust over time.
+     * Whether the pool size should automatically adjust over time.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
-     * Gets or sets the formula for the desired number of compute nodes in the
-     * pool.
+     * The formula for the desired number of compute nodes in the pool.
      * 
      * @param {moment.duration}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
-     * Gets or sets a time interval for the desired AutoScale evaluation period
-     * in the pool.
+     * A time interval for the desired AutoScale evaluation period in the pool.
      * 
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
-     * Gets or sets whether the pool permits direct communication between nodes.
+     * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask] Gets or
-     * sets a task to run on each compute node as it joins the pool. The task
-     * runs when the node is added to the pool or when the node is restarted.
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask] A task
+     * to run on each compute node as it joins the pool. The task runs when the
+     * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * Gets or sets the command line of the start task.
+     * The command line of the start task.
      * 
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the start task.
+     * A list of environment variable settings for the start task.
      * 
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.runElevated]
-     * Gets or sets whether to run the start task in elevated mode. The default
-     * value is false.
+     * Whether to run the start task in elevated mode. The default value is false.
      * 
      * @param {number}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried.
+     * The maximum number of times the task may be retried.
      * 
      * @param {boolean}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Gets or sets whether the Batch Service should wait for the start task to
-     * complete successfully (that is, to exit with exit code 0) before
-     * scheduling any tasks on the compute node.
+     * Whether the Batch service should wait for the start task to complete
+     * successfully (that is, to exit with exit code 0) before scheduling any
+     * tasks on the compute node.
      * 
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.certificateReferences]
-     * Gets or sets a list of certificates to be installed on each compute node
-     * in the pool.
+     * A list of certificates to be installed on each compute node in the pool.
      * 
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
-     * Gets or sets the list of application packages to be installed on each
-     * compute node in the pool.
+     * The list of application packages to be installed on each compute node in
+     * the pool.
      * 
      * @param {array}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.metadata] Gets or
-     * sets a list of name-value pairs associated with the pool as metadata.
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.metadata] A list
+     * of name-value pairs associated with the pool as metadata.
      * 
-     * @param {array} [jobUpdateParameter.metadata] Sets a list of name-value
-     * pairs associated with the job as metadata. If omitted, the existing job
-     * metadata is left unchanged.
+     * @param {array} [jobUpdateParameter.metadata] A list of name-value pairs
+     * associated with the job as metadata. If omitted, the existing job metadata
+     * is left unchanged.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.jobUpdateOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.jobUpdateOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.jobUpdateOptions.timeout] The maximum time that
+     * the server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.jobUpdateOptions.clientRequestId] Caller generated
      * request identity, in the form of a GUID with no decoration such as curly
@@ -1966,17 +1959,17 @@ export interface Job {
      *
      * @param {string} jobId The id of the job to disable.
      * 
-     * @param {string} disableTasks Sets what to do with active tasks associated
-     * with the job. Possible values include: 'requeue', 'terminate', 'wait'
+     * @param {string} disableTasks What to do with active tasks associated with
+     * the job. Possible values include: 'requeue', 'terminate', 'wait'
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.jobDisableOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.jobDisableOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.jobDisableOptions.timeout] The maximum time that
+     * the server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.jobDisableOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -2025,9 +2018,9 @@ export interface Job {
      * @param {object} [options.jobEnableOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.jobEnableOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.jobEnableOptions.timeout] The maximum time that
+     * the server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.jobEnableOptions.clientRequestId] Caller generated
      * request identity, in the form of a GUID with no decoration such as curly
@@ -2073,15 +2066,15 @@ export interface Job {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.terminateReason] Sets the text you want to appear
-     * as the job's TerminateReason. The default is 'UserTerminate'.
+     * @param {string} [options.terminateReason] The text you want to appear as
+     * the job's TerminateReason. The default is 'UserTerminate'.
      * 
      * @param {object} [options.jobTerminateOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.jobTerminateOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.jobTerminateOptions.timeout] The maximum time that
+     * the server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.jobTerminateOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -2125,341 +2118,348 @@ export interface Job {
      *
      * @param {object} job Specifies the job to be added.
      * 
-     * @param {string} [job.id] Gets or sets a string that uniquely identifies the
-     * job within the account. The id can contain any combination of alphanumeric
-     * characters including hyphens and underscores, and cannot contain more than
-     * 64 characters. It is common to use a GUID for the id.
+     * @param {string} [job.id] A string that uniquely identifies the job within
+     * the account. The id can contain any combination of alphanumeric characters
+     * including hyphens and underscores, and cannot contain more than 64
+     * characters. It is common to use a GUID for the id.
      * 
-     * @param {string} [job.displayName] Gets or sets the display name for the job.
+     * @param {string} [job.displayName] The display name for the job.
      * 
-     * @param {number} [job.priority] Gets or sets the priority of the job.
-     * Priority values can range from -1000 to 1000, with -1000 being the lowest
-     * priority and 1000 being the highest priority. The default value is 0.
+     * @param {number} [job.priority] The priority of the job. Priority values can
+     * range from -1000 to 1000, with -1000 being the lowest priority and 1000
+     * being the highest priority. The default value is 0.
      * 
-     * @param {object} [job.constraints] Gets or sets the execution constraints
-     * for the job.
+     * @param {object} [job.constraints] The execution constraints for the job.
      * 
-     * @param {moment.duration} [job.constraints.maxWallClockTime] Gets or sets
-     * the maximum elapsed time that the job may run, measured from the time the
-     * job starts. If the job does not complete within the time limit, the Batch
-     * service terminates it and any tasks that are still running.
+     * @param {moment.duration} [job.constraints.maxWallClockTime] The maximum
+     * elapsed time that the job may run, measured from the time the job starts.
+     * If the job does not complete within the time limit, the Batch service
+     * terminates it and any tasks that are still running.
      * 
-     * @param {number} [job.constraints.maxTaskRetryCount] Gets or sets the
-     * maximum number of times each task may be retried. The Batch service
-     * retries a task if its exit code is nonzero.
+     * @param {number} [job.constraints.maxTaskRetryCount] The maximum number of
+     * times each task may be retried. The Batch service retries a task if its
+     * exit code is nonzero.
      * 
-     * @param {object} [job.jobManagerTask] Gets or sets details of a Job Manager
-     * task to be launched when the job is started.
+     * @param {object} [job.jobManagerTask] Details of a Job Manager task to be
+     * launched when the job is started.
      * 
-     * @param {string} [job.jobManagerTask.id] Gets or sets a string that uniquely
-     * identifies the Job Manager task. A GUID is recommended.
+     * @param {string} [job.jobManagerTask.id] A string that uniquely identifies
+     * the Job Manager task. A GUID is recommended.
      * 
-     * @param {string} [job.jobManagerTask.displayName] Gets or sets the display
-     * name of the Job Manager task.
+     * @param {string} [job.jobManagerTask.displayName] The display name of the
+     * Job Manager task.
      * 
-     * @param {string} [job.jobManagerTask.commandLine] Gets or sets the command
-     * line of the Job Manager task.
+     * @param {string} [job.jobManagerTask.commandLine] The command line of the
+     * Job Manager task.
      * 
-     * @param {array} [job.jobManagerTask.resourceFiles] Gets or sets a list of
-     * files that Batch will download to the compute node before running the
-     * command line.
+     * @param {array} [job.jobManagerTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
+     * line.
      * 
-     * @param {array} [job.jobManagerTask.environmentSettings] Gets or sets a list
-     * of environment variable settings for the Job Manager task.
+     * @param {array} [job.jobManagerTask.environmentSettings] A list of
+     * environment variable settings for the Job Manager task.
      * 
-     * @param {object} [job.jobManagerTask.constraints] Gets or sets constraints
-     * that apply to the Job Manager task.
+     * @param {object} [job.jobManagerTask.constraints] Constraints that apply to
+     * the Job Manager task.
      * 
-     * @param {boolean} [job.jobManagerTask.killJobOnCompletion] Gets or sets
-     * whether completion of the Job Manager task signifies completion of the
-     * entire job.
+     * @param {boolean} [job.jobManagerTask.killJobOnCompletion] Whether
+     * completion of the Job Manager task signifies completion of the entire job.
      * 
-     * @param {boolean} [job.jobManagerTask.runElevated] Gets or sets whether to
-     * run the Job Manager task in elevated mode. The default value is false.
+     * @param {boolean} [job.jobManagerTask.runElevated] Whether to run the Job
+     * Manager task in elevated mode. The default value is false.
      * 
-     * @param {boolean} [job.jobManagerTask.runExclusive] Gets or sets whether the
-     * Job Manager task requires exclusive use of the compute node where it runs.
+     * @param {boolean} [job.jobManagerTask.runExclusive] Whether the Job Manager
+     * task requires exclusive use of the compute node where it runs. If true, no
+     * other tasks will run on the same compute node for as long as the Job
+     * Manager is running. If false, other tasks can run simultaneously with the
+     * Job Manager on a compute node. (The Job Manager task counts normally
+     * against the node’s concurrent task limit, so this is only relevant if the
+     * node allows multiple concurrent tasks.)
      * 
-     * @param {object} [job.jobPreparationTask] Gets or sets the Job Preparation
-     * task.
+     * @param {object} [job.jobPreparationTask] The Job Preparation task.
      * 
-     * @param {string} [job.jobPreparationTask.id] Gets or sets a string that
-     * uniquely identifies the job preparation task within the job. The id can
-     * contain any combination of alphanumeric characters including hyphens and
-     * underscores and cannot contain more than 64 characters.
-     * 
-     * @param {string} [job.jobPreparationTask.commandLine] Gets or sets the
-     * command line of the Job Preparation task.
-     * 
-     * @param {array} [job.jobPreparationTask.resourceFiles] Gets or sets a list
-     * of files that Batch will download to the compute node before running the
-     * command line.
-     * 
-     * @param {array} [job.jobPreparationTask.environmentSettings] Gets or sets a
-     * list of environment variable settings for the Job Preparation task.
-     * 
-     * @param {object} [job.jobPreparationTask.constraints] Gets or sets
-     * constraints that apply to the Job Preparation task..
-     * 
-     * @param {moment.duration}
-     * [job.jobPreparationTask.constraints.maxWallClockTime] Gets or sets the
-     * maximum elapsed time that the task may run, measured from the time the
-     * task starts. If the task does not complete within the time limit, the
-     * Batch service terminates it.
-     * 
-     * @param {moment.duration} [job.jobPreparationTask.constraints.retentionTime]
-     * Gets or sets the minimum time to retain the working directory for the task
-     * on the compute node where it ran. After this time, the Batch service may
-     * delete the working directory and all its contents. The default is infinite.
-     * 
-     * @param {number} [job.jobPreparationTask.constraints.maxTaskRetryCount] Gets
-     * or sets the maximum number of times the task may be retried. The Batch
-     * service retries a task if its exit code is nonzero.
-     * 
-     * @param {boolean} [job.jobPreparationTask.waitForSuccess] Gets or sets
-     * whether the Batch Service should wait for the Job Preparation task to
-     * complete successfully before scheduling any other tasks of the job on the
-     * compute node.
-     * 
-     * @param {boolean} [job.jobPreparationTask.runElevated] Gets or sets whether
-     * to run the Job Preparation task in elevated mode. The default value is
-     * false.
-     * 
-     * @param {boolean} [job.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
-     * Gets or sets whether the Batch service should rerun the Job Preparation
-     * task after a compute node reboots. The default value is true.
-     * 
-     * @param {object} [job.jobReleaseTask] Gets or sets the Job Release task.
-     * 
-     * @param {string} [job.jobReleaseTask.id] Gets or sets a string that uniquely
-     * identifies the Job Release task within the job. The id can contain any
+     * @param {string} [job.jobPreparationTask.id] A string that uniquely
+     * identifies the job preparation task within the job. The id can contain any
      * combination of alphanumeric characters including hyphens and underscores
      * and cannot contain more than 64 characters.
      * 
-     * @param {string} [job.jobReleaseTask.commandLine] Gets or sets the command
-     * line of the Job Release task.
+     * @param {string} [job.jobPreparationTask.commandLine] The command line of
+     * the Job Preparation task.
      * 
-     * @param {array} [job.jobReleaseTask.resourceFiles] Gets or sets a list of
-     * files that Batch will download to the compute node before running the
+     * @param {array} [job.jobPreparationTask.resourceFiles] A list of files that
+     * the Batch service will download to the compute node before running the
      * command line.
      * 
-     * @param {array} [job.jobReleaseTask.environmentSettings] Gets or sets a list
-     * of environment variable settings for the Job Release task.
+     * @param {array} [job.jobPreparationTask.environmentSettings] A list of
+     * environment variable settings for the Job Preparation task.
      * 
-     * @param {moment.duration} [job.jobReleaseTask.maxWallClockTime] Gets or sets
-     * the maximum elapsed time that the Job Release task may run on a given
-     * compute node, measured from the time the task starts. If the task does not
-     * complete within the time limit, the Batch service terminates it. The
-     * default value is 15 minutes.
+     * @param {object} [job.jobPreparationTask.constraints] Constraints that apply
+     * to the Job Preparation task.
      * 
-     * @param {moment.duration} [job.jobReleaseTask.retentionTime] Gets or sets
-     * the minimum time to retain the working directory for the Job Release task
-     * on the compute node.  After this time, the Batch service may delete the
-     * working directory and all its contents. The default is infinite.
+     * @param {moment.duration}
+     * [job.jobPreparationTask.constraints.maxWallClockTime] The maximum elapsed
+     * time that the task may run, measured from the time the task starts. If the
+     * task does not complete within the time limit, the Batch service terminates
+     * it.
      * 
-     * @param {boolean} [job.jobReleaseTask.runElevated] Gets or sets whether to
-     * run the Job Release task in elevated mode. The default value is false.
+     * @param {moment.duration} [job.jobPreparationTask.constraints.retentionTime]
+     * The minimum time to retain the working directory for the task on the
+     * compute node where it ran, from the time it completes execution. After
+     * this time, the Batch service may delete the working directory and all its
+     * contents. The default is infinite.
      * 
-     * @param {array} [job.commonEnvironmentSettings] Gets or sets the list of
-     * common environment variable settings.  These environment variables are set
-     * for all tasks in the job (including the Job Manager, Job Preparation and
-     * Job Release tasks).
+     * @param {number} [job.jobPreparationTask.constraints.maxTaskRetryCount] The
+     * maximum number of times the task may be retried. The Batch service retries
+     * a task if its exit code is nonzero.
      * 
-     * @param {object} [job.poolInfo] Gets or sets the pool on which the Batch
-     * service runs the job’s tasks.
+     * @param {boolean} [job.jobPreparationTask.waitForSuccess] Whether the Batch
+     * service should wait for the Job Preparation task to complete successfully
+     * before scheduling any other tasks of the job on the compute node.
      * 
-     * @param {string} [job.poolInfo.poolId] Gets or sets the id of an existing
-     * pool. All the tasks of the job will run on the specified pool. You must
-     * specify either PoolId or AutoPoolSpecification, but not both.
+     * @param {boolean} [job.jobPreparationTask.runElevated] Whether to run the
+     * Job Preparation task in elevated mode. The default value is false.
      * 
-     * @param {object} [job.poolInfo.autoPoolSpecification] Gets or sets
-     * characteristics for a temporary 'auto pool'. The Batch service will create
-     * this auto pool and run all of the tasks of the job on it, and will delete
-     * the pool once the job has completed. You must specify either PoolId or
+     * @param {boolean} [job.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
+     * Whether the Batch service should rerun the Job Preparation task after a
+     * compute node reboots. Note that the Job Preparation task should still be
+     * written to be idempotent because it can be rerun if the compute node is
+     * rebooted while Job Preparation task is still running. The default value is
+     * true.
+     * 
+     * @param {object} [job.jobReleaseTask] The Job Release task.
+     * 
+     * @param {string} [job.jobReleaseTask.id] A string that uniquely identifies
+     * the Job Release task within the job. The id can contain any combination of
+     * alphanumeric characters including hyphens and underscores and cannot
+     * contain more than 64 characters.
+     * 
+     * @param {string} [job.jobReleaseTask.commandLine] The command line of the
+     * Job Release task.
+     * 
+     * @param {array} [job.jobReleaseTask.resourceFiles] A list of files that the
+     * Batch service will download to the compute node before running the command
+     * line.
+     * 
+     * @param {array} [job.jobReleaseTask.environmentSettings] A list of
+     * environment variable settings for the Job Release task.
+     * 
+     * @param {moment.duration} [job.jobReleaseTask.maxWallClockTime] The maximum
+     * elapsed time that the Job Release task may run on a given compute node,
+     * measured from the time the task starts. If the task does not complete
+     * within the time limit, the Batch service terminates it. The default value
+     * is 15 minutes.
+     * 
+     * @param {moment.duration} [job.jobReleaseTask.retentionTime] The minimum
+     * time to retain the working directory for the Job Release task on the
+     * compute node.  After this time, the Batch service may delete the working
+     * directory and all its contents. The default is infinite.
+     * 
+     * @param {boolean} [job.jobReleaseTask.runElevated] Whether to run the Job
+     * Release task in elevated mode. The default value is false.
+     * 
+     * @param {array} [job.commonEnvironmentSettings] The list of common
+     * environment variable settings.  These environment variables are set for
+     * all tasks in the job (including the Job Manager, Job Preparation and Job
+     * Release tasks).
+     * 
+     * @param {object} [job.poolInfo] The pool on which the Batch service runs the
+     * job’s tasks.
+     * 
+     * @param {string} [job.poolInfo.poolId] The id of an existing pool. All the
+     * tasks of the job will run on the specified pool. You must specify either
+     * PoolId or AutoPoolSpecification, but not both.
+     * 
+     * @param {object} [job.poolInfo.autoPoolSpecification] Characteristics for a
+     * temporary 'auto pool'. The Batch service will create this auto pool and
+     * run all of the tasks of the job on it, and will delete the pool once the
+     * job has completed. You must specify either PoolId or
      * AutoPoolSpecification, but not both.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.autoPoolIdPrefix] Gets
-     * or sets a prefix to be added to the unique identifier when a pool is
-     * automatically created. The prefix can be up to 20 characters long.
+     * @param {string} [job.poolInfo.autoPoolSpecification.autoPoolIdPrefix] A
+     * prefix to be added to the unique identifier when a pool is automatically
+     * created. The prefix can be up to 20 characters long.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.poolLifetimeOption]
-     * Gets or sets the minimum lifetime of created auto pools, and how multiple
-     * jobs on a schedule are assigned to pools. Possible values include:
-     * 'jobschedule', 'job', 'unmapped'
+     * @param {string} [job.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * minimum lifetime of created auto pools, and how multiple jobs on a
+     * schedule are assigned to pools. Possible values include: 'jobschedule',
+     * 'job', 'unmapped'
      * 
-     * @param {boolean} [job.poolInfo.autoPoolSpecification.keepAlive] Gets or
-     * sets whether to keep an auto pool alive after its lifetime expires.
+     * @param {boolean} [job.poolInfo.autoPoolSpecification.keepAlive] Whether to
+     * keep an auto pool alive after its lifetime expires.
      * 
-     * @param {object} [job.poolInfo.autoPoolSpecification.pool] Gets or sets the
-     * pool specification for the auto pool.
+     * @param {object} [job.poolInfo.autoPoolSpecification.pool] The pool
+     * specification for the auto pool.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.pool.displayName] Gets
-     * or sets the display name for the pool.
+     * @param {string} [job.poolInfo.autoPoolSpecification.pool.displayName] The
+     * display name for the pool.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.pool.vmSize] Gets or
-     * sets the size of the virtual machines in the pool. All VMs in a pool are
+     * @param {string} [job.poolInfo.autoPoolSpecification.pool.vmSize] The size
+     * of the virtual machines in the pool. All virtual machines in a pool are
      * the same size.
      * 
      * @param {object}
-     * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] Gets
-     * or sets the cloud service configuration for the pool. This property and
+     * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] The
+     * cloud service configuration for the pool. This property and
      * VirtualMachineConfiguration are mutually exclusive and one of the
      * properties must be specified.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
-     * Gets or sets the Azure Guest OS family to be installed on the virtual
-     * machines in the pool.
+     * The Azure Guest OS family to be installed on the virtual machines in the
+     * pool.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool. The default value is * which specifies the latest
-     * operating system version for the specified OS family.
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
-     * Gets or sets the Azure Guest OS Version currently installed on the virtual
-     * machines in the pool. This may differ from TargetOSVersion if the pool
-     * state is Upgrading.
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from TargetOSVersion if the pool state is
+     * Upgrading.
      * 
      * @param {object}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] Gets
-     * or sets the virtual machine configuration for the pool. This property and
+     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] The
+     * virtual machine configuration for the pool. This property and
      * CloudServiceConfiguration are mutually exclusive and one of the properties
      * must be specified.
      * 
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
-     * Gets or sets information about the platform or marketplace image to use.
+     * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
-     * Gets or sets the publisher of the image.
+     * The publisher of the Azure Virtual Machines Marketplace image. For
+     * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
-     * Gets or sets the offer of the image.
+     * The offer type of the Azure Virtual Machines Marketplace image. For
+     * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
-     * Gets or sets the SKU of the image.
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
-     * Gets or sets the version of the image. A value of 'latest' can be
-     * specified to select the latest version of an image.
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
-     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
-     * the compute node. This property must match the ImageReference property.
+     * The SKU of Batch Node Agent to be provisioned on the compute node. The
+     * Batch node agent is a program that runs on each node in the pool, and
+     * provides the command-and-control interface between the node and the Batch
+     * service. There are different implementations of the node agent, known as
+     * SKUs, for different operating systems.
      * 
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
-     * Gets or sets Windows operating system settings on the virtual machine.
-     * This property must not be specified if the ImageReference property
-     * referencs a Linux OS image.
+     * Windows operating system settings on the virtual machine. This property
+     * must not be specified if the ImageReference property specifies a Linux OS
+     * image.
      * 
      * @param {boolean}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether virtual machine is enabled for automatic updates. If
-     * omitted, the default value is true.
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
      * 
      * @param {number} [job.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * Gets or sets the maximum number of tasks that can run concurrently on a
-     * single compute node in the pool.
+     * The maximum number of tasks that can run concurrently on a single compute
+     * node in the pool.
      * 
      * @param {object}
-     * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy] Gets or
-     * sets how tasks are distributed among compute nodes in the pool.
+     * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy] How tasks
+     * are distributed among compute nodes in the pool.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * Gets or sets how tasks should be distributed across compute nodes.
-     * Possible values include: 'spread', 'pack', 'unmapped'
+     * How tasks should be distributed across compute nodes. Possible values
+     * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
-     * [job.poolInfo.autoPoolSpecification.pool.resizeTimeout] Gets or sets the
-     * timeout for allocation of compute nodes to the pool.
+     * [job.poolInfo.autoPoolSpecification.pool.resizeTimeout] The timeout for
+     * allocation of compute nodes to the pool.
      * 
      * @param {number} [job.poolInfo.autoPoolSpecification.pool.targetDedicated]
-     * Gets or sets the desired number of compute nodes in the pool.
+     * The desired number of compute nodes in the pool.
      * 
      * @param {boolean} [job.poolInfo.autoPoolSpecification.pool.enableAutoScale]
-     * Gets or sets whether the pool size should automatically adjust over time.
+     * Whether the pool size should automatically adjust over time.
      * 
      * @param {string} [job.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
-     * Gets or sets the formula for the desired number of compute nodes in the
-     * pool.
+     * The formula for the desired number of compute nodes in the pool.
      * 
      * @param {moment.duration}
-     * [job.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval] Gets
-     * or sets a time interval for the desired AutoScale evaluation period in the
-     * pool.
+     * [job.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval] A
+     * time interval for the desired AutoScale evaluation period in the pool.
      * 
      * @param {boolean}
      * [job.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
-     * Gets or sets whether the pool permits direct communication between nodes.
+     * Whether the pool permits direct communication between nodes.
      * 
-     * @param {object} [job.poolInfo.autoPoolSpecification.pool.startTask] Gets or
-     * sets a task to run on each compute node as it joins the pool. The task
-     * runs when the node is added to the pool or when the node is restarted.
+     * @param {object} [job.poolInfo.autoPoolSpecification.pool.startTask] A task
+     * to run on each compute node as it joins the pool. The task runs when the
+     * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.startTask.commandLine] Gets or
-     * sets the command line of the start task.
+     * [job.poolInfo.autoPoolSpecification.pool.startTask.commandLine] The
+     * command line of the start task.
      * 
      * @param {array}
-     * [job.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles] Gets or
-     * sets a list of files that Batch will download to the compute node before
+     * [job.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles] A list
+     * of files that the Batch service will download to the compute node before
      * running the command line.
      * 
      * @param {array}
-     * [job.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the start task.
+     * [job.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings] A
+     * list of environment variable settings for the start task.
      * 
      * @param {boolean}
-     * [job.poolInfo.autoPoolSpecification.pool.startTask.runElevated] Gets or
-     * sets whether to run the start task in elevated mode. The default value is
-     * false.
+     * [job.poolInfo.autoPoolSpecification.pool.startTask.runElevated] Whether to
+     * run the start task in elevated mode. The default value is false.
      * 
      * @param {number}
-     * [job.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] Gets
-     * or sets the maximum number of times the task may be retried.
+     * [job.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The
+     * maximum number of times the task may be retried.
      * 
      * @param {boolean}
-     * [job.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] Gets or
-     * sets whether the Batch Service should wait for the start task to complete
-     * successfully (that is, to exit with exit code 0) before scheduling any
-     * tasks on the compute node.
+     * [job.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] Whether
+     * the Batch service should wait for the start task to complete successfully
+     * (that is, to exit with exit code 0) before scheduling any tasks on the
+     * compute node.
      * 
      * @param {array}
-     * [job.poolInfo.autoPoolSpecification.pool.certificateReferences] Gets or
-     * sets a list of certificates to be installed on each compute node in the
+     * [job.poolInfo.autoPoolSpecification.pool.certificateReferences] A list of
+     * certificates to be installed on each compute node in the pool.
+     * 
+     * @param {array}
+     * [job.poolInfo.autoPoolSpecification.pool.applicationPackageReferences] The
+     * list of application packages to be installed on each compute node in the
      * pool.
      * 
-     * @param {array}
-     * [job.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
-     * Gets or sets the list of application packages to be installed on each
-     * compute node in the pool.
+     * @param {array} [job.poolInfo.autoPoolSpecification.pool.metadata] A list of
+     * name-value pairs associated with the pool as metadata.
      * 
-     * @param {array} [job.poolInfo.autoPoolSpecification.pool.metadata] Gets or
-     * sets a list of name-value pairs associated with the pool as metadata.
+     * @param {array} [job.metadata] A list of name-value pairs associated with
+     * the job as metadata.
      * 
-     * @param {array} [job.metadata] Gets or sets a list of name-value pairs
-     * associated with the job as metadata.
-     * 
-     * @param {boolean} [job.usesTaskDependencies] Gets or sets the flag that
-     * determines if this job will use tasks with dependencies.
+     * @param {boolean} [job.usesTaskDependencies] The flag that determines if
+     * this job will use tasks with dependencies.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.jobAddOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.jobAddOptions.timeout] Sets the maximum time that
-     * the server can spend processing the request, in seconds. The default is 30
+     * @param {number} [options.jobAddOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
      * @param {string} [options.jobAddOptions.clientRequestId] Caller generated
@@ -2490,20 +2490,17 @@ export interface Job {
      * @param {object} [options.jobListOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.jobListOptions.filter] Sets an OData $filter
-     * clause.
+     * @param {string} [options.jobListOptions.filter] An OData $filter clause.
      * 
-     * @param {string} [options.jobListOptions.select] Sets an OData $select
-     * clause.
+     * @param {string} [options.jobListOptions.select] An OData $select clause.
      * 
-     * @param {string} [options.jobListOptions.expand] Sets an OData $expand
-     * clause.
+     * @param {string} [options.jobListOptions.expand] An OData $expand clause.
      * 
-     * @param {number} [options.jobListOptions.maxResults] Sets the maximum number
-     * of items to return in the response.
+     * @param {number} [options.jobListOptions.maxResults] The maximum number of
+     * items to return in the response.
      * 
-     * @param {number} [options.jobListOptions.timeout] Sets the maximum time that
-     * the server can spend processing the request, in seconds. The default is 30
+     * @param {number} [options.jobListOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
      * @param {string} [options.jobListOptions.clientRequestId] Caller generated
@@ -2538,21 +2535,21 @@ export interface Job {
      * @param {object} [options.jobListFromJobScheduleOptions] Additional
      * parameters for the operation
      * 
-     * @param {string} [options.jobListFromJobScheduleOptions.filter] Sets an
-     * OData $filter clause.
+     * @param {string} [options.jobListFromJobScheduleOptions.filter] An OData
+     * $filter clause.
      * 
-     * @param {string} [options.jobListFromJobScheduleOptions.select] Sets an
-     * OData $select clause.
+     * @param {string} [options.jobListFromJobScheduleOptions.select] An OData
+     * $select clause.
      * 
-     * @param {string} [options.jobListFromJobScheduleOptions.expand] Sets an
-     * OData $expand clause.
+     * @param {string} [options.jobListFromJobScheduleOptions.expand] An OData
+     * $expand clause.
      * 
-     * @param {number} [options.jobListFromJobScheduleOptions.maxResults] Sets the
+     * @param {number} [options.jobListFromJobScheduleOptions.maxResults] The
      * maximum number of items to return in the response.
      * 
-     * @param {number} [options.jobListFromJobScheduleOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.jobListFromJobScheduleOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.jobListFromJobScheduleOptions.clientRequestId]
      * Caller generated request identity, in the form of a GUID with no
@@ -2587,19 +2584,19 @@ export interface Job {
      * Additional parameters for the operation
      * 
      * @param {string}
-     * [options.jobListPreparationAndReleaseTaskStatusOptions.filter] Sets an
-     * OData $filter clause.
+     * [options.jobListPreparationAndReleaseTaskStatusOptions.filter] An OData
+     * $filter clause.
      * 
      * @param {string}
-     * [options.jobListPreparationAndReleaseTaskStatusOptions.select] Sets an
-     * OData $select clause.
+     * [options.jobListPreparationAndReleaseTaskStatusOptions.select] An OData
+     * $select clause.
      * 
      * @param {number}
-     * [options.jobListPreparationAndReleaseTaskStatusOptions.maxResults] Sets
-     * the maximum number of items to return in the response.
+     * [options.jobListPreparationAndReleaseTaskStatusOptions.maxResults] The
+     * maximum number of items to return in the response.
      * 
      * @param {number}
-     * [options.jobListPreparationAndReleaseTaskStatusOptions.timeout] Sets the
+     * [options.jobListPreparationAndReleaseTaskStatusOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -2742,22 +2739,22 @@ export interface CertificateOperations {
      *
      * @param {object} certificate Specifies the certificate to be added.
      * 
-     * @param {string} [certificate.thumbprint] Get or sets the X.509 thumbprint
-     * of the certificate. This is a sequence of up to 40 hex digits (it may
-     * include spaces but these are removed).
+     * @param {string} [certificate.thumbprint] Get or The X.509 thumbprint of the
+     * certificate. This is a sequence of up to 40 hex digits (it may include
+     * spaces but these are removed).
      * 
-     * @param {string} [certificate.thumbprintAlgorithm] Gets or sets the
-     * algorithm used to derive the thumbprint. This must be sha1.
+     * @param {string} [certificate.thumbprintAlgorithm] The algorithm used to
+     * derive the thumbprint. This must be sha1.
      * 
-     * @param {string} [certificate.data] Gets or sets the base64-encoded contents
-     * of the certificate. The maximum size is 10KB. This property is not
-     * populated by the Get Certificate operation.
+     * @param {string} [certificate.data] The base64-encoded contents of the
+     * certificate. The maximum size is 10KB. This property is not populated by
+     * the Get Certificate operation.
      * 
-     * @param {string} [certificate.certificateFormat] Gets or sets the format of
-     * the certificate data. Possible values include: 'pfx', 'cer', 'unmapped'
+     * @param {string} [certificate.certificateFormat] The format of the
+     * certificate data. Possible values include: 'pfx', 'cer', 'unmapped'
      * 
-     * @param {string} [certificate.password] Gets or sets the password to access
-     * the certificate's private key. This property is not populated by the Get
+     * @param {string} [certificate.password] The password to access the
+     * certificate's private key. This property is not populated by the Get
      * Certificate operation.
      * 
      * @param {object} [options] Optional Parameters.
@@ -2765,9 +2762,9 @@ export interface CertificateOperations {
      * @param {object} [options.certificateAddOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.certificateAddOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.certificateAddOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.certificateAddOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -2798,18 +2795,18 @@ export interface CertificateOperations {
      * @param {object} [options.certificateListOptions] Additional parameters for
      * the operation
      * 
-     * @param {string} [options.certificateListOptions.filter] Sets an OData
-     * $filter clause.
+     * @param {string} [options.certificateListOptions.filter] An OData $filter
+     * clause.
      * 
-     * @param {string} [options.certificateListOptions.select] Sets an OData
-     * $select clause.
+     * @param {string} [options.certificateListOptions.select] An OData $select
+     * clause.
      * 
-     * @param {number} [options.certificateListOptions.maxResults] Sets the
-     * maximum number of items to return in the response.
+     * @param {number} [options.certificateListOptions.maxResults] The maximum
+     * number of items to return in the response.
      * 
-     * @param {number} [options.certificateListOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.certificateListOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.certificateListOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -2845,7 +2842,7 @@ export interface CertificateOperations {
      * @param {object} [options.certificateCancelDeletionOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.certificateCancelDeletionOptions.timeout] Sets the
+     * @param {number} [options.certificateCancelDeletionOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -2884,7 +2881,7 @@ export interface CertificateOperations {
      * @param {object} [options.certificateDeleteMethodOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.certificateDeleteMethodOptions.timeout] Sets the
+     * @param {number} [options.certificateDeleteMethodOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -2923,12 +2920,12 @@ export interface CertificateOperations {
      * @param {object} [options.certificateGetOptions] Additional parameters for
      * the operation
      * 
-     * @param {string} [options.certificateGetOptions.select] Sets an OData
-     * $select clause.
+     * @param {string} [options.certificateGetOptions.select] An OData $select
+     * clause.
      * 
-     * @param {number} [options.certificateGetOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.certificateGetOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.certificateGetOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -3003,7 +3000,7 @@ export interface File {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {boolean} [options.recursive] Sets whether to delete children of a
+     * @param {boolean} [options.recursive] Whether to delete children of a
      * directory. If the fileName parameter represents a directory instead of a
      * file, you can set Recursive to true to delete the directory and all of the
      * files and subdirectories in it. If Recursive is false then the directory
@@ -3012,9 +3009,9 @@ export interface File {
      * @param {object} [options.fileDeleteFromTaskOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.fileDeleteFromTaskOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.fileDeleteFromTaskOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.fileDeleteFromTaskOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -3052,9 +3049,9 @@ export interface File {
      * @param {object} [options.fileGetFromTaskOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.fileGetFromTaskOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.fileGetFromTaskOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.fileGetFromTaskOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -3106,7 +3103,7 @@ export interface File {
      * Additional parameters for the operation
      * 
      * @param {number} [options.fileGetNodeFilePropertiesFromTaskOptions.timeout]
-     * Sets the maximum time that the server can spend processing the request, in
+     * The maximum time that the server can spend processing the request, in
      * seconds. The default is 30 seconds.
      * 
      * @param {string}
@@ -3154,7 +3151,7 @@ export interface File {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {boolean} [options.recursive] Sets whether to delete children of a
+     * @param {boolean} [options.recursive] Whether to delete children of a
      * directory. If the fileName parameter represents a directory instead of a
      * file, you can set Recursive to true to delete the directory and all of the
      * files and subdirectories in it. If Recursive is false then the directory
@@ -3163,7 +3160,7 @@ export interface File {
      * @param {object} [options.fileDeleteFromComputeNodeOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.fileDeleteFromComputeNodeOptions.timeout] Sets the
+     * @param {number} [options.fileDeleteFromComputeNodeOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -3204,9 +3201,9 @@ export interface File {
      * @param {object} [options.fileGetFromComputeNodeOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.fileGetFromComputeNodeOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.fileGetFromComputeNodeOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.fileGetFromComputeNodeOptions.clientRequestId]
      * Caller generated request identity, in the form of a GUID with no
@@ -3257,7 +3254,7 @@ export interface File {
      * Additional parameters for the operation
      * 
      * @param {number}
-     * [options.fileGetNodeFilePropertiesFromComputeNodeOptions.timeout] Sets the
+     * [options.fileGetNodeFilePropertiesFromComputeNodeOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -3304,21 +3301,21 @@ export interface File {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {boolean} [options.recursive] Sets whether to list children of a
+     * @param {boolean} [options.recursive] Whether to list children of a
      * directory.
      * 
      * @param {object} [options.fileListFromTaskOptions] Additional parameters for
      * the operation
      * 
-     * @param {string} [options.fileListFromTaskOptions.filter] Sets an OData
-     * $filter clause.
+     * @param {string} [options.fileListFromTaskOptions.filter] An OData $filter
+     * clause.
      * 
-     * @param {number} [options.fileListFromTaskOptions.maxResults] Sets the
-     * maximum number of items to return in the response.
+     * @param {number} [options.fileListFromTaskOptions.maxResults] The maximum
+     * number of items to return in the response.
      * 
-     * @param {number} [options.fileListFromTaskOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.fileListFromTaskOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.fileListFromTaskOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -3351,19 +3348,19 @@ export interface File {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {boolean} [options.recursive] Sets whether to list children of a
+     * @param {boolean} [options.recursive] Whether to list children of a
      * directory.
      * 
      * @param {object} [options.fileListFromComputeNodeOptions] Additional
      * parameters for the operation
      * 
-     * @param {string} [options.fileListFromComputeNodeOptions.filter] Sets an
-     * OData $filter clause.
+     * @param {string} [options.fileListFromComputeNodeOptions.filter] An OData
+     * $filter clause.
      * 
-     * @param {number} [options.fileListFromComputeNodeOptions.maxResults] Sets
-     * the maximum number of items to return in the response.
+     * @param {number} [options.fileListFromComputeNodeOptions.maxResults] The
+     * maximum number of items to return in the response.
      * 
-     * @param {number} [options.fileListFromComputeNodeOptions.timeout] Sets the
+     * @param {number} [options.fileListFromComputeNodeOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -3475,12 +3472,9 @@ export interface JobSchedule {
      * @param {object} [options.jobScheduleExistsOptions] Additional parameters
      * for the operation
      * 
-     * @param {string} [options.jobScheduleExistsOptions.select] Sets an OData
-     * $select clause.
-     * 
-     * @param {number} [options.jobScheduleExistsOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.jobScheduleExistsOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.jobScheduleExistsOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -3529,7 +3523,7 @@ export interface JobSchedule {
      * @param {object} [options.jobScheduleDeleteMethodOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.jobScheduleDeleteMethodOptions.timeout] Sets the
+     * @param {number} [options.jobScheduleDeleteMethodOptions.timeout] The
      * maximum time that the server can spend processing the request, in seconds.
      * The default is 30 seconds.
      * 
@@ -3581,15 +3575,15 @@ export interface JobSchedule {
      * @param {object} [options.jobScheduleGetOptions] Additional parameters for
      * the operation
      * 
-     * @param {string} [options.jobScheduleGetOptions.select] Sets an OData
-     * $select clause.
+     * @param {string} [options.jobScheduleGetOptions.select] An OData $select
+     * clause.
      * 
-     * @param {string} [options.jobScheduleGetOptions.expand] Sets an OData
-     * $expand clause.
+     * @param {string} [options.jobScheduleGetOptions.expand] An OData $expand
+     * clause.
      * 
-     * @param {number} [options.jobScheduleGetOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.jobScheduleGetOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.jobScheduleGetOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -3635,437 +3629,435 @@ export interface JobSchedule {
      * 
      * @param {object} jobSchedulePatchParameter The parameters for the request.
      * 
-     * @param {object} [jobSchedulePatchParameter.schedule] Sets the schedule
-     * according to which jobs will be created. If you do not specify this
-     * element, the existing schedule is not modified.
+     * @param {object} [jobSchedulePatchParameter.schedule] The schedule according
+     * to which jobs will be created. If you do not specify this element, the
+     * existing schedule is not modified.
      * 
-     * @param {date} [jobSchedulePatchParameter.schedule.doNotRunUntil] Gets or
-     * sets the earliest time at which any job may be created under this job
-     * schedule. If you do not specify a doNotRunUntil time, the schedule becomes
-     * ready to create jobs immediately.
+     * @param {date} [jobSchedulePatchParameter.schedule.doNotRunUntil] The
+     * earliest time at which any job may be created under this job schedule. If
+     * you do not specify a doNotRunUntil time, the schedule becomes ready to
+     * create jobs immediately.
      * 
-     * @param {date} [jobSchedulePatchParameter.schedule.doNotRunAfter] Gets or
-     * sets a time after which no job will be created under this job schedule.
-     * The schedule will move to the completed state as soon as this deadline is
-     * past and there is no active job under this job schedule.
+     * @param {date} [jobSchedulePatchParameter.schedule.doNotRunAfter] A time
+     * after which no job will be created under this job schedule.  The schedule
+     * will move to the completed state as soon as this deadline is past and
+     * there is no active job under this job schedule.
      * 
      * @param {moment.duration} [jobSchedulePatchParameter.schedule.startWindow]
-     * Gets or sets the time interval, starting from the time at which the
-     * schedule indicates a job should be created, within which a job must be
-     * created.  If a job is not created within the startWindow interval, then
-     * the 'opportunity' is lost; no job will be created until the next
-     * recurrence of the schedule.
+     * The time interval, starting from the time at which the schedule indicates
+     * a job should be created, within which a job must be created.  If a job is
+     * not created within the startWindow interval, then the 'opportunity' is
+     * lost; no job will be created until the next recurrence of the schedule.
      * 
      * @param {moment.duration}
-     * [jobSchedulePatchParameter.schedule.recurrenceInterval] Gets or sets the
-     * time interval between the start times of two successive jobs under the job
-     * schedule. A job schedule can have at most one active job under it at any
-     * given time.
+     * [jobSchedulePatchParameter.schedule.recurrenceInterval] The time interval
+     * between the start times of two successive jobs under the job schedule. A
+     * job schedule can have at most one active job under it at any given time.
      * 
-     * @param {object} [jobSchedulePatchParameter.jobSpecification] Sets the
-     * details of the jobs to be created on this schedule.
+     * @param {object} [jobSchedulePatchParameter.jobSpecification] The details of
+     * the jobs to be created on this schedule.
      * 
-     * @param {number} [jobSchedulePatchParameter.jobSpecification.priority] Gets
-     * or sets the priority of jobs created under this schedule. Priority values
-     * can range from -1000 to 1000, with -1000 being the lowest priority and
-     * 1000 being the highest priority. The default value is 0.
+     * @param {number} [jobSchedulePatchParameter.jobSpecification.priority] The
+     * priority of jobs created under this schedule. Priority values can range
+     * from -1000 to 1000, with -1000 being the lowest priority and 1000 being
+     * the highest priority. The default value is 0.
      * 
      * @param {string} [jobSchedulePatchParameter.jobSpecification.displayName]
-     * Gets or sets the display name for jobs created under this schedule. It
-     * need not be unique and can contain any Unicode characters up to a maximum
-     * length of 1024.
+     * The display name for jobs created under this schedule. It need not be
+     * unique and can contain any Unicode characters up to a maximum length of
+     * 1024.
      * 
      * @param {boolean}
-     * [jobSchedulePatchParameter.jobSpecification.usesTaskDependencies] Gets or
-     * sets the flag that determines if this job will use tasks with dependencies.
+     * [jobSchedulePatchParameter.jobSpecification.usesTaskDependencies] The flag
+     * that determines if this job will use tasks with dependencies.
      * 
      * @param {object} [jobSchedulePatchParameter.jobSpecification.constraints]
-     * Gets or sets the execution constraints for jobs created under this
-     * schedule.
+     * The execution constraints for jobs created under this schedule.
      * 
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.constraints.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the job may run, measured from
-     * the time the job starts. If the job does not complete within the time
-     * limit, the Batch service terminates it and any tasks that are still
-     * running.
+     * The maximum elapsed time that the job may run, measured from the time the
+     * job starts. If the job does not complete within the time limit, the Batch
+     * service terminates it and any tasks that are still running.
      * 
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.constraints.maxTaskRetryCount]
-     * Gets or sets the maximum number of times each task may be retried. The
-     * Batch service retries a task if its exit code is nonzero.
+     * The maximum number of times each task may be retried. The Batch service
+     * retries a task if its exit code is nonzero.
      * 
      * @param {object} [jobSchedulePatchParameter.jobSpecification.jobManagerTask]
-     * Gets or sets the details of a Job Manager task to be launched when a job
-     * is started under this schedule.
+     * The details of a Job Manager task to be launched when a job is started
+     * under this schedule.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.id] Gets or
-     * sets a string that uniquely identifies the Job Manager task. A GUID is
-     * recommended.
+     * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.id] A string
+     * that uniquely identifies the Job Manager task. A GUID is recommended.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.displayName]
-     * Gets or sets the display name of the Job Manager task.
+     * The display name of the Job Manager task.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.commandLine]
-     * Gets or sets the command line of the Job Manager task.
+     * The command line of the Job Manager task.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job Manager
-     * task.
+     * A list of environment variable settings for the Job Manager task.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.constraints]
-     * Gets or sets constraints that apply to the Job Manager task.
+     * Constraints that apply to the Job Manager task.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.killJobOnCompletion]
-     * Gets or sets whether completion of the Job Manager task signifies
-     * completion of the entire job.
+     * Whether completion of the Job Manager task signifies completion of the
+     * entire job.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.runElevated]
-     * Gets or sets whether to run the Job Manager task in elevated mode. The
-     * default value is false.
+     * Whether to run the Job Manager task in elevated mode. The default value is
+     * false.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.runExclusive]
-     * Gets or sets whether the Job Manager task requires exclusive use of the
-     * compute node where it runs.
+     * Whether the Job Manager task requires exclusive use of the compute node
+     * where it runs. If true, no other tasks will run on the same compute node
+     * for as long as the Job Manager is running. If false, other tasks can run
+     * simultaneously with the Job Manager on a compute node. (The Job Manager
+     * task counts normally against the node’s concurrent task limit, so this is
+     * only relevant if the node allows multiple concurrent tasks.)
      * 
      * @param {object}
-     * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask] Gets or
-     * sets the Job Preparation task for jobs created under this schedule.
+     * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask] The Job
+     * Preparation task for jobs created under this schedule.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.id] Gets or
-     * sets a string that uniquely identifies the job preparation task within the
-     * job. The id can contain any combination of alphanumeric characters
-     * including hyphens and underscores and cannot contain more than 64
-     * characters.
+     * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.id] A
+     * string that uniquely identifies the job preparation task within the job.
+     * The id can contain any combination of alphanumeric characters including
+     * hyphens and underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.commandLine]
-     * Gets or sets the command line of the Job Preparation task.
+     * The command line of the Job Preparation task.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job
-     * Preparation task.
+     * A list of environment variable settings for the Job Preparation task.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints]
-     * Gets or sets constraints that apply to the Job Preparation task..
+     * Constraints that apply to the Job Preparation task.
      * 
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the task may run, measured from
-     * the time the task starts. If the task does not complete within the time
-     * limit, the Batch service terminates it.
+     * The maximum elapsed time that the task may run, measured from the time the
+     * task starts. If the task does not complete within the time limit, the
+     * Batch service terminates it.
      * 
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.retentionTime]
-     * Gets or sets the minimum time to retain the working directory for the task
-     * on the compute node where it ran. After this time, the Batch service may
-     * delete the working directory and all its contents. The default is infinite.
+     * The minimum time to retain the working directory for the task on the
+     * compute node where it ran, from the time it completes execution. After
+     * this time, the Batch service may delete the working directory and all its
+     * contents. The default is infinite.
      * 
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried. The
-     * Batch service retries a task if its exit code is nonzero.
+     * The maximum number of times the task may be retried. The Batch service
+     * retries a task if its exit code is nonzero.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.waitForSuccess]
-     * Gets or sets whether the Batch Service should wait for the Job Preparation
-     * task to complete successfully before scheduling any other tasks of the job
-     * on the compute node.
+     * Whether the Batch service should wait for the Job Preparation task to
+     * complete successfully before scheduling any other tasks of the job on the
+     * compute node.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.runElevated]
-     * Gets or sets whether to run the Job Preparation task in elevated mode. The
-     * default value is false.
+     * Whether to run the Job Preparation task in elevated mode. The default
+     * value is false.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
-     * Gets or sets whether the Batch service should rerun the Job Preparation
-     * task after a compute node reboots. The default value is true.
+     * Whether the Batch service should rerun the Job Preparation task after a
+     * compute node reboots. Note that the Job Preparation task should still be
+     * written to be idempotent because it can be rerun if the compute node is
+     * rebooted while Job Preparation task is still running. The default value is
+     * true.
      * 
      * @param {object} [jobSchedulePatchParameter.jobSpecification.jobReleaseTask]
-     * Gets or sets the Job Release task for jobs created under this schedule.
+     * The Job Release task for jobs created under this schedule.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.id] Gets or
-     * sets a string that uniquely identifies the Job Release task within the
-     * job. The id can contain any combination of alphanumeric characters
-     * including hyphens and underscores and cannot contain more than 64
-     * characters.
+     * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.id] A string
+     * that uniquely identifies the Job Release task within the job. The id can
+     * contain any combination of alphanumeric characters including hyphens and
+     * underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.commandLine]
-     * Gets or sets the command line of the Job Release task.
+     * The command line of the Job Release task.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job Release
-     * task.
+     * A list of environment variable settings for the Job Release task.
      * 
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the Job Release task may run on
-     * a given compute node, measured from the time the task starts. If the task
-     * does not complete within the time limit, the Batch service terminates it.
-     * The default value is 15 minutes.
+     * The maximum elapsed time that the Job Release task may run on a given
+     * compute node, measured from the time the task starts. If the task does not
+     * complete within the time limit, the Batch service terminates it. The
+     * default value is 15 minutes.
      * 
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.retentionTime]
-     * Gets or sets the minimum time to retain the working directory for the Job
-     * Release task on the compute node.  After this time, the Batch service may
-     * delete the working directory and all its contents. The default is infinite.
+     * The minimum time to retain the working directory for the Job Release task
+     * on the compute node.  After this time, the Batch service may delete the
+     * working directory and all its contents. The default is infinite.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.runElevated]
-     * Gets or sets whether to run the Job Release task in elevated mode. The
-     * default value is false.
+     * Whether to run the Job Release task in elevated mode. The default value is
+     * false.
      * 
      * @param {array}
-     * [jobSchedulePatchParameter.jobSpecification.commonEnvironmentSettings]
-     * Gets or sets a list of common environment variable settings.  These
-     * environment variables are set for all tasks in jobs created under this
-     * schedule (including the Job Manager, Job Preparation and Job Release
-     * tasks).
+     * [jobSchedulePatchParameter.jobSpecification.commonEnvironmentSettings] A
+     * list of common environment variable settings.  These environment variables
+     * are set for all tasks in jobs created under this schedule (including the
+     * Job Manager, Job Preparation and Job Release tasks).
      * 
-     * @param {object} [jobSchedulePatchParameter.jobSpecification.poolInfo] Gets
-     * or sets the pool on which the Batch service runs the tasks of jobs created
-     * under this schedule.
+     * @param {object} [jobSchedulePatchParameter.jobSpecification.poolInfo] The
+     * pool on which the Batch service runs the tasks of jobs created under this
+     * schedule.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.poolId] Gets or sets
-     * the id of an existing pool. All the tasks of the job will run on the
-     * specified pool. You must specify either PoolId or AutoPoolSpecification,
-     * but not both.
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.poolId] The id of an
+     * existing pool. All the tasks of the job will run on the specified pool.
+     * You must specify either PoolId or AutoPoolSpecification, but not both.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification]
-     * Gets or sets characteristics for a temporary 'auto pool'. The Batch
-     * service will create this auto pool and run all of the tasks of the job on
-     * it, and will delete the pool once the job has completed. You must specify
-     * either PoolId or AutoPoolSpecification, but not both.
+     * Characteristics for a temporary 'auto pool'. The Batch service will create
+     * this auto pool and run all of the tasks of the job on it, and will delete
+     * the pool once the job has completed. You must specify either PoolId or
+     * AutoPoolSpecification, but not both.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix]
-     * Gets or sets a prefix to be added to the unique identifier when a pool is
-     * automatically created. The prefix can be up to 20 characters long.
+     * A prefix to be added to the unique identifier when a pool is automatically
+     * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
-     * Gets or sets the minimum lifetime of created auto pools, and how multiple
-     * jobs on a schedule are assigned to pools. Possible values include:
-     * 'jobschedule', 'job', 'unmapped'
+     * The minimum lifetime of created auto pools, and how multiple jobs on a
+     * schedule are assigned to pools. Possible values include: 'jobschedule',
+     * 'job', 'unmapped'
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.keepAlive]
-     * Gets or sets whether to keep an auto pool alive after its lifetime expires.
+     * Whether to keep an auto pool alive after its lifetime expires.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool]
-     * Gets or sets the pool specification for the auto pool.
+     * The pool specification for the auto pool.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.displayName]
-     * Gets or sets the display name for the pool.
+     * The display name for the pool.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
-     * Gets or sets the size of the virtual machines in the pool. All VMs in a
+     * The size of the virtual machines in the pool. All virtual machines in a
      * pool are the same size.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
-     * Gets or sets the cloud service configuration for the pool. This property
-     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * The cloud service configuration for the pool. This property and
+     * VirtualMachineConfiguration are mutually exclusive and one of the
      * properties must be specified.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
-     * Gets or sets the Azure Guest OS family to be installed on the virtual
-     * machines in the pool.
+     * The Azure Guest OS family to be installed on the virtual machines in the
+     * pool.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool. The default value is * which specifies the latest
-     * operating system version for the specified OS family.
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
-     * Gets or sets the Azure Guest OS Version currently installed on the virtual
-     * machines in the pool. This may differ from TargetOSVersion if the pool
-     * state is Upgrading.
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from TargetOSVersion if the pool state is
+     * Upgrading.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
-     * Gets or sets the virtual machine configuration for the pool. This property
-     * and CloudServiceConfiguration are mutually exclusive and one of the
-     * properties must be specified.
+     * The virtual machine configuration for the pool. This property and
+     * CloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
-     * Gets or sets information about the platform or marketplace image to use.
+     * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
-     * Gets or sets the publisher of the image.
+     * The publisher of the Azure Virtual Machines Marketplace image. For
+     * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
-     * Gets or sets the offer of the image.
+     * The offer type of the Azure Virtual Machines Marketplace image. For
+     * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
-     * Gets or sets the SKU of the image.
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
-     * Gets or sets the version of the image. A value of 'latest' can be
-     * specified to select the latest version of an image.
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
-     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
-     * the compute node. This property must match the ImageReference property.
+     * The SKU of Batch Node Agent to be provisioned on the compute node. The
+     * Batch node agent is a program that runs on each node in the pool, and
+     * provides the command-and-control interface between the node and the Batch
+     * service. There are different implementations of the node agent, known as
+     * SKUs, for different operating systems.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
-     * Gets or sets Windows operating system settings on the virtual machine.
-     * This property must not be specified if the ImageReference property
-     * referencs a Linux OS image.
+     * Windows operating system settings on the virtual machine. This property
+     * must not be specified if the ImageReference property specifies a Linux OS
+     * image.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether virtual machine is enabled for automatic updates. If
-     * omitted, the default value is true.
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
      * 
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * Gets or sets the maximum number of tasks that can run concurrently on a
-     * single compute node in the pool.
+     * The maximum number of tasks that can run concurrently on a single compute
+     * node in the pool.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * Gets or sets how tasks are distributed among compute nodes in the pool.
+     * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * Gets or sets how tasks should be distributed across compute nodes.
-     * Possible values include: 'spread', 'pack', 'unmapped'
+     * How tasks should be distributed across compute nodes. Possible values
+     * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
-     * Gets or sets the timeout for allocation of compute nodes to the pool.
+     * The timeout for allocation of compute nodes to the pool.
      * 
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated]
-     * Gets or sets the desired number of compute nodes in the pool.
+     * The desired number of compute nodes in the pool.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale]
-     * Gets or sets whether the pool size should automatically adjust over time.
+     * Whether the pool size should automatically adjust over time.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
-     * Gets or sets the formula for the desired number of compute nodes in the
-     * pool.
+     * The formula for the desired number of compute nodes in the pool.
      * 
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
-     * Gets or sets a time interval for the desired AutoScale evaluation period
-     * in the pool.
+     * A time interval for the desired AutoScale evaluation period in the pool.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
-     * Gets or sets whether the pool permits direct communication between nodes.
+     * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
-     * Gets or sets a task to run on each compute node as it joins the pool. The
-     * task runs when the node is added to the pool or when the node is restarted.
+     * A task to run on each compute node as it joins the pool. The task runs
+     * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * Gets or sets the command line of the start task.
+     * The command line of the start task.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the start task.
+     * A list of environment variable settings for the start task.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.runElevated]
-     * Gets or sets whether to run the start task in elevated mode. The default
-     * value is false.
+     * Whether to run the start task in elevated mode. The default value is false.
      * 
      * @param {number}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried.
+     * The maximum number of times the task may be retried.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Gets or sets whether the Batch Service should wait for the start task to
-     * complete successfully (that is, to exit with exit code 0) before
-     * scheduling any tasks on the compute node.
+     * Whether the Batch service should wait for the start task to complete
+     * successfully (that is, to exit with exit code 0) before scheduling any
+     * tasks on the compute node.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
-     * Gets or sets a list of certificates to be installed on each compute node
-     * in the pool.
+     * A list of certificates to be installed on each compute node in the pool.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
-     * Gets or sets the list of application packages to be installed on each
-     * compute node in the pool.
+     * The list of application packages to be installed on each compute node in
+     * the pool.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.metadata]
-     * Gets or sets a list of name-value pairs associated with the pool as
-     * metadata.
+     * A list of name-value pairs associated with the pool as metadata.
      * 
-     * @param {array} [jobSchedulePatchParameter.jobSpecification.metadata] Gets
-     * or sets a list of name-value pairs associated with each job created under
-     * this schedule as metadata.
+     * @param {array} [jobSchedulePatchParameter.jobSpecification.metadata] A list
+     * of name-value pairs associated with each job created under this schedule
+     * as metadata.
      * 
-     * @param {array} [jobSchedulePatchParameter.metadata] Sets a list of
-     * name-value pairs associated with the job schedule as metadata.
+     * @param {array} [jobSchedulePatchParameter.metadata] A list of name-value
+     * pairs associated with the job schedule as metadata.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.jobSchedulePatchOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.jobSchedulePatchOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.jobSchedulePatchOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.jobSchedulePatchOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -4111,442 +4103,440 @@ export interface JobSchedule {
      * 
      * @param {object} jobScheduleUpdateParameter The parameters for the request.
      * 
-     * @param {object} [jobScheduleUpdateParameter.schedule] Sets the schedule
+     * @param {object} [jobScheduleUpdateParameter.schedule] The schedule
      * according to which jobs will be created. If you do not specify this
      * element, it is equivalent to passing the default schedule: that is, a
      * single job scheduled to run immediately.
      * 
-     * @param {date} [jobScheduleUpdateParameter.schedule.doNotRunUntil] Gets or
-     * sets the earliest time at which any job may be created under this job
-     * schedule. If you do not specify a doNotRunUntil time, the schedule becomes
-     * ready to create jobs immediately.
+     * @param {date} [jobScheduleUpdateParameter.schedule.doNotRunUntil] The
+     * earliest time at which any job may be created under this job schedule. If
+     * you do not specify a doNotRunUntil time, the schedule becomes ready to
+     * create jobs immediately.
      * 
-     * @param {date} [jobScheduleUpdateParameter.schedule.doNotRunAfter] Gets or
-     * sets a time after which no job will be created under this job schedule.
-     * The schedule will move to the completed state as soon as this deadline is
-     * past and there is no active job under this job schedule.
+     * @param {date} [jobScheduleUpdateParameter.schedule.doNotRunAfter] A time
+     * after which no job will be created under this job schedule.  The schedule
+     * will move to the completed state as soon as this deadline is past and
+     * there is no active job under this job schedule.
      * 
      * @param {moment.duration} [jobScheduleUpdateParameter.schedule.startWindow]
-     * Gets or sets the time interval, starting from the time at which the
-     * schedule indicates a job should be created, within which a job must be
-     * created.  If a job is not created within the startWindow interval, then
-     * the 'opportunity' is lost; no job will be created until the next
-     * recurrence of the schedule.
+     * The time interval, starting from the time at which the schedule indicates
+     * a job should be created, within which a job must be created.  If a job is
+     * not created within the startWindow interval, then the 'opportunity' is
+     * lost; no job will be created until the next recurrence of the schedule.
      * 
      * @param {moment.duration}
-     * [jobScheduleUpdateParameter.schedule.recurrenceInterval] Gets or sets the
-     * time interval between the start times of two successive jobs under the job
-     * schedule. A job schedule can have at most one active job under it at any
-     * given time.
+     * [jobScheduleUpdateParameter.schedule.recurrenceInterval] The time interval
+     * between the start times of two successive jobs under the job schedule. A
+     * job schedule can have at most one active job under it at any given time.
      * 
-     * @param {object} [jobScheduleUpdateParameter.jobSpecification] Sets details
-     * of the jobs to be created on this schedule.
+     * @param {object} [jobScheduleUpdateParameter.jobSpecification] Details of
+     * the jobs to be created on this schedule.
      * 
-     * @param {number} [jobScheduleUpdateParameter.jobSpecification.priority] Gets
-     * or sets the priority of jobs created under this schedule. Priority values
-     * can range from -1000 to 1000, with -1000 being the lowest priority and
-     * 1000 being the highest priority. The default value is 0.
+     * @param {number} [jobScheduleUpdateParameter.jobSpecification.priority] The
+     * priority of jobs created under this schedule. Priority values can range
+     * from -1000 to 1000, with -1000 being the lowest priority and 1000 being
+     * the highest priority. The default value is 0.
      * 
      * @param {string} [jobScheduleUpdateParameter.jobSpecification.displayName]
-     * Gets or sets the display name for jobs created under this schedule. It
-     * need not be unique and can contain any Unicode characters up to a maximum
-     * length of 1024.
+     * The display name for jobs created under this schedule. It need not be
+     * unique and can contain any Unicode characters up to a maximum length of
+     * 1024.
      * 
      * @param {boolean}
-     * [jobScheduleUpdateParameter.jobSpecification.usesTaskDependencies] Gets or
-     * sets the flag that determines if this job will use tasks with dependencies.
+     * [jobScheduleUpdateParameter.jobSpecification.usesTaskDependencies] The
+     * flag that determines if this job will use tasks with dependencies.
      * 
      * @param {object} [jobScheduleUpdateParameter.jobSpecification.constraints]
-     * Gets or sets the execution constraints for jobs created under this
-     * schedule.
+     * The execution constraints for jobs created under this schedule.
      * 
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.constraints.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the job may run, measured from
-     * the time the job starts. If the job does not complete within the time
-     * limit, the Batch service terminates it and any tasks that are still
-     * running.
+     * The maximum elapsed time that the job may run, measured from the time the
+     * job starts. If the job does not complete within the time limit, the Batch
+     * service terminates it and any tasks that are still running.
      * 
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.constraints.maxTaskRetryCount]
-     * Gets or sets the maximum number of times each task may be retried. The
-     * Batch service retries a task if its exit code is nonzero.
+     * The maximum number of times each task may be retried. The Batch service
+     * retries a task if its exit code is nonzero.
      * 
      * @param {object}
-     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask] Gets or sets
-     * the details of a Job Manager task to be launched when a job is started
-     * under this schedule.
+     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask] The details
+     * of a Job Manager task to be launched when a job is started under this
+     * schedule.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.id] Gets or
-     * sets a string that uniquely identifies the Job Manager task. A GUID is
-     * recommended.
+     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.id] A string
+     * that uniquely identifies the Job Manager task. A GUID is recommended.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.displayName]
-     * Gets or sets the display name of the Job Manager task.
+     * The display name of the Job Manager task.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.commandLine]
-     * Gets or sets the command line of the Job Manager task.
+     * The command line of the Job Manager task.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job Manager
-     * task.
+     * A list of environment variable settings for the Job Manager task.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.constraints]
-     * Gets or sets constraints that apply to the Job Manager task.
+     * Constraints that apply to the Job Manager task.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.killJobOnCompletion]
-     * Gets or sets whether completion of the Job Manager task signifies
-     * completion of the entire job.
+     * Whether completion of the Job Manager task signifies completion of the
+     * entire job.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.runElevated]
-     * Gets or sets whether to run the Job Manager task in elevated mode. The
-     * default value is false.
+     * Whether to run the Job Manager task in elevated mode. The default value is
+     * false.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.runExclusive]
-     * Gets or sets whether the Job Manager task requires exclusive use of the
-     * compute node where it runs.
+     * Whether the Job Manager task requires exclusive use of the compute node
+     * where it runs. If true, no other tasks will run on the same compute node
+     * for as long as the Job Manager is running. If false, other tasks can run
+     * simultaneously with the Job Manager on a compute node. (The Job Manager
+     * task counts normally against the node’s concurrent task limit, so this is
+     * only relevant if the node allows multiple concurrent tasks.)
      * 
      * @param {object}
-     * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask] Gets or
-     * sets the Job Preparation task for jobs created under this schedule.
+     * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask] The Job
+     * Preparation task for jobs created under this schedule.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.id] Gets
-     * or sets a string that uniquely identifies the job preparation task within
-     * the job. The id can contain any combination of alphanumeric characters
-     * including hyphens and underscores and cannot contain more than 64
-     * characters.
+     * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.id] A
+     * string that uniquely identifies the job preparation task within the job.
+     * The id can contain any combination of alphanumeric characters including
+     * hyphens and underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.commandLine]
-     * Gets or sets the command line of the Job Preparation task.
+     * The command line of the Job Preparation task.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job
-     * Preparation task.
+     * A list of environment variable settings for the Job Preparation task.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints]
-     * Gets or sets constraints that apply to the Job Preparation task..
+     * Constraints that apply to the Job Preparation task.
      * 
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the task may run, measured from
-     * the time the task starts. If the task does not complete within the time
-     * limit, the Batch service terminates it.
+     * The maximum elapsed time that the task may run, measured from the time the
+     * task starts. If the task does not complete within the time limit, the
+     * Batch service terminates it.
      * 
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.retentionTime]
-     * Gets or sets the minimum time to retain the working directory for the task
-     * on the compute node where it ran. After this time, the Batch service may
-     * delete the working directory and all its contents. The default is infinite.
+     * The minimum time to retain the working directory for the task on the
+     * compute node where it ran, from the time it completes execution. After
+     * this time, the Batch service may delete the working directory and all its
+     * contents. The default is infinite.
      * 
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried. The
-     * Batch service retries a task if its exit code is nonzero.
+     * The maximum number of times the task may be retried. The Batch service
+     * retries a task if its exit code is nonzero.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.waitForSuccess]
-     * Gets or sets whether the Batch Service should wait for the Job Preparation
-     * task to complete successfully before scheduling any other tasks of the job
-     * on the compute node.
+     * Whether the Batch service should wait for the Job Preparation task to
+     * complete successfully before scheduling any other tasks of the job on the
+     * compute node.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.runElevated]
-     * Gets or sets whether to run the Job Preparation task in elevated mode. The
-     * default value is false.
+     * Whether to run the Job Preparation task in elevated mode. The default
+     * value is false.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
-     * Gets or sets whether the Batch service should rerun the Job Preparation
-     * task after a compute node reboots. The default value is true.
+     * Whether the Batch service should rerun the Job Preparation task after a
+     * compute node reboots. Note that the Job Preparation task should still be
+     * written to be idempotent because it can be rerun if the compute node is
+     * rebooted while Job Preparation task is still running. The default value is
+     * true.
      * 
      * @param {object}
-     * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask] Gets or sets
-     * the Job Release task for jobs created under this schedule.
+     * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask] The Job
+     * Release task for jobs created under this schedule.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.id] Gets or
-     * sets a string that uniquely identifies the Job Release task within the
-     * job. The id can contain any combination of alphanumeric characters
-     * including hyphens and underscores and cannot contain more than 64
-     * characters.
+     * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.id] A string
+     * that uniquely identifies the Job Release task within the job. The id can
+     * contain any combination of alphanumeric characters including hyphens and
+     * underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.commandLine]
-     * Gets or sets the command line of the Job Release task.
+     * The command line of the Job Release task.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job Release
-     * task.
+     * A list of environment variable settings for the Job Release task.
      * 
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the Job Release task may run on
-     * a given compute node, measured from the time the task starts. If the task
-     * does not complete within the time limit, the Batch service terminates it.
-     * The default value is 15 minutes.
+     * The maximum elapsed time that the Job Release task may run on a given
+     * compute node, measured from the time the task starts. If the task does not
+     * complete within the time limit, the Batch service terminates it. The
+     * default value is 15 minutes.
      * 
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.retentionTime]
-     * Gets or sets the minimum time to retain the working directory for the Job
-     * Release task on the compute node.  After this time, the Batch service may
-     * delete the working directory and all its contents. The default is infinite.
+     * The minimum time to retain the working directory for the Job Release task
+     * on the compute node.  After this time, the Batch service may delete the
+     * working directory and all its contents. The default is infinite.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.runElevated]
-     * Gets or sets whether to run the Job Release task in elevated mode. The
-     * default value is false.
+     * Whether to run the Job Release task in elevated mode. The default value is
+     * false.
      * 
      * @param {array}
-     * [jobScheduleUpdateParameter.jobSpecification.commonEnvironmentSettings]
-     * Gets or sets a list of common environment variable settings.  These
-     * environment variables are set for all tasks in jobs created under this
-     * schedule (including the Job Manager, Job Preparation and Job Release
-     * tasks).
+     * [jobScheduleUpdateParameter.jobSpecification.commonEnvironmentSettings] A
+     * list of common environment variable settings.  These environment variables
+     * are set for all tasks in jobs created under this schedule (including the
+     * Job Manager, Job Preparation and Job Release tasks).
      * 
-     * @param {object} [jobScheduleUpdateParameter.jobSpecification.poolInfo] Gets
-     * or sets the pool on which the Batch service runs the tasks of jobs created
-     * under this schedule.
+     * @param {object} [jobScheduleUpdateParameter.jobSpecification.poolInfo] The
+     * pool on which the Batch service runs the tasks of jobs created under this
+     * schedule.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.poolId] Gets or sets
-     * the id of an existing pool. All the tasks of the job will run on the
-     * specified pool. You must specify either PoolId or AutoPoolSpecification,
-     * but not both.
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.poolId] The id of an
+     * existing pool. All the tasks of the job will run on the specified pool.
+     * You must specify either PoolId or AutoPoolSpecification, but not both.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification]
-     * Gets or sets characteristics for a temporary 'auto pool'. The Batch
-     * service will create this auto pool and run all of the tasks of the job on
-     * it, and will delete the pool once the job has completed. You must specify
-     * either PoolId or AutoPoolSpecification, but not both.
+     * Characteristics for a temporary 'auto pool'. The Batch service will create
+     * this auto pool and run all of the tasks of the job on it, and will delete
+     * the pool once the job has completed. You must specify either PoolId or
+     * AutoPoolSpecification, but not both.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix]
-     * Gets or sets a prefix to be added to the unique identifier when a pool is
-     * automatically created. The prefix can be up to 20 characters long.
+     * A prefix to be added to the unique identifier when a pool is automatically
+     * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
-     * Gets or sets the minimum lifetime of created auto pools, and how multiple
-     * jobs on a schedule are assigned to pools. Possible values include:
-     * 'jobschedule', 'job', 'unmapped'
+     * The minimum lifetime of created auto pools, and how multiple jobs on a
+     * schedule are assigned to pools. Possible values include: 'jobschedule',
+     * 'job', 'unmapped'
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.keepAlive]
-     * Gets or sets whether to keep an auto pool alive after its lifetime expires.
+     * Whether to keep an auto pool alive after its lifetime expires.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool]
-     * Gets or sets the pool specification for the auto pool.
+     * The pool specification for the auto pool.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.displayName]
-     * Gets or sets the display name for the pool.
+     * The display name for the pool.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
-     * Gets or sets the size of the virtual machines in the pool. All VMs in a
+     * The size of the virtual machines in the pool. All virtual machines in a
      * pool are the same size.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
-     * Gets or sets the cloud service configuration for the pool. This property
-     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * The cloud service configuration for the pool. This property and
+     * VirtualMachineConfiguration are mutually exclusive and one of the
      * properties must be specified.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
-     * Gets or sets the Azure Guest OS family to be installed on the virtual
-     * machines in the pool.
+     * The Azure Guest OS family to be installed on the virtual machines in the
+     * pool.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool. The default value is * which specifies the latest
-     * operating system version for the specified OS family.
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
-     * Gets or sets the Azure Guest OS Version currently installed on the virtual
-     * machines in the pool. This may differ from TargetOSVersion if the pool
-     * state is Upgrading.
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from TargetOSVersion if the pool state is
+     * Upgrading.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
-     * Gets or sets the virtual machine configuration for the pool. This property
-     * and CloudServiceConfiguration are mutually exclusive and one of the
-     * properties must be specified.
+     * The virtual machine configuration for the pool. This property and
+     * CloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
-     * Gets or sets information about the platform or marketplace image to use.
+     * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
-     * Gets or sets the publisher of the image.
+     * The publisher of the Azure Virtual Machines Marketplace image. For
+     * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
-     * Gets or sets the offer of the image.
+     * The offer type of the Azure Virtual Machines Marketplace image. For
+     * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
-     * Gets or sets the SKU of the image.
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
-     * Gets or sets the version of the image. A value of 'latest' can be
-     * specified to select the latest version of an image.
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
-     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
-     * the compute node. This property must match the ImageReference property.
+     * The SKU of Batch Node Agent to be provisioned on the compute node. The
+     * Batch node agent is a program that runs on each node in the pool, and
+     * provides the command-and-control interface between the node and the Batch
+     * service. There are different implementations of the node agent, known as
+     * SKUs, for different operating systems.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
-     * Gets or sets Windows operating system settings on the virtual machine.
-     * This property must not be specified if the ImageReference property
-     * referencs a Linux OS image.
+     * Windows operating system settings on the virtual machine. This property
+     * must not be specified if the ImageReference property specifies a Linux OS
+     * image.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether virtual machine is enabled for automatic updates. If
-     * omitted, the default value is true.
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
      * 
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * Gets or sets the maximum number of tasks that can run concurrently on a
-     * single compute node in the pool.
+     * The maximum number of tasks that can run concurrently on a single compute
+     * node in the pool.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * Gets or sets how tasks are distributed among compute nodes in the pool.
+     * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * Gets or sets how tasks should be distributed across compute nodes.
-     * Possible values include: 'spread', 'pack', 'unmapped'
+     * How tasks should be distributed across compute nodes. Possible values
+     * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
-     * Gets or sets the timeout for allocation of compute nodes to the pool.
+     * The timeout for allocation of compute nodes to the pool.
      * 
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated]
-     * Gets or sets the desired number of compute nodes in the pool.
+     * The desired number of compute nodes in the pool.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale]
-     * Gets or sets whether the pool size should automatically adjust over time.
+     * Whether the pool size should automatically adjust over time.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
-     * Gets or sets the formula for the desired number of compute nodes in the
-     * pool.
+     * The formula for the desired number of compute nodes in the pool.
      * 
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
-     * Gets or sets a time interval for the desired AutoScale evaluation period
-     * in the pool.
+     * A time interval for the desired AutoScale evaluation period in the pool.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
-     * Gets or sets whether the pool permits direct communication between nodes.
+     * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
-     * Gets or sets a task to run on each compute node as it joins the pool. The
-     * task runs when the node is added to the pool or when the node is restarted.
+     * A task to run on each compute node as it joins the pool. The task runs
+     * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * Gets or sets the command line of the start task.
+     * The command line of the start task.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the start task.
+     * A list of environment variable settings for the start task.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.runElevated]
-     * Gets or sets whether to run the start task in elevated mode. The default
-     * value is false.
+     * Whether to run the start task in elevated mode. The default value is false.
      * 
      * @param {number}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried.
+     * The maximum number of times the task may be retried.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Gets or sets whether the Batch Service should wait for the start task to
-     * complete successfully (that is, to exit with exit code 0) before
-     * scheduling any tasks on the compute node.
+     * Whether the Batch service should wait for the start task to complete
+     * successfully (that is, to exit with exit code 0) before scheduling any
+     * tasks on the compute node.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
-     * Gets or sets a list of certificates to be installed on each compute node
-     * in the pool.
+     * A list of certificates to be installed on each compute node in the pool.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
-     * Gets or sets the list of application packages to be installed on each
-     * compute node in the pool.
+     * The list of application packages to be installed on each compute node in
+     * the pool.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.metadata]
-     * Gets or sets a list of name-value pairs associated with the pool as
-     * metadata.
+     * A list of name-value pairs associated with the pool as metadata.
      * 
-     * @param {array} [jobScheduleUpdateParameter.jobSpecification.metadata] Gets
-     * or sets a list of name-value pairs associated with each job created under
-     * this schedule as metadata.
+     * @param {array} [jobScheduleUpdateParameter.jobSpecification.metadata] A
+     * list of name-value pairs associated with each job created under this
+     * schedule as metadata.
      * 
-     * @param {array} [jobScheduleUpdateParameter.metadata] Sets a list of
-     * name-value pairs associated with the job schedule as metadata. If you do
-     * not specify this element, it takes the default value of an empty list; in
-     * effect, any existing metadata is deleted.
+     * @param {array} [jobScheduleUpdateParameter.metadata] A list of name-value
+     * pairs associated with the job schedule as metadata. If you do not specify
+     * this element, it takes the default value of an empty list; in effect, any
+     * existing metadata is deleted.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.jobScheduleUpdateOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.jobScheduleUpdateOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.jobScheduleUpdateOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.jobScheduleUpdateOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -4595,9 +4585,9 @@ export interface JobSchedule {
      * @param {object} [options.jobScheduleDisableOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.jobScheduleDisableOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.jobScheduleDisableOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.jobScheduleDisableOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -4646,9 +4636,9 @@ export interface JobSchedule {
      * @param {object} [options.jobScheduleEnableOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.jobScheduleEnableOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.jobScheduleEnableOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.jobScheduleEnableOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -4697,9 +4687,9 @@ export interface JobSchedule {
      * @param {object} [options.jobScheduleTerminateOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.jobScheduleTerminateOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.jobScheduleTerminateOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.jobScheduleTerminateOptions.clientRequestId]
      * Caller generated request identity, in the form of a GUID with no
@@ -4743,433 +4733,432 @@ export interface JobSchedule {
      *
      * @param {object} cloudJobSchedule Specifies the job schedule to be added.
      * 
-     * @param {string} [cloudJobSchedule.id] Gets or sets a string that uniquely
-     * identifies the schedule within the account. A GUID is recommended.
+     * @param {string} [cloudJobSchedule.id] A string that uniquely identifies the
+     * schedule within the account. A GUID is recommended.
      * 
-     * @param {string} [cloudJobSchedule.displayName] Gets or sets the display
-     * name for the schedule.
+     * @param {string} [cloudJobSchedule.displayName] The display name for the
+     * schedule.
      * 
-     * @param {object} [cloudJobSchedule.schedule] Gets or sets the schedule
-     * according to which jobs will be created.
+     * @param {object} [cloudJobSchedule.schedule] The schedule according to which
+     * jobs will be created.
      * 
-     * @param {date} [cloudJobSchedule.schedule.doNotRunUntil] Gets or sets the
-     * earliest time at which any job may be created under this job schedule. If
-     * you do not specify a doNotRunUntil time, the schedule becomes ready to
-     * create jobs immediately.
+     * @param {date} [cloudJobSchedule.schedule.doNotRunUntil] The earliest time
+     * at which any job may be created under this job schedule. If you do not
+     * specify a doNotRunUntil time, the schedule becomes ready to create jobs
+     * immediately.
      * 
-     * @param {date} [cloudJobSchedule.schedule.doNotRunAfter] Gets or sets a time
-     * after which no job will be created under this job schedule.  The schedule
-     * will move to the completed state as soon as this deadline is past and
-     * there is no active job under this job schedule.
+     * @param {date} [cloudJobSchedule.schedule.doNotRunAfter] A time after which
+     * no job will be created under this job schedule.  The schedule will move to
+     * the completed state as soon as this deadline is past and there is no
+     * active job under this job schedule.
      * 
-     * @param {moment.duration} [cloudJobSchedule.schedule.startWindow] Gets or
-     * sets the time interval, starting from the time at which the schedule
-     * indicates a job should be created, within which a job must be created.  If
-     * a job is not created within the startWindow interval, then the
-     * 'opportunity' is lost; no job will be created until the next recurrence of
-     * the schedule.
+     * @param {moment.duration} [cloudJobSchedule.schedule.startWindow] The time
+     * interval, starting from the time at which the schedule indicates a job
+     * should be created, within which a job must be created.  If a job is not
+     * created within the startWindow interval, then the 'opportunity' is lost;
+     * no job will be created until the next recurrence of the schedule.
      * 
-     * @param {moment.duration} [cloudJobSchedule.schedule.recurrenceInterval]
-     * Gets or sets the time interval between the start times of two successive
-     * jobs under the job schedule. A job schedule can have at most one active
-     * job under it at any given time.
+     * @param {moment.duration} [cloudJobSchedule.schedule.recurrenceInterval] The
+     * time interval between the start times of two successive jobs under the job
+     * schedule. A job schedule can have at most one active job under it at any
+     * given time.
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification] Gets or sets the
-     * details of the jobs to be created on this schedule.
+     * @param {object} [cloudJobSchedule.jobSpecification] The details of the jobs
+     * to be created on this schedule.
      * 
-     * @param {number} [cloudJobSchedule.jobSpecification.priority] Gets or sets
-     * the priority of jobs created under this schedule. Priority values can
-     * range from -1000 to 1000, with -1000 being the lowest priority and 1000
-     * being the highest priority. The default value is 0.
+     * @param {number} [cloudJobSchedule.jobSpecification.priority] The priority
+     * of jobs created under this schedule. Priority values can range from -1000
+     * to 1000, with -1000 being the lowest priority and 1000 being the highest
+     * priority. The default value is 0.
      * 
-     * @param {string} [cloudJobSchedule.jobSpecification.displayName] Gets or
-     * sets the display name for jobs created under this schedule. It need not be
-     * unique and can contain any Unicode characters up to a maximum length of
-     * 1024.
+     * @param {string} [cloudJobSchedule.jobSpecification.displayName] The display
+     * name for jobs created under this schedule. It need not be unique and can
+     * contain any Unicode characters up to a maximum length of 1024.
      * 
      * @param {boolean} [cloudJobSchedule.jobSpecification.usesTaskDependencies]
-     * Gets or sets the flag that determines if this job will use tasks with
-     * dependencies.
+     * The flag that determines if this job will use tasks with dependencies.
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification.constraints] Gets or
-     * sets the execution constraints for jobs created under this schedule.
+     * @param {object} [cloudJobSchedule.jobSpecification.constraints] The
+     * execution constraints for jobs created under this schedule.
      * 
      * @param {moment.duration}
-     * [cloudJobSchedule.jobSpecification.constraints.maxWallClockTime] Gets or
-     * sets the maximum elapsed time that the job may run, measured from the time
-     * the job starts. If the job does not complete within the time limit, the
-     * Batch service terminates it and any tasks that are still running.
+     * [cloudJobSchedule.jobSpecification.constraints.maxWallClockTime] The
+     * maximum elapsed time that the job may run, measured from the time the job
+     * starts. If the job does not complete within the time limit, the Batch
+     * service terminates it and any tasks that are still running.
      * 
      * @param {number}
-     * [cloudJobSchedule.jobSpecification.constraints.maxTaskRetryCount] Gets or
-     * sets the maximum number of times each task may be retried. The Batch
-     * service retries a task if its exit code is nonzero.
+     * [cloudJobSchedule.jobSpecification.constraints.maxTaskRetryCount] The
+     * maximum number of times each task may be retried. The Batch service
+     * retries a task if its exit code is nonzero.
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification.jobManagerTask] Gets or
-     * sets the details of a Job Manager task to be launched when a job is
-     * started under this schedule.
+     * @param {object} [cloudJobSchedule.jobSpecification.jobManagerTask] The
+     * details of a Job Manager task to be launched when a job is started under
+     * this schedule.
      * 
-     * @param {string} [cloudJobSchedule.jobSpecification.jobManagerTask.id] Gets
-     * or sets a string that uniquely identifies the Job Manager task. A GUID is
+     * @param {string} [cloudJobSchedule.jobSpecification.jobManagerTask.id] A
+     * string that uniquely identifies the Job Manager task. A GUID is
      * recommended.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.jobManagerTask.displayName] Gets or
-     * sets the display name of the Job Manager task.
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.displayName] The display
+     * name of the Job Manager task.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.jobManagerTask.commandLine] Gets or
-     * sets the command line of the Job Manager task.
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.commandLine] The command
+     * line of the Job Manager task.
      * 
      * @param {array}
-     * [cloudJobSchedule.jobSpecification.jobManagerTask.resourceFiles] Gets or
-     * sets a list of files that Batch will download to the compute node before
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.resourceFiles] A list of
+     * files that the Batch service will download to the compute node before
      * running the command line.
      * 
      * @param {array}
-     * [cloudJobSchedule.jobSpecification.jobManagerTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job Manager
-     * task.
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.environmentSettings] A
+     * list of environment variable settings for the Job Manager task.
      * 
      * @param {object}
-     * [cloudJobSchedule.jobSpecification.jobManagerTask.constraints] Gets or
-     * sets constraints that apply to the Job Manager task.
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.constraints] Constraints
+     * that apply to the Job Manager task.
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.killJobOnCompletion]
-     * Gets or sets whether completion of the Job Manager task signifies
-     * completion of the entire job.
+     * Whether completion of the Job Manager task signifies completion of the
+     * entire job.
      * 
      * @param {boolean}
-     * [cloudJobSchedule.jobSpecification.jobManagerTask.runElevated] Gets or
-     * sets whether to run the Job Manager task in elevated mode. The default
-     * value is false.
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.runElevated] Whether to
+     * run the Job Manager task in elevated mode. The default value is false.
      * 
      * @param {boolean}
-     * [cloudJobSchedule.jobSpecification.jobManagerTask.runExclusive] Gets or
-     * sets whether the Job Manager task requires exclusive use of the compute
-     * node where it runs.
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.runExclusive] Whether
+     * the Job Manager task requires exclusive use of the compute node where it
+     * runs. If true, no other tasks will run on the same compute node for as
+     * long as the Job Manager is running. If false, other tasks can run
+     * simultaneously with the Job Manager on a compute node. (The Job Manager
+     * task counts normally against the node’s concurrent task limit, so this is
+     * only relevant if the node allows multiple concurrent tasks.)
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] Gets
-     * or sets the Job Preparation task for jobs created under this schedule.
+     * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] The
+     * Job Preparation task for jobs created under this schedule.
      * 
-     * @param {string} [cloudJobSchedule.jobSpecification.jobPreparationTask.id]
-     * Gets or sets a string that uniquely identifies the job preparation task
-     * within the job. The id can contain any combination of alphanumeric
-     * characters including hyphens and underscores and cannot contain more than
-     * 64 characters.
+     * @param {string} [cloudJobSchedule.jobSpecification.jobPreparationTask.id] A
+     * string that uniquely identifies the job preparation task within the job.
+     * The id can contain any combination of alphanumeric characters including
+     * hyphens and underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.jobPreparationTask.commandLine] Gets or
-     * sets the command line of the Job Preparation task.
+     * [cloudJobSchedule.jobSpecification.jobPreparationTask.commandLine] The
+     * command line of the Job Preparation task.
      * 
      * @param {array}
-     * [cloudJobSchedule.jobSpecification.jobPreparationTask.resourceFiles] Gets
-     * or sets a list of files that Batch will download to the compute node
+     * [cloudJobSchedule.jobSpecification.jobPreparationTask.resourceFiles] A
+     * list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job
-     * Preparation task.
+     * A list of environment variable settings for the Job Preparation task.
      * 
      * @param {object}
-     * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints] Gets or
-     * sets constraints that apply to the Job Preparation task..
+     * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints]
+     * Constraints that apply to the Job Preparation task.
      * 
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.maxWallClockTime]
-     * Gets or sets the maximum elapsed time that the task may run, measured from
-     * the time the task starts. If the task does not complete within the time
-     * limit, the Batch service terminates it.
+     * The maximum elapsed time that the task may run, measured from the time the
+     * task starts. If the task does not complete within the time limit, the
+     * Batch service terminates it.
      * 
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.retentionTime]
-     * Gets or sets the minimum time to retain the working directory for the task
-     * on the compute node where it ran. After this time, the Batch service may
-     * delete the working directory and all its contents. The default is infinite.
+     * The minimum time to retain the working directory for the task on the
+     * compute node where it ran, from the time it completes execution. After
+     * this time, the Batch service may delete the working directory and all its
+     * contents. The default is infinite.
      * 
      * @param {number}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried. The
-     * Batch service retries a task if its exit code is nonzero.
+     * The maximum number of times the task may be retried. The Batch service
+     * retries a task if its exit code is nonzero.
      * 
      * @param {boolean}
-     * [cloudJobSchedule.jobSpecification.jobPreparationTask.waitForSuccess] Gets
-     * or sets whether the Batch Service should wait for the Job Preparation task
-     * to complete successfully before scheduling any other tasks of the job on
-     * the compute node.
+     * [cloudJobSchedule.jobSpecification.jobPreparationTask.waitForSuccess]
+     * Whether the Batch service should wait for the Job Preparation task to
+     * complete successfully before scheduling any other tasks of the job on the
+     * compute node.
      * 
      * @param {boolean}
-     * [cloudJobSchedule.jobSpecification.jobPreparationTask.runElevated] Gets or
-     * sets whether to run the Job Preparation task in elevated mode. The default
-     * value is false.
+     * [cloudJobSchedule.jobSpecification.jobPreparationTask.runElevated] Whether
+     * to run the Job Preparation task in elevated mode. The default value is
+     * false.
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess]
-     * Gets or sets whether the Batch service should rerun the Job Preparation
-     * task after a compute node reboots. The default value is true.
+     * Whether the Batch service should rerun the Job Preparation task after a
+     * compute node reboots. Note that the Job Preparation task should still be
+     * written to be idempotent because it can be rerun if the compute node is
+     * rebooted while Job Preparation task is still running. The default value is
+     * true.
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification.jobReleaseTask] Gets or
-     * sets the Job Release task for jobs created under this schedule.
+     * @param {object} [cloudJobSchedule.jobSpecification.jobReleaseTask] The Job
+     * Release task for jobs created under this schedule.
      * 
-     * @param {string} [cloudJobSchedule.jobSpecification.jobReleaseTask.id] Gets
-     * or sets a string that uniquely identifies the Job Release task within the
-     * job. The id can contain any combination of alphanumeric characters
-     * including hyphens and underscores and cannot contain more than 64
-     * characters.
+     * @param {string} [cloudJobSchedule.jobSpecification.jobReleaseTask.id] A
+     * string that uniquely identifies the Job Release task within the job. The
+     * id can contain any combination of alphanumeric characters including
+     * hyphens and underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.jobReleaseTask.commandLine] Gets or
-     * sets the command line of the Job Release task.
+     * [cloudJobSchedule.jobSpecification.jobReleaseTask.commandLine] The command
+     * line of the Job Release task.
      * 
      * @param {array}
-     * [cloudJobSchedule.jobSpecification.jobReleaseTask.resourceFiles] Gets or
-     * sets a list of files that Batch will download to the compute node before
+     * [cloudJobSchedule.jobSpecification.jobReleaseTask.resourceFiles] A list of
+     * files that the Batch service will download to the compute node before
      * running the command line.
      * 
      * @param {array}
-     * [cloudJobSchedule.jobSpecification.jobReleaseTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the Job Release
-     * task.
+     * [cloudJobSchedule.jobSpecification.jobReleaseTask.environmentSettings] A
+     * list of environment variable settings for the Job Release task.
      * 
      * @param {moment.duration}
-     * [cloudJobSchedule.jobSpecification.jobReleaseTask.maxWallClockTime] Gets
-     * or sets the maximum elapsed time that the Job Release task may run on a
-     * given compute node, measured from the time the task starts. If the task
-     * does not complete within the time limit, the Batch service terminates it.
-     * The default value is 15 minutes.
+     * [cloudJobSchedule.jobSpecification.jobReleaseTask.maxWallClockTime] The
+     * maximum elapsed time that the Job Release task may run on a given compute
+     * node, measured from the time the task starts. If the task does not
+     * complete within the time limit, the Batch service terminates it. The
+     * default value is 15 minutes.
      * 
      * @param {moment.duration}
-     * [cloudJobSchedule.jobSpecification.jobReleaseTask.retentionTime] Gets or
-     * sets the minimum time to retain the working directory for the Job Release
-     * task on the compute node.  After this time, the Batch service may delete
-     * the working directory and all its contents. The default is infinite.
+     * [cloudJobSchedule.jobSpecification.jobReleaseTask.retentionTime] The
+     * minimum time to retain the working directory for the Job Release task on
+     * the compute node.  After this time, the Batch service may delete the
+     * working directory and all its contents. The default is infinite.
      * 
      * @param {boolean}
-     * [cloudJobSchedule.jobSpecification.jobReleaseTask.runElevated] Gets or
-     * sets whether to run the Job Release task in elevated mode. The default
-     * value is false.
+     * [cloudJobSchedule.jobSpecification.jobReleaseTask.runElevated] Whether to
+     * run the Job Release task in elevated mode. The default value is false.
      * 
      * @param {array}
-     * [cloudJobSchedule.jobSpecification.commonEnvironmentSettings] Gets or sets
-     * a list of common environment variable settings.  These environment
-     * variables are set for all tasks in jobs created under this schedule
-     * (including the Job Manager, Job Preparation and Job Release tasks).
+     * [cloudJobSchedule.jobSpecification.commonEnvironmentSettings] A list of
+     * common environment variable settings.  These environment variables are set
+     * for all tasks in jobs created under this schedule (including the Job
+     * Manager, Job Preparation and Job Release tasks).
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification.poolInfo] Gets or sets
-     * the pool on which the Batch service runs the tasks of jobs created under
-     * this schedule.
+     * @param {object} [cloudJobSchedule.jobSpecification.poolInfo] The pool on
+     * which the Batch service runs the tasks of jobs created under this schedule.
      * 
-     * @param {string} [cloudJobSchedule.jobSpecification.poolInfo.poolId] Gets or
-     * sets the id of an existing pool. All the tasks of the job will run on the
-     * specified pool. You must specify either PoolId or AutoPoolSpecification,
-     * but not both.
+     * @param {string} [cloudJobSchedule.jobSpecification.poolInfo.poolId] The id
+     * of an existing pool. All the tasks of the job will run on the specified
+     * pool. You must specify either PoolId or AutoPoolSpecification, but not
+     * both.
      * 
      * @param {object}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification] Gets or
-     * sets characteristics for a temporary 'auto pool'. The Batch service will
-     * create this auto pool and run all of the tasks of the job on it, and will
-     * delete the pool once the job has completed. You must specify either PoolId
-     * or AutoPoolSpecification, but not both.
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification]
+     * Characteristics for a temporary 'auto pool'. The Batch service will create
+     * this auto pool and run all of the tasks of the job on it, and will delete
+     * the pool once the job has completed. You must specify either PoolId or
+     * AutoPoolSpecification, but not both.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix]
-     * Gets or sets a prefix to be added to the unique identifier when a pool is
-     * automatically created. The prefix can be up to 20 characters long.
+     * A prefix to be added to the unique identifier when a pool is automatically
+     * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
-     * Gets or sets the minimum lifetime of created auto pools, and how multiple
-     * jobs on a schedule are assigned to pools. Possible values include:
-     * 'jobschedule', 'job', 'unmapped'
+     * The minimum lifetime of created auto pools, and how multiple jobs on a
+     * schedule are assigned to pools. Possible values include: 'jobschedule',
+     * 'job', 'unmapped'
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.keepAlive]
-     * Gets or sets whether to keep an auto pool alive after its lifetime expires.
+     * Whether to keep an auto pool alive after its lifetime expires.
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool]
-     * Gets or sets the pool specification for the auto pool.
+     * The pool specification for the auto pool.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.displayName]
-     * Gets or sets the display name for the pool.
+     * The display name for the pool.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
-     * Gets or sets the size of the virtual machines in the pool. All VMs in a
+     * The size of the virtual machines in the pool. All virtual machines in a
      * pool are the same size.
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
-     * Gets or sets the cloud service configuration for the pool. This property
-     * and VirtualMachineConfiguration are mutually exclusive and one of the
+     * The cloud service configuration for the pool. This property and
+     * VirtualMachineConfiguration are mutually exclusive and one of the
      * properties must be specified.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
-     * Gets or sets the Azure Guest OS family to be installed on the virtual
-     * machines in the pool.
+     * The Azure Guest OS family to be installed on the virtual machines in the
+     * pool.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
-     * Gets or sets the Azure Guest OS version to be installed on the virtual
-     * machines in the pool. The default value is * which specifies the latest
-     * operating system version for the specified OS family.
+     * The Azure Guest OS version to be installed on the virtual machines in the
+     * pool. The default value is * which specifies the latest operating system
+     * version for the specified OS family.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
-     * Gets or sets the Azure Guest OS Version currently installed on the virtual
-     * machines in the pool. This may differ from TargetOSVersion if the pool
-     * state is Upgrading.
+     * The Azure Guest OS Version currently installed on the virtual machines in
+     * the pool. This may differ from TargetOSVersion if the pool state is
+     * Upgrading.
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
-     * Gets or sets the virtual machine configuration for the pool. This property
-     * and CloudServiceConfiguration are mutually exclusive and one of the
-     * properties must be specified.
+     * The virtual machine configuration for the pool. This property and
+     * CloudServiceConfiguration are mutually exclusive and one of the properties
+     * must be specified.
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
-     * Gets or sets information about the platform or marketplace image to use.
+     * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
-     * Gets or sets the publisher of the image.
+     * The publisher of the Azure Virtual Machines Marketplace image. For
+     * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
-     * Gets or sets the offer of the image.
+     * The offer type of the Azure Virtual Machines Marketplace image. For
+     * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
-     * Gets or sets the SKU of the image.
+     * The SKU of the Azure Virtual Machines Marketplace image. For example,
+     * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.version]
-     * Gets or sets the version of the image. A value of 'latest' can be
-     * specified to select the latest version of an image.
+     * The version of the Azure Virtual Machines Marketplace image. A value of
+     * 'latest' can be specified to select the latest version of an image. If
+     * omitted, the default is 'latest'.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
-     * Gets or sets the SKU of Batch Node Agent that needs to be provisioned on
-     * the compute node. This property must match the ImageReference property.
+     * The SKU of Batch Node Agent to be provisioned on the compute node. The
+     * Batch node agent is a program that runs on each node in the pool, and
+     * provides the command-and-control interface between the node and the Batch
+     * service. There are different implementations of the node agent, known as
+     * SKUs, for different operating systems.
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
-     * Gets or sets Windows operating system settings on the virtual machine.
-     * This property must not be specified if the ImageReference property
-     * referencs a Linux OS image.
+     * Windows operating system settings on the virtual machine. This property
+     * must not be specified if the ImageReference property specifies a Linux OS
+     * image.
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether virtual machine is enabled for automatic updates. If
-     * omitted, the default value is true.
+     * Whether automatic updates are enabled on the virtual machine. If omitted,
+     * the default value is true.
      * 
      * @param {number}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
-     * Gets or sets the maximum number of tasks that can run concurrently on a
-     * single compute node in the pool.
+     * The maximum number of tasks that can run concurrently on a single compute
+     * node in the pool.
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
-     * Gets or sets how tasks are distributed among compute nodes in the pool.
+     * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * Gets or sets how tasks should be distributed across compute nodes.
-     * Possible values include: 'spread', 'pack', 'unmapped'
+     * How tasks should be distributed across compute nodes. Possible values
+     * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
-     * Gets or sets the timeout for allocation of compute nodes to the pool.
+     * The timeout for allocation of compute nodes to the pool.
      * 
      * @param {number}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated]
-     * Gets or sets the desired number of compute nodes in the pool.
+     * The desired number of compute nodes in the pool.
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale]
-     * Gets or sets whether the pool size should automatically adjust over time.
+     * Whether the pool size should automatically adjust over time.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
-     * Gets or sets the formula for the desired number of compute nodes in the
-     * pool.
+     * The formula for the desired number of compute nodes in the pool.
      * 
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
-     * Gets or sets a time interval for the desired AutoScale evaluation period
-     * in the pool.
+     * A time interval for the desired AutoScale evaluation period in the pool.
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
-     * Gets or sets whether the pool permits direct communication between nodes.
+     * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
-     * Gets or sets a task to run on each compute node as it joins the pool. The
-     * task runs when the node is added to the pool or when the node is restarted.
+     * A task to run on each compute node as it joins the pool. The task runs
+     * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * Gets or sets the command line of the start task.
+     * The command line of the start task.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
-     * Gets or sets a list of files that Batch will download to the compute node
+     * A list of files that the Batch service will download to the compute node
      * before running the command line.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
-     * Gets or sets a list of environment variable settings for the start task.
+     * A list of environment variable settings for the start task.
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.runElevated]
-     * Gets or sets whether to run the start task in elevated mode. The default
-     * value is false.
+     * Whether to run the start task in elevated mode. The default value is false.
      * 
      * @param {number}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
-     * Gets or sets the maximum number of times the task may be retried.
+     * The maximum number of times the task may be retried.
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
-     * Gets or sets whether the Batch Service should wait for the start task to
-     * complete successfully (that is, to exit with exit code 0) before
-     * scheduling any tasks on the compute node.
+     * Whether the Batch service should wait for the start task to complete
+     * successfully (that is, to exit with exit code 0) before scheduling any
+     * tasks on the compute node.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
-     * Gets or sets a list of certificates to be installed on each compute node
-     * in the pool.
+     * A list of certificates to be installed on each compute node in the pool.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
-     * Gets or sets the list of application packages to be installed on each
-     * compute node in the pool.
+     * The list of application packages to be installed on each compute node in
+     * the pool.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.metadata]
-     * Gets or sets a list of name-value pairs associated with the pool as
+     * A list of name-value pairs associated with the pool as metadata.
+     * 
+     * @param {array} [cloudJobSchedule.jobSpecification.metadata] A list of
+     * name-value pairs associated with each job created under this schedule as
      * metadata.
      * 
-     * @param {array} [cloudJobSchedule.jobSpecification.metadata] Gets or sets a
-     * list of name-value pairs associated with each job created under this
-     * schedule as metadata.
-     * 
-     * @param {array} [cloudJobSchedule.metadata] Gets or sets a list of
-     * name-value pairs associated with the schedule as metadata.
+     * @param {array} [cloudJobSchedule.metadata] A list of name-value pairs
+     * associated with the schedule as metadata.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.jobScheduleAddOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.jobScheduleAddOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.jobScheduleAddOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.jobScheduleAddOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5200,21 +5189,21 @@ export interface JobSchedule {
      * @param {object} [options.jobScheduleListOptions] Additional parameters for
      * the operation
      * 
-     * @param {string} [options.jobScheduleListOptions.filter] Sets an OData
-     * $filter clause.
+     * @param {string} [options.jobScheduleListOptions.filter] An OData $filter
+     * clause.
      * 
-     * @param {string} [options.jobScheduleListOptions.select] Sets an OData
-     * $select clause.
+     * @param {string} [options.jobScheduleListOptions.select] An OData $select
+     * clause.
      * 
-     * @param {string} [options.jobScheduleListOptions.expand] Sets an OData
-     * $expand clause.
+     * @param {string} [options.jobScheduleListOptions.expand] An OData $expand
+     * clause.
      * 
-     * @param {number} [options.jobScheduleListOptions.maxResults] Sets the
-     * maximum number of items to return in the response.
+     * @param {number} [options.jobScheduleListOptions.maxResults] The maximum
+     * number of items to return in the response.
      * 
-     * @param {number} [options.jobScheduleListOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.jobScheduleListOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.jobScheduleListOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5285,84 +5274,87 @@ export interface Task {
      * 
      * @param {object} task Specifies the task to be added.
      * 
-     * @param {string} [task.id] Gets or sets a string that uniquely identifies
-     * the task within the job. The id can contain any combination of
-     * alphanumeric characters including hyphens and underscores, and cannot
-     * contain more than 64 characters.
+     * @param {string} [task.id] A string that uniquely identifies the task within
+     * the job. The id can contain any combination of alphanumeric characters
+     * including hyphens and underscores, and cannot contain more than 64
+     * characters.
      * 
-     * @param {string} [task.displayName] Gets or sets a display name for the task.
+     * @param {string} [task.displayName] A display name for the task.
      * 
-     * @param {string} [task.commandLine] Gets or sets the command line of the
-     * task. For multi-instance tasks, the command line is executed on the
-     * primary subtask after all the subtasks have finished executing the
-     * coordianation command line.
+     * @param {string} [task.commandLine] The command line of the task. For
+     * multi-instance tasks, the command line is executed on the primary subtask
+     * after all the subtasks have finished executing the coordianation command
+     * line.
      * 
-     * @param {array} [task.resourceFiles] Gets or sets a list of files that Batch
+     * @param {array} [task.resourceFiles] A list of files that the Batch service
      * will download to the compute node before running the command line. For
      * multi-instance tasks, the resource files will only be downloaded to the
      * compute node on which the primary subtask is executed.
      * 
-     * @param {array} [task.environmentSettings] Gets or sets a list of
-     * environment variable settings for the task.
+     * @param {array} [task.environmentSettings] A list of environment variable
+     * settings for the task.
      * 
-     * @param {object} [task.affinityInfo] Gets or sets a locality hint that can
-     * be used by the Batch service to select a compute node on which to start
-     * the new task.
+     * @param {object} [task.affinityInfo] A locality hint that can be used by the
+     * Batch service to select a compute node on which to start the new task.
      * 
-     * @param {string} [task.affinityInfo.affinityId] Gets or sets an opaque
-     * string representing the location of a compute node or a task that has run
+     * @param {string} [task.affinityInfo.affinityId] An opaque string
+     * representing the location of a compute node or a task that has run
      * previously.  You can pass the AffinityId of a compute node or task to
      * indicate that this task needs to be placed close to the node or task.
      * 
-     * @param {object} [task.constraints] Gets or sets the execution constraints
-     * that apply to this task.
+     * @param {object} [task.constraints] The execution constraints that apply to
+     * this task.
      * 
-     * @param {moment.duration} [task.constraints.maxWallClockTime] Gets or sets
-     * the maximum elapsed time that the task may run, measured from the time the
-     * task starts. If the task does not complete within the time limit, the
-     * Batch service terminates it.
+     * @param {moment.duration} [task.constraints.maxWallClockTime] The maximum
+     * elapsed time that the task may run, measured from the time the task
+     * starts. If the task does not complete within the time limit, the Batch
+     * service terminates it.
      * 
-     * @param {moment.duration} [task.constraints.retentionTime] Gets or sets the
-     * minimum time to retain the working directory for the task on the compute
-     * node where it ran. After this time, the Batch service may delete the
-     * working directory and all its contents. The default is infinite.
+     * @param {moment.duration} [task.constraints.retentionTime] The minimum time
+     * to retain the working directory for the task on the compute node where it
+     * ran, from the time it completes execution. After this time, the Batch
+     * service may delete the working directory and all its contents. The default
+     * is infinite.
      * 
-     * @param {number} [task.constraints.maxTaskRetryCount] Gets or sets the
-     * maximum number of times the task may be retried. The Batch service retries
-     * a task if its exit code is nonzero.
+     * @param {number} [task.constraints.maxTaskRetryCount] The maximum number of
+     * times the task may be retried. The Batch service retries a task if its
+     * exit code is nonzero.
      * 
-     * @param {boolean} [task.runElevated] Gets or sets whether to run the task in
-     * elevated mode.
+     * @param {boolean} [task.runElevated] Whether to run the task in elevated
+     * mode.
      * 
-     * @param {object} [task.multiInstanceSettings] Gets or sets information about
-     * how to run the multi-instance task.
+     * @param {object} [task.multiInstanceSettings] Information about how to run
+     * the multi-instance task.
      * 
-     * @param {number} [task.multiInstanceSettings.numberOfInstances] Gets or sets
-     * the number of compute node instances used for multi-instance task.
+     * @param {number} [task.multiInstanceSettings.numberOfInstances] The number
+     * of compute nodes required by the multi-instance task.
      * 
-     * @param {string} [task.multiInstanceSettings.coordinationCommandLine] Gets
-     * or sets the command to be run on the compute node instances to setup
-     * coordination among the subtasks.
+     * @param {string} [task.multiInstanceSettings.coordinationCommandLine] The
+     * command to run on the compute node instances for coordinating among the
+     * subtasks.
      * 
-     * @param {array} [task.multiInstanceSettings.commonResourceFiles] Gets or
-     * sets a list of files that Batch will download on all subtasks.
+     * @param {array} [task.multiInstanceSettings.commonResourceFiles] A list of
+     * files that the Batch service will download before running the coordination
+     * command line. The difference between common resource files and task
+     * resource files is that common resource files are downloaded for all
+     * subtasks including the primary, whereas task resource files are downloaded
+     * only for the primary.
      * 
-     * @param {object} [task.dependsOn] Gets or sets any dependencies this task
-     * has.
+     * @param {object} [task.dependsOn] Any dependencies this task has.
      * 
-     * @param {array} [task.dependsOn.taskIds] Gets or sets the list of task ids
-     * that must complete before this task can be scheduled.
+     * @param {array} [task.dependsOn.taskIds] The list of task ids that must
+     * complete before this task can be scheduled.
      * 
-     * @param {array} [task.dependsOn.taskIdRanges] Gets or sets the list of task
-     * ranges that must complete before this task can be scheduled.
+     * @param {array} [task.dependsOn.taskIdRanges] The list of task ranges that
+     * must complete before this task can be scheduled.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.taskAddOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.taskAddOptions.timeout] Sets the maximum time that
-     * the server can spend processing the request, in seconds. The default is 30
+     * @param {number} [options.taskAddOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
      * @param {string} [options.taskAddOptions.clientRequestId] Caller generated
@@ -5396,21 +5388,18 @@ export interface Task {
      * @param {object} [options.taskListOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.taskListOptions.filter] Sets an OData $filter
-     * clause.
+     * @param {string} [options.taskListOptions.filter] An OData $filter clause.
      * 
-     * @param {string} [options.taskListOptions.select] Sets an OData $select
-     * clause.
+     * @param {string} [options.taskListOptions.select] An OData $select clause.
      * 
-     * @param {string} [options.taskListOptions.expand] Sets an OData $expand
-     * clause.
+     * @param {string} [options.taskListOptions.expand] An OData $expand clause.
      * 
-     * @param {number} [options.taskListOptions.maxResults] Sets the maximum
-     * number of items to return in the response.
+     * @param {number} [options.taskListOptions.maxResults] The maximum number of
+     * items to return in the response.
      * 
-     * @param {number} [options.taskListOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.taskListOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.taskListOptions.clientRequestId] Caller generated
      * request identity, in the form of a GUID with no decoration such as curly
@@ -5446,9 +5435,9 @@ export interface Task {
      * @param {object} [options.taskAddCollectionOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.taskAddCollectionOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.taskAddCollectionOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.taskAddCollectionOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5483,9 +5472,9 @@ export interface Task {
      * @param {object} [options.taskDeleteMethodOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.taskDeleteMethodOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.taskDeleteMethodOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.taskDeleteMethodOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5536,14 +5525,12 @@ export interface Task {
      * @param {object} [options.taskGetOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.taskGetOptions.select] Sets an OData $select
-     * clause.
+     * @param {string} [options.taskGetOptions.select] An OData $select clause.
      * 
-     * @param {string} [options.taskGetOptions.expand] Sets an OData $expand
-     * clause.
+     * @param {string} [options.taskGetOptions.expand] An OData $expand clause.
      * 
-     * @param {number} [options.taskGetOptions.timeout] Sets the maximum time that
-     * the server can spend processing the request, in seconds. The default is 30
+     * @param {number} [options.taskGetOptions.timeout] The maximum time that the
+     * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
      * @param {string} [options.taskGetOptions.clientRequestId] Caller generated
@@ -5592,29 +5579,30 @@ export interface Task {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.constraints] Sets constraints that apply to this
-     * task. If omitted, the task is given the default constraints.
+     * @param {object} [options.constraints] Constraints that apply to this task.
+     * If omitted, the task is given the default constraints.
      * 
-     * @param {moment.duration} [options.constraints.maxWallClockTime] Gets or
-     * sets the maximum elapsed time that the task may run, measured from the
-     * time the task starts. If the task does not complete within the time limit,
-     * the Batch service terminates it.
+     * @param {moment.duration} [options.constraints.maxWallClockTime] The maximum
+     * elapsed time that the task may run, measured from the time the task
+     * starts. If the task does not complete within the time limit, the Batch
+     * service terminates it.
      * 
-     * @param {moment.duration} [options.constraints.retentionTime] Gets or sets
-     * the minimum time to retain the working directory for the task on the
-     * compute node where it ran. After this time, the Batch service may delete
-     * the working directory and all its contents. The default is infinite.
+     * @param {moment.duration} [options.constraints.retentionTime] The minimum
+     * time to retain the working directory for the task on the compute node
+     * where it ran, from the time it completes execution. After this time, the
+     * Batch service may delete the working directory and all its contents. The
+     * default is infinite.
      * 
-     * @param {number} [options.constraints.maxTaskRetryCount] Gets or sets the
-     * maximum number of times the task may be retried. The Batch service retries
-     * a task if its exit code is nonzero.
+     * @param {number} [options.constraints.maxTaskRetryCount] The maximum number
+     * of times the task may be retried. The Batch service retries a task if its
+     * exit code is nonzero.
      * 
      * @param {object} [options.taskUpdateOptions] Additional parameters for the
      * operation
      * 
-     * @param {number} [options.taskUpdateOptions.timeout] Sets the maximum time
-     * that the server can spend processing the request, in seconds. The default
-     * is 30 seconds.
+     * @param {number} [options.taskUpdateOptions.timeout] The maximum time that
+     * the server can spend processing the request, in seconds. The default is 30
+     * seconds.
      * 
      * @param {string} [options.taskUpdateOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5666,12 +5654,12 @@ export interface Task {
      * @param {object} [options.taskListSubtasksOptions] Additional parameters for
      * the operation
      * 
-     * @param {string} [options.taskListSubtasksOptions.select] Sets an OData
-     * $select clause.
+     * @param {string} [options.taskListSubtasksOptions.select] An OData $select
+     * clause.
      * 
-     * @param {number} [options.taskListSubtasksOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.taskListSubtasksOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.taskListSubtasksOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5706,9 +5694,9 @@ export interface Task {
      * @param {object} [options.taskTerminateOptions] Additional parameters for
      * the operation
      * 
-     * @param {number} [options.taskTerminateOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.taskTerminateOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.taskTerminateOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5798,27 +5786,27 @@ export interface ComputeNodeOperations {
      * 
      * @param {object} user Specifies the user account to be created.
      * 
-     * @param {string} [user.name] Gets or sets the user name of the account.
+     * @param {string} [user.name] The user name of the account.
      * 
-     * @param {boolean} [user.isAdmin] Gets or sets whether the account should be
-     * an administrator on the compute node.
+     * @param {boolean} [user.isAdmin] Whether the account should be an
+     * administrator on the compute node.
      * 
-     * @param {date} [user.expiryTime] Gets or sets the time at which the account
-     * should expire. If omitted, the default is 1 day from the current time.
+     * @param {date} [user.expiryTime] The time at which the account should
+     * expire. If omitted, the default is 1 day from the current time.
      * 
-     * @param {string} [user.password] Gets or sets the password of the account.
+     * @param {string} [user.password] The password of the account.
      * 
-     * @param {string} [user.sshPublicKey] Gets or sets the SSH public key that
-     * can be used for remote login to the compute node.
+     * @param {string} [user.sshPublicKey] The SSH public key that can be used for
+     * remote login to the compute node.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.computeNodeAddUserOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.computeNodeAddUserOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.computeNodeAddUserOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.computeNodeAddUserOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5856,9 +5844,9 @@ export interface ComputeNodeOperations {
      * @param {object} [options.computeNodeDeleteUserOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.computeNodeDeleteUserOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.computeNodeDeleteUserOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.computeNodeDeleteUserOptions.clientRequestId]
      * Caller generated request identity, in the form of a GUID with no
@@ -5894,24 +5882,24 @@ export interface ComputeNodeOperations {
      * 
      * @param {object} nodeUpdateUserParameter The parameters for the request.
      * 
-     * @param {string} [nodeUpdateUserParameter.password] Sets the password of the
+     * @param {string} [nodeUpdateUserParameter.password] The password of the
      * account.
      * 
-     * @param {date} [nodeUpdateUserParameter.expiryTime] Sets the time at which
-     * the account should expire. If omitted, the default is 1 day from the
-     * current time.
+     * @param {date} [nodeUpdateUserParameter.expiryTime] The time at which the
+     * account should expire. If omitted, the default is 1 day from the current
+     * time.
      * 
-     * @param {string} [nodeUpdateUserParameter.sshPublicKey] Gets or sets the SSH
-     * public key that can be used for remote login to the compute node.
+     * @param {string} [nodeUpdateUserParameter.sshPublicKey] The SSH public key
+     * that can be used for remote login to the compute node.
      * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.computeNodeUpdateUserOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.computeNodeUpdateUserOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.computeNodeUpdateUserOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.computeNodeUpdateUserOptions.clientRequestId]
      * Caller generated request identity, in the form of a GUID with no
@@ -5947,12 +5935,12 @@ export interface ComputeNodeOperations {
      * @param {object} [options.computeNodeGetOptions] Additional parameters for
      * the operation
      * 
-     * @param {string} [options.computeNodeGetOptions.select] Sets an OData
-     * $select clause.
+     * @param {string} [options.computeNodeGetOptions.select] An OData $select
+     * clause.
      * 
-     * @param {number} [options.computeNodeGetOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.computeNodeGetOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.computeNodeGetOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -5984,17 +5972,17 @@ export interface ComputeNodeOperations {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.nodeRebootOption] Sets when to reboot the compute
-     * node and what to do with currently running tasks. The default value is
-     * requeue. Possible values include: 'requeue', 'terminate',
-     * 'taskcompletion', 'retaineddata'
+     * @param {string} [options.nodeRebootOption] When to reboot the compute node
+     * and what to do with currently running tasks. The default value is requeue.
+     * Possible values include: 'requeue', 'terminate', 'taskcompletion',
+     * 'retaineddata'
      * 
      * @param {object} [options.computeNodeRebootOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.computeNodeRebootOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.computeNodeRebootOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.computeNodeRebootOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -6026,17 +6014,17 @@ export interface ComputeNodeOperations {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.nodeReimageOption] Sets when to reimage the
-     * compute node and what to do with currently running tasks. The default
-     * value is requeue. Possible values include: 'requeue', 'terminate',
+     * @param {string} [options.nodeReimageOption] When to reimage the compute
+     * node and what to do with currently running tasks. The default value is
+     * requeue. Possible values include: 'requeue', 'terminate',
      * 'taskcompletion', 'retaineddata'
      * 
      * @param {object} [options.computeNodeReimageOptions] Additional parameters
      * for the operation
      * 
-     * @param {number} [options.computeNodeReimageOptions.timeout] Sets the
-     * maximum time that the server can spend processing the request, in seconds.
-     * The default is 30 seconds.
+     * @param {number} [options.computeNodeReimageOptions.timeout] The maximum
+     * time that the server can spend processing the request, in seconds. The
+     * default is 30 seconds.
      * 
      * @param {string} [options.computeNodeReimageOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
@@ -6069,17 +6057,17 @@ export interface ComputeNodeOperations {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.nodeDisableSchedulingOption] Gets or sets what to
-     * do with currently running tasks when disable task scheduling on the
-     * compute node. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'taskcompletion'
+     * @param {string} [options.nodeDisableSchedulingOption] What to do with
+     * currently running tasks when disable task scheduling on the compute node.
+     * The default value is requeue. Possible values include: 'requeue',
+     * 'terminate', 'taskcompletion'
      * 
      * @param {object} [options.computeNodeDisableSchedulingOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.computeNodeDisableSchedulingOptions.timeout] Sets
-     * the maximum time that the server can spend processing the request, in
-     * seconds. The default is 30 seconds.
+     * @param {number} [options.computeNodeDisableSchedulingOptions.timeout] The
+     * maximum time that the server can spend processing the request, in seconds.
+     * The default is 30 seconds.
      * 
      * @param {string}
      * [options.computeNodeDisableSchedulingOptions.clientRequestId] Caller
@@ -6117,9 +6105,9 @@ export interface ComputeNodeOperations {
      * @param {object} [options.computeNodeEnableSchedulingOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.computeNodeEnableSchedulingOptions.timeout] Sets
-     * the maximum time that the server can spend processing the request, in
-     * seconds. The default is 30 seconds.
+     * @param {number} [options.computeNodeEnableSchedulingOptions.timeout] The
+     * maximum time that the server can spend processing the request, in seconds.
+     * The default is 30 seconds.
      * 
      * @param {string}
      * [options.computeNodeEnableSchedulingOptions.clientRequestId] Caller
@@ -6158,7 +6146,7 @@ export interface ComputeNodeOperations {
      * Additional parameters for the operation
      * 
      * @param {number} [options.computeNodeGetRemoteLoginSettingsOptions.timeout]
-     * Sets the maximum time that the server can spend processing the request, in
+     * The maximum time that the server can spend processing the request, in
      * seconds. The default is 30 seconds.
      * 
      * @param {string}
@@ -6197,9 +6185,9 @@ export interface ComputeNodeOperations {
      * @param {object} [options.computeNodeGetRemoteDesktopOptions] Additional
      * parameters for the operation
      * 
-     * @param {number} [options.computeNodeGetRemoteDesktopOptions.timeout] Sets
-     * the maximum time that the server can spend processing the request, in
-     * seconds. The default is 30 seconds.
+     * @param {number} [options.computeNodeGetRemoteDesktopOptions.timeout] The
+     * maximum time that the server can spend processing the request, in seconds.
+     * The default is 30 seconds.
      * 
      * @param {string}
      * [options.computeNodeGetRemoteDesktopOptions.clientRequestId] Caller
@@ -6234,18 +6222,18 @@ export interface ComputeNodeOperations {
      * @param {object} [options.computeNodeListOptions] Additional parameters for
      * the operation
      * 
-     * @param {string} [options.computeNodeListOptions.filter] Sets an OData
-     * $filter clause.
+     * @param {string} [options.computeNodeListOptions.filter] An OData $filter
+     * clause.
      * 
-     * @param {string} [options.computeNodeListOptions.select] Sets an OData
-     * $select clause.
+     * @param {string} [options.computeNodeListOptions.select] An OData $select
+     * clause.
      * 
-     * @param {number} [options.computeNodeListOptions.maxResults] Sets the
-     * maximum number of items to return in the response.
+     * @param {number} [options.computeNodeListOptions.maxResults] The maximum
+     * number of items to return in the response.
      * 
-     * @param {number} [options.computeNodeListOptions.timeout] Sets the maximum
-     * time that the server can spend processing the request, in seconds. The
-     * default is 30 seconds.
+     * @param {number} [options.computeNodeListOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
      * 
      * @param {string} [options.computeNodeListOptions.clientRequestId] Caller
      * generated request identity, in the form of a GUID with no decoration such
