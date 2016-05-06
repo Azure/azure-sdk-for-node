@@ -14,3 +14,4 @@ services/cdnManagement/cdnOrigin-tests.js
 services/cdnManagement/cdnCustomDomain-tests.js
 services/cdnManagement/cdnCheckNameAvailability-tests.js
 services/cdnManagement/cdnOperation-tests.js
+services/servermanagement/servermanagement-tests.js
