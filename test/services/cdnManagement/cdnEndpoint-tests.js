@@ -51,7 +51,7 @@ describe('Cdn Management Endpoint', function() {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function() {
       groupName = suite.generateId(groupPrefix, createdGroups, suite.isMocked);
-      client = new StorageManagementClient(suite.credentials, suite.subscriptionId);
+      client = new StorageManagementClient(suite.credentials, suite.subscriptionId, 'https://api-dogfood.resources.windows-int.net');
       defaultLocation = process.env['AZURE_TEST_LOCATION'];
       profileName = suite.generateId(profilePrefix, createdProfiles, suite.isMocked);
       endpointName = suite.generateId(endpointPrefix, createdEndpoints, suite.isMocked);
@@ -62,7 +62,7 @@ describe('Cdn Management Endpoint', function() {
           tag2: 'val2'
         },
         sku: {
-          name: 'Standard'
+          name: 'Standard_Verizon'
         }
       };
       emptyEndpointProperties = {

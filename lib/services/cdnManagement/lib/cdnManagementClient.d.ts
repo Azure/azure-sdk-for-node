@@ -19,7 +19,7 @@ declare class CdnManagementClient {
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
      *
-     * @param {string} subscriptionId - Azure Subscription ID
+     * @param {string} subscriptionId - Azure Subscription ID.
      *
      * @param {string} [baseUri] - The base URI of the service.
      *
@@ -32,7 +32,7 @@ declare class CdnManagementClient {
      *
      * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
      *
-     * @param {string} [options.apiVersion] - Version of the API to be used with the client request, current version is 2015-06-01
+     * @param {string} [options.apiVersion] - Version of the API to be used with the client request. Current version is 2016-04-02
      *
      * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
      *

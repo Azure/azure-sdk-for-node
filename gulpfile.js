@@ -68,7 +68,7 @@ var mappings = {
   },
   'cdn': {
 	'dir': 'cdnManagement/lib',
-	'source': 'arm-cdn/2015-06-01/swagger/cdn.json',
+	'source': 'arm-cdn/2016-04-02/swagger/cdn.json',
 	'ft': 2
   },
   'datalake.analytics.account': {

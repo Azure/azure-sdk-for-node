@@ -2,50 +2,50 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/customDomains/cdnTestCustomDomain5269?api-version=2015-06-01')
+nock('http://api-dogfood.resources.windows-int.net:443')
+  .get('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup7583/providers/Microsoft.Cdn/profiles/cdnTestProfile7066/endpoints/testEndpoint-4436d201-109c-4944-a0ad-0322de415c38/customDomains/cdnTestCustomDomain4542?api-version=2016-04-02')
   .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The requested resource was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '104',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '4247a44c-015a-48ac-8d31-26fe8bf7796f',
-  'x-ms-client-request-id': '51e093ed-ad02-4c9f-8ca0-5112989bd8f6',
+  'x-ms-request-id': '9f6ea31a-2ea7-4c8e-9cd8-6bcb416c363e',
+  'x-ms-client-request-id': 'c9af8932-4733-43ea-8cc7-4cd3bdcf8471',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'a333fd62-813f-4d2e-87a8-4593e0674784',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224907Z:a333fd62-813f-4d2e-87a8-4593e0674784',
-  date: 'Wed, 02 Mar 2016 22:49:07 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': '48343bac-6641-4e15-b51e-d18c8194a8f5',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T232932Z:48343bac-6641-4e15-b51e-d18c8194a8f5',
+  date: 'Mon, 25 Apr 2016 23:29:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/customDomains/cdnTestCustomDomain5269?api-version=2015-06-01')
+nock('https://api-dogfood.resources.windows-int.net:443')
+  .get('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup7583/providers/Microsoft.Cdn/profiles/cdnTestProfile7066/endpoints/testEndpoint-4436d201-109c-4944-a0ad-0322de415c38/customDomains/cdnTestCustomDomain4542?api-version=2016-04-02')
   .reply(404, "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"The requested resource was not found.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '104',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '4247a44c-015a-48ac-8d31-26fe8bf7796f',
-  'x-ms-client-request-id': '51e093ed-ad02-4c9f-8ca0-5112989bd8f6',
+  'x-ms-request-id': '9f6ea31a-2ea7-4c8e-9cd8-6bcb416c363e',
+  'x-ms-client-request-id': 'c9af8932-4733-43ea-8cc7-4cd3bdcf8471',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-reads': '14999',
-  'x-ms-correlation-request-id': 'a333fd62-813f-4d2e-87a8-4593e0674784',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224907Z:a333fd62-813f-4d2e-87a8-4593e0674784',
-  date: 'Wed, 02 Mar 2016 22:49:07 GMT',
+  'x-ms-ratelimit-remaining-subscription-reads': '14996',
+  'x-ms-correlation-request-id': '48343bac-6641-4e15-b51e-d18c8194a8f5',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T232932Z:48343bac-6641-4e15-b51e-d18c8194a8f5',
+  date: 'Mon, 25 Apr 2016 23:29:31 GMT',
   connection: 'close' });
  return result; }]];

@@ -1057,6 +1057,9 @@
     <Compile Include="test\services\cdnManagement\cdnCustomDomain-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
+	<Compile Include="test\services\cdnManagement\cdnOperation-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
     <Compile Include="test\services\cdnManagement\cdnOrigin-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>

@@ -2,52 +2,52 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '06adb0b3-baaa-4e5f-9df6-ca770f7902cd';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://management.azure.com:443')
+nock('http://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/purge?api-version=2015-06-01', '*')
+.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup152/providers/Microsoft.Cdn/profiles/cdnTestProfile3218/endpoints/cdnTestEndpoint1999/purge?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The requested operation cannot be executed on the entity in the current state.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '147',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'b56929d8-5e1e-40ba-8919-4602a1c8a76c',
-  'x-ms-client-request-id': '4a8b256a-04fa-4fef-bf88-22c3c1a0d31e',
+  'x-ms-request-id': '51cc7bf4-a607-4732-b510-1a7e52f331d7',
+  'x-ms-client-request-id': '941187e1-053f-4259-96e9-488b247ec5a6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'f197035d-90ff-4a79-b378-4b2de2078a48',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221513Z:f197035d-90ff-4a79-b378-4b2de2078a48',
-  date: 'Tue, 01 Mar 2016 22:15:13 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1172',
+  'x-ms-correlation-request-id': 'fbf9ed07-fac7-4d77-95d5-0a881a95a660',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T230436Z:fbf9ed07-fac7-4d77-95d5-0a881a95a660',
+  date: 'Mon, 25 Apr 2016 23:04:36 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://management.azure.com:443')
+nock('https://api-dogfood.resources.windows-int.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/purge?api-version=2015-06-01', '*')
+.post('/subscriptions/06adb0b3-baaa-4e5f-9df6-ca770f7902cd/resourceGroups/cdnTestGroup152/providers/Microsoft.Cdn/profiles/cdnTestProfile3218/endpoints/cdnTestEndpoint1999/purge?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The requested operation cannot be executed on the entity in the current state.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '147',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'b56929d8-5e1e-40ba-8919-4602a1c8a76c',
-  'x-ms-client-request-id': '4a8b256a-04fa-4fef-bf88-22c3c1a0d31e',
+  'x-ms-request-id': '51cc7bf4-a607-4732-b510-1a7e52f331d7',
+  'x-ms-client-request-id': '941187e1-053f-4259-96e9-488b247ec5a6',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'f197035d-90ff-4a79-b378-4b2de2078a48',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221513Z:f197035d-90ff-4a79-b378-4b2de2078a48',
-  date: 'Tue, 01 Mar 2016 22:15:13 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1172',
+  'x-ms-correlation-request-id': 'fbf9ed07-fac7-4d77-95d5-0a881a95a660',
+  'x-ms-routing-request-id': 'CENTRALUS:20160425T230436Z:fbf9ed07-fac7-4d77-95d5-0a881a95a660',
+  date: 'Mon, 25 Apr 2016 23:04:36 GMT',
   connection: 'close' });
  return result; }]];
