@@ -25,8 +25,14 @@ npm install azure-arm-servermanagement
     var credentials = new msRestAzure.UserTokenCredentials(clientId, username, password, subscriptionId);
     var client = new ServerManagement(credentials, subscriptionId);
 
+    // get a list of nodes
+     client.node.list(resourceGroupName, function( error, nodes,request, response ) {
+        nodes.map(function (node, index, array) {
+            console.log('found node :' + node.name);
+        }));
+     });
 
-    // do something
+    
 ```
 
 ## Related projects

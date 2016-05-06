@@ -48,6 +48,14 @@ var exec = function (cmd, args, opts) {
   });
 };
 
+// polyfill startsWith on old ES5
+if (!String.prototype.startsWith) {
+    String.prototype.startsWith = function(searchString, position){
+      position = position || 0;
+      return this.substr(position, searchString.length) === searchString;
+  };
+}
+
 function powerShell(cmdline) {
   return exec("powershell.exe", typeof cmdline === 'Array' ? cmdline : [cmdline]);
 }
