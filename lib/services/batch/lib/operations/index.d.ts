@@ -37,13 +37,13 @@ export interface Application {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.applicationListOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.applicationListOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.applicationListOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.applicationListOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -72,13 +72,13 @@ export interface Application {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.applicationGetOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.applicationGetOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.applicationGetOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.applicationGetOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -104,13 +104,13 @@ export interface Application {
      * @param {object} [options.applicationListNextOptions] Additional parameters
      * for the operation
      * 
-     * @param {string} [options.applicationListNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.applicationListNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.applicationListNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.applicationListNextOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -162,13 +162,12 @@ export interface Pool {
      * The default is 30 seconds.
      * 
      * @param {string} [options.poolListPoolUsageMetricsOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.poolListPoolUsageMetricsOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * [options.poolListPoolUsageMetricsOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolListPoolUsageMetricsOptions.ocpDate] The time
      * the request was issued. If not specified, this header will be
@@ -199,14 +198,14 @@ export interface Pool {
      * seconds. The default is 30 seconds.
      * 
      * @param {string}
-     * [options.poolGetAllPoolsLifetimeStatisticsOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.poolGetAllPoolsLifetimeStatisticsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.poolGetAllPoolsLifetimeStatisticsOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.poolGetAllPoolsLifetimeStatisticsOptions.ocpDate]
      * The time the request was issued. If not specified, this header will be
@@ -224,7 +223,7 @@ export interface Pool {
     /**
      * Adds a pool to the specified account.
      *
-     * @param {object} pool Specifies the pool to be added.
+     * @param {object} pool The pool to be added.
      * 
      * @param {string} [pool.id] A string that uniquely identifies the pool within
      * the account. The id can contain any combination of alphanumeric characters
@@ -233,8 +232,8 @@ export interface Pool {
      * 
      * @param {string} [pool.displayName] The display name for the pool.
      * 
-     * @param {string} [pool.vmSize] The size of virtual machines in the pool.
-     * All virtual machines in a pool are the same size.
+     * @param {string} [pool.vmSize] The size of virtual machines in the pool. All
+     * virtual machines in a pool are the same size.
      * 
      * @param {object} [pool.cloudServiceConfiguration] The cloud service
      * configuration for the pool. This property and VirtualMachineConfiguration
@@ -365,13 +364,12 @@ export interface Pool {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.poolAddOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolAddOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.poolAddOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.poolAddOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolAddOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -407,13 +405,12 @@ export interface Pool {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.poolListOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolListOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.poolListOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.poolListOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolListOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -442,13 +439,13 @@ export interface Pool {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.poolDeleteMethodOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolDeleteMethodOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.poolDeleteMethodOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.poolDeleteMethodOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -493,13 +490,12 @@ export interface Pool {
      * the server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.poolExistsOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolExistsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.poolExistsOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * @param {boolean} [options.poolExistsOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolExistsOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -548,13 +544,12 @@ export interface Pool {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.poolGetOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolGetOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.poolGetOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.poolGetOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolGetOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -638,13 +633,12 @@ export interface Pool {
      * the server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.poolPatchOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolPatchOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.poolPatchOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.poolPatchOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolPatchOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -690,13 +684,13 @@ export interface Pool {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.poolDisableAutoScaleOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolDisableAutoScaleOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.poolDisableAutoScaleOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.poolDisableAutoScaleOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolDisableAutoScaleOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -735,13 +729,13 @@ export interface Pool {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.poolEnableAutoScaleOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolEnableAutoScaleOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.poolEnableAutoScaleOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.poolEnableAutoScaleOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -790,13 +784,13 @@ export interface Pool {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.poolEvaluateAutoScaleOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolEvaluateAutoScaleOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.poolEvaluateAutoScaleOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.poolEvaluateAutoScaleOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolEvaluateAutoScaleOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -838,13 +832,12 @@ export interface Pool {
      * the server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.poolResizeOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolResizeOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.poolResizeOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * @param {boolean} [options.poolResizeOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolResizeOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -891,13 +884,13 @@ export interface Pool {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.poolStopResizeOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolStopResizeOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.poolStopResizeOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.poolStopResizeOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -985,13 +978,13 @@ export interface Pool {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.poolUpdatePropertiesOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolUpdatePropertiesOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.poolUpdatePropertiesOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.poolUpdatePropertiesOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.poolUpdatePropertiesOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -1023,13 +1016,13 @@ export interface Pool {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.poolUpgradeOSOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolUpgradeOSOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.poolUpgradeOSOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.poolUpgradeOSOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -1087,13 +1080,13 @@ export interface Pool {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.poolRemoveNodesOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolRemoveNodesOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.poolRemoveNodesOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.poolRemoveNodesOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -1137,14 +1130,14 @@ export interface Pool {
      * parameters for the operation
      * 
      * @param {string}
-     * [options.poolListPoolUsageMetricsNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.poolListPoolUsageMetricsNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.poolListPoolUsageMetricsNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.poolListPoolUsageMetricsNextOptions.ocpDate] The
      * time the request was issued. If not specified, this header will be
@@ -1170,13 +1163,13 @@ export interface Pool {
      * @param {object} [options.poolListNextOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.poolListNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.poolListNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.poolListNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.poolListNextOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -1201,7 +1194,7 @@ export interface Pool {
 export interface Account {
 
     /**
-     * Lists all the node agent SKUs supported by Azure Batch service.
+     * Lists all node agent SKUs supported by the Azure Batch service.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -1219,13 +1212,12 @@ export interface Account {
      * The default is 30 seconds.
      * 
      * @param {string} [options.accountListNodeAgentSkusOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.accountListNodeAgentSkusOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * [options.accountListNodeAgentSkusOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.accountListNodeAgentSkusOptions.ocpDate] The time
      * the request was issued. If not specified, this header will be
@@ -1241,7 +1233,7 @@ export interface Account {
     listNodeAgentSkus(callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
 
     /**
-     * Lists all the node agent SKUs supported by Azure Batch service.
+     * Lists all node agent SKUs supported by the Azure Batch service.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1252,14 +1244,14 @@ export interface Account {
      * parameters for the operation
      * 
      * @param {string}
-     * [options.accountListNodeAgentSkusNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.accountListNodeAgentSkusNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.accountListNodeAgentSkusNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.accountListNodeAgentSkusNextOptions.ocpDate] The
      * time the request was issued. If not specified, this header will be
@@ -1299,14 +1291,14 @@ export interface Job {
      * seconds. The default is 30 seconds.
      * 
      * @param {string}
-     * [options.jobGetAllJobsLifetimeStatisticsOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.jobGetAllJobsLifetimeStatisticsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.jobGetAllJobsLifetimeStatisticsOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobGetAllJobsLifetimeStatisticsOptions.ocpDate] The
      * time the request was issued. If not specified, this header will be
@@ -1335,13 +1327,13 @@ export interface Job {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.jobDeleteMethodOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobDeleteMethodOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobDeleteMethodOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobDeleteMethodOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -1390,12 +1382,12 @@ export interface Job {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.jobGetOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobGetOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.jobGetOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * @param {boolean} [options.jobGetOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobGetOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -1645,13 +1637,12 @@ export interface Job {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.jobPatchOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobPatchOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.jobPatchOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.jobPatchOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobPatchOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -1917,13 +1908,12 @@ export interface Job {
      * the server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.jobUpdateOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobUpdateOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.jobUpdateOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.jobUpdateOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobUpdateOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -1971,13 +1961,12 @@ export interface Job {
      * the server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.jobDisableOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobDisableOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.jobDisableOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * @param {boolean} [options.jobDisableOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobDisableOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -2022,13 +2011,12 @@ export interface Job {
      * the server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.jobEnableOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobEnableOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.jobEnableOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.jobEnableOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobEnableOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -2076,13 +2064,13 @@ export interface Job {
      * the server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.jobTerminateOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobTerminateOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobTerminateOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobTerminateOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -2116,7 +2104,7 @@ export interface Job {
     /**
      * Adds a job to the specified account.
      *
-     * @param {object} job Specifies the job to be added.
+     * @param {object} job The job to be added.
      * 
      * @param {string} [job.id] A string that uniquely identifies the job within
      * the account. The id can contain any combination of alphanumeric characters
@@ -2251,15 +2239,15 @@ export interface Job {
      * 
      * @param {moment.duration} [job.jobReleaseTask.retentionTime] The minimum
      * time to retain the working directory for the Job Release task on the
-     * compute node.  After this time, the Batch service may delete the working
+     * compute node. After this time, the Batch service may delete the working
      * directory and all its contents. The default is infinite.
      * 
      * @param {boolean} [job.jobReleaseTask.runElevated] Whether to run the Job
      * Release task in elevated mode. The default value is false.
      * 
      * @param {array} [job.commonEnvironmentSettings] The list of common
-     * environment variable settings.  These environment variables are set for
-     * all tasks in the job (including the Job Manager, Job Preparation and Job
+     * environment variable settings. These environment variables are set for all
+     * tasks in the job (including the Job Manager, Job Preparation and Job
      * Release tasks).
      * 
      * @param {object} [job.poolInfo] The pool on which the Batch service runs the
@@ -2462,12 +2450,12 @@ export interface Job {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.jobAddOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobAddOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.jobAddOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * @param {boolean} [options.jobAddOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobAddOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -2503,13 +2491,12 @@ export interface Job {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.jobListOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobListOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.jobListOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.jobListOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobListOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -2551,13 +2538,13 @@ export interface Job {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.jobListFromJobScheduleOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobListFromJobScheduleOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.jobListFromJobScheduleOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.jobListFromJobScheduleOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobListFromJobScheduleOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -2602,13 +2589,13 @@ export interface Job {
      * 
      * @param {string}
      * [options.jobListPreparationAndReleaseTaskStatusOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.jobListPreparationAndReleaseTaskStatusOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date}
      * [options.jobListPreparationAndReleaseTaskStatusOptions.ocpDate] The time
@@ -2635,13 +2622,12 @@ export interface Job {
      * @param {object} [options.jobListNextOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.jobListNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobListNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.jobListNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * @param {boolean} [options.jobListNextOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobListNextOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -2668,13 +2654,12 @@ export interface Job {
      * parameters for the operation
      * 
      * @param {string} [options.jobListFromJobScheduleNextOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.jobListFromJobScheduleNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * [options.jobListFromJobScheduleNextOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobListFromJobScheduleNextOptions.ocpDate] The time
      * the request was issued. If not specified, this header will be
@@ -2703,13 +2688,13 @@ export interface Job {
      * 
      * @param {string}
      * [options.jobListPreparationAndReleaseTaskStatusNextOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.jobListPreparationAndReleaseTaskStatusNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date}
      * [options.jobListPreparationAndReleaseTaskStatusNextOptions.ocpDate] The
@@ -2737,9 +2722,9 @@ export interface CertificateOperations {
     /**
      * Adds a certificate to the specified account.
      *
-     * @param {object} certificate Specifies the certificate to be added.
+     * @param {object} certificate The certificate to be added.
      * 
-     * @param {string} [certificate.thumbprint] Get or The X.509 thumbprint of the
+     * @param {string} [certificate.thumbprint] The X.509 thumbprint of the
      * certificate. This is a sequence of up to 40 hex digits (it may include
      * spaces but these are removed).
      * 
@@ -2747,15 +2732,13 @@ export interface CertificateOperations {
      * derive the thumbprint. This must be sha1.
      * 
      * @param {string} [certificate.data] The base64-encoded contents of the
-     * certificate. The maximum size is 10KB. This property is not populated by
-     * the Get Certificate operation.
+     * certificate. The maximum size is 10KB.
      * 
      * @param {string} [certificate.certificateFormat] The format of the
      * certificate data. Possible values include: 'pfx', 'cer', 'unmapped'
      * 
      * @param {string} [certificate.password] The password to access the
-     * certificate's private key. This property is not populated by the Get
-     * Certificate operation.
+     * certificate's private key.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2766,13 +2749,13 @@ export interface CertificateOperations {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.certificateAddOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.certificateAddOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.certificateAddOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.certificateAddOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -2808,13 +2791,13 @@ export interface CertificateOperations {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.certificateListOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.certificateListOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.certificateListOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.certificateListOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -2847,13 +2830,12 @@ export interface CertificateOperations {
      * The default is 30 seconds.
      * 
      * @param {string} [options.certificateCancelDeletionOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.certificateCancelDeletionOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * [options.certificateCancelDeletionOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.certificateCancelDeletionOptions.ocpDate] The time
      * the request was issued. If not specified, this header will be
@@ -2886,13 +2868,12 @@ export interface CertificateOperations {
      * The default is 30 seconds.
      * 
      * @param {string} [options.certificateDeleteMethodOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.certificateDeleteMethodOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * [options.certificateDeleteMethodOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.certificateDeleteMethodOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -2927,13 +2908,13 @@ export interface CertificateOperations {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.certificateGetOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.certificateGetOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.certificateGetOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.certificateGetOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -2959,13 +2940,13 @@ export interface CertificateOperations {
      * @param {object} [options.certificateListNextOptions] Additional parameters
      * for the operation
      * 
-     * @param {string} [options.certificateListNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.certificateListNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.certificateListNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.certificateListNextOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -3013,13 +2994,13 @@ export interface File {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.fileDeleteFromTaskOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.fileDeleteFromTaskOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.fileDeleteFromTaskOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.fileDeleteFromTaskOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -3053,21 +3034,21 @@ export interface File {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.fileGetFromTaskOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.fileGetFromTaskOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.fileGetFromTaskOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.fileGetFromTaskOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
      * with the current system clock time.
      * 
-     * @param {string} [options.fileGetFromTaskOptions.ocpRange] Specifies the
-     * byte range to be retrieved. The default is to retrieve the entire file.
-     * The format is startRange-endRange.
+     * @param {string} [options.fileGetFromTaskOptions.ocpRange] The byte range to
+     * be retrieved. The default is to retrieve the entire file. The format is
+     * startRange-endRange.
      * 
      * @param {date} [options.fileGetFromTaskOptions.ifModifiedSince] Specify this
      * header to perform the operation only if the resource has been modified
@@ -3107,14 +3088,14 @@ export interface File {
      * seconds. The default is 30 seconds.
      * 
      * @param {string}
-     * [options.fileGetNodeFilePropertiesFromTaskOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.fileGetNodeFilePropertiesFromTaskOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.fileGetNodeFilePropertiesFromTaskOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.fileGetNodeFilePropertiesFromTaskOptions.ocpDate]
      * The time the request was issued. If not specified, this header will be
@@ -3165,13 +3146,12 @@ export interface File {
      * The default is 30 seconds.
      * 
      * @param {string} [options.fileDeleteFromComputeNodeOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.fileDeleteFromComputeNodeOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * [options.fileDeleteFromComputeNodeOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.fileDeleteFromComputeNodeOptions.ocpDate] The time
      * the request was issued. If not specified, this header will be
@@ -3205,21 +3185,21 @@ export interface File {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.fileGetFromComputeNodeOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.fileGetFromComputeNodeOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.fileGetFromComputeNodeOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.fileGetFromComputeNodeOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.fileGetFromComputeNodeOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
      * populated with the current system clock time.
      * 
-     * @param {string} [options.fileGetFromComputeNodeOptions.ocpRange] Specifies
-     * the byte range to be retrieved. The default is to retrieve the entire
-     * file.  The format is startRange-endRange.
+     * @param {string} [options.fileGetFromComputeNodeOptions.ocpRange] The byte
+     * range to be retrieved. The default is to retrieve the entire file. The
+     * format is startRange-endRange.
      * 
      * @param {date} [options.fileGetFromComputeNodeOptions.ifModifiedSince]
      * Specify this header to perform the operation only if the resource has been
@@ -3260,13 +3240,13 @@ export interface File {
      * 
      * @param {string}
      * [options.fileGetNodeFilePropertiesFromComputeNodeOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.fileGetNodeFilePropertiesFromComputeNodeOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date}
      * [options.fileGetNodeFilePropertiesFromComputeNodeOptions.ocpDate] The time
@@ -3317,13 +3297,13 @@ export interface File {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.fileListFromTaskOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.fileListFromTaskOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.fileListFromTaskOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.fileListFromTaskOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -3365,13 +3345,12 @@ export interface File {
      * The default is 30 seconds.
      * 
      * @param {string} [options.fileListFromComputeNodeOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.fileListFromComputeNodeOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * [options.fileListFromComputeNodeOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.fileListFromComputeNodeOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -3397,13 +3376,13 @@ export interface File {
      * @param {object} [options.fileListFromTaskNextOptions] Additional parameters
      * for the operation
      * 
-     * @param {string} [options.fileListFromTaskNextOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.fileListFromTaskNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.fileListFromTaskNextOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.fileListFromTaskNextOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.fileListFromTaskNextOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -3430,14 +3409,13 @@ export interface File {
      * parameters for the operation
      * 
      * @param {string}
-     * [options.fileListFromComputeNodeNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.fileListFromComputeNodeNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.fileListFromComputeNodeNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * [options.fileListFromComputeNodeNextOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.fileListFromComputeNodeNextOptions.ocpDate] The time
      * the request was issued. If not specified, this header will be
@@ -3476,13 +3454,13 @@ export interface JobSchedule {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.jobScheduleExistsOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleExistsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobScheduleExistsOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobScheduleExistsOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -3528,13 +3506,12 @@ export interface JobSchedule {
      * The default is 30 seconds.
      * 
      * @param {string} [options.jobScheduleDeleteMethodOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * The caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.jobScheduleDeleteMethodOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * [options.jobScheduleDeleteMethodOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobScheduleDeleteMethodOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -3585,13 +3562,13 @@ export interface JobSchedule {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.jobScheduleGetOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleGetOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobScheduleGetOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobScheduleGetOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -3639,13 +3616,13 @@ export interface JobSchedule {
      * create jobs immediately.
      * 
      * @param {date} [jobSchedulePatchParameter.schedule.doNotRunAfter] A time
-     * after which no job will be created under this job schedule.  The schedule
+     * after which no job will be created under this job schedule. The schedule
      * will move to the completed state as soon as this deadline is past and
      * there is no active job under this job schedule.
      * 
      * @param {moment.duration} [jobSchedulePatchParameter.schedule.startWindow]
      * The time interval, starting from the time at which the schedule indicates
-     * a job should be created, within which a job must be created.  If a job is
+     * a job should be created, within which a job must be created. If a job is
      * not created within the startWindow interval, then the 'opportunity' is
      * lost; no job will be created until the next recurrence of the schedule.
      * 
@@ -3829,7 +3806,7 @@ export interface JobSchedule {
      * @param {moment.duration}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.retentionTime]
      * The minimum time to retain the working directory for the Job Release task
-     * on the compute node.  After this time, the Batch service may delete the
+     * on the compute node. After this time, the Batch service may delete the
      * working directory and all its contents. The default is infinite.
      * 
      * @param {boolean}
@@ -3839,7 +3816,7 @@ export interface JobSchedule {
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.commonEnvironmentSettings] A
-     * list of common environment variable settings.  These environment variables
+     * list of common environment variable settings. These environment variables
      * are set for all tasks in jobs created under this schedule (including the
      * Job Manager, Job Preparation and Job Release tasks).
      * 
@@ -4059,13 +4036,13 @@ export interface JobSchedule {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.jobSchedulePatchOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobSchedulePatchOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobSchedulePatchOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobSchedulePatchOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -4114,13 +4091,13 @@ export interface JobSchedule {
      * create jobs immediately.
      * 
      * @param {date} [jobScheduleUpdateParameter.schedule.doNotRunAfter] A time
-     * after which no job will be created under this job schedule.  The schedule
+     * after which no job will be created under this job schedule. The schedule
      * will move to the completed state as soon as this deadline is past and
      * there is no active job under this job schedule.
      * 
      * @param {moment.duration} [jobScheduleUpdateParameter.schedule.startWindow]
      * The time interval, starting from the time at which the schedule indicates
-     * a job should be created, within which a job must be created.  If a job is
+     * a job should be created, within which a job must be created. If a job is
      * not created within the startWindow interval, then the 'opportunity' is
      * lost; no job will be created until the next recurrence of the schedule.
      * 
@@ -4306,7 +4283,7 @@ export interface JobSchedule {
      * @param {moment.duration}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.retentionTime]
      * The minimum time to retain the working directory for the Job Release task
-     * on the compute node.  After this time, the Batch service may delete the
+     * on the compute node. After this time, the Batch service may delete the
      * working directory and all its contents. The default is infinite.
      * 
      * @param {boolean}
@@ -4316,7 +4293,7 @@ export interface JobSchedule {
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.commonEnvironmentSettings] A
-     * list of common environment variable settings.  These environment variables
+     * list of common environment variable settings. These environment variables
      * are set for all tasks in jobs created under this schedule (including the
      * Job Manager, Job Preparation and Job Release tasks).
      * 
@@ -4538,13 +4515,13 @@ export interface JobSchedule {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.jobScheduleUpdateOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleUpdateOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobScheduleUpdateOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobScheduleUpdateOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -4589,13 +4566,13 @@ export interface JobSchedule {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.jobScheduleDisableOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleDisableOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobScheduleDisableOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobScheduleDisableOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -4640,13 +4617,13 @@ export interface JobSchedule {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.jobScheduleEnableOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleEnableOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobScheduleEnableOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobScheduleEnableOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -4691,13 +4668,13 @@ export interface JobSchedule {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.jobScheduleTerminateOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleTerminateOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.jobScheduleTerminateOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.jobScheduleTerminateOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.jobScheduleTerminateOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -4731,7 +4708,7 @@ export interface JobSchedule {
     /**
      * Adds a job schedule to the specified account.
      *
-     * @param {object} cloudJobSchedule Specifies the job schedule to be added.
+     * @param {object} cloudJobSchedule The job schedule to be added.
      * 
      * @param {string} [cloudJobSchedule.id] A string that uniquely identifies the
      * schedule within the account. A GUID is recommended.
@@ -4748,13 +4725,13 @@ export interface JobSchedule {
      * immediately.
      * 
      * @param {date} [cloudJobSchedule.schedule.doNotRunAfter] A time after which
-     * no job will be created under this job schedule.  The schedule will move to
+     * no job will be created under this job schedule. The schedule will move to
      * the completed state as soon as this deadline is past and there is no
      * active job under this job schedule.
      * 
      * @param {moment.duration} [cloudJobSchedule.schedule.startWindow] The time
      * interval, starting from the time at which the schedule indicates a job
-     * should be created, within which a job must be created.  If a job is not
+     * should be created, within which a job must be created. If a job is not
      * created within the startWindow interval, then the 'opportunity' is lost;
      * no job will be created until the next recurrence of the schedule.
      * 
@@ -4932,7 +4909,7 @@ export interface JobSchedule {
      * @param {moment.duration}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.retentionTime] The
      * minimum time to retain the working directory for the Job Release task on
-     * the compute node.  After this time, the Batch service may delete the
+     * the compute node. After this time, the Batch service may delete the
      * working directory and all its contents. The default is infinite.
      * 
      * @param {boolean}
@@ -4941,7 +4918,7 @@ export interface JobSchedule {
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.commonEnvironmentSettings] A list of
-     * common environment variable settings.  These environment variables are set
+     * common environment variable settings. These environment variables are set
      * for all tasks in jobs created under this schedule (including the Job
      * Manager, Job Preparation and Job Release tasks).
      * 
@@ -5160,13 +5137,13 @@ export interface JobSchedule {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.jobScheduleAddOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleAddOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobScheduleAddOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobScheduleAddOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -5205,13 +5182,13 @@ export interface JobSchedule {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.jobScheduleListOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleListOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobScheduleListOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobScheduleListOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -5237,13 +5214,13 @@ export interface JobSchedule {
      * @param {object} [options.jobScheduleListNextOptions] Additional parameters
      * for the operation
      * 
-     * @param {string} [options.jobScheduleListNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.jobScheduleListNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.jobScheduleListNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.jobScheduleListNextOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -5272,7 +5249,7 @@ export interface Task {
      *
      * @param {string} jobId The id of the job to which the task is to be added.
      * 
-     * @param {object} task Specifies the task to be added.
+     * @param {object} task The task to be added.
      * 
      * @param {string} [task.id] A string that uniquely identifies the task within
      * the job. The id can contain any combination of alphanumeric characters
@@ -5299,7 +5276,7 @@ export interface Task {
      * 
      * @param {string} [task.affinityInfo.affinityId] An opaque string
      * representing the location of a compute node or a task that has run
-     * previously.  You can pass the AffinityId of a compute node or task to
+     * previously. You can pass the AffinityId of a compute node or task to
      * indicate that this task needs to be placed close to the node or task.
      * 
      * @param {object} [task.constraints] The execution constraints that apply to
@@ -5340,7 +5317,7 @@ export interface Task {
      * subtasks including the primary, whereas task resource files are downloaded
      * only for the primary.
      * 
-     * @param {object} [task.dependsOn] Any dependencies this task has.
+     * @param {object} [task.dependsOn] Any other tasks that this task depends on.
      * 
      * @param {array} [task.dependsOn.taskIds] The list of task ids that must
      * complete before this task can be scheduled.
@@ -5357,13 +5334,12 @@ export interface Task {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.taskAddOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskAddOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.taskAddOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.taskAddOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.taskAddOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -5401,13 +5377,12 @@ export interface Task {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.taskListOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskListOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.taskListOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.taskListOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.taskListOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -5439,13 +5414,13 @@ export interface Task {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.taskAddCollectionOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskAddCollectionOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.taskAddCollectionOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.taskAddCollectionOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -5476,13 +5451,13 @@ export interface Task {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.taskDeleteMethodOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskDeleteMethodOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.taskDeleteMethodOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.taskDeleteMethodOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -5533,13 +5508,12 @@ export interface Task {
      * server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.taskGetOptions.clientRequestId] Caller generated
-     * request identity, in the form of a GUID with no decoration such as curly
-     * braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskGetOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.taskGetOptions.returnClientRequestId] Specifies
-     * if the server should return the client-request-id identifier in the
-     * response.
+     * @param {boolean} [options.taskGetOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.taskGetOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -5604,13 +5578,12 @@ export interface Task {
      * the server can spend processing the request, in seconds. The default is 30
      * seconds.
      * 
-     * @param {string} [options.taskUpdateOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskUpdateOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
-     * @param {boolean} [options.taskUpdateOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * @param {boolean} [options.taskUpdateOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.taskUpdateOptions.ocpDate] The time the request was
      * issued. If not specified, this header will be automatically populated with
@@ -5661,13 +5634,13 @@ export interface Task {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.taskListSubtasksOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskListSubtasksOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.taskListSubtasksOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.taskListSubtasksOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -5698,13 +5671,13 @@ export interface Task {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.taskTerminateOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskTerminateOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.taskTerminateOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.taskTerminateOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -5746,13 +5719,13 @@ export interface Task {
      * @param {object} [options.taskListNextOptions] Additional parameters for the
      * operation
      * 
-     * @param {string} [options.taskListNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.taskListNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.taskListNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.taskListNextOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -5784,7 +5757,7 @@ export interface ComputeNodeOperations {
      * @param {string} nodeId The id of the machine on which you want to create a
      * user account.
      * 
-     * @param {object} user Specifies the user account to be created.
+     * @param {object} user The user account to be created.
      * 
      * @param {string} [user.name] The user name of the account.
      * 
@@ -5808,13 +5781,13 @@ export interface ComputeNodeOperations {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.computeNodeAddUserOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.computeNodeAddUserOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.computeNodeAddUserOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.computeNodeAddUserOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -5848,13 +5821,13 @@ export interface ComputeNodeOperations {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.computeNodeDeleteUserOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.computeNodeDeleteUserOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.computeNodeDeleteUserOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.computeNodeDeleteUserOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.computeNodeDeleteUserOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -5901,13 +5874,13 @@ export interface ComputeNodeOperations {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.computeNodeUpdateUserOptions.clientRequestId]
-     * Caller generated request identity, in the form of a GUID with no
-     * decoration such as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.computeNodeUpdateUserOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.computeNodeUpdateUserOptions.returnClientRequestId] Specifies if
-     * the server should return the client-request-id identifier in the response.
+     * [options.computeNodeUpdateUserOptions.returnClientRequestId] Whether the
+     * server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.computeNodeUpdateUserOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -5942,13 +5915,13 @@ export interface ComputeNodeOperations {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.computeNodeGetOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.computeNodeGetOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.computeNodeGetOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.computeNodeGetOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -5984,13 +5957,13 @@ export interface ComputeNodeOperations {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.computeNodeRebootOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.computeNodeRebootOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.computeNodeRebootOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.computeNodeRebootOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -6026,13 +5999,13 @@ export interface ComputeNodeOperations {
      * time that the server can spend processing the request, in seconds. The
      * default is 30 seconds.
      * 
-     * @param {string} [options.computeNodeReimageOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.computeNodeReimageOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.computeNodeReimageOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.computeNodeReimageOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically
@@ -6070,14 +6043,14 @@ export interface ComputeNodeOperations {
      * The default is 30 seconds.
      * 
      * @param {string}
-     * [options.computeNodeDisableSchedulingOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.computeNodeDisableSchedulingOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.computeNodeDisableSchedulingOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.computeNodeDisableSchedulingOptions.ocpDate] The
      * time the request was issued. If not specified, this header will be
@@ -6110,14 +6083,13 @@ export interface ComputeNodeOperations {
      * The default is 30 seconds.
      * 
      * @param {string}
-     * [options.computeNodeEnableSchedulingOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.computeNodeEnableSchedulingOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.computeNodeEnableSchedulingOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * [options.computeNodeEnableSchedulingOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.computeNodeEnableSchedulingOptions.ocpDate] The time
      * the request was issued. If not specified, this header will be
@@ -6150,14 +6122,14 @@ export interface ComputeNodeOperations {
      * seconds. The default is 30 seconds.
      * 
      * @param {string}
-     * [options.computeNodeGetRemoteLoginSettingsOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.computeNodeGetRemoteLoginSettingsOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
      * [options.computeNodeGetRemoteLoginSettingsOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.computeNodeGetRemoteLoginSettingsOptions.ocpDate]
      * The time the request was issued. If not specified, this header will be
@@ -6190,14 +6162,13 @@ export interface ComputeNodeOperations {
      * The default is 30 seconds.
      * 
      * @param {string}
-     * [options.computeNodeGetRemoteDesktopOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * [options.computeNodeGetRemoteDesktopOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean}
-     * [options.computeNodeGetRemoteDesktopOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * [options.computeNodeGetRemoteDesktopOptions.returnClientRequestId] Whether
+     * the server should return the client-request-id identifier in the response.
      * 
      * @param {date} [options.computeNodeGetRemoteDesktopOptions.ocpDate] The time
      * the request was issued. If not specified, this header will be
@@ -6235,13 +6206,13 @@ export interface ComputeNodeOperations {
      * that the server can spend processing the request, in seconds. The default
      * is 30 seconds.
      * 
-     * @param {string} [options.computeNodeListOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.computeNodeListOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.computeNodeListOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.computeNodeListOptions.ocpDate] The time the request
      * was issued. If not specified, this header will be automatically populated
@@ -6267,13 +6238,13 @@ export interface ComputeNodeOperations {
      * @param {object} [options.computeNodeListNextOptions] Additional parameters
      * for the operation
      * 
-     * @param {string} [options.computeNodeListNextOptions.clientRequestId] Caller
-     * generated request identity, in the form of a GUID with no decoration such
-     * as curly braces e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * @param {string} [options.computeNodeListNextOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
      * 
      * @param {boolean} [options.computeNodeListNextOptions.returnClientRequestId]
-     * Specifies if the server should return the client-request-id identifier in
-     * the response.
+     * Whether the server should return the client-request-id identifier in the
+     * response.
      * 
      * @param {date} [options.computeNodeListNextOptions.ocpDate] The time the
      * request was issued. If not specified, this header will be automatically

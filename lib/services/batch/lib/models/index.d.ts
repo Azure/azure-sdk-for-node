@@ -22,7 +22,7 @@
  * 
  * @member {date} endTime The end time of the aggregation interval.
  * 
- * @member {string} vmSize The size of virtual machines in the pool.  All VMs
+ * @member {string} vmSize The size of virtual machines in the pool. All VMs
  * in a pool are the same size.
  * 
  * @member {number} totalCoreHours The total core hours used in the pool
@@ -290,11 +290,11 @@ export interface PoolStatistics {
  * @member {number} writeIOps The total number of disk write operations made
  * by all tasks in the job.
  * 
- * @member {number} readIOGiB The total gibibytes of I/O read from disk by all
- * tasks in the job.
+ * @member {number} readIOGiB The total gibibytes read from disk by all tasks
+ * in the job.
  * 
- * @member {number} writeIOGiB The total gibibytes of I/O written to disk by
- * all tasks in the job.
+ * @member {number} writeIOGiB The total gibibytes written to disk by all
+ * tasks in the job.
  * 
  * @member {number} numSucceededTasks The total number of tasks successfully
  * completed in the job during the given time range.
@@ -371,9 +371,9 @@ export interface DeleteCertificateError {
  * @constructor
  * A certificate that can be installed on compute nodes and can be used to
  * authenticate operations on the machine.
- * @member {string} [thumbprint] Get or The X.509 thumbprint of the
- * certificate. This is a sequence of up to 40 hex digits (it may include
- * spaces but these are removed).
+ * @member {string} [thumbprint] The X.509 thumbprint of the certificate. This
+ * is a sequence of up to 40 hex digits (it may include spaces but these are
+ * removed).
  * 
  * @member {string} [thumbprintAlgorithm] The algorithm used to derive the
  * thumbprint. This must be sha1.
@@ -391,18 +391,18 @@ export interface DeleteCertificateError {
  * state. Possible values include: 'active', 'deleting', 'deletefailed'
  * 
  * @member {date} [previousStateTransitionTime] The time at which the
- * certificate entered its previous state.  This property is not set if the
+ * certificate entered its previous state. This property is not set if the
  * certificate is in its initial Active state.
  * 
  * @member {string} [publicData] The public part of the certificate as a
  * base-64 encoded .cer file.
  * 
  * @member {object} [deleteCertificateError] The error that occurred on the
- * last attempt to delete this certificate.  This property is set only if the
+ * last attempt to delete this certificate. This property is set only if the
  * certificate is in the deletefailed state.
  * 
  * @member {string} [deleteCertificateError.code] An identifier for the
- * certificate deletion error.  Codes are invariant and are intended to be
+ * certificate deletion error. Codes are invariant and are intended to be
  * consumed programmatically.
  * 
  * @member {string} [deleteCertificateError.message] A message describing the
@@ -431,10 +431,10 @@ export interface Certificate {
  * @constructor
  * A reference to an application package to be installed on compute nodes in a
  * pool.
- * @member {string} applicationId The application package id.
+ * @member {string} applicationId The id of the application to install.
  * 
- * @member {string} [version] The application package version. If not
- * specified, the default is used.
+ * @member {string} [version] The version of the application to install. If
+ * omitted, the default version is installed.
  * 
  */
 export interface ApplicationPackageReference {
@@ -467,23 +467,21 @@ export interface ApplicationSummary {
  * @constructor
  * A certificate that can be installed on compute nodes and can be used to
  * authenticate operations on the machine.
- * @member {string} thumbprint Get or The X.509 thumbprint of the certificate.
- * This is a sequence of up to 40 hex digits (it may include spaces but these
- * are removed).
+ * @member {string} thumbprint The X.509 thumbprint of the certificate. This
+ * is a sequence of up to 40 hex digits (it may include spaces but these are
+ * removed).
  * 
  * @member {string} thumbprintAlgorithm The algorithm used to derive the
  * thumbprint. This must be sha1.
  * 
  * @member {string} data The base64-encoded contents of the certificate. The
- * maximum size is 10KB. This property is not populated by the Get
- * Certificate operation.
+ * maximum size is 10KB.
  * 
  * @member {string} [certificateFormat] The format of the certificate data.
  * Possible values include: 'pfx', 'cer', 'unmapped'
  * 
  * @member {string} [password] The password to access the certificate's
- * private key. This property is not populated by the Get Certificate
- * operation.
+ * private key.
  * 
  */
 export interface CertificateAddParameter {
@@ -562,13 +560,13 @@ export interface NodeFile {
  * time, the schedule becomes ready to create jobs immediately.
  * 
  * @member {date} [doNotRunAfter] A time after which no job will be created
- * under this job schedule.  The schedule will move to the completed state as
+ * under this job schedule. The schedule will move to the completed state as
  * soon as this deadline is past and there is no active job under this job
  * schedule.
  * 
  * @member {moment.duration} [startWindow] The time interval, starting from
  * the time at which the schedule indicates a job should be created, within
- * which a job must be created.  If a job is not created within the
+ * which a job must be created. If a job is not created within the
  * startWindow interval, then the 'opportunity' is lost; no job will be
  * created until the next recurrence of the schedule.
  * 
@@ -817,8 +815,8 @@ export interface JobPreparationTask {
  * the Batch service terminates it. The default value is 15 minutes.
  * 
  * @member {moment.duration} [retentionTime] The minimum time to retain the
- * working directory for the Job Release task on the compute node.  After
- * this time, the Batch service may delete the working directory and all its
+ * working directory for the Job Release task on the compute node. After this
+ * time, the Batch service may delete the working directory and all its
  * contents. The default is infinite.
  * 
  * @member {boolean} [runElevated] Whether to run the Job Release task in
@@ -890,7 +888,7 @@ export interface StartTask {
  * @member {string} thumbprint The thumbprint of the certificate.
  * 
  * @member {string} thumbprintAlgorithm The algorithm with which the
- * thumbprint is associated.  This must be sha1.
+ * thumbprint is associated. This must be sha1.
  * 
  * @member {string} [storeLocation] The location of the certificate store on
  * the compute node into which to install the certificate. The default value
@@ -1648,14 +1646,14 @@ export interface PoolInformation {
  * 
  * @member {moment.duration} [jobReleaseTask.retentionTime] The minimum time
  * to retain the working directory for the Job Release task on the compute
- * node.  After this time, the Batch service may delete the working directory
+ * node. After this time, the Batch service may delete the working directory
  * and all its contents. The default is infinite.
  * 
  * @member {boolean} [jobReleaseTask.runElevated] Whether to run the Job
  * Release task in elevated mode. The default value is false.
  * 
  * @member {array} [commonEnvironmentSettings] A list of common environment
- * variable settings.  These environment variables are set for all tasks in
+ * variable settings. These environment variables are set for all tasks in
  * jobs created under this schedule (including the Job Manager, Job
  * Preparation and Job Release tasks).
  * 
@@ -1930,11 +1928,11 @@ export interface JobScheduleExecutionInformation {
  * @member {number} writeIOps The total number of disk write operations made
  * by all tasks in all jobs created under the schedule.
  * 
- * @member {number} readIOGiB The total gibibytes of I/O read from disk by all
- * tasks in all jobs created under the schedule.
+ * @member {number} readIOGiB The total gibibytes read from disk by all tasks
+ * in all jobs created under the schedule.
  * 
- * @member {number} writeIOGiB The total gibibytes of I/O written to disk by
- * all tasks in all jobs created under the schedule.
+ * @member {number} writeIOGiB The total gibibytes written to disk by all
+ * tasks in all jobs created under the schedule.
  * 
  * @member {number} numSucceededTasks The total number of tasks successfully
  * completed during the given time range in jobs created under the schedule.
@@ -2012,13 +2010,13 @@ export interface JobScheduleStatistics {
  * doNotRunUntil time, the schedule becomes ready to create jobs immediately.
  * 
  * @member {date} [schedule.doNotRunAfter] A time after which no job will be
- * created under this job schedule.  The schedule will move to the completed
+ * created under this job schedule. The schedule will move to the completed
  * state as soon as this deadline is past and there is no active job under
  * this job schedule.
  * 
  * @member {moment.duration} [schedule.startWindow] The time interval,
  * starting from the time at which the schedule indicates a job should be
- * created, within which a job must be created.  If a job is not created
+ * created, within which a job must be created. If a job is not created
  * within the startWindow interval, then the 'opportunity' is lost; no job
  * will be created until the next recurrence of the schedule.
  * 
@@ -2191,14 +2189,14 @@ export interface JobScheduleStatistics {
  * 
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
  * The minimum time to retain the working directory for the Job Release task
- * on the compute node.  After this time, the Batch service may delete the
+ * on the compute node. After this time, the Batch service may delete the
  * working directory and all its contents. The default is infinite.
  * 
  * @member {boolean} [jobSpecification.jobReleaseTask.runElevated] Whether to
  * run the Job Release task in elevated mode. The default value is false.
  * 
  * @member {array} [jobSpecification.commonEnvironmentSettings] A list of
- * common environment variable settings.  These environment variables are set
+ * common environment variable settings. These environment variables are set
  * for all tasks in jobs created under this schedule (including the Job
  * Manager, Job Preparation and Job Release tasks).
  * 
@@ -2450,15 +2448,15 @@ export interface JobScheduleStatistics {
  * @member {number} [stats.writeIOps] The total number of disk write
  * operations made by all tasks in all jobs created under the schedule.
  * 
- * @member {number} [stats.readIOGiB] The total gibibytes of I/O read from
- * disk by all tasks in all jobs created under the schedule.
+ * @member {number} [stats.readIOGiB] The total gibibytes read from disk by
+ * all tasks in all jobs created under the schedule.
  * 
- * @member {number} [stats.writeIOGiB] The total gibibytes of I/O written to
- * disk by all tasks in all jobs created under the schedule.
+ * @member {number} [stats.writeIOGiB] The total gibibytes written to disk by
+ * all tasks in all jobs created under the schedule.
  * 
  * @member {number} [stats.numSucceededTasks] The total number of tasks
  * successfully completed during the given time range in jobs created under
- * the schedule.  A task completes successfully if it returns exit code 0.
+ * the schedule. A task completes successfully if it returns exit code 0.
  * 
  * @member {number} [stats.numFailedTasks] The total number of tasks that
  * failed during the given time range in jobs created under the schedule. A
@@ -2512,13 +2510,13 @@ export interface CloudJobSchedule {
  * doNotRunUntil time, the schedule becomes ready to create jobs immediately.
  * 
  * @member {date} [schedule.doNotRunAfter] A time after which no job will be
- * created under this job schedule.  The schedule will move to the completed
+ * created under this job schedule. The schedule will move to the completed
  * state as soon as this deadline is past and there is no active job under
  * this job schedule.
  * 
  * @member {moment.duration} [schedule.startWindow] The time interval,
  * starting from the time at which the schedule indicates a job should be
- * created, within which a job must be created.  If a job is not created
+ * created, within which a job must be created. If a job is not created
  * within the startWindow interval, then the 'opportunity' is lost; no job
  * will be created until the next recurrence of the schedule.
  * 
@@ -2691,14 +2689,14 @@ export interface CloudJobSchedule {
  * 
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
  * The minimum time to retain the working directory for the Job Release task
- * on the compute node.  After this time, the Batch service may delete the
+ * on the compute node. After this time, the Batch service may delete the
  * working directory and all its contents. The default is infinite.
  * 
  * @member {boolean} [jobSpecification.jobReleaseTask.runElevated] Whether to
  * run the Job Release task in elevated mode. The default value is false.
  * 
  * @member {array} [jobSpecification.commonEnvironmentSettings] A list of
- * common environment variable settings.  These environment variables are set
+ * common environment variable settings. These environment variables are set
  * for all tasks in jobs created under this schedule (including the Job
  * Manager, Job Preparation and Job Release tasks).
  * 
@@ -2921,7 +2919,7 @@ export interface JobScheduleAddParameter {
  * @member {string} category The category of the job scheduling error.
  * Possible values include: 'usererror', 'servererror', 'unmapped'
  * 
- * @member {string} [code] An identifier for the job scheduling error.  Codes
+ * @member {string} [code] An identifier for the job scheduling error. Codes
  * are invariant and are intended to be consumed programmatically.
  * 
  * @member {string} [message] A message describing the job scheduling error,
@@ -2959,7 +2957,7 @@ export interface JobSchedulingError {
  * 'unmapped'
  * 
  * @member {string} [schedulingError.code] An identifier for the job
- * scheduling error.  Codes are invariant and are intended to be consumed
+ * scheduling error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [schedulingError.message] A message describing the job
@@ -3159,14 +3157,14 @@ export interface JobExecutionInformation {
  * 
  * @member {moment.duration} [jobReleaseTask.retentionTime] The minimum time
  * to retain the working directory for the Job Release task on the compute
- * node.  After this time, the Batch service may delete the working directory
+ * node. After this time, the Batch service may delete the working directory
  * and all its contents. The default is infinite.
  * 
  * @member {boolean} [jobReleaseTask.runElevated] Whether to run the Job
  * Release task in elevated mode. The default value is false.
  * 
  * @member {array} [commonEnvironmentSettings] The list of common environment
- * variable settings.  These environment variables are set for all tasks in
+ * variable settings. These environment variables are set for all tasks in
  * the job (including the Job Manager, Job Preparation and Job Release tasks).
  * 
  * @member {object} [poolInfo] The pool on which the Batch service runs the
@@ -3373,7 +3371,7 @@ export interface JobExecutionInformation {
  * 'servererror', 'unmapped'
  * 
  * @member {string} [executionInfo.schedulingError.code] An identifier for the
- * job scheduling error.  Codes are invariant and are intended to be consumed
+ * job scheduling error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [executionInfo.schedulingError.message] A message
@@ -3415,11 +3413,11 @@ export interface JobExecutionInformation {
  * @member {number} [stats.writeIOps] The total number of disk write
  * operations made by all tasks in the job.
  * 
- * @member {number} [stats.readIOGiB] The total gibibytes of I/O read from
- * disk by all tasks in the job.
+ * @member {number} [stats.readIOGiB] The total gibibytes read from disk by
+ * all tasks in the job.
  * 
- * @member {number} [stats.writeIOGiB] The total gibibytes of I/O written to
- * disk by all tasks in the job.
+ * @member {number} [stats.writeIOGiB] The total gibibytes written to disk by
+ * all tasks in the job.
  * 
  * @member {number} [stats.numSucceededTasks] The total number of tasks
  * successfully completed in the job during the given time range.
@@ -3613,14 +3611,14 @@ export interface CloudJob {
  * 
  * @member {moment.duration} [jobReleaseTask.retentionTime] The minimum time
  * to retain the working directory for the Job Release task on the compute
- * node.  After this time, the Batch service may delete the working directory
+ * node. After this time, the Batch service may delete the working directory
  * and all its contents. The default is infinite.
  * 
  * @member {boolean} [jobReleaseTask.runElevated] Whether to run the Job
  * Release task in elevated mode. The default value is false.
  * 
  * @member {array} [commonEnvironmentSettings] The list of common environment
- * variable settings.  These environment variables are set for all tasks in
+ * variable settings. These environment variables are set for all tasks in
  * the job (including the Job Manager, Job Preparation and Job Release tasks).
  * 
  * @member {object} poolInfo The pool on which the Batch service runs the
@@ -3835,7 +3833,7 @@ export interface JobAddParameter {
  * @member {string} category The category of the task scheduling error.
  * Possible values include: 'usererror', 'servererror', 'unmapped'
  * 
- * @member {string} [code] An identifier for the task scheduling error.  Codes
+ * @member {string} [code] An identifier for the task scheduling error. Codes
  * are invariant and are intended to be consumed programmatically.
  * 
  * @member {string} [message] A message describing the task scheduling error,
@@ -3885,7 +3883,7 @@ export interface TaskSchedulingError {
  * 'unmapped'
  * 
  * @member {string} [schedulingError.code] An identifier for the task
- * scheduling error.  Codes are invariant and are intended to be consumed
+ * scheduling error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [schedulingError.message] A message describing the task
@@ -3949,7 +3947,7 @@ export interface JobPreparationTaskExecutionInformation {
  * 'unmapped'
  * 
  * @member {string} [schedulingError.code] An identifier for the task
- * scheduling error.  Codes are invariant and are intended to be consumed
+ * scheduling error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [schedulingError.message] A message describing the task
@@ -4017,7 +4015,7 @@ export interface JobReleaseTaskExecutionInformation {
  * 'usererror', 'servererror', 'unmapped'
  * 
  * @member {string} [jobPreparationTaskExecutionInfo.schedulingError.code] An
- * identifier for the task scheduling error.  Codes are invariant and are
+ * identifier for the task scheduling error. Codes are invariant and are
  * intended to be consumed programmatically.
  * 
  * @member {string} [jobPreparationTaskExecutionInfo.schedulingError.message]
@@ -4071,7 +4069,7 @@ export interface JobReleaseTaskExecutionInformation {
  * 'usererror', 'servererror', 'unmapped'
  * 
  * @member {string} [jobReleaseTaskExecutionInfo.schedulingError.code] An
- * identifier for the task scheduling error.  Codes are invariant and are
+ * identifier for the task scheduling error. Codes are invariant and are
  * intended to be consumed programmatically.
  * 
  * @member {string} [jobReleaseTaskExecutionInfo.schedulingError.message] A
@@ -4096,7 +4094,7 @@ export interface JobPreparationAndReleaseTaskExecutionInformation {
  * @constructor
  * An error that occurred when executing or evaluating a pool autoscale
  * formula.
- * @member {string} [code] An identifier for the autoscale error.  Codes are
+ * @member {string} [code] An identifier for the autoscale error. Codes are
  * invariant and are intended to be consumed programmatically.
  * 
  * @member {string} [message] A message describing the autoscale error,
@@ -4121,13 +4119,13 @@ export interface AutoScaleRunError {
  * evaluated.
  * 
  * @member {string} [results] The final values of all variables used in the
- * evaluation of the autoscale formula.  Each variable value is returned in
+ * evaluation of the autoscale formula. Each variable value is returned in
  * the form $variable=value, and variables are separated by semicolons.
  * 
  * @member {object} [error] Details of the error encountered evaluating the
  * autoscale formula on the pool, if the evaluation was unsuccessful.
  * 
- * @member {string} [error.code] An identifier for the autoscale error.  Codes
+ * @member {string} [error.code] An identifier for the autoscale error. Codes
  * are invariant and are intended to be consumed programmatically.
  * 
  * @member {string} [error.message] A message describing the autoscale error,
@@ -4148,7 +4146,7 @@ export interface AutoScaleRun {
  * Initializes a new instance of the ResizeError class.
  * @constructor
  * An error that occurred when resizing a pool.
- * @member {string} [code] An identifier for the pool resize error.  Codes are
+ * @member {string} [code] An identifier for the pool resize error. Codes are
  * invariant and are intended to be consumed programmatically.
  * 
  * @member {string} [message] A message describing the pool resize error,
@@ -4196,7 +4194,7 @@ export interface ResizeError {
  * @member {date} [allocationStateTransitionTime] The time at which the pool
  * entered its current allocation state.
  * 
- * @member {string} [vmSize] The size of virtual machines in the pool.  All
+ * @member {string} [vmSize] The size of virtual machines in the pool. All
  * virtual machines in a pool are the same size.
  * 
  * @member {object} [cloudServiceConfiguration] The cloud service
@@ -4265,7 +4263,7 @@ export interface ResizeError {
  * AllocationState is Steady.
  * 
  * @member {string} [resizeError.code] An identifier for the pool resize
- * error.  Codes are invariant and are intended to be consumed
+ * error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [resizeError.message] A message describing the pool resize
@@ -4298,7 +4296,7 @@ export interface ResizeError {
  * formula was last evaluated.
  * 
  * @member {string} [autoScaleRun.results] The final values of all variables
- * used in the evaluation of the autoscale formula.  Each variable value is
+ * used in the evaluation of the autoscale formula. Each variable value is
  * returned in the form $variable=value, and variables are separated by
  * semicolons.
  * 
@@ -4307,7 +4305,7 @@ export interface ResizeError {
  * unsuccessful.
  * 
  * @member {string} [autoScaleRun.error.code] An identifier for the autoscale
- * error.  Codes are invariant and are intended to be consumed
+ * error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [autoScaleRun.error.message] A message describing the
@@ -4473,7 +4471,7 @@ export interface CloudPool {
  * 
  * @member {string} [displayName] The display name for the pool.
  * 
- * @member {string} vmSize The size of virtual machines in the pool.  All
+ * @member {string} vmSize The size of virtual machines in the pool. All
  * virtual machines in a pool are the same size.
  * 
  * @member {object} [cloudServiceConfiguration] The cloud service
@@ -4621,7 +4619,7 @@ export interface PoolAddParameter {
  * A locality hint that can be used by the Batch service to select a compute
  * node on which to start a task.
  * @member {string} [affinityId] An opaque string representing the location of
- * a compute node or a task that has run previously.  You can pass the
+ * a compute node or a task that has run previously. You can pass the
  * AffinityId of a compute node or task to indicate that this task needs to
  * be placed close to the node or task.
  * 
@@ -4653,7 +4651,7 @@ export interface AffinityInformation {
  * 'unmapped'
  * 
  * @member {string} [schedulingError.code] An identifier for the task
- * scheduling error.  Codes are invariant and are intended to be consumed
+ * scheduling error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [schedulingError.message] A message describing the task
@@ -4771,11 +4769,9 @@ export interface MultiInstanceSettings {
  * @member {number} writeIOps The total number of disk write operations made
  * by the task.
  * 
- * @member {number} readIOGiB The total gibibytes of I/O read from disk by the
- * task.
+ * @member {number} readIOGiB The total gibibytes read from disk by the task.
  * 
- * @member {number} writeIOGiB The total gibibytes of I/O written to disk by
- * the task.
+ * @member {number} writeIOGiB The total gibibytes written to disk by the task.
  * 
  * @member {moment.duration} waitTime The total wait time of the task. The
  * wait time for a task is defined as the elapsed time between the creation
@@ -4801,9 +4797,9 @@ export interface TaskStatistics {
  * @class
  * Initializes a new instance of the TaskDependencies class.
  * @constructor
- * Specifies any dependencies of a task.  Any task that is explicitly
- * specified or within a dependency range must complete before the dependant
- * task will be scheduled.
+ * Specifies any dependencies of a task. Any task that is explicitly specified
+ * or within a dependency range must complete before the dependant task will
+ * be scheduled.
  * @member {array} [taskIds] The list of task ids that must complete before
  * this task can be scheduled.
  * 
@@ -4884,7 +4880,7 @@ export interface TaskIdRange {
  * Batch service to select a compute node on which to start the new task.
  * 
  * @member {string} [affinityInfo.affinityId] An opaque string representing
- * the location of a compute node or a task that has run previously.  You can
+ * the location of a compute node or a task that has run previously. You can
  * pass the AffinityId of a compute node or task to indicate that this task
  * needs to be placed close to the node or task.
  * 
@@ -4929,8 +4925,8 @@ export interface TaskIdRange {
  * 'servererror', 'unmapped'
  * 
  * @member {string} [executionInfo.schedulingError.code] An identifier for the
- * task scheduling error.  Codes are invariant and are intended to be
- * consumed programmatically.
+ * task scheduling error. Codes are invariant and are intended to be consumed
+ * programmatically.
  * 
  * @member {string} [executionInfo.schedulingError.message] A message
  * describing the task scheduling error, intended to be suitable for display
@@ -5015,11 +5011,11 @@ export interface TaskIdRange {
  * @member {number} [stats.writeIOps] The total number of disk write
  * operations made by the task.
  * 
- * @member {number} [stats.readIOGiB] The total gibibytes of I/O read from
- * disk by the task.
+ * @member {number} [stats.readIOGiB] The total gibibytes read from disk by
+ * the task.
  * 
- * @member {number} [stats.writeIOGiB] The total gibibytes of I/O written to
- * disk by the task.
+ * @member {number} [stats.writeIOGiB] The total gibibytes written to disk by
+ * the task.
  * 
  * @member {moment.duration} [stats.waitTime] The total wait time of the task.
  * The wait time for a task is defined as the elapsed time between the
@@ -5089,7 +5085,7 @@ export interface CloudTask {
  * Batch service to select a compute node on which to start the new task.
  * 
  * @member {string} [affinityInfo.affinityId] An opaque string representing
- * the location of a compute node or a task that has run previously.  You can
+ * the location of a compute node or a task that has run previously. You can
  * pass the AffinityId of a compute node or task to indicate that this task
  * needs to be placed close to the node or task.
  * 
@@ -5130,7 +5126,7 @@ export interface CloudTask {
  * subtasks including the primary, whereas task resource files are downloaded
  * only for the primary.
  * 
- * @member {object} [dependsOn] Any dependencies this task has.
+ * @member {object} [dependsOn] Any other tasks that this task depends on.
  * 
  * @member {array} [dependsOn.taskIds] The list of task ids that must complete
  * before this task can be scheduled.
@@ -5322,7 +5318,7 @@ export interface TaskAddCollectionResult {
  * 'unmapped'
  * 
  * @member {string} [schedulingError.code] An identifier for the task
- * scheduling error.  Codes are invariant and are intended to be consumed
+ * scheduling error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [schedulingError.message] A message describing the task
@@ -5409,8 +5405,8 @@ export interface CloudTaskListSubtasksResult {
  * 'servererror', 'unmapped'
  * 
  * @member {string} [executionInfo.schedulingError.code] An identifier for the
- * task scheduling error.  Codes are invariant and are intended to be
- * consumed programmatically.
+ * task scheduling error. Codes are invariant and are intended to be consumed
+ * programmatically.
  * 
  * @member {string} [executionInfo.schedulingError.message] A message
  * describing the task scheduling error, intended to be suitable for display
@@ -5464,7 +5460,7 @@ export interface TaskInformation {
  * 'unmapped'
  * 
  * @member {string} [schedulingError.code] An identifier for the task
- * scheduling error.  Codes are invariant and are intended to be consumed
+ * scheduling error. Codes are invariant and are intended to be consumed
  * programmatically.
  * 
  * @member {string} [schedulingError.message] A message describing the task
@@ -5495,8 +5491,8 @@ export interface StartTaskInformation {
  * Initializes a new instance of the ComputeNodeError class.
  * @constructor
  * An error encountered by a compute node.
- * @member {string} [code] An identifier for the compute node error.  Codes
- * are invariant and are intended to be consumed programmatically.
+ * @member {string} [code] An identifier for the compute node error. Codes are
+ * invariant and are intended to be consumed programmatically.
  * 
  * @member {string} [message] A message describing the compute node error,
  * intended to be suitable for display in a user interface.
@@ -5606,8 +5602,8 @@ export interface ComputeNodeError {
  * 'servererror', 'unmapped'
  * 
  * @member {string} [startTaskInfo.schedulingError.code] An identifier for the
- * task scheduling error.  Codes are invariant and are intended to be
- * consumed programmatically.
+ * task scheduling error. Codes are invariant and are intended to be consumed
+ * programmatically.
  * 
  * @member {string} [startTaskInfo.schedulingError.message] A message
  * describing the task scheduling error, intended to be suitable for display
@@ -5708,13 +5704,13 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * doNotRunUntil time, the schedule becomes ready to create jobs immediately.
  * 
  * @member {date} [schedule.doNotRunAfter] A time after which no job will be
- * created under this job schedule.  The schedule will move to the completed
+ * created under this job schedule. The schedule will move to the completed
  * state as soon as this deadline is past and there is no active job under
  * this job schedule.
  * 
  * @member {moment.duration} [schedule.startWindow] The time interval,
  * starting from the time at which the schedule indicates a job should be
- * created, within which a job must be created.  If a job is not created
+ * created, within which a job must be created. If a job is not created
  * within the startWindow interval, then the 'opportunity' is lost; no job
  * will be created until the next recurrence of the schedule.
  * 
@@ -5887,14 +5883,14 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * 
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
  * The minimum time to retain the working directory for the Job Release task
- * on the compute node.  After this time, the Batch service may delete the
+ * on the compute node. After this time, the Batch service may delete the
  * working directory and all its contents. The default is infinite.
  * 
  * @member {boolean} [jobSpecification.jobReleaseTask.runElevated] Whether to
  * run the Job Release task in elevated mode. The default value is false.
  * 
  * @member {array} [jobSpecification.commonEnvironmentSettings] A list of
- * common environment variable settings.  These environment variables are set
+ * common environment variable settings. These environment variables are set
  * for all tasks in jobs created under this schedule (including the Job
  * Manager, Job Preparation and Job Release tasks).
  * 
@@ -6121,13 +6117,13 @@ export interface JobSchedulePatchParameter {
  * doNotRunUntil time, the schedule becomes ready to create jobs immediately.
  * 
  * @member {date} [schedule.doNotRunAfter] A time after which no job will be
- * created under this job schedule.  The schedule will move to the completed
+ * created under this job schedule. The schedule will move to the completed
  * state as soon as this deadline is past and there is no active job under
  * this job schedule.
  * 
  * @member {moment.duration} [schedule.startWindow] The time interval,
  * starting from the time at which the schedule indicates a job should be
- * created, within which a job must be created.  If a job is not created
+ * created, within which a job must be created. If a job is not created
  * within the startWindow interval, then the 'opportunity' is lost; no job
  * will be created until the next recurrence of the schedule.
  * 
@@ -6300,14 +6296,14 @@ export interface JobSchedulePatchParameter {
  * 
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
  * The minimum time to retain the working directory for the Job Release task
- * on the compute node.  After this time, the Batch service may delete the
+ * on the compute node. After this time, the Batch service may delete the
  * working directory and all its contents. The default is infinite.
  * 
  * @member {boolean} [jobSpecification.jobReleaseTask.runElevated] Whether to
  * run the Job Release task in elevated mode. The default value is false.
  * 
  * @member {array} [jobSpecification.commonEnvironmentSettings] A list of
- * common environment variable settings.  These environment variables are set
+ * common environment variable settings. These environment variables are set
  * for all tasks in jobs created under this schedule (including the Job
  * Manager, Job Preparation and Job Release tasks).
  * 
@@ -7264,12 +7260,12 @@ export interface NodeRemoveParameter {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7292,12 +7288,12 @@ export interface ApplicationListOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7330,12 +7326,12 @@ export interface ApplicationGetOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7366,12 +7362,12 @@ export interface PoolListPoolUsageMetricsOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7395,12 +7391,12 @@ export interface AccountListNodeAgentSkusOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7422,12 +7418,12 @@ export interface PoolGetAllPoolsLifetimeStatisticsOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7449,12 +7445,12 @@ export interface JobGetAllJobsLifetimeStatisticsOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7483,12 +7479,12 @@ export interface CertificateAddOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7513,12 +7509,12 @@ export interface CertificateListOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7540,12 +7536,12 @@ export interface CertificateCancelDeletionOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7569,12 +7565,12 @@ export interface CertificateDeleteMethodOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7597,12 +7593,12 @@ export interface CertificateGetOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7624,19 +7620,19 @@ export interface FileDeleteFromTaskOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
  * time.
  * 
- * @member {string} [ocpRange] Specifies the byte range to be retrieved. The
- * default is to retrieve the entire file.  The format is startRange-endRange.
+ * @member {string} [ocpRange] The byte range to be retrieved. The default is
+ * to retrieve the entire file. The format is startRange-endRange.
  * 
  * @member {date} [ifModifiedSince] Specify this header to perform the
  * operation only if the resource has been modified since the specified
@@ -7665,12 +7661,12 @@ export interface FileGetFromTaskOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7702,12 +7698,12 @@ export interface FileGetNodeFilePropertiesFromTaskOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7729,19 +7725,19 @@ export interface FileDeleteFromComputeNodeOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
  * time.
  * 
- * @member {string} [ocpRange] Specifies the byte range to be retrieved. The
- * default is to retrieve the entire file.  The format is startRange-endRange.
+ * @member {string} [ocpRange] The byte range to be retrieved. The default is
+ * to retrieve the entire file. The format is startRange-endRange.
  * 
  * @member {date} [ifModifiedSince] Specify this header to perform the
  * operation only if the resource has been modified since the specified
@@ -7771,12 +7767,12 @@ export interface FileGetFromComputeNodeOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7813,12 +7809,12 @@ export interface FileGetNodeFilePropertiesFromComputeNodeOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7847,12 +7843,12 @@ export interface FileListFromTaskOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7876,12 +7872,12 @@ export interface FileListFromComputeNodeOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7923,12 +7919,12 @@ export interface JobScheduleExistsOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -7974,12 +7970,12 @@ export interface JobScheduleDeleteMethodOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8023,12 +8019,12 @@ export interface JobScheduleGetOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8070,12 +8066,12 @@ export interface JobSchedulePatchOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8117,12 +8113,12 @@ export interface JobScheduleUpdateOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8164,12 +8160,12 @@ export interface JobScheduleDisableOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8211,12 +8207,12 @@ export interface JobScheduleEnableOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8258,12 +8254,12 @@ export interface JobScheduleTerminateOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8294,12 +8290,12 @@ export interface JobScheduleAddOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8325,12 +8321,12 @@ export interface JobScheduleListOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8376,12 +8372,12 @@ export interface JobDeleteMethodOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8405,12 +8401,12 @@ export interface JobGetOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8452,12 +8448,12 @@ export interface JobPatchOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8499,12 +8495,12 @@ export interface JobUpdateOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8546,12 +8542,12 @@ export interface JobDisableOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8593,12 +8589,12 @@ export interface JobEnableOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8640,12 +8636,12 @@ export interface JobTerminateOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8676,12 +8672,12 @@ export interface JobAddOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8716,12 +8712,12 @@ export interface JobListOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8754,12 +8750,12 @@ export interface JobListFromJobScheduleOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8784,12 +8780,12 @@ export interface JobListPreparationAndReleaseTaskStatusOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8820,12 +8816,12 @@ export interface PoolAddOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8851,12 +8847,12 @@ export interface PoolListOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8898,12 +8894,12 @@ export interface PoolDeleteMethodOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8949,12 +8945,12 @@ export interface PoolExistsOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8998,12 +8994,12 @@ export interface PoolGetOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9045,12 +9041,12 @@ export interface PoolPatchOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9072,12 +9068,12 @@ export interface PoolDisableAutoScaleOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9119,12 +9115,12 @@ export interface PoolEnableAutoScaleOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9146,12 +9142,12 @@ export interface PoolEvaluateAutoScaleOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9193,12 +9189,12 @@ export interface PoolResizeOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9240,12 +9236,12 @@ export interface PoolStopResizeOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9267,12 +9263,12 @@ export interface PoolUpdatePropertiesOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9314,12 +9310,12 @@ export interface PoolUpgradeOSOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9361,12 +9357,12 @@ export interface PoolRemoveNodesOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9397,12 +9393,12 @@ export interface TaskAddOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9428,12 +9424,12 @@ export interface TaskListOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9455,12 +9451,12 @@ export interface TaskAddCollectionOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9506,12 +9502,12 @@ export interface TaskDeleteMethodOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9555,12 +9551,12 @@ export interface TaskGetOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9604,12 +9600,12 @@ export interface TaskUpdateOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9632,12 +9628,12 @@ export interface TaskListSubtasksOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9679,12 +9675,12 @@ export interface TaskTerminateOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9706,12 +9702,12 @@ export interface ComputeNodeAddUserOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9733,12 +9729,12 @@ export interface ComputeNodeDeleteUserOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9762,12 +9758,12 @@ export interface ComputeNodeUpdateUserOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9790,12 +9786,12 @@ export interface ComputeNodeGetOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9817,12 +9813,12 @@ export interface ComputeNodeRebootOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9844,12 +9840,12 @@ export interface ComputeNodeReimageOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9871,12 +9867,12 @@ export interface ComputeNodeDisableSchedulingOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9898,12 +9894,12 @@ export interface ComputeNodeEnableSchedulingOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9925,12 +9921,12 @@ export interface ComputeNodeGetRemoteLoginSettingsOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9959,12 +9955,12 @@ export interface ComputeNodeGetRemoteDesktopOptions {
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9986,12 +9982,12 @@ export interface ComputeNodeListOptions {
  * Initializes a new instance of the ApplicationListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10009,12 +10005,12 @@ export interface ApplicationListNextOptions {
  * Initializes a new instance of the PoolListPoolUsageMetricsNextOptions class.
  * @constructor
  * Additional parameters for the listPoolUsageMetricsNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10032,12 +10028,12 @@ export interface PoolListPoolUsageMetricsNextOptions {
  * Initializes a new instance of the AccountListNodeAgentSkusNextOptions class.
  * @constructor
  * Additional parameters for the listNodeAgentSkusNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10055,12 +10051,12 @@ export interface AccountListNodeAgentSkusNextOptions {
  * Initializes a new instance of the CertificateListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10078,12 +10074,12 @@ export interface CertificateListNextOptions {
  * Initializes a new instance of the FileListFromTaskNextOptions class.
  * @constructor
  * Additional parameters for the listFromTaskNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10101,12 +10097,12 @@ export interface FileListFromTaskNextOptions {
  * Initializes a new instance of the FileListFromComputeNodeNextOptions class.
  * @constructor
  * Additional parameters for the listFromComputeNodeNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10124,12 +10120,12 @@ export interface FileListFromComputeNodeNextOptions {
  * Initializes a new instance of the JobScheduleListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10147,12 +10143,12 @@ export interface JobScheduleListNextOptions {
  * Initializes a new instance of the JobListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10170,12 +10166,12 @@ export interface JobListNextOptions {
  * Initializes a new instance of the JobListFromJobScheduleNextOptions class.
  * @constructor
  * Additional parameters for the listFromJobScheduleNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10194,12 +10190,12 @@ export interface JobListFromJobScheduleNextOptions {
  * @constructor
  * Additional parameters for the listPreparationAndReleaseTaskStatusNext
  * operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10217,12 +10213,12 @@ export interface JobListPreparationAndReleaseTaskStatusNextOptions {
  * Initializes a new instance of the PoolListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10240,12 +10236,12 @@ export interface PoolListNextOptions {
  * Initializes a new instance of the TaskListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -10263,12 +10259,12 @@ export interface TaskListNextOptions {
  * Initializes a new instance of the ComputeNodeListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
- * @member {string} [clientRequestId] Caller generated request identity, in
- * the form of a GUID with no decoration such as curly braces e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity,
+ * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
- * @member {boolean} [returnClientRequestId] Specifies if the server should
- * return the client-request-id identifier in the response.
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id identifier in the response.
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
