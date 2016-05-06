@@ -58,7 +58,8 @@ function rnd(prefix) {
 }
 
 function log(text) {
-  console.log("      " + (text || ''));
+  // enable for interactive testing. 
+  // console.log("      " + (text || ''));
 }
 
 function dump(obj, n) {
