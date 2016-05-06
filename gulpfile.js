@@ -111,6 +111,10 @@ var mappings = {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
+  },  
+  'servermanagement': {
+    'dir': 'servermanagement/lib',
+    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
   }
 };
 
