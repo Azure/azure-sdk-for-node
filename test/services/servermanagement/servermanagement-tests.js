@@ -57,7 +57,7 @@ if (!String.prototype.startsWith) {
 }
 
 function powerShell(cmdline) {
-  return exec("powershell.exe", typeof cmdline === 'Array' ? cmdline : [cmdline]);
+  return exec("powershell.exe", typeof (cmdline) === 'Array' ? cmdline : [cmdline]);
 }
 
 function rnd(prefix) {
@@ -74,16 +74,16 @@ function dump(obj, n) {
 }
 
 Promise.adaptToPromise = function (fn, argumentCount) {
-  if (typeof fn == 'object') {
+  if (typeof (fn) == 'object') {
     // adapt members of an object
     for (var each in fn) {
-      if (typeof fn[each] == 'function' && !each.startsWith("begin")) {
+      if (typeof (fn[each]) == 'function' && !each.startsWith("begin")) {
         fn[each] = Promise.adaptToPromise(fn[each]);
       }
     }
     return;
   }
-  if (typeof fn != 'function') {
+  if (typeof (fn) != 'function') {
     return;
   }
   // adapt a function.
@@ -136,7 +136,7 @@ describe('ServerManagement', function () {
 
       var v = suite.getMockVariable(variableName);
       if (!v) {
-        if (typeof defaultValueFn == 'function') {
+        if (typeof (defaultValueFn) == 'function') {
           v = defaultValueFn();
         } else {
           v = defaultValueFn;
