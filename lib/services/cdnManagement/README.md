@@ -21,7 +21,10 @@ We provide both fine-grained modules for different Microsoft Azure services whic
 
 ```
 npm install azure
+npm install ms-rest-azure
+npm install ms-arm-cdn
 ```
+
 &nbsp;
 
 ## How to Use
@@ -29,7 +32,7 @@ npm install azure
 ### Initialise the client
 ```javascript
 var msRestAzure = require('ms-rest-azure');
-var ManagementClient = require('../../../lib/services/cdnManagement/lib/cdnManagementClient');
+var ManagementClient = require('ms-arm-cdn');
 
 //user authentication
 var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
