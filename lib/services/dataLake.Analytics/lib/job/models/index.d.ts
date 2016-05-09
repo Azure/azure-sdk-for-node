@@ -62,13 +62,13 @@
  * 
  * @member {number} [totalCount] Gets the total vertex count for this stage.
  * 
- * @member {moment.duration} [totalFailedTime] Gets the amount of time that
- * failed vertices took up in this stage.
+ * @member {string} [totalFailedTime] Gets the amount of time that failed
+ * vertices took up in this stage.
  * 
  * @member {number} [totalProgress] Gets the current progress of this stage,
  * as a percentage.
  * 
- * @member {moment.duration} [totalSucceededTime] Gets the amount of time all
+ * @member {string} [totalSucceededTime] Gets the amount of time all
  * successful vertices took in this stage.
  * 
  */
@@ -90,9 +90,9 @@ export interface JobStatisticsVertexStage {
     succeededCount?: number;
     tempDataWritten?: number;
     totalCount?: number;
-    totalFailedTime?: moment.Duration;
+    totalFailedTime?: string;
     totalProgress?: number;
-    totalSucceededTime?: moment.Duration;
+    totalSucceededTime?: string;
 }
 
 /**
@@ -222,21 +222,21 @@ export interface JobProperties {
  * @member {string} [algebraFilePath] Gets the algebra file path after the job
  * has completed
  * 
- * @member {moment.duration} [totalCompilationTime] Gets the total time this
- * job spent compiling. This value should not be set by the user and will be
- * ignored if it is.
+ * @member {string} [totalCompilationTime] Gets the total time this job spent
+ * compiling. This value should not be set by the user and will be ignored if
+ * it is.
  * 
- * @member {moment.duration} [totalPauseTime] Gets the total time this job
- * spent paused. This value should not be set by the user and will be ignored
- * if it is.
+ * @member {string} [totalPauseTime] Gets the total time this job spent
+ * paused. This value should not be set by the user and will be ignored if it
+ * is.
  * 
- * @member {moment.duration} [totalQueuedTime] Gets the total time this job
- * spent queued. This value should not be set by the user and will be ignored
- * if it is.
+ * @member {string} [totalQueuedTime] Gets the total time this job spent
+ * queued. This value should not be set by the user and will be ignored if it
+ * is.
  * 
- * @member {moment.duration} [totalRunningTime] Gets the total time this job
- * spent executing. This value should not be set by the user and will be
- * ignored if it is.
+ * @member {string} [totalRunningTime] Gets the total time this job spent
+ * executing. This value should not be set by the user and will be ignored if
+ * it is.
  * 
  * @member {string} [rootProcessNodeId] Gets the ID used to identify the job
  * manager coordinating job execution. This value should not be set by the
@@ -260,10 +260,10 @@ export interface USqlJobProperties extends JobProperties {
     debugData?: JobDataPath;
     diagnostics?: Diagnostics[];
     algebraFilePath?: string;
-    totalCompilationTime?: moment.Duration;
-    totalPauseTime?: moment.Duration;
-    totalQueuedTime?: moment.Duration;
-    totalRunningTime?: moment.Duration;
+    totalCompilationTime?: string;
+    totalPauseTime?: string;
+    totalQueuedTime?: string;
+    totalRunningTime?: string;
     rootProcessNodeId?: string;
     yarnApplicationId?: string;
     yarnApplicationTimeStamp?: number;
@@ -388,7 +388,7 @@ export interface HiveJobProperties extends JobProperties {
  * @member {number} [innerError.diagnosticCode] Gets the diagnostic error code.
  * 
  * @member {string} [innerError.severity] Gets the severity level of the
- * failure. Possible values include: 'Warning', 'Error', 'Info'
+ * failure. Possible values include: 'Warning', 'Error'
  * 
  * @member {string} [innerError.details] Gets the details of the error message.
  * 
@@ -416,7 +416,7 @@ export interface HiveJobProperties extends JobProperties {
  * @member {string} [innerError.description] Gets the error message description
  * 
  * @member {string} [severity] Gets the severity level of the failure.
- * Possible values include: 'Warning', 'Error', 'Info'
+ * Possible values include: 'Warning', 'Error'
  * 
  * @member {string} [source] Gets the ultimate source of the failure (usually
  * either SYSTEM or USER).
@@ -450,7 +450,7 @@ export interface JobErrorDetails {
  * @member {number} [diagnosticCode] Gets the diagnostic error code.
  * 
  * @member {string} [severity] Gets the severity level of the failure.
- * Possible values include: 'Warning', 'Error', 'Info'
+ * Possible values include: 'Warning', 'Error'
  * 
  * @member {string} [details] Gets the details of the error message.
  * 
