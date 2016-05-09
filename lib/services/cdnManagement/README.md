@@ -21,15 +21,18 @@ We provide both fine-grained modules for different Microsoft Azure services whic
 
 ```
 npm install azure
+npm install ms-rest-azure
+npm install azure-arm-cdn
 ```
+
 &nbsp;
 
 ## How to Use
 
 ### Initialise the client
 ```javascript
-var msrestAzure = require('ms-rest-azure');
-var ManagementClient = require('../../../lib/services/cdnManagement/lib/cdnManagementClient');
+var msRestAzure = require('ms-rest-azure');
+var ManagementClient = require('azure-arm-cdn');
 
 //user authentication
 var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
@@ -62,18 +65,18 @@ client.profiles.listByResourceGroup("your-resource-group-name", function(err, re
 });
 
 //Create profile under certain resource group
-var standardCreateParameters = {
+var standardVerizonCreateParameters = {
 	location: 'West US',
 	tags: {
 	    tag1: 'val1',
 	    tag2: 'val2'
 	},
 	sku: {
-	    name: 'Standard'
+	    name: 'Standard_Verizon'
 	}
 };
 
-client.profiles.create("your-profile-name", standardCreateParameters, "your-resource-group-name", function(err, result, request, response) {
+client.profiles.create("your-profile-name", standardVerizonCreateParameters, "your-resource-group-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -82,6 +85,17 @@ client.profiles.create("your-profile-name", standardCreateParameters, "your-reso
 		console.log(profile.sku.name);
 	}
 });
+
+var standardAkamaiCreateParameters = {
+	location: 'West US',
+	tags: {
+	    tag1: 'val1',
+	    tag2: 'val2'
+	},
+	sku: {
+	    name: 'Standard_Akamai'
+	}
+};
 
 //Delete profile
 client.profiles.deleteIfExists("your-profile-name", "your-resource-group-name", function(err, result, request, response) {
@@ -142,7 +156,7 @@ var endpointProperties = {
 	}]
 }
 
-client.endpoints.create("your-endpoint-name", validEndpointProperties, "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.create("your-endpoint-name", endpointProperties, "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
     if (err) {
         console.log(err);
     } else {
