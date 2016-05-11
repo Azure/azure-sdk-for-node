@@ -100,7 +100,8 @@ describe('Batch Management', function () {
       var options = { parameters : params };
       client.applicationOperations.addApplication(groupName, 'batchtestnodesdk', 'my_application_id', options, function (err, result, request, response) {
         should.not.exist(err);
-        should.not.exist(result);
+        should.exist(result);
+        result.id.should.equal('my_application_id');
         response.statusCode.should.equal(201);
         done();
       });
@@ -325,7 +326,7 @@ describe('Batch Management', function () {
     });
     
     it('should sync auto storage keys successfully', function (done) {
-      client.account.syncAutoStorageKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.account.synchronizeAutoStorageKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
