@@ -35,9 +35,9 @@
       ]
     },
     "cdn": {
-      "swagger": "arm-cdn/2015-06-01/swagger/cdn.json",
+      "swagger": "arm-cdn/2016-04-02/swagger/cdn.json",
       "autorest_options": {
-        "FT": 1
+        "FT": 2
       },
       "output_dir": "lib/services/cdnManagement/lib"
     },
