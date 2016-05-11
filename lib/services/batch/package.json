@@ -4,7 +4,7 @@
   "contributors": [
     "Wu, Xing <xingwu@microsoft.com>"
   ],
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Microsoft Azure Batch Service Client Library for node",
   "tags": [
     "azure",
@@ -25,8 +25,8 @@
     }
   ],
   "dependencies": {
-    "ms-rest": "^1.10.0",
-    "ms-rest-azure": "^1.10.0",
+    "ms-rest": "^1.12.0",
+    "ms-rest-azure": "^1.12.0",
     "underscore": "^1.4.0",
     "moment": "^2.12.0"
   },
