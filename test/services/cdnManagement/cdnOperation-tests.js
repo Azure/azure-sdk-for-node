@@ -21,10 +21,6 @@ var SuiteBase = require('../../framework/suite-base');
 var FileTokenCache = require('../../../lib/util/fileTokenCache');
 var StorageManagementClient = require('../../../lib/services/cdnManagement/lib/cdnManagementClient');
 var testPrefix = 'cdnOperation-tests';
-var groupPrefix = 'cdnTestGroup';
-var profilePrefix = 'cdnTestProfile';
-var createdGroups = [];
-var createdProfiles = [];
 
 var requiredEnvironment = [{
   name: 'AZURE_TEST_LOCATION',
@@ -33,12 +29,6 @@ var requiredEnvironment = [{
 
 var suite;
 var client;
-var profileName1;
-var profileName2;
-var groupName1;
-var groupName2;
-var standardCreateParameters;
-var premiumCreateParameters;
 var defaultLocation;
 
 describe('Cdn Management Operation', function() {
@@ -67,7 +57,6 @@ describe('Cdn Management Operation', function() {
   });
 
   describe('cdn operations', function() {
-
     it('should list cdn management operations', function(done) {
       client.operations.list(function(err, result, request, response) {
         should.not.exist(err);

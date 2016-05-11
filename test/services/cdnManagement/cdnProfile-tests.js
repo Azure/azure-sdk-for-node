@@ -35,6 +35,7 @@ var suite;
 var client;
 var profileName1;
 var profileName2;
+var profileName3;
 var groupName1;
 var groupName2;
 var standardCreateParameters;
@@ -52,6 +53,7 @@ describe('Cdn Management Profile', function() {
       defaultLocation = process.env['AZURE_TEST_LOCATION'];
       profileName1 = suite.generateId(profilePrefix, createdProfiles, suite.isMocked);
       profileName2 = suite.generateId(profilePrefix, createdProfiles, suite.isMocked);
+      profileName3 = suite.generateId(profilePrefix, createdProfiles, suite.isMocked);
       standardCreateParameters = {
         location: 'West US',
         tags: {
@@ -59,7 +61,7 @@ describe('Cdn Management Profile', function() {
           tag2: 'val2'
         },
         sku: {
-          name: 'Standard'
+          name: 'Standard_Verizon'
         }
       };
       premiumCreateParameters = {
@@ -69,7 +71,17 @@ describe('Cdn Management Profile', function() {
           tag2: 'val2'
         },
         sku: {
-          name: 'Premium'
+          name: 'Premium_Verizon'
+        }
+      };
+      akamaiCreateParameters = {
+        location: 'East US',
+        tags: {
+          tag1: 'val1',
+          tag2: 'val2'
+        },
+        sku: {
+          name: 'Standard_Akamai'
         }
       };
       if (suite.isPlayback) {
@@ -134,14 +146,6 @@ describe('Cdn Management Profile', function() {
         var profile = result;
         profile.name.should.equal(profileName1);
         profile.sku.name.should.equal(standardCreateParameters.sku.name);
-        done();
-      });
-    });
-
-    it('should try to create a profile with same name and fail', function(done) {
-      client.profiles.create(profileName1, standardCreateParameters, groupName1, function(err, result, request, response) {
-        should.exist(err);
-        should.not.exist(result);
         done();
       });
     });
@@ -260,6 +264,24 @@ describe('Cdn Management Profile', function() {
 
     it('should delete second profile and succeed', function(done) {
       client.profiles.deleteIfExists(profileName2, groupName2, function(err, result, request, response) {
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('should create a standard akamai profile correctly', function (done) {
+      client.profiles.create(profileName3, akamaiCreateParameters, groupName1, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        var profile = result;
+        profile.name.should.equal(profileName3);
+        profile.sku.name.should.equal(akamaiCreateParameters.sku.name);
+        done();
+      });
+    });
+
+    it('should delete akamai profile and succeed', function (done) {
+      client.profiles.deleteIfExists(profileName3, groupName1, function (err, result, request, response) {
         should.not.exist(err);
         done();
       });
