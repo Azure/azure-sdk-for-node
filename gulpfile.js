@@ -90,10 +90,14 @@ var mappings = {
   'datalake.store.filesystem': {
     'dir': 'dataLake.Store/lib/filesystem',
     'source': 'arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json'
+  },
+  'servermanagement': {
+    'dir': 'servermanagement/lib',
+    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
   }
 };
 
-var defaultAutoRestVersion = '0.15.0-Nightly20160304';
+var defaultAutoRestVersion = '0.16.0-Nightly20160428';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
