@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{72210dc5-a996-48d4-bb68-ba82b3544c77}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>
     </StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
@@ -52,6 +52,9 @@
     <Content Include="lib\services\HDInsightJob2\LICENSE.txt" />
     <Content Include="lib\services\HDInsightJob2\package.json" />
     <Content Include="lib\services\HDInsightJob2\README.md" />
+    <Content Include="lib\services\notificationHubsManagement\LICENSE.txt" />
+    <Content Include="lib\services\notificationHubsManagement\package.json" />
+    <Content Include="lib\services\notificationHubsManagement\README.md" />
     <Content Include="lib\services\serviceFabric\package.json" />
     <Content Include="lib\services\serviceFabric\README.md" />
     <Content Include="LICENSE.txt" />
@@ -480,6 +483,40 @@
     <Compile Include="lib\services\HDInsight2\lib\hDInsightManagementClient.js" />
     <Compile Include="lib\services\HDInsightJob2\lib\hdinsightjob2.js" />
     <Compile Include="lib\services\HDInsightJob2\lib\hDInsightJobManagementClient.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\admCredential.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\admCredentialProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\apnsCredential.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\apnsCredentialProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\baiduCredential.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\baiduCredentialProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\checkAvailabilityParameters.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\checkAvailabilityResource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\gcmCredential.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\gcmCredentialProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\index.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\mpnsCredential.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\mpnsCredentialProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\namespaceCreateOrUpdateParameters.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\namespaceListResult.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\namespaceProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\namespaceResource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\notificationHubCreateOrUpdateParameters.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\notificationHubListResult.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\notificationHubProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\notificationHubResource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\resource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\resourceListKeys.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\sharedAccessAuthorizationRuleCreateOrUpdateParameters.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\sharedAccessAuthorizationRuleListResult.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\sharedAccessAuthorizationRuleProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\sharedAccessAuthorizationRuleResource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\subResource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\wnsCredential.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\wnsCredentialProperties.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\notificationHubsManagementClient.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\operations\index.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\operations\namespaces.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\operations\notificationHubs.js" />
     <Compile Include="lib\services\serviceFabric\lib\models\application.js" />
     <Compile Include="lib\services\serviceFabric\lib\models\applicationDescription.js" />
     <Compile Include="lib\services\serviceFabric\lib\models\applicationDescriptionParameterListItem.js" />
@@ -1090,6 +1127,9 @@
     <Compile Include="lib\services\networkManagement\lib\networkManagementClient.js" />
     <Compile Include="lib\services\networkManagement2\lib\network.js" />
     <Compile Include="lib\services\networkManagement2\lib\networkResourceProviderClient.js" />
+    <TypeScriptCompile Include="lib\services\notificationHubsManagement\lib\models\index.d.ts" />
+    <TypeScriptCompile Include="lib\services\notificationHubsManagement\lib\notificationHubsManagementClient.d.ts" />
+    <TypeScriptCompile Include="lib\services\notificationHubsManagement\lib\operations\index.d.ts" />
     <TypeScriptCompile Include="lib\services\rediscachemanagement\lib\redisManagementClient.d.ts" />
     <Compile Include="lib\services\rediscachemanagement\lib\redisManagementClient.js" />
     <TypeScriptCompile Include="lib\services\rediscachemanagement\lib\models\index.d.ts" />
@@ -1578,6 +1618,8 @@
     <Compile Include="test\services\intune\intuneResourceManagementClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
+    <Compile Include="test\services\notificationHubsManagement\namespace-tests.js" />
+    <Compile Include="test\services\notificationHubsManagement\notificationHub-tests.js" />
     <Compile Include="test\services\resourceManagement\authorizationClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
@@ -1735,6 +1777,10 @@
     <Folder Include="lib\services\networkManagement\lib" />
     <Folder Include="lib\services\networkManagement2" />
     <Folder Include="lib\services\networkManagement2\lib" />
+    <Folder Include="lib\services\notificationHubsManagement\" />
+    <Folder Include="lib\services\notificationHubsManagement\lib\" />
+    <Folder Include="lib\services\notificationHubsManagement\lib\models\" />
+    <Folder Include="lib\services\notificationHubsManagement\lib\operations\" />
     <Folder Include="lib\services\rediscachemanagement" />
     <Folder Include="lib\services\rediscachemanagement\lib" />
     <Folder Include="lib\services\rediscachemanagement\lib\models" />
@@ -2056,6 +2102,7 @@
     <Folder Include="test\services\dataLakeAnalyticsManagement\" />
     <Folder Include="test\services\dataLakeStoreManagement\" />
     <Folder Include="test\services\intune" />
+    <Folder Include="test\services\notificationHubsManagement\" />
     <Folder Include="test\services\resourceManagement" />
     <Folder Include="test\services\storageManagement" />
     <Folder Include="test\tmp" />

@@ -111,7 +111,11 @@ var mappings = {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
-  }
+  },
+  'notificationHubs':{
+    'dir': 'notificationHubsManagement/lib',
+    'source': 'arm-notificationhubs/2014-09-01/swagger/notificationhubs.json'
+  }  
 };
 
 var defaultAutoRestVersion = '0.16.0-Nightly20160428';
