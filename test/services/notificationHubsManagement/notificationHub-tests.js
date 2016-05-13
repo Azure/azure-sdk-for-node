@@ -99,19 +99,24 @@ describe('Notification Hubs Management', function () {
             console.log("Create Resource Group : " + groupName);
             suite.createResourcegroup(groupName, namespaceLocation, function (err, result) {
                 should.not.exist(err);
-
-                console.log("Create Namespace : " + namespaceName);
-                client.namespaces.createOrUpdate(groupName, namespaceName, createNamespaceParameters, function (err, result, request, response) {
-                    should.not.exist(err);
-                    should.exist(result);
-                    response.statusCode.should.equal(200);
-                    
-                    console.log("Get the Created Namespace");
-                    IsNamespaceActive(groupName, namespaceName, function (err, active) {
-                        console.log("State : " + active);
-                        done();
+                
+                if (!suite.isPlayback) {
+                    console.log("Create Namespace : " + namespaceName);
+                    client.namespaces.createOrUpdate(groupName, namespaceName, createNamespaceParameters, function (err, result, request, response) {
+                        should.not.exist(err);
+                        should.exist(result);
+                        response.statusCode.should.equal(200);
+                        
+                        console.log("Get the Created Namespace");
+                        IsNamespaceActive(groupName, namespaceName, function (err, active) {
+                            console.log("State : " + active);
+                            done();
+                        });
                     });
-                });
+                } 
+                else {
+                    done();
+                }
             });
         });
     });
