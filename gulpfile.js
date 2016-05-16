@@ -115,6 +115,10 @@ var mappings = {
   'servermanagement': {
     'dir': 'servermanagement/lib',
     'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
+  },
+  'notificationHubs':{
+    'dir': 'notificationHubsManagement/lib',
+    'source': 'arm-notificationhubs/2014-09-01/swagger/notificationhubs.json'
   }
 };
 
