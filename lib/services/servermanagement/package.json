@@ -4,7 +4,7 @@
   "contributors": [
     "Garrett Serack <garretts@microsoft.com>"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Microsoft Server Management Client Library for node",
   "tags": [
     "azure",
@@ -15,9 +15,6 @@
     "azure"
   ],
   "main": "./lib/servermanagement.js",
-  "engines": {
-    "node": "^5.0.0"
-  },
   "licenses": [{
     "type": "Apache 2.0",
     "url": "http://www.apache.org/licenses/LICENSE-2.0"
