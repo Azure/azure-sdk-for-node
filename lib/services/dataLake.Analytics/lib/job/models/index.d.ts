@@ -14,7 +14,7 @@
  * @class
  * Initializes a new instance of the JobStatisticsVertexStage class.
  * @constructor
- * The Data Lake Analytics job statistics vertex stage information.
+ * The Data Lake Analytics U-SQL job statistics vertex stage information.
  * @member {number} [dataRead] Gets the amount of data read, in bytes.
  * 
  * @member {number} [dataReadCrossPod] Gets the amount of data read across
@@ -62,13 +62,13 @@
  * 
  * @member {number} [totalCount] Gets the total vertex count for this stage.
  * 
- * @member {moment.duration} [totalFailedTime] Gets the amount of time that
- * failed vertices took up in this stage.
+ * @member {string} [totalFailedTime] Gets the amount of time that failed
+ * vertices took up in this stage.
  * 
  * @member {number} [totalProgress] Gets the current progress of this stage,
  * as a percentage.
  * 
- * @member {moment.duration} [totalSucceededTime] Gets the amount of time all
+ * @member {string} [totalSucceededTime] Gets the amount of time all
  * successful vertices took in this stage.
  * 
  */
@@ -90,16 +90,16 @@ export interface JobStatisticsVertexStage {
     succeededCount?: number;
     tempDataWritten?: number;
     totalCount?: number;
-    totalFailedTime?: moment.Duration;
+    totalFailedTime?: string;
     totalProgress?: number;
-    totalSucceededTime?: moment.Duration;
+    totalSucceededTime?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the JobStatistics class.
  * @constructor
- * The Data Lake Analytics job execution statistics.
+ * The Data Lake Analytics U-SQL job execution statistics.
  * @member {date} [lastUpdateTimeUtc] Gets the last update time for the
  * statistics.
  * 
@@ -115,7 +115,7 @@ export interface JobStatistics {
  * @class
  * Initializes a new instance of the JobDataPath class.
  * @constructor
- * A Data Lake Analytics job data path item.
+ * A Data Lake Analytics U-SQL job data path item.
  * @member {uuid} [jobId] Gets the id of the job this data is for.
  * 
  * @member {string} [command] Gets the command that this job data relates to.
@@ -133,8 +133,8 @@ export interface JobDataPath {
  * @class
  * Initializes a new instance of the JobStateAuditRecord class.
  * @constructor
- * The Data Lake Analytics job state audit records for tracking the lifecycle
- * of a job.
+ * The Data Lake Analytics U-SQL job state audit records for tracking the
+ * lifecycle of a job.
  * @member {string} [newState] Gets the new state the job is in.
  * 
  * @member {date} [timeStamp] Gets the time stamp that the state change took
@@ -156,15 +156,13 @@ export interface JobStateAuditRecord {
  * @class
  * Initializes a new instance of the JobResource class.
  * @constructor
- * The Data Lake Analytics job resources.
+ * The Data Lake Analytics U-SQL job resources.
  * @member {string} [name] Gets or set the name of the resource.
  * 
  * @member {string} [resourcePath] Gets or sets the path to the resource.
  * 
  * @member {string} [type] Gets or sets the job resource type. Possible values
- * include: 'VertexResource', 'JobManagerResource', 'StatisticsResource',
- * 'VertexResourceInUserFolder', 'JobManagerResourceInUserFolder',
- * 'StatisticsResourceInUserFolder'
+ * include: 'VertexResource', 'StatisticsResource'
  * 
  */
 export interface JobResource {
@@ -179,9 +177,9 @@ export interface JobResource {
  * @constructor
  * The common Data Lake Analytics job properties.
  * @member {string} [runtimeVersion] Gets or sets the runtime version of the
- * Data Lake Analytics engine to use for the specific type of job being run.
+ * U-SQL engine to use
  * 
- * @member {string} script Gets or sets the script to run
+ * @member {string} script Gets or sets the U-SQL script to run
  * 
  * @member {string} type Polymorhpic Discriminator
  * 
@@ -217,26 +215,24 @@ export interface JobProperties {
  * @member {array} [debugData.paths] Gets the list of paths to all of the job
  * data.
  * 
- * @member {array} [diagnostics] Gets or sets the diagnostics for the job.
+ * @member {string} [algebraFilePath] Gets the U-SQL algebra file path after
+ * the job has completed
  * 
- * @member {string} [algebraFilePath] Gets the algebra file path after the job
- * has completed
+ * @member {string} [totalCompilationTime] Gets the total time this job spent
+ * compiling. This value should not be set by the user and will be ignored if
+ * it is.
  * 
- * @member {moment.duration} [totalCompilationTime] Gets the total time this
- * job spent compiling. This value should not be set by the user and will be
- * ignored if it is.
+ * @member {string} [totalPauseTime] Gets the total time this job spent
+ * paused. This value should not be set by the user and will be ignored if it
+ * is.
  * 
- * @member {moment.duration} [totalPauseTime] Gets the total time this job
- * spent paused. This value should not be set by the user and will be ignored
- * if it is.
+ * @member {string} [totalQueuedTime] Gets the total time this job spent
+ * queued. This value should not be set by the user and will be ignored if it
+ * is.
  * 
- * @member {moment.duration} [totalQueuedTime] Gets the total time this job
- * spent queued. This value should not be set by the user and will be ignored
- * if it is.
- * 
- * @member {moment.duration} [totalRunningTime] Gets the total time this job
- * spent executing. This value should not be set by the user and will be
- * ignored if it is.
+ * @member {string} [totalRunningTime] Gets the total time this job spent
+ * executing. This value should not be set by the user and will be ignored if
+ * it is.
  * 
  * @member {string} [rootProcessNodeId] Gets the ID used to identify the job
  * manager coordinating job execution. This value should not be set by the
@@ -258,43 +254,15 @@ export interface USqlJobProperties extends JobProperties {
     resources?: JobResource[];
     statistics?: JobStatistics;
     debugData?: JobDataPath;
-    diagnostics?: Diagnostics[];
     algebraFilePath?: string;
-    totalCompilationTime?: moment.Duration;
-    totalPauseTime?: moment.Duration;
-    totalQueuedTime?: moment.Duration;
-    totalRunningTime?: moment.Duration;
+    totalCompilationTime?: string;
+    totalPauseTime?: string;
+    totalQueuedTime?: string;
+    totalRunningTime?: string;
     rootProcessNodeId?: string;
     yarnApplicationId?: string;
     yarnApplicationTimeStamp?: number;
     compileMode?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Diagnostics class.
- * @constructor
- * @member {number} [columnNumber] Gets the column where the error occured.
- * 
- * @member {number} [end] Gets the ending index of the error.
- * 
- * @member {number} [lineNumber] Gets the line number the error occured on.
- * 
- * @member {string} [message] Gets the error message.
- * 
- * @member {string} [severity] Gets the severity of the error. Possible values
- * include: 'Warning', 'Error', 'Info'
- * 
- * @member {number} [start] Gets the starting index of the error.
- * 
- */
-export interface Diagnostics {
-    columnNumber?: number;
-    end?: number;
-    lineNumber?: number;
-    message?: string;
-    severity?: string;
-    start?: number;
 }
 
 /**
@@ -330,8 +298,8 @@ export interface HiveJobStatementInfo {
  * 
  * @member {string} [logsLocation] Gets or sets the Hive logs location
  * 
- * @member {string} [warehouseLocation] Gets or sets the location of the Hive
- * warehouse
+ * @member {string} [warehouseLocation] Gets or sets the runtime version of
+ * the U-SQL engine to use
  * 
  * @member {number} [statementCount] Gets or sets the number of statements
  * that will be run based on the script
@@ -388,7 +356,7 @@ export interface HiveJobProperties extends JobProperties {
  * @member {number} [innerError.diagnosticCode] Gets the diagnostic error code.
  * 
  * @member {string} [innerError.severity] Gets the severity level of the
- * failure. Possible values include: 'Warning', 'Error', 'Info'
+ * failure. Possible values include: 'Warning', 'Error'
  * 
  * @member {string} [innerError.details] Gets the details of the error message.
  * 
@@ -416,7 +384,7 @@ export interface HiveJobProperties extends JobProperties {
  * @member {string} [innerError.description] Gets the error message description
  * 
  * @member {string} [severity] Gets the severity level of the failure.
- * Possible values include: 'Warning', 'Error', 'Info'
+ * Possible values include: 'Warning', 'Error'
  * 
  * @member {string} [source] Gets the ultimate source of the failure (usually
  * either SYSTEM or USER).
@@ -450,7 +418,7 @@ export interface JobErrorDetails {
  * @member {number} [diagnosticCode] Gets the diagnostic error code.
  * 
  * @member {string} [severity] Gets the severity level of the failure.
- * Possible values include: 'Warning', 'Error', 'Info'
+ * Possible values include: 'Warning', 'Error'
  * 
  * @member {string} [details] Gets the details of the error message.
  * 
@@ -539,10 +507,9 @@ export interface JobInnerError {
  * @member {object} properties Gets or sets the job specific properties.
  * 
  * @member {string} [properties.runtimeVersion] Gets or sets the runtime
- * version of the Data Lake Analytics engine to use for the specific type of
- * job being run.
+ * version of the U-SQL engine to use
  * 
- * @member {string} [properties.script] Gets or sets the script to run
+ * @member {string} [properties.script] Gets or sets the U-SQL script to run
  * 
  * @member {string} [properties.type] Polymorhpic Discriminator
  * 

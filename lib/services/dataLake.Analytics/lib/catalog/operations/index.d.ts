@@ -126,25 +126,6 @@ export interface Catalog {
     deleteSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Deletes all secrets in the specified database
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
-     * 
-     * @param {string} databaseName The name of the database containing the secret.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteAllSecrets(accountName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteAllSecrets(accountName: string, databaseName: string, callback: ServiceCallback<void>): void;
-
-    /**
      * Retrieves the specified external data source from the Data Lake Analytics
      * catalog.
      *
@@ -483,8 +464,7 @@ export interface Catalog {
     listViews(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlViewList>): void;
 
     /**
-     * Retrieves the specified table statistics from the Data Lake Analytics
-     * catalog.
+     * Retrieves the specified table from the Data Lake Analytics catalog.
      *
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute catalog operations on.
@@ -510,7 +490,7 @@ export interface Catalog {
     getTableStatistic(accountName: string, databaseName: string, schemaName: string, tableName: string, statisticsName: string, callback: ServiceCallback<models.USqlTableStatistics>): void;
 
     /**
-     * Retrieves the list of table statistics from the Data Lake Analytics catalog.
+     * Retrieves the list of tables from the Data Lake Analytics catalog.
      *
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute catalog operations on.
@@ -954,7 +934,7 @@ export interface Catalog {
     listViewsNext(nextPageLink: string, callback: ServiceCallback<models.USqlViewList>): void;
 
     /**
-     * Retrieves the list of table statistics from the Data Lake Analytics catalog.
+     * Retrieves the list of tables from the Data Lake Analytics catalog.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
