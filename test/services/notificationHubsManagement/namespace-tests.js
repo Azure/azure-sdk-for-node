@@ -22,7 +22,7 @@ var msRestAzure = require('ms-rest-azure');
 var testutil = require('../../util/util');
 var SuiteBase = require('../../framework/suite-base');
 var FileTokenCache = require('../../../lib/util/fileTokenCache');
-var NotificationHubsManagementClient = require('../../../lib/services/notificationHubsManagement/lib/notificationHubsManagementClient');
+var NotificationHubsManagementClient = require('../../../lib/services/notificationhubsmanagement/lib/notificationHubsManagementClient');
 var testPrefix = 'notificationhubsservice-tests';
 var groupPrefix = 'nodeTestGroup';
 var namespacePrefix = 'testNS';
@@ -80,7 +80,7 @@ describe('Notification Hubs Management :', function () {
             if (suite.isPlayback) {
                 client.longRunningOperationRetryTimeoutInSeconds = 0;
             }
-            console.log("Create ResourceGroup : " + groupName);
+            //console.log("Create ResourceGroup : " + groupName);
             suite.createResourcegroup(groupName, namespaceLocation, function (err, result) {
                 should.not.exist(err);
                 done();
@@ -108,18 +108,18 @@ describe('Notification Hubs Management :', function () {
     describe('Namespace Tests : ', function () {
         it('CRUD', function (done) {
             
-            console.log("Create Namespace : " + namespaceName);
+            //console.log("Create Namespace : " + namespaceName);
 
             client.namespaces.createOrUpdate(groupName, namespaceName, createNamespaceParameters, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
                 
-                console.log("Get created Namespace");
+                //console.log("Get created Namespace");
                 IsNamespaceActive(groupName, namespaceName, function (err, active) {
                     console.log("State : " + active);
                     
-                    console.log("Get all created Namespace in the ResourceGroup");
+                    //console.log("Get all created Namespace in the ResourceGroup");
                     client.namespaces.list(groupName, function (err, result, request, response) {
                         should.not.exist(err);
                         should.exist(result);
@@ -128,7 +128,7 @@ describe('Notification Hubs Management :', function () {
                         namespaceList.length.should.be.above(0);
                         namespaceList.some(function (ns) { return ns.name === namespaceName }).should.be.true;
                         
-                        console.log("Get all Namespaces in the subscription");
+                        //console.log("Get all Namespaces in the subscription");
                         client.namespaces.listAll(function (err, result, request, response) {
                             should.not.exist(err);
                             should.exist(result);
@@ -137,7 +137,7 @@ describe('Notification Hubs Management :', function () {
                             namespaceList.length.should.be.above(0);
                             namespaceList.some(function (ns) { return ns.name === namespaceName }).should.be.true;
                             
-                            console.log("Create Namespace Authorization rule : " + authorizationRuleName);
+                            //console.log("Create Namespace Authorization rule : " + authorizationRuleName);
                             client.namespaces.createOrUpdateAuthorizationRule(groupName, namespaceName, authorizationRuleName, authRuleParameter, function (err, result, request, response) {
                                 should.not.exist(err);
                                 should.exist(result);
@@ -149,7 +149,7 @@ describe('Notification Hubs Management :', function () {
                                 authRule.properties.rights.indexOf('Listen') > -1;
                                 authRule.properties.rights.indexOf('Send') > -1;
                                 
-                                console.log("Get created Namespace Authorization rule");
+                                //console.log("Get created Namespace Authorization rule");
                                 client.namespaces.getAuthorizationRule(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
                                     should.not.exist(err);
                                     should.exist(result);
@@ -161,7 +161,7 @@ describe('Notification Hubs Management :', function () {
                                     authRule.properties.rights.indexOf('Listen') > -1;
                                     authRule.properties.rights.indexOf('Send') > -1;
                                     
-                                    console.log("Get all Namespace Authorizations rules");
+                                    //console.log("Get all Namespace Authorizations rules");
                                     client.namespaces.listAuthorizationRules(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
                                         should.not.exist(err);
                                         should.exist(result);
@@ -170,7 +170,7 @@ describe('Notification Hubs Management :', function () {
                                         authRuleList.length.should.be.above(1);
                                         authRuleList.some(function (auth) { return auth.name === authorizationRuleName }).should.be.true;
                                         
-                                        console.log("Namespace listKeys");
+                                        //console.log("Namespace listKeys");
                                         client.namespaces.listKeys(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
                                             should.not.exist(err);
                                             should.exist(result);
@@ -179,7 +179,7 @@ describe('Notification Hubs Management :', function () {
                                             authKey.primaryConnectionString.indexOf(authRuleParameter.properties.primaryKey) > -1;
                                             authKey.secondaryConnectionString.indexOf(authRuleParameter.properties.secondaryKey) > -1;
                                             
-                                            console.log("Delete Namespace Authorization Rule");
+                                            //console.log("Delete Namespace Authorization Rule");
                                             client.namespaces.deleteAuthorizationRule(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
                                                 should.not.exist(err);
                                                 response.statusCode.should.equal(200);

@@ -96,27 +96,26 @@ describe('Notification Hubs Management', function () {
             if (suite.isPlayback) {
                 client.longRunningOperationRetryTimeoutInSeconds = 0;
             }
-            console.log("Create Resource Group : " + groupName);
+            //console.log("Create Resource Group : " + groupName);
+
             suite.createResourcegroup(groupName, namespaceLocation, function (err, result) {
                 should.not.exist(err);
                 
                 if (!suite.isPlayback) {
-                    console.log("Create Namespace : " + namespaceName);
+                    //console.log("Create Namespace : " + namespaceName);
                     client.namespaces.createOrUpdate(groupName, namespaceName, createNamespaceParameters, function (err, result, request, response) {
                         should.not.exist(err);
                         should.exist(result);
                         response.statusCode.should.equal(200);
                         
-                        console.log("Get the Created Namespace");
+                        //console.log("Get the Created Namespace");
                         IsNamespaceActive(groupName, namespaceName, function (err, active) {
-                            console.log("State : " + active);
+                            //console.log("State : " + active);
                             done();
                         });
                     });
                 } 
-                else {
                     done();
-                }
             });
         });
     });
@@ -130,7 +129,7 @@ describe('Notification Hubs Management', function () {
          //       console.log("statusCode" + response.statusCode);
          //       response.statusCode.should.equal(404);
                 
-                console.log("Delete Resource Group");
+                //console.log("Delete Resource Group");
                 suite.deleteResourcegroup(groupName, function (err, result) {
                     should.not.exist(err);
                     done();
@@ -150,15 +149,15 @@ describe('Notification Hubs Management', function () {
     
     describe('NotificationHub Tests :', function () {
         it('CRUD', function (done) {
-            
+            console.log("Wait : " + notificationHubName);
             Wait(function (err) {
-                console.log("Create a Notification Hub : " + notificationHubName);
+                //console.log("Create a Notification Hub : " + notificationHubName);
                 client.notificationHubs.createOrUpdate(groupName, namespaceName, notificationHubName, createNotificationHubParameters, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(201);
                     
-                    console.log("Get created Notification Hub");
+                    //console.log("Get created Notification Hub");
                     client.notificationHubs.get(groupName, namespaceName, notificationHubName, function (err, result, request, response) {
                         should.not.exist(err);
                         should.exist(result);
@@ -167,7 +166,7 @@ describe('Notification Hubs Management', function () {
                         nhub.name.should.equal(notificationHubName);
                         nhub.location.should.equal(namespaceLocation);
                         
-                        console.log("Get all Notification Hubs");
+                        //console.log("Get all Notification Hubs");
                         client.notificationHubs.list(groupName, namespaceName, function (err, result, request, response) {
                             should.not.exist(err);
                             should.exist(result);
@@ -175,7 +174,7 @@ describe('Notification Hubs Management', function () {
                             var nHubList = result;
                             nHubList.length.should.be.above(0);
                             
-                            console.log("Get the PNS credentials");
+                            //console.log("Get the PNS credentials");
                             client.notificationHubs.getPnsCredentials(groupName, namespaceName, notificationHubName, function (err, result, request, response) {
                                 should.not.exist(err);
                                 should.exist(result);
@@ -187,7 +186,7 @@ describe('Notification Hubs Management', function () {
                                 //nhub.properties.WnsCredential.properties.PackageSid.should.equal(createNotificationHubParameters.properties.WnsCredential.properties.PackageSid);
                                 //nhub.properties.WnsCredential.properties.WindowsLiveEndpoint.should.equal(createNotificationHubParameters.properties.WnsCredential.properties.WindowsLiveEndpoint);
                                 
-                                console.log("Create Notification Hub Authorization Rules : " + authorizationRuleName);
+                                //console.log("Create Notification Hub Authorization Rules : " + authorizationRuleName);
                                 client.notificationHubs.createOrUpdateAuthorizationRule(groupName, namespaceName, notificationHubName, authorizationRuleName, authRuleParameter, function (err, result, request, response) {
                                     should.not.exist(err);
                                     should.exist(result);
@@ -199,7 +198,7 @@ describe('Notification Hubs Management', function () {
                                     authRule.properties.rights.indexOf('Listen') > -1;
                                     authRule.properties.rights.indexOf('Send') > -1;
                                     
-                                    console.log("Get Created Authorization Rules");
+                                    //console.log("Get Created Authorization Rules");
                                     client.notificationHubs.getAuthorizationRule(groupName, namespaceName, notificationHubName, authorizationRuleName, function (err, result, request, response) {
                                         should.not.exist(err);
                                         should.exist(result);
@@ -211,7 +210,7 @@ describe('Notification Hubs Management', function () {
                                         authRule.properties.rights.indexOf('Listen') > -1;
                                         authRule.properties.rights.indexOf('Send') > -1;
                                         
-                                        console.log("Get all the Notification Hub Authoirzation Rules");
+                                        //console.log("Get all the Notification Hub Authoirzation Rules");
                                         client.notificationHubs.listAuthorizationRules(groupName, namespaceName, notificationHubName, function (err, result, request, response) {
                                             should.not.exist(err);
                                             should.exist(result);
@@ -220,7 +219,7 @@ describe('Notification Hubs Management', function () {
                                             authRuleList.length.should.be.above(2);
                                             authRuleList.some(function (auth) { return auth.name === authorizationRuleName }).should.be.true;
                                             
-                                            console.log("NotificationHub ListKeys");
+                                            //console.log("NotificationHub ListKeys");
                                             client.notificationHubs.listKeys(groupName, namespaceName, notificationHubName, authorizationRuleName, function (err, result, request, response) {
                                                 should.not.exist(err);
                                                 should.exist(result);
@@ -229,12 +228,12 @@ describe('Notification Hubs Management', function () {
                                                 authKey.primaryConnectionString.indexOf(authRuleParameter.properties.primaryKey) > -1;
                                                 authKey.secondaryConnectionString.indexOf(authRuleParameter.properties.secondaryKey) > -1;
                                                 
-                                                console.log("Delete the Created Authorization Rule");
+                                                //console.log("Delete the Created Authorization Rule");
                                                 client.notificationHubs.deleteAuthorizationRule(groupName, namespaceName, notificationHubName, authorizationRuleName, function (err, result, request, response) {
                                                     should.not.exist(err);
                                                     response.statusCode.should.equal(200);
                                                     
-                                                    console.log("Delete the Created Notification Hub");
+                                                    //console.log("Delete the Created Notification Hub");
                                                     client.notificationHubs.deleteMethod(groupName, namespaceName, notificationHubName, function (err, result, request, response) {
                                                         should.not.exist(err);
                                                         response.statusCode.should.equal(200);
@@ -257,7 +256,7 @@ describe('Notification Hubs Management', function () {
         
         client.namespaces.get(groupName, namespaceName, 
                 function (err, result, request, response) {
-            console.log("Inside Get");
+            //console.log("Inside Get");
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -265,8 +264,8 @@ describe('Notification Hubs Management', function () {
             namespace.name.should.equal(namespaceName);
             namespace.location.should.equal(namespaceLocation);
             namespace.properties.namespaceType.should.equal(namespaceType);
-            console.log("State : " + namespace.properties.provisioningState);
-            console.log(namespace);
+            //console.log("State : " + namespace.properties.provisioningState);
+            //console.log(namespace);
             if (namespace.properties.provisioningState === "Succeeded")
                 return callback(null, true);
             else
@@ -278,9 +277,11 @@ describe('Notification Hubs Management', function () {
     {
         if (!suite.isPlayback) {
             setTimeout(function () {
-                console.log('sleep for 30 seconds');
+                //console.log('sleep for 30 seconds');
                 return callback(null);
             }, 30000);
-        }        
+        }
+
+        return callback(null);
     }
 });
