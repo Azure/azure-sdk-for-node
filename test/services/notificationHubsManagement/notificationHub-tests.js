@@ -20,7 +20,7 @@ var util = require('util');
 var msRestAzure = require('ms-rest-azure');
 
 var SuiteBase = require('../../framework/suite-base');
-var NotificationHubsManagementClient = require('../../../lib/services/notificationhubsmanagement/lib/notificationHubsManagementClient');
+var NotificationHubsManagementClient = require('../../../lib/services/notificationHubsManagement/lib/notificationHubsManagementClient');
 var testPrefix = 'notificationhubsservice-tests';
 var groupPrefix = 'nodeTestGroup';
 var namespacePrefix = 'testNS';
