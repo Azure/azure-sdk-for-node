@@ -1124,7 +1124,7 @@ export interface CloudServiceConfiguration {
  * Machines Marketplace image. A value of 'latest' can be specified to select
  * the latest version of an image. If omitted, the default is 'latest'.
  * 
- * @member {string} [nodeAgentSKUId] The SKU of Batch Node Agent to be
+ * @member {string} nodeAgentSKUId The SKU of Batch Node Agent to be
  * provisioned on the compute node. The Batch node agent is a program that
  * runs on each node in the pool, and provides the command-and-control
  * interface between the node and the Batch service. There are different
@@ -1142,7 +1142,7 @@ export interface CloudServiceConfiguration {
  */
 export interface VirtualMachineConfiguration {
     imageReference: ImageReference;
-    nodeAgentSKUId?: string;
+    nodeAgentSKUId: string;
     windowsConfiguration?: WindowsConfiguration;
 }
 
