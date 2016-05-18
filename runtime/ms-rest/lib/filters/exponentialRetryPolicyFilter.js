@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-var _ = require('underscore');
 var utils = require('../utils');
 
 /**
@@ -140,19 +139,16 @@ function ExponentialRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
         callback(err, response, body);
       }
     }
-
+    
+    newFilter.prototype.retryCount = isNaN(retryCount) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT : retryCount,
+    newFilter.prototype.retryInterval = isNaN(retryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval,
+    newFilter.prototype.minRetryInterval = isNaN(minRetryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval,
+    newFilter.prototype.maxRetryInterval = isNaN(maxRetryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval,
+    newFilter.prototype.handle = handle,
+    newFilter.prototype.shouldRetry = shouldRetry,
+    newFilter.prototype.updateRetryData = updateRetryData
     return next(options, retryCallback);
   }
-
-  _.extend(newFilter, {
-    retryCount: isNaN(retryCount) ? ExponentialRetryPolicyFilter.DEFAULT_CLIENT_RETRY_COUNT : retryCount,
-    retryInterval: isNaN(retryInterval) ? ExponentialRetryPolicyFilter.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval,
-    minRetryInterval: isNaN(minRetryInterval) ? ExponentialRetryPolicyFilter.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval,
-    maxRetryInterval: isNaN(maxRetryInterval) ? ExponentialRetryPolicyFilter.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval,
-    handle: handle,
-    shouldRetry: shouldRetry,
-    updateRetryData: updateRetryData
-  });
 
   return newFilter;
 }
@@ -160,21 +156,21 @@ function ExponentialRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
 /**
 * Represents the default client retry interval, in milliseconds.
 */
-ExponentialRetryPolicyFilter.DEFAULT_CLIENT_RETRY_INTERVAL = 1000 * 30;
+ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL = 1000 * 30;
 
 /**
 * Represents the default client retry count.
 */
-ExponentialRetryPolicyFilter.DEFAULT_CLIENT_RETRY_COUNT = 3;
+ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT = 3;
 
 /**
 * Represents the default maximum retry interval, in milliseconds.
 */
-ExponentialRetryPolicyFilter.DEFAULT_CLIENT_MAX_RETRY_INTERVAL = 1000 * 90;
+ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL = 1000 * 90;
 
 /**
 * Represents the default minimum retry interval, in milliseconds.
 */
-ExponentialRetryPolicyFilter.DEFAULT_CLIENT_MIN_RETRY_INTERVAL = 1000 * 3;
+ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL = 1000 * 3;
 
 module.exports = ExponentialRetryPolicyFilter;

@@ -147,11 +147,13 @@ describe('Storage Management', function () {
     });
     
     it('should check the name availability for a storage account that does not exist', function (done) {
-      client.storageAccounts.checkNameAvailability(accountName + '1012', function (err, result, request, response) {
-        should.not.exist(err);
-        should.exist(result);
-        result.nameAvailable.should.equal(true);
-        response.statusCode.should.equal(200);
+      client.storageAccounts.checkNameAvailability(accountName + '1012')
+        .then(function (result, request, response) {
+          console.log(result);
+          done();
+      })
+      .catch(function (err) {
+        console.log(err);
         done();
       });
     });
