@@ -21,7 +21,7 @@ var msRestAzure = require('ms-rest-azure');
 
 var SuiteBase = require('../../framework/suite-base');
 var NotificationHubsManagementClient = require('../../../lib/services/notificationHubsManagement/lib/notificationHubsManagementClient');
-var testPrefix = 'notificationhubsservice-tests';
+var testPrefix = 'notificationhubsservice-Hub-tests';
 var groupPrefix = 'nodeTestGroup';
 var namespacePrefix = 'testNS';
 var notificationHubPrefix = 'testHub';
@@ -114,8 +114,9 @@ describe('Notification Hubs Management', function () {
                             done();
                         });
                     });
-                } 
+                } else {
                     done();
+                }
             });
         });
     });
@@ -149,7 +150,7 @@ describe('Notification Hubs Management', function () {
     
     describe('NotificationHub Tests :', function () {
         it('CRUD', function (done) {
-            console.log("Wait : " + notificationHubName);
+            //console.log("Wait : " + notificationHubName);
             Wait(function (err) {
                 //console.log("Create a Notification Hub : " + notificationHubName);
                 client.notificationHubs.createOrUpdate(groupName, namespaceName, notificationHubName, createNotificationHubParameters, function (err, result, request, response) {
@@ -280,8 +281,8 @@ describe('Notification Hubs Management', function () {
                 //console.log('sleep for 30 seconds');
                 return callback(null);
             }, 30000);
+        } else {
+            return callback(null);
         }
-
-        return callback(null);
     }
 });

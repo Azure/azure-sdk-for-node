@@ -23,7 +23,7 @@ var testutil = require('../../util/util');
 var SuiteBase = require('../../framework/suite-base');
 var FileTokenCache = require('../../../lib/util/fileTokenCache');
 var NotificationHubsManagementClient = require('../../../lib/services/notificationHubsManagement/lib/notificationHubsManagementClient');
-var testPrefix = 'notificationhubsservice-tests';
+var testPrefix = 'notificationhubsservice-NS-tests';
 var groupPrefix = 'nodeTestGroup';
 var namespacePrefix = 'testNS';
 var authPrefix = 'testAuth';
@@ -117,7 +117,7 @@ describe('Notification Hubs Management :', function () {
                 
                 //console.log("Get created Namespace");
                 IsNamespaceActive(groupName, namespaceName, function (err, active) {
-                    console.log("State : " + active);
+                    //console.log("State : " + active);
                     
                     //console.log("Get all created Namespace in the ResourceGroup");
                     client.namespaces.list(groupName, function (err, result, request, response) {
@@ -207,7 +207,7 @@ describe('Notification Hubs Management :', function () {
         
         client.namespaces.get(groupName, namespaceName, 
                 function (err, result, request, response) {
-            console.log("Inside Get");
+            //console.log("Inside Get");
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -215,8 +215,8 @@ describe('Notification Hubs Management :', function () {
             namespace.name.should.equal(namespaceName);
             namespace.location.should.equal(namespaceLocation);
             namespace.properties.namespaceType.should.equal(namespaceType);
-            console.log("State : " + namespace.properties.provisioningState);
-            console.log(namespace);
+            //console.log("State : " + namespace.properties.provisioningState);
+            //console.log(namespace);
             if (namespace.properties.provisioningState === "Succeeded")
                 return callback(null, true);
             else
@@ -227,9 +227,11 @@ describe('Notification Hubs Management :', function () {
     function Wait(callback) {
         if (!suite.isPlayback) {
             setTimeout(function () {
-                console.log('sleep for 30 seconds');
+                //console.log('sleep for 30 seconds');
                 return callback(null);
             }, 30000);
+        } else {
+            return callback(null);
         }
     }
 });
