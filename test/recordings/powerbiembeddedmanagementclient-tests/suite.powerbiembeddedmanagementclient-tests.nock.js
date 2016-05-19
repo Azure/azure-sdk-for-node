@@ -7,4 +7,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['azureSdkNodeTestResourceGroup2869','azureNodeSdkTestWorkspaceCollection3488'];};
+ exports.randomTestIdsGenerated = function() { return ['azureSdkNodeTestResourceGroup2919','azureNodeSdkTestWorkspaceCollection8031'];};
