@@ -67,6 +67,10 @@ var mappings = {
     'source': 'arm-network/2016-03-30/swagger/network.json',
     'ft': 1
   },
+  'notificationHubs':{
+    'dir': 'notificationHubsManagement/lib',
+    'source': 'arm-notificationhubs/2014-09-01/swagger/notificationhubs.json'
+  },
   'powerbiembedded': {
     'dir': 'powerbiembedded/lib',
     'source': 'arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json'
@@ -101,6 +105,10 @@ var mappings = {
     'source': 'arm-storage/2016-01-01/swagger/storage.json',
     'ft': 2
   },
+  'servermanagement': {
+    'dir': 'servermanagement/lib',
+    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
+  },
   'serviceFabric': {
     'dir': 'serviceFabric/lib',
     'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
@@ -115,18 +123,10 @@ var mappings = {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
-  },  
-  'servermanagement': {
-    'dir': 'servermanagement/lib',
-    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
-  },
-  'notificationHubs':{
-    'dir': 'notificationHubsManagement/lib',
-    'source': 'arm-notificationhubs/2014-09-01/swagger/notificationhubs.json'
   }
 };
 
-var defaultAutoRestVersion = '0.16.0-Nightly20160428';
+var defaultAutoRestVersion = '0.17.0-Nightly20160518';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
