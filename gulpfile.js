@@ -67,6 +67,10 @@ var mappings = {
     'source': 'arm-network/2016-03-30/swagger/network.json',
     'ft': 1
   },
+  'powerbiembedded': {
+    'dir': 'powerbiembedded/lib',
+    'source': 'arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json'
+  },
   'rediscache': {
     'dir': 'rediscachemanagement/lib',
     'source': 'arm-redis/2015-08-01/swagger/redis.json',
