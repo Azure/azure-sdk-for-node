@@ -30,7 +30,7 @@ var client = new DevTestLabsClient(credentials, 'your-subscription-id');
 ## Get properties of a lab
 
 ```javascript
-client.labOperations.getResource(resourceGroupName, labName, null, function (err, result, request, response) {
+client.labOperations.getResource(resourceGroupName, labName, function (err, result, request, response) {
   if (err) {
     console.log(err);
   }
