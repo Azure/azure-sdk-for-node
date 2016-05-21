@@ -19,17 +19,23 @@ npm install azure-arm-powerbiembedded
 
 ## How to Use
 
-### Initialize the client managing Power BI
+### Authentication, client creation and listing workspaces within a workspace collection in a resource group as an example
 
-```javascript
-var msRestAzure = require('ms-rest-azure');
-var PowerBIEmbeddedManagementClient = require('azure-arm-powerbiembedded');
-  
-// Create an Power BI Embedded Client
-var subscriptionId = '<subscription-id>';
-var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
-var client = new PowerBIEmbeddedManagementClient(credentials, subscriptionId);
-```
+ ```javascript
+ var msrestAzure = require('ms-rest-azure');
+ var PowerBIEmbeddedManagementClient = require('azure-arm-powerbiembedded');
+
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new PowerBIEmbeddedManagementClient(credentials, subscriptionId);
+  client.workspaces.list(resourceGroupName, workspaceCollectionName, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
+ ```
 
 ### Create new Workspace Collection
 ```javascript

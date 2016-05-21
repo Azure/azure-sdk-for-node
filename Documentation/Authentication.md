@@ -102,7 +102,8 @@ info:    Executing command login
 info:    login command OK
 ```
 
-## Using serviceprincipal authentication in your node.js script
+## Using authentication in your node.js script
+- Service Principal Authentication
 ```javascript
  var msrestAzure = require('ms-rest-azure');
  //service principal authentication
@@ -112,15 +113,30 @@ info:    login command OK
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
  ```
 
-## Using user authentitcation in your node.js script
-Currently, the node sdk only supports users with org-id (organizational account) and have 2FA disabled.
- ```javascript
- var msrestAzure = require('ms-rest-azure');
- //user authentication
- 'your-client-id' - is the id provided by Azure Active Directory for your application
- 'your-domain' - is the tenant id (a guid) or the part **after @** in your username (user1@**contosocorp.com**) ('contosocorp.com')
- 'your-username' - is your username ('user1@contosocorp.com')
- 'your-password' - password associated with the username
- 'your-redirect-uri' - is the redirect uri for your application. Providing 'http://localhost:8080' should also be fine.
- var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
- ```
+- Interactive Login is the simplest and the best way to authenticate.
+It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+the user will get a DeviceTokenCredentials object.
+```javascript
+ var someAzureServiceClient = require('azure-arm-someService');
+ msRestAzure.interactiveLogin(function(err, credentials) {
+   var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
+   client.someOperationGroup.method(param1, param2, function(err, result) {
+     if (err) console.log(err);
+     console.log(result);
+   });
+ });
+```
+
+- Login with username and password
+This mechanism will only work for organizational ids and ids that are not 2FA enabled.
+Otherwise it is better to use the above mechanism (interactive login).
+```javascript
+ var someAzureServiceClient = require('azure-arm-someService');
+ msRestAzure.loginWithUsernamePassword(username, password, function(err, credentials) {
+   var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
+   client.someOperationGroup.method(param1, param2, function(err, result) {
+     if (err) console.log(err);
+     console.log(result);
+   });
+ });
+```
