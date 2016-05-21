@@ -28,6 +28,9 @@ var MockTokenCache = require('./mock-token-cache');
 var nockHelper = require('./nock-helper');
 var ResourceManagementClient = require('../../lib/services/resourceManagement/lib/resource/resourceManagementClient');
 var async = require('async');
+var adal = require('adal-node');
+
+var DEFAULT_ADAL_CLIENT_ID =  '04b07795-8ddb-461a-bbee-02f9e1bf7b46';
 
 /**
  * @class
@@ -61,13 +64,12 @@ function SuiteBase(mochaSuiteObject, testPrefix, env) {
   this.isPlayback = !process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD;
   //authentication info
   this.subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'] || 'subscription-id';
-  this.clientId = process.env['CLIENT_ID'] || 'client-id';
+  this.clientId = process.env['CLIENT_ID'] || DEFAULT_ADAL_CLIENT_ID;
   this.domain = process.env['DOMAIN'] || 'domain';
   this.username = process.env['AZURE_USERNAME'] || 'username@example.com';
   this.password = process.env['AZURE_PASSWORD'] || 'dummypassword';
   this.secret = process.env['APPLICATION_SECRET'] || 'dummysecret';
-  this.clientRedirectUri = process.env['CLIENT_REDIRECT_URI'] || 'clientRedirectUri';
-  this.tokenCache = new FileTokenCache(path.resolve(path.join(__dirname, '../tmp/tokenstore.json')));
+  this.tokenCache = new adal.MemoryCache();
   this._setCredentials();
   //subscriptionId should be recorded for playback
   if (!env) {
@@ -118,21 +120,21 @@ _.extend(SuiteBase.prototype, {
    */
   _createUserCredentials: function() {
     if(process.env['AZURE_ENVIRONMENT'] && process.env['AZURE_ENVIRONMENT'].toUpperCase() === 'DOGFOOD') {
-      var env = new msRestAzure.AzureEnvironment.AzureEnvironment(
-                          'https://login.windows-ppe.net/',
-                          'https://management.core.windows.net/',
-                          true);
+      var df = {
+        name: 'Dogfood',
+        portalUrl: 'https://windows.azure-test.net/',
+        activeDirectoryEndpointUrl: 'https://login.windows-ppe.net/',
+        activeDirectoryResourceId: 'https://management.core.windows.net/',
+        managementEndpointUrl: 'https://management-preview.core.windows-int.net/',
+        resourceManagerEndpointUrl: 'https://api-dogfood.resources.windows-int.net/'
+      };
+      var env = msRestAzure.AzureEnvironment.add(df);
       return new msRestAzure.UserTokenCredentials(this.clientId, this.domain, this.username,
-        this.password, this.clientRedirectUri, {
-          'tokenCache': this.tokenCache,
-          'environment': env
-      });
+        this.password, { 'tokenCache': this.tokenCache, 'environment': env });
     }
     
     return new msRestAzure.UserTokenCredentials(this.clientId, this.domain, this.username,
-      this.password, this.clientRedirectUri, {
-        'tokenCache': this.tokenCache
-      });
+      this.password, { 'tokenCache': this.tokenCache });
   },
 
   /**
@@ -142,11 +144,15 @@ _.extend(SuiteBase.prototype, {
    */
   _createApplicationCredentials: function() {
     if(process.env['AZURE_ENVIRONMENT'] && process.env['AZURE_ENVIRONMENT'].toUpperCase() === 'DOGFOOD') {
-      var env = new msRestAzure.AzureEnvironment.AzureEnvironment(
-                          'https://login.windows-ppe.net/',
-                          'https://management.core.windows.net/',
-                          true);
-                          
+      var df = {
+        name: 'Dogfood',
+        portalUrl: 'https://windows.azure-test.net/',
+        activeDirectoryEndpointUrl: 'https://login.windows-ppe.net/',
+        activeDirectoryResourceId: 'https://management.core.windows.net/',
+        managementEndpointUrl: 'https://management-preview.core.windows-int.net/',
+        resourceManagerEndpointUrl: 'https://api-dogfood.resources.windows-int.net/'
+      };
+      var env = msRestAzure.AzureEnvironment.add(df);               
       return new msRestAzure.ApplicationTokenCredentials(this.clientId, this.domain, this.secret, {
         'tokenCache': this.tokenCache,
         'environment': env
