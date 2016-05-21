@@ -53,6 +53,10 @@ var mappings = {
     'dir': 'dataLake.Store/lib/filesystem',
     'source': 'arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json'
   },
+  'devTestLabs': {
+    'dir': 'devTestLabs/lib',
+    'source': 'arm-devtestlabs/2015-05-21-preview/swagger/DTL.json'
+  },
   'graph': {
     'dir': 'graphManagement/lib',
     'source': 'arm-graphrbac/1.6-internal/swagger/graphrbac.json',
@@ -66,6 +70,14 @@ var mappings = {
     'dir': 'networkManagement2/lib',
     'source': 'arm-network/2016-03-30/swagger/network.json',
     'ft': 1
+  },
+  'notificationHubs':{
+    'dir': 'notificationHubsManagement/lib',
+    'source': 'arm-notificationhubs/2014-09-01/swagger/notificationhubs.json'
+  },
+  'powerbiembedded': {
+    'dir': 'powerbiembedded/lib',
+    'source': 'arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json'
   },
   'rediscache': {
     'dir': 'rediscachemanagement/lib',
@@ -97,6 +109,10 @@ var mappings = {
     'source': 'arm-storage/2016-01-01/swagger/storage.json',
     'ft': 2
   },
+  'servermanagement': {
+    'dir': 'servermanagement/lib',
+    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
+  },
   'serviceFabric': {
     'dir': 'serviceFabric/lib',
     'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
@@ -111,14 +127,10 @@ var mappings = {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
-  },  
-  'servermanagement': {
-    'dir': 'servermanagement/lib',
-    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
   }
 };
 
-var defaultAutoRestVersion = '0.16.0-Nightly20160428';
+var defaultAutoRestVersion = '0.17.0-Nightly20160518';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
