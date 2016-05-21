@@ -53,6 +53,10 @@ var mappings = {
     'dir': 'dataLake.Store/lib/filesystem',
     'source': 'arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json'
   },
+  'devTestLabs': {
+    'dir': 'devTestLabs/lib',
+    'source': 'arm-devtestlabs/2015-05-21-preview/swagger/DTL.json'
+  },
   'graph': {
     'dir': 'graphManagement/lib',
     'source': 'arm-graphrbac/1.6-internal/swagger/graphrbac.json',
