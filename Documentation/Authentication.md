@@ -103,20 +103,8 @@ info:    login command OK
 ```
 
 ## Using authentication in your node.js script
-- Service Principal Authentication
-This is useful in automation scenarios. The experience for loginWithServicePrincipalSecret is the same as the one described above in CLI.
-```javascript
- var someAzureServiceClient = require('azure-arm-someService');
- msRestAzure.loginWithServicePrincipalSecret(clientId, secret, domain, function(err, credentials) {
-   var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
-   client.someOperationGroup.method(param1, param2, function(err, result) {
-     if (err) console.log(err);
-     console.log(result);
-   });
- });
-```
 
-- Interactive Login is the simplest and the best way to authenticate.
+- **Interactive Login** is the simplest and the best way to authenticate.
 It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
 the user will get a DeviceTokenCredentials object.
 ```javascript
@@ -130,7 +118,20 @@ the user will get a DeviceTokenCredentials object.
  });
 ```
 
-- Login with username and password
+- **Service Principal Authentication**
+This is useful in automation scenarios. The experience for loginWithServicePrincipalSecret is the same as the one described above in CLI.
+```javascript
+ var someAzureServiceClient = require('azure-arm-someService');
+ msRestAzure.loginWithServicePrincipalSecret(clientId, secret, domain, function(err, credentials) {
+   var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
+   client.someOperationGroup.method(param1, param2, function(err, result) {
+     if (err) console.log(err);
+     console.log(result);
+   });
+ });
+```
+
+- **Login with username and password**
 This mechanism will only work for non 2FA enabled organizational ids.
 Otherwise it is better to use the above mechanism (interactive login).
 ```javascript
