@@ -16,24 +16,23 @@ npm install azure-arm-servermanagement
 
 ## How to Use
 
-### Create an ServerManagement management client
+### Authentication, client creation and listing nodes in a resource group as an example
 
-```javascript
-    var msRestAzure = require('ms-rest-azure');
-    var ServerManagement = require('azure-arm-servermanagement');
-
-    var credentials = new msRestAzure.UserTokenCredentials(clientId, username, password, subscriptionId);
-    var client = new ServerManagement(credentials, subscriptionId);
-
-    // get a list of nodes
-     client.node.list(resourceGroupName, function( error, nodes,request, response ) {
-        nodes.map(function (node, index, array) {
-            console.log('found node :' + node.name);
-        }));
-     });
-
-    
-```
+ ```javascript
+ var msrestAzure = require('ms-rest-azure');
+ var ServerManagement = require('azure-arm-servermanagement');
+ 
+ // Interactive Login
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new webSiteManagementClient(credentials, 'your-subscription-id');
+  client.node.list(resourceGroupName, function(err, nodes, request, response) {
+    if (err) console.log(err);
+    nodes.map(function (node, index, array) {
+      console.log('found node :' + node.name);
+    }));
+  });
+ });
+ ```
 
 ## Related projects
 

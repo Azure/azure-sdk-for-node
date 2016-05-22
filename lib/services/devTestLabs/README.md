@@ -10,33 +10,23 @@ npm install azure-arm-devtestlabs
 ```
 ## How to Use
 
-### Authentication
+### Authentication, client creation and getting properties of a lab as an example
 
  ```javascript
  var msrestAzure = require('ms-rest-azure');
- //user authentication
- var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
- //service principal authentication
- var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
+ var DevTestLabsClient = require('azure-arm-devtestlabs');
+
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new DevTestLabsClient(credentials, 'your-subscription-id');
+  client.labOperations.getResource(resourceGroupName, labName, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
  ```
-
-### Create the DevTestLabsClient
-
-```javascript
-var DevTestLabsClient = require('azure-arm-devtestlabs');
-var client = new DevTestLabsClient(credentials, 'your-subscription-id');
-```
-
-## Get properties of a lab
-
-```javascript
-client.labOperations.getResource(resourceGroupName, labName, function (err, result, request, response) {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
-```
 
 ## Related projects
 

@@ -4,7 +4,7 @@ This project provides a Node.js package that makes it easy to manage Azure Data 
 
 Right now it supports:
 
-  *  **Node.js version: 0.10.0 or higher**
+  *  **Node.js version: 4.x.x or higher**
   *  **REST API version for Account: 2015-10-01-preview**
   *  **REST API version for FileSystem: 2015-10-01-preview**
 
@@ -21,23 +21,26 @@ npm install azure-arm-datalake-store
 
 ## How to Use
 
-### Authentication
+### Authentication, account and filesystem client creation and listing file status as an example
 
  ```javascript
  var msrestAzure = require('ms-rest-azure');
- //user authentication
- var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
- //service principal authentication
- var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
+ var adlsManagement = require("azure-arm-datalake-store");
+ 
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var accountName = 'testadlsacct';
+  var pathToEnumerate = '/myfolder';
+  var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, 'your-subscription-id');
+  var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials, 'azuredatalakestore.net');
+  filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
  ```
-
-### Create the Data Lake Analytics Clients
-
-```javascript
-var adlsManagement = require("azure-arm-datalake-store");
-var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, 'your-subscription-id');
-var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials, 'azuredatalakestore.net');
-```
 
 ### Create a Data Lake Store Account
 ```javascript
