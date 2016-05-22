@@ -119,7 +119,7 @@ the user will get a DeviceTokenCredentials object.
 ```
 
 - **Service Principal Authentication**
-This is useful in automation scenarios. The experience for loginWithServicePrincipalSecret is the same as the one described above in CLI.
+This is useful in automation scenarios. The experience for loginWithServicePrincipalSecret is the same as the one described above for [azure-cli in step 4](https://github.com/Azure/azure-sdk-for-node/blob/master/Documentation/Authentication.md#step-4-login-as-a-serviceprincipal).
 ```javascript
  var someAzureServiceClient = require('azure-arm-someService');
  msRestAzure.loginWithServicePrincipalSecret(clientId, secret, domain, function(err, credentials) {
