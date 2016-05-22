@@ -133,13 +133,8 @@ describe('Batch Management', function () {
         response.statusCode.should.equal(201);
         result.id.should.equal('my_application_id')
         result.version.should.equal('v1.0');
-        should.exist(result.storageUrl);
-        fs.writeFile("test/tmp/test_package.zip", "Hey there!", function (err) {
-          if (err) {
-            return console.log(err);
-          }
-        });
-        var fileContent = fs.createReadStream('test/tmp/test_package.zip');
+        fs.writeFileSync(__dirname + '/../../data/test_package.zip', 'Hey there!');
+        var fileContent = fs.createReadStream(__dirname + '/../../data/test_package.zip');
         var httpRequest = new WebResource();
         var client = new ServiceClient();
         httpRequest.method = 'PUT';
