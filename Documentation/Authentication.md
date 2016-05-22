@@ -80,7 +80,7 @@ This will associate the serviceprincipal to your current subscription
 D:\sdk>azure role assignment create --spn 56894bd4-0fde-41d8-a0d7-5bsslccety2 -o Contributor
 info:    Executing command role assignment create
 + Finding role with specified name
-/data:    RoleAssignmentId     : /subscriptions/abcdefgh-1234-4cc9-89b5-12345678/providers/Microsoft.Authorization/roleAssignments/987654-ea85-40a5-80c2-abcdferghtt
+data:    RoleAssignmentId     : /subscriptions/abcdefgh-1234-4cc9-89b5-12345678/providers/Microsoft.Authorization/roleAssignments/987654-ea85-40a5-80c2-abcdferghtt
 data:    RoleDefinitionName   : Contributor
 data:    RoleDefinitionId     : jhfskjf-6180-42a0-ab88-5656eiu677e23e
 data:    Scope                : /subscriptions/abcdefgh-1234-4cc9-89b5-12345678
@@ -97,7 +97,7 @@ info:    role assignment create command OK
 ```
 D:\sdk>azure login -u 56894bd4-0fde-41d8-a0d7-5bsslccety2 -p P@ssw0rd --tenant <a guid OR your domain(contosocorp.com) --service-principal
 info:    Executing command login
-\info:    Added subscription TestSubscription
+info:    Added subscription TestSubscription
 +
 info:    login command OK
 ```
@@ -110,6 +110,10 @@ the user will get a DeviceTokenCredentials object.
 ```javascript
  var someAzureServiceClient = require('azure-arm-someService');
  msRestAzure.interactiveLogin(function(err, credentials) {
+   if (err) {
+     console.log(err);
+     return;
+   }
    var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
    client.someOperationGroup.method(param1, param2, function(err, result) {
      if (err) console.log(err);
@@ -123,6 +127,10 @@ This is useful in automation scenarios. The experience for loginWithServicePrinc
 ```javascript
  var someAzureServiceClient = require('azure-arm-someService');
  msRestAzure.loginWithServicePrincipalSecret(clientId, secret, domain, function(err, credentials) {
+   if (err) {
+    console.log(err);
+    return;
+   }
    var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
    client.someOperationGroup.method(param1, param2, function(err, result) {
      if (err) console.log(err);
@@ -137,6 +145,10 @@ Otherwise it is better to use the above mechanism (interactive login).
 ```javascript
  var someAzureServiceClient = require('azure-arm-someService');
  msRestAzure.loginWithUsernamePassword(username, password, function(err, credentials) {
+   if (err) {
+     console.log(err);
+     return;
+   }
    var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
    client.someOperationGroup.method(param1, param2, function(err, result) {
      if (err) console.log(err);
