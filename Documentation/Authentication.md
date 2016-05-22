@@ -23,11 +23,14 @@ After successful login, please follow the steps mentioned below to create a serv
 #### Step 1. Create an aplication
 
 Let us create an application with a password. The default start-date witll be the day of application creation and the default end-date will be 1 year from the day of creation.
+
+> ###### NOTE: The AppId that gets created in this command is also known as clientId. It is the id given by ADAL for itself to identify your application. You can use this as the clientId during user authentication (creating UserTokenCredentials object).
+
 ```
 D:\sdk>azure ad app create -n testap908 --home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
 info:    Executing command ad app create
 + Creating application testap674
-data:    AppId:                   56894bd4-0fde-41d8-a0d7-5bsslccety2
+data:    AppId:                   56894bd4-0fde-41d8-a0d7-5bsslccety2   //<<<<<<<< Also known as clientId.
 data:    ObjectId:                g565675e8-7c30-908t-8548-87r98ew7rej
 data:    DisplayName:             testap674
 data:    IdentifierUris:          0=https://testap674.com/home
