@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
+var _ = require('underscore');
 var Constants = require('./constants');
 
 /**
@@ -20,7 +21,7 @@ exports.urlIsHTTPS = function (urlToCheck) {
 * @return {bool} True if the value is null or undefined, false otherwise.
 */
 exports.objectIsNull = function (value) {
-  return (value === null || value === undefined);
+  return _.isNull(value) || _.isUndefined(value);
 };
 
 /**
