@@ -87,25 +87,6 @@ export interface Account {
     listFirewallRules(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
 
     /**
-     * Gets the next page of Data Lake Store firewall rules, if any, for the
-     * specified account. The response includes a link to the next page of
-     * results, if any.
-     *
-     * @param {string} nextLink The URL to the next page of the firewall rules
-     * list.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    firewallRulesListNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
-    firewallRulesListNext(nextLink: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
-
-    /**
      * Creates or updates the specified firewall rule.
      *
      * @param {string} resourceGroupName The name of the Azure resource group that
@@ -481,25 +462,6 @@ export interface Account {
      */
     listFirewallRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
     listFirewallRulesNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
-
-    /**
-     * Gets the next page of Data Lake Store firewall rules, if any, for the
-     * specified account. The response includes a link to the next page of
-     * results, if any.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    firewallRulesListNextNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
-    firewallRulesListNextNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
 
     /**
      * Lists the Data Lake Store accounts within a specific resource group. The

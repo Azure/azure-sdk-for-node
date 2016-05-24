@@ -194,42 +194,6 @@ export interface Account {
     listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.ListBlobContainersResult>): void;
 
     /**
-     * Gets the next page of Azure Storage containers, if any, within the
-     * specified Azure Storage account. The response includes a link to the next
-     * page of results, if any.
-     *
-     * @param {string} nextLink The URL to the next Azure Storage Container page.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    storageContainersListNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListBlobContainersResult>): void;
-    storageContainersListNext(nextLink: string, callback: ServiceCallback<models.ListBlobContainersResult>): void;
-
-    /**
-     * Gets the next page of the SAS token objects within the specified Azure
-     * Storage account and container, if any.
-     *
-     * @param {string} nextLink The URL to the next Azure Storage Container SAS
-     * token page.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    sasTokensListNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
-    sasTokensListNext(nextLink: string, callback: ServiceCallback<models.ListSasTokensResult>): void;
-
-    /**
      * Gets the SAS token associated with the specified Data Lake Analytics and
      * Azure Storage account and container combination.
      *
@@ -827,43 +791,6 @@ export interface Account {
      */
     listStorageContainersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListBlobContainersResult>): void;
     listStorageContainersNext(nextPageLink: string, callback: ServiceCallback<models.ListBlobContainersResult>): void;
-
-    /**
-     * Gets the next page of Azure Storage containers, if any, within the
-     * specified Azure Storage account. The response includes a link to the next
-     * page of results, if any.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    storageContainersListNextNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListBlobContainersResult>): void;
-    storageContainersListNextNext(nextPageLink: string, callback: ServiceCallback<models.ListBlobContainersResult>): void;
-
-    /**
-     * Gets the next page of the SAS token objects within the specified Azure
-     * Storage account and container, if any.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    sasTokensListNextNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
-    sasTokensListNextNext(nextPageLink: string, callback: ServiceCallback<models.ListSasTokensResult>): void;
 
     /**
      * Gets the SAS token associated with the specified Data Lake Analytics and

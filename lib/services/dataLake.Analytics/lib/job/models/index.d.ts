@@ -533,6 +533,14 @@ export interface JobInnerError {
  * result of the running job. Possible values include: 'None', 'Succeeded',
  * 'Cancelled', 'Failed'
  * 
+ * @member {string} [logFolder] Gets or sets the log folder path to use in the
+ * following format:
+ * adl://<accountName>.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/13/17/18/5fe51957-93bc-4de0-8ddc-c5a4753b068b/logs/.
+ * 
+ * @member {array} [logFilePatterns] Gets or sets the list of log file name
+ * patterns to find in the logFolder. '*' is the only matching character
+ * allowed. Example format: jobExecution*.log or *mylog*.txt
+ * 
  * @member {array} [stateAuditRecords] Gets the job state audit records,
  * indicating when various operations have been performed on this job.
  * 
@@ -560,6 +568,8 @@ export interface JobInformation {
     endTime?: Date;
     state?: string;
     result?: string;
+    logFolder?: string;
+    logFilePatterns?: string[];
     stateAuditRecords?: JobStateAuditRecord[];
     properties: JobProperties;
 }
