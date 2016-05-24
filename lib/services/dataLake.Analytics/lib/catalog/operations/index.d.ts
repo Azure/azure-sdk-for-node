@@ -126,6 +126,25 @@ export interface Catalog {
     deleteSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<void>): void;
 
     /**
+     * Deletes all secrets in the specified database
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to
+     * execute catalog operations on.
+     * 
+     * @param {string} databaseName The name of the database containing the secret.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteAllSecrets(accountName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteAllSecrets(accountName: string, databaseName: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Retrieves the specified external data source from the Data Lake Analytics
      * catalog.
      *
@@ -464,7 +483,8 @@ export interface Catalog {
     listViews(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlViewList>): void;
 
     /**
-     * Retrieves the specified table from the Data Lake Analytics catalog.
+     * Retrieves the specified table statistics from the Data Lake Analytics
+     * catalog.
      *
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute catalog operations on.
@@ -490,7 +510,7 @@ export interface Catalog {
     getTableStatistic(accountName: string, databaseName: string, schemaName: string, tableName: string, statisticsName: string, callback: ServiceCallback<models.USqlTableStatistics>): void;
 
     /**
-     * Retrieves the list of tables from the Data Lake Analytics catalog.
+     * Retrieves the list of table statistics from the Data Lake Analytics catalog.
      *
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute catalog operations on.
@@ -536,6 +556,81 @@ export interface Catalog {
      */
     listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
     listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+
+    /**
+     * Retrieves the specified table partition from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to
+     * execute catalog operations on.
+     * 
+     * @param {string} databaseName The name of the database containing the
+     * partition.
+     * 
+     * @param {string} schemaName The name of the schema containing the partition.
+     * 
+     * @param {string} tableName The name of the table containing the partition.
+     * 
+     * @param {string} partitionName The name of the table partition.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getTablePartition(accountName: string, databaseName: string, schemaName: string, tableName: string, partitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartition>): void;
+    getTablePartition(accountName: string, databaseName: string, schemaName: string, tableName: string, partitionName: string, callback: ServiceCallback<models.USqlTablePartition>): void;
+
+    /**
+     * Retrieves the list of table partitions from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to
+     * execute catalog operations on.
+     * 
+     * @param {string} databaseName The name of the database containing the
+     * partitions.
+     * 
+     * @param {string} schemaName The name of the schema containing the partitions.
+     * 
+     * @param {string} tableName The name of the table containing the partitions.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.filter] OData filter. Optional.
+     * 
+     * @param {number} [options.top] The number of items to return. Optional.
+     * 
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     * 
+     * @param {string} [options.expand] OData expansion. Expand related resources
+     * in line with the retrieved resources, e.g. Categories?$expand=Products
+     * would expand Product data in line with each Category entry. Optional.
+     * 
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     * 
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     * 
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in
+     * the response, e.g. Categories?$count=true. Optional.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+    listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, callback: ServiceCallback<models.USqlTablePartitionList>): void;
 
     /**
      * Retrieves the list of types within the specified database and schema from
@@ -934,7 +1029,7 @@ export interface Catalog {
     listViewsNext(nextPageLink: string, callback: ServiceCallback<models.USqlViewList>): void;
 
     /**
-     * Retrieves the list of tables from the Data Lake Analytics catalog.
+     * Retrieves the list of table statistics from the Data Lake Analytics catalog.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -949,6 +1044,23 @@ export interface Catalog {
      */
     listTableStatisticsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
     listTableStatisticsNext(nextPageLink: string, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+
+    /**
+     * Retrieves the list of table partitions from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listTablePartitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+    listTablePartitionsNext(nextPageLink: string, callback: ServiceCallback<models.USqlTablePartitionList>): void;
 
     /**
      * Retrieves the list of types within the specified database and schema from

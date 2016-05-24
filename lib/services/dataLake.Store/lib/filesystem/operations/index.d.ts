@@ -377,27 +377,6 @@ export interface FileSystem {
     removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Removes the existing Access Control List (ACL) of the specified file or
-     * directory.
-     *
-     * @param {string} accountName The Azure Data Lake Store account to execute
-     * filesystem operations on.
-     * 
-     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
-     * the file or directory with the ACL being removed.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    removeAcl(accountName: string, aclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    removeAcl(accountName: string, aclFilePath: string, callback: ServiceCallback<void>): void;
-
-    /**
      * Gets Access Control List (ACL) entries for the specified file or directory.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute

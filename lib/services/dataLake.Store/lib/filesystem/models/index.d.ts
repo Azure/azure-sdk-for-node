@@ -225,3 +225,120 @@ export interface FileStatusesResult {
 export interface FileStatusResult {
     fileStatus?: FileStatusProperties;
 }
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsRemoteException class.
+ * @constructor
+ * Data Lake Store filesystem exception based on the WebHDFS definition for
+ * RemoteExceptions.
+ * @member {string} [javaClassName] Gets the full class package name for the
+ * exception thrown, such as 'java.lang.IllegalArgumentException'.
+ * 
+ * @member {string} [message] Gets the message associated with the exception
+ * that was thrown, such as 'Invalid value for webhdfs parameter
+ * "permission":...'.
+ * 
+ * @member {string} exception Polymorhpic Discriminator
+ * 
+ */
+export interface AdlsRemoteException {
+    javaClassName?: string;
+    message?: string;
+    exception: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsIllegalArgumentException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating that one more arguments is incorrect.
+ * Thrown when a 400 error response code is returned (bad request).
+ */
+export interface AdlsIllegalArgumentException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsUnsupportedOperationException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating that the requested operation is not
+ * supported. Thrown when a 400 error response code is returned (bad request).
+ */
+export interface AdlsUnsupportedOperationException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsSecurityException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating that access is denied. Thrown when a
+ * 401 error response code is returned (Unauthorized).
+ */
+export interface AdlsSecurityException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsIOException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating there was an IO (read or write)
+ * error. Thrown when a 403 error response code is returned (forbidden).
+ */
+export interface AdlsIOException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsFileNotFoundException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating the file or folder could not be
+ * found. Thrown when a 404 error response code is returned (not found).
+ */
+export interface AdlsFileNotFoundException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsRuntimeException class.
+ * @constructor
+ * A WebHDFS exception thrown when an unexpected error occurs during an
+ * operation. Thrown when a 500 error response code is returned (Internal
+ * server error).
+ */
+export interface AdlsRuntimeException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsAccessControlException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating that access is denied due to
+ * insufficient permissions. Thrown when a 403 error response code is
+ * returned (forbidden).
+ */
+export interface AdlsAccessControlException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsError class.
+ * @constructor
+ * Data Lake Store filesystem error containing a specific WebHDFS exception.
+ * @member {object} [remoteException] Gets the object representing the actual
+ * WebHDFS exception being returned.
+ * 
+ * @member {string} [remoteException.javaClassName] Gets the full class
+ * package name for the exception thrown, such as
+ * 'java.lang.IllegalArgumentException'.
+ * 
+ * @member {string} [remoteException.message] Gets the message associated with
+ * the exception that was thrown, such as 'Invalid value for webhdfs
+ * parameter "permission":...'.
+ * 
+ * @member {string} [remoteException.exception] Polymorhpic Discriminator
+ * 
+ */
+export interface AdlsError {
+    remoteException?: AdlsRemoteException;
+}
