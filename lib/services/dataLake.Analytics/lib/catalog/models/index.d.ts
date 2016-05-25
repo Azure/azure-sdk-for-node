@@ -430,6 +430,32 @@ export interface USqlView extends CatalogItem {
 
 /**
  * @class
+ * Initializes a new instance of the USqlTablePartition class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL table partition item.
+ * @member {string} [databaseName] Gets or sets the name of the database.
+ * 
+ * @member {string} [schemaName] Gets or sets the name of the schema
+ * associated with this table partition and database.
+ * 
+ * @member {string} [name] Gets or sets the name of the table partition.
+ * 
+ * @member {number} [indexId] Gets or sets the index ID for this partition.
+ * 
+ * @member {array} [label] Gets or sets the list of labels associated with
+ * this partition.
+ * 
+ */
+export interface USqlTablePartition extends CatalogItem {
+    databaseName?: string;
+    schemaName?: string;
+    name?: string;
+    indexId?: number;
+    label?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlTableStatistics class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table statistics item.

@@ -85,6 +85,10 @@ export interface Job {
      * the current job. Lower numbers have a higher priority. By default, a job
      * has a priority of 1000. This must be greater than 0.
      * 
+     * @param {array} [parameters.logFilePatterns] Gets or sets the list of log
+     * file name patterns to find in the logFolder. '*' is the only matching
+     * character allowed. Example format: jobExecution*.log or *mylog*.txt
+     * 
      * @param {object} [parameters.properties] Gets or sets the job specific
      * properties.
      * 
@@ -173,6 +177,10 @@ export interface Job {
      * @param {number} [parameters.priority] Gets or sets the priority value for
      * the current job. Lower numbers have a higher priority. By default, a job
      * has a priority of 1000. This must be greater than 0.
+     * 
+     * @param {array} [parameters.logFilePatterns] Gets or sets the list of log
+     * file name patterns to find in the logFolder. '*' is the only matching
+     * character allowed. Example format: jobExecution*.log or *mylog*.txt
      * 
      * @param {object} [parameters.properties] Gets or sets the job specific
      * properties.
