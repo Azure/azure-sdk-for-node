@@ -259,6 +259,9 @@ export interface ApplicationGatewayBackendAddress {
  * @member {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated
  * 
+ * @member {boolean} [primary] Gets whether this is a primary customer address
+ * on the NIC
+ * 
  * @member {object} [publicIPAddress]
  * 
  * @member {string} [publicIPAddress.publicIPAllocationMethod] Gets or sets
@@ -415,6 +418,7 @@ export interface NetworkInterfaceIPConfiguration extends SubResource {
     privateIPAllocationMethod?: string;
     privateIPAddressVersion?: string;
     subnet?: Subnet;
+    primary?: boolean;
     publicIPAddress?: PublicIPAddress;
     provisioningState?: string;
     name?: string;
@@ -584,6 +588,9 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string} [backendIPConfiguration.subnet.etag] A unique read-only
  * string that changes whenever the resource is updated
+ * 
+ * @member {boolean} [backendIPConfiguration.primary] Gets whether this is a
+ * primary customer address on the NIC
  * 
  * @member {object} [backendIPConfiguration.publicIPAddress]
  * 
