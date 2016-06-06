@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ServiceCertificateOperations - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ComputeManagementClient-ComputeManagementClient.html">ComputeManagementClient</a><ul class='methods'><li data-type='method'><a href="ComputeManagementClient-ComputeManagementClient.html#getOperationStatus">getOperationStatus</a></li></ul></li><li><a href="DeploymentOperations-DeploymentOperations.html">DeploymentOperations</a><ul class='methods'><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#abortMigration">abortMigration</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginAbortMigration">beginAbortMigration</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginChangingConfigurationByName">beginChangingConfigurationByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginChangingConfigurationBySlot">beginChangingConfigurationBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginCommitMigration">beginCommitMigration</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginDeletingByName">beginDeletingByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginDeletingBySlot">beginDeletingBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginDeletingRoleInstanceByBeploymentSlot">beginDeletingRoleInstanceByBeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginDeletingRoleInstanceByDeploymentName">beginDeletingRoleInstanceByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginGettingPackageByName">beginGettingPackageByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginGettingPackageBySlot">beginGettingPackageBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginPrepareMigration">beginPrepareMigration</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginRebootingRoleInstanceByDeploymentName">beginRebootingRoleInstanceByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginRebootingRoleInstanceByDeploymentSlot">beginRebootingRoleInstanceByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginRebuildingRoleInstanceByDeploymentName">beginRebuildingRoleInstanceByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginRebuildingRoleInstanceByDeploymentSlot">beginRebuildingRoleInstanceByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginReimagingRoleInstanceByDeploymentName">beginReimagingRoleInstanceByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginReimagingRoleInstanceByDeploymentSlot">beginReimagingRoleInstanceByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginSwapping">beginSwapping</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginUpdatingStatusByDeploymentName">beginUpdatingStatusByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginUpdatingStatusByDeploymentSlot">beginUpdatingStatusByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginUpgradingByName">beginUpgradingByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginUpgradingBySlot">beginUpgradingBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginWalkingUpgradeDomainByDeploymentName">beginWalkingUpgradeDomainByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#beginWalkingUpgradeDomainByDeploymentSlot">beginWalkingUpgradeDomainByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#changeConfigurationByName">changeConfigurationByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#changeConfigurationBySlot">changeConfigurationBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#commitMigration">commitMigration</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#create">create</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#deleteByName">deleteByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#deleteBySlot">deleteBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#deleteRoleInstanceByDeploymentName">deleteRoleInstanceByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#deleteRoleInstanceByDeploymentSlot">deleteRoleInstanceByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#getByName">getByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#getBySlot">getBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#getPackageByName">getPackageByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#getPackageBySlot">getPackageBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#listEvents">listEvents</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#listEventsBySlot">listEventsBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#prepareMigration">prepareMigration</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#rebootRoleInstanceByDeploymentName">rebootRoleInstanceByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#rebootRoleInstanceByDeploymentSlot">rebootRoleInstanceByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#rebuildRoleInstanceByDeploymentName">rebuildRoleInstanceByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#rebuildRoleInstanceByDeploymentSlot">rebuildRoleInstanceByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#reimageRoleInstanceByDeploymentName">reimageRoleInstanceByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#reimageRoleInstanceByDeploymentSlot">reimageRoleInstanceByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#rollbackUpdateOrUpgradeByDeploymentName">rollbackUpdateOrUpgradeByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#rollbackUpdateOrUpgradeByDeploymentSlot">rollbackUpdateOrUpgradeByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#swap">swap</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#updateStatusByDeploymentName">updateStatusByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#updateStatusByDeploymentSlot">updateStatusByDeploymentSlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#upgradeByName">upgradeByName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#upgradeBySlot">upgradeBySlot</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#walkUpgradeDomainByDeploymentName">walkUpgradeDomainByDeploymentName</a></li><li data-type='method'><a href="DeploymentOperations-DeploymentOperations.html#walkUpgradeDomainByDeploymentSlot">walkUpgradeDomainByDeploymentSlot</a></li></ul></li><li><a href="DNSServerOperations-DNSServerOperations.html">DNSServerOperations</a><ul class='methods'><li data-type='method'><a href="DNSServerOperations-DNSServerOperations.html#addDNSServer">addDNSServer</a></li><li data-type='method'><a href="DNSServerOperations-DNSServerOperations.html#beginAddingDNSServer">beginAddingDNSServer</a></li><li data-type='method'><a href="DNSServerOperations-DNSServerOperations.html#beginDeletingDNSServer">beginDeletingDNSServer</a></li><li data-type='method'><a href="DNSServerOperations-DNSServerOperations.html#beginUpdatingDNSServer">beginUpdatingDNSServer</a></li><li data-type='method'><a href="DNSServerOperations-DNSServerOperations.html#deleteDNSServer">deleteDNSServer</a></li><li data-type='method'><a href="DNSServerOperations-DNSServerOperations.html#updateDNSServer">updateDNSServer</a></li></ul></li><li><a href="ExtensionImageOperations-ExtensionImageOperations.html">ExtensionImageOperations</a><ul class='methods'><li data-type='method'><a href="ExtensionImageOperations-ExtensionImageOperations.html#beginRegistering">beginRegistering</a></li><li data-type='method'><a href="ExtensionImageOperations-ExtensionImageOperations.html#beginUnregistering">beginUnregistering</a></li><li data-type='method'><a href="ExtensionImageOperations-ExtensionImageOperations.html#beginUpdating">beginUpdating</a></li><li data-type='method'><a href="ExtensionImageOperations-ExtensionImageOperations.html#register">register</a></li><li data-type='method'><a href="ExtensionImageOperations-ExtensionImageOperations.html#unregister">unregister</a></li><li data-type='method'><a href="ExtensionImageOperations-ExtensionImageOperations.html#update">update</a></li></ul></li><li><a href="HostedServiceOperations-HostedServiceOperations.html">HostedServiceOperations</a><ul class='methods'><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#addExtension">addExtension</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#beginAddingExtension">beginAddingExtension</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#beginDeletingAll">beginDeletingAll</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#beginDeletingExtension">beginDeletingExtension</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#checkNameAvailability">checkNameAvailability</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#create">create</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#deleteAll">deleteAll</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#deleteExtension">deleteExtension</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#get">get</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#getDetailed">getDetailed</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#getExtension">getExtension</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#list">list</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#listAvailableExtensions">listAvailableExtensions</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#listExtensions">listExtensions</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#listExtensionVersions">listExtensionVersions</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#listPublisherExtensions">listPublisherExtensions</a></li><li data-type='method'><a href="HostedServiceOperations-HostedServiceOperations.html#update">update</a></li></ul></li><li><a href="LoadBalancerOperations-LoadBalancerOperations.html">LoadBalancerOperations</a><ul class='methods'><li data-type='method'><a href="LoadBalancerOperations-LoadBalancerOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="LoadBalancerOperations-LoadBalancerOperations.html#beginDeleting">beginDeleting</a></li><li data-type='method'><a href="LoadBalancerOperations-LoadBalancerOperations.html#beginUpdating">beginUpdating</a></li><li data-type='method'><a href="LoadBalancerOperations-LoadBalancerOperations.html#create">create</a></li><li data-type='method'><a href="LoadBalancerOperations-LoadBalancerOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="LoadBalancerOperations-LoadBalancerOperations.html#update">update</a></li></ul></li><li><a href="OperatingSystemOperations-OperatingSystemOperations.html">OperatingSystemOperations</a><ul class='methods'><li data-type='method'><a href="OperatingSystemOperations-OperatingSystemOperations.html#list">list</a></li><li data-type='method'><a href="OperatingSystemOperations-OperatingSystemOperations.html#listFamilies">listFamilies</a></li></ul></li><li><a href="ServiceCertificateOperations-ServiceCertificateOperations.html">ServiceCertificateOperations</a><ul class='methods'><li data-type='method'><a href="ServiceCertificateOperations-ServiceCertificateOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="ServiceCertificateOperations-ServiceCertificateOperations.html#beginDeleting">beginDeleting</a></li><li data-type='method'><a href="ServiceCertificateOperations-ServiceCertificateOperations.html#create">create</a></li><li data-type='method'><a href="ServiceCertificateOperations-ServiceCertificateOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ServiceCertificateOperations-ServiceCertificateOperations.html#get">get</a></li><li data-type='method'><a href="ServiceCertificateOperations-ServiceCertificateOperations.html#list">list</a></li></ul></li><li><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html">VirtualMachineDiskOperations</a><ul class='methods'><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#beginCreatingDataDisk">beginCreatingDataDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#beginDeletingDataDisk">beginDeletingDataDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#beginUpdatingDisk">beginUpdatingDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#createDataDisk">createDataDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#createDisk">createDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#deleteDataDisk">deleteDataDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#deleteDisk">deleteDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#getDataDisk">getDataDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#getDisk">getDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#listDisks">listDisks</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#updateDataDisk">updateDataDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#updateDisk">updateDisk</a></li><li data-type='method'><a href="VirtualMachineDiskOperations-VirtualMachineDiskOperations.html#updateDiskSize">updateDiskSize</a></li></ul></li><li><a href="VirtualMachineExtensionOperations-VirtualMachineExtensionOperations.html">VirtualMachineExtensionOperations</a><ul class='methods'><li data-type='method'><a href="VirtualMachineExtensionOperations-VirtualMachineExtensionOperations.html#list">list</a></li><li data-type='method'><a href="VirtualMachineExtensionOperations-VirtualMachineExtensionOperations.html#listVersions">listVersions</a></li></ul></li><li><a href="VirtualMachineOperations-VirtualMachineOperations.html">VirtualMachineOperations</a><ul class='methods'><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginCapturingOSImage">beginCapturingOSImage</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginCapturingVMImage">beginCapturingVMImage</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginCreatingDeployment">beginCreatingDeployment</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginDeleting">beginDeleting</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginRestarting">beginRestarting</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginShutdown">beginShutdown</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginShuttingDownRoles">beginShuttingDownRoles</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginStarting">beginStarting</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginStartingRoles">beginStartingRoles</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginUpdating">beginUpdating</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#beginUpdatingLoadBalancedEndpointSet">beginUpdatingLoadBalancedEndpointSet</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#captureOSImage">captureOSImage</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#captureVMImage">captureVMImage</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#create">create</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#createDeployment">createDeployment</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#get">get</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#getRemoteDesktopFile">getRemoteDesktopFile</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#restart">restart</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#shutdown">shutdown</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#shutdownRoles">shutdownRoles</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#start">start</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#startRoles">startRoles</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#update">update</a></li><li data-type='method'><a href="VirtualMachineOperations-VirtualMachineOperations.html#updateLoadBalancedEndpointSet">updateLoadBalancedEndpointSet</a></li></ul></li><li><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html">VirtualMachineOSImageOperations</a><ul class='methods'><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#beginSharing">beginSharing</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#beginUnreplicating">beginUnreplicating</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#create">create</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#get">get</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#getDetails">getDetails</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#list">list</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#replicate">replicate</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#share">share</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#unreplicate">unreplicate</a></li><li data-type='method'><a href="VirtualMachineOSImageOperations-VirtualMachineOSImageOperations.html#update">update</a></li></ul></li><li><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html">VirtualMachineVMImageOperations</a><ul class='methods'><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#beginDeleting">beginDeleting</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#beginSharing">beginSharing</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#beginUnreplicating">beginUnreplicating</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#create">create</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#getDetails">getDetails</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#list">list</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#replicate">replicate</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#share">share</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#unreplicate">unreplicate</a></li><li data-type='method'><a href="VirtualMachineVMImageOperations-VirtualMachineVMImageOperations.html#update">update</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ComputeManagementClient">ComputeManagementClient</a></li><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createComputeManagementClient">createComputeManagementClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">ServiceCertificateOperations</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        ServiceCertificateOperations
+        </h2>
+        
+            <div class="class-description"><p>Operations for managing service certificates for your subscription.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/ee795178.aspx for<br>more information)<br><strong>NOTE</strong>: An instance of this class is automatically created for an<br>instance of the [ComputeManagementClient] {@link<br>ComputeManagementClient~ComputeManagementClient}.<br>See [serviceCertificates] {@link<br>ComputeManagementClient~ComputeManagementClient#serviceCertificates}.<br>Initializes a new instance of the ServiceCertificateOperations class.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="ServiceCertificateOperations"><span class="type-signature"></span>new ServiceCertificateOperations<span class="signature">(client)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#ComputeManagementClient">ComputeManagementClient</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Reference to the service client.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="computeManagementClient.js.html">computeManagementClient.js</a>, <a href="computeManagementClient.js.html#line18456">line 18456</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="beginCreating"><span class="type-signature"></span>beginCreating<span class="signature">(serviceName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>The Begin Creating Service Certificate operation adds a certificate to a<br>hosted service. This operation is an asynchronous operation. To determine<br>whether the management service has finished processing the request, call<br>Get Operation Status.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/ee460817.aspx for<br>more information)</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>serviceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DNS prefix name of your service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ServiceCertificateCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied<br>to the Begin Creating Service Certificate operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">buffer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The pfx or cer file.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>certificateFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CertificateFormat</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The service<br>certificate format. Azure supports the pfx and cer file formats.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The password for a pfx certificate.<br>A cer certificate does not require a password.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="computeManagementClient.js.html">computeManagementClient.js</a>, <a href="computeManagementClient.js.html#line18485">line 18485</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="beginDeleting"><span class="type-signature"></span>beginDeleting<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>The Begin Deleting Service Certificate operation deletes a service<br>certificate from the certificate store of a hosted service. This<br>operation is an asynchronous operation. To determine whether the<br>management service has finished processing the request, call Get<br>Operation Status.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/ee460803.aspx for<br>more information)</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ServiceCertificateDeleteParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied<br>to the Begin Deleting Service Certificate operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>serviceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DNS prefix name of your service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thumbprintAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The algorithm for the<br>certificate's thumbprint.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thumbprint</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The hexadecimal representation of<br>the thumbprint.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="computeManagementClient.js.html">computeManagementClient.js</a>, <a href="computeManagementClient.js.html#line18607">line 18607</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(serviceName, parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>The Create Service Certificate operation adds a certificate to a hosted<br>service. This operation is an asynchronous operation. To determine<br>whether the management service has finished processing the request, call<br>Get Operation Status.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/ee460817.aspx for<br>more information)</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>serviceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DNS prefix name of your service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ServiceCertificateCreateParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied<br>to the Create Service Certificate operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">buffer</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The pfx or cer file.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>certificateFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CertificateFormat</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The service<br>certificate format. Azure supports the pfx and cer file formats.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The password for a pfx certificate.<br>A cer certificate does not require a password.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="computeManagementClient.js.html">computeManagementClient.js</a>, <a href="computeManagementClient.js.html#line18708">line 18708</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>The Delete Service Certificate operation deletes a service certificate<br>from the certificate store of a hosted service. This operation is an<br>asynchronous operation. To determine whether the management service has<br>finished processing the request, call Get Operation Status.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/ee460803.aspx for<br>more information)</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ServiceCertificateDeleteParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied<br>to the Delete Service Certificate operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>serviceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DNS prefix name of your service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thumbprintAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The algorithm for the<br>certificate's thumbprint.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thumbprint</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The hexadecimal representation of<br>the thumbprint.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="computeManagementClient.js.html">computeManagementClient.js</a>, <a href="computeManagementClient.js.html#line18783">line 18783</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(parameters, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>The Get Service Certificate operation returns the public data for the<br>specified X.509 certificate associated with a hosted service.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/ee460792.aspx for<br>more information)</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ServiceCertificateGetParameters</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parameters supplied to<br>the Get Service Certificate operation.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>serviceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DNS prefix name of your service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thumbprintAlgorithm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The algorithm for the<br>certificate's thumbprint.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thumbprint</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The hexadecimal representation of<br>the thumbprint.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="computeManagementClient.js.html">computeManagementClient.js</a>, <a href="computeManagementClient.js.html#line18856">line 18856</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="list"><span class="type-signature"></span>list<span class="signature">(serviceName, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>The List Service Certificates operation lists all of the service<br>certificates associated with the specified hosted service.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/jj154105.aspx for<br>more information)</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>serviceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DNS prefix name of your hosted service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="computeManagementClient.js.html">computeManagementClient.js</a>, <a href="computeManagementClient.js.html#line18965">line 18965</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:21:30 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Global - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Gateway.html">Gateway</a><ul class='methods'><li data-type='method'><a href="Gateway.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Gateway.html#beginGetProfile">beginGetProfile</a></li><li data-type='method'><a href="Gateway.html#beginRegenerateProfile">beginRegenerateProfile</a></li><li data-type='method'><a href="Gateway.html#beginUpdate">beginUpdate</a></li><li data-type='method'><a href="Gateway.html#beginUpgrade">beginUpgrade</a></li><li data-type='method'><a href="Gateway.html#create">create</a></li><li data-type='method'><a href="Gateway.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Gateway.html#get">get</a></li><li data-type='method'><a href="Gateway.html#getProfile">getProfile</a></li><li data-type='method'><a href="Gateway.html#list">list</a></li><li data-type='method'><a href="Gateway.html#listForResourceGroup">listForResourceGroup</a></li><li data-type='method'><a href="Gateway.html#listForResourceGroupNext">listForResourceGroupNext</a></li><li data-type='method'><a href="Gateway.html#listNext">listNext</a></li><li data-type='method'><a href="Gateway.html#regenerateProfile">regenerateProfile</a></li><li data-type='method'><a href="Gateway.html#update">update</a></li><li data-type='method'><a href="Gateway.html#upgrade">upgrade</a></li></ul></li><li><a href="Node.html">Node</a><ul class='methods'><li data-type='method'><a href="Node.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Node.html#beginUpdate">beginUpdate</a></li><li data-type='method'><a href="Node.html#create">create</a></li><li data-type='method'><a href="Node.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Node.html#get">get</a></li><li data-type='method'><a href="Node.html#list">list</a></li><li data-type='method'><a href="Node.html#listForResourceGroup">listForResourceGroup</a></li><li data-type='method'><a href="Node.html#listForResourceGroupNext">listForResourceGroupNext</a></li><li data-type='method'><a href="Node.html#listNext">listNext</a></li><li data-type='method'><a href="Node.html#update">update</a></li></ul></li><li><a href="PowerShell.html">PowerShell</a><ul class='methods'><li data-type='method'><a href="PowerShell.html#beginCancelCommand">beginCancelCommand</a></li><li data-type='method'><a href="PowerShell.html#beginCreateSession">beginCreateSession</a></li><li data-type='method'><a href="PowerShell.html#beginInvokeCommand">beginInvokeCommand</a></li><li data-type='method'><a href="PowerShell.html#beginUpdateCommand">beginUpdateCommand</a></li><li data-type='method'><a href="PowerShell.html#cancelCommand">cancelCommand</a></li><li data-type='method'><a href="PowerShell.html#createSession">createSession</a></li><li data-type='method'><a href="PowerShell.html#getCommandStatus">getCommandStatus</a></li><li data-type='method'><a href="PowerShell.html#invokeCommand">invokeCommand</a></li><li data-type='method'><a href="PowerShell.html#listSession">listSession</a></li><li data-type='method'><a href="PowerShell.html#tabCompletion">tabCompletion</a></li><li data-type='method'><a href="PowerShell.html#updateCommand">updateCommand</a></li></ul></li><li><a href="ServerManagement.html">ServerManagement</a></li><li><a href="Session.html">Session</a><ul class='methods'><li data-type='method'><a href="Session.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Session.html#create">create</a></li><li data-type='method'><a href="Session.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Session.html#get">get</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#autoUpgrade">autoUpgrade</a></li><li><a href="global.html#command">command</a></li><li><a href="global.html#completed">completed</a></li><li><a href="global.html#descriptions">descriptions</a></li><li><a href="global.html#etag">etag</a></li><li><a href="global.html#fields">fields</a></li><li><a href="global.html#minorRevision">minorRevision</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#password">password</a></li><li><a href="global.html#powerShellSessionResourceName">powerShellSessionResourceName</a></li><li><a href="global.html#promptFieldType">promptFieldType</a></li><li><a href="global.html#publishedTimeUtc">publishedTimeUtc</a></li><li><a href="global.html#response">response</a></li><li><a href="global.html#results">results</a></li><li><a href="global.html#statusBlobSignature">statusBlobSignature</a></li><li><a href="global.html#statusUpdated">statusUpdated</a></li><li><a href="global.html#updated">updated</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">Global</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="autoUpgrade"><span class="type-signature"></span>autoUpgrade<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>location of the resource</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_gatewayParameters.js.html">models/gatewayParameters.js</a>, <a href="models_gatewayParameters.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="command"><span class="type-signature"></span>command<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Command to get tab completion for.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_powerShellTabCompletionParameters.js.html">models/powerShellTabCompletionParameters.js</a>, <a href="models_powerShellTabCompletionParameters.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="command"><span class="type-signature"></span>command<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Script to execute</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_powerShellCommandParameters.js.html">models/powerShellCommandParameters.js</a>, <a href="models_powerShellCommandParameters.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="completed"><span class="type-signature"></span>completed<span class="type-signature"> :array</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_powerShellCommandStatus.js.html">models/powerShellCommandStatus.js</a>, <a href="models_powerShellCommandStatus.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="completed"><span class="type-signature"></span>completed<span class="type-signature"> :array</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_powerShellCommandResults.js.html">models/powerShellCommandResults.js</a>, <a href="models_powerShellCommandResults.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="descriptions"><span class="type-signature"></span>descriptions<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    <p>the type of message</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_powerShellCommandResult.js.html">models/powerShellCommandResult.js</a>, <a href="models_powerShellCommandResult.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="etag"><span class="type-signature"></span>etag<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>ARM Resource ID</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_resource.js.html">models/resource.js</a>, <a href="models_resource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="fields"><span class="type-signature"></span>fields<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_errorModel.js.html">models/errorModel.js</a>, <a href="models_errorModel.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="minorRevision"><span class="type-signature"></span>minorRevision<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    <p>the leftmost number of the version</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_version.js.html">models/version.js</a>, <a href="models_version.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>collection of Gateway Resources</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_gatewayResources.js.html">models/gatewayResources.js</a>, <a href="models_gatewayResources.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Colleciton of powershell session resources</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_powerShellSessionResources.js.html">models/powerShellSessionResources.js</a>, <a href="models_powerShellSessionResources.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Collection of Node Resources</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_nodeResources.js.html">models/nodeResources.js</a>, <a href="models_nodeResources.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="password"><span class="type-signature"></span>password<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>location of the resource?</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_nodeParameters.js.html">models/nodeParameters.js</a>, <a href="models_nodeParameters.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="password"><span class="type-signature"></span>password<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>User name to be used to connect to node</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_sessionParameters.js.html">models/sessionParameters.js</a>, <a href="models_sessionParameters.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="powerShellSessionResourceName"><span class="type-signature"></span>powerShellSessionResourceName<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>the PowerShell Session Id.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_powerShellSessionResource.js.html">models/powerShellSessionResource.js</a>, <a href="models_powerShellSessionResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="promptFieldType"><span class="type-signature"></span>promptFieldType<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>the name of the prompt</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_promptFieldDescription.js.html">models/promptFieldDescription.js</a>, <a href="models_promptFieldDescription.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="publishedTimeUtc"><span class="type-signature"></span>publishedTimeUtc<span class="type-signature"> :date</span></h4>
+
+
+
+
+<div class="description">
+    <p>UTC date and time when gateway was first added to<br>management service</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">date</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_gatewayResource.js.html">models/gatewayResource.js</a>, <a href="models_gatewayResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="response"><span class="type-signature"></span>response<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>the list of responses a cmdlet expects</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_promptMessageResponse.js.html">models/promptMessageResponse.js</a>, <a href="models_promptMessageResponse.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="results"><span class="type-signature"></span>results<span class="type-signature"> :array</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_powerShellTabCompletionResults.js.html">models/powerShellTabCompletionResults.js</a>, <a href="models_powerShellTabCompletionResults.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="statusBlobSignature"><span class="type-signature"></span>statusBlobSignature<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>the Dataplane connection URL</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_gatewayProfile.js.html">models/gatewayProfile.js</a>, <a href="models_gatewayProfile.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="statusUpdated"><span class="type-signature"></span>statusUpdated<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    <p>The available memory on the gateway<br>host machine in megabytes.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_gatewayStatus.js.html">models/gatewayStatus.js</a>, <a href="models_gatewayStatus.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="updated"><span class="type-signature"></span>updated<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>Id of the gateway</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_nodeResource.js.html">models/nodeResource.js</a>, <a href="models_nodeResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="updated"><span class="type-signature"></span>updated<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>the username connecting to the session</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_sessionResource.js.html">models/sessionResource.js</a>, <a href="models_sessionResource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:22:00 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

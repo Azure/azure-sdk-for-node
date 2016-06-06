@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/notificationHubProperties.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Namespaces.html">Namespaces</a><ul class='methods'><li data-type='method'><a href="Namespaces.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Namespaces.html#checkAvailability">checkAvailability</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Namespaces.html#get">get</a></li><li data-type='method'><a href="Namespaces.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#getLongRunningOperationStatus">getLongRunningOperationStatus</a></li><li data-type='method'><a href="Namespaces.html#list">list</a></li><li data-type='method'><a href="Namespaces.html#listAll">listAll</a></li><li data-type='method'><a href="Namespaces.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="Namespaces.html#listKeys">listKeys</a></li><li data-type='method'><a href="Namespaces.html#listNext">listNext</a></li></ul></li><li><a href="NotificationHubs.html">NotificationHubs</a><ul class='methods'><li data-type='method'><a href="NotificationHubs.html#checkAvailability">checkAvailability</a></li><li data-type='method'><a href="NotificationHubs.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="NotificationHubs.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="NotificationHubs.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="NotificationHubs.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="NotificationHubs.html#get">get</a></li><li data-type='method'><a href="NotificationHubs.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="NotificationHubs.html#getPnsCredentials">getPnsCredentials</a></li><li data-type='method'><a href="NotificationHubs.html#list">list</a></li><li data-type='method'><a href="NotificationHubs.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="NotificationHubs.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="NotificationHubs.html#listKeys">listKeys</a></li><li data-type='method'><a href="NotificationHubs.html#listNext">listNext</a></li></ul></li><li><a href="NotificationHubsManagementClient.html">NotificationHubsManagementClient</a></li></ul><h3>Global</h3><ul><li><a href="global.html#authTokenUrl">authTokenUrl</a></li><li><a href="global.html#baiduSecretKey">baiduSecretKey</a></li><li><a href="global.html#googleApiKey">googleApiKey</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#isAvailiable">isAvailiable</a></li><li><a href="global.html#namespaceType">namespaceType</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#revision">revision</a></li><li><a href="global.html#secondaryConnectionString">secondaryConnectionString</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#thumbprint">thumbprint</a></li><li><a href="global.html#windowsLiveEndpoint">windowsLiveEndpoint</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/notificationHubProperties.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var models = require('./index');
+
+var util = require('util');
+
+/**
+ * @class
+ * Initializes a new instance of the NotificationHubProperties class.
+ * @constructor
+ * NotificationHub properties.
+ * @member {string} [name] The NotificationHub name.
+ * 
+ * @member {string} [registrationTtl] The RegistrationTtl of the created
+ * NotificationHub
+ * 
+ * @member {array} [authorizationRules] The AuthorizationRules of the created
+ * NotificationHub
+ * 
+ * @member {object} [apnsCredential] The ApnsCredential of the created
+ * NotificationHub
+ * 
+ * @member {object} [apnsCredential.properties] Gets or sets properties of
+ * NotificationHub ApnsCredential.
+ * 
+ * @member {string} [apnsCredential.properties.apnsCertificate] Gets or sets
+ * the APNS certificate.
+ * 
+ * @member {string} [apnsCredential.properties.certificateKey] Gets or sets
+ * the certificate key.
+ * 
+ * @member {string} [apnsCredential.properties.endpoint] Gets or sets the
+ * endpoint of this credential.
+ * 
+ * @member {string} [apnsCredential.properties.thumbprint] Gets or sets the
+ * Apns certificate Thumbprint
+ * 
+ * @member {object} [wnsCredential] The WnsCredential of the created
+ * NotificationHub
+ * 
+ * @member {object} [wnsCredential.properties] Gets or sets properties of
+ * NotificationHub WnsCredential.
+ * 
+ * @member {string} [wnsCredential.properties.packageSid] Gets or sets the
+ * package ID for this credential.
+ * 
+ * @member {string} [wnsCredential.properties.secretKey] Gets or sets the
+ * secret key.
+ * 
+ * @member {string} [wnsCredential.properties.windowsLiveEndpoint] Gets or
+ * sets the Windows Live endpoint.
+ * 
+ * @member {object} [gcmCredential] The GcmCredential of the created
+ * NotificationHub
+ * 
+ * @member {object} [gcmCredential.properties] Gets or sets properties of
+ * NotificationHub GcmCredential.
+ * 
+ * @member {string} [gcmCredential.properties.gcmEndpoint] Gets or sets the
+ * GCM endpoint.
+ * 
+ * @member {string} [gcmCredential.properties.googleApiKey] Gets or sets the
+ * Google API key.
+ * 
+ * @member {object} [mpnsCredential] The MpnsCredential of the created
+ * NotificationHub
+ * 
+ * @member {object} [mpnsCredential.properties] Gets or sets properties of
+ * NotificationHub MpnsCredential.
+ * 
+ * @member {string} [mpnsCredential.properties.mpnsCertificate] Gets or sets
+ * the MPNS certificate.
+ * 
+ * @member {string} [mpnsCredential.properties.certificateKey] Gets or sets
+ * the certificate key for this credential.
+ * 
+ * @member {string} [mpnsCredential.properties.thumbprint] Gets or sets the
+ * Mpns certificate Thumbprint
+ * 
+ * @member {object} [admCredential] The AdmCredential of the created
+ * NotificationHub
+ * 
+ * @member {object} [admCredential.properties] Gets or sets properties of
+ * NotificationHub AdmCredential.
+ * 
+ * @member {string} [admCredential.properties.clientId] Gets or sets the
+ * client identifier.
+ * 
+ * @member {string} [admCredential.properties.clientSecret] Gets or sets the
+ * credential secret access key.
+ * 
+ * @member {string} [admCredential.properties.authTokenUrl] Gets or sets the
+ * URL of the authorization token.
+ * 
+ * @member {object} [baiduCredential] The BaiduCredential of the created
+ * NotificationHub
+ * 
+ * @member {object} [baiduCredential.properties] Gets or sets properties of
+ * NotificationHub BaiduCredential.
+ * 
+ * @member {string} [baiduCredential.properties.baiduApiKey] Get or Set Baidu
+ * Api Key.
+ * 
+ * @member {string} [baiduCredential.properties.baiduEndPoint] Get or Set
+ * Baidu Endpoint.
+ * 
+ * @member {string} [baiduCredential.properties.baiduSecretKey] Get or Set
+ * Baidu Secret Key
+ * 
+ */
+function NotificationHubProperties() {
+}
+
+/**
+ * Defines the metadata of NotificationHubProperties
+ *
+ * @returns {object} metadata of NotificationHubProperties
+ *
+ */
+NotificationHubProperties.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'NotificationHubProperties',
+    type: {
+      name: 'Composite',
+      className: 'NotificationHubProperties',
+      modelProperties: {
+        name: {
+          required: false,
+          serializedName: 'name',
+          type: {
+            name: 'String'
+          }
+        },
+        registrationTtl: {
+          required: false,
+          serializedName: 'registrationTtl',
+          type: {
+            name: 'String'
+          }
+        },
+        authorizationRules: {
+          required: false,
+          serializedName: 'authorizationRules',
+          type: {
+            name: 'Sequence',
+            element: {
+                required: false,
+                serializedName: 'SharedAccessAuthorizationRulePropertiesElementType',
+                type: {
+                  name: 'Composite',
+                  className: 'SharedAccessAuthorizationRuleProperties'
+                }
+            }
+          }
+        },
+        apnsCredential: {
+          required: false,
+          serializedName: 'apnsCredential',
+          type: {
+            name: 'Composite',
+            className: 'ApnsCredential'
+          }
+        },
+        wnsCredential: {
+          required: false,
+          serializedName: 'wnsCredential',
+          type: {
+            name: 'Composite',
+            className: 'WnsCredential'
+          }
+        },
+        gcmCredential: {
+          required: false,
+          serializedName: 'gcmCredential',
+          type: {
+            name: 'Composite',
+            className: 'GcmCredential'
+          }
+        },
+        mpnsCredential: {
+          required: false,
+          serializedName: 'mpnsCredential',
+          type: {
+            name: 'Composite',
+            className: 'MpnsCredential'
+          }
+        },
+        admCredential: {
+          required: false,
+          serializedName: 'admCredential',
+          type: {
+            name: 'Composite',
+            className: 'AdmCredential'
+          }
+        },
+        baiduCredential: {
+          required: false,
+          serializedName: 'baiduCredential',
+          type: {
+            name: 'Composite',
+            className: 'BaiduCredential'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = NotificationHubProperties;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:21:53 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
