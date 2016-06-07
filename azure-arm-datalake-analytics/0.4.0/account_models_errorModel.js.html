@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>account/models/errorModel.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Account.html">Account</a><ul class='methods'><li data-type='method'><a href="Account.html#addDataLakeStoreAccount">addDataLakeStoreAccount</a></li><li data-type='method'><a href="Account.html#addStorageAccount">addStorageAccount</a></li><li data-type='method'><a href="Account.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Account.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Account.html#beginUpdate">beginUpdate</a></li><li data-type='method'><a href="Account.html#create">create</a></li><li data-type='method'><a href="Account.html#deleteDataLakeStoreAccount">deleteDataLakeStoreAccount</a></li><li data-type='method'><a href="Account.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Account.html#deleteStorageAccount">deleteStorageAccount</a></li><li data-type='method'><a href="Account.html#get">get</a></li><li data-type='method'><a href="Account.html#getDataLakeStoreAccount">getDataLakeStoreAccount</a></li><li data-type='method'><a href="Account.html#getStorageAccount">getStorageAccount</a></li><li data-type='method'><a href="Account.html#getStorageContainer">getStorageContainer</a></li><li data-type='method'><a href="Account.html#list">list</a></li><li data-type='method'><a href="Account.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Account.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Account.html#listDataLakeStoreAccounts">listDataLakeStoreAccounts</a></li><li data-type='method'><a href="Account.html#listDataLakeStoreAccountsNext">listDataLakeStoreAccountsNext</a></li><li data-type='method'><a href="Account.html#listNext">listNext</a></li><li data-type='method'><a href="Account.html#listSasTokens">listSasTokens</a></li><li data-type='method'><a href="Account.html#listSasTokensNext">listSasTokensNext</a></li><li data-type='method'><a href="Account.html#listStorageAccounts">listStorageAccounts</a></li><li data-type='method'><a href="Account.html#listStorageAccountsNext">listStorageAccountsNext</a></li><li data-type='method'><a href="Account.html#listStorageContainers">listStorageContainers</a></li><li data-type='method'><a href="Account.html#listStorageContainersNext">listStorageContainersNext</a></li><li data-type='method'><a href="Account.html#update">update</a></li><li data-type='method'><a href="Account.html#updateStorageAccount">updateStorageAccount</a></li></ul></li><li><a href="Catalog.html">Catalog</a><ul class='methods'><li data-type='method'><a href="Catalog.html#createSecret">createSecret</a></li><li data-type='method'><a href="Catalog.html#deleteAllSecrets">deleteAllSecrets</a></li><li data-type='method'><a href="Catalog.html#deleteSecret">deleteSecret</a></li><li data-type='method'><a href="Catalog.html#getAssembly">getAssembly</a></li><li data-type='method'><a href="Catalog.html#getCredential">getCredential</a></li><li data-type='method'><a href="Catalog.html#getDatabase">getDatabase</a></li><li data-type='method'><a href="Catalog.html#getExternalDataSource">getExternalDataSource</a></li><li data-type='method'><a href="Catalog.html#getProcedure">getProcedure</a></li><li data-type='method'><a href="Catalog.html#getSchema">getSchema</a></li><li data-type='method'><a href="Catalog.html#getSecret">getSecret</a></li><li data-type='method'><a href="Catalog.html#getTable">getTable</a></li><li data-type='method'><a href="Catalog.html#getTablePartition">getTablePartition</a></li><li data-type='method'><a href="Catalog.html#getTableStatistic">getTableStatistic</a></li><li data-type='method'><a href="Catalog.html#getTableValuedFunction">getTableValuedFunction</a></li><li data-type='method'><a href="Catalog.html#getView">getView</a></li><li data-type='method'><a href="Catalog.html#listAssemblies">listAssemblies</a></li><li data-type='method'><a href="Catalog.html#listAssembliesNext">listAssembliesNext</a></li><li data-type='method'><a href="Catalog.html#listCredentials">listCredentials</a></li><li data-type='method'><a href="Catalog.html#listCredentialsNext">listCredentialsNext</a></li><li data-type='method'><a href="Catalog.html#listDatabases">listDatabases</a></li><li data-type='method'><a href="Catalog.html#listDatabasesNext">listDatabasesNext</a></li><li data-type='method'><a href="Catalog.html#listExternalDataSources">listExternalDataSources</a></li><li data-type='method'><a href="Catalog.html#listExternalDataSourcesNext">listExternalDataSourcesNext</a></li><li data-type='method'><a href="Catalog.html#listProcedures">listProcedures</a></li><li data-type='method'><a href="Catalog.html#listProceduresNext">listProceduresNext</a></li><li data-type='method'><a href="Catalog.html#listSchemas">listSchemas</a></li><li data-type='method'><a href="Catalog.html#listSchemasNext">listSchemasNext</a></li><li data-type='method'><a href="Catalog.html#listTablePartitions">listTablePartitions</a></li><li data-type='method'><a href="Catalog.html#listTablePartitionsNext">listTablePartitionsNext</a></li><li data-type='method'><a href="Catalog.html#listTables">listTables</a></li><li data-type='method'><a href="Catalog.html#listTablesNext">listTablesNext</a></li><li data-type='method'><a href="Catalog.html#listTableStatistics">listTableStatistics</a></li><li data-type='method'><a href="Catalog.html#listTableStatisticsNext">listTableStatisticsNext</a></li><li data-type='method'><a href="Catalog.html#listTableValuedFunctions">listTableValuedFunctions</a></li><li data-type='method'><a href="Catalog.html#listTableValuedFunctionsNext">listTableValuedFunctionsNext</a></li><li data-type='method'><a href="Catalog.html#listTypes">listTypes</a></li><li data-type='method'><a href="Catalog.html#listTypesNext">listTypesNext</a></li><li data-type='method'><a href="Catalog.html#listViews">listViews</a></li><li data-type='method'><a href="Catalog.html#listViewsNext">listViewsNext</a></li><li data-type='method'><a href="Catalog.html#updateSecret">updateSecret</a></li></ul></li><li><a href="DataLakeAnalyticsAccountManagementClient.html">DataLakeAnalyticsAccountManagementClient</a></li><li><a href="DataLakeAnalyticsCatalogManagementClient.html">DataLakeAnalyticsCatalogManagementClient</a></li><li><a href="DataLakeAnalyticsJobManagementClient.html">DataLakeAnalyticsJobManagementClient</a></li><li><a href="Job.html">Job</a><ul class='methods'><li data-type='method'><a href="Job.html#build">build</a></li><li data-type='method'><a href="Job.html#cancel">cancel</a></li><li data-type='method'><a href="Job.html#create">create</a></li><li data-type='method'><a href="Job.html#get">get</a></li><li data-type='method'><a href="Job.html#getDebugDataPath">getDebugDataPath</a></li><li data-type='method'><a href="Job.html#getStatistics">getStatistics</a></li><li data-type='method'><a href="Job.html#list">list</a></li><li data-type='method'><a href="Job.html#listNext">listNext</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#accessToken">accessToken</a></li><li><a href="global.html#clrName">clrName</a></li><li><a href="global.html#colNames">colNames</a></li><li><a href="global.html#compileMode">compileMode</a></li><li><a href="global.html#contentPath">contentPath</a></li><li><a href="global.html#context">context</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#definition">definition</a></li><li><a href="global.html#dependencies">dependencies</a></li><li><a href="global.html#descending">descending</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#details">details</a></li><li><a href="global.html#dynamicCount">dynamicCount</a></li><li><a href="global.html#endpoint">endpoint</a></li><li><a href="global.html#errorMessage">errorMessage</a></li><li><a href="global.html#executedStatementCount">executedStatementCount</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#isComplexType">isComplexType</a></li><li><a href="global.html#isUnique">isUnique</a></li><li><a href="global.html#label">label</a></li><li><a href="global.html#lastModifiedTime">lastModifiedTime</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#password">password</a></li><li><a href="global.html#paths">paths</a></li><li><a href="global.html#pushdownTypes">pushdownTypes</a></li><li><a href="global.html#server">server</a></li><li><a href="global.html#stages">stages</a></li><li><a href="global.html#start">start</a></li><li><a href="global.html#startOffset">startOffset</a></li><li><a href="global.html#suffix">suffix</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#target">target</a></li><li><a href="global.html#totalSucceededTime">totalSucceededTime</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#uri">uri</a></li><li><a href="global.html#userName">userName</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#version">version</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">account/models/errorModel.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var models = require('./index');
+
+var util = require('util');
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorModel class.
+ * @constructor
+ * Generic resource error information.
+ * @member {string} [code] Gets or sets the HTTP status code or error code
+ * associated with this error
+ * 
+ * @member {string} [message] Gets or sets the error message to display.
+ * 
+ * @member {string} [target] Gets or sets the target of the error.
+ * 
+ * @member {array} [details] Gets or sets the list of error details
+ * 
+ * @member {object} [innerError] Gets or sets the inner exceptions or errors,
+ * if any
+ * 
+ * @member {string} [innerError.trace] Gets or sets the stack trace for the
+ * error
+ * 
+ * @member {string} [innerError.context] Gets or sets the context for the
+ * error message
+ * 
+ */
+function ErrorModel() {
+}
+
+/**
+ * Defines the metadata of ErrorModel
+ *
+ * @returns {object} metadata of ErrorModel
+ *
+ */
+ErrorModel.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'Error',
+    type: {
+      name: 'Composite',
+      className: 'ErrorModel',
+      modelProperties: {
+        code: {
+          required: false,
+          readOnly: true,
+          serializedName: 'code',
+          type: {
+            name: 'String'
+          }
+        },
+        message: {
+          required: false,
+          readOnly: true,
+          serializedName: 'message',
+          type: {
+            name: 'String'
+          }
+        },
+        target: {
+          required: false,
+          readOnly: true,
+          serializedName: 'target',
+          type: {
+            name: 'String'
+          }
+        },
+        details: {
+          required: false,
+          readOnly: true,
+          serializedName: 'details',
+          type: {
+            name: 'Sequence',
+            element: {
+                required: false,
+                serializedName: 'ErrorDetailsElementType',
+                type: {
+                  name: 'Composite',
+                  className: 'ErrorDetails'
+                }
+            }
+          }
+        },
+        innerError: {
+          required: false,
+          readOnly: true,
+          serializedName: 'innerError',
+          type: {
+            name: 'Composite',
+            className: 'InnerError'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = ErrorModel;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:21:34 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

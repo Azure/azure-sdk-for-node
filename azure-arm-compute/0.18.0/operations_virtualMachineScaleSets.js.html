@@ -1,0 +1,3478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>operations/virtualMachineScaleSets.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AvailabilitySets.html">AvailabilitySets</a><ul class='methods'><li data-type='method'><a href="AvailabilitySets.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="AvailabilitySets.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="AvailabilitySets.html#get">get</a></li><li data-type='method'><a href="AvailabilitySets.html#list">list</a></li><li data-type='method'><a href="AvailabilitySets.html#listAvailableSizes">listAvailableSizes</a></li></ul></li><li><a href="ComputeManagementClient.html">ComputeManagementClient</a></li><li><a href="ContainerServiceOperations.html">ContainerServiceOperations</a><ul class='methods'><li data-type='method'><a href="ContainerServiceOperations.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="ContainerServiceOperations.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="ContainerServiceOperations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ContainerServiceOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ContainerServiceOperations.html#get">get</a></li><li data-type='method'><a href="ContainerServiceOperations.html#list">list</a></li></ul></li><li><a href="UsageOperations.html">UsageOperations</a><ul class='methods'><li data-type='method'><a href="UsageOperations.html#list">list</a></li><li data-type='method'><a href="UsageOperations.html#listNext">listNext</a></li></ul></li><li><a href="VirtualMachineExtensionImages.html">VirtualMachineExtensionImages</a><ul class='methods'><li data-type='method'><a href="VirtualMachineExtensionImages.html#get">get</a></li><li data-type='method'><a href="VirtualMachineExtensionImages.html#listTypes">listTypes</a></li><li data-type='method'><a href="VirtualMachineExtensionImages.html#listVersions">listVersions</a></li></ul></li><li><a href="VirtualMachineExtensions.html">VirtualMachineExtensions</a><ul class='methods'><li data-type='method'><a href="VirtualMachineExtensions.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualMachineExtensions.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualMachineExtensions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualMachineExtensions.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineExtensions.html#get">get</a></li></ul></li><li><a href="VirtualMachineImages.html">VirtualMachineImages</a><ul class='methods'><li data-type='method'><a href="VirtualMachineImages.html#get">get</a></li><li data-type='method'><a href="VirtualMachineImages.html#list">list</a></li><li data-type='method'><a href="VirtualMachineImages.html#listOffers">listOffers</a></li><li data-type='method'><a href="VirtualMachineImages.html#listPublishers">listPublishers</a></li><li data-type='method'><a href="VirtualMachineImages.html#listSkus">listSkus</a></li></ul></li><li><a href="VirtualMachines.html">VirtualMachines</a><ul class='methods'><li data-type='method'><a href="VirtualMachines.html#beginCapture">beginCapture</a></li><li data-type='method'><a href="VirtualMachines.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualMachines.html#beginDeallocate">beginDeallocate</a></li><li data-type='method'><a href="VirtualMachines.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualMachines.html#beginPowerOff">beginPowerOff</a></li><li data-type='method'><a href="VirtualMachines.html#beginRedeploy">beginRedeploy</a></li><li data-type='method'><a href="VirtualMachines.html#beginRestart">beginRestart</a></li><li data-type='method'><a href="VirtualMachines.html#beginStart">beginStart</a></li><li data-type='method'><a href="VirtualMachines.html#capture">capture</a></li><li data-type='method'><a href="VirtualMachines.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualMachines.html#deallocate">deallocate</a></li><li data-type='method'><a href="VirtualMachines.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachines.html#generalize">generalize</a></li><li data-type='method'><a href="VirtualMachines.html#get">get</a></li><li data-type='method'><a href="VirtualMachines.html#list">list</a></li><li data-type='method'><a href="VirtualMachines.html#listAll">listAll</a></li><li data-type='method'><a href="VirtualMachines.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="VirtualMachines.html#listAvailableSizes">listAvailableSizes</a></li><li data-type='method'><a href="VirtualMachines.html#powerOff">powerOff</a></li><li data-type='method'><a href="VirtualMachines.html#redeploy">redeploy</a></li><li data-type='method'><a href="VirtualMachines.html#restart">restart</a></li><li data-type='method'><a href="VirtualMachines.html#start">start</a></li></ul></li><li><a href="VirtualMachineScaleSets.html">VirtualMachineScaleSets</a><ul class='methods'><li data-type='method'><a href="VirtualMachineScaleSets.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginDeallocate">beginDeallocate</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginDeleteInstances">beginDeleteInstances</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginPowerOff">beginPowerOff</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginReimage">beginReimage</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginRestart">beginRestart</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginStart">beginStart</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#beginUpdateInstances">beginUpdateInstances</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#deallocate">deallocate</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#deleteInstances">deleteInstances</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#get">get</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#getInstanceView">getInstanceView</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#list">list</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listAll">listAll</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listNext">listNext</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listSkus">listSkus</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#listSkusNext">listSkusNext</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#powerOff">powerOff</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#reimage">reimage</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#restart">restart</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#start">start</a></li><li data-type='method'><a href="VirtualMachineScaleSets.html#updateInstances">updateInstances</a></li></ul></li><li><a href="VirtualMachineScaleSetVMs.html">VirtualMachineScaleSetVMs</a><ul class='methods'><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginDeallocate">beginDeallocate</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginPowerOff">beginPowerOff</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginReimage">beginReimage</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginRestart">beginRestart</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#beginStart">beginStart</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#deallocate">deallocate</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#get">get</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#getInstanceView">getInstanceView</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#list">list</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#listNext">listNext</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#powerOff">powerOff</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#reimage">reimage</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#restart">restart</a></li><li data-type='method'><a href="VirtualMachineScaleSetVMs.html#start">start</a></li></ul></li><li><a href="VirtualMachineSizes.html">VirtualMachineSizes</a><ul class='methods'><li data-type='method'><a href="VirtualMachineSizes.html#list">list</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#adminPassword">adminPassword</a></li><li><a href="global.html#capacity">capacity</a></li><li><a href="global.html#certificateStore">certificateStore</a></li><li><a href="global.html#certificateUrl">certificateUrl</a></li><li><a href="global.html#content">content</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#dataDiskImages">dataDiskImages</a></li><li><a href="global.html#dataDisks">dataDisks</a></li><li><a href="global.html#diskSizeGB">diskSizeGB</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#errordetail">errordetail</a></li><li><a href="global.html#extensions">extensions</a></li><li><a href="global.html#fqdn">fqdn</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#instanceIds">instanceIds</a></li><li><a href="global.html#ipConfigurations">ipConfigurations</a></li><li><a href="global.html#keyData">keyData</a></li><li><a href="global.html#listeners">listeners</a></li><li><a href="global.html#loadBalancerInboundNatPools">loadBalancerInboundNatPools</a></li><li><a href="global.html#localizedValue">localizedValue</a></li><li><a href="global.html#lun">lun</a></li><li><a href="global.html#maxDataDiskCount">maxDataDiskCount</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#mode">mode</a></li><li><a href="global.html#networkInterfaceConfigurations">networkInterfaceConfigurations</a></li><li><a href="global.html#networkInterfaces">networkInterfaces</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#operatingSystem">operatingSystem</a></li><li><a href="global.html#orchestratorType">orchestratorType</a></li><li><a href="global.html#output">output</a></li><li><a href="global.html#overProvision">overProvision</a></li><li><a href="global.html#overwriteVhds">overwriteVhds</a></li><li><a href="global.html#primary">primary</a></li><li><a href="global.html#product">product</a></li><li><a href="global.html#promotionCode">promotionCode</a></li><li><a href="global.html#provisioningState">provisioningState</a></li><li><a href="global.html#publicKeys">publicKeys</a></li><li><a href="global.html#resources">resources</a></li><li><a href="global.html#scaleType">scaleType</a></li><li><a href="global.html#secrets">secrets</a></li><li><a href="global.html#serialConsoleLogBlobUri">serialConsoleLogBlobUri</a></li><li><a href="global.html#statuses">statuses</a></li><li><a href="global.html#statusesSummary">statusesSummary</a></li><li><a href="global.html#storageUri">storageUri</a></li><li><a href="global.html#supportsMultipleExtensions">supportsMultipleExtensions</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#time">time</a></li><li><a href="global.html#uri">uri</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#vaultCertificates">vaultCertificates</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#vhdContainers">vhdContainers</a></li><li><a href="global.html#vmSize">vmSize</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">operations/virtualMachineScaleSets.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var util = require('util');
+var msRest = require('ms-rest');
+var msRestAzure = require('ms-rest-azure');
+var WebResource = msRest.WebResource;
+
+/**
+ * @class
+ * VirtualMachineScaleSets
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ * Initializes a new instance of the VirtualMachineScaleSets class.
+ * @constructor
+ *
+ * @param {ComputeManagementClient} client Reference to the service client.
+ */
+function VirtualMachineScaleSets(client) {
+  this.client = client;
+}
+
+/**
+ *
+ * The operation to create or update a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} name Parameters supplied to the Create Virtual Machine
+ * Scale Set operation.
+ * 
+ * @param {object} parameters Parameters supplied to the Create Virtual
+ * Machine Scale Set operation.
+ * 
+ * @param {object} [parameters.sku] Gets or sets the virtual machine scale set
+ * sku.
+ * 
+ * @param {string} [parameters.sku.name] Gets or sets the sku name.
+ * 
+ * @param {string} [parameters.sku.tier] Gets or sets the sku tier.
+ * 
+ * @param {number} [parameters.sku.capacity] Gets or sets the sku capacity.
+ * 
+ * @param {object} [parameters.upgradePolicy] Gets or sets the upgrade policy.
+ * 
+ * @param {string} [parameters.upgradePolicy.mode] Gets or sets the upgrade
+ * mode. Possible values include: 'Automatic', 'Manual'
+ * 
+ * @param {object} [parameters.virtualMachineProfile] Gets or sets the virtual
+ * machine profile.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.osProfile] Gets or sets
+ * the virtual machine scale set OS profile.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] Gets or
+ * sets the computer name prefix.
+ * 
+ * @param {string} [parameters.virtualMachineProfile.osProfile.adminUsername]
+ * Gets or sets the admin user name.
+ * 
+ * @param {string} [parameters.virtualMachineProfile.osProfile.adminPassword]
+ * Gets or sets the admin user password.
+ * 
+ * @param {string} [parameters.virtualMachineProfile.osProfile.customData]
+ * Gets or sets a base-64 encoded string of custom data.
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] Gets or
+ * sets the Windows Configuration of the OS profile.
+ * 
+ * @param {boolean}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
+ * Gets or sets whether VM Agent should be provisioned on the Virtual Machine.
+ * 
+ * @param {boolean}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
+ * Gets or sets whether Windows updates are automatically installed on the VM
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
+ * Gets or sets the Time Zone of the VM
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
+ * Gets or sets the additional base-64 encoded XML formatted information that
+ * can be included in the Unattend.xml file.
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM]
+ * Gets or sets the Windows Remote Management configuration of the VM
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
+ * Gets or sets the list of Windows Remote Management listeners
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] Gets or
+ * sets the Linux Configuration of the OS profile.
+ * 
+ * @param {boolean}
+ * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
+ * Gets or sets whether Authentication using user name and password is
+ * allowed or not
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] Gets
+ * or sets the SSH configuration for linux VMs
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
+ * Gets or sets the list of SSH public keys used to authenticate with linux
+ * based VMs
+ * 
+ * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] Gets or
+ * sets the List of certificates for addition to the VM.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.storageProfile] Gets or
+ * sets the virtual machine scale set storage profile.
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference] Gets or
+ * sets the image reference.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
+ * Gets or sets the image publisher.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference.offer]
+ * Gets or sets the image offer.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] Gets
+ * or sets the image sku.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference.version]
+ * Gets or sets the image version. The allowed formats are Major.Minor.Build
+ * or 'latest'. Major, Minor and Build being decimal numbers. Specify
+ * 'latest' to use the latest version of image.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
+ * Gets or sets the OS disk.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.name] Gets or sets
+ * the disk name.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] Gets or
+ * sets the caching type. Possible values include: 'None', 'ReadOnly',
+ * 'ReadWrite'
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] Gets
+ * or sets the create option. Possible values include: 'fromImage', 'empty',
+ * 'attach'
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] Gets or
+ * sets the Operating System type. Possible values include: 'Windows', 'Linux'
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.image] Gets or
+ * sets the Source User Image VirtualHardDisk. This VirtualHardDisk will be
+ * copied before using it to attach to the Virtual Machine.If SourceImage is
+ * provided, the destination VirtualHardDisk should not exist.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] Gets or
+ * sets the virtual hard disk's uri. It should be a valid Uri to a virtual
+ * hard disk.
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers]
+ * Gets or sets the list of virtual hard disk container uris.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.networkProfile] Gets or
+ * sets the virtual machine scale set network profile.
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
+ * Gets or sets the list of network configurations.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.extensionProfile] Gets
+ * the virtual machine scale set extension profile.
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.extensionProfile.extensions] Gets the
+ * virtual machine scale set child extension resources.
+ * 
+ * @param {string} [parameters.provisioningState] Gets or sets the
+ * provisioning state, which only appears in the response.
+ * 
+ * @param {boolean} [parameters.overProvision] Specifies whether the Virtual
+ * Machine Scale Set should be overprovisioned.
+ * 
+ * @param {string} [parameters.location] Resource location
+ * 
+ * @param {object} [parameters.tags] Resource tags
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSet} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.createOrUpdate = function (resourceGroupName, name, parameters, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginCreateOrUpdate(resourceGroupName, name, parameters, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPutOrPatchOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSet']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to create or update a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} name Parameters supplied to the Create Virtual Machine
+ * Scale Set operation.
+ * 
+ * @param {object} parameters Parameters supplied to the Create Virtual
+ * Machine Scale Set operation.
+ * 
+ * @param {object} [parameters.sku] Gets or sets the virtual machine scale set
+ * sku.
+ * 
+ * @param {string} [parameters.sku.name] Gets or sets the sku name.
+ * 
+ * @param {string} [parameters.sku.tier] Gets or sets the sku tier.
+ * 
+ * @param {number} [parameters.sku.capacity] Gets or sets the sku capacity.
+ * 
+ * @param {object} [parameters.upgradePolicy] Gets or sets the upgrade policy.
+ * 
+ * @param {string} [parameters.upgradePolicy.mode] Gets or sets the upgrade
+ * mode. Possible values include: 'Automatic', 'Manual'
+ * 
+ * @param {object} [parameters.virtualMachineProfile] Gets or sets the virtual
+ * machine profile.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.osProfile] Gets or sets
+ * the virtual machine scale set OS profile.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] Gets or
+ * sets the computer name prefix.
+ * 
+ * @param {string} [parameters.virtualMachineProfile.osProfile.adminUsername]
+ * Gets or sets the admin user name.
+ * 
+ * @param {string} [parameters.virtualMachineProfile.osProfile.adminPassword]
+ * Gets or sets the admin user password.
+ * 
+ * @param {string} [parameters.virtualMachineProfile.osProfile.customData]
+ * Gets or sets a base-64 encoded string of custom data.
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] Gets or
+ * sets the Windows Configuration of the OS profile.
+ * 
+ * @param {boolean}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
+ * Gets or sets whether VM Agent should be provisioned on the Virtual Machine.
+ * 
+ * @param {boolean}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
+ * Gets or sets whether Windows updates are automatically installed on the VM
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
+ * Gets or sets the Time Zone of the VM
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
+ * Gets or sets the additional base-64 encoded XML formatted information that
+ * can be included in the Unattend.xml file.
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM]
+ * Gets or sets the Windows Remote Management configuration of the VM
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
+ * Gets or sets the list of Windows Remote Management listeners
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] Gets or
+ * sets the Linux Configuration of the OS profile.
+ * 
+ * @param {boolean}
+ * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
+ * Gets or sets whether Authentication using user name and password is
+ * allowed or not
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] Gets
+ * or sets the SSH configuration for linux VMs
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
+ * Gets or sets the list of SSH public keys used to authenticate with linux
+ * based VMs
+ * 
+ * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] Gets or
+ * sets the List of certificates for addition to the VM.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.storageProfile] Gets or
+ * sets the virtual machine scale set storage profile.
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference] Gets or
+ * sets the image reference.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
+ * Gets or sets the image publisher.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference.offer]
+ * Gets or sets the image offer.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] Gets
+ * or sets the image sku.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.imageReference.version]
+ * Gets or sets the image version. The allowed formats are Major.Minor.Build
+ * or 'latest'. Major, Minor and Build being decimal numbers. Specify
+ * 'latest' to use the latest version of image.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
+ * Gets or sets the OS disk.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.name] Gets or sets
+ * the disk name.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] Gets or
+ * sets the caching type. Possible values include: 'None', 'ReadOnly',
+ * 'ReadWrite'
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] Gets
+ * or sets the create option. Possible values include: 'fromImage', 'empty',
+ * 'attach'
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] Gets or
+ * sets the Operating System type. Possible values include: 'Windows', 'Linux'
+ * 
+ * @param {object}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.image] Gets or
+ * sets the Source User Image VirtualHardDisk. This VirtualHardDisk will be
+ * copied before using it to attach to the Virtual Machine.If SourceImage is
+ * provided, the destination VirtualHardDisk should not exist.
+ * 
+ * @param {string}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] Gets or
+ * sets the virtual hard disk's uri. It should be a valid Uri to a virtual
+ * hard disk.
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers]
+ * Gets or sets the list of virtual hard disk container uris.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.networkProfile] Gets or
+ * sets the virtual machine scale set network profile.
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
+ * Gets or sets the list of network configurations.
+ * 
+ * @param {object} [parameters.virtualMachineProfile.extensionProfile] Gets
+ * the virtual machine scale set extension profile.
+ * 
+ * @param {array}
+ * [parameters.virtualMachineProfile.extensionProfile.extensions] Gets the
+ * virtual machine scale set child extension resources.
+ * 
+ * @param {string} [parameters.provisioningState] Gets or sets the
+ * provisioning state, which only appears in the response.
+ * 
+ * @param {boolean} [parameters.overProvision] Specifies whether the Virtual
+ * Machine Scale Set should be overprovisioned.
+ * 
+ * @param {string} [parameters.location] Resource location
+ * 
+ * @param {object} [parameters.tags] Resource tags
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSet} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginCreateOrUpdate = function (resourceGroupName, name, parameters, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (name === null || name === undefined || typeof name.valueOf() !== 'string') {
+      throw new Error('name cannot be null or undefined and it must be of type string.');
+    }
+    if (parameters === null || parameters === undefined) {
+      throw new Error('parameters cannot be null or undefined.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{name}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{name}', encodeURIComponent(name));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  var requestContent = null;
+  var requestModel = null;
+  try {
+    if (parameters !== null &amp;&amp; parameters !== undefined) {
+      var requestModelMapper = new client.models['VirtualMachineScaleSet']().mapper();
+      requestModel = client.serialize(requestModelMapper, parameters, 'parameters');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    var serializationError = new Error(util.format('Error "%s" occurred in serializing the ' + 
+        'payload - "%s"', error.message, util.inspect(parameters, {depth: null})));
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200 &amp;&amp; statusCode !== 201) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSet']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+    // Deserialize Response
+    if (statusCode === 201) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSet']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError1 = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError1.request = msRest.stripRequest(httpRequest);
+        deserializationError1.response = msRest.stripResponse(response);
+        return callback(deserializationError1);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The operation to deallocate virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+ * set instance ids.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.deallocate = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginDeallocate(resourceGroupName, vmScaleSetName, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to deallocate virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+ * set instance ids.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginDeallocate = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var instanceIds = (options &amp;&amp; options.instanceIds !== undefined) ? options.instanceIds : undefined;
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (util.isArray(instanceIds)) {
+      for (var i = 0; i &lt; instanceIds.length; i++) {
+        if (instanceIds[i] !== null &amp;&amp; instanceIds[i] !== undefined &amp;&amp; typeof instanceIds[i].valueOf() !== 'string') {
+          throw new Error('instanceIds[i] must be of type string.');
+        }
+      }
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+  var vmInstanceIDs;
+  if (instanceIds !== null &amp;&amp; instanceIds !== undefined) {
+      vmInstanceIDs = new client.models['VirtualMachineScaleSetVMInstanceIDs']();
+      vmInstanceIDs.instanceIds = instanceIds;
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/deallocate';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  var requestContent = null;
+  var requestModel = null;
+  try {
+    if (vmInstanceIDs !== null &amp;&amp; vmInstanceIDs !== undefined) {
+      var requestModelMapper = new client.models['VirtualMachineScaleSetVMInstanceIDs']().mapper();
+      requestModel = client.serialize(requestModelMapper, vmInstanceIDs, 'vmInstanceIDs');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    var serializationError = new Error(util.format('Error "%s" occurred in serializing the ' + 
+        'payload - "%s"', error.message, util.inspect(vmInstanceIDs, {depth: null})));
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 202) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The operation to delete a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.deleteMethod = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginDeleteMethod(resourceGroupName, vmScaleSetName, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to delete a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginDeleteMethod = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'DELETE';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200 &amp;&amp; statusCode !== 202 &amp;&amp; statusCode !== 204) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The operation to get a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSet} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.get = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSet']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The operation to delete virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {array} instanceIds Gets or sets the virtual machine scale set
+ * instance ids.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.deleteInstances = function (resourceGroupName, vmScaleSetName, instanceIds, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginDeleteInstances(resourceGroupName, vmScaleSetName, instanceIds, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to delete virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {array} instanceIds Gets or sets the virtual machine scale set
+ * instance ids.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginDeleteInstances = function (resourceGroupName, vmScaleSetName, instanceIds, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (!util.isArray(instanceIds)) {
+      throw new Error('instanceIds cannot be null or undefined and it must be of type array.');
+    }
+    for (var i = 0; i &lt; instanceIds.length; i++) {
+      if (instanceIds[i] !== null &amp;&amp; instanceIds[i] !== undefined &amp;&amp; typeof instanceIds[i].valueOf() !== 'string') {
+        throw new Error('instanceIds[i] must be of type string.');
+      }
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+  var vmInstanceIDs;
+  if (instanceIds !== null &amp;&amp; instanceIds !== undefined) {
+      vmInstanceIDs = new client.models['VirtualMachineScaleSetVMInstanceRequiredIDs']();
+      vmInstanceIDs.instanceIds = instanceIds;
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/delete';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  var requestContent = null;
+  var requestModel = null;
+  try {
+    if (vmInstanceIDs !== null &amp;&amp; vmInstanceIDs !== undefined) {
+      var requestModelMapper = new client.models['VirtualMachineScaleSetVMInstanceRequiredIDs']().mapper();
+      requestModel = client.serialize(requestModelMapper, vmInstanceIDs, 'vmInstanceIDs');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    var serializationError = new Error(util.format('Error "%s" occurred in serializing the ' + 
+        'payload - "%s"', error.message, util.inspect(vmInstanceIDs, {depth: null})));
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 202) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The operation to get a virtual machine scale set instance view.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSetInstanceView} for
+ *                      more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.getInstanceView = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSetInstanceView']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The operation to list virtual machine scale sets under a resource group.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSetListResult} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.list = function (resourceGroupName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSetListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Gets the list of Virtual Machine Scale Sets in the subscription. Use
+ * nextLink property in the response to get the next page of Virtual Machine
+ * Scale Sets. Do this till nextLink is not null to fetch all the Virtual
+ * Machine Scale Sets.
+ *
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSetListWithLinkResult}
+ *                      for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.listAll = function (options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachineScaleSets';
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSetListWithLinkResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The operation to list available skus for a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSetListSkusResult} for
+ *                      more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.listSkus = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/skus';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSetListSkusResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The operation to power off (stop) virtual machines in a virtual machine
+ * scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+ * set instance ids.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.powerOff = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginPowerOff(resourceGroupName, vmScaleSetName, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to power off (stop) virtual machines in a virtual machine
+ * scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+ * set instance ids.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginPowerOff = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var instanceIds = (options &amp;&amp; options.instanceIds !== undefined) ? options.instanceIds : undefined;
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (util.isArray(instanceIds)) {
+      for (var i = 0; i &lt; instanceIds.length; i++) {
+        if (instanceIds[i] !== null &amp;&amp; instanceIds[i] !== undefined &amp;&amp; typeof instanceIds[i].valueOf() !== 'string') {
+          throw new Error('instanceIds[i] must be of type string.');
+        }
+      }
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+  var vmInstanceIDs;
+  if (instanceIds !== null &amp;&amp; instanceIds !== undefined) {
+      vmInstanceIDs = new client.models['VirtualMachineScaleSetVMInstanceIDs']();
+      vmInstanceIDs.instanceIds = instanceIds;
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  var requestContent = null;
+  var requestModel = null;
+  try {
+    if (vmInstanceIDs !== null &amp;&amp; vmInstanceIDs !== undefined) {
+      var requestModelMapper = new client.models['VirtualMachineScaleSetVMInstanceIDs']().mapper();
+      requestModel = client.serialize(requestModelMapper, vmInstanceIDs, 'vmInstanceIDs');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    var serializationError = new Error(util.format('Error "%s" occurred in serializing the ' + 
+        'payload - "%s"', error.message, util.inspect(vmInstanceIDs, {depth: null})));
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 202) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The operation to restart virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+ * set instance ids.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.restart = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginRestart(resourceGroupName, vmScaleSetName, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to restart virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+ * set instance ids.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginRestart = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var instanceIds = (options &amp;&amp; options.instanceIds !== undefined) ? options.instanceIds : undefined;
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (util.isArray(instanceIds)) {
+      for (var i = 0; i &lt; instanceIds.length; i++) {
+        if (instanceIds[i] !== null &amp;&amp; instanceIds[i] !== undefined &amp;&amp; typeof instanceIds[i].valueOf() !== 'string') {
+          throw new Error('instanceIds[i] must be of type string.');
+        }
+      }
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+  var vmInstanceIDs;
+  if (instanceIds !== null &amp;&amp; instanceIds !== undefined) {
+      vmInstanceIDs = new client.models['VirtualMachineScaleSetVMInstanceIDs']();
+      vmInstanceIDs.instanceIds = instanceIds;
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  var requestContent = null;
+  var requestModel = null;
+  try {
+    if (vmInstanceIDs !== null &amp;&amp; vmInstanceIDs !== undefined) {
+      var requestModelMapper = new client.models['VirtualMachineScaleSetVMInstanceIDs']().mapper();
+      requestModel = client.serialize(requestModelMapper, vmInstanceIDs, 'vmInstanceIDs');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    var serializationError = new Error(util.format('Error "%s" occurred in serializing the ' + 
+        'payload - "%s"', error.message, util.inspect(vmInstanceIDs, {depth: null})));
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 202) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The operation to start virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+ * set instance ids.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.start = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginStart(resourceGroupName, vmScaleSetName, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to start virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
+ * set instance ids.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginStart = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var instanceIds = (options &amp;&amp; options.instanceIds !== undefined) ? options.instanceIds : undefined;
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (util.isArray(instanceIds)) {
+      for (var i = 0; i &lt; instanceIds.length; i++) {
+        if (instanceIds[i] !== null &amp;&amp; instanceIds[i] !== undefined &amp;&amp; typeof instanceIds[i].valueOf() !== 'string') {
+          throw new Error('instanceIds[i] must be of type string.');
+        }
+      }
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+  var vmInstanceIDs;
+  if (instanceIds !== null &amp;&amp; instanceIds !== undefined) {
+      vmInstanceIDs = new client.models['VirtualMachineScaleSetVMInstanceIDs']();
+      vmInstanceIDs.instanceIds = instanceIds;
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  var requestContent = null;
+  var requestModel = null;
+  try {
+    if (vmInstanceIDs !== null &amp;&amp; vmInstanceIDs !== undefined) {
+      var requestModelMapper = new client.models['VirtualMachineScaleSetVMInstanceIDs']().mapper();
+      requestModel = client.serialize(requestModelMapper, vmInstanceIDs, 'vmInstanceIDs');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    var serializationError = new Error(util.format('Error "%s" occurred in serializing the ' + 
+        'payload - "%s"', error.message, util.inspect(vmInstanceIDs, {depth: null})));
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 202) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The operation to manually upgrade virtual machines in a virtual machine
+ * scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {array} instanceIds Gets or sets the virtual machine scale set
+ * instance ids.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.updateInstances = function (resourceGroupName, vmScaleSetName, instanceIds, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginUpdateInstances(resourceGroupName, vmScaleSetName, instanceIds, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to manually upgrade virtual machines in a virtual machine
+ * scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {array} instanceIds Gets or sets the virtual machine scale set
+ * instance ids.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginUpdateInstances = function (resourceGroupName, vmScaleSetName, instanceIds, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (!util.isArray(instanceIds)) {
+      throw new Error('instanceIds cannot be null or undefined and it must be of type array.');
+    }
+    for (var i = 0; i &lt; instanceIds.length; i++) {
+      if (instanceIds[i] !== null &amp;&amp; instanceIds[i] !== undefined &amp;&amp; typeof instanceIds[i].valueOf() !== 'string') {
+        throw new Error('instanceIds[i] must be of type string.');
+      }
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+  var vmInstanceIDs;
+  if (instanceIds !== null &amp;&amp; instanceIds !== undefined) {
+      vmInstanceIDs = new client.models['VirtualMachineScaleSetVMInstanceRequiredIDs']();
+      vmInstanceIDs.instanceIds = instanceIds;
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  var requestContent = null;
+  var requestModel = null;
+  try {
+    if (vmInstanceIDs !== null &amp;&amp; vmInstanceIDs !== undefined) {
+      var requestModelMapper = new client.models['VirtualMachineScaleSetVMInstanceRequiredIDs']().mapper();
+      requestModel = client.serialize(requestModelMapper, vmInstanceIDs, 'vmInstanceIDs');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    var serializationError = new Error(util.format('Error "%s" occurred in serializing the ' + 
+        'payload - "%s"', error.message, util.inspect(vmInstanceIDs, {depth: null})));
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 202) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The operation to re-image virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.reimage = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginReimage(resourceGroupName, vmScaleSetName, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The operation to re-image virtual machines in a virtual machine scale set.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} vmScaleSetName The name of the virtual machine scale set.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.beginReimage = function (resourceGroupName, vmScaleSetName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var apiVersion = '2016-03-30';
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vmScaleSetName === null || vmScaleSetName === undefined || typeof vmScaleSetName.valueOf() !== 'string') {
+      throw new Error('vmScaleSetName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vmScaleSetName}', encodeURIComponent(vmScaleSetName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 202) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The operation to list virtual machine scale sets under a resource group.
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSetListResult} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.listNext = function (nextPageLink, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSetListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Gets the list of Virtual Machine Scale Sets in the subscription. Use
+ * nextLink property in the response to get the next page of Virtual Machine
+ * Scale Sets. Do this till nextLink is not null to fetch all the Virtual
+ * Machine Scale Sets.
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSetListWithLinkResult}
+ *                      for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.listAllNext = function (nextPageLink, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSetListWithLinkResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The operation to list available skus for a virtual machine scale set.
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link VirtualMachineScaleSetListSkusResult} for
+ *                      more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+VirtualMachineScaleSets.prototype.listSkusNext = function (nextPageLink, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['VirtualMachineScaleSetListSkusResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+
+module.exports = VirtualMachineScaleSets;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:21:32 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

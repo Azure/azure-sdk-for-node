@@ -1,0 +1,3005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>filesystem/operations/fileSystem.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520access%2520is%2520denied.%2520Thrown%2520when%2520a%250A401%2520error%2520response%2520code%2520is%2520returned%2520(Unauthorized)..html">A WebHDFS exception thrown indicating that access is denied. Thrown when a
+401 error response code is returned (Unauthorized).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520access%2520is%2520denied%2520due%2520to%250Ainsufficient%2520permissions.%2520Thrown%2520when%2520a%2520403%2520error%2520response%2520code%2520is%250Areturned%2520(forbidden)..html">A WebHDFS exception thrown indicating that access is denied due to
+insufficient permissions. Thrown when a 403 error response code is
+returned (forbidden).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520one%2520more%2520arguments%2520is%2520incorrect.%250AThrown%2520when%2520a%2520400%2520error%2520response%2520code%2520is%2520returned%2520(bad%2520request)..html">A WebHDFS exception thrown indicating that one more arguments is incorrect.
+Thrown when a 400 error response code is returned (bad request).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520the%2520requested%2520operation%2520is%2520not%250Asupported.%2520Thrown%2520when%2520a%2520400%2520error%2520response%2520code%2520is%2520returned%2520(bad%2520request)..html">A WebHDFS exception thrown indicating that the requested operation is not
+supported. Thrown when a 400 error response code is returned (bad request).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520the%2520file%2520or%2520folder%2520could%2520not%2520be%250Afound.%2520Thrown%2520when%2520a%2520404%2520error%2520response%2520code%2520is%2520returned%2520(not%2520found)..html">A WebHDFS exception thrown indicating the file or folder could not be
+found. Thrown when a 404 error response code is returned (not found).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520there%2520was%2520an%2520IO%2520(read%2520or%2520write)%250Aerror.%2520Thrown%2520when%2520a%2520403%2520error%2520response%2520code%2520is%2520returned%2520(forbidden)..html">A WebHDFS exception thrown indicating there was an IO (read or write)
+error. Thrown when a 403 error response code is returned (forbidden).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520when%2520an%2520unexpected%2520error%2520occurs%2520during%2520an%250Aoperation.%2520Thrown%2520when%2520a%2520500%2520error%2520response%2520code%2520is%2520returned%2520(Internal%250Aserver%2520error)..html">A WebHDFS exception thrown when an unexpected error occurs during an
+operation. Thrown when a 500 error response code is returned (Internal
+server error).</a></li><li><a href="Account.html">Account</a><ul class='methods'><li data-type='method'><a href="Account.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Account.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Account.html#beginUpdate">beginUpdate</a></li><li data-type='method'><a href="Account.html#create">create</a></li><li data-type='method'><a href="Account.html#createOrUpdateFirewallRule">createOrUpdateFirewallRule</a></li><li data-type='method'><a href="Account.html#deleteFirewallRule">deleteFirewallRule</a></li><li data-type='method'><a href="Account.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Account.html#get">get</a></li><li data-type='method'><a href="Account.html#getFirewallRule">getFirewallRule</a></li><li data-type='method'><a href="Account.html#list">list</a></li><li data-type='method'><a href="Account.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Account.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Account.html#listFirewallRules">listFirewallRules</a></li><li data-type='method'><a href="Account.html#listFirewallRulesNext">listFirewallRulesNext</a></li><li data-type='method'><a href="Account.html#listNext">listNext</a></li><li data-type='method'><a href="Account.html#update">update</a></li></ul></li><li><a href="DataLakeStoreAccountManagementClient.html">DataLakeStoreAccountManagementClient</a></li><li><a href="DataLakeStoreFileSystemManagementClient.html">DataLakeStoreFileSystemManagementClient</a></li><li><a href="FileSystem.html">FileSystem</a><ul class='methods'><li data-type='method'><a href="FileSystem.html#append">append</a></li><li data-type='method'><a href="FileSystem.html#checkAccess">checkAccess</a></li><li data-type='method'><a href="FileSystem.html#concat">concat</a></li><li data-type='method'><a href="FileSystem.html#concurrentAppend">concurrentAppend</a></li><li data-type='method'><a href="FileSystem.html#create">create</a></li><li data-type='method'><a href="FileSystem.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="FileSystem.html#getAclStatus">getAclStatus</a></li><li data-type='method'><a href="FileSystem.html#getContentSummary">getContentSummary</a></li><li data-type='method'><a href="FileSystem.html#getFileStatus">getFileStatus</a></li><li data-type='method'><a href="FileSystem.html#listFileStatus">listFileStatus</a></li><li data-type='method'><a href="FileSystem.html#mkdirs">mkdirs</a></li><li data-type='method'><a href="FileSystem.html#modifyAclEntries">modifyAclEntries</a></li><li data-type='method'><a href="FileSystem.html#msConcat">msConcat</a></li><li data-type='method'><a href="FileSystem.html#open">open</a></li><li data-type='method'><a href="FileSystem.html#removeAclEntries">removeAclEntries</a></li><li data-type='method'><a href="FileSystem.html#rename">rename</a></li><li data-type='method'><a href="FileSystem.html#setAcl">setAcl</a></li><li data-type='method'><a href="FileSystem.html#setOwner">setOwner</a></li><li data-type='method'><a href="FileSystem.html#setPermission">setPermission</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#context">context</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#defaultGroup">defaultGroup</a></li><li><a href="global.html#endIpAddress">endIpAddress</a></li><li><a href="global.html#exception">exception</a></li><li><a href="global.html#fileStatus">fileStatus</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#operationResult">operationResult</a></li><li><a href="global.html#spaceConsumed">spaceConsumed</a></li><li><a href="global.html#stickyBit">stickyBit</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#target">target</a></li><li><a href="global.html#type">type</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">filesystem/operations/fileSystem.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var util = require('util');
+var msRest = require('ms-rest');
+var msRestAzure = require('ms-rest-azure');
+var WebResource = msRest.WebResource;
+
+/**
+ * @class
+ * FileSystem
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeStoreFileSystemManagementClient.
+ * Initializes a new instance of the FileSystem class.
+ * @constructor
+ *
+ * @param {DataLakeStoreFileSystemManagementClient} client Reference to the service client.
+ */
+function FileSystem(client) {
+  this.client = client;
+}
+
+/**
+ * Appends to the specified file. This method supports multiple concurrent
+ * appends to the file. NOTE: Concurrent append and normal (serial) append
+ * CANNOT be used interchangeably. Once a file has been appended to using
+ * either append option, it can only be appended to using that append option.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} filePath The Data Lake Store path (starting with '/') of
+ * the file to which to append using concurrent append.
+ * 
+ * @param {object} streamContents The file contents to include when appending
+ * to the file.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {string} [options.appendMode] Indicates the concurrent append call
+ * should create the file if it doesn't exist or just open the existing file
+ * for append. Possible values include: 'autocreate'
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.concurrentAppend = function (accountName, filePath, streamContents, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var appendMode = (options &amp;&amp; options.appendMode !== undefined) ? options.appendMode : undefined;
+  var op = 'CONCURRENTAPPEND';
+  var transferEncoding = 'chunked';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (filePath === null || filePath === undefined || typeof filePath.valueOf() !== 'string') {
+      throw new Error('filePath cannot be null or undefined and it must be of type string.');
+    }
+    if (streamContents === null || streamContents === undefined) {
+      throw new Error('streamContents cannot be null or undefined and it must be of type object.');
+    }
+    if (appendMode) {
+      var allowedValues = [ 'autocreate' ];
+      if (!allowedValues.some( function(item) { return item === appendMode; })) {
+        throw new Error(appendMode + ' is not a valid value. The valid values are: ' + allowedValues);
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//WebHdfsExt/{filePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{filePath}', encodeURIComponent(filePath));
+  var queryParameters = [];
+  if (appendMode !== null &amp;&amp; appendMode !== undefined) {
+    queryParameters.push('appendMode=' + encodeURIComponent(appendMode));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (transferEncoding !== undefined &amp;&amp; transferEncoding !== null) {
+    httpRequest.headers['Transfer-Encoding'] = transferEncoding;
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/octet-stream';
+  // Serialize Request  
+  var requestContent = streamContents;
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Checks if the specified access is available at the given path.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} path The Data Lake Store path (starting with '/') of the
+ * file or directory for which to check access.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {string} [options.fsaction] File system operation read/write/execute
+ * in string form, matching regex pattern '[rwx-]{3}'
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.checkAccess = function (accountName, path, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var fsaction = (options &amp;&amp; options.fsaction !== undefined) ? options.fsaction : undefined;
+  var op = 'CHECKACCESS';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (path === null || path === undefined || typeof path.valueOf() !== 'string') {
+      throw new Error('path cannot be null or undefined and it must be of type string.');
+    }
+    if (fsaction !== null &amp;&amp; fsaction !== undefined &amp;&amp; typeof fsaction.valueOf() !== 'string') {
+      throw new Error('fsaction must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{path}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{path}', encodeURIComponent(path));
+  var queryParameters = [];
+  if (fsaction !== null &amp;&amp; fsaction !== undefined) {
+    queryParameters.push('fsaction=' + encodeURIComponent(fsaction));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Creates a directory.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} path The Data Lake Store path (starting with '/') of the
+ * directory to create.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link FileOperationResult} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.mkdirs = function (accountName, path, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'MKDIRS';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (path === null || path === undefined || typeof path.valueOf() !== 'string') {
+      throw new Error('path cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{path}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{path}', encodeURIComponent(path));
+  var queryParameters = [];
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['FileOperationResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Concatenates the list of source files into the destination file, removing
+ * all source files upon success.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} destinationPath The Data Lake Store path (starting with
+ * '/') of the destination file resulting from the concatenation.
+ * 
+ * @param {array} sources A list of comma seperated Data Lake Store paths
+ * (starting with '/') of the files to concatenate, in the order in which
+ * they should be concatenated.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.concat = function (accountName, destinationPath, sources, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'CONCAT';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (destinationPath === null || destinationPath === undefined || typeof destinationPath.valueOf() !== 'string') {
+      throw new Error('destinationPath cannot be null or undefined and it must be of type string.');
+    }
+    if (!util.isArray(sources)) {
+      throw new Error('sources cannot be null or undefined and it must be of type array.');
+    }
+    for (var i = 0; i &lt; sources.length; i++) {
+      if (sources[i] !== null &amp;&amp; sources[i] !== undefined &amp;&amp; typeof sources[i].valueOf() !== 'string') {
+        throw new Error('sources[i] must be of type string.');
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{destinationPath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{destinationPath}', encodeURIComponent(destinationPath));
+  var queryParameters = [];
+  queryParameters.push('sources=' + encodeURIComponent(sources.join(',')));
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Concatenates the list of source files into the destination file, deleting
+ * all source files upon success. This method accepts more source file paths
+ * than the Concat method. This method and the parameters it accepts are
+ * subject to change for usability in an upcoming version.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} msConcatDestinationPath The Data Lake Store path (starting
+ * with '/') of the destination file resulting from the concatenation.
+ * 
+ * @param {object} streamContents A list of Data Lake Store paths (starting
+ * with '/') of the source files. Must be in the format: sources=&lt;comma
+ * separated list>
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {boolean} [options.deleteSourceDirectory] Indicates that as an
+ * optimization instead of deleting each individual source stream, delete the
+ * source stream folder if all streams are in the same folder instead. This
+ * results in a substantial performance improvement when the only streams in
+ * the folder are part of the concatenation operation. WARNING: This includes
+ * the deletion of any other files that are not source files. Only set this
+ * to true when source files are the only files in the source directory.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.msConcat = function (accountName, msConcatDestinationPath, streamContents, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var deleteSourceDirectory = (options &amp;&amp; options.deleteSourceDirectory !== undefined) ? options.deleteSourceDirectory : undefined;
+  var op = 'MSCONCAT';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (msConcatDestinationPath === null || msConcatDestinationPath === undefined || typeof msConcatDestinationPath.valueOf() !== 'string') {
+      throw new Error('msConcatDestinationPath cannot be null or undefined and it must be of type string.');
+    }
+    if (deleteSourceDirectory !== null &amp;&amp; deleteSourceDirectory !== undefined &amp;&amp; typeof deleteSourceDirectory !== 'boolean') {
+      throw new Error('deleteSourceDirectory must be of type boolean.');
+    }
+    if (streamContents === null || streamContents === undefined) {
+      throw new Error('streamContents cannot be null or undefined and it must be of type object.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{msConcatDestinationPath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{msConcatDestinationPath}', encodeURIComponent(msConcatDestinationPath));
+  var queryParameters = [];
+  if (deleteSourceDirectory !== null &amp;&amp; deleteSourceDirectory !== undefined) {
+    queryParameters.push('deleteSourceDirectory=' + encodeURIComponent(deleteSourceDirectory.toString()));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/octet-stream';
+  // Serialize Request  
+  var requestContent = streamContents;
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Get the list of file status objects specified by the file path, with
+ * optional pagination parameters
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} listFilePath The Data Lake Store path (starting with '/')
+ * of the directory to list.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {number} [options.listSize] Gets or sets the number of items to
+ * return. Optional.
+ * 
+ * @param {string} [options.listAfter] Gets or sets the item or lexographical
+ * index after which to begin returning results. For example, a file list of
+ * 'a','b','d' and listAfter='b' will return 'd', and a listAfter='c' will
+ * also return 'd'. Optional.
+ * 
+ * @param {string} [options.listBefore] Gets or sets the item or lexographical
+ * index before which to begin returning results. For example, a file list of
+ * 'a','b','d' and listBefore='d' will return 'a','b', and a listBefore='c'
+ * will also return 'a','b'. Optional.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link FileStatusesResult} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.listFileStatus = function (accountName, listFilePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var listSize = (options &amp;&amp; options.listSize !== undefined) ? options.listSize : undefined;
+  var listAfter = (options &amp;&amp; options.listAfter !== undefined) ? options.listAfter : undefined;
+  var listBefore = (options &amp;&amp; options.listBefore !== undefined) ? options.listBefore : undefined;
+  var op = 'MSLISTSTATUS';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (listFilePath === null || listFilePath === undefined || typeof listFilePath.valueOf() !== 'string') {
+      throw new Error('listFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (listSize !== null &amp;&amp; listSize !== undefined &amp;&amp; typeof listSize !== 'number') {
+      throw new Error('listSize must be of type number.');
+    }
+    if (listAfter !== null &amp;&amp; listAfter !== undefined &amp;&amp; typeof listAfter.valueOf() !== 'string') {
+      throw new Error('listAfter must be of type string.');
+    }
+    if (listBefore !== null &amp;&amp; listBefore !== undefined &amp;&amp; typeof listBefore.valueOf() !== 'string') {
+      throw new Error('listBefore must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{listFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{listFilePath}', encodeURIComponent(listFilePath));
+  var queryParameters = [];
+  if (listSize !== null &amp;&amp; listSize !== undefined) {
+    queryParameters.push('listSize=' + encodeURIComponent(listSize.toString()));
+  }
+  if (listAfter !== null &amp;&amp; listAfter !== undefined) {
+    queryParameters.push('listAfter=' + encodeURIComponent(listAfter));
+  }
+  if (listBefore !== null &amp;&amp; listBefore !== undefined) {
+    queryParameters.push('listBefore=' + encodeURIComponent(listBefore));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['FileStatusesResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Gets the file content summary object specified by the file path.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} getContentSummaryFilePath The Data Lake Store path
+ * (starting with '/') of the file for which to retrieve the summary.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link ContentSummaryResult} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.getContentSummary = function (accountName, getContentSummaryFilePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'GETCONTENTSUMMARY';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (getContentSummaryFilePath === null || getContentSummaryFilePath === undefined || typeof getContentSummaryFilePath.valueOf() !== 'string') {
+      throw new Error('getContentSummaryFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/va/{getContentSummaryFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{getContentSummaryFilePath}', encodeURIComponent(getContentSummaryFilePath));
+  var queryParameters = [];
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['ContentSummaryResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Get the file status object specified by the file path.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} getFilePath The Data Lake Store path (starting with '/') of
+ * the file or directory for which to retrieve the status.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link FileStatusResult} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.getFileStatus = function (accountName, getFilePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'GETFILESTATUS';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (getFilePath === null || getFilePath === undefined || typeof getFilePath.valueOf() !== 'string') {
+      throw new Error('getFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{getFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{getFilePath}', encodeURIComponent(getFilePath));
+  var queryParameters = [];
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['FileStatusResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Appends to the specified file. This method does not support multiple
+ * concurrent appends to the file. NOTE: Concurrent append and normal
+ * (serial) append CANNOT be used interchangeably. Once a file has been
+ * appended to using either append option, it can only be appended to using
+ * that append option. Use the ConcurrentAppend option if you would like
+ * support for concurrent appends.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} directFilePath The Data Lake Store path (starting with '/')
+ * of the file to which to append.
+ * 
+ * @param {object} streamContents The file contents to include when appending
+ * to the file.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.append = function (accountName, directFilePath, streamContents, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'APPEND';
+  var append = 'true';
+  var transferEncoding = 'chunked';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (directFilePath === null || directFilePath === undefined || typeof directFilePath.valueOf() !== 'string') {
+      throw new Error('directFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (streamContents === null || streamContents === undefined) {
+      throw new Error('streamContents cannot be null or undefined and it must be of type object.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{directFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{directFilePath}', encodeURIComponent(directFilePath));
+  var queryParameters = [];
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('append=' + encodeURIComponent(append));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (transferEncoding !== undefined &amp;&amp; transferEncoding !== null) {
+    httpRequest.headers['Transfer-Encoding'] = transferEncoding;
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/octet-stream';
+  // Serialize Request  
+  var requestContent = streamContents;
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Creates a file with optionally specified content.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} directFilePath The Data Lake Store path (starting with '/')
+ * of the file to create.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.streamContents] The file contents to include when
+ * creating the file. This parameter is optional, resulting in an empty file
+ * if not specified.
+ * 
+ * @param {boolean} [options.overwrite] The indication of if the file should
+ * be overwritten.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.create = function (accountName, directFilePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var streamContents = (options &amp;&amp; options.streamContents !== undefined) ? options.streamContents : undefined;
+  var overwrite = (options &amp;&amp; options.overwrite !== undefined) ? options.overwrite : undefined;
+  var op = 'CREATE';
+  var write = 'true';
+  var transferEncoding = 'chunked';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (directFilePath === null || directFilePath === undefined || typeof directFilePath.valueOf() !== 'string') {
+      throw new Error('directFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (streamContents !== null &amp;&amp; streamContents !== undefined &amp;&amp; typeof streamContents.valueOf() !== 'object') {
+      throw new Error('streamContents must be of type object.');
+    }
+    if (overwrite !== null &amp;&amp; overwrite !== undefined &amp;&amp; typeof overwrite !== 'boolean') {
+      throw new Error('overwrite must be of type boolean.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{directFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{directFilePath}', encodeURIComponent(directFilePath));
+  var queryParameters = [];
+  if (overwrite !== null &amp;&amp; overwrite !== undefined) {
+    queryParameters.push('overwrite=' + encodeURIComponent(overwrite.toString()));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('write=' + encodeURIComponent(write));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (transferEncoding !== undefined &amp;&amp; transferEncoding !== null) {
+    httpRequest.headers['Transfer-Encoding'] = transferEncoding;
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/octet-stream';
+  // Serialize Request  
+  var requestContent = streamContents;
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 201) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Opens and reads from the specified file.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} directFilePath The Data Lake Store path (starting with '/')
+ * of the file to open.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {number} [options.length]
+ * 
+ * @param {number} [options.offset]
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.open = function (accountName, directFilePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var length = (options &amp;&amp; options.length !== undefined) ? options.length : undefined;
+  var offset = (options &amp;&amp; options.offset !== undefined) ? options.offset : undefined;
+  var op = 'OPEN';
+  var read = 'true';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (directFilePath === null || directFilePath === undefined || typeof directFilePath.valueOf() !== 'string') {
+      throw new Error('directFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (length !== null &amp;&amp; length !== undefined &amp;&amp; typeof length !== 'number') {
+      throw new Error('length must be of type number.');
+    }
+    if (offset !== null &amp;&amp; offset !== undefined &amp;&amp; typeof offset !== 'number') {
+      throw new Error('offset must be of type number.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{directFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{directFilePath}', encodeURIComponent(directFilePath));
+  var queryParameters = [];
+  if (length !== null &amp;&amp; length !== undefined) {
+    queryParameters.push('length=' + encodeURIComponent(length.toString()));
+  }
+  if (offset !== null &amp;&amp; offset !== undefined) {
+    queryParameters.push('offset=' + encodeURIComponent(offset.toString()));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('read=' + encodeURIComponent(read));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  httpRequest.streamedResponse = true;
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(util.format('Unexpected status code: %s', statusCode));
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        if (responseBody !== undefined) parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+
+    // Create Result
+    var result = response;
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Sets the Access Control List (ACL) for a file or folder.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} setAclFilePath The Data Lake Store path (starting with '/')
+ * of the file or directory on which to set the ACL.
+ * 
+ * @param {string} aclspec The ACL spec included in ACL creation operations in
+ * the format '[default:]user|group|other::r|-w|-x|-'
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.setAcl = function (accountName, setAclFilePath, aclspec, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'SETACL';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (setAclFilePath === null || setAclFilePath === undefined || typeof setAclFilePath.valueOf() !== 'string') {
+      throw new Error('setAclFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (aclspec === null || aclspec === undefined || typeof aclspec.valueOf() !== 'string') {
+      throw new Error('aclspec cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{setAclFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{setAclFilePath}', encodeURIComponent(setAclFilePath));
+  var queryParameters = [];
+  queryParameters.push('aclspec=' + encodeURIComponent(aclspec));
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Modifies existing Access Control List (ACL) entries on a file or folder.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} modifyAclFilePath The Data Lake Store path (starting with
+ * '/') of the file or directory with the ACL being modified.
+ * 
+ * @param {string} aclspec The ACL specification included in ACL modification
+ * operations in the format '[default:]user|group|other::r|-w|-x|-'
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.modifyAclEntries = function (accountName, modifyAclFilePath, aclspec, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'MODIFYACLENTRIES';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (modifyAclFilePath === null || modifyAclFilePath === undefined || typeof modifyAclFilePath.valueOf() !== 'string') {
+      throw new Error('modifyAclFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (aclspec === null || aclspec === undefined || typeof aclspec.valueOf() !== 'string') {
+      throw new Error('aclspec cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{modifyAclFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{modifyAclFilePath}', encodeURIComponent(modifyAclFilePath));
+  var queryParameters = [];
+  queryParameters.push('aclspec=' + encodeURIComponent(aclspec));
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Removes existing Access Control List (ACL) entries for a file or folder.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} removeAclFilePath The Data Lake Store path (starting with
+ * '/') of the file or directory with the ACL being removed.
+ * 
+ * @param {string} aclspec The ACL spec included in ACL removal operations in
+ * the format '[default:]user|group|other'
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.removeAclEntries = function (accountName, removeAclFilePath, aclspec, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'REMOVEACLENTRIES';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (removeAclFilePath === null || removeAclFilePath === undefined || typeof removeAclFilePath.valueOf() !== 'string') {
+      throw new Error('removeAclFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (aclspec === null || aclspec === undefined || typeof aclspec.valueOf() !== 'string') {
+      throw new Error('aclspec cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{removeAclFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{removeAclFilePath}', encodeURIComponent(removeAclFilePath));
+  var queryParameters = [];
+  queryParameters.push('aclspec=' + encodeURIComponent(aclspec));
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Gets Access Control List (ACL) entries for the specified file or directory.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
+ * the file or directory for which to get the ACL.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link AclStatusResult} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.getAclStatus = function (accountName, aclFilePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'GETACLSTATUS';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (aclFilePath === null || aclFilePath === undefined || typeof aclFilePath.valueOf() !== 'string') {
+      throw new Error('aclFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{aclFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{aclFilePath}', encodeURIComponent(aclFilePath));
+  var queryParameters = [];
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['AclStatusResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Deletes the requested file or directory, optionally recursively.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} filePath The Data Lake Store path (starting with '/') of
+ * the file or directory to delete.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {boolean} [options.recursive] The optional switch indicating if the
+ * delete should be recursive
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link FileOperationResult} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.deleteMethod = function (accountName, filePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var recursive = (options &amp;&amp; options.recursive !== undefined) ? options.recursive : undefined;
+  var op = 'DELETE';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (filePath === null || filePath === undefined || typeof filePath.valueOf() !== 'string') {
+      throw new Error('filePath cannot be null or undefined and it must be of type string.');
+    }
+    if (recursive !== null &amp;&amp; recursive !== undefined &amp;&amp; typeof recursive !== 'boolean') {
+      throw new Error('recursive must be of type boolean.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{filePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{filePath}', encodeURIComponent(filePath));
+  var queryParameters = [];
+  if (recursive !== null &amp;&amp; recursive !== undefined) {
+    queryParameters.push('recursive=' + encodeURIComponent(recursive.toString()));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'DELETE';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['FileOperationResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Rename a file or directory.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} renameFilePath The Data Lake Store path (starting with '/')
+ * of the file or directory to move/rename.
+ * 
+ * @param {string} destination The path to move/rename the file or folder to
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link FileOperationResult} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.rename = function (accountName, renameFilePath, destination, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var op = 'RENAME';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (renameFilePath === null || renameFilePath === undefined || typeof renameFilePath.valueOf() !== 'string') {
+      throw new Error('renameFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (destination === null || destination === undefined || typeof destination.valueOf() !== 'string') {
+      throw new Error('destination cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{renameFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{renameFilePath}', encodeURIComponent(renameFilePath));
+  var queryParameters = [];
+  queryParameters.push('destination=' + encodeURIComponent(destination));
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['FileOperationResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Sets the owner of a file or directory.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} setOwnerFilePath The Data Lake Store path (starting with
+ * '/') of the file or directory for which to set the owner.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {string} [options.owner] The AAD Object ID of the user owner of the
+ * file or directory. If empty, the property will remain unchanged.
+ * 
+ * @param {string} [options.group] The AAD Object ID of the group owner of the
+ * file or directory. If empty, the property will remain unchanged.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.setOwner = function (accountName, setOwnerFilePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var owner = (options &amp;&amp; options.owner !== undefined) ? options.owner : undefined;
+  var group = (options &amp;&amp; options.group !== undefined) ? options.group : undefined;
+  var op = 'SETOWNER';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (setOwnerFilePath === null || setOwnerFilePath === undefined || typeof setOwnerFilePath.valueOf() !== 'string') {
+      throw new Error('setOwnerFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (owner !== null &amp;&amp; owner !== undefined &amp;&amp; typeof owner.valueOf() !== 'string') {
+      throw new Error('owner must be of type string.');
+    }
+    if (group !== null &amp;&amp; group !== undefined &amp;&amp; typeof group.valueOf() !== 'string') {
+      throw new Error('group must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{setOwnerFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{setOwnerFilePath}', encodeURIComponent(setOwnerFilePath));
+  var queryParameters = [];
+  if (owner !== null &amp;&amp; owner !== undefined) {
+    queryParameters.push('owner=' + encodeURIComponent(owner));
+  }
+  if (group !== null &amp;&amp; group !== undefined) {
+    queryParameters.push('group=' + encodeURIComponent(group));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * Sets the permission of the file or folder.
+ *
+ * @param {string} accountName The Azure Data Lake Store account to execute
+ * filesystem operations on.
+ * 
+ * @param {string} setPermissionFilePath The Data Lake Store path (starting
+ * with '/') of the file or directory for which to set the permission.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {string} [options.permission] A string representation of the
+ * permission (i.e 'rwx'). If empty, this property remains unchanged.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+FileSystem.prototype.setPermission = function (accountName, setPermissionFilePath, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var permission = (options &amp;&amp; options.permission !== undefined) ? options.permission : undefined;
+  var op = 'SETPERMISSION';
+  // Validate
+  try {
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.adlsFileSystemDnsSuffix === null || this.client.adlsFileSystemDnsSuffix === undefined || typeof this.client.adlsFileSystemDnsSuffix.valueOf() !== 'string') {
+      throw new Error('this.client.adlsFileSystemDnsSuffix cannot be null or undefined and it must be of type string.');
+    }
+    if (setPermissionFilePath === null || setPermissionFilePath === undefined || typeof setPermissionFilePath.valueOf() !== 'string') {
+      throw new Error('setPermissionFilePath cannot be null or undefined and it must be of type string.');
+    }
+    if (permission !== null &amp;&amp; permission !== undefined &amp;&amp; typeof permission.valueOf() !== 'string') {
+      throw new Error('permission must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//webhdfs/v1/{setPermissionFilePath}';
+  requestUrl = requestUrl.replace('{accountName}', accountName);
+  requestUrl = requestUrl.replace('{adlsFileSystemDnsSuffix}', this.client.adlsFileSystemDnsSuffix);
+  requestUrl = requestUrl.replace('{setPermissionFilePath}', encodeURIComponent(setPermissionFilePath));
+  var queryParameters = [];
+  if (permission !== null &amp;&amp; permission !== undefined) {
+    queryParameters.push('permission=' + encodeURIComponent(permission));
+  }
+  queryParameters.push('op=' + encodeURIComponent(op));
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['AdlsError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+
+module.exports = FileSystem;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:21:35 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

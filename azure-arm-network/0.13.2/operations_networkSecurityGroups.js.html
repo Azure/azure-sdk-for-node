@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>operations/networkSecurityGroups.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ApplicationGateways.html">ApplicationGateways</a><ul class='methods'><li data-type='method'><a href="ApplicationGateways.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="ApplicationGateways.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="ApplicationGateways.html#beginStart">beginStart</a></li><li data-type='method'><a href="ApplicationGateways.html#beginStop">beginStop</a></li><li data-type='method'><a href="ApplicationGateways.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ApplicationGateways.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ApplicationGateways.html#get">get</a></li><li data-type='method'><a href="ApplicationGateways.html#list">list</a></li><li data-type='method'><a href="ApplicationGateways.html#listAll">listAll</a></li><li data-type='method'><a href="ApplicationGateways.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="ApplicationGateways.html#listNext">listNext</a></li><li data-type='method'><a href="ApplicationGateways.html#start">start</a></li><li data-type='method'><a href="ApplicationGateways.html#stop">stop</a></li></ul></li><li><a href="ExpressRouteCircuitAuthorizations.html">ExpressRouteCircuitAuthorizations</a><ul class='methods'><li data-type='method'><a href="ExpressRouteCircuitAuthorizations.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="ExpressRouteCircuitAuthorizations.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="ExpressRouteCircuitAuthorizations.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ExpressRouteCircuitAuthorizations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ExpressRouteCircuitAuthorizations.html#get">get</a></li><li data-type='method'><a href="ExpressRouteCircuitAuthorizations.html#list">list</a></li><li data-type='method'><a href="ExpressRouteCircuitAuthorizations.html#listNext">listNext</a></li></ul></li><li><a href="ExpressRouteCircuitPeerings.html">ExpressRouteCircuitPeerings</a><ul class='methods'><li data-type='method'><a href="ExpressRouteCircuitPeerings.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="ExpressRouteCircuitPeerings.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="ExpressRouteCircuitPeerings.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ExpressRouteCircuitPeerings.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ExpressRouteCircuitPeerings.html#get">get</a></li><li data-type='method'><a href="ExpressRouteCircuitPeerings.html#list">list</a></li><li data-type='method'><a href="ExpressRouteCircuitPeerings.html#listNext">listNext</a></li></ul></li><li><a href="ExpressRouteCircuits.html">ExpressRouteCircuits</a><ul class='methods'><li data-type='method'><a href="ExpressRouteCircuits.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#beginListArpTable">beginListArpTable</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#beginListRoutesTable">beginListRoutesTable</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#beginListRoutesTableSummary">beginListRoutesTableSummary</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#get">get</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#getPeeringStats">getPeeringStats</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#getStats">getStats</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#list">list</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#listAll">listAll</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#listArpTable">listArpTable</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#listNext">listNext</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#listRoutesTable">listRoutesTable</a></li><li data-type='method'><a href="ExpressRouteCircuits.html#listRoutesTableSummary">listRoutesTableSummary</a></li></ul></li><li><a href="ExpressRouteServiceProviders.html">ExpressRouteServiceProviders</a><ul class='methods'><li data-type='method'><a href="ExpressRouteServiceProviders.html#list">list</a></li><li data-type='method'><a href="ExpressRouteServiceProviders.html#listNext">listNext</a></li></ul></li><li><a href="LoadBalancers.html">LoadBalancers</a><ul class='methods'><li data-type='method'><a href="LoadBalancers.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="LoadBalancers.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="LoadBalancers.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="LoadBalancers.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="LoadBalancers.html#get">get</a></li><li data-type='method'><a href="LoadBalancers.html#list">list</a></li><li data-type='method'><a href="LoadBalancers.html#listAll">listAll</a></li><li data-type='method'><a href="LoadBalancers.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="LoadBalancers.html#listNext">listNext</a></li></ul></li><li><a href="LocalNetworkGateways.html">LocalNetworkGateways</a><ul class='methods'><li data-type='method'><a href="LocalNetworkGateways.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="LocalNetworkGateways.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="LocalNetworkGateways.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="LocalNetworkGateways.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="LocalNetworkGateways.html#get">get</a></li><li data-type='method'><a href="LocalNetworkGateways.html#list">list</a></li><li data-type='method'><a href="LocalNetworkGateways.html#listNext">listNext</a></li></ul></li><li><a href="NetworkInterfaces.html">NetworkInterfaces</a><ul class='methods'><li data-type='method'><a href="NetworkInterfaces.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="NetworkInterfaces.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="NetworkInterfaces.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="NetworkInterfaces.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="NetworkInterfaces.html#get">get</a></li><li data-type='method'><a href="NetworkInterfaces.html#getVirtualMachineScaleSetNetworkInterface">getVirtualMachineScaleSetNetworkInterface</a></li><li data-type='method'><a href="NetworkInterfaces.html#list">list</a></li><li data-type='method'><a href="NetworkInterfaces.html#listAll">listAll</a></li><li data-type='method'><a href="NetworkInterfaces.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="NetworkInterfaces.html#listNext">listNext</a></li><li data-type='method'><a href="NetworkInterfaces.html#listVirtualMachineScaleSetNetworkInterfaces">listVirtualMachineScaleSetNetworkInterfaces</a></li><li data-type='method'><a href="NetworkInterfaces.html#listVirtualMachineScaleSetNetworkInterfacesNext">listVirtualMachineScaleSetNetworkInterfacesNext</a></li><li data-type='method'><a href="NetworkInterfaces.html#listVirtualMachineScaleSetVMNetworkInterfaces">listVirtualMachineScaleSetVMNetworkInterfaces</a></li><li data-type='method'><a href="NetworkInterfaces.html#listVirtualMachineScaleSetVMNetworkInterfacesNext">listVirtualMachineScaleSetVMNetworkInterfacesNext</a></li></ul></li><li><a href="NetworkManagementClient.html">NetworkManagementClient</a><ul class='methods'><li data-type='method'><a href="NetworkManagementClient.html#checkDnsNameAvailability">checkDnsNameAvailability</a></li></ul></li><li><a href="NetworkSecurityGroups.html">NetworkSecurityGroups</a><ul class='methods'><li data-type='method'><a href="NetworkSecurityGroups.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="NetworkSecurityGroups.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="NetworkSecurityGroups.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="NetworkSecurityGroups.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="NetworkSecurityGroups.html#get">get</a></li><li data-type='method'><a href="NetworkSecurityGroups.html#list">list</a></li><li data-type='method'><a href="NetworkSecurityGroups.html#listAll">listAll</a></li><li data-type='method'><a href="NetworkSecurityGroups.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="NetworkSecurityGroups.html#listNext">listNext</a></li></ul></li><li><a href="PublicIPAddresses.html">PublicIPAddresses</a><ul class='methods'><li data-type='method'><a href="PublicIPAddresses.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="PublicIPAddresses.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="PublicIPAddresses.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="PublicIPAddresses.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="PublicIPAddresses.html#get">get</a></li><li data-type='method'><a href="PublicIPAddresses.html#list">list</a></li><li data-type='method'><a href="PublicIPAddresses.html#listAll">listAll</a></li><li data-type='method'><a href="PublicIPAddresses.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="PublicIPAddresses.html#listNext">listNext</a></li></ul></li><li><a href="Routes.html">Routes</a><ul class='methods'><li data-type='method'><a href="Routes.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Routes.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Routes.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Routes.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Routes.html#get">get</a></li><li data-type='method'><a href="Routes.html#list">list</a></li><li data-type='method'><a href="Routes.html#listNext">listNext</a></li></ul></li><li><a href="RouteTables.html">RouteTables</a><ul class='methods'><li data-type='method'><a href="RouteTables.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="RouteTables.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="RouteTables.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="RouteTables.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RouteTables.html#get">get</a></li><li data-type='method'><a href="RouteTables.html#list">list</a></li><li data-type='method'><a href="RouteTables.html#listAll">listAll</a></li><li data-type='method'><a href="RouteTables.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="RouteTables.html#listNext">listNext</a></li></ul></li><li><a href="SecurityRules.html">SecurityRules</a><ul class='methods'><li data-type='method'><a href="SecurityRules.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="SecurityRules.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="SecurityRules.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="SecurityRules.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="SecurityRules.html#get">get</a></li><li data-type='method'><a href="SecurityRules.html#list">list</a></li><li data-type='method'><a href="SecurityRules.html#listNext">listNext</a></li></ul></li><li><a href="Subnets.html">Subnets</a><ul class='methods'><li data-type='method'><a href="Subnets.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Subnets.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Subnets.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Subnets.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Subnets.html#get">get</a></li><li data-type='method'><a href="Subnets.html#list">list</a></li><li data-type='method'><a href="Subnets.html#listNext">listNext</a></li></ul></li><li><a href="Usages.html">Usages</a><ul class='methods'><li data-type='method'><a href="Usages.html#list">list</a></li><li data-type='method'><a href="Usages.html#listNext">listNext</a></li></ul></li><li><a href="VirtualNetworkGatewayConnections.html">VirtualNetworkGatewayConnections</a><ul class='methods'><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#beginResetSharedKey">beginResetSharedKey</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#beginSetSharedKey">beginSetSharedKey</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#get">get</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#getSharedKey">getSharedKey</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#list">list</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#listNext">listNext</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#resetSharedKey">resetSharedKey</a></li><li data-type='method'><a href="VirtualNetworkGatewayConnections.html#setSharedKey">setSharedKey</a></li></ul></li><li><a href="VirtualNetworkGateways.html">VirtualNetworkGateways</a><ul class='methods'><li data-type='method'><a href="VirtualNetworkGateways.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#beginReset">beginReset</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#generatevpnclientpackage">generatevpnclientpackage</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#get">get</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#list">list</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#listNext">listNext</a></li><li data-type='method'><a href="VirtualNetworkGateways.html#reset">reset</a></li></ul></li><li><a href="VirtualNetworks.html">VirtualNetworks</a><ul class='methods'><li data-type='method'><a href="VirtualNetworks.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="VirtualNetworks.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="VirtualNetworks.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="VirtualNetworks.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="VirtualNetworks.html#get">get</a></li><li data-type='method'><a href="VirtualNetworks.html#list">list</a></li><li data-type='method'><a href="VirtualNetworks.html#listAll">listAll</a></li><li data-type='method'><a href="VirtualNetworks.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="VirtualNetworks.html#listNext">listNext</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#addressPrefixes">addressPrefixes</a></li><li><a href="global.html#available">available</a></li><li><a href="global.html#bandwidthInMbps">bandwidthInMbps</a></li><li><a href="global.html#capacity">capacity</a></li><li><a href="global.html#dnsServers">dnsServers</a></li><li><a href="global.html#etag">etag</a></li><li><a href="global.html#family">family</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#innerError">innerError</a></li><li><a href="global.html#internalDomainNameSuffix">internalDomainNameSuffix</a></li><li><a href="global.html#ipAddress">ipAddress</a></li><li><a href="global.html#keyLength">keyLength</a></li><li><a href="global.html#localizedValue">localizedValue</a></li><li><a href="global.html#macAddress">macAddress</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#peerWeight">peerWeight</a></li><li><a href="global.html#processorArchitecture">processorArchitecture</a></li><li><a href="global.html#provisioningState">provisioningState</a></li><li><a href="global.html#reverseFqdn">reverseFqdn</a></li><li><a href="global.html#routingRegistryName">routingRegistryName</a></li><li><a href="global.html#secondarybytesOut">secondarybytesOut</a></li><li><a href="global.html#statePfxRcd">statePfxRcd</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#valueInMbps">valueInMbps</a></li><li><a href="global.html#vpnClientRevokedCertificates">vpnClientRevokedCertificates</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">operations/networkSecurityGroups.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator 0.16.0.0
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var util = require('util');
+var msRest = require('ms-rest');
+var msRestAzure = require('ms-rest-azure');
+var WebResource = msRest.WebResource;
+
+/**
+ * @class
+ * NetworkSecurityGroups
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ * Initializes a new instance of the NetworkSecurityGroups class.
+ * @constructor
+ *
+ * @param {NetworkManagementClient} client Reference to the service client.
+ */
+function NetworkSecurityGroups(client) {
+  this.client = client;
+}
+
+/**
+ *
+ * The Delete NetworkSecurityGroup operation deletes the specifed network
+ * security group
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} networkSecurityGroupName The name of the network security
+ * group.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.deleteMethod = function (resourceGroupName, networkSecurityGroupName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginDeleteMethod(resourceGroupName, networkSecurityGroupName, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPostOrDeleteOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The Delete NetworkSecurityGroup operation deletes the specifed network
+ * security group
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} networkSecurityGroupName The name of the network security
+ * group.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.beginDeleteMethod = function (resourceGroupName, networkSecurityGroupName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (networkSecurityGroupName === null || networkSecurityGroupName === undefined || typeof networkSecurityGroupName.valueOf() !== 'string') {
+      throw new Error('networkSecurityGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{networkSecurityGroupName}', encodeURIComponent(networkSecurityGroupName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'DELETE';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 202 &amp;&amp; statusCode !== 200 &amp;&amp; statusCode !== 204) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The Get NetworkSecurityGroups operation retrieves information about the
+ * specified network security group.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} networkSecurityGroupName The name of the network security
+ * group.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {string} [options.expand] expand references resources.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link NetworkSecurityGroup} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.get = function (resourceGroupName, networkSecurityGroupName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  var expand = (options &amp;&amp; options.expand !== undefined) ? options.expand : undefined;
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (networkSecurityGroupName === null || networkSecurityGroupName === undefined || typeof networkSecurityGroupName.valueOf() !== 'string') {
+      throw new Error('networkSecurityGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (expand !== null &amp;&amp; expand !== undefined &amp;&amp; typeof expand.valueOf() !== 'string') {
+      throw new Error('expand must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{networkSecurityGroupName}', encodeURIComponent(networkSecurityGroupName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (expand !== null &amp;&amp; expand !== undefined) {
+    queryParameters.push('$expand=' + encodeURIComponent(expand));
+  }
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['NetworkSecurityGroup']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ *
+ * The Put NetworkSecurityGroup operation creates/updates a network security
+ * groupin the specified resource group.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} networkSecurityGroupName The name of the network security
+ * group.
+ * 
+ * @param {object} parameters Parameters supplied to the create/update Network
+ * Security Group operation
+ * 
+ * @param {array} [parameters.securityRules] Gets or sets Security rules of
+ * network security group
+ * 
+ * @param {array} [parameters.defaultSecurityRules] Gets or sets Default
+ * security rules of network security group
+ * 
+ * @param {array} [parameters.networkInterfaces] Gets collection of references
+ * to Network Interfaces
+ * 
+ * @param {array} [parameters.subnets] Gets collection of references to subnets
+ * 
+ * @param {string} [parameters.resourceGuid] Gets or sets resource guid
+ * property of the network security group resource
+ * 
+ * @param {string} [parameters.provisioningState] Gets or sets Provisioning
+ * state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @param {string} [parameters.etag] Gets a unique read-only string that
+ * changes whenever the resource is updated
+ * 
+ * @param {string} [parameters.id] Resource Id
+ * 
+ * @param {string} [parameters.location] Resource location
+ * 
+ * @param {object} [parameters.tags] Resource tags
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link NetworkSecurityGroup} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.createOrUpdate = function (resourceGroupName, networkSecurityGroupName, parameters, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+
+  // Send request
+  this.beginCreateOrUpdate(resourceGroupName, networkSecurityGroupName, parameters, options, function (err, parsedResult, httpRequest, response){
+    if (err) return callback(err);
+
+    var initialResult = new msRest.HttpOperationResponse();
+    initialResult.request = httpRequest;
+    initialResult.response = response;
+    initialResult.body = response.body;
+    client.getPutOrPatchOperationResult(initialResult, options, function (err, pollingResult) {
+      if (err) return callback(err);
+
+      // Create Result
+      var result = null;
+      httpRequest = pollingResult.request;
+      response = pollingResult.response;
+      var responseBody = pollingResult.body;
+      if (responseBody === '') responseBody = null;
+
+      // Deserialize Response
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['NetworkSecurityGroup']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+
+      return callback(null, result, httpRequest, response);
+    });
+  });
+};
+
+/**
+ * The Put NetworkSecurityGroup operation creates/updates a network security
+ * groupin the specified resource group.
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {string} networkSecurityGroupName The name of the network security
+ * group.
+ * 
+ * @param {object} parameters Parameters supplied to the create/update Network
+ * Security Group operation
+ * 
+ * @param {array} [parameters.securityRules] Gets or sets Security rules of
+ * network security group
+ * 
+ * @param {array} [parameters.defaultSecurityRules] Gets or sets Default
+ * security rules of network security group
+ * 
+ * @param {array} [parameters.networkInterfaces] Gets collection of references
+ * to Network Interfaces
+ * 
+ * @param {array} [parameters.subnets] Gets collection of references to subnets
+ * 
+ * @param {string} [parameters.resourceGuid] Gets or sets resource guid
+ * property of the network security group resource
+ * 
+ * @param {string} [parameters.provisioningState] Gets or sets Provisioning
+ * state of the PublicIP resource Updating/Deleting/Failed
+ * 
+ * @param {string} [parameters.etag] Gets a unique read-only string that
+ * changes whenever the resource is updated
+ * 
+ * @param {string} [parameters.id] Resource Id
+ * 
+ * @param {string} [parameters.location] Resource location
+ * 
+ * @param {object} [parameters.tags] Resource tags
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link NetworkSecurityGroup} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.beginCreateOrUpdate = function (resourceGroupName, networkSecurityGroupName, parameters, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (networkSecurityGroupName === null || networkSecurityGroupName === undefined || typeof networkSecurityGroupName.valueOf() !== 'string') {
+      throw new Error('networkSecurityGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (parameters === null || parameters === undefined) {
+      throw new Error('parameters cannot be null or undefined.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{networkSecurityGroupName}', encodeURIComponent(networkSecurityGroupName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  var requestContent = null;
+  var requestModel = null;
+  try {
+    if (parameters !== null &amp;&amp; parameters !== undefined) {
+      var requestModelMapper = new client.models['NetworkSecurityGroup']().mapper();
+      requestModel = client.serialize(requestModelMapper, parameters, 'parameters');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    var serializationError = new Error(util.format('Error "%s" occurred in serializing the ' + 
+        'payload - "%s"', error.message, util.inspect(parameters, {depth: null})));
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 201 &amp;&amp; statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 201) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['NetworkSecurityGroup']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['NetworkSecurityGroup']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError1 = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError1.request = msRest.stripRequest(httpRequest);
+        deserializationError1.response = msRest.stripResponse(response);
+        return callback(deserializationError1);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The list NetworkSecurityGroups returns all network security groups in a
+ * subscription
+ *
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link NetworkSecurityGroupListResult} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.listAll = function (options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityGroups';
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['NetworkSecurityGroupListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The list NetworkSecurityGroups returns all network security groups in a
+ * resource group
+ *
+ * @param {string} resourceGroupName The name of the resource group.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link NetworkSecurityGroupListResult} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.list = function (resourceGroupName, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = this.client.baseUri +
+                   '//subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  var queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['NetworkSecurityGroupListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The list NetworkSecurityGroups returns all network security groups in a
+ * subscription
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link NetworkSecurityGroupListResult} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.listAllNext = function (nextPageLink, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['NetworkSecurityGroupListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+/**
+ * The list NetworkSecurityGroups returns all network security groups in a
+ * resource group
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ * 
+ * @param {object} [options] Optional Parameters.
+ * 
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ * 
+ * @param {function} callback
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object.
+ *                      See {@link NetworkSecurityGroupListResult} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+NetworkSecurityGroups.prototype.listNext = function (nextPageLink, options, callback) {
+  var client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  var requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+  // trim all duplicate forward slashes in the url
+  var regex = /([^:]\/)\/+/gi;
+  requestUrl = requestUrl.replace(regex, '$1');
+
+  // Create HTTP transport objects
+  var httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(var headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, function (err, response, responseBody) {
+    if (err) {
+      return callback(err);
+    }
+    var statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      var error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      var parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          var resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = util.format('Error "%s" occurred in deserializing the responseBody ' + 
+                         '- "%s" for the default response.', defaultError.message, responseBody);
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    var result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      var parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          var resultMapper = new client.models['NetworkSecurityGroupListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        var deserializationError = new Error(util.format('Error "%s" occurred in deserializing the responseBody - "%s"', error, responseBody));
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+};
+
+
+module.exports = NetworkSecurityGroups;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:21:52 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

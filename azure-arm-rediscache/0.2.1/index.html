@@ -58,81 +58,35 @@
 <h2>Features</h2><ul>
 <li>Manage Redis Cache: create, update, delete, list, get, regenerate key and get-key.</li>
 </ul>
-<h2>How to Install</h2><pre class="prettyprint source lang-bash"><code>npm install azure-arm-rediscache</code></pre><h2>How to Use</h2><h3>Initialise the client and managing Redis Cache</h3><pre class="prettyprint source lang-javascript"><code>var msRestAzure = require('ms-rest-azure');
-var AzureMgmtRedisCache = require('azure-arm-rediscache');
+<h2>How to Install</h2><pre class="prettyprint source lang-bash"><code>npm install azure-arm-rediscache</code></pre><h2>How to Use</h2><h3>Authentication, client creation and listing redis caches in a resource group as an example</h3><pre class="prettyprint source lang-javascript"><code> var msrestAzure = require('ms-rest-azure');
+ var AzureMgmtRedisCache = require('azure-arm-rediscache');
 
-// Create an Azure Redis Cache Management client.
-  var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
-  client = new AzureMgmtRedisCache(credentials, 'your-subscription-id');
-
-  var resourceGroup = 'myResourceGroup';
-  var cacheName = 'myNewCache';
-
-//Create an Azure Redis Cache
-
-  var skuProperties = {
-          capacity : 1,
-          family : C,
-          name : 'Standard'
-      };
-
-  var parameters = {
-          location:'West US',
-          redisVersion : '3.0',
-      enableNonSslPort : false,
-      sku : skuProperties
-      };
-
-  console.info('Creating cache...');
-  client.redis.createOrUpdate(resourceGroup, cacheName, parameters, function (err, result) {
-    if (err) throw err;
-    console.info('Cache created: ' + JSON.stringify(result, null, ' '));
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new AzureMgmtRedisCache(credentials, subscriptionId);
+  client.redis.listByResourceGroup(resourceGroup, workspaceCollectionName, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
   });
-
-
-//Show properties of an existing Azure Redis Cache
-
-  console.info('Getting cache properties...');
-  client.redis.get(resourceGroup, cacheName, function (err, result) {
-    if (err) throw err;
-    console.info('Cache properties: ' + JSON.stringify(result, null, ' '));
-  });
-
-
-//list all caches within a resource group
-
-  console.info('Getting caches within a resource group...');
-  client.redis.listByResourceGroup(resourceGroup, function (err, result) {
-    if (err) throw err;
-    console.info('Caches: ' + JSON.stringify(result, null, ' '));
-  });
-
-//list all caches within your subscription
-
-  console.info('Getting caches within a subscription...');
-  client.redis.list(function (err, result) {
-    if (err) throw err;
-    console.info('Caches: ' + JSON.stringify(result, null, ' '));
-  });
-
-//show primary and secondary keys of the cache
-
-  console.info('Getting cache keys...');
-  client.redis.listKeys(resourceGroup, cacheName, function (err, result) {
-    if (err) throw err;
-    console.info('Cache keys: ' + JSON.stringify(result, null, ' '));
-  });
-
-
-//regenerate  keys of the cache
-
-  var keytype = 'Primary';
-  console.info('Getting cache keys...');
-  client.redis.regenerateKey(resourceGroup, cacheName, keytype, function (err, result) {
-    if (err) throw err;
-    console.info('Cache primary key regenerated');
-    console.info('Regenerated Cache keys: ' + JSON.stringify(result, null, ' '));
-  });</code></pre><h2>Related projects</h2><ul>
+ });</code></pre><h4>Managing a RedisCache</h4><p>  client = new AzureMgmtRedisCache(credentials, 'your-subscription-id');</p>
+<p>  var resourceGroup = 'myResourceGroup';<br>  var cacheName = 'myNewCache';</p>
+<p>//Create an Azure Redis Cache</p>
+<p>  var skuProperties = {<br>          capacity : 1,<br>          family : C,<br>          name : 'Standard'<br>      };</p>
+<p>  var parameters = {<br>          location:'West US',<br>          redisVersion : '3.0',<br>      enableNonSslPort : false,<br>      sku : skuProperties<br>      };</p>
+<p>  console.info('Creating cache...');<br>  client.redis.createOrUpdate(resourceGroup, cacheName, parameters, function (err, result) {<br>    if (err) throw err;<br>    console.info('Cache created: ' + JSON.stringify(result, null, ' '));<br>  });</p>
+<p>//Show properties of an existing Azure Redis Cache</p>
+<p>  console.info('Getting cache properties...');<br>  client.redis.get(resourceGroup, cacheName, function (err, result) {<br>    if (err) throw err;<br>    console.info('Cache properties: ' + JSON.stringify(result, null, ' '));<br>  });</p>
+<p>//list all caches within a resource group</p>
+<p>  console.info('Getting caches within a resource group...');<br>  client.redis.listByResourceGroup(resourceGroup, function (err, result) {<br>    if (err) throw err;<br>    console.info('Caches: ' + JSON.stringify(result, null, ' '));<br>  });</p>
+<p>//list all caches within your subscription</p>
+<p>  console.info('Getting caches within a subscription...');<br>  client.redis.list(function (err, result) {<br>    if (err) throw err;<br>    console.info('Caches: ' + JSON.stringify(result, null, ' '));<br>  });</p>
+<p>//show primary and secondary keys of the cache</p>
+<p>  console.info('Getting cache keys...');<br>  client.redis.listKeys(resourceGroup, cacheName, function (err, result) {<br>    if (err) throw err;<br>    console.info('Cache keys: ' + JSON.stringify(result, null, ' '));<br>  });</p>
+<p>//regenerate  keys of the cache</p>
+<p>  var keytype = 'Primary';<br>  console.info('Getting cache keys...');<br>  client.redis.regenerateKey(resourceGroup, cacheName, keytype, function (err, result) {<br>    if (err) throw err;<br>    console.info('Cache primary key regenerated');<br>    console.info('Regenerated Cache keys: ' + JSON.stringify(result, null, ' '));<br>  });<br>```</p>
+<h2>Related projects</h2><ul>
 <li><a href="https://github.com/Azure/azure-sdk-for-node">Microsoft Azure SDK for Node.js</a></li>
 <li><a href="https://github.com/Azure/autorest">AutoRest</a></li>
 </ul></article>
@@ -148,7 +102,7 @@ var AzureMgmtRedisCache = require('azure-arm-rediscache');
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 08 2016 19:04:13 GMT-0700 (PDT) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:21:55 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

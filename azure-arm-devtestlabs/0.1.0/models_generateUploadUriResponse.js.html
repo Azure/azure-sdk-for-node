@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/generateUploadUriResponse.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ArtifactOperations.html">ArtifactOperations</a><ul class='methods'><li data-type='method'><a href="ArtifactOperations.html#generateArmTemplate">generateArmTemplate</a></li><li data-type='method'><a href="ArtifactOperations.html#getResource">getResource</a></li><li data-type='method'><a href="ArtifactOperations.html#list">list</a></li><li data-type='method'><a href="ArtifactOperations.html#listNext">listNext</a></li></ul></li><li><a href="ArtifactSourceOperations.html">ArtifactSourceOperations</a><ul class='methods'><li data-type='method'><a href="ArtifactSourceOperations.html#createOrUpdateResource">createOrUpdateResource</a></li><li data-type='method'><a href="ArtifactSourceOperations.html#deleteResource">deleteResource</a></li><li data-type='method'><a href="ArtifactSourceOperations.html#getResource">getResource</a></li><li data-type='method'><a href="ArtifactSourceOperations.html#list">list</a></li><li data-type='method'><a href="ArtifactSourceOperations.html#listNext">listNext</a></li><li data-type='method'><a href="ArtifactSourceOperations.html#patchResource">patchResource</a></li></ul></li><li><a href="CostInsightOperations.html">CostInsightOperations</a><ul class='methods'><li data-type='method'><a href="CostInsightOperations.html#beginRefreshData">beginRefreshData</a></li><li data-type='method'><a href="CostInsightOperations.html#getResource">getResource</a></li><li data-type='method'><a href="CostInsightOperations.html#list">list</a></li><li data-type='method'><a href="CostInsightOperations.html#listNext">listNext</a></li><li data-type='method'><a href="CostInsightOperations.html#refreshData">refreshData</a></li></ul></li><li><a href="CostOperations.html">CostOperations</a><ul class='methods'><li data-type='method'><a href="CostOperations.html#beginRefreshData">beginRefreshData</a></li><li data-type='method'><a href="CostOperations.html#getResource">getResource</a></li><li data-type='method'><a href="CostOperations.html#list">list</a></li><li data-type='method'><a href="CostOperations.html#listNext">listNext</a></li><li data-type='method'><a href="CostOperations.html#refreshData">refreshData</a></li></ul></li><li><a href="CustomImageOperations.html">CustomImageOperations</a><ul class='methods'><li data-type='method'><a href="CustomImageOperations.html#beginCreateOrUpdateResource">beginCreateOrUpdateResource</a></li><li data-type='method'><a href="CustomImageOperations.html#beginDeleteResource">beginDeleteResource</a></li><li data-type='method'><a href="CustomImageOperations.html#createOrUpdateResource">createOrUpdateResource</a></li><li data-type='method'><a href="CustomImageOperations.html#deleteResource">deleteResource</a></li><li data-type='method'><a href="CustomImageOperations.html#getResource">getResource</a></li><li data-type='method'><a href="CustomImageOperations.html#list">list</a></li><li data-type='method'><a href="CustomImageOperations.html#listNext">listNext</a></li></ul></li><li><a href="DevTestLabsClient.html">DevTestLabsClient</a></li><li><a href="FormulaOperations.html">FormulaOperations</a><ul class='methods'><li data-type='method'><a href="FormulaOperations.html#beginCreateOrUpdateResource">beginCreateOrUpdateResource</a></li><li data-type='method'><a href="FormulaOperations.html#createOrUpdateResource">createOrUpdateResource</a></li><li data-type='method'><a href="FormulaOperations.html#deleteResource">deleteResource</a></li><li data-type='method'><a href="FormulaOperations.html#getResource">getResource</a></li><li data-type='method'><a href="FormulaOperations.html#list">list</a></li><li data-type='method'><a href="FormulaOperations.html#listNext">listNext</a></li></ul></li><li><a href="GalleryImageOperations.html">GalleryImageOperations</a><ul class='methods'><li data-type='method'><a href="GalleryImageOperations.html#list">list</a></li><li data-type='method'><a href="GalleryImageOperations.html#listNext">listNext</a></li></ul></li><li><a href="LabOperations.html">LabOperations</a><ul class='methods'><li data-type='method'><a href="LabOperations.html#beginCreateEnvironment">beginCreateEnvironment</a></li><li data-type='method'><a href="LabOperations.html#beginCreateOrUpdateResource">beginCreateOrUpdateResource</a></li><li data-type='method'><a href="LabOperations.html#beginDeleteResource">beginDeleteResource</a></li><li data-type='method'><a href="LabOperations.html#createEnvironment">createEnvironment</a></li><li data-type='method'><a href="LabOperations.html#createOrUpdateResource">createOrUpdateResource</a></li><li data-type='method'><a href="LabOperations.html#deleteResource">deleteResource</a></li><li data-type='method'><a href="LabOperations.html#generateUploadUri">generateUploadUri</a></li><li data-type='method'><a href="LabOperations.html#getResource">getResource</a></li><li data-type='method'><a href="LabOperations.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="LabOperations.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="LabOperations.html#listBySubscription">listBySubscription</a></li><li data-type='method'><a href="LabOperations.html#listBySubscriptionNext">listBySubscriptionNext</a></li><li data-type='method'><a href="LabOperations.html#listVhds">listVhds</a></li><li data-type='method'><a href="LabOperations.html#listVhdsNext">listVhdsNext</a></li><li data-type='method'><a href="LabOperations.html#patchResource">patchResource</a></li></ul></li><li><a href="PolicyOperations.html">PolicyOperations</a><ul class='methods'><li data-type='method'><a href="PolicyOperations.html#createOrUpdateResource">createOrUpdateResource</a></li><li data-type='method'><a href="PolicyOperations.html#deleteResource">deleteResource</a></li><li data-type='method'><a href="PolicyOperations.html#getResource">getResource</a></li><li data-type='method'><a href="PolicyOperations.html#list">list</a></li><li data-type='method'><a href="PolicyOperations.html#listNext">listNext</a></li><li data-type='method'><a href="PolicyOperations.html#patchResource">patchResource</a></li></ul></li><li><a href="PolicySet.html">PolicySet</a><ul class='methods'><li data-type='method'><a href="PolicySet.html#evaluatePolicies">evaluatePolicies</a></li></ul></li><li><a href="ScheduleOperations.html">ScheduleOperations</a><ul class='methods'><li data-type='method'><a href="ScheduleOperations.html#beginCreateOrUpdateResource">beginCreateOrUpdateResource</a></li><li data-type='method'><a href="ScheduleOperations.html#beginDeleteResource">beginDeleteResource</a></li><li data-type='method'><a href="ScheduleOperations.html#beginExecute">beginExecute</a></li><li data-type='method'><a href="ScheduleOperations.html#createOrUpdateResource">createOrUpdateResource</a></li><li data-type='method'><a href="ScheduleOperations.html#deleteResource">deleteResource</a></li><li data-type='method'><a href="ScheduleOperations.html#execute">execute</a></li><li data-type='method'><a href="ScheduleOperations.html#getResource">getResource</a></li><li data-type='method'><a href="ScheduleOperations.html#list">list</a></li><li data-type='method'><a href="ScheduleOperations.html#listNext">listNext</a></li><li data-type='method'><a href="ScheduleOperations.html#patchResource">patchResource</a></li></ul></li><li><a href="VirtualMachine.html">VirtualMachine</a><ul class='methods'><li data-type='method'><a href="VirtualMachine.html#applyArtifacts">applyArtifacts</a></li><li data-type='method'><a href="VirtualMachine.html#beginApplyArtifacts">beginApplyArtifacts</a></li><li data-type='method'><a href="VirtualMachine.html#beginCreateOrUpdateResource">beginCreateOrUpdateResource</a></li><li data-type='method'><a href="VirtualMachine.html#beginDeleteResource">beginDeleteResource</a></li><li data-type='method'><a href="VirtualMachine.html#beginStart">beginStart</a></li><li data-type='method'><a href="VirtualMachine.html#beginStop">beginStop</a></li><li data-type='method'><a href="VirtualMachine.html#createOrUpdateResource">createOrUpdateResource</a></li><li data-type='method'><a href="VirtualMachine.html#deleteResource">deleteResource</a></li><li data-type='method'><a href="VirtualMachine.html#getResource">getResource</a></li><li data-type='method'><a href="VirtualMachine.html#list">list</a></li><li data-type='method'><a href="VirtualMachine.html#listNext">listNext</a></li><li data-type='method'><a href="VirtualMachine.html#patchResource">patchResource</a></li><li data-type='method'><a href="VirtualMachine.html#start">start</a></li><li data-type='method'><a href="VirtualMachine.html#stop">stop</a></li></ul></li><li><a href="VirtualNetworkOperations.html">VirtualNetworkOperations</a><ul class='methods'><li data-type='method'><a href="VirtualNetworkOperations.html#beginCreateOrUpdateResource">beginCreateOrUpdateResource</a></li><li data-type='method'><a href="VirtualNetworkOperations.html#beginDeleteResource">beginDeleteResource</a></li><li data-type='method'><a href="VirtualNetworkOperations.html#createOrUpdateResource">createOrUpdateResource</a></li><li data-type='method'><a href="VirtualNetworkOperations.html#deleteResource">deleteResource</a></li><li data-type='method'><a href="VirtualNetworkOperations.html#getResource">getResource</a></li><li data-type='method'><a href="VirtualNetworkOperations.html#list">list</a></li><li data-type='method'><a href="VirtualNetworkOperations.html#listNext">listNext</a></li><li data-type='method'><a href="VirtualNetworkOperations.html#patchResource">patchResource</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#allowPublicIp">allowPublicIp</a></li><li><a href="global.html#artifacts">artifacts</a></li><li><a href="global.html#blobName">blobName</a></li><li><a href="global.html#cost">cost</a></li><li><a href="global.html#costType">costType</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#labVmId">labVmId</a></li><li><a href="global.html#linuxOsState">linuxOsState</a></li><li><a href="global.html#location">location</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#minute">minute</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#policies">policies</a></li><li><a href="global.html#policyViolations">policyViolations</a></li><li><a href="global.html#results">results</a></li><li><a href="global.html#sysPrep">sysPrep</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#time">time</a></li><li><a href="global.html#totalArtifacts">totalArtifacts</a></li><li><a href="global.html#uploadUri">uploadUri</a></li><li><a href="global.html#usePublicIpAddressPermission">usePublicIpAddressPermission</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#valueOffset">valueOffset</a></li><li><a href="global.html#version">version</a></li><li><a href="global.html#windowsOsState">windowsOsState</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/generateUploadUriResponse.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the GenerateUploadUriResponse class.
+ * @constructor
+ * Reponse body for generating an upload URI.
+ * @member {string} [uploadUri] The upload URI for the VHD.
+ * 
+ */
+function GenerateUploadUriResponse() {
+}
+
+/**
+ * Defines the metadata of GenerateUploadUriResponse
+ *
+ * @returns {object} metadata of GenerateUploadUriResponse
+ *
+ */
+GenerateUploadUriResponse.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'GenerateUploadUriResponse',
+    type: {
+      name: 'Composite',
+      className: 'GenerateUploadUriResponse',
+      modelProperties: {
+        uploadUri: {
+          required: false,
+          serializedName: 'uploadUri',
+          type: {
+            name: 'String'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = GenerateUploadUriResponse;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:21:37 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

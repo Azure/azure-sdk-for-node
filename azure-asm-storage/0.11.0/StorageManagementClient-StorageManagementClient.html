@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>StorageManagementClient - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="StorageAccountOperations-StorageAccountOperations.html">StorageAccountOperations</a><ul class='methods'><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#abortMigration">abortMigration</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#beginAbortMigration">beginAbortMigration</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#beginCommitMigration">beginCommitMigration</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#beginCreating">beginCreating</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#beginPrepareMigration">beginPrepareMigration</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#checkNameAvailability">checkNameAvailability</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#commitMigration">commitMigration</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#create">create</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#get">get</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#getKeys">getKeys</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#list">list</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#prepareMigration">prepareMigration</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#regenerateKeys">regenerateKeys</a></li><li data-type='method'><a href="StorageAccountOperations-StorageAccountOperations.html#update">update</a></li></ul></li><li><a href="StorageManagementClient-StorageManagementClient.html">StorageManagementClient</a><ul class='methods'><li data-type='method'><a href="StorageManagementClient-StorageManagementClient.html#getOperationStatus">getOperationStatus</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#createCertificateCloudCredentials">createCertificateCloudCredentials</a></li><li><a href="global.html#createStorageManagementClient">createStorageManagementClient</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">StorageManagementClient</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        StorageManagementClient
+        </h2>
+        
+            <div class="class-description"><p>The Service Management API provides programmatic access to much of the<br>functionality available through the Management Portal. The Service<br>Management API is a REST API. All API operations are performed over SSL<br>and are mutually authenticated using X.509 v3 certificates.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/ee460799.aspx for<br>more information)<br>Initializes a new instance of the StorageManagementClient class.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="StorageManagementClient"><span class="type-signature"></span>new StorageManagementClient<span class="signature">(credentials, baseUri<span class="signature-attributes">opt</span>, filters)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>credentials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">SubscriptionCloudCredentials</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets subscription<br>credentials which uniquely identify Microsoft Azure subscription. The<br>subscription ID forms part of the URI for every service call.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>subscriptionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>baseUri</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets the URI used as the base for all cloud<br>service requests.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>filters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="storageAccounts"><span class="type-signature"></span>storageAccounts<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>Provides an instance of the<br><a href="-StorageAccountOperations.html">StorageAccountOperations</a> object.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line84">line 84</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="getOperationStatus"><span class="type-signature"></span>getOperationStatus<span class="signature">(requestId, callback)</span><span class="type-signature"> &rarr; {Stream}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>The Get Operation Status operation returns the status of the specified<br>operation. After calling an asynchronous operation, you can call Get<br>Operation Status to determine whether the operation has succeeded,<br>failed, or is still in progress.  (see<br>http://msdn.microsoft.com/en-us/library/windowsazure/ee460783.aspx for<br>more information)</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>requestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The request ID for the request you wish to<br>track. The request ID is returned in the x-ms-request-id response header<br>for every request.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="storageManagementClient.js.html">storageManagementClient.js</a>, <a href="storageManagementClient.js.html#line105">line 105</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The response stream.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Stream</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 15:22:06 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
