@@ -440,18 +440,37 @@ export interface USqlView extends CatalogItem {
  * 
  * @member {string} [name] Gets or sets the name of the table partition.
  * 
+ * @member {object} [parentName] Gets or sets the Ddl object of the
+ * partition's parent.
+ * 
+ * @member {string} [parentName.firstPart] Gets or sets the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [parentName.secondPart] Gets or sets the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [parentName.thirdPart] Gets or sets the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [parentName.server] Gets or sets the name of the table
+ * associated with this database and schema.
+ * 
  * @member {number} [indexId] Gets or sets the index ID for this partition.
  * 
  * @member {array} [label] Gets or sets the list of labels associated with
  * this partition.
+ * 
+ * @member {date} [createDate] Gets or sets the creation time of the partition
  * 
  */
 export interface USqlTablePartition extends CatalogItem {
     databaseName?: string;
     schemaName?: string;
     name?: string;
+    parentName?: DdlName;
     indexId?: number;
     label?: string[];
+    createDate?: Date;
 }
 
 /**
