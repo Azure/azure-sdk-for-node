@@ -35,11 +35,10 @@ export interface Catalog {
      * @param {object} parameters The parameters required to create the secret
      * (name and password)
      * 
-     * @param {string} [parameters.password] Gets or sets the password for the
-     * secret to pass in
+     * @param {string} [parameters.password] the password for the secret to pass in
      * 
-     * @param {string} [parameters.uri] Gets or sets the URI identifier for the
-     * secret in the format <hostname>:<port>
+     * @param {string} [parameters.uri] the URI identifier for the secret in the
+     * format <hostname>:<port>
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -66,11 +65,10 @@ export interface Catalog {
      * @param {object} parameters The parameters required to modify the secret
      * (name and password)
      * 
-     * @param {string} [parameters.password] Gets or sets the password for the
-     * secret to pass in
+     * @param {string} [parameters.password] the password for the secret to pass in
      * 
-     * @param {string} [parameters.uri] Gets or sets the URI identifier for the
-     * secret in the format <hostname>:<port>
+     * @param {string} [parameters.uri] the URI identifier for the secret in the
+     * format <hostname>:<port>
      * 
      * @param {object} [options] Optional Parameters.
      * 
