@@ -19,7 +19,7 @@ declare class DataLakeAnalyticsAccountManagementClient {
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
      *
-     * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+     * @param {string} subscriptionId - Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
      *
      * @param {string} [baseUri] - The base URI of the service.
      *

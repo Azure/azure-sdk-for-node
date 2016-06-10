@@ -712,7 +712,7 @@ export interface TaskConstraints {
  * will run on the same compute node for as long as the Job Manager is
  * running. If false, other tasks can run simultaneously with the Job Manager
  * on a compute node. (The Job Manager task counts normally against the
- * node’s concurrent task limit, so this is only relevant if the node allows
+ * node's concurrent task limit, so this is only relevant if the node allows
  * multiple concurrent tasks.)
  * 
  */
@@ -1124,7 +1124,7 @@ export interface CloudServiceConfiguration {
  * Machines Marketplace image. A value of 'latest' can be specified to select
  * the latest version of an image. If omitted, the default is 'latest'.
  * 
- * @member {string} [nodeAgentSKUId] The SKU of Batch Node Agent to be
+ * @member {string} nodeAgentSKUId The SKU of Batch Node Agent to be
  * provisioned on the compute node. The Batch node agent is a program that
  * runs on each node in the pool, and provides the command-and-control
  * interface between the node and the Batch service. There are different
@@ -1142,7 +1142,7 @@ export interface CloudServiceConfiguration {
  */
 export interface VirtualMachineConfiguration {
     imageReference: ImageReference;
-    nodeAgentSKUId?: string;
+    nodeAgentSKUId: string;
     windowsConfiguration?: WindowsConfiguration;
 }
 
@@ -1567,7 +1567,7 @@ export interface PoolInformation {
  * other tasks will run on the same compute node for as long as the Job
  * Manager is running. If false, other tasks can run simultaneously with the
  * Job Manager on a compute node. (The Job Manager task counts normally
- * against the node’s concurrent task limit, so this is only relevant if the
+ * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobPreparationTask] The Job Preparation task for jobs
@@ -2103,7 +2103,7 @@ export interface JobScheduleStatistics {
  * runs. If true, no other tasks will run on the same compute node for as
  * long as the Job Manager is running. If false, other tasks can run
  * simultaneously with the Job Manager on a compute node. (The Job Manager
- * task counts normally against the node’s concurrent task limit, so this is
+ * task counts normally against the node's concurrent task limit, so this is
  * only relevant if the node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobSpecification.jobPreparationTask] The Job Preparation
@@ -2603,7 +2603,7 @@ export interface CloudJobSchedule {
  * runs. If true, no other tasks will run on the same compute node for as
  * long as the Job Manager is running. If false, other tasks can run
  * simultaneously with the Job Manager on a compute node. (The Job Manager
- * task counts normally against the node’s concurrent task limit, so this is
+ * task counts normally against the node's concurrent task limit, so this is
  * only relevant if the node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobSpecification.jobPreparationTask] The Job Preparation
@@ -3080,7 +3080,7 @@ export interface JobExecutionInformation {
  * other tasks will run on the same compute node for as long as the Job
  * Manager is running. If false, other tasks can run simultaneously with the
  * Job Manager on a compute node. (The Job Manager task counts normally
- * against the node’s concurrent task limit, so this is only relevant if the
+ * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobPreparationTask] The Job Preparation task.
@@ -3168,7 +3168,7 @@ export interface JobExecutionInformation {
  * the job (including the Job Manager, Job Preparation and Job Release tasks).
  * 
  * @member {object} [poolInfo] The pool on which the Batch service runs the
- * job’s tasks.
+ * job's tasks.
  * 
  * @member {string} [poolInfo.poolId] The id of an existing pool. All the
  * tasks of the job will run on the specified pool. You must specify either
@@ -3534,7 +3534,7 @@ export interface CloudJob {
  * other tasks will run on the same compute node for as long as the Job
  * Manager is running. If false, other tasks can run simultaneously with the
  * Job Manager on a compute node. (The Job Manager task counts normally
- * against the node’s concurrent task limit, so this is only relevant if the
+ * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobPreparationTask] The Job Preparation task.
@@ -3622,7 +3622,7 @@ export interface CloudJob {
  * the job (including the Job Manager, Job Preparation and Job Release tasks).
  * 
  * @member {object} poolInfo The pool on which the Batch service runs the
- * job’s tasks.
+ * job's tasks.
  * 
  * @member {string} [poolInfo.poolId] The id of an existing pool. All the
  * tasks of the job will run on the specified pool. You must specify either
@@ -5797,7 +5797,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * runs. If true, no other tasks will run on the same compute node for as
  * long as the Job Manager is running. If false, other tasks can run
  * simultaneously with the Job Manager on a compute node. (The Job Manager
- * task counts normally against the node’s concurrent task limit, so this is
+ * task counts normally against the node's concurrent task limit, so this is
  * only relevant if the node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobSpecification.jobPreparationTask] The Job Preparation
@@ -6210,7 +6210,7 @@ export interface JobSchedulePatchParameter {
  * runs. If true, no other tasks will run on the same compute node for as
  * long as the Job Manager is running. If false, other tasks can run
  * simultaneously with the Job Manager on a compute node. (The Job Manager
- * task counts normally against the node’s concurrent task limit, so this is
+ * task counts normally against the node's concurrent task limit, so this is
  * only relevant if the node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobSpecification.jobPreparationTask] The Job Preparation
@@ -7253,7 +7253,7 @@ export interface NodeRemoveParameter {
  * @class
  * Initializes a new instance of the ApplicationListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Application_list operation.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response.
  * 
@@ -7284,7 +7284,7 @@ export interface ApplicationListOptions {
  * @class
  * Initializes a new instance of the ApplicationGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Application_get operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7311,7 +7311,7 @@ export interface ApplicationGetOptions {
  * @class
  * Initializes a new instance of the PoolListPoolUsageMetricsOptions class.
  * @constructor
- * Additional parameters for the listPoolUsageMetrics operation.
+ * Additional parameters for the Pool_listPoolUsageMetrics operation.
  * @member {date} [startTime] The earliest time from which to include metrics.
  * This must be at least two and a half hours before the current time.
  * 
@@ -7353,7 +7353,7 @@ export interface PoolListPoolUsageMetricsOptions {
  * @class
  * Initializes a new instance of the AccountListNodeAgentSkusOptions class.
  * @constructor
- * Additional parameters for the listNodeAgentSkus operation.
+ * Additional parameters for the Account_listNodeAgentSkus operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -7387,7 +7387,7 @@ export interface AccountListNodeAgentSkusOptions {
  * @class
  * Initializes a new instance of the PoolGetAllPoolsLifetimeStatisticsOptions class.
  * @constructor
- * Additional parameters for the getAllPoolsLifetimeStatistics operation.
+ * Additional parameters for the Pool_getAllPoolsLifetimeStatistics operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7414,7 +7414,7 @@ export interface PoolGetAllPoolsLifetimeStatisticsOptions {
  * @class
  * Initializes a new instance of the JobGetAllJobsLifetimeStatisticsOptions class.
  * @constructor
- * Additional parameters for the getAllJobsLifetimeStatistics operation.
+ * Additional parameters for the Job_getAllJobsLifetimeStatistics operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7441,7 +7441,7 @@ export interface JobGetAllJobsLifetimeStatisticsOptions {
  * @class
  * Initializes a new instance of the CertificateAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the Certificate_add operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7468,7 +7468,7 @@ export interface CertificateAddOptions {
  * @class
  * Initializes a new instance of the CertificateListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Certificate_list operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -7505,7 +7505,7 @@ export interface CertificateListOptions {
  * @class
  * Initializes a new instance of the CertificateCancelDeletionOptions class.
  * @constructor
- * Additional parameters for the cancelDeletion operation.
+ * Additional parameters for the Certificate_cancelDeletion operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7532,7 +7532,7 @@ export interface CertificateCancelDeletionOptions {
  * @class
  * Initializes a new instance of the CertificateDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the Certificate_deleteMethod operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7559,7 +7559,7 @@ export interface CertificateDeleteMethodOptions {
  * @class
  * Initializes a new instance of the CertificateGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Certificate_get operation.
  * @member {string} [select] An OData $select clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
@@ -7589,7 +7589,7 @@ export interface CertificateGetOptions {
  * @class
  * Initializes a new instance of the FileDeleteFromTaskOptions class.
  * @constructor
- * Additional parameters for the deleteFromTask operation.
+ * Additional parameters for the File_deleteFromTask operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7616,7 +7616,7 @@ export interface FileDeleteFromTaskOptions {
  * @class
  * Initializes a new instance of the FileGetFromTaskOptions class.
  * @constructor
- * Additional parameters for the getFromTask operation.
+ * Additional parameters for the File_getFromTask operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7657,7 +7657,7 @@ export interface FileGetFromTaskOptions {
  * @class
  * Initializes a new instance of the FileGetNodeFilePropertiesFromTaskOptions class.
  * @constructor
- * Additional parameters for the getNodeFilePropertiesFromTask operation.
+ * Additional parameters for the File_getNodeFilePropertiesFromTask operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7694,7 +7694,7 @@ export interface FileGetNodeFilePropertiesFromTaskOptions {
  * @class
  * Initializes a new instance of the FileDeleteFromComputeNodeOptions class.
  * @constructor
- * Additional parameters for the deleteFromComputeNode operation.
+ * Additional parameters for the File_deleteFromComputeNode operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7721,7 +7721,7 @@ export interface FileDeleteFromComputeNodeOptions {
  * @class
  * Initializes a new instance of the FileGetFromComputeNodeOptions class.
  * @constructor
- * Additional parameters for the getFromComputeNode operation.
+ * Additional parameters for the File_getFromComputeNode operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7762,7 +7762,7 @@ export interface FileGetFromComputeNodeOptions {
  * @class
  * Initializes a new instance of the FileGetNodeFilePropertiesFromComputeNodeOptions class.
  * @constructor
- * Additional parameters for the getNodeFilePropertiesFromComputeNode
+ * Additional parameters for the File_getNodeFilePropertiesFromComputeNode
  * operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
@@ -7800,7 +7800,7 @@ export interface FileGetNodeFilePropertiesFromComputeNodeOptions {
  * @class
  * Initializes a new instance of the FileListFromTaskOptions class.
  * @constructor
- * Additional parameters for the listFromTask operation.
+ * Additional parameters for the File_listFromTask operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -7834,7 +7834,7 @@ export interface FileListFromTaskOptions {
  * @class
  * Initializes a new instance of the FileListFromComputeNodeOptions class.
  * @constructor
- * Additional parameters for the listFromComputeNode operation.
+ * Additional parameters for the File_listFromComputeNode operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
@@ -7868,7 +7868,7 @@ export interface FileListFromComputeNodeOptions {
  * @class
  * Initializes a new instance of the JobScheduleExistsOptions class.
  * @constructor
- * Additional parameters for the exists operation.
+ * Additional parameters for the JobSchedule_exists operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7915,7 +7915,7 @@ export interface JobScheduleExistsOptions {
  * @class
  * Initializes a new instance of the JobScheduleDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the JobSchedule_deleteMethod operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -7962,7 +7962,7 @@ export interface JobScheduleDeleteMethodOptions {
  * @class
  * Initializes a new instance of the JobScheduleGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the JobSchedule_get operation.
  * @member {string} [select] An OData $select clause.
  * 
  * @member {string} [expand] An OData $expand clause.
@@ -8015,7 +8015,7 @@ export interface JobScheduleGetOptions {
  * @class
  * Initializes a new instance of the JobSchedulePatchOptions class.
  * @constructor
- * Additional parameters for the patch operation.
+ * Additional parameters for the JobSchedule_patch operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8062,7 +8062,7 @@ export interface JobSchedulePatchOptions {
  * @class
  * Initializes a new instance of the JobScheduleUpdateOptions class.
  * @constructor
- * Additional parameters for the update operation.
+ * Additional parameters for the JobSchedule_update operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8109,7 +8109,7 @@ export interface JobScheduleUpdateOptions {
  * @class
  * Initializes a new instance of the JobScheduleDisableOptions class.
  * @constructor
- * Additional parameters for the disable operation.
+ * Additional parameters for the JobSchedule_disable operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8156,7 +8156,7 @@ export interface JobScheduleDisableOptions {
  * @class
  * Initializes a new instance of the JobScheduleEnableOptions class.
  * @constructor
- * Additional parameters for the enable operation.
+ * Additional parameters for the JobSchedule_enable operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8203,7 +8203,7 @@ export interface JobScheduleEnableOptions {
  * @class
  * Initializes a new instance of the JobScheduleTerminateOptions class.
  * @constructor
- * Additional parameters for the terminate operation.
+ * Additional parameters for the JobSchedule_terminate operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8250,7 +8250,7 @@ export interface JobScheduleTerminateOptions {
  * @class
  * Initializes a new instance of the JobScheduleAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the JobSchedule_add operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8277,7 +8277,7 @@ export interface JobScheduleAddOptions {
  * @class
  * Initializes a new instance of the JobScheduleListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the JobSchedule_list operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8317,7 +8317,7 @@ export interface JobScheduleListOptions {
  * @class
  * Initializes a new instance of the JobDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the Job_deleteMethod operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8364,7 +8364,7 @@ export interface JobDeleteMethodOptions {
  * @class
  * Initializes a new instance of the JobGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Job_get operation.
  * @member {string} [select] An OData $select clause.
  * 
  * @member {string} [expand] An OData $expand clause.
@@ -8397,7 +8397,7 @@ export interface JobGetOptions {
  * @class
  * Initializes a new instance of the JobPatchOptions class.
  * @constructor
- * Additional parameters for the patch operation.
+ * Additional parameters for the Job_patch operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8444,7 +8444,7 @@ export interface JobPatchOptions {
  * @class
  * Initializes a new instance of the JobUpdateOptions class.
  * @constructor
- * Additional parameters for the update operation.
+ * Additional parameters for the Job_update operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8491,7 +8491,7 @@ export interface JobUpdateOptions {
  * @class
  * Initializes a new instance of the JobDisableOptions class.
  * @constructor
- * Additional parameters for the disable operation.
+ * Additional parameters for the Job_disable operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8538,7 +8538,7 @@ export interface JobDisableOptions {
  * @class
  * Initializes a new instance of the JobEnableOptions class.
  * @constructor
- * Additional parameters for the enable operation.
+ * Additional parameters for the Job_enable operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8585,7 +8585,7 @@ export interface JobEnableOptions {
  * @class
  * Initializes a new instance of the JobTerminateOptions class.
  * @constructor
- * Additional parameters for the terminate operation.
+ * Additional parameters for the Job_terminate operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8632,7 +8632,7 @@ export interface JobTerminateOptions {
  * @class
  * Initializes a new instance of the JobAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the Job_add operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8659,7 +8659,7 @@ export interface JobAddOptions {
  * @class
  * Initializes a new instance of the JobListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Job_list operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8699,7 +8699,7 @@ export interface JobListOptions {
  * @class
  * Initializes a new instance of the JobListFromJobScheduleOptions class.
  * @constructor
- * Additional parameters for the listFromJobSchedule operation.
+ * Additional parameters for the Job_listFromJobSchedule operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8739,7 +8739,8 @@ export interface JobListFromJobScheduleOptions {
  * @class
  * Initializes a new instance of the JobListPreparationAndReleaseTaskStatusOptions class.
  * @constructor
- * Additional parameters for the listPreparationAndReleaseTaskStatus operation.
+ * Additional parameters for the Job_listPreparationAndReleaseTaskStatus
+ * operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8776,7 +8777,7 @@ export interface JobListPreparationAndReleaseTaskStatusOptions {
  * @class
  * Initializes a new instance of the PoolAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the Pool_add operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8803,7 +8804,7 @@ export interface PoolAddOptions {
  * @class
  * Initializes a new instance of the PoolListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Pool_list operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8843,7 +8844,7 @@ export interface PoolListOptions {
  * @class
  * Initializes a new instance of the PoolDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the Pool_deleteMethod operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8890,7 +8891,7 @@ export interface PoolDeleteMethodOptions {
  * @class
  * Initializes a new instance of the PoolExistsOptions class.
  * @constructor
- * Additional parameters for the exists operation.
+ * Additional parameters for the Pool_exists operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -8937,7 +8938,7 @@ export interface PoolExistsOptions {
  * @class
  * Initializes a new instance of the PoolGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Pool_get operation.
  * @member {string} [select] An OData $select clause.
  * 
  * @member {string} [expand] An OData $expand clause.
@@ -8990,7 +8991,7 @@ export interface PoolGetOptions {
  * @class
  * Initializes a new instance of the PoolPatchOptions class.
  * @constructor
- * Additional parameters for the patch operation.
+ * Additional parameters for the Pool_patch operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9037,7 +9038,7 @@ export interface PoolPatchOptions {
  * @class
  * Initializes a new instance of the PoolDisableAutoScaleOptions class.
  * @constructor
- * Additional parameters for the disableAutoScale operation.
+ * Additional parameters for the Pool_disableAutoScale operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9064,7 +9065,7 @@ export interface PoolDisableAutoScaleOptions {
  * @class
  * Initializes a new instance of the PoolEnableAutoScaleOptions class.
  * @constructor
- * Additional parameters for the enableAutoScale operation.
+ * Additional parameters for the Pool_enableAutoScale operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9111,7 +9112,7 @@ export interface PoolEnableAutoScaleOptions {
  * @class
  * Initializes a new instance of the PoolEvaluateAutoScaleOptions class.
  * @constructor
- * Additional parameters for the evaluateAutoScale operation.
+ * Additional parameters for the Pool_evaluateAutoScale operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9138,7 +9139,7 @@ export interface PoolEvaluateAutoScaleOptions {
  * @class
  * Initializes a new instance of the PoolResizeOptions class.
  * @constructor
- * Additional parameters for the resize operation.
+ * Additional parameters for the Pool_resize operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9185,7 +9186,7 @@ export interface PoolResizeOptions {
  * @class
  * Initializes a new instance of the PoolStopResizeOptions class.
  * @constructor
- * Additional parameters for the stopResize operation.
+ * Additional parameters for the Pool_stopResize operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9232,7 +9233,7 @@ export interface PoolStopResizeOptions {
  * @class
  * Initializes a new instance of the PoolUpdatePropertiesOptions class.
  * @constructor
- * Additional parameters for the updateProperties operation.
+ * Additional parameters for the Pool_updateProperties operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9259,7 +9260,7 @@ export interface PoolUpdatePropertiesOptions {
  * @class
  * Initializes a new instance of the PoolUpgradeOSOptions class.
  * @constructor
- * Additional parameters for the upgradeOS operation.
+ * Additional parameters for the Pool_upgradeOS operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9306,7 +9307,7 @@ export interface PoolUpgradeOSOptions {
  * @class
  * Initializes a new instance of the PoolRemoveNodesOptions class.
  * @constructor
- * Additional parameters for the removeNodes operation.
+ * Additional parameters for the Pool_removeNodes operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9353,7 +9354,7 @@ export interface PoolRemoveNodesOptions {
  * @class
  * Initializes a new instance of the TaskAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the Task_add operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9380,7 +9381,7 @@ export interface TaskAddOptions {
  * @class
  * Initializes a new instance of the TaskListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Task_list operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -9420,7 +9421,7 @@ export interface TaskListOptions {
  * @class
  * Initializes a new instance of the TaskAddCollectionOptions class.
  * @constructor
- * Additional parameters for the addCollection operation.
+ * Additional parameters for the Task_addCollection operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9447,7 +9448,7 @@ export interface TaskAddCollectionOptions {
  * @class
  * Initializes a new instance of the TaskDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the Task_deleteMethod operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9494,7 +9495,7 @@ export interface TaskDeleteMethodOptions {
  * @class
  * Initializes a new instance of the TaskGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Task_get operation.
  * @member {string} [select] An OData $select clause.
  * 
  * @member {string} [expand] An OData $expand clause.
@@ -9547,7 +9548,7 @@ export interface TaskGetOptions {
  * @class
  * Initializes a new instance of the TaskUpdateOptions class.
  * @constructor
- * Additional parameters for the update operation.
+ * Additional parameters for the Task_update operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9594,7 +9595,7 @@ export interface TaskUpdateOptions {
  * @class
  * Initializes a new instance of the TaskListSubtasksOptions class.
  * @constructor
- * Additional parameters for the listSubtasks operation.
+ * Additional parameters for the Task_listSubtasks operation.
  * @member {string} [select] An OData $select clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
@@ -9624,7 +9625,7 @@ export interface TaskListSubtasksOptions {
  * @class
  * Initializes a new instance of the TaskTerminateOptions class.
  * @constructor
- * Additional parameters for the terminate operation.
+ * Additional parameters for the Task_terminate operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9671,7 +9672,7 @@ export interface TaskTerminateOptions {
  * @class
  * Initializes a new instance of the ComputeNodeAddUserOptions class.
  * @constructor
- * Additional parameters for the addUser operation.
+ * Additional parameters for the ComputeNode_addUser operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9698,7 +9699,7 @@ export interface ComputeNodeAddUserOptions {
  * @class
  * Initializes a new instance of the ComputeNodeDeleteUserOptions class.
  * @constructor
- * Additional parameters for the deleteUser operation.
+ * Additional parameters for the ComputeNode_deleteUser operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9725,7 +9726,7 @@ export interface ComputeNodeDeleteUserOptions {
  * @class
  * Initializes a new instance of the ComputeNodeUpdateUserOptions class.
  * @constructor
- * Additional parameters for the updateUser operation.
+ * Additional parameters for the ComputeNode_updateUser operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9752,7 +9753,7 @@ export interface ComputeNodeUpdateUserOptions {
  * @class
  * Initializes a new instance of the ComputeNodeGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the ComputeNode_get operation.
  * @member {string} [select] An OData $select clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
@@ -9782,7 +9783,7 @@ export interface ComputeNodeGetOptions {
  * @class
  * Initializes a new instance of the ComputeNodeRebootOptions class.
  * @constructor
- * Additional parameters for the reboot operation.
+ * Additional parameters for the ComputeNode_reboot operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9809,7 +9810,7 @@ export interface ComputeNodeRebootOptions {
  * @class
  * Initializes a new instance of the ComputeNodeReimageOptions class.
  * @constructor
- * Additional parameters for the reimage operation.
+ * Additional parameters for the ComputeNode_reimage operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9836,7 +9837,7 @@ export interface ComputeNodeReimageOptions {
  * @class
  * Initializes a new instance of the ComputeNodeDisableSchedulingOptions class.
  * @constructor
- * Additional parameters for the disableScheduling operation.
+ * Additional parameters for the ComputeNode_disableScheduling operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9863,7 +9864,7 @@ export interface ComputeNodeDisableSchedulingOptions {
  * @class
  * Initializes a new instance of the ComputeNodeEnableSchedulingOptions class.
  * @constructor
- * Additional parameters for the enableScheduling operation.
+ * Additional parameters for the ComputeNode_enableScheduling operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9890,7 +9891,7 @@ export interface ComputeNodeEnableSchedulingOptions {
  * @class
  * Initializes a new instance of the ComputeNodeGetRemoteLoginSettingsOptions class.
  * @constructor
- * Additional parameters for the getRemoteLoginSettings operation.
+ * Additional parameters for the ComputeNode_getRemoteLoginSettings operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9917,7 +9918,7 @@ export interface ComputeNodeGetRemoteLoginSettingsOptions {
  * @class
  * Initializes a new instance of the ComputeNodeGetRemoteDesktopOptions class.
  * @constructor
- * Additional parameters for the getRemoteDesktop operation.
+ * Additional parameters for the ComputeNode_getRemoteDesktop operation.
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds.
  * 
@@ -9944,7 +9945,7 @@ export interface ComputeNodeGetRemoteDesktopOptions {
  * @class
  * Initializes a new instance of the ComputeNodeListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the ComputeNode_list operation.
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
