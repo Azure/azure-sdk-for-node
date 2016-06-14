@@ -19,7 +19,7 @@ npm install azure-cli -g
   - For non 2FA enabled user accounts `azure login -u user1@constosocorp.com`
 
 After successful login, please follow the steps mentioned below to create a serviceprincipal:
-#### Step 0: Please make sure you have selected the correct subscription. The service principal will have access to your current subscription.
+#### Step 0. Please make sure you have selected the correct subscription. The service principal will have access to your current subscription.
 - To list all your subscriptions: `azure account list`
 - To set the subscription of your choice: `azure account set "your subscription name"`
 
