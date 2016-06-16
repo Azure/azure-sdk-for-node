@@ -880,32 +880,6 @@ export interface ResourceProviderOperationDisplayProperties {
 
 /**
  * @class
- * Initializes a new instance of the ResourceProviderOperationDefinition class.
- * @constructor
- * Resource provider operation information.
- * @member {string} [name] Gets or sets the provider operation name.
- * 
- * @member {object} [display] Gets or sets the display property of the
- * provider operation.
- * 
- * @member {string} [display.publisher] Gets or sets operation description.
- * 
- * @member {string} [display.provider] Gets or sets operation provider.
- * 
- * @member {string} [display.resource] Gets or sets operation resource.
- * 
- * @member {string} [display.operation] Gets or sets operation.
- * 
- * @member {string} [display.description] Gets or sets operation description.
- * 
- */
-export interface ResourceProviderOperationDefinition {
-    name?: string;
-    display?: ResourceProviderOperationDisplayProperties;
-}
-
-/**
- * @class
  * Initializes a new instance of the SubResource class.
  * @constructor
  * @member {string} [id] Resource Id

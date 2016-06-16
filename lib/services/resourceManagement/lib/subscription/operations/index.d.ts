@@ -67,23 +67,6 @@ export interface Subscriptions {
     list(callback: ServiceCallback<models.SubscriptionListResult>): void;
 
     /**
-     * Gets a list of the subscription locations.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listLocationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocationListResult>): void;
-    listLocationsNext(nextPageLink: string, callback: ServiceCallback<models.LocationListResult>): void;
-
-    /**
      * Gets a list of the subscriptionIds.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
