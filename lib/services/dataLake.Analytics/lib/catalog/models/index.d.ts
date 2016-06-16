@@ -336,6 +336,21 @@ export interface ExternalTable {
 
 /**
  * @class
+ * Initializes a new instance of the TypeFieldInfo class.
+ * @constructor
+ * A Data Lake Analytics catalog type field information item.
+ * @member {string} [name] the name of the field associated with this type.
+ * 
+ * @member {string} [type] the type of the field.
+ * 
+ */
+export interface TypeFieldInfo {
+    name?: string;
+    type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlTable class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table item.
@@ -379,6 +394,19 @@ export interface ExternalTable {
  * @member {uuid} [externalTable.dataSource.version] the version of the
  * external data source.
  * 
+ * @member {object} [distributionInfo] the distributions info of the table
+ * 
+ * @member {number} [distributionInfo.type] the type of this distribution.
+ * 
+ * @member {array} [distributionInfo.keys] the list of directed columns in the
+ * distribution
+ * 
+ * @member {number} [distributionInfo.count] the count of indices using this
+ * distribution.
+ * 
+ * @member {number} [distributionInfo.dynamicCount] the dynamic count of
+ * indices using this distribution.
+ * 
  */
 export interface USqlTable extends CatalogItem {
     databaseName?: string;
@@ -388,6 +416,85 @@ export interface USqlTable extends CatalogItem {
     indexList?: USqlIndex[];
     partitionKeyList?: string[];
     externalTable?: ExternalTable;
+    distributionInfo?: USqlDistributionInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the USqlType class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL type item.
+ * @member {string} [databaseName] the name of the database.
+ * 
+ * @member {string} [schemaName] the name of the schema associated with this
+ * table and database.
+ * 
+ * @member {string} [name] the name of type for this type.
+ * 
+ * @member {string} [typeFamily] the type family for this type.
+ * 
+ * @member {string} [cSharpName] the C# name for this type.
+ * 
+ * @member {string} [fullCSharpName] the fully qualified C# name for this type.
+ * 
+ * @member {number} [systemTypeId] the system type ID for this type.
+ * 
+ * @member {number} [userTypeId] the user type ID for this type.
+ * 
+ * @member {number} [schemaId] the schema ID for this type.
+ * 
+ * @member {number} [principalId] the principal ID for this type.
+ * 
+ * @member {boolean} [isNullable] the the switch indicating if this type is
+ * nullable.
+ * 
+ * @member {boolean} [isUserDefined] the the switch indicating if this type is
+ * user defined.
+ * 
+ * @member {boolean} [isAssemblyType] the the switch indicating if this type
+ * is an assembly type.
+ * 
+ * @member {boolean} [isTableType] the the switch indicating if this type is a
+ * table type.
+ * 
+ * @member {boolean} [isComplexType] the the switch indicating if this type is
+ * a complex type.
+ * 
+ */
+export interface USqlType extends CatalogItem {
+    databaseName?: string;
+    schemaName?: string;
+    name?: string;
+    typeFamily?: string;
+    cSharpName?: string;
+    fullCSharpName?: string;
+    systemTypeId?: number;
+    userTypeId?: number;
+    schemaId?: number;
+    principalId?: number;
+    isNullable?: boolean;
+    isUserDefined?: boolean;
+    isAssemblyType?: boolean;
+    isTableType?: boolean;
+    isComplexType?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the USqlTableType class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL table type item.
+ * @member {object} [columns] the type field information associated with this
+ * table type.
+ * 
+ * @member {string} [columns.name] the name of the field associated with this
+ * type.
+ * 
+ * @member {string} [columns.type] the type of the field.
+ * 
+ */
+export interface USqlTableType extends USqlType {
+    columns?: TypeFieldInfo;
 }
 
 /**
@@ -507,66 +614,6 @@ export interface USqlTableStatistics extends CatalogItem {
     hasFilter?: boolean;
     filterDefinition?: string;
     colNames?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlType class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL type item.
- * @member {string} [databaseName] the name of the database.
- * 
- * @member {string} [schemaName] the name of the schema associated with this
- * table and database.
- * 
- * @member {string} [name] the name of type for this type.
- * 
- * @member {string} [typeFamily] the type family for this type.
- * 
- * @member {string} [cSharpName] the C# name for this type.
- * 
- * @member {string} [fullCSharpName] the fully qualified C# name for this type.
- * 
- * @member {number} [systemTypeId] the system type ID for this type.
- * 
- * @member {number} [userTypeId] the user type ID for this type.
- * 
- * @member {number} [schemaId] the schema ID for this type.
- * 
- * @member {number} [principalId] the principal ID for this type.
- * 
- * @member {boolean} [isNullable] the the switch indicating if this type is
- * nullable.
- * 
- * @member {boolean} [isUserDefined] the the switch indicating if this type is
- * user defined.
- * 
- * @member {boolean} [isAssemblyType] the the switch indicating if this type
- * is an assembly type.
- * 
- * @member {boolean} [isTableType] the the switch indicating if this type is a
- * table type.
- * 
- * @member {boolean} [isComplexType] the the switch indicating if this type is
- * a complex type.
- * 
- */
-export interface USqlType extends CatalogItem {
-    databaseName?: string;
-    schemaName?: string;
-    name?: string;
-    typeFamily?: string;
-    cSharpName?: string;
-    fullCSharpName?: string;
-    systemTypeId?: number;
-    userTypeId?: number;
-    schemaId?: number;
-    principalId?: number;
-    isNullable?: boolean;
-    isUserDefined?: boolean;
-    isAssemblyType?: boolean;
-    isTableType?: boolean;
-    isComplexType?: boolean;
 }
 
 /**
