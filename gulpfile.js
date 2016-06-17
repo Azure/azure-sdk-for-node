@@ -59,8 +59,9 @@ var mappings = {
   },
   'graph': {
     'dir': 'graphManagement/lib',
-    'source': 'arm-graphrbac/1.6-internal/swagger/graphrbac.json',
-    'ft': 1
+    'source': 'arm-graphrbac/compositeGraphRbacManagementClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
   },
   'intune': {
     'dir': 'intune/lib',
@@ -130,7 +131,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20160606';
+var defaultAutoRestVersion = '0.17.0-Nightly20160613';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

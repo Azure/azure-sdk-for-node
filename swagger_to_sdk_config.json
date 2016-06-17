@@ -70,9 +70,10 @@
       "output_dir": "lib/services/dataLake.Store/lib/filesystem"
     },
     "graphrbac": {
-      "swagger": "arm-graphrbac/1.6-internal/swagger/graphrbac.json",
+      "swagger": "arm-graphrbac/compositeGraphRbacManagementClient.json",
       "autorest_options": {
-        "FT": 1
+        "FT": 1,
+        "Modeler": "CompositeSwagger"
       },
       "output_dir": "lib/services/graphManagement/lib"
     },
