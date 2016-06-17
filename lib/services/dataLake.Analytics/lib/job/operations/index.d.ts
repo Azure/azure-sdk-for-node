@@ -40,7 +40,7 @@ export interface Job {
     getStatistics(accountName: string, jobIdentity: string, callback: ServiceCallback<models.JobStatistics>): void;
 
     /**
-     * Gets the job debug data information specified by the job ID.
+     * Gets the U-SQL job debug data information specified by the job ID.
      *
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute job operations on.
@@ -85,19 +85,14 @@ export interface Job {
      * the current job. Lower numbers have a higher priority. By default, a job
      * has a priority of 1000. This must be greater than 0.
      * 
-     * @param {array} [parameters.logFilePatterns] Gets or sets the list of log
-     * file name patterns to find in the logFolder. '*' is the only matching
-     * character allowed. Example format: jobExecution*.log or *mylog*.txt
-     * 
      * @param {object} [parameters.properties] Gets or sets the job specific
      * properties.
      * 
      * @param {string} [parameters.properties.runtimeVersion] Gets or sets the
-     * runtime version of the Data Lake Analytics engine to use for the specific
-     * type of job being run.
+     * runtime version of the U-SQL engine to use
      * 
-     * @param {string} [parameters.properties.script] Gets or sets the script to
-     * run
+     * @param {string} [parameters.properties.script] Gets or sets the U-SQL
+     * script to run
      * 
      * @param {string} [parameters.properties.type] Polymorhpic Discriminator
      * 
@@ -178,19 +173,14 @@ export interface Job {
      * the current job. Lower numbers have a higher priority. By default, a job
      * has a priority of 1000. This must be greater than 0.
      * 
-     * @param {array} [parameters.logFilePatterns] Gets or sets the list of log
-     * file name patterns to find in the logFolder. '*' is the only matching
-     * character allowed. Example format: jobExecution*.log or *mylog*.txt
-     * 
      * @param {object} [parameters.properties] Gets or sets the job specific
      * properties.
      * 
      * @param {string} [parameters.properties.runtimeVersion] Gets or sets the
-     * runtime version of the Data Lake Analytics engine to use for the specific
-     * type of job being run.
+     * runtime version of the U-SQL engine to use
      * 
-     * @param {string} [parameters.properties.script] Gets or sets the script to
-     * run
+     * @param {string} [parameters.properties.script] Gets or sets the U-SQL
+     * script to run
      * 
      * @param {string} [parameters.properties.type] Polymorhpic Discriminator
      * 
@@ -222,7 +212,7 @@ export interface Job {
      * returning elements. Optional.
      * 
      * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
+     * in line with the retrieved resources, e.g. Categories/$expand=Products
      * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
