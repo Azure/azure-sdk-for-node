@@ -56,11 +56,7 @@ declare class GraphRbacManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
-    applicationOperations: operations.ApplicationOperations;
-    objectOperations: operations.ObjectOperations;
-    groupOperations: operations.GroupOperations;
-    servicePrincipalOperations: operations.ServicePrincipalOperations;
-    userOperations: operations.UserOperations;
+    objects: operations.Objects;
     }
 
 export = GraphRbacManagementClient;
