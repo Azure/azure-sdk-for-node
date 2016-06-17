@@ -20,12 +20,31 @@ npm install azure-graph
  // Interactive Login
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
  // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin(function(err, credentials) {
+ msRestAzure.interactiveLogin(function(err, credentials, subscriptions) {
   var client = new graphRbacManagementClient(credentials, 'your-tenant-id');
-  client.userOperations.list(function(err, result, request, response) {
-    if (err) console.log(err);
-    console.log(result);
-  });
+  var userParams = {
+    accountEnabled: true,
+    userPrincipalName: OfficialStark@GOT.com,
+    displayName: 'Jon Snow',
+    mailNickname: 'OfficialStark',
+    passwordProfile: {
+      password: 'WinterisComing!',
+      forceChangePasswordNextLogin: false
+    }
+  };
+  client.users.create(userParams, function (err, user, request, response) {
+    if (err) return console.log(err);
+    console.log(user);
+    var userObjectId = user.objectId;
+    client.users.list(function(err, result, request, response) {
+      if (err) return console.log(err);
+      console.log(result);
+    });
+    client.users.delete(userObjectId, function (err, result, request, response) {
+      if (err) return console.log(err);
+      console.log(result);
+    });
+  })
  });
  ```
 
