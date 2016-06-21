@@ -100,22 +100,19 @@ export interface Account {
      * @param {object} parameters Parameters supplied to create the create
      * firewall rule.
      * 
-     * @param {string} [parameters.name] Gets or sets the firewall rule's name.
+     * @param {string} [parameters.name] the firewall rule's name.
      * 
-     * @param {string} [parameters.id] Gets or sets the firewall rule's
-     * subscription ID.
+     * @param {string} [parameters.id] the firewall rule's subscription ID.
      * 
-     * @param {string} [parameters.location] Gets or sets the firewall rule's
-     * regional location.
+     * @param {string} [parameters.location] the firewall rule's regional location.
      * 
-     * @param {object} [parameters.properties] Gets or sets the properties of the
-     * firewall rule.
+     * @param {object} [parameters.properties] the properties of the firewall rule.
      * 
-     * @param {string} [parameters.properties.startIpAddress] Gets or sets the
-     * start IP address for the firewall rule.
+     * @param {string} [parameters.properties.startIpAddress] the start IP address
+     * for the firewall rule.
      * 
-     * @param {string} [parameters.properties.endIpAddress] Gets or sets the end
-     * IP address for the firewall rule.
+     * @param {string} [parameters.properties.endIpAddress] the end IP address for
+     * the firewall rule.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -139,23 +136,19 @@ export interface Account {
      * @param {object} parameters Parameters supplied to create the Data Lake
      * Store account.
      * 
-     * @param {string} [parameters.location] Gets or sets the account regional
-     * location.
+     * @param {string} [parameters.location] the account regional location.
      * 
-     * @param {string} [parameters.name] Gets or sets the account name.
+     * @param {string} [parameters.name] the account name.
      * 
-     * @param {object} [parameters.tags] Gets or sets the value of custom
+     * @param {object} [parameters.tags] the value of custom properties.
+     * 
+     * @param {object} [parameters.properties] the Data Lake Store account
      * properties.
      * 
-     * @param {object} [parameters.properties] Gets or sets the Data Lake Store
-     * account properties.
+     * @param {string} [parameters.properties.endpoint] the gateway host.
      * 
-     * @param {string} [parameters.properties.endpoint] Gets or sets the gateway
-     * host.
-     * 
-     * @param {string} [parameters.properties.defaultGroup] Gets or sets the
-     * default owner group for all new folders and files created in the Data Lake
-     * Store account.
+     * @param {string} [parameters.properties.defaultGroup] the default owner
+     * group for all new folders and files created in the Data Lake Store account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -179,23 +172,19 @@ export interface Account {
      * @param {object} parameters Parameters supplied to create the Data Lake
      * Store account.
      * 
-     * @param {string} [parameters.location] Gets or sets the account regional
-     * location.
+     * @param {string} [parameters.location] the account regional location.
      * 
-     * @param {string} [parameters.name] Gets or sets the account name.
+     * @param {string} [parameters.name] the account name.
      * 
-     * @param {object} [parameters.tags] Gets or sets the value of custom
+     * @param {object} [parameters.tags] the value of custom properties.
+     * 
+     * @param {object} [parameters.properties] the Data Lake Store account
      * properties.
      * 
-     * @param {object} [parameters.properties] Gets or sets the Data Lake Store
-     * account properties.
+     * @param {string} [parameters.properties.endpoint] the gateway host.
      * 
-     * @param {string} [parameters.properties.endpoint] Gets or sets the gateway
-     * host.
-     * 
-     * @param {string} [parameters.properties.defaultGroup] Gets or sets the
-     * default owner group for all new folders and files created in the Data Lake
-     * Store account.
+     * @param {string} [parameters.properties.defaultGroup] the default owner
+     * group for all new folders and files created in the Data Lake Store account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -219,23 +208,19 @@ export interface Account {
      * @param {object} parameters Parameters supplied to update the Data Lake
      * Store account.
      * 
-     * @param {string} [parameters.location] Gets or sets the account regional
-     * location.
+     * @param {string} [parameters.location] the account regional location.
      * 
-     * @param {string} [parameters.name] Gets or sets the account name.
+     * @param {string} [parameters.name] the account name.
      * 
-     * @param {object} [parameters.tags] Gets or sets the value of custom
+     * @param {object} [parameters.tags] the value of custom properties.
+     * 
+     * @param {object} [parameters.properties] the Data Lake Store account
      * properties.
      * 
-     * @param {object} [parameters.properties] Gets or sets the Data Lake Store
-     * account properties.
+     * @param {string} [parameters.properties.endpoint] the gateway host.
      * 
-     * @param {string} [parameters.properties.endpoint] Gets or sets the gateway
-     * host.
-     * 
-     * @param {string} [parameters.properties.defaultGroup] Gets or sets the
-     * default owner group for all new folders and files created in the Data Lake
-     * Store account.
+     * @param {string} [parameters.properties.defaultGroup] the default owner
+     * group for all new folders and files created in the Data Lake Store account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -259,23 +244,19 @@ export interface Account {
      * @param {object} parameters Parameters supplied to update the Data Lake
      * Store account.
      * 
-     * @param {string} [parameters.location] Gets or sets the account regional
-     * location.
+     * @param {string} [parameters.location] the account regional location.
      * 
-     * @param {string} [parameters.name] Gets or sets the account name.
+     * @param {string} [parameters.name] the account name.
      * 
-     * @param {object} [parameters.tags] Gets or sets the value of custom
+     * @param {object} [parameters.tags] the value of custom properties.
+     * 
+     * @param {object} [parameters.properties] the Data Lake Store account
      * properties.
      * 
-     * @param {object} [parameters.properties] Gets or sets the Data Lake Store
-     * account properties.
+     * @param {string} [parameters.properties.endpoint] the gateway host.
      * 
-     * @param {string} [parameters.properties.endpoint] Gets or sets the gateway
-     * host.
-     * 
-     * @param {string} [parameters.properties.defaultGroup] Gets or sets the
-     * default owner group for all new folders and files created in the Data Lake
-     * Store account.
+     * @param {string} [parameters.properties.defaultGroup] the default owner
+     * group for all new folders and files created in the Data Lake Store account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
