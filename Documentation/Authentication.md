@@ -5,7 +5,7 @@ One does not want to login interactively all the time. Azure provides service pr
 ## Via Portal
 [This article](https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/) provides detailed steps on creating a service principal via portal.
 
-## Via XplatCLI
+## Via XplatCLI in 3 simple steps
 Pre-requisite:
 - Install the latest version of cli from the [latest github release](https://github.com/Azure/azure-xplat-cli/releases) or from [npm](https://npmjs.com/package/azure-cli).
 
