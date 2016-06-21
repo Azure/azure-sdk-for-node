@@ -288,6 +288,36 @@ export interface GroupGetMemberGroupsParameters {
 
 /**
  * @class
+ * Initializes a new instance of the CheckGroupMembershipParameters class.
+ * @constructor
+ * Request parameters for IsMemberOf API call
+ * @member {string} groupId The object ID of the group to check.
+ * 
+ * @member {string} memberId The object ID of the contact, group, user, or
+ * service principal to check for membership in the specified group.
+ * 
+ */
+export interface CheckGroupMembershipParameters {
+    groupId: string;
+    memberId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckGroupMembershipResult class.
+ * @constructor
+ * Server response for IsMemberOf API call
+ * @member {boolean} [value] true if the specified user, group, contact, or
+ * service principal has either direct or transitive membership in the
+ * specified group; otherwise, false.
+ * 
+ */
+export interface CheckGroupMembershipResult {
+    value?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServicePrincipalCreateParameters class.
  * @constructor
  * Request parameters for create a new service principal
