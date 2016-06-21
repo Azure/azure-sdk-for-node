@@ -15,6 +15,7 @@
  * Initializes a new instance of the RoleAssignmentFilter class.
  * @constructor
  * Role Assignments filter
+ *
  * @member {string} [principalId] Returns role assignment of the specific
  * principal.
  * 
@@ -28,6 +29,7 @@ export interface RoleAssignmentFilter {
  * Initializes a new instance of the RoleDefinitionFilter class.
  * @constructor
  * Role Definitions filter
+ *
  * @member {string} [roleName] Returns role definition with the specific name.
  * 
  */
@@ -40,6 +42,7 @@ export interface RoleDefinitionFilter {
  * Initializes a new instance of the ClassicAdministratorProperties class.
  * @constructor
  * Classic Administrator properties.
+ *
  * @member {string} [emailAddress] Gets or sets the email address
  * 
  * @member {string} [role] Gets or sets the role
@@ -55,6 +58,7 @@ export interface ClassicAdministratorProperties {
  * Initializes a new instance of the ClassicAdministrator class.
  * @constructor
  * Classic Administrators
+ *
  * @member {string} [id] Gets or sets the classic administrator id.
  * 
  * @member {string} [name] Gets or sets the classic administrator name.
@@ -81,6 +85,7 @@ export interface ClassicAdministrator {
  * Initializes a new instance of the Permission class.
  * @constructor
  * Role definition permissions.
+ *
  * @member {array} [actions] Role definition allowed actions.
  * 
  * @member {array} [notActions] Role definition denied actions.
@@ -96,6 +101,7 @@ export interface Permission {
  * Initializes a new instance of the ProviderOperation class.
  * @constructor
  * Operation
+ *
  * @member {string} [name] Gets or sets the operation name
  * 
  * @member {string} [displayName] Gets or sets the operation display name
@@ -120,6 +126,7 @@ export interface ProviderOperation {
  * Initializes a new instance of the ResourceType class.
  * @constructor
  * Resource Type
+ *
  * @member {string} [name] Gets or sets the resource type name
  * 
  * @member {string} [displayName] Gets or sets the resource type display name
@@ -138,6 +145,7 @@ export interface ResourceType {
  * Initializes a new instance of the ProviderOperationsMetadata class.
  * @constructor
  * Provider Operations metadata
+ *
  * @member {string} [id] Gets or sets the provider id.
  * 
  * @member {string} [name] Gets or sets the provider name
@@ -165,6 +173,7 @@ export interface ProviderOperationsMetadata {
  * Initializes a new instance of the RoleAssignmentPropertiesWithScope class.
  * @constructor
  * Role assignment properties with scope.
+ *
  * @member {string} [scope] Gets or sets role assignment scope.
  * 
  * @member {string} [roleDefinitionId] Gets or sets role definition id.
@@ -183,6 +192,7 @@ export interface RoleAssignmentPropertiesWithScope {
  * Initializes a new instance of the RoleAssignment class.
  * @constructor
  * Role Assignments
+ *
  * @member {string} [id] Gets or sets role assignment id.
  * 
  * @member {string} [name] Gets or sets role assignment name.
@@ -211,6 +221,7 @@ export interface RoleAssignment {
  * Initializes a new instance of the RoleAssignmentProperties class.
  * @constructor
  * Role assignment properties.
+ *
  * @member {string} [roleDefinitionId] Gets or sets role definition id.
  * 
  * @member {string} [principalId] Gets or sets principal Id.
@@ -226,6 +237,7 @@ export interface RoleAssignmentProperties {
  * Initializes a new instance of the RoleAssignmentCreateParameters class.
  * @constructor
  * Role assignment create parameters.
+ *
  * @member {object} [properties] Gets or sets role assignment properties.
  * 
  * @member {string} [properties.roleDefinitionId] Gets or sets role definition
@@ -243,6 +255,7 @@ export interface RoleAssignmentCreateParameters {
  * Initializes a new instance of the RoleDefinitionProperties class.
  * @constructor
  * Role definition properties.
+ *
  * @member {string} [roleName] Gets or sets role name.
  * 
  * @member {string} [description] Gets or sets role definition description.
@@ -268,6 +281,7 @@ export interface RoleDefinitionProperties {
  * Initializes a new instance of the RoleDefinition class.
  * @constructor
  * Role definition.
+ *
  * @member {string} [id] Gets or sets role definition id.
  * 
  * @member {string} [name] Gets or sets role definition name.

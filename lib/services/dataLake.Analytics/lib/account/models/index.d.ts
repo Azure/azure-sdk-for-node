@@ -15,6 +15,7 @@
  * Initializes a new instance of the StorageAccountProperties class.
  * @constructor
  * Azure Storage account properties information.
+ *
  * @member {string} accessKey the access key associated with this Azure
  * Storage account that will be used to connect to it.
  * 
@@ -31,6 +32,7 @@ export interface StorageAccountProperties {
  * Initializes a new instance of the StorageAccountInfo class.
  * @constructor
  * Azure Storage account information.
+ *
  * @member {string} name the account name associated with the Azure storage
  * account.
  * 
@@ -54,6 +56,7 @@ export interface StorageAccountInfo {
  * Initializes a new instance of the BlobContainerProperties class.
  * @constructor
  * Azure Storage blob container properties information.
+ *
  * @member {date} [lastModifiedTime] the last modified time of the blob
  * container.
  * 
@@ -67,6 +70,7 @@ export interface BlobContainerProperties {
  * Initializes a new instance of the BlobContainer class.
  * @constructor
  * Azure Storage blob container information.
+ *
  * @member {string} [name] the name of the blob container.
  * 
  * @member {string} [id] the unique identifier of the blob container.
@@ -91,6 +95,7 @@ export interface BlobContainer {
  * Initializes a new instance of the SasTokenInfo class.
  * @constructor
  * SAS token information.
+ *
  * @member {string} [accessToken] the access token for the associated Azure
  * Storage Container.
  * 
@@ -104,6 +109,7 @@ export interface SasTokenInfo {
  * Initializes a new instance of the DataLakeStoreAccountInfoProperties class.
  * @constructor
  * Data Lake Store account properties information.
+ *
  * @member {string} [suffix] the optional suffix for the Data Lake Store
  * account.
  * 
@@ -117,6 +123,7 @@ export interface DataLakeStoreAccountInfoProperties {
  * Initializes a new instance of the DataLakeStoreAccountInfo class.
  * @constructor
  * Data Lake Store account information.
+ *
  * @member {string} name the account name of the Data Lake Store account.
  * 
  * @member {object} [properties] the properties associated with this Data Lake
@@ -137,6 +144,7 @@ export interface DataLakeStoreAccountInfo {
  * @constructor
  * The account specific properties that are associated with an underlying Data
  * Lake Analytics account.
+ *
  * @member {string} [provisioningState] the provisioning status of the Data
  * Lake Analytics account. Possible values include: 'Failed', 'Creating',
  * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
@@ -185,6 +193,7 @@ export interface DataLakeAnalyticsAccountProperties {
  * Initializes a new instance of the AddDataLakeStoreParameters class.
  * @constructor
  * Additional Data Lake Store parameters.
+ *
  * @member {object} properties the properties for the Data Lake Store account
  * being added.
  * 
@@ -201,6 +210,7 @@ export interface AddDataLakeStoreParameters {
  * Initializes a new instance of the AddStorageAccountParameters class.
  * @constructor
  * Additional Azure Storage account parameters.
+ *
  * @member {object} properties the properties for the Azure Storage account
  * being added.
  * 
@@ -221,6 +231,7 @@ export interface AddStorageAccountParameters {
  * @constructor
  * A Data Lake Analytics account object, containing all information associated
  * with the named Data Lake Analytics account.
+ *
  * @member {string} [location] the account regional location.
  * 
  * @member {string} [name] the account name.
@@ -279,6 +290,7 @@ export interface DataLakeAnalyticsAccount {
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * Generic resource error details information.
+ *
  * @member {string} [code] the HTTP status code or error code associated with
  * this error
  * 
@@ -300,6 +312,7 @@ export interface ErrorDetails {
  * Initializes a new instance of the InnerError class.
  * @constructor
  * Generic resource inner error information.
+ *
  * @member {string} [trace] the stack trace for the error
  * 
  * @member {string} [context] the context for the error message
@@ -315,6 +328,7 @@ export interface InnerError {
  * Initializes a new instance of the ErrorModel class.
  * @constructor
  * Generic resource error information.
+ *
  * @member {string} [code] the HTTP status code or error code associated with
  * this error
  * 
@@ -351,6 +365,7 @@ export interface ErrorModel {
  * status code for the successful request. If the asynchronous operation
  * failed, the response body includes the HTTP status code for the failed
  * request and error information regarding the failure.
+ *
  * @member {string} [status] the status of the AzureAsuncOperation. Possible
  * values include: 'InProgress', 'Succeeded', 'Failed'
  * 

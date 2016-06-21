@@ -15,6 +15,7 @@
  * Initializes a new instance of the Endpoint class.
  * @constructor
  * Class respresenting a Traffic Manager endpoint.
+ *
  * @member {string} [id] Gets or sets the ID of the Traffic Manager endpoint.
  * 
  * @member {string} [name] Gets or sets the name of the Traffic Manager
@@ -77,6 +78,7 @@ export interface Endpoint {
  * Initializes a new instance of the CheckTrafficManagerRelativeDnsNameAvailabilityParameters class.
  * @constructor
  * Parameters supplied to check Traffic Manager name operation.
+ *
  * @member {string} [name] Gets or sets the name of the resource.
  * 
  * @member {string} [type] Gets or sets the type of the resource.
@@ -92,6 +94,7 @@ export interface CheckTrafficManagerRelativeDnsNameAvailabilityParameters {
  * Initializes a new instance of the DnsConfig class.
  * @constructor
  * Class containing DNS settings in a Traffic Manager profile.
+ *
  * @member {string} [relativeName] Gets or sets the relative DNS name provided
  * by this Traffic Manager profile.  This value is combined with the DNS
  * domain name used by Azure Traffic Manager to form the fully-qualified
@@ -117,6 +120,7 @@ export interface DnsConfig {
  * Initializes a new instance of the MonitorConfig class.
  * @constructor
  * Class containing endpoint monitoring settings in a Traffic Manager profile.
+ *
  * @member {string} [profileMonitorStatus] Gets or sets the profile-level
  * monitoring status of the Traffic Manager profile.
  * 
@@ -165,6 +169,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the Profile class.
  * @constructor
  * Class representing a Traffic Manager profile.
+ *
  * @member {string} [profileStatus] Gets or sets the status of the Traffic
  * Manager profile.  Possible values are 'Enabled' and 'Disabled'.
  * 
@@ -221,6 +226,7 @@ export interface Profile extends Resource {
  * Initializes a new instance of the TrafficManagerNameAvailability class.
  * @constructor
  * Class representing a Traffic Manager Name Availability response.
+ *
  * @member {string} [name] The relative name.
  * 
  * @member {string} [type] Traffic Manager profile resource type.

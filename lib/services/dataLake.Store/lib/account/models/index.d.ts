@@ -15,6 +15,7 @@
  * Initializes a new instance of the FirewallRuleProperties class.
  * @constructor
  * Data Lake Store firewall rule properties information
+ *
  * @member {string} [startIpAddress] the start IP address for the firewall
  * rule.
  * 
@@ -31,6 +32,7 @@ export interface FirewallRuleProperties {
  * Initializes a new instance of the FirewallRule class.
  * @constructor
  * Data Lake Store firewall rule information
+ *
  * @member {string} [name] the firewall rule's name.
  * 
  * @member {string} [type] the namespace and type of the firewall Rule.
@@ -61,6 +63,7 @@ export interface FirewallRule {
  * Initializes a new instance of the DataLakeStoreAccountProperties class.
  * @constructor
  * Data Lake Store account properties information
+ *
  * @member {string} [provisioningState] the status of the Data Lake Store
  * account while being provisioned. Possible values include: 'Failed',
  * 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
@@ -93,6 +96,7 @@ export interface DataLakeStoreAccountProperties {
  * Initializes a new instance of the DataLakeStoreAccount class.
  * @constructor
  * Data Lake Store account information
+ *
  * @member {string} [location] the account regional location.
  * 
  * @member {string} [name] the account name.
@@ -138,6 +142,7 @@ export interface DataLakeStoreAccount {
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * Data Lake Store error details information
+ *
  * @member {string} [code] the HTTP status code or error code associated with
  * this error
  * 
@@ -159,6 +164,7 @@ export interface ErrorDetails {
  * Initializes a new instance of the InnerError class.
  * @constructor
  * Data Lake Store inner error information
+ *
  * @member {string} [trace] the stack trace for the error
  * 
  * @member {string} [context] the context for the error message
@@ -174,6 +180,7 @@ export interface InnerError {
  * Initializes a new instance of the ErrorModel class.
  * @constructor
  * Data Lake Store error information
+ *
  * @member {string} [code] the HTTP status code or error code associated with
  * this error
  * 
@@ -210,6 +217,7 @@ export interface ErrorModel {
  * status code for the successful request. If the asynchronous operation
  * failed, the response body includes the HTTP status code for the failed
  * request and error information regarding the failure.
+ *
  * @member {string} [status] the status of the AzureAsuncOperation. Possible
  * values include: 'InProgress', 'Succeeded', 'Failed'
  * 

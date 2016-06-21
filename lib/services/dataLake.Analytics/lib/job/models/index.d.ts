@@ -15,6 +15,7 @@
  * Initializes a new instance of the JobStatisticsVertexStage class.
  * @constructor
  * The Data Lake Analytics U-SQL job statistics vertex stage information.
+ *
  * @member {number} [dataRead] Gets the amount of data read, in bytes.
  * 
  * @member {number} [dataReadCrossPod] Gets the amount of data read across
@@ -100,6 +101,7 @@ export interface JobStatisticsVertexStage {
  * Initializes a new instance of the JobStatistics class.
  * @constructor
  * The Data Lake Analytics U-SQL job execution statistics.
+ *
  * @member {date} [lastUpdateTimeUtc] Gets the last update time for the
  * statistics.
  * 
@@ -116,6 +118,7 @@ export interface JobStatistics {
  * Initializes a new instance of the JobDataPath class.
  * @constructor
  * A Data Lake Analytics U-SQL job data path item.
+ *
  * @member {uuid} [jobId] Gets the id of the job this data is for.
  * 
  * @member {string} [command] Gets the command that this job data relates to.
@@ -135,6 +138,7 @@ export interface JobDataPath {
  * @constructor
  * The Data Lake Analytics U-SQL job state audit records for tracking the
  * lifecycle of a job.
+ *
  * @member {string} [newState] Gets the new state the job is in.
  * 
  * @member {date} [timeStamp] Gets the time stamp that the state change took
@@ -157,6 +161,7 @@ export interface JobStateAuditRecord {
  * Initializes a new instance of the JobResource class.
  * @constructor
  * The Data Lake Analytics U-SQL job resources.
+ *
  * @member {string} [name] Gets or set the name of the resource.
  * 
  * @member {string} [resourcePath] Gets or sets the path to the resource.
@@ -176,6 +181,7 @@ export interface JobResource {
  * Initializes a new instance of the JobProperties class.
  * @constructor
  * The common Data Lake Analytics job properties.
+ *
  * @member {string} [runtimeVersion] Gets or sets the runtime version of the
  * U-SQL engine to use
  * 
@@ -321,6 +327,7 @@ export interface HiveJobProperties extends JobProperties {
  * Initializes a new instance of the JobErrorDetails class.
  * @constructor
  * The Data Lake Analytics job error details.
+ *
  * @member {string} [description] Gets the error message description
  * 
  * @member {string} [details] Gets the details of the error message.
@@ -415,6 +422,7 @@ export interface JobErrorDetails {
  * Initializes a new instance of the JobInnerError class.
  * @constructor
  * The Data Lake Analytics job error details.
+ *
  * @member {number} [diagnosticCode] Gets the diagnostic error code.
  * 
  * @member {string} [severity] Gets the severity level of the failure.
@@ -465,6 +473,7 @@ export interface JobInnerError {
  * Initializes a new instance of the JobInformation class.
  * @constructor
  * The common Data Lake Analytics job information properties.
+ *
  * @member {uuid} [jobId] Gets or sets the job's unique identifier (a GUID).
  * 
  * @member {string} name Gets or sets the friendly name of the job.

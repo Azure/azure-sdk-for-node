@@ -38,6 +38,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the Location class.
  * @constructor
  * Location entity for given tenant.
+ *
  * @member {string} hostName
  * 
  */
@@ -64,6 +65,7 @@ export interface ErrorModel {
  * Initializes a new instance of the GroupItem class.
  * @constructor
  * Group entity for Intune MAM.
+ *
  * @member {string} friendlyName
  * 
  */
@@ -76,10 +78,11 @@ export interface GroupItem extends Resource {
  * Initializes a new instance of the Application class.
  * @constructor
  * Application entity for Intune MAM.
+ *
  * @member {string} friendlyName
  * 
  * @member {string} platform Possible values include: 'ios', 'android',
- * 'windows'
+ * 'windows'. Default value: 'ios' .
  * 
  * @member {string} [appId]
  * 
@@ -95,36 +98,40 @@ export interface Application extends Resource {
  * Initializes a new instance of the IOSMAMPolicy class.
  * @constructor
  * iOS Policy entity for Intune MAM.
+ *
  * @member {string} friendlyName
  * 
  * @member {string} [description]
  * 
  * @member {string} [appSharingFromLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
+ * 'policyManagedApps', 'allApps'. Default value: 'none' .
  * 
  * @member {string} [appSharingToLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
+ * 'policyManagedApps', 'allApps'. Default value: 'none' .
  * 
  * @member {string} [authentication] Possible values include: 'required',
- * 'notRequired'
+ * 'notRequired'. Default value: 'required' .
  * 
  * @member {string} [clipboardSharingLevel] Possible values include:
- * 'blocked', 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'
+ * 'blocked', 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'.
+ * Default value: 'blocked' .
  * 
- * @member {string} [dataBackup] Possible values include: 'allow', 'block'
+ * @member {string} [dataBackup] Possible values include: 'allow', 'block'.
+ * Default value: 'allow' .
  * 
  * @member {string} [fileSharingSaveAs] Possible values include: 'allow',
- * 'block'
+ * 'block'. Default value: 'allow' .
  * 
- * @member {string} [pin] Possible values include: 'required', 'notRequired'
+ * @member {string} [pin] Possible values include: 'required', 'notRequired'.
+ * Default value: 'required' .
  * 
  * @member {number} [pinNumRetry]
  * 
  * @member {string} [deviceCompliance] Possible values include: 'enable',
- * 'disable'
+ * 'disable'. Default value: 'enable' .
  * 
  * @member {string} [managedBrowser] Possible values include: 'required',
- * 'notRequired'
+ * 'notRequired'. Default value: 'required' .
  * 
  * @member {moment.duration} [accessRecheckOfflineTimeout]
  * 
@@ -135,15 +142,16 @@ export interface Application extends Resource {
  * @member {number} [numOfApps]
  * 
  * @member {string} [groupStatus] Possible values include: 'notTargeted',
- * 'targeted'
+ * 'targeted'. Default value: 'notTargeted' .
  * 
  * @member {date} [lastModifiedTime]
  * 
  * @member {string} [fileEncryptionLevel] Possible values include:
  * 'deviceLocked', 'deviceLockedExceptFilesOpen', 'afterDeviceRestart',
- * 'useDeviceSettings'
+ * 'useDeviceSettings'. Default value: 'deviceLocked' .
  * 
- * @member {string} [touchId] Possible values include: 'enable', 'disable'
+ * @member {string} [touchId] Possible values include: 'enable', 'disable'.
+ * Default value: 'enable' .
  * 
  */
 export interface IOSMAMPolicy extends Resource {
@@ -174,36 +182,40 @@ export interface IOSMAMPolicy extends Resource {
  * Initializes a new instance of the AndroidMAMPolicy class.
  * @constructor
  * Android Policy entity for Intune MAM.
+ *
  * @member {string} friendlyName
  * 
  * @member {string} [description]
  * 
  * @member {string} [appSharingFromLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
+ * 'policyManagedApps', 'allApps'. Default value: 'none' .
  * 
  * @member {string} [appSharingToLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
+ * 'policyManagedApps', 'allApps'. Default value: 'none' .
  * 
  * @member {string} [authentication] Possible values include: 'required',
- * 'notRequired'
+ * 'notRequired'. Default value: 'required' .
  * 
  * @member {string} [clipboardSharingLevel] Possible values include:
- * 'blocked', 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'
+ * 'blocked', 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'.
+ * Default value: 'blocked' .
  * 
- * @member {string} [dataBackup] Possible values include: 'allow', 'block'
+ * @member {string} [dataBackup] Possible values include: 'allow', 'block'.
+ * Default value: 'allow' .
  * 
  * @member {string} [fileSharingSaveAs] Possible values include: 'allow',
- * 'block'
+ * 'block'. Default value: 'allow' .
  * 
- * @member {string} [pin] Possible values include: 'required', 'notRequired'
+ * @member {string} [pin] Possible values include: 'required', 'notRequired'.
+ * Default value: 'required' .
  * 
  * @member {number} [pinNumRetry]
  * 
  * @member {string} [deviceCompliance] Possible values include: 'enable',
- * 'disable'
+ * 'disable'. Default value: 'enable' .
  * 
  * @member {string} [managedBrowser] Possible values include: 'required',
- * 'notRequired'
+ * 'notRequired'. Default value: 'required' .
  * 
  * @member {moment.duration} [accessRecheckOfflineTimeout]
  * 
@@ -214,14 +226,15 @@ export interface IOSMAMPolicy extends Resource {
  * @member {number} [numOfApps]
  * 
  * @member {string} [groupStatus] Possible values include: 'notTargeted',
- * 'targeted'
+ * 'targeted'. Default value: 'notTargeted' .
  * 
  * @member {date} [lastModifiedTime]
  * 
- * @member {string} [screenCapture] Possible values include: 'allow', 'block'
+ * @member {string} [screenCapture] Possible values include: 'allow', 'block'.
+ * Default value: 'allow' .
  * 
  * @member {string} [fileEncryption] Possible values include: 'required',
- * 'notRequired'
+ * 'notRequired'. Default value: 'required' .
  * 
  */
 export interface AndroidMAMPolicy extends Resource {
@@ -252,6 +265,7 @@ export interface AndroidMAMPolicy extends Resource {
  * Initializes a new instance of the MAMPolicyAppIdOrGroupIdPayload class.
  * @constructor
  * MAM Policy request body for properties Intune MAM.
+ *
  * @member {object} [properties]
  * 
  * @member {string} [properties.url]
@@ -266,6 +280,7 @@ export interface MAMPolicyAppIdOrGroupIdPayload {
  * Initializes a new instance of the MAMPolicyAppOrGroupIdProperties class.
  * @constructor
  * Android Policy request body for Intune MAM.
+ *
  * @member {string} url
  * 
  */
@@ -282,31 +297,34 @@ export interface MAMPolicyAppOrGroupIdProperties {
  * @member {string} [description]
  * 
  * @member {string} [appSharingFromLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
+ * 'policyManagedApps', 'allApps'. Default value: 'none' .
  * 
  * @member {string} [appSharingToLevel] Possible values include: 'none',
- * 'policyManagedApps', 'allApps'
+ * 'policyManagedApps', 'allApps'. Default value: 'none' .
  * 
  * @member {string} [authentication] Possible values include: 'required',
- * 'notRequired'
+ * 'notRequired'. Default value: 'required' .
  * 
  * @member {string} [clipboardSharingLevel] Possible values include:
- * 'blocked', 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'
+ * 'blocked', 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'.
+ * Default value: 'blocked' .
  * 
- * @member {string} [dataBackup] Possible values include: 'allow', 'block'
+ * @member {string} [dataBackup] Possible values include: 'allow', 'block'.
+ * Default value: 'allow' .
  * 
  * @member {string} [fileSharingSaveAs] Possible values include: 'allow',
- * 'block'
+ * 'block'. Default value: 'allow' .
  * 
- * @member {string} [pin] Possible values include: 'required', 'notRequired'
+ * @member {string} [pin] Possible values include: 'required', 'notRequired'.
+ * Default value: 'required' .
  * 
  * @member {number} [pinNumRetry]
  * 
  * @member {string} [deviceCompliance] Possible values include: 'enable',
- * 'disable'
+ * 'disable'. Default value: 'enable' .
  * 
  * @member {string} [managedBrowser] Possible values include: 'required',
- * 'notRequired'
+ * 'notRequired'. Default value: 'required' .
  * 
  * @member {moment.duration} [accessRecheckOfflineTimeout]
  * 
@@ -317,7 +335,7 @@ export interface MAMPolicyAppOrGroupIdProperties {
  * @member {number} [numOfApps]
  * 
  * @member {string} [groupStatus] Possible values include: 'notTargeted',
- * 'targeted'
+ * 'targeted'. Default value: 'notTargeted' .
  * 
  * @member {date} [lastModifiedTime]
  * 
@@ -348,6 +366,7 @@ export interface MAMPolicyProperties {
  * Initializes a new instance of the Device class.
  * @constructor
  * Device entity for Intune.
+ *
  * @member {string} userId
  * 
  * @member {string} friendlyName
@@ -372,6 +391,7 @@ export interface Device extends Resource {
  * Initializes a new instance of the WipeDeviceOperationResult class.
  * @constructor
  * Device entity for Intune.
+ *
  * @member {string} value
  * 
  */
@@ -384,6 +404,7 @@ export interface WipeDeviceOperationResult extends Resource {
  * Initializes a new instance of the OperationResult class.
  * @constructor
  * OperationResult entity for Intune.
+ *
  * @member {string} friendlyName
  * 
  * @member {string} [category]
@@ -422,6 +443,7 @@ export interface OperationMetadataProperties {
  * Initializes a new instance of the StatusesDefault class.
  * @constructor
  * Default Statuses entity for the given tenant.
+ *
  * @member {number} [deployedPolicies]
  * 
  * @member {number} [enrolledUsers]
@@ -458,6 +480,7 @@ export interface StatusesDefault extends Resource {
  * Initializes a new instance of the FlaggedUser class.
  * @constructor
  * Flagged user for the given tenant.
+ *
  * @member {number} [errorCount]
  * 
  * @member {string} [friendlyName]
@@ -473,6 +496,7 @@ export interface FlaggedUser extends Resource {
  * Initializes a new instance of the FlaggedEnrolledApp class.
  * @constructor
  * Flagged Enrolled App for the given tenant.
+ *
  * @member {string} [deviceType]
  * 
  * @member {string} [friendlyName]

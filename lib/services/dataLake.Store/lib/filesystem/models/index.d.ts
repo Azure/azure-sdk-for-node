@@ -15,6 +15,7 @@
  * Initializes a new instance of the FileOperationResult class.
  * @constructor
  * The result of the request or operation.
+ *
  * @member {boolean} [operationResult] the result of the operation or request.
  * 
  */
@@ -27,6 +28,7 @@ export interface FileOperationResult {
  * Initializes a new instance of the AclStatus class.
  * @constructor
  * Data Lake Store file or directory Access Control List information.
+ *
  * @member {array} [entries] the list of ACLSpec entries on a file or
  * directory.
  * 
@@ -50,6 +52,7 @@ export interface AclStatus {
  * Initializes a new instance of the AclStatusResult class.
  * @constructor
  * Data Lake Store file or directory Access Control List information.
+ *
  * @member {object} [aclStatus] the AclStatus object for a given file or
  * directory.
  * 
@@ -73,6 +76,7 @@ export interface AclStatusResult {
  * Initializes a new instance of the ContentSummary class.
  * @constructor
  * Data Lake Store content summary information
+ *
  * @member {number} [directoryCount] the number of directories.
  * 
  * @member {number} [fileCount] the number of files.
@@ -94,6 +98,7 @@ export interface ContentSummary {
  * Initializes a new instance of the ContentSummaryResult class.
  * @constructor
  * Data Lake Store filesystem content summary information response.
+ *
  * @member {object} [contentSummary] the content summary for the specified path
  * 
  * @member {number} [contentSummary.directoryCount] the number of directories.
@@ -116,6 +121,7 @@ export interface ContentSummaryResult {
  * Initializes a new instance of the FileStatusProperties class.
  * @constructor
  * Data Lake Store file or directory information.
+ *
  * @member {number} [accessTime] the last access time as ticks since the epoch.
  * 
  * @member {number} [blockSize] the block size for the file.
@@ -157,6 +163,7 @@ export interface FileStatusProperties {
  * Initializes a new instance of the FileStatuses class.
  * @constructor
  * Data Lake Store file status list information.
+ *
  * @member {array} [fileStatus] the object containing the list of properties
  * of the files.
  * 
@@ -170,6 +177,7 @@ export interface FileStatuses {
  * Initializes a new instance of the FileStatusesResult class.
  * @constructor
  * Data Lake Store filesystem file status list information response.
+ *
  * @member {object} [fileStatuses] the object representing the list of file
  * statuses.
  * 
@@ -186,6 +194,7 @@ export interface FileStatusesResult {
  * Initializes a new instance of the FileStatusResult class.
  * @constructor
  * Data Lake Store filesystem file status information response.
+ *
  * @member {object} [fileStatus] the file status object associated with the
  * specified path.
  * 
@@ -225,6 +234,7 @@ export interface FileStatusResult {
  * @constructor
  * Data Lake Store filesystem exception based on the WebHDFS definition for
  * RemoteExceptions.
+ *
  * @member {string} [javaClassName] the full class package name for the
  * exception thrown, such as 'java.lang.IllegalArgumentException'.
  * 
@@ -246,6 +256,7 @@ export interface AdlsRemoteException {
  * @constructor
  * A WebHDFS exception thrown indicating that one more arguments is incorrect.
  * Thrown when a 400 error response code is returned (bad request).
+ *
  */
 export interface AdlsIllegalArgumentException extends AdlsRemoteException {
 }
@@ -256,6 +267,7 @@ export interface AdlsIllegalArgumentException extends AdlsRemoteException {
  * @constructor
  * A WebHDFS exception thrown indicating that the requested operation is not
  * supported. Thrown when a 400 error response code is returned (bad request).
+ *
  */
 export interface AdlsUnsupportedOperationException extends AdlsRemoteException {
 }
@@ -266,6 +278,7 @@ export interface AdlsUnsupportedOperationException extends AdlsRemoteException {
  * @constructor
  * A WebHDFS exception thrown indicating that access is denied. Thrown when a
  * 401 error response code is returned (Unauthorized).
+ *
  */
 export interface AdlsSecurityException extends AdlsRemoteException {
 }
@@ -276,6 +289,7 @@ export interface AdlsSecurityException extends AdlsRemoteException {
  * @constructor
  * A WebHDFS exception thrown indicating there was an IO (read or write)
  * error. Thrown when a 403 error response code is returned (forbidden).
+ *
  */
 export interface AdlsIOException extends AdlsRemoteException {
 }
@@ -286,6 +300,7 @@ export interface AdlsIOException extends AdlsRemoteException {
  * @constructor
  * A WebHDFS exception thrown indicating the file or folder could not be
  * found. Thrown when a 404 error response code is returned (not found).
+ *
  */
 export interface AdlsFileNotFoundException extends AdlsRemoteException {
 }
@@ -297,6 +312,7 @@ export interface AdlsFileNotFoundException extends AdlsRemoteException {
  * A WebHDFS exception thrown when an unexpected error occurs during an
  * operation. Thrown when a 500 error response code is returned (Internal
  * server error).
+ *
  */
 export interface AdlsRuntimeException extends AdlsRemoteException {
 }
@@ -308,6 +324,7 @@ export interface AdlsRuntimeException extends AdlsRemoteException {
  * A WebHDFS exception thrown indicating that access is denied due to
  * insufficient permissions. Thrown when a 403 error response code is
  * returned (forbidden).
+ *
  */
 export interface AdlsAccessControlException extends AdlsRemoteException {
 }
@@ -317,6 +334,7 @@ export interface AdlsAccessControlException extends AdlsRemoteException {
  * Initializes a new instance of the AdlsError class.
  * @constructor
  * Data Lake Store filesystem error containing a specific WebHDFS exception.
+ *
  * @member {object} [remoteException] the object representing the actual
  * WebHDFS exception being returned.
  * 

@@ -15,6 +15,7 @@
  * Initializes a new instance of the PolicyDefinition class.
  * @constructor
  * The policy definition.
+ *
  * @member {string} [policyType] Gets or sets policy definition policy type.
  * Possible values include: 'NotSpecified', 'BuiltIn', 'Custom'
  * 
@@ -45,6 +46,7 @@ export interface PolicyDefinition extends BaseResource {
  * Initializes a new instance of the PolicyAssignment class.
  * @constructor
  * The policy definition.
+ *
  * @member {string} [displayName] Gets or sets the policy assignment display
  * name.
  * 

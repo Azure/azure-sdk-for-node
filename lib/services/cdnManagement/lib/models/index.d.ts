@@ -32,6 +32,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the TrackedResource class.
  * @constructor
  * ARM tracked resource
+ *
  * @member {string} location Resource location
  * 
  * @member {object} tags Resource tags
@@ -50,6 +51,7 @@ export interface TrackedResource extends Resource {
  * CDN API. This allows users to set up a logical grouping of endpoints in
  * addition to creating shared configuration settings and selecting pricing
  * tiers and providers.
+ *
  * @member {object} [sku] The SKU (pricing tier) of the CDN profile.
  * 
  * @member {string} [sku.name] Name of the pricing tier. Possible values
@@ -74,6 +76,7 @@ export interface Profile extends TrackedResource {
  * Initializes a new instance of the Sku class.
  * @constructor
  * The SKU (pricing tier) of the CDN profile.
+ *
  * @member {string} [name] Name of the pricing tier. Possible values include:
  * 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon', 'Standard_Akamai'
  * 
@@ -87,6 +90,7 @@ export interface Sku {
  * Initializes a new instance of the ProfileCreateParameters class.
  * @constructor
  * Profile properties required for profile creation.
+ *
  * @member {string} location Profile location
  * 
  * @member {object} [tags] Profile tags
@@ -109,6 +113,7 @@ export interface ProfileCreateParameters extends BaseResource {
  * Initializes a new instance of the ProfileUpdateParameters class.
  * @constructor
  * Profile properties required for profile update.
+ *
  * @member {object} tags Profile tags
  * 
  */
@@ -121,6 +126,7 @@ export interface ProfileUpdateParameters extends BaseResource {
  * Initializes a new instance of the SsoUri class.
  * @constructor
  * SSO URI required to login to third party web portal.
+ *
  * @member {string} [ssoUriValue] The URI used to login to third party web
  * portal.
  * 
@@ -137,6 +143,7 @@ export interface SsoUri {
  * information regarding caching behaviors and origins. The CDN endpoint is
  * exposed using the URL format <endpointname>.azureedge.net by default, but
  * custom domains can also be created.
+ *
  * @member {string} [hostName] The host name of the endpoint
  * {endpointName}.{DNSZone}
  * 
@@ -198,6 +205,7 @@ export interface Endpoint extends TrackedResource {
  * Initializes a new instance of the DeepCreatedOrigin class.
  * @constructor
  * Deep created origins within a CDN endpoint.
+ *
  * @member {string} name Origin name
  * 
  * @member {string} hostName The address of the origin. Domain names, IPv4
@@ -222,6 +230,7 @@ export interface DeepCreatedOrigin extends BaseResource {
  * Initializes a new instance of the EndpointCreateParameters class.
  * @constructor
  * Endpoint properties required for new endpoint creation.
+ *
  * @member {string} location Endpoint location
  * 
  * @member {object} [tags] Endpoint tags
@@ -277,6 +286,7 @@ export interface EndpointCreateParameters extends BaseResource {
  * Initializes a new instance of the EndpointUpdateParameters class.
  * @constructor
  * Endpoint properties required for new endpoint creation.
+ *
  * @member {object} [tags] Endpoint tags
  * 
  * @member {string} [originHostHeader] The host header the CDN provider will
@@ -324,6 +334,7 @@ export interface EndpointUpdateParameters extends BaseResource {
  * Initializes a new instance of the PurgeParameters class.
  * @constructor
  * Parameters required for endpoint purge.
+ *
  * @member {array} contentPaths The path to the content to be purged. Can
  * describe a file path or a wild card directory.
  * 
@@ -337,6 +348,7 @@ export interface PurgeParameters {
  * Initializes a new instance of the LoadParameters class.
  * @constructor
  * Parameters required for endpoint load.
+ *
  * @member {array} contentPaths The path to the content to be loaded. Should
  * describe a file path.
  * 
@@ -353,6 +365,7 @@ export interface LoadParameters {
  * edge nodes represented by an endpoint do not have the requested content
  * cached, they attempt to fetch it from one or more of the configured
  * origins.
+ *
  * @member {string} hostName The address of the origin. Domain names, IPv4
  * addresses, and IPv6 addresses are supported.
  * 
@@ -382,6 +395,7 @@ export interface Origin extends Resource {
  * Initializes a new instance of the OriginParameters class.
  * @constructor
  * Origin properties needed for origin creation or update.
+ *
  * @member {string} hostName The address of the origin. Domain names, IPv4
  * addresses, and IPv6 addresses are supported.
  * 
@@ -405,6 +419,7 @@ export interface OriginParameters extends BaseResource {
  * CDN CustomDomain represents a mapping between a user specified domain name
  * and a CDN endpoint. This is to use custom domain names to represent the
  * URLs for branding purposes.
+ *
  * @member {string} hostName The host name of the custom domain. Must be a
  * domain name.
  * 
@@ -426,6 +441,7 @@ export interface CustomDomain extends Resource {
  * Initializes a new instance of the CustomDomainParameters class.
  * @constructor
  * CustomDomain properties required for custom domain creation or update.
+ *
  * @member {string} hostName The host name of the custom domain. Must be a
  * domain name.
  * 
@@ -439,6 +455,7 @@ export interface CustomDomainParameters extends BaseResource {
  * Initializes a new instance of the ValidateCustomDomainInput class.
  * @constructor
  * Input of the custom domain to be validated.
+ *
  * @member {string} hostName The host name of the custom domain. Must be a
  * domain name.
  * 
@@ -452,6 +469,7 @@ export interface ValidateCustomDomainInput {
  * Initializes a new instance of the ValidateCustomDomainOutput class.
  * @constructor
  * Output of custom domain validation.
+ *
  * @member {boolean} [customDomainValidated] Indicates whether the custom
  * domain is validated or not.
  * 
@@ -472,6 +490,7 @@ export interface ValidateCustomDomainOutput {
  * Initializes a new instance of the CheckNameAvailabilityInput class.
  * @constructor
  * Input of CheckNameAvailability API.
+ *
  * @member {string} name The resource name to validate.
  * 
  * @member {string} type The type of the resource whose name is to be
@@ -488,6 +507,7 @@ export interface CheckNameAvailabilityInput {
  * Initializes a new instance of the CheckNameAvailabilityOutput class.
  * @constructor
  * Output of check name availability API.
+ *
  * @member {boolean} [nameAvailable] Indicates whether the name is available.
  * 
  * @member {string} [reason] The reason why the name is not available.
@@ -507,6 +527,7 @@ export interface CheckNameAvailabilityOutput {
  * Initializes a new instance of the Operation class.
  * @constructor
  * CDN REST API operation
+ *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}
  * 
  * @member {object} [display]

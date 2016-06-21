@@ -15,6 +15,7 @@
  * Initializes a new instance of the Sku class.
  * @constructor
  * Sku parameters supplied to the create redis operation.
+ *
  * @member {string} name What type of redis cache to deploy. Valid values:
  * (Basic, Standard, Premium). Possible values include: 'Basic', 'Standard',
  * 'Premium'
@@ -37,6 +38,7 @@ export interface Sku {
  * Initializes a new instance of the RedisProperties class.
  * @constructor
  * Parameters supplied to CreateOrUpdate redis operation.
+ *
  * @member {string} [redisVersion] RedisVersion parameter has been deprecated.
  * As such, it is no longer necessary to provide this parameter and any value
  * specified is ignored.
@@ -116,6 +118,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the RedisCreateOrUpdateParameters class.
  * @constructor
  * Parameters supplied to the CreateOrUpdate Redis operation.
+ *
  * @member {string} [redisVersion] RedisVersion parameter has been deprecated.
  * As such, it is no longer necessary to provide this parameter and any value
  * specified is ignored.
@@ -172,6 +175,7 @@ export interface RedisCreateOrUpdateParameters extends Resource {
  * Initializes a new instance of the RedisAccessKeys class.
  * @constructor
  * Redis cache access keys.
+ *
  * @member {string} [primaryKey] The current primary key that clients can use
  * to authenticate with redis cache.
  * 
@@ -189,6 +193,7 @@ export interface RedisAccessKeys {
  * Initializes a new instance of the RedisResourceWithAccessKey class.
  * @constructor
  * A redis item in CreateOrUpdate Operation response.
+ *
  * @member {string} [redisVersion] RedisVersion parameter has been deprecated.
  * As such, it is no longer necessary to provide this parameter and any value
  * specified is ignored.
@@ -266,6 +271,7 @@ export interface RedisResourceWithAccessKey extends Resource {
  * Initializes a new instance of the RedisResource class.
  * @constructor
  * A single redis item in List or Get Operation.
+ *
  * @member {string} [redisVersion] RedisVersion parameter has been deprecated.
  * As such, it is no longer necessary to provide this parameter and any value
  * specified is ignored.
@@ -334,6 +340,7 @@ export interface RedisResource extends Resource {
  * Initializes a new instance of the RedisListKeysResult class.
  * @constructor
  * The response of redis list keys operation.
+ *
  * @member {string} [primaryKey] The current primary key that clients can use
  * to authenticate with redis cache.
  * 
@@ -351,6 +358,7 @@ export interface RedisListKeysResult {
  * Initializes a new instance of the RedisRegenerateKeyParameters class.
  * @constructor
  * Specifies which redis access keys to reset.
+ *
  * @member {string} keyType Which redis access key to reset. Possible values
  * include: 'Primary', 'Secondary'
  * 
@@ -364,6 +372,7 @@ export interface RedisRegenerateKeyParameters {
  * Initializes a new instance of the RedisRebootParameters class.
  * @constructor
  * Specifies which redis node(s) to reboot.
+ *
  * @member {string} rebootType Which redis node(s) to reboot. Depending on
  * this value data loss is possible. Possible values include: 'PrimaryNode',
  * 'SecondaryNode', 'AllNodes'
