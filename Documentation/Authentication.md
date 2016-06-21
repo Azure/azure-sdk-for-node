@@ -23,54 +23,26 @@ After successful login, please follow the steps mentioned below to create a serv
 - To list all your subscriptions: `azure account list`
 - To set the subscription of your choice: `azure account set "your subscription name"`
 
-#### Step 1. Create an aplication
+#### Step 1. Create a service principal
 
-Let us create an application with a password. The default start-date witll be the day of application creation and the default end-date will be 1 year from the day of creation.
+Let us create a serviceprincipal with a password. The default start-date will be the day of application creation and the default end-date will be 1 year from the day of creation.
 
-> ###### NOTE: The AppId that gets created in this command is also known as clientId. It is the id given by ADAL for itself to identify your application. You can use this as the clientId during user authentication (creating UserTokenCredentials object).
+> ###### NOTE: The AppId a.k.a the serviceprincipal name in **GUID** format that gets created in this command is also known as clientId. It is the id given by ADAL for itself to identify your application. You can use this as the clientId during user authentication (creating UserTokenCredentials object).
 
 ```
-D:\sdk>azure ad app create -n testap908 --home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
+D:\sdk>azure ad sp create -n testap908 --home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
 info:    Executing command ad app create
 + Creating application testap674
-data:    AppId:                   56894bd4-0fde-41d8-a0d7-5bsslccety2   //<<<<<<<< Also known as clientId.
-data:    ObjectId:                g565675e8-7c30-908t-8548-87r98ew7rej
-data:    DisplayName:             testap674
-data:    IdentifierUris:          0=https://testap674.com/home
-data:    ReplyUrls:
-data:    AvailableToOtherTenants:  False
-data:    AppPermissions:
-data:                             claimValue:  user_impersonation
-data:                             description:  Allow the application to access testap674 on behalf of the signed-in user.
-data:                             directAccessGrantTypes:
-data:                             displayName:  Access testap674
-data:                             impersonationAccessGrantTypes:  impersonated=User, impersonator=Application
-data:                             isDisabled:
-data:                             origin:  Application
-data:                             permissionId:  12345698ui-fa71-4ab0-b647-fdajfhdakfh789
-data:                             resourceScopeType:  Personal
-data:                             userConsentDescription:  Allow the application to access testap674 on your behalf.
-data:                             userConsentDisplayName:  Access testap674
-data:                             lang:
-info:    ad app create command OK
-```
-
-#### Step 2. Create a ServicePrincipal with the applicationId
-
-Let us create a serviceprincipal using the applicationId from the previous step.
-```
-D:\sdk>azure ad sp create --applicationId 56894bd4-0fde-41d8-a0d7-5bsslccety2
-info:    Executing command ad sp create
 + Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
 data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
 data:    Display Name:            testap674
 data:    Service Principal Names:
-data:                             56894bd4-0fde-41d8-a0d7-5bsslccety2
+data:                             56894bd4-0fde-41d8-a0d7-5bsslccety2   <<<<<<<<<<<<<<<<<<<<< also known as clientId
 data:                             https://testap674.com/home
 info:    ad sp create command OK
 ```
 
-#### Step 3. Assigning a role to a ServicePrincipal by using the spn
+#### Step 2. Assigning a role to a ServicePrincipal by using the spn
 
 - You can get a list of available roles by ```azure role list```
 - In this example we are creating the serviceprincipal as a Contributor at the subscription level.
@@ -99,7 +71,7 @@ data:
 info:    role assignment create command OK
 ```
 
-#### Step 4. Login as a serviceprincipal
+#### Step 3. Login as a serviceprincipal
 ```
 D:\sdk>azure login -u 56894bd4-0fde-41d8-a0d7-5bsslccety2 -p P@ssw0rd --tenant <a guid OR your domain(contosocorp.com) --service-principal
 info:    Executing command login
