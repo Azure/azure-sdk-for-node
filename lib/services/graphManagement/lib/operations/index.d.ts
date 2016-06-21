@@ -148,6 +148,28 @@ export interface Applications {
 export interface Groups {
 
     /**
+     * Checks whether the specified user, group, contact, or service principal is
+     * a direct or a transitive member of the specified group.
+     *
+     * @param {object} parameters Check group membership parameters.
+     * 
+     * @param {string} [parameters.groupId] The object ID of the group to check.
+     * 
+     * @param {string} [parameters.memberId] The object ID of the contact, group,
+     * user, or service principal to check for membership in the specified group.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    isMemberOf(parameters: models.CheckGroupMembershipParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckGroupMembershipResult>): void;
+    isMemberOf(parameters: models.CheckGroupMembershipParameters, callback: ServiceCallback<models.CheckGroupMembershipResult>): void;
+
+    /**
      * Remove a memeber from a group. Reference:
      * https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/groups-operations#DeleteGroupMember
      *
