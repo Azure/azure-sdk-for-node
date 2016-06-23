@@ -10,41 +10,41 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla3890?api-version=2015-10-01-preview', '*')
-  .reply(400, "{\"error\":{\"code\":\"InvalidInput\",\"message\":\"The deep update for property 'DataLakeStoreAccounts' is not supported. Trace: fda12436-b612-4d86-9728-e347b360f0a8 Time: 2016-05-17T17:46:28.5287306-07:00\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla2105?api-version=2015-10-01-preview', '*')
+  .reply(400, "{\"error\":{\"code\":\"InvalidInput\",\"message\":\"The deep update for property 'DataLakeStoreAccounts' is not supported. Trace: 4d00996b-cd2c-407a-ba6a-23c73bd02244 Time: 2016-05-24T17:53:49.1212925-07:00\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '200',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'fda12436-b612-4d86-9728-e347b360f0a8',
+  'x-ms-request-id': '4d00996b-cd2c-407a-ba6a-23c73bd02244',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '12593cd8-f804-4f13-8428-d9ea873d5eaa',
-  'x-ms-routing-request-id': 'WESTUS:20160518T004628Z:12593cd8-f804-4f13-8428-d9ea873d5eaa',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-correlation-request-id': '0f294626-e9a3-4bf0-93af-53108ebd6d17',
+  'x-ms-routing-request-id': 'WESTUS:20160525T005349Z:0f294626-e9a3-4bf0-93af-53108ebd6d17',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 18 May 2016 00:46:28 GMT',
+  date: 'Wed, 25 May 2016 00:53:49 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla3890?api-version=2015-10-01-preview', '*')
-  .reply(400, "{\"error\":{\"code\":\"InvalidInput\",\"message\":\"The deep update for property 'DataLakeStoreAccounts' is not supported. Trace: fda12436-b612-4d86-9728-e347b360f0a8 Time: 2016-05-17T17:46:28.5287306-07:00\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlarg05/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla2105?api-version=2015-10-01-preview', '*')
+  .reply(400, "{\"error\":{\"code\":\"InvalidInput\",\"message\":\"The deep update for property 'DataLakeStoreAccounts' is not supported. Trace: 4d00996b-cd2c-407a-ba6a-23c73bd02244 Time: 2016-05-24T17:53:49.1212925-07:00\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '200',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'fda12436-b612-4d86-9728-e347b360f0a8',
+  'x-ms-request-id': '4d00996b-cd2c-407a-ba6a-23c73bd02244',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '12593cd8-f804-4f13-8428-d9ea873d5eaa',
-  'x-ms-routing-request-id': 'WESTUS:20160518T004628Z:12593cd8-f804-4f13-8428-d9ea873d5eaa',
+  'x-ms-ratelimit-remaining-subscription-writes': '1195',
+  'x-ms-correlation-request-id': '0f294626-e9a3-4bf0-93af-53108ebd6d17',
+  'x-ms-routing-request-id': 'WESTUS:20160525T005349Z:0f294626-e9a3-4bf0-93af-53108ebd6d17',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 18 May 2016 00:46:28 GMT',
+  date: 'Wed, 25 May 2016 00:53:49 GMT',
   connection: 'close' });
  return result; }]];

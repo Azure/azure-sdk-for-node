@@ -6,7 +6,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Agarwal, Shubham <shuagarw@microsoft.com>"
   ],
-  "version": "0.1.1",
+  "version": "1.0.1",
   "description": "Microsoft Azure Client Library in node for graph api",
   "tags": [
     "azure",
@@ -17,9 +17,6 @@
     "azure"
   ],
   "main": "./lib/graphRbacManagementClient.js",
-  "engines": {
-    "node": ">= 0.10.0"
-  },
   "licenses": [
     {
       "type": "Apache 2.0",
@@ -27,8 +24,8 @@
     }
   ],
   "dependencies": {
-    "ms-rest-azure": "^1.8.0",
-    "ms-rest": "^1.8.0"
+    "ms-rest-azure": "^1.14.4",
+    "ms-rest": "^1.14.3"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

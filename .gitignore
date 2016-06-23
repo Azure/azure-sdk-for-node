@@ -1,6 +1,7 @@
 projects/*
 targets/*
 packages/*
+test/data/test_package.zip
 
 # Visual Studio #
 *.suo

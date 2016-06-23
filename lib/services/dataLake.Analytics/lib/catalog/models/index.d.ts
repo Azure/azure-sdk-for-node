@@ -430,6 +430,51 @@ export interface USqlView extends CatalogItem {
 
 /**
  * @class
+ * Initializes a new instance of the USqlTablePartition class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL table partition item.
+ * @member {string} [databaseName] Gets or sets the name of the database.
+ * 
+ * @member {string} [schemaName] Gets or sets the name of the schema
+ * associated with this table partition and database.
+ * 
+ * @member {string} [name] Gets or sets the name of the table partition.
+ * 
+ * @member {object} [parentName] Gets or sets the Ddl object of the
+ * partition's parent.
+ * 
+ * @member {string} [parentName.firstPart] Gets or sets the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [parentName.secondPart] Gets or sets the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [parentName.thirdPart] Gets or sets the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [parentName.server] Gets or sets the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {number} [indexId] Gets or sets the index ID for this partition.
+ * 
+ * @member {array} [label] Gets or sets the list of labels associated with
+ * this partition.
+ * 
+ * @member {date} [createDate] Gets or sets the creation time of the partition
+ * 
+ */
+export interface USqlTablePartition extends CatalogItem {
+    databaseName?: string;
+    schemaName?: string;
+    name?: string;
+    parentName?: DdlName;
+    indexId?: number;
+    label?: string[];
+    createDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlTableStatistics class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table statistics item.

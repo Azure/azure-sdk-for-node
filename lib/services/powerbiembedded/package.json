@@ -1,0 +1,39 @@
+{
+  "name": "azure-arm-powerbiembedded",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Mazzola, Matt <mattm@microsoft.com>"
+  ],
+  "version": "0.1.0",
+  "description": "Microsoft Azure Power BI Embedded Client Library for node",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/powerBIEmbeddedManagementClient.js",
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "ms-rest": "^1.14.0",
+    "ms-rest-azure": "^1.14.0"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}

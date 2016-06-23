@@ -1,108 +1,32 @@
-# Microsoft Azure SDK for Node.js - Storage Management
+# Microsoft Azure SDK for Node.js - NotificationHubs Management
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure Storage Resources.Right now it supports:
-- **Node.js version: 0.10.0 or higher**
+This project provides a Node.js package that makes it easy to manage Microsoft Azure NotificationHubs Resources.Right now it supports:
+- **Node.js version: 4.x.x or higher**
 
 ## How to Install
 
 ```bash
-npm install azure-arm-storage
+npm install azure-arm-notificationhubs
 ```
 ## How to Use
 
-### Authentication
+### Authentication, client creation and listing notificationHubs associated with a namespace in a resource group as an example
 
  ```javascript
  var msrestAzure = require('ms-rest-azure');
- //user authentication
- var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
- //service principal authentication
- var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
+ var notificationHubsClient = require('azure-arm-notificationhubs');
+
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new notificationHubsClient(credentials, 'your-subscription-id');
+  client.notificationHubs.list(resourceGroupName, namespaceName, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
  ```
-
-### Create the StorageManagementClient
-
-```javascript
-var storageManagementClient = require('azure-arm-storage');
-var client = new storageManagementClient(credentials, 'your-subscription-id');
-```
-
-## Create a storageAccount
-
-```javascript
-var createParameters = {
-  location: 'West US',
-  sku: {
-    name: 'Standard_LRS'
-  },
-  kind: 'Storage'
-  tags: {
-    tag1: 'val1',
-    tag2: 'val2'
-  }
-};
-client.storageAccounts.create(groupName, accountName, createParameters, function (err, result, request, response) {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
-```
-
-## Get properties of a storageAccount
-
-```javascript
-client.storageAccounts.getProperties(groupName, accountName, function (err, result, request, response) {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
-```
-
-## List all the storage accounts in a specific resource group
-
-```javascript
-client.storageAccounts.listByResourceGroup(groupName, function (err, result, request, response) {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
-```
-
-## List all the storage accounts in the current subscription
-
-```javascript
-client.storageAccounts.list(function (err, result, request, response) {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
-```
-
-## Regenerate the storage account keys of a storage account
-
-```javascript
-client.storageAccounts.regenerateKey(groupName, accountName, 'key1', function (err, result, request, response) {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
-```
-
-## Delete a storageAccount
-
-```javascript
-client.storageAccounts.deleteMethod(groupName, accountName, function (err, result, request, response) {
-  if (err) {
-    console.log(err);
-  }
-  console.log(result);
-});
-```
 
 ## Related projects
 

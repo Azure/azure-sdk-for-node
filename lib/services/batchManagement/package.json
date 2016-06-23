@@ -15,9 +15,6 @@
     "azure"
   ],
   "main": "./lib/batchManagementClient.js",
-  "engines": {
-    "node": ">= 0.10.0"
-  },
   "licenses": [
     {
       "type": "Apache 2.0",
@@ -25,8 +22,8 @@
     }
   ],
   "dependencies": {
-    "ms-rest": "^1.12.0",
-    "ms-rest-azure": "^1.12.0"
+    "ms-rest": "^1.14.0",
+    "ms-rest-azure": "^1.14.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

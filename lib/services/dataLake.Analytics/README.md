@@ -4,7 +4,7 @@ This project provides a Node.js package that makes it easy to manage Azure Data 
 
 Right now it supports:
 
-  *  **Node.js version: 0.10.0 or higher**
+  *  **Node.js version: 4.x.x or higher**
   *  **REST API version for Account: 2015-10-01-preview**
   *  **REST API version for Catalog: 2015-10-01-preview**
   *  **REST API version for Job: 2016-03-20-preview**
@@ -23,24 +23,25 @@ npm install azure-arm-datalake-analytics
 
 ## How to Use
 
-### Authentication
+### Authentication, account, job and catalog client creation and listing jobs as an example
 
  ```javascript
  var msrestAzure = require('ms-rest-azure');
- //user authentication
- var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
- //service principal authentication
- var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
+ var adlaManagement = require("azure-arm-datalake-analytics");
+
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var acccountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
+  var jobClient = new adlaManagement.DataLakeAnalyticsJobClient(credentials, 'azuredatalakeanalytics.net');
+  var catalogClient = new adlaManagement.DataLakeAnalyticsCatalogClient(credentials, 'azuredatalakeanalytics.net');
+  jobClient.job.list(accountName, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
  ```
-
-### Create the Data Lake Analytics Clients
-
-```javascript
-var adlaManagement = require("azure-arm-datalake-analytics");
-var acccountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
-var jobClient = new adlaManagement.DataLakeAnalyticsJobClient(credentials, 'azuredatalakeanalytics.net');
-var catalogClient = new adlaManagement.DataLakeAnalyticsCatalogClient(credentials, 'azuredatalakeanalytics.net');
-```
 
 ### Create a Data Lake Analytics Account
 ```javascript

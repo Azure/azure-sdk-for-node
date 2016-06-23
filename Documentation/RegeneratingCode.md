@@ -14,4 +14,4 @@
   - If you want to use a local file then save the file locally say "D:\sdk" and make sure to have the same path as defined in the source of your porject in the mappings object. Execute `gulp codegen --spec-root "D:\sdk" --project <your-project-name>`.
 - If generation is successful then you will see the generated code in the lib folder under `lib/services/<YourServiceName>`
 - Make sure you have License.txt, README.md and package.json file. Take a look at [StorageManagement2](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/storageManagement2) as an example.
-- **Please make sure to have accurate examples in README.md as that is what customers will see when they search for your service package**
+- **Please make sure to have accurate examples in README.md as that is what customers will see when they search for your service package on https://npmjs.com**

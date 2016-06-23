@@ -16,22 +16,21 @@ npm install azure-arm-website
 
 ## How to Use
 
-### Authentication
+### Authentication, client creation and listing serverFarms in a resource group as an example
 
  ```javascript
-var msrestAzure = require('ms-rest-azure');
- //user authentication
- var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
- //service principal authentication
- var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
+ var msrestAzure = require('ms-rest-azure');
+ var webSiteManagementClient = require('azure-arm-website');
+ 
+ // Interactive Login
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new webSiteManagementClient(credentials, 'your-subscription-id');
+  client.serverFarms.getServerFarms(resourceGroupName, function(err, result) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
  ```
-
-### Create the WebSiteManagementClient
-
-```javascript
-var webSiteManagement = require('azure-arm-website');
-var webSiteManagementClient = new webSiteManagement(credentials, 'your-subscription-id');
-```
 
 ## Related projects
 
