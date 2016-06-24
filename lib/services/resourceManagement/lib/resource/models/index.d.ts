@@ -15,6 +15,7 @@
  * Initializes a new instance of the DeploymentExtendedFilter class.
  * @constructor
  * Deployment filter.
+ *
  * @member {string} [provisioningState] Gets or sets the provisioning state.
  * 
  */
@@ -27,17 +28,21 @@ export interface DeploymentExtendedFilter {
  * Initializes a new instance of the GenericResourceFilter class.
  * @constructor
  * Resource filter.
+ *
  * @member {string} [resourceType] Gets or sets the resource type.
  * 
  * @member {string} [tagname] Gets or sets the tag name.
  * 
  * @member {string} [tagvalue] Gets or sets the tag value.
  * 
+ * @member {string} [expand] Gets or sets the expand value.
+ * 
  */
 export interface GenericResourceFilter {
     resourceType?: string;
     tagname?: string;
     tagvalue?: string;
+    expand?: string;
 }
 
 /**
@@ -45,6 +50,7 @@ export interface GenericResourceFilter {
  * Initializes a new instance of the ResourceGroupFilter class.
  * @constructor
  * Resource group filter.
+ *
  * @member {string} [tagName] Gets or sets the tag name.
  * 
  * @member {string} [tagValue] Gets or sets the tag value.
@@ -60,6 +66,7 @@ export interface ResourceGroupFilter {
  * Initializes a new instance of the TemplateLink class.
  * @constructor
  * Entity representing the reference to the template.
+ *
  * @member {string} uri URI referencing the template.
  * 
  * @member {string} [contentVersion] If included it must match the
@@ -76,6 +83,7 @@ export interface TemplateLink {
  * Initializes a new instance of the ParametersLink class.
  * @constructor
  * Entity representing the reference to the deployment paramaters.
+ *
  * @member {string} uri URI referencing the template.
  * 
  * @member {string} [contentVersion] If included it must match the
@@ -92,6 +100,7 @@ export interface ParametersLink {
  * Initializes a new instance of the DeploymentProperties class.
  * @constructor
  * Deployment properties.
+ *
  * @member {object} [template] Gets or sets the template content. Use only one
  * of Template or TemplateLink.
  * 
@@ -114,7 +123,7 @@ export interface ParametersLink {
  * @member {string} [parametersLink.contentVersion] If included it must match
  * the ContentVersion in the template.
  * 
- * @member {string} [mode] Gets or sets the deployment mode. Possible values
+ * @member {string} mode Gets or sets the deployment mode. Possible values
  * include: 'Incremental', 'Complete'
  * 
  * @member {object} [debugSetting] Gets or sets the debug setting of the
@@ -129,7 +138,7 @@ export interface DeploymentProperties {
     templateLink?: TemplateLink;
     parameters?: any;
     parametersLink?: ParametersLink;
-    mode?: string;
+    mode: string;
     debugSetting?: DebugSetting;
 }
 
@@ -149,6 +158,7 @@ export interface DebugSetting {
  * Initializes a new instance of the Deployment class.
  * @constructor
  * Deployment operation parameters.
+ *
  * @member {object} [properties] Gets or sets the deployment properties.
  * 
  * @member {object} [properties.template] Gets or sets the template content.
@@ -225,6 +235,7 @@ export interface ResourceManagementErrorWithDetails {
  * Initializes a new instance of the ProviderResourceType class.
  * @constructor
  * Resource type managed by the resource provider.
+ *
  * @member {string} [resourceType] Gets or sets the resource type.
  * 
  * @member {array} [locations] Gets or sets the collection of locations where
@@ -247,6 +258,7 @@ export interface ProviderResourceType {
  * Initializes a new instance of the Provider class.
  * @constructor
  * Resource provider information.
+ *
  * @member {string} [id] Gets or sets the provider id.
  * 
  * @member {string} [namespace] Gets or sets the namespace of the provider.
@@ -270,6 +282,7 @@ export interface Provider {
  * Initializes a new instance of the BasicDependency class.
  * @constructor
  * Deployment dependency information.
+ *
  * @member {string} [id] Gets or sets the ID of the dependency.
  * 
  * @member {string} [resourceType] Gets or sets the dependency resource type.
@@ -288,6 +301,7 @@ export interface BasicDependency {
  * Initializes a new instance of the Dependency class.
  * @constructor
  * Deployment dependency information.
+ *
  * @member {array} [dependsOn] Gets the list of dependencies.
  * 
  * @member {string} [id] Gets or sets the ID of the dependency.
@@ -309,6 +323,7 @@ export interface Dependency {
  * Initializes a new instance of the DeploymentPropertiesExtended class.
  * @constructor
  * Deployment properties with additional details.
+ *
  * @member {string} [provisioningState] Gets or sets the state of the
  * provisioning.
  * 
@@ -378,6 +393,7 @@ export interface DeploymentPropertiesExtended {
  * Initializes a new instance of the DeploymentValidateResult class.
  * @constructor
  * Information from validate template deployment response.
+ *
  * @member {object} [error] Gets or sets validation error.
  * 
  * @member {string} [error.code] Gets or sets the error code returned from the
@@ -454,6 +470,7 @@ export interface DeploymentValidateResult {
  * Initializes a new instance of the DeploymentExtended class.
  * @constructor
  * Deployment information.
+ *
  * @member {string} [id] Gets or sets the ID of the deployment.
  * 
  * @member {string} name Gets or sets the name of the deployment.
@@ -545,6 +562,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the GenericResource class.
  * @constructor
  * Resource information.
+ *
  * @member {object} [plan] Gets or sets the plan of the resource.
  * 
  * @member {string} [plan.name] Gets or sets the plan ID.
@@ -557,10 +575,43 @@ export interface Resource extends BaseResource {
  * 
  * @member {object} [properties] Gets or sets the resource properties.
  * 
+ * @member {string} [kind] Gets or sets the kind of the resource.
+ * 
+ * @member {string} [managedBy] Gets or sets the managedBy property of the
+ * resource.
+ * 
+ * @member {object} [sku] Gets or sets the sku of the resource.
+ * 
+ * @member {string} [sku.name] Gets or sets the sku name.
+ * 
+ * @member {string} [sku.tier] Gets or sets the sku tier.
+ * 
+ * @member {string} [sku.size] Gets or sets the sku size.
+ * 
+ * @member {string} [sku.family] Gets or sets the sku family.
+ * 
+ * @member {string} [sku.model] Gets or sets the sku model.
+ * 
+ * @member {number} [sku.capacity] Gets or sets the sku capacity.
+ * 
+ * @member {object} [identity] Gets or sets the identity of the resource.
+ * 
+ * @member {string} [identity.principalId] The principal id of resource
+ * identity.
+ * 
+ * @member {string} [identity.tenantId] The tenant id of resource.
+ * 
+ * @member {string} [identity.type] Gets or sets the identity type. Possible
+ * values include: 'SystemAssigned'
+ * 
  */
 export interface GenericResource extends Resource {
     plan?: Plan;
     properties?: any;
+    kind?: string;
+    managedBy?: string;
+    sku?: Sku;
+    identity?: Identity;
 }
 
 /**
@@ -568,6 +619,7 @@ export interface GenericResource extends Resource {
  * Initializes a new instance of the Plan class.
  * @constructor
  * Plan for the resource.
+ *
  * @member {string} [name] Gets or sets the plan ID.
  * 
  * @member {string} [publisher] Gets or sets the publisher ID.
@@ -586,9 +638,58 @@ export interface Plan {
 
 /**
  * @class
+ * Initializes a new instance of the Sku class.
+ * @constructor
+ * Sku for the resource.
+ *
+ * @member {string} [name] Gets or sets the sku name.
+ * 
+ * @member {string} [tier] Gets or sets the sku tier.
+ * 
+ * @member {string} [size] Gets or sets the sku size.
+ * 
+ * @member {string} [family] Gets or sets the sku family.
+ * 
+ * @member {string} [model] Gets or sets the sku model.
+ * 
+ * @member {number} [capacity] Gets or sets the sku capacity.
+ * 
+ */
+export interface Sku {
+    name?: string;
+    tier?: string;
+    size?: string;
+    family?: string;
+    model?: string;
+    capacity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Identity class.
+ * @constructor
+ * Identity for the resource.
+ *
+ * @member {string} [principalId] The principal id of resource identity.
+ * 
+ * @member {string} [tenantId] The tenant id of resource.
+ * 
+ * @member {string} [type] Gets or sets the identity type. Possible values
+ * include: 'SystemAssigned'
+ * 
+ */
+export interface Identity {
+    principalId?: string;
+    tenantId?: string;
+    type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResourceGroup class.
  * @constructor
  * Resource group information.
+ *
  * @member {string} [id] Gets the ID of the resource group.
  * 
  * @member {string} [name] Gets or sets the Name of the resource group.
@@ -620,6 +721,7 @@ export interface ResourceGroup {
  * Initializes a new instance of the ResourceGroupProperties class.
  * @constructor
  * The resource group properties.
+ *
  * @member {string} [provisioningState] Gets resource group provisioning state.
  * 
  */
@@ -632,6 +734,7 @@ export interface ResourceGroupProperties {
  * Initializes a new instance of the ResourcesMoveInfo class.
  * @constructor
  * Parameters of move resources.
+ *
  * @member {array} [resources] Gets or sets the ids of the resources.
  * 
  * @member {string} [targetResourceGroup] The target resource group.
@@ -647,6 +750,7 @@ export interface ResourcesMoveInfo {
  * Initializes a new instance of the ExportTemplateRequest class.
  * @constructor
  * Export resource group template request parameters.
+ *
  * @member {array} [resources] Gets or sets the ids of the resources. The only
  * supported string currently is '*' (all resources). Future api updates will
  * support exporting specific resources.
@@ -666,6 +770,7 @@ export interface ExportTemplateRequest {
  * Initializes a new instance of the TagCount class.
  * @constructor
  * Tag count.
+ *
  * @member {string} [type] Type of count.
  * 
  * @member {string} [value] Value of count.
@@ -681,6 +786,7 @@ export interface TagCount {
  * Initializes a new instance of the TagValue class.
  * @constructor
  * Tag information.
+ *
  * @member {string} [id] Gets or sets the tag ID.
  * 
  * @member {string} [tagValueProperty] Gets or sets the tag value.
@@ -703,6 +809,7 @@ export interface TagValue {
  * Initializes a new instance of the TagDetails class.
  * @constructor
  * Tag details.
+ *
  * @member {string} [id] Gets or sets the tag ID.
  * 
  * @member {string} [tagName] Gets or sets the tag name.
@@ -728,6 +835,7 @@ export interface TagDetails {
  * Initializes a new instance of the TargetResource class.
  * @constructor
  * Target resource.
+ *
  * @member {string} [id] Gets or sets the ID of the resource.
  * 
  * @member {string} [resourceName] Gets or sets the name of the resource.
@@ -757,6 +865,7 @@ export interface HttpMessage {
  * Initializes a new instance of the DeploymentOperationProperties class.
  * @constructor
  * Deployment operation properties.
+ *
  * @member {string} [provisioningState] Gets or sets the state of the
  * provisioning.
  * 
@@ -804,6 +913,7 @@ export interface DeploymentOperationProperties {
  * Initializes a new instance of the DeploymentOperation class.
  * @constructor
  * Deployment operation information.
+ *
  * @member {string} [id] Gets or sets full deployment operation id.
  * 
  * @member {string} [operationId] Gets or sets deployment operation id.
@@ -859,6 +969,7 @@ export interface DeploymentOperation {
  * Initializes a new instance of the ResourceProviderOperationDisplayProperties class.
  * @constructor
  * Resource provider operation's display properties.
+ *
  * @member {string} [publisher] Gets or sets operation description.
  * 
  * @member {string} [provider] Gets or sets operation provider.
@@ -876,32 +987,6 @@ export interface ResourceProviderOperationDisplayProperties {
     resource?: string;
     operation?: string;
     description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceProviderOperationDefinition class.
- * @constructor
- * Resource provider operation information.
- * @member {string} [name] Gets or sets the provider operation name.
- * 
- * @member {object} [display] Gets or sets the display property of the
- * provider operation.
- * 
- * @member {string} [display.publisher] Gets or sets operation description.
- * 
- * @member {string} [display.provider] Gets or sets operation provider.
- * 
- * @member {string} [display.resource] Gets or sets operation resource.
- * 
- * @member {string} [display.operation] Gets or sets operation.
- * 
- * @member {string} [display.description] Gets or sets operation description.
- * 
- */
-export interface ResourceProviderOperationDefinition {
-    name?: string;
-    display?: ResourceProviderOperationDisplayProperties;
 }
 
 /**
