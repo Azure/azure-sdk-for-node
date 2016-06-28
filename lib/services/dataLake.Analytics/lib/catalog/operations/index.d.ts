@@ -35,11 +35,10 @@ export interface Catalog {
      * @param {object} parameters The parameters required to create the secret
      * (name and password)
      * 
-     * @param {string} [parameters.password] Gets or sets the password for the
-     * secret to pass in
+     * @param {string} [parameters.password] the password for the secret to pass in
      * 
-     * @param {string} [parameters.uri] Gets or sets the URI identifier for the
-     * secret in the format <hostname>:<port>
+     * @param {string} [parameters.uri] the URI identifier for the secret in the
+     * format <hostname>:<port>
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -66,11 +65,10 @@ export interface Catalog {
      * @param {object} parameters The parameters required to modify the secret
      * (name and password)
      * 
-     * @param {string} [parameters.password] Gets or sets the password for the
-     * secret to pass in
+     * @param {string} [parameters.password] the password for the secret to pass in
      * 
-     * @param {string} [parameters.uri] Gets or sets the URI identifier for the
-     * secret in the format <hostname>:<port>
+     * @param {string} [parameters.uri] the URI identifier for the secret in the
+     * format <hostname>:<port>
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -413,6 +411,77 @@ export interface Catalog {
      */
     listTables(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
     listTables(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableList>): void;
+
+    /**
+     * Retrieves the specified table type from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to
+     * execute catalog operations on.
+     * 
+     * @param {string} databaseName The name of the database containing the table
+     * type.
+     * 
+     * @param {string} schemaName The name of the schema containing the table type.
+     * 
+     * @param {string} tableTypeName The name of the table type to retrieve.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getTableType(accountName: string, databaseName: string, schemaName: string, tableTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableType>): void;
+    getTableType(accountName: string, databaseName: string, schemaName: string, tableTypeName: string, callback: ServiceCallback<models.USqlTableType>): void;
+
+    /**
+     * Retrieves the list of table types from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to
+     * execute catalog operations on.
+     * 
+     * @param {string} databaseName The name of the database containing the table
+     * types.
+     * 
+     * @param {string} schemaName The name of the schema containing the table
+     * types.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.filter] OData filter. Optional.
+     * 
+     * @param {number} [options.top] The number of items to return. Optional.
+     * 
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     * 
+     * @param {string} [options.expand] OData expansion. Expand related resources
+     * in line with the retrieved resources, e.g. Categories?$expand=Products
+     * would expand Product data in line with each Category entry. Optional.
+     * 
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     * 
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     * 
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in
+     * the response, e.g. Categories?$count=true. Optional.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listTableTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableTypeList>): void;
+    listTableTypes(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableTypeList>): void;
 
     /**
      * Retrieves the specified view from the Data Lake Analytics catalog.
@@ -1010,6 +1079,23 @@ export interface Catalog {
      */
     listTablesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
     listTablesNext(nextPageLink: string, callback: ServiceCallback<models.USqlTableList>): void;
+
+    /**
+     * Retrieves the list of table types from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listTableTypesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableTypeList>): void;
+    listTableTypesNext(nextPageLink: string, callback: ServiceCallback<models.USqlTableTypeList>): void;
 
     /**
      * Retrieves the list of views from the Data Lake Analytics catalog.

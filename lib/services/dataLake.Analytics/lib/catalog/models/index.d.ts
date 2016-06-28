@@ -15,11 +15,11 @@
  * Initializes a new instance of the DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters class.
  * @constructor
  * DataLakeAnalytics DataLakeAnalyticsAccount information.
- * @member {string} password Gets or sets the password for the secret to pass
- * in
+ *
+ * @member {string} password the password for the secret to pass in
  * 
- * @member {string} [uri] Gets or sets the URI identifier for the secret in
- * the format <hostname>:<port>
+ * @member {string} [uri] the URI identifier for the secret in the format
+ * <hostname>:<port>
  * 
  */
 export interface DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters {
@@ -32,10 +32,11 @@ export interface DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters {
  * Initializes a new instance of the CatalogItem class.
  * @constructor
  * A Data Lake Analytics catalog item.
- * @member {string} [computeAccountName] Gets or sets the name of the Data
- * Lake Analytics account.
+ *
+ * @member {string} [computeAccountName] the name of the Data Lake Analytics
+ * account.
  * 
- * @member {uuid} [version] Gets or sets the version of the catalog item.
+ * @member {uuid} [version] the version of the catalog item.
  * 
  */
 export interface CatalogItem {
@@ -48,19 +49,18 @@ export interface CatalogItem {
  * Initializes a new instance of the USqlSecret class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL secret item.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [name] Gets or sets the name of the secret.
+ * @member {string} [name] the name of the secret.
  * 
- * @member {date} [creationTime] Gets or sets the creation time of the
- * credential object. This is the only information returned about a secret
- * from a GET.
+ * @member {date} [creationTime] the creation time of the credential object.
+ * This is the only information returned about a secret from a GET.
  * 
- * @member {string} [uri] Gets or sets the URI identifier for the secret in
- * the format <hostname>:<port>
+ * @member {string} [uri] the URI identifier for the secret in the format
+ * <hostname>:<port>
  * 
- * @member {string} [password] Gets or sets the password for the secret to
- * pass in
+ * @member {string} [password] the password for the secret to pass in
  * 
  */
 export interface USqlSecret extends CatalogItem {
@@ -76,18 +76,19 @@ export interface USqlSecret extends CatalogItem {
  * Initializes a new instance of the USqlExternalDataSource class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL external datasource item.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [name] Gets or sets the name of the external data source.
+ * @member {string} [name] the name of the external data source.
  * 
- * @member {string} [provider] Gets or sets the name of the provider for the
+ * @member {string} [provider] the name of the provider for the external data
+ * source.
+ * 
+ * @member {string} [providerString] the name of the provider string for the
  * external data source.
  * 
- * @member {string} [providerString] Gets or sets the name of the provider
- * string for the external data source.
- * 
- * @member {array} [pushdownTypes] Gets or sets the list of types to push down
- * from the external data source.
+ * @member {array} [pushdownTypes] the list of types to push down from the
+ * external data source.
  * 
  */
 export interface USqlExternalDataSource extends CatalogItem {
@@ -103,16 +104,16 @@ export interface USqlExternalDataSource extends CatalogItem {
  * Initializes a new instance of the USqlCredential class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL credential item.
- * @member {string} [databaseName] Gets or sets the name of the database the
- * credential is in.
+ *
+ * @member {string} [databaseName] the name of the database the credential is
+ * in.
  * 
- * @member {string} [identity] Gets or sets the name of the secret associated
- * with the credential.
- * 
- * @member {string} [name] Gets or sets the name of the credential.
- * 
- * @member {string} [userName] Gets or sets the user name associated with the
+ * @member {string} [identity] the name of the secret associated with the
  * credential.
+ * 
+ * @member {string} [name] the name of the credential.
+ * 
+ * @member {string} [userName] the user name associated with the credential.
  * 
  */
 export interface USqlCredential extends CatalogItem {
@@ -127,15 +128,15 @@ export interface USqlCredential extends CatalogItem {
  * Initializes a new instance of the USqlProcedure class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL procedure item.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [schemaName] Gets or sets the name of the schema
- * associated with this procedure and database.
+ * @member {string} [schemaName] the name of the schema associated with this
+ * procedure and database.
  * 
- * @member {string} [name] Gets or sets the name of the procedure.
+ * @member {string} [name] the name of the procedure.
  * 
- * @member {string} [definition] Gets or sets the defined query of the
- * procedure.
+ * @member {string} [definition] the defined query of the procedure.
  * 
  */
 export interface USqlProcedure extends CatalogItem {
@@ -150,10 +151,11 @@ export interface USqlProcedure extends CatalogItem {
  * Initializes a new instance of the USqlTableColumn class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table column item.
- * @member {string} [name] Gets or sets the name of the column in the table.
+ *
+ * @member {string} [name] the name of the column in the table.
  * 
- * @member {string} [type] Gets or sets the object type of the specified
- * column (such as System.String).
+ * @member {string} [type] the object type of the specified column (such as
+ * System.String).
  * 
  */
 export interface USqlTableColumn {
@@ -166,10 +168,11 @@ export interface USqlTableColumn {
  * Initializes a new instance of the USqlDirectedColumn class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL directed column item.
- * @member {string} [name] Gets or sets the name of the index in the table.
+ *
+ * @member {string} [name] the name of the index in the table.
  * 
- * @member {boolean} [descending] Gets or sets the switch indicating if the
- * index is descending or not.
+ * @member {boolean} [descending] the switch indicating if the index is
+ * descending or not.
  * 
  */
 export interface USqlDirectedColumn {
@@ -182,16 +185,15 @@ export interface USqlDirectedColumn {
  * Initializes a new instance of the USqlDistributionInfo class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL distribution information object.
- * @member {number} [type] Gets or sets the type of this distribution.
+ *
+ * @member {number} [type] the type of this distribution.
  * 
- * @member {array} [keys] Gets or sets the list of directed columns in the
- * distribution
+ * @member {array} [keys] the list of directed columns in the distribution
  * 
- * @member {number} [count] Gets or sets the count of indices using this
+ * @member {number} [count] the count of indices using this distribution.
+ * 
+ * @member {number} [dynamicCount] the dynamic count of indices using this
  * distribution.
- * 
- * @member {number} [dynamicCount] Gets or sets the dynamic count of indices
- * using this distribution.
  * 
  */
 export interface USqlDistributionInfo {
@@ -206,45 +208,40 @@ export interface USqlDistributionInfo {
  * Initializes a new instance of the USqlIndex class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table index item.
- * @member {string} [name] Gets or sets the name of the index in the table.
+ *
+ * @member {string} [name] the name of the index in the table.
  * 
- * @member {array} [indexKeys] Gets or sets the list of directed columns in
- * the index
+ * @member {array} [indexKeys] the list of directed columns in the index
  * 
- * @member {array} [columns] Gets or sets the list of columns in the index
+ * @member {array} [columns] the list of columns in the index
  * 
- * @member {object} [distributionInfo] Gets or sets the distributions info of
- * the index
+ * @member {object} [distributionInfo] the distributions info of the index
  * 
- * @member {number} [distributionInfo.type] Gets or sets the type of this
+ * @member {number} [distributionInfo.type] the type of this distribution.
+ * 
+ * @member {array} [distributionInfo.keys] the list of directed columns in the
+ * distribution
+ * 
+ * @member {number} [distributionInfo.count] the count of indices using this
  * distribution.
  * 
- * @member {array} [distributionInfo.keys] Gets or sets the list of directed
- * columns in the distribution
+ * @member {number} [distributionInfo.dynamicCount] the dynamic count of
+ * indices using this distribution.
  * 
- * @member {number} [distributionInfo.count] Gets or sets the count of indices
- * using this distribution.
+ * @member {uuid} [partitionFunction] partition function ID for the index.
  * 
- * @member {number} [distributionInfo.dynamicCount] Gets or sets the dynamic
- * count of indices using this distribution.
+ * @member {array} [partitionKeyList] the list of partion keys in the index
  * 
- * @member {uuid} [partitionFunction] Gets or sets partition function ID for
- * the index.
+ * @member {array} [streamNames] the list of full paths to the streams that
+ * contain this index in the DataLake account.
  * 
- * @member {array} [partitionKeyList] Gets or sets the list of partion keys in
- * the index
+ * @member {boolean} [isColumnstore] the switch indicating if this index is a
+ * columnstore index.
  * 
- * @member {array} [streamNames] Gets or sets the list of full paths to the
- * streams that contain this index in the DataLake account.
+ * @member {number} [indexId] the ID of this index within the table.
  * 
- * @member {boolean} [isColumnstore] Gets or sets the switch indicating if
- * this index is a columnstore index.
- * 
- * @member {number} [indexId] Gets or sets the ID of this index within the
- * table.
- * 
- * @member {boolean} [isUnique] Gets or sets the switch indicating if this
- * index is a unique index.
+ * @member {boolean} [isUnique] the switch indicating if this index is a
+ * unique index.
  * 
  */
 export interface USqlIndex {
@@ -265,17 +262,18 @@ export interface USqlIndex {
  * Initializes a new instance of the DdlName class.
  * @constructor
  * A Data Lake Analytics DDL name item.
- * @member {string} [firstPart] Gets or sets the name of the table associated
- * with this database and schema.
+ *
+ * @member {string} [firstPart] the name of the table associated with this
+ * database and schema.
  * 
- * @member {string} [secondPart] Gets or sets the name of the table associated
- * with this database and schema.
+ * @member {string} [secondPart] the name of the table associated with this
+ * database and schema.
  * 
- * @member {string} [thirdPart] Gets or sets the name of the table associated
- * with this database and schema.
+ * @member {string} [thirdPart] the name of the table associated with this
+ * database and schema.
  * 
- * @member {string} [server] Gets or sets the name of the table associated
- * with this database and schema.
+ * @member {string} [server] the name of the table associated with this
+ * database and schema.
  * 
  */
 export interface DdlName {
@@ -290,23 +288,23 @@ export interface DdlName {
  * Initializes a new instance of the EntityId class.
  * @constructor
  * A Data Lake Analytics catalog entity identifier object.
- * @member {object} [name] Gets or sets the name of the external table
- * associated with this database, schema and table.
+ *
+ * @member {object} [name] the name of the external table associated with this
+ * database, schema and table.
  * 
- * @member {string} [name.firstPart] Gets or sets the name of the table
- * associated with this database and schema.
+ * @member {string} [name.firstPart] the name of the table associated with
+ * this database and schema.
  * 
- * @member {string} [name.secondPart] Gets or sets the name of the table
- * associated with this database and schema.
+ * @member {string} [name.secondPart] the name of the table associated with
+ * this database and schema.
  * 
- * @member {string} [name.thirdPart] Gets or sets the name of the table
- * associated with this database and schema.
+ * @member {string} [name.thirdPart] the name of the table associated with
+ * this database and schema.
  * 
- * @member {string} [name.server] Gets or sets the name of the table
- * associated with this database and schema.
+ * @member {string} [name.server] the name of the table associated with this
+ * database and schema.
  * 
- * @member {uuid} [version] Gets or sets the version of the external data
- * source.
+ * @member {uuid} [version] the version of the external data source.
  * 
  */
 export interface EntityId {
@@ -319,29 +317,29 @@ export interface EntityId {
  * Initializes a new instance of the ExternalTable class.
  * @constructor
  * A Data Lake Analytics catalog external table item.
- * @member {string} [tableName] Gets or sets the name of the table associated
+ *
+ * @member {string} [tableName] the name of the table associated with this
+ * database and schema.
+ * 
+ * @member {object} [dataSource] the data source associated with this external
+ * table.
+ * 
+ * @member {object} [dataSource.name] the name of the external table
+ * associated with this database, schema and table.
+ * 
+ * @member {string} [dataSource.name.firstPart] the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [dataSource.name.secondPart] the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [dataSource.name.thirdPart] the name of the table
+ * associated with this database and schema.
+ * 
+ * @member {string} [dataSource.name.server] the name of the table associated
  * with this database and schema.
  * 
- * @member {object} [dataSource] Gets or sets the data source associated with
- * this external table.
- * 
- * @member {object} [dataSource.name] Gets or sets the name of the external
- * table associated with this database, schema and table.
- * 
- * @member {string} [dataSource.name.firstPart] Gets or sets the name of the
- * table associated with this database and schema.
- * 
- * @member {string} [dataSource.name.secondPart] Gets or sets the name of the
- * table associated with this database and schema.
- * 
- * @member {string} [dataSource.name.thirdPart] Gets or sets the name of the
- * table associated with this database and schema.
- * 
- * @member {string} [dataSource.name.server] Gets or sets the name of the
- * table associated with this database and schema.
- * 
- * @member {uuid} [dataSource.version] Gets or sets the version of the
- * external data source.
+ * @member {uuid} [dataSource.version] the version of the external data source.
  * 
  */
 export interface ExternalTable {
@@ -351,49 +349,78 @@ export interface ExternalTable {
 
 /**
  * @class
+ * Initializes a new instance of the TypeFieldInfo class.
+ * @constructor
+ * A Data Lake Analytics catalog type field information item.
+ *
+ * @member {string} [name] the name of the field associated with this type.
+ * 
+ * @member {string} [type] the type of the field.
+ * 
+ */
+export interface TypeFieldInfo {
+    name?: string;
+    type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlTable class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table item.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [schemaName] Gets or sets the name of the schema
- * associated with this table and database.
+ * @member {string} [schemaName] the name of the schema associated with this
+ * table and database.
  * 
- * @member {string} [name] Gets or sets the name of the table.
+ * @member {string} [name] the name of the table.
  * 
- * @member {array} [columnList] Gets or sets the list of columns in this table
+ * @member {array} [columnList] the list of columns in this table
  * 
- * @member {array} [indexList] Gets or sets the list of indices in this table
+ * @member {array} [indexList] the list of indices in this table
  * 
- * @member {array} [partitionKeyList] Gets or sets the list of partition keys
- * in the table
+ * @member {array} [partitionKeyList] the list of partition keys in the table
  * 
- * @member {object} [externalTable] Gets or sets the external table associated
- * with the table.
+ * @member {object} [externalTable] the external table associated with the
+ * table.
  * 
- * @member {string} [externalTable.tableName] Gets or sets the name of the
+ * @member {string} [externalTable.tableName] the name of the table associated
+ * with this database and schema.
+ * 
+ * @member {object} [externalTable.dataSource] the data source associated with
+ * this external table.
+ * 
+ * @member {object} [externalTable.dataSource.name] the name of the external
+ * table associated with this database, schema and table.
+ * 
+ * @member {string} [externalTable.dataSource.name.firstPart] the name of the
  * table associated with this database and schema.
  * 
- * @member {object} [externalTable.dataSource] Gets or sets the data source
- * associated with this external table.
+ * @member {string} [externalTable.dataSource.name.secondPart] the name of the
+ * table associated with this database and schema.
  * 
- * @member {object} [externalTable.dataSource.name] Gets or sets the name of
- * the external table associated with this database, schema and table.
+ * @member {string} [externalTable.dataSource.name.thirdPart] the name of the
+ * table associated with this database and schema.
  * 
- * @member {string} [externalTable.dataSource.name.firstPart] Gets or sets the
- * name of the table associated with this database and schema.
+ * @member {string} [externalTable.dataSource.name.server] the name of the
+ * table associated with this database and schema.
  * 
- * @member {string} [externalTable.dataSource.name.secondPart] Gets or sets
- * the name of the table associated with this database and schema.
+ * @member {uuid} [externalTable.dataSource.version] the version of the
+ * external data source.
  * 
- * @member {string} [externalTable.dataSource.name.thirdPart] Gets or sets the
- * name of the table associated with this database and schema.
+ * @member {object} [distributionInfo] the distributions info of the table
  * 
- * @member {string} [externalTable.dataSource.name.server] Gets or sets the
- * name of the table associated with this database and schema.
+ * @member {number} [distributionInfo.type] the type of this distribution.
  * 
- * @member {uuid} [externalTable.dataSource.version] Gets or sets the version
- * of the external data source.
+ * @member {array} [distributionInfo.keys] the list of directed columns in the
+ * distribution
+ * 
+ * @member {number} [distributionInfo.count] the count of indices using this
+ * distribution.
+ * 
+ * @member {number} [distributionInfo.dynamicCount] the dynamic count of
+ * indices using this distribution.
  * 
  */
 export interface USqlTable extends CatalogItem {
@@ -404,131 +431,7 @@ export interface USqlTable extends CatalogItem {
     indexList?: USqlIndex[];
     partitionKeyList?: string[];
     externalTable?: ExternalTable;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlView class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL view item.
- * @member {string} [databaseName] Gets or sets the name of the database.
- * 
- * @member {string} [schemaName] Gets or sets the name of the schema
- * associated with this view and database.
- * 
- * @member {string} [name] Gets or sets the name of the view.
- * 
- * @member {string} [definition] Gets or sets the defined query of the view.
- * 
- */
-export interface USqlView extends CatalogItem {
-    databaseName?: string;
-    schemaName?: string;
-    name?: string;
-    definition?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTablePartition class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table partition item.
- * @member {string} [databaseName] Gets or sets the name of the database.
- * 
- * @member {string} [schemaName] Gets or sets the name of the schema
- * associated with this table partition and database.
- * 
- * @member {string} [name] Gets or sets the name of the table partition.
- * 
- * @member {object} [parentName] Gets or sets the Ddl object of the
- * partition's parent.
- * 
- * @member {string} [parentName.firstPart] Gets or sets the name of the table
- * associated with this database and schema.
- * 
- * @member {string} [parentName.secondPart] Gets or sets the name of the table
- * associated with this database and schema.
- * 
- * @member {string} [parentName.thirdPart] Gets or sets the name of the table
- * associated with this database and schema.
- * 
- * @member {string} [parentName.server] Gets or sets the name of the table
- * associated with this database and schema.
- * 
- * @member {number} [indexId] Gets or sets the index ID for this partition.
- * 
- * @member {array} [label] Gets or sets the list of labels associated with
- * this partition.
- * 
- * @member {date} [createDate] Gets or sets the creation time of the partition
- * 
- */
-export interface USqlTablePartition extends CatalogItem {
-    databaseName?: string;
-    schemaName?: string;
-    name?: string;
-    parentName?: DdlName;
-    indexId?: number;
-    label?: string[];
-    createDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTableStatistics class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table statistics item.
- * @member {string} [databaseName] Gets or sets the name of the database.
- * 
- * @member {string} [schemaName] Gets or sets the name of the schema
- * associated with this table and database.
- * 
- * @member {string} [tableName] Gets or sets the name of the table.
- * 
- * @member {string} [name] Gets or sets the name of the table statistics.
- * 
- * @member {string} [userStatName] Gets or sets the name of the user
- * statistics.
- * 
- * @member {string} [statDataPath] Gets or sets the path to the statistics
- * data.
- * 
- * @member {date} [createTime] Gets or sets the creation time of the
- * statistics.
- * 
- * @member {date} [updateTime] Gets or sets the last time the statistics were
- * updated.
- * 
- * @member {boolean} [isUserCreated] Gets or sets the switch indicating if
- * these statistics are user created.
- * 
- * @member {boolean} [isAutoCreated] Gets or sets the switch indicating if
- * these statistics are automatically created.
- * 
- * @member {boolean} [hasFilter] Gets or sets the switch indicating if these
- * statistics have a filter.
- * 
- * @member {string} [filterDefinition] Gets or sets the filter definition for
- * the statistics.
- * 
- * @member {array} [colNames] Gets or sets the list of column names associated
- * with these statistics.
- * 
- */
-export interface USqlTableStatistics extends CatalogItem {
-    databaseName?: string;
-    schemaName?: string;
-    tableName?: string;
-    name?: string;
-    userStatName?: string;
-    statDataPath?: string;
-    createTime?: Date;
-    updateTime?: Date;
-    isUserCreated?: boolean;
-    isAutoCreated?: boolean;
-    hasFilter?: boolean;
-    filterDefinition?: string;
-    colNames?: string[];
+    distributionInfo?: USqlDistributionInfo;
 }
 
 /**
@@ -536,43 +439,42 @@ export interface USqlTableStatistics extends CatalogItem {
  * Initializes a new instance of the USqlType class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL type item.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [schemaName] Gets or sets the name of the schema
- * associated with this table and database.
+ * @member {string} [schemaName] the name of the schema associated with this
+ * table and database.
  * 
- * @member {string} [name] Gets or sets the name of type for this type.
+ * @member {string} [name] the name of type for this type.
  * 
- * @member {string} [typeFamily] Gets or sets the type family for this type.
+ * @member {string} [typeFamily] the type family for this type.
  * 
- * @member {string} [cSharpName] Gets or sets the C# name for this type.
+ * @member {string} [cSharpName] the C# name for this type.
  * 
- * @member {string} [fullCSharpName] Gets or sets the fully qualified C# name
- * for this type.
+ * @member {string} [fullCSharpName] the fully qualified C# name for this type.
  * 
- * @member {number} [systemTypeId] Gets or sets the system type ID for this
- * type.
+ * @member {number} [systemTypeId] the system type ID for this type.
  * 
- * @member {number} [userTypeId] Gets or sets the user type ID for this type.
+ * @member {number} [userTypeId] the user type ID for this type.
  * 
- * @member {number} [schemaId] Gets or sets the schema ID for this type.
+ * @member {number} [schemaId] the schema ID for this type.
  * 
- * @member {number} [principalId] Gets or sets the principal ID for this type.
+ * @member {number} [principalId] the principal ID for this type.
  * 
- * @member {boolean} [isNullable] Gets or sets the the switch indicating if
- * this type is nullable.
+ * @member {boolean} [isNullable] the the switch indicating if this type is
+ * nullable.
  * 
- * @member {boolean} [isUserDefined] Gets or sets the the switch indicating if
- * this type is user defined.
+ * @member {boolean} [isUserDefined] the the switch indicating if this type is
+ * user defined.
  * 
- * @member {boolean} [isAssemblyType] Gets or sets the the switch indicating
- * if this type is an assembly type.
+ * @member {boolean} [isAssemblyType] the the switch indicating if this type
+ * is an assembly type.
  * 
- * @member {boolean} [isTableType] Gets or sets the the switch indicating if
- * this type is a table type.
+ * @member {boolean} [isTableType] the the switch indicating if this type is a
+ * table type.
  * 
- * @member {boolean} [isComplexType] Gets or sets the the switch indicating if
- * this type is a complex type.
+ * @member {boolean} [isComplexType] the the switch indicating if this type is
+ * a complex type.
  * 
  */
 export interface USqlType extends CatalogItem {
@@ -595,18 +497,159 @@ export interface USqlType extends CatalogItem {
 
 /**
  * @class
+ * Initializes a new instance of the USqlTableType class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL table type item.
+ *
+ * @member {object} [columns] the type field information associated with this
+ * table type.
+ * 
+ * @member {string} [columns.name] the name of the field associated with this
+ * type.
+ * 
+ * @member {string} [columns.type] the type of the field.
+ * 
+ */
+export interface USqlTableType extends USqlType {
+    columns?: TypeFieldInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the USqlView class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL view item.
+ *
+ * @member {string} [databaseName] the name of the database.
+ * 
+ * @member {string} [schemaName] the name of the schema associated with this
+ * view and database.
+ * 
+ * @member {string} [name] the name of the view.
+ * 
+ * @member {string} [definition] the defined query of the view.
+ * 
+ */
+export interface USqlView extends CatalogItem {
+    databaseName?: string;
+    schemaName?: string;
+    name?: string;
+    definition?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the USqlTablePartition class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL table partition item.
+ *
+ * @member {string} [databaseName] the name of the database.
+ * 
+ * @member {string} [schemaName] the name of the schema associated with this
+ * table partition and database.
+ * 
+ * @member {string} [name] the name of the table partition.
+ * 
+ * @member {object} [parentName] the Ddl object of the partition's parent.
+ * 
+ * @member {string} [parentName.firstPart] the name of the table associated
+ * with this database and schema.
+ * 
+ * @member {string} [parentName.secondPart] the name of the table associated
+ * with this database and schema.
+ * 
+ * @member {string} [parentName.thirdPart] the name of the table associated
+ * with this database and schema.
+ * 
+ * @member {string} [parentName.server] the name of the table associated with
+ * this database and schema.
+ * 
+ * @member {number} [indexId] the index ID for this partition.
+ * 
+ * @member {array} [label] the list of labels associated with this partition.
+ * 
+ * @member {date} [createDate] the creation time of the partition
+ * 
+ */
+export interface USqlTablePartition extends CatalogItem {
+    databaseName?: string;
+    schemaName?: string;
+    name?: string;
+    parentName?: DdlName;
+    indexId?: number;
+    label?: string[];
+    createDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the USqlTableStatistics class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL table statistics item.
+ *
+ * @member {string} [databaseName] the name of the database.
+ * 
+ * @member {string} [schemaName] the name of the schema associated with this
+ * table and database.
+ * 
+ * @member {string} [tableName] the name of the table.
+ * 
+ * @member {string} [name] the name of the table statistics.
+ * 
+ * @member {string} [userStatName] the name of the user statistics.
+ * 
+ * @member {string} [statDataPath] the path to the statistics data.
+ * 
+ * @member {date} [createTime] the creation time of the statistics.
+ * 
+ * @member {date} [updateTime] the last time the statistics were updated.
+ * 
+ * @member {boolean} [isUserCreated] the switch indicating if these statistics
+ * are user created.
+ * 
+ * @member {boolean} [isAutoCreated] the switch indicating if these statistics
+ * are automatically created.
+ * 
+ * @member {boolean} [hasFilter] the switch indicating if these statistics
+ * have a filter.
+ * 
+ * @member {string} [filterDefinition] the filter definition for the
+ * statistics.
+ * 
+ * @member {array} [colNames] the list of column names associated with these
+ * statistics.
+ * 
+ */
+export interface USqlTableStatistics extends CatalogItem {
+    databaseName?: string;
+    schemaName?: string;
+    tableName?: string;
+    name?: string;
+    userStatName?: string;
+    statDataPath?: string;
+    createTime?: Date;
+    updateTime?: Date;
+    isUserCreated?: boolean;
+    isAutoCreated?: boolean;
+    hasFilter?: boolean;
+    filterDefinition?: string;
+    colNames?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlTableValuedFunction class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table valued function item.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [schemaName] Gets or sets the name of the schema
- * associated with this database.
+ * @member {string} [schemaName] the name of the schema associated with this
+ * database.
  * 
- * @member {string} [name] Gets or sets the name of the table valued function.
+ * @member {string} [name] the name of the table valued function.
  * 
- * @member {string} [definition] Gets or sets the definition of the table
- * valued function.
+ * @member {string} [definition] the definition of the table valued function.
  * 
  */
 export interface USqlTableValuedFunction extends CatalogItem {
@@ -621,14 +664,13 @@ export interface USqlTableValuedFunction extends CatalogItem {
  * Initializes a new instance of the USqlAssemblyFileInfo class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL assembly file information item.
- * @member {string} [type] Gets or sets the assembly file type. Possible
- * values include: 'Assembly', 'Resource'
+ *
+ * @member {string} [type] the assembly file type. Possible values include:
+ * 'Assembly', 'Resource'
  * 
- * @member {string} [originalPath] Gets or sets the the original path to the
- * assembly file.
+ * @member {string} [originalPath] the the original path to the assembly file.
  * 
- * @member {string} [contentPath] Gets or sets the the content path to the
- * assembly file.
+ * @member {string} [contentPath] the the content path to the assembly file.
  * 
  */
 export interface USqlAssemblyFileInfo {
@@ -642,25 +684,25 @@ export interface USqlAssemblyFileInfo {
  * Initializes a new instance of the USqlAssemblyDependencyInfo class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL dependency information item.
- * @member {object} [entityId] Gets or sets the EntityId of the dependency.
+ *
+ * @member {object} [entityId] the EntityId of the dependency.
  * 
- * @member {object} [entityId.name] Gets or sets the name of the external
- * table associated with this database, schema and table.
+ * @member {object} [entityId.name] the name of the external table associated
+ * with this database, schema and table.
  * 
- * @member {string} [entityId.name.firstPart] Gets or sets the name of the
- * table associated with this database and schema.
+ * @member {string} [entityId.name.firstPart] the name of the table associated
+ * with this database and schema.
  * 
- * @member {string} [entityId.name.secondPart] Gets or sets the name of the
- * table associated with this database and schema.
- * 
- * @member {string} [entityId.name.thirdPart] Gets or sets the name of the
- * table associated with this database and schema.
- * 
- * @member {string} [entityId.name.server] Gets or sets the name of the table
+ * @member {string} [entityId.name.secondPart] the name of the table
  * associated with this database and schema.
  * 
- * @member {uuid} [entityId.version] Gets or sets the version of the external
- * data source.
+ * @member {string} [entityId.name.thirdPart] the name of the table associated
+ * with this database and schema.
+ * 
+ * @member {string} [entityId.name.server] the name of the table associated
+ * with this database and schema.
+ * 
+ * @member {uuid} [entityId.version] the version of the external data source.
  * 
  */
 export interface USqlAssemblyDependencyInfo {
@@ -672,23 +714,23 @@ export interface USqlAssemblyDependencyInfo {
  * Initializes a new instance of the USqlAssembly class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL Assembly.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [name] Gets or sets the name of the assembly.
+ * @member {string} [name] the name of the assembly.
  * 
- * @member {string} [clrName] Gets or sets the name of the CLR.
+ * @member {string} [clrName] the name of the CLR.
  * 
- * @member {boolean} [isVisible] Gets or sets the switch indicating if this
- * assembly is visible or not.
+ * @member {boolean} [isVisible] the switch indicating if this assembly is
+ * visible or not.
  * 
- * @member {boolean} [isUserDefined] Gets or sets the switch indicating if
- * this assembly is user defined or not.
+ * @member {boolean} [isUserDefined] the switch indicating if this assembly is
+ * user defined or not.
  * 
- * @member {array} [files] Gets or sets the list of files associated with the
+ * @member {array} [files] the list of files associated with the assembly
+ * 
+ * @member {array} [dependencies] the list of dependencies associated with the
  * assembly
- * 
- * @member {array} [dependencies] Gets or sets the list of dependencies
- * associated with the assembly
  * 
  */
 export interface USqlAssembly extends CatalogItem {
@@ -706,11 +748,12 @@ export interface USqlAssembly extends CatalogItem {
  * Initializes a new instance of the USqlAssemblyClr class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL assembly CLR item.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [name] Gets or sets the name of the assembly.
+ * @member {string} [name] the name of the assembly.
  * 
- * @member {string} [clrName] Gets or sets the name of the CLR.
+ * @member {string} [clrName] the name of the CLR.
  * 
  */
 export interface USqlAssemblyClr extends CatalogItem {
@@ -724,9 +767,10 @@ export interface USqlAssemblyClr extends CatalogItem {
  * Initializes a new instance of the USqlSchema class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL schema item.
- * @member {string} [databaseName] Gets or sets the name of the database.
+ *
+ * @member {string} [databaseName] the name of the database.
  * 
- * @member {string} [name] Gets or sets the name of the schema.
+ * @member {string} [name] the name of the schema.
  * 
  */
 export interface USqlSchema extends CatalogItem {
@@ -739,7 +783,8 @@ export interface USqlSchema extends CatalogItem {
  * Initializes a new instance of the USqlDatabase class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL database item.
- * @member {string} [name] Gets or sets the name of the database.
+ *
+ * @member {string} [name] the name of the database.
  * 
  */
 export interface USqlDatabase extends CatalogItem {
@@ -751,10 +796,10 @@ export interface USqlDatabase extends CatalogItem {
  * Initializes a new instance of the CatalogItemList class.
  * @constructor
  * A Data Lake Analytics catalog item list.
- * @member {number} [count] Gets or sets the count of items in the list.
+ *
+ * @member {number} [count] the count of items in the list.
  * 
- * @member {string} [nextLink] Gets or sets the link to the next page of
- * results.
+ * @member {string} [nextLink] the link to the next page of results.
  * 
  */
 export interface CatalogItemList {

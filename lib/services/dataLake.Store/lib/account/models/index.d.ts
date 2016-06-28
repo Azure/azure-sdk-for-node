@@ -15,11 +15,11 @@
  * Initializes a new instance of the FirewallRuleProperties class.
  * @constructor
  * Data Lake Store firewall rule properties information
- * @member {string} [startIpAddress] Gets or sets the start IP address for the
- * firewall rule.
+ *
+ * @member {string} [startIpAddress] the start IP address for the firewall
+ * rule.
  * 
- * @member {string} [endIpAddress] Gets or sets the end IP address for the
- * firewall rule.
+ * @member {string} [endIpAddress] the end IP address for the firewall rule.
  * 
  */
 export interface FirewallRuleProperties {
@@ -32,23 +32,22 @@ export interface FirewallRuleProperties {
  * Initializes a new instance of the FirewallRule class.
  * @constructor
  * Data Lake Store firewall rule information
- * @member {string} [name] Gets or sets the firewall rule's name.
+ *
+ * @member {string} [name] the firewall rule's name.
  * 
- * @member {string} [type] Gets the namespace and type of the firewall Rule.
+ * @member {string} [type] the namespace and type of the firewall Rule.
  * 
- * @member {string} [id] Gets or sets the firewall rule's subscription ID.
+ * @member {string} [id] the firewall rule's subscription ID.
  * 
- * @member {string} [location] Gets or sets the firewall rule's regional
- * location.
+ * @member {string} [location] the firewall rule's regional location.
  * 
- * @member {object} [properties] Gets or sets the properties of the firewall
- * rule.
+ * @member {object} [properties] the properties of the firewall rule.
  * 
- * @member {string} [properties.startIpAddress] Gets or sets the start IP
- * address for the firewall rule.
+ * @member {string} [properties.startIpAddress] the start IP address for the
+ * firewall rule.
  * 
- * @member {string} [properties.endIpAddress] Gets or sets the end IP address
- * for the firewall rule.
+ * @member {string} [properties.endIpAddress] the end IP address for the
+ * firewall rule.
  * 
  */
 export interface FirewallRule {
@@ -64,23 +63,23 @@ export interface FirewallRule {
  * Initializes a new instance of the DataLakeStoreAccountProperties class.
  * @constructor
  * Data Lake Store account properties information
- * @member {string} [provisioningState] Gets the status of the Data Lake Store
+ *
+ * @member {string} [provisioningState] the status of the Data Lake Store
  * account while being provisioned. Possible values include: 'Failed',
  * 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
  * 'Deleting', 'Deleted'
  * 
- * @member {string} [state] Gets the status of the Data Lake Store account
- * after provisioning has completed. Possible values include: 'active',
- * 'suspended'
+ * @member {string} [state] the status of the Data Lake Store account after
+ * provisioning has completed. Possible values include: 'active', 'suspended'
  * 
- * @member {date} [creationTime] Gets the account creation time.
+ * @member {date} [creationTime] the account creation time.
  * 
- * @member {date} [lastModifiedTime] Gets the account last modified time.
+ * @member {date} [lastModifiedTime] the account last modified time.
  * 
- * @member {string} [endpoint] Gets or sets the gateway host.
+ * @member {string} [endpoint] the gateway host.
  * 
- * @member {string} [defaultGroup] Gets or sets the default owner group for
- * all new folders and files created in the Data Lake Store account.
+ * @member {string} [defaultGroup] the default owner group for all new folders
+ * and files created in the Data Lake Store account.
  * 
  */
 export interface DataLakeStoreAccountProperties {
@@ -97,37 +96,36 @@ export interface DataLakeStoreAccountProperties {
  * Initializes a new instance of the DataLakeStoreAccount class.
  * @constructor
  * Data Lake Store account information
- * @member {string} [location] Gets or sets the account regional location.
+ *
+ * @member {string} [location] the account regional location.
  * 
- * @member {string} [name] Gets or sets the account name.
+ * @member {string} [name] the account name.
  * 
- * @member {string} [type] Gets the namespace and type of the account.
+ * @member {string} [type] the namespace and type of the account.
  * 
- * @member {string} [id] Gets the account subscription ID.
+ * @member {string} [id] the account subscription ID.
  * 
- * @member {object} [tags] Gets or sets the value of custom properties.
+ * @member {object} [tags] the value of custom properties.
  * 
- * @member {object} [properties] Gets or sets the Data Lake Store account
- * properties.
+ * @member {object} [properties] the Data Lake Store account properties.
  * 
- * @member {string} [properties.provisioningState] Gets the status of the Data
- * Lake Store account while being provisioned. Possible values include:
- * 'Failed', 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',
- * 'Resuming', 'Deleting', 'Deleted'
+ * @member {string} [properties.provisioningState] the status of the Data Lake
+ * Store account while being provisioned. Possible values include: 'Failed',
+ * 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
+ * 'Deleting', 'Deleted'
  * 
- * @member {string} [properties.state] Gets the status of the Data Lake Store
+ * @member {string} [properties.state] the status of the Data Lake Store
  * account after provisioning has completed. Possible values include:
  * 'active', 'suspended'
  * 
- * @member {date} [properties.creationTime] Gets the account creation time.
+ * @member {date} [properties.creationTime] the account creation time.
  * 
- * @member {date} [properties.lastModifiedTime] Gets the account last modified
- * time.
+ * @member {date} [properties.lastModifiedTime] the account last modified time.
  * 
- * @member {string} [properties.endpoint] Gets or sets the gateway host.
+ * @member {string} [properties.endpoint] the gateway host.
  * 
- * @member {string} [properties.defaultGroup] Gets or sets the default owner
- * group for all new folders and files created in the Data Lake Store account.
+ * @member {string} [properties.defaultGroup] the default owner group for all
+ * new folders and files created in the Data Lake Store account.
  * 
  */
 export interface DataLakeStoreAccount {
@@ -144,14 +142,15 @@ export interface DataLakeStoreAccount {
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * Data Lake Store error details information
- * @member {string} [code] Gets the HTTP status code or error code associated
- * with this error
+ *
+ * @member {string} [code] the HTTP status code or error code associated with
+ * this error
  * 
- * @member {string} [message] Gets the error message localized based on
+ * @member {string} [message] the error message localized based on
  * Accept-Language
  * 
- * @member {string} [target] Gets the target of the particular error (for
- * example, the name of the property in error).
+ * @member {string} [target] the target of the particular error (for example,
+ * the name of the property in error).
  * 
  */
 export interface ErrorDetails {
@@ -165,9 +164,10 @@ export interface ErrorDetails {
  * Initializes a new instance of the InnerError class.
  * @constructor
  * Data Lake Store inner error information
- * @member {string} [trace] Gets the stack trace for the error
+ *
+ * @member {string} [trace] the stack trace for the error
  * 
- * @member {string} [context] Gets the context for the error message
+ * @member {string} [context] the context for the error message
  * 
  */
 export interface InnerError {
@@ -180,20 +180,21 @@ export interface InnerError {
  * Initializes a new instance of the ErrorModel class.
  * @constructor
  * Data Lake Store error information
- * @member {string} [code] Gets the HTTP status code or error code associated
- * with this error
+ *
+ * @member {string} [code] the HTTP status code or error code associated with
+ * this error
  * 
- * @member {string} [message] Gets the error message to display.
+ * @member {string} [message] the error message to display.
  * 
- * @member {string} [target] Gets the target of the error.
+ * @member {string} [target] the target of the error.
  * 
- * @member {array} [details] Gets the list of error details
+ * @member {array} [details] the list of error details
  * 
- * @member {object} [innerError] Gets the inner exceptions or errors, if any
+ * @member {object} [innerError] the inner exceptions or errors, if any
  * 
- * @member {string} [innerError.trace] Gets the stack trace for the error
+ * @member {string} [innerError.trace] the stack trace for the error
  * 
- * @member {string} [innerError.context] Gets the context for the error message
+ * @member {string} [innerError.context] the context for the error message
  * 
  */
 export interface ErrorModel {
@@ -216,26 +217,26 @@ export interface ErrorModel {
  * status code for the successful request. If the asynchronous operation
  * failed, the response body includes the HTTP status code for the failed
  * request and error information regarding the failure.
- * @member {string} [status] Gets the status of the AzureAsuncOperation.
- * Possible values include: 'InProgress', 'Succeeded', 'Failed'
+ *
+ * @member {string} [status] the status of the AzureAsuncOperation. Possible
+ * values include: 'InProgress', 'Succeeded', 'Failed'
  * 
  * @member {object} [error]
  * 
- * @member {string} [error.code] Gets the HTTP status code or error code
- * associated with this error
+ * @member {string} [error.code] the HTTP status code or error code associated
+ * with this error
  * 
- * @member {string} [error.message] Gets the error message to display.
+ * @member {string} [error.message] the error message to display.
  * 
- * @member {string} [error.target] Gets the target of the error.
+ * @member {string} [error.target] the target of the error.
  * 
- * @member {array} [error.details] Gets the list of error details
+ * @member {array} [error.details] the list of error details
  * 
- * @member {object} [error.innerError] Gets the inner exceptions or errors, if
- * any
+ * @member {object} [error.innerError] the inner exceptions or errors, if any
  * 
- * @member {string} [error.innerError.trace] Gets the stack trace for the error
+ * @member {string} [error.innerError.trace] the stack trace for the error
  * 
- * @member {string} [error.innerError.context] Gets the context for the error
+ * @member {string} [error.innerError.context] the context for the error
  * message
  * 
  */
