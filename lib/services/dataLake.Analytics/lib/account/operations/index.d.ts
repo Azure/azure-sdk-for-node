@@ -83,15 +83,14 @@ export interface Account {
      * @param {object} parameters The parameters containing the access key and
      * suffix to update the storage account with.
      * 
-     * @param {object} [parameters.properties] Gets or sets the properties for the
-     * Azure Storage account being added.
+     * @param {object} [parameters.properties] the properties for the Azure
+     * Storage account being added.
      * 
-     * @param {string} [parameters.properties.accessKey] Gets or sets the access
-     * key associated with this Azure Storage account that will be used to
-     * connect to it.
+     * @param {string} [parameters.properties.accessKey] the access key associated
+     * with this Azure Storage account that will be used to connect to it.
      * 
-     * @param {string} [parameters.properties.suffix] Gets or sets the optional
-     * suffix for the Data Lake account.
+     * @param {string} [parameters.properties.suffix] the optional suffix for the
+     * Data Lake account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -120,15 +119,14 @@ export interface Account {
      * @param {object} parameters The parameters containing the access key and
      * optional suffix for the Azure Storage Account.
      * 
-     * @param {object} [parameters.properties] Gets or sets the properties for the
-     * Azure Storage account being added.
+     * @param {object} [parameters.properties] the properties for the Azure
+     * Storage account being added.
      * 
-     * @param {string} [parameters.properties.accessKey] Gets or sets the access
-     * key associated with this Azure Storage account that will be used to
-     * connect to it.
+     * @param {string} [parameters.properties.accessKey] the access key associated
+     * with this Azure Storage account that will be used to connect to it.
      * 
-     * @param {string} [parameters.properties.suffix] Gets or sets the optional
-     * suffix for the Data Lake account.
+     * @param {string} [parameters.properties.suffix] the optional suffix for the
+     * Data Lake account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -283,11 +281,11 @@ export interface Account {
      * 
      * @param {object} parameters The details of the Data Lake Store account.
      * 
-     * @param {object} [parameters.properties] Gets or sets the properties for the
-     * Data Lake Store account being added.
+     * @param {object} [parameters.properties] the properties for the Data Lake
+     * Store account being added.
      * 
-     * @param {string} [parameters.properties.suffix] Gets or sets the optional
-     * suffix for the Data Lake Store account.
+     * @param {string} [parameters.properties.suffix] the optional suffix for the
+     * Data Lake Store account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -580,33 +578,30 @@ export interface Account {
      * @param {object} parameters Parameters supplied to the create Data Lake
      * Analytics account operation.
      * 
-     * @param {string} [parameters.location] Gets or sets the account regional
-     * location.
+     * @param {string} [parameters.location] the account regional location.
      * 
-     * @param {string} [parameters.name] Gets or sets the account name.
+     * @param {string} [parameters.name] the account name.
      * 
-     * @param {object} [parameters.tags] Gets or sets the value of custom
-     * properties.
+     * @param {object} [parameters.tags] the value of custom properties.
      * 
-     * @param {object} [parameters.properties] Gets or sets the properties defined
-     * by Data Lake Analytics all properties are specific to each resource
-     * provider.
+     * @param {object} [parameters.properties] the properties defined by Data Lake
+     * Analytics all properties are specific to each resource provider.
      * 
-     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] Gets or
-     * sets the default data lake storage account associated with this Data Lake
-     * Analytics account.
+     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] the
+     * default data lake storage account associated with this Data Lake Analytics
+     * account.
      * 
-     * @param {number} [parameters.properties.maxDegreeOfParallelism] Gets or sets
-     * the maximum supported degree of parallelism for this acocunt.
+     * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
+     * supported degree of parallelism for this account.
      * 
-     * @param {number} [parameters.properties.maxJobCount] Gets or sets the
-     * maximum supported jobs running under the account at the same time.
+     * @param {number} [parameters.properties.maxJobCount] the maximum supported
+     * jobs running under the account at the same time.
      * 
-     * @param {array} [parameters.properties.dataLakeStoreAccounts] Gets or sets
-     * the list of Data Lake storage accounts associated with this account.
+     * @param {array} [parameters.properties.dataLakeStoreAccounts] the list of
+     * Data Lake storage accounts associated with this account.
      * 
-     * @param {array} [parameters.properties.storageAccounts] Gets or sets the
-     * list of Azure Blob storage accounts associated with this account.
+     * @param {array} [parameters.properties.storageAccounts] the list of Azure
+     * Blob storage accounts associated with this account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -632,33 +627,30 @@ export interface Account {
      * @param {object} parameters Parameters supplied to the create Data Lake
      * Analytics account operation.
      * 
-     * @param {string} [parameters.location] Gets or sets the account regional
-     * location.
+     * @param {string} [parameters.location] the account regional location.
      * 
-     * @param {string} [parameters.name] Gets or sets the account name.
+     * @param {string} [parameters.name] the account name.
      * 
-     * @param {object} [parameters.tags] Gets or sets the value of custom
-     * properties.
+     * @param {object} [parameters.tags] the value of custom properties.
      * 
-     * @param {object} [parameters.properties] Gets or sets the properties defined
-     * by Data Lake Analytics all properties are specific to each resource
-     * provider.
+     * @param {object} [parameters.properties] the properties defined by Data Lake
+     * Analytics all properties are specific to each resource provider.
      * 
-     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] Gets or
-     * sets the default data lake storage account associated with this Data Lake
-     * Analytics account.
+     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] the
+     * default data lake storage account associated with this Data Lake Analytics
+     * account.
      * 
-     * @param {number} [parameters.properties.maxDegreeOfParallelism] Gets or sets
-     * the maximum supported degree of parallelism for this acocunt.
+     * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
+     * supported degree of parallelism for this account.
      * 
-     * @param {number} [parameters.properties.maxJobCount] Gets or sets the
-     * maximum supported jobs running under the account at the same time.
+     * @param {number} [parameters.properties.maxJobCount] the maximum supported
+     * jobs running under the account at the same time.
      * 
-     * @param {array} [parameters.properties.dataLakeStoreAccounts] Gets or sets
-     * the list of Data Lake storage accounts associated with this account.
+     * @param {array} [parameters.properties.dataLakeStoreAccounts] the list of
+     * Data Lake storage accounts associated with this account.
      * 
-     * @param {array} [parameters.properties.storageAccounts] Gets or sets the
-     * list of Azure Blob storage accounts associated with this account.
+     * @param {array} [parameters.properties.storageAccounts] the list of Azure
+     * Blob storage accounts associated with this account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -683,33 +675,30 @@ export interface Account {
      * @param {object} parameters Parameters supplied to the update Data Lake
      * Analytics account operation.
      * 
-     * @param {string} [parameters.location] Gets or sets the account regional
-     * location.
+     * @param {string} [parameters.location] the account regional location.
      * 
-     * @param {string} [parameters.name] Gets or sets the account name.
+     * @param {string} [parameters.name] the account name.
      * 
-     * @param {object} [parameters.tags] Gets or sets the value of custom
-     * properties.
+     * @param {object} [parameters.tags] the value of custom properties.
      * 
-     * @param {object} [parameters.properties] Gets or sets the properties defined
-     * by Data Lake Analytics all properties are specific to each resource
-     * provider.
+     * @param {object} [parameters.properties] the properties defined by Data Lake
+     * Analytics all properties are specific to each resource provider.
      * 
-     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] Gets or
-     * sets the default data lake storage account associated with this Data Lake
-     * Analytics account.
+     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] the
+     * default data lake storage account associated with this Data Lake Analytics
+     * account.
      * 
-     * @param {number} [parameters.properties.maxDegreeOfParallelism] Gets or sets
-     * the maximum supported degree of parallelism for this acocunt.
+     * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
+     * supported degree of parallelism for this account.
      * 
-     * @param {number} [parameters.properties.maxJobCount] Gets or sets the
-     * maximum supported jobs running under the account at the same time.
+     * @param {number} [parameters.properties.maxJobCount] the maximum supported
+     * jobs running under the account at the same time.
      * 
-     * @param {array} [parameters.properties.dataLakeStoreAccounts] Gets or sets
-     * the list of Data Lake storage accounts associated with this account.
+     * @param {array} [parameters.properties.dataLakeStoreAccounts] the list of
+     * Data Lake storage accounts associated with this account.
      * 
-     * @param {array} [parameters.properties.storageAccounts] Gets or sets the
-     * list of Azure Blob storage accounts associated with this account.
+     * @param {array} [parameters.properties.storageAccounts] the list of Azure
+     * Blob storage accounts associated with this account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -734,33 +723,30 @@ export interface Account {
      * @param {object} parameters Parameters supplied to the update Data Lake
      * Analytics account operation.
      * 
-     * @param {string} [parameters.location] Gets or sets the account regional
-     * location.
+     * @param {string} [parameters.location] the account regional location.
      * 
-     * @param {string} [parameters.name] Gets or sets the account name.
+     * @param {string} [parameters.name] the account name.
      * 
-     * @param {object} [parameters.tags] Gets or sets the value of custom
-     * properties.
+     * @param {object} [parameters.tags] the value of custom properties.
      * 
-     * @param {object} [parameters.properties] Gets or sets the properties defined
-     * by Data Lake Analytics all properties are specific to each resource
-     * provider.
+     * @param {object} [parameters.properties] the properties defined by Data Lake
+     * Analytics all properties are specific to each resource provider.
      * 
-     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] Gets or
-     * sets the default data lake storage account associated with this Data Lake
-     * Analytics account.
+     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] the
+     * default data lake storage account associated with this Data Lake Analytics
+     * account.
      * 
-     * @param {number} [parameters.properties.maxDegreeOfParallelism] Gets or sets
-     * the maximum supported degree of parallelism for this acocunt.
+     * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
+     * supported degree of parallelism for this account.
      * 
-     * @param {number} [parameters.properties.maxJobCount] Gets or sets the
-     * maximum supported jobs running under the account at the same time.
+     * @param {number} [parameters.properties.maxJobCount] the maximum supported
+     * jobs running under the account at the same time.
      * 
-     * @param {array} [parameters.properties.dataLakeStoreAccounts] Gets or sets
-     * the list of Data Lake storage accounts associated with this account.
+     * @param {array} [parameters.properties.dataLakeStoreAccounts] the list of
+     * Data Lake storage accounts associated with this account.
      * 
-     * @param {array} [parameters.properties.storageAccounts] Gets or sets the
-     * list of Azure Blob storage accounts associated with this account.
+     * @param {array} [parameters.properties.storageAccounts] the list of Azure
+     * Blob storage accounts associated with this account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
