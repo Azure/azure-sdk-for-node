@@ -31,17 +31,14 @@ export interface AvailabilitySets {
      * @param {object} parameters Parameters supplied to the Create Availability
      * Set operation.
      * 
-     * @param {number} [parameters.platformUpdateDomainCount] Gets or sets Update
-     * Domain count.
+     * @param {number} [parameters.platformUpdateDomainCount] Update Domain count.
      * 
-     * @param {number} [parameters.platformFaultDomainCount] Gets or sets Fault
-     * Domain count.
+     * @param {number} [parameters.platformFaultDomainCount] Fault Domain count.
      * 
-     * @param {array} [parameters.virtualMachines] Gets or sets a list containing
-     * reference to all Virtual Machines created under this Availability Set.
+     * @param {array} [parameters.virtualMachines] a list containing reference to
+     * all Virtual Machines created under this Availability Set.
      * 
-     * @param {array} [parameters.statuses] Gets or sets the resource status
-     * information.
+     * @param {array} [parameters.statuses] the resource status information.
      * 
      * @param {string} [parameters.location] Resource location
      * 
@@ -226,49 +223,45 @@ export interface VirtualMachineExtensions {
      * @param {object} extensionParameters Parameters supplied to the Create
      * Virtual Machine Extension operation.
      * 
-     * @param {string} [extensionParameters.forceUpdateTag] Gets or sets how the
-     * extension handler should be forced to update even if the extension
-     * configuration has not changed.
+     * @param {string} [extensionParameters.forceUpdateTag] how the extension
+     * handler should be forced to update even if the extension configuration has
+     * not changed.
      * 
-     * @param {string} [extensionParameters.publisher] Gets or sets the name of
-     * the extension handler publisher.
+     * @param {string} [extensionParameters.publisher] the name of the extension
+     * handler publisher.
      * 
-     * @param {string} [extensionParameters.virtualMachineExtensionType] Gets or
-     * sets the type of the extension handler.
+     * @param {string} [extensionParameters.virtualMachineExtensionType] the type
+     * of the extension handler.
      * 
-     * @param {string} [extensionParameters.typeHandlerVersion] Gets or sets the
+     * @param {string} [extensionParameters.typeHandlerVersion] the type version
+     * of the extension handler.
+     * 
+     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] whether the
+     * extension handler should be automatically upgraded across minor versions.
+     * 
+     * @param {object} [extensionParameters.settings] Json formatted public
+     * settings for the extension.
+     * 
+     * @param {object} [extensionParameters.protectedSettings] Json formatted
+     * protected settings for the extension.
+     * 
+     * @param {object} [extensionParameters.instanceView] the virtual machine
+     * extension instance view.
+     * 
+     * @param {string} [extensionParameters.instanceView.name] the virtual machine
+     * extension name.
+     * 
+     * @param {string} [extensionParameters.instanceView.type] the full type of
+     * the extension handler which includes both publisher and type.
+     * 
+     * @param {string} [extensionParameters.instanceView.typeHandlerVersion] the
      * type version of the extension handler.
      * 
-     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Gets or sets
-     * whether the extension handler should be automatically upgraded across
-     * minor versions.
+     * @param {array} [extensionParameters.instanceView.substatuses] the resource
+     * status information.
      * 
-     * @param {object} [extensionParameters.settings] Gets or sets Json formatted
-     * public settings for the extension.
-     * 
-     * @param {object} [extensionParameters.protectedSettings] Gets or sets Json
-     * formatted protected settings for the extension.
-     * 
-     * @param {string} [extensionParameters.provisioningState] Gets or sets the
-     * provisioning state, which only appears in the response.
-     * 
-     * @param {object} [extensionParameters.instanceView] Gets or sets the virtual
-     * machine extension instance view.
-     * 
-     * @param {string} [extensionParameters.instanceView.name] Gets or sets the
-     * virtual machine extension name.
-     * 
-     * @param {string} [extensionParameters.instanceView.type] Gets or sets the
-     * full type of the extension handler which includes both publisher and type.
-     * 
-     * @param {string} [extensionParameters.instanceView.typeHandlerVersion] Gets
-     * or sets the type version of the extension handler.
-     * 
-     * @param {array} [extensionParameters.instanceView.substatuses] Gets or sets
-     * the resource status information.
-     * 
-     * @param {array} [extensionParameters.instanceView.statuses] Gets or sets the
-     * resource status information.
+     * @param {array} [extensionParameters.instanceView.statuses] the resource
+     * status information.
      * 
      * @param {string} [extensionParameters.location] Resource location
      * 
@@ -298,49 +291,45 @@ export interface VirtualMachineExtensions {
      * @param {object} extensionParameters Parameters supplied to the Create
      * Virtual Machine Extension operation.
      * 
-     * @param {string} [extensionParameters.forceUpdateTag] Gets or sets how the
-     * extension handler should be forced to update even if the extension
-     * configuration has not changed.
+     * @param {string} [extensionParameters.forceUpdateTag] how the extension
+     * handler should be forced to update even if the extension configuration has
+     * not changed.
      * 
-     * @param {string} [extensionParameters.publisher] Gets or sets the name of
-     * the extension handler publisher.
+     * @param {string} [extensionParameters.publisher] the name of the extension
+     * handler publisher.
      * 
-     * @param {string} [extensionParameters.virtualMachineExtensionType] Gets or
-     * sets the type of the extension handler.
+     * @param {string} [extensionParameters.virtualMachineExtensionType] the type
+     * of the extension handler.
      * 
-     * @param {string} [extensionParameters.typeHandlerVersion] Gets or sets the
+     * @param {string} [extensionParameters.typeHandlerVersion] the type version
+     * of the extension handler.
+     * 
+     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] whether the
+     * extension handler should be automatically upgraded across minor versions.
+     * 
+     * @param {object} [extensionParameters.settings] Json formatted public
+     * settings for the extension.
+     * 
+     * @param {object} [extensionParameters.protectedSettings] Json formatted
+     * protected settings for the extension.
+     * 
+     * @param {object} [extensionParameters.instanceView] the virtual machine
+     * extension instance view.
+     * 
+     * @param {string} [extensionParameters.instanceView.name] the virtual machine
+     * extension name.
+     * 
+     * @param {string} [extensionParameters.instanceView.type] the full type of
+     * the extension handler which includes both publisher and type.
+     * 
+     * @param {string} [extensionParameters.instanceView.typeHandlerVersion] the
      * type version of the extension handler.
      * 
-     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Gets or sets
-     * whether the extension handler should be automatically upgraded across
-     * minor versions.
+     * @param {array} [extensionParameters.instanceView.substatuses] the resource
+     * status information.
      * 
-     * @param {object} [extensionParameters.settings] Gets or sets Json formatted
-     * public settings for the extension.
-     * 
-     * @param {object} [extensionParameters.protectedSettings] Gets or sets Json
-     * formatted protected settings for the extension.
-     * 
-     * @param {string} [extensionParameters.provisioningState] Gets or sets the
-     * provisioning state, which only appears in the response.
-     * 
-     * @param {object} [extensionParameters.instanceView] Gets or sets the virtual
-     * machine extension instance view.
-     * 
-     * @param {string} [extensionParameters.instanceView.name] Gets or sets the
-     * virtual machine extension name.
-     * 
-     * @param {string} [extensionParameters.instanceView.type] Gets or sets the
-     * full type of the extension handler which includes both publisher and type.
-     * 
-     * @param {string} [extensionParameters.instanceView.typeHandlerVersion] Gets
-     * or sets the type version of the extension handler.
-     * 
-     * @param {array} [extensionParameters.instanceView.substatuses] Gets or sets
-     * the resource status information.
-     * 
-     * @param {array} [extensionParameters.instanceView.statuses] Gets or sets the
-     * resource status information.
+     * @param {array} [extensionParameters.instanceView.statuses] the resource
+     * status information.
      * 
      * @param {string} [extensionParameters.location] Resource location
      * 
@@ -626,14 +615,14 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Capture Virtual
      * Machine operation.
      * 
-     * @param {string} [parameters.vhdPrefix] Gets or sets the captured
-     * VirtualHardDisk's name prefix.
+     * @param {string} [parameters.vhdPrefix] the captured VirtualHardDisk's name
+     * prefix.
      * 
-     * @param {string} [parameters.destinationContainerName] Gets or sets the
-     * destination container name.
+     * @param {string} [parameters.destinationContainerName] the destination
+     * container name.
      * 
-     * @param {boolean} [parameters.overwriteVhds] Gets or sets whether it
-     * overwrites destination VirtualHardDisk if true, in case of conflict.
+     * @param {boolean} [parameters.overwriteVhds] whether it overwrites
+     * destination VirtualHardDisk if true, in case of conflict.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -657,14 +646,14 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Capture Virtual
      * Machine operation.
      * 
-     * @param {string} [parameters.vhdPrefix] Gets or sets the captured
-     * VirtualHardDisk's name prefix.
+     * @param {string} [parameters.vhdPrefix] the captured VirtualHardDisk's name
+     * prefix.
      * 
-     * @param {string} [parameters.destinationContainerName] Gets or sets the
-     * destination container name.
+     * @param {string} [parameters.destinationContainerName] the destination
+     * container name.
      * 
-     * @param {boolean} [parameters.overwriteVhds] Gets or sets whether it
-     * overwrites destination VirtualHardDisk if true, in case of conflict.
+     * @param {boolean} [parameters.overwriteVhds] whether it overwrites
+     * destination VirtualHardDisk if true, in case of conflict.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -687,20 +676,18 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Create Virtual
      * Machine operation.
      * 
-     * @param {object} [parameters.plan] Gets or sets the purchase plan when
-     * deploying virtual machine from VM Marketplace images.
+     * @param {object} [parameters.plan] the purchase plan when deploying virtual
+     * machine from VM Marketplace images.
      * 
-     * @param {string} [parameters.plan.name] Gets or sets the plan ID.
+     * @param {string} [parameters.plan.name] the plan ID.
      * 
-     * @param {string} [parameters.plan.publisher] Gets or sets the publisher ID.
+     * @param {string} [parameters.plan.publisher] the publisher ID.
      * 
-     * @param {string} [parameters.plan.product] Gets or sets the offer ID.
+     * @param {string} [parameters.plan.product] the offer ID.
      * 
-     * @param {string} [parameters.plan.promotionCode] Gets or sets the promotion
-     * code.
+     * @param {string} [parameters.plan.promotionCode] the promotion code.
      * 
-     * @param {object} [parameters.hardwareProfile] Gets or sets the hardware
-     * profile.
+     * @param {object} [parameters.hardwareProfile] the hardware profile.
      * 
      * @param {string} [parameters.hardwareProfile.vmSize] The virtual machine
      * size name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
@@ -720,179 +707,162 @@ export interface VirtualMachines {
      * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
      * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
      * 
-     * @param {object} [parameters.storageProfile] Gets or sets the storage
-     * profile.
+     * @param {object} [parameters.storageProfile] the storage profile.
      * 
-     * @param {object} [parameters.storageProfile.imageReference] Gets or sets the
-     * image reference.
+     * @param {object} [parameters.storageProfile.imageReference] the image
+     * reference.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.publisher] Gets
-     * or sets the image publisher.
+     * @param {string} [parameters.storageProfile.imageReference.publisher] the
+     * image publisher.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.offer] Gets or
-     * sets the image offer.
+     * @param {string} [parameters.storageProfile.imageReference.offer] the image
+     * offer.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.sku] Gets or sets
-     * the image sku.
+     * @param {string} [parameters.storageProfile.imageReference.sku] the image
+     * sku.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.version] Gets or
-     * sets the image version. The allowed formats are Major.Minor.Build or
-     * 'latest'. Major, Minor and Build being decimal numbers. Specify 'latest'
-     * to use the latest version of image.
+     * @param {string} [parameters.storageProfile.imageReference.version] the
+     * image version. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
+     * latest version of image.
      * 
-     * @param {object} [parameters.storageProfile.osDisk] Gets or sets the OS disk.
+     * @param {object} [parameters.storageProfile.osDisk] the OS disk.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.osType] Gets or sets the
-     * Operating System type. Possible values include: 'Windows', 'Linux'
+     * @param {string} [parameters.storageProfile.osDisk.osType] the Operating
+     * System type. Possible values include: 'Windows', 'Linux'
      * 
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings] Gets
-     * or sets the disk encryption settings.
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings] the
+     * disk encryption settings.
      * 
      * @param {object}
      * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Gets or sets the disk encryption key which is a KeyVault Secret.
+     * the disk encryption key which is a KeyVault Secret.
      * 
      * @param {string}
      * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
-     * Gets or sets the URL referencing a secret in a Key Vault.
+     * the URL referencing a secret in a Key Vault.
      * 
      * @param {object}
      * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
-     * Gets or sets the Relative URL of the Key Vault containing the secret.
+     * the Relative URL of the Key Vault containing the secret.
      * 
      * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Gets or sets the key encryption key which is KeyVault Key.
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey] the
+     * key encryption key which is KeyVault Key.
      * 
      * @param {string}
      * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
-     * Gets or sets the URL referencing a key in a Key Vault.
+     * the URL referencing a key in a Key Vault.
      * 
      * @param {object}
      * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
-     * Gets or sets the Relative URL of the Key Vault containing the key
+     * the Relative URL of the Key Vault containing the key
      * 
      * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Gets or sets
-     * whether disk encryption should be enabled on the Virtual Machine.
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] whether disk
+     * encryption should be enabled on the Virtual Machine.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.name] Gets or sets the
-     * disk name.
+     * @param {string} [parameters.storageProfile.osDisk.name] the disk name.
      * 
-     * @param {object} [parameters.storageProfile.osDisk.vhd] Gets or sets the
-     * Virtual Hard Disk.
+     * @param {object} [parameters.storageProfile.osDisk.vhd] the Virtual Hard
+     * Disk.
      * 
-     * @param {object} [parameters.storageProfile.osDisk.image] Gets or sets the
-     * Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
-     * before using it to attach to the Virtual Machine.If SourceImage is
-     * provided, the destination VirtualHardDisk should not exist.
+     * @param {object} [parameters.storageProfile.osDisk.image] the Source User
+     * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
+     * to attach to the Virtual Machine.If SourceImage is provided, the
+     * destination VirtualHardDisk should not exist.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Gets or sets
-     * the virtual hard disk's uri. It should be a valid Uri to a virtual hard
-     * disk.
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] the virtual
+     * hard disk's uri. It should be a valid Uri to a virtual hard disk.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.caching] Gets or sets the
-     * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     * @param {string} [parameters.storageProfile.osDisk.caching] the caching
+     * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
-     * @param {string} [parameters.storageProfile.osDisk.createOption] Gets or
-     * sets the create option. Possible values include: 'fromImage', 'empty',
-     * 'attach'
+     * @param {string} [parameters.storageProfile.osDisk.createOption] the create
+     * option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Gets or sets
-     * the initial disk size in GB for blank data disks, and the new desired size
-     * for existing OS and Data disks.
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] the initial
+     * disk size in GB for blank data disks, and the new desired size for
+     * existing OS and Data disks.
      * 
-     * @param {array} [parameters.storageProfile.dataDisks] Gets or sets the data
-     * disks.
+     * @param {array} [parameters.storageProfile.dataDisks] the data disks.
      * 
-     * @param {object} [parameters.osProfile] Gets or sets the OS profile.
+     * @param {object} [parameters.osProfile] the OS profile.
      * 
-     * @param {string} [parameters.osProfile.computerName] Gets or sets the
-     * computer name.
+     * @param {string} [parameters.osProfile.computerName] the computer name.
      * 
-     * @param {string} [parameters.osProfile.adminUsername] Gets or sets the admin
-     * user name.
+     * @param {string} [parameters.osProfile.adminUsername] the admin user name.
      * 
-     * @param {string} [parameters.osProfile.adminPassword] Gets or sets the admin
-     * user password.
+     * @param {string} [parameters.osProfile.adminPassword] the admin user
+     * password.
      * 
-     * @param {string} [parameters.osProfile.customData] Gets or sets a base-64
-     * encoded string of custom data.
+     * @param {string} [parameters.osProfile.customData] a base-64 encoded string
+     * of custom data.
      * 
-     * @param {object} [parameters.osProfile.windowsConfiguration] Gets or sets
-     * the Windows Configuration of the OS profile.
+     * @param {object} [parameters.osProfile.windowsConfiguration] the Windows
+     * Configuration of the OS profile.
      * 
      * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Gets or sets
-     * whether VM Agent should be provisioned on the Virtual Machine.
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] whether VM
+     * Agent should be provisioned on the Virtual Machine.
      * 
      * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Gets or
-     * sets whether Windows updates are automatically installed on the VM
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] whether
+     * Windows updates are automatically installed on the VM
      * 
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] Gets
-     * or sets the Time Zone of the VM
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] the
+     * Time Zone of the VM
      * 
      * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent] Gets
-     * or sets the additional base-64 encoded XML formatted information that can
-     * be included in the Unattend.xml file.
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent] the
+     * additional base-64 encoded XML formatted information that can be included
+     * in the Unattend.xml file.
      * 
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Gets or
-     * sets the Windows Remote Management configuration of the VM
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] the
+     * Windows Remote Management configuration of the VM
      * 
      * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * Gets or sets the list of Windows Remote Management listeners
+     * the list of Windows Remote Management listeners
      * 
-     * @param {object} [parameters.osProfile.linuxConfiguration] Gets or sets the
-     * Linux Configuration of the OS profile.
+     * @param {object} [parameters.osProfile.linuxConfiguration] the Linux
+     * Configuration of the OS profile.
      * 
      * @param {boolean}
      * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Gets or sets whether Authentication using user name and password is
-     * allowed or not
+     * whether Authentication using user name and password is allowed or not
      * 
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Gets or sets
-     * the SSH configuration for linux VMs
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] the SSH
+     * configuration for linux VMs
      * 
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys]
-     * Gets or sets the list of SSH public keys used to authenticate with linux
-     * based VMs
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] the
+     * list of SSH public keys used to authenticate with linux based VMs
      * 
-     * @param {array} [parameters.osProfile.secrets] Gets or sets the List of
-     * certificates for addition to the VM.
+     * @param {array} [parameters.osProfile.secrets] the List of certificates for
+     * addition to the VM.
      * 
-     * @param {object} [parameters.networkProfile] Gets or sets the network
-     * profile.
+     * @param {object} [parameters.networkProfile] the network profile.
      * 
-     * @param {array} [parameters.networkProfile.networkInterfaces] Gets or sets
-     * the network interfaces.
+     * @param {array} [parameters.networkProfile.networkInterfaces] the network
+     * interfaces.
      * 
-     * @param {object} [parameters.diagnosticsProfile] Gets or sets the
-     * diagnostics profile.
+     * @param {object} [parameters.diagnosticsProfile] the diagnostics profile.
      * 
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Gets or
-     * sets the boot diagnostics.
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] the boot
+     * diagnostics.
      * 
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Gets or sets whether boot diagnostics should be enabled on the Virtual
-     * Machine.
+     * whether boot diagnostics should be enabled on the Virtual Machine.
      * 
      * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Gets or sets the boot diagnostics storage Uri. It should be a valid Uri
+     * the boot diagnostics storage Uri. It should be a valid Uri
      * 
-     * @param {object} [parameters.availabilitySet] Gets or sets the reference Id
-     * of the availability set to which this virtual machine belongs.
+     * @param {object} [parameters.availabilitySet] the reference Id of the
+     * availability set to which this virtual machine belongs.
      * 
      * @param {string} [parameters.availabilitySet.id] Resource Id
      * 
-     * @param {string} [parameters.provisioningState] Gets or sets the
-     * provisioning state, which only appears in the response.
-     * 
-     * @param {string} [parameters.licenseType] Gets or sets the license type,
-     * which is for bring your own license scenario.
-     * 
-     * @param {string} [parameters.vmId] Gets the virtual machine unique id.
+     * @param {string} [parameters.licenseType] the license type, which is for
+     * bring your own license scenario.
      * 
      * @param {string} [parameters.location] Resource location
      * 
@@ -919,20 +889,18 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Create Virtual
      * Machine operation.
      * 
-     * @param {object} [parameters.plan] Gets or sets the purchase plan when
-     * deploying virtual machine from VM Marketplace images.
+     * @param {object} [parameters.plan] the purchase plan when deploying virtual
+     * machine from VM Marketplace images.
      * 
-     * @param {string} [parameters.plan.name] Gets or sets the plan ID.
+     * @param {string} [parameters.plan.name] the plan ID.
      * 
-     * @param {string} [parameters.plan.publisher] Gets or sets the publisher ID.
+     * @param {string} [parameters.plan.publisher] the publisher ID.
      * 
-     * @param {string} [parameters.plan.product] Gets or sets the offer ID.
+     * @param {string} [parameters.plan.product] the offer ID.
      * 
-     * @param {string} [parameters.plan.promotionCode] Gets or sets the promotion
-     * code.
+     * @param {string} [parameters.plan.promotionCode] the promotion code.
      * 
-     * @param {object} [parameters.hardwareProfile] Gets or sets the hardware
-     * profile.
+     * @param {object} [parameters.hardwareProfile] the hardware profile.
      * 
      * @param {string} [parameters.hardwareProfile.vmSize] The virtual machine
      * size name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
@@ -952,179 +920,162 @@ export interface VirtualMachines {
      * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
      * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
      * 
-     * @param {object} [parameters.storageProfile] Gets or sets the storage
-     * profile.
+     * @param {object} [parameters.storageProfile] the storage profile.
      * 
-     * @param {object} [parameters.storageProfile.imageReference] Gets or sets the
-     * image reference.
+     * @param {object} [parameters.storageProfile.imageReference] the image
+     * reference.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.publisher] Gets
-     * or sets the image publisher.
+     * @param {string} [parameters.storageProfile.imageReference.publisher] the
+     * image publisher.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.offer] Gets or
-     * sets the image offer.
+     * @param {string} [parameters.storageProfile.imageReference.offer] the image
+     * offer.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.sku] Gets or sets
-     * the image sku.
+     * @param {string} [parameters.storageProfile.imageReference.sku] the image
+     * sku.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.version] Gets or
-     * sets the image version. The allowed formats are Major.Minor.Build or
-     * 'latest'. Major, Minor and Build being decimal numbers. Specify 'latest'
-     * to use the latest version of image.
+     * @param {string} [parameters.storageProfile.imageReference.version] the
+     * image version. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
+     * latest version of image.
      * 
-     * @param {object} [parameters.storageProfile.osDisk] Gets or sets the OS disk.
+     * @param {object} [parameters.storageProfile.osDisk] the OS disk.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.osType] Gets or sets the
-     * Operating System type. Possible values include: 'Windows', 'Linux'
+     * @param {string} [parameters.storageProfile.osDisk.osType] the Operating
+     * System type. Possible values include: 'Windows', 'Linux'
      * 
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings] Gets
-     * or sets the disk encryption settings.
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings] the
+     * disk encryption settings.
      * 
      * @param {object}
      * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * Gets or sets the disk encryption key which is a KeyVault Secret.
+     * the disk encryption key which is a KeyVault Secret.
      * 
      * @param {string}
      * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
-     * Gets or sets the URL referencing a secret in a Key Vault.
+     * the URL referencing a secret in a Key Vault.
      * 
      * @param {object}
      * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
-     * Gets or sets the Relative URL of the Key Vault containing the secret.
+     * the Relative URL of the Key Vault containing the secret.
      * 
      * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey]
-     * Gets or sets the key encryption key which is KeyVault Key.
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey] the
+     * key encryption key which is KeyVault Key.
      * 
      * @param {string}
      * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
-     * Gets or sets the URL referencing a key in a Key Vault.
+     * the URL referencing a key in a Key Vault.
      * 
      * @param {object}
      * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
-     * Gets or sets the Relative URL of the Key Vault containing the key
+     * the Relative URL of the Key Vault containing the key
      * 
      * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Gets or sets
-     * whether disk encryption should be enabled on the Virtual Machine.
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] whether disk
+     * encryption should be enabled on the Virtual Machine.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.name] Gets or sets the
-     * disk name.
+     * @param {string} [parameters.storageProfile.osDisk.name] the disk name.
      * 
-     * @param {object} [parameters.storageProfile.osDisk.vhd] Gets or sets the
-     * Virtual Hard Disk.
+     * @param {object} [parameters.storageProfile.osDisk.vhd] the Virtual Hard
+     * Disk.
      * 
-     * @param {object} [parameters.storageProfile.osDisk.image] Gets or sets the
-     * Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
-     * before using it to attach to the Virtual Machine.If SourceImage is
-     * provided, the destination VirtualHardDisk should not exist.
+     * @param {object} [parameters.storageProfile.osDisk.image] the Source User
+     * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
+     * to attach to the Virtual Machine.If SourceImage is provided, the
+     * destination VirtualHardDisk should not exist.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] Gets or sets
-     * the virtual hard disk's uri. It should be a valid Uri to a virtual hard
-     * disk.
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] the virtual
+     * hard disk's uri. It should be a valid Uri to a virtual hard disk.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.caching] Gets or sets the
-     * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     * @param {string} [parameters.storageProfile.osDisk.caching] the caching
+     * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
-     * @param {string} [parameters.storageProfile.osDisk.createOption] Gets or
-     * sets the create option. Possible values include: 'fromImage', 'empty',
-     * 'attach'
+     * @param {string} [parameters.storageProfile.osDisk.createOption] the create
+     * option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Gets or sets
-     * the initial disk size in GB for blank data disks, and the new desired size
-     * for existing OS and Data disks.
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] the initial
+     * disk size in GB for blank data disks, and the new desired size for
+     * existing OS and Data disks.
      * 
-     * @param {array} [parameters.storageProfile.dataDisks] Gets or sets the data
-     * disks.
+     * @param {array} [parameters.storageProfile.dataDisks] the data disks.
      * 
-     * @param {object} [parameters.osProfile] Gets or sets the OS profile.
+     * @param {object} [parameters.osProfile] the OS profile.
      * 
-     * @param {string} [parameters.osProfile.computerName] Gets or sets the
-     * computer name.
+     * @param {string} [parameters.osProfile.computerName] the computer name.
      * 
-     * @param {string} [parameters.osProfile.adminUsername] Gets or sets the admin
-     * user name.
+     * @param {string} [parameters.osProfile.adminUsername] the admin user name.
      * 
-     * @param {string} [parameters.osProfile.adminPassword] Gets or sets the admin
-     * user password.
+     * @param {string} [parameters.osProfile.adminPassword] the admin user
+     * password.
      * 
-     * @param {string} [parameters.osProfile.customData] Gets or sets a base-64
-     * encoded string of custom data.
+     * @param {string} [parameters.osProfile.customData] a base-64 encoded string
+     * of custom data.
      * 
-     * @param {object} [parameters.osProfile.windowsConfiguration] Gets or sets
-     * the Windows Configuration of the OS profile.
+     * @param {object} [parameters.osProfile.windowsConfiguration] the Windows
+     * Configuration of the OS profile.
      * 
      * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Gets or sets
-     * whether VM Agent should be provisioned on the Virtual Machine.
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] whether VM
+     * Agent should be provisioned on the Virtual Machine.
      * 
      * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Gets or
-     * sets whether Windows updates are automatically installed on the VM
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] whether
+     * Windows updates are automatically installed on the VM
      * 
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] Gets
-     * or sets the Time Zone of the VM
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] the
+     * Time Zone of the VM
      * 
      * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent] Gets
-     * or sets the additional base-64 encoded XML formatted information that can
-     * be included in the Unattend.xml file.
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent] the
+     * additional base-64 encoded XML formatted information that can be included
+     * in the Unattend.xml file.
      * 
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] Gets or
-     * sets the Windows Remote Management configuration of the VM
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] the
+     * Windows Remote Management configuration of the VM
      * 
      * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * Gets or sets the list of Windows Remote Management listeners
+     * the list of Windows Remote Management listeners
      * 
-     * @param {object} [parameters.osProfile.linuxConfiguration] Gets or sets the
-     * Linux Configuration of the OS profile.
+     * @param {object} [parameters.osProfile.linuxConfiguration] the Linux
+     * Configuration of the OS profile.
      * 
      * @param {boolean}
      * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Gets or sets whether Authentication using user name and password is
-     * allowed or not
+     * whether Authentication using user name and password is allowed or not
      * 
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] Gets or sets
-     * the SSH configuration for linux VMs
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] the SSH
+     * configuration for linux VMs
      * 
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys]
-     * Gets or sets the list of SSH public keys used to authenticate with linux
-     * based VMs
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] the
+     * list of SSH public keys used to authenticate with linux based VMs
      * 
-     * @param {array} [parameters.osProfile.secrets] Gets or sets the List of
-     * certificates for addition to the VM.
+     * @param {array} [parameters.osProfile.secrets] the List of certificates for
+     * addition to the VM.
      * 
-     * @param {object} [parameters.networkProfile] Gets or sets the network
-     * profile.
+     * @param {object} [parameters.networkProfile] the network profile.
      * 
-     * @param {array} [parameters.networkProfile.networkInterfaces] Gets or sets
-     * the network interfaces.
+     * @param {array} [parameters.networkProfile.networkInterfaces] the network
+     * interfaces.
      * 
-     * @param {object} [parameters.diagnosticsProfile] Gets or sets the
-     * diagnostics profile.
+     * @param {object} [parameters.diagnosticsProfile] the diagnostics profile.
      * 
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Gets or
-     * sets the boot diagnostics.
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] the boot
+     * diagnostics.
      * 
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * Gets or sets whether boot diagnostics should be enabled on the Virtual
-     * Machine.
+     * whether boot diagnostics should be enabled on the Virtual Machine.
      * 
      * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * Gets or sets the boot diagnostics storage Uri. It should be a valid Uri
+     * the boot diagnostics storage Uri. It should be a valid Uri
      * 
-     * @param {object} [parameters.availabilitySet] Gets or sets the reference Id
-     * of the availability set to which this virtual machine belongs.
+     * @param {object} [parameters.availabilitySet] the reference Id of the
+     * availability set to which this virtual machine belongs.
      * 
      * @param {string} [parameters.availabilitySet.id] Resource Id
      * 
-     * @param {string} [parameters.provisioningState] Gets or sets the
-     * provisioning state, which only appears in the response.
-     * 
-     * @param {string} [parameters.licenseType] Gets or sets the license type,
-     * which is for bring your own license scenario.
-     * 
-     * @param {string} [parameters.vmId] Gets the virtual machine unique id.
+     * @param {string} [parameters.licenseType] the license type, which is for
+     * bring your own license scenario.
      * 
      * @param {string} [parameters.location] Resource location
      * 
@@ -1450,6 +1401,23 @@ export interface VirtualMachines {
     beginRedeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
+     * The operation to list virtual machines under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
+    /**
      * Gets the list of Virtual Machines in the subscription. Use nextLink
      * property in the response to get the next page of Virtual Machines. Do this
      * till nextLink is not null to fetch all the Virtual Machines.
@@ -1489,166 +1457,157 @@ export interface VirtualMachineScaleSets {
      * @param {object} parameters Parameters supplied to the Create Virtual
      * Machine Scale Set operation.
      * 
-     * @param {object} [parameters.sku] Gets or sets the virtual machine scale set
-     * sku.
+     * @param {object} [parameters.sku] the virtual machine scale set sku.
      * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name.
+     * @param {string} [parameters.sku.name] the sku name.
      * 
-     * @param {string} [parameters.sku.tier] Gets or sets the sku tier.
+     * @param {string} [parameters.sku.tier] the sku tier.
      * 
-     * @param {number} [parameters.sku.capacity] Gets or sets the sku capacity.
+     * @param {number} [parameters.sku.capacity] the sku capacity.
      * 
-     * @param {object} [parameters.upgradePolicy] Gets or sets the upgrade policy.
+     * @param {object} [parameters.upgradePolicy] the upgrade policy.
      * 
-     * @param {string} [parameters.upgradePolicy.mode] Gets or sets the upgrade
-     * mode. Possible values include: 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradePolicy.mode] the upgrade mode. Possible
+     * values include: 'Automatic', 'Manual'
      * 
-     * @param {object} [parameters.virtualMachineProfile] Gets or sets the virtual
-     * machine profile.
+     * @param {object} [parameters.virtualMachineProfile] the virtual machine
+     * profile.
      * 
-     * @param {object} [parameters.virtualMachineProfile.osProfile] Gets or sets
-     * the virtual machine scale set OS profile.
+     * @param {object} [parameters.virtualMachineProfile.osProfile] the virtual
+     * machine scale set OS profile.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] Gets or
-     * sets the computer name prefix.
+     * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] the
+     * computer name prefix.
      * 
      * @param {string} [parameters.virtualMachineProfile.osProfile.adminUsername]
-     * Gets or sets the admin user name.
+     * the admin user name.
      * 
      * @param {string} [parameters.virtualMachineProfile.osProfile.adminPassword]
-     * Gets or sets the admin user password.
+     * the admin user password.
      * 
-     * @param {string} [parameters.virtualMachineProfile.osProfile.customData]
-     * Gets or sets a base-64 encoded string of custom data.
+     * @param {string} [parameters.virtualMachineProfile.osProfile.customData] a
+     * base-64 encoded string of custom data.
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] Gets or
-     * sets the Windows Configuration of the OS profile.
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] the
+     * Windows Configuration of the OS profile.
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
-     * Gets or sets whether VM Agent should be provisioned on the Virtual Machine.
+     * whether VM Agent should be provisioned on the Virtual Machine.
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether Windows updates are automatically installed on the VM
+     * whether Windows updates are automatically installed on the VM
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
-     * Gets or sets the Time Zone of the VM
+     * the Time Zone of the VM
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Gets or sets the additional base-64 encoded XML formatted information that
-     * can be included in the Unattend.xml file.
+     * the additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file.
      * 
      * @param {object}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM]
-     * Gets or sets the Windows Remote Management configuration of the VM
+     * the Windows Remote Management configuration of the VM
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
-     * Gets or sets the list of Windows Remote Management listeners
+     * the list of Windows Remote Management listeners
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] Gets or
-     * sets the Linux Configuration of the OS profile.
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] the Linux
+     * Configuration of the OS profile.
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Gets or sets whether Authentication using user name and password is
-     * allowed or not
+     * whether Authentication using user name and password is allowed or not
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] Gets
-     * or sets the SSH configuration for linux VMs
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] the
+     * SSH configuration for linux VMs
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
-     * Gets or sets the list of SSH public keys used to authenticate with linux
-     * based VMs
+     * the list of SSH public keys used to authenticate with linux based VMs
      * 
-     * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] Gets or
-     * sets the List of certificates for addition to the VM.
+     * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] the
+     * List of certificates for addition to the VM.
      * 
-     * @param {object} [parameters.virtualMachineProfile.storageProfile] Gets or
-     * sets the virtual machine scale set storage profile.
+     * @param {object} [parameters.virtualMachineProfile.storageProfile] the
+     * virtual machine scale set storage profile.
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference] Gets or
-     * sets the image reference.
+     * [parameters.virtualMachineProfile.storageProfile.imageReference] the image
+     * reference.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
-     * Gets or sets the image publisher.
+     * the image publisher.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer]
-     * Gets or sets the image offer.
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer] the
+     * image offer.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] Gets
-     * or sets the image sku.
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] the
+     * image sku.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.imageReference.version]
-     * Gets or sets the image version. The allowed formats are Major.Minor.Build
-     * or 'latest'. Major, Minor and Build being decimal numbers. Specify
-     * 'latest' to use the latest version of image.
+     * the image version. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
+     * latest version of image.
      * 
      * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
-     * Gets or sets the OS disk.
+     * the OS disk.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] Gets or sets
-     * the disk name.
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] the disk
+     * name.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] Gets or
-     * sets the caching type. Possible values include: 'None', 'ReadOnly',
-     * 'ReadWrite'
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] the
+     * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] Gets
-     * or sets the create option. Possible values include: 'fromImage', 'empty',
-     * 'attach'
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] the
+     * create option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] Gets or
-     * sets the Operating System type. Possible values include: 'Windows', 'Linux'
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] the
+     * Operating System type. Possible values include: 'Windows', 'Linux'
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.image] Gets or
-     * sets the Source User Image VirtualHardDisk. This VirtualHardDisk will be
-     * copied before using it to attach to the Virtual Machine.If SourceImage is
-     * provided, the destination VirtualHardDisk should not exist.
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image] the Source
+     * User Image VirtualHardDisk. This VirtualHardDisk will be copied before
+     * using it to attach to the Virtual Machine.If SourceImage is provided, the
+     * destination VirtualHardDisk should not exist.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] Gets or
-     * sets the virtual hard disk's uri. It should be a valid Uri to a virtual
-     * hard disk.
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] the
+     * virtual hard disk's uri. It should be a valid Uri to a virtual hard disk.
      * 
      * @param {array}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers]
-     * Gets or sets the list of virtual hard disk container uris.
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers] the
+     * list of virtual hard disk container uris.
      * 
-     * @param {object} [parameters.virtualMachineProfile.networkProfile] Gets or
-     * sets the virtual machine scale set network profile.
+     * @param {object} [parameters.virtualMachineProfile.networkProfile] the
+     * virtual machine scale set network profile.
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
-     * Gets or sets the list of network configurations.
+     * the list of network configurations.
      * 
-     * @param {object} [parameters.virtualMachineProfile.extensionProfile] Gets
-     * the virtual machine scale set extension profile.
+     * @param {object} [parameters.virtualMachineProfile.extensionProfile] the
+     * virtual machine scale set extension profile.
      * 
      * @param {array}
-     * [parameters.virtualMachineProfile.extensionProfile.extensions] Gets the
-     * virtual machine scale set child extension resources.
-     * 
-     * @param {string} [parameters.provisioningState] Gets or sets the
-     * provisioning state, which only appears in the response.
+     * [parameters.virtualMachineProfile.extensionProfile.extensions] the virtual
+     * machine scale set child extension resources.
      * 
      * @param {boolean} [parameters.overProvision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
@@ -1680,166 +1639,157 @@ export interface VirtualMachineScaleSets {
      * @param {object} parameters Parameters supplied to the Create Virtual
      * Machine Scale Set operation.
      * 
-     * @param {object} [parameters.sku] Gets or sets the virtual machine scale set
-     * sku.
+     * @param {object} [parameters.sku] the virtual machine scale set sku.
      * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name.
+     * @param {string} [parameters.sku.name] the sku name.
      * 
-     * @param {string} [parameters.sku.tier] Gets or sets the sku tier.
+     * @param {string} [parameters.sku.tier] the sku tier.
      * 
-     * @param {number} [parameters.sku.capacity] Gets or sets the sku capacity.
+     * @param {number} [parameters.sku.capacity] the sku capacity.
      * 
-     * @param {object} [parameters.upgradePolicy] Gets or sets the upgrade policy.
+     * @param {object} [parameters.upgradePolicy] the upgrade policy.
      * 
-     * @param {string} [parameters.upgradePolicy.mode] Gets or sets the upgrade
-     * mode. Possible values include: 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradePolicy.mode] the upgrade mode. Possible
+     * values include: 'Automatic', 'Manual'
      * 
-     * @param {object} [parameters.virtualMachineProfile] Gets or sets the virtual
-     * machine profile.
+     * @param {object} [parameters.virtualMachineProfile] the virtual machine
+     * profile.
      * 
-     * @param {object} [parameters.virtualMachineProfile.osProfile] Gets or sets
-     * the virtual machine scale set OS profile.
+     * @param {object} [parameters.virtualMachineProfile.osProfile] the virtual
+     * machine scale set OS profile.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] Gets or
-     * sets the computer name prefix.
+     * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] the
+     * computer name prefix.
      * 
      * @param {string} [parameters.virtualMachineProfile.osProfile.adminUsername]
-     * Gets or sets the admin user name.
+     * the admin user name.
      * 
      * @param {string} [parameters.virtualMachineProfile.osProfile.adminPassword]
-     * Gets or sets the admin user password.
+     * the admin user password.
      * 
-     * @param {string} [parameters.virtualMachineProfile.osProfile.customData]
-     * Gets or sets a base-64 encoded string of custom data.
+     * @param {string} [parameters.virtualMachineProfile.osProfile.customData] a
+     * base-64 encoded string of custom data.
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] Gets or
-     * sets the Windows Configuration of the OS profile.
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] the
+     * Windows Configuration of the OS profile.
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
-     * Gets or sets whether VM Agent should be provisioned on the Virtual Machine.
+     * whether VM Agent should be provisioned on the Virtual Machine.
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
-     * Gets or sets whether Windows updates are automatically installed on the VM
+     * whether Windows updates are automatically installed on the VM
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
-     * Gets or sets the Time Zone of the VM
+     * the Time Zone of the VM
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
-     * Gets or sets the additional base-64 encoded XML formatted information that
-     * can be included in the Unattend.xml file.
+     * the additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file.
      * 
      * @param {object}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM]
-     * Gets or sets the Windows Remote Management configuration of the VM
+     * the Windows Remote Management configuration of the VM
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
-     * Gets or sets the list of Windows Remote Management listeners
+     * the list of Windows Remote Management listeners
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] Gets or
-     * sets the Linux Configuration of the OS profile.
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] the Linux
+     * Configuration of the OS profile.
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * Gets or sets whether Authentication using user name and password is
-     * allowed or not
+     * whether Authentication using user name and password is allowed or not
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] Gets
-     * or sets the SSH configuration for linux VMs
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] the
+     * SSH configuration for linux VMs
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
-     * Gets or sets the list of SSH public keys used to authenticate with linux
-     * based VMs
+     * the list of SSH public keys used to authenticate with linux based VMs
      * 
-     * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] Gets or
-     * sets the List of certificates for addition to the VM.
+     * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] the
+     * List of certificates for addition to the VM.
      * 
-     * @param {object} [parameters.virtualMachineProfile.storageProfile] Gets or
-     * sets the virtual machine scale set storage profile.
+     * @param {object} [parameters.virtualMachineProfile.storageProfile] the
+     * virtual machine scale set storage profile.
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference] Gets or
-     * sets the image reference.
+     * [parameters.virtualMachineProfile.storageProfile.imageReference] the image
+     * reference.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
-     * Gets or sets the image publisher.
+     * the image publisher.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer]
-     * Gets or sets the image offer.
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer] the
+     * image offer.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] Gets
-     * or sets the image sku.
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] the
+     * image sku.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.imageReference.version]
-     * Gets or sets the image version. The allowed formats are Major.Minor.Build
-     * or 'latest'. Major, Minor and Build being decimal numbers. Specify
-     * 'latest' to use the latest version of image.
+     * the image version. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
+     * latest version of image.
      * 
      * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
-     * Gets or sets the OS disk.
+     * the OS disk.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] Gets or sets
-     * the disk name.
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] the disk
+     * name.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] Gets or
-     * sets the caching type. Possible values include: 'None', 'ReadOnly',
-     * 'ReadWrite'
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] the
+     * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] Gets
-     * or sets the create option. Possible values include: 'fromImage', 'empty',
-     * 'attach'
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] the
+     * create option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] Gets or
-     * sets the Operating System type. Possible values include: 'Windows', 'Linux'
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] the
+     * Operating System type. Possible values include: 'Windows', 'Linux'
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.image] Gets or
-     * sets the Source User Image VirtualHardDisk. This VirtualHardDisk will be
-     * copied before using it to attach to the Virtual Machine.If SourceImage is
-     * provided, the destination VirtualHardDisk should not exist.
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image] the Source
+     * User Image VirtualHardDisk. This VirtualHardDisk will be copied before
+     * using it to attach to the Virtual Machine.If SourceImage is provided, the
+     * destination VirtualHardDisk should not exist.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] Gets or
-     * sets the virtual hard disk's uri. It should be a valid Uri to a virtual
-     * hard disk.
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] the
+     * virtual hard disk's uri. It should be a valid Uri to a virtual hard disk.
      * 
      * @param {array}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers]
-     * Gets or sets the list of virtual hard disk container uris.
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers] the
+     * list of virtual hard disk container uris.
      * 
-     * @param {object} [parameters.virtualMachineProfile.networkProfile] Gets or
-     * sets the virtual machine scale set network profile.
+     * @param {object} [parameters.virtualMachineProfile.networkProfile] the
+     * virtual machine scale set network profile.
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
-     * Gets or sets the list of network configurations.
+     * the list of network configurations.
      * 
-     * @param {object} [parameters.virtualMachineProfile.extensionProfile] Gets
-     * the virtual machine scale set extension profile.
+     * @param {object} [parameters.virtualMachineProfile.extensionProfile] the
+     * virtual machine scale set extension profile.
      * 
      * @param {array}
-     * [parameters.virtualMachineProfile.extensionProfile.extensions] Gets the
-     * virtual machine scale set child extension resources.
-     * 
-     * @param {string} [parameters.provisioningState] Gets or sets the
-     * provisioning state, which only appears in the response.
+     * [parameters.virtualMachineProfile.extensionProfile.extensions] the virtual
+     * machine scale set child extension resources.
      * 
      * @param {boolean} [parameters.overProvision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
@@ -1871,8 +1821,8 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
-     * set instance ids.
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1895,8 +1845,8 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
-     * set instance ids.
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1968,8 +1918,7 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} instanceIds Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {array} instanceIds the virtual machine scale set instance ids.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1989,8 +1938,7 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} instanceIds Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {array} instanceIds the virtual machine scale set instance ids.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2084,8 +2032,8 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
-     * set instance ids.
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2107,8 +2055,8 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
-     * set instance ids.
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2128,8 +2076,8 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
-     * set instance ids.
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2149,8 +2097,8 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
-     * set instance ids.
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2170,8 +2118,8 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
-     * set instance ids.
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2191,8 +2139,8 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {array} [options.instanceIds] Gets or sets the virtual machine scale
-     * set instance ids.
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2211,8 +2159,7 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} instanceIds Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {array} instanceIds the virtual machine scale set instance ids.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2233,8 +2180,7 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string} vmScaleSetName The name of the virtual machine scale set.
      * 
-     * @param {array} instanceIds Gets or sets the virtual machine scale set
-     * instance ids.
+     * @param {array} instanceIds the virtual machine scale set instance ids.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2392,7 +2338,7 @@ export interface VirtualMachineScaleSetVMs {
     beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Allows you to deallocate a virtual machine virtual machine scale set.Shuts
+     * Allows you to deallocate a virtual machine scale set virtual machine. Shuts
      * down the virtual machine and releases the compute resources. You are not
      * billed for the compute resources that this virtual machine uses.
      *
@@ -2414,7 +2360,7 @@ export interface VirtualMachineScaleSetVMs {
     deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Allows you to deallocate a virtual machine virtual machine scale set.Shuts
+     * Allows you to deallocate a virtual machine scale set virtual machine. Shuts
      * down the virtual machine and releases the compute resources. You are not
      * billed for the compute resources that this virtual machine uses.
      *
@@ -2730,8 +2676,8 @@ export interface ContainerServiceOperations {
      * @param {object} [parameters.linuxProfile.ssh] Specifies the ssh key
      * configuration for Linux VMs
      * 
-     * @param {array} [parameters.linuxProfile.ssh.publicKeys] Gets or sets the
-     * list of SSH public keys used to authenticate with Linux based VMs
+     * @param {array} [parameters.linuxProfile.ssh.publicKeys] the list of SSH
+     * public keys used to authenticate with Linux based VMs
      * 
      * @param {object} [parameters.diagnosticsProfile] Properties for Diagnostic
      * Agent
@@ -2739,9 +2685,8 @@ export interface ContainerServiceOperations {
      * @param {object} [parameters.diagnosticsProfile.vmDiagnostics] Profile for
      * container service VM diagnostic agent
      * 
-     * @param {boolean} [parameters.diagnosticsProfile.vmDiagnostics.enabled] Gets
-     * or sets whether VM Diagnostic Agent should be provisioned on the Virtual
-     * Machine.
+     * @param {boolean} [parameters.diagnosticsProfile.vmDiagnostics.enabled]
+     * whether VM Diagnostic Agent should be provisioned on the Virtual Machine.
      * 
      * @param {string} [parameters.location] Resource location
      * 
@@ -2801,8 +2746,8 @@ export interface ContainerServiceOperations {
      * @param {object} [parameters.linuxProfile.ssh] Specifies the ssh key
      * configuration for Linux VMs
      * 
-     * @param {array} [parameters.linuxProfile.ssh.publicKeys] Gets or sets the
-     * list of SSH public keys used to authenticate with Linux based VMs
+     * @param {array} [parameters.linuxProfile.ssh.publicKeys] the list of SSH
+     * public keys used to authenticate with Linux based VMs
      * 
      * @param {object} [parameters.diagnosticsProfile] Properties for Diagnostic
      * Agent
@@ -2810,9 +2755,8 @@ export interface ContainerServiceOperations {
      * @param {object} [parameters.diagnosticsProfile.vmDiagnostics] Profile for
      * container service VM diagnostic agent
      * 
-     * @param {boolean} [parameters.diagnosticsProfile.vmDiagnostics.enabled] Gets
-     * or sets whether VM Diagnostic Agent should be provisioned on the Virtual
-     * Machine.
+     * @param {boolean} [parameters.diagnosticsProfile.vmDiagnostics.enabled]
+     * whether VM Diagnostic Agent should be provisioned on the Virtual Machine.
      * 
      * @param {string} [parameters.location] Resource location
      * 
