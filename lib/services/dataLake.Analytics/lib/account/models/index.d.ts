@@ -15,11 +15,11 @@
  * Initializes a new instance of the StorageAccountProperties class.
  * @constructor
  * Azure Storage account properties information.
- * @member {string} accessKey Gets or sets the access key associated with this
- * Azure Storage account that will be used to connect to it.
+ *
+ * @member {string} accessKey the access key associated with this Azure
+ * Storage account that will be used to connect to it.
  * 
- * @member {string} [suffix] Gets or sets the optional suffix for the Data
- * Lake account.
+ * @member {string} [suffix] the optional suffix for the Data Lake account.
  * 
  */
 export interface StorageAccountProperties {
@@ -32,18 +32,18 @@ export interface StorageAccountProperties {
  * Initializes a new instance of the StorageAccountInfo class.
  * @constructor
  * Azure Storage account information.
- * @member {string} name Gets or sets the account name associated with the
- * Azure storage account.
+ *
+ * @member {string} name the account name associated with the Azure storage
+ * account.
  * 
- * @member {object} properties Gets or sets the properties associated with
- * this storage account.
+ * @member {object} properties the properties associated with this storage
+ * account.
  * 
- * @member {string} [properties.accessKey] Gets or sets the access key
- * associated with this Azure Storage account that will be used to connect to
- * it.
+ * @member {string} [properties.accessKey] the access key associated with this
+ * Azure Storage account that will be used to connect to it.
  * 
- * @member {string} [properties.suffix] Gets or sets the optional suffix for
- * the Data Lake account.
+ * @member {string} [properties.suffix] the optional suffix for the Data Lake
+ * account.
  * 
  */
 export interface StorageAccountInfo {
@@ -56,8 +56,9 @@ export interface StorageAccountInfo {
  * Initializes a new instance of the BlobContainerProperties class.
  * @constructor
  * Azure Storage blob container properties information.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of
- * the blob container.
+ *
+ * @member {date} [lastModifiedTime] the last modified time of the blob
+ * container.
  * 
  */
 export interface BlobContainerProperties {
@@ -69,18 +70,17 @@ export interface BlobContainerProperties {
  * Initializes a new instance of the BlobContainer class.
  * @constructor
  * Azure Storage blob container information.
- * @member {string} [name] Gets or sets the name of the blob container.
+ *
+ * @member {string} [name] the name of the blob container.
  * 
- * @member {string} [id] Gets or sets the unique identifier of the blob
- * container.
+ * @member {string} [id] the unique identifier of the blob container.
  * 
- * @member {string} [type] Gets or sets the type of the blob container.
+ * @member {string} [type] the type of the blob container.
  * 
- * @member {object} [properties] Gets or sets the properties of the blob
- * container.
+ * @member {object} [properties] the properties of the blob container.
  * 
- * @member {date} [properties.lastModifiedTime] Gets or sets the last modified
- * time of the blob container.
+ * @member {date} [properties.lastModifiedTime] the last modified time of the
+ * blob container.
  * 
  */
 export interface BlobContainer {
@@ -95,8 +95,9 @@ export interface BlobContainer {
  * Initializes a new instance of the SasTokenInfo class.
  * @constructor
  * SAS token information.
- * @member {string} [accessToken] Gets or sets the access token for the
- * associated Azure Storage Container.
+ *
+ * @member {string} [accessToken] the access token for the associated Azure
+ * Storage Container.
  * 
  */
 export interface SasTokenInfo {
@@ -108,8 +109,9 @@ export interface SasTokenInfo {
  * Initializes a new instance of the DataLakeStoreAccountInfoProperties class.
  * @constructor
  * Data Lake Store account properties information.
- * @member {string} [suffix] Gets or sets the optional suffix for the Data
- * Lake Store account.
+ *
+ * @member {string} [suffix] the optional suffix for the Data Lake Store
+ * account.
  * 
  */
 export interface DataLakeStoreAccountInfoProperties {
@@ -121,14 +123,14 @@ export interface DataLakeStoreAccountInfoProperties {
  * Initializes a new instance of the DataLakeStoreAccountInfo class.
  * @constructor
  * Data Lake Store account information.
- * @member {string} name Gets or sets the account name of the Data Lake Store
- * account.
+ *
+ * @member {string} name the account name of the Data Lake Store account.
  * 
- * @member {object} [properties] Gets or sets the properties associated with
- * this Data Lake Store account.
+ * @member {object} [properties] the properties associated with this Data Lake
+ * Store account.
  * 
- * @member {string} [properties.suffix] Gets or sets the optional suffix for
- * the Data Lake Store account.
+ * @member {string} [properties.suffix] the optional suffix for the Data Lake
+ * Store account.
  * 
  */
 export interface DataLakeStoreAccountInfo {
@@ -142,36 +144,35 @@ export interface DataLakeStoreAccountInfo {
  * @constructor
  * The account specific properties that are associated with an underlying Data
  * Lake Analytics account.
- * @member {string} [provisioningState] Gets the provisioning status of the
- * Data Lake Analytics account. Possible values include: 'Failed',
- * 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
- * 'Deleting', 'Deleted'
+ *
+ * @member {string} [provisioningState] the provisioning status of the Data
+ * Lake Analytics account. Possible values include: 'Failed', 'Creating',
+ * 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming', 'Deleting',
+ * 'Deleted'
  * 
- * @member {string} [state] Gets the state of the Data Lake Analytics account.
+ * @member {string} [state] the state of the Data Lake Analytics account.
  * Possible values include: 'active', 'suspended'
  * 
- * @member {string} [defaultDataLakeStoreAccount] Gets or sets the default
- * data lake storage account associated with this Data Lake Analytics account.
+ * @member {string} [defaultDataLakeStoreAccount] the default data lake
+ * storage account associated with this Data Lake Analytics account.
  * 
- * @member {number} [maxDegreeOfParallelism] Gets or sets the maximum
- * supported degree of parallelism for this acocunt.
+ * @member {number} [maxDegreeOfParallelism] the maximum supported degree of
+ * parallelism for this account.
  * 
- * @member {number} [maxJobCount] Gets or sets the maximum supported jobs
- * running under the account at the same time.
+ * @member {number} [maxJobCount] the maximum supported jobs running under the
+ * account at the same time.
  * 
- * @member {array} [dataLakeStoreAccounts] Gets or sets the list of Data Lake
- * storage accounts associated with this account.
+ * @member {array} [dataLakeStoreAccounts] the list of Data Lake storage
+ * accounts associated with this account.
  * 
- * @member {array} [storageAccounts] Gets or sets the list of Azure Blob
- * storage accounts associated with this account.
+ * @member {array} [storageAccounts] the list of Azure Blob storage accounts
+ * associated with this account.
  * 
- * @member {date} [creationTime] Gets or sets the account creation time.
+ * @member {date} [creationTime] the account creation time.
  * 
- * @member {date} [lastModifiedTime] Gets or sets the account last modified
- * time.
+ * @member {date} [lastModifiedTime] the account last modified time.
  * 
- * @member {string} [endpoint] Gets or sets the full CName endpoint for this
- * account.
+ * @member {string} [endpoint] the full CName endpoint for this account.
  * 
  */
 export interface DataLakeAnalyticsAccountProperties {
@@ -192,11 +193,12 @@ export interface DataLakeAnalyticsAccountProperties {
  * Initializes a new instance of the AddDataLakeStoreParameters class.
  * @constructor
  * Additional Data Lake Store parameters.
- * @member {object} properties Gets or sets the properties for the Data Lake
- * Store account being added.
+ *
+ * @member {object} properties the properties for the Data Lake Store account
+ * being added.
  * 
- * @member {string} [properties.suffix] Gets or sets the optional suffix for
- * the Data Lake Store account.
+ * @member {string} [properties.suffix] the optional suffix for the Data Lake
+ * Store account.
  * 
  */
 export interface AddDataLakeStoreParameters {
@@ -208,15 +210,15 @@ export interface AddDataLakeStoreParameters {
  * Initializes a new instance of the AddStorageAccountParameters class.
  * @constructor
  * Additional Azure Storage account parameters.
- * @member {object} properties Gets or sets the properties for the Azure
- * Storage account being added.
+ *
+ * @member {object} properties the properties for the Azure Storage account
+ * being added.
  * 
- * @member {string} [properties.accessKey] Gets or sets the access key
- * associated with this Azure Storage account that will be used to connect to
- * it.
+ * @member {string} [properties.accessKey] the access key associated with this
+ * Azure Storage account that will be used to connect to it.
  * 
- * @member {string} [properties.suffix] Gets or sets the optional suffix for
- * the Data Lake account.
+ * @member {string} [properties.suffix] the optional suffix for the Data Lake
+ * account.
  * 
  */
 export interface AddStorageAccountParameters {
@@ -229,51 +231,49 @@ export interface AddStorageAccountParameters {
  * @constructor
  * A Data Lake Analytics account object, containing all information associated
  * with the named Data Lake Analytics account.
- * @member {string} [location] Gets or sets the account regional location.
+ *
+ * @member {string} [location] the account regional location.
  * 
- * @member {string} [name] Gets or sets the account name.
+ * @member {string} [name] the account name.
  * 
- * @member {string} [type] Gets or sets the namespace and type of the account.
+ * @member {string} [type] the namespace and type of the account.
  * 
- * @member {string} [id] Gets or sets the account subscription ID.
+ * @member {string} [id] the account subscription ID.
  * 
- * @member {object} [tags] Gets or sets the value of custom properties.
+ * @member {object} [tags] the value of custom properties.
  * 
- * @member {object} [properties] Gets or sets the properties defined by Data
- * Lake Analytics all properties are specific to each resource provider.
+ * @member {object} [properties] the properties defined by Data Lake Analytics
+ * all properties are specific to each resource provider.
  * 
- * @member {string} [properties.provisioningState] Gets the provisioning
- * status of the Data Lake Analytics account. Possible values include:
- * 'Failed', 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending',
- * 'Resuming', 'Deleting', 'Deleted'
+ * @member {string} [properties.provisioningState] the provisioning status of
+ * the Data Lake Analytics account. Possible values include: 'Failed',
+ * 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
+ * 'Deleting', 'Deleted'
  * 
- * @member {string} [properties.state] Gets the state of the Data Lake
- * Analytics account. Possible values include: 'active', 'suspended'
+ * @member {string} [properties.state] the state of the Data Lake Analytics
+ * account. Possible values include: 'active', 'suspended'
  * 
- * @member {string} [properties.defaultDataLakeStoreAccount] Gets or sets the
- * default data lake storage account associated with this Data Lake Analytics
+ * @member {string} [properties.defaultDataLakeStoreAccount] the default data
+ * lake storage account associated with this Data Lake Analytics account.
+ * 
+ * @member {number} [properties.maxDegreeOfParallelism] the maximum supported
+ * degree of parallelism for this account.
+ * 
+ * @member {number} [properties.maxJobCount] the maximum supported jobs
+ * running under the account at the same time.
+ * 
+ * @member {array} [properties.dataLakeStoreAccounts] the list of Data Lake
+ * storage accounts associated with this account.
+ * 
+ * @member {array} [properties.storageAccounts] the list of Azure Blob storage
+ * accounts associated with this account.
+ * 
+ * @member {date} [properties.creationTime] the account creation time.
+ * 
+ * @member {date} [properties.lastModifiedTime] the account last modified time.
+ * 
+ * @member {string} [properties.endpoint] the full CName endpoint for this
  * account.
- * 
- * @member {number} [properties.maxDegreeOfParallelism] Gets or sets the
- * maximum supported degree of parallelism for this acocunt.
- * 
- * @member {number} [properties.maxJobCount] Gets or sets the maximum
- * supported jobs running under the account at the same time.
- * 
- * @member {array} [properties.dataLakeStoreAccounts] Gets or sets the list of
- * Data Lake storage accounts associated with this account.
- * 
- * @member {array} [properties.storageAccounts] Gets or sets the list of Azure
- * Blob storage accounts associated with this account.
- * 
- * @member {date} [properties.creationTime] Gets or sets the account creation
- * time.
- * 
- * @member {date} [properties.lastModifiedTime] Gets or sets the account last
- * modified time.
- * 
- * @member {string} [properties.endpoint] Gets or sets the full CName endpoint
- * for this account.
  * 
  */
 export interface DataLakeAnalyticsAccount {
@@ -290,14 +290,15 @@ export interface DataLakeAnalyticsAccount {
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
  * Generic resource error details information.
- * @member {string} [code] Gets or sets the HTTP status code or error code
- * associated with this error
+ *
+ * @member {string} [code] the HTTP status code or error code associated with
+ * this error
  * 
- * @member {string} [message] Gets or sets the error message localized based
- * on Accept-Language
+ * @member {string} [message] the error message localized based on
+ * Accept-Language
  * 
- * @member {string} [target] Gets or sets the target of the particular error
- * (for example, the name of the property in error).
+ * @member {string} [target] the target of the particular error (for example,
+ * the name of the property in error).
  * 
  */
 export interface ErrorDetails {
@@ -311,9 +312,10 @@ export interface ErrorDetails {
  * Initializes a new instance of the InnerError class.
  * @constructor
  * Generic resource inner error information.
- * @member {string} [trace] Gets or sets the stack trace for the error
+ *
+ * @member {string} [trace] the stack trace for the error
  * 
- * @member {string} [context] Gets or sets the context for the error message
+ * @member {string} [context] the context for the error message
  * 
  */
 export interface InnerError {
@@ -326,23 +328,21 @@ export interface InnerError {
  * Initializes a new instance of the ErrorModel class.
  * @constructor
  * Generic resource error information.
- * @member {string} [code] Gets or sets the HTTP status code or error code
- * associated with this error
+ *
+ * @member {string} [code] the HTTP status code or error code associated with
+ * this error
  * 
- * @member {string} [message] Gets or sets the error message to display.
+ * @member {string} [message] the error message to display.
  * 
- * @member {string} [target] Gets or sets the target of the error.
+ * @member {string} [target] the target of the error.
  * 
- * @member {array} [details] Gets or sets the list of error details
+ * @member {array} [details] the list of error details
  * 
- * @member {object} [innerError] Gets or sets the inner exceptions or errors,
- * if any
+ * @member {object} [innerError] the inner exceptions or errors, if any
  * 
- * @member {string} [innerError.trace] Gets or sets the stack trace for the
- * error
+ * @member {string} [innerError.trace] the stack trace for the error
  * 
- * @member {string} [innerError.context] Gets or sets the context for the
- * error message
+ * @member {string} [innerError.context] the context for the error message
  * 
  */
 export interface ErrorModel {
@@ -365,29 +365,27 @@ export interface ErrorModel {
  * status code for the successful request. If the asynchronous operation
  * failed, the response body includes the HTTP status code for the failed
  * request and error information regarding the failure.
- * @member {string} [status] Gets or sets the status of the
- * AzureAsuncOperation. Possible values include: 'InProgress', 'Succeeded',
- * 'Failed'
+ *
+ * @member {string} [status] the status of the AzureAsuncOperation. Possible
+ * values include: 'InProgress', 'Succeeded', 'Failed'
  * 
  * @member {object} [error]
  * 
- * @member {string} [error.code] Gets or sets the HTTP status code or error
- * code associated with this error
+ * @member {string} [error.code] the HTTP status code or error code associated
+ * with this error
  * 
- * @member {string} [error.message] Gets or sets the error message to display.
+ * @member {string} [error.message] the error message to display.
  * 
- * @member {string} [error.target] Gets or sets the target of the error.
+ * @member {string} [error.target] the target of the error.
  * 
- * @member {array} [error.details] Gets or sets the list of error details
+ * @member {array} [error.details] the list of error details
  * 
- * @member {object} [error.innerError] Gets or sets the inner exceptions or
- * errors, if any
+ * @member {object} [error.innerError] the inner exceptions or errors, if any
  * 
- * @member {string} [error.innerError.trace] Gets or sets the stack trace for
- * the error
+ * @member {string} [error.innerError.trace] the stack trace for the error
  * 
- * @member {string} [error.innerError.context] Gets or sets the context for
- * the error message
+ * @member {string} [error.innerError.context] the context for the error
+ * message
  * 
  */
 export interface AzureAsyncOperationResult {
