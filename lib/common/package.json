@@ -37,7 +37,7 @@
     "dateformat": "1.0.2-1.2.3",
     "underscore": "1.4.x",
     "tunnel": "~0.0.2",
-    "request": "2.45.0",
+    "request": "~2.69.0",
     "validator": "~3.22.2",
     "envconf": "~0.0.4",
     "duplexer": "~0.1.1",
