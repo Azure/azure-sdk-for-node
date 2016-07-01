@@ -19,7 +19,7 @@ npm install azure-arm-website
 ### Authentication, client creation and listing serverFarms in a resource group as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var webSiteManagementClient = require('azure-arm-website');
  
  // Interactive Login

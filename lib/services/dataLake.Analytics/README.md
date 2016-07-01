@@ -26,7 +26,7 @@ npm install azure-arm-datalake-analytics
 ### Authentication, account, job and catalog client creation and listing jobs as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var adlaManagement = require("azure-arm-datalake-analytics");
 
  // Interactive Login

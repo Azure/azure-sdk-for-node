@@ -18,7 +18,7 @@ npm install azure-arm-authorization
 ### Authentication, client creation and listing role assignments as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var authorizationManagement = require("azure-arm-authorization");
 
  // Interactive Login

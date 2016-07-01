@@ -24,7 +24,7 @@ npm install azure-arm-datalake-store
 ### Authentication, account and filesystem client creation and listing file status as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var adlsManagement = require("azure-arm-datalake-store");
  
  // Interactive Login

@@ -13,7 +13,7 @@ npm install azure-arm-devtestlabs
 ### Authentication, client creation and getting properties of a lab as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var DevTestLabsClient = require('azure-arm-devtestlabs');
 
  // Interactive Login

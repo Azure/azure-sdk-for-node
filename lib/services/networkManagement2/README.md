@@ -30,7 +30,7 @@ npm install azure-arm-network
 ### Authentication, client creation and listing vnets in a resource group as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var NetworkManagementClient = require('azure-arm-network');
 
  // Interactive Login
