@@ -131,7 +131,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20160613';
+var defaultAutoRestVersion = '0.17.0-Nightly20160630';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

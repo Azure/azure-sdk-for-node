@@ -17,7 +17,7 @@ declare class DataLakeStoreAccountManagementClient {
      * Initializes a new instance of the DataLakeStoreAccountManagementClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Gets Azure subscription credentials.
+     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
      * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
      *
