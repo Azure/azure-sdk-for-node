@@ -87,7 +87,7 @@ function (nock) {
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/xplathub1/Messages', '*')
+.post('/xplathub1/Messages?api-version=2013-07', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -144,7 +144,7 @@ function (nock) {
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/xplathub2/Messages', '*')
+.post('/xplathub2/Messages?api-version=2013-07', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -201,7 +201,7 @@ function (nock) {
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/xplathub3/Messages', '*')
+.post('/xplathub3/Messages?api-version=2013-07', '*')
   .reply(400, "<Error><Code>400</Code><Detail>The content type for a 'wns/raw' notification must be 'application/octet-stream'</Detail></Error>", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -258,7 +258,7 @@ function (nock) {
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/xplathub4/Messages', '*')
+.post('/xplathub4/Messages?api-version=2013-07', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -315,7 +315,7 @@ function (nock) {
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/xplathub5/Messages', '*')
+.post('/xplathub5/Messages?api-version=2013-07', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -372,7 +372,7 @@ function (nock) {
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/xplathub6/Messages', '*')
+.post('/xplathub6/Messages?api-version=2013-07', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -429,7 +429,7 @@ function (nock) {
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/xplathub7/Messages', '*')
+.post('/xplathub7/Messages?api-version=2013-07', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
@@ -486,7 +486,7 @@ function (nock) {
 var result = 
 nock('https://ciserversb.servicebus.windows.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/xplathub8/Messages', '*')
+.post('/xplathub8/Messages?api-version=2013-07', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
   'content-type': 'application/xml; charset=utf-8',
   server: 'Microsoft-HTTPAPI/2.0',
