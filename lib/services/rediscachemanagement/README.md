@@ -18,7 +18,7 @@ npm install azure-arm-rediscache
 ### Authentication, client creation and listing redis caches in a resource group as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var AzureMgmtRedisCache = require('azure-arm-rediscache');
 
  // Interactive Login

@@ -22,7 +22,7 @@ npm install azure-arm-powerbiembedded
 ### Authentication, client creation and listing workspaces within a workspace collection in a resource group as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var PowerBIEmbeddedManagementClient = require('azure-arm-powerbiembedded');
 
  // Interactive Login

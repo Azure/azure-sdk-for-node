@@ -14,7 +14,7 @@ npm install azure-graph
 ### Authentication, client creation and listing users as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var graphRbacManagementClient = require('azure-graph');
 
  // Interactive Login

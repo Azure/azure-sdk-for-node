@@ -19,7 +19,7 @@ npm install azure-arm-resource
 ### Authentication, client creation and listing resources as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var resourceManagement = require("azure-arm-resource");
  
  // Interactive Login

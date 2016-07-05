@@ -19,7 +19,7 @@ npm install azure-arm-servermanagement
 ### Authentication, client creation and listing nodes in a resource group as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var ServerManagement = require('azure-arm-servermanagement');
  
  // Interactive Login

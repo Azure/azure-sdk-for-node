@@ -13,7 +13,7 @@ npm install azure-arm-notificationhubs
 ### Authentication, client creation and listing notificationHubs associated with a namespace in a resource group as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var notificationHubsClient = require('azure-arm-notificationhubs');
 
  // Interactive Login

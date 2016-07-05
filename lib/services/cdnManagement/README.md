@@ -23,7 +23,7 @@ npm install azure-arm-cdn
 ### Authentication, client creation and listing profiles as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var CDNManagementClient = require('azure-arm-cdn');
 
  // Interactive Login
