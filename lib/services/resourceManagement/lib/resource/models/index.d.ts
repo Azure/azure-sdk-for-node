@@ -123,7 +123,7 @@ export interface ParametersLink {
  * @member {string} [parametersLink.contentVersion] If included it must match
  * the ContentVersion in the template.
  * 
- * @member {string} [mode] Gets or sets the deployment mode. Possible values
+ * @member {string} mode Gets or sets the deployment mode. Possible values
  * include: 'Incremental', 'Complete'
  * 
  * @member {object} [debugSetting] Gets or sets the debug setting of the
@@ -138,7 +138,7 @@ export interface DeploymentProperties {
     templateLink?: TemplateLink;
     parameters?: any;
     parametersLink?: ParametersLink;
-    mode?: string;
+    mode: string;
     debugSetting?: DebugSetting;
 }
 
