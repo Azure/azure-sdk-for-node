@@ -8,9 +8,10 @@
     "Georgiev, Yavor <yavorg@microsoft.com>",
     "Janczuk, Tomasz <tjanczuk@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
-    "Tavares, Chris <ctavares@microsoft.com>"
+    "Tavares, Chris <ctavares@microsoft.com>",
+    "Desai, Priyank <priydes@microsoft.com>"
   ],
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Microsoft Azure Virtual Network Management Client Library for node",
   "tags": [
     "azure",
