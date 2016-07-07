@@ -67,6 +67,11 @@ var mappings = {
     'dir': 'intune/lib',
     'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
   },
+  'iothub': {
+    'dir': 'iothub/lib',
+    'source': 'arm-iothub/2016-02-03/swagger/iothub.json',
+    'ft': 1
+  },
   'network': {
     'dir': 'networkManagement2/lib',
     'source': 'arm-network/2016-06-01/network.json',
