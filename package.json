@@ -14,7 +14,7 @@
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>",
     "Lu, Jianghao <jianghlu@microsoft.com>"
   ],
-  "version": "1.1.0-preview",
+  "version": "1.1.1-preview",
   "description": "Microsoft Azure Client Library for node",
   "tags": [
     "azure",
@@ -35,6 +35,7 @@
     "azure-graph": "0.1.1",
     "azure-monitoring": "0.10.3",
     "azure-sb": "0.10.3",
+    "azure-storage": "1.1.0",
     "azure-keyvault": "0.10.1",
     "azure-scheduler": "0.10.2",
     "azure-asm-compute": "0.17.0",
