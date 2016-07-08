@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Microsoft Azure Monitoring Client Library for node",
   "tags": [
     "azure",
@@ -28,9 +28,9 @@
     }
   ],
   "dependencies": {
-    "azure-common": "^0.9.13",
+    "azure-common": "^0.9.17",
     "underscore": "1.4.x",
-    "moment": "2.6.0"
+    "moment": "2.14.1"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
