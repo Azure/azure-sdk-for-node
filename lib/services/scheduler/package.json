@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Microsoft Azure Scheduler Client Library for node",
   "tags": [
     "azure",
@@ -28,8 +28,8 @@
     }
   ],
   "dependencies": {
-    "azure-common": "^0.9.13",
-    "moment": "2.6.0"
+    "azure-common": "^0.9.17",
+    "moment": "2.14.1"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
