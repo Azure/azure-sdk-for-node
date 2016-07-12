@@ -307,6 +307,29 @@ export interface AdlsFileNotFoundException extends AdlsRemoteException {
 
 /**
  * @class
+ * Initializes a new instance of the AdlsFileAlreadyExistsException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating the file or folder already exists.
+ * Thrown when a 403 error response code is returned (forbidden).
+ *
+ */
+export interface AdlsFileAlreadyExistsException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsBadOffsetException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating the append or read is from a bad
+ * offset. Thrown when a 400 error response code is returned for append and
+ * open operations (Bad request).
+ *
+ */
+export interface AdlsBadOffsetException extends AdlsRemoteException {
+}
+
+/**
+ * @class
  * Initializes a new instance of the AdlsRuntimeException class.
  * @constructor
  * A WebHDFS exception thrown when an unexpected error occurs during an
