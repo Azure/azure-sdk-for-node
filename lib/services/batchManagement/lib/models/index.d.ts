@@ -15,6 +15,7 @@
  * Initializes a new instance of the AutoStorageBaseProperties class.
  * @constructor
  * The properties related to auto storage account.
+ *
  * @member {string} storageAccountId The resource id of the storage account to
  * be used for auto storage account.
  * 
@@ -28,6 +29,7 @@ export interface AutoStorageBaseProperties {
  * Initializes a new instance of the BatchAccountCreateParameters class.
  * @constructor
  * Parameters supplied to the Create operation.
+ *
  * @member {string} [location] The region in which the account is created.
  * 
  * @member {object} [tags] The user specified tags associated with the account.
@@ -51,6 +53,7 @@ export interface BatchAccountCreateParameters {
  * @constructor
  * Contains information about the auto storage account associated with a Batch
  * account.
+ *
  * @member {string} storageAccountId The resource id of the storage account to
  * be used for auto storage account.
  * 
@@ -91,6 +94,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the AccountResource class.
  * @constructor
  * Contains information about an Azure Batch account.
+ *
  * @member {string} [accountEndpoint] The endpoint used by this account to
  * interact with the Batch services.
  * 
@@ -129,6 +133,7 @@ export interface AccountResource extends Resource {
  * Initializes a new instance of the BatchAccountUpdateParameters class.
  * @constructor
  * Parameters supplied to the Update operation.
+ *
  * @member {object} [tags] The user specified tags associated with the account.
  * 
  * @member {object} [autoStorage] The properties related to auto storage
@@ -148,6 +153,7 @@ export interface BatchAccountUpdateParameters {
  * Initializes a new instance of the BatchAccountRegenerateKeyParameters class.
  * @constructor
  * Parameters supplied to the RegenerateKey operation.
+ *
  * @member {string} keyName The type of account key to regenerate. Possible
  * values include: 'Primary', 'Secondary'
  * 
@@ -161,6 +167,7 @@ export interface BatchAccountRegenerateKeyParameters {
  * Initializes a new instance of the BatchAccountRegenerateKeyResult class.
  * @constructor
  * Values returned by the RegenerateKey operation.
+ *
  * @member {string} [primary] The primary key associated with the account.
  * 
  * @member {string} [secondary] The secondary key associated with the account.
@@ -176,6 +183,7 @@ export interface BatchAccountRegenerateKeyResult {
  * Initializes a new instance of the BatchAccountListKeyResult class.
  * @constructor
  * Values returned by the GetKeys operation.
+ *
  * @member {string} [primary] The primary key associated with the account.
  * 
  * @member {string} [secondary] The secondary key associated with the account.
@@ -191,6 +199,7 @@ export interface BatchAccountListKeyResult {
  * Initializes a new instance of the ActivateApplicationPackageParameters class.
  * @constructor
  * Parameters for an ApplicationOperations.ActivateApplicationPackage request.
+ *
  * @member {string} format The format of the application package binary file.
  * 
  */
@@ -203,6 +212,7 @@ export interface ActivateApplicationPackageParameters {
  * Initializes a new instance of the AddApplicationParameters class.
  * @constructor
  * Parameters for an ApplicationOperations.AddApplication request.
+ *
  * @member {boolean} [allowUpdates] A value indicating whether packages within
  * the application may be overwritten using the same version string.
  * 
@@ -219,6 +229,7 @@ export interface AddApplicationParameters {
  * Initializes a new instance of the AddApplicationPackageResult class.
  * @constructor
  * Response to an ApplicationOperations.AddApplicationPackage request.
+ *
  * @member {string} [id] The id of the application.
  * 
  * @member {string} [version] The version of the application.
@@ -242,6 +253,7 @@ export interface AddApplicationPackageResult {
  * Initializes a new instance of the ApplicationPackage class.
  * @constructor
  * Contains information about an application package.
+ *
  * @member {string} [version] The version of the application package.
  * 
  * @member {string} [state] The current state of the application package.
@@ -266,6 +278,7 @@ export interface ApplicationPackage {
  * Initializes a new instance of the Application class.
  * @constructor
  * Contains information about an application in a Batch account.
+ *
  * @member {string} [id] A string that uniquely identifies the application
  * within the account.
  * 
@@ -293,6 +306,7 @@ export interface Application {
  * Initializes a new instance of the GetApplicationPackageResult class.
  * @constructor
  * Response to an ApplicationOperations.GetApplicationPackage request.
+ *
  * @member {string} [id] The id of the application.
  * 
  * @member {string} [version] The version of the application package.
@@ -328,6 +342,7 @@ export interface GetApplicationPackageResult {
  * Initializes a new instance of the UpdateApplicationParameters class.
  * @constructor
  * Parameters for an ApplicationOperations.UpdateApplication request.
+ *
  * @member {boolean} [allowUpdates] A value indicating whether packages within
  * the application may be overwritten using the same version string.
  * 
@@ -348,6 +363,7 @@ export interface UpdateApplicationParameters {
  * Initializes a new instance of the SubscriptionQuotasGetResult class.
  * @constructor
  * Values returned by the Get Subscription Quotas operation.
+ *
  * @member {number} [accountQuota] The number of Batch accounts that may be
  * created under the subscription in the specified region.
  * 

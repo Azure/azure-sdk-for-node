@@ -2161,7 +2161,7 @@ export interface Job {
      * other tasks will run on the same compute node for as long as the Job
      * Manager is running. If false, other tasks can run simultaneously with the
      * Job Manager on a compute node. (The Job Manager task counts normally
-     * against the node’s concurrent task limit, so this is only relevant if the
+     * against the node's concurrent task limit, so this is only relevant if the
      * node allows multiple concurrent tasks.)
      * 
      * @param {object} [job.jobPreparationTask] The Job Preparation task.
@@ -2251,7 +2251,7 @@ export interface Job {
      * Release tasks).
      * 
      * @param {object} [job.poolInfo] The pool on which the Batch service runs the
-     * job’s tasks.
+     * job's tasks.
      * 
      * @param {string} [job.poolInfo.poolId] The id of an existing pool. All the
      * tasks of the job will run on the specified pool. You must specify either
@@ -3117,8 +3117,8 @@ export interface File {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getNodeFilePropertiesFromTask(jobId: string, taskId: string, fileName: string, options: { fileGetNodeFilePropertiesFromTaskOptions? : models.FileGetNodeFilePropertiesFromTaskOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    getNodeFilePropertiesFromTask(jobId: string, taskId: string, fileName: string, callback: ServiceCallback<void>): void;
+    getNodeFilePropertiesFromTask(jobId: string, taskId: string, fileName: string, options: { fileGetNodeFilePropertiesFromTaskOptions? : models.FileGetNodeFilePropertiesFromTaskOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+    getNodeFilePropertiesFromTask(jobId: string, taskId: string, fileName: string, callback: ServiceCallback<boolean>): void;
 
     /**
      * Deletes the specified task file from the compute node.
@@ -3269,8 +3269,8 @@ export interface File {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getNodeFilePropertiesFromComputeNode(poolId: string, nodeId: string, fileName: string, options: { fileGetNodeFilePropertiesFromComputeNodeOptions? : models.FileGetNodeFilePropertiesFromComputeNodeOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    getNodeFilePropertiesFromComputeNode(poolId: string, nodeId: string, fileName: string, callback: ServiceCallback<void>): void;
+    getNodeFilePropertiesFromComputeNode(poolId: string, nodeId: string, fileName: string, options: { fileGetNodeFilePropertiesFromComputeNodeOptions? : models.FileGetNodeFilePropertiesFromComputeNodeOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+    getNodeFilePropertiesFromComputeNode(poolId: string, nodeId: string, fileName: string, callback: ServiceCallback<boolean>): void;
 
     /**
      * Lists the files in a task's directory on its compute node.
@@ -3707,7 +3707,7 @@ export interface JobSchedule {
      * where it runs. If true, no other tasks will run on the same compute node
      * for as long as the Job Manager is running. If false, other tasks can run
      * simultaneously with the Job Manager on a compute node. (The Job Manager
-     * task counts normally against the node’s concurrent task limit, so this is
+     * task counts normally against the node's concurrent task limit, so this is
      * only relevant if the node allows multiple concurrent tasks.)
      * 
      * @param {object}
@@ -4183,7 +4183,7 @@ export interface JobSchedule {
      * where it runs. If true, no other tasks will run on the same compute node
      * for as long as the Job Manager is running. If false, other tasks can run
      * simultaneously with the Job Manager on a compute node. (The Job Manager
-     * task counts normally against the node’s concurrent task limit, so this is
+     * task counts normally against the node's concurrent task limit, so this is
      * only relevant if the node allows multiple concurrent tasks.)
      * 
      * @param {object}
@@ -4813,7 +4813,7 @@ export interface JobSchedule {
      * runs. If true, no other tasks will run on the same compute node for as
      * long as the Job Manager is running. If false, other tasks can run
      * simultaneously with the Job Manager on a compute node. (The Job Manager
-     * task counts normally against the node’s concurrent task limit, so this is
+     * task counts normally against the node's concurrent task limit, so this is
      * only relevant if the node allows multiple concurrent tasks.)
      * 
      * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] The
