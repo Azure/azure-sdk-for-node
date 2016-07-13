@@ -15,6 +15,7 @@
  * Initializes a new instance of the InstanceViewStatus class.
  * @constructor
  * Instance view status.
+ *
  * @member {string} [code] the status Code.
  * 
  * @member {string} [level] the level Code. Possible values include: 'Info',
@@ -75,6 +76,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the AvailabilitySet class.
  * @constructor
  * Create or update Availability Set parameters.
+ *
  * @member {number} [platformUpdateDomainCount] Update Domain count.
  * 
  * @member {number} [platformFaultDomainCount] Fault Domain count.
@@ -97,6 +99,7 @@ export interface AvailabilitySet extends Resource {
  * Initializes a new instance of the VirtualMachineSize class.
  * @constructor
  * Describes the properties of a VM size.
+ *
  * @member {string} [name] the VM size name.
  * 
  * @member {number} [numberOfCores] the Number of cores supported by a VM size.
@@ -126,6 +129,7 @@ export interface VirtualMachineSize {
  * Initializes a new instance of the VirtualMachineExtensionImage class.
  * @constructor
  * Describes a Virtual Machine Extension Image.
+ *
  * @member {string} operatingSystem the operating system this extension
  * supports.
  * 
@@ -157,6 +161,7 @@ export interface VirtualMachineExtensionImage extends Resource {
  * Initializes a new instance of the VirtualMachineImageResource class.
  * @constructor
  * Virtual machine image resource information.
+ *
  * @member {string} name the name of the resource.
  * 
  * @member {string} location the location of the resource.
@@ -175,6 +180,7 @@ export interface VirtualMachineImageResource extends SubResource {
  * Initializes a new instance of the VirtualMachineExtensionInstanceView class.
  * @constructor
  * The instance view of a virtual machine extension.
+ *
  * @member {string} [name] the virtual machine extension name.
  * 
  * @member {string} [type] the full type of the extension handler which
@@ -201,6 +207,7 @@ export interface VirtualMachineExtensionInstanceView {
  * Initializes a new instance of the VirtualMachineExtension class.
  * @constructor
  * Describes a Virtual Machine Extension.
+ *
  * @member {string} [forceUpdateTag] how the extension handler should be
  * forced to update even if the extension configuration has not changed.
  * 
@@ -257,6 +264,7 @@ export interface VirtualMachineExtension extends Resource {
  * @constructor
  * Used for establishing the purchase context of any 3rd Party artifact
  * through MarketPlace.
+ *
  * @member {string} publisher the publisher ID.
  * 
  * @member {string} name the plan ID.
@@ -275,6 +283,7 @@ export interface PurchasePlan {
  * Initializes a new instance of the OSDiskImage class.
  * @constructor
  * Contains the os disk image information.
+ *
  * @member {string} operatingSystem the operating system of the osDiskImage.
  * Possible values include: 'Windows', 'Linux'
  * 
@@ -288,6 +297,7 @@ export interface OSDiskImage {
  * Initializes a new instance of the DataDiskImage class.
  * @constructor
  * Contains the data disk images information.
+ *
  * @member {number} [lun] the LUN number for a data disk.This value is used to
  * identify data disk image inside the VMImage therefore it must be unique
  * for each data disk.The allowed character for the value is digit.
@@ -302,6 +312,7 @@ export interface DataDiskImage {
  * Initializes a new instance of the VirtualMachineImage class.
  * @constructor
  * Describes a Virtual Machine Image.
+ *
  * @member {object} [plan]
  * 
  * @member {string} [plan.publisher] the publisher ID.
@@ -329,6 +340,7 @@ export interface VirtualMachineImage extends VirtualMachineImageResource {
  * Initializes a new instance of the UsageName class.
  * @constructor
  * The Usage Names.
+ *
  * @member {string} [value] a string describing the resource name.
  * 
  * @member {string} [localizedValue] a localized string describing the
@@ -345,6 +357,7 @@ export interface UsageName {
  * Initializes a new instance of the Usage class.
  * @constructor
  * Describes Compute Resource Usage.
+ *
  * @member {number} currentValue the current value of the usage.
  * 
  * @member {number} limit the limit of usage.
@@ -368,6 +381,7 @@ export interface Usage {
  * Initializes a new instance of the VirtualMachineCaptureParameters class.
  * @constructor
  * Capture Virtual Machine parameters.
+ *
  * @member {string} vhdPrefix the captured VirtualHardDisk's name prefix.
  * 
  * @member {string} destinationContainerName the destination container name.
@@ -387,6 +401,7 @@ export interface VirtualMachineCaptureParameters {
  * Initializes a new instance of the VirtualMachineCaptureResult class.
  * @constructor
  * Resource Id.
+ *
  * @member {object} [output] Operation output data (raw JSON)
  * 
  */
@@ -399,6 +414,7 @@ export interface VirtualMachineCaptureResult extends SubResource {
  * Initializes a new instance of the Plan class.
  * @constructor
  * Plan for the resource.
+ *
  * @member {string} [name] the plan ID.
  * 
  * @member {string} [publisher] the publisher ID.
@@ -420,6 +436,7 @@ export interface Plan {
  * Initializes a new instance of the HardwareProfile class.
  * @constructor
  * Describes a hardware profile.
+ *
  * @member {string} [vmSize] The virtual machine size name. Possible values
  * include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4',
  * 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4',
@@ -448,6 +465,7 @@ export interface HardwareProfile {
  * Initializes a new instance of the ImageReference class.
  * @constructor
  * The image reference.
+ *
  * @member {string} [publisher] the image publisher.
  * 
  * @member {string} [offer] the image offer.
@@ -471,6 +489,7 @@ export interface ImageReference {
  * Initializes a new instance of the KeyVaultSecretReference class.
  * @constructor
  * Describes a reference to Key Vault Secret
+ *
  * @member {string} secretUrl the URL referencing a secret in a Key Vault.
  * 
  * @member {object} sourceVault the Relative URL of the Key Vault containing
@@ -489,6 +508,7 @@ export interface KeyVaultSecretReference {
  * Initializes a new instance of the KeyVaultKeyReference class.
  * @constructor
  * Describes a reference to Key Vault Key
+ *
  * @member {string} keyUrl the URL referencing a key in a Key Vault.
  * 
  * @member {object} sourceVault the Relative URL of the Key Vault containing
@@ -507,6 +527,7 @@ export interface KeyVaultKeyReference {
  * Initializes a new instance of the DiskEncryptionSettings class.
  * @constructor
  * Describes a Encryption Settings for a Disk
+ *
  * @member {object} [diskEncryptionKey] the disk encryption key which is a
  * KeyVault Secret.
  * 
@@ -544,6 +565,7 @@ export interface DiskEncryptionSettings {
  * Initializes a new instance of the VirtualHardDisk class.
  * @constructor
  * Describes the uri of a disk.
+ *
  * @member {string} [uri] the virtual hard disk's uri. It should be a valid
  * Uri to a virtual hard disk.
  * 
@@ -557,6 +579,7 @@ export interface VirtualHardDisk {
  * Initializes a new instance of the OSDisk class.
  * @constructor
  * Describes an Operating System disk.
+ *
  * @member {string} [osType] the Operating System type. Possible values
  * include: 'Windows', 'Linux'
  * 
@@ -630,6 +653,7 @@ export interface OSDisk {
  * Initializes a new instance of the DataDisk class.
  * @constructor
  * Describes a data disk.
+ *
  * @member {number} lun the logical unit number.
  * 
  * @member {string} name the disk name.
@@ -672,6 +696,7 @@ export interface DataDisk {
  * Initializes a new instance of the StorageProfile class.
  * @constructor
  * Describes a storage profile.
+ *
  * @member {object} [imageReference] the image reference.
  * 
  * @member {string} [imageReference.publisher] the image publisher.
@@ -759,6 +784,7 @@ export interface StorageProfile {
  * Unattend.xml file, which is used by Windows Setup. Contents are defined by
  * setting name, component name, and the pass in which the content is a
  * applied.
+ *
  * @member {string} [passName] the pass name. Currently, the only allowable
  * value is oobeSystem. Possible values include: 'oobeSystem'
  * 
@@ -787,6 +813,7 @@ export interface AdditionalUnattendContent {
  * Initializes a new instance of the WinRMListener class.
  * @constructor
  * Describes Protocol and thumbprint of Windows Remote Management listener
+ *
  * @member {string} [protocol] the Protocol used by WinRM listener. Currently
  * only Http and Https are supported. Possible values include: 'Http', 'Https'
  * 
@@ -804,6 +831,7 @@ export interface WinRMListener {
  * Initializes a new instance of the WinRMConfiguration class.
  * @constructor
  * Describes Windows Remote Management configuration of the VM
+ *
  * @member {array} [listeners] the list of Windows Remote Management listeners
  * 
  */
@@ -816,6 +844,7 @@ export interface WinRMConfiguration {
  * Initializes a new instance of the WindowsConfiguration class.
  * @constructor
  * Describes Windows Configuration of the OS Profile.
+ *
  * @member {boolean} [provisionVMAgent] whether VM Agent should be provisioned
  * on the Virtual Machine.
  * 
@@ -848,6 +877,7 @@ export interface WindowsConfiguration {
  * @constructor
  * Contains information about SSH certificate public key and the path on the
  * Linux VM where the public key is placed.
+ *
  * @member {string} [path] the full path on the created VM where SSH public
  * key is stored. If the file already exists, the specified key is appended
  * to the file.
@@ -867,6 +897,7 @@ export interface SshPublicKey {
  * Initializes a new instance of the SshConfiguration class.
  * @constructor
  * SSH configuration for Linux based VMs running on Azure
+ *
  * @member {array} [publicKeys] the list of SSH public keys used to
  * authenticate with linux based VMs
  * 
@@ -880,6 +911,7 @@ export interface SshConfiguration {
  * Initializes a new instance of the LinuxConfiguration class.
  * @constructor
  * Describes Windows Configuration of the OS Profile.
+ *
  * @member {boolean} [disablePasswordAuthentication] whether Authentication
  * using user name and password is allowed or not
  * 
@@ -900,6 +932,7 @@ export interface LinuxConfiguration {
  * @constructor
  * Describes a single certificate reference in a Key Vault, and where the
  * certificate should reside on the VM.
+ *
  * @member {string} [certificateUrl] the URL referencing a secret in a Key
  * Vault which contains a properly formatted certificate.
  * 
@@ -917,6 +950,7 @@ export interface VaultCertificate {
  * Initializes a new instance of the VaultSecretGroup class.
  * @constructor
  * Describes a set of certificates which are all in the same Key Vault.
+ *
  * @member {object} [sourceVault] the Relative URL of the Key Vault containing
  * all of the certificates in VaultCertificates.
  * 
@@ -936,6 +970,7 @@ export interface VaultSecretGroup {
  * Initializes a new instance of the OSProfile class.
  * @constructor
  * Describes an OS profile.
+ *
  * @member {string} [computerName] the computer name.
  * 
  * @member {string} [adminUsername] the admin user name.
@@ -995,6 +1030,7 @@ export interface OSProfile {
  * Initializes a new instance of the NetworkInterfaceReference class.
  * @constructor
  * Describes a network interface reference.
+ *
  * @member {boolean} [primary] whether this is a primary NIC on a virtual
  * machine
  * 
@@ -1008,6 +1044,7 @@ export interface NetworkInterfaceReference extends SubResource {
  * Initializes a new instance of the NetworkProfile class.
  * @constructor
  * Describes a network profile.
+ *
  * @member {array} [networkInterfaces] the network interfaces.
  * 
  */
@@ -1020,6 +1057,7 @@ export interface NetworkProfile {
  * Initializes a new instance of the BootDiagnostics class.
  * @constructor
  * Describes Boot Diagnostics.
+ *
  * @member {boolean} [enabled] whether boot diagnostics should be enabled on
  * the Virtual Machine.
  * 
@@ -1037,6 +1075,7 @@ export interface BootDiagnostics {
  * Initializes a new instance of the DiagnosticsProfile class.
  * @constructor
  * Describes a diagnostics profile.
+ *
  * @member {object} [bootDiagnostics] the boot diagnostics.
  * 
  * @member {boolean} [bootDiagnostics.enabled] whether boot diagnostics should
@@ -1055,6 +1094,7 @@ export interface DiagnosticsProfile {
  * Initializes a new instance of the VirtualMachineExtensionHandlerInstanceView class.
  * @constructor
  * The instance view of a virtual machine extension handler.
+ *
  * @member {string} [type] full type of the extension handler which includes
  * both publisher and type.
  * 
@@ -1088,6 +1128,7 @@ export interface VirtualMachineExtensionHandlerInstanceView {
  * Initializes a new instance of the VirtualMachineAgentInstanceView class.
  * @constructor
  * The instance view of the VM Agent running on the virtual machine.
+ *
  * @member {string} [vmAgentVersion] the VM Agent full version.
  * 
  * @member {array} [extensionHandlers] the virtual machine extension handler
@@ -1107,6 +1148,7 @@ export interface VirtualMachineAgentInstanceView {
  * Initializes a new instance of the DiskInstanceView class.
  * @constructor
  * The instance view of the disk.
+ *
  * @member {string} [name] the disk name.
  * 
  * @member {array} [statuses] the resource status information.
@@ -1122,6 +1164,7 @@ export interface DiskInstanceView {
  * Initializes a new instance of the BootDiagnosticsInstanceView class.
  * @constructor
  * The instance view of a virtual machine boot diagnostics.
+ *
  * @member {string} [consoleScreenshotBlobUri] the console screenshot blob Uri.
  * 
  * @member {string} [serialConsoleLogBlobUri] the Linux serial console log
@@ -1138,6 +1181,7 @@ export interface BootDiagnosticsInstanceView {
  * Initializes a new instance of the VirtualMachineInstanceView class.
  * @constructor
  * The instance view of a virtual machine.
+ *
  * @member {number} [platformUpdateDomain] the Update Domain count.
  * 
  * @member {number} [platformFaultDomain] the Fault Domain count.
@@ -1184,6 +1228,7 @@ export interface VirtualMachineInstanceView {
  * Initializes a new instance of the VirtualMachine class.
  * @constructor
  * Describes a Virtual Machine.
+ *
  * @member {object} [plan] the purchase plan when deploying virtual machine
  * from VM Marketplace images.
  * 
@@ -1436,6 +1481,7 @@ export interface VirtualMachine extends Resource {
  * Initializes a new instance of the Sku class.
  * @constructor
  * Describes a virtual machine scale set sku.
+ *
  * @member {string} [name] the sku name.
  * 
  * @member {string} [tier] the sku tier.
@@ -1454,6 +1500,7 @@ export interface Sku {
  * Initializes a new instance of the UpgradePolicy class.
  * @constructor
  * Describes an upgrade policy - automatic or manual.
+ *
  * @member {string} [mode] the upgrade mode. Possible values include:
  * 'Automatic', 'Manual'
  * 
@@ -1467,6 +1514,7 @@ export interface UpgradePolicy {
  * Initializes a new instance of the VirtualMachineScaleSetOSProfile class.
  * @constructor
  * Describes a virtual machine scale set OS profile.
+ *
  * @member {string} [computerNamePrefix] the computer name prefix.
  * 
  * @member {string} [adminUsername] the admin user name.
@@ -1526,6 +1574,7 @@ export interface VirtualMachineScaleSetOSProfile {
  * Initializes a new instance of the VirtualMachineScaleSetOSDisk class.
  * @constructor
  * Describes a virtual machine scale set operating system disk.
+ *
  * @member {string} name the disk name.
  * 
  * @member {string} [caching] the caching type. Possible values include:
@@ -1563,6 +1612,7 @@ export interface VirtualMachineScaleSetOSDisk {
  * Initializes a new instance of the VirtualMachineScaleSetStorageProfile class.
  * @constructor
  * Describes a virtual machine scale set storage profile.
+ *
  * @member {object} [imageReference] the image reference.
  * 
  * @member {string} [imageReference.publisher] the image publisher.
@@ -1610,6 +1660,7 @@ export interface VirtualMachineScaleSetStorageProfile {
  * Initializes a new instance of the ApiEntityReference class.
  * @constructor
  * The API entity reference.
+ *
  * @member {string} [id] the ARM resource id in the form of
  * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
  * 
@@ -1623,6 +1674,7 @@ export interface ApiEntityReference {
  * Initializes a new instance of the VirtualMachineScaleSetIPConfiguration class.
  * @constructor
  * Describes a virtual machine scale set network profile's IP configuration.
+ *
  * @member {string} name the IP configuration name.
  * 
  * @member {object} subnet the subnet.
@@ -1654,6 +1706,7 @@ export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
  * @constructor
  * Describes a virtual machine scale set network profile's network
  * configurations.
+ *
  * @member {string} name the network configuration name.
  * 
  * @member {boolean} [primary] whether this is a primary NIC on a virtual
@@ -1674,6 +1727,7 @@ export interface VirtualMachineScaleSetNetworkConfiguration extends SubResource 
  * Initializes a new instance of the VirtualMachineScaleSetNetworkProfile class.
  * @constructor
  * Describes a virtual machine scale set network profile.
+ *
  * @member {array} [networkInterfaceConfigurations] the list of network
  * configurations.
  * 
@@ -1687,6 +1741,7 @@ export interface VirtualMachineScaleSetNetworkProfile {
  * Initializes a new instance of the VirtualMachineScaleSetExtension class.
  * @constructor
  * Describes a Virtual Machine Scale Set Extension.
+ *
  * @member {string} [name] the name of the extension.
  * 
  * @member {string} [publisher] the name of the extension handler publisher.
@@ -1725,6 +1780,7 @@ export interface VirtualMachineScaleSetExtension extends SubResource {
  * Initializes a new instance of the VirtualMachineScaleSetExtensionProfile class.
  * @constructor
  * Describes a virtual machine scale set extension profile.
+ *
  * @member {array} [extensions] the virtual machine scale set child extension
  * resources.
  * 
@@ -1738,6 +1794,7 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * Initializes a new instance of the VirtualMachineScaleSetVMProfile class.
  * @constructor
  * Describes a virtual machine scale set virtual machine profile.
+ *
  * @member {object} [osProfile] the virtual machine scale set OS profile.
  * 
  * @member {string} [osProfile.computerNamePrefix] the computer name prefix.
@@ -1853,6 +1910,7 @@ export interface VirtualMachineScaleSetVMProfile {
  * Initializes a new instance of the VirtualMachineScaleSet class.
  * @constructor
  * Describes a Virtual Machine Scale Set.
+ *
  * @member {object} [sku] the virtual machine scale set sku.
  * 
  * @member {string} [sku.name] the sku name.
@@ -2010,6 +2068,7 @@ export interface VirtualMachineScaleSet extends Resource {
  * Initializes a new instance of the VirtualMachineScaleSetVMInstanceIDs class.
  * @constructor
  * Specifies the list of virtual machine scale set instance IDs.
+ *
  * @member {array} [instanceIds] the virtual machine scale set instance ids.
  * 
  */
@@ -2022,6 +2081,7 @@ export interface VirtualMachineScaleSetVMInstanceIDs {
  * Initializes a new instance of the VirtualMachineScaleSetVMInstanceRequiredIDs class.
  * @constructor
  * Specifies the list of virtual machine scale set instance IDs.
+ *
  * @member {array} instanceIds the virtual machine scale set instance ids.
  * 
  */
@@ -2035,6 +2095,7 @@ export interface VirtualMachineScaleSetVMInstanceRequiredIDs {
  * @constructor
  * The status code and count of the virtual machine scale set instance view
  * status summary.
+ *
  * @member {string} [code] the instance view status code.
  * 
  * @member {number} [count] the number of instances having a particular status
@@ -2052,6 +2113,7 @@ export interface VirtualMachineStatusCodeCount {
  * @constructor
  * Instance view statuses summary for virtual machines of a virtual machine
  * scale set.
+ *
  * @member {array} [statusesSummary] the extensions information.
  * 
  */
@@ -2064,6 +2126,7 @@ export interface VirtualMachineScaleSetInstanceViewStatusesSummary {
  * Initializes a new instance of the VirtualMachineScaleSetVMExtensionsSummary class.
  * @constructor
  * Extensions summary for virtual machines of a virtual machine scale set.
+ *
  * @member {string} [name] the extension name.
  * 
  * @member {array} [statusesSummary] the extensions information.
@@ -2079,6 +2142,7 @@ export interface VirtualMachineScaleSetVMExtensionsSummary {
  * Initializes a new instance of the VirtualMachineScaleSetInstanceView class.
  * @constructor
  * The instance view of a virtual machine scale set.
+ *
  * @member {object} [virtualMachine] the instance view status summary for the
  * virtual machine scale set.
  * 
@@ -2100,6 +2164,7 @@ export interface VirtualMachineScaleSetInstanceView {
  * Initializes a new instance of the VirtualMachineScaleSetSkuCapacity class.
  * @constructor
  * Describes scaling information of a sku.
+ *
  * @member {number} [minimum] the minimum capacity.
  * 
  * @member {number} [maximum] the maximum capacity that can be set.
@@ -2122,6 +2187,7 @@ export interface VirtualMachineScaleSetSkuCapacity {
  * Initializes a new instance of the VirtualMachineScaleSetSku class.
  * @constructor
  * Describes an available virtual machine scale set sku.
+ *
  * @member {string} [resourceType] the type of resource the sku applies to.
  * 
  * @member {object} [sku] the Sku.
@@ -2155,6 +2221,7 @@ export interface VirtualMachineScaleSetSku {
  * Initializes a new instance of the VirtualMachineScaleSetVM class.
  * @constructor
  * Describes a virtual machine scale set virtual machine.
+ *
  * @member {string} [instanceId] the virtual machine instance id.
  * 
  * @member {object} [sku] the virtual machine sku.
@@ -2420,6 +2487,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
  * Initializes a new instance of the VirtualMachineScaleSetVMInstanceView class.
  * @constructor
  * The instance view of a virtual machine scale set VM.
+ *
  * @member {number} [platformUpdateDomain] the Update Domain count.
  * 
  * @member {number} [platformFaultDomain] the Fault Domain count.
@@ -2466,6 +2534,7 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * Initializes a new instance of the ApiErrorBase class.
  * @constructor
  * Api error base.
+ *
  * @member {string} [code] the error code.
  * 
  * @member {string} [target] the target of the particular error.
@@ -2484,6 +2553,7 @@ export interface ApiErrorBase {
  * Initializes a new instance of the InnerError class.
  * @constructor
  * Inner error details.
+ *
  * @member {string} [exceptiontype] the exception type.
  * 
  * @member {string} [errordetail] the internal error message or exception dump.
@@ -2499,6 +2569,7 @@ export interface InnerError {
  * Initializes a new instance of the ApiError class.
  * @constructor
  * Api error.
+ *
  * @member {array} [details] the Api error details
  * 
  * @member {object} [innererror] the Api inner error
@@ -2528,6 +2599,7 @@ export interface ApiError {
  * Initializes a new instance of the ComputeLongRunningOperationProperties class.
  * @constructor
  * Compute-specific operation properties, including output
+ *
  * @member {object} [output] Operation output data (raw JSON)
  * 
  */
@@ -2540,6 +2612,7 @@ export interface ComputeLongRunningOperationProperties {
  * Initializes a new instance of the ContainerServiceOrchestratorProfile class.
  * @constructor
  * Profile for Orchestrator
+ *
  * @member {string} [orchestratorType] Specifies what orchestrator will be
  * used to manage container cluster resources. Possible values include:
  * 'Swarm', 'DCOS'
@@ -2554,6 +2627,7 @@ export interface ContainerServiceOrchestratorProfile {
  * Initializes a new instance of the ContainerServiceMasterProfile class.
  * @constructor
  * Profile for container service master
+ *
  * @member {number} [count] Number of masters (VMs) in the container cluster
  * 
  * @member {string} dnsPrefix DNS prefix to be used to create FQDN for master
@@ -2572,6 +2646,7 @@ export interface ContainerServiceMasterProfile {
  * Initializes a new instance of the ContainerServiceAgentPoolProfile class.
  * @constructor
  * Profile for container service agent pool
+ *
  * @member {string} name Unique name of the agent pool profile within the
  * context of the subscription and resource group
  * 
@@ -2611,6 +2686,7 @@ export interface ContainerServiceAgentPoolProfile {
  * Initializes a new instance of the ContainerServiceWindowsProfile class.
  * @constructor
  * Profile for Windows VMs
+ *
  * @member {string} adminUsername The administrator username to use for
  * Windows VMs
  * 
@@ -2628,6 +2704,7 @@ export interface ContainerServiceWindowsProfile {
  * Initializes a new instance of the ContainerServiceLinuxProfile class.
  * @constructor
  * Profile for Linux VMs
+ *
  * @member {string} adminUsername The administrator username to use for all
  * Linux VMs
  * 
@@ -2647,6 +2724,7 @@ export interface ContainerServiceLinuxProfile {
  * Initializes a new instance of the ContainerServiceSshConfiguration class.
  * @constructor
  * SSH configuration for Linux based VMs running on Azure
+ *
  * @member {array} [publicKeys] the list of SSH public keys used to
  * authenticate with Linux based VMs
  * 
@@ -2660,6 +2738,7 @@ export interface ContainerServiceSshConfiguration {
  * Initializes a new instance of the ContainerServiceSshPublicKey class.
  * @constructor
  * Contains information about SSH certificate public key data.
+ *
  * @member {string} keyData Certificate public key used to authenticate with
  * VM through SSH. The certificate must be in Pem format with or without
  * headers.
@@ -2692,6 +2771,7 @@ export interface ContainerServiceDiagnosticsProfile {
  * Initializes a new instance of the ContainerServiceVMDiagnostics class.
  * @constructor
  * Describes VM Diagnostics.
+ *
  * @member {boolean} [enabled] whether VM Diagnostic Agent should be
  * provisioned on the Virtual Machine.
  * 
@@ -2709,6 +2789,7 @@ export interface ContainerServiceVMDiagnostics {
  * Initializes a new instance of the ContainerService class.
  * @constructor
  * Container service
+ *
  * @member {string} [provisioningState] the provisioning state, which only
  * appears in the response.
  * 

@@ -15,6 +15,7 @@
  * Initializes a new instance of the PoolUsageMetrics class.
  * @constructor
  * Usage metrics for a pool across an aggregation interval.
+ *
  * @member {string} poolId The id of the pool whose metrics are being
  * aggregated.
  * 
@@ -54,6 +55,7 @@ export interface PoolUsageMetrics {
  * command-and-control interface between the node and the Batch service.
  * There are different implementations of the node agent, known as SKUs, for
  * different operating systems.
+ *
  * @member {string} [id] The node agent SKU id.
  * 
  * @member {array} [verifiedImageReferences] The list of images verified to be
@@ -75,6 +77,7 @@ export interface NodeAgentSku {
  * Initializes a new instance of the ImageReference class.
  * @constructor
  * A reference to an Azure Virtual Machines Marketplace image.
+ *
  * @member {string} publisher The publisher of the Azure Virtual Machines
  * Marketplace image. For example, Canonical or MicrosoftWindowsServer.
  * 
@@ -101,6 +104,7 @@ export interface ImageReference {
  * Initializes a new instance of the UsageStatistics class.
  * @constructor
  * Statistics related to pool usage information.
+ *
  * @member {date} startTime The start time of the time range covered by the
  * statistics.
  * 
@@ -123,6 +127,7 @@ export interface UsageStatistics {
  * Initializes a new instance of the ResourceStatistics class.
  * @constructor
  * Statistics related to resource consumption by compute nodes in a pool.
+ *
  * @member {date} startTime The start time of the time range covered by the
  * statistics.
  * 
@@ -186,6 +191,7 @@ export interface ResourceStatistics {
  * @constructor
  * Contains utilization and resource usage statistics for the lifetime of a
  * pool.
+ *
  * @member {string} url The URL for the statistics.
  * 
  * @member {date} startTime The start time of the time range covered by the
@@ -265,6 +271,7 @@ export interface PoolStatistics {
  * Initializes a new instance of the JobStatistics class.
  * @constructor
  * Resource usage statistics for a job.
+ *
  * @member {string} url The URL of the statistics.
  * 
  * @member {date} startTime The start time of the time range covered by the
@@ -334,6 +341,7 @@ export interface JobStatistics {
  * Initializes a new instance of the NameValuePair class.
  * @constructor
  * Represents a name-value pair.
+ *
  * @member {string} [name] The name in the name-value pair.
  * 
  * @member {string} [value] The value in the name-value pair.
@@ -349,6 +357,7 @@ export interface NameValuePair {
  * Initializes a new instance of the DeleteCertificateError class.
  * @constructor
  * An error encountered by the Batch service when deleting a certificate.
+ *
  * @member {string} [code] An identifier for the certificate deletion error.
  * Codes are invariant and are intended to be consumed programmatically.
  * 
@@ -371,6 +380,7 @@ export interface DeleteCertificateError {
  * @constructor
  * A certificate that can be installed on compute nodes and can be used to
  * authenticate operations on the machine.
+ *
  * @member {string} [thumbprint] The X.509 thumbprint of the certificate. This
  * is a sequence of up to 40 hex digits (it may include spaces but these are
  * removed).
@@ -431,6 +441,7 @@ export interface Certificate {
  * @constructor
  * A reference to an application package to be installed on compute nodes in a
  * pool.
+ *
  * @member {string} applicationId The id of the application to install.
  * 
  * @member {string} [version] The version of the application to install. If
@@ -447,6 +458,7 @@ export interface ApplicationPackageReference {
  * Initializes a new instance of the ApplicationSummary class.
  * @constructor
  * Contains information about an application in an Azure Batch account.
+ *
  * @member {string} id A string that uniquely identifies the application
  * within the account.
  * 
@@ -467,6 +479,7 @@ export interface ApplicationSummary {
  * @constructor
  * A certificate that can be installed on compute nodes and can be used to
  * authenticate operations on the machine.
+ *
  * @member {string} thumbprint The X.509 thumbprint of the certificate. This
  * is a sequence of up to 40 hex digits (it may include spaces but these are
  * removed).
@@ -497,6 +510,7 @@ export interface CertificateAddParameter {
  * Initializes a new instance of the FileProperties class.
  * @constructor
  * The properties of a file on a compute node.
+ *
  * @member {date} [creationTime] The file creation time.
  * 
  * @member {date} lastModified The time at which the file was last modified.
@@ -522,6 +536,7 @@ export interface FileProperties {
  * Initializes a new instance of the NodeFile class.
  * @constructor
  * Information about a file or directory on a compute node.
+ *
  * @member {string} [name] The file path.
  * 
  * @member {string} [url] The URL of the file.
@@ -555,6 +570,7 @@ export interface NodeFile {
  * Initializes a new instance of the Schedule class.
  * @constructor
  * The schedule according to which jobs will be created
+ *
  * @member {date} [doNotRunUntil] The earliest time at which any job may be
  * created under this job schedule. If you do not specify a doNotRunUntil
  * time, the schedule becomes ready to create jobs immediately.
@@ -587,6 +603,7 @@ export interface Schedule {
  * Initializes a new instance of the JobConstraints class.
  * @constructor
  * Specifies the execution constraints for jobs created on a schedule.
+ *
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
  * the job may run, measured from the time the job starts. If the job does
  * not complete within the time limit, the Batch service terminates it and
@@ -607,6 +624,7 @@ export interface JobConstraints {
  * Initializes a new instance of the ResourceFile class.
  * @constructor
  * A file to be downloaded from Azure blob storage to a compute node.
+ *
  * @member {string} [blobSource] The URL of the file within Azure Blob
  * Storage. This URL should include a shared access signature if the blob is
  * not publicly readable.
@@ -630,6 +648,7 @@ export interface ResourceFile {
  * Initializes a new instance of the EnvironmentSetting class.
  * @constructor
  * An environment variable to be set on a task process.
+ *
  * @member {string} [name] The name of the environment variable.
  * 
  * @member {string} [value] The value of the environment variable.
@@ -645,6 +664,7 @@ export interface EnvironmentSetting {
  * Initializes a new instance of the TaskConstraints class.
  * @constructor
  * Constraints to apply to the Job Manager task.
+ *
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
  * the task may run, measured from the time the task starts. If the task does
  * not complete within the time limit, the Batch service terminates it.
@@ -670,6 +690,7 @@ export interface TaskConstraints {
  * Initializes a new instance of the JobManagerTask class.
  * @constructor
  * Specifies details of a Job Manager task.
+ *
  * @member {string} [id] A string that uniquely identifies the Job Manager
  * task. A GUID is recommended.
  * 
@@ -712,7 +733,7 @@ export interface TaskConstraints {
  * will run on the same compute node for as long as the Job Manager is
  * running. If false, other tasks can run simultaneously with the Job Manager
  * on a compute node. (The Job Manager task counts normally against the
- * node’s concurrent task limit, so this is only relevant if the node allows
+ * node's concurrent task limit, so this is only relevant if the node allows
  * multiple concurrent tasks.)
  * 
  */
@@ -734,6 +755,7 @@ export interface JobManagerTask {
  * @constructor
  * A Job Preparation task to run before any tasks of the job on any given
  * compute node.
+ *
  * @member {string} [id] A string that uniquely identifies the job preparation
  * task within the job. The id can contain any combination of alphanumeric
  * characters including hyphens and underscores and cannot contain more than
@@ -796,6 +818,7 @@ export interface JobPreparationTask {
  * @constructor
  * A Job Release task to run on job completion on any compute node where the
  * job has run.
+ *
  * @member {string} [id] A string that uniquely identifies the Job Release
  * task within the job. The id can contain any combination of alphanumeric
  * characters including hyphens and underscores and cannot contain more than
@@ -838,6 +861,7 @@ export interface JobReleaseTask {
  * Initializes a new instance of the TaskSchedulingPolicy class.
  * @constructor
  * Specifies how tasks should be distributed across compute nodes.
+ *
  * @member {string} nodeFillType How tasks should be distributed across
  * compute nodes. Possible values include: 'spread', 'pack', 'unmapped'
  * 
@@ -852,6 +876,7 @@ export interface TaskSchedulingPolicy {
  * @constructor
  * A task which is run when a compute node joins a pool in the Azure Batch
  * service, or when the compute node is rebooted or reimaged.
+ *
  * @member {string} [commandLine] The command line of the start task.
  * 
  * @member {array} [resourceFiles] A list of files that the Batch service will
@@ -885,6 +910,7 @@ export interface StartTask {
  * Initializes a new instance of the CertificateReference class.
  * @constructor
  * A reference to a certificate to be installed on compute nodes in a pool.
+ *
  * @member {string} thumbprint The thumbprint of the certificate.
  * 
  * @member {string} thumbprintAlgorithm The algorithm with which the
@@ -921,6 +947,7 @@ export interface CertificateReference {
  * A name-value pair associated with a Batch service resource. The Batch
  * service does not assign any meaning to this metadata; it is solely for the
  * use of user code.
+ *
  * @member {string} [name] The name of the metadata item.
  * 
  * @member {string} [value] The value of the metadata item.
@@ -936,6 +963,7 @@ export interface MetadataItem {
  * Initializes a new instance of the PoolSpecification class.
  * @constructor
  * Specification for creating a new pool.
+ *
  * @member {string} [displayName] The display name for the pool.
  * 
  * @member {string} [vmSize] The size of the virtual machines in the pool. All
@@ -1082,6 +1110,7 @@ export interface PoolSpecification {
  * @constructor
  * The configuration for nodes in a pool based on the Azure Cloud Services
  * platform.
+ *
  * @member {string} osFamily The Azure Guest OS family to be installed on the
  * virtual machines in the pool.
  * 
@@ -1107,6 +1136,7 @@ export interface CloudServiceConfiguration {
  * @constructor
  * The configuration for compute nodes in a pool based on the Azure Virtual
  * Machines infrastructure.
+ *
  * @member {object} imageReference A reference to the Azure Virtual Machines
  * Marketplace image to use.
  * 
@@ -1124,7 +1154,7 @@ export interface CloudServiceConfiguration {
  * Machines Marketplace image. A value of 'latest' can be specified to select
  * the latest version of an image. If omitted, the default is 'latest'.
  * 
- * @member {string} [nodeAgentSKUId] The SKU of Batch Node Agent to be
+ * @member {string} nodeAgentSKUId The SKU of Batch Node Agent to be
  * provisioned on the compute node. The Batch node agent is a program that
  * runs on each node in the pool, and provides the command-and-control
  * interface between the node and the Batch service. There are different
@@ -1142,7 +1172,7 @@ export interface CloudServiceConfiguration {
  */
 export interface VirtualMachineConfiguration {
     imageReference: ImageReference;
-    nodeAgentSKUId?: string;
+    nodeAgentSKUId: string;
     windowsConfiguration?: WindowsConfiguration;
 }
 
@@ -1151,6 +1181,7 @@ export interface VirtualMachineConfiguration {
  * Initializes a new instance of the WindowsConfiguration class.
  * @constructor
  * Windows operating system settings to apply to the virtual machine.
+ *
  * @member {boolean} [enableAutomaticUpdates] Whether automatic updates are
  * enabled on the virtual machine. If omitted, the default value is true.
  * 
@@ -1166,6 +1197,7 @@ export interface WindowsConfiguration {
  * Specifies characteristics for a temporary 'auto pool'. The Batch service
  * will create this auto pool, run all the tasks for the job on it, and will
  * delete the pool once the job has completed.
+ *
  * @member {string} [autoPoolIdPrefix] A prefix to be added to the unique
  * identifier when a pool is automatically created. The prefix can be up to
  * 20 characters long.
@@ -1316,6 +1348,7 @@ export interface AutoPoolSpecification {
  * Initializes a new instance of the PoolInformation class.
  * @constructor
  * Specifies how a job should be assigned to a pool.
+ *
  * @member {string} [poolId] The id of an existing pool. All the tasks of the
  * job will run on the specified pool. You must specify either PoolId or
  * AutoPoolSpecification, but not both.
@@ -1495,6 +1528,7 @@ export interface PoolInformation {
  * Initializes a new instance of the JobSpecification class.
  * @constructor
  * Specifies details of the jobs to be created on a schedule.
+ *
  * @member {number} [priority] The priority of jobs created under this
  * schedule. Priority values can range from -1000 to 1000, with -1000 being
  * the lowest priority and 1000 being the highest priority. The default value
@@ -1567,7 +1601,7 @@ export interface PoolInformation {
  * other tasks will run on the same compute node for as long as the Job
  * Manager is running. If false, other tasks can run simultaneously with the
  * Job Manager on a compute node. (The Job Manager task counts normally
- * against the node’s concurrent task limit, so this is only relevant if the
+ * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobPreparationTask] The Job Preparation task for jobs
@@ -1862,6 +1896,7 @@ export interface JobSpecification {
  * Initializes a new instance of the RecentJob class.
  * @constructor
  * Information about the most recent job to run under the job schedule.
+ *
  * @member {string} [id] The id of the job.
  * 
  * @member {string} [url] The URL of the job.
@@ -1877,6 +1912,7 @@ export interface RecentJob {
  * Initializes a new instance of the JobScheduleExecutionInformation class.
  * @constructor
  * Specifies how tasks should be run in a job associated with a job schedule.
+ *
  * @member {date} [nextRunTime] The next time at which a job will be created
  * under this schedule.
  * 
@@ -1902,6 +1938,7 @@ export interface JobScheduleExecutionInformation {
  * Initializes a new instance of the JobScheduleStatistics class.
  * @constructor
  * Resource usage statistics for a job schedule.
+ *
  * @member {string} url The URL of the statistics.
  * 
  * @member {date} startTime The start time of the time range covered by the
@@ -1975,6 +2012,7 @@ export interface JobScheduleStatistics {
  * @constructor
  * A job schedule that allows recurring jobs by specifying when to run jobs
  * and a specification used to create each job.
+ *
  * @member {string} [id] A string that uniquely identifies the schedule within
  * the account. A GUID is recommended.
  * 
@@ -2103,7 +2141,7 @@ export interface JobScheduleStatistics {
  * runs. If true, no other tasks will run on the same compute node for as
  * long as the Job Manager is running. If false, other tasks can run
  * simultaneously with the Job Manager on a compute node. (The Job Manager
- * task counts normally against the node’s concurrent task limit, so this is
+ * task counts normally against the node's concurrent task limit, so this is
  * only relevant if the node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobSpecification.jobPreparationTask] The Job Preparation
@@ -2497,6 +2535,7 @@ export interface CloudJobSchedule {
  * @constructor
  * A job schedule that allows recurring jobs by specifying when to run jobs
  * and a specification used to create each job.
+ *
  * @member {string} id A string that uniquely identifies the schedule within
  * the account. A GUID is recommended.
  * 
@@ -2603,7 +2642,7 @@ export interface CloudJobSchedule {
  * runs. If true, no other tasks will run on the same compute node for as
  * long as the Job Manager is running. If false, other tasks can run
  * simultaneously with the Job Manager on a compute node. (The Job Manager
- * task counts normally against the node’s concurrent task limit, so this is
+ * task counts normally against the node's concurrent task limit, so this is
  * only relevant if the node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobSpecification.jobPreparationTask] The Job Preparation
@@ -2916,6 +2955,7 @@ export interface JobScheduleAddParameter {
  * Initializes a new instance of the JobSchedulingError class.
  * @constructor
  * An error encountered by the Batch service when scheduling a job.
+ *
  * @member {string} category The category of the job scheduling error.
  * Possible values include: 'usererror', 'servererror', 'unmapped'
  * 
@@ -2942,6 +2982,7 @@ export interface JobSchedulingError {
  * @constructor
  * Contains information about the execution of a job in the Azure Batch
  * service.
+ *
  * @member {date} startTime The start time of the job.
  * 
  * @member {date} [endTime] The completion time of the job. This property is
@@ -2983,6 +3024,7 @@ export interface JobExecutionInformation {
  * Initializes a new instance of the CloudJob class.
  * @constructor
  * An Azure Batch job.
+ *
  * @member {string} [id] A string that uniquely identifies the job within the
  * account. The id can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
@@ -3080,7 +3122,7 @@ export interface JobExecutionInformation {
  * other tasks will run on the same compute node for as long as the Job
  * Manager is running. If false, other tasks can run simultaneously with the
  * Job Manager on a compute node. (The Job Manager task counts normally
- * against the node’s concurrent task limit, so this is only relevant if the
+ * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobPreparationTask] The Job Preparation task.
@@ -3168,7 +3210,7 @@ export interface JobExecutionInformation {
  * the job (including the Job Manager, Job Preparation and Job Release tasks).
  * 
  * @member {object} [poolInfo] The pool on which the Batch service runs the
- * job’s tasks.
+ * job's tasks.
  * 
  * @member {string} [poolInfo.poolId] The id of an existing pool. All the
  * tasks of the job will run on the specified pool. You must specify either
@@ -3464,6 +3506,7 @@ export interface CloudJob {
  * Initializes a new instance of the JobAddParameter class.
  * @constructor
  * An Azure Batch job to add.
+ *
  * @member {string} id A string that uniquely identifies the job within the
  * account. The id can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
@@ -3534,7 +3577,7 @@ export interface CloudJob {
  * other tasks will run on the same compute node for as long as the Job
  * Manager is running. If false, other tasks can run simultaneously with the
  * Job Manager on a compute node. (The Job Manager task counts normally
- * against the node’s concurrent task limit, so this is only relevant if the
+ * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobPreparationTask] The Job Preparation task.
@@ -3622,7 +3665,7 @@ export interface CloudJob {
  * the job (including the Job Manager, Job Preparation and Job Release tasks).
  * 
  * @member {object} poolInfo The pool on which the Batch service runs the
- * job’s tasks.
+ * job's tasks.
  * 
  * @member {string} [poolInfo.poolId] The id of an existing pool. All the
  * tasks of the job will run on the specified pool. You must specify either
@@ -3830,6 +3873,7 @@ export interface JobAddParameter {
  * Initializes a new instance of the TaskSchedulingError class.
  * @constructor
  * Information about an error when scheduling a task.
+ *
  * @member {string} category The category of the task scheduling error.
  * Possible values include: 'usererror', 'servererror', 'unmapped'
  * 
@@ -3856,6 +3900,7 @@ export interface TaskSchedulingError {
  * @constructor
  * Contains information about the execution of a Job Preparation task on a
  * compute node.
+ *
  * @member {date} startTime The time at which the task started running. Note
  * that every time the task is restarted, this value is updated.
  * 
@@ -3920,6 +3965,7 @@ export interface JobPreparationTaskExecutionInformation {
  * @constructor
  * Contains information about the execution of a Job Release task on a compute
  * node.
+ *
  * @member {date} startTime The time at which the task started running. Note
  * that every time the task is restarted, this value is updated.
  * 
@@ -3972,6 +4018,7 @@ export interface JobReleaseTaskExecutionInformation {
  * Initializes a new instance of the JobPreparationAndReleaseTaskExecutionInformation class.
  * @constructor
  * The status of the Job Preparation and Job Release tasks on a compute node.
+ *
  * @member {string} [poolId] The id of the pool containing the compute node to
  * which this entry refers.
  * 
@@ -4094,6 +4141,7 @@ export interface JobPreparationAndReleaseTaskExecutionInformation {
  * @constructor
  * An error that occurred when executing or evaluating a pool autoscale
  * formula.
+ *
  * @member {string} [code] An identifier for the autoscale error. Codes are
  * invariant and are intended to be consumed programmatically.
  * 
@@ -4115,6 +4163,7 @@ export interface AutoScaleRunError {
  * Initializes a new instance of the AutoScaleRun class.
  * @constructor
  * The results and errors from an execution of a pool autoscale formula.
+ *
  * @member {date} timestamp The time at which the autoscale formula was last
  * evaluated.
  * 
@@ -4146,6 +4195,7 @@ export interface AutoScaleRun {
  * Initializes a new instance of the ResizeError class.
  * @constructor
  * An error that occurred when resizing a pool.
+ *
  * @member {string} [code] An identifier for the pool resize error. Codes are
  * invariant and are intended to be consumed programmatically.
  * 
@@ -4167,6 +4217,7 @@ export interface ResizeError {
  * Initializes a new instance of the CloudPool class.
  * @constructor
  * A pool in the Azure Batch service.
+ *
  * @member {string} [id] A string that uniquely identifies the pool within the
  * account. The id can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
@@ -4464,6 +4515,7 @@ export interface CloudPool {
  * Initializes a new instance of the PoolAddParameter class.
  * @constructor
  * A pool in the Azure Batch service to add.
+ *
  * @member {string} id A string that uniquely identifies the pool within the
  * account. The id can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
@@ -4618,6 +4670,7 @@ export interface PoolAddParameter {
  * @constructor
  * A locality hint that can be used by the Batch service to select a compute
  * node on which to start a task.
+ *
  * @member {string} [affinityId] An opaque string representing the location of
  * a compute node or a task that has run previously. You can pass the
  * AffinityId of a compute node or task to indicate that this task needs to
@@ -4633,6 +4686,7 @@ export interface AffinityInformation {
  * Initializes a new instance of the TaskExecutionInformation class.
  * @constructor
  * Information about the execution of a task.
+ *
  * @member {date} [startTime] The time at which the task started running. If
  * the task has been restarted or retried, this is the most recent time at
  * which the task started running.
@@ -4689,6 +4743,7 @@ export interface TaskExecutionInformation {
  * Initializes a new instance of the ComputeNodeInformation class.
  * @constructor
  * Information about the compute node on which a task ran.
+ *
  * @member {string} [affinityId] An identifier for the compute node on which
  * the task ran, which can be passed when adding a task to request that the
  * task be scheduled close to this compute node.
@@ -4721,6 +4776,7 @@ export interface ComputeNodeInformation {
  * @constructor
  * Settings which specify how to run a multi-instance task. Multi-instance
  * tasks are commonly used to support MPI tasks.
+ *
  * @member {number} numberOfInstances The number of compute nodes required by
  * the multi-instance task.
  * 
@@ -4745,6 +4801,7 @@ export interface MultiInstanceSettings {
  * Initializes a new instance of the TaskStatistics class.
  * @constructor
  * Resource usage statistics for a task.
+ *
  * @member {string} url The URL of the statistics.
  * 
  * @member {date} startTime The start time of the time range covered by the
@@ -4800,6 +4857,7 @@ export interface TaskStatistics {
  * Specifies any dependencies of a task. Any task that is explicitly specified
  * or within a dependency range must complete before the dependant task will
  * be scheduled.
+ *
  * @member {array} [taskIds] The list of task ids that must complete before
  * this task can be scheduled.
  * 
@@ -4819,6 +4877,7 @@ export interface TaskDependencies {
  * A range of task ids that a task can depend on. All tasks with ids in the
  * range must complete successfully before the dependent task can be
  * scheduled.
+ *
  * @member {number} start The first task id in the range.
  * 
  * @member {number} end The last task id in the range.
@@ -4834,6 +4893,7 @@ export interface TaskIdRange {
  * Initializes a new instance of the CloudTask class.
  * @constructor
  * An Azure Batch task.
+ *
  * @member {string} [id] A string that uniquely identifies the task within the
  * job. The id can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
@@ -5061,6 +5121,7 @@ export interface CloudTask {
  * Initializes a new instance of the TaskAddParameter class.
  * @constructor
  * An Azure Batch task to add.
+ *
  * @member {string} id A string that uniquely identifies the task within the
  * job. The id can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
@@ -5153,6 +5214,7 @@ export interface TaskAddParameter {
  * Initializes a new instance of the TaskAddCollectionParameter class.
  * @constructor
  * A collection of Azure Batch tasks to add.
+ *
  * @member {array} value The collection of tasks to add.
  * 
  */
@@ -5165,6 +5227,7 @@ export interface TaskAddCollectionParameter {
  * Initializes a new instance of the TaskAddResult class.
  * @constructor
  * Result for a single task added as part of an add task collection operation.
+ *
  * @member {string} status The status of the add task request. Possible values
  * include: 'success', 'clienterror', 'servererror', 'unmapped'
  * 
@@ -5209,6 +5272,7 @@ export interface TaskAddResult {
  * Initializes a new instance of the BatchError class.
  * @constructor
  * An error response received from the Azure Batch service.
+ *
  * @member {string} [code] An identifier for the error. Codes are invariant
  * and are intended to be consumed programmatically.
  * 
@@ -5234,6 +5298,7 @@ export interface BatchError {
  * Initializes a new instance of the ErrorMessage class.
  * @constructor
  * An error message received in an Azure Batch error response.
+ *
  * @member {string} [lang] The language code of the error message
  * 
  * @member {string} [value] The text of the message.
@@ -5249,6 +5314,7 @@ export interface ErrorMessage {
  * Initializes a new instance of the BatchErrorDetail class.
  * @constructor
  * An item of additional information included in an Azure Batch error response.
+ *
  * @member {string} [key] An identifier specifying the meaning of the Value
  * property.
  * 
@@ -5266,6 +5332,7 @@ export interface BatchErrorDetail {
  * Initializes a new instance of the TaskAddCollectionResult class.
  * @constructor
  * Response to a TaskOperations.AddCollection request.
+ *
  * @member {array} [value] The results of the add task collection operation.
  * 
  */
@@ -5278,6 +5345,7 @@ export interface TaskAddCollectionResult {
  * Initializes a new instance of the SubtaskInformation class.
  * @constructor
  * Information about an Azure Batch subtask.
+ *
  * @member {number} [id] The id of the subtask.
  * 
  * @member {object} [nodeInfo] Information about the compute node on which the
@@ -5360,6 +5428,7 @@ export interface SubtaskInformation {
  * Initializes a new instance of the CloudTaskListSubtasksResult class.
  * @constructor
  * Response to a CloudTaskOperations.ListSubtasks request.
+ *
  * @member {array} [value] The list of information of subtasks.
  * 
  */
@@ -5372,6 +5441,7 @@ export interface CloudTaskListSubtasksResult {
  * Initializes a new instance of the TaskInformation class.
  * @constructor
  * Information about a task running on a compute node.
+ *
  * @member {string} [taskUrl] The URL of the task.
  * 
  * @member {string} [jobId] The id of the job to which the task belongs.
@@ -5443,6 +5513,7 @@ export interface TaskInformation {
  * Initializes a new instance of the StartTaskInformation class.
  * @constructor
  * Information about a start task running on a compute node.
+ *
  * @member {string} state The state of the start task on the compute node.
  * Possible values include: 'running', 'completed'
  * 
@@ -5491,6 +5562,7 @@ export interface StartTaskInformation {
  * Initializes a new instance of the ComputeNodeError class.
  * @constructor
  * An error encountered by a compute node.
+ *
  * @member {string} [code] An identifier for the compute node error. Codes are
  * invariant and are intended to be consumed programmatically.
  * 
@@ -5512,6 +5584,7 @@ export interface ComputeNodeError {
  * Initializes a new instance of the ComputeNode class.
  * @constructor
  * A compute node in the Batch service.
+ *
  * @member {string} [id] The id of the compute node.
  * 
  * @member {string} [url] The URL of the compute node.
@@ -5651,6 +5724,7 @@ export interface ComputeNode {
  * Initializes a new instance of the ComputeNodeUser class.
  * @constructor
  * An user account on a compute node.
+ *
  * @member {string} name The user name of the account.
  * 
  * @member {boolean} [isAdmin] Whether the account should be an administrator
@@ -5678,6 +5752,7 @@ export interface ComputeNodeUser {
  * Initializes a new instance of the ComputeNodeGetRemoteLoginSettingsResult class.
  * @constructor
  * Response to a ComputeNodeOperation.GetRemoteLoginSettings request.
+ *
  * @member {string} remoteLoginIPAddress The IP address used for remote login
  * to the compute node.
  * 
@@ -5695,6 +5770,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * Initializes a new instance of the JobSchedulePatchParameter class.
  * @constructor
  * Parameters for a CloudJobScheduleOperations.Patch request.
+ *
  * @member {object} [schedule] The schedule according to which jobs will be
  * created. If you do not specify this element, the existing schedule is not
  * modified.
@@ -5797,7 +5873,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * runs. If true, no other tasks will run on the same compute node for as
  * long as the Job Manager is running. If false, other tasks can run
  * simultaneously with the Job Manager on a compute node. (The Job Manager
- * task counts normally against the node’s concurrent task limit, so this is
+ * task counts normally against the node's concurrent task limit, so this is
  * only relevant if the node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobSpecification.jobPreparationTask] The Job Preparation
@@ -6108,6 +6184,7 @@ export interface JobSchedulePatchParameter {
  * Initializes a new instance of the JobScheduleUpdateParameter class.
  * @constructor
  * Parameters for a CloudJobScheduleOperations.Update request.
+ *
  * @member {object} schedule The schedule according to which jobs will be
  * created. If you do not specify this element, it is equivalent to passing
  * the default schedule: that is, a single job scheduled to run immediately.
@@ -6210,7 +6287,7 @@ export interface JobSchedulePatchParameter {
  * runs. If true, no other tasks will run on the same compute node for as
  * long as the Job Manager is running. If false, other tasks can run
  * simultaneously with the Job Manager on a compute node. (The Job Manager
- * task counts normally against the node’s concurrent task limit, so this is
+ * task counts normally against the node's concurrent task limit, so this is
  * only relevant if the node allows multiple concurrent tasks.)
  * 
  * @member {object} [jobSpecification.jobPreparationTask] The Job Preparation
@@ -6523,6 +6600,7 @@ export interface JobScheduleUpdateParameter {
  * Initializes a new instance of the JobDisableParameter class.
  * @constructor
  * Parameters for a CloudJobOperations.Disable request.
+ *
  * @member {string} disableTasks What to do with active tasks associated with
  * the job. Possible values include: 'requeue', 'terminate', 'wait'
  * 
@@ -6536,6 +6614,7 @@ export interface JobDisableParameter {
  * Initializes a new instance of the JobTerminateParameter class.
  * @constructor
  * Parameters for a CloudJobOperations.Terminate request.
+ *
  * @member {string} [terminateReason] The text you want to appear as the job's
  * TerminateReason. The default is 'UserTerminate'.
  * 
@@ -6549,6 +6628,7 @@ export interface JobTerminateParameter {
  * Initializes a new instance of the JobPatchParameter class.
  * @constructor
  * Parameters for a CloudJobOperations.Patch request.
+ *
  * @member {number} [priority] The priority of the job. Priority values can
  * range from -1000 to 1000, with -1000 being the lowest priority and 1000
  * being the highest priority. If omitted, the priority of the job is left
@@ -6765,6 +6845,7 @@ export interface JobPatchParameter {
  * Initializes a new instance of the JobUpdateParameter class.
  * @constructor
  * Parameters for a CloudJobOperations.Update request.
+ *
  * @member {number} [priority] The priority of the job. Priority values can
  * range from -1000 to 1000, with -1000 being the lowest priority and 1000
  * being the highest priority. If omitted, the priority of the job is left
@@ -6981,6 +7062,7 @@ export interface JobUpdateParameter {
  * Initializes a new instance of the PoolEnableAutoScaleParameter class.
  * @constructor
  * Parameters for a CloudPoolOperations.EnableAutoScale request.
+ *
  * @member {string} [autoScaleFormula] The formula for the desired number of
  * compute nodes in the pool.
  * 
@@ -6998,6 +7080,7 @@ export interface PoolEnableAutoScaleParameter {
  * Initializes a new instance of the PoolEvaluateAutoScaleParameter class.
  * @constructor
  * Parameters for a CloudJobOperations.EvaluateAutoScale request.
+ *
  * @member {string} autoScaleFormula A formula for the desired number of
  * compute nodes in the pool.
  * 
@@ -7011,6 +7094,7 @@ export interface PoolEvaluateAutoScaleParameter {
  * Initializes a new instance of the PoolResizeParameter class.
  * @constructor
  * Parameters for a CloudPoolOperations.Resize request.
+ *
  * @member {number} targetDedicated The desired number of compute nodes in the
  * pool.
  * 
@@ -7034,6 +7118,7 @@ export interface PoolResizeParameter {
  * Initializes a new instance of the PoolUpdatePropertiesParameter class.
  * @constructor
  * Parameters for a CloudPoolOperations.UpdateProperties request.
+ *
  * @member {object} [startTask] A task to run on each compute node as it joins
  * the pool. If omitted, any existing start task is removed from the pool.
  * 
@@ -7081,6 +7166,7 @@ export interface PoolUpdatePropertiesParameter {
  * Initializes a new instance of the PoolUpgradeOSParameter class.
  * @constructor
  * Parameters for a CloudPoolOperations.UpgradeOS request.
+ *
  * @member {string} targetOSVersion The Azure Guest OS version to be installed
  * on the virtual machines in the pool.
  * 
@@ -7094,6 +7180,7 @@ export interface PoolUpgradeOSParameter {
  * Initializes a new instance of the PoolPatchParameter class.
  * @constructor
  * Parameters for a CloudPoolOperations.Patch request.
+ *
  * @member {object} [startTask] A task to run on each compute node as it joins
  * the pool. If omitted, any existing start task is left unchanged.
  * 
@@ -7139,6 +7226,7 @@ export interface PoolPatchParameter {
  * Initializes a new instance of the TaskUpdateParameter class.
  * @constructor
  * Parameters for a CloudTaskOperations.Update request.
+ *
  * @member {object} [constraints] Constraints that apply to this task. If
  * omitted, the task is given the default constraints.
  * 
@@ -7167,6 +7255,7 @@ export interface TaskUpdateParameter {
  * Initializes a new instance of the NodeUpdateUserParameter class.
  * @constructor
  * Parameters for a ComputeNodeOperations.UpdateUser request.
+ *
  * @member {string} [password] The password of the account.
  * 
  * @member {date} [expiryTime] The time at which the account should expire. If
@@ -7187,6 +7276,7 @@ export interface NodeUpdateUserParameter {
  * Initializes a new instance of the NodeRebootParameter class.
  * @constructor
  * Parameters for a ComputeNodeOperations.Reboot request.
+ *
  * @member {string} [nodeRebootOption] When to reboot the compute node and
  * what to do with currently running tasks. The default value is requeue.
  * Possible values include: 'requeue', 'terminate', 'taskcompletion',
@@ -7202,6 +7292,7 @@ export interface NodeRebootParameter {
  * Initializes a new instance of the NodeReimageParameter class.
  * @constructor
  * Parameters for a ComputeNodeOperations.Reimage request.
+ *
  * @member {string} [nodeReimageOption] When to reimage the compute node and
  * what to do with currently running tasks. The default value is requeue.
  * Possible values include: 'requeue', 'terminate', 'taskcompletion',
@@ -7217,6 +7308,7 @@ export interface NodeReimageParameter {
  * Initializes a new instance of the NodeDisableSchedulingParameter class.
  * @constructor
  * Parameters for a ComputeNodeOperations.DisableScheduling request.
+ *
  * @member {string} [nodeDisableSchedulingOption] What to do with currently
  * running tasks when disable task scheduling on the compute node. The
  * default value is requeue. Possible values include: 'requeue', 'terminate',
@@ -7232,6 +7324,7 @@ export interface NodeDisableSchedulingParameter {
  * Initializes a new instance of the NodeRemoveParameter class.
  * @constructor
  * Parameters for a ComputeNodeOperations.Remove request.
+ *
  * @member {array} nodeList A list containing the id of the compute nodes to
  * be removed from the specified pool.
  * 
@@ -7253,12 +7346,14 @@ export interface NodeRemoveParameter {
  * @class
  * Initializes a new instance of the ApplicationListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Application_list operation.
+ *
  * @member {number} [maxResults] The maximum number of items to return in the
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7284,9 +7379,11 @@ export interface ApplicationListOptions {
  * @class
  * Initializes a new instance of the ApplicationGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Application_get operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7311,7 +7408,8 @@ export interface ApplicationGetOptions {
  * @class
  * Initializes a new instance of the PoolListPoolUsageMetricsOptions class.
  * @constructor
- * Additional parameters for the listPoolUsageMetrics operation.
+ * Additional parameters for the Pool_listPoolUsageMetrics operation.
+ *
  * @member {date} [startTime] The earliest time from which to include metrics.
  * This must be at least two and a half hours before the current time.
  * 
@@ -7324,7 +7422,8 @@ export interface ApplicationGetOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7353,14 +7452,16 @@ export interface PoolListPoolUsageMetricsOptions {
  * @class
  * Initializes a new instance of the AccountListNodeAgentSkusOptions class.
  * @constructor
- * Additional parameters for the listNodeAgentSkus operation.
+ * Additional parameters for the Account_listNodeAgentSkus operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7387,9 +7488,11 @@ export interface AccountListNodeAgentSkusOptions {
  * @class
  * Initializes a new instance of the PoolGetAllPoolsLifetimeStatisticsOptions class.
  * @constructor
- * Additional parameters for the getAllPoolsLifetimeStatistics operation.
+ * Additional parameters for the Pool_getAllPoolsLifetimeStatistics operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7414,9 +7517,11 @@ export interface PoolGetAllPoolsLifetimeStatisticsOptions {
  * @class
  * Initializes a new instance of the JobGetAllJobsLifetimeStatisticsOptions class.
  * @constructor
- * Additional parameters for the getAllJobsLifetimeStatistics operation.
+ * Additional parameters for the Job_getAllJobsLifetimeStatistics operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7441,9 +7546,11 @@ export interface JobGetAllJobsLifetimeStatisticsOptions {
  * @class
  * Initializes a new instance of the CertificateAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the Certificate_add operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7468,7 +7575,8 @@ export interface CertificateAddOptions {
  * @class
  * Initializes a new instance of the CertificateListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Certificate_list operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -7477,7 +7585,8 @@ export interface CertificateAddOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7505,9 +7614,11 @@ export interface CertificateListOptions {
  * @class
  * Initializes a new instance of the CertificateCancelDeletionOptions class.
  * @constructor
- * Additional parameters for the cancelDeletion operation.
+ * Additional parameters for the Certificate_cancelDeletion operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7532,9 +7643,11 @@ export interface CertificateCancelDeletionOptions {
  * @class
  * Initializes a new instance of the CertificateDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the Certificate_deleteMethod operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7559,11 +7672,13 @@ export interface CertificateDeleteMethodOptions {
  * @class
  * Initializes a new instance of the CertificateGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Certificate_get operation.
+ *
  * @member {string} [select] An OData $select clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7589,9 +7704,11 @@ export interface CertificateGetOptions {
  * @class
  * Initializes a new instance of the FileDeleteFromTaskOptions class.
  * @constructor
- * Additional parameters for the deleteFromTask operation.
+ * Additional parameters for the File_deleteFromTask operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7616,9 +7733,11 @@ export interface FileDeleteFromTaskOptions {
  * @class
  * Initializes a new instance of the FileGetFromTaskOptions class.
  * @constructor
- * Additional parameters for the getFromTask operation.
+ * Additional parameters for the File_getFromTask operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7657,9 +7776,11 @@ export interface FileGetFromTaskOptions {
  * @class
  * Initializes a new instance of the FileGetNodeFilePropertiesFromTaskOptions class.
  * @constructor
- * Additional parameters for the getNodeFilePropertiesFromTask operation.
+ * Additional parameters for the File_getNodeFilePropertiesFromTask operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7694,9 +7815,11 @@ export interface FileGetNodeFilePropertiesFromTaskOptions {
  * @class
  * Initializes a new instance of the FileDeleteFromComputeNodeOptions class.
  * @constructor
- * Additional parameters for the deleteFromComputeNode operation.
+ * Additional parameters for the File_deleteFromComputeNode operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7721,9 +7844,11 @@ export interface FileDeleteFromComputeNodeOptions {
  * @class
  * Initializes a new instance of the FileGetFromComputeNodeOptions class.
  * @constructor
- * Additional parameters for the getFromComputeNode operation.
+ * Additional parameters for the File_getFromComputeNode operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7762,10 +7887,12 @@ export interface FileGetFromComputeNodeOptions {
  * @class
  * Initializes a new instance of the FileGetNodeFilePropertiesFromComputeNodeOptions class.
  * @constructor
- * Additional parameters for the getNodeFilePropertiesFromComputeNode
+ * Additional parameters for the File_getNodeFilePropertiesFromComputeNode
  * operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7800,14 +7927,16 @@ export interface FileGetNodeFilePropertiesFromComputeNodeOptions {
  * @class
  * Initializes a new instance of the FileListFromTaskOptions class.
  * @constructor
- * Additional parameters for the listFromTask operation.
+ * Additional parameters for the File_listFromTask operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7834,14 +7963,16 @@ export interface FileListFromTaskOptions {
  * @class
  * Initializes a new instance of the FileListFromComputeNodeOptions class.
  * @constructor
- * Additional parameters for the listFromComputeNode operation.
+ * Additional parameters for the File_listFromComputeNode operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7868,9 +7999,11 @@ export interface FileListFromComputeNodeOptions {
  * @class
  * Initializes a new instance of the JobScheduleExistsOptions class.
  * @constructor
- * Additional parameters for the exists operation.
+ * Additional parameters for the JobSchedule_exists operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7915,9 +8048,11 @@ export interface JobScheduleExistsOptions {
  * @class
  * Initializes a new instance of the JobScheduleDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the JobSchedule_deleteMethod operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -7962,13 +8097,15 @@ export interface JobScheduleDeleteMethodOptions {
  * @class
  * Initializes a new instance of the JobScheduleGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the JobSchedule_get operation.
+ *
  * @member {string} [select] An OData $select clause.
  * 
  * @member {string} [expand] An OData $expand clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8015,9 +8152,11 @@ export interface JobScheduleGetOptions {
  * @class
  * Initializes a new instance of the JobSchedulePatchOptions class.
  * @constructor
- * Additional parameters for the patch operation.
+ * Additional parameters for the JobSchedule_patch operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8062,9 +8201,11 @@ export interface JobSchedulePatchOptions {
  * @class
  * Initializes a new instance of the JobScheduleUpdateOptions class.
  * @constructor
- * Additional parameters for the update operation.
+ * Additional parameters for the JobSchedule_update operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8109,9 +8250,11 @@ export interface JobScheduleUpdateOptions {
  * @class
  * Initializes a new instance of the JobScheduleDisableOptions class.
  * @constructor
- * Additional parameters for the disable operation.
+ * Additional parameters for the JobSchedule_disable operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8156,9 +8299,11 @@ export interface JobScheduleDisableOptions {
  * @class
  * Initializes a new instance of the JobScheduleEnableOptions class.
  * @constructor
- * Additional parameters for the enable operation.
+ * Additional parameters for the JobSchedule_enable operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8203,9 +8348,11 @@ export interface JobScheduleEnableOptions {
  * @class
  * Initializes a new instance of the JobScheduleTerminateOptions class.
  * @constructor
- * Additional parameters for the terminate operation.
+ * Additional parameters for the JobSchedule_terminate operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8250,9 +8397,11 @@ export interface JobScheduleTerminateOptions {
  * @class
  * Initializes a new instance of the JobScheduleAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the JobSchedule_add operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8277,7 +8426,8 @@ export interface JobScheduleAddOptions {
  * @class
  * Initializes a new instance of the JobScheduleListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the JobSchedule_list operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8288,7 +8438,8 @@ export interface JobScheduleAddOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8317,9 +8468,11 @@ export interface JobScheduleListOptions {
  * @class
  * Initializes a new instance of the JobDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the Job_deleteMethod operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8364,13 +8517,15 @@ export interface JobDeleteMethodOptions {
  * @class
  * Initializes a new instance of the JobGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Job_get operation.
+ *
  * @member {string} [select] An OData $select clause.
  * 
  * @member {string} [expand] An OData $expand clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8397,9 +8552,11 @@ export interface JobGetOptions {
  * @class
  * Initializes a new instance of the JobPatchOptions class.
  * @constructor
- * Additional parameters for the patch operation.
+ * Additional parameters for the Job_patch operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8444,9 +8601,11 @@ export interface JobPatchOptions {
  * @class
  * Initializes a new instance of the JobUpdateOptions class.
  * @constructor
- * Additional parameters for the update operation.
+ * Additional parameters for the Job_update operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8491,9 +8650,11 @@ export interface JobUpdateOptions {
  * @class
  * Initializes a new instance of the JobDisableOptions class.
  * @constructor
- * Additional parameters for the disable operation.
+ * Additional parameters for the Job_disable operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8538,9 +8699,11 @@ export interface JobDisableOptions {
  * @class
  * Initializes a new instance of the JobEnableOptions class.
  * @constructor
- * Additional parameters for the enable operation.
+ * Additional parameters for the Job_enable operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8585,9 +8748,11 @@ export interface JobEnableOptions {
  * @class
  * Initializes a new instance of the JobTerminateOptions class.
  * @constructor
- * Additional parameters for the terminate operation.
+ * Additional parameters for the Job_terminate operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8632,9 +8797,11 @@ export interface JobTerminateOptions {
  * @class
  * Initializes a new instance of the JobAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the Job_add operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8659,7 +8826,8 @@ export interface JobAddOptions {
  * @class
  * Initializes a new instance of the JobListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Job_list operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8670,7 +8838,8 @@ export interface JobAddOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8699,7 +8868,8 @@ export interface JobListOptions {
  * @class
  * Initializes a new instance of the JobListFromJobScheduleOptions class.
  * @constructor
- * Additional parameters for the listFromJobSchedule operation.
+ * Additional parameters for the Job_listFromJobSchedule operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8710,7 +8880,8 @@ export interface JobListOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8739,7 +8910,9 @@ export interface JobListFromJobScheduleOptions {
  * @class
  * Initializes a new instance of the JobListPreparationAndReleaseTaskStatusOptions class.
  * @constructor
- * Additional parameters for the listPreparationAndReleaseTaskStatus operation.
+ * Additional parameters for the Job_listPreparationAndReleaseTaskStatus
+ * operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8748,7 +8921,8 @@ export interface JobListFromJobScheduleOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8776,9 +8950,11 @@ export interface JobListPreparationAndReleaseTaskStatusOptions {
  * @class
  * Initializes a new instance of the PoolAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the Pool_add operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8803,7 +8979,8 @@ export interface PoolAddOptions {
  * @class
  * Initializes a new instance of the PoolListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Pool_list operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -8814,7 +8991,8 @@ export interface PoolAddOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8843,9 +9021,11 @@ export interface PoolListOptions {
  * @class
  * Initializes a new instance of the PoolDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the Pool_deleteMethod operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8890,9 +9070,11 @@ export interface PoolDeleteMethodOptions {
  * @class
  * Initializes a new instance of the PoolExistsOptions class.
  * @constructor
- * Additional parameters for the exists operation.
+ * Additional parameters for the Pool_exists operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8937,13 +9119,15 @@ export interface PoolExistsOptions {
  * @class
  * Initializes a new instance of the PoolGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Pool_get operation.
+ *
  * @member {string} [select] An OData $select clause.
  * 
  * @member {string} [expand] An OData $expand clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -8990,9 +9174,11 @@ export interface PoolGetOptions {
  * @class
  * Initializes a new instance of the PoolPatchOptions class.
  * @constructor
- * Additional parameters for the patch operation.
+ * Additional parameters for the Pool_patch operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9037,9 +9223,11 @@ export interface PoolPatchOptions {
  * @class
  * Initializes a new instance of the PoolDisableAutoScaleOptions class.
  * @constructor
- * Additional parameters for the disableAutoScale operation.
+ * Additional parameters for the Pool_disableAutoScale operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9064,9 +9252,11 @@ export interface PoolDisableAutoScaleOptions {
  * @class
  * Initializes a new instance of the PoolEnableAutoScaleOptions class.
  * @constructor
- * Additional parameters for the enableAutoScale operation.
+ * Additional parameters for the Pool_enableAutoScale operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9111,9 +9301,11 @@ export interface PoolEnableAutoScaleOptions {
  * @class
  * Initializes a new instance of the PoolEvaluateAutoScaleOptions class.
  * @constructor
- * Additional parameters for the evaluateAutoScale operation.
+ * Additional parameters for the Pool_evaluateAutoScale operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9138,9 +9330,11 @@ export interface PoolEvaluateAutoScaleOptions {
  * @class
  * Initializes a new instance of the PoolResizeOptions class.
  * @constructor
- * Additional parameters for the resize operation.
+ * Additional parameters for the Pool_resize operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9185,9 +9379,11 @@ export interface PoolResizeOptions {
  * @class
  * Initializes a new instance of the PoolStopResizeOptions class.
  * @constructor
- * Additional parameters for the stopResize operation.
+ * Additional parameters for the Pool_stopResize operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9232,9 +9428,11 @@ export interface PoolStopResizeOptions {
  * @class
  * Initializes a new instance of the PoolUpdatePropertiesOptions class.
  * @constructor
- * Additional parameters for the updateProperties operation.
+ * Additional parameters for the Pool_updateProperties operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9259,9 +9457,11 @@ export interface PoolUpdatePropertiesOptions {
  * @class
  * Initializes a new instance of the PoolUpgradeOSOptions class.
  * @constructor
- * Additional parameters for the upgradeOS operation.
+ * Additional parameters for the Pool_upgradeOS operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9306,9 +9506,11 @@ export interface PoolUpgradeOSOptions {
  * @class
  * Initializes a new instance of the PoolRemoveNodesOptions class.
  * @constructor
- * Additional parameters for the removeNodes operation.
+ * Additional parameters for the Pool_removeNodes operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9353,9 +9555,11 @@ export interface PoolRemoveNodesOptions {
  * @class
  * Initializes a new instance of the TaskAddOptions class.
  * @constructor
- * Additional parameters for the add operation.
+ * Additional parameters for the Task_add operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9380,7 +9584,8 @@ export interface TaskAddOptions {
  * @class
  * Initializes a new instance of the TaskListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the Task_list operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -9391,7 +9596,8 @@ export interface TaskAddOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9420,9 +9626,11 @@ export interface TaskListOptions {
  * @class
  * Initializes a new instance of the TaskAddCollectionOptions class.
  * @constructor
- * Additional parameters for the addCollection operation.
+ * Additional parameters for the Task_addCollection operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9447,9 +9655,11 @@ export interface TaskAddCollectionOptions {
  * @class
  * Initializes a new instance of the TaskDeleteMethodOptions class.
  * @constructor
- * Additional parameters for the deleteMethod operation.
+ * Additional parameters for the Task_deleteMethod operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9494,13 +9704,15 @@ export interface TaskDeleteMethodOptions {
  * @class
  * Initializes a new instance of the TaskGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the Task_get operation.
+ *
  * @member {string} [select] An OData $select clause.
  * 
  * @member {string} [expand] An OData $expand clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9547,9 +9759,11 @@ export interface TaskGetOptions {
  * @class
  * Initializes a new instance of the TaskUpdateOptions class.
  * @constructor
- * Additional parameters for the update operation.
+ * Additional parameters for the Task_update operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9594,11 +9808,13 @@ export interface TaskUpdateOptions {
  * @class
  * Initializes a new instance of the TaskListSubtasksOptions class.
  * @constructor
- * Additional parameters for the listSubtasks operation.
+ * Additional parameters for the Task_listSubtasks operation.
+ *
  * @member {string} [select] An OData $select clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9624,9 +9840,11 @@ export interface TaskListSubtasksOptions {
  * @class
  * Initializes a new instance of the TaskTerminateOptions class.
  * @constructor
- * Additional parameters for the terminate operation.
+ * Additional parameters for the Task_terminate operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9671,9 +9889,11 @@ export interface TaskTerminateOptions {
  * @class
  * Initializes a new instance of the ComputeNodeAddUserOptions class.
  * @constructor
- * Additional parameters for the addUser operation.
+ * Additional parameters for the ComputeNode_addUser operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9698,9 +9918,11 @@ export interface ComputeNodeAddUserOptions {
  * @class
  * Initializes a new instance of the ComputeNodeDeleteUserOptions class.
  * @constructor
- * Additional parameters for the deleteUser operation.
+ * Additional parameters for the ComputeNode_deleteUser operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9725,9 +9947,11 @@ export interface ComputeNodeDeleteUserOptions {
  * @class
  * Initializes a new instance of the ComputeNodeUpdateUserOptions class.
  * @constructor
- * Additional parameters for the updateUser operation.
+ * Additional parameters for the ComputeNode_updateUser operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9752,11 +9976,13 @@ export interface ComputeNodeUpdateUserOptions {
  * @class
  * Initializes a new instance of the ComputeNodeGetOptions class.
  * @constructor
- * Additional parameters for the get operation.
+ * Additional parameters for the ComputeNode_get operation.
+ *
  * @member {string} [select] An OData $select clause.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9782,9 +10008,11 @@ export interface ComputeNodeGetOptions {
  * @class
  * Initializes a new instance of the ComputeNodeRebootOptions class.
  * @constructor
- * Additional parameters for the reboot operation.
+ * Additional parameters for the ComputeNode_reboot operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9809,9 +10037,11 @@ export interface ComputeNodeRebootOptions {
  * @class
  * Initializes a new instance of the ComputeNodeReimageOptions class.
  * @constructor
- * Additional parameters for the reimage operation.
+ * Additional parameters for the ComputeNode_reimage operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9836,9 +10066,11 @@ export interface ComputeNodeReimageOptions {
  * @class
  * Initializes a new instance of the ComputeNodeDisableSchedulingOptions class.
  * @constructor
- * Additional parameters for the disableScheduling operation.
+ * Additional parameters for the ComputeNode_disableScheduling operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9863,9 +10095,11 @@ export interface ComputeNodeDisableSchedulingOptions {
  * @class
  * Initializes a new instance of the ComputeNodeEnableSchedulingOptions class.
  * @constructor
- * Additional parameters for the enableScheduling operation.
+ * Additional parameters for the ComputeNode_enableScheduling operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9890,9 +10124,11 @@ export interface ComputeNodeEnableSchedulingOptions {
  * @class
  * Initializes a new instance of the ComputeNodeGetRemoteLoginSettingsOptions class.
  * @constructor
- * Additional parameters for the getRemoteLoginSettings operation.
+ * Additional parameters for the ComputeNode_getRemoteLoginSettings operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9917,9 +10153,11 @@ export interface ComputeNodeGetRemoteLoginSettingsOptions {
  * @class
  * Initializes a new instance of the ComputeNodeGetRemoteDesktopOptions class.
  * @constructor
- * Additional parameters for the getRemoteDesktop operation.
+ * Additional parameters for the ComputeNode_getRemoteDesktop operation.
+ *
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9944,7 +10182,8 @@ export interface ComputeNodeGetRemoteDesktopOptions {
  * @class
  * Initializes a new instance of the ComputeNodeListOptions class.
  * @constructor
- * Additional parameters for the list operation.
+ * Additional parameters for the ComputeNode_list operation.
+ *
  * @member {string} [filter] An OData $filter clause.
  * 
  * @member {string} [select] An OData $select clause.
@@ -9953,7 +10192,8 @@ export interface ComputeNodeGetRemoteDesktopOptions {
  * response.
  * 
  * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds.
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
  * 
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
@@ -9982,6 +10222,7 @@ export interface ComputeNodeListOptions {
  * Initializes a new instance of the ApplicationListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10005,6 +10246,7 @@ export interface ApplicationListNextOptions {
  * Initializes a new instance of the PoolListPoolUsageMetricsNextOptions class.
  * @constructor
  * Additional parameters for the listPoolUsageMetricsNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10028,6 +10270,7 @@ export interface PoolListPoolUsageMetricsNextOptions {
  * Initializes a new instance of the AccountListNodeAgentSkusNextOptions class.
  * @constructor
  * Additional parameters for the listNodeAgentSkusNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10051,6 +10294,7 @@ export interface AccountListNodeAgentSkusNextOptions {
  * Initializes a new instance of the CertificateListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10074,6 +10318,7 @@ export interface CertificateListNextOptions {
  * Initializes a new instance of the FileListFromTaskNextOptions class.
  * @constructor
  * Additional parameters for the listFromTaskNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10097,6 +10342,7 @@ export interface FileListFromTaskNextOptions {
  * Initializes a new instance of the FileListFromComputeNodeNextOptions class.
  * @constructor
  * Additional parameters for the listFromComputeNodeNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10120,6 +10366,7 @@ export interface FileListFromComputeNodeNextOptions {
  * Initializes a new instance of the JobScheduleListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10143,6 +10390,7 @@ export interface JobScheduleListNextOptions {
  * Initializes a new instance of the JobListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10166,6 +10414,7 @@ export interface JobListNextOptions {
  * Initializes a new instance of the JobListFromJobScheduleNextOptions class.
  * @constructor
  * Additional parameters for the listFromJobScheduleNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10190,6 +10439,7 @@ export interface JobListFromJobScheduleNextOptions {
  * @constructor
  * Additional parameters for the listPreparationAndReleaseTaskStatusNext
  * operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10213,6 +10463,7 @@ export interface JobListPreparationAndReleaseTaskStatusNextOptions {
  * Initializes a new instance of the PoolListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10236,6 +10487,7 @@ export interface PoolListNextOptions {
  * Initializes a new instance of the TaskListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
@@ -10259,6 +10511,7 @@ export interface TaskListNextOptions {
  * Initializes a new instance of the ComputeNodeListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
+ *
  * @member {string} [clientRequestId] The caller-generated request identity,
  * in the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
