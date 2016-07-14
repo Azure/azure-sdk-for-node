@@ -69,7 +69,7 @@ var mappings = {
   },
   'network': {
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2016-06-01/network.json',
+    'source': 'arm-network/2016-06-01/swagger/network.json',
     'ft': 1
   },
   'notificationHubs':{
