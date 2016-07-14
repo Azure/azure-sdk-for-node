@@ -15,6 +15,7 @@
  * Initializes a new instance of the ApplicationGatewaySku class.
  * @constructor
  * SKU of application gateway
+ *
  * @member {string} [name] Gets or sets name of application gateway SKU.
  * Possible values include: 'Standard_Small', 'Standard_Medium',
  * 'Standard_Large'
@@ -48,6 +49,7 @@ export interface SubResource extends BaseResource {
  * Initializes a new instance of the ApplicationGatewayIPConfiguration class.
  * @constructor
  * IP configuration of application gateway
+ *
  * @member {object} [subnet] Gets or sets the reference of the subnet
  * resource.A subnet from where appliation gateway gets its private address
  * 
@@ -75,6 +77,7 @@ export interface ApplicationGatewayIPConfiguration extends SubResource {
  * Initializes a new instance of the ApplicationGatewaySslCertificate class.
  * @constructor
  * SSL certificates of application gateway
+ *
  * @member {string} [data] Gets or sets the certificate data
  * 
  * @member {string} [password] Gets or sets the certificate password
@@ -105,6 +108,7 @@ export interface ApplicationGatewaySslCertificate extends SubResource {
  * Initializes a new instance of the ApplicationGatewayFrontendIPConfiguration class.
  * @constructor
  * Frontend IP configuration of application gateway
+ *
  * @member {string} [privateIPAddress] Gets or sets the privateIPAddress of
  * the Network Interface IP Configuration
  * 
@@ -146,6 +150,7 @@ export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
  * Initializes a new instance of the ApplicationGatewayFrontendPort class.
  * @constructor
  * Frontend Port of application gateway
+ *
  * @member {number} [port] Gets or sets the frontend port
  * 
  * @member {string} [provisioningState] Gets or sets Provisioning state of the
@@ -170,6 +175,7 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * Initializes a new instance of the ApplicationGatewayBackendAddress class.
  * @constructor
  * Backend Address of application gateway
+ *
  * @member {string} [fqdn] Gets or sets the dns name
  * 
  * @member {string} [ipAddress] Gets or sets the ip address
@@ -185,6 +191,7 @@ export interface ApplicationGatewayBackendAddress {
  * Initializes a new instance of the NetworkInterfaceIPConfiguration class.
  * @constructor
  * IPConfiguration in a NetworkInterface
+ *
  * @member {array} [applicationGatewayBackendAddressPools] Gets or sets the
  * reference of ApplicationGatewayBackendAddressPool resource
  * 
@@ -426,6 +433,7 @@ export interface NetworkInterfaceIPConfiguration extends SubResource {
  * Initializes a new instance of the ApplicationGatewayBackendAddressPool class.
  * @constructor
  * Backend Address Pool of application gateway
+ *
  * @member {array} [backendIPConfigurations] Gets collection of references to
  * IPs defined in NICs
  * 
@@ -454,6 +462,7 @@ export interface ApplicationGatewayBackendAddressPool extends SubResource {
  * Initializes a new instance of the BackendAddressPool class.
  * @constructor
  * Pool of backend IP addresseses
+ *
  * @member {array} [backendIPConfigurations] Gets collection of references to
  * IPs defined in NICs
  * 
@@ -489,6 +498,7 @@ export interface BackendAddressPool extends SubResource {
  * Initializes a new instance of the InboundNatRule class.
  * @constructor
  * Inbound NAT rule of the loadbalancer
+ *
  * @member {object} [frontendIPConfiguration] Gets or sets a reference to
  * frontend IP Addresses
  * 
@@ -811,6 +821,7 @@ export interface InboundNatRule extends SubResource {
  * Initializes a new instance of the Subnet class.
  * @constructor
  * Subnet in a VirtualNework resource
+ *
  * @member {string} [addressPrefix] Gets or sets Address prefix for the subnet.
  * 
  * @member {object} [networkSecurityGroup] Gets or sets the reference of the
@@ -902,6 +913,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the NetworkSecurityGroup class.
  * @constructor
  * NetworkSecurityGroup resource
+ *
  * @member {array} [securityRules] Gets or sets security rules of network
  * security group
  * 
@@ -938,6 +950,7 @@ export interface NetworkSecurityGroup extends Resource {
  * Initializes a new instance of the SecurityRule class.
  * @constructor
  * Network security rule
+ *
  * @member {string} [description] Gets or sets a description for this rule.
  * Restricted to 140 chars.
  * 
@@ -1006,6 +1019,7 @@ export interface SecurityRule extends SubResource {
  * Initializes a new instance of the NetworkInterface class.
  * @constructor
  * A NetworkInterface in a resource group
+ *
  * @member {object} [virtualMachine] Gets or sets the reference of a
  * VirtualMachine
  * 
@@ -1091,6 +1105,7 @@ export interface NetworkInterface extends Resource {
  * Initializes a new instance of the NetworkInterfaceDnsSettings class.
  * @constructor
  * Dns settings of a network interface
+ *
  * @member {array} [dnsServers] Gets or sets list of DNS servers IP addresses
  * 
  * @member {array} [appliedDnsServers] Gets or sets list of Applied DNS
@@ -1117,6 +1132,7 @@ export interface NetworkInterfaceDnsSettings {
  * Initializes a new instance of the RouteTable class.
  * @constructor
  * RouteTable resource
+ *
  * @member {array} [routes] Gets or sets Routes in a Route Table
  * 
  * @member {array} [subnets] Gets collection of references to subnets
@@ -1140,6 +1156,7 @@ export interface RouteTable extends Resource {
  * Initializes a new instance of the Route class.
  * @constructor
  * Route resource
+ *
  * @member {string} [addressPrefix] Gets or sets the destination CIDR to which
  * the route applies.
  * 
@@ -1175,6 +1192,7 @@ export interface Route extends SubResource {
  * Initializes a new instance of the IPConfiguration class.
  * @constructor
  * IPConfiguration
+ *
  * @member {string} [privateIPAddress] Gets or sets the privateIPAddress of
  * the IP Configuration
  * 
@@ -1310,6 +1328,7 @@ export interface IPConfiguration extends SubResource {
  * Initializes a new instance of the PublicIPAddress class.
  * @constructor
  * PublicIPAddress resource
+ *
  * @member {string} [publicIPAllocationMethod] Gets or sets PublicIP
  * allocation method (Static/Dynamic). Possible values include: 'Static',
  * 'Dynamic'
@@ -1450,6 +1469,7 @@ export interface PublicIPAddress extends Resource {
  * Initializes a new instance of the PublicIPAddressDnsSettings class.
  * @constructor
  * Contains FQDN of the DNS record associated with the public IP address
+ *
  * @member {string} [domainNameLabel] Gets or sets the Domain name label.The
  * concatenation of the domain name label and the regionalized DNS zone make
  * up the fully qualified domain name associated with the public IP address.
@@ -1478,6 +1498,7 @@ export interface PublicIPAddressDnsSettings {
  * Initializes a new instance of the ApplicationGatewayBackendHttpSettings class.
  * @constructor
  * Backend address pool settings of application gateway
+ *
  * @member {number} [port] Gets or sets the port
  * 
  * @member {string} [protocol] Gets or sets the protocol. Possible values
@@ -1518,6 +1539,7 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * Initializes a new instance of the ApplicationGatewayHttpListener class.
  * @constructor
  * Http listener of application gateway
+ *
  * @member {object} [frontendIPConfiguration] Gets or sets frontend IP
  * configuration resource of application gateway
  * 
@@ -1568,6 +1590,7 @@ export interface ApplicationGatewayHttpListener extends SubResource {
  * Initializes a new instance of the ApplicationGatewayPathRule class.
  * @constructor
  * Path rule of URL path map of application gateway
+ *
  * @member {array} [paths] Gets or sets the path rules of URL path map
  * 
  * @member {object} [backendAddressPool] Gets or sets backend address pool
@@ -1604,6 +1627,7 @@ export interface ApplicationGatewayPathRule extends SubResource {
  * Initializes a new instance of the ApplicationGatewayProbe class.
  * @constructor
  * Probe of application gateway
+ *
  * @member {string} [protocol] Gets or sets the protocol. Possible values
  * include: 'Http', 'Https'
  * 
@@ -1645,6 +1669,7 @@ export interface ApplicationGatewayProbe extends SubResource {
  * Initializes a new instance of the ApplicationGatewayRequestRoutingRule class.
  * @constructor
  * Request routing rule of application gateway
+ *
  * @member {string} [ruleType] Gets or sets the rule type. Possible values
  * include: 'Basic', 'PathBasedRouting'
  * 
@@ -1694,6 +1719,7 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
  * Initializes a new instance of the ApplicationGatewayUrlPathMap class.
  * @constructor
  * UrlPathMap of application gateway
+ *
  * @member {object} [defaultBackendAddressPool] Gets or sets default backend
  * address pool resource of URL path map
  * 
@@ -1730,6 +1756,7 @@ export interface ApplicationGatewayUrlPathMap extends SubResource {
  * Initializes a new instance of the ApplicationGateway class.
  * @constructor
  * ApplicationGateways resource
+ *
  * @member {object} [sku] Gets or sets sku of application gateway resource
  * 
  * @member {string} [sku.name] Gets or sets name of application gateway SKU.
@@ -1808,6 +1835,7 @@ export interface ApplicationGateway extends Resource {
  * Initializes a new instance of the ExpressRouteCircuitAuthorization class.
  * @constructor
  * Authorization in a ExpressRouteCircuit resource
+ *
  * @member {string} [authorizationKey] Gets or sets the authorization key
  * 
  * @member {string} [authorizationUseStatus] Gets or sets
@@ -1836,6 +1864,7 @@ export interface ExpressRouteCircuitAuthorization extends SubResource {
  * Initializes a new instance of the ExpressRouteCircuitPeeringConfig class.
  * @constructor
  * Specfies the peering config
+ *
  * @member {array} [advertisedPublicPrefixes] Gets or sets the reference of
  * AdvertisedPublicPrefixes
  * 
@@ -1861,6 +1890,7 @@ export interface ExpressRouteCircuitPeeringConfig {
  * Initializes a new instance of the ExpressRouteCircuitStats class.
  * @constructor
  * Contains Stats associated with the peering
+ *
  * @member {number} [primarybytesIn] Gets BytesIn of the peering.
  * 
  * @member {number} [primarybytesOut] Gets BytesOut of the peering.
@@ -1882,6 +1912,7 @@ export interface ExpressRouteCircuitStats {
  * Initializes a new instance of the ExpressRouteCircuitPeering class.
  * @constructor
  * Peering in a ExpressRouteCircuit resource
+ *
  * @member {string} [peeringType] Gets or sets PeeringType. Possible values
  * include: 'AzurePublicPeering', 'AzurePrivatePeering', 'MicrosoftPeering'
  * 
@@ -1966,6 +1997,7 @@ export interface ExpressRouteCircuitPeering extends SubResource {
  * Initializes a new instance of the ExpressRouteCircuitSku class.
  * @constructor
  * Contains sku in an ExpressRouteCircuit
+ *
  * @member {string} [name] Gets or sets name of the sku.
  * 
  * @member {string} [tier] Gets or sets tier of the sku. Possible values
@@ -1986,6 +2018,7 @@ export interface ExpressRouteCircuitSku {
  * Initializes a new instance of the ExpressRouteCircuitServiceProviderProperties class.
  * @constructor
  * Contains ServiceProviderProperties in an ExpressRouteCircuit
+ *
  * @member {string} [serviceProviderName] Gets or sets serviceProviderName.
  * 
  * @member {string} [peeringLocation] Gets or sets peering location.
@@ -2004,6 +2037,7 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * Initializes a new instance of the ExpressRouteCircuit class.
  * @constructor
  * ExpressRouteCircuit resource
+ *
  * @member {object} [sku] Gets or sets sku
  * 
  * @member {string} [sku.name] Gets or sets name of the sku.
@@ -2069,6 +2103,7 @@ export interface ExpressRouteCircuit extends Resource {
  * Initializes a new instance of the ExpressRouteCircuitArpTable class.
  * @constructor
  * The arp table associated with the ExpressRouteCircuit
+ *
  * @member {number} [age] Age.
  * 
  * @member {string} [interface] Interface.
@@ -2090,6 +2125,7 @@ export interface ExpressRouteCircuitArpTable {
  * Initializes a new instance of the ExpressRouteCircuitsArpTableListResult class.
  * @constructor
  * Response for ListArpTable associated with the Express Route Circuits Api
+ *
  * @member {array} [value] Gets List of ArpTable
  * 
  * @member {string} [nextLink] Gets the URL to get the next set of results.
@@ -2105,6 +2141,7 @@ export interface ExpressRouteCircuitsArpTableListResult {
  * Initializes a new instance of the ExpressRouteCircuitRoutesTable class.
  * @constructor
  * The routes table associated with the ExpressRouteCircuit
+ *
  * @member {string} [network] network.
  * 
  * @member {string} [nextHop] nextHop
@@ -2129,6 +2166,7 @@ export interface ExpressRouteCircuitRoutesTable {
  * Initializes a new instance of the ExpressRouteCircuitsRoutesTableListResult class.
  * @constructor
  * Response for ListRoutesTable associated with the Express Route Circuits Api
+ *
  * @member {array} [value] Gets List of RoutesTable
  * 
  * @member {string} [nextLink] Gets the URL to get the next set of results.
@@ -2144,6 +2182,7 @@ export interface ExpressRouteCircuitsRoutesTableListResult {
  * Initializes a new instance of the ExpressRouteCircuitRoutesTableSummary class.
  * @constructor
  * The routes table associated with the ExpressRouteCircuit
+ *
  * @member {string} [neighbor] Neighbor.
  * 
  * @member {number} [v] BGP version number spoken to the neighbor.
@@ -2171,6 +2210,7 @@ export interface ExpressRouteCircuitRoutesTableSummary {
  * Initializes a new instance of the ExpressRouteCircuitsRoutesTableSummaryListResult class.
  * @constructor
  * Response for ListRoutesTable associated with the Express Route Circuits Api
+ *
  * @member {array} [value] Gets List of RoutesTable
  * 
  * @member {string} [nextLink] Gets the URL to get the next set of results.
@@ -2186,6 +2226,7 @@ export interface ExpressRouteCircuitsRoutesTableSummaryListResult {
  * Initializes a new instance of the ExpressRouteServiceProviderBandwidthsOffered class.
  * @constructor
  * Contains Bandwidths offered in ExpressRouteServiceProviders
+ *
  * @member {string} [offerName] Gets the OfferName
  * 
  * @member {number} [valueInMbps] Gets the ValueInMbps.
@@ -2201,6 +2242,7 @@ export interface ExpressRouteServiceProviderBandwidthsOffered {
  * Initializes a new instance of the ExpressRouteServiceProvider class.
  * @constructor
  * ExpressRouteResourceProvider object
+ *
  * @member {array} [peeringLocations] Gets or list of peering locations
  * 
  * @member {array} [bandwidthsOffered] Gets or bandwidths offered
@@ -2220,6 +2262,7 @@ export interface ExpressRouteServiceProvider extends Resource {
  * Initializes a new instance of the FrontendIPConfiguration class.
  * @constructor
  * Frontend IP address of the load balancer
+ *
  * @member {array} [inboundNatRules] Read only.Inbound rules URIs that use
  * this frontend IP
  * 
@@ -2460,6 +2503,7 @@ export interface FrontendIPConfiguration extends SubResource {
  * Initializes a new instance of the LoadBalancingRule class.
  * @constructor
  * Rules of the load balancer
+ *
  * @member {object} [frontendIPConfiguration] Gets or sets a reference to
  * frontend IP Addresses
  * 
@@ -2539,6 +2583,7 @@ export interface LoadBalancingRule extends SubResource {
  * Initializes a new instance of the Probe class.
  * @constructor
  * Load balancer Probe
+ *
  * @member {array} [loadBalancingRules] Gets Load balancer rules that use this
  * probe
  * 
@@ -2593,6 +2638,7 @@ export interface Probe extends SubResource {
  * Initializes a new instance of the InboundNatPool class.
  * @constructor
  * Inbound NAT pool of the loadbalancer
+ *
  * @member {object} [frontendIPConfiguration] Gets or sets a reference to
  * frontend IP Addresses
  * 
@@ -2647,6 +2693,7 @@ export interface InboundNatPool extends SubResource {
  * Initializes a new instance of the OutboundNatRule class.
  * @constructor
  * Outbound NAT pool of the loadbalancer
+ *
  * @member {number} [allocatedOutboundPorts] Gets or sets the number of
  * outbound ports to be used for SNAT
  * 
@@ -2683,6 +2730,7 @@ export interface OutboundNatRule extends SubResource {
  * Initializes a new instance of the LoadBalancer class.
  * @constructor
  * LoadBalancer resource
+ *
  * @member {array} [frontendIPConfigurations] Gets or sets frontend IP
  * addresses of the load balancer
  * 
@@ -2728,6 +2776,7 @@ export interface LoadBalancer extends Resource {
  * @constructor
  * AddressSpace contains an array of IP address ranges that can be used by
  * subnets
+ *
  * @member {array} [addressPrefixes] Gets or sets list of address blocks
  * reserved for this virtual network in CIDR notation
  * 
@@ -2760,6 +2809,7 @@ export interface BgpSettings {
  * Initializes a new instance of the LocalNetworkGateway class.
  * @constructor
  * A common class for general resource information
+ *
  * @member {object} [localNetworkAddressSpace] Local network site Address space
  * 
  * @member {array} [localNetworkAddressSpace.addressPrefixes] Gets or sets
@@ -2801,6 +2851,7 @@ export interface LocalNetworkGateway extends Resource {
  * Initializes a new instance of the EffectiveNetworkSecurityGroup class.
  * @constructor
  * Effective NetworkSecurityGroup
+ *
  * @member {object} [networkSecurityGroup] Gets the id of network security
  * group that is applied
  * 
@@ -2832,6 +2883,7 @@ export interface EffectiveNetworkSecurityGroup {
  * Initializes a new instance of the EffectiveNetworkSecurityGroupAssociation class.
  * @constructor
  * Effective NetworkSecurityGroup association
+ *
  * @member {object} [subnet] Gets the id of subnet if assigned
  * 
  * @member {string} [subnet.id] Resource Id
@@ -2852,6 +2904,7 @@ export interface EffectiveNetworkSecurityGroupAssociation {
  * Initializes a new instance of the EffectiveNetworkSecurityRules class.
  * @constructor
  * Effective NetworkSecurityRules
+ *
  * @member {string} [name] Gets the name of the security rule specified by the
  * user (if created by the user)
  * 
@@ -2900,6 +2953,7 @@ export interface EffectiveNetworkSecurityRules {
  * Initializes a new instance of the EffectiveRoute class.
  * @constructor
  * Effective Route
+ *
  * @member {object} [userDefinedRoute] Gets the Id of the effective route.
  * This is optional, only user defined routes have the name.
  * 
@@ -2937,6 +2991,7 @@ export interface EffectiveRoute extends SubResource {
  * Initializes a new instance of the VirtualNetworkPeering class.
  * @constructor
  * Peerings in a VirtualNework resource
+ *
  * @member {boolean} [allowVirtualNetworkAccess] Gets or sets whether the VMs
  * in the linked virtual network space would be able to access all the VMs in
  * local Virtual network space
@@ -2990,6 +3045,7 @@ export interface VirtualNetworkPeering extends SubResource {
  * Initializes a new instance of the UsageName class.
  * @constructor
  * The Usage Names.
+ *
  * @member {string} [value] Gets or sets a string describing the resource name.
  * 
  * @member {string} [localizedValue] Gets or sets a localized string
@@ -3006,6 +3062,7 @@ export interface UsageName {
  * Initializes a new instance of the Usage class.
  * @constructor
  * Describes Network Resource Usage.
+ *
  * @member {number} currentValue Gets or sets the current value of the usage.
  * 
  * @member {number} limit Gets or sets the limit of usage.
@@ -3030,6 +3087,7 @@ export interface Usage {
  * Initializes a new instance of the VirtualNetworkGatewayIPConfiguration class.
  * @constructor
  * IpConfiguration for Virtual network gateway
+ *
  * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
  * allocation method. Possible values include: 'Static', 'Dynamic'
  * 
@@ -3066,6 +3124,7 @@ export interface VirtualNetworkGatewayIPConfiguration extends SubResource {
  * Initializes a new instance of the VirtualNetworkGatewaySku class.
  * @constructor
  * VirtualNetworkGatewaySku details
+ *
  * @member {string} [name] Gateway sku name -Basic/HighPerformance/Standard.
  * Possible values include: 'Basic', 'HighPerformance', 'Standard'
  * 
@@ -3086,6 +3145,7 @@ export interface VirtualNetworkGatewaySku {
  * Initializes a new instance of the VpnClientConfiguration class.
  * @constructor
  * VpnClientConfiguration for P2S client
+ *
  * @member {object} [vpnClientAddressPool] Gets or sets the reference of the
  * Address space resource which represents Address space for P2S VpnClient.
  * 
@@ -3110,6 +3170,7 @@ export interface VpnClientConfiguration {
  * Initializes a new instance of the VpnClientRootCertificate class.
  * @constructor
  * VPN client root certificate of virtual network gateway
+ *
  * @member {string} [publicCertData] Gets or sets the certificate public data
  * 
  * @member {string} [provisioningState] Gets provisioning state of the VPN
@@ -3134,6 +3195,7 @@ export interface VpnClientRootCertificate extends SubResource {
  * Initializes a new instance of the VpnClientRevokedCertificate class.
  * @constructor
  * VPN client revoked certificate of virtual network gateway
+ *
  * @member {string} [thumbprint] Gets or sets the revoked Vpn client
  * certificate thumbprint
  * 
@@ -3159,6 +3221,7 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * Initializes a new instance of the VirtualNetworkGateway class.
  * @constructor
  * A common class for general resource information
+ *
  * @member {array} [ipConfigurations] IpConfigurations for Virtual network
  * gateway.
  * 
@@ -3249,6 +3312,7 @@ export interface VirtualNetworkGateway extends Resource {
  * Initializes a new instance of the VpnClientParameters class.
  * @constructor
  * VpnClientParameters
+ *
  * @member {string} [processorArchitecture] VPN client Processor Architecture
  * -Amd64/X86. Possible values include: 'Amd64', 'X86'
  * 
@@ -3262,6 +3326,7 @@ export interface VpnClientParameters {
  * Initializes a new instance of the VirtualNetworkGatewayConnection class.
  * @constructor
  * A common class for general resource information
+ *
  * @member {string} [authorizationKey] The authorizationKey.
  * 
  * @member {object} [virtualNetworkGateway1]
@@ -3511,6 +3576,7 @@ export interface VirtualNetworkGatewayConnection extends Resource {
  * Initializes a new instance of the ConnectionSharedKeyResult class.
  * @constructor
  * Response for CheckConnectionSharedKey Api servive call
+ *
  * @member {string} [value] The virtual network connection shared key value
  * 
  */
@@ -3535,6 +3601,7 @@ export interface ConnectionResetSharedKey {
  * Initializes a new instance of the ConnectionSharedKey class.
  * @constructor
  * Response for GetConnectionSharedKey Api servive call
+ *
  * @member {string} [value] The virtual network connection shared key value
  * 
  */
@@ -3549,6 +3616,7 @@ export interface ConnectionSharedKey {
  * DHCPOptions contains an array of DNS servers available to VMs deployed in
  * the virtual networkStandard DHCP option for a subnet overrides VNET DHCP
  * options.
+ *
  * @member {array} [dnsServers] Gets or sets list of DNS servers IP addresses
  * 
  */
@@ -3561,6 +3629,7 @@ export interface DhcpOptions {
  * Initializes a new instance of the VirtualNetwork class.
  * @constructor
  * Virtual Network resource
+ *
  * @member {object} [addressSpace] Gets or sets AddressSpace that contains an
  * array of IP address ranges that can be used by subnets
  * 
@@ -3603,6 +3672,7 @@ export interface VirtualNetwork extends Resource {
  * Initializes a new instance of the DnsNameAvailabilityResult class.
  * @constructor
  * Response for CheckDnsNameAvailability Api servive call
+ *
  * @member {boolean} [available] Domain availability (True/False)
  * 
  */
@@ -3662,6 +3732,7 @@ export interface ErrorModel {
  * status code for the successful request. If the asynchronous operation
  * failed, the response body includes the HTTP status code for the failed
  * request and error information regarding the failure.
+ *
  * @member {string} [status] Status of the AzureAsuncOperation. Possible
  * values include: 'InProgress', 'Succeeded', 'Failed'
  * 
