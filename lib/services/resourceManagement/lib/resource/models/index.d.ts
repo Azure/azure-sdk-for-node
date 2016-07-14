@@ -35,14 +35,11 @@ export interface DeploymentExtendedFilter {
  * 
  * @member {string} [tagvalue] Gets or sets the tag value.
  * 
- * @member {string} [expand] Gets or sets the expand value.
- * 
  */
 export interface GenericResourceFilter {
     resourceType?: string;
     tagname?: string;
     tagvalue?: string;
-    expand?: string;
 }
 
 /**
@@ -232,6 +229,34 @@ export interface ResourceManagementErrorWithDetails {
 
 /**
  * @class
+ * Initializes a new instance of the AliasPathType class.
+ * @constructor
+ * @member {string} [path] Gets or sets the path.
+ * 
+ * @member {array} [apiVersions] Gets or sets the api versions.
+ * 
+ */
+export interface AliasPathType {
+    path?: string;
+    apiVersions?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AliasType class.
+ * @constructor
+ * @member {string} [name] Gets or sets the alias name.
+ * 
+ * @member {array} [paths] Gets or sets the paths for an alias.
+ * 
+ */
+export interface AliasType {
+    name?: string;
+    paths?: AliasPathType[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ProviderResourceType class.
  * @constructor
  * Resource type managed by the resource provider.
@@ -241,6 +266,9 @@ export interface ResourceManagementErrorWithDetails {
  * @member {array} [locations] Gets or sets the collection of locations where
  * this resource type can be created in.
  * 
+ * @member {array} [aliases] Gets or sets the aliases that are supported by
+ * this resource type.
+ * 
  * @member {array} [apiVersions] Gets or sets the api version.
  * 
  * @member {object} [properties] Gets or sets the properties.
@@ -249,6 +277,7 @@ export interface ResourceManagementErrorWithDetails {
 export interface ProviderResourceType {
     resourceType?: string;
     locations?: string[];
+    aliases?: AliasType[];
     apiVersions?: string[];
     properties?: { [propertyName: string]: string };
 }
@@ -544,10 +573,6 @@ export interface DeploymentExtended {
  * 
  * @member {string} [type] Resource type
  * 
- * @member {date} [createdTime] Created time of the resource.
- * 
- * @member {date} [changedTime] Changed time of the resource.
- * 
  * @member {string} location Resource location
  * 
  * @member {object} [tags] Resource tags
@@ -557,8 +582,6 @@ export interface Resource extends BaseResource {
     id?: string;
     name?: string;
     type?: string;
-    createdTime?: Date;
-    changedTime?: Date;
     location: string;
     tags?: { [propertyName: string]: string };
 }
