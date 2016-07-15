@@ -15,11 +15,11 @@ nock('http://management.azure.com:443')
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14994',
-  'x-ms-request-id': '6eaae2a7-d460-45eb-9f36-5382ea7eaf97',
-  'x-ms-correlation-request-id': '6eaae2a7-d460-45eb-9f36-5382ea7eaf97',
-  'x-ms-routing-request-id': 'CENTRALUS:20160715T034252Z:6eaae2a7-d460-45eb-9f36-5382ea7eaf97',
+  'x-ms-request-id': '148ee35c-1dfa-498b-9602-ce5616b75180',
+  'x-ms-correlation-request-id': '148ee35c-1dfa-498b-9602-ce5616b75180',
+  'x-ms-routing-request-id': 'CENTRALUS:20160715T184727Z:148ee35c-1dfa-498b-9602-ce5616b75180',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 15 Jul 2016 03:42:51 GMT',
+  date: 'Fri, 15 Jul 2016 18:47:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -33,10 +33,10 @@ nock('https://management.azure.com:443')
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14994',
-  'x-ms-request-id': '6eaae2a7-d460-45eb-9f36-5382ea7eaf97',
-  'x-ms-correlation-request-id': '6eaae2a7-d460-45eb-9f36-5382ea7eaf97',
-  'x-ms-routing-request-id': 'CENTRALUS:20160715T034252Z:6eaae2a7-d460-45eb-9f36-5382ea7eaf97',
+  'x-ms-request-id': '148ee35c-1dfa-498b-9602-ce5616b75180',
+  'x-ms-correlation-request-id': '148ee35c-1dfa-498b-9602-ce5616b75180',
+  'x-ms-routing-request-id': 'CENTRALUS:20160715T184727Z:148ee35c-1dfa-498b-9602-ce5616b75180',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 15 Jul 2016 03:42:51 GMT',
+  date: 'Fri, 15 Jul 2016 18:47:26 GMT',
   connection: 'close' });
  return result; }]];

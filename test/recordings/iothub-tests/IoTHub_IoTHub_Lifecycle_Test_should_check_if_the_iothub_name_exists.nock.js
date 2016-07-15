@@ -8,42 +8,6 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourcegroups/nodetestrg?api-version=2016-02-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/nodetestrg\",\"name\":\"nodetestrg\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '173',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-request-id': '3b412d66-7f62-474a-9ad2-8f5bc1a0353b',
-  'x-ms-correlation-request-id': '3b412d66-7f62-474a-9ad2-8f5bc1a0353b',
-  'x-ms-routing-request-id': 'CENTRALUS:20160715T033836Z:3b412d66-7f62-474a-9ad2-8f5bc1a0353b',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 15 Jul 2016 03:38:36 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourcegroups/nodetestrg?api-version=2016-02-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/nodetestrg\",\"name\":\"nodetestrg\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '173',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-request-id': '3b412d66-7f62-474a-9ad2-8f5bc1a0353b',
-  'x-ms-correlation-request-id': '3b412d66-7f62-474a-9ad2-8f5bc1a0353b',
-  'x-ms-routing-request-id': 'CENTRALUS:20160715T033836Z:3b412d66-7f62-474a-9ad2-8f5bc1a0353b',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 15 Jul 2016 03:38:36 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
 .post('/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/providers/Microsoft.Devices/checkNameAvailability?api-version=2016-02-03', '*')
   .reply(200, "{\"nameAvailable\":true,\"reason\":\"Invalid\",\"message\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
@@ -52,11 +16,11 @@ nock('http://management.azure.com:443')
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': '21c24562-97f7-474c-9515-fcfbca277761',
-  'x-ms-correlation-request-id': '21c24562-97f7-474c-9515-fcfbca277761',
-  'x-ms-routing-request-id': 'CENTRALUS:20160715T033837Z:21c24562-97f7-474c-9515-fcfbca277761',
+  'x-ms-request-id': '37018a9f-f909-420d-8b50-44377aac2433',
+  'x-ms-correlation-request-id': '37018a9f-f909-420d-8b50-44377aac2433',
+  'x-ms-routing-request-id': 'WESTUS:20160715T184213Z:37018a9f-f909-420d-8b50-44377aac2433',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 15 Jul 2016 03:38:36 GMT',
+  date: 'Fri, 15 Jul 2016 18:42:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -71,10 +35,10 @@ nock('https://management.azure.com:443')
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': '21c24562-97f7-474c-9515-fcfbca277761',
-  'x-ms-correlation-request-id': '21c24562-97f7-474c-9515-fcfbca277761',
-  'x-ms-routing-request-id': 'CENTRALUS:20160715T033837Z:21c24562-97f7-474c-9515-fcfbca277761',
+  'x-ms-request-id': '37018a9f-f909-420d-8b50-44377aac2433',
+  'x-ms-correlation-request-id': '37018a9f-f909-420d-8b50-44377aac2433',
+  'x-ms-routing-request-id': 'WESTUS:20160715T184213Z:37018a9f-f909-420d-8b50-44377aac2433',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 15 Jul 2016 03:38:36 GMT',
+  date: 'Fri, 15 Jul 2016 18:42:12 GMT',
   connection: 'close' });
  return result; }]];

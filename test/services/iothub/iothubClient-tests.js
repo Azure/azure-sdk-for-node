@@ -270,6 +270,12 @@ describe('IoTHub', function () {
             });
         });
 
+        it('should delete the iothub successfully', function (done) {
+            client.iotHubResource.deleteMethod(resourceGroupName, resourceName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                done();
+            });
+        });
     });
 
     describe('Get All IoTHubs in subscription', function () {
